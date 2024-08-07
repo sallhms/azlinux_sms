@@ -1,7 +1,8 @@
 storage:
+  bootType: efi
   disks:
   - partitionTableType: gpt
-    maxSize: 4G
+    maxSize: 5120M
     partitions:
     - id: esp
       type: esp
@@ -10,17 +11,20 @@ storage:
 
     - id: boot
       start: 9M
-      end: 108M
+      end: 1024M
 
-    - id: rootfs
-      label: rootfs
-      start: 108M
-      end: 2G
+    - id: root
+      label: root
+      start: 1024M
+      end: 3072M
+
+    - id: verityhash
+      label: root-hash
+      start: 3072M
+      end: 3200M
 
     - id: var
-      start: 2G
-      
-  bootType: efi
+      start: 3200M
 
   fileSystems:
   - deviceId: esp
@@ -34,10 +38,13 @@ storage:
     mountPoint:
       path: /boot
 
-  - deviceId: rootfs
+  - deviceId: root
     type: ext4
     mountPoint:
       path: /
+      
+  - deviceId: verityhash
+    type: fat32
 
   - deviceId: var
     type: ext4
@@ -57,10 +64,31 @@ os:
   packages:
     install:
     - openssh-server
+    - veritysetup
+    - vim
 
   services:
     enable:
     - sshd
+
+  users:
+  - name: root
+    password:
+      type: plain-text
+      value: hello
+      
+  - name: chris
+    sshPublicKeyPaths:
+    - /home/chris/.ssh/id_ed25519.pub
+
+  verity:
+    corruptionOption: panic
+    dataPartition:
+      idType: part-label
+      id: root
+    hashPartition:
+      idType: part-label
+      id: root-hash
 
 scripts:
   postCustomization:
@@ -78,10 +106,9 @@ scripts:
 
       mkdir -p "$OVERLAY_ETC_UPPER"
       mkdir -p "$OVERLAY_ETC_WORK"
-      mkdir -p /var/chocolate
 
       cat << EOF >> /etc/fstab
-      overlay /var/chocolate overlay auto,x-initrd.mount,x-systemd.requires=/sysroot/var,lowerdir=/sysroot/etc,upperdir=/sysroot$OVERLAY_ETC_UPPER,workdir=/sysroot$OVERLAY_ETC_WORK 0 0
+      overlay /etc overlay auto,x-initrd.mount,x-systemd.requires=/sysroot/var,lowerdir=/sysroot/etc,upperdir=/sysroot$OVERLAY_ETC_UPPER,workdir=/sysroot$OVERLAY_ETC_WORK 0 0
       EOF
 
       cat /etc/fstab

@@ -1,0 +1,87 @@
+storage:
+  disks:
+  - partitionTableType: gpt
+    maxSize: 4G
+    partitions:
+    - id: esp
+      type: esp
+      start: 1M
+      end: 9M
+
+    - id: boot
+      start: 9M
+      end: 108M
+
+    - id: rootfs
+      label: rootfs
+      start: 108M
+      end: 2G
+
+    - id: var
+      start: 2G
+      
+  bootType: efi
+
+  fileSystems:
+  - deviceId: esp
+    type: fat32
+    mountPoint:
+      path: /boot/efi
+      options: umask=0077
+
+  - deviceId: boot
+    type: ext4
+    mountPoint:
+      path: /boot
+
+  - deviceId: rootfs
+    type: ext4
+    mountPoint:
+      path: /
+
+  - deviceId: var
+    type: ext4
+    mountPoint:
+      path: /var
+      options: defaults,x-initrd.mount
+
+os:
+  resetBootLoaderType: hard-reset
+  
+  additionalFiles:
+    files/dracut-overlay.conf: /etc/dracut.conf.d/dracut-overlay.conf
+
+  kernelCommandLine:
+    extraCommandLine: systemd.log_level=debug
+
+  packages:
+    install:
+    - openssh-server
+
+  services:
+    enable:
+    - sshd
+
+scripts:
+  postCustomization:
+  - content: |
+      set -eux
+
+      sed -i "s|#LogLevel=info|LogLevel=debug|" /etc/systemd/system.conf
+      cat /etc/systemd/system.conf
+
+      #sed -i "s| ro ||" /boot/mariner.cfg
+      #cat /boot/mariner.cfg
+
+      OVERLAY_ETC_UPPER=/var/overlays/etc/upper
+      OVERLAY_ETC_WORK=/var/overlays/etc/work
+
+      mkdir -p "$OVERLAY_ETC_UPPER"
+      mkdir -p "$OVERLAY_ETC_WORK"
+      mkdir -p /var/chocolate
+
+      cat << EOF >> /etc/fstab
+      overlay /var/chocolate overlay auto,x-initrd.mount,x-systemd.requires=/sysroot/var,lowerdir=/sysroot/etc,upperdir=/sysroot$OVERLAY_ETC_UPPER,workdir=/sysroot$OVERLAY_ETC_WORK 0 0
+      EOF
+
+      cat /etc/fstab

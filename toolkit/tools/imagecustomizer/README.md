@@ -43,8 +43,8 @@ Disadvantages:
    For documentation on the supported configuration options, see:
    [Azure Linux Image Customizer configuration](./docs/configuration.md)
 
-3. Install prerequisites: `qemu-img`, `rpm`, `dd`, `lsblk`, `losetup`, `sfdisk`,
-   `udevadm`, `flock`, `blkid`, `openssl`, `sed`, `createrepo`, `mksquashfs`,
+3. Install prerequisites: `qemu-img`, `rpm`, `rsync`, `dd`, `lsblk`, `losetup`,
+   `sfdisk`, `udevadm`, `flock`, `blkid`, `openssl`, `sed`, `createrepo`, `mksquashfs`,
    `genisoimage`, `parted`, `mkfs`, `mkfs.ext4`, `mkfs.vfat`, `mkfs.xfs`, `fsck`,
    `e2fsck`, `xfs_repair`, `resize2fs`, `tune2fs`, `xfs_admin`, `fatlabel`, `zstd`,
    `veritysetup`, `grub2-install` (or `grub-install`).
@@ -52,17 +52,17 @@ Disadvantages:
    - For Ubuntu 22.04 images, run:
 
      ```bash
-     sudo apt -y install qemu-utils rpm coreutils util-linux mount fdisk udev openssl \
-        sed createrepo-c squashfs-tools genisoimage parted e2fsprogs dosfstools \
-        xfsprogs zstd cryptsetup-bin grub2-common
+     sudo apt -y install qemu-utils rpm coreutils util-linux rsync mount fdisk udev \
+        openssl sed createrepo-c squashfs-tools genisoimage parted e2fsprogs \
+        dosfstools xfsprogs zstd cryptsetup-bin grub2-common
      ```
 
    - For Mariner 2.0, run:
 
      ```bash
-     sudo tdnf install -y qemu-img rpm coreutils util-linux systemd openssl \
-        sed createrepo_c squashfs-tools cdrkit parted e2fsprogs dosfstools \
-        xfsprogs zstd veritysetup grub2 grub2-pc
+     sudo tdnf install -y qemu-img rpm coreutils util-linux rsync systemd \
+        openssl sed createrepo_c squashfs-tools cdrkit parted e2fsprogs \
+        dosfstools xfsprogs zstd veritysetup grub2 grub2-pc
      ```
 
 4. Run the Azure Linux Image Customizer tool.

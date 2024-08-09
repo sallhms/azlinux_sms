@@ -50,15 +50,26 @@ func copyFilesIntoNewDisk(existingImageChroot *safechroot.Chroot, newImageChroot
 }
 
 func copyPartitionFiles(sourceRoot, targetRoot string) error {
-	// Notes:
-	// `-a` ensures unix permissions, extended attributes (including SELinux), and sub-directories (-r) are copied.
-	// `--no-dereference` ensures that symlinks are copied as symlinks.
-	copyArgs := []string{"--verbose", "--no-clobber", "-a", "--no-dereference", "--sparse", "always",
+	// --archive:
+	//   --recursive: All descendent files/directories.
+	//   --links: Symlinks are copied as symlinks.
+	//   --perms: Preserve permissions.
+	//   --times: Preserve modification times.
+	//   --group: Preserve group.
+	//   --owner: Preserve owner.
+	//   --devices: Preserve device files.
+	//   --specials: Preserve special files.
+	// --acls: Preserve ACLs.
+	// --xattrs: Preserve extended attributes (e.g. filecaps, SELinux lables).
+	// --atimes: Preserve access times.
+	// --sparse: Turn blocks of 0s into sparse blocks.
+	// --info=NAME: List the files that are copied.
+	copyArgs := []string{"--archive", "--acls", "--xattrs", "--atimes", "--sparse", "--info=NAME",
 		sourceRoot, targetRoot}
 
-	err := shell.NewExecBuilder("cp", copyArgs...).
-		LogLevel(logrus.TraceLevel, logrus.DebugLevel).
-		ErrorStderrLines(1).
+	err := shell.NewExecBuilder("rsync", copyArgs...).
+		LogLevel(logrus.TraceLevel, logrus.WarnLevel).
+		ErrorStderrLines(2).
 		Execute()
 	if err != nil {
 		return fmt.Errorf("failed to copy files:\n%w", err)

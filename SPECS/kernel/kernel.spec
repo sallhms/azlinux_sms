@@ -409,6 +409,7 @@ echo "initrd of kernel %{uname_r} removed" >&2
 %changelog
 * Wed Sep 04 2024 Rachel Menge <rachelmenge@microsoft.com> - 6.6.47.1-3
 - Build mpt2sas and mpt3sas drivers as modules
+- Build pata_legacy as module
 
 * Thu Aug 29 2024 Jo Zzsi <jozzsicsataban@gmail.com> - 6.6.47.1-2
 - UKI: remove usrmount from initrd

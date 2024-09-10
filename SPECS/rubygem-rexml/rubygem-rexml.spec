@@ -36,6 +36,7 @@ gem install -V --local --force --install-dir %{buildroot}/%{gemdir} %{gem_name}-
 %changelog
 * Tue Sep 10 2024 Harshit Gupta <guptaharshit@microsoft.com> - 3.3.3-1
 - Upgrade to v3.3.3 to fix CVE-2024-41946
+- Remove patch that supports old strscan
 
 * Wed May 22 2024 Neha Agarwal <nehaagarwal@microsoft.com> - 3.2.8-1
 - Upgrade to v3.2.8 to fix CVE-2024-35176

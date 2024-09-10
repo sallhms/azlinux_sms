@@ -2,7 +2,7 @@
 %global gem_name rexml
 Summary:        REXML is an XML toolkit for Ruby
 Name:           rubygem-%{gem_name}
-Version:        3.2.8
+Version:        3.3.3
 Release:        1%{?dist}
 License:        BSD
 Vendor:         Microsoft Corporation
@@ -35,6 +35,9 @@ gem install -V --local --force --install-dir %{buildroot}/%{gemdir} %{gem_name}-
 %{gemdir}
 
 %changelog
+* Tue Sep 10 2024 Harshit Gupta <guptaharshit@microsoft.com> - 3.3.3-1
+- Upgrade to v3.3.3 to fix CVE-2024-41946
+
 * Wed May 22 2024 Neha Agarwal <nehaagarwal@microsoft.com> - 3.2.8-1
 - Upgrade to v3.2.8 to fix CVE-2024-35176
 - Add patch to support old strscan

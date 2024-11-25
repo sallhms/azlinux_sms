@@ -1,18 +1,13 @@
-Vendor:         Microsoft Corporation
-Distribution:   Azure Linux
-%global _hardened_build 1
-
 Name:           accountsservice
-Version:        0.6.55
-Release:        4%{?dist}
+Version:        23.13.9
+Release:        5%{?dist}
 Summary:        D-Bus interfaces for querying and manipulating user account information
-License:        GPLv3+
+License:        GPL-3.0-or-later
 URL:            https://www.freedesktop.org/wiki/Software/AccountsService/
 
-#VCS: git:git://git.freedesktop.org/accountsservice
-Source0:        http://www.freedesktop.org/software/accountsservice/accountsservice-%{version}.tar.xz
+#VCS: git:git://gitlab.freedesktop.org/accountsservice/accountsservice
+Source0:        https://www.freedesktop.org/software/accountsservice/accountsservice-%{version}.tar.xz
 
-BuildRequires:  %{_bindir}/xsltproc
 BuildRequires:  gettext-devel
 BuildRequires:  pkgconfig(dbus-1)
 BuildRequires:  glib2-devel
@@ -20,12 +15,19 @@ BuildRequires:  polkit-devel
 BuildRequires:  systemd
 BuildRequires:  systemd-devel
 BuildRequires:  gobject-introspection-devel
+BuildRequires:  gtk-doc
 BuildRequires:  git
 BuildRequires:  meson
+BuildRequires:  vala
+BuildRequires:  python3-dbusmock
 
 Requires:       polkit
 Requires:       shadow-utils
 %{?systemd_requires}
+
+# https://bugzilla.redhat.com/show_bug.cgi?id=2185850
+Patch10001:     0001-mocklibc-Fix-compiler-warning.patch
+Patch10002:     0002-user-manager-Fix-another-compiler-warning.patch
 
 %description
 The accountsservice project provides a set of D-Bus interfaces for
@@ -34,7 +36,7 @@ of these interfaces, based on the useradd, usermod and userdel commands.
 
 %package libs
 Summary: Client-side library to talk to accountsservice
-Requires: %{name} = %{version}-%{release}
+Requires: %{name}%{?_isa} = %{version}-%{release}
 
 %description libs
 The accountsservice-libs package contains a library that can
@@ -43,7 +45,7 @@ daemon.
 
 %package devel
 Summary: Development files for accountsservice-libs
-Requires: %{name}-libs = %{version}-%{release}
+Requires: %{name}-libs%{?_isa} = %{version}-%{release}
 
 %description devel
 The accountsservice-devel package contains headers and other
@@ -54,11 +56,15 @@ files needed to build applications that use accountsservice-libs.
 %autosetup -S git
 
 %build
-%meson -Dgtk_doc=false -Dsystemd=true -Duser_heuristics=true
+%meson \
+ -Dgtk_doc=true \
+ -Dadmin_group=wheel
 %meson_build
 
 %install
 %meson_install
+
+mkdir -p $RPM_BUILD_ROOT%{_datadir}/accountsservice/interfaces/
 
 %find_lang accounts-service
 
@@ -76,35 +82,100 @@ files needed to build applications that use accountsservice-libs.
 %files -f accounts-service.lang
 %license COPYING
 %doc README.md AUTHORS
-%{_sysconfdir}/dbus-1/system.d/org.freedesktop.Accounts.conf
 %{_libexecdir}/accounts-daemon
+%dir %{_datadir}/accountsservice/
+%dir %{_datadir}/accountsservice/interfaces/
+%{_datadir}/accountsservice/user-templates/
 %{_datadir}/dbus-1/interfaces/org.freedesktop.Accounts.xml
 %{_datadir}/dbus-1/interfaces/org.freedesktop.Accounts.User.xml
+%{_datadir}/dbus-1/system.d/org.freedesktop.Accounts.conf
 %{_datadir}/dbus-1/system-services/org.freedesktop.Accounts.service
 %{_datadir}/polkit-1/actions/org.freedesktop.accounts.policy
 %dir %{_localstatedir}/lib/AccountsService/
-%dir %{_localstatedir}/lib/AccountsService/users
-%dir %{_localstatedir}/lib/AccountsService/icons
+%dir %{_localstatedir}/lib/AccountsService/users/
+%dir %{_localstatedir}/lib/AccountsService/icons/
 %{_unitdir}/accounts-daemon.service
 
 %files libs
 %{_libdir}/libaccountsservice.so.*
+%dir %{_libdir}/girepository-1.0/
 %{_libdir}/girepository-1.0/AccountsService-1.0.typelib
 
 %files devel
 %{_includedir}/accountsservice-1.0
 %{_libdir}/libaccountsservice.so
 %{_libdir}/pkgconfig/accountsservice.pc
+%dir %{_datadir}/gir-1.0/
 %{_datadir}/gir-1.0/AccountsService-1.0.gir
+%dir %{_datadir}/gtk-doc/html/libaccountsservice
+%{_datadir}/gtk-doc/html/libaccountsservice/*
+%dir %{_datadir}/vala/
+%dir %{_datadir}/vala/vapi/
+%{_datadir}/vala/vapi/accountsservice.*
 
 %changelog
-* Mon Mar 21 2022 Pawel Winogrodzki <pawelwi@microsoft.com> - 0.6.55-4
-- Adding BR on '%%{_bindir}/xsltproc'.
-- License verified.
-- Removed doc building.
+* Wed Jul 17 2024 Fedora Release Engineering <releng@fedoraproject.org> - 23.13.9-5
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_41_Mass_Rebuild
 
-* Fri Oct 15 2021 Pawel Winogrodzki <pawelwi@microsoft.com> - 0.6.55-3
-- Initial CBL-Mariner import from Fedora 32 (license: MIT).
+* Wed Jan 24 2024 Fedora Release Engineering <releng@fedoraproject.org> - 23.13.9-4
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Fri Jan 19 2024 Fedora Release Engineering <releng@fedoraproject.org> - 23.13.9-3
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Wed Jul 19 2023 Fedora Release Engineering <releng@fedoraproject.org> - 23.13.9-2
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_39_Mass_Rebuild
+
+* Tue Apr 11 2023 Ray Strode <rstrode@redhat.com> - 23.13.9-1
+- Update to 23.13.9
+- Fix C99 compile error
+  Resolves: #2185850
+
+* Fri Mar 24 2023 Ray Strode <rstrode@redhat.com> - 23.11.69-2
+- Fix delay during boot for some users
+  Resolves: #2180768
+
+* Wed Mar 15 2023 Ray Strode <rstrode@redhat.com> - 23.11.69-1
+- Update to 23.11.69
+
+* Wed Jan 18 2023 Fedora Release Engineering <releng@fedoraproject.org> - 22.08.8-3
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_38_Mass_Rebuild
+
+* Mon Sep 26 2022 Kalev Lember <klember@redhat.com> - 22.08.8-2
+- Rebuild
+
+* Sat Aug 27 2022 Leigh Scott <leigh123linux@gmail.com> - 22.08.8-1
+- Update to 22.08.8
+
+* Tue Jul 26 2022 Tomas Popela <tpopela@redhat.com> - 0.6.55-11
+- Fix the build with meson 0.60+
+
+* Wed Jul 20 2022 Fedora Release Engineering <releng@fedoraproject.org> - 0.6.55-10
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_37_Mass_Rebuild
+
+* Wed Jan 19 2022 Fedora Release Engineering <releng@fedoraproject.org> - 0.6.55-9
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_36_Mass_Rebuild
+
+* Wed Jul 21 2021 Fedora Release Engineering <releng@fedoraproject.org> - 0.6.55-8
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_35_Mass_Rebuild
+
+* Fri Jun 25 2021 Björn Esser <besser82@fedoraproject.org> - 0.6.55-7
++ accountsservice-0.6.55-7
+- Add patch to use yescrypt for new user passwords, fixes rhbz#1976334
+
+* Mon Jan 25 2021 Fedora Release Engineering <releng@fedoraproject.org> - 0.6.55-6
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_34_Mass_Rebuild
+
+* Fri Sep 04 2020 Bastien Nocera <bnocera@redhat.com> - 0.6.55-5
++ accountsservice-0.6.55-5
+- Own /usr/share/accountsservice
+
+* Fri Jul 31 2020 Fedora Release Engineering <releng@fedoraproject.org> - 0.6.55-4
+- Second attempt - Rebuilt for
+  https://fedoraproject.org/wiki/Fedora_33_Mass_Rebuild
+
+* Mon Jul 27 2020 Fedora Release Engineering <releng@fedoraproject.org> - 0.6.55-3
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_33_Mass_Rebuild
 
 * Tue Jan 28 2020 Fedora Release Engineering <releng@fedoraproject.org> - 0.6.55-2
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_32_Mass_Rebuild

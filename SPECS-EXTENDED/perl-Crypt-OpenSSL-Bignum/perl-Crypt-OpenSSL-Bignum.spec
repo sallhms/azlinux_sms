@@ -1,31 +1,30 @@
-Vendor:         Microsoft Corporation
-Distribution:   Azure Linux
 Name:           perl-Crypt-OpenSSL-Bignum
 Version:        0.09
-Release:        10%{?dist}
-Summary:        Perl interface to OpenSSL for Bignum
-License:        GPL+ or Artistic 
+Release:        28%{?dist}
+Summary:        Perl interface to OpenSSL's multiprecision integer arithmetic
+License:        GPL-1.0-or-later OR Artistic-1.0-Perl
 URL:            https://metacpan.org/release/Crypt-OpenSSL-Bignum
-Source0:        https://cpan.metacpan.org/authors/id/K/KM/KMX/Crypt-OpenSSL-Bignum-%{version}.tar.gz#/perl-Crypt-OpenSSL-Bignum-%{version}.tar.gz
+Source0:        https://cpan.metacpan.org/authors/id/K/KM/KMX/Crypt-OpenSSL-Bignum-%{version}.tar.gz
 BuildRequires:  coreutils
 BuildRequires:  findutils
 BuildRequires:  gcc
 BuildRequires:  make
-BuildRequires:  openssl
-BuildRequires:  openssl-devel
 BuildRequires:  perl-devel
 BuildRequires:  perl-generators
 BuildRequires:  perl-interpreter
+BuildRequires:  perl(:VERSION) >= 5.6.2
+BuildRequires:  perl(Config)
+BuildRequires:  perl(ExtUtils::MakeMaker) >= 6.76
+BuildRequires:  pkgconf-pkg-config
+BuildRequires:  pkgconfig(libcrypto)
+# Run-time:
 BuildRequires:  perl(base)
 BuildRequires:  perl(Carp)
-BuildRequires:  perl(Config)
 BuildRequires:  perl(DynaLoader)
-BuildRequires:  perl(ExtUtils::MakeMaker)
 BuildRequires:  perl(strict)
-BuildRequires:  perl(Test)
 BuildRequires:  perl(vars)
-
-Requires:       perl(:MODULE_COMPAT_%(eval "`%{__perl} -V:version`"; echo $version))
+# Tests:
+BuildRequires:  perl(Test)
 
 %description
 Crypt::OpenSSL::Bignum provides access to OpenSSL multiprecision integer
@@ -34,23 +33,37 @@ operations that OpenSSL provides are exposed to perl. In addition, this
 module can be used to provide access to bignum values produced by other
 OpenSSL modules, such as key parameters from Crypt::OpenSSL::RSA.
 
+%package tests  
+Summary:        Tests for %{name}
+BuildArch:      noarch
+Requires:       %{name} = %{?epoch:%{epoch}:}%{version}-%{release}
+Requires:       perl-Test-Harness
+
+%description tests
+Tests from %{name}. Execute them
+with "%{_libexecdir}/%{name}/test".
+
 %prep
 %setup -q -n Crypt-OpenSSL-Bignum-%{version}
+chmod a-x LICENSE README Changes
 
 %build
-%{__perl} Makefile.PL INSTALLDIRS=vendor
-make %{?_smp_mflags}
+unset OPENSSL_LIB OPENSSL_PREFIX
+perl Makefile.PL INSTALLDIRS=vendor NO_PACKLIST=1 NO_PERLLOCAL=1
+%{make_build}
 
 %install
-rm -rf %{buildroot}
-
-make pure_install DESTDIR=%{buildroot}
-
-find %{buildroot} -type f -name .packlist -delete
-find %{buildroot} -depth -type d -exec rmdir {} 2>/dev/null \;
+%{make_install}
 find %{buildroot} -type f -name '*.bs' -size 0 -delete
-
 %{_fixperms} %{buildroot}/*
+# Install tests
+mkdir -p %{buildroot}%{_libexecdir}/%{name}
+cp -a test.pl %{buildroot}%{_libexecdir}/%{name}
+cat > %{buildroot}%{_libexecdir}/%{name}/test << 'EOF'
+#!/bin/sh
+cd %{_libexecdir}/%{name} && exec prove -I . test.pl
+EOF
+chmod +x %{buildroot}%{_libexecdir}/%{name}/test
 
 %check
 make test
@@ -58,13 +71,78 @@ make test
 %files
 %license LICENSE
 %doc Changes README
-%{perl_vendorarch}/auto/*
-%{perl_vendorarch}/Crypt/
-%{_mandir}/man3/*
+%dir %{perl_vendorarch}/auto/Crypt
+%dir %{perl_vendorarch}/auto/Crypt/OpenSSL
+%{perl_vendorarch}/auto/Crypt/OpenSSL/Bignum
+%dir %{perl_vendorarch}/Crypt
+%dir %{perl_vendorarch}/Crypt/OpenSSL
+%{perl_vendorarch}/Crypt/OpenSSL/Bignum
+%{perl_vendorarch}/Crypt/OpenSSL/Bignum.pm
+%{_mandir}/man3/Crypt::OpenSSL::Bignum.*
+%{_mandir}/man3/Crypt::OpenSSL::Bignum::*
+
+%files tests
+%{_libexecdir}/%{name}
 
 %changelog
-* Fri Oct 15 2021 Pawel Winogrodzki <pawelwi@microsoft.com> - 0.09-10
-- Initial CBL-Mariner import from Fedora 32 (license: MIT).
+* Thu Jul 18 2024 Fedora Release Engineering <releng@fedoraproject.org> - 0.09-28
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_41_Mass_Rebuild
+
+* Mon Jun 10 2024 Jitka Plesnikova <jplesnik@redhat.com> - 0.09-27
+- Perl 5.40 rebuild
+
+* Fri May 17 2024 Petr Pisar <ppisar@redhat.com> - 0.09-26
+- Use pkg-config for discovering OpenSSL
+- Package the tests
+
+* Thu Jan 25 2024 Fedora Release Engineering <releng@fedoraproject.org> - 0.09-25
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Sun Jan 21 2024 Fedora Release Engineering <releng@fedoraproject.org> - 0.09-24
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Thu Jul 20 2023 Fedora Release Engineering <releng@fedoraproject.org> - 0.09-23
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_39_Mass_Rebuild
+
+* Tue Jul 11 2023 Jitka Plesnikova <jplesnik@redhat.com> - 0.09-22
+- Perl 5.38 rebuild
+
+* Wed Jun 07 2023 Michal Josef Špaček <mspacek@redhat.com> - 0.09-21
+- Update license to SPDX format
+
+* Fri Jan 20 2023 Fedora Release Engineering <releng@fedoraproject.org> - 0.09-20
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_38_Mass_Rebuild
+
+* Fri Jul 22 2022 Fedora Release Engineering <releng@fedoraproject.org> - 0.09-19
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_37_Mass_Rebuild
+
+* Mon May 30 2022 Jitka Plesnikova <jplesnik@redhat.com> - 0.09-18
+- Perl 5.36 rebuild
+
+* Fri Jan 21 2022 Fedora Release Engineering <releng@fedoraproject.org> - 0.09-17
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_36_Mass_Rebuild
+
+* Tue Sep 14 2021 Sahana Prasad <sahana@redhat.com> - 0.09-16
+- Rebuilt with OpenSSL 3.0.0
+
+* Thu Jul 22 2021 Fedora Release Engineering <releng@fedoraproject.org> - 0.09-15
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_35_Mass_Rebuild
+
+* Fri May 21 2021 Jitka Plesnikova <jplesnik@redhat.com> - 0.09-14
+- Perl 5.34 rebuild
+
+* Wed Jan 27 2021 Fedora Release Engineering <releng@fedoraproject.org> - 0.09-13
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_34_Mass_Rebuild
+
+* Tue Jul 28 2020 Fedora Release Engineering <releng@fedoraproject.org> - 0.09-12
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_33_Mass_Rebuild
+
+* Mon Jun 22 2020 Jitka Plesnikova <jplesnik@redhat.com> - 0.09-11
+- Perl 5.32 rebuild
+
+* Tue Feb 04 2020 Tom Stellard <tstellar@redhat.com> - 0.09-10
+- Use make_build macro
+- https://docs.fedoraproject.org/en-US/packaging-guidelines/#_parallel_make
 
 * Wed Jan 29 2020 Fedora Release Engineering <releng@fedoraproject.org> - 0.09-9
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_32_Mass_Rebuild

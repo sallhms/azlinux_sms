@@ -1,18 +1,17 @@
-Vendor:         Microsoft Corporation
-Distribution:   Azure Linux
 Name:           celt051
 Version:        0.5.1.3
-Release:        20%{?dist}
+Release:        29%{?dist}
 Summary:        An audio codec for use in low-delay speech and audio communication
 
 License:        BSD
 # Files without license header are confirmed to be BSD. Will be fixed in later release
 # http://lists.xiph.org/pipermail/celt-dev/2009-February/000063.html
-URL:            https://gitlab.xiph.org/xiph/celt
+URL:            http://www.celt-codec.org/
 Source0:        http://downloads.us.xiph.org/releases/celt/celt-%{version}.tar.gz
 
 BuildRequires:  gcc
 BuildRequires: libogg-devel
+BuildRequires: make
 
 %description
 CELT (Constrained Energy Lapped Transform) is an ultra-low delay audio
@@ -66,8 +65,35 @@ rm $RPM_BUILD_ROOT%{_libdir}/libcelt051.la
 %{_libdir}/libcelt051.so
 
 %changelog
-* Fri Oct 15 2021 Pawel Winogrodzki <pawelwi@microsoft.com> - 0.5.1.3-20
-- Initial CBL-Mariner import from Fedora 32 (license: MIT).
+* Wed Jul 17 2024 Fedora Release Engineering <releng@fedoraproject.org> - 0.5.1.3-29
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_41_Mass_Rebuild
+
+* Tue Jan 23 2024 Fedora Release Engineering <releng@fedoraproject.org> - 0.5.1.3-28
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Fri Jan 19 2024 Fedora Release Engineering <releng@fedoraproject.org> - 0.5.1.3-27
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Wed Jul 19 2023 Fedora Release Engineering <releng@fedoraproject.org> - 0.5.1.3-26
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_39_Mass_Rebuild
+
+* Wed Jan 18 2023 Fedora Release Engineering <releng@fedoraproject.org> - 0.5.1.3-25
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_38_Mass_Rebuild
+
+* Wed Jul 20 2022 Fedora Release Engineering <releng@fedoraproject.org> - 0.5.1.3-24
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_37_Mass_Rebuild
+
+* Wed Jan 19 2022 Fedora Release Engineering <releng@fedoraproject.org> - 0.5.1.3-23
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_36_Mass_Rebuild
+
+* Wed Jul 21 2021 Fedora Release Engineering <releng@fedoraproject.org> - 0.5.1.3-22
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_35_Mass_Rebuild
+
+* Tue Jan 26 2021 Fedora Release Engineering <releng@fedoraproject.org> - 0.5.1.3-21
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_34_Mass_Rebuild
+
+* Mon Jul 27 2020 Fedora Release Engineering <releng@fedoraproject.org> - 0.5.1.3-20
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_33_Mass_Rebuild
 
 * Tue Jan 28 2020 Fedora Release Engineering <releng@fedoraproject.org> - 0.5.1.3-19
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_32_Mass_Rebuild

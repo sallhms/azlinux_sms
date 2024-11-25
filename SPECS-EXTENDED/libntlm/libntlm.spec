@@ -1,19 +1,13 @@
-%define version_with_hyphens %(version="%{version}" && echo "${version//./-}")
-
-Summary:        NTLMv1 authentication library
 Name:           libntlm
 Version:        1.6
-Release:        1%{?dist}
-License:        LGPL-2.1-only
-Vendor:         Microsoft Corporation
-Distribution:   Azure Linux
-URL:            https://gitlab.com/gsasl/libntlm/
-Source0:        https://gitlab.com/gsasl/libntlm/-/archive/%{name}-%{version_with_hyphens}/%{name}-%{name}-%{version_with_hyphens}.tar.gz
-
-BuildRequires:  autoconf
+Release:        10%{?dist}
+Summary:        NTLMv1 authentication library
+License:        LGPLv2+
+URL:            http://nongnu.org/libntlm
+Source0:        http://nongnu.org/libntlm/releases/%{name}-%{version}.tar.gz
+BuildRequires:  pkgconfig
 BuildRequires:  gcc
-BuildRequires:  pkg-config
-
+BuildRequires: make
 Provides:       bundled(gnulib)
 
 %description
@@ -29,8 +23,7 @@ The %{name}-devel package contains libraries and header files for
 developing applications that use %{name}.
 
 %prep
-%setup -q -n %{name}-%{name}-%{version_with_hyphens}
-autoreconf -fi
+%setup -q
 
 %build
 %configure --disable-static
@@ -39,27 +32,55 @@ sed -i 's|$(install_sh) -c|$(install_sh) -pc|g' Makefile
 
 %install
 make install DESTDIR=%{buildroot}
-find %{buildroot} -type f -name "*.la" -delete -print
+find %{buildroot} -name '*.la' -delete
 
 %files
-%license COPYING
-%doc AUTHORS ChangeLog README THANKS
-%{_libdir}/%{name}.so.0
-%{_libdir}/%{name}.so.0.*
+%doc AUTHORS ChangeLog COPYING README THANKS
+%{_libdir}/%{name}.so.*
 
 %files devel
+%doc COPYING 
 %{_includedir}/ntlm.h
 %{_libdir}/%{name}.so
 %{_libdir}/pkgconfig/%{name}.pc
 
 %changelog
-* Thu Nov 24 2022 Pawel Winogrodzki <pawelwi@microsoft.com> - 1.6-1
-- Updated to version 1.6 to fix CVE-2019-17455.
-- License verified.
-- Updated URLs.
+* Thu Jul 18 2024 Fedora Release Engineering <releng@fedoraproject.org> - 1.6-10
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_41_Mass_Rebuild
 
-* Fri Oct 15 2021 Pawel Winogrodzki <pawelwi@microsoft.com> - 1.5-3
-- Initial CBL-Mariner import from Fedora 32 (license: MIT).
+* Thu Jan 25 2024 Fedora Release Engineering <releng@fedoraproject.org> - 1.6-9
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Sun Jan 21 2024 Fedora Release Engineering <releng@fedoraproject.org> - 1.6-8
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Thu Jul 20 2023 Fedora Release Engineering <releng@fedoraproject.org> - 1.6-7
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_39_Mass_Rebuild
+
+* Thu Jan 19 2023 Fedora Release Engineering <releng@fedoraproject.org> - 1.6-6
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_38_Mass_Rebuild
+
+* Thu Jul 21 2022 Fedora Release Engineering <releng@fedoraproject.org> - 1.6-5
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_37_Mass_Rebuild
+
+* Thu Jan 20 2022 Fedora Release Engineering <releng@fedoraproject.org> - 1.6-4
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_36_Mass_Rebuild
+
+* Thu Jul 22 2021 Fedora Release Engineering <releng@fedoraproject.org> - 1.6-3
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_35_Mass_Rebuild
+
+* Tue Jan 26 2021 Fedora Release Engineering <releng@fedoraproject.org> - 1.6-2
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_34_Mass_Rebuild
+
+* Sat Oct 31 2020 Kevin Fenzi <kevin@scrye.com> - 1.6-1
+- Update to 1.6. Fixes CVE-2019-17455
+
+* Sat Aug 01 2020 Fedora Release Engineering <releng@fedoraproject.org> - 1.5-4
+- Second attempt - Rebuilt for
+  https://fedoraproject.org/wiki/Fedora_33_Mass_Rebuild
+
+* Tue Jul 28 2020 Fedora Release Engineering <releng@fedoraproject.org> - 1.5-3
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_33_Mass_Rebuild
 
 * Wed Jan 29 2020 Fedora Release Engineering <releng@fedoraproject.org> - 1.5-2
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_32_Mass_Rebuild

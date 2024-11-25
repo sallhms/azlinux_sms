@@ -1,13 +1,11 @@
-Vendor:         Microsoft Corporation
-Distribution:   Azure Linux
 Name:           perl-AppConfig
 Version:        1.71
-Release:        18%{?dist}
+Release:        30%{?dist}
 Summary:        Perl module for reading configuration files
 
 License:        GPL+ or Artistic
 URL:            https://metacpan.org/release/AppConfig
-Source0:        https://cpan.metacpan.org/authors/id/N/NE/NEILB/AppConfig-%{version}.tar.gz#/perl-AppConfig-%{version}.tar.gz
+Source0:        https://cpan.metacpan.org/authors/id/N/NE/NEILB/AppConfig-%{version}.tar.gz
 
 BuildArch:      noarch
 # Build:
@@ -33,7 +31,6 @@ BuildRequires:  perl(vars)
 # Optional Tests:
 BuildRequires:  perl(Test::Pod) >= 1.14
 # Dependencies:
-Requires:       perl(:MODULE_COMPAT_%(eval "`%{__perl} -V:version`"; echo $version))
 
 %description
 AppConfig has a powerful but easy to use module for parsing
@@ -86,8 +83,44 @@ AUTOMATED_TESTING=1 make test
 
 
 %changelog
-* Fri Oct 15 2021 Pawel Winogrodzki <pawelwi@microsoft.com> - 1.71-18
-- Initial CBL-Mariner import from Fedora 32 (license: MIT).
+* Thu Jul 18 2024 Fedora Release Engineering <releng@fedoraproject.org> - 1.71-30
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_41_Mass_Rebuild
+
+* Thu Jan 25 2024 Fedora Release Engineering <releng@fedoraproject.org> - 1.71-29
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Sun Jan 21 2024 Fedora Release Engineering <releng@fedoraproject.org> - 1.71-28
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Thu Jul 20 2023 Fedora Release Engineering <releng@fedoraproject.org> - 1.71-27
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_39_Mass_Rebuild
+
+* Thu Jan 19 2023 Fedora Release Engineering <releng@fedoraproject.org> - 1.71-26
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_38_Mass_Rebuild
+
+* Fri Jul 22 2022 Fedora Release Engineering <releng@fedoraproject.org> - 1.71-25
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_37_Mass_Rebuild
+
+* Mon May 30 2022 Jitka Plesnikova <jplesnik@redhat.com> - 1.71-24
+- Perl 5.36 rebuild
+
+* Thu Jan 20 2022 Fedora Release Engineering <releng@fedoraproject.org> - 1.71-23
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_36_Mass_Rebuild
+
+* Thu Jul 22 2021 Fedora Release Engineering <releng@fedoraproject.org> - 1.71-22
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_35_Mass_Rebuild
+
+* Fri May 21 2021 Jitka Plesnikova <jplesnik@redhat.com> - 1.71-21
+- Perl 5.34 rebuild
+
+* Tue Jan 26 2021 Fedora Release Engineering <releng@fedoraproject.org> - 1.71-20
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_34_Mass_Rebuild
+
+* Tue Jul 28 2020 Fedora Release Engineering <releng@fedoraproject.org> - 1.71-19
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_33_Mass_Rebuild
+
+* Tue Jun 23 2020 Jitka Plesnikova <jplesnik@redhat.com> - 1.71-18
+- Perl 5.32 rebuild
 
 * Wed Jan 29 2020 Fedora Release Engineering <releng@fedoraproject.org> - 1.71-17
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_32_Mass_Rebuild

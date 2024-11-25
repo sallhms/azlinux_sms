@@ -1,11 +1,9 @@
-Vendor:         Microsoft Corporation
-Distribution:   Azure Linux
 %global project openexr
 
 Name:    ilmbase
 Summary: Abstraction/convenience libraries
 Version: 2.3.0
-Release: 5%{?dist}
+Release: 14%{?dist}
 
 License: BSD
 URL:	 http://www.openexr.com/
@@ -18,6 +16,7 @@ BuildRequires: pkgconfig
 # silly rpm, won't pick up rpm dependencies for items not in it's buildroot
 # see http://bugzilla.redhat.com/866302
 BuildRequires: pkgconfig(gl) pkgconfig(glu)
+BuildRequires: make
 
 ## upstreamable patches
 # explicitly add $(PTHREAD_LIBS) to libIlmThread linkage (helps PTHREAD_LIBS workaround in %%build)
@@ -51,8 +50,8 @@ Requires: %{name}%{?_isa} = %{version}-%{release}
 %prep
 %setup -q
 
-%patch 51 -p1 -b .no_undefined
-%patch 53 -p1 -b .pkgconfig
+%patch -P51 -p1 -b .no_undefined
+%patch -P53 -p1 -b .pkgconfig
 #patch54 -p1 -b .glibc_iszero
 
 #/bootstrap
@@ -116,8 +115,35 @@ test "$(pkg-config --modversion IlmBase)" = "%{version}"
 
 
 %changelog
-* Fri Oct 15 2021 Pawel Winogrodzki <pawelwi@microsoft.com> - 2.3.0-5
-- Initial CBL-Mariner import from Fedora 32 (license: MIT).
+* Thu Jul 18 2024 Fedora Release Engineering <releng@fedoraproject.org> - 2.3.0-14
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_41_Mass_Rebuild
+
+* Wed Jan 24 2024 Fedora Release Engineering <releng@fedoraproject.org> - 2.3.0-13
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Sat Jan 20 2024 Fedora Release Engineering <releng@fedoraproject.org> - 2.3.0-12
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Thu Jul 20 2023 Fedora Release Engineering <releng@fedoraproject.org> - 2.3.0-11
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_39_Mass_Rebuild
+
+* Thu Jan 19 2023 Fedora Release Engineering <releng@fedoraproject.org> - 2.3.0-10
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_38_Mass_Rebuild
+
+* Thu Jul 21 2022 Fedora Release Engineering <releng@fedoraproject.org> - 2.3.0-9
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_37_Mass_Rebuild
+
+* Thu Jan 20 2022 Fedora Release Engineering <releng@fedoraproject.org> - 2.3.0-8
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_36_Mass_Rebuild
+
+* Thu Jul 22 2021 Fedora Release Engineering <releng@fedoraproject.org> - 2.3.0-7
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_35_Mass_Rebuild
+
+* Tue Jan 26 2021 Fedora Release Engineering <releng@fedoraproject.org> - 2.3.0-6
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_34_Mass_Rebuild
+
+* Tue Jul 28 2020 Fedora Release Engineering <releng@fedoraproject.org> - 2.3.0-5
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_33_Mass_Rebuild
 
 * Wed Jan 29 2020 Fedora Release Engineering <releng@fedoraproject.org> - 2.3.0-4
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_32_Mass_Rebuild

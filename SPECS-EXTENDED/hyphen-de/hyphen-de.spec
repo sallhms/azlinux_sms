@@ -1,14 +1,11 @@
-Vendor:         Microsoft Corporation
-Distribution:   Azure Linux
 Name: hyphen-de
 Summary: German hyphenation rules
 %global upstreamid 20060120
 Version: 0.%{upstreamid}
-Release: 24%{?dist}
-Source0: http://download.services.openoffice.org/contrib/dictionaries/hyph_de_DE.zip
-Source1: %{name}-LICENSE.txt
+Release: 34%{?dist}
+Source: http://download.services.openoffice.org/contrib/dictionaries/hyph_de_DE.zip
 URL: http://wiki.services.openoffice.org/wiki/Dictionaries
-License: LGPLv2+
+License: LGPL-2.1-or-later
 BuildArch: noarch
 Requires: hyphen
 Supplements: (hyphen and langpacks-de)
@@ -18,7 +15,6 @@ German hyphenation rules.
 
 %prep
 %autosetup -c -n hyphen-de
-cp %{SOURCE1} ./LICENSE.txt
 
 %build
 for i in README_hyph_de_DE.txt; do
@@ -45,13 +41,42 @@ popd
 
 
 %files
-%license LICENSE.txt
 %doc README_hyph_de_DE.txt
 %{_datadir}/hyphen/*
 
 %changelog
-* Fri Oct 15 2021 Pawel Winogrodzki <pawelwi@microsoft.com> - 0.20060120-24
-- Initial CBL-Mariner import from Fedora 32 (license: MIT).
+* Thu Jul 18 2024 Fedora Release Engineering <releng@fedoraproject.org> - 0.20060120-34
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_41_Mass_Rebuild
+
+* Wed Jan 24 2024 Fedora Release Engineering <releng@fedoraproject.org> - 0.20060120-33
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Sat Jan 20 2024 Fedora Release Engineering <releng@fedoraproject.org> - 0.20060120-32
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Thu Jul 20 2023 Fedora Release Engineering <releng@fedoraproject.org> - 0.20060120-31
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_39_Mass_Rebuild
+
+* Thu Feb 32 2023 Caolán McNamara <caolanm@redhat.com> - 0.20060120-30
+- migrated to SPDX license
+
+* Thu Jan 19 2023 Fedora Release Engineering <releng@fedoraproject.org> - 0.20060120-29
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_38_Mass_Rebuild
+
+* Thu Jul 21 2022 Fedora Release Engineering <releng@fedoraproject.org> - 0.20060120-28
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_37_Mass_Rebuild
+
+* Thu Jan 20 2022 Fedora Release Engineering <releng@fedoraproject.org> - 0.20060120-27
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_36_Mass_Rebuild
+
+* Thu Jul 22 2021 Fedora Release Engineering <releng@fedoraproject.org> - 0.20060120-26
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_35_Mass_Rebuild
+
+* Tue Jan 26 2021 Fedora Release Engineering <releng@fedoraproject.org> - 0.20060120-25
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_34_Mass_Rebuild
+
+* Tue Jul 28 2020 Fedora Release Engineering <releng@fedoraproject.org> - 0.20060120-24
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_33_Mass_Rebuild
 
 * Wed Jan 29 2020 Fedora Release Engineering <releng@fedoraproject.org> - 0.20060120-23
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_32_Mass_Rebuild

@@ -1,12 +1,12 @@
-Vendor:         Microsoft Corporation
-Distribution:   Azure Linux
 %global udevdir %{_prefix}/lib/udev
+
+%undefine __cmake_in_source_build
 
 Summary: Library for using OBEX
 Name: openobex
 Version: 1.7.2
-Release: 12%{?dist}
-License: GPLv2+ and LGPLv2+
+Release: 27%{?dist}
+License: GPL-2.0-or-later AND LGPL-2.1-or-later
 URL: http://openobex.sourceforge.net
 # git clone https://git.gitorious.org/openobex/mainline.git
 Source: http://downloads.sourceforge.net/%{name}/%{name}-%{version}-Source.tar.gz
@@ -17,9 +17,13 @@ Patch3:  openobex-1.7-strtoul.patch
 
 # gcc is no longer in buildroot by default
 BuildRequires: gcc
+# uses autosetup
+BuildRequires: git-core
 
-BuildRequires: bluez-libs-devel, libusb-devel
+BuildRequires: bluez-libs-devel, libusb1-devel
 BuildRequires: cmake, doxygen, libxslt, docbook-style-xsl
+# cmake uses make internally
+BuildRequires: make
 ExcludeArch: s390 s390x
 
 %description
@@ -31,7 +35,7 @@ Open OBEX shared C library.
 %package devel
 Summary: Files for development of applications which will use OBEX
 Requires: %{name} = %{version}-%{release}
-Requires: bluez-libs-devel libusb-devel
+Requires: bluez-libs-devel libusb1-devel
 
 %description devel
 Header files for development of applications which use OpenOBEX.
@@ -44,11 +48,7 @@ Open OBEX Applications to exchange all kind of objects like files, pictures,
 calendar entries (vCal) and business cards (vCard) using the OBEX protocol.
 
 %prep
-%setup -q -n %{name}-%{version}-Source
-%patch 0 -p1 -b .flush
-%patch 1 -p1 -b .push
-%patch 2 -p1 -b .udev
-%patch 3 -p1 -b .strtoul
+%autosetup -n %{name}-%{version}-Source -S git
 
 %build
 export CFLAGS="%{optflags} -std=gnu99 -D_POSIX_C_SOURCE=200809L -D_DEFAULT_SOURCE"
@@ -59,11 +59,11 @@ export CFLAGS="%{optflags} -std=gnu99 -D_POSIX_C_SOURCE=200809L -D_DEFAULT_SOURC
        -DCMAKE_INSTALL_DOCDIR=%{_pkgdocdir} \
        -DCMAKE_INSTALL_UDEVRULESDIR=%{udevdir}/rules.d
 
-make %{?_smp_mflags}
-make openobex-apps %{?_smp_mflags}
+%cmake_build
+%cmake_build --target openobex-apps
 
 %install
-make install DESTDIR=$RPM_BUILD_ROOT
+%cmake_install
 # we do not want .la files
 rm -f $RPM_BUILD_ROOT%{_libdir}/*.la
 # don't ship obex_test program, that is for testing purposes only
@@ -77,7 +77,8 @@ rm -f $RPM_BUILD_ROOT%{_mandir}/man1/obex_test.1*
 %doc AUTHORS COPYING COPYING.LIB ChangeLog README
 # the HTML doc is distributed in the %%{name}-devel subpackage
 %exclude %{_pkgdocdir}/html
-%{_libdir}/libopenobex*.so.*
+%{_libdir}/libopenobex.so.1.7.2
+%{_libdir}/libopenobex.so.2
 %{_sbindir}/obex-check-device
 %{udevdir}/rules.d/60-openobex.rules
 
@@ -105,8 +106,54 @@ rm -f $RPM_BUILD_ROOT%{_mandir}/man1/obex_test.1*
 %{_mandir}/man1/obex_push.1*
 
 %changelog
-* Fri Oct 15 2021 Pawel Winogrodzki <pawelwi@microsoft.com> - 1.7.2-12
-- Initial CBL-Mariner import from Fedora 32 (license: MIT).
+* Thu Jul 18 2024 Fedora Release Engineering <releng@fedoraproject.org> - 1.7.2-27
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_41_Mass_Rebuild
+
+* Thu Jan 25 2024 Fedora Release Engineering <releng@fedoraproject.org> - 1.7.2-26
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Sun Jan 21 2024 Fedora Release Engineering <releng@fedoraproject.org> - 1.7.2-25
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Thu Nov 23 2023 Zdenek Dohnal <zdohnal@redhat.com> - 1.7.2-24
+- use autosetup and name shared library
+
+* Thu Jul 20 2023 Fedora Release Engineering <releng@fedoraproject.org> - 1.7.2-23
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_39_Mass_Rebuild
+
+* Thu Jan 19 2023 Fedora Release Engineering <releng@fedoraproject.org> - 1.7.2-22
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_38_Mass_Rebuild
+
+* Fri Jul 22 2022 Fedora Release Engineering <releng@fedoraproject.org> - 1.7.2-21
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_37_Mass_Rebuild
+
+* Mon Mar 21 2022 Zdenek Dohnal <zdohnal@redhat.com> - 1.7.2-20
+- 2063081 - F37FailsToInstall: openobex-devel
+
+* Thu Jan 20 2022 Fedora Release Engineering <releng@fedoraproject.org> - 1.7.2-19
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_36_Mass_Rebuild
+
+* Thu Jul 22 2021 Fedora Release Engineering <releng@fedoraproject.org> - 1.7.2-18
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_35_Mass_Rebuild
+
+* Tue Jan 26 2021 Fedora Release Engineering <releng@fedoraproject.org> - 1.7.2-17
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_34_Mass_Rebuild
+
+* Thu Nov 05 2020 Zdenek Dohnal <zdohnal@redhat.com> - 1.7.2-16
+- make is no longer in buildroot by default
+
+* Wed Aug 05 2020 Zdenek Dohnal <zdohnal@redhat.com> - 1.7.2-15
+- comply to FPG with cmake macros
+
+* Tue Aug 04 2020 Zdenek Dohnal <zdohnal@redhat.com> - 1.7.2-14
+- use a workaround for cmake macro
+
+* Sat Aug 01 2020 Fedora Release Engineering <releng@fedoraproject.org> - 1.7.2-13
+- Second attempt - Rebuilt for
+  https://fedoraproject.org/wiki/Fedora_33_Mass_Rebuild
+
+* Tue Jul 28 2020 Fedora Release Engineering <releng@fedoraproject.org> - 1.7.2-12
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_33_Mass_Rebuild
 
 * Wed Jan 29 2020 Fedora Release Engineering <releng@fedoraproject.org> - 1.7.2-11
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_32_Mass_Rebuild

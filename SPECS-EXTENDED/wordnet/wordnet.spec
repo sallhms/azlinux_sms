@@ -1,20 +1,19 @@
-Summary:        A lexical database for the English language
 Name:           wordnet
 Version:        3.0
-Release:        43%{?dist}
-License:        MIT AND GPLv2+
-Vendor:         Microsoft Corporation
-Distribution:   Azure Linux
-URL:            https://wordnet.princeton.edu/
-Source0:        https://wordnetcode.princeton.edu/%{version}/WordNet-%{version}.tar.gz
+Release:        47%{?dist}
+Summary:        A lexical database for the English language
+
+License:        MIT and GPL-2.0-or-later
+URL:            http://wordnet.princeton.edu/
+Source0:        http://wordnetcode.princeton.edu/%{version}/WordNet-%{version}.tar.bz2
 # Updated database
-Source1:        https://wordnetcode.princeton.edu/wn3.1.dict.tar.gz
+Source1:        http://wordnetcode.princeton.edu/wn3.1.dict.tar.gz
 Patch0:         wordnet-3.0-CVE-2008-2149.patch
 Patch1:         wordnet-3.0-CVE-2008-3908.patch
 Patch2:         wordnet-3.0-fix_man.patch
 Patch3:         wordnet-3.0-fix_resourcedir_path.patch
 Patch4:         wordnet-3.0-src_stubs_c.patch
-# wordnet-3.0-wishwn_manpage.patch is GPLv2+
+# wordnet-3.0-wishwn_manpage.patch is GPL-2.0-or-later
 Patch5:         wordnet-3.0-wishwn_manpage.patch
 Patch6:         wordnet-3.0-use_system_tk_headers.patch
 Patch7:         wordnet-3.0-libtool.patch
@@ -42,32 +41,47 @@ with the browser. WordNet is also freely and publicly available for download.
 WordNet's structure makes it a useful tool for computational linguistics and
 natural language processing.
 
+
 %package browser
-Summary:        Tk browser for WordNet
-Requires:       %{name}%{?_isa} = %{version}-%{release}
+Summary:    Tk browser for WordNet
+Requires:   %{name}%{?_isa} = %{version}-%{release}
+Requires:   font(:lang=en)
 
 %description browser
 This package contains graphical browser for WordNet database.
 
+
 %package devel
-Summary:        The development libraries and header files for WordNet
-Requires:       %{name} = %{version}-%{release}
+Summary:    The development libraries and header files for WordNet
+Requires:   %{name} = %{version}-%{release}
 
 %description devel
 This package contains the libraries and header files required to create
 applications based on WordNet.
 
+
 %package doc
-Summary:        Manual pages for WordNet in alternative formats
-BuildArch:      noarch
+Summary:    Manual pages for WordNet in alternative formats
+BuildArch:  noarch
 
 %description doc
 This package contains manual pages for WordNet package in HTML, PDF,
 and PostScript format.
 
+
 %prep
-%autosetup -p1 -n WordNet-%{version}
+%setup -q -n WordNet-%{version}
+%patch -P 0 -p1 -b .cve-2008-2149
+%patch -P 1 -p1 -b .cve-2008-3908
+%patch -P 2 -p1 -b .fix_man
+%patch -P 3 -p1 -b .fix_resourcedir_path
+%patch -P 4 -p1 -b .src_stubs_c
+%patch -P 5 -p1 -b .wishwn_manpage
 sed -e '/man_MANS/ s/$/ wishwn.1/' -i doc/man/Makefile.am
+%patch -P 6 -p1 -b .use_system_tk_headers
+%patch -P 7 -p1 -b .libtool
+%patch -P 8 -p1 -b .error_message
+%patch -P 9 -p1 -b .format
 # delete the include/tk dir, since we do not use the included tk headers
 rm -rf include/tk
 # Update a database
@@ -75,29 +89,33 @@ tar -xozf %{SOURCE1}
 # Remove database byproducts brought by the database update
 rm -rf dict/dbfiles
 
+
 %build
 libtoolize && aclocal
 autoupdate
 autoreconf -i
+%if 0%{?fedora} >= 21 || 0%{?rhel} > 7
 export CFLAGS="%{?optflags} -DUSE_INTERP_RESULT"
 export CXXFLAGS="%{?optflags} -DUSE_INTERP_RESULT"
+%endif
 %configure --enable-static=no --prefix=%{_datadir}/wordnet-%{version}/
-%make_build
+make %{?_smp_mflags}
+
 
 %install
-%make_install
+make install DESTDIR=$RPM_BUILD_ROOT
 # delete the libWN.la files (reasoning in the packaging guidelines)
-rm -f  %{buildroot}/%{_libdir}/libWN.la
+rm -f  $RPM_BUILD_ROOT%{_libdir}/libWN.la
 # Remove duplicate copies of docs installed by make install
-rm -rf %{buildroot}/%{_datadir}/%{name}-%{version}/doc
+rm -rf $RPM_BUILD_ROOT%{_datadir}/%{name}-%{version}/doc
 # Remove useless Makefiles installed by %%doc
 rm -rf doc/{html,ps,pdf}/Makefile*
+
 
 %ldconfig_scriptlets
 
 %files
-%license COPYING
-%doc AUTHORS ChangeLog README
+%doc AUTHORS COPYING ChangeLog README
 %{_bindir}/wn
 %{_mandir}/man1/grind.1.gz
 %{_mandir}/man1/wn.1.gz
@@ -121,13 +139,24 @@ rm -rf doc/{html,ps,pdf}/Makefile*
 %{_libdir}/libWN.so
 
 %files doc
-%license COPYING
-%doc doc/{html,ps,pdf}
+%doc COPYING doc/{html,ps,pdf}
+
 
 %changelog
-* Tue Jan 03 2023 Sumedh Sharma <sumsharma@microsoft.com> - 3.0-43
-- Initial CBL-Mariner import from Fedora 37 (license: MIT)
-- License verified
+* Sat Jul 20 2024 Fedora Release Engineering <releng@fedoraproject.org> - 3.0-47
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_41_Mass_Rebuild
+
+* Sat Jan 27 2024 Fedora Release Engineering <releng@fedoraproject.org> - 3.0-46
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Sat Jul 22 2023 Fedora Release Engineering <releng@fedoraproject.org> - 3.0-45
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_39_Mass_Rebuild
+
+* Fri Jul 07 2023 Parag Nemade <pnemade AT redhat DOT com> - 3.0-44
+- Migrate to SPDX license expression
+
+* Sat Jan 21 2023 Fedora Release Engineering <releng@fedoraproject.org> - 3.0-43
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_38_Mass_Rebuild
 
 * Sat Jul 23 2022 Fedora Release Engineering <releng@fedoraproject.org> - 3.0-42
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_37_Mass_Rebuild

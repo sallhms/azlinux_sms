@@ -1,16 +1,15 @@
-Vendor:         Microsoft Corporation
-Distribution:   Azure Linux
 Name:             adobe-mappings-pdf
 Summary:          PDF mapping resources from Adobe
-Version:          20180407
-Release:          6%{?dist}
-License:          BSD
+Version:          20190401
+Release:          8%{?dist}
+License:          BSD-3-Clause
 
 URL:              https://www.adobe.com/
 Source:           https://github.com/adobe-type-tools/mapping-resources-pdf/archive/%{version}.tar.gz#/mapping-resources-pdf-%{version}.tar.gz
 
 BuildArch:        noarch
 BuildRequires:    git
+BuildRequires: make
 
 %description
 Mapping resources for PDF have a variety of functions, such as mapping CIDs
@@ -31,7 +30,7 @@ Summary:          RPM macros for Adobe's PDF mapping resources
 Requires:         %{name} = %{version}-%{release}
 
 %description devel
-This package is useful for Fedora development purposes only. It installs RPM
+This package is useful for development purposes only. It installs RPM
 macros useful for building packages against %{name},
 as well as all the fonts contained in this font set.
 
@@ -74,8 +73,44 @@ _EOF
 # =============================================================================
 
 %changelog
-* Fri Oct 15 2021 Pawel Winogrodzki <pawelwi@microsoft.com> - 20180407-6
-- Initial CBL-Mariner import from Fedora 32 (license: MIT).
+* Wed Jul 17 2024 Fedora Release Engineering <releng@fedoraproject.org> - 20190401-8
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_41_Mass_Rebuild
+
+* Mon Jan 22 2024 Fedora Release Engineering <releng@fedoraproject.org> - 20190401-7
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Fri Jan 19 2024 Fedora Release Engineering <releng@fedoraproject.org> - 20190401-6
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Wed Jul 19 2023 Fedora Release Engineering <releng@fedoraproject.org> - 20190401-5
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_39_Mass_Rebuild
+
+* Mon Feb 21 2023 Richard Lescak <rlescak@redhat.com> - 20190401-4
+- SPDX migration
+
+* Wed Jan 18 2023 Fedora Release Engineering <releng@fedoraproject.org> - 20190401-3
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_38_Mass_Rebuild
+
+* Wed Jul 20 2022 Fedora Release Engineering <releng@fedoraproject.org> - 20190401-2
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_37_Mass_Rebuild
+
+* Thu Mar 10 2022 Richard Lescak <rlescak@redhat.com> - 20190401-1
+- Rebase to latest version
+
+* Wed Jan 19 2022 Fedora Release Engineering <releng@fedoraproject.org> - 20180407-10
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_36_Mass_Rebuild
+
+* Wed Jul 21 2021 Fedora Release Engineering <releng@fedoraproject.org> - 20180407-9
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_35_Mass_Rebuild
+
+* Mon Jan 25 2021 Fedora Release Engineering <releng@fedoraproject.org> - 20180407-8
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_34_Mass_Rebuild
+
+* Mon Jul 27 2020 Fedora Release Engineering <releng@fedoraproject.org> - 20180407-7
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_33_Mass_Rebuild
+
+* Mon Mar 16 2020 Zdenek Dohnal <zdohnal@redhat.com> - 20180407-6
+- remove mention of Fedora from desc
 
 * Tue Jan 28 2020 Fedora Release Engineering <releng@fedoraproject.org> - 20180407-5
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_32_Mass_Rebuild

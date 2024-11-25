@@ -1,12 +1,11 @@
-Vendor:         Microsoft Corporation
-Distribution:   Azure Linux
 Name:           qperf
 Summary:        Measure socket and RDMA performance
 Version:        0.4.9
-Release:        18%{?dist}
+Release:        29%{?dist}
 License:        GPLv2 or BSD
 Source:         http://www.openfabrics.org/downloads/%{name}/%{name}-%{version}.tar.gz
 Url:            http://www.openfabrics.org
+BuildRequires: make
 BuildRequires:  gcc
 BuildRequires:  libibverbs-devel >= 1.2.0
 BuildRequires:  librdmacm-devel >= 1.0.21
@@ -25,10 +24,10 @@ Measure socket and RDMA performance.
 %build
 export CFLAGS="$RPM_OPT_FLAGS -fno-strict-aliasing"
 %configure
-make %{?_smp_mflags}
+%make_build
 
 %install
-make DESTDIR=%{buildroot} install
+%make_install
 
 %files
 %license COPYING
@@ -36,9 +35,42 @@ make DESTDIR=%{buildroot} install
 %_mandir/man1/qperf.1*
 
 %changelog
-* Fri May 28 2021 Thomas Crain <thcrain@microsoft.com> - 0.4.9-18
-- Initial CBL-Mariner import from Fedora 32 (license: MIT).
-- Add BR: perl-diagnostics, perl-POSIX
+* Fri Jul 19 2024 Fedora Release Engineering <releng@fedoraproject.org> - 0.4.9-29
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_41_Mass_Rebuild
+
+* Fri Jan 26 2024 Fedora Release Engineering <releng@fedoraproject.org> - 0.4.9-28
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Mon Jan 22 2024 Fedora Release Engineering <releng@fedoraproject.org> - 0.4.9-27
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Fri Jul 21 2023 Fedora Release Engineering <releng@fedoraproject.org> - 0.4.9-26
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_39_Mass_Rebuild
+
+* Fri Jan 20 2023 Fedora Release Engineering <releng@fedoraproject.org> - 0.4.9-25
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_38_Mass_Rebuild
+
+* Fri Jul 22 2022 Fedora Release Engineering <releng@fedoraproject.org> - 0.4.9-24
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_37_Mass_Rebuild
+
+* Fri Jan 21 2022 Fedora Release Engineering <releng@fedoraproject.org> - 0.4.9-23
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_36_Mass_Rebuild
+
+* Fri Jul 23 2021 Fedora Release Engineering <releng@fedoraproject.org> - 0.4.9-22
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_35_Mass_Rebuild
+
+* Wed Jan 27 2021 Fedora Release Engineering <releng@fedoraproject.org> - 0.4.9-21
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_34_Mass_Rebuild
+
+* Wed Jul 29 2020 Fedora Release Engineering <releng@fedoraproject.org> - 0.4.9-20
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_33_Mass_Rebuild
+
+* Tue Jul 21 2020 Tom Stellard <tstellar@redhat.com> - 0.4.9-19
+- Use make macros
+- https://fedoraproject.org/wiki/Changes/UseMakeBuildInstallMacro
+
+* Sun Jul 19 2020 Honggang Li <honli@redhat.com> - 0.4.9-18
+- Add BR perl-diagnostics and perl-POSIX
 
 * Thu Jan 30 2020 Fedora Release Engineering <releng@fedoraproject.org> - 0.4.9-17
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_32_Mass_Rebuild

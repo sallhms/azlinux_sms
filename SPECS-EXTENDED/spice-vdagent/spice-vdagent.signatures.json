@@ -1,5 +1,7 @@
 {
  "Signatures": {
-  "spice-vdagent-0.22.1.tar.bz2": "93b0d15aca4762cc7d379b179a7101149dbaed62b72112fffb2b3e90b11687a0"
+  "spice-vdagent-0.22.1.tar.bz2": "93b0d15aca4762cc7d379b179a7101149dbaed62b72112fffb2b3e90b11687a0",
+  "spice-vdagent-0.22.1.tar.bz2.sig": "c0e36b84417243b673ef849ebefee765f740b8a195371997b00c9e143aa0e8c9",
+  "victortoso-E37A484F.keyring": "baf674e73d98c2070ee63a914d192111d0df4777f64a9f523a1f9096dce2b6f7"
  }
 }

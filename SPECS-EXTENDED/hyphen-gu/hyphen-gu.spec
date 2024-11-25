@@ -1,12 +1,11 @@
-Vendor:         Microsoft Corporation
-Distribution:   Azure Linux
 Name: hyphen-gu
 Summary: Gujarati hyphenation rules
+Epoch: 1
 Version: 0.7.0
-Release: 17%{?dist}
+Release: 26%{?dist}
 Source: http://download.savannah.gnu.org/releases/smc/hyphenation/patterns/%{name}-%{version}.tar.bz2
 URL: http://wiki.smc.org.in
-License: LGPLv3+
+License: LGPL-3.0-or-later
 BuildArch: noarch
 Requires: hyphen
 Supplements: (hyphen and langpacks-gu)
@@ -28,11 +27,38 @@ install -m644 -p *.dic %{buildroot}/%{_datadir}/hyphen
 %{_datadir}/hyphen/*
 
 %changelog
-* Mon Nov 01 2021 Muhammad Falak <mwani@microsft.com> - 0.7.0-17
-- Remove epoch
+* Thu Jul 18 2024 Fedora Release Engineering <releng@fedoraproject.org> - 1:0.7.0-26
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_41_Mass_Rebuild
 
-* Fri Oct 15 2021 Pawel Winogrodzki <pawelwi@microsoft.com> - 1:0.7.0-16
-- Initial CBL-Mariner import from Fedora 32 (license: MIT).
+* Wed Jan 24 2024 Fedora Release Engineering <releng@fedoraproject.org> - 1:0.7.0-25
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Sat Jan 20 2024 Fedora Release Engineering <releng@fedoraproject.org> - 1:0.7.0-24
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Thu Jul 20 2023 Fedora Release Engineering <releng@fedoraproject.org> - 1:0.7.0-23
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_39_Mass_Rebuild
+
+* Thu Jan 19 2023 Fedora Release Engineering <releng@fedoraproject.org> - 1:0.7.0-22
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_38_Mass_Rebuild
+
+* Thu Dec 01 2022 Parag Nemade <pnemade AT redhat DOT com> - 1:0.7.0-21
+- Update license tag to SPDX format
+
+* Thu Jul 21 2022 Fedora Release Engineering <releng@fedoraproject.org> - 1:0.7.0-20
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_37_Mass_Rebuild
+
+* Thu Jan 20 2022 Fedora Release Engineering <releng@fedoraproject.org> - 1:0.7.0-19
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_36_Mass_Rebuild
+
+* Thu Jul 22 2021 Fedora Release Engineering <releng@fedoraproject.org> - 1:0.7.0-18
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_35_Mass_Rebuild
+
+* Tue Jan 26 2021 Fedora Release Engineering <releng@fedoraproject.org> - 1:0.7.0-17
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_34_Mass_Rebuild
+
+* Tue Jul 28 2020 Fedora Release Engineering <releng@fedoraproject.org> - 1:0.7.0-16
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_33_Mass_Rebuild
 
 * Wed Jan 29 2020 Fedora Release Engineering <releng@fedoraproject.org> - 1:0.7.0-15
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_32_Mass_Rebuild

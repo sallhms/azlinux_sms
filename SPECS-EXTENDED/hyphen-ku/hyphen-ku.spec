@@ -1,13 +1,10 @@
-Vendor:         Microsoft Corporation
-Distribution:   Azure Linux
 Name: hyphen-ku
 Summary: Kurdish hyphenation rules
 Version: 1.71.2
-Release: 19%{?dist}
-Source0: https://downloads.sourceforge.net/project/aoo-extensions/2445/12/kitandin.oxt
-Source1: %{name}-LICENSE.txt
+Release: 30%{?dist}
+Source: https://downloads.sourceforge.net/project/aoo-extensions/2445/12/kitandin.oxt
 URL: http://extensions.services.openoffice.org/project/kitandin
-License: GPLv2+ or LGPLv2+
+License: GPL-2.0-or-later OR LGPL-2.1-or-later
 BuildArch: noarch
 Requires: hyphen
 Supplements: (hyphen and langpacks-ku)
@@ -17,10 +14,9 @@ Kurdish hyphenation rules.
 
 %prep
 %autosetup -c -n hyphen-ku
-cp %{SOURCE1} ./LICENSE.txt
 
 %build
-chmod -x *
+chmod -x *.dic *.txt
 
 %install
 mkdir -p $RPM_BUILD_ROOT/%{_datadir}/hyphen
@@ -35,13 +31,45 @@ popd
 
 
 %files
-%license LICENSE.txt
 %doc README_ku.txt
 %{_datadir}/hyphen/*
 
 %changelog
-* Fri Oct 15 2021 Pawel Winogrodzki <pawelwi@microsoft.com> - 1.71.2-19
-- Initial CBL-Mariner import from Fedora 32 (license: MIT).
+* Thu Jul 18 2024 Fedora Release Engineering <releng@fedoraproject.org> - 1.71.2-30
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_41_Mass_Rebuild
+
+* Wed Jan 24 2024 Fedora Release Engineering <releng@fedoraproject.org> - 1.71.2-29
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Sat Jan 20 2024 Fedora Release Engineering <releng@fedoraproject.org> - 1.71.2-28
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Thu Jul 20 2023 Fedora Release Engineering <releng@fedoraproject.org> - 1.71.2-27
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_39_Mass_Rebuild
+
+* Tue Mar 28 2023 Caolán McNamara <caolanm@redhat.com> - 1.71.2-26
+- migrated to SPDX license
+
+* Thu Jan 19 2023 Fedora Release Engineering <releng@fedoraproject.org> - 1.71.2-25
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_38_Mass_Rebuild
+
+* Tue Aug 02 2022 Caolán McNamara <caolanm@redhat.com> - 1.71.2-24
+- rhbz#2113446 FTBFS in Fedora rawhide/f37
+
+* Thu Jul 21 2022 Fedora Release Engineering <releng@fedoraproject.org> - 1.71.2-23
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_37_Mass_Rebuild
+
+* Thu Jan 20 2022 Fedora Release Engineering <releng@fedoraproject.org> - 1.71.2-22
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_36_Mass_Rebuild
+
+* Thu Jul 22 2021 Fedora Release Engineering <releng@fedoraproject.org> - 1.71.2-21
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_35_Mass_Rebuild
+
+* Tue Jan 26 2021 Fedora Release Engineering <releng@fedoraproject.org> - 1.71.2-20
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_34_Mass_Rebuild
+
+* Tue Jul 28 2020 Fedora Release Engineering <releng@fedoraproject.org> - 1.71.2-19
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_33_Mass_Rebuild
 
 * Wed Jan 29 2020 Fedora Release Engineering <releng@fedoraproject.org> - 1.71.2-18
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_32_Mass_Rebuild

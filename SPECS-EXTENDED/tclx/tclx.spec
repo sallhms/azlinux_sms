@@ -1,28 +1,30 @@
+%bcond_without wcheck
+
 %{!?tcl_version: %global tcl_version %(echo 'puts $tcl_version' | tclsh)}
 %{!?tcl_sitearch: %global tcl_sitearch %{_libdir}/tcl%{tcl_version}}
+
 %define major_ver 8.4
 %define upversion 8.5
 %define tcltk_ver 8.4.13
 #define for 8.4 is needed, tclx wasn't updated on higher version
-Summary:        Extensions for Tcl and Tk
-Name:           tclx
-Version:        %{major_ver}.0
-Release:        37%{?dist}
-License:        BSD
-Vendor:         Microsoft Corporation
-Distribution:   Azure Linux
-URL:            https://tclx.sourceforge.net/
-Source:         https://downloads.sourceforge.net/%{name}/%{name}%{major_ver}.tar.bz2
-Patch1:         %{name}-%{major_ver}-varinit.patch
-Patch2:         %{name}-%{major_ver}-relid.patch
-Patch3:         %{name}-%{major_ver}-man.patch
-Patch4:         %{name}-%{major_ver}-tcl86.patch
+
+Summary: Extensions for Tcl and Tk
+Name: tclx
+Version: %{major_ver}.0
+Release: 45%{?dist}
+License: BSD
+URL: http://tclx.sourceforge.net/
+Source: http://downloads.sourceforge.net/%{name}/%{name}%{major_ver}.tar.bz2
+Requires: tcl%{?_isa} >= %{tcltk_ver}, tk%{?_isa} >= %{tcltk_ver}
+BuildRequires: make
 BuildRequires:  gcc
-BuildRequires:  make
-BuildRequires:  tcl-devel >= %{tcltk_ver}
-BuildRequires:  tk-devel >= %{tcltk_ver}
-Requires:       tcl%{?_isa} >= %{tcltk_ver}
-Requires:       tk%{?_isa} >= %{tcltk_ver}
+BuildRequires: tcl-devel >= %{tcltk_ver}, tk-devel >= %{tcltk_ver}
+#BuildRequires: autoconf
+Patch1: tclx-%{major_ver}-varinit.patch
+Patch2: tclx-%{major_ver}-relid.patch
+Patch3: tclx-%{major_ver}-man.patch
+Patch4: tclx-%{major_ver}-tcl86.patch
+Patch5: tclx-configure-c99.patch
 
 %description
 Extended Tcl (TclX) is a set of extensions to the Tcl programming language.
@@ -32,15 +34,22 @@ operating system, and adds many new programming constructs, text manipulation
 and debugging tools.
 
 %package devel
-Summary:        Extended Tcl development files
-Requires:       tclx = %{version}-%{release}
+Summary: Extended Tcl development files
+Requires: tclx = %{version}-%{release}
 
 %description devel
 This package contains the tclx development files needed for building
 applications embedding tclx.
 
 %prep
-%autosetup -p1 -n %{name}%{major_ver}
+%setup -q -n tclx%{major_ver}
+%patch -P1 -p1 -b .1.varinit
+%patch -P2 -p1 -b .2.relid
+%patch -P3 -p1 -b .3.patch
+%patch -P4 -p1 -b .4.tcl86
+%patch -P5 -p1 -b .5.configure-c99
+
+# patch2 touches tcl.m4
 
 %build
 %configure \
@@ -53,19 +62,25 @@ applications embedding tclx.
    --disable-threads \
    --enable-64bit \
    --libdir=%{tcl_sitearch}
-
-%make_build
+# smp building doesn't work
+make %{?_smp_mflags}
 
 %check
-make test
+# run "make test" by default
+%if %{without wcheck}
+   make test
+%endif
 
 %install
-%make_install
+rm -rf $RPM_BUILD_ROOT
 
-mkdir -p %{buildroot}/%{_sysconfdir}/ld.so.conf.d/
-echo '%{_libdir}/tcl%{tcl_version}/%{name}%{major_ver}' > %{buildroot}%{_sysconfdir}/ld.so.conf.d/%{name}-%{_arch}.conf
+make install DESTDIR=$RPM_BUILD_ROOT INSTALL='install -p'
+
+mkdir -p $RPM_BUILD_ROOT%{_sysconfdir}/ld.so.conf.d/
+echo '%{_libdir}/tcl%{tcl_version}/%{name}%{major_ver}' > $RPM_BUILD_ROOT%{_sysconfdir}/ld.so.conf.d/%{name}-%{_arch}.conf
 
 %post -p /sbin/ldconfig
+
 %postun -p /sbin/ldconfig
 
 %files
@@ -85,11 +100,35 @@ echo '%{_libdir}/tcl%{tcl_version}/%{name}%{major_ver}' > %{buildroot}%{_sysconf
 %{_mandir}/man3/Keylist.3*
 
 %changelog
-* Wed Jan 04 2023 Sumedh Sharma <sumsharma@microsoft.com> - 8.4.0-37
-- License verified
+* Sat Jul 20 2024 Fedora Release Engineering <releng@fedoraproject.org> - 8.4.0-45
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_41_Mass_Rebuild
 
-* Fri Oct 15 2021 Pawel Winogrodzki <pawelwi@microsoft.com> - 8.4.0-36
-- Initial CBL-Mariner import from Fedora 32 (license: MIT).
+* Sat Jan 27 2024 Fedora Release Engineering <releng@fedoraproject.org> - 8.4.0-44
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Sat Jul 22 2023 Fedora Release Engineering <releng@fedoraproject.org> - 8.4.0-43
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_39_Mass_Rebuild
+
+* Sat Jan 21 2023 Fedora Release Engineering <releng@fedoraproject.org> - 8.4.0-42
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_38_Mass_Rebuild
+
+* Fri Nov 18 2022 Florian Weimer <fweimer@redhat.com> - 8.4.0-41
+- Avoid implicit function declarations in configure script
+
+* Sat Jul 23 2022 Fedora Release Engineering <releng@fedoraproject.org> - 8.4.0-40
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_37_Mass_Rebuild
+
+* Sat Jan 22 2022 Fedora Release Engineering <releng@fedoraproject.org> - 8.4.0-39
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_36_Mass_Rebuild
+
+* Fri Jul 23 2021 Fedora Release Engineering <releng@fedoraproject.org> - 8.4.0-38
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_35_Mass_Rebuild
+
+* Wed Jan 27 2021 Fedora Release Engineering <releng@fedoraproject.org> - 8.4.0-37
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_34_Mass_Rebuild
+
+* Wed Jul 29 2020 Fedora Release Engineering <releng@fedoraproject.org> - 8.4.0-36
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_33_Mass_Rebuild
 
 * Fri Jan 31 2020 Fedora Release Engineering <releng@fedoraproject.org> - 8.4.0-35
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_32_Mass_Rebuild

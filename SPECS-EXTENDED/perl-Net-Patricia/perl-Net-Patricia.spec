@@ -1,13 +1,11 @@
-Vendor:         Microsoft Corporation
-Distribution:   Azure Linux
 Name:           perl-Net-Patricia
 Version:        1.22
-Release:        25%{?dist}
+Release:        40%{?dist}
 Summary:        Patricia Trie perl module for fast IP address lookups
 # The entire source code is GPLv2+ except libpatricia/ which is BSD
 License:        GPLv2+ and BSD
 URL:            https://metacpan.org/release/Net-Patricia
-Source0:        https://cpan.metacpan.org/modules/by-module/Net/Net-Patricia-%{version}.tar.gz#/perl-Net-Patricia-%{version}.tar.gz
+Source0:        https://cpan.metacpan.org/modules/by-module/Net/Net-Patricia-%{version}.tar.gz
 # Fix building on systems without libsnl, bug #1534596, CPAN RT#124088
 Patch0:         Net-Patricia-1.22-Do-not-link-to-nsl-library.patch
 BuildRequires:  gcc
@@ -34,7 +32,6 @@ BuildRequires:  perl(warnings)
 Requires:       perl(DynaLoader)
 Requires:       perl(Exporter)
 Requires:       perl(Net::CIDR::Lite) >= 0.20
-Requires:       perl(:MODULE_COMPAT_%(eval "`%{__perl} -V:version`"; echo $version))
 
 %description
 This module uses a Patricia Trie data structure to quickly perform IP
@@ -50,7 +47,7 @@ lookups within the BSD kernel since the 4.3 Reno release.
 
 %prep
 %setup -q -n Net-Patricia-%{version}
-%patch 0 -p1
+%patch -P0 -p1
 
 %build
 %{__perl} Makefile.PL INSTALLDIRS=vendor OPTIMIZE="$RPM_OPT_FLAGS"
@@ -78,8 +75,54 @@ make test
 %{_mandir}/man3/*
 
 %changelog
-* Fri Oct 15 2021 Pawel Winogrodzki <pawelwi@microsoft.com> - 1.22-25
-- Initial CBL-Mariner import from Fedora 32 (license: MIT).
+* Fri Jul 19 2024 Fedora Release Engineering <releng@fedoraproject.org> - 1.22-40
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_41_Mass_Rebuild
+
+* Mon Jun 10 2024 Jitka Plesnikova <jplesnik@redhat.com> - 1.22-39
+- Perl 5.40 rebuild
+
+* Thu Jan 25 2024 Fedora Release Engineering <releng@fedoraproject.org> - 1.22-38
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Sun Jan 21 2024 Fedora Release Engineering <releng@fedoraproject.org> - 1.22-37
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Fri Jul 21 2023 Fedora Release Engineering <releng@fedoraproject.org> - 1.22-36
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_39_Mass_Rebuild
+
+* Tue Jul 11 2023 Jitka Plesnikova <jplesnik@redhat.com> - 1.22-35
+- Perl 5.38 rebuild
+
+* Fri Jan 20 2023 Fedora Release Engineering <releng@fedoraproject.org> - 1.22-34
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_38_Mass_Rebuild
+
+* Fri Jul 22 2022 Fedora Release Engineering <releng@fedoraproject.org> - 1.22-33
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_37_Mass_Rebuild
+
+* Tue May 31 2022 Jitka Plesnikova <jplesnik@redhat.com> - 1.22-32
+- Perl 5.36 rebuild
+
+* Fri Jan 21 2022 Fedora Release Engineering <releng@fedoraproject.org> - 1.22-31
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_36_Mass_Rebuild
+
+* Thu Jul 22 2021 Fedora Release Engineering <releng@fedoraproject.org> - 1.22-30
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_35_Mass_Rebuild
+
+* Fri May 21 2021 Jitka Plesnikova <jplesnik@redhat.com> - 1.22-29
+- Perl 5.34 rebuild
+
+* Wed Jan 27 2021 Fedora Release Engineering <releng@fedoraproject.org> - 1.22-28
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_34_Mass_Rebuild
+
+* Sat Aug 01 2020 Fedora Release Engineering <releng@fedoraproject.org> - 1.22-27
+- Second attempt - Rebuilt for
+  https://fedoraproject.org/wiki/Fedora_33_Mass_Rebuild
+
+* Tue Jul 28 2020 Fedora Release Engineering <releng@fedoraproject.org> - 1.22-26
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_33_Mass_Rebuild
+
+* Tue Jun 23 2020 Jitka Plesnikova <jplesnik@redhat.com> - 1.22-25
+- Perl 5.32 rebuild
 
 * Thu Jan 30 2020 Fedora Release Engineering <releng@fedoraproject.org> - 1.22-24
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_32_Mass_Rebuild

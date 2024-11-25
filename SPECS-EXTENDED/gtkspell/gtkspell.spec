@@ -1,11 +1,9 @@
-Vendor:         Microsoft Corporation
-Distribution:   Azure Linux
 ### Abstract ###
 
 Name: gtkspell
 Version: 2.0.16
-Release: 23%{?dist}
-License: GPLv2+
+Release: 31%{?dist}
+License: GPL-2.0-or-later
 Summary: On-the-fly spell checking for GtkTextView widgets
 URL: http://gtkspell.sourceforge.net/
 Source: http://gtkspell.sourceforge.net/download/%{name}-%{version}.tar.gz
@@ -13,7 +11,6 @@ Source: http://gtkspell.sourceforge.net/download/%{name}-%{version}.tar.gz
 ### Build Dependencies ###
 
 BuildRequires: gcc
-BuildRequires: perl(File::Find)
 BuildRequires: make
 BuildRequires: enchant-devel
 BuildRequires: gtk2-devel
@@ -40,11 +37,11 @@ applications which use GtkSpell.
 
 %build
 %configure --disable-gtk-doc --disable-static
-make %{?_smp_mflags}
+%make_build
 
 %install
 rm -rf $RPM_BUILD_ROOT
-make DESTDIR=$RPM_BUILD_ROOT install
+%make_install
 find $RPM_BUILD_ROOT -name "*.la" -exec rm {} \;
 
 %find_lang %{name}
@@ -52,8 +49,7 @@ find $RPM_BUILD_ROOT -name "*.la" -exec rm {} \;
 %ldconfig_scriptlets
 
 %files -f %{name}.lang
-%license COPYING
-%doc README AUTHORS
+%doc README AUTHORS COPYING
 %{_libdir}/libgtkspell.so.0*
 
 %files devel
@@ -63,14 +59,39 @@ find $RPM_BUILD_ROOT -name "*.la" -exec rm {} \;
 %{_libdir}/pkgconfig/gtkspell-2.0.pc
 
 %changelog
-* Wed Feb 16 2022 Pawel Winogrodzki <pawelwi@microsoft.com> - 2.0.16-23
-- License verified.
+* Thu Jul 18 2024 Fedora Release Engineering <releng@fedoraproject.org> - 2.0.16-31
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_41_Mass_Rebuild
 
-* Tue Feb 15 2022 Pawel Winogrodzki <pawelwi@microsoft.com> - 2.0.16-22
-- Adding missing BRs on Perl modules.
+* Wed Jan 24 2024 Fedora Release Engineering <releng@fedoraproject.org> - 2.0.16-30
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
 
-* Fri Oct 15 2021 Pawel Winogrodzki <pawelwi@microsoft.com> - 2.0.16-21
-- Initial CBL-Mariner import from Fedora 32 (license: MIT).
+* Sat Jan 20 2024 Fedora Release Engineering <releng@fedoraproject.org> - 2.0.16-29
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Thu Jul 20 2023 Fedora Release Engineering <releng@fedoraproject.org> - 2.0.16-28
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_39_Mass_Rebuild
+
+* Thu Jan 19 2023 Fedora Release Engineering <releng@fedoraproject.org> - 2.0.16-27
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_38_Mass_Rebuild
+
+* Thu Jul 21 2022 Fedora Release Engineering <releng@fedoraproject.org> - 2.0.16-26
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_37_Mass_Rebuild
+
+* Thu Jan 20 2022 Fedora Release Engineering <releng@fedoraproject.org> - 2.0.16-25
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_36_Mass_Rebuild
+
+* Thu Jul 22 2021 Fedora Release Engineering <releng@fedoraproject.org> - 2.0.16-24
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_35_Mass_Rebuild
+
+* Tue Jan 26 2021 Fedora Release Engineering <releng@fedoraproject.org> - 2.0.16-23
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_34_Mass_Rebuild
+
+* Tue Jul 28 2020 Fedora Release Engineering <releng@fedoraproject.org> - 2.0.16-22
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_33_Mass_Rebuild
+
+* Mon Jul 13 2020 Tom Stellard <tstellar@redhat.com> - 2.0.16-21
+- Use make macros
+- https://fedoraproject.org/wiki/Changes/UseMakeBuildInstallMacro
 
 * Wed Jan 29 2020 Fedora Release Engineering <releng@fedoraproject.org> - 2.0.16-20
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_32_Mass_Rebuild

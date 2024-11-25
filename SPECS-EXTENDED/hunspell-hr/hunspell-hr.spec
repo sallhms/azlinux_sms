@@ -1,17 +1,21 @@
-Vendor:         Microsoft Corporation
-Distribution:   Azure Linux
+%if 0%{?fedora} >= 36 || 0%{?rhel} > 9
+%global dict_dirname hunspell
+%else
+%global dict_dirname myspell
+%endif
+
 Name: hunspell-hr
 Summary: Croatian hunspell dictionaries
 %global upstreamid 20040608
 Version: 0.%{upstreamid}
-Release: 23%{?dist}
-Source0: http://cvs.linux.hr/spell/myspell/hr_HR.zip
-Source1: %{name}-LICENSE.txt
+Release: 33%{?dist}
+Epoch: 1
+Source: http://cvs.linux.hr/spell/myspell/hr_HR.zip
 URL: http://cvs.linux.hr/spell/
-License: LGPLv2+ or SISSL
+License: LGPL-2.1-or-later OR SISSL
 BuildArch: noarch
 
-Requires: hunspell
+Requires: hunspell-filesystem
 Supplements: (hunspell and langpacks-hr)
 
 %description
@@ -27,34 +31,62 @@ Croatian hyphenation rules.
 
 %prep
 %setup -q -c -n hunspell-hr
-cp %{SOURCE1} ./LICENSE.txt
 
 %build
 chmod -x *
 
 %install
-mkdir -p $RPM_BUILD_ROOT/%{_datadir}/myspell
-cp -p hr_HR.dic hr_HR.aff $RPM_BUILD_ROOT/%{_datadir}/myspell
+mkdir -p $RPM_BUILD_ROOT/%{_datadir}/%{dict_dirname}
+cp -p hr_HR.dic hr_HR.aff $RPM_BUILD_ROOT/%{_datadir}/%{dict_dirname}
 mkdir -p $RPM_BUILD_ROOT/%{_datadir}/hyphen
 cp -p hyph_hr.dic $RPM_BUILD_ROOT/%{_datadir}/hyphen/hyph_hr_HR.dic
 
 
 %files
-%license LICENSE.txt
 %doc README_hr_HR.txt
-%{_datadir}/myspell/*
+%{_datadir}/%{dict_dirname}/*
 
 %files -n hyphen-hr
-%license LICENSE.txt
 %doc README_hr_HR.txt
 %{_datadir}/hyphen/*
 
 %changelog
-* Mon Nov 01 2021 Muhammad Falak <mwani@microsft.com> - 0.20040608-23
-- Remove epoch
+* Thu Jul 18 2024 Fedora Release Engineering <releng@fedoraproject.org> - 1:0.20040608-33
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_41_Mass_Rebuild
 
-* Fri Oct 15 2021 Pawel Winogrodzki <pawelwi@microsoft.com> - 1:0.20040608-22
-- Initial CBL-Mariner import from Fedora 32 (license: MIT).
+* Wed Jan 24 2024 Fedora Release Engineering <releng@fedoraproject.org> - 1:0.20040608-32
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Sat Jan 20 2024 Fedora Release Engineering <releng@fedoraproject.org> - 1:0.20040608-31
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Thu Jul 20 2023 Fedora Release Engineering <releng@fedoraproject.org> - 1:0.20040608-30
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_39_Mass_Rebuild
+
+* Wed Feb 22 2023 Caolán McNamara <caolanm@redhat.com> - 1:0.20040608-29
+- migrated to SPDX license
+
+* Thu Jan 19 2023 Fedora Release Engineering <releng@fedoraproject.org> - 1:0.20040608-28
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_38_Mass_Rebuild
+
+* Thu Jul 21 2022 Fedora Release Engineering <releng@fedoraproject.org> - 1:0.20040608-27
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_37_Mass_Rebuild
+
+* Tue Mar 22 2022 Parag Nemade <pnemade AT redhat DOT com> - 1:0.20040608-26
+- Add conditional for new hunspell dir path and update to Requires:
+  hunspell-filesystem
+
+* Thu Jan 20 2022 Fedora Release Engineering <releng@fedoraproject.org> - 1:0.20040608-25
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_36_Mass_Rebuild
+
+* Thu Jul 22 2021 Fedora Release Engineering <releng@fedoraproject.org> - 1:0.20040608-24
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_35_Mass_Rebuild
+
+* Tue Jan 26 2021 Fedora Release Engineering <releng@fedoraproject.org> - 1:0.20040608-23
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_34_Mass_Rebuild
+
+* Tue Jul 28 2020 Fedora Release Engineering <releng@fedoraproject.org> - 1:0.20040608-22
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_33_Mass_Rebuild
 
 * Wed Jan 29 2020 Fedora Release Engineering <releng@fedoraproject.org> - 1:0.20040608-21
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_32_Mass_Rebuild

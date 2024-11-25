@@ -1,207 +1,277 @@
-%define base_name       digester
-%define short_name      commons-%{base_name}
-Summary:        Jakarta Commons Digester Package
-Name:           apache-%{short_name}
-Version:        2.1
-Release:        4%{?dist}
-License:        Apache-2.0
-Vendor:         Microsoft Corporation
-Distribution:   Azure Linux
-Group:          Development/Libraries/Java
-URL:            https://commons.apache.org/proper/commons-digester
-Source0:        https://dlcdn.apache.org/commons/%{base_name}/source/%{short_name}-%{version}-src.tar.gz
-Source1:        %{name}-build.xml
-BuildRequires:  ant
-BuildRequires:  commons-beanutils
-BuildRequires:  commons-collections
-BuildRequires:  commons-logging
-BuildRequires:  fdupes
-BuildRequires:  javapackages-local-bootstrap
-Requires:       commons-beanutils
-Requires:       commons-logging
-Provides:       %{short_name} = %{version}-%{release}
-Obsoletes:      %{short_name} < %{version}-%{release}
-BuildArch:      noarch
-%if 0%{?with_check}
-BuildRequires:  ant-junit
-%endif
+%global short_name commons-digester
+
+Name:          apache-%{short_name}
+Version:       2.1
+Release:       31%{?dist}
+Summary:       XML to Java object mapping module
+License:       ASL 2.0
+URL:           http://commons.apache.org/digester/
+BuildArch:     noarch
+#ExclusiveArch:  %{java_arches} noarch
+
+Source0:       http://archive.apache.org/dist/commons/digester/source/%{short_name}-%{version}-src.tar.gz
+
+BuildRequires:  maven-local
+BuildRequires:  mvn(commons-beanutils:commons-beanutils)
+BuildRequires:  mvn(commons-logging:commons-logging)
+BuildRequires:  mvn(junit:junit)
+BuildRequires:  mvn(org.apache.commons:commons-parent:pom:)
 
 %description
-The goal of the Jakarta Commons Digester project is to create and
-maintain an XML to Java object mapping package written in the Java
-language to be distributed under the ASF license.
+Many projects read XML configuration files to provide initialization of
+various Java objects within the system. There are several ways of doing this,
+and the Digester component was designed to provide a common implementation
+that can be used in many different projects
 
 %package javadoc
-Summary:        Javadoc for apache-commons-digester
-Group:          Development/Libraries/Java
+Summary:       API documentation for %{name}
 
 %description javadoc
-The goal of the Jakarta Commons Digester project is to create and
-maintain a XML -> Java object mapping package written in the Java
-language to be distributed under the ASF license.
-
-This package contains the javadoc documentation for the Jakarta Commons
-Digester Package.
+This package contains the %{summary}.
 
 %prep
 %setup -q -n %{short_name}-%{version}-src
-cp %{SOURCE1} build.xml
 
-mkdir -p lib
-build-jar-repository -s lib commons-beanutils commons-logging
-
-%pom_remove_parent
+# Compatibility links
+%mvn_alias "%{short_name}:%{short_name}" "org.apache.commons:%{short_name}"
+%mvn_file :%{short_name} %{short_name} %{name}
 
 %build
-ant jar javadoc
+%mvn_build -- -Dcommons.packageId=digester
 
 %install
-# jars
-install -d -m 0755 %{buildroot}%{_javadir}
-install -pm 644 target/%{short_name}-%{version}.jar %{buildroot}%{_javadir}/%{name}.jar
-ln -s %{name}.jar %{buildroot}%{_javadir}/%{short_name}.jar
-# pom
-install -d -m 0755 %{buildroot}%{_mavenpomdir}
-install -pm 644 pom.xml %{buildroot}%{_mavenpomdir}/%{name}.pom
-%add_maven_depmap %{name}.pom %{name}.jar -a org.apache.commons:%{short_name}
-# javadoc
-install -d -m 0755 %{buildroot}%{_javadocdir}/%{name}
-cp -pr target/site/apidocs/* %{buildroot}%{_javadocdir}/%{name}/
-%fdupes -s %{buildroot}%{_javadocdir}/%{name}/
-
-%check
-build-jar-repository -s lib commons-collections
-ant test
+%mvn_install
 
 %files -f .mfiles
-%license LICENSE.txt
-%doc NOTICE.txt RELEASE-NOTES.txt
-%{_javadir}/*
+%doc LICENSE.txt NOTICE.txt RELEASE-NOTES.txt
 
-%files javadoc
-%{_javadocdir}/%{name}
+%files javadoc -f .mfiles-javadoc
+%doc LICENSE.txt NOTICE.txt
 
 %changelog
-* Mon Nov 07 2022 Sumedh Sharma <sumsharma@microsoft.com> - 2.1-4
-- Enable check section
-- License verified
+* Wed Jul 17 2024 Fedora Release Engineering <releng@fedoraproject.org> - 2.1-31
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_41_Mass_Rebuild
 
-* Thu Oct 14 2021 Pawel Winogrodzki <pawelwi@microsoft.com> - 2.1-3
-- Converting the 'Release' tag to the '[number].[distribution]' format.
+* Tue Feb 27 2024 Jiri Vanek <jvanek@redhat.com> - 2.1-30
+- Rebuilt for java-21-openjdk as system jdk
 
-* Fri Nov 27 2020 Ruying Chen <v-ruyche@microsoft.com> - 2.1-2.7
-- Initial CBL-Mariner import from openSUSE Tumbleweed (license: same as "License" tag).
-- Use javapackages-local-bootstrap to avoid build cycle.
+* Wed Jan 31 2024 Mikolaj Izdebski <mizdebsk@redhat.com> - 2.1-29
+- Port to apache-commons-parent 65
 
-* Wed Mar 27 2019 Fridrich Strba <fstrba@suse.com>
-- Use global defines for name
+* Mon Jan 22 2024 Fedora Release Engineering <releng@fedoraproject.org> - 2.1-28
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
 
-* Mon Feb 25 2019 Fridrich Strba <fstrba@suse.com>
-- Upgrade to 2.1
-  * Breaking changes:
-    + The minimum JDK requirement is now JDK 1.5. The provided
-    binaries will not work on lower JDKs. The source has been
-    updated to leverage Generics and other JDK 1.5 features where
-    possible, and requires JDK 1.5 to compile.
-    + This release eliminates all dependencies on Commons
-    Collections classes. Previously, ArrayStack was used in the
-    Digester implementation and was exposed via protected fields
-    or inner classes of the following classes:
-  - org.apache.commons.digester.Digester,
-  - org.apache.commons.digester.CallParamRule, and
-  - org.apache.commons.digester.xmlrules.DigesterRuleParser
-    These classes now use java.util.Stack instead. Any subclasses
-    of the above using protected ArrayStack members will require
-    appropriate migration to use java.util.Stack instead before
-    they can be used with version 2.0 or later.
-  * Important changes:
-    + The legacy schema support has been deprecated in favor of
-    javax.xml.validation.Schema support.
-  * New features:
-    + Support for XML Schema validation using
-    javax.xml.validation.Schema  has been added to Digester.
-    See Digester class Javadoc, and
-    Digester#setSchema(javax.xml.validation.Schema) method.
-    This allows usage of W3C XML Schema, Relax NG and Schematron
-    for validation of XML documents.
-    The legacy schema support has been deprecated (details below).
-    + The underlying SAXParser factory can now be easily configured
-    to be XInclude aware. This allows for general purpose
-    inclusion of XML or text documents, for example, and
-    facilitates document modularity.
-    + Added a new package 'annotations' that provides for Java5
-    Annotations  meta-data based definition of rules for Digester.
-    This improves maintainability of both Java code and XML
-    documents, as  rules are now defined in POJOs and generating
-    Digester parsers at  runtime, avoiding manual updates.
-  * Bugs from previous release:
-    + SetPropertyRule throws java.lang.IllegalArgumentException:
-    No name specified when matched element has no attributes.
-    [DIGESTER-114]
-    + Missing unit tests using Ant and Maven. [DIGESTER-117]
-    + Digesting XML content with NodeCreateRule swallows spaces.
-    [DIGESTER-120]
-    + Potential NullPointerException if debug is enabled in
-    Digester#resolveEntity() [DIGESTER-122]
-    + Clear inputSources list in method Digester.clear()
-    [DIGESTER-125]
-    + Potential NullPointerException if debug is enabled in
-    FactoryCreateRule#begin() [DIGESTER-126]
-  * Improvements from previous release:
-    + Null arguments to all Digester#parse() methods now throw an
-    IllegalArgumentException. [DIGESTER-111]
-    + 'serialVersionUID' fields have been added to Serializable
-    classes.
-- Generate ant build files that were removed in 2.1 by upstream
-- Removed patch:
-  * apache-commons-digester-build.patch
-    + the generated build is handling the build classpath
-    differently
+* Fri Jan 19 2024 Fedora Release Engineering <releng@fedoraproject.org> - 2.1-27
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
 
-* Fri Dec 21 2018 Fridrich Strba <fstrba@suse.com>
-- Renamed package to apache-commons-digester
-- Removed patch:
-  * jakarta-commons-digester-java16compat.patch
-    + no need to patch build.xml to build with source/target 1.6
-- Added patch:
-  * apache-commons-digester-build.patch
-    + add commons-collections to the build classpath
+* Wed Jul 19 2023 Fedora Release Engineering <releng@fedoraproject.org> - 2.1-26
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_39_Mass_Rebuild
 
-* Mon Sep 18 2017 fstrba@suse.com
-- Removed patch:
-  * jakarta-commons-digester-java14compat.patch
-- Added patch:
-  * jakarta-commons-digester-java16compat.patch
-  - Build with java source and target 1.6
-  - Fixes build with jdk9
-- Align the spec file to the way the ant build gets its
-  dependencies and fix the javadoc build
+* Wed Jan 18 2023 Fedora Release Engineering <releng@fedoraproject.org> - 2.1-25
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_38_Mass_Rebuild
 
-* Tue Jul  8 2014 tchvatal@suse.com
-- Cleanup with spec cleaner and fix build again.
+* Wed Jul 20 2022 Fedora Release Engineering <releng@fedoraproject.org> - 2.1-24
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_37_Mass_Rebuild
 
-* Mon Sep 25 2006 skh@suse.de
-- don't use icecream
-- use source="1.4" and target="1.4" for build with java 1.5
+* Fri Jul 08 2022 Jiri Vanek <jvanek@redhat.com> - 2.1-23
+- Rebuilt for Drop i686 JDKs
 
-* Wed Jan 25 2006 mls@suse.de
-- converted neededforbuild to BuildRequires
+* Sat Feb 05 2022 Jiri Vanek <jvanek@redhat.com> - 2.1-22
+- Rebuilt for java-17-openjdk as system jdk
 
-* Wed Jul 27 2005 jsmeix@suse.de
-- Current version 1.7 from JPackage.org
+* Wed Jan 19 2022 Fedora Release Engineering <releng@fedoraproject.org> - 2.1-21
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_36_Mass_Rebuild
 
-* Mon Jul 18 2005 jsmeix@suse.de
-- Current version 1.6 from JPackage.org
+* Wed Dec 15 2021 Mat Booth <mat.booth@gmail.com> - 2.1-20
+- Fix build on Java 17
 
-* Tue Feb 22 2005 skh@suse.de
-- enable build of rss package (needed by struts)
+* Wed Jul 21 2021 Fedora Release Engineering <releng@fedoraproject.org> - 2.1-19
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_35_Mass_Rebuild
 
-* Mon Feb 21 2005 skh@suse.de
-- update to version 1.6
-- don't use icecream
+* Tue Jan 26 2021 Fedora Release Engineering <releng@fedoraproject.org> - 2.1-18
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_34_Mass_Rebuild
 
-* Thu Sep 16 2004 skh@suse.de
-- Fix prerequires of javadoc subpackage
+* Mon Jul 27 2020 Fedora Release Engineering <releng@fedoraproject.org> - 2.1-17
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_33_Mass_Rebuild
 
-* Sun Sep  5 2004 skh@suse.de
-- Initial package created with version 1.5 (JPackage version 1.5)
+* Fri Jul 10 2020 Jiri Vanek <jvanek@redhat.com> - 2.1-16
+- Rebuilt for JDK-11, see https://fedoraproject.org/wiki/Changes/Java11
+
+* Tue Jan 28 2020 Fedora Release Engineering <releng@fedoraproject.org> - 2.1-15
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_32_Mass_Rebuild
+
+* Tue Nov 05 2019 Fabio Valentini <decathorpe@gmail.com> - 2.1-14
+- Add missing maven compiler source and target overrides.
+
+* Wed Jul 24 2019 Fedora Release Engineering <releng@fedoraproject.org> - 2.1-13
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_31_Mass_Rebuild
+
+* Thu Jan 31 2019 Fedora Release Engineering <releng@fedoraproject.org> - 2.1-12
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_30_Mass_Rebuild
+
+* Thu Jul 12 2018 Fedora Release Engineering <releng@fedoraproject.org> - 2.1-11
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_29_Mass_Rebuild
+
+* Wed Feb 07 2018 Fedora Release Engineering <releng@fedoraproject.org> - 2.1-10
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_28_Mass_Rebuild
+
+* Wed Jul 26 2017 Fedora Release Engineering <releng@fedoraproject.org> - 2.1-9
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_27_Mass_Rebuild
+
+* Fri Feb 10 2017 Fedora Release Engineering <releng@fedoraproject.org> - 2.1-8
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_26_Mass_Rebuild
+
+* Wed Jun 15 2016 Mikolaj Izdebski <mizdebsk@redhat.com> - 2.1-7
+- Regenerate build-requires
+
+* Wed Feb 03 2016 Fedora Release Engineering <releng@fedoraproject.org> - 2.1-6
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_24_Mass_Rebuild
+
+* Wed Jun 17 2015 Fedora Release Engineering <rel-eng@lists.fedoraproject.org> - 2.1-5
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_23_Mass_Rebuild
+
+* Tue Oct 14 2014 Mikolaj Izdebski <mizdebsk@redhat.com> - 2.1-4
+- Remove legacy Obsoletes/Provides for jakarta-commons
+
+* Sat Jun 07 2014 Fedora Release Engineering <rel-eng@lists.fedoraproject.org> - 2.1-3
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_21_Mass_Rebuild
+
+* Tue Mar 04 2014 Stanislav Ochotnicky <sochotnicky@redhat.com> - 2.1-2
+- Use Requires: java-headless rebuild (#1067528)
+
+* Wed Aug 21 2013 Mat Booth <fedora@matbooth.co.uk> - 2.1-1
+- Update to latest upstream, rhbz #639893
+- Update spec for latest guidelines
+
+* Sat Aug 03 2013 Fedora Release Engineering <rel-eng@lists.fedoraproject.org> - 1.8.1-16
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_20_Mass_Rebuild
+
+* Mon Apr 29 2013 Mikolaj Izdebski <mizdebsk@redhat.com> - 1.8.1-15
+- Remove unneeded BR: maven-idea-plugin
+
+* Mon Feb 18 2013 Java SIG <java-devel@lists.fedoraproject.org> - 1.8.1-14
+- Update for https://fedoraproject.org/wiki/Fedora_19_Maven_Rebuild
+- Replace maven BuildRequires with maven-local
+
+* Wed Feb 13 2013 Fedora Release Engineering <rel-eng@lists.fedoraproject.org> - 1.8.1-13
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_19_Mass_Rebuild
+
+* Tue Aug  7 2012 Mikolaj Izdebski <mizdebsk@redhat.com> - 1.8.1-12
+- Fix file permissions
+- Install LICENSE and NOTICE with javadoc package
+
+* Wed Jul 18 2012 Fedora Release Engineering <rel-eng@lists.fedoraproject.org> - 1.8.1-11
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_18_Mass_Rebuild
+
+* Thu Jan 12 2012 Fedora Release Engineering <rel-eng@lists.fedoraproject.org> - 1.8.1-10
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_17_Mass_Rebuild
+
+* Wed Nov 30 2011 Alexander Kurtakov <akurtako@redhat.com> 1.8.1-9
+- Build with maven 3.
+- Adapt to current guidelines.
+
+* Mon Feb 07 2011 Fedora Release Engineering <rel-eng@lists.fedoraproject.org> - 1.8.1-8
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_15_Mass_Rebuild
+
+* Fri May 21 2010 Mat Booth <fedora@matbooth.co.uk> - 1.8.1-7
+- Correct dep-map names.
+
+* Fri May 14 2010 Mat Booth <fedora@matbooth.co.uk> - 1.8.1-6
+- Obsolete jakarta javadoc package.
+- Keep legacy depmap around.
+
+* Thu May 13 2010 Mat Booth <fedora@matbooth.co.uk> - 1.8.1-5
+- Drop really old obsoletes/provides on short_name.
+- Fix requires.
+
+* Tue May 11 2010 Mat Booth <fedora@matbooth.co.uk> - 1.8.1-4
+- Not ready for auto OSGi depsolving yet in this package.
+- Rename package (jakarta-commons-digester->apache-commons-digester).
+
+* Tue Dec 8 2009 Mat Booth <fedora@matbooth.co.uk> - 1.8.1-3
+- Enable OSGi automatic depsolving (from Alphonse Van Assche).
+
+* Sun Nov 8 2009 Mat Booth <fedora@matbooth.co.uk> - 1.8.1-2
+- Fix build failure due to targeting too old a JRE
+- Add missing doxia build req
+
+* Sun Nov 8 2009 Mat Booth <fedora@matbooth.co.uk> - 1.8.1-1
+- Update to 1.8.1
+- Rewrite spec file to build using upstream-preferred maven instead of ant
+- Install pom and add to maven dep-map
+- Fix javadoc package requires
+
+* Mon Aug 10 2009 Ville Skyttä <ville.skytta@iki.fi> - 0:1.7-10.3
+- Convert specfile to UTF-8.
+
+* Fri Jul 24 2009 Fedora Release Engineering <rel-eng@lists.fedoraproject.org> - 0:1.7-9.3
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_12_Mass_Rebuild
+
+* Wed Feb 25 2009 Fedora Release Engineering <rel-eng@lists.fedoraproject.org> - 0:1.7-8.3
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_11_Mass_Rebuild
+
+* Wed Jul  9 2008 Tom "spot" Callaway <tcallawa@redhat.com> - 0:1.7-7.3
+- fix license tag
+- drop repotag
+
+* Tue Feb 19 2008 Fedora Release Engineering <rel-eng@fedoraproject.org> - 0:1.7-7jpp.2
+- Autorebuild for GCC 4.3
+
+* Fri Sep 07 2007 Matt Wringe <mwringe@redhat.com> - 0:1.7-6jpp.2
+- Fix unowned dir (/usr/lib/gcj/jakarta-commons-digester)
+
+* Mon Jan 22 2007 Vivek Lakshmanan <vivekl at redhat.com> - 0:1.7-6jpp.1
+- Resynch with JPP release
+
+* Tue Jan 16 2007 Vivek Lakshmanan <vivekl at redhat.com> - 0:1.7-5jpp.3
+- Update component-info.xml to add scm and tag attribute instead of a comment
+- Remove the export of a versioned jar
+
+* Tue Jan 9 2007 Vivek Lakshmanan <vivekl at redhat.com> - 0:1.7-5jpp.2
+- Upgrade to latest from JPP and FC6
+- Remove old RHUG specific trigger
+- Add support for conditional build of repolib package
+- Build repolib package by default
+
+* Thu Aug 10 2006 Matt Wringe <mwringe at redhat.com> - 0:1.7-5jpp.1
+- Merge with upstream version:
+ - Add missing requires for javadoc
+
+* Thu Aug 10 2006 Karsten Hopp <karsten@redhat.de> 1.7-4jpp_3fc
+- Requires(post/postun): coreutils
+
+* Sat Jul 22 2006 Jakub Jelinek <jakub@redhat.com> - 0:1.7-4jpp_2fc
+- Rebuilt
+
+* Wed Jul 19 2006 Matt Wringe <mwringe at redhat.com> - 0:1.7-4jpp_1fc
+- Merged with upstream version
+
+* Wed Jul 19 2006 Matt Wringe <mwringe at redhat.com> - 0:1.7-4jpp
+- Removed separate definition of name, version and release.
+
+* Mon Jul 17 2006 Matt Wringe <mwringe at redhat.com> - 0:1.7-3jpp
+- Added conditional native compiling
+
+* Wed Apr 26 2006 Fernando Nasser <fnasser@redhat.com> - 0:1.7-2jpp
+- First JPP 1.7 build
+
+* Tue Jul 26 2005 Fernando Nasser <fnasser@redhat.com> - 0:1.7-1jpp
+- Upgrade to 1.7
+
+* Thu Nov 26 2004 Fernando Nasser <fnasser@redhat.com> - 0:1.6-2jpp
+- Rebuild so that rss package is included
+
+* Thu Oct 21 2004 Fernando Nasser <fnasser@redhat.com> - 0:1.6-1jpp
+- Upgrade to 1.6
+
+* Sun Aug 23 2004 Randy Watler <rwatler at finali.com> - 0:1.5-4jpp
+- Rebuild with ant-1.6.2
+
+* Fri May 09 2003 David Walluck <david@anti-microsoft.org> 0:1.5-3jpp
+- update for JPackage 1.5
+
+* Thu May 08 2003 Henri Gomez <hgomez@users.sourceforge.net> 1.5-2jpp
+- used correct JPP 1.5 spec file
+
+* Thu May 08 2003 Henri Gomez <hgomez@users.sourceforge.net> 1.5-2jpp
+- 1.5

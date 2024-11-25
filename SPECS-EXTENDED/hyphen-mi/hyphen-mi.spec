@@ -1,15 +1,13 @@
-Vendor:         Microsoft Corporation
-Distribution:   Azure Linux
 Name: hyphen-mi
 Summary: Maori hyphenation rules
 %global upstreamid 20080630
 Version: 0.%{upstreamid}
-Release: 23%{?dist}
+Release: 31%{?dist}
 # Source is dead now
 # Source: http://packages.papakupu.maori.nz/hunspell-hyphen/hunspell-hyphen-mi-0.1.%%{upstreamid}-beta.tar.gz
-Source: %{_distro_sources_url}/hunspell-hyphen-mi-0.1.%{upstreamid}-beta.tar.gz
+Source: hunspell-hyphen-mi-0.1.%{upstreamid}-beta.tar.gz
 URL: http://papakupu.maori.nz/
-License: GPLv3+
+License: GPL-3.0-or-later
 BuildArch: noarch
 
 Requires: hyphen
@@ -29,21 +27,42 @@ cp -p mi.dic $RPM_BUILD_ROOT/%{_datadir}/hyphen/hyph_mi_NZ.dic
 
 
 %files
-%license mi.LICENSE
-%doc mi.README
+%doc mi.LICENSE mi.README
 %{_datadir}/hyphen/*
 
 %changelog
-* Thu Feb 22 2024 Pawel Winogrodzki <pawelwi@microsoft.com> - 0.20080630-23
-- Updating naming for 3.0 version of Azure Linux.
+* Thu Jul 18 2024 Fedora Release Engineering <releng@fedoraproject.org> - 0.20080630-31
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_41_Mass_Rebuild
 
-* Mon Apr 25 2022 Pawel Winogrodzki <pawelwi@microsoft.com> - 0.20080630-22
-- Updating source URLs.
-- License verified.
+* Wed Jan 24 2024 Fedora Release Engineering <releng@fedoraproject.org> - 0.20080630-30
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
 
-* Mon Jan 25 2021 Joe Schmitt <joschmit@microsoft.com> - 0.20080630-21
-- Initial CBL-Mariner import from Fedora 32 (license: MIT).
-- Fix source macro expansion
+* Sat Jan 20 2024 Fedora Release Engineering <releng@fedoraproject.org> - 0.20080630-29
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Thu Aug 03 2023 Fedora Release Engineering <releng@fedoraproject.org> - 0.20080630-28
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_39_Mass_Rebuild
+
+* Tue Mar 28 2023 Caolán McNamara <caolanm@redhat.com> - 0.20080630-27
+- migrated to SPDX license
+
+* Thu Jan 19 2023 Fedora Release Engineering <releng@fedoraproject.org> - 0.20080630-26
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_38_Mass_Rebuild
+
+* Thu Jul 21 2022 Fedora Release Engineering <releng@fedoraproject.org> - 0.20080630-25
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_37_Mass_Rebuild
+
+* Thu Jan 20 2022 Fedora Release Engineering <releng@fedoraproject.org> - 0.20080630-24
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_36_Mass_Rebuild
+
+* Thu Jul 22 2021 Fedora Release Engineering <releng@fedoraproject.org> - 0.20080630-23
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_35_Mass_Rebuild
+
+* Tue Jan 26 2021 Fedora Release Engineering <releng@fedoraproject.org> - 0.20080630-22
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_34_Mass_Rebuild
+
+* Tue Jul 28 2020 Fedora Release Engineering <releng@fedoraproject.org> - 0.20080630-21
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_33_Mass_Rebuild
 
 * Wed Jan 29 2020 Fedora Release Engineering <releng@fedoraproject.org> - 0.20080630-20
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_32_Mass_Rebuild
@@ -103,5 +122,5 @@ cp -p mi.dic $RPM_BUILD_ROOT/%{_datadir}/hyphen/hyph_mi_NZ.dic
 * Tue Feb 24 2009 Fedora Release Engineering <rel-eng@lists.fedoraproject.org> - 0.20080630-2
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_11_Mass_Rebuild
 
-* Wed Jan 09 2008 Caolan McNamara <caolanm@redhat.com> - 0.20080630-1
+* Wed Jan 09 2008 Caolán McNamara <caolanm@redhat.com> - 0.20080630-1
 - initial version

@@ -1,13 +1,12 @@
-Vendor:         Microsoft Corporation
-Distribution:   Azure Linux
 Summary: A tool for printing multiple pages of text on each printed page
 Name: mpage
 Version: 2.5.7
-Release: 10%{?dist}
-License: GPLv2+
+Release: 20%{?dist}
+License: GPL-2.0-or-later
 Url: http://www.mesa.nl/pub/mpage/
 Source: ftp://ftp.mesa.nl/pub/mpage/mpage-%{version}.tgz
 Patch0: mpage25-config.patch
+BuildRequires: make
 BuildRequires: gcc
 
 %description
@@ -20,7 +19,7 @@ pages.
 
 %prep
 %setup -q
-%patch 0 -p1 -b .config
+%patch -P0 -p1 -b .config
 
 %build
 make BINDIR=%{_bindir} LIBDIR=%{_datadir} MANDIR=%{_mandir}/man1
@@ -44,8 +43,38 @@ make PREFIX=$RPM_BUILD_ROOT/%{_prefix} BINDIR=$RPM_BUILD_ROOT/%{_bindir} \
 %{_datadir}/mpage
 
 %changelog
-* Fri Oct 15 2021 Pawel Winogrodzki <pawelwi@microsoft.com> - 2.5.7-10
-- Initial CBL-Mariner import from Fedora 32 (license: MIT).
+* Thu Jul 18 2024 Fedora Release Engineering <releng@fedoraproject.org> - 2.5.7-20
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_41_Mass_Rebuild
+
+* Thu Jan 25 2024 Fedora Release Engineering <releng@fedoraproject.org> - 2.5.7-19
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Sun Jan 21 2024 Fedora Release Engineering <releng@fedoraproject.org> - 2.5.7-18
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Thu Jul 20 2023 Fedora Release Engineering <releng@fedoraproject.org> - 2.5.7-17
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_39_Mass_Rebuild
+
+* Wed Apr 26 2023 Michal Hlavinka <mhlavink@redhat.com> - 2.5.7-16
+- update license tag format (SPDX migration) for https://fedoraproject.org/wiki/Changes/SPDX_Licenses_Phase_1
+
+* Thu Jan 19 2023 Fedora Release Engineering <releng@fedoraproject.org> - 2.5.7-15
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_38_Mass_Rebuild
+
+* Thu Jul 21 2022 Fedora Release Engineering <releng@fedoraproject.org> - 2.5.7-14
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_37_Mass_Rebuild
+
+* Thu Jan 20 2022 Fedora Release Engineering <releng@fedoraproject.org> - 2.5.7-13
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_36_Mass_Rebuild
+
+* Thu Jul 22 2021 Fedora Release Engineering <releng@fedoraproject.org> - 2.5.7-12
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_35_Mass_Rebuild
+
+* Tue Jan 26 2021 Fedora Release Engineering <releng@fedoraproject.org> - 2.5.7-11
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_34_Mass_Rebuild
+
+* Tue Jul 28 2020 Fedora Release Engineering <releng@fedoraproject.org> - 2.5.7-10
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_33_Mass_Rebuild
 
 * Wed Jan 29 2020 Fedora Release Engineering <releng@fedoraproject.org> - 2.5.7-9
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_32_Mass_Rebuild

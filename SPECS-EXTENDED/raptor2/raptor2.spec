@@ -1,10 +1,8 @@
-Vendor:         Microsoft Corporation
-Distribution:   Azure Linux
 
 Summary: RDF Parser Toolkit for Redland
 Name:    raptor2
 Version: 2.0.15
-Release: 28%{?dist}
+Release: 44%{?dist}
 
 License: GPLv2+ or LGPLv2+ or ASL 2.0
 Source:  http://download.librdf.org/source/raptor2-%{version}.tar.gz
@@ -17,6 +15,9 @@ Patch1: 0001-Calcualte-max-nspace-declarations-correctly-for-XML-.patch
 Patch2: 0001-CVE-2020-25713-raptor2-malformed-input-file-can-lead.patch
 
 ## upstreamable patches
+Patch3: raptor2-configure-c99.patch
+Patch4: raptor2-c99.patch
+Patch5: raptor2-libxml2.patch
 
 BuildRequires: make
 BuildRequires: gcc-c++
@@ -103,8 +104,57 @@ make check
 
 
 %changelog
-* Fri Oct 15 2021 Pawel Winogrodzki <pawelwi@microsoft.com> - 2.0.15-28
-- Initial CBL-Mariner import from Fedora 33 (license: MIT).
+* Fri Jul 19 2024 Fedora Release Engineering <releng@fedoraproject.org> - 2.0.15-44
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_41_Mass_Rebuild
+
+* Wed Jan 31 2024 Pete Walter <pwalter@fedoraproject.org> - 2.0.15-43
+- Rebuild for ICU 74
+
+* Fri Jan 26 2024 Fedora Release Engineering <releng@fedoraproject.org> - 2.0.15-42
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Mon Jan 22 2024 Fedora Release Engineering <releng@fedoraproject.org> - 2.0.15-41
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Mon Jan 08 2024 Florian Weimer <fweimer@redhat.com> - 2.0.15-40
+- Backport upstream patch to fix C compatibility issues
+- Backport another upstream patch to fix build issue with current libxml2
+
+* Fri Jul 21 2023 Fedora Release Engineering <releng@fedoraproject.org> - 2.0.15-39
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_39_Mass_Rebuild
+
+* Tue Jul 11 2023 František Zatloukal <fzatlouk@redhat.com> - 2.0.15-38
+- Rebuilt for ICU 73.2
+
+* Fri Jan 20 2023 Fedora Release Engineering <releng@fedoraproject.org> - 2.0.15-37
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_38_Mass_Rebuild
+
+* Sat Dec 31 2022 Pete Walter <pwalter@fedoraproject.org> - 2.0.15-36
+- Rebuild for ICU 72
+
+* Thu Dec  8 2022 Florian Weimer <fweimer@redhat.com> - 2.0.15-35
+- Port configure script to C99
+
+* Mon Aug 01 2022 Frantisek Zatloukal <fzatlouk@redhat.com> - 2.0.15-34
+- Rebuilt for ICU 71.1
+
+* Sat Jul 23 2022 Fedora Release Engineering <releng@fedoraproject.org> - 2.0.15-33
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_37_Mass_Rebuild
+
+* Fri Jan 21 2022 Fedora Release Engineering <releng@fedoraproject.org> - 2.0.15-32
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_36_Mass_Rebuild
+
+* Fri Jul 23 2021 Fedora Release Engineering <releng@fedoraproject.org> - 2.0.15-31
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_35_Mass_Rebuild
+
+* Thu May 20 2021 Pete Walter <pwalter@fedoraproject.org> - 2.0.15-30
+- Rebuild for ICU 69
+
+* Wed May 19 2021 Pete Walter <pwalter@fedoraproject.org> - 2.0.15-29
+- Rebuild for ICU 69
+
+* Wed Jan 27 2021 Fedora Release Engineering <releng@fedoraproject.org> - 2.0.15-28
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_34_Mass_Rebuild
 
 * Mon Jan 11 2021 Caolán McNamara <caolanm@redhat.com> - 2.0.15-27
 - Resolves: rhbz#1900686 CVE-2020-25713 malformed input file can lead to a segfault

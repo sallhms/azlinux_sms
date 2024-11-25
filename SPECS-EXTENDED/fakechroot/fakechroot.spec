@@ -1,19 +1,17 @@
-Vendor:         Microsoft Corporation
-Distribution:   Azure Linux
 Name:           fakechroot
 Version:        2.20.1
-Release:        4%{?dist}
+Release:        17%{?dist}
 Summary:        Gives a fake chroot environment
 License:        LGPLv2+
 URL:            https://github.com/dex4er/fakechroot
 Source0:        %{url}/archive/%{version}/%{name}-%{version}.tar.gz
 Patch1:         https://github.com/dex4er/fakechroot/commit/b42d1fb9538f680af2f31e864c555414ccba842a.patch
-Patch2:         https://github.com/dex4er/fakechroot/pull/85/commits/534e6d555736b97211523970d378dfb0db2608e9.patch
-Patch3:         https://github.com/dex4er/fakechroot/pull/85/commits/75d7e6fa191c11a791faff06a0de86eaa7801d05.patch
-Patch4:         https://github.com/dex4er/fakechroot/pull/85/commits/693a3597ea7fccfb62f357503ff177bd3e3d5a89.patch
-Patch5:         https://github.com/dex4er/fakechroot/pull/86.patch
+Patch2:         https://github.com/dex4er/fakechroot/pull/80.patch
+Patch4:         https://github.com/dex4er/fakechroot/pull/104.patch
+Patch8:         disable_cp.t.patch
+#Patch9:         fix_test_on_32bits.patch
+Patch10:        autoupdate.patch
 
-Requires:       %{name}-libs%{?_isa} = %{version}-%{release}
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  libtool
@@ -21,9 +19,10 @@ BuildRequires:  make
 BuildRequires:  gcc
 # Required for manpage
 BuildRequires:  /usr/bin/pod2man
-BuildRequires:  gdbm-devel
+# BuildRequires:  gdbm-libs
 # ldd.fakechroot
 Requires:       /usr/bin/objdump
+Requires:       %{name}-libs%{?_isa} = %{version}-%{release}
 
 %description
 fakechroot runs a command in an environment were is additionally
@@ -43,10 +42,15 @@ This package contains the libraries required by %{name}.
 # For %%doc dependency-clean.
 chmod -x scripts/{relocatesymlinks,restoremode,savemode}.sh
 
+
 %build
 autoreconf -vfi
 
-%configure --disable-static --disable-silent-rules --with-libpath="%{_libdir}/fakechroot"
+%if 0%{?__isa_bits} == 64
+%configure --disable-static --disable-silent-rules --with-libpath="%{_libdir}/fakechroot:/usr/lib/fakechroot"
+%else
+%configure --disable-static --disable-silent-rules --with-libpath="%{_libdir}/fakechroot:/usr/lib64/fakechroot"
+%endif
 
 %make_build
 
@@ -56,7 +60,9 @@ autoreconf -vfi
 find %{buildroot}%{_libdir} -name '*.la' -delete -print
 
 %check
+%ifnarch ppc64le
 %make_build check
+%endif
 
 %files
 %doc scripts/{relocatesymlinks,restoremode,savemode}.sh
@@ -76,12 +82,68 @@ find %{buildroot}%{_libdir} -name '*.la' -delete -print
 %{_libdir}/%{name}/
 
 %changelog
-* Thu Mar 03 2022 Pawel Winogrodzki <pawelwi@microsoft.com> - 2.20.1-4
-- Apply Fedora 36 patches (license: MIT) to fix compilation with GCC 11.
-- License verified.
+* Fri Jan 19 2024 Fedora Release Engineering <releng@fedoraproject.org> - 2.20.1-17
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
 
-* Fri Oct 15 2021 Pawel Winogrodzki <pawelwi@microsoft.com> - 2.20.1-4
-- Initial CBL-Mariner import from Fedora 32 (license: MIT).
+* Fri Jul 28 2023 Sérgio Basto <sergio@serjux.com> - 2.20.1-16
+- Update patch 104
+- Use fix_test_on_32bits.patch and also remove -d option on cp test to fix the build
+- Drop 93.diff and 100.patch, to sync with https://github.com/dex4er/fakechroot/pull/104
+- Add autoupdate.patch
+- Remove cp.t test which fails randomly since RHEL 6 or 7
+
+* Wed Jul 19 2023 Fedora Release Engineering <releng@fedoraproject.org> - 2.20.1-15
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_39_Mass_Rebuild
+
+* Thu Jan 19 2023 Fedora Release Engineering <releng@fedoraproject.org> - 2.20.1-14
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_38_Mass_Rebuild
+
+* Sun Dec 25 2022 Sérgio Basto <sergio@serjux.com> - 2.20.1-13
+- PR #104 have more 2 commits
+- Patch to fix test on 32bits is not needed anymore, maybe glibc was fixed (on 32 bits), I don't know
+
+* Sat Oct 29 2022 Sérgio Basto <sergio@serjux.com> - 2.20.1-12
+- All changes to fakechroot we carry in Debian for glibc >= 2.34 #104
+  check return value of dladdr #70
+  glibc 2.33+ compatibility #85
+  Wrap fstatat and fstatat64 (glibc 2.33) #86
+  src/lckpwdf.c: create an empty /etc/.pwd.lock #95
+  Wrap all functions accessing /etc/passwd, /etc/group and /etc/shadow for glibc >= 2.34 #98
+  Stat fix compilation #73 is also included
+  The strcpy writes the terminating null byte as well. #79 is also included
+  as note #98 for glibc 2.32 added src/__nss_files_fopen.c and later for glibc 2.34 remove it
+- Fix typo in AC_PATH_PROG for ldconfig #80 is not included but it is a trivial fix
+- Fix issue #92 #93 not included
+- rel2abs: Only call getcwd_real for relative paths #100 not included
+- fix_test_on_32bits.patch (which strated to fail on F36+)
+
+* Thu Jul 21 2022 Fedora Release Engineering <releng@fedoraproject.org> - 2.20.1-11
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_37_Mass_Rebuild
+
+* Thu Jan 20 2022 Fedora Release Engineering <releng@fedoraproject.org> - 2.20.1-10
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_36_Mass_Rebuild
+
+* Wed Jul 21 2021 Fedora Release Engineering <releng@fedoraproject.org> - 2.20.1-9
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_35_Mass_Rebuild
+
+* Tue Jan 26 2021 Fedora Release Engineering <releng@fedoraproject.org> - 2.20.1-8
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_34_Mass_Rebuild
+- Fix build with https://github.com/dex4er/fakechroot/pull/85 and
+  https://github.com/dex4er/fakechroot/pull/86
+
+* Sat Aug 29 2020 Sérgio Basto <sergio@serjux.com> - 2.20.1-7
+- Use upstream fix for t/escape-nested-chroot.t
+
+* Sat Aug 01 2020 Fedora Release Engineering <releng@fedoraproject.org> - 2.20.1-6
+- Second attempt - Rebuilt for
+  https://fedoraproject.org/wiki/Fedora_33_Mass_Rebuild
+- Disable escape-nested-chroot test temporarily
+
+* Mon Jul 27 2020 Fedora Release Engineering <releng@fedoraproject.org> - 2.20.1-5
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_33_Mass_Rebuild
+
+* Wed Feb 12 2020 Sérgio Basto <sergio@serjux.com> - 2.20.1-4
+- Use if "%{_libdir}" == "/usr/lib64" instead %if 0%{__isa_bits} == 64
 
 * Tue Jan 28 2020 Fedora Release Engineering <releng@fedoraproject.org> - 2.20.1-3
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_32_Mass_Rebuild

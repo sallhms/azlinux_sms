@@ -1,14 +1,13 @@
-Vendor:         Microsoft Corporation
-Distribution:   Azure Linux
 Name:           ykclient
 Version:        2.15
-Release:        11%{?dist}
+Release:        19%{?dist}
 Summary:        Yubikey management library and client
 
 License:        BSD
 URL:            http://opensource.yubico.com/yubico-c-client/
 Source0:	http://opensource.yubico.com/yubico-c-client/releases/ykclient-%{version}.tar.gz
 
+BuildRequires: make
 BuildRequires:  gcc
 BuildRequires:  curl-devel, chrpath, help2man
 
@@ -50,8 +49,32 @@ chrpath -d $RPM_BUILD_ROOT%{_bindir}/ykclient
 %{_libdir}/libykclient.so
 
 %changelog
-* Fri Oct 15 2021 Pawel Winogrodzki <pawelwi@microsoft.com> - 2.15-11
-- Initial CBL-Mariner import from Fedora 32 (license: MIT).
+* Sat Jul 20 2024 Fedora Release Engineering <releng@fedoraproject.org> - 2.15-19
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_41_Mass_Rebuild
+
+* Sat Jan 27 2024 Fedora Release Engineering <releng@fedoraproject.org> - 2.15-18
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Sat Jul 22 2023 Fedora Release Engineering <releng@fedoraproject.org> - 2.15-17
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_39_Mass_Rebuild
+
+* Sat Jan 21 2023 Fedora Release Engineering <releng@fedoraproject.org> - 2.15-16
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_38_Mass_Rebuild
+
+* Sat Jul 23 2022 Fedora Release Engineering <releng@fedoraproject.org> - 2.15-15
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_37_Mass_Rebuild
+
+* Sat Jan 22 2022 Fedora Release Engineering <releng@fedoraproject.org> - 2.15-14
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_36_Mass_Rebuild
+
+* Fri Jul 23 2021 Fedora Release Engineering <releng@fedoraproject.org> - 2.15-13
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_35_Mass_Rebuild
+
+* Thu Jan 28 2021 Fedora Release Engineering <releng@fedoraproject.org> - 2.15-12
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_34_Mass_Rebuild
+
+* Wed Jul 29 2020 Fedora Release Engineering <releng@fedoraproject.org> - 2.15-11
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_33_Mass_Rebuild
 
 * Fri Jan 31 2020 Fedora Release Engineering <releng@fedoraproject.org> - 2.15-10
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_32_Mass_Rebuild

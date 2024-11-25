@@ -1,36 +1,32 @@
-Vendor:         Microsoft Corporation
-Distribution:   Azure Linux
-
-%global httpd24 1
-%global rundir /run
-%global rundir_tmpfs 1
-%global systemd_units systemd
-
 Name:		mod_fcgid
 Version:	2.3.9
-Release:	21%{?dist}
+Release:	34%{?dist}
 Summary:	FastCGI interface module for Apache 2
-License:	ASL 2.0
+License:	Apache-2.0
 URL:		http://httpd.apache.org/mod_fcgid/
 Source0:	http://www.apache.org/dist/httpd/mod_fcgid/mod_fcgid-%{version}.tar.bz2
-Source1:	fcgid.conf
 Source2:	mod_fcgid-2.1-README.RPM
 Source3:	mod_fcgid-2.1-README.SELinux
 Source4:	mod_fcgid-tmpfs.conf
 Source5:	fcgid24.conf
 Patch0:		mod_fcgid-2.3.4-fixconf-shellbang.patch
+Patch1:		mod_fcgid-2.3.9-segfault-upload.patch
+Patch2:		mod_fcgid-2.3.9-r1848298.patch
 BuildRequires:	coreutils
 BuildRequires:	gcc
-BuildRequires:	httpd-devel >= 2.0
+BuildRequires:	httpd-devel >= 2.4
 BuildRequires:	make
 BuildRequires:	pkgconfig
 BuildRequires:	sed
+# systemd-rpm-macros needed for definition of %%{_tmpfilesdir}
+%if (0%{?fedora} && 0%{?fedora} <= 30)
+BuildRequires:	systemd
+%else
 BuildRequires:	systemd-rpm-macros
-Requires:	httpd-mmn
-# %%systemd_units needed for ownership of %%{_tmpfilesdir}
-%if %{rundir_tmpfs}
-Requires:	%{systemd_units}
 %endif
+Requires:	httpd-mmn = %{_httpd_mmn}
+# systemd needed for ownership of %%{_tmpfilesdir}
+Requires:	systemd
 
 %description
 mod_fcgid is a binary-compatible alternative to the Apache module mod_fastcgi.
@@ -40,40 +36,35 @@ as possible.
 
 %prep
 %setup -q
-cp -p %{SOURCE1} fcgid.conf
 cp -p %{SOURCE2} README.RPM
 cp -p %{SOURCE3} README.SELinux
 cp -p %{SOURCE5} fcgid24.conf
 
+# Fix shellbang in fixconf script for our location of sed
+%if (0%{?rhel} && 0%{?rhel} <= 7) || (0%{?fedora} && 0%{?fedora} <= 23)
+%patch -P 0 -p1
+%endif
+
+%patch -P 1 -p1 -b .segfault_upload
+%patch -P 2 -p1 -b .r1848298
 
 %build
 APXS=%{_httpd_apxs} ./configure.apxs
 make
 
 %install
-make DESTDIR=%{buildroot} MKINSTALLDIRS="mkdir -p" install
-%if %{httpd24}
+%make_install MKINSTALLDIRS="mkdir -p"
 mkdir -p %{buildroot}{%{_httpd_confdir},%{_httpd_modconfdir}}
 echo "LoadModule fcgid_module modules/mod_fcgid.so" > %{buildroot}%{_httpd_modconfdir}/10-fcgid.conf
 install -D -m 644 fcgid24.conf %{buildroot}%{_httpd_confdir}/fcgid.conf
-%else
-install -D -m 644 fcgid.conf %{buildroot}%{_httpd_confdir}/fcgid.conf
-%endif
-install -d -m 755 %{buildroot}%{rundir}/mod_fcgid
+install -d -m 755 %{buildroot}/run/mod_fcgid
 
 # Include the manual as %%doc, don't need it elsewhere
-%if %{httpd24}
 rm -rf %{buildroot}%{_httpd_contentdir}/manual
-%else
-rm -rf %{buildroot}%{_var}/www/manual
-%endif
 
-# Make sure %%{rundir}/mod_fcgid exists at boot time for systems
-# with %%{rundir} on tmpfs (#656625)
-%if %{rundir_tmpfs}
+# Make sure /run/mod_fcgid exists at boot time (#656625)
 install -d -m 755 %{buildroot}%{_tmpfilesdir}
 install -p -m 644 %{SOURCE4} %{buildroot}%{_tmpfilesdir}/mod_fcgid.conf
-%endif
 
 %files
 %license LICENSE-FCGID
@@ -83,22 +74,62 @@ install -p -m 644 %{SOURCE4} %{buildroot}%{_tmpfilesdir}/mod_fcgid.conf
 %doc docs/manual/mod/mod_fcgid.html.en modules/fcgid/ChangeLog
 %doc build/fixconf.sed
 %{_libdir}/httpd/modules/mod_fcgid.so
-%if %{httpd24}
 %config(noreplace) %{_httpd_modconfdir}/10-fcgid.conf
-%endif
 %config(noreplace) %{_httpd_confdir}/fcgid.conf
-%if %{rundir_tmpfs}
 %{_tmpfilesdir}/mod_fcgid.conf
-%endif
-%dir %attr(0775,root,apache) %{rundir}/mod_fcgid/
+%dir %attr(0775,root,apache) /run/mod_fcgid/
 
 %changelog
-* Tue Mar 15 2022 Pawel Winogrodzki <pawelwi@microsoft.com> - 2.3.9-21
-- Adding missing BR on 'systemd-rpm-macros'.
-- License verified.
+* Thu Jul 18 2024 Fedora Release Engineering <releng@fedoraproject.org> - 2.3.9-34
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_41_Mass_Rebuild
 
-* Fri Oct 15 2021 Pawel Winogrodzki <pawelwi@microsoft.com> - 2.3.9-20
-- Initial CBL-Mariner import from Fedora 32 (license: MIT).
+* Tue Jul  9 2024 Software Management Team <packaging-team-maint@redhat.com> - 2.3.9-33
+- Eliminate use of obsolete %%patchN syntax (#2283636)
+
+* Thu Jan 25 2024 Fedora Release Engineering <releng@fedoraproject.org> - 2.3.9-32
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Sun Jan 21 2024 Fedora Release Engineering <releng@fedoraproject.org> - 2.3.9-31
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Thu Jul 20 2023 Fedora Release Engineering <releng@fedoraproject.org> - 2.3.9-30
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_39_Mass_Rebuild
+
+* Thu Jan 19 2023 Fedora Release Engineering <releng@fedoraproject.org> - 2.3.9-29
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_38_Mass_Rebuild
+
+* Wed Aug 24 2022 Paul Howarth <paul@city-fan.org> - 2.3.9-28
+- BR: systemd-rpm-macros for definition of %%{_tmpfilesdir}
+
+* Thu Jul 21 2022 Fedora Release Engineering <releng@fedoraproject.org> - 2.3.9-27
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_37_Mass_Rebuild
+
+* Thu Jan 20 2022 Fedora Release Engineering <releng@fedoraproject.org> - 2.3.9-26
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_36_Mass_Rebuild
+
+* Thu Jul 22 2021 Fedora Release Engineering <releng@fedoraproject.org> - 2.3.9-25
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_35_Mass_Rebuild
+
+* Wed Jan 27 2021 Paul Howarth <paul@city-fan.org> - 2.3.9-24
+- Drop EL-6 support
+  - Use %%license unconditionally
+  - _httpd_* macros always available
+  - Run directory is always /run on tmpfs
+  - Assume httpd ≥ 2.4 filesystem layout
+  - systemd-units always provided by systemd
+
+* Tue Jan 26 2021 Fedora Release Engineering <releng@fedoraproject.org> - 2.3.9-23
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_34_Mass_Rebuild
+
+* Thu Aug 27 2020 Joe Orton <jorton@redhat.com> - 2.3.9-22
+- merge fixes from RHEL (r1848298, etc)
+
+* Tue Jul 28 2020 Fedora Release Engineering <releng@fedoraproject.org> - 2.3.9-21
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_33_Mass_Rebuild
+
+* Mon Jul 13 2020 Tom Stellard <tstellar@redhat.com> - 2.3.9-20
+- Use make macros
+- https://fedoraproject.org/wiki/Changes/UseMakeBuildInstallMacro
 
 * Wed Jan 29 2020 Fedora Release Engineering <releng@fedoraproject.org> - 2.3.9-19
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_32_Mass_Rebuild

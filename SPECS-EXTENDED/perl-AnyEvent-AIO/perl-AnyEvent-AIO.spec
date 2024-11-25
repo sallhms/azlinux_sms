@@ -1,22 +1,18 @@
-Summary:        Truly asynchronous file and directrory I/O
 Name:           perl-AnyEvent-AIO
 Version:        1.1
-Release:        35%{?dist}
-License:        GPL+ OR Artistic
-Vendor:         Microsoft Corporation
-Distribution:   Azure Linux
+Release:        42%{?dist}
+Summary:        Truly asynchronous file and directrory I/O
+
+License:        GPL+ or Artistic
 URL:            https://metacpan.org/release/AnyEvent-AIO
 Source0:        https://cpan.metacpan.org/authors/id/M/ML/MLEHMANN/AnyEvent-AIO-%{version}.tar.gz
 
 BuildArch:      noarch
-
-BuildRequires:  make
+BuildRequires: make
 BuildRequires:  perl-generators
-BuildRequires:  perl(AnyEvent)
 BuildRequires:  perl(ExtUtils::MakeMaker)
 BuildRequires:  perl(IO::AIO) >= 3
-
-Requires:       perl(:MODULE_COMPAT_%(eval "`perl -V:version`"; echo $version))
+BuildRequires:  perl(AnyEvent)
 
 %description
 Truly asynchronous file and directrory I/O.
@@ -26,27 +22,51 @@ Truly asynchronous file and directrory I/O.
 
 
 %build
-perl Makefile.PL INSTALLDIRS=vendor
-%make_build
+%{__perl} Makefile.PL INSTALLDIRS=vendor
+make %{?_smp_mflags}
 
 
 %install
-make pure_install PERL_INSTALL_ROOT=%{buildroot}
-find %{buildroot} -type f -name .packlist -exec rm -f {} ';'
+rm -rf $RPM_BUILD_ROOT
+make pure_install PERL_INSTALL_ROOT=$RPM_BUILD_ROOT
+find $RPM_BUILD_ROOT -type f -name .packlist -exec rm -f {} ';'
+
 
 %check
 make test
 
+
+
 %files
-%license COPYING
-%doc README
+%doc COPYING README
 %{perl_vendorlib}/*
 %{_mandir}/man3/*.3*
 
+
 %changelog
-* Thu Jan 27 2022 Pawel Winogrodzki <pawelwi@microsoft.com> - 1.1-35
-- Initial CBL-Mariner import from Fedora 36 (license: MIT).
-- License verified.
+* Thu Jul 18 2024 Fedora Release Engineering <releng@fedoraproject.org> - 1.1-42
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_41_Mass_Rebuild
+
+* Thu Jan 25 2024 Fedora Release Engineering <releng@fedoraproject.org> - 1.1-41
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Sun Jan 21 2024 Fedora Release Engineering <releng@fedoraproject.org> - 1.1-40
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Thu Jul 20 2023 Fedora Release Engineering <releng@fedoraproject.org> - 1.1-39
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_39_Mass_Rebuild
+
+* Thu Jan 19 2023 Fedora Release Engineering <releng@fedoraproject.org> - 1.1-38
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_38_Mass_Rebuild
+
+* Fri Jul 22 2022 Fedora Release Engineering <releng@fedoraproject.org> - 1.1-37
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_37_Mass_Rebuild
+
+* Tue May 31 2022 Jitka Plesnikova <jplesnik@redhat.com> - 1.1-36
+- Perl 5.36 rebuild
+
+* Thu Jan 20 2022 Fedora Release Engineering <releng@fedoraproject.org> - 1.1-35
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_36_Mass_Rebuild
 
 * Thu Jul 22 2021 Fedora Release Engineering <releng@fedoraproject.org> - 1.1-34
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_35_Mass_Rebuild
@@ -155,3 +175,4 @@ make test
 
 * Fri Nov 29 2008 kwizart < kwizart at gmail.com > - 1.0-1
 - Initial package.
+

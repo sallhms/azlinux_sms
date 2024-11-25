@@ -1,293 +1,437 @@
-Summary:        A Program for Extracting, Verifying, and Fixing Audio Tracks from CDs
-Name:           cdparanoia
-Version:        10.2
-Release:        1%{?dist}
-License:        GPL-2.0-or-later
-Vendor:         Microsoft Corporation
-Distribution:   Azure Linux
-Group:          Productivity/Multimedia/CD/Grabbers
-URL:            https://www.xiph.org/paranoia/index.html
-Source:         https://downloads.xiph.org/releases/%{name}/%{name}-III-%{version}.src.tgz
-Patch0:         010_build_system.patch
-Patch1:         cdparanoia-III-ide_majors.patch
-Patch2:         cdparanoia-III-c++.patch
-Patch3:         050_all_build_only_shared_libraries.patch
-Patch4:         cdparanoia-III-01-typos-and-spelling.patch
-Patch5:         cdparanoia-III-05-gcc4.3.patch
-Patch6:         cdparanoia-III-06-endian.patch
-Patch7:         config-guess-sub-update.patch
+Summary: Compact Disc Digital Audio (CDDA) extraction tool (or ripper)
+Name: cdparanoia
+Version: 10.2
+Release: 45%{?dist}
+# the app is GPLv2 and GPLv2+, everything else is LGPLv2
+License: GPLv2 and GPLv2+ and LGPLv2
+URL: http://www.xiph.org/paranoia/index.html
+
+Source: http://downloads.xiph.org/releases/cdparanoia/cdparanoia-III-%{version}.src.tgz
+# Patch from upstream to fix cdda_interface.h C++ incompatibility ("private")
+# https://trac.xiph.org/changeset/15338
+# https://bugzilla.redhat.com/show_bug.cgi?id=463009
+Patch0: cdparanoia-10.2-#463009.patch
+# #466659
+Patch1: cdparanoia-10.2-endian.patch
+Patch2: cdparanoia-10.2-install.patch
+Patch3: cdparanoia-10.2-format-security.patch
+Patch4: cdparanoia-use-proper-gnu-config-files.patch
+Patch5: cdparanoia-10.2-ldflags.patch
+# https://svn.xiph.org/trunk/cdparanoia@17289
+Patch6: cdparanoia-10.2-add-pkgconfig.patch
+
+Requires: %{name}-libs%{?_isa} = %{version}-%{release}
+
+BuildRequires:  gcc
 BuildRequires:  autoconf
 BuildRequires:  automake
-Provides:       cdparano = %{version}
-Obsoletes:      cdparano < %{version}
-
-%package -n libcdda_interface0
-Summary:        Library for Extracting, Verifying, and Fixing Audio Tracks from CDs
-License:        LGPL-2.1-or-later
-Group:          System/Libraries
-Suggests:       ImageMagick-extra = %{version}
-
-%package -n libcdda_paranoia0
-Summary:        Library for Extracting, Verifying, and Fixing Audio Tracks from CDs
-License:        LGPL-2.1-or-later
-Group:          System/Libraries
-
-%package devel
-Summary:        Development files for cdparanoia, a library for extractnig audio tracks from CDs
-License:        LGPL-2.1-or-later
-Group:          Development/Libraries/C and C++
-Requires:       libcdda_interface0 = %{version}
-Requires:       libcdda_paranoia0 = %{version}
+BuildRequires: make
 
 %description
-This CDDA reader distribution ('cdparanoia') reads audio from the
-CD-ROM directly as data and writes the data to a file or pipe as .wav,
-.aifc, or raw 16-bit linear PCM.
+Cdparanoia (Paranoia III) reads digital audio directly from a CD, then
+writes the data to a file or pipe in WAV, AIFC or raw 16 bit linear
+PCM format.  Cdparanoia doesn't contain any extra features (like the ones
+included in the cdda2wav sampling utility).  Instead, cdparanoia's strength
+lies in its ability to handle a variety of hardware, including inexpensive
+drives prone to misalignment, frame jitter and loss of streaming during
+atomic reads.  Cdparanoia is also good at reading and repairing data from
+damaged CDs.
+
+%package static
+Summary: Development tools for libcdda_paranoia (Paranoia III)
+Requires: cdparanoia-devel = %{version}-%{release}
+License: LGPLv2
+
+%description static
+The cdparanoia-devel package contains the static libraries needed for
+developing applications to read CD Digital Audio disks.
+
+%package libs
+Summary: Libraries for libcdda_paranoia (Paranoia III)
+License: LGPLv2
+
+%description libs
+The cdparanoia-libs package contains the dynamic libraries needed for
+applications which read CD Digital Audio disks.
+
+%package devel
+Summary: Development tools for libcdda_paranoia (Paranoia III)
+Requires: %{name}-libs%{?_isa} = %{version}-%{release}
+License: LGPLv2
 
 %description devel
-This CDDA reader distribution ('cdparanoia') reads audio from the
-CD-ROM directly as data and writes the data to a file or pipe as .wav,
-.aifc, or raw 16-bit linear PCM.
-
-%description -n libcdda_interface0
-This CDDA reader distribution ('cdparanoia') reads audio from the
-CD-ROM directly as data and writes the data to a file or pipe as .wav,
-.aifc, or raw 16-bit linear PCM.
-
-%description -n libcdda_paranoia0
-This CDDA reader distribution ('cdparanoia') reads audio from the
-CD-ROM directly as data and writes the data to a file or pipe as .wav,
-.aifc, or raw 16-bit linear PCM.
+The cdparanoia-devel package contains the libraries and header files needed
+for developing applications to read CD Digital Audio disks.
 
 %prep
-%autosetup -p1 -n %{name}-III-%{version}
+%setup -q -n cdparanoia-III-%{version}
+%patch -P0 -p3 -b .#463009
+%patch -P1 -p1 -b .endian
+%patch -P2 -p1 -b .install
+%patch -P3 -p1 -b .fmt-sec
+%patch -P4 -p1 -b .config
+%patch -P5 -p1 -b .ldflags
+%patch -P6 -p1 -b .pkgconfig
+
+# Update config.guess/sub for newer architectures
+cp /usr/lib/rpm/redhat/config.* .
 
 %build
-autoreconf -vfi
+autoreconf -ifv
+%configure --includedir=%{_includedir}/cdda
+# Also remove many warnings which we are aware of
+# Lastly, don't use _smp_mflags since it also makes the build fail
+make OPT="$RPM_OPT_FLAGS -Wno-pointer-sign -Wno-unused" LDFLAGS="%{?__global_ldflags}"
 
-%configure
-# Disabling "format-security" warnings enabled by default on Mariner.
-%make_build OPT="%{optflags} -Wno-format-security"
 
 %install
-make prefix=%{buildroot}%{_prefix} \
-     LIBDIR=%{buildroot}%{_libdir} \
-     MANDIR=%{buildroot}%{_mandir} \
-     BINDIR=%{buildroot}%{_bindir} \
-     INCLUDEDIR=%{buildroot}%{_includedir} \
-       install
-JAPN_MANDIR=%{buildroot}%{_mandir}/ja/man1
-mkdir -p $JAPN_MANDIR
-install -m644 cdparanoia.1.jp $JAPN_MANDIR/cdparanoia.1
+make install DESTDIR=$RPM_BUILD_ROOT
 
-%post -n libcdda_interface0 -p /sbin/ldconfig
-%postun -n libcdda_interface0 -p /sbin/ldconfig
-%post -n libcdda_paranoia0 -p /sbin/ldconfig
-%postun -n libcdda_paranoia0 -p /sbin/ldconfig
+%ldconfig_scriptlets libs
 
 %files
-%doc README
-%license COPYING-GPL
-%{_mandir}/man1/*
-%{_mandir}/ja
-%{_bindir}/*
+%doc COPYING* README
+%{_bindir}/cdparanoia
+%{_mandir}/man1/cdparanoia.1*
 
-%files -n libcdda_interface0
-%license COPYING-LGPL
-%{_libdir}/libcdda_interface.so.0
-%{_libdir}/libcdda_interface.so.0.*
-
-%files -n libcdda_paranoia0
-%license COPYING-LGPL
-%{_libdir}/libcdda_paranoia.so.0
-%{_libdir}/libcdda_paranoia.so.0.*
+%files libs
+%{_libdir}/*.so.*
 
 %files devel
-%{_includedir}/*
-%{_libdir}/libcdda_paranoia.so
-%{_libdir}/libcdda_interface.so
+%{_includedir}/cdda/
+%{_libdir}/pkgconfig/*.pc
+%{_libdir}/*.so
+
+%files static
+%{_libdir}/*.a
 
 %changelog
-* Wed Nov 23 2022 Sumedh Sharma <sumsharma@microsoft.com> - 10.2-1
-- Initial CBL-Mariner import from openSUSE Tumbleweed (license: same as "License" tag)
-- Converting the 'Release' tag to the '[number].[distribution]' format
-- License verified
+* Wed Jul 17 2024 Fedora Release Engineering <releng@fedoraproject.org> - 10.2-45
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_41_Mass_Rebuild
 
-* Wed Apr 18 2018 jengelh@inai.de
-- Update descriptions.
+* Tue Jan 23 2024 Fedora Release Engineering <releng@fedoraproject.org> - 10.2-44
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
 
-* Wed Apr 18 2018 tchvatal@suse.com
-- Do not bother to talk about it being beta release as we
-  are shipping this since 2008
+* Fri Jan 19 2024 Fedora Release Engineering <releng@fedoraproject.org> - 10.2-43
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
 
-* Wed Apr 18 2018 adam.majer@suse.de
-- Adjust licenses to be installed with %%license not %%doc
-- libraries are covered by LGPL-2.1-or-greater and the command-line
-  tool is GPL-2.0-or-greater
+* Wed Jul 19 2023 Fedora Release Engineering <releng@fedoraproject.org> - 10.2-42
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_39_Mass_Rebuild
 
-* Tue Apr 17 2018 schwab@suse.de
-- config-guess-sub-update.diff: update for RISC-V support
+* Wed Jan 18 2023 Fedora Release Engineering <releng@fedoraproject.org> - 10.2-41
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_38_Mass_Rebuild
 
-* Thu Oct 24 2013 tchvatal@suse.com
-- Redo the buildsystem to use only shared libs and allow parallel
-  building to have it faster in obs.
-  * removed patches:
-  - cdparanoia-III-dt_needed.patch
-  - cdparanoia-large-pic.diff
-  * added patches:
-  - 010_build_system.patch
-  - 050_all_build_only_shared_libraries.patch
+* Wed Jul 20 2022 Fedora Release Engineering <releng@fedoraproject.org> - 10.2-40
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_37_Mass_Rebuild
 
-* Tue May 21 2013 dmueller@suse.com
-- add config-guess-sub-update.diff:
-  * configure.guess/sub update for aarch64 support
+* Wed Jan 19 2022 Fedora Release Engineering <releng@fedoraproject.org> - 10.2-39
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_36_Mass_Rebuild
 
-* Thu Mar 21 2013 mmeister@suse.com
-- Added url as source.
-  Please see http://en.opensuse.org/SourceUrls
+* Wed Jul 21 2021 Fedora Release Engineering <releng@fedoraproject.org> - 10.2-38
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_35_Mass_Rebuild
 
-* Sun Jul 15 2012 coolo@suse.com
-- own directories for japanese man pages, no need to buildrequire man
-  for that
+* Tue Apr 20 2021 Jiri Kucera <jkucera@redhat.com> - 10.2-37
+- Include also GPLv2+ to License field (main.c and cachetest.c
+  are distributed under GPLv2+)
 
-* Tue Dec 20 2011 coolo@suse.com
-- remove call to suse_update_config (very old work around)
+* Tue Jan 26 2021 Fedora Release Engineering <releng@fedoraproject.org> - 10.2-36
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_34_Mass_Rebuild
 
-* Wed Oct  5 2011 uli@suse.com
-- cross-build fixes: use %%configure macro, set bindir and include
-  dir explicitly when installing
+* Mon Oct 26 2020 Dan Horák <dan[at]danny.cz> - 10.2-35
+- Add pkgconfig support
 
-* Thu Jan  7 2010 jengelh@medozas.de
-- Add baselibs.conf as a source
-- Switch from -fpic to -fPIC, at least SPARC needs this
+* Mon Oct 05 2020 Stephen Gallagher <sgallagh@redhat.com> - 10.2-34
+- Fix build on Fedora 33+
 
-* Wed Aug  5 2009 vuntz@novell.com
-- Make the devel package require libcdda_interface0 and
-  libcdda_paranoia0 instead of cdparanoia.
+* Sat Aug 01 2020 Fedora Release Engineering <releng@fedoraproject.org> - 10.2-33
+- Second attempt - Rebuilt for
+  https://fedoraproject.org/wiki/Fedora_33_Mass_Rebuild
 
-* Thu Feb 26 2009 nadvornik@suse.cz
-- updated to III-10.2
-  * many patches merged upstream
-- adapted according to shared library policy
-  * new subpackage libcdda_interface0
-  * new subpackage libcdda_paranoia0
-  * new subpackage cdparanoia-devel
-- added debian patches
-  cdparanoia-III-01-typos-and-spelling.dpatch
-  cdparanoia-III-05-gcc4.3.dpatch
-  cdparanoia-III-06-endian.dpatch
+* Mon Jul 27 2020 Fedora Release Engineering <releng@fedoraproject.org> - 10.2-32
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_33_Mass_Rebuild
 
-* Wed Dec 10 2008 olh@suse.de
-- use Obsoletes: -XXbit only for ppc64 to help solver during distupgrade
-  (bnc#437293)
+* Tue Jan 28 2020 Fedora Release Engineering <releng@fedoraproject.org> - 10.2-31
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_32_Mass_Rebuild
 
-* Thu Oct 30 2008 olh@suse.de
-- obsolete old -XXbit packages (bnc#437293)
+* Wed Jul 24 2019 Fedora Release Engineering <releng@fedoraproject.org> - 10.2-30
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_31_Mass_Rebuild
 
-* Thu Apr 10 2008 ro@suse.de
-- added baselibs.conf file to build xxbit packages
-  for multilib support
+* Thu Jan 31 2019 Fedora Release Engineering <releng@fedoraproject.org> - 10.2-29
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_30_Mass_Rebuild
 
-* Wed Aug  8 2007 pgajdos@suse.cz
-- solved 'Lack of SG_IO interface support' [#295308]
-  * shortened gcc34.patch (leaved in hunks for utils.h only, removed
-  hunks for scsi_interface.c)
-  * new patch sgio.patch to solve error mentioned above
-  * new patch gcc34-2.patch (avoid persisting problems with
-    compilation -- memcpy macro)
+* Thu Jul 12 2018 Fedora Release Engineering <releng@fedoraproject.org> - 10.2-28
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_29_Mass_Rebuild
 
-* Fri Oct 27 2006 lnussel@suse.de
-- remove resmgr patch
+* Wed Mar 07 2018 Adam Jackson <ajax@redhat.com> - 10.2-27
+- Fix LDFLAGS propagation
+- Stop building with -O0
 
-* Mon Jun 12 2006 dmueller@suse.de
-- add DT_NEEDED for libcdda_interface to libccda_paranoia (#183849)
+* Wed Feb 07 2018 Fedora Release Engineering <releng@fedoraproject.org> - 10.2-26
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_28_Mass_Rebuild
 
-* Fri May 26 2006 schwab@suse.de
-- Don't strip binaries.
+* Sun Feb 04 2018 Igor Gnatenko <ignatenkobrain@fedoraproject.org> - 10.2-25
+- Switch to %%ldconfig_scriptlets
 
-* Tue May 23 2006 nadvornik@suse.cz
-- check for all IDE major numbers
+* Wed Aug 02 2017 Fedora Release Engineering <releng@fedoraproject.org> - 10.2-24
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_27_Binutils_Mass_Rebuild
 
-* Wed Jan 25 2006 mls@suse.de
-- converted neededforbuild to BuildRequires
+* Wed Jul 26 2017 Fedora Release Engineering <releng@fedoraproject.org> - 10.2-23
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_27_Mass_Rebuild
 
-* Wed Aug 10 2005 nadvornik@suse.cz
-- use RPM_OPT_FLAGS instead of hardcoded CFLAGS [#93874]
-- fixed compiler warnings
+* Fri Feb 10 2017 Fedora Release Engineering <releng@fedoraproject.org> - 10.2-22
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_26_Mass_Rebuild
 
-* Mon Feb  7 2005 nadvornik@suse.cz
-- do not dereference symlinks in resmgr device name [#44912]
+* Wed Feb 03 2016 Fedora Release Engineering <releng@fedoraproject.org> - 10.2-21
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_24_Mass_Rebuild
 
-* Wed Sep 15 2004 ro@suse.de
-- don't use --host for configure
+* Wed Jun 17 2015 Fedora Release Engineering <rel-eng@lists.fedoraproject.org> - 10.2-20
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_23_Mass_Rebuild
 
-* Wed Jan 28 2004 schwab@suse.de
-- Fix missing library dependency.
+* Sat Feb 21 2015 Till Maas <opensource@till.name> - 10.2-19
+- Rebuilt for Fedora 23 Change
+  https://fedoraproject.org/wiki/Changes/Harden_all_packages_with_position-independent_code
 
-* Sat Jan 17 2004 meissner@suse.de
-- fixed labels at end of compound statement problem.
+* Fri Aug 15 2014 Fedora Release Engineering <rel-eng@lists.fedoraproject.org> - 10.2-18
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_21_22_Mass_Rebuild
 
-* Sun Jan 11 2004 adrian@suse.de
-- add %%run_ldconfig
+* Sat Jun 07 2014 Fedora Release Engineering <rel-eng@lists.fedoraproject.org> - 10.2-17
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_21_Mass_Rebuild
 
-* Mon May 19 2003 meissner@suse.de
-- remove .a files, they are not packaged.
+* Sat May  3 2014 Peter Robinson <pbrobinson@fedoraproject.org> 10.2-16
+- Update config.guess config.sub to build on new architectures
+- Cleanup spec
 
-* Fri Feb 28 2003 meissner@suse.de
-- Added resmgr support so cdparanoia can read audio CDs on
-  SCSI CD-ROMs (and ide-scsi based IDE CD-ROMs).
+* Mon Apr 14 2014 Jaromir Capik <jcapik@redhat.com> - 10.2-15
+- Fixing format-security flaws (#1037011)
 
-* Tue Sep 24 2002 nadvornik@suse.cz
-- fixed crash with k3b [#18282]
+* Sat Aug 03 2013 Fedora Release Engineering <rel-eng@lists.fedoraproject.org> - 10.2-14
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_20_Mass_Rebuild
 
-* Tue Sep 17 2002 ro@suse.de
-- removed bogus self-provides
+* Wed Feb 13 2013 Fedora Release Engineering <rel-eng@lists.fedoraproject.org> - 10.2-13
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_19_Mass_Rebuild
 
-* Thu Apr 25 2002 coolo@suse.de
-- use %%_libdir
+* Wed Jul 18 2012 Fedora Release Engineering <rel-eng@lists.fedoraproject.org> - 10.2-12
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_18_Mass_Rebuild
 
-* Wed Jun 13 2001 schwab@suse.de
-- Fix stupid file names.
+* Thu Jan 12 2012 Fedora Release Engineering <rel-eng@lists.fedoraproject.org> - 10.2-11
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_17_Mass_Rebuild
 
-* Mon Apr  2 2001 bk@suse.de
-- update to III-alpha9.8
-- remove of static libs from filelist(shared libs are used by e.g. kde)
+* Tue Feb 08 2011 Fedora Release Engineering <rel-eng@lists.fedoraproject.org> - 10.2-10
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_15_Mass_Rebuild
 
-* Thu Nov  9 2000 nadvornik@suse.cz
-- renamed cdparano -> cdparanoia
+* Fri Feb 05 2010 Adam Jackson <ajax@redhat.com> 10.2-9
+- Fix packaging typo from -7
 
-* Wed Apr 26 2000 nadvornik@suse.cz
-- changed Group
+* Wed Feb 03 2010 Peter Jones <pjones@redhat.com> - 10.2-8
+- Incorporate changes from Matthias Saou:
+- Include install patch, to avoid all of the ugly manual installation.
+- Cosmetic fixes (libs group, scriplets, don't mix %%name with hardcode...).
 
-* Mon Apr 10 2000 nadvornik@suse.cz
-- added BuildRoot
-- added URL
+* Tue Feb 02 2010 Adam Jackson <ajax@redhat.com> 10.2-7
+- Move static libs to -static subpackage, make it require -devel
 
-* Tue Feb 29 2000 uli@suse.de
-- fixed filelist (this time for real)
-- now builds with "-O2" instead of "-O20"
+* Tue Dec  8 2009 Matthias Saou <http://freshrpms.net/> 10.2-6
+- Fix all of the problems detected during the review which aren't acceptable
+  according to the current policies and guidelines (part of #225638).
+- Don't prefix summaries with "A" nor suffix them with a dot.
+- Move .so symlink to the devel sub-package (#203620).
+- Add highest known version to the cdparanoia-III obsoletes.
+- Remove incorrect buildroot removal from %%build.
+- Use acceptable %%clean section.
+- Provide cdparanoia-static in the devel sub-package since the *.a is there.
+- Use single-command scriplet syntax for /sbin/ldconfig calls.
+- Escape all macros in changelog.
+- Include license file since it is present with the sources.
 
-* Tue Feb 29 2000 ro@suse.de
-- fixed filelist
+* Fri Jul 24 2009 Fedora Release Engineering <rel-eng@lists.fedoraproject.org> - 10.2-5
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_12_Mass_Rebuild
 
-* Mon Jan 17 2000 ro@suse.de
-- update to III-alpha9.7
-- man to /usr/share/man
+* Mon Feb 23 2009 Fedora Release Engineering <rel-eng@lists.fedoraproject.org> - 10.2-4
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_11_Mass_Rebuild
 
-* Mon Sep 13 1999 bs@suse.de
-- ran old prepare_spec on spec file to switch to new prepare_spec.
+* Tue Feb 10 2009 Adam Jackson <ajax@redhat.com>
+- Merge review cleanups (not finished, #225638)
 
-* Fri Sep  3 1999 ro@suse.de
-- update to III-alpha9.6
+* Tue Feb 10 2009 Adam Jackson <ajax@redhat.com> 10.2-3
+- cdparanoia-10.2-endian.patch: Backport a crash fix for host/drive
+  endianness mismatch. (#466659)
 
-* Fri Jul  9 1999 ro@suse.de
-- update to alpha9.5
+* Tue Sep 30 2008 Kevin Kofler <Kevin@tigcc.ticalc.org> 10.2-2
+- fix cdda_interface.h C++ incompatibility (patch from upstream) (#463009)
 
-* Tue Sep 22 1998 ro@suse.de
-- update to alpha8 / define _GNU_SOURCE for compiling
+* Thu Sep 11 2008 Adam Jackson <ajax@redhat.com> 10.2-1
+- cdparanoia 10.2
 
-* Tue Aug  4 1998 ro@suse.de
-- update to alpha7
+* Wed Aug 13 2008 Adam Jackson <ajax@redhat.com> 10.1-1
+- Update to 10.1, just changes the license back.
 
-* Fri Apr 24 1998 ro@suse.de
-- build initial package version 03alpha6
+* Tue Jul 15 2008 Tom "spot" Callaway <tcallawa@redhat.com> 10.0-3
+- fix license tag
+- fix headers, setspeed patch to apply with fuzz=0
+
+* Thu Jun 19 2008 Adam Jackson <ajax@redhat.com> 10.0-2
+- cdparanoia 10.
+
+* Thu Mar 20 2008 Adam Jackson <ajax@redhat.com> alpha9.8-30
+- Add -Werror-implicit-function-declarations.
+- cdparanoia-III-alpha9.8-headers.patch: Fix the resulting errors.
+
+* Tue Mar 04 2008 Adam Jackson <ajax@redhat.com> alpha9.8-29
+- cdparanoia-III-alpha9.8.scsi-setspeed.patch: Allow setting the speed of
+  SCSI CD drives. (#431178)
+
+* Tue Feb 19 2008 Fedora Release Engineering <rel-eng@fedoraproject.org> - alpha9.8-28.2
+- Autorebuild for GCC 4.3
+
+* Wed Jul 12 2006 Jesse Keating <jkeating@redhat.com> - alpha9.8-27.2
+- rebuild
+
+* Fri Feb 10 2006 Jesse Keating <jkeating@redhat.com> - alpha9.8-27.1
+- bump again for double-long bug on ppc(64)
+
+* Wed Feb 08 2006 Monty Montgomery <cmontgom@redhat.com> - alpha9.8-27
+- rebuilt 
+
+* Tue Feb 07 2006 Jesse Keating <jkeating@redhat.com> - alpha9.8-26.2
+- rebuilt for new gcc4.1 snapshot and glibc changes
+
+* Fri Dec 09 2005 Jesse Keating <jkeating@redhat.com>
+- rebuilt
+
+* Sat Oct 15 2005 Florian La Roche <laroche@redhat.com>
+- make sure shared libs are linked against respective other libs
+
+* Wed Mar 16 2005 Peter Jones <pjones@redhat.com> alpha9.8-25
+- gcc4 rebuild and CFLAGS change
+
+* Wed Feb 9 2005 Peter Jones <pjones@redhat.com> alpha9.8-24.2
+- Rebuild for new toolchain
+
+* Wed Oct 6 2004 Peter Jones <pjones@redhat.com> alpha9.8-24
+- workaround for sgio read size issues in newer kernels.
+
+* Fri Oct 1 2004 Peter Jones <pjones@redhat.com> alpha9.8-23
+- "This time, with a meaningful changelog" release.  Just like -22.
+- new SG_IO code in rawhide.  This means ripping will no longer use the 
+  "cooked ioctl" mode that it has since we moved to 2.6, instead utilizing
+  the real scsi-based command set to talk to most drives.  This should
+  result in better error correction handling, and usage of much more
+  commonly used kernel features.
+- environment variable "CDDA_TRANSPORT" added.  If you set this to "cooked",
+  cdparanoia will try to use the "cooked ioctl" mode instead of SCSI/SG_IO
+  based modes first, and then fall back to SG_IO.
+- It'd be good if this got some testing.  A prior version of the SG_IO code
+  was known to fail on some USB drives.  This version should mitigate that
+  quite a bit, but I lack the hardware to test it for sure.
+  
+* Wed Jul 7 2004 Peter Jones <pjones@redhat.com> alpha9.8-21sgio1
+- a new set of sgio patches
+
+* Tue Jun 15 2004 Elliot Lee <sopwith@redhat.com>
+- rebuilt
+
+* Tue Mar 02 2004 Elliot Lee <sopwith@redhat.com>
+- rebuilt
+
+* Tue Feb 17 2004 Peter Jones <pjones@redhat.com> alpha9.8-20
+- take ownership of %%{_includedir}/cdda
+
+* Fri Feb 13 2004 Elliot Lee <sopwith@redhat.com>
+- rebuilt
+
+* Wed Jun 04 2003 Elliot Lee <sopwith@redhat.com>
+- rebuilt
+
+* Tue May 20 2003 Peter Jones <pjones@redhat.com> alpha9.8-17
+- typo fix (g_fd -> fd)
+- add errno output
+
+* Tue May 06 2003 Peter Jones <pjones@redhat.com> alpha9.8-16
+- fix warnings on switches
+- use O_EXCL
+
+* Tue Feb 04 2003 Florian La Roche <Florian.LaRoche@redhat.de>
+- add symlinks to shared libs
+
+* Wed Jan 22 2003 Tim Powers <timp@redhat.com>
+- rebuilt
+
+* Wed Dec 25 2002 Tim Powers <timp@redhat.com> alpha9.8-13
+- fix %%install references in the changelog so that it will rebuild properly
+
+* Wed Dec 11 2002 Tim Powers <timp@redhat.com> alpha9.8-12
+- rebuild on all arches
+
+* Fri Jun 21 2002 Tim Powers <timp@redhat.com>
+- automated rebuild
+
+* Thu May 23 2002 Tim Powers <timp@redhat.com>
+- automated rebuild
+
+* Wed Apr  3 2002 Peter Jones <pjones@redhat.com> alpha9.8-8
+- don't strip, let rpm do that
+
+* Mon Feb 25 2002 Tim Powers <timp@redhat.com> alpha9.8-7
+- fix broken Obsoletes of cdparanoia-devel
+
+* Thu Dec  6 2001 Peter Jones <pjones@redhat.com> alpha9.8-6
+- move includes to %%{_includedir}/cdda/
+- add utils.h to %%install
+- clean up %%install some.
+
+* Sun Nov  4 2001 Peter Jones <pjones@redhat.com> alpha9.8-5
+- make a -libs package which contains the .so files
+- make the cdparanoia dependancy towards that, not -devel
+
+* Thu Aug  2 2001 Peter Jones <pjones@redhat.com>
+- bump the release not to conflict with on in the RH build tree :/
+- reverse devel dependency
+
+* Wed Aug  1 2001 Peter Jones <pjones@redhat.com>
+- fix %%post and %%postun to only run ldconfig for devel packages
+
+* Wed Jul 18 2001 Crutcher Dunnavant <crutcher@redhat.com>
+- devel now depends on package
+
+* Wed Mar 28 2001 Peter Jones <pjones@redhat.com>
+- 9.8 release.
+
+* Tue Feb 27 2001 Karsten Hopp <karsten@redhat.de>
+- fix spelling error in description
+
+* Thu Dec  7 2000 Crutcher Dunnavant <crutcher@redhat.com>
+- rebuild for new tree
+
+* Fri Jul 21 2000 Trond Eivind Glomsrød <teg@redhat.com>
+- use %%{_tmppath}
+
+* Wed Jul 12 2000 Prospector <bugzilla@redhat.com>
+- automatic rebuild
+
+* Wed Jun 06 2000 Preston Brown <pbrown@redhat.com>
+- revert name change
+- use new rpm macro paths
+
+* Wed Apr 19 2000 Trond Eivind Glomsrød <teg@redhat.com>
+- Switched spec file from the one used in Red Hat Linux 6.2, which
+  also changes the name
+- gzip man page
+
+* Thu Dec 23 1999 Peter Jones <pjones@redhat.com>
+- update package to provide cdparanoia-alpha9.7-2.*.rpm and 
+  cdparanoia-devel-alpha9.7-2.*.rpm.  Also, URLs point at xiph.org
+  like they should.
+
+* Wed Dec 22 1999 Peter Jones <pjones@redhat.com>
+- updated package for alpha9.7, based on input from:
+  Monty <xiphmont@xiph.org> 
+  David Philippi <david@torangan.saar.de>
+
+* Mon Apr 12 1999 Michael Maher <mike@redhat.com>
+- updated pacakge
+
+* Tue Oct 06 1998 Michael Maher <mike@redhat.com>
+- updated package
+
+* Mon Jun 29 1998 Michael Maher <mike@redhat.com>
+- built package

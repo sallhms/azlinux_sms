@@ -14,8 +14,8 @@ Distribution:   Azure Linux
 %global dbus_python_version 0.83.0
 
 Name:           ibus
-Version:        1.5.22
-Release:        9%{?dist}
+Version:        1.5.31
+Release:        1%{?dist}
 Summary:        Intelligent Input Bus for Linux OS
 License:        LGPLv2+
 URL:            https://github.com/ibus/%name/wiki
@@ -23,7 +23,7 @@ Source0:        https://github.com/ibus/%name/releases/download/%{version}/%{nam
 Source1:        %{name}-xinput
 Source2:        %{name}.conf.5
 # Patch0:         %%{name}-HEAD.patch
-Patch0:         %{name}-HEAD.patch
+#Patch0:         %{name}-HEAD.patch
 # Under testing #1349148 #1385349 #1350291 #1406699 #1432252 #1601577
 Patch1:         %{name}-1385349-segv-bus-proxy.patch
 

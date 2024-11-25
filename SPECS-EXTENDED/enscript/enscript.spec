@@ -1,19 +1,23 @@
-Vendor:         Microsoft Corporation
-Distribution:   Azure Linux
 Summary: A plain ASCII to PostScript converter
 Name: enscript
 Version: 1.6.6
-Release: 25%{?dist}
-License: GPLv3+
+Release: 35%{?dist}
+# compat/regex.h,strerror.c,xalloc.{c,h} - GPL-2.0-or-later
+# states/gram.{c,h}, intl/plural.c - GPL-3.0-or-later WITH Bison-exception-2.2
+# intl/hash-string.c - LGPL-2.1-or-later
+# compat/*, intl/* - LGPL-2.0-or-later
+# afmlib/*, compat/gettext.h, docs/texinfo.tex, src/*, states/*, w32/* - GPL-3.0-or-later
+# (unshipped) - ylwrap - GPL-2.0-or-later
+License: LGPL-2.0-or-later AND GPL-3.0-or-later AND GPL-2.0-or-later AND GPL-3.0-or-later WITH Bison-exception-2.2 AND LGPL-2.1-or-later
 URL: http://www.gnu.org/software/enscript
 # Tarball exists nowhere. You have to obtain it via:
 # $ git clone git://git.savannah.gnu.org/enscript.git
-# $ git archive --format=tar --prefix=%%{name}-%%{version}/ v%%{version} | gzip > %%{name}-%%{version}.tar.gz
-Source0: %{_distro_sources_url}/%{name}-%{version}.tar.gz
+# $ git archive --format=tar --prefix=enscript-1.6.4/ v1.6.4 |gzip > enscript-1.6.4.tar.gz
+Source0: enscript-%{version}.tar.gz
+Source1: enscript-ruby-1.6.4.tar.gz
 #http://neugierig.org/software/ruby/ruby-enscript.tar.gz
-Source1: %{_distro_sources_url}/%{name}-ruby-1.6.4.tar.gz
-#http://home.raxnet.net/downloads/viewcvs/php.st
 Source2: enscript-php-1.6.4.st
+#http://home.raxnet.net/downloads/viewcvs/php.st
 
 # RH #61294
 Patch3: enscript-1.6.1-locale.patch
@@ -38,6 +42,8 @@ Patch17: enscript-CVE-vasnprintf.patch
 
 # gcc is no longer in buildroot by default
 BuildRequires: gcc
+# uses make
+BuildRequires: make
 BuildRequires: autoconf, automake, gettext
 BuildRequires: gettext-devel
 
@@ -58,17 +64,17 @@ includes many options for customizing printouts
 
 %prep
 %setup -q
-%patch 3 -p1 -b .locale
-%patch 8 -p1 -b .wrap_header
-%patch 10 -p1 -b .rh457720
-%patch 12 -p1 -b .rh477382
-%patch 13 -p1 -b .build
-%patch 14 -p1 -b .manfixes
-%patch 15 -p1 -b .bufpos-crash
+%patch -P 3 -p1 -b .locale
+%patch -P 8 -p1 -b .wrap_header
+%patch -P 10 -p1 -b .rh457720
+%patch -P 12 -p1 -b .rh477382
+%patch -P 13 -p1 -b .build
+%patch -P 14 -p1 -b .manfixes
+%patch -P 15 -p1 -b .bufpos-crash
 # 1664367 - [RFE] Add support for 885915 encoding in enscript
-%patch 16 -p1 -b .newencodings
+%patch -P 16 -p1 -b .newencodings
 # CVE in gnulib
-%patch 17 -p1 -b .vasnprintf
+%patch -P 17 -p1 -b .vasnprintf
 
 %{__tar} -C states/hl -zxf %{SOURCE1} ruby.st
 install -pm 644 %{SOURCE2} states/hl/php.st
@@ -77,12 +83,12 @@ install -pm 644 %{SOURCE2} states/hl/php.st
 autoreconf -fiv
 export CPPFLAGS='-DPROTOTYPES'
 %configure --with-media=Letter
-make %{?_smp_mflags}
+%make_build
 
 
 %install
 mkdir -p %{buildroot}%{_datadir}/locale/{de,es,fi,fr,nl,sl}/LC_MESSAGES
-make DESTDIR=%{buildroot} install
+%make_install
 rm -f %{buildroot}%{_datadir}/info/dir
 
 %find_lang %name
@@ -106,8 +112,7 @@ for all in README THANKS; do
 done
 
 %files -f %{name}.lang -f share.list
-%license COPYING
-%doc AUTHORS ChangeLog docs/FAQ.html NEWS README README.ESCAPES THANKS TODO
+%doc AUTHORS ChangeLog COPYING docs/FAQ.html NEWS README README.ESCAPES THANKS TODO
 %{_bindir}/*
 %{_mandir}/man1/*
 %dir %{_datadir}/enscript
@@ -115,15 +120,46 @@ done
 %config(noreplace) %{_sysconfdir}/enscript.cfg
 
 %changelog
-* Thu Feb 22 2024 Pawel Winogrodzki <pawelwi@microsoft.com> - 1.6.6-25
-- Updating naming for 3.0 version of Azure Linux.
+* Wed Jul 17 2024 Fedora Release Engineering <releng@fedoraproject.org> - 1.6.6-35
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_41_Mass_Rebuild
 
-* Mon Apr 25 2022 Pawel Winogrodzki <pawelwi@microsoft.com> - 1.6.6-24
-- Updating source URLs.
-- License verified.
+* Wed Jan 24 2024 Fedora Release Engineering <releng@fedoraproject.org> - 1.6.6-34
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
 
-* Fri Oct 15 2021 Pawel Winogrodzki <pawelwi@microsoft.com> - 1.6.6-23
-- Initial CBL-Mariner import from Fedora 32 (license: MIT).
+* Fri Jan 19 2024 Fedora Release Engineering <releng@fedoraproject.org> - 1.6.6-33
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Fri Oct 27 2023 Zdenek Dohnal <zdohnal@redhat.com> - 1.6.6-32
+- SPDX license scan and migration
+- %%patch macro migration
+
+* Wed Jul 19 2023 Fedora Release Engineering <releng@fedoraproject.org> - 1.6.6-31
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_39_Mass_Rebuild
+
+* Thu Jan 19 2023 Fedora Release Engineering <releng@fedoraproject.org> - 1.6.6-30
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_38_Mass_Rebuild
+
+* Thu Jul 21 2022 Fedora Release Engineering <releng@fedoraproject.org> - 1.6.6-29
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_37_Mass_Rebuild
+
+* Thu Jan 20 2022 Fedora Release Engineering <releng@fedoraproject.org> - 1.6.6-28
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_36_Mass_Rebuild
+
+* Wed Jul 21 2021 Fedora Release Engineering <releng@fedoraproject.org> - 1.6.6-27
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_35_Mass_Rebuild
+
+* Tue Jan 26 2021 Fedora Release Engineering <releng@fedoraproject.org> - 1.6.6-26
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_34_Mass_Rebuild
+
+* Thu Nov 05 2020 Zdenek Dohnal <zdohnal@redhat.com> - 1.6.6-25
+- make is no longer in buildroot by default
+
+* Mon Jul 27 2020 Fedora Release Engineering <releng@fedoraproject.org> - 1.6.6-24
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_33_Mass_Rebuild
+
+* Mon Jul 13 2020 Tom Stellard <tstellar@redhat.com> - 1.6.6-23
+- Use make macros
+- https://fedoraproject.org/wiki/Changes/UseMakeBuildInstallMacro
 
 * Tue Jan 28 2020 Fedora Release Engineering <releng@fedoraproject.org> - 1.6.6-22
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_32_Mass_Rebuild
@@ -275,7 +311,7 @@ done
 * Tue Jun 27 2006 Florian La Roche <laroche@redhat.com> - 1.6.4-3
 - /sbin/install-info is required for scripts
 
-* Fri Feb 17 2006 Jitka Kudrnacova <jkudrnac@redhat.com> 1.6.4-2
+*Fri Feb 17 2006 Jitka Kudrnacova <jkudrnac@redhat.com> 1.6.4-2
 - added new highlighters (#177336)
 
 * Fri Feb 10 2006 Jesse Keating <jkeating@redhat.com> - 1.6.4-1.1.2

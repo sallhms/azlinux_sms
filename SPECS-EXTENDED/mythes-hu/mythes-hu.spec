@@ -1,16 +1,14 @@
-Vendor:         Microsoft Corporation
-Distribution:   Azure Linux
 Name: mythes-hu
 Summary: Hungarian thesaurus
 %global upstreamid 20101019
 Version: 0.%{upstreamid}
-Release: 20%{?dist}
+Release: 30%{?dist}
 Source: https://downloads.sourceforge.net/project/aoo-extensions/1283/9/dict-hu.oxt
 URL: http://extensions.services.openoffice.org/project/hu_dicts
 #bundled but unused spell-checking stuff is under GPLv2+ or LGPLv2+ or MPLv1.1
 #base for bundled but unused hyphenation stuff is under GPLv2
 #additional patch to unused hyphenation stuff is MPL/GPL/LGPL
-License: GPLv2+ and (GPLv2+ or LGPLv2+ or MPLv1.1) and GPLv2 and (GPL+ or LGPLv2+ or MPLv1.1)
+License: GPL-2.0-or-later AND ( GPL-2.0-or-later OR LGPL-2.1-or-later OR MPL-1.1 ) AND GPL-2.0-only AND ( GPL-1.0-or-later OR LGPL-2.1-or-later OR MPL-1.1 )
 BuildArch: noarch
 Requires: mythes
 Supplements: (mythes and langpacks-hu)
@@ -29,12 +27,42 @@ cp -p th_hu_HU_v2.* $RPM_BUILD_ROOT/%{_datadir}/mythes
 
 
 %files
-%license README_th_hu_HU_v2.txt
+%doc README_th_hu_HU_v2.txt
 %{_datadir}/mythes/*
 
 %changelog
-* Fri Oct 15 2021 Pawel Winogrodzki <pawelwi@microsoft.com> - 0.20101019-20
-- Initial CBL-Mariner import from Fedora 32 (license: MIT).
+* Thu Jul 18 2024 Fedora Release Engineering <releng@fedoraproject.org> - 0.20101019-30
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_41_Mass_Rebuild
+
+* Thu Jan 25 2024 Fedora Release Engineering <releng@fedoraproject.org> - 0.20101019-29
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Sun Jan 21 2024 Fedora Release Engineering <releng@fedoraproject.org> - 0.20101019-28
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Thu Jul 20 2023 Fedora Release Engineering <releng@fedoraproject.org> - 0.20101019-27
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_39_Mass_Rebuild
+
+* Thu Feb 23 2023 Caolán McNamara <caolanm@redhat.com> - 0.20101019-26
+- migrated to SPDX license
+
+* Thu Jan 19 2023 Fedora Release Engineering <releng@fedoraproject.org> - 0.20101019-25
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_38_Mass_Rebuild
+
+* Fri Jul 22 2022 Fedora Release Engineering <releng@fedoraproject.org> - 0.20101019-24
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_37_Mass_Rebuild
+
+* Thu Jan 20 2022 Fedora Release Engineering <releng@fedoraproject.org> - 0.20101019-23
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_36_Mass_Rebuild
+
+* Thu Jul 22 2021 Fedora Release Engineering <releng@fedoraproject.org> - 0.20101019-22
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_35_Mass_Rebuild
+
+* Tue Jan 26 2021 Fedora Release Engineering <releng@fedoraproject.org> - 0.20101019-21
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_34_Mass_Rebuild
+
+* Tue Jul 28 2020 Fedora Release Engineering <releng@fedoraproject.org> - 0.20101019-20
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_33_Mass_Rebuild
 
 * Wed Jan 29 2020 Fedora Release Engineering <releng@fedoraproject.org> - 0.20101019-19
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_32_Mass_Rebuild

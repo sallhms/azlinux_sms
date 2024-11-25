@@ -44,6 +44,12 @@
 #include "libecap/common/autoconf-sparc.h"
 #elif defined(__aarch64__)
 #include "libecap/common/autoconf-aarch64.h"
+#elif defined(__riscv)
+#if __riscv_xlen == 64
+#include "libecap/common/autoconf-riscv64.h"
+#else
+#include "libecap/common/autoconf-riscv32.h"
+#endif
 #else
 #error "The libecap-devel package is not usable with the architecture."
 #endif

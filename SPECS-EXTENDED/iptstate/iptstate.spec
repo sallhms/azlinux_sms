@@ -1,17 +1,18 @@
 Name: iptstate
 Summary: A top-like display of IP Tables state table entries
 Version: 2.2.7
-Release: 1%{?dist}
+Release: 6%{?dist}
 Source: https://github.com/jaymzh/iptstate/releases/download/v%{version}/iptstate-%{version}.tar.bz2
-Patch0: iptstate-2.1-man8.patch
-Vendor:         Microsoft Corporation
-Distribution:   Azure Linux
+Patch01: 0001-Makefile-respect-LDFLAGS.patch
+Patch02: 0002-Makefile-Use-pkg-config.patch
+Patch03: 0003-Makefile-don-t-override-CPPFLAGS.patch
 URL: http://www.phildev.net/iptstate/
 License: zlib
 Requires: iptables
 BuildRequires:  gcc-c++
 BuildRequires: ncurses-devel
 BuildRequires: libnetfilter_conntrack-devel
+BuildRequires: make
 
 %description
 IP Tables State (iptstate) was originally written to implement 
@@ -35,15 +36,13 @@ display the state table once.
         - much more...
 
 %prep
-%setup -q
-%patch 0 -p1 -b .man8
+%autosetup -p1
 
 %build
-make %{?_smp_mflags} CXXFLAGS="$RPM_OPT_FLAGS $RPM_LD_FLAGS"
+%make_build
 
 %install
-rm -rf %{buildroot}
-make install PREFIX=%{buildroot}%{_prefix} INSTALL="install -p"
+%make_install PREFIX=%{buildroot}%{_prefix}
 
 %files
 %doc LICENSE README.md
@@ -51,12 +50,39 @@ make install PREFIX=%{buildroot}%{_prefix} INSTALL="install -p"
 %{_mandir}/man8/iptstate.*
 
 %changelog
-* Thu Jun 23 2022 Mandeep Plaha <mandeepplaha@microsoft.com> - 2.2.7-1
-- Upgrade version to 2.2.7 to fix build break.
-- License verified.
+* Thu Jul 18 2024 Fedora Release Engineering <releng@fedoraproject.org> - 2.2.7-6
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_41_Mass_Rebuild
 
-* Fri Oct 15 2021 Pawel Winogrodzki <pawelwi@microsoft.com> - 2.2.6-11
-- Initial CBL-Mariner import from Fedora 32 (license: MIT).
+* Wed Jan 24 2024 Fedora Release Engineering <releng@fedoraproject.org> - 2.2.7-5
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Sat Jan 20 2024 Fedora Release Engineering <releng@fedoraproject.org> - 2.2.7-4
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Thu Jul 20 2023 Fedora Release Engineering <releng@fedoraproject.org> - 2.2.7-3
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_39_Mass_Rebuild
+
+* Thu Jan 19 2023 Fedora Release Engineering <releng@fedoraproject.org> - 2.2.7-2
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_38_Mass_Rebuild
+
+* Tue Aug 09 2022 Phil Sutter <psutter@redhat.com> - 2.2.7-1
+- New version 2.2.7 plus some pending fixes from upstream
+- Simplify spec file using some newer macros
+
+* Thu Jul 21 2022 Fedora Release Engineering <releng@fedoraproject.org> - 2.2.6-15
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_37_Mass_Rebuild
+
+* Thu Jan 20 2022 Fedora Release Engineering <releng@fedoraproject.org> - 2.2.6-14
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_36_Mass_Rebuild
+
+* Thu Jul 22 2021 Fedora Release Engineering <releng@fedoraproject.org> - 2.2.6-13
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_35_Mass_Rebuild
+
+* Tue Jan 26 2021 Fedora Release Engineering <releng@fedoraproject.org> - 2.2.6-12
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_34_Mass_Rebuild
+
+* Tue Jul 28 2020 Fedora Release Engineering <releng@fedoraproject.org> - 2.2.6-11
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_33_Mass_Rebuild
 
 * Wed Jan 29 2020 Fedora Release Engineering <releng@fedoraproject.org> - 2.2.6-10
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_32_Mass_Rebuild

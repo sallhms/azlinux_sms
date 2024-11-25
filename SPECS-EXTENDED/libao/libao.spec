@@ -1,25 +1,24 @@
-Summary:        Cross Platform Audio Output Library
 Name:           libao
 Version:        1.2.0
-Release:        24%{?dist}
-License:        GPLv2+
-Vendor:         Microsoft Corporation
-Distribution:   Azure Linux
-URL:            https://xiph.org/ao/
-Source0:        https://downloads.xiph.org/releases/ao/%{name}-%{version}.tar.gz
+Release:        28%{?dist}
+Summary:        Cross Platform Audio Output Library
+License:        GPL-2.0-or-later
+URL:            http://xiph.org/ao/
+Source0:        http://downloads.xiph.org/releases/ao/%{name}-%{version}.tar.gz
 Patch1:         0001-ao_pulse.c-fix-latency-calculation.patch
 # https://gitlab.xiph.org/xiph/libao/commit/d5221655dfd1a2156aa6be83b5aadea7c1e0f5bd.diff
 # CVE 2017-11548
 Patch2:         d5221655dfd1a2156aa6be83b5aadea7c1e0f5bd.diff
 Patch3:         libao-nanosleep.patch
-BuildRequires:  alsa-lib-devel
 BuildRequires:  gcc
-BuildRequires:  make
+BuildRequires:  alsa-lib-devel
 BuildRequires:  pkgconfig(libpulse)
+BuildRequires: make
 
 %description
 Libao is a cross-platform audio library that allows programs to output audio
 using a simple API on a wide variety of platforms.
+
 
 %package        devel
 Summary:        Development files for %{name}
@@ -29,27 +28,34 @@ Requires:       %{name}%{?_isa} = %{version}-%{release}
 The %{name}-devel package contains libraries and header files for
 developing applications that use %{name}.
 
+
 %prep
-%autosetup -p1
+%setup -q
+%patch -P1 -p1
+%patch -P2 -p1
+%patch -P3 -p1
 sed -i "s/-O20 -ffast-math//" configure
+
 
 %build
 %configure
 sed -i 's|^hardcode_libdir_flag_spec=.*|hardcode_libdir_flag_spec=""|g' libtool
 sed -i 's|^runpath_var=LD_RUN_PATH|runpath_var=DIE_RPATH_DIE|g' libtool
-%make_build
+make %{?_smp_mflags}
+
 
 %install
 %make_install INSTALL="install -p"
 # remove unpackaged files from the buildroot
-find %{buildroot} -type f -name "*.la" -delete -print
-rm -rf %{buildroot}%{_docdir}/%{name}*
+find $RPM_BUILD_ROOT -name '*.la' -exec rm -rf {} \;
+rm -rf $RPM_BUILD_ROOT%{_docdir}/%{name}*
+
 
 %ldconfig_scriptlets
 
+
 %files
-%license COPYING
-%doc AUTHORS CHANGES README
+%doc AUTHORS CHANGES COPYING README
 %{_libdir}/libao.so.*
 %{_libdir}/ao
 %{_mandir}/man5/*
@@ -62,10 +68,22 @@ rm -rf %{buildroot}%{_docdir}/%{name}*
 %{_libdir}/pkgconfig/ao.pc
 %{_datadir}/aclocal/ao.m4
 
+
 %changelog
-* Wed Dec 07 2022 Sumedh Sharma <sumsharma@microsoft.com> - 1.2.0-24
-- Initial CBL-Mariner import from Fedora 37 (license: MIT)
-- License verified
+* Thu Jul 18 2024 Fedora Release Engineering <releng@fedoraproject.org> - 1.2.0-28
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_41_Mass_Rebuild
+
+* Thu Jan 25 2024 Fedora Release Engineering <releng@fedoraproject.org> - 1.2.0-27
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Sun Jan 21 2024 Fedora Release Engineering <releng@fedoraproject.org> - 1.2.0-26
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Thu Jul 20 2023 Fedora Release Engineering <releng@fedoraproject.org> - 1.2.0-25
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_39_Mass_Rebuild
+
+* Thu Jan 19 2023 Fedora Release Engineering <releng@fedoraproject.org> - 1.2.0-24
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_38_Mass_Rebuild
 
 * Thu Jul 21 2022 Fedora Release Engineering <releng@fedoraproject.org> - 1.2.0-23
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_37_Mass_Rebuild

@@ -1,16 +1,17 @@
-Vendor:         Microsoft Corporation
-Distribution:   Azure Linux
 Name:           liboping
 Version:        1.10.0
-Release:        14%{?dist}
+Release:        30%{?dist}
 Summary:        A C library to generate ICMP echo requests
 
-License:        GPLv2+
+License:        GPLv2
 URL:            https://noping.cc/
 Source0:        https://noping.cc/files/%{name}-%{version}.tar.bz2
 # Disable -Werror to avoid https://github.com/octo/liboping/issues/38
 Patch0:         liboping-1.10.0-no-werror.patch
-Patch1:         liboping-1.10-fix-format-ncurses63.patch
+# Fix build with ncurses-6.3 https://github.com/octo/liboping/pull/61
+# Note: slightly tweaked, since we don't have
+#       https://github.com/octo/liboping/commit/47130cb9c2cdc900acf1daca1d028c87eccd2004
+Patch1:         liboping-1.10.0-ncurses-6.3.patch
 
 BuildRequires:  gcc
 BuildRequires:  perl-devel
@@ -18,8 +19,8 @@ BuildRequires:  perl-generators
 BuildRequires:  perl(ExtUtils::MakeMaker)
 BuildRequires:  perl(Test::More)
 BuildRequires:  ncurses-devel
+BuildRequires:  make
 
-Requires:       perl(:MODULE_COMPAT_%(eval "`%{__perl} -V:version`"; echo $version))
 
 %description
 Liboping is a C library to generate ICMP echo requests, better known as
@@ -39,6 +40,10 @@ liboping, a %{summary}.
 
 %build
 %configure --disable-static
+# The application uses a local copy of libtool, we need to remove rpath with the
+# following two lines (see https://fedoraproject.org/wiki/Packaging/Guidelines#Beware_of_Rpath)
+sed -i 's|^hardcode_libdir_flag_spec=.*|hardcode_libdir_flag_spec=""|g' libtool
+sed -i 's|^runpath_var=LD_RUN_PATH|runpath_var=DIE_RPATH_DIE|g' libtool
 make -C src %{?_smp_mflags}
 make -C bindings %{?_smp_mflags} perl/Makefile
 cd bindings/perl
@@ -86,12 +91,60 @@ LD_LIBRARY_PATH=../../src/.libs make -C bindings/perl test
 %{_mandir}/man3/ping_setopt.3*
 
 %changelog
-* Thu Jun 23 2022 Riken Maharjan <rmaharjan@microsoft.com> - 1.10.0-14
-- Patch for ncurses6.3 format issue.
-- License verified
+* Thu Jul 18 2024 Fedora Release Engineering <releng@fedoraproject.org> - 1.10.0-30
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_41_Mass_Rebuild
 
-* Fri Oct 15 2021 Pawel Winogrodzki <pawelwi@microsoft.com> - 1.10.0-13
-- Initial CBL-Mariner import from Fedora 32 (license: MIT).
+* Mon Jun 10 2024 Jitka Plesnikova <jplesnik@redhat.com> - 1.10.0-29
+- Perl 5.40 rebuild
+
+* Thu Jan 25 2024 Fedora Release Engineering <releng@fedoraproject.org> - 1.10.0-28
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Sun Jan 21 2024 Fedora Release Engineering <releng@fedoraproject.org> - 1.10.0-27
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Thu Jul 20 2023 Fedora Release Engineering <releng@fedoraproject.org> - 1.10.0-26
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_39_Mass_Rebuild
+
+* Tue Jul 11 2023 Jitka Plesnikova <jplesnik@redhat.com> - 1.10.0-25
+- Perl 5.38 rebuild
+
+* Thu Jan 19 2023 Fedora Release Engineering <releng@fedoraproject.org> - 1.10.0-24
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_38_Mass_Rebuild
+
+* Thu Jul 21 2022 Fedora Release Engineering <releng@fedoraproject.org> - 1.10.0-23
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_37_Mass_Rebuild
+
+* Mon May 30 2022 Jitka Plesnikova <jplesnik@redhat.com> - 1.10.0-22
+- Perl 5.36 rebuild
+
+* Tue May 03 2022 Frantisek Sumsal <frantisek@sumsal.cz> - 1.10.0-21
+- Fix build with ncurses-6.3 (BZ#2080201)
+
+* Thu Jan 20 2022 Fedora Release Engineering <releng@fedoraproject.org> - 1.10.0-20
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_36_Mass_Rebuild
+
+* Sat Sep 25 2021 Frantisek Sumsal <frantisek@sumsal.cz> - 1.10.0-19
+- FTBFS fix - drop redundant RPATH (BZ#1969505)
+
+* Thu Jul 22 2021 Fedora Release Engineering <releng@fedoraproject.org> - 1.10.0-18
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_35_Mass_Rebuild
+
+* Fri May 21 2021 Jitka Plesnikova <jplesnik@redhat.com> - 1.10.0-17
+- Perl 5.34 rebuild
+
+* Tue Jan 26 2021 Fedora Release Engineering <releng@fedoraproject.org> - 1.10.0-16
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_34_Mass_Rebuild
+
+* Sat Aug 01 2020 Fedora Release Engineering <releng@fedoraproject.org> - 1.10.0-15
+- Second attempt - Rebuilt for
+  https://fedoraproject.org/wiki/Fedora_33_Mass_Rebuild
+
+* Tue Jul 28 2020 Fedora Release Engineering <releng@fedoraproject.org> - 1.10.0-14
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_33_Mass_Rebuild
+
+* Mon Jun 22 2020 Jitka Plesnikova <jplesnik@redhat.com> - 1.10.0-13
+- Perl 5.32 rebuild
 
 * Wed Jan 29 2020 Fedora Release Engineering <releng@fedoraproject.org> - 1.10.0-12
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_32_Mass_Rebuild

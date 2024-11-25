@@ -1,23 +1,24 @@
-Summary:        Revision Control System (RCS) file version management tools
-Name:           rcs
-Version:        5.10.1
-Release:        4%{?dist}
-License:        GPL-3.0-or-later
-Vendor:         Microsoft Corporation
-Distribution:   Azure Linux
-URL:            https://www.gnu.org/software/rcs/
-Source:         https://ftp.gnu.org/gnu/rcs/%{name}-%{version}.tar.lz
-BuildRequires:  autoconf
-# BuildRequires: ghostscript
-BuildRequires:  ed
-BuildRequires:  gcc
-BuildRequires:  groff
-BuildRequires:  lzip
-BuildRequires:  make
-BuildRequires:  texinfo
-Requires:       diffutils
+Summary: Revision Control System (RCS) file version management tools
+Name: rcs
+Version: 5.10.1
+Release: 9%{?dist}
+License: GPL-3.0-or-later
+URL: http://www.gnu.org/software/rcs/
+Source: http://ftp.gnu.org/gnu/rcs/%{name}-%{version}.tar.lz
+Patch0: rcs-configure-c99.patch
+
 # for bundled(gnulib) see https://fedorahosted.org/fpc/ticket/174
-Provides:       bundled(gnulib)
+Provides: bundled(gnulib)
+BuildRequires: make
+BuildRequires: gcc
+BuildRequires: autoconf
+BuildRequires: automake
+BuildRequires: groff-base
+BuildRequires: ghostscript
+BuildRequires: ed
+BuildRequires: texinfo
+BuildRequires: lzip
+Requires: diffutils
 
 %description
 The Revision Control System (RCS) is a system for managing multiple
@@ -30,7 +31,7 @@ The rcs package should be installed if you need a system for managing
 different versions of files.
 
 %prep
-%setup -q
+%autosetup -p1
 
 autoconf
 
@@ -39,26 +40,39 @@ autoconf
 make %{?_smp_mflags}
 
 %install
-make DESTDIR=%{buildroot} install
+make DESTDIR=$RPM_BUILD_ROOT install
 
-install -m 755 src/rcsfreeze %{buildroot}%{_bindir}
+install -m 755 src/rcsfreeze $RPM_BUILD_ROOT%{_bindir}
 
-rm -f %{buildroot}/%{_infodir}/dir
+rm -f $RPM_BUILD_ROOT/%{_infodir}/dir
 
 %check
 make check XFAIL_TESTS="`tests/known-failures %{version}`"
 
 %files
-%license COPYING
-%doc ChangeLog THANKS NEWS README
+%doc ChangeLog COPYING THANKS NEWS README
 %{_bindir}/*
 %{_mandir}/man[15]/*
 %{_infodir}/*
 
 %changelog
-* Wed Jan 11 2023 Suresh Thelkar <sthelkar@microsoft.com> - 5.10.1-4
-- Initial CBL-Mariner import from Fedora 36 (license: MIT)
-- License verified
+* Fri Jul 19 2024 Fedora Release Engineering <releng@fedoraproject.org> - 5.10.1-9
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_41_Mass_Rebuild
+
+* Fri Jan 26 2024 Fedora Release Engineering <releng@fedoraproject.org> - 5.10.1-8
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Mon Jan 22 2024 Fedora Release Engineering <releng@fedoraproject.org> - 5.10.1-7
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Fri Jul 21 2023 Fedora Release Engineering <releng@fedoraproject.org> - 5.10.1-6
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_39_Mass_Rebuild
+
+* Wed Apr 12 2023 Florian Weimer <fweimer@redhat.com> - 5.10.1-5
+- Port configure script to C99
+
+* Fri Jan 20 2023 Fedora Release Engineering <releng@fedoraproject.org> - 5.10.1-4
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_38_Mass_Rebuild
 
 * Mon Nov 07 2022 Christoph Karl <pampelmuse [AT] gmx [DOT] at> - 5.10.1-3
 - SPDX

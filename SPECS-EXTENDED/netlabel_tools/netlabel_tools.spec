@@ -1,10 +1,8 @@
-Vendor:         Microsoft Corporation
-Distribution:   Azure Linux
 Summary: Tools to manage the Linux NetLabel subsystem
 Name: netlabel_tools
 Version: 0.30.0
-Release: 10%{?dist}
-License: GPLv2
+Release: 19%{?dist}
+License: GPL-2.0-only
 URL: https://github.com/netlabel/netlabel_tools
 Source: https://github.com/netlabel/netlabel_tools/releases/download/v%{version}/%{name}-%{version}.tar.gz
 Patch0: rhbz1683434.patch
@@ -13,12 +11,12 @@ Requires: libnl3
 Requires(post): systemd
 Requires(preun): systemd
 Requires(postun): systemd
+BuildRequires: make
 BuildRequires:  gcc
 BuildRequires: kernel-headers
 BuildRequires: libnl3-devel
 BuildRequires: doxygen
 BuildRequires: systemd
-BuildRequires: systemd-devel
 
 %description
 NetLabel is a kernel subsystem which implements explicit packet labeling
@@ -28,8 +26,7 @@ package provides the necessary user space tools to query and configure the
 kernel subsystem.
 
 %prep
-%setup -q
-%patch 0 -p1
+%autosetup -p 1
 
 %build
 %configure
@@ -69,9 +66,35 @@ make V=1 DESTDIR="%{buildroot}" install
 %attr(0644,root,root) %config(noreplace) /etc/netlabel.rules
 
 %changelog
-* Mon Jun 07 2021 Thomas Crain <thcrain@microsoft.com> - 0.30.0-10
-- Initial CBL-Mariner import from Fedora 32 (license: MIT).
-- Add BR:systemd-devel for the systemd *.pc files
+* Thu Jul 18 2024 Fedora Release Engineering <releng@fedoraproject.org> - 0.30.0-19
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_41_Mass_Rebuild
+
+* Thu Jan 25 2024 Fedora Release Engineering <releng@fedoraproject.org> - 0.30.0-18
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Sun Jan 21 2024 Fedora Release Engineering <releng@fedoraproject.org> - 0.30.0-17
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Thu Jul 20 2023 Fedora Release Engineering <releng@fedoraproject.org> - 0.30.0-16
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_39_Mass_Rebuild
+
+* Thu Jan 19 2023 Fedora Release Engineering <releng@fedoraproject.org> - 0.30.0-15
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_38_Mass_Rebuild
+
+* Fri Jul 22 2022 Fedora Release Engineering <releng@fedoraproject.org> - 0.30.0-14
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_37_Mass_Rebuild
+
+* Thu Jan 20 2022 Fedora Release Engineering <releng@fedoraproject.org> - 0.30.0-13
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_36_Mass_Rebuild
+
+* Thu Jul 22 2021 Fedora Release Engineering <releng@fedoraproject.org> - 0.30.0-12
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_35_Mass_Rebuild
+
+* Tue Jan 26 2021 Fedora Release Engineering <releng@fedoraproject.org> - 0.30.0-11
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_34_Mass_Rebuild
+
+* Tue Jul 28 2020 Fedora Release Engineering <releng@fedoraproject.org> - 0.30.0-10
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_33_Mass_Rebuild
 
 * Wed Jan 29 2020 Fedora Release Engineering <releng@fedoraproject.org> - 0.30.0-9
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_32_Mass_Rebuild

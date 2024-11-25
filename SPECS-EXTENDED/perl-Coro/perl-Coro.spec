@@ -1,38 +1,32 @@
 %global cpan_version 6.57
-# Filter underspecified dependencies
-%global __requires_exclude %{?__requires_exclude:__requires_exclude|}^perl\\(AnyEvent\\)$
-%global __requires_exclude %{__requires_exclude}|^perl\\(AnyEvent\\) >= 4.800001$
-%global __requires_exclude %{__requires_exclude}|^perl\\(AnyEvent::AIO\\)$
-%global __requires_exclude %{__requires_exclude}|^perl\\(AnyEvent::BDB\\)$
-%global __requires_exclude %{__requires_exclude}|^perl\\(EV\\)$
-%global __requires_exclude %{__requires_exclude}|^perl\\(Event\\)$
-%global __requires_exclude %{__requires_exclude}|^perl\\(Guard\\)$
-%global __requires_exclude %{__requires_exclude}|^perl\\(Storable\\)$
-%global __provides_exclude %{?__provides_exclude:__provides_exclude|}^perl\\(Coro\\)$
-
-Summary:        The only real threads in perl
 Name:           perl-Coro
 Version:        6.570
-Release:        5%{?dist}
-# Coro/libcoro:    GPLv2 or BSD
-# Rest of package: GPL+ or Artistic
-License:        (GPL+ OR Artistic) AND (GPLv2 OR BSD)
-Vendor:         Microsoft Corporation
-Distribution:   Azure Linux
+Release:        19%{?dist}
+Summary:        The only real threads in perl
+# Coro/libcoro:    GPL-2.0-or-later OR BSD-2-Clause
+# Rest of package: GPL-1.0-or-later OR Artistic-1.0-Perl
+License:        (GPL-1.0-or-later OR Artistic-1.0-Perl) AND (GPL-2.0-or-later OR BSD-2-Clause)
 URL:            https://metacpan.org/release/Coro
 Source0:        https://cpan.metacpan.org/authors/id/M/ML/MLEHMANN/Coro-%{cpan_version}.tar.gz
 Patch0:         %{name}-5.25-ucontext-default.patch
 # Do not disable hardening
 Patch1:         Coro-6.512-Disable-disabling-FORTIFY_SOURCE.patch
-
 BuildRequires:  coreutils
 BuildRequires:  findutils
 BuildRequires:  gcc
 BuildRequires:  libecb-static
 BuildRequires:  make
+BuildRequires:  perl-interpreter
 BuildRequires:  perl-devel
 BuildRequires:  perl-generators
-BuildRequires:  perl-interpreter
+BuildRequires:  perl(Canary::Stability)
+BuildRequires:  perl(Config)
+BuildRequires:  perl(EV) >= 4
+BuildRequires:  perl(EV::MakeMaker)
+BuildRequires:  perl(Event) >= 1.08
+BuildRequires:  perl(Event::MakeMaker) >= 6.76
+BuildRequires:  perl(ExtUtils::MakeMaker) >= 6.52
+BuildRequires:  perl(strict)
 BuildRequires:  sed
 # Run-time:
 BuildRequires:  perl(AnyEvent) >= 7
@@ -41,35 +35,25 @@ BuildRequires:  perl(AnyEvent) >= 7
 # AnyEvent::DNS not used at tests
 BuildRequires:  perl(AnyEvent::Socket)
 BuildRequires:  perl(AnyEvent::Util)
-BuildRequires:  perl(Canary::Stability)
+BuildRequires:  perl(base)
 # BDB not used at tests
 BuildRequires:  perl(Carp)
-BuildRequires:  perl(Config)
-BuildRequires:  perl(EV) >= 4
-BuildRequires:  perl(EV::MakeMaker)
+BuildRequires:  perl(common::sense)
 BuildRequires:  perl(Errno)
-BuildRequires:  perl(Event) >= 1.08
-BuildRequires:  perl(Event::MakeMaker) >= 6.76
 BuildRequires:  perl(Exporter)
-BuildRequires:  perl(ExtUtils::MakeMaker) >= 6.52
 BuildRequires:  perl(Guard) >= 0.5
 # IO::AIO >= 3.1 not used at tests
 BuildRequires:  perl(IO::Socket::INET)
-BuildRequires:  perl(Scalar::Util)
-BuildRequires:  perl(Socket)
-BuildRequires:  perl(Storable) >= 2.15
-BuildRequires:  perl(XSLoader)
-BuildRequires:  perl(base)
-BuildRequires:  perl(common::sense)
 # Net::Config not used at tests
 # Net::FTP not used at tests
 # Net::HTTP not used at tests
 # Net::NNTP not used at tests
 BuildRequires:  perl(overload)
-BuildRequires:  perl(strict)
+BuildRequires:  perl(Scalar::Util)
+BuildRequires:  perl(Socket)
+BuildRequires:  perl(Storable) >= 2.15
 BuildRequires:  perl(warnings)
-
-Requires:       perl(:MODULE_COMPAT_%(eval "`perl -V:version`"; echo $version))
+BuildRequires:  perl(XSLoader)
 # Export correct required versions
 Requires:       perl(AnyEvent) >= 7
 Requires:       perl(AnyEvent::AIO) >= 1
@@ -79,7 +63,20 @@ Requires:       perl(Event) >= 1.08
 Requires:       perl(Guard) >= 0.5
 Requires:       perl(Storable) >= 2.15
 Requires:       perl(warnings)
+
 %{?perl_default_filter}
+
+# Filter underspecified dependencies
+%global __requires_exclude %{?__requires_exclude:__requires_exclude|}^perl\\(AnyEvent\\)$
+%global __requires_exclude %__requires_exclude|^perl\\(AnyEvent\\) >= 4.800001$
+%global __requires_exclude %__requires_exclude|^perl\\(AnyEvent::AIO\\)$
+%global __requires_exclude %__requires_exclude|^perl\\(AnyEvent::BDB\\)$
+%global __requires_exclude %__requires_exclude|^perl\\(EV\\)$
+%global __requires_exclude %__requires_exclude|^perl\\(Event\\)$
+%global __requires_exclude %__requires_exclude|^perl\\(Guard\\)$
+%global __requires_exclude %__requires_exclude|^perl\\(Storable\\)$
+%global __provides_exclude %{?__provides_exclude:__provides_exclude|}^perl\\(Coro\\)$
+
 
 %description
 This module collection manages continuations in general, most often in the
@@ -91,14 +88,25 @@ between threads unless necessary, at easily-identified points in your
 program, so locking and parallel access are rarely an issue, making thread
 programming much safer and easier than using other thread models.
 
+%package tests
+Summary:        Tests for %{name}
+License:        GPL-1.0-or-later OR Artistic-1.0-Perl
+BuildArch:      noarch
+Requires:       %{name} = %{?epoch:%{epoch}:}%{version}-%{release}
+Requires:       perl-Test-Harness
+
+%description tests
+Tests from %{name}. Execute them
+with "%{_libexecdir}/%{name}/test".
+
 %prep
 %setup -q -n Coro-%{cpan_version}
 
 %ifnarch %{ix86} x86_64 %{arm}
 # use ucontext backend on non-x86 (setjmp didn't work on s390(x))
-%patch 0 -p1 -b .ucontext-default
+%patch -P0 -p1 -b .ucontext-default
 %endif
-%patch 1 -p1
+%patch -P1 -p1
 
 # Unbundle libecb
 rm Coro/ecb.h
@@ -112,23 +120,36 @@ for F in Coro/jit-*.pl; do
 done
 %fix_shbang_line eg/myhttpd
 
+# Help generators to recognize Perl scripts
+for F in t/*.t; do
+    perl -i -MConfig -ple 'print $Config{startperl} if $. == 1 && !s{\A#!\s*perl}{$Config{startperl}}' "$F"
+    chmod +x "$F"
+done
 
 %build
 # Interactive configuration. Use default values.
 perl Makefile.PL INSTALLDIRS=perl NO_PACKLIST=1 NO_PERLLOCAL=1 \
-    OPTIMIZE="%{optflags}" </dev/null
-%make_build
+    OPTIMIZE="$RPM_OPT_FLAGS" </dev/null
+%{make_build}
 
 %install
-%make_install
+%{make_install}
 find %{buildroot} -type f -name '*.bs' -size 0 -delete
+# Install tests
+mkdir -p %{buildroot}%{_libexecdir}/%{name}
+cp -a t %{buildroot}%{_libexecdir}/%{name}
+cat > %{buildroot}%{_libexecdir}/%{name}/test << 'EOF'
+#!/bin/sh
+cd %{_libexecdir}/%{name} && exec prove -I . -j "$(getconf _NPROCESSORS_ONLN)"
+EOF
+chmod +x %{buildroot}%{_libexecdir}/%{name}/test
 %{_fixperms} %{buildroot}/*
 
 %check
-%make_build test
+%{make_build} test
 
 %files
-%license COPYING Coro/libcoro/LICENSE
+%license COPYING
 %doc Changes README README.linux-glibc
 %doc doc/* eg
 %{perl_archlib}/auto/Coro
@@ -136,10 +157,56 @@ find %{buildroot} -type f -name '*.bs' -size 0 -delete
 %{perl_archlib}/Coro.pm
 %{_mandir}/man3/Coro*.3pm*
 
+%files tests
+%{_libexecdir}/%{name}
+
 %changelog
-* Thu Jan 27 2022 Pawel Winogrodzki <pawelwi@microsoft.com> - 6.570-5
-- Initial CBL-Mariner import from Fedora 36 (license: MIT).
-- License verified.
+* Thu Jul 18 2024 Fedora Release Engineering <releng@fedoraproject.org> - 6.570-19
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_41_Mass_Rebuild
+
+* Tue Jun 11 2024 Jitka Plesnikova <jplesnik@redhat.com> - 6.570-18
+- Perl 5.40 rebuild
+
+* Mon Jan 29 2024 Fedora Release Engineering <releng@fedoraproject.org> - 6.570-17
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Thu Jan 25 2024 Fedora Release Engineering <releng@fedoraproject.org> - 6.570-16
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Sun Jan 21 2024 Fedora Release Engineering <releng@fedoraproject.org> - 6.570-15
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Thu Jul 20 2023 Fedora Release Engineering <releng@fedoraproject.org> - 6.570-14
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_39_Mass_Rebuild
+
+* Tue Jul 11 2023 Jitka Plesnikova <jplesnik@redhat.com> - 6.570-13
+- Perl 5.38 rebuild
+
+* Fri Feb 17 2023 Michal Josef Špaček <mspacek@redhat.com> - 6.570-12
+- Fedora don't support arm32, we could use fortify for all architectures RHBZ
+  2165855
+
+* Fri Jan 20 2023 Fedora Release Engineering <releng@fedoraproject.org> - 6.570-11
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_38_Mass_Rebuild
+
+* Mon Jan 16 2023 Siddhesh Poyarekar <siddhesh@redhat.com> - 6.570-10
+- Use _fortify_level.
+
+* Tue Nov 22 2022 Michal Josef Špaček <mspacek@redhat.com> - 6.570-9
+- Fix license for tests package
+
+* Tue Nov 15 2022 Michal Josef Špaček <mspacek@redhat.com> - 6.570-8
+- Package tests
+- Update license to SPDX format
+
+* Fri Jul 22 2022 Fedora Release Engineering <releng@fedoraproject.org> - 6.570-7
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_37_Mass_Rebuild
+
+* Tue May 31 2022 Jitka Plesnikova <jplesnik@redhat.com> - 6.570-6
+- Perl 5.36 rebuild
+
+* Fri Jan 21 2022 Fedora Release Engineering <releng@fedoraproject.org> - 6.570-5
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_36_Mass_Rebuild
 
 * Thu Jul 22 2021 Fedora Release Engineering <releng@fedoraproject.org> - 6.570-4
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_35_Mass_Rebuild

@@ -1,0 +1,20 @@
+Include "utf8.h" for a prototype of the utf8_decode function.  This
+avoids an implicit function declaration and build issues with future
+compilers.
+
+Submitted upstream:
+
+  <https://gitlab.xiph.org/xiph/vorbis-tools/-/merge_requests/6>
+
+diff --git a/ogginfo/codec_skeleton.c b/ogginfo/codec_skeleton.c
+index a27f8da8307872bb..0709860ab096c942 100644
+--- a/ogginfo/codec_skeleton.c
++++ b/ogginfo/codec_skeleton.c
+@@ -25,6 +25,7 @@
+ #include <ogg/ogg.h>
+ 
+ #include "i18n.h"
++#include "utf8.h"
+ 
+ #include "private.h"
+ 

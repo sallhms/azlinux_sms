@@ -7,13 +7,11 @@
 
 Name:		perl-PPIx-Utilities
 Version:	1.001000
-Release:	37%{?dist}
+Release:	53%{?dist}
 Summary:	Extensions to PPI
-License:	GPL+ or Artistic
-Vendor:         Microsoft Corporation
-Distribution:   Azure Linux
+License:	GPL-1.0-or-later OR Artistic-1.0-Perl
 URL:		https://metacpan.org/release/PPIx-Utilities
-Source0:	https://cpan.metacpan.org/authors/id/E/EL/ELLIOTJS/PPIx-Utilities-%{version}.tar.gz#/perl-PPIx-Utilities-%{version}.tar.gz
+Source0:	https://cpan.metacpan.org/authors/id/E/EL/ELLIOTJS/PPIx-Utilities-%{version}.tar.gz
 BuildArch:	noarch
 # Build:
 BuildRequires:	coreutils
@@ -43,7 +41,6 @@ BuildRequires:	perl(Test::More)
 # Extra tests:
 # PPI needed by Perl::Critic, so don't run extra tests when bootstrapping
 %if 0%{!?perl_bootstrap:1} && %{with perl_PPIx_Utilities_enables_extra_test}
-BuildRequires:	aspell-en
 BuildRequires:	perl(File::Find)
 BuildRequires:	perl(File::Slurp)
 BuildRequires:	perl(Perl::Critic::Policy::Miscellanea::RequireRcsKeywords)
@@ -53,8 +50,8 @@ BuildRequires:	perl(Test::Kwalitee)
 BuildRequires:	perl(Test::Pod)
 BuildRequires:	perl(Test::Pod::Coverage)
 %endif
-# Run-time:
-Requires:	perl(:MODULE_COMPAT_%(eval "`perl -V:version`"; echo $version))
+# Dependencies:
+# (none)
 
 %description
 This is a collection of functions for dealing with PPI objects, many of
@@ -87,11 +84,7 @@ make test TEST_FILES="$(echo $(find xt/ -name '*.t'))"
 %endif
 
 %files
-%if 0%{?_licensedir:1}
 %license LICENSE
-%else
-%doc LICENSE
-%endif
 %doc Changes README
 %{perl_vendorlib}/PPIx/
 %{_mandir}/man3/PPIx::Utilities.3*
@@ -100,8 +93,56 @@ make test TEST_FILES="$(echo $(find xt/ -name '*.t'))"
 %{_mandir}/man3/PPIx::Utilities::Statement.3*
 
 %changelog
-* Fri Oct 15 2021 Pawel Winogrodzki <pawelwi@microsoft.com> - 1.001000-37
-- Initial CBL-Mariner import from Fedora 32 (license: MIT).
+* Fri Jul 19 2024 Fedora Release Engineering <releng@fedoraproject.org> - 1.001000-53
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_41_Mass_Rebuild
+
+* Mon Jan 29 2024 Fedora Release Engineering <releng@fedoraproject.org> - 1.001000-52
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Thu Jan 25 2024 Fedora Release Engineering <releng@fedoraproject.org> - 1.001000-51
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Sun Jan 21 2024 Fedora Release Engineering <releng@fedoraproject.org> - 1.001000-50
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Fri Jul 21 2023 Fedora Release Engineering <releng@fedoraproject.org> - 1.001000-49
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_39_Mass_Rebuild
+
+* Fri Jan 20 2023 Fedora Release Engineering <releng@fedoraproject.org> - 1.001000-48
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_38_Mass_Rebuild
+
+* Fri Jul 22 2022 Fedora Release Engineering <releng@fedoraproject.org> - 1.001000-47
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_37_Mass_Rebuild
+
+* Fri Jun 03 2022 Jitka Plesnikova <jplesnik@redhat.com> - 1.001000-46
+- Perl 5.36 re-rebuild of bootstrapped packages
+
+* Wed Jun 01 2022 Jitka Plesnikova <jplesnik@redhat.com> - 1.001000-45
+- Perl 5.36 rebuild
+
+* Fri Jan 21 2022 Fedora Release Engineering <releng@fedoraproject.org> - 1.001000-44
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_36_Mass_Rebuild
+
+* Thu Jul 22 2021 Fedora Release Engineering <releng@fedoraproject.org> - 1.001000-43
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_35_Mass_Rebuild
+
+* Mon May 24 2021 Jitka Plesnikova <jplesnik@redhat.com> - 1.001000-42
+- Perl 5.34 re-rebuild of bootstrapped packages
+
+* Fri May 21 2021 Jitka Plesnikova <jplesnik@redhat.com> - 1.001000-41
+- Perl 5.34 rebuild
+
+* Wed Jan 27 2021 Fedora Release Engineering <releng@fedoraproject.org> - 1.001000-40
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_34_Mass_Rebuild
+
+* Tue Jul 28 2020 Fedora Release Engineering <releng@fedoraproject.org> - 1.001000-39
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_33_Mass_Rebuild
+
+* Fri Jun 26 2020 Jitka Plesnikova <jplesnik@redhat.com> - 1.001000-38
+- Perl 5.32 re-rebuild of bootstrapped packages
+
+* Tue Jun 23 2020 Jitka Plesnikova <jplesnik@redhat.com> - 1.001000-37
+- Perl 5.32 rebuild
 
 * Thu Jan 30 2020 Fedora Release Engineering <releng@fedoraproject.org> - 1.001000-36
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_32_Mass_Rebuild

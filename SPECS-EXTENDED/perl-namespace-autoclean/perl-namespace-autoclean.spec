@@ -7,20 +7,18 @@
 
 Name:           perl-namespace-autoclean
 Version:        0.29
-Release:        3%{?dist}
-License:        GPL+ or Artistic
-Vendor:         Microsoft Corporation
-Distribution:   Azure Linux
+Release:        19%{?dist}
+License:        GPL-1.0-or-later OR Artistic-1.0-Perl
 Summary:        Keep imports out of your namespace
 URL:            https://metacpan.org/release/namespace-autoclean
-Source0:        https://cpan.metacpan.org/modules/by-module/namespace/namespace-autoclean-%{version}.tar.gz#/perl-namespace-autoclean-%{version}.tar.gz
+Source0:        https://cpan.metacpan.org/modules/by-module/namespace/namespace-autoclean-%{version}.tar.gz
 BuildArch:      noarch
 # Module Build
 BuildRequires:  coreutils
 BuildRequires:  findutils
 BuildRequires:  make
-BuildRequires:  perl-interpreter
 BuildRequires:  perl-generators
+BuildRequires:  perl-interpreter
 BuildRequires:  perl(ExtUtils::MakeMaker)
 # Module
 BuildRequires:  perl(B::Hooks::EndOfScope) >= 0.12
@@ -42,9 +40,9 @@ BuildRequires:  perl(Test::Needs)
 %if %{with perl_namespace_autoclean_enables_optional_test}
 # Optional Tests
 BuildRequires:  perl(CPAN::Meta) >= 2.120900
-
+%if 0%{?fedora} || 0%{?rhel} > 7
 BuildRequires:  perl(Moo) >= 1.004000
-
+%endif
 %if ! %{defined perl_bootstrap}
 # Break build-cycle: perl-namespace-autoclean → perl-Moose
 # → perl-Package-DeprecationManager → perl-namespace-autoclean
@@ -58,8 +56,7 @@ BuildRequires:  perl(Mouse)
 BuildRequires:  perl(Sub::Install)
 BuildRequires:  perl(Sub::Name)
 %endif
-# Runtime
-Requires:       perl(:MODULE_COMPAT_%(eval "`perl -V:version`"; echo $version))
+# Dependencies
 Requires:       perl(Sub::Identify)
 
 %description
@@ -94,8 +91,56 @@ make test
 %{_mandir}/man3/namespace::autoclean.3*
 
 %changelog
-* Fri Oct 15 2021 Pawel Winogrodzki <pawelwi@microsoft.com> - 0.29-3
-- Initial CBL-Mariner import from Fedora 32 (license: MIT).
+* Fri Jul 19 2024 Fedora Release Engineering <releng@fedoraproject.org> - 0.29-19
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_41_Mass_Rebuild
+
+* Thu Jan 25 2024 Fedora Release Engineering <releng@fedoraproject.org> - 0.29-18
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Sun Jan 21 2024 Fedora Release Engineering <releng@fedoraproject.org> - 0.29-17
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Fri Jul 21 2023 Fedora Release Engineering <releng@fedoraproject.org> - 0.29-16
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_39_Mass_Rebuild
+
+* Wed May 03 2023 Michal Josef Špaček <mspacek@redhat.com> - 0.29-15
+- Update license to SPDX format
+
+* Fri Jan 20 2023 Fedora Release Engineering <releng@fedoraproject.org> - 0.29-14
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_38_Mass_Rebuild
+
+* Fri Jul 22 2022 Fedora Release Engineering <releng@fedoraproject.org> - 0.29-13
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_37_Mass_Rebuild
+
+* Fri Jun 03 2022 Jitka Plesnikova <jplesnik@redhat.com> - 0.29-12
+- Perl 5.36 re-rebuild of bootstrapped packages
+
+* Wed Jun 01 2022 Jitka Plesnikova <jplesnik@redhat.com> - 0.29-11
+- Perl 5.36 rebuild
+
+* Fri Jan 21 2022 Fedora Release Engineering <releng@fedoraproject.org> - 0.29-10
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_36_Mass_Rebuild
+
+* Fri Jul 23 2021 Fedora Release Engineering <releng@fedoraproject.org> - 0.29-9
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_35_Mass_Rebuild
+
+* Mon May 24 2021 Jitka Plesnikova <jplesnik@redhat.com> - 0.29-8
+- Perl 5.34 re-rebuild of bootstrapped packages
+
+* Fri May 21 2021 Jitka Plesnikova <jplesnik@redhat.com> - 0.29-7
+- Perl 5.34 rebuild
+
+* Wed Jan 27 2021 Fedora Release Engineering <releng@fedoraproject.org> - 0.29-6
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_34_Mass_Rebuild
+
+* Tue Jul 28 2020 Fedora Release Engineering <releng@fedoraproject.org> - 0.29-5
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_33_Mass_Rebuild
+
+* Fri Jun 26 2020 Jitka Plesnikova <jplesnik@redhat.com> - 0.29-4
+- Perl 5.32 re-rebuild of bootstrapped packages
+
+* Tue Jun 23 2020 Jitka Plesnikova <jplesnik@redhat.com> - 0.29-3
+- Perl 5.32 rebuild
 
 * Thu Jan 30 2020 Fedora Release Engineering <releng@fedoraproject.org> - 0.29-2
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_32_Mass_Rebuild

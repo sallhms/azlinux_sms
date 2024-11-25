@@ -1,15 +1,24 @@
-Vendor:         Microsoft Corporation
-Distribution:   Azure Linux
 # Define `python3_sitearch' if there is no one:
 %{!?python3_sitearch:%global python3_sitearch %(%{__python3} -c "from distutils.sysconfig import get_python_lib; print(get_python_lib(1))")}
 
 # Enable Python 3 in Fedora and RHEL > 7 as default:
+%if 0%{?fedora} || 0%{?rhel} > 7
 # Add `--without python3' option (enable python3 by default):
 %bcond_without python3
+%else
+# Add `--with python3' option (disable python3 by default):
+%bcond_with python3
+%endif
 
 # Drop Python 2 in Fedora >= 30 and RHEL > 7 as default:
+%if 0%{?fedora} >= 30 || 0%{?rhel} > 7
 %global drop_python2 1
 %global configure_with_python2 no
+%else
+# Define `python2_sitearch' if there is no one:
+%{!?python2_sitearch:%global python2_sitearch %(%{__python2} -c "from distutils.sysconfig import get_python_lib; print get_python_lib(1)")}
+%global configure_with_python2 yes
+%endif
 
 %if %{with python3}
 %global configure_with_python3 yes
@@ -23,9 +32,8 @@ Distribution:   Azure Linux
 Summary: An utility for manipulating storage encryption keys and passphrases
 Name: volume_key
 Version: 0.3.12
-Release: 8%{?dist}
-# lib/{SECerrs,SSLerrs}.h are both licensed under MPLv1.1, GPLv2 and LGPLv2
-License: GPLv2 and (MPLv1.1 or GPLv2 or LGPLv2)
+Release: 23%{?dist}
+License: GPL-2.0-only AND (MPL-1.1 OR GPL-2.0-or-later OR LGPL-2.1-or-later)
 URL: https://pagure.io/%{name}/
 Requires: %{name}-libs%{?_isa} = %{version}-%{release}
 
@@ -33,9 +41,15 @@ Source0: https://releases.pagure.org/%{name}/%{name}-%{version}.tar.xz
 # Support all LUKS devices
 # - backport of 26c09768662d8958debe8c9410dae9fda02292c3
 Patch0: volume_key-0.3.12-support_LUKS2_and_more.patch
+# Fix resource leaks
+# - backport of bf6618ec0b09b4e51fc97fa021e687fbd87599ba
+Patch1: volume_key-0.3.12-fix_resource_leaks.patch
+BuildRequires: autoconf, automake, libtool
+BuildRequires: make
 BuildRequires: gcc
-BuildRequires: cryptsetup-luks-devel, gettext-devel, glib2-devel, /usr/bin/gpg2
-BuildRequires: gpgme-devel, libblkid-devel, nss-devel, python3-devel
+BuildRequires: cryptsetup-devel, gettext-devel, glib2-devel, /usr/bin/gpg2
+BuildRequires: gpgme-devel, libblkid-devel, nss-devel
+BuildRequires: python3-devel, python3-setuptools
 %if 0%{?drop_python2} < 1
 BuildRequires: python2-devel
 %endif
@@ -106,14 +120,16 @@ Requires: %{name}-libs%{?_isa} = %{version}-%{release}
 
 %prep
 %setup -q
-%patch 0 -p1
+%patch -P0 -p1
+%patch -P1 -p1
+autoreconf -fiv
 
 %build
 %configure %{?with_pythons}
-make %{?_smp_mflags}
+%make_build
 
 %install
-make install DESTDIR=$RPM_BUILD_ROOT INSTALL='install -p'
+%make_install
 
 # Remove libtool archive
 find %{buildroot} -type f -name "*.la" -delete
@@ -157,9 +173,55 @@ exit 1; \
 %endif
 
 %changelog
-* Mon Mar 16 2021 Henry Li <lihl@microsoft.com> - 0.3.12-8
-- Initial CBL-Mariner import from Fedora 32 (license: MIT).
-- Disable python2 build and enable python3 build
+* Sat Jul 20 2024 Fedora Release Engineering <releng@fedoraproject.org> - 0.3.12-23
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_41_Mass_Rebuild
+
+* Fri Jun 07 2024 Python Maint <python-maint@redhat.com> - 0.3.12-22
+- Rebuilt for Python 3.13
+
+* Sat Jan 27 2024 Fedora Release Engineering <releng@fedoraproject.org> - 0.3.12-21
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Sat Jul 22 2023 Fedora Release Engineering <releng@fedoraproject.org> - 0.3.12-20
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_39_Mass_Rebuild
+
+* Tue Jun 13 2023 Python Maint <python-maint@redhat.com> - 0.3.12-19
+- Rebuilt for Python 3.12
+
+* Sat Jan 21 2023 Fedora Release Engineering <releng@fedoraproject.org> - 0.3.12-18
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_38_Mass_Rebuild
+
+* Sat Jul 23 2022 Fedora Release Engineering <releng@fedoraproject.org> - 0.3.12-17
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_37_Mass_Rebuild
+
+* Mon Jun 13 2022 Python Maint <python-maint@redhat.com> - 0.3.12-16
+- Rebuilt for Python 3.11
+
+* Sat Jan 22 2022 Fedora Release Engineering <releng@fedoraproject.org> - 0.3.12-15
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_36_Mass_Rebuild
+
+* Wed Aug 04 2021 Jiri Kucera <jkucera@redhat.com> - 0.3.12-14
+- Fix FTBFS
+- Move License tag back to GPLv2 (this is the effective license)
+- Use make macros
+
+* Fri Jul 23 2021 Fedora Release Engineering <releng@fedoraproject.org> - 0.3.12-13
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_35_Mass_Rebuild
+
+* Fri Jun 04 2021 Python Maint <python-maint@redhat.com> - 0.3.12-12
+- Rebuilt for Python 3.10
+
+* Wed Mar 31 2021 Jiri Kucera <jkucera@redhat.com> - 0.3.12-11
+- Fix resource leaks
+
+* Wed Jan 27 2021 Fedora Release Engineering <releng@fedoraproject.org> - 0.3.12-10
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_34_Mass_Rebuild
+
+* Wed Jul 29 2020 Fedora Release Engineering <releng@fedoraproject.org> - 0.3.12-9
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_33_Mass_Rebuild
+
+* Tue May 26 2020 Miro Hrončok <mhroncok@redhat.com> - 0.3.12-8
+- Rebuilt for Python 3.9
 
 * Fri Jan 31 2020 Fedora Release Engineering <releng@fedoraproject.org> - 0.3.12-7
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_32_Mass_Rebuild

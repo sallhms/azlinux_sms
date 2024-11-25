@@ -1,17 +1,16 @@
-Vendor:         Microsoft Corporation
-Distribution:   Azure Linux
 Name: hyphen-grc
 Summary: Ancient Greek hyphenation rules
 %global upstreamid 20110913
 Version: 0.%{upstreamid}
-Release: 18%{?dist}
-#Source0: http://tug.org/svn/texhyphen/trunk/hyph-utf8/tex/generic/hyph-utf8/patterns/tex/hyph-grc.tex?view=co
-Source0: hyph-grc.tex
-Source1: %{name}-LICENSE.txt
+Release: 28%{?dist}
+#? in a url causes trouble
+#http://tug.org/svn/texhyphen/trunk/hyph-utf8/tex/generic/hyph-utf8/patterns/tex/hyph-grc.tex?view=co
+Source: hyph-grc.tex
 URL: http://tug.org/tex-hyphen
-License: LPPL
+License: LPPL-1.3a
 BuildArch: noarch
 BuildRequires: hyphen-devel
+BuildRequires: glibc-langpack-el
 
 Requires: hyphen
 Supplements: (hyphen and langpacks-grc)
@@ -23,8 +22,7 @@ Ancient Greek hyphenation rules.
 %prep
 %setup -T -q -c -n hyphen-grc
 cp -p %{SOURCE0} hyph-grc.tex
-%patch 0 -p0 -b .clean
-cp %{SOURCE1} ./LICENSE.txt
+%patch -P0 -p0 -b .clean
 
 %build
 grep -v "^%" hyph-grc.tex | tr ' ' '\n' > temp.tex
@@ -40,14 +38,42 @@ cp -p hyph_grc_GR.dic $RPM_BUILD_ROOT/%{_datadir}/hyphen
 
 
 %files
-%license LICENSE.txt
 %doc README
 %{_datadir}/hyphen/*
 
 %changelog
-* Fri Jul 23 2021 Pawel Winogrodzki <pawelwi@microsoft.com> - 0.20110913-18
-- Initial CBL-Mariner import from Fedora 32 (license: MIT).
-- Removing unused BR on 'glibc-langpack-el'.
+* Thu Jul 18 2024 Fedora Release Engineering <releng@fedoraproject.org> - 0.20110913-28
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_41_Mass_Rebuild
+
+* Wed Jan 24 2024 Fedora Release Engineering <releng@fedoraproject.org> - 0.20110913-27
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Sat Jan 20 2024 Fedora Release Engineering <releng@fedoraproject.org> - 0.20110913-26
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Thu Jul 20 2023 Fedora Release Engineering <releng@fedoraproject.org> - 0.20110913-25
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_39_Mass_Rebuild
+
+* Mon Mar 27 2023 Caolán McNamara <caolanm@redhat.com> - 0.20110913-24
+- migrated to SPDX license
+
+* Thu Jan 19 2023 Fedora Release Engineering <releng@fedoraproject.org> - 0.20110913-23
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_38_Mass_Rebuild
+
+* Thu Jul 21 2022 Fedora Release Engineering <releng@fedoraproject.org> - 0.20110913-22
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_37_Mass_Rebuild
+
+* Thu Jan 20 2022 Fedora Release Engineering <releng@fedoraproject.org> - 0.20110913-21
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_36_Mass_Rebuild
+
+* Thu Jul 22 2021 Fedora Release Engineering <releng@fedoraproject.org> - 0.20110913-20
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_35_Mass_Rebuild
+
+* Tue Jan 26 2021 Fedora Release Engineering <releng@fedoraproject.org> - 0.20110913-19
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_34_Mass_Rebuild
+
+* Tue Jul 28 2020 Fedora Release Engineering <releng@fedoraproject.org> - 0.20110913-18
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_33_Mass_Rebuild
 
 * Wed Jan 29 2020 Fedora Release Engineering <releng@fedoraproject.org> - 0.20110913-17
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_32_Mass_Rebuild

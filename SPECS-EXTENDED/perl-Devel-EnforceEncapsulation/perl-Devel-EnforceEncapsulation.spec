@@ -1,21 +1,33 @@
-Vendor:         Microsoft Corporation
-Distribution:   Azure Linux
 Name:		perl-Devel-EnforceEncapsulation
 Version:	0.51
-Release:	18%{?dist}
+Release:	31%{?dist}
 Summary:	Find access violations to blessed objects
-License:	GPL+ or Artistic
+License:	GPL-1.0-or-later OR Artistic-1.0-Perl
 URL:		https://metacpan.org/release/Devel-EnforceEncapsulation
-Source0:	https://cpan.metacpan.org/authors/id/C/CD/CDOLAN/Devel-EnforceEncapsulation-%{version}.tar.gz#/perl-Devel-EnforceEncapsulation-%{version}.tar.gz
+Source0:	https://cpan.metacpan.org/modules/by-module/Devel/Devel-EnforceEncapsulation-%{version}.tar.gz
 BuildArch:	noarch
+# Module Build
+BuildRequires:	coreutils
+BuildRequires:	findutils
+BuildRequires:	make
 BuildRequires:	perl-generators
+BuildRequires:	perl-interpreter
+BuildRequires:	perl(ExtUtils::MakeMaker)
+# Module Runtime
 BuildRequires:	perl(Carp)
 BuildRequires:	perl(English)
-BuildRequires:	perl(ExtUtils::MakeMaker)
+BuildRequires:	perl(overload)
+BuildRequires:	perl(strict)
+BuildRequires:	perl(warnings)
+# Test Suite
+BuildRequires:	perl(base)
 BuildRequires:	perl(Test::More)
-BuildRequires:	perl(Test::Pod)
-BuildRequires:	perl(Test::Pod::Coverage)
-Requires:	perl(:MODULE_COMPAT_%(eval "`perl -V:version`"; echo $version))
+# Optional Tests
+BuildRequires:	perl(Pod::Coverage) >= 0.17
+BuildRequires:	perl(Test::Pod) >= 1.14
+BuildRequires:	perl(Test::Pod::Coverage) >= 1.04
+# Dependencies
+# (none)
 
 %description
 Encapsulation is the practice of creating subroutines to access the properties
@@ -54,20 +66,65 @@ make %{?_smp_mflags}
 
 %install
 make pure_install DESTDIR=%{buildroot}
-find %{buildroot} -type f -name .packlist -exec rm -f {} \;
-%{_fixperms} %{buildroot}
+find %{buildroot} -type f -name .packlist -delete
+%{_fixperms} -c %{buildroot}
 
 %check
 make test AUTHOR_TEST=1 AUTHOR_TEST_CDOLAN=1
 
 %files
-%doc CHANGES LICENSE README
+%license LICENSE
+%doc CHANGES README
 %{perl_vendorlib}/Devel/
-%{_mandir}/man3/Devel::EnforceEncapsulation.3pm*
+%{_mandir}/man3/Devel::EnforceEncapsulation.3*
 
 %changelog
-* Fri Oct 15 2021 Pawel Winogrodzki <pawelwi@microsoft.com> - 0.51-18
-- Initial CBL-Mariner import from Fedora 32 (license: MIT).
+* Thu Jul 18 2024 Fedora Release Engineering <releng@fedoraproject.org> - 0.51-31
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_41_Mass_Rebuild
+
+* Thu Jan 25 2024 Fedora Release Engineering <releng@fedoraproject.org> - 0.51-30
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Sun Jan 21 2024 Fedora Release Engineering <releng@fedoraproject.org> - 0.51-29
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Thu Jul 20 2023 Fedora Release Engineering <releng@fedoraproject.org> - 0.51-28
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_39_Mass_Rebuild
+
+* Fri Jan 20 2023 Fedora Release Engineering <releng@fedoraproject.org> - 0.51-27
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_38_Mass_Rebuild
+
+* Fri Jul 22 2022 Fedora Release Engineering <releng@fedoraproject.org> - 0.51-26
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_37_Mass_Rebuild
+
+* Tue May 31 2022 Jitka Plesnikova <jplesnik@redhat.com> - 0.51-25
+- Perl 5.36 rebuild
+
+* Fri Jan 21 2022 Fedora Release Engineering <releng@fedoraproject.org> - 0.51-24
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_36_Mass_Rebuild
+
+* Thu Jul 22 2021 Fedora Release Engineering <releng@fedoraproject.org> - 0.51-23
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_35_Mass_Rebuild
+
+* Fri May 21 2021 Jitka Plesnikova <jplesnik@redhat.com> - 0.51-22
+- Perl 5.34 rebuild
+
+* Wed Jan 27 2021 Fedora Release Engineering <releng@fedoraproject.org> - 0.51-21
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_34_Mass_Rebuild
+
+* Fri Jan  8 2021 Paul Howarth <paul@city-fan.org> - 0.51-20
+- Spec tidy-up
+  - Use author-independent source URL
+  - Classify buildreqs by usage
+  - Simplify find command using -delete
+  - Fix permissions verbosely
+  - Use %%license macro
+
+* Tue Jul 28 2020 Fedora Release Engineering <releng@fedoraproject.org> - 0.51-19
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_33_Mass_Rebuild
+
+* Tue Jun 23 2020 Jitka Plesnikova <jplesnik@redhat.com> - 0.51-18
+- Perl 5.32 rebuild
 
 * Wed Jan 29 2020 Fedora Release Engineering <releng@fedoraproject.org> - 0.51-17
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_32_Mass_Rebuild

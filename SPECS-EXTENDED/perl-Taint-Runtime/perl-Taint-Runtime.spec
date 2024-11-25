@@ -1,23 +1,28 @@
 Name:           perl-Taint-Runtime
 Version:        0.03
-Release:        39%{?dist}
+Release:        54%{?dist}
 Summary:        Runtime enable taint checking
-License:        GPL+ or Artistic
-Vendor:         Microsoft Corporation
-Distribution:   Azure Linux
+License:        GPL-1.0-or-later OR Artistic-1.0-Perl
 URL:            https://metacpan.org/release/Taint-Runtime
-Source0:        https://cpan.metacpan.org/authors/id/R/RH/RHANDOM/Taint-Runtime-%{version}.tar.gz#/perl-Taint-Runtime-%{version}.tar.gz
+Source0:        https://cpan.metacpan.org/modules/by-module/Taint/Taint-Runtime-%{version}.tar.gz
+# Build:
+BuildRequires:  coreutils
+BuildRequires:  findutils
 BuildRequires:  gcc
+BuildRequires:  make
 BuildRequires:  perl-devel
 BuildRequires:  perl-generators
+BuildRequires:  perl-interpreter
 BuildRequires:  perl(ExtUtils::MakeMaker)
 # Run-time:
 BuildRequires:  perl(Carp)
 BuildRequires:  perl(Exporter)
+BuildRequires:  perl(strict)
+BuildRequires:  perl(vars)
 BuildRequires:  perl(XSLoader)
 # Tests:
 BuildRequires:  perl(Test::More)
-Requires:       perl(:MODULE_COMPAT_%(eval "`%{__perl} -V:version`"; echo $version))
+# Dependencies:
 Requires:       perl(Carp)
 
 %{?perl_default_filter}
@@ -31,17 +36,17 @@ good reason for not using the -T option, you should use the -T option.
 
 %prep
 %setup -q -n Taint-Runtime-%{version}
-chmod +x is_taint_bench.pl
+chmod -c +x is_taint_bench.pl
 
 %build
-%{__perl} Makefile.PL INSTALLDIRS=vendor OPTIMIZE="$RPM_OPT_FLAGS"
+perl Makefile.PL INSTALLDIRS=vendor OPTIMIZE="%{optflags}"
 make %{?_smp_mflags}
 
 %install
-make pure_install DESTDIR=$RPM_BUILD_ROOT
-find $RPM_BUILD_ROOT -type f -name .packlist -exec rm -f {} ';'
-find $RPM_BUILD_ROOT -type f -name '*.bs' -a -size 0 -exec rm -f {} ';'
-chmod -R u+w $RPM_BUILD_ROOT/*
+make pure_install DESTDIR=%{buildroot}
+find %{buildroot} -type f -name .packlist -delete
+find %{buildroot} -type f -name '*.bs' -empty -delete
+%{_fixperms} -c %{buildroot}
 
 %check
 make test
@@ -50,11 +55,62 @@ make test
 %doc Changes README
 %{perl_vendorarch}/auto/Taint/
 %{perl_vendorarch}/Taint/
-%{_mandir}/man3/*.3*
+%{_mandir}/man3/Taint::Runtime.3*
 
 %changelog
-* Fri Oct 15 2021 Pawel Winogrodzki <pawelwi@microsoft.com> - 0.03-39
-- Initial CBL-Mariner import from Fedora 32 (license: MIT).
+* Fri Jul 19 2024 Fedora Release Engineering <releng@fedoraproject.org> - 0.03-54
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_41_Mass_Rebuild
+
+* Mon Jun 10 2024 Jitka Plesnikova <jplesnik@redhat.com> - 0.03-53
+- Perl 5.40 rebuild
+
+* Thu Jan 25 2024 Fedora Release Engineering <releng@fedoraproject.org> - 0.03-52
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Sun Jan 21 2024 Fedora Release Engineering <releng@fedoraproject.org> - 0.03-51
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Fri Jul 21 2023 Fedora Release Engineering <releng@fedoraproject.org> - 0.03-50
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_39_Mass_Rebuild
+
+* Tue Jul 11 2023 Jitka Plesnikova <jplesnik@redhat.com> - 0.03-49
+- Perl 5.38 rebuild
+
+* Sat May 13 2023 Paul Howarth <paul@city-fan.org> - 0.03-48
+- Spec tidy-up
+  - Use SPDX-format license tag
+  - Use author-independent source URL
+  - Specify all dependencies
+  - Fix permissions verbosely
+  - Simplify find commands using -empty and -delete
+  - Make %%files list more explicit
+
+* Fri Jan 20 2023 Fedora Release Engineering <releng@fedoraproject.org> - 0.03-47
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_38_Mass_Rebuild
+
+* Fri Jul 22 2022 Fedora Release Engineering <releng@fedoraproject.org> - 0.03-46
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_37_Mass_Rebuild
+
+* Mon May 30 2022 Jitka Plesnikova <jplesnik@redhat.com> - 0.03-45
+- Perl 5.36 rebuild
+
+* Fri Jan 21 2022 Fedora Release Engineering <releng@fedoraproject.org> - 0.03-44
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_36_Mass_Rebuild
+
+* Thu Jul 22 2021 Fedora Release Engineering <releng@fedoraproject.org> - 0.03-43
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_35_Mass_Rebuild
+
+* Fri May 21 2021 Jitka Plesnikova <jplesnik@redhat.com> - 0.03-42
+- Perl 5.34 rebuild
+
+* Wed Jan 27 2021 Fedora Release Engineering <releng@fedoraproject.org> - 0.03-41
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_34_Mass_Rebuild
+
+* Tue Jul 28 2020 Fedora Release Engineering <releng@fedoraproject.org> - 0.03-40
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_33_Mass_Rebuild
+
+* Mon Jun 22 2020 Jitka Plesnikova <jplesnik@redhat.com> - 0.03-39
+- Perl 5.32 rebuild
 
 * Thu Jan 30 2020 Fedora Release Engineering <releng@fedoraproject.org> - 0.03-38
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_32_Mass_Rebuild

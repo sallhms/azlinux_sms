@@ -1,15 +1,19 @@
-Vendor:         Microsoft Corporation
-Distribution:   Azure Linux
+%if 0%{?fedora} >= 36 || 0%{?rhel} > 9
+%global dict_dirname hunspell
+%else
+%global dict_dirname myspell
+%endif
+
 Name: hunspell-dsb
 Summary: Lower Sorbian hunspell dictionaries
 Version: 1.4.8
-Release: 6%{?dist}
+Release: 18%{?dist}
 Source: https://downloads.sourceforge.net/project/aoo-extensions/3045/14/lower_sorbian_spelling_dictionary-%{version}.oxt
 URL: http://dsb-spell.sourceforge.net
-License: GPLv2+
+License: GPL-2.0-or-later
 BuildArch: noarch
 
-Requires: hunspell
+Requires: hunspell-filesystem
 Supplements: (hunspell and langpacks-dsb)
 
 %description
@@ -21,19 +25,56 @@ Lower Sorbian hunspell dictionaries.
 %build
 
 %install
-mkdir -p $RPM_BUILD_ROOT/%{_datadir}/myspell
-cp -p dsb_DE.* $RPM_BUILD_ROOT/%{_datadir}/myspell
+mkdir -p $RPM_BUILD_ROOT/%{_datadir}/%{dict_dirname}
+cp -p dsb_DE.* $RPM_BUILD_ROOT/%{_datadir}/%{dict_dirname}
 
 
 %files
 %doc description/desc_de.txt description/desc_en.txt description/desc_pl.txt
 %license registration/license_en.txt  
 
-%{_datadir}/myspell/*
+%{_datadir}/%{dict_dirname}/*
 
 %changelog
-* Fri Oct 15 2021 Pawel Winogrodzki <pawelwi@microsoft.com> - 1.4.8-6
-- Initial CBL-Mariner import from Fedora 32 (license: MIT).
+* Thu Jul 18 2024 Fedora Release Engineering <releng@fedoraproject.org> - 1.4.8-18
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_41_Mass_Rebuild
+
+* Mon Jan 29 2024 Fedora Release Engineering <releng@fedoraproject.org> - 1.4.8-17
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Wed Jan 24 2024 Fedora Release Engineering <releng@fedoraproject.org> - 1.4.8-16
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Sat Jan 20 2024 Fedora Release Engineering <releng@fedoraproject.org> - 1.4.8-15
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Thu Jul 20 2023 Fedora Release Engineering <releng@fedoraproject.org> - 1.4.8-14
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_39_Mass_Rebuild
+
+* Wed Feb 22 2023 Caolán McNamara <caolanm@redhat.com> - 1.4.6-13
+- migrated to SPDX license
+
+* Thu Jan 19 2023 Fedora Release Engineering <releng@fedoraproject.org> - 1.4.8-12
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_38_Mass_Rebuild
+
+* Thu Jul 21 2022 Fedora Release Engineering <releng@fedoraproject.org> - 1.4.8-11
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_37_Mass_Rebuild
+
+* Tue Mar 22 2022 Parag Nemade <pnemade AT redhat DOT com> - 1.4.8-10
+- Add conditional for new hunspell dir path and update to Requires:
+  hunspell-filesystem
+
+* Thu Jan 20 2022 Fedora Release Engineering <releng@fedoraproject.org> - 1.4.8-9
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_36_Mass_Rebuild
+
+* Thu Jul 22 2021 Fedora Release Engineering <releng@fedoraproject.org> - 1.4.8-8
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_35_Mass_Rebuild
+
+* Tue Jan 26 2021 Fedora Release Engineering <releng@fedoraproject.org> - 1.4.8-7
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_34_Mass_Rebuild
+
+* Tue Jul 28 2020 Fedora Release Engineering <releng@fedoraproject.org> - 1.4.8-6
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_33_Mass_Rebuild
 
 * Wed Jan 29 2020 Fedora Release Engineering <releng@fedoraproject.org> - 1.4.8-5
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_32_Mass_Rebuild

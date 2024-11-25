@@ -1,11 +1,9 @@
-Vendor:         Microsoft Corporation
-Distribution:   Azure Linux
 %define _hardened_build 1
 
 Summary: TCP port reservation utility
 Name: portreserve
 Version: 0.0.5
-Release: 24%{?dist}
+Release: 35%{?dist}
 License: GPLv2+
 URL: http://cyberelk.net/tim/portreserve/
 Source0: http://cyberelk.net/tim/data/portreserve/stable/%{name}-%{version}.tar.bz2
@@ -20,6 +18,7 @@ Requires(postun): systemd-units
 # should fire just after this package is installed.
 Requires(post): systemd-sysv
 
+BuildRequires: make
 BuildRequires:  gcc
 BuildRequires: xmlto
 BuildRequires: systemd-units
@@ -35,7 +34,7 @@ port (generally in the init script).
 %setup -q
 
 # Avoid a race during start-up if there are no configured ports (bug #1034139).
-%patch 1 -p1 -b .pid-file
+%patch -P1 -p1 -b .pid-file
 
 %build
 %configure --sbindir=/sbin
@@ -44,13 +43,13 @@ make
 %install
 rm -rf %{buildroot}
 make DESTDIR=%{buildroot} install
-mkdir -p %{buildroot}%{_localstatedir}/run/portreserve
+mkdir -p %{buildroot}%{_rundir}/portreserve
 mkdir -p %{buildroot}%{_unitdir}
 install -m644 %{SOURCE1} %{buildroot}%{_unitdir}/portreserve.service
 mkdir -p %{buildroot}%{_sysconfdir}/portreserve
 mkdir -p %{buildroot}%{_tmpfilesdir}
 cat <<EOF > %{buildroot}%{_tmpfilesdir}/portreserve.conf
-d %{_localstatedir}/run/portreserve 0755 root root 10d
+d %{_rundir}/portreserve 0755 root root 10d
 EOF
 
 %post
@@ -74,7 +73,7 @@ EOF
 
 %files
 %doc ChangeLog README COPYING NEWS
-%dir %{_localstatedir}/run/portreserve
+%dir %{_rundir}/portreserve
 %dir %{_sysconfdir}/portreserve
 %config %{_tmpfilesdir}/portreserve.conf
 %{_unitdir}/portreserve.service
@@ -82,8 +81,42 @@ EOF
 %{_mandir}/*/*
 
 %changelog
-* Fri Oct 15 2021 Pawel Winogrodzki <pawelwi@microsoft.com> - 0.0.5-24
-- Initial CBL-Mariner import from Fedora 32 (license: MIT).
+* Fri Jul 19 2024 Fedora Release Engineering <releng@fedoraproject.org> - 0.0.5-35
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_41_Mass_Rebuild
+
+* Thu Jan 25 2024 Fedora Release Engineering <releng@fedoraproject.org> - 0.0.5-34
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Sun Jan 21 2024 Fedora Release Engineering <releng@fedoraproject.org> - 0.0.5-33
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Fri Jul 21 2023 Fedora Release Engineering <releng@fedoraproject.org> - 0.0.5-32
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_39_Mass_Rebuild
+
+* Fri Jan 20 2023 Fedora Release Engineering <releng@fedoraproject.org> - 0.0.5-31
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_38_Mass_Rebuild
+
+* Mon Jan 16 2023 Tim Waugh <twaugh@redhat.com> - 0.0.5-30
+- Fix PID file location (bug #1805970).
+
+* Fri Jul 22 2022 Fedora Release Engineering <releng@fedoraproject.org> - 0.0.5-29
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_37_Mass_Rebuild
+
+* Fri Jan 21 2022 Fedora Release Engineering <releng@fedoraproject.org> - 0.0.5-28
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_36_Mass_Rebuild
+
+* Fri Jul 23 2021 Fedora Release Engineering <releng@fedoraproject.org> - 0.0.5-27
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_35_Mass_Rebuild
+
+* Tue Mar 02 2021 Zbigniew Jędrzejewski-Szmek <zbyszek@in.waw.pl> - 0.0.5-26
+- Rebuilt for updated systemd-rpm-macros
+  See https://pagure.io/fesco/issue/2583.
+
+* Wed Jan 27 2021 Fedora Release Engineering <releng@fedoraproject.org> - 0.0.5-25
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_34_Mass_Rebuild
+
+* Tue Jul 28 2020 Fedora Release Engineering <releng@fedoraproject.org> - 0.0.5-24
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_33_Mass_Rebuild
 
 * Thu Jan 30 2020 Fedora Release Engineering <releng@fedoraproject.org> - 0.0.5-23
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_32_Mass_Rebuild

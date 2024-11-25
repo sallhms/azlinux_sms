@@ -7,18 +7,19 @@
 
 Name:           perl-Test-CPAN-Meta
 Version:        0.25
-Release:        21%{?dist}
+Release:        37%{?dist}
 Summary:        Validation of the META.yml file in a CPAN distribution
-License:        Artistic 2.0
-Vendor:         Microsoft Corporation
-Distribution:   Azure Linux
+License:        Artistic-2.0
 URL:            https://metacpan.org/release/Test-CPAN-Meta
-Source0:        https://cpan.metacpan.org/authors/id/B/BA/BARBIE/Test-CPAN-Meta-%{version}.tar.gz#/perl-Test-CPAN-Meta-%{version}.tar.gz
+Source0:        https://cpan.metacpan.org/modules/by-module/Test/Test-CPAN-Meta-%{version}.tar.gz
 Patch0:         Test-CPAN-Meta-0.25-utf8.patch
 BuildArch:      noarch
 # Module Build
-BuildRequires:  perl-interpreter
+BuildRequires:  coreutils
+BuildRequires:  findutils
+BuildRequires:  make
 BuildRequires:  perl-generators
+BuildRequires:  perl-interpreter
 BuildRequires:  perl(ExtUtils::MakeMaker)
 # Module Runtime
 BuildRequires:  perl(Parse::CPAN::Meta) >= 0.02
@@ -39,7 +40,6 @@ BuildRequires:  perl(Test::CPAN::Meta::JSON)
 BuildRequires:  perl(Test::Pod) >= 1.00
 BuildRequires:  perl(Test::Pod::Coverage) >= 0.08
 # Runtime
-Requires:       perl(:MODULE_COMPAT_%(eval "`perl -V:version`"; echo $version))
 
 %description
 This module was written to ensure that a META.yml file, provided with a
@@ -52,7 +52,7 @@ Module::Install.
 %setup -q -n Test-CPAN-Meta-%{version}
 
 # Re-code documentation as UTF-8
-%patch 0
+%patch -P0
 
 %build
 perl Makefile.PL INSTALLDIRS=vendor
@@ -60,8 +60,8 @@ make %{?_smp_mflags}
 
 %install
 make pure_install DESTDIR=%{buildroot}
-find %{buildroot} -type f -name .packlist -exec rm -f {} \;
-%{_fixperms} %{buildroot}
+find %{buildroot} -type f -name .packlist -delete
+%{_fixperms} -c %{buildroot}
 
 %check
 make test AUTOMATED_TESTING=1
@@ -74,8 +74,60 @@ make test AUTOMATED_TESTING=1
 %{_mandir}/man3/Test::CPAN::Meta::Version.3*
 
 %changelog
-* Fri Oct 15 2021 Pawel Winogrodzki <pawelwi@microsoft.com> - 0.25-21
-- Initial CBL-Mariner import from Fedora 32 (license: MIT).
+* Fri Jul 19 2024 Fedora Release Engineering <releng@fedoraproject.org> - 0.25-37
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_41_Mass_Rebuild
+
+* Thu Jan 25 2024 Fedora Release Engineering <releng@fedoraproject.org> - 0.25-36
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Sun Jan 21 2024 Fedora Release Engineering <releng@fedoraproject.org> - 0.25-35
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Fri Jul 21 2023 Fedora Release Engineering <releng@fedoraproject.org> - 0.25-34
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_39_Mass_Rebuild
+
+* Fri Jan 20 2023 Fedora Release Engineering <releng@fedoraproject.org> - 0.25-33
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_38_Mass_Rebuild
+
+* Fri Jul 22 2022 Fedora Release Engineering <releng@fedoraproject.org> - 0.25-32
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_37_Mass_Rebuild
+
+* Fri Jun 03 2022 Jitka Plesnikova <jplesnik@redhat.com> - 0.25-31
+- Perl 5.36 re-rebuild of bootstrapped packages
+
+* Tue May 31 2022 Jitka Plesnikova <jplesnik@redhat.com> - 0.25-30
+- Perl 5.36 rebuild
+
+* Fri Jan 21 2022 Fedora Release Engineering <releng@fedoraproject.org> - 0.25-29
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_36_Mass_Rebuild
+
+* Fri Jul 23 2021 Fedora Release Engineering <releng@fedoraproject.org> - 0.25-28
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_35_Mass_Rebuild
+
+* Mon May 24 2021 Jitka Plesnikova <jplesnik@redhat.com> - 0.25-27
+- Perl 5.34 re-rebuild of bootstrapped packages
+
+* Fri May 21 2021 Jitka Plesnikova <jplesnik@redhat.com> - 0.25-26
+- Perl 5.34 rebuild
+
+* Wed Jan 27 2021 Fedora Release Engineering <releng@fedoraproject.org> - 0.25-25
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_34_Mass_Rebuild
+
+* Thu Jan 14 2021 Paul Howarth <paul@city-fan.org> - 0.25-24
+- Spec tidy-up
+  - Use author-independent source URL
+  - Specify all build dependencies
+  - Simplify find command using -delete
+  - Fix permissions verbosely
+
+* Tue Jul 28 2020 Fedora Release Engineering <releng@fedoraproject.org> - 0.25-23
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_33_Mass_Rebuild
+
+* Fri Jun 26 2020 Jitka Plesnikova <jplesnik@redhat.com> - 0.25-22
+- Perl 5.32 re-rebuild of bootstrapped packages
+
+* Tue Jun 23 2020 Jitka Plesnikova <jplesnik@redhat.com> - 0.25-21
+- Perl 5.32 rebuild
 
 * Thu Jan 30 2020 Fedora Release Engineering <releng@fedoraproject.org> - 0.25-20
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_32_Mass_Rebuild

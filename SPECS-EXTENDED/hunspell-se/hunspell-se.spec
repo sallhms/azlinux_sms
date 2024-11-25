@@ -1,12 +1,15 @@
-Vendor:         Microsoft Corporation
-Distribution:   Azure Linux
+%if 0%{?fedora} > 35
+%global dict_dirname hunspell 
+%else
+%global dict_dirname myspell
+%endif
 Name: hunspell-se
 Summary: Northern Saami hunspell dictionaries
 Version: 1.0
-Release: 1%{?dist}
+Release: 0.30.beta7%{?dist}
 Source: http://divvun.no/static_files/hunspell-se.tar.gz
 URL: http://www.divvun.no/index.html
-License: GPLv3
+License: GPL-3.0-only
 BuildArch: noarch
 
 Requires: hunspell
@@ -21,11 +24,11 @@ Northern Saami hunspell dictionaries.
 %build
 
 %install
-mkdir -p $RPM_BUILD_ROOT/%{_datadir}/myspell
-cp -p se.aff $RPM_BUILD_ROOT/%{_datadir}/myspell/se_NO.aff
-cp -p se.dic $RPM_BUILD_ROOT/%{_datadir}/myspell/se_NO.dic
+mkdir -p $RPM_BUILD_ROOT/%{_datadir}/%{dict_dirname}
+cp -p se.aff $RPM_BUILD_ROOT/%{_datadir}/%{dict_dirname}/se_NO.aff
+cp -p se.dic $RPM_BUILD_ROOT/%{_datadir}/%{dict_dirname}/se_NO.dic
 
-pushd $RPM_BUILD_ROOT/%{_datadir}/myspell/
+pushd $RPM_BUILD_ROOT/%{_datadir}/%{dict_dirname}/
 se_NO_aliases="se_SE se_FI"
 for lang in $se_NO_aliases; do
         ln -s se_NO.aff $lang.aff
@@ -35,12 +38,45 @@ done
 
 %files
 %doc Copyright README GPL-3
-%{_datadir}/myspell/*
+%{_datadir}/%{dict_dirname}/*
 
 %changelog
-* Thu Oct 14 2021 Pawel Winogrodzki <pawelwi@microsoft.com> - 1.0-1
-- Initial CBL-Mariner import from Fedora 32 (license: MIT).
-- Converting the 'Release' tag to the '[number].[distribution]' format.
+* Thu Jul 18 2024 Fedora Release Engineering <releng@fedoraproject.org> - 1.0-0.30.beta7
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_41_Mass_Rebuild
+
+* Wed Jan 24 2024 Fedora Release Engineering <releng@fedoraproject.org> - 1.0-0.29.beta7
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Sat Jan 20 2024 Fedora Release Engineering <releng@fedoraproject.org> - 1.0-0.28.beta7
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Thu Jul 20 2023 Fedora Release Engineering <releng@fedoraproject.org> - 1.0-0.27.beta7
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_39_Mass_Rebuild
+
+* Thu Feb 23 2023 Caolán McNamara <caolanm@redhat.com> - 1.0-0.26.beta7
+- migrated to SPDX license
+
+* Thu Jan 19 2023 Fedora Release Engineering <releng@fedoraproject.org> - 1.0-0.25.beta7
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_38_Mass_Rebuild
+
+* Thu Jul 21 2022 Fedora Release Engineering <releng@fedoraproject.org> - 1.0-0.24.beta7
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_37_Mass_Rebuild
+
+* Fri Feb 11 2022 Vishal Vijayraghavan <vishalvvr@fedoraproject.org> - 1.0-0.23.beta7
+- rename install directory name from myspell to hunspell
+- https://fedoraproject.org/wiki/Changes/Hunspell_dictionary_dir_change
+
+* Thu Jan 20 2022 Fedora Release Engineering <releng@fedoraproject.org> - 1.0-0.22.beta7
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_36_Mass_Rebuild
+
+* Thu Jul 22 2021 Fedora Release Engineering <releng@fedoraproject.org> - 1.0-0.21.beta7
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_35_Mass_Rebuild
+
+* Tue Jan 26 2021 Fedora Release Engineering <releng@fedoraproject.org> - 1.0-0.20.beta7
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_34_Mass_Rebuild
+
+* Tue Jul 28 2020 Fedora Release Engineering <releng@fedoraproject.org> - 1.0-0.19.beta7
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_33_Mass_Rebuild
 
 * Wed Jan 29 2020 Fedora Release Engineering <releng@fedoraproject.org> - 1.0-0.18.beta7
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_32_Mass_Rebuild
@@ -94,5 +130,5 @@ done
 * Fri Jul 24 2009 Fedora Release Engineering <rel-eng@lists.fedoraproject.org> - 1.0-0.2.beta7
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_12_Mass_Rebuild
 
-* Fri Jun 12 2009 Caolan McNamara <caolanm@redhat.com> - 1.0-0.1.beta7
+* Fri Jun 12 2009 Caolán McNamara <caolanm@redhat.com> - 1.0-0.1.beta7
 - initial version

@@ -1,0 +1,31 @@
+From 197741e4fa3510a14e78f572677d3b9154419cab Mon Sep 17 00:00:00 2001
+From: Lokesh Mandvekar <lsm5@fedoraproject.org>
+Date: Tue, 15 Oct 2024 13:17:50 +0530
+Subject: [PATCH] upstream c/common PR 2194 to podman
+
+Signed-off-by: Lokesh Mandvekar <lsm5@fedoraproject.org>
+---
+ vendor/github.com/containers/common/pkg/config/default.go | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/vendor/github.com/containers/common/pkg/config/default.go b/vendor/github.com/containers/common/pkg/config/default.go
+index 311b090b9..044748ab0 100644
+--- a/vendor/github.com/containers/common/pkg/config/default.go
++++ b/vendor/github.com/containers/common/pkg/config/default.go
+@@ -120,12 +120,12 @@ var (
+ 	additionalHelperBinariesDir string
+
+ 	defaultUnixComposeProviders = []string{
+-		"docker-compose",
+ 		"$HOME/.docker/cli-plugins/docker-compose",
+ 		"/usr/local/lib/docker/cli-plugins/docker-compose",
+ 		"/usr/local/libexec/docker/cli-plugins/docker-compose",
+ 		"/usr/lib/docker/cli-plugins/docker-compose",
+ 		"/usr/libexec/docker/cli-plugins/docker-compose",
++		"docker-compose",
+ 		"podman-compose",
+ 	}
+
+-- 
+2.47.0
+

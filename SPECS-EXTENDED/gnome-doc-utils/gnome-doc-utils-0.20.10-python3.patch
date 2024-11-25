@@ -518,3 +518,23 @@ diff -U3 -r gnome-doc-utils-0.20.10.orig/xml2po/xml2po/xml2po.py.in gnome-doc-ut
  # -*- encoding: utf-8 -*-
  # Copyright (c) 2004, 2005, 2006 Danilo Šegan <danilo@gnome.org>.
  # Copyright (c) 2009 Claude Paroz <claude@2xlibre.net>.
+--- gnome-doc-utils-0.20.10.old/xml2po/xml2po/__init__.py	2021-10-14 16:54:33.332661817 +0900
++++ gnome-doc-utils-0.20.10/xml2po/xml2po/__init__.py	2021-10-14 17:06:31.006607987 +0900
+@@ -504,7 +504,7 @@
+             # !!! This is not very nice thing to do, but I don't know if
+             #     raising an exception is any better
+             return False
+-        return tmpstr.find('EXTERNAL_GENERAL_PARSED_ENTITY') != -1
++        return tmpstr.find(b'EXTERNAL_GENERAL_PARSED_ENTITY') != -1
+ 
+     def doSerialize(self, node):
+         """Serializes a node and its children, emitting PO messages along the way.
+@@ -556,7 +556,7 @@
+         elif output == '-':
+             self.out = sys.stdout
+         else:
+-            self.out = file(output, 'w')
++            self.out = open(output, 'w')
+ 
+     def load_mode(self, modename):
+         try:

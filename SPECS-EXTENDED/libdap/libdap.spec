@@ -1,16 +1,17 @@
 Name: libdap
-Summary: The C++ DAP2 library from OPeNDAP
-Version: 3.20.5
+Summary: The C++ DAP2 and DAP4 library from OPeNDAP
+Version: 3.21.0.27
 Release: 2%{?dist}
 
-License: LGPLv2+
-Vendor:         Microsoft Corporation
-Distribution:   Azure Linux
+%global libdap_tag 3.21.0-27
+
+License: LGPL-2.1-or-later
 URL: http://www.opendap.org/
-Source0: http://www.opendap.org/pub/source/libdap-%{version}.tar.gz
+Source0: https://github.com/OPENDAP/libdap4/archive/%{libdap_tag}/%{name}-%{version}.tar.gz
 #Don't run HTTP tests - builders don't have network connections
 Patch0: libdap-offline.patch
 
+BuildRequires: make
 BuildRequires: gcc-c++
 # For autoreconf
 BuildRequires: libtool
@@ -25,7 +26,7 @@ BuildRequires: libuuid-devel
 BuildRequires: libxml2-devel
 BuildRequires: openssl-devel
 BuildRequires: pkgconfig
-%ifnarch s390 %{mips}
+%ifarch %{valgrind_arches}
 BuildRequires: valgrind
 %endif
 
@@ -33,11 +34,11 @@ Provides: bundled(gnulib)
 
 
 %description
-The libdap++ library contains an implementation of DAP2. This package
-contains the library, dap-config, and getdap. The script dap-config
-simplifies using the library in other projects. The getdap utility is a
-simple command-line tool to read from DAP2 servers. It is built using the
-library and demonstrates simple uses of it.
+The libdap++ library contains an implementation of DAP2 and DAP4. This
+package contains the library, dap-config, and getdap. The script
+dap-config simplifies using the library in other projects. The getdap
+utility is a simple command-line tool to read from DAP2 servers. It is
+built using the library and demonstrates simple uses of it.
 
 
 %package devel
@@ -62,7 +63,7 @@ Documentation of the libdap library.
 
 
 %prep
-%autosetup -n %{name}-%{version} -p1
+%autosetup -n libdap4-%{libdap_tag} -p1
 iconv -f latin1 -t utf8 < COPYRIGHT_W3C > COPYRIGHT_W3C.utf8
 touch -r COPYRIGHT_W3C COPYRIGHT_W3C.utf8
 mv COPYRIGHT_W3C.utf8 COPYRIGHT_W3C
@@ -104,10 +105,10 @@ make check || :
 
 %files
 %license COPYRIGHT_W3C COPYING COPYRIGHT_URI
-%doc README NEWS README.dodsrc
+%doc README.md NEWS README.dodsrc
 %{_bindir}/getdap
 %{_bindir}/getdap4
-%{_libdir}/libdap.so.25*
+%{_libdir}/libdap.so.27*
 %{_libdir}/libdapclient.so.6*
 %{_libdir}/libdapserver.so.7*
 %{_mandir}/man1/getdap.1*
@@ -130,8 +131,51 @@ make check || :
 
 
 %changelog
-* Fri Oct 15 2021 Pawel Winogrodzki <pawelwi@microsoft.com> - 3.20.5-2
-- Initial CBL-Mariner import from Fedora 32 (license: MIT).
+* Thu Jul 18 2024 Fedora Release Engineering <releng@fedoraproject.org> - 3.21.0.27-2
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_41_Mass_Rebuild
+
+* Fri Feb 23 2024 Richard W.M. Jones <rjones@redhat.com> - 3.21.0.27-1
+- New upstream version 3.21.0-27, required by bes (RHBZ#1328287)
+- Remove old patches
+
+* Thu Jan 25 2024 Fedora Release Engineering <releng@fedoraproject.org> - 3.20.10-6
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Sun Jan 21 2024 Fedora Release Engineering <releng@fedoraproject.org> - 3.20.10-5
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Thu Jul 20 2023 Fedora Release Engineering <releng@fedoraproject.org> - 3.20.10-4
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_39_Mass_Rebuild
+
+* Thu Jan 19 2023 Fedora Release Engineering <releng@fedoraproject.org> - 3.20.10-3
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_38_Mass_Rebuild
+
+* Thu Jul 21 2022 Fedora Release Engineering <releng@fedoraproject.org> - 3.20.10-2
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_37_Mass_Rebuild
+
+* Fri Jul 01 2022 Orion Poplawski <orion@nwra.com> - 3.20.10-1
+- Update to 3.20.10
+
+* Thu Jan 20 2022 Fedora Release Engineering <releng@fedoraproject.org> - 3.20.9-2
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_36_Mass_Rebuild
+
+* Thu Jan 13 2022 Orion Poplawski <orion@nwra.com> - 3.20.9-1
+- Update to 3.20.9
+
+* Sat Nov 20 2021 Orion Poplawski <orion@nwra.com> - 3.20.8-1
+- Update to 3.20.8
+
+* Thu Jul 22 2021 Fedora Release Engineering <releng@fedoraproject.org> - 3.20.6-4
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_35_Mass_Rebuild
+
+* Tue Jan 26 2021 Fedora Release Engineering <releng@fedoraproject.org> - 3.20.6-3
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_34_Mass_Rebuild
+
+* Tue Jul 28 2020 Fedora Release Engineering <releng@fedoraproject.org> - 3.20.6-2
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_33_Mass_Rebuild
+
+* Fri May 08 2020 Orion Poplawski <orion@nwra.com> - 3.20.6-1
+- Update to 3.20.6
 
 * Sat Feb 08 2020 Orion Poplawski <orion@nwra.com> - 3.20.5-1
 - Update to 3.20.5

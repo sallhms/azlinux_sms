@@ -1,13 +1,11 @@
-Vendor:         Microsoft Corporation
-Distribution:   Azure Linux
 Name: fxload
 Version: 2008_10_13
-Release: 17%{?dist}
+Release: 28%{?dist}
 Summary: A helper program to download firmware into FX and FX2 EZ-USB devices
 
-License: GPLv2+
+License: GPL-2.0-or-later
 URL: http://linux-hotplug.sourceforge.net/
-Source0: %{_distro_sources_url}/fxload-%{version}-noa3load.tar.gz
+Source0: fxload-%{version}-noa3load.tar.gz
 # The above file is derived from:
 # http://downloads.sourceforge.net/project/linux-hotplug/fxload/2008_10_13/fxload-2008_10_13.tar.gz
 # This file contains code that is copyright Cypress Semiconductor Inc,
@@ -17,9 +15,9 @@ Source0: %{_distro_sources_url}/fxload-%{version}-noa3load.tar.gz
 # ./fxload-generate-tarball.sh 2008_10_13
 Source1: fxload-generate-tarball.sh
 Patch0: fxload-noa3load.patch
-Patch1: fxload-cflags-ldflags.patch
+Patch1: fxload-ldflags.patch
 
-BuildRequires: gcc kernel-headers
+BuildRequires: gcc kernel-headers make
 Requires: udev
 Conflicts: hotplug-gtk hotplug
 
@@ -31,11 +29,11 @@ appears on the bus.
 
 %prep
 %setup -q 
-%patch 0 -p1 -b .fxload-noa3load
-%patch 1 -p1 -b .cflags
+%patch -P0 -p1 -b .fxload-noa3load
+%patch -P1 -p1 -b .ldflags
 
 %build 
-make CC=gcc CFLAGS="$RPM_OPT_FLAGS" LDFLAGS="$RPM_LD_FLAGS"
+%{make_build} CFLAGS="$RPM_OPT_FLAGS" LDFLAGS="$RPM_LD_FLAGS -pie"
 
 %install
 mkdir -p -m 755 %{buildroot}/sbin
@@ -44,21 +42,53 @@ mkdir -p -m 755 %{buildroot}/%{_mandir}/man8/
 install -m 644 fxload.8 %{buildroot}/%{_mandir}/man8/
 
 %files
-%license COPYING
+%doc COPYING
 %doc README.txt
 %attr(0755, root, root) /sbin/fxload
 %{_mandir}/*/*
 
 %changelog
-* Thu Feb 22 2024 Pawel Winogrodzki <pawelwi@microsoft.com> - 2008_10_13-17
-- Updating naming for 3.0 version of Azure Linux.
+* Wed Jul 17 2024 Fedora Release Engineering <releng@fedoraproject.org> - 2008_10_13-28
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_41_Mass_Rebuild
 
-* Mon Apr 25 2022 Pawel Winogrodzki <pawelwi@microsoft.com> - 2008_10_13-16
-- Updating source URLs.
-- License verified.
+* Wed Jan 24 2024 Fedora Release Engineering <releng@fedoraproject.org> - 2008_10_13-27
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
 
-* Fri Oct 15 2021 Pawel Winogrodzki <pawelwi@microsoft.com> - 2008_10_13-15
-- Initial CBL-Mariner import from Fedora 32 (license: MIT).
+* Fri Jan 19 2024 Fedora Release Engineering <releng@fedoraproject.org> - 2008_10_13-26
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Thu Sep  7 2023 Jaroslav Kysela <perex@perex.cz> - 2008_10_13-25
+- SPDX license
+
+* Wed Jul 19 2023 Fedora Release Engineering <releng@fedoraproject.org> - 2008_10_13-24
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_39_Mass_Rebuild
+
+* Thu Jan 19 2023 Fedora Release Engineering <releng@fedoraproject.org> - 2008_10_13-23
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_38_Mass_Rebuild
+
+* Thu Jul 21 2022 Fedora Release Engineering <releng@fedoraproject.org> - 2008_10_13-22
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_37_Mass_Rebuild
+
+* Thu Jan 20 2022 Fedora Release Engineering <releng@fedoraproject.org> - 2008_10_13-21
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_36_Mass_Rebuild
+
+* Wed Jul 21 2021 Fedora Release Engineering <releng@fedoraproject.org> - 2008_10_13-20
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_35_Mass_Rebuild
+
+* Tue Jan 26 2021 Fedora Release Engineering <releng@fedoraproject.org> - 2008_10_13-19
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_34_Mass_Rebuild
+
+* Tue Dec 08 2020 Charles R. Anderson <cra@alum.wpi.edu> - 2008_10_13-18
+- BR: make
+
+* Tue Dec 08 2020 Charles R. Anderson <cra@alum.wpi.edu> - 2008_10_13-17
+- Merge PR#2: Make annocheck pass, pass -pie to linker, use make_build macro
+
+* Mon Jul 27 2020 Fedora Release Engineering <releng@fedoraproject.org> - 2008_10_13-16
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_33_Mass_Rebuild
+
+* Mon Feb 03 2020 Tom Stellard <tstellar@redhat.com> - 2008_10_13-15
+- Use __cc macro instead of hard-coding gcc
 
 * Tue Jan 28 2020 Fedora Release Engineering <releng@fedoraproject.org> - 2008_10_13-14
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_32_Mass_Rebuild
@@ -162,3 +192,4 @@ install -m 644 fxload.8 %{buildroot}/%{_mandir}/man8/
 
 * Wed Apr 12 2006 Bart Vanbrabant <bart.vanbrabant@zoeloelip.be> - 2002_04_11-1
 - First version of fxload spec based on hotplug spec
+

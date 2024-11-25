@@ -1,12 +1,10 @@
-Vendor:         Microsoft Corporation
-Distribution:   Azure Linux
 %global provider_dir %{_libdir}/cmpi
 
 Summary:        SBLIM fsvol instrumentation
 Name:           sblim-cmpi-fsvol
 Version:        1.5.1
-Release:        27%{?dist}
-License:        EPL
+Release:        37%{?dist}
+License:        EPL-1.0
 URL:            http://sourceforge.net/projects/sblim/
 Source0:        http://downloads.sourceforge.net/project/sblim/providers/%{name}/%{version}/%{name}-%{version}.tar.bz2
 Patch0:         sblim-cmpi-fsvol-1.5.0-ext4-support.patch
@@ -21,6 +19,7 @@ Patch4:         sblim-cmpi-fsvol-1.5.1-prov-reg-sfcb-systemd.patch
 # Patch5: fixes  mounted filesystem is shown as disabled when device mapper is used
 Patch5:         sblim-cmpi-fsvol-1.5.1-mounted-dm-fs-shown-as-disabled.patch
 
+BuildRequires: make
 BuildRequires:  perl-generators
 BuildRequires:  sblim-cmpi-base-devel sblim-cmpi-devel
 BuildRequires:  gcc
@@ -49,12 +48,7 @@ SBLIM Base Fsvol Testcase Files for SBLIM Testsuite
 
 %prep
 %setup -q
-%patch 0 -p1 -b .ext4-support
-%patch 1 -p0 -b .mounted-fs-shown-as-disabled
-%patch 2 -p1 -b .docdir
-%patch 3 -p1 -b .pegasus-interop
-%patch 4 -p1 -b .prov-reg-sfcb-systemd
-%patch 5 -p1 -b .mounted-dm-fs-shown-as-disabled
+%autopatch -p1
 
 %build
 %ifarch s390 s390x ppc ppc64
@@ -117,8 +111,39 @@ echo "%{_libdir}/cmpi" > $RPM_BUILD_ROOT/%{_sysconfdir}/ld.so.conf.d/%{name}-%{_
 %postun -p /sbin/ldconfig
 
 %changelog
-* Fri Oct 15 2021 Pawel Winogrodzki <pawelwi@microsoft.com> - 1.5.1-27
-- Initial CBL-Mariner import from Fedora 32 (license: MIT).
+* Sat Jul 20 2024 Fedora Release Engineering <releng@fedoraproject.org> - 1.5.1-37
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_41_Mass_Rebuild
+
+* Mon Jan 29 2024 Fedora Release Engineering <releng@fedoraproject.org> - 1.5.1-36
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Sat Jan 27 2024 Fedora Release Engineering <releng@fedoraproject.org> - 1.5.1-35
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Sat Jul 22 2023 Fedora Release Engineering <releng@fedoraproject.org> - 1.5.1-34
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_39_Mass_Rebuild
+
+* Fri May 26 2023 Vitezslav Crhonek <vcrhonek@redhat.com> - 1.5.1-33
+- SPDX migration
+
+* Sat Jan 21 2023 Fedora Release Engineering <releng@fedoraproject.org> - 1.5.1-32
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_38_Mass_Rebuild
+
+* Sat Jul 23 2022 Fedora Release Engineering <releng@fedoraproject.org> - 1.5.1-31
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_37_Mass_Rebuild
+
+* Sat Jan 22 2022 Fedora Release Engineering <releng@fedoraproject.org> - 1.5.1-30
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_36_Mass_Rebuild
+
+* Tue Jul 27 2021 Fedora Release Engineering <releng@fedoraproject.org> - 1.5.1-29
+- Second attempt - Rebuilt for
+  https://fedoraproject.org/wiki/Fedora_35_Mass_Rebuild
+
+* Wed Jan 27 2021 Fedora Release Engineering <releng@fedoraproject.org> - 1.5.1-28
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_34_Mass_Rebuild
+
+* Wed Jul 29 2020 Fedora Release Engineering <releng@fedoraproject.org> - 1.5.1-27
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_33_Mass_Rebuild
 
 * Thu Jan 30 2020 Fedora Release Engineering <releng@fedoraproject.org> - 1.5.1-26
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_32_Mass_Rebuild

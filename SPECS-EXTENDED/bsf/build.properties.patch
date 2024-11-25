@@ -35,7 +35,7 @@ diff --new-file -r -u bsf-2.4.0-orig/build-properties.xml bsf-2.4.0/build-proper
 +    <property name="site.dest" location="docs"/>
 +    <property name="site.projectFile" value="stylesheets/project.xml"/>
 +
-+    <property name="source.level" value="8" />
++    <property name="source.level" value="1.3" />
 +
 +    <property name="src.dir" value="src"/>
 +

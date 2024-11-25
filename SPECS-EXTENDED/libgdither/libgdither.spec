@@ -1,24 +1,26 @@
-Summary:        Library for applying dithering to PCM audio sources
 Name:           libgdither
 Version:        0.6
-Release:        27%{?dist}
+Release:        32%{?dist}
+Summary:        Library for applying dithering to PCM audio sources
+
 License:        GPLv2+
-Vendor:         Microsoft Corporation
-Distribution:   Azure Linux
 URL:            http://plugin.org.uk/libgdither/README
 Source0:        http://plugin.org.uk/libgdither/libgdither-%{version}.tar.gz
 Patch0:         libgdither-0.6-default.patch
 Patch1:         libgdither-0.6-gavl.patch
 Patch2:         libgdither-0.6-ldflags.patch
-BuildRequires:  fftw-devel >= 3.0.0
+
 BuildRequires:  gcc-c++
-BuildRequires:  make
+BuildRequires:  fftw-devel >= 3.0.0
+BuildRequires: make
+    
 
 %description
-Libgdither is a GPL'd library library for performing audio dithering on
-PCM samples. The dithering process should be carried out before reducing
-the bit width of PCM audio data (eg. float to 16 bit int conversions) to
+Libgdither is a GPL'd library library for performing audio dithering on 
+PCM samples. The dithering process should be carried out before reducing 
+the bit width of PCM audio data (eg. float to 16 bit int conversions) to 
 preserve audio quality.
+
 
 %package        devel
 Summary:        Development files for %{name}
@@ -28,15 +30,16 @@ Requires:       %{name}%{?_isa} = %{version}-%{release}
 The %{name}-devel package contains libraries and header files for
 developing applications that use %{name}.
 
+
 %prep
 %setup -q
-%patch 0 -p1 -b .default
-%patch 1 -p1 -b .gavl_fix
-%patch 2 -p1 -b .ldflags
+%patch -P0 -p1 -b .default
+%patch -P1 -p1 -b .gavl_fix
+%patch -P2 -p1 -b .ldflags
 
 
 %build
-export INIT_CFLAGS="%{optflags}"
+export INIT_CFLAGS="${RPM_OPT_FLAGS}"
 export LDFLAGS="%{build_ldflags}"
 export PREFIX="%{_prefix}"
 %make_build
@@ -44,12 +47,12 @@ export PREFIX="%{_prefix}"
 
 %install
 %make_install PREFIX=%{_prefix} LIBDIR=%{_libdir}
-find %{buildroot} -type f -name "*.la" -delete -print
+find $RPM_BUILD_ROOT -name '*.la' -exec rm -f {} ';'
 
-sed -i -e 's|%{_prefix}/local|%{_prefix}|g' \
-   %{buildroot}%{_libdir}/pkgconfig/libgdither.pc
+sed -i -e 's|/usr/local|%{_prefix}|g' \
+   $RPM_BUILD_ROOT%{_libdir}/pkgconfig/libgdither.pc
 sed -i -e 's|%{_prefix}/lib|%{_libdir}|' \
-  %{buildroot}%{_libdir}/pkgconfig/libgdither.pc
+  $RPM_BUILD_ROOT%{_libdir}/pkgconfig/libgdither.pc
 
 %check
 make test CFLAGS="%{optflags} -Werror --std=c99 -I%{_builddir}/%{?buildsubdir}"
@@ -69,9 +72,23 @@ make test CFLAGS="%{optflags} -Werror --std=c99 -I%{_builddir}/%{?buildsubdir}"
 %{_libdir}/pkgconfig/libgdither.pc
 
 %changelog
-* Thu Jan 05 2023 Suresh Thelkar <sthelkar@microsoft.com> - 0.6-27
-- Initial CBL-Mariner import from Fedora 36 (license: MIT)
-- License verified
+* Thu Jul 18 2024 Fedora Release Engineering <releng@fedoraproject.org> - 0.6-32
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_41_Mass_Rebuild
+
+* Thu Jan 25 2024 Fedora Release Engineering <releng@fedoraproject.org> - 0.6-31
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Sun Jan 21 2024 Fedora Release Engineering <releng@fedoraproject.org> - 0.6-30
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Thu Jul 20 2023 Fedora Release Engineering <releng@fedoraproject.org> - 0.6-29
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_39_Mass_Rebuild
+
+* Thu Jan 19 2023 Fedora Release Engineering <releng@fedoraproject.org> - 0.6-28
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_38_Mass_Rebuild
+
+* Thu Jul 21 2022 Fedora Release Engineering <releng@fedoraproject.org> - 0.6-27
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_37_Mass_Rebuild
 
 * Thu Jan 20 2022 Fedora Release Engineering <releng@fedoraproject.org> - 0.6-26
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_36_Mass_Rebuild

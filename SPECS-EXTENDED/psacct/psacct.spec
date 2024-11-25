@@ -4,10 +4,8 @@
 Summary: Utilities for monitoring process activities
 Name: psacct
 Version: 6.6.4
-Release: 8%{?dist}
-License: GPLv3+
-Vendor:         Microsoft Corporation
-Distribution:   Azure Linux
+Release: 22%{?dist}
+License: GPL-3.0-or-later
 URL: http://www.gnu.org/software/acct/
 
 Source: ftp://ftp.gnu.org/pub/gnu/acct/acct-%{version}.tar.gz
@@ -18,6 +16,8 @@ Source3: accton-create
 Patch1: psacct-6.6.2-unnumberedsubsubsec.patch
 Patch2: psacct-6.6.1-SEGV-when-record-incomplete.patch
 Patch3: psacct-6.6.4-lastcomm-manpage-pid-twice.patch
+Patch4: psacct-6.6.4-sprintf-buffer-overflow.patch
+Patch5: psacct-6.6.4-specfile-tweaks-file-locs.patch
 
 Conflicts: filesystem < 3
 Requires: coreutils
@@ -25,9 +25,11 @@ Requires(post): systemd
 Requires(preun): systemd
 Requires(postun): systemd
 
+BuildRequires: make
 BuildRequires: autoconf
 BuildRequires: systemd
 BuildRequires: gcc
+BuildRequires: git
 
 
 %description
@@ -41,20 +43,7 @@ commands.
 
 
 %prep
-%setup -q -n acct-%{version}
-
-%patch 1 -p1 -b .subsubsec
-%patch 2 -p1
-%patch 3 -p1
-
-# fixing 'gets' undeclared
-sed -i 's|.*(gets,.*||g' lib/stdio.in.h
-
-# workaround for broken autotools stuff
-sed -i 's|@ACCT_FILE_LOC@|/var/account/pacct|g'      files.h.in
-sed -i 's|@SAVACCT_FILE_LOC@|/var/account/savacct|g' files.h.in
-sed -i 's|@USRACCT_FILE_LOC@|/var/account/usracct|g' files.h.in
-
+%autosetup -S git -n acct-%{version}
 
 %build
 %configure --enable-linux-multiformat
@@ -115,6 +104,7 @@ touch /var/account/pacct && chmod 0600 /var/account/pacct
 %{_sbindir}/sa
 %{_sbindir}/dump-utmp
 %{_sbindir}/dump-acct
+%dir %{_libexecdir}/psacct
 %{_libexecdir}/psacct/accton-create
 %{_bindir}/ac
 %if %{with_last}
@@ -134,8 +124,54 @@ touch /var/account/pacct && chmod 0600 /var/account/pacct
 
 
 %changelog
-* Fri Oct 15 2021 Pawel Winogrodzki <pawelwi@microsoft.com> - 6.6.4-8
-- Initial CBL-Mariner import from Fedora 32 (license: MIT).
+* Fri Jul 19 2024 Fedora Release Engineering <releng@fedoraproject.org> - 6.6.4-22
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_41_Mass_Rebuild
+
+* Fri Jan 26 2024 Fedora Release Engineering <releng@fedoraproject.org> - 6.6.4-21
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Sun Jan 21 2024 Fedora Release Engineering <releng@fedoraproject.org> - 6.6.4-20
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Fri Jul 21 2023 Fedora Release Engineering <releng@fedoraproject.org> - 6.6.4-19
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_39_Mass_Rebuild
+
+* Tue May 02 2023 Jan Rybar <jrybar@redhat.com> - 6.6.4-18
+- forgot to add the second patch... again
+
+* Tue May 02 2023 Jan Rybar <jrybar@redhat.com> - 6.6.4-17
+- migrate to autosetup; convert specfile script to a patch
+- FORTIFY_SOURCE_3 detected a buffer overflow
+- Resolves: bz#2190057
+
+* Mon Apr 24 2023 Lukáš Zaoral <lzaoral@redhat.com> - 6.6.4-16
+- migrate to SPDX license format
+
+* Fri Jan 20 2023 Fedora Release Engineering <releng@fedoraproject.org> - 6.6.4-15
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_38_Mass_Rebuild
+
+* Fri Jul 22 2022 Fedora Release Engineering <releng@fedoraproject.org> - 6.6.4-14
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_37_Mass_Rebuild
+
+* Wed Jun 08 2022 Jan Rybar <jrybar@redhat.com> - 6.6.4-13
+- Spec file alignment with guidelines
+- Resolves: bz#1965232
+
+* Fri Jan 21 2022 Fedora Release Engineering <releng@fedoraproject.org> - 6.6.4-12
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_36_Mass_Rebuild
+
+* Fri Jul 23 2021 Fedora Release Engineering <releng@fedoraproject.org> - 6.6.4-11
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_35_Mass_Rebuild
+
+* Tue Mar 02 2021 Zbigniew Jędrzejewski-Szmek <zbyszek@in.waw.pl> - 6.6.4-10
+- Rebuilt for updated systemd-rpm-macros
+  See https://pagure.io/fesco/issue/2583.
+
+* Wed Jan 27 2021 Fedora Release Engineering <releng@fedoraproject.org> - 6.6.4-9
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_34_Mass_Rebuild
+
+* Tue Jul 28 2020 Fedora Release Engineering <releng@fedoraproject.org> - 6.6.4-8
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_33_Mass_Rebuild
 
 * Thu Jan 30 2020 Fedora Release Engineering <releng@fedoraproject.org> - 6.6.4-7
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_32_Mass_Rebuild

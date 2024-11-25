@@ -1,18 +1,21 @@
-Vendor:         Microsoft Corporation
-Distribution:   Azure Linux
+%if 0%{?fedora} >= 36 || 0%{?rhel} > 9
+%global dict_dirname hunspell
+%else
+%global dict_dirname myspell
+%endif
+
 Name: hunspell-ne
 Summary: Nepali hunspell dictionaries
 Version: 20080425
-Release: 22%{?dist}
+Release: 33%{?dist}
 # Upstream Source and URL is down now, please don't report FTBFS bugs
-Source0: http://nepalinux.org/downloads/ne_NP_dict.zip
-Source1: %{name}-LICENSE.txt
+Source: http://nepalinux.org/downloads/ne_NP_dict.zip
 URL: http://nepalinux.org/downloads
 # License is given in README_ne_NP.txt file
-License: LGPLv2
+License: LGPL-2.1-only
 BuildArch: noarch
 
-Requires: hunspell
+Requires: hunspell-filesystem
 Supplements: (hunspell and langpacks-ne)
 
 %description
@@ -26,15 +29,13 @@ sed -i 's|निजामती/I15,22|निजामती/15,22|g' ne_NP.dic
 # Remove ^M and trailing whitespace characters
 sed -i 's/\r//;s/[ \t]*$//' ne_NP.dic
 
-cp %{SOURCE1} ./LICENSE.txt
-
 %build
 
 %install
-mkdir -p $RPM_BUILD_ROOT/%{_datadir}/myspell
-cp -p *.dic *.aff $RPM_BUILD_ROOT/%{_datadir}/myspell
+mkdir -p $RPM_BUILD_ROOT/%{_datadir}/%{dict_dirname}
+cp -p *.dic *.aff $RPM_BUILD_ROOT/%{_datadir}/%{dict_dirname}
 
-pushd $RPM_BUILD_ROOT/%{_datadir}/myspell/
+pushd $RPM_BUILD_ROOT/%{_datadir}/%{dict_dirname}/
 ne_NP_aliases="ne_IN"
 for lang in $ne_NP_aliases; do
         ln -s ne_NP.aff $lang.aff
@@ -43,13 +44,46 @@ done
 popd
 
 %files
-%license LICENSE.txt
 %doc README_ne_NP.txt 
-%{_datadir}/myspell/*
+%{_datadir}/%{dict_dirname}/*
 
 %changelog
-* Fri Oct 15 2021 Pawel Winogrodzki <pawelwi@microsoft.com> - 20080425-22
-- Initial CBL-Mariner import from Fedora 32 (license: MIT).
+* Thu Jul 18 2024 Fedora Release Engineering <releng@fedoraproject.org> - 20080425-33
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_41_Mass_Rebuild
+
+* Wed Jan 24 2024 Fedora Release Engineering <releng@fedoraproject.org> - 20080425-32
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Sat Jan 20 2024 Fedora Release Engineering <releng@fedoraproject.org> - 20080425-31
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Thu Jul 20 2023 Fedora Release Engineering <releng@fedoraproject.org> - 20080425-30
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_39_Mass_Rebuild
+
+* Thu Jan 19 2023 Fedora Release Engineering <releng@fedoraproject.org> - 20080425-29
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_38_Mass_Rebuild
+
+* Wed Nov 23 2022 Parag Nemade <pnemade AT redhat DOT com> - 20080425-28
+- Update license tag to SPDX format
+
+* Thu Jul 21 2022 Fedora Release Engineering <releng@fedoraproject.org> - 20080425-27
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_37_Mass_Rebuild
+
+* Tue Mar 22 2022 Parag Nemade <pnemade AT redhat DOT com> - 20080425-26
+- Add conditional for new hunspell dir path and update to Requires:
+  hunspell-filesystem
+
+* Thu Jan 20 2022 Fedora Release Engineering <releng@fedoraproject.org> - 20080425-25
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_36_Mass_Rebuild
+
+* Thu Jul 22 2021 Fedora Release Engineering <releng@fedoraproject.org> - 20080425-24
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_35_Mass_Rebuild
+
+* Tue Jan 26 2021 Fedora Release Engineering <releng@fedoraproject.org> - 20080425-23
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_34_Mass_Rebuild
+
+* Tue Jul 28 2020 Fedora Release Engineering <releng@fedoraproject.org> - 20080425-22
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_33_Mass_Rebuild
 
 * Wed Jan 29 2020 Fedora Release Engineering <releng@fedoraproject.org> - 20080425-21
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_32_Mass_Rebuild

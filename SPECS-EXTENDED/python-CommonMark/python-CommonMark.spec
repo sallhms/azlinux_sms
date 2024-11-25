@@ -1,10 +1,3 @@
-%{!?python3_pkgversion: %global python3_pkgversion 3}
-%{!?python3_version: %define python3_version %(python3 -c "import sys; sys.stdout.write(sys.version[:3])")}
-%{!?python3_sitelib: %define python3_sitelib %(python3 -c "from distutils.sysconfig import get_python_lib;print(get_python_lib())")}
-%{!?__python3: %global __python3 /usr/bin/python3}
-%{!?py3_build: %define py3_build CFLAGS="%{optflags}" %{__python3} setup.py build}
-%{!?py3_install: %define py3_install %{__python3} setup.py install --skip-build --root %{buildroot}}
-
 %global pypi_name CommonMark
 %global desc Pure Python port of jgm’s stmd.js, a Markdown parser and renderer for the\
 CommonMark specification, using only native modules. Once both this project and\
@@ -17,19 +10,30 @@ Python versions pre-3.4 use outdated (i.e. not HTML5 spec) entity conversion,\
 I’ve converted the 3.4 implementation into a single file, entitytrans.py which\
 so far seems to work (all tests pass on 2.7, 3.3, and 3.4).
 
-Summary:        Python parser for the CommonMark Markdown spec
 Name:           python-%{pypi_name}
 Version:        0.9.1
-Release:        3%{?dist}
+Release:        17%{?dist}
+Summary:        Python parser for the CommonMark Markdown spec
+
 License:        BSD
 URL:            https://pypi.python.org/pypi/%{pypi_name}
-Vendor:         Microsoft Corporation
-Distribution:   Azure Linux
 Source0:        https://files.pythonhosted.org/packages/60/48/a60f593447e8f0894ebb7f6e6c1f25dafc5e89c5879fdc9360ae93ff83f0/commonmark-0.9.1.tar.gz
+
+Patch0:         0001-Rename-cmark-entrypoint.patch
+
 BuildArch:      noarch
 
 %description
 %{desc}
+
+%package utils
+Summary:        Command-line tools built using %{name}
+
+%description utils
+%{desc}
+
+This package contains the 'commonmark' command.
+
 
 %package doc
 Summary:        Documentation for python-%{pypi_name}
@@ -42,46 +46,99 @@ Documentation package.
 
 %package -n     python%{python3_pkgversion}-%{pypi_name}
 BuildRequires:  python%{python3_pkgversion}-devel
-BuildRequires:  python%{python3_pkgversion}-hypothesis
 BuildRequires:  python%{python3_pkgversion}-setuptools
-BuildRequires:  python%{python3_pkgversion}-xml
-
-Suggests: python-CommonMark-doc
+BuildRequires:  python%{python3_pkgversion}-hypothesis
+Suggests:       python-CommonMark-doc
+Suggests:       %{name}-utils == %{version}-%{release}
 Summary:        %{summary}
 %{?python_provide:%python_provide python%{python3_pkgversion}-%{pypi_name}}
 
 %description -n python%{python3_pkgversion}-%{pypi_name}
 %{desc}
 
+
 %prep
-%setup -qn commonmark-%{version}
+%autosetup -p1 -n commonmark-%{version}
+
 # Fix non executable scripts
 sed -i '1{\@^#!/usr/bin/env python@d}' commonmark/tests/run_spec_tests.py
 sed -i '1{\@^#!/usr/bin/env python@d}' commonmark/cmark.py
 
+
+
 %build
 %py3_build
 
+
 %install
 %py3_install
+
 
 %check
 export PYTHONIOENCODING=UTF-8
 PYTHONPATH=$(pwd) %{__python3} setup.py test
 
+
 %files -n python%{python3_pkgversion}-%{pypi_name}
 %license LICENSE
-%{_bindir}/cmark
 %{python3_sitelib}/commonmark-%{version}-py%{python3_version}.egg-info
 %{python3_sitelib}/commonmark/
+
+%files utils
+%license LICENSE
+%{_bindir}/commonmark
 
 %files doc
 %license LICENSE
 %doc README.rst spec.txt
 
+
 %changelog
-* Wed Oct 21 2020 Steve Laughman <steve.laughman@microsoft.com> - 0.9.1-3
-- Initial CBL-Mariner import from Fedora 33 (license: MIT)
+* Fri Jul 19 2024 Fedora Release Engineering <releng@fedoraproject.org> - 0.9.1-17
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_41_Mass_Rebuild
+
+* Fri Jun 07 2024 Python Maint <python-maint@redhat.com> - 0.9.1-16
+- Rebuilt for Python 3.13
+
+* Fri Jan 26 2024 Fedora Release Engineering <releng@fedoraproject.org> - 0.9.1-15
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Sun Jan 21 2024 Fedora Release Engineering <releng@fedoraproject.org> - 0.9.1-14
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Fri Jul 21 2023 Fedora Release Engineering <releng@fedoraproject.org> - 0.9.1-13
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_39_Mass_Rebuild
+
+* Thu Jun 15 2023 Python Maint <python-maint@redhat.com> - 0.9.1-12
+- Rebuilt for Python 3.12
+
+* Fri Jan 20 2023 Fedora Release Engineering <releng@fedoraproject.org> - 0.9.1-11
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_38_Mass_Rebuild
+
+* Fri Jul 22 2022 Fedora Release Engineering <releng@fedoraproject.org> - 0.9.1-10
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_37_Mass_Rebuild
+
+* Mon Jun 13 2022 Python Maint <python-maint@redhat.com> - 0.9.1-9
+- Rebuilt for Python 3.11
+
+* Tue May 31 2022 FeRD (Frank Dana) <ferdnyc@gmail.com> - 0.9.1-8
+- Remove python-future requirement (only required in Python2)
+
+* Sat May 28 2022 FeRD (Frank Dana) <ferdnyc@gmail.com> - 0.9.1-7
+- Split out command-line tool to -utils subpackage, rename 'commonmark'
+  (bug 1958762)
+
+* Fri Jan 21 2022 Fedora Release Engineering <releng@fedoraproject.org> - 0.9.1-6
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_36_Mass_Rebuild
+
+* Fri Jul 23 2021 Fedora Release Engineering <releng@fedoraproject.org> - 0.9.1-5
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_35_Mass_Rebuild
+
+* Fri Jun 04 2021 Python Maint <python-maint@redhat.com> - 0.9.1-4
+- Rebuilt for Python 3.10
+
+* Wed Jan 27 2021 Fedora Release Engineering <releng@fedoraproject.org> - 0.9.1-3
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_34_Mass_Rebuild
 
 * Tue Jul 28 2020 Fedora Release Engineering <releng@fedoraproject.org> - 0.9.1-2
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_33_Mass_Rebuild

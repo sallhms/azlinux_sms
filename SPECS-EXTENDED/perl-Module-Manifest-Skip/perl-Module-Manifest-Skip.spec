@@ -1,16 +1,19 @@
 Name:           perl-Module-Manifest-Skip
 Version:        0.23
-Release:        17%{?dist}
+Release:        32%{?dist}
 Summary:        MANIFEST.SKIP Manangement for Modules
-License:        GPL+ or Artistic
-Vendor:         Microsoft Corporation
-Distribution:   Azure Linux
+License:        GPL-1.0-or-later OR Artistic-1.0-Perl
 URL:            https://metacpan.org/release/Module-Manifest-Skip
-Source0:        https://cpan.metacpan.org/authors/id/I/IN/INGY/Module-Manifest-Skip-%{version}.tar.gz#/perl-Module-Manifest-Skip-%{version}.tar.gz
+Source0:        https://cpan.metacpan.org/authors/id/I/IN/INGY/Module-Manifest-Skip-%{version}.tar.gz
+# Adapt to changes in Moo-2.004000, bug #1826148,
+# <https://github.com/ingydotnet/module-manifest-skip-pm/issues/7>
+Patch0:         Module-Manifest-Skip-0.23-Adapt-to-changes-in-Moo-2.004000.patch
 BuildArch:      noarch
-BuildRequires:  perl-interpreter
+BuildRequires:  make
 BuildRequires:  perl-generators
-BuildRequires:  perl(ExtUtils::MakeMaker) >= 6.30
+BuildRequires:  perl-interpreter
+BuildRequires:  perl(:VERSION) >= 5.8.1
+BuildRequires:  perl(ExtUtils::MakeMaker) >= 6.76
 BuildRequires:  perl(File::ShareDir::Install) >= 0.06
 BuildRequires:  perl(strict)
 BuildRequires:  perl(warnings)
@@ -24,7 +27,6 @@ BuildRequires:  perl(Cwd)
 BuildRequires:  perl(Exporter)
 BuildRequires:  perl(lib)
 BuildRequires:  perl(Test::More)
-Requires:       perl(:MODULE_COMPAT_%(eval "`perl -V:version`"; echo $version))
 Requires:       perl(File::ShareDir)
 Requires:       perl(File::Spec)
 Requires:       perl(Moo) >= 0.091013
@@ -32,6 +34,9 @@ Requires:       perl(warnings)
 
 # Remove under-speficied dependencies
 %global __requires_exclude %{?__requires_exclude:%__requires_exclude|}^perl\\(Moo\\)$
+# Remove private modules
+%global __requires_exclude %{?__requires_exclude:%__requires_exclude|}^perl\\(TestModuleManifestSkip\\)$
+%global __provides_exclude %{?__provides_exclude:%__provides_exclude|}^perl\\(TestModuleManifestSkip\\)$
 
 %description
 CPAN module authors use a MANIFEST.SKIP file to exclude certain well known
@@ -43,30 +48,114 @@ one of your own entries, you have to add all the common ones yourself.  This
 module attempts to make all of this boring process as simple and reliable as
 possible.
 
+%package tests
+Summary:        Tests for %{name}
+Requires:       %{name} = %{?epoch:%{epoch}:}%{version}-%{release}
+Requires:       coreutils
+Requires:       perl-Test-Harness
+
+%description tests
+Tests from %{name}. Execute them
+with "%{_libexecdir}/%{name}/test".
 
 %prep
 %setup -q -n Module-Manifest-Skip-%{version}
+%patch -P0 -p1
+# Help generators to recognize Perl scripts
+for F in $(find t/ -name '*.t'); do
+    perl -i -MConfig -ple 'print $Config{startperl} if $. == 1 && !s{\A#!\s*perl}{$Config{startperl}}' "$F"
+    chmod +x "$F"
+done
 
 %build
-perl Makefile.PL INSTALLDIRS=vendor
-make %{?_smp_mflags}
+perl Makefile.PL INSTALLDIRS=vendor NO_PACKLIST=1 NO_PERLLOCAL=1
+%{make_build}
 
 %install
-make pure_install DESTDIR=$RPM_BUILD_ROOT
-find $RPM_BUILD_ROOT -type f -name .packlist -exec rm -f {} \;
-%{_fixperms} $RPM_BUILD_ROOT/*
+%{make_install}
+# Install tests
+mkdir -p %{buildroot}%{_libexecdir}/%{name}
+cp -a t %{buildroot}%{_libexecdir}/%{name}
+# share dir is for testing
+cp -a share %{buildroot}%{_libexecdir}/%{name}
+# Remove author tests
+rm -f %{buildroot}%{_libexecdir}/%{name}/t/release-pod-syntax.t
+cat > %{buildroot}%{_libexecdir}/%{name}/test << 'EOF'
+#!/bin/bash
+set -e
+# Some test files writes into CWD
+DIR=$(mktemp -d)
+cp -a %{_libexecdir}/%{name}/* "$DIR"
+pushd "$DIR"
+prove -I . -j "$(getconf _NPROCESSORS_ONLN)"
+popd
+rm -r "$DIR"
+EOF
+chmod +x %{buildroot}%{_libexecdir}/%{name}/test
+%{_fixperms} %{buildroot}/*
 
 %check
+unset RELEASE_TESTING
 make test
 
 %files
-%doc Changes CONTRIBUTING LICENSE README
+%license LICENSE
+%doc Changes CONTRIBUTING README
 %{perl_vendorlib}/*
 %{_mandir}/man3/*
 
+%files tests
+%{_libexecdir}/%{name}
+
 %changelog
-* Fri Oct 15 2021 Pawel Winogrodzki <pawelwi@microsoft.com> - 0.23-17
-- Initial CBL-Mariner import from Fedora 32 (license: MIT).
+* Fri Jul 19 2024 Fedora Release Engineering <releng@fedoraproject.org> - 0.23-32
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_41_Mass_Rebuild
+
+* Thu Jan 25 2024 Fedora Release Engineering <releng@fedoraproject.org> - 0.23-31
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Sun Jan 21 2024 Fedora Release Engineering <releng@fedoraproject.org> - 0.23-30
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Thu Jul 20 2023 Fedora Release Engineering <releng@fedoraproject.org> - 0.23-29
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_39_Mass_Rebuild
+
+* Fri Jan 20 2023 Fedora Release Engineering <releng@fedoraproject.org> - 0.23-28
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_38_Mass_Rebuild
+
+* Tue Dec 13 2022 Michal Josef Špaček <mspacek@redhat.com> - 0.23-27
+- Remove obsolete code
+
+* Sun Dec 11 2022 Michal Josef Špaček <mspacek@redhat.com> - 0.23-26
+- Package tests
+- Update license to SPDX format
+
+* Fri Jul 22 2022 Fedora Release Engineering <releng@fedoraproject.org> - 0.23-25
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_37_Mass_Rebuild
+
+* Wed Jun 01 2022 Jitka Plesnikova <jplesnik@redhat.com> - 0.23-24
+- Perl 5.36 rebuild
+
+* Fri Jan 21 2022 Fedora Release Engineering <releng@fedoraproject.org> - 0.23-23
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_36_Mass_Rebuild
+
+* Thu Jul 22 2021 Fedora Release Engineering <releng@fedoraproject.org> - 0.23-22
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_35_Mass_Rebuild
+
+* Fri May 21 2021 Jitka Plesnikova <jplesnik@redhat.com> - 0.23-21
+- Perl 5.34 rebuild
+
+* Wed Jan 27 2021 Fedora Release Engineering <releng@fedoraproject.org> - 0.23-20
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_34_Mass_Rebuild
+
+* Tue Jul 28 2020 Fedora Release Engineering <releng@fedoraproject.org> - 0.23-19
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_33_Mass_Rebuild
+
+* Tue Jun 23 2020 Jitka Plesnikova <jplesnik@redhat.com> - 0.23-18
+- Perl 5.32 rebuild
+
+* Tue Apr 21 2020 Petr Pisar <ppisar@redhat.com> - 0.23-17
+- Adapt to changes in Moo-2.004000 (bug #1826148)
 
 * Thu Jan 30 2020 Fedora Release Engineering <releng@fedoraproject.org> - 0.23-16
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_32_Mass_Rebuild

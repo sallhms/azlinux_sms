@@ -1,12 +1,10 @@
 Name:		perl-Test-CPAN-Meta-JSON
 Version:	0.16
-Release:	17%{?dist}
+Release:	29%{?dist}
 Summary:	Validate a META.json file within a CPAN distribution
-License:	Artistic 2.0
-Vendor:         Microsoft Corporation
-Distribution:   Azure Linux
+License:	Artistic-2.0
 URL:		https://metacpan.org/release/Test-CPAN-Meta-YAML
-Source0:	https://cpan.metacpan.org/modules/by-module/Test/Test-CPAN-Meta-JSON-%{version}.tar.gz#/perl-Test-CPAN-Meta-JSON-%{version}.tar.gz
+Source0:	https://cpan.metacpan.org/modules/by-module/Test/Test-CPAN-Meta-JSON-%{version}.tar.gz
 Patch0:		Test-CPAN-Meta-JSON-0.16-utf8.patch
 BuildArch:	noarch
 # Module Build
@@ -30,8 +28,8 @@ BuildRequires:	perl(Test::More)
 BuildRequires:	perl(Test::CPAN::Meta)
 BuildRequires:	perl(Test::Pod) >= 1.00
 BuildRequires:	perl(Test::Pod::Coverage) >= 0.08
-# Runtime
-Requires:	perl(:MODULE_COMPAT_%(eval "`perl -V:version`"; echo $version))
+# Dependencies
+# (none)
 
 %description
 This module was written to ensure that a META.json file, provided with a
@@ -45,7 +43,7 @@ See CPAN::Meta for further details of the CPAN Meta Specification.
 %setup -q -n Test-CPAN-Meta-JSON-%{version}
 
 # Recode LICENSE as UTF-8
-%patch 0
+%patch -P 0
 
 %build
 perl Makefile.PL INSTALLDIRS=vendor
@@ -60,19 +58,51 @@ find %{buildroot} -type f -name .packlist -delete
 make test AUTOMATED_TESTING=1
 
 %files
-%if 0%{?_licensedir:1}
 %license LICENSE
-%else
-%doc LICENSE
-%endif
 %doc Changes README examples/
 %{perl_vendorlib}/Test/
 %{_mandir}/man3/Test::CPAN::Meta::JSON.3*
 %{_mandir}/man3/Test::CPAN::Meta::JSON::Version.3*
 
 %changelog
-* Fri Oct 15 2021 Pawel Winogrodzki <pawelwi@microsoft.com> - 0.16-17
-- Initial CBL-Mariner import from Fedora 32 (license: MIT).
+* Fri Jul 19 2024 Fedora Release Engineering <releng@fedoraproject.org> - 0.16-29
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_41_Mass_Rebuild
+
+* Thu Jan 25 2024 Fedora Release Engineering <releng@fedoraproject.org> - 0.16-28
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Sun Jan 21 2024 Fedora Release Engineering <releng@fedoraproject.org> - 0.16-27
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Fri Jul 21 2023 Fedora Release Engineering <releng@fedoraproject.org> - 0.16-26
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_39_Mass_Rebuild
+
+* Fri Jan 20 2023 Fedora Release Engineering <releng@fedoraproject.org> - 0.16-25
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_38_Mass_Rebuild
+
+* Fri Jul 22 2022 Fedora Release Engineering <releng@fedoraproject.org> - 0.16-24
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_37_Mass_Rebuild
+
+* Tue May 31 2022 Jitka Plesnikova <jplesnik@redhat.com> - 0.16-23
+- Perl 5.36 rebuild
+
+* Fri Jan 21 2022 Fedora Release Engineering <releng@fedoraproject.org> - 0.16-22
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_36_Mass_Rebuild
+
+* Fri Jul 23 2021 Fedora Release Engineering <releng@fedoraproject.org> - 0.16-21
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_35_Mass_Rebuild
+
+* Fri May 21 2021 Jitka Plesnikova <jplesnik@redhat.com> - 0.16-20
+- Perl 5.34 rebuild
+
+* Wed Jan 27 2021 Fedora Release Engineering <releng@fedoraproject.org> - 0.16-19
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_34_Mass_Rebuild
+
+* Tue Jul 28 2020 Fedora Release Engineering <releng@fedoraproject.org> - 0.16-18
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_33_Mass_Rebuild
+
+* Tue Jun 23 2020 Jitka Plesnikova <jplesnik@redhat.com> - 0.16-17
+- Perl 5.32 rebuild
 
 * Thu Jan 30 2020 Fedora Release Engineering <releng@fedoraproject.org> - 0.16-16
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_32_Mass_Rebuild

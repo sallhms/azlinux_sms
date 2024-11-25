@@ -1,23 +1,23 @@
-Vendor:         Microsoft Corporation
-Distribution:   Azure Linux
 %define	_bindir	/bin
 
 Summary: A utility for configuring serial ports
 Name: setserial
 Version: 2.17
-Release: 52%{?dist}
-Source0: https://sourceforge.net/projects/setserial/files/setserial/%{version}/%{name}-%{version}.tar.gz
-Source1: %{name}-LICENSE.txt
+Release: 61%{?dist}
+Source: https://sourceforge.net/projects/setserial/files/setserial/%{version}/%{name}-%{version}.tar.gz
 Patch0: setserial-2.17-fhs.patch
 Patch1: setserial-2.17-rc.patch
 Patch2: setserial-2.17-readme.patch
 Patch3: setserial-2.17-spelling.patch
 Patch4: setserial-hayesesp.patch
 Patch5: setserial-aarch64.patch
-License: GPL+
+Patch6: setserial-configure-c99.patch
+Patch7: setserial-c99.patch
+License: GPL-1.0-or-later
 URL: http://setserial.sourceforge.net/
 ExcludeArch: s390 s390x
 
+BuildRequires: make
 BuildRequires: gcc
 BuildRequires: groff
 
@@ -29,25 +29,25 @@ port and IRQ that a particular serial device is using, and more.
 %prep
 %setup -q
 # Use FHS directory layout.
-%patch 0 -p1 -b .fhs
+%patch -P0 -p1 -b .fhs
 
 # Fixed initscript.
-%patch 1 -p1 -b .rc
+%patch -P1 -p1 -b .rc
 
 # Corrected readme file.
-%patch 2 -p1 -b .readme
+%patch -P2 -p1 -b .readme
 
 # Fixed spelling in help output.
-%patch 3 -p1 -b .spelling
+%patch -P3 -p1 -b .spelling
 
 # Don't require hayesesp.h (bug #564947).
-%patch 4 -p1 -b .hayesesp
+%patch -P4 -p1 -b .hayesesp
 rm -f config.cache
 
 # Support aarch64 (bug #926522).
-%patch 5 -p1 -b .aarch64
-
-mv %{SOURCE1} ./LICENSE.txt
+%patch -P5 -p1 -b .aarch64
+%patch -P6 -p1
+%patch -P7 -p1
 
 %build
 %set_build_flags
@@ -63,17 +63,43 @@ mkdir -p ${RPM_BUILD_ROOT}/%{_mandir}/man8
 make install DESTDIR=${RPM_BUILD_ROOT}
 
 %files
-%license LICENSE.txt
 %doc README rc.serial
 %{_bindir}/setserial
 %{_mandir}/man*/*
 
 %changelog
-* Fri Dec 10 2021 Thomas Crain <thcrain@microsoft.com> - 2.17-52
-- License verified
+* Sat Jul 20 2024 Fedora Release Engineering <releng@fedoraproject.org> - 2.17-61
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_41_Mass_Rebuild
 
-* Fri Oct 15 2021 Pawel Winogrodzki <pawelwi@microsoft.com> - 2.17-51
-- Initial CBL-Mariner import from Fedora 32 (license: MIT).
+* Wed May 08 2024 Than Ngo <than@redhat.com> - 2.17-60
+- Migrate to SPDX license
+
+* Sat Jan 27 2024 Fedora Release Engineering <releng@fedoraproject.org> - 2.17-59
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Sat Jul 22 2023 Fedora Release Engineering <releng@fedoraproject.org> - 2.17-58
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_39_Mass_Rebuild
+
+* Thu Apr 13 2023 Florian Weimer <fweimer@redhat.com> - 2.17-57
+- Port to C99
+
+* Sat Jan 21 2023 Fedora Release Engineering <releng@fedoraproject.org> - 2.17-56
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_38_Mass_Rebuild
+
+* Sat Jul 23 2022 Fedora Release Engineering <releng@fedoraproject.org> - 2.17-55
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_37_Mass_Rebuild
+
+* Sat Jan 22 2022 Fedora Release Engineering <releng@fedoraproject.org> - 2.17-54
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_36_Mass_Rebuild
+
+* Fri Jul 23 2021 Fedora Release Engineering <releng@fedoraproject.org> - 2.17-53
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_35_Mass_Rebuild
+
+* Wed Jan 27 2021 Fedora Release Engineering <releng@fedoraproject.org> - 2.17-52
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_34_Mass_Rebuild
+
+* Wed Jul 29 2020 Fedora Release Engineering <releng@fedoraproject.org> - 2.17-51
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_33_Mass_Rebuild
 
 * Thu Jan 30 2020 Fedora Release Engineering <releng@fedoraproject.org> - 2.17-50
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_32_Mass_Rebuild

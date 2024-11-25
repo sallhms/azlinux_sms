@@ -1,8 +1,6 @@
-Vendor:         Microsoft Corporation
-Distribution:   Azure Linux
 Name:           filebench
 Version:        1.4.9.1
-Release:        14%{?dist}
+Release:        24%{?dist}
 Summary:        A model based file system workload generator
 
 License:        CDDL
@@ -11,10 +9,12 @@ Source0:        http://downloads.sourceforge.net/%{name}/%{name}-%{version}.tar.
 Source1:        LICENSE
 Source2:        filebench.1
 Patch0:         make-dofile-global.patch
+Patch1:         filebench-configure-c99.patch
 
 BuildRequires:  gcc
 BuildRequires:  flex
 BuildRequires:  bison
+BuildRequires: make
 
 %description
 Filebench is a file system and storage benchmark that allows to generate a
@@ -24,7 +24,8 @@ for detailed workload specification.
 
 %prep
 %setup -q
-%patch 0 -p1 -b .dofile
+%patch -P0 -p1 -b .dofile
+%patch -P1 -p1 -b .c99
 cp -p %{SOURCE1} .
 cp -p %{SOURCE2} .
 
@@ -48,8 +49,38 @@ install -m 644 -p %{SOURCE2} $RPM_BUILD_ROOT%{_mandir}/man1
 
 
 %changelog
-* Fri Oct 15 2021 Pawel Winogrodzki <pawelwi@microsoft.com> - 1.4.9.1-14
-- Initial CBL-Mariner import from Fedora 32 (license: MIT).
+* Wed Jul 17 2024 Fedora Release Engineering <releng@fedoraproject.org> - 1.4.9.1-24
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_41_Mass_Rebuild
+
+* Wed Jan 24 2024 Fedora Release Engineering <releng@fedoraproject.org> - 1.4.9.1-23
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Fri Jan 19 2024 Fedora Release Engineering <releng@fedoraproject.org> - 1.4.9.1-22
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Wed Jul 19 2023 Fedora Release Engineering <releng@fedoraproject.org> - 1.4.9.1-21
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_39_Mass_Rebuild
+
+* Thu Jan 19 2023 Fedora Release Engineering <releng@fedoraproject.org> - 1.4.9.1-20
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_38_Mass_Rebuild
+
+* Tue Dec 20 2022 Florian Weimer <fweimer@redhat.com> - 1.4.9.1-19
+- Port configure script to C99
+
+* Thu Jul 21 2022 Fedora Release Engineering <releng@fedoraproject.org> - 1.4.9.1-18
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_37_Mass_Rebuild
+
+* Thu Jan 20 2022 Fedora Release Engineering <releng@fedoraproject.org> - 1.4.9.1-17
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_36_Mass_Rebuild
+
+* Wed Jul 21 2021 Fedora Release Engineering <releng@fedoraproject.org> - 1.4.9.1-16
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_35_Mass_Rebuild
+
+* Tue Jan 26 2021 Fedora Release Engineering <releng@fedoraproject.org> - 1.4.9.1-15
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_34_Mass_Rebuild
+
+* Mon Jul 27 2020 Fedora Release Engineering <releng@fedoraproject.org> - 1.4.9.1-14
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_33_Mass_Rebuild
 
 * Tue Jan 28 2020 Fedora Release Engineering <releng@fedoraproject.org> - 1.4.9.1-13
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_32_Mass_Rebuild

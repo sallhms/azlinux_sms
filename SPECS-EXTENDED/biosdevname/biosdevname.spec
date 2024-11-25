@@ -1,22 +1,25 @@
 Name:		biosdevname
 Version:	0.7.3
-Release:	7%{?dist}
+Release:	17%{?dist}
 Summary:	Udev helper for naming devices per BIOS names
-License:	GPLv2
-Vendor:         Microsoft Corporation
-Distribution:   Azure Linux
-URL:		https://github.com/dell/biosdevname
+
+# * biosdevname is GPL-2.0-only
+# * bundled dmidecode is GPL-2.0-or-later
+License:	GPL-2.0-only AND GPL-2.0-or-later
+
+URL:		http://linux.dell.com/files/%{name}
 # SMBIOS only exists on these arches.  It's also likely that other
 # arches don't expect the PCI bus to be sorted breadth-first, or of
 # so, there haven't been any comments about that on LKML.
 ExclusiveArch:	%{ix86} x86_64
-Source0:	https://github.com/dell/%{name}/archive/refs/tags/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
+Source0:	http://linux.dell.com/files/%{name}/%{name}-%{version}/%{name}-%{version}.tar.gz
 
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  gcc
 BuildRequires:  pciutils-devel
 BuildRequires:  zlib-devel
+BuildRequires: make
 
 Patch1: 0001-Disable-biosdevname-by-default.patch
 Patch2: 0002-Place-udev-rules-to-usr-lib.patch
@@ -41,19 +44,47 @@ make %{?_smp_mflags}
 make install install-data DESTDIR=%{buildroot}
 
 %files
-%license COPYING
-%doc README
+%doc COPYING README
 %{_sbindir}/%{name}
 %{_prefix}/lib/udev/rules.d/*.rules
 %{_mandir}/man1/%{name}.1*
 
 %changelog
-* Wed Jan 12 2022 Pawel Winogrodzki <pawelwi@microsoft.com> - 0.7.3-7
-- License verified.
-- Updated source and project URLs.
+* Wed Jul 17 2024 Fedora Release Engineering <releng@fedoraproject.org> - 0.7.3-17
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_41_Mass_Rebuild
 
-* Fri Oct 15 2021 Pawel Winogrodzki <pawelwi@microsoft.com> - 0.7.3-6
-- Initial CBL-Mariner import from Fedora 32 (license: MIT).
+* Tue Jan 23 2024 Fedora Release Engineering <releng@fedoraproject.org> - 0.7.3-16
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Fri Jan 19 2024 Fedora Release Engineering <releng@fedoraproject.org> - 0.7.3-15
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Thu Jul 27 2023 Lukáš Zaoral <lzaoral@redhat.com> - 0.7.3-14
+- correct the License: field
+
+* Wed Jul 26 2023 Lukáš Zaoral <lzaoral@redhat.com> - 0.7.3-13
+- migrate to SPDX license format
+
+* Wed Jul 19 2023 Fedora Release Engineering <releng@fedoraproject.org> - 0.7.3-12
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_39_Mass_Rebuild
+
+* Wed Jan 18 2023 Fedora Release Engineering <releng@fedoraproject.org> - 0.7.3-11
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_38_Mass_Rebuild
+
+* Wed Jul 20 2022 Fedora Release Engineering <releng@fedoraproject.org> - 0.7.3-10
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_37_Mass_Rebuild
+
+* Wed Jan 19 2022 Fedora Release Engineering <releng@fedoraproject.org> - 0.7.3-9
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_36_Mass_Rebuild
+
+* Wed Jul 21 2021 Fedora Release Engineering <releng@fedoraproject.org> - 0.7.3-8
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_35_Mass_Rebuild
+
+* Tue Jan 26 2021 Fedora Release Engineering <releng@fedoraproject.org> - 0.7.3-7
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_34_Mass_Rebuild
+
+* Mon Jul 27 2020 Fedora Release Engineering <releng@fedoraproject.org> - 0.7.3-6
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_33_Mass_Rebuild
 
 * Tue Jan 28 2020 Fedora Release Engineering <releng@fedoraproject.org> - 0.7.3-5
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_32_Mass_Rebuild
@@ -167,6 +198,10 @@ make install install-data DESTDIR=%{buildroot}
 - Don't display _vf suffix on NPAR devices with single function
 - Fix PCIe/PIRQ slot mapping
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> f16
 * Thu Apr 21 2011 Praveen K Paladugu <praveen_paladugu@dell.com> - 0.3.8-1
 - Add changes to parse VPD structure for device mapping on NPAR devices
 - Fix pathname

@@ -1,51 +1,56 @@
 %global udevdir %(pkg-config --variable=udevdir udev)
-Summary:        Tools for connecting joysticks & legacy devices to the kernel's input subsystem
+
 Name:           linuxconsoletools
 Version:        1.8.1
-Release:        3%{?dist}
-License:        GPLv2+
-Vendor:         Microsoft Corporation
-Distribution:   Azure Linux
-URL:            https://sourceforge.net/projects/linuxconsole/
-Source:         https://downloads.sourceforge.net/linuxconsole/%{name}-%{version}.tar.bz2
+Release:        8%{?dist}
+Summary:        Tools for connecting joysticks & legacy devices to the kernel's input subsystem
+License:        GPL-2.0-or-later
+URL:            http://sourceforge.net/projects/linuxconsole/
+Source:         http://downloads.sourceforge.net/linuxconsole/%{name}-%{version}.tar.bz2
+
 BuildRequires:  gcc
-BuildRequires:  libudev-devel
-BuildRequires:  make
 BuildRequires:  pkgconfig(sdl2)
 BuildRequires:  systemd-udev
-Conflicts:      gpm < 1.20.6-26
+BuildRequires: make
+
 Provides:       joystick = %{version}-%{release}
 Provides:       ff-utils = 1:%{version}-%{release}
 Obsoletes:      joystick < 1.2.16-1
 Obsoletes:      ff-utils < 2.4.22-1
+Conflicts:      gpm < 1.20.6-26
+
 
 %description
 This package contains utilities for testing and configuring joysticks,
 connecting legacy devices to the kernel's input subsystem (providing support
 for serial mice, touchscreens etc.), and test the input event layer.
 
+
 %prep
 %autosetup
 
+
 %build
 %{set_build_flags}
-%make_build PREFIX=%{_prefix}
+%{make_build} PREFIX=%{_prefix}
 
 # moving helper scripts from /usr/share/joystick to /usr/libexec/joystick
 sed -i "s|%{_datadir}/joystick|%{_libexecdir}/joystick|g" utils/jscal-restore utils/jscal-store
 
+
 %install
-%make_install PREFIX=%{_prefix}
+%{make_install} PREFIX=%{_prefix}
 
 # moving helper scripts from /usr/share/joystick to /usr/libexec/joystick
 install -d -m 0755 %{buildroot}%{_libexecdir}/joystick
 mv -f %{buildroot}%{_datadir}/joystick/* %{buildroot}%{_libexecdir}/joystick/
 
 # fixing udev dir
-mv -f %{buildroot}/lib %{buildroot}%{_prefix}/
+mv -f %{buildroot}/lib %{buildroot}/usr/
 
 # fixing man permissions
 chmod -x %{buildroot}%{_mandir}/man1/*
+
 
 %files
 %doc README NEWS
@@ -68,10 +73,25 @@ chmod -x %{buildroot}%{_mandir}/man1/*
 
 %{_mandir}/man1/*
 
+
 %changelog
-* Wed Dec 07 2022 Sumedh Sharma <sumsharma@microsoft.com> - 1.8.1-3
-- Initial CBL-Mariner import from Fedora 37 (license: MIT)
-- License verified
+* Thu Jul 18 2024 Fedora Release Engineering <releng@fedoraproject.org> - 1.8.1-8
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_41_Mass_Rebuild
+
+* Thu Jan 25 2024 Fedora Release Engineering <releng@fedoraproject.org> - 1.8.1-7
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Sun Jan 21 2024 Fedora Release Engineering <releng@fedoraproject.org> - 1.8.1-6
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Mon Oct 23 2023 Ondrej Sloup <osloup@redhat.com> - 1.8.1-5
+- Update license tag to the SPDX format
+
+* Thu Jul 20 2023 Fedora Release Engineering <releng@fedoraproject.org> - 1.8.1-4
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_39_Mass_Rebuild
+
+* Thu Jan 19 2023 Fedora Release Engineering <releng@fedoraproject.org> - 1.8.1-3
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_38_Mass_Rebuild
 
 * Thu Jul 21 2022 Fedora Release Engineering <releng@fedoraproject.org> - 1.8.1-2
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_37_Mass_Rebuild

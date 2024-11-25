@@ -1,8 +1,8 @@
 %global _unpackaged_files_terminate_build 0
 
 Name:    pcp
-Version: 5.1.1
-Release: 3%{?dist}
+Version: 6.3.1
+Release: 1%{?dist}
 Summary: System-level performance monitoring and performance management
 License: GPLv2+ and LGPLv2+ and CC-BY
 Vendor:         Microsoft Corporation

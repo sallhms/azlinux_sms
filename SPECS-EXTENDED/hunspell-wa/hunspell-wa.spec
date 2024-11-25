@@ -1,16 +1,22 @@
-Vendor:         Microsoft Corporation
-Distribution:   Azure Linux
+%if 0%{?fedora} >= 36 || 0%{?rhel} > 9
+%global dict_dirname hunspell
+%else
+%global dict_dirname myspell
+%endif
+
 Name: hunspell-wa
 Summary: Walloon hunspell dictionaries
 Version: 0.4.17
-Release: 14%{?dist}
+Release: 25%{?dist}
 Source0: http://chanae.walon.org/walon/aspell-wa-%{version}.tar.bz2
 URL: http://chanae.walon.org/walon/aspell.php
-License: LGPLv2+
+License: LGPL-2.1-or-later
 BuildArch: noarch
 Patch0: hunspell-wa-0.4.15-buildfix.patch
 
-Requires: hunspell
+BuildRequires: make
+
+Requires: hunspell-filesystem
 Supplements: (hunspell and langpacks-wa)
 
 %description
@@ -18,7 +24,7 @@ Walloon hunspell dictionaries.
 
 %prep
 %setup -q -n aspell-wa-%{version}
-%patch 0 -p1 -b .buildfix
+%patch -P0 -p1 -b .buildfix
 
 %build
 make myspell
@@ -34,19 +40,52 @@ for i in TODO README; do
 done
 
 %install
-mkdir -p $RPM_BUILD_ROOT/%{_datadir}/myspell
-cp -p wa.dic $RPM_BUILD_ROOT/%{_datadir}/myspell/wa_BE.dic
-cp -p wa.aff $RPM_BUILD_ROOT/%{_datadir}/myspell/wa_BE.aff
+mkdir -p $RPM_BUILD_ROOT/%{_datadir}/%{dict_dirname}
+cp -p wa.dic $RPM_BUILD_ROOT/%{_datadir}/%{dict_dirname}/wa_BE.dic
+cp -p wa.aff $RPM_BUILD_ROOT/%{_datadir}/%{dict_dirname}/wa_BE.aff
 
 
 %files
-%license Copyright LGPL
-%doc README ChangeLog TODO
-%{_datadir}/myspell/*
+%doc README LGPL ChangeLog TODO
+%{_datadir}/%{dict_dirname}/*
 
 %changelog
-* Fri Oct 15 2021 Pawel Winogrodzki <pawelwi@microsoft.com> - 0.4.17-14
-- Initial CBL-Mariner import from Fedora 32 (license: MIT).
+* Thu Jul 18 2024 Fedora Release Engineering <releng@fedoraproject.org> - 0.4.17-25
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_41_Mass_Rebuild
+
+* Wed Jan 24 2024 Fedora Release Engineering <releng@fedoraproject.org> - 0.4.17-24
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Sat Jan 20 2024 Fedora Release Engineering <releng@fedoraproject.org> - 0.4.17-23
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Thu Jul 20 2023 Fedora Release Engineering <releng@fedoraproject.org> - 0.4.17-22
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_39_Mass_Rebuild
+
+* Thu Feb 23 2023 Caolán McNamara <caolanm@redhat.com> - 0.4.17-21
+- migrated to SPDX license
+
+* Thu Jan 19 2023 Fedora Release Engineering <releng@fedoraproject.org> - 0.4.17-20
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_38_Mass_Rebuild
+
+* Thu Jul 21 2022 Fedora Release Engineering <releng@fedoraproject.org> - 0.4.17-19
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_37_Mass_Rebuild
+
+* Tue Mar 22 2022 Parag Nemade <pnemade AT redhat DOT com> - 0.4.17-18
+- Add conditional for new hunspell dir path and update to Requires:
+  hunspell-filesystem
+
+* Thu Jan 20 2022 Fedora Release Engineering <releng@fedoraproject.org> - 0.4.17-17
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_36_Mass_Rebuild
+
+* Thu Jul 22 2021 Fedora Release Engineering <releng@fedoraproject.org> - 0.4.17-16
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_35_Mass_Rebuild
+
+* Tue Jan 26 2021 Fedora Release Engineering <releng@fedoraproject.org> - 0.4.17-15
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_34_Mass_Rebuild
+
+* Tue Jul 28 2020 Fedora Release Engineering <releng@fedoraproject.org> - 0.4.17-14
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_33_Mass_Rebuild
 
 * Wed Jan 29 2020 Fedora Release Engineering <releng@fedoraproject.org> - 0.4.17-13
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_32_Mass_Rebuild

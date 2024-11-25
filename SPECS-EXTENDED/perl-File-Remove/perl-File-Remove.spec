@@ -1,35 +1,32 @@
 Name:		perl-File-Remove
-Version:	1.58
-Release:	7%{?dist}
+Version:	1.61
+Release:	8%{?dist}
 Summary:	Convenience module for removing files and directories
-License:	GPL+ or Artistic
+License:	GPL-1.0-or-later OR Artistic-1.0-Perl
 
-Vendor:         Microsoft Corporation
-Distribution:   Azure Linux
 URL:		https://metacpan.org/release/File-Remove
-Source0:	https://cpan.metacpan.org/authors/id/S/SH/SHLOMIF/File-Remove-%{version}.tar.gz#/perl-File-Remove-%{version}.tar.gz
-Requires:	perl(:MODULE_COMPAT_%(eval "`perl -V:version`"; echo $version))
+Source0:	https://cpan.metacpan.org/authors/id/S/SH/SHLOMIF/File-Remove-%{version}.tar.gz
 
-BuildRequires:  %{__perl}
-BuildRequires:  %{__make}
+BuildRequires:	%{__perl}
+BuildRequires:	%{__make}
 
 BuildRequires:	perl-generators
+BuildRequires:	perl(blib)
 BuildRequires:	perl(constant)
 BuildRequires:	perl(Cwd) >= 3.29
 BuildRequires:	perl(ExtUtils::MakeMaker)
-BuildRequires:  perl(File::Copy)
+BuildRequires:	perl(File::Copy)
 BuildRequires:	perl(File::Glob)
 BuildRequires:	perl(File::Path)
 BuildRequires:	perl(File::Spec) >= 3.29
 BuildRequires:	perl(File::Spec::Functions)
 BuildRequires:	perl(File::Temp)
-BuildRequires:  perl(IO::Handle)
-BuildRequires:  perl(IPC::Open3)
-BuildRequires:  perl(strict)
+BuildRequires:	perl(IO::Handle)
+BuildRequires:	perl(IPC::Open3)
+BuildRequires:	perl(strict)
 BuildRequires:	perl(Test::More) >= 0.42
-BuildRequires:  perl(vars)
-BuildRequires:  perl(warnings)
-BuildRequires:  perl(blib)
+BuildRequires:	perl(vars)
+BuildRequires:	perl(warnings)
 
 BuildArch:	noarch
 
@@ -40,12 +37,12 @@ BuildArch:	noarch
 %setup -q -n File-Remove-%{version}
 
 %build
-%{__perl} Makefile.PL INSTALLDIRS=vendor NO_PACKLIST=1
-%{__make} %{?_smp_mflags}
+%{__perl} Makefile.PL INSTALLDIRS=vendor NO_PACKLIST=1 NO_PERLLOCAL=1
+%{make_build}
 
 %install
-%{__make} pure_install DESTDIR="$RPM_BUILD_ROOT"
-chmod -R u+w $RPM_BUILD_ROOT/*
+%{make_install} DESTDIR="$RPM_BUILD_ROOT"
+%{_fixperms} "$RPM_BUILD_ROOT"/*
 
 %check
 %{__make} test
@@ -57,12 +54,57 @@ chmod -R u+w $RPM_BUILD_ROOT/*
 %{_mandir}/man3/*
 
 %changelog
-* Fri Apr 22 2022 Muhammad Falak <mwani@microsoft.com> - 1.58-7
-- Add an explicit BR on `perl(blib)` to enable ptest
-- License verified
+* Fri Jul 19 2024 Fedora Release Engineering <releng@fedoraproject.org> - 1.61-8
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_41_Mass_Rebuild
 
-* Fri Oct 15 2021 Pawel Winogrodzki <pawelwi@microsoft.com> - 1.58-6
-- Initial CBL-Mariner import from Fedora 32 (license: MIT).
+* Thu Jan 25 2024 Fedora Release Engineering <releng@fedoraproject.org> - 1.61-7
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Sun Jan 21 2024 Fedora Release Engineering <releng@fedoraproject.org> - 1.61-6
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Thu Jul 20 2023 Fedora Release Engineering <releng@fedoraproject.org> - 1.61-5
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_39_Mass_Rebuild
+
+* Fri Jan 20 2023 Fedora Release Engineering <releng@fedoraproject.org> - 1.61-4
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_38_Mass_Rebuild
+
+* Mon Nov 28 2022 Ralf Corsépius <corsepiu@fedoraproject.org> - 1.61-3
+- Convert license to SPDX.
+
+* Fri Jul 22 2022 Fedora Release Engineering <releng@fedoraproject.org> - 1.61-2
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_37_Mass_Rebuild
+
+* Tue Jun 14 2022 Ralf Corsépius <corsepiu@fedoraproject.org> - 1.61-1
+- Upstream update to 1.61.
+- Spec file cosmetics.
+
+* Mon May 30 2022 Jitka Plesnikova <jplesnik@redhat.com> - 1.60-6
+- Perl 5.36 rebuild
+
+* Fri Jan 21 2022 Fedora Release Engineering <releng@fedoraproject.org> - 1.60-5
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_36_Mass_Rebuild
+
+* Thu Jul 22 2021 Fedora Release Engineering <releng@fedoraproject.org> - 1.60-4
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_35_Mass_Rebuild
+
+* Fri May 21 2021 Jitka Plesnikova <jplesnik@redhat.com> - 1.60-3
+- Perl 5.34 rebuild
+
+* Wed Jan 27 2021 Fedora Release Engineering <releng@fedoraproject.org> - 1.60-2
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_34_Mass_Rebuild
+
+* Mon Nov  2 2020 Tom Callaway <spot@fedoraproject.org> 1.60-1
+- update to 1.60
+
+* Tue Jul 28 2020 Fedora Release Engineering <releng@fedoraproject.org> - 1.58-8
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_33_Mass_Rebuild
+
+* Mon Jun 22 2020 Jitka Plesnikova <jplesnik@redhat.com> - 1.58-7
+- Perl 5.32 rebuild
+
+* Tue Mar 03 2020 Petr Pisar <ppisar@redhat.com> - 1.58-6
+- Build-require blib module for tests
 
 * Thu Jan 30 2020 Fedora Release Engineering <releng@fedoraproject.org> - 1.58-5
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_32_Mass_Rebuild

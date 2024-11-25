@@ -3,8 +3,8 @@ Index: OSBase_CommonFsvol.c
 RCS file: /cvsroot/sblim/cmpi-fsvol/OSBase_CommonFsvol.c,v
 retrieving revision 1.10
 diff -a -u -p -U4 -r1.10 OSBase_CommonFsvol.c
---- OSBase_CommonFsvol.c	2 Jun 2009 19:42:24 -0000	1.10
-+++ OSBase_CommonFsvol.c	26 Oct 2012 15:21:31 -0000
+--- sblim-cmpi-fsvol-1.5.1/OSBase_CommonFsvol.c	2 Jun 2009 19:42:24 -0000	1.10
++++ sblim-cmpi-fsvol-1.5.1/OSBase_CommonFsvol.c	26 Oct 2012 15:21:31 -0000
 @@ -20,8 +20,9 @@
  */
  

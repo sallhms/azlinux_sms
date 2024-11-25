@@ -1,22 +1,30 @@
-Summary:        Thunderbolt device manager
-Name:           bolt
-Version:        0.9.2
-Release:        2%{?dist}
-License:        LGPL-2.0-or-later
-Vendor:         Microsoft Corporation
-Distribution:   Azure Linux
-URL:            https://gitlab.freedesktop.org/bolt/bolt
-Source0:        %{url}/-/archive/%{version}/%{name}-%{version}.tar.gz
-BuildRequires:  asciidoc
-BuildRequires:  gcc
-BuildRequires:  libudev-devel
-BuildRequires:  meson
-BuildRequires:  pkgconfig
-BuildRequires:  polkit-devel
-BuildRequires:  systemd
-BuildRequires:  systemd-devel
-BuildRequires:  pkgconfig(gio-2.0)
+Name:          bolt
+Version:       0.9.8
+Release:       3%{?dist}
+Summary:       Thunderbolt device manager
+License:       LGPL-2.1-or-later
+URL:           https://gitlab.freedesktop.org/bolt/bolt
+Source0:       %{url}/-/archive/%{version}/%{name}-%{version}.tar.gz
+Patch0:        0001-test-test-unix-skip-unix-domain-socket-test.patch
+
+BuildRequires: gcc
+BuildRequires: asciidoc
+BuildRequires: meson
+BuildRequires: libudev-devel
+BuildRequires: pkgconfig(gio-2.0)
+BuildRequires: pkgconfig(libudev)
+BuildRequires: pkgconfig(systemd)
+BuildRequires: polkit-devel
+BuildRequires: systemd
 %{?systemd_requires}
+
+# for the integration test (optional)
+%if 0%{?fedora} || 0%{?rhel} > 8
+BuildRequires: python3-gobject-base
+BuildRequires: python3-dbus
+BuildRequires: python3-dbusmock
+BuildRequires: umockdev-devel
+%endif
 
 %description
 bolt is a system daemon to manage Thunderbolt devices via a D-BUS
@@ -69,9 +77,50 @@ mentioned tasks.
 %ghost %dir %{_localstatedir}/lib/boltd
 
 %changelog
-* Thu Jan 05 2023 Suresh Thelkar <sthelkar@microsoft.com> - 0.9.2-2
-- Initial CBL-Mariner import from Fedora 36 (license: MIT)
-- License verified
+* Wed Jul 17 2024 Fedora Release Engineering <releng@fedoraproject.org> - 0.9.8-3
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_41_Mass_Rebuild
+
+* Fri May 31 2024 Kate Hsuan <hpa@redhat.com> - 0.9.8-2
+- Update python3-gobject-base dependency for test
+
+* Wed May 22 2024 Kate Hsuan <hpa@redhat.com> - 0.9.8-1
+- A new NHI for REMBRANDT.
+- systemd configuration improvement.
+- Fixed: Determine the string length before writing file.
+- Fixed: Free on error to prevent resource leak.
+
+* Fri Mar 1 2024 Kate Hsuan <hpa@redhat.com> - 0.9.7-1
+- bolt 0.9.7 release
+- Support 'nopcie' security level
+- Bug fixes
+
+* Thu Feb 1 2024 Kate Hsuan <hpa@redhat.com> - 0.9.6-4
+- Update SPDX license
+
+* Tue Jan 23 2024 Fedora Release Engineering <releng@fedoraproject.org> - 0.9.6-3
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Fri Jan 19 2024 Fedora Release Engineering <releng@fedoraproject.org> - 0.9.6-2
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Wed Sep 13 2023 Kate Hsuan <hpa@redhat.com> - 0.9.6-1
+- Update 0.9.6 release
+- Fixing for compiler warning and log message issues
+
+* Wed Jul 19 2023 Fedora Release Engineering <releng@fedoraproject.org> - 0.9.5-2
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_39_Mass_Rebuild
+
+* Tue Feb 14 2023 Kate hsuan <hpa@redhat.com> - 0.9.5-1
+- Updated to upstream version
+
+* Wed Jan 18 2023 Fedora Release Engineering <releng@fedoraproject.org> - 0.9.3-2
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_38_Mass_Rebuild
+
+* Tue Aug 23 2022 Simon Steinbeiss <simon.steinbeiss@redhat.com> - 0.9.3-1
+- New upstream release
+
+* Wed Jul 20 2022 Fedora Release Engineering <releng@fedoraproject.org> - 0.9.2-2
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_37_Mass_Rebuild
 
 * Thu Jan 27 2022 Christian Kellner <ckellner@redhat.com> - 0.9.2-1
 - bolt 0.9.2 release

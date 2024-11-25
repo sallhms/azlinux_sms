@@ -1,10 +1,8 @@
-Vendor:         Microsoft Corporation
-Distribution:   Azure Linux
 %global docs_hash 20131007a
 
 Name:		tcl-pgtcl
 Version:	2.1.1
-Release:	12%{?dist}
+Release:	21%{?dist}
 Summary:	A Tcl client library for PostgreSQL
 
 URL:		http://sourceforge.net/projects/pgtclng/
@@ -25,6 +23,7 @@ Provides:	pgtcl = %{version}-%{release}
 Provides:	postgresql-tcl = 8.5.0-1
 Obsoletes:	postgresql-tcl < 8.5
 
+BuildRequires: make
 BuildRequires:  gcc
 BuildRequires:	libpq-devel tcl-devel
 BuildRequires:	autoconf
@@ -48,7 +47,7 @@ unzip %{SOURCE1}
 PGTCLDOCDIR=`basename %{SOURCE1} .zip`
 mv $PGTCLDOCDIR Pgtcl-docs
 
-%patch 1 -p1
+%patch -P1 -p1
 
 autoconf
 
@@ -65,14 +64,40 @@ rm -f $RPM_BUILD_ROOT%{_includedir}/libpgtcl.h
 
 
 %files
-%license COPYRIGHT
 %{_libdir}/tcl%{tcl_version}/pgtcl%{version}/
 %doc Pgtcl-docs/*
 
 
 %changelog
-* Fri Oct 15 2021 Pawel Winogrodzki <pawelwi@microsoft.com> - 2.1.1-12
-- Initial CBL-Mariner import from Fedora 32 (license: MIT).
+* Sat Jul 20 2024 Fedora Release Engineering <releng@fedoraproject.org> - 2.1.1-21
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_41_Mass_Rebuild
+
+* Sat Jan 27 2024 Fedora Release Engineering <releng@fedoraproject.org> - 2.1.1-20
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Sat Jul 22 2023 Fedora Release Engineering <releng@fedoraproject.org> - 2.1.1-19
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_39_Mass_Rebuild
+
+* Sat Jan 21 2023 Fedora Release Engineering <releng@fedoraproject.org> - 2.1.1-18
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_38_Mass_Rebuild
+
+* Sat Jul 23 2022 Fedora Release Engineering <releng@fedoraproject.org> - 2.1.1-17
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_37_Mass_Rebuild
+
+* Sat Jan 22 2022 Fedora Release Engineering <releng@fedoraproject.org> - 2.1.1-16
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_36_Mass_Rebuild
+
+* Fri Jul 23 2021 Fedora Release Engineering <releng@fedoraproject.org> - 2.1.1-15
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_35_Mass_Rebuild
+
+* Mon Feb 08 2021 Pavel Raiskup <praiskup@redhat.com> - 2.1.1-14
+- rebuild for libpq ABI fix rhbz#1908268
+
+* Wed Jan 27 2021 Fedora Release Engineering <releng@fedoraproject.org> - 2.1.1-13
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_34_Mass_Rebuild
+
+* Wed Jul 29 2020 Fedora Release Engineering <releng@fedoraproject.org> - 2.1.1-12
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_33_Mass_Rebuild
 
 * Fri Jan 31 2020 Fedora Release Engineering <releng@fedoraproject.org> - 2.1.1-11
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_32_Mass_Rebuild

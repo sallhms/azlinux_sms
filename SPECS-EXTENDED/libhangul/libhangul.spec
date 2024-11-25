@@ -1,10 +1,8 @@
-Vendor:         Microsoft Corporation
-Distribution:   Azure Linux
 Name:		libhangul
 Version:	0.1.0
-Release:	22%{?dist}
+Release:	32%{?dist}
 
-License:	LGPLv2+
+License:	LGPL-2.1-or-later
 URL:		https://github.com/libhangul/libhangul
 # Change Source URL when upstream released tar ball
 # Source0:	https://github.com/libhangul/libhangul/archive/libhangul-%{version}.tar.gz
@@ -12,6 +10,7 @@ Source0:	https://libhangul.googlecode.com/files/libhangul-%{version}.tar.gz
 
 Summary:	Hangul input library
 BuildRequires:	  gettext-devel, automake, libtool
+BuildRequires:	  make
 
 
 %description
@@ -29,9 +28,9 @@ providing Hangul input.
 
 %prep
 %setup -q
-autoreconf -fi
 
 %build
+autoreconf -fi
 %configure --disable-static
 
 make %{?_smp_mflags}
@@ -60,8 +59,38 @@ rm $RPM_BUILD_ROOT%{_libdir}/%{name}.la
 
 
 %changelog
-* Fri Oct 15 2021 Pawel Winogrodzki <pawelwi@microsoft.com> - 0.1.0-22
-- Initial CBL-Mariner import from Fedora 32 (license: MIT).
+* Thu Jul 18 2024 Fedora Release Engineering <releng@fedoraproject.org> - 0.1.0-32
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_41_Mass_Rebuild
+
+* Thu Jan 25 2024 Fedora Release Engineering <releng@fedoraproject.org> - 0.1.0-31
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Sun Jan 21 2024 Fedora Release Engineering <releng@fedoraproject.org> - 0.1.0-30
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Thu Jul 20 2023 Fedora Release Engineering <releng@fedoraproject.org> - 0.1.0-29
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_39_Mass_Rebuild
+
+* Mon May  8 2023 Peng Wu <pwu@redhat.com> - 0.1.0-28
+- Migrate to SPDX license
+
+* Thu Jan 19 2023 Fedora Release Engineering <releng@fedoraproject.org> - 0.1.0-27
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_38_Mass_Rebuild
+
+* Thu Jul 21 2022 Fedora Release Engineering <releng@fedoraproject.org> - 0.1.0-26
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_37_Mass_Rebuild
+
+* Thu Jan 20 2022 Fedora Release Engineering <releng@fedoraproject.org> - 0.1.0-25
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_36_Mass_Rebuild
+
+* Thu Jul 22 2021 Fedora Release Engineering <releng@fedoraproject.org> - 0.1.0-24
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_35_Mass_Rebuild
+
+* Tue Jan 26 2021 Fedora Release Engineering <releng@fedoraproject.org> - 0.1.0-23
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_34_Mass_Rebuild
+
+* Tue Jul 28 2020 Fedora Release Engineering <releng@fedoraproject.org> - 0.1.0-22
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_33_Mass_Rebuild
 
 * Wed Jan 29 2020 Fedora Release Engineering <releng@fedoraproject.org> - 0.1.0-21
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_32_Mass_Rebuild
@@ -170,7 +199,7 @@ rm $RPM_BUILD_ROOT%{_libdir}/%{name}.la
 * Wed Jul 25 2007 Jesse Keating <jkeating@redhat.com> - 0.0.6-2
 - Rebuild for RH #249435
 
-* Tue Jul 24 2007 Hu Zheng <zhu@redhat.com> - 0.0.6-1
+*Tue Jul 24 2007 Hu Zheng <zhu@redhat.com> - 0.0.6-1
 - New upstream release.
 
 * Mon Feb 19 2007 Akira TAGOH <tagoh@redhat.com> - 0.0.4-2

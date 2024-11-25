@@ -42,7 +42,7 @@ Signed-off-by: Petr Písař <ppisar@redhat.com>
  2 files changed, 11 insertions(+), 10 deletions(-)
 
 diff --git a/Multicore.xs b/Multicore.xs
-index ba819c6..625a3a5 100644
+index 61fad96a9e12ab0b..01a68001d8b42402 100644
 --- a/Multicore.xs
 +++ b/Multicore.xs
 @@ -187,7 +187,7 @@ X_THREAD_PROC(thread_proc)
@@ -54,7 +54,7 @@ index ba819c6..625a3a5 100644
  {
    xthread_t tid;
  
-@@ -207,7 +207,7 @@ start_thread (void)
+@@ -216,7 +216,7 @@ start_thread (void)
  }
  
  static void
@@ -63,7 +63,7 @@ index ba819c6..625a3a5 100644
  {
    if (! ((thread_enable ? thread_enable : global_enable) & 1))
      {
-@@ -232,7 +232,7 @@ pmapi_release (void)
+@@ -241,7 +241,7 @@ pmapi_release (void)
    X_LOCK (release_m);
  
    if (idle <= min_idle)
@@ -72,7 +72,7 @@ index ba819c6..625a3a5 100644
  
    tctxs_put (&releasers, ctx);
    X_COND_SIGNAL (release_c);
-@@ -247,7 +247,7 @@ pmapi_release (void)
+@@ -256,7 +256,7 @@ pmapi_release (void)
  }
  
  static void
@@ -81,7 +81,7 @@ index ba819c6..625a3a5 100644
  {
    int jeret;
    struct tctx *ctx = X_TLS_GET (current_key);
-@@ -311,9 +311,10 @@ BOOT:
+@@ -328,14 +328,15 @@ BOOT:
  	I_CORO_API ("Coro::Multicore");
  
          if (0) { /*D*/
@@ -93,11 +93,17 @@ index ba819c6..625a3a5 100644
          X_UNLOCK (release_m);
          }
  
+         /* not perfectly efficient to do it this way, but it is simple */
+-	perl_multicore_init (); /* calls release */
++	perl_multicore_init (perl_thx); /* calls release */
+         perl_multicore_api->pmapi_release = pmapi_release;
+         perl_multicore_api->pmapi_acquire = pmapi_acquire;
+ }
 diff --git a/perlmulticore.h b/perlmulticore.h
-index 7ad38a4..b009311 100644
+index 7ad38a45923cee60..0999e35c471b330e 100644
 --- a/perlmulticore.h
 +++ b/perlmulticore.h
-@@ -185,8 +185,8 @@ START_EXTERN_C
+@@ -185,11 +185,11 @@ START_EXTERN_C
  /* contain only the two function pointers for release/acquire */
  struct perl_multicore_api
  {
@@ -107,7 +113,11 @@ index 7ad38a4..b009311 100644
 +  void (*pmapi_acquire)(pTHX);
  };
  
- static void perl_multicore_init (void);
+-static void perl_multicore_init (void);
++static void perl_multicore_init (pTHX);
+ 
+ static const struct perl_multicore_api perl_multicore_api_init
+    = { perl_multicore_init, 0 };
 @@ -197,12 +197,12 @@ static const struct perl_multicore_api perl_multicore_api_init
  static struct perl_multicore_api *perl_multicore_api
     = (struct perl_multicore_api *)&perl_multicore_api_init;
@@ -124,6 +134,15 @@ index 7ad38a4..b009311 100644
  {
  }
  
--- 
-2.21.0
-
+@@ -211,10 +211,8 @@ static const char perl_multicore_api_key[] = "perl_multicore_api";
+ /* this is the initial implementation of "release" - it initialises */
+ /* the api and then calls the real release function */
+ static void
+-perl_multicore_init (void)
++perl_multicore_init (pTHX)
+ {
+-  dTHX;
+-
+   /* check for existing API struct in PL_modglobal */
+   SV **api_svp = hv_fetch (PL_modglobal, perl_multicore_api_key,
+                            sizeof (perl_multicore_api_key) - 1, 1);

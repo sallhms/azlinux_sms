@@ -1,30 +1,29 @@
-%global gtk_doc 0
-Summary:        Geolocation service
 Name:           geoclue2
 Version:        2.7.0
-Release:        1%{?dist}
-License:        GPLv2+
-Vendor:         Microsoft Corporation
-Distribution:   Azure Linux
-URL:            https://www.freedesktop.org/wiki/Software/GeoClue/
-Source0:        https://gitlab.freedesktop.org/geoclue/geoclue/-/archive/%{version}/geoclue-%{version}.tar.bz2#/%{name}-%{version}.tar.bz2
+Release:        6%{?dist}
+Summary:        Geolocation service
+
+License:        GPL-2.0-or-later
+URL:            http://www.freedesktop.org/wiki/Software/GeoClue/
+Source0:        https://gitlab.freedesktop.org/geoclue/geoclue/-/archive/%{version}/geoclue-%{version}.tar.bz2
+Source1:        geoclue2.sysusers
+
 BuildRequires:  avahi-glib-devel
 BuildRequires:  gettext
 BuildRequires:  glib2-devel
 BuildRequires:  gobject-introspection-devel
-%if %{with gtk_doc}
 BuildRequires:  gtk-doc
-%endif
 BuildRequires:  json-glib-devel
-BuildRequires:  libsoup-devel
+BuildRequires:  libsoup3-devel
 BuildRequires:  meson
 BuildRequires:  ModemManager-glib-devel
-BuildRequires:  systemd
+BuildRequires:  systemd, systemd-rpm-macros
 BuildRequires:  vala
-BuildRequires:  %{_bindir}/xsltproc
-Requires(pre):  shadow-utils
 Requires:       dbus
+%{?sysusers_requires_compat}
+
 Obsoletes:      geoclue2-server < 2.1.8
+
 Obsoletes:      geoclue < 0.12.99-10
 Obsoletes:      geoclue-devel < 0.12.99-10
 Obsoletes:      geoclue-gsmloc < 0.12.99-10
@@ -37,62 +36,57 @@ of the Geoclue project is to make creating location-aware applications as
 simple as possible, while the secondary goal is to ensure that no application
 can access location information without explicit permission from user.
 
+
 %package        libs
 Summary:        Geoclue client library
-License:        LGPLv2+
+License:        LGPL-2.0-or-later AND LGPL-2.1-or-later
 Recommends:     %{name} = %{version}-%{release}
 
 %description    libs
 The %{name}-libs package contains a convenience library to interact with
 Geoclue service.
 
+
 %package        devel
 Summary:        Development files for %{name}
-License:        LGPLv2+
+# /docs/*xml is GFDL-1.1-or-later
+License:        GPL-2.0-or-later AND LGPL-2.0-or-later AND LGPL-2.1-or-later AND GFDL-1.1-or-later
 Requires:       %{name}-libs%{?_isa} = %{version}-%{release}
 
 %description    devel
 The %{name}-devel package contains files for developing applications that
 use %{name}.
 
+
 %package        demos
 Summary:        Demo applications for %{name}
-License:        LGPLv2+
-BuildRequires:  libnotify-devel
 Requires:       %{name}-libs%{?_isa} = %{version}-%{release}
 Recommends:     %{name} = %{version}-%{release}
+BuildRequires:  libnotify-devel
 
 %description    demos
 The %{name}-demos package contains demo applications that use %{name}.
 
+
 %prep
 %autosetup -p1 -n geoclue-%{version}
 
+
 %build
-%meson \
-%if %{with gtk_doc}
-  -Dgtk-doc=true \
-%else
-  -Dgtk-doc=false \
-%endif
- -Ddbus-srv-user=geoclue
+%meson -Ddbus-srv-user=geoclue
 %meson_build
+
 
 %install
 %meson_install
+install -Dpm 0644 %{SOURCE1} %{buildroot}%{_sysusersdir}/geoclue2.conf
 
 # Home directory for the 'geoclue' user
-mkdir -p %{buildroot}%{_sharedstatedir}/geoclue
+mkdir -p $RPM_BUILD_ROOT/var/lib/geoclue
+
 
 %pre
-# Update the home directory for existing users
-getent passwd geoclue >/dev/null && \
-    usermod -d %{_sharedstatedir}/geoclue geoclue &>/dev/null
-# Create a new user and group if they don't exist
-getent group geoclue >/dev/null || groupadd -r geoclue
-getent passwd geoclue >/dev/null || \
-    useradd -r -g geoclue -d %{_sharedstatedir}/geoclue -s /sbin/nologin \
-    -c "User for geoclue" geoclue
+%sysusers_create_compat %{SOURCE1}
 exit 0
 
 %post
@@ -103,6 +97,7 @@ exit 0
 
 %postun
 %systemd_postun_with_restart geoclue.service
+
 
 %files
 %license COPYING
@@ -120,7 +115,8 @@ exit 0
 %{_mandir}/man5/geoclue.5*
 %{_unitdir}/geoclue.service
 %{_libexecdir}/geoclue-2.0/demos/agent
-%attr(755,geoclue,geoclue) %dir %{_sharedstatedir}/geoclue
+%{_sysusersdir}/geoclue2.conf
+%attr(755,geoclue,geoclue) %dir /var/lib/geoclue
 
 %files libs
 %license COPYING.LIB
@@ -132,12 +128,10 @@ exit 0
 %{_datadir}/dbus-1/interfaces/org.freedesktop.GeoClue2*.xml
 %dir %{_datadir}/gir-1.0
 %{_datadir}/gir-1.0/Geoclue-2.0.gir
-%if %{with gtk_doc}
 %dir %{_datadir}/gtk-doc
 %dir %{_datadir}/gtk-doc/html
 %{_datadir}/gtk-doc/html/geoclue/
 %{_datadir}/gtk-doc/html/libgeoclue/
-%endif
 %dir %{_datadir}/vala
 %dir %{_datadir}/vala/vapi
 %{_datadir}/vala/vapi/libgeoclue-2.0.*
@@ -150,12 +144,30 @@ exit 0
 %{_libexecdir}/geoclue-2.0/demos/where-am-i
 %{_datadir}/applications/geoclue-where-am-i.desktop
 
+
 %changelog
-* Wed Mar 08 2023 Sumedh Sharma <sumsharma@microsoft.com> - 2.7.0-1
-- Initial CBL-Mariner import from Fedora 37 (license: MIT)
-- Bump version to 2.7.0
-- Disable gtk-doc
-- license verified
+* Thu Jul 18 2024 Fedora Release Engineering <releng@fedoraproject.org> - 2.7.0-6
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_41_Mass_Rebuild
+
+* Wed Jan 24 2024 Fedora Release Engineering <releng@fedoraproject.org> - 2.7.0-5
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Fri Jan 19 2024 Fedora Release Engineering <releng@fedoraproject.org> - 2.7.0-4
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Mon Oct 02 2023 Daan De Meyer <daan.j.demeyer@gmail.com> - 2.7.0-3
+- Provide a sysusers.d file to get user() and group() provides
+  (see https://fedoraproject.org/wiki/Changes/Adopting_sysusers.d_format).
+
+* Wed Jul 19 2023 Fedora Release Engineering <releng@fedoraproject.org> - 2.7.0-2
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_39_Mass_Rebuild
+
+* Wed Mar 29 2023 Kalev Lember <klember@redhat.com> - 2.7.0-1
+- Update to 2.7.0
+- Switch to libsoup 3
+
+* Thu Jan 19 2023 Fedora Release Engineering <releng@fedoraproject.org> - 2.6.0-5
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_38_Mass_Rebuild
 
 * Wed Nov 30 2022 Kalev Lember <klember@redhat.com> - 2.6.0-4
 - Tighten dependencies between -libs and -demos subpackages

@@ -1,17 +1,19 @@
-Vendor:         Microsoft Corporation
-Distribution:   Azure Linux
 Summary:	A sophisticated file transfer program
 Name:		lftp
 Version:	4.9.2
-Release:	2%{?dist}
-License:	GPLv3+
+Release:	14%{?dist}
+License:	GPL-3.0-or-later
 Source0:	http://lftp.yar.ru/ftp/%{name}-%{version}.tar.xz
 URL:		http://lftp.yar.ru/
 BuildRequires:	ncurses-devel, gnutls-devel, perl-generators, pkgconfig, readline-devel, gettext
 BuildRequires:	zlib-devel, gcc-c++
 BuildRequires: desktop-file-utils
+BuildRequires: make
 
 Patch1:  lftp-4.0.9-date_fmt.patch
+Patch2:  lftp-4.9.2-cdefs.patch
+Patch3:  lftp-4.9.2-gnutls-peers2.patch
+Patch4:  lftp-4.9.2-fedora-c99.patch
 
 %description
 LFTP is a sophisticated ftp/http file transfer program. Like bash, it has job
@@ -30,7 +32,15 @@ Utility scripts for use with lftp.
 %prep
 %setup -q
 
-%patch 1 -p1 -b .date_fmt
+%patch -P1 -p1 -b .date_fmt
+%ifarch ppc64le
+%patch -P2 -p1 -b .cdefs
+%endif
+%patch -P3 -p1 -b .gnutls-peers2
+
+%patch -P4 -p1 -b .fedora-c99
+# Avoid trying to re-run autoconf
+touch -r aclocal.m4 configure m4/needtrio.m4
 
 #sed -i.rpath -e '/lftp_cv_openssl/s|-R.*lib||' configure
 sed -i.norpath -e \
@@ -67,8 +77,10 @@ desktop-file-install	\
 %files -f %{name}.lang
 %doc BUGS COPYING ChangeLog FAQ FEATURES README* NEWS THANKS TODO
 %config(noreplace) %{_sysconfdir}/lftp.conf
-%{_bindir}/*
-%{_mandir}/*/*
+%{_bindir}/lftp
+%{_bindir}/lftpget
+%{_mandir}/man1/lftp*.1*
+%{_mandir}/man5/lftp.conf.5*
 %dir %{_libdir}/lftp
 %dir %{_libdir}/lftp/%{version}
 %{_libdir}/lftp/%{version}/cmd-torrent.so
@@ -93,11 +105,50 @@ desktop-file-install	\
 
 
 %changelog
-* Fri Oct 15 2021 Pawel Winogrodzki <pawelwi@microsoft.com> - 4.9.2-2
-- Initial CBL-Mariner import from Fedora 32 (license: MIT).
+* Thu Jul 18 2024 Fedora Release Engineering <releng@fedoraproject.org> - 4.9.2-14
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_41_Mass_Rebuild
+
+* Thu Jan 25 2024 Fedora Release Engineering <releng@fedoraproject.org> - 4.9.2-13
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Sun Jan 21 2024 Fedora Release Engineering <releng@fedoraproject.org> - 4.9.2-12
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Thu Jul 20 2023 Fedora Release Engineering <releng@fedoraproject.org> - 4.9.2-11
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_39_Mass_Rebuild
+
+* Thu Mar 16 2023 Michal Ruprich <mruprich@redhat.com> - 4.9.2-10
+- SPDX migration
+
+* Wed Feb  8 2023 DJ Delorie <dj@redhat.com> - 4.9.2-9
+- Fix C99 compatibility issue
+
+* Thu Jan 19 2023 Fedora Release Engineering <releng@fedoraproject.org> - 4.9.2-8
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_38_Mass_Rebuild
+
+* Wed Sep 07 2022 Michal Ruprich <mruprich@redhat.com> - 4.9.2-7
+- Resolves: #2107872 - lftp fails to verify Let's Encrypt certificates
+
+* Thu Jul 21 2022 Fedora Release Engineering <releng@fedoraproject.org> - 4.9.2-6
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_37_Mass_Rebuild
+
+* Mon Feb 07 2022 Michal Ruprich <mruprich@redhat.com> - 4.9.2-5
+- Fix for FTBFS(rhbz#2045780)
+
+* Thu Jan 20 2022 Fedora Release Engineering <releng@fedoraproject.org> - 4.9.2-4
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_36_Mass_Rebuild
+
+* Thu Jul 22 2021 Fedora Release Engineering <releng@fedoraproject.org> - 4.9.2-3
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_35_Mass_Rebuild
+
+* Tue Jan 26 2021 Fedora Release Engineering <releng@fedoraproject.org> - 4.9.2-2
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_34_Mass_Rebuild
 
 * Wed Aug 19 2020 Michal Ruprich <michalruprich@gmail.com> - 4.9.2-1
 - New version 4.9.2
+
+* Tue Jul 28 2020 Fedora Release Engineering <releng@fedoraproject.org> - 4.9.1-2
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_33_Mass_Rebuild
 
 * Fri Apr 03 2020 Michal Ruprich <michalruprich@gmail.com> - 4.9.1-1
 - New version 4.9.1

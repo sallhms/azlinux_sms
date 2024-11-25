@@ -1,27 +1,32 @@
-Vendor:         Microsoft Corporation
-Distribution:   Azure Linux
 Name:           perl-IO-SessionData
 Version:        1.03
-Release:        18%{?dist}
+Release:        30%{?dist}
 Summary:        IO::SessionData and IO::SessionSet modules
-License:        GPL+ or Artistic
+License:        GPL-1.0-or-later OR Artistic-1.0-Perl
 URL:            https://metacpan.org/release/IO-SessionData
-Source0:        https://cpan.metacpan.org/authors/id/P/PH/PHRED/IO-SessionData-%{version}.tar.gz#/perl-IO-SessionData-%{version}.tar.gz
+Source0:        https://cpan.metacpan.org/modules/by-module/IO/IO-SessionData-%{version}.tar.gz
 BuildArch:      noarch
-BuildRequires:  perl-interpreter
+# Build
+BuildRequires:  coreutils
+BuildRequires:  make
 BuildRequires:  perl-generators
+BuildRequires:  perl-interpreter
+BuildRequires:  perl(ExtUtils::MakeMaker) >= 6.76
+BuildRequires:  perl(warnings)
+# Module
 BuildRequires:  perl(Carp)
 BuildRequires:  perl(constant)
 BuildRequires:  perl(Errno)
-BuildRequires:  perl(ExtUtils::MakeMaker)
 BuildRequires:  perl(IO::Handle)
 BuildRequires:  perl(IO::Select)
 BuildRequires:  perl(POSIX)
 BuildRequires:  perl(strict)
-BuildRequires:  perl(Test::More)
 BuildRequires:  perl(vars)
-BuildRequires:  perl(warnings)
-Requires:       perl(:MODULE_COMPAT_%(eval "$(perl -V:version)"; echo $version))
+# Test Suite
+BuildRequires:  perl(Test::More)
+# Dependencies
+Requires:       perl(Errno)
+Requires:       perl(POSIX)
 
 %description
 A set of session modules, former parts of the SOAP::Lite distribution.
@@ -30,24 +35,63 @@ A set of session modules, former parts of the SOAP::Lite distribution.
 %setup -q -n IO-SessionData-%{version}
 
 %build
-perl Makefile.PL INSTALLDIRS=vendor
-make %{?_smp_mflags}
+perl Makefile.PL INSTALLDIRS=vendor NO_PACKLIST=1 NO_PERLLOCAL=1
+%{make_build}
 
 %install
-make pure_install DESTDIR=%{buildroot}
-find %{buildroot} -type f -name .packlist -exec rm -f {} +
-%{_fixperms} %{buildroot}/*
+%{make_install}
+%{_fixperms} -c %{buildroot}
 
 %check
 make test
 
 %files
 %doc Changes README
-%{perl_vendorlib}/*
+%{perl_vendorlib}/IO/
 
 %changelog
-* Fri Oct 15 2021 Pawel Winogrodzki <pawelwi@microsoft.com> - 1.03-18
-- Initial CBL-Mariner import from Fedora 32 (license: MIT).
+* Fri Jul 19 2024 Fedora Release Engineering <releng@fedoraproject.org> - 1.03-30
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_41_Mass_Rebuild
+
+* Thu Jan 25 2024 Fedora Release Engineering <releng@fedoraproject.org> - 1.03-29
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Thu Jul 20 2023 Fedora Release Engineering <releng@fedoraproject.org> - 1.03-28
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_39_Mass_Rebuild
+
+* Fri Jan 20 2023 Fedora Release Engineering <releng@fedoraproject.org> - 1.03-27
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_38_Mass_Rebuild
+
+* Fri Jul 22 2022 Fedora Release Engineering <releng@fedoraproject.org> - 1.03-26
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_37_Mass_Rebuild
+
+* Mon May 30 2022 Jitka Plesnikova <jplesnik@redhat.com> - 1.03-25
+- Perl 5.36 rebuild
+
+* Fri Jan 21 2022 Fedora Release Engineering <releng@fedoraproject.org> - 1.03-24
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_36_Mass_Rebuild
+
+* Mon Jan 10 2022 Paul Howarth <paul@city-fan.org> - 1.03-23
+- Spec tidy-up
+  - Use author-independent source URL
+  - Classify buildreqs by usage
+  - Use %%{make_build} and %%{make_install}
+  - Fix permissions verbosely
+
+* Thu Jul 22 2021 Fedora Release Engineering <releng@fedoraproject.org> - 1.03-22
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_35_Mass_Rebuild
+
+* Fri May 21 2021 Jitka Plesnikova <jplesnik@redhat.com> - 1.03-21
+- Perl 5.34 rebuild
+
+* Wed Jan 27 2021 Fedora Release Engineering <releng@fedoraproject.org> - 1.03-20
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_34_Mass_Rebuild
+
+* Tue Jul 28 2020 Fedora Release Engineering <releng@fedoraproject.org> - 1.03-19
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_33_Mass_Rebuild
+
+* Mon Jun 22 2020 Jitka Plesnikova <jplesnik@redhat.com> - 1.03-18
+- Perl 5.32 rebuild
 
 * Thu Jan 30 2020 Fedora Release Engineering <releng@fedoraproject.org> - 1.03-17
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_32_Mass_Rebuild

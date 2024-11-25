@@ -1,32 +1,17 @@
-%define         underscore_version %(echo %{version} | cut -d. -f1-3 --output-delimiter="_")
+%global snapshot 20230911
 # Do not create debuginfo sub-package because there is no binary executable
 %global debug_package %{nil}
-
-Summary:        Compiler built-ins
-Name:           libecb
-Version:        9.30
-Release:        2%{?dist}
-License:        BSD OR GPLv2+
-Vendor:         Microsoft Corporation
-Distribution:   Azure Linux
-URL:            http://software.schmorp.de/pkg/libecb.html
-# Below link points to the correct revision of the sources but doesn't give tarballs with reproducible hashes.
-# How to re-build this file for CBL-Mariner in a reproducible way:
-#   1. cvs -d :pserver:anonymous@cvs.schmorp.de/schmorpforge export -r rxvt-unicode-rel-%%{underscore_version} %%{name}
-#   2. mv %%{name} %%{name}-%%{version}
-#   3. tar  --sort=name \
-#           --mtime="2021-04-26 00:00Z" \
-#           --owner=0 --group=0 --numeric-owner \
-#           --pax-option=exthdr.name=%d/PaxHeaders/%f,delete=atime,delete=ctime \
-#           -cf %%{name}-%%{version}.tar.gz %%{name}-%%{version}
-#
-#   NOTES:
-#       - You require GNU tar version 1.28+.
-#       - The additional options enable generation of a tarball with the same hash every time regardless of the environment.
-#         See: https://reproducible-builds.org/docs/archives/
-#       - For the value of "--mtime" use the date "2021-04-26 00:00Z" to simplify future updates.
-Source0:        http://cvs.schmorp.de/libecb/?view=tar&pathrev=rxvt-unicode-rel-%{underscore_version}#/%{name}-%{version}.tar.gz
-
+Name:       libecb
+# Upstream version is a 32-bit hexadecimal number with an internal structure.
+# See ECB_VERSION macro. RPM cannot order them correctly. A decimal encoding
+# would work, but would be uggly. Just use 0.
+Version:    0.%{snapshot}
+Release:    4%{?dist}
+Summary:    Compiler built-ins
+License:    BSD-2-Clause OR GPL-2.0-or-later
+URL:        http://software.schmorp.de/pkg/libecb.html
+# Snapshot from CVS :pserver:anonymous@cvs.schmorp.de/schmorpforge libecb 
+Source0:    %{name}-%{snapshot}.tar.xz
 BuildRequires:  coreutils
 BuildRequires:  perl-podlators
 
@@ -38,15 +23,16 @@ noinline, assume, unreachable and so on.
 This is a dummy package. All the useful files are delivered by %{name}-devel
 package.
 
+
 %package devel
-Summary:        Compiler built-ins
+Summary:    Compiler built-ins
 # Packaging guidelines require header-only packages:
 # to be architecture-specific, to deliver headers in -devel package, to
 # provide -static symbol for reverse build-requires.
 # Replace libecb package:
-Provides:       libecb-static = %{?epoch:%{epoch}:}%{version}-%{release}
-Provides:       libecb = %{?epoch:%{epoch}:}%{version}-%{release}
-Obsoletes:      libecb < 0.20150218
+Provides:   libecb-static = %{?epoch:%{epoch}:}%{version}-%{release}
+Provides:   libecb = %{?epoch:%{epoch}:}%{version}-%{release}
+Obsoletes:  libecb < 0.20150218
 
 %description devel
 This project delivers you many GCC built-ins, attributes and a number of
@@ -54,31 +40,47 @@ generally useful low-level functions, such as popcount, expect, prefetch,
 noinline, assume, unreachable and so on.
 
 %prep
-%autosetup -p1
+%autosetup -p1 -n %{name}-%{snapshot}
 
 %build
 pod2man ecb.pod > ecb.3
 
 %install
 install -d %{buildroot}%{_includedir}
-install -m 0644 -t %{buildroot}%{_includedir} *.h
+install -m 0644 -t %{buildroot}%{_includedir} *.h 
 install -d %{buildroot}%{_mandir}/man3
 install -m 0644 -t %{buildroot}%{_mandir}/man3 *.3
 
 %files devel
 %license LICENSE
 %doc Changes README
-%{_includedir}/*
-%{_mandir}/man3/*
+%{_includedir}/ecb.h
+%{_mandir}/man3/ecb.*
 
 %changelog
-* Tue Apr 12 2022 Pawel Winogrodzki <pawelwi@microsoft.com> - 9.30-2
-- Fixing "%%underscore_version" macro definition.
+* Thu Jul 18 2024 Fedora Release Engineering <releng@fedoraproject.org> - 0.20230911-4
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_41_Mass_Rebuild
 
-* Wed Jan 26 2022 Pawel Winogrodzki <pawelwi@microsoft.com> - 9.30-1
-- Initial CBL-Mariner import from Fedora 36 (license: MIT).
-- Switching to using CVS revision tag as version.
-- License verified.
+* Thu Jan 25 2024 Fedora Release Engineering <releng@fedoraproject.org> - 0.20230911-3
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Sun Jan 21 2024 Fedora Release Engineering <releng@fedoraproject.org> - 0.20230911-2
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Mon Sep 11 2023 Petr Pisar <ppisar@redhat.com> - 0.20230911-1
+- CVS snapshot taken on 2023-09-11
+
+* Thu Jul 20 2023 Fedora Release Engineering <releng@fedoraproject.org> - 0.20211217-5
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_39_Mass_Rebuild
+
+* Thu Jan 19 2023 Fedora Release Engineering <releng@fedoraproject.org> - 0.20211217-4
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_38_Mass_Rebuild
+
+* Thu Jul 21 2022 Fedora Release Engineering <releng@fedoraproject.org> - 0.20211217-3
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_37_Mass_Rebuild
+
+* Thu Jan 20 2022 Fedora Release Engineering <releng@fedoraproject.org> - 0.20211217-2
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_36_Mass_Rebuild
 
 * Fri Dec 17 2021 Petr Pisar <ppisar@redhat.com> - 0.20211217-1
 - CVS snapshot taken on 20211217 (Fedora patches merged)
@@ -177,3 +179,4 @@ install -m 0644 -t %{buildroot}%{_mandir}/man3 *.3
 * Mon Oct 08 2012 Petr Pisar <ppisar@redhat.com> - 0.20121008-1
 - CVS snapshot taken on 2012-10-08
 - Fix for building on big-endian systems (bug #863991)
+

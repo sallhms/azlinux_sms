@@ -1,17 +1,28 @@
+# Perform optional tests
+%if 0%{?rhel} > 8
+%bcond_with  perl_Crypt_DES_enables_optional_test
+%else
+%bcond_without  perl_Crypt_DES_enables_optional_test
+%endif
+
 Name:           perl-Crypt-DES
 Version:        2.07
-Release:        21%{?dist}
+Release:        39%{?dist}
 Summary:        Perl DES encryption module
-License:        BSD
-Vendor:         Microsoft Corporation
-Distribution:   Azure Linux
+License:        BSD-Systemics
 URL:            https://metacpan.org/release/Crypt-DES
-Source0:        https://cpan.metacpan.org/authors/id/D/DP/DPARIS/Crypt-DES-%{version}.tar.gz#/perl-Crypt-DES-%{version}.tar.gz
-BuildRequires:  perl-interpreter
+Source0:        https://cpan.metacpan.org/modules/by-module/Crypt/Crypt-DES-%{version}.tar.gz
+Patch0:         perl-Crypt-DES-init-braces.patch
+Patch99:        perl-Crypt-DES-fedora-c99.patch
+# Build
+BuildRequires:  coreutils
+BuildRequires:  findutils
+BuildRequires:  gcc
+BuildRequires:  make
 BuildRequires:  perl-devel
 BuildRequires:  perl-generators
-BuildRequires:  gcc
-BuildRequires:  perl(ExtUtils::MakeMaker)
+BuildRequires:  perl-interpreter
+BuildRequires:  perl(ExtUtils::MakeMaker) >= 6.76
 # Run-time:
 BuildRequires:  perl(Carp)
 BuildRequires:  perl(DynaLoader)
@@ -21,41 +32,107 @@ BuildRequires:  perl(vars)
 # Tests:
 BuildRequires:  perl(Benchmark)
 BuildRequires:  perl(Data::Dumper)
+%if %{with perl_Crypt_DES_enables_optional_test}
 # Optional tests:
 BuildRequires:  perl(Crypt::CBC) > 1.22
-Requires:       perl(:MODULE_COMPAT_%(eval "`perl -V:version`"; echo $version))
+%endif
 
 %{?perl_default_filter}
 
 %description
-DES encryption module.
+DES encryption module. The module implements the Crypt::CBC interface.
 
 %prep
 %setup -q -n Crypt-DES-%{version}
 
+# Fix "warning: missing braces around initializer [-Wmissing-braces]"
+%patch -P 0
+
+# Fix C99 compatibility (CPAN RT#133363)
+%patch -P 99 -p1
+
 %build
-perl Makefile.PL INSTALLDIRS=vendor OPTIMIZE="$RPM_OPT_FLAGS"
-make %{?_smp_mflags}
+perl Makefile.PL INSTALLDIRS=vendor NO_PACKLIST=1 NO_PERLLOCAL=1 OPTIMIZE="%{optflags}"
+%{make_build}
 
 %install
-rm -rf $RPM_BUILD_ROOT
-make pure_install DESTDIR=$RPM_BUILD_ROOT
-find $RPM_BUILD_ROOT -type f -name .packlist -exec rm -f {} \;
-find $RPM_BUILD_ROOT -type f -name '*.bs' -size 0 -exec rm -f {} \;
-%{_fixperms} $RPM_BUILD_ROOT
+%{make_install}
+find %{buildroot} -type f -name '*.bs' -empty -delete
+%{_fixperms} -c %{buildroot}
 
 %check
 make test
 
 %files
-%doc COPYRIGHT README
+%license COPYRIGHT
+%doc README
 %{perl_vendorarch}/auto/Crypt/
 %{perl_vendorarch}/Crypt/
-%{_mandir}/man3/Crypt::DES.3pm*
+%{_mandir}/man3/Crypt::DES.3*
 
 %changelog
-* Fri Oct 15 2021 Pawel Winogrodzki <pawelwi@microsoft.com> - 2.07-21
-- Initial CBL-Mariner import from Fedora 32 (license: MIT).
+* Thu Jul 18 2024 Fedora Release Engineering <releng@fedoraproject.org> - 2.07-39
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_41_Mass_Rebuild
+
+* Tue Jun 11 2024 Jitka Plesnikova <jplesnik@redhat.com> - 2.07-38
+- Perl 5.40 rebuild
+
+* Thu Jan 25 2024 Fedora Release Engineering <releng@fedoraproject.org> - 2.07-37
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Sun Jan 21 2024 Fedora Release Engineering <releng@fedoraproject.org> - 2.07-36
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Thu Sep 14 2023 Michal Josef Špaček <mspacek@redhat.com> - 2.07-35
+- Update license field to new BSD-Systemics SPDX license id
+
+* Thu Jul 20 2023 Fedora Release Engineering <releng@fedoraproject.org> - 2.07-34
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_39_Mass_Rebuild
+
+* Tue Jul 11 2023 Jitka Plesnikova <jplesnik@redhat.com> - 2.07-33
+- Perl 5.38 rebuild
+
+* Thu Mar 16 2023 Paul Howarth <paul@city-fan.org> - 2.07-32
+- Package tidy-up
+  - Use author-independent source URL
+  - Fix "warning: missing braces around initializer [-Wmissing-braces]"
+  - Avoid deprecated patch syntax
+  - Simplify find command using -empty
+  - Fix permissions verbosely
+
+* Wed Mar 15 2023 DJ Delorie <dj@redhat.com> - 2.07-31
+- Fix C99 compatibility issue
+
+* Fri Jan 20 2023 Fedora Release Engineering <releng@fedoraproject.org> - 2.07-30
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_38_Mass_Rebuild
+
+* Fri Jul 22 2022 Fedora Release Engineering <releng@fedoraproject.org> - 2.07-29
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_37_Mass_Rebuild
+
+* Wed Jun 01 2022 Jitka Plesnikova <jplesnik@redhat.com> - 2.07-28
+- Perl 5.36 rebuild
+
+* Fri Jan 21 2022 Fedora Release Engineering <releng@fedoraproject.org> - 2.07-27
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_36_Mass_Rebuild
+
+* Thu Jul 22 2021 Fedora Release Engineering <releng@fedoraproject.org> - 2.07-26
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_35_Mass_Rebuild
+
+* Sun May 23 2021 Jitka Plesnikova <jplesnik@redhat.com> - 2.07-25
+- Perl 5.34 rebuild
+
+* Mon Feb 22 2021 Petr Pisar <ppisar@redhat.com> - 2.07-24
+- Disable optional tests on RHEL > 8
+- Modernize packaging
+
+* Wed Jan 27 2021 Fedora Release Engineering <releng@fedoraproject.org> - 2.07-23
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_34_Mass_Rebuild
+
+* Tue Jul 28 2020 Fedora Release Engineering <releng@fedoraproject.org> - 2.07-22
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_33_Mass_Rebuild
+
+* Tue Jun 23 2020 Jitka Plesnikova <jplesnik@redhat.com> - 2.07-21
+- Perl 5.32 rebuild
 
 * Wed Jan 29 2020 Fedora Release Engineering <releng@fedoraproject.org> - 2.07-20
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_32_Mass_Rebuild

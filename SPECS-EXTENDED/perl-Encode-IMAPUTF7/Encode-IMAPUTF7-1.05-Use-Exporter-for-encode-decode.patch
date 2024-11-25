@@ -1,0 +1,13 @@
+diff -up Encode-IMAPUTF7-1.05/lib/Encode/IMAPUTF7.pm.orig Encode-IMAPUTF7-1.05/lib/Encode/IMAPUTF7.pm
+--- Encode-IMAPUTF7-1.05/lib/Encode/IMAPUTF7.pm.orig	2024-05-09 12:22:35.502986662 +0200
++++ Encode-IMAPUTF7-1.05/lib/Encode/IMAPUTF7.pm	2024-05-09 12:24:03.958733794 +0200
+@@ -10,6 +10,9 @@ our $VERSION = '1.05';
+ use MIME::Base64;
+ use Encode;
+ 
++use Exporter 'import';
++our @EXPORT_OK = qw(encode decode); 
++
+ #
+ # Algorithms taken from Unicode::String by Gisle Aas
+ # Code directly borrowed from Encode::Unicode::UTF7 by Dan Kogai

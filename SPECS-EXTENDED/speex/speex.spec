@@ -1,15 +1,15 @@
-Vendor:         Microsoft Corporation
-Distribution:   Azure Linux
 Summary:	A voice compression format (codec)
 Name:		speex
 Version:	1.2.0
-Release:	6%{?dist}
-License:	BSD
+Release:	18%{?dist}
+License:	BSD-3-clause AND TU-Berlin-1.0
 URL:		https://www.speex.org/
 Source0:	https://downloads.xiph.org/releases/speex/%{name}-%{version}.tar.gz
+BuildRequires: make
 BuildRequires:	gcc
 BuildRequires:	pkgconfig(ogg)
 BuildRequires:	pkgconfig(speexdsp)
+Patch0:		speex-1.2.0-guard-against-invalid-channel-numbers.patch
 
 %description
 Speex is a patent-free compression format designed especially for
@@ -36,16 +36,17 @@ speech. This package contains tools files and user's manual for %{name}.
 
 %prep
 %setup -q
+%patch -P0 -p1 -b.CVE-2020-23903
 
 %build
 %configure --disable-static --enable-binaries
 # Remove rpath from speexenc and speexdec
 sed -i 's|^hardcode_libdir_flag_spec=.*|hardcode_libdir_flag_spec=""|g' libtool
 sed -i 's|^runpath_var=LD_RUN_PATH|runpath_var=DIE_RPATH_DIE|g' libtool
-make %{?_smp_mflags}
+%make_build
 
 %install
-make DESTDIR=$RPM_BUILD_ROOT install
+%make_install
 rm -f $RPM_BUILD_ROOT%{_docdir}/speex/manual.pdf
 
 %ldconfig_scriptlets
@@ -71,8 +72,46 @@ rm -f $RPM_BUILD_ROOT%{_docdir}/speex/manual.pdf
 
 
 %changelog
-* Fri Oct 15 2021 Pawel Winogrodzki <pawelwi@microsoft.com> - 1.2.0-6
-- Initial CBL-Mariner import from Fedora 32 (license: MIT).
+* Sat Jul 20 2024 Fedora Release Engineering <releng@fedoraproject.org> - 1.2.0-18
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_41_Mass_Rebuild
+
+* Sat Jan 27 2024 Fedora Release Engineering <releng@fedoraproject.org> - 1.2.0-17
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Wed Nov 01 2023 Tomas Korbar <tkorbar@redhat.com> - 1.2.0-16
+- Add licenses to fully conform with SPDX
+
+* Sat Jul 22 2023 Fedora Release Engineering <releng@fedoraproject.org> - 1.2.0-15
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_39_Mass_Rebuild
+
+* Sat Mar 11 2023 Tomas Korbar <tkorbar@redhat.com> - 1.2.0-14
+- Change the License tag to the SPDX format
+
+* Sat Jan 21 2023 Fedora Release Engineering <releng@fedoraproject.org> - 1.2.0-13
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_38_Mass_Rebuild
+
+* Sat Jul 23 2022 Fedora Release Engineering <releng@fedoraproject.org> - 1.2.0-12
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_37_Mass_Rebuild
+
+* Mon Apr 25 2022 Tomas Korbar <tkorbar@redhat.com> - 1.2.0-11
+- Fix CVE-2020-23903 speex: divide by zero in read_samples() via crafted WAV file
+- Resolves: CVE-2020-23903
+
+* Sat Jan 22 2022 Fedora Release Engineering <releng@fedoraproject.org> - 1.2.0-10
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_36_Mass_Rebuild
+
+* Fri Jul 23 2021 Fedora Release Engineering <releng@fedoraproject.org> - 1.2.0-9
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_35_Mass_Rebuild
+
+* Wed Jan 27 2021 Fedora Release Engineering <releng@fedoraproject.org> - 1.2.0-8
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_34_Mass_Rebuild
+
+* Tue Aug 18 2020 Tomas Korbar <tkorbar@redhat.com> - 1.2.0-7
+- Use make macros
+- https://fedoraproject.org/wiki/Changes/UseMakeBuildInstallMacro
+
+* Wed Jul 29 2020 Fedora Release Engineering <releng@fedoraproject.org> - 1.2.0-6
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_33_Mass_Rebuild
 
 * Fri Jan 31 2020 Fedora Release Engineering <releng@fedoraproject.org> - 1.2.0-5
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_32_Mass_Rebuild

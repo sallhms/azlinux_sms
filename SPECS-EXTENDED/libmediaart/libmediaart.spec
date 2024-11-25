@@ -1,19 +1,25 @@
-Vendor:         Microsoft Corporation
-Distribution:   Azure Linux
 Name:           libmediaart
-Version:        1.9.4
-Release:        10%{?dist}
+Version:        1.9.6
+Release:        9%{?dist}
 Summary:        Library for managing media art caches
 
-License:        LGPLv2+
+License:        LGPL-2.1-or-later
 URL:            https://gitlab.gnome.org/GNOME/libmediaart
 Source0:        https://download.gnome.org/sources/%{name}/1.9/%{name}-%{version}.tar.xz
 
+BuildRequires:  gtk-doc
+BuildRequires:  meson
 BuildRequires:  pkgconfig(glib-2.0) pkgconfig(gio-2.0) pkgconfig(gio-unix-2.0)
 BuildRequires:  pkgconfig(gdk-pixbuf-2.0)
 BuildRequires:  pkgconfig(gobject-introspection-1.0)
+%if 0%{?rhel} == 8
+# Test requires the jpeg gdk-pixbuf loader, which isn't built-in
 BuildRequires:  gdk-pixbuf2-modules
-BuildRequires:  vala vala-devel
+%endif
+BuildRequires:  vala
+
+# Removed in F34
+Obsoletes: libmediaart-tests < 1.9.5
 
 %description
 Library tasked with managing, extracting and handling media art caches.
@@ -27,40 +33,28 @@ Requires:       %{name}%{?_isa} = %{version}-%{release}
 The %{name}-devel package contains libraries and header files for
 developing applications that use %{name}.
 
-%package  tests
-Summary:  Tests for the %{name} package
-Requires: %{name}%{?_isa} = %{version}-%{release}
-
-%description tests
-The %{name}-tests package contains tests that can be used to verify
-the functionality of the installed %{name} package.
 
 %prep
-%setup -q
+%autosetup -p1
 
 
 %build
-%configure --disable-static \
-  --enable-gdkpixbuf \
-  --disable-qt \
-  --enable-installed-tests
-make %{?_smp_mflags}
+%meson -Dimage_library=gdk-pixbuf -Dgtk_doc=true
+%meson_build
 
 
 %install
-%make_install
-find $RPM_BUILD_ROOT -name '*.la' -delete -print
+%meson_install
+
 
 %check
-make check
-
-%ldconfig_scriptlets
+%meson_test
 
 
 %files
 %license COPYING.LESSER
-%doc AUTHORS NEWS
-%{_libdir}/libmediaart-2.0.so.*
+%doc NEWS
+%{_libdir}/libmediaart-2.0.so.0*
 %{_libdir}/girepository-1.0/MediaArt-2.0.typelib
 
 %files devel
@@ -69,16 +63,56 @@ make check
 %{_libdir}/pkgconfig/libmediaart-2.0.pc
 %{_datadir}/gir-1.0/MediaArt-2.0.gir
 %{_datadir}/gtk-doc/html/libmediaart
+%{_datadir}/vala/vapi/libmediaart-2.0.deps
 %{_datadir}/vala/vapi/libmediaart-2.0.vapi
-
-%files tests
-%{_libexecdir}/installed-tests/libmediaart
-%{_datadir}/installed-tests
 
 
 %changelog
-* Fri Oct 15 2021 Pawel Winogrodzki <pawelwi@microsoft.com> - 1.9.4-10
-- Initial CBL-Mariner import from Fedora 32 (license: MIT).
+* Thu Jul 18 2024 Fedora Release Engineering <releng@fedoraproject.org> - 1.9.6-9
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_41_Mass_Rebuild
+
+* Thu Jul 04 2024 Benjamin Gilbert <bgilbert@backtick.net> - 1.9.6-8
+- Drop unnecessary gdk-pixbuf2-modules BR on Fedora and RHEL 9+
+
+* Fri Feb  2 2024 Yanko Kaneti <yaneti@declera.com> - 1.9.6-7
+- SPDX migration
+
+* Thu Jan 25 2024 Fedora Release Engineering <releng@fedoraproject.org> - 1.9.6-6
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Sun Jan 21 2024 Fedora Release Engineering <releng@fedoraproject.org> - 1.9.6-5
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Thu Jul 20 2023 Fedora Release Engineering <releng@fedoraproject.org> - 1.9.6-4
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_39_Mass_Rebuild
+
+* Thu Jan 19 2023 Fedora Release Engineering <releng@fedoraproject.org> - 1.9.6-3
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_38_Mass_Rebuild
+
+* Thu Jul 21 2022 Fedora Release Engineering <releng@fedoraproject.org> - 1.9.6-2
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_37_Mass_Rebuild
+
+* Wed Jun 01 2022 David King <amigadave@amigadave.com> - 1.9.6-1
+- Update to 1.9.6
+
+* Thu Jan 20 2022 Fedora Release Engineering <releng@fedoraproject.org> - 1.9.5-3
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_36_Mass_Rebuild
+
+* Thu Jul 22 2021 Fedora Release Engineering <releng@fedoraproject.org> - 1.9.5-2
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_35_Mass_Rebuild
+
+* Wed May 26 2021 Kalev Lember <klember@redhat.com> - 1.9.5-1
+- Update to 1.9.5
+- Switch to meson build system
+- Drop installed tests subpackage as they are gone from upstream
+- Remove unneeded vala-devel build dep
+- Tighten soname globs
+
+* Tue Jan 26 2021 Fedora Release Engineering <releng@fedoraproject.org> - 1.9.4-11
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_34_Mass_Rebuild
+
+* Tue Jul 28 2020 Fedora Release Engineering <releng@fedoraproject.org> - 1.9.4-10
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_33_Mass_Rebuild
 
 * Wed Jan 29 2020 Fedora Release Engineering <releng@fedoraproject.org> - 1.9.4-9
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_32_Mass_Rebuild

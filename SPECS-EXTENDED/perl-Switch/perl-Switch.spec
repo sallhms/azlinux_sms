@@ -1,27 +1,25 @@
 Name:		perl-Switch
 Version:	2.17
-Release:	17%{?dist}
+Release:	31%{?dist}
 Summary:	A switch statement for Perl
 License:	GPL+ or Artistic
-Vendor:         Microsoft Corporation
-Distribution:   Azure Linux
 URL:		https://metacpan.org/release/Switch
-Source0:	https://cpan.metacpan.org/authors/id/R/RG/RGARCIA/Switch-%{version}.tar.gz#/perl-Switch-%{version}.tar.gz
+Source0:	https://cpan.metacpan.org/authors/id/R/RG/RGARCIA/Switch-%{version}.tar.gz
 Patch0:		Switch-2.17-Filter-1.50.patch
-BuildRequires:	perl-interpreter
+BuildRequires:	findutils
+BuildRequires:	make
 BuildRequires:	perl-generators
-%if 0%(perl -e 'print $] > 5.011')
+BuildRequires:	perl-interpreter
+BuildRequires:	perl(Carp)
 BuildRequires:	perl(deprecate)
-%endif
-BuildRequires:	perl(ExtUtils::MakeMaker)
+BuildRequires:	perl(ExtUtils::MakeMaker) >= 6.76
 BuildRequires:	perl(Filter::Util::Call)
 BuildRequires:	perl(if)
 BuildRequires:	perl(overload)
+BuildRequires:	perl(strict)
 BuildRequires:	perl(Text::Balanced)
 BuildRequires:	perl(vars)
-BuildRequires:	perl(strict)
-Requires:	perl(:MODULE_COMPAT_%(eval "`%{__perl} -V:version`"; echo $version))
-Requires:	perl(overload)
+Requires:	perl(deprecate)
 BuildArch:	noarch
 
 %description
@@ -34,17 +32,16 @@ various cases.
 
 %prep
 %setup -q -n Switch-%{version}
-%patch 0 -p1 -b .fixme
+%patch -P0 -p1 -b .fixme
 
 %build
-%{__perl} Makefile.PL INSTALLDIRS=vendor
+%{__perl} Makefile.PL INSTALLDIRS=vendor NO_PACKLIST=1
 make %{?_smp_mflags}
 
 %install
 make pure_install DESTDIR=%{buildroot}
-find %{buildroot} -type f -name .packlist -exec rm -f {} ';'
-find %{buildroot} -type f -name '*.bs' -a -size 0 -exec rm -f {} ';'
-chmod -R u+w %{buildroot}/*
+find %{buildroot} -type f -name '*.bs' -a -size 0 -delete
+%{_fixperms} %{buildroot}/*
 
 %check
 make test
@@ -55,8 +52,50 @@ make test
 %{_mandir}/man3/*.3*
 
 %changelog
-* Fri Oct 15 2021 Pawel Winogrodzki <pawelwi@microsoft.com> - 2.17-17
-- Initial CBL-Mariner import from Fedora 32 (license: MIT).
+* Fri Jul 19 2024 Fedora Release Engineering <releng@fedoraproject.org> - 2.17-31
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_41_Mass_Rebuild
+
+* Thu Jan 25 2024 Fedora Release Engineering <releng@fedoraproject.org> - 2.17-30
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Sun Jan 21 2024 Fedora Release Engineering <releng@fedoraproject.org> - 2.17-29
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Fri Jul 21 2023 Fedora Release Engineering <releng@fedoraproject.org> - 2.17-28
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_39_Mass_Rebuild
+
+* Fri Jan 20 2023 Fedora Release Engineering <releng@fedoraproject.org> - 2.17-27
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_38_Mass_Rebuild
+
+* Fri Jul 22 2022 Fedora Release Engineering <releng@fedoraproject.org> - 2.17-26
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_37_Mass_Rebuild
+
+* Mon May 30 2022 Jitka Plesnikova <jplesnik@redhat.com> - 2.17-25
+- Perl 5.36 rebuild
+
+* Fri Jan 21 2022 Fedora Release Engineering <releng@fedoraproject.org> - 2.17-24
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_36_Mass_Rebuild
+
+* Thu Jul 22 2021 Fedora Release Engineering <releng@fedoraproject.org> - 2.17-23
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_35_Mass_Rebuild
+
+* Fri May 21 2021 Jitka Plesnikova <jplesnik@redhat.com> - 2.17-22
+- Perl 5.34 rebuild
+
+* Wed Jan 27 2021 Fedora Release Engineering <releng@fedoraproject.org> - 2.17-21
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_34_Mass_Rebuild
+
+* Tue Jul 28 2020 Fedora Release Engineering <releng@fedoraproject.org> - 2.17-20
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_33_Mass_Rebuild
+
+* Mon Jun 22 2020 Jitka Plesnikova <jplesnik@redhat.com> - 2.17-19
+- Perl 5.32 rebuild
+
+* Wed Jun 10 2020 Jitka Plesnikova <jplesnik@redhat.com> - 2.17-18
+- Updated dependencies
+
+* Tue Mar 17 2020 Jitka Plesnikova <jplesnik@redhat.com> - 2.17-17
+- Remove condition for perl(deprecate), it did not work
 
 * Thu Jan 30 2020 Fedora Release Engineering <releng@fedoraproject.org> - 2.17-16
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_32_Mass_Rebuild

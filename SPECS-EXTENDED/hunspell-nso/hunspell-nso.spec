@@ -1,14 +1,16 @@
-Vendor:         Microsoft Corporation
-Distribution:   Azure Linux
+%if 0%{?fedora} > 35
+%global dict_dirname hunspell 
+%else
+%global dict_dirname myspell
+%endif
 Name: hunspell-nso
 Summary: Northern Sotho hunspell dictionaries
 %global upstreamid 20091201
 Version: 0.%{upstreamid}
-Release: 19%{?dist}
-Source0: https://downloads.sourceforge.net/project/aoo-extensions/3139/1/dict-ns_za-2009.12.01.oxt
-Source1: %{name}-LICENSE.txt
+Release: 30%{?dist}
+Source: https://downloads.sourceforge.net/project/aoo-extensions/3139/1/dict-ns_za-2009.12.01.oxt
 URL: https://extensions.openoffice.org/en/project/northern-sotho-spell-checker
-License: LGPLv2+
+License: LGPL-2.1-or-later
 BuildArch: noarch
 
 Requires: hunspell
@@ -19,7 +21,6 @@ Northern Sotho hunspell dictionaries.
 
 %prep
 %autosetup -c -n hunspell-nso
-cp %{SOURCE1} ./LICENSE.txt
 
 %build
 for i in README-ns_ZA.txt package-description.txt release-notes-ns_ZA.txt; do
@@ -34,19 +35,52 @@ for i in README-ns_ZA.txt package-description.txt release-notes-ns_ZA.txt; do
 done
 
 %install
-mkdir -p $RPM_BUILD_ROOT/%{_datadir}/myspell
-cp -p ns_ZA.dic $RPM_BUILD_ROOT/%{_datadir}/myspell/nso_ZA.dic
-cp -p ns_ZA.aff $RPM_BUILD_ROOT/%{_datadir}/myspell/nso_ZA.aff
+mkdir -p $RPM_BUILD_ROOT/%{_datadir}/%{dict_dirname}
+cp -p ns_ZA.dic $RPM_BUILD_ROOT/%{_datadir}/%{dict_dirname}/nso_ZA.dic
+cp -p ns_ZA.aff $RPM_BUILD_ROOT/%{_datadir}/%{dict_dirname}/nso_ZA.aff
 
 
 %files
-%license LICENSE.txt
 %doc README-ns_ZA.txt package-description.txt release-notes-ns_ZA.txt
-%{_datadir}/myspell/*
+%{_datadir}/%{dict_dirname}/*
 
 %changelog
-* Fri Oct 15 2021 Pawel Winogrodzki <pawelwi@microsoft.com> - 0.20091201-19
-- Initial CBL-Mariner import from Fedora 32 (license: MIT).
+* Thu Jul 18 2024 Fedora Release Engineering <releng@fedoraproject.org> - 0.20091201-30
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_41_Mass_Rebuild
+
+* Wed Jan 24 2024 Fedora Release Engineering <releng@fedoraproject.org> - 0.20091201-29
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Sat Jan 20 2024 Fedora Release Engineering <releng@fedoraproject.org> - 0.20091201-28
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Thu Jul 20 2023 Fedora Release Engineering <releng@fedoraproject.org> - 0.20091201-27
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_39_Mass_Rebuild
+
+* Wed Feb 22 2023 Caolán McNamara <caolanm@redhat.com> - 0.20091201-26
+- migrated to SPDX license
+
+* Thu Jan 19 2023 Fedora Release Engineering <releng@fedoraproject.org> - 0.20091201-25
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_38_Mass_Rebuild
+
+* Thu Jul 21 2022 Fedora Release Engineering <releng@fedoraproject.org> - 0.20091201-24
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_37_Mass_Rebuild
+
+* Fri Feb 11 2022 Vishal Vijayraghavan <vishalvvr@fedoraproject.org> - 0.20091201-23
+- rename install directory name from myspell to hunspell
+- https://fedoraproject.org/wiki/Changes/Hunspell_dictionary_dir_change
+
+* Thu Jan 20 2022 Fedora Release Engineering <releng@fedoraproject.org> - 0.20091201-22
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_36_Mass_Rebuild
+
+* Thu Jul 22 2021 Fedora Release Engineering <releng@fedoraproject.org> - 0.20091201-21
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_35_Mass_Rebuild
+
+* Tue Jan 26 2021 Fedora Release Engineering <releng@fedoraproject.org> - 0.20091201-20
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_34_Mass_Rebuild
+
+* Tue Jul 28 2020 Fedora Release Engineering <releng@fedoraproject.org> - 0.20091201-19
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_33_Mass_Rebuild
 
 * Wed Jan 29 2020 Fedora Release Engineering <releng@fedoraproject.org> - 0.20091201-18
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_32_Mass_Rebuild
@@ -100,7 +134,7 @@ cp -p ns_ZA.aff $RPM_BUILD_ROOT/%{_datadir}/myspell/nso_ZA.aff
 * Wed Feb 09 2011 Fedora Release Engineering <rel-eng@lists.fedoraproject.org> - 0.20091201-2
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_15_Mass_Rebuild
 
-* Wed Dec 02 2009 Caolan McNamara <caolanm@redhat.com> - 0.20091201-1
+* Wed Dec 02 2009 Caolán McNamara <caolanm@redhat.com> - 0.20091201-1
 - latest version
 
 * Fri Jul 24 2009 Fedora Release Engineering <rel-eng@lists.fedoraproject.org> - 0.20060120-3
@@ -109,5 +143,5 @@ cp -p ns_ZA.aff $RPM_BUILD_ROOT/%{_datadir}/myspell/nso_ZA.aff
 * Tue Feb 24 2009 Fedora Release Engineering <rel-eng@lists.fedoraproject.org> - 0.20060120-2
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_11_Mass_Rebuild
 
-* Fri Sep 12 2008 Caolan McNamara <caolanm@redhat.com> - 0.20060120-1
+* Fri Sep 12 2008 Caolán McNamara <caolanm@redhat.com> - 0.20060120-1
 - initial version

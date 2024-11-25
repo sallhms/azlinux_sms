@@ -1,10 +1,8 @@
-Vendor:         Microsoft Corporation
-Distribution:   Azure Linux
-%global commit	fa9dce43d1a667d6e6e26895fbed01b3b04362c9
+%global commit	06ae09c8d09ff62a8b69e45af67fc31974c30244
 
 Name:		driverctl
-Version:	0.111
-Release:	2%{?dist}
+Version:	0.101
+Release:	15%{?dist}
 Summary:	Device driver control utility
 
 License:	LGPLv2
@@ -16,7 +14,8 @@ Source0:	https://gitlab.com/driverctl/%{name}/repository/archive.tar.gz?ref=%{ve
 
 # for udev macros
 BuildRequires: systemd
-Requires(post,postun): %{_bindir}/udevadm
+BuildRequires: make
+Requires(post,postun): %{_sbindir}/udevadm
 Requires: coreutils udev
 
 %description
@@ -42,7 +41,7 @@ by default.
 %setup -q -n %{name}-%{version}-%{commit}
 
 %install
-%make_install UDEVDIR=/usr/lib/udev/ UNITDIR=%{_unitdir}
+%make_install
 
 %files
 %license COPYING
@@ -62,12 +61,38 @@ by default.
 %udev_rules_update
 
 %changelog
-* Fri Oct 15 2021 Pawel Winogrodzki <pawelwi@microsoft.com> - 0.111-2
-- Initial CBL-Mariner import from Fedora 32 (license: MIT).
+* Wed Jul 17 2024 Fedora Release Engineering <releng@fedoraproject.org> - 0.101-15
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_41_Mass_Rebuild
 
-* Sun Jun 6 2021 Jon Slobodzian- 0.111-1
-- Upgraded to 0.111
-- Fixed build issues for Mariner
+* Mon Jan 29 2024 Fedora Release Engineering <releng@fedoraproject.org> - 0.101-14
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Wed Jan 24 2024 Fedora Release Engineering <releng@fedoraproject.org> - 0.101-13
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Fri Jan 19 2024 Fedora Release Engineering <releng@fedoraproject.org> - 0.101-12
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Wed Jul 19 2023 Fedora Release Engineering <releng@fedoraproject.org> - 0.101-11
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_39_Mass_Rebuild
+
+* Thu Jan 19 2023 Fedora Release Engineering <releng@fedoraproject.org> - 0.101-10
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_38_Mass_Rebuild
+
+* Thu Jul 21 2022 Fedora Release Engineering <releng@fedoraproject.org> - 0.101-9
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_37_Mass_Rebuild
+
+* Thu Jan 20 2022 Fedora Release Engineering <releng@fedoraproject.org> - 0.101-8
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_36_Mass_Rebuild
+
+* Wed Jul 21 2021 Fedora Release Engineering <releng@fedoraproject.org> - 0.101-7
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_35_Mass_Rebuild
+
+* Tue Jan 26 2021 Fedora Release Engineering <releng@fedoraproject.org> - 0.101-6
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_34_Mass_Rebuild
+
+* Mon Jul 27 2020 Fedora Release Engineering <releng@fedoraproject.org> - 0.101-5
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_33_Mass_Rebuild
 
 * Tue Jan 28 2020 Fedora Release Engineering <releng@fedoraproject.org> - 0.101-4
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_32_Mass_Rebuild

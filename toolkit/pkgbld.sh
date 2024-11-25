@@ -12,6 +12,7 @@ WCREFRESH=y
 SDIR=../SPECS
 USEPKGBLDCACHE=y
 USECCACHE=y
+RMID=3.0
 helpFuncion () {
 	echo ""
 	echo "Build a package(s) for 3.0 locally:"
@@ -139,6 +140,7 @@ fi
 
 
 sudo make build-packages \
+	RELEASE_MAJOR_ID=${RMID} \
 	REBUILD_TOOLS=y \
 	QUICK_REBUILD_PACKAGES=y \
 	USE_CCACHE=${USECCACHE} \

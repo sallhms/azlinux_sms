@@ -1,16 +1,14 @@
-Vendor:         Microsoft Corporation
-Distribution:   Azure Linux
 Name:           babeltrace
-Version:        1.5.7
-Release:        7%{?dist}
+Version:        1.5.11
+Release:        9%{?dist}
 Summary:        Trace Viewer and Converter, mainly for the Common Trace Format
-License:        MIT and GPLv2
+License:        MIT AND GPL-3.0-or-later WITH Bison-exception-2.2 AND LGPL-2.1-only AND BSD-4-Clause-UC
 URL:            https://www.efficios.com/babeltrace
 Source0:        https://www.efficios.com/files/%{name}/%{name}-%{version}.tar.bz2
 Source1:        https://www.efficios.com/files/%{name}/%{name}-%{version}.tar.bz2.asc
 # gpg2 --export --export-options export-minimal 7F49314A26E0DE78427680E05F1B2A0789F12B11 > gpgkey-7F49314A26E0DE78427680E05F1B2A0789F12B11.gpg
 Source2:        gpgkey-7F49314A26E0DE78427680E05F1B2A0789F12B11.gpg
-Patch0:         python39.patch
+Patch0:         babeltrace-getaddrinfo.patch
 
 BuildRequires:  bison >= 2.4
 BuildRequires:  flex >= 2.5.35
@@ -18,10 +16,12 @@ BuildRequires:  glib2-devel >= 2.22.0
 BuildRequires:  libuuid-devel
 BuildRequires:  popt-devel >= 1.13
 BuildRequires:  python3-devel
+BuildRequires:  python3-setuptools
 BuildRequires:  swig >= 2.0
 BuildRequires:  elfutils-devel >= 0.154
 BuildRequires:  autoconf automake libtool
 BuildRequires:  gnupg2
+BuildRequires:  make
 
 Requires:       lib%{name}%{?_isa} = %{version}-%{release}
 
@@ -117,8 +117,78 @@ rm -f %{buildroot}/%{_pkgdocdir}/std-ext-lib.txt
 
 
 %changelog
-* Fri Oct 15 2021 Pawel Winogrodzki <pawelwi@microsoft.com> - 1.5.7-7
-- Initial CBL-Mariner import from Fedora 32 (license: MIT).
+* Wed Jul 17 2024 Fedora Release Engineering <releng@fedoraproject.org> - 1.5.11-9
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_41_Mass_Rebuild
+
+* Fri Jun 07 2024 Python Maint <python-maint@redhat.com> - 1.5.11-8
+- Rebuilt for Python 3.13
+
+* Tue Jan 23 2024 Fedora Release Engineering <releng@fedoraproject.org> - 1.5.11-7
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Fri Jan 19 2024 Fedora Release Engineering <releng@fedoraproject.org> - 1.5.11-6
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Wed Jul 19 2023 Fedora Release Engineering <releng@fedoraproject.org> - 1.5.11-5
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_39_Mass_Rebuild
+
+* Tue Jun 13 2023 Python Maint <python-maint@redhat.com> - 1.5.11-4
+- Rebuilt for Python 3.12
+
+* Mon May 30 2023 Keith Seitz <keiths@redhat.com>
+- Update license expression.
+
+* Mon May 08 2023 Michael Jeanson <mjeanson@efficios.com> - 1.5.11-3
+- migrated to SPDX license
+
+* Wed Jan 18 2023 Fedora Release Engineering <releng@fedoraproject.org> - 1.5.11-2
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_38_Mass_Rebuild
+
+* Wed Nov 02 2022 Michael Jeanson <mjeanson@efficios.com> - 1.5.11-1
+- New upstream release
+- Drop patches merged upstream
+- Add builddep on python3-setuptools for Python 3.12+
+
+* Fri Sep 16 2022 Keith Seitz - 1.5.8-13
+- Add use-after-free patch for popt-1.19 update.
+  (Keith Seitz, RHBZ 2126067)
+
+* Wed Jul 20 2022 Fedora Release Engineering <releng@fedoraproject.org> - 1.5.8-12
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_37_Mass_Rebuild
+
+* Mon Jun 13 2022 Python Maint <python-maint@redhat.com> - 1.5.8-11
+- Rebuilt for Python 3.11
+
+* Wed Mar 16 2022 Keith Seitz <keiths@redhat.com> - 1.5.8-10
+- Use getaddrinfo instead of gethostbyname.
+
+* Wed Jan 19 2022 Fedora Release Engineering <releng@fedoraproject.org> - 1.5.8-9
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_36_Mass_Rebuild
+
+* Wed Jul 21 2021 Fedora Release Engineering <releng@fedoraproject.org> - 1.5.8-8
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_35_Mass_Rebuild
+
+* Fri Jun 04 2021 Python Maint <python-maint@redhat.com> - 1.5.8-7
+- Rebuilt for Python 3.10
+
+* Tue Jan 26 2021 Fedora Release Engineering <releng@fedoraproject.org> - 1.5.8-6
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_34_Mass_Rebuild
+
+* Mon Nov 16 2020 Keith Seitz <keiths@redhat.com> - 1.5.8-5
+- Remove workaround for 1890813 now that binutils is fixed.
+
+* Mon Oct 26 2020 Keith Seitz <keiths@redhat.com> - 1.5.8-4
+- Workaround __openat_missing_mode compiler error.
+  (Keith Seitz, RH BZ 1890813)
+
+* Mon Jul 27 2020 Fedora Release Engineering <releng@fedoraproject.org> - 1.5.8-3
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_33_Mass_Rebuild
+
+* Tue May 26 2020 Miro Hrončok <mhroncok@redhat.com> - 1.5.8-2
+- Rebuilt for Python 3.9
+
+* Wed Feb 12 2020 Michael Jeanson <mjeanson@efficios.com> - 1.5.8-1
+- New upstream release
 
 * Tue Jan 28 2020 Fedora Release Engineering <releng@fedoraproject.org> - 1.5.7-6
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_32_Mass_Rebuild

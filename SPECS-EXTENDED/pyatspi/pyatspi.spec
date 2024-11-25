@@ -1,29 +1,27 @@
-Vendor:         Microsoft Corporation
-Distribution:   Azure Linux
 %global debug_package %{nil}
 
 Name:           pyatspi
-Version:        2.36.0
-Release:        2%{?dist}
+Version:        2.46.1
+Release:        5%{?dist}
 Summary:        Python bindings for at-spi
 
-License:        LGPLv2 and GPLv2
-URL:            https://wiki.linuxfoundation.org/accessibility/atk/at-spi/at-spi_on_d-bus
-Source0:        https://download.gnome.org/sources/pyatspi/2.36/%{name}-%{version}.tar.xz
+License:        LGPL-2.0-or-later AND GPL-2.0-or-later
+URL:            http://www.linuxfoundation.org/en/AT-SPI_on_D-Bus
+Source0:        https://download.gnome.org/sources/pyatspi/2.46/%{name}-%{version}.tar.xz
 
-# For tests
+BuildRequires:  make
+BuildRequires:  pkgconfig(atk) >= 2.11.2
+BuildRequires:  pkgconfig(atspi-2)
 BuildRequires:  pkgconfig(dbus-1) >= 1.0
 BuildRequires:  pkgconfig(glib-2.0)
-BuildRequires:  dbus-glib-devel >= 0.7.0
-BuildRequires:  pkgconfig(gobject-2.0) >= 2.0.0
 BuildRequires:  pkgconfig(gmodule-2.0) >= 2.0.0
+BuildRequires:  pkgconfig(gobject-2.0) >= 2.0.0
+BuildRequires:  pkgconfig(gtk+-3.0)
 BuildRequires:  pkgconfig(libxml-2.0) >= 2.0.0
-BuildRequires:  pkgconfig(atk) >= 2.11.2
-BuildRequires:  pkgconfig(gtk+-2.0) >= 2.10.0
 BuildRequires:  pkgconfig(pygobject-3.0) >= 2.90.1
 
-BuildRequires:  python3-devel
 BuildRequires:  python3-dbus
+BuildRequires:  python3-devel
 
 BuildArch:      noarch
 
@@ -56,7 +54,7 @@ This package includes a python3 client library for at-spi.
 
 %build
 %configure --with-python=python3 --enable-tests
-make
+%make_build
 
 
 %install
@@ -72,15 +70,87 @@ sed -i '1s|^#!/usr/bin/python|#!%{__python3}|' examples/magFocusTracker.py
 
 %files -n python3-pyatspi
 %license COPYING COPYING.GPL
-%doc AUTHORS README
+%doc AUTHORS README.md
 %doc examples/magFocusTracker.py
 %{python3_sitelib}/pyatspi/
 
 
 %changelog
-* Thu Jun 17 2021 Thomas Crain <thcrain@microsoft.com> - 2.36.0-2
-- Initial CBL-Mariner import from Fedora 32 (license: MIT).
-- Explicitly require dbus-glib-devel instead of pkgconfig(dbus-glib-1)
+* Fri Jul 19 2024 Fedora Release Engineering <releng@fedoraproject.org> - 2.46.1-5
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_41_Mass_Rebuild
+
+* Fri Jun 07 2024 Python Maint <python-maint@redhat.com> - 2.46.1-4
+- Rebuilt for Python 3.13
+
+* Fri Jan 26 2024 Fedora Release Engineering <releng@fedoraproject.org> - 2.46.1-3
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Sun Jan 21 2024 Fedora Release Engineering <releng@fedoraproject.org> - 2.46.1-2
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Thu Jan 11 2024 Kalev Lember <klember@redhat.com> - 2.46.1-1
+- Update to 2.46.1
+
+* Fri Jul 21 2023 Fedora Release Engineering <releng@fedoraproject.org> - 2.46.0-6
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_39_Mass_Rebuild
+
+* Thu Jun 15 2023 Python Maint <python-maint@redhat.com> - 2.46.0-5
+- Rebuilt for Python 3.12
+
+* Wed May 10 2023 Tomas Popela <tpopela@redhat.com> - 2.46.0-4
+- Drop BR on dbus-glib as the project is using plain dbus
+
+* Wed Apr 05 2023 David King <amigadave@amigadave.com> - 2.46.0-3
+- Remove obsolete gtk2 BuildRequires
+- Use SPDX for license field
+
+* Fri Jan 20 2023 Fedora Release Engineering <releng@fedoraproject.org> - 2.46.0-2
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_38_Mass_Rebuild
+
+* Wed Sep 21 2022 Kalev Lember <klember@redhat.com> - 2.46.0-1
+- Update to 2.46.0
+
+* Mon Aug 08 2022 Kalev Lember <klember@redhat.com> - 2.45.90-1
+- Update to 2.45.90
+
+* Fri Jul 22 2022 Fedora Release Engineering <releng@fedoraproject.org> - 2.45.1-2
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_37_Mass_Rebuild
+
+* Thu Jul 07 2022 David King <amigadave@amigadave.com> - 2.45.1-1
+- Update to 2.45.1
+
+* Mon Jun 13 2022 Python Maint <python-maint@redhat.com> - 2.38.2-3
+- Rebuilt for Python 3.11
+
+* Fri Jan 21 2022 Fedora Release Engineering <releng@fedoraproject.org> - 2.38.2-2
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_36_Mass_Rebuild
+
+* Sat Dec 11 2021 Kalev Lember <klember@redhat.com> - 2.38.2-1
+- Update to 2.38.2
+
+* Fri Jul 23 2021 Fedora Release Engineering <releng@fedoraproject.org> - 2.38.1-3
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_35_Mass_Rebuild
+
+* Fri Jun 04 2021 Python Maint <python-maint@redhat.com> - 2.38.1-2
+- Rebuilt for Python 3.10
+
+* Mon Mar 15 2021 Kalev Lember <klember@redhat.com> - 2.38.1-1
+- Update to 2.38.1
+
+* Wed Jan 27 2021 Fedora Release Engineering <releng@fedoraproject.org> - 2.38.0-2
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_34_Mass_Rebuild
+
+* Sat Sep 12 2020 Kalev Lember <klember@redhat.com> - 2.38.0-1
+- Update to 2.38.0
+
+* Tue Aug 18 2020 Kalev Lember <klember@redhat.com> - 2.37.90-1
+- Update to 2.37.90
+
+* Tue Jul 28 2020 Fedora Release Engineering <releng@fedoraproject.org> - 2.36.0-3
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_33_Mass_Rebuild
+
+* Tue May 26 2020 Miro Hrončok <mhroncok@redhat.com> - 2.36.0-2
+- Rebuilt for Python 3.9
 
 * Sun Mar 08 2020 Kalev Lember <klember@redhat.com> - 2.36.0-1
 - Update to 2.36.0

@@ -1,20 +1,16 @@
-Summary:        Extremely light-weight Lempel-Ziv-Free compression
 Name:           perl-Compress-LZF
 Version:        3.8
-Release:        21%{?dist}
-License:        GPL+ OR Artistic
-Vendor:         Microsoft Corporation
-Distribution:   Azure Linux
+Release:        32%{?dist}
+Summary:        Extremely light-weight Lempel-Ziv-Free compression
+License:        GPL-1.0-or-later OR Artistic-1.0-Perl
 ## Not in the binary packages
 # liblzf files:     BSD or GPLv2+
 # perlmulticore.h:  Public Domain or CC0
 URL:            https://metacpan.org/release/Compress-LZF
 Source0:        https://cpan.metacpan.org/modules/by-module/Compress/Compress-LZF-%{version}.tar.gz
-# Unbundle liblzf
 Patch0:         Compress-LZF-3.8-Unbundle-liblzf.patch
-# Unbundle perlmulticore.h
 Patch1:         Compress-LZF-3.8-Unbundle-perlmulticore.patch
-
+Patch2:         perl-Compress-LZF-c99.patch
 # Build
 BuildRequires:  coreutils
 BuildRequires:  findutils
@@ -24,26 +20,30 @@ BuildRequires:  make
 BuildRequires:  perl-devel
 BuildRequires:  perl-generators
 BuildRequires:  perl-interpreter
+BuildRequires:  perl(ExtUtils::MakeMaker)
 BuildRequires:  perlmulticore-static
 # Module
 BuildRequires:  perl(DynaLoader)
 BuildRequires:  perl(Exporter)
-BuildRequires:  perl(ExtUtils::MakeMaker)
-
-%if 0%{?with_check}
+# Test Suite
 BuildRequires:  perl(Storable)
-%endif
-
 # Dependencies
-Requires:       perl(:MODULE_COMPAT_%(eval "`perl -V:version`"; echo $version))
+# (none)
 
 %description
 This is Perl binding to the LZF compression library.
 
 %prep
 %setup -q -n Compress-LZF-%{version}
-%patch 0 -p1
-%patch 1 -p1
+
+# Unbundle liblzf
+%patch -P 0 -p1
+
+# Unbundle perlmulticore.h
+%patch -P 1 -p1
+
+# Compile in C99 mode
+%patch -P 2 -p1
 
 %build
 perl Makefile.PL INSTALLDIRS=vendor OPTIMIZE="%{optflags}"
@@ -66,9 +66,41 @@ make test
 %{_mandir}/man3/Compress::LZF.3*
 
 %changelog
-* Wed Jan 26 2022 Pawel Winogrodzki <pawelwi@microsoft.com> - 3.8-21
-- Initial CBL-Mariner import from Fedora 36 (license: MIT).
-- License verified.
+* Thu Jul 18 2024 Fedora Release Engineering <releng@fedoraproject.org> - 3.8-32
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_41_Mass_Rebuild
+
+* Mon Jun 10 2024 Jitka Plesnikova <jplesnik@redhat.com> - 3.8-31
+- Perl 5.40 rebuild
+
+* Thu Jan 25 2024 Fedora Release Engineering <releng@fedoraproject.org> - 3.8-30
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Sun Jan 21 2024 Fedora Release Engineering <releng@fedoraproject.org> - 3.8-29
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Wed Dec 13 2023 Paul Howarth <paul@city-fan.org> - 3.8-28
+- Avoid use of deprecated patch syntax
+
+* Thu Jul 20 2023 Fedora Release Engineering <releng@fedoraproject.org> - 3.8-27
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_39_Mass_Rebuild
+
+* Tue Jul 11 2023 Jitka Plesnikova <jplesnik@redhat.com> - 3.8-26
+- Perl 5.38 rebuild
+
+* Fri Jan 20 2023 Fedora Release Engineering <releng@fedoraproject.org> - 3.8-25
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_38_Mass_Rebuild
+
+* Sun Nov 27 2022 Florian Weimer <fweimer@redhat.com> - 3.8-24
+- Avoid implicit function declarations for C99 compatibility (#2148767)
+
+* Fri Jul 22 2022 Fedora Release Engineering <releng@fedoraproject.org> - 3.8-23
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_37_Mass_Rebuild
+
+* Mon May 30 2022 Jitka Plesnikova <jplesnik@redhat.com> - 3.8-22
+- Perl 5.36 rebuild
+
+* Fri Jan 21 2022 Fedora Release Engineering <releng@fedoraproject.org> - 3.8-21
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_36_Mass_Rebuild
 
 * Thu Jul 22 2021 Fedora Release Engineering <releng@fedoraproject.org> - 3.8-20
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_35_Mass_Rebuild

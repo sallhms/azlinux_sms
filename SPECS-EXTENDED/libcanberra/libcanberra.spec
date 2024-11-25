@@ -1,85 +1,98 @@
-Summary:        Portable Sound Event Library
-Name:           libcanberra
-Version:        0.30
-Release:        24%{?dist}
-License:        LGPLv2+
-Vendor:         Microsoft Corporation
-Distribution:   Azure Linux
-URL:            https://0pointer.de/lennart/projects/libcanberra/
-Source0:        https://0pointer.de/lennart/projects/%{name}/%{name}-%{version}.tar.xz
-Patch0:         0001-gtk-Don-t-assume-all-GdkDisplays-are-GdkX11Displays-.patch
-BuildRequires:  gcc
-BuildRequires:  gtk2-devel
-BuildRequires:  gtk3-devel
-BuildRequires:  alsa-lib-devel
-BuildRequires:  libvorbis-devel
-BuildRequires:  libtool-ltdl-devel
-BuildRequires:  gtk-doc
-BuildRequires:  pulseaudio-libs-devel >= 0.9.15
-BuildRequires:  gstreamer1-devel
-BuildRequires:  libtdb-devel
-BuildRequires:  gettext-devel
-BuildRequires:  systemd-devel
-Requires:       sound-theme-freedesktop
-Requires:       pulseaudio-libs >= 0.9.15
-Requires(post): systemd
-Requires(preun):systemd
-Requires(postun): systemd
+# RHEL 10 won't ship with GTK 2, don't build bit there, but build them elsewhere
+%if 0%{?rhel} > 9
+%bcond_with gtk2
+%else
+%bcond_without gtk2
+%endif
+
+Name: libcanberra
+Version: 0.30
+Release: 36%{?dist}
+Summary: Portable Sound Event Library
+Source0: http://0pointer.de/lennart/projects/libcanberra/libcanberra-%{version}.tar.xz
+Patch0: 0001-gtk-Don-t-assume-all-GdkDisplays-are-GdkX11Displays-.patch
+License: LGPL-2.1-or-later
+Url: http://git.0pointer.de/?p=libcanberra.git;a=summary
+BuildRequires: gcc
+%if %{with gtk2}
+BuildRequires: gtk2-devel
+%endif
+BuildRequires: gtk3-devel
+BuildRequires: alsa-lib-devel
+BuildRequires: libvorbis-devel
+BuildRequires: libtool-ltdl-devel
+BuildRequires: gtk-doc
+BuildRequires: pulseaudio-libs-devel >= 0.9.15
+BuildRequires: gstreamer1-devel
+BuildRequires: libtdb-devel
+BuildRequires: gettext-devel
+BuildRequires: systemd-devel
+BuildRequires: make
+Requires: sound-theme-freedesktop
+Requires: pulseaudio-libs >= 0.9.15
 
 %description
 A small and lightweight implementation of the XDG Sound Theme Specification
 (http://0pointer.de/public/sound-theme-spec.html).
 
+%if %{with gtk2}
 %package gtk2
-Summary:        Gtk+ 2.x Bindings for libcanberra
-Requires:       %{name}%{?_isa} = %{version}-%{release}
+Summary: Gtk+ 2.x Bindings for libcanberra
+Requires: %{name}%{?_isa} = %{version}-%{release}
 # Some other stuff is included in the gtk3 package, so always pull that in.
-Requires:       %{name}-gtk3%{?_isa} = %{version}-%{release}
+Requires: %{name}-gtk3%{?_isa} = %{version}-%{release}
 
 %description gtk2
 Gtk+ 2.x bindings for libcanberra
+%endif
 
 %package gtk3
-Summary:        Gtk+ 3.x Bindings for libcanberra
-Requires:       %{name}%{?_isa} = %{version}-%{release}
+Summary: Gtk+ 3.x Bindings for libcanberra
+Requires: %{name}%{?_isa} = %{version}-%{release}
 
 %description gtk3
 Gtk+ 3.x bindings for libcanberra
 
 %package devel
-Summary:        Development Files for libcanberra Client Development
-Requires:       %{name}%{?_isa} = %{version}-%{release}
-Requires:       %{name}-gtk2%{?_isa} = %{version}-%{release}
-Requires:       %{name}-gtk3%{?_isa} = %{version}-%{release}
-Requires:       gtk2-devel
+Summary: Development Files for libcanberra Client Development
+Requires: %{name}%{?_isa} = %{version}-%{release}
+Requires: %{name}-gtk3%{?_isa} = %{version}-%{release}
+%if %{with gtk2}
+Requires: %{name}-gtk2%{?_isa} = %{version}-%{release}
+Requires: gtk2-devel
+%endif
 
 %description devel
 Development Files for libcanberra Client Development
 
 %post
-%{?ldconfig}
 %systemd_post canberra-system-bootup.service canberra-system-shutdown.service canberra-system-shutdown-reboot.service
 
 %preun
 %systemd_preun canberra-system-bootup.service canberra-system-shutdown.service canberra-system-shutdown-reboot.service
 
-%ldconfig_postun
-
-%ldconfig_scriptlets gtk2
-
-%ldconfig_scriptlets gtk3
-
 %prep
-%autosetup -p1
+%setup -q
+%patch -P0 -p1 
 
 %build
-%configure --disable-static --enable-pulse --enable-alsa --enable-null --disable-oss --with-builtin=dso --with-systemdsystemunitdir=%{_libdir}/systemd/system
-%make_build %{?_smp_mflags}
+%configure \
+    --disable-static \
+    --enable-pulse \
+    --enable-alsa \
+%if %{without gtk2}
+    --disable-gtk \
+%endif
+    --enable-null \
+    --disable-oss \
+    --with-builtin=dso \
+    --with-systemdsystemunitdir=/usr/lib/systemd/system
+make %{?_smp_mflags}
 
 %install
-make DESTDIR=%{buildroot} install
-find %{buildroot} \( -name *.a -o -name *.la \) -exec rm {} \;
-rm %{buildroot}%{_docdir}/libcanberra/README
+make DESTDIR=$RPM_BUILD_ROOT install
+find $RPM_BUILD_ROOT \( -name *.a -o -name *.la \) -exec rm {} \;
+rm $RPM_BUILD_ROOT%{_docdir}/libcanberra/README
 
 %files
 %license LGPL
@@ -91,14 +104,16 @@ rm %{buildroot}%{_docdir}/libcanberra/README
 %{_libdir}/libcanberra-%{version}/libcanberra-null.so
 %{_libdir}/libcanberra-%{version}/libcanberra-multi.so
 %{_libdir}/libcanberra-%{version}/libcanberra-gstreamer.so
-%{_libdir}/systemd/system/canberra-system-bootup.service
-%{_libdir}/systemd/system/canberra-system-shutdown-reboot.service
-%{_libdir}/systemd/system/canberra-system-shutdown.service
+%{_prefix}/lib/systemd/system/canberra-system-bootup.service
+%{_prefix}/lib/systemd/system/canberra-system-shutdown-reboot.service
+%{_prefix}/lib/systemd/system/canberra-system-shutdown.service
 %{_bindir}/canberra-boot
 
+%if %{with gtk2}
 %files gtk2
 %{_libdir}/libcanberra-gtk.so.*
 %{_libdir}/gtk-2.0/modules/libcanberra-gtk-module.so
+%endif
 
 %files gtk3
 %{_libdir}/libcanberra-gtk3.so.*
@@ -121,12 +136,14 @@ rm %{buildroot}%{_docdir}/libcanberra/README
 %doc %{_datadir}/gtk-doc
 %{_includedir}/canberra-gtk.h
 %{_includedir}/canberra.h
-%{_libdir}/libcanberra-gtk.so
-%{_libdir}/libcanberra-gtk3.so
 %{_libdir}/libcanberra.so
-%{_libdir}/pkgconfig/libcanberra-gtk.pc
-%{_libdir}/pkgconfig/libcanberra-gtk3.pc
 %{_libdir}/pkgconfig/libcanberra.pc
+%if %{with gtk2}
+%{_libdir}/libcanberra-gtk.so
+%{_libdir}/pkgconfig/libcanberra-gtk.pc
+%endif
+%{_libdir}/libcanberra-gtk3.so
+%{_libdir}/pkgconfig/libcanberra-gtk3.pc
 # co-own these directories to avoid requiring vala
 %dir %{_datadir}/vala
 %dir %{_datadir}/vala/vapi
@@ -134,11 +151,49 @@ rm %{buildroot}%{_docdir}/libcanberra/README
 %{_datadir}/vala/vapi/libcanberra.vapi
 
 %changelog
-* Thu Nov 24 2022 Sumedh Sharma <sumsharma@microsoft.com> - 0.30-24
-- License verified
+* Thu Jul 18 2024 Fedora Release Engineering <releng@fedoraproject.org> - 0.30-36
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_41_Mass_Rebuild
 
-* Fri Oct 15 2021 Pawel Winogrodzki <pawelwi@microsoft.com> - 0.30-23
-- Initial CBL-Mariner import from Fedora 32 (license: MIT).
+* Thu Jan 25 2024 Fedora Release Engineering <releng@fedoraproject.org> - 0.30-35
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Sun Jan 21 2024 Fedora Release Engineering <releng@fedoraproject.org> - 0.30-34
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Fri Oct 13 2023 Niels De Graef <ndegraef@redhat.com> - 0.30-33
+- Migrate to SPDX license
+
+* Thu Jul 20 2023 Fedora Release Engineering <releng@fedoraproject.org> - 0.30-32
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_39_Mass_Rebuild
+
+* Thu Jan 19 2023 Fedora Release Engineering <releng@fedoraproject.org> - 0.30-31
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_38_Mass_Rebuild
+
+* Tue Jan 10 2023 Tomas Popela <tpopela@redhat.com> - 0.30-30
+- Don't build GTK 2 bits on ELN/RHEL 10 as GTK 2 won't be there
+
+* Thu Jul 21 2022 Fedora Release Engineering <releng@fedoraproject.org> - 0.30-29
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_37_Mass_Rebuild
+
+* Sun Feb 06 2022 Bastien Nocera <bnocera@redhat.com> - 0.30-28
++ libcanberra-0.30-27
+- Update X11 avoidance patch
+
+* Thu Jan 20 2022 Fedora Release Engineering <releng@fedoraproject.org> - 0.30-27
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_36_Mass_Rebuild
+
+* Fri Oct 01 2021 Kalev Lember <klember@redhat.com> - 0.30-26
+- Avoid requiring systemd as per updated packaging guidelines
+- Drop ldconfig scriptlets
+
+* Thu Jul 22 2021 Fedora Release Engineering <releng@fedoraproject.org> - 0.30-25
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_35_Mass_Rebuild
+
+* Tue Jan 26 2021 Fedora Release Engineering <releng@fedoraproject.org> - 0.30-24
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_34_Mass_Rebuild
+
+* Tue Jul 28 2020 Fedora Release Engineering <releng@fedoraproject.org> - 0.30-23
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_33_Mass_Rebuild
 
 * Wed Jan 29 2020 Fedora Release Engineering <releng@fedoraproject.org> - 0.30-22
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_32_Mass_Rebuild

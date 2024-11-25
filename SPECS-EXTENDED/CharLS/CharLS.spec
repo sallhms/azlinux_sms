@@ -1,16 +1,15 @@
-Summary:        An optimized implementation of the JPEG-LS standard
-Name:           CharLS
-Version:        2.4.2
-Release:        1%{?dist}
-License:        BSD
-Vendor:         Microsoft Corporation
-Distribution:   Azure Linux
-URL:            https://github.com/team-charls/charls
-Source0:        https://github.com/team-charls/charls/archive/refs/tags/%{version}.tar.gz#/%{name}-%{version}.tar.gz
+Name:		CharLS
+Version:	2.4.2
+Release:	6%{?dist}
+Summary:	An optimized implementation of the JPEG-LS standard
+License:	BSD
+URL:		https://github.com/team-charls/charls
+Source0:	https://github.com/team-charls/charls/archive/%{version}/%{name}-%{version}.tar.gz
 
-BuildRequires:  cmake
-BuildRequires:  gcc
-BuildRequires:  gcc-c++
+BuildRequires:	gcc
+BuildRequires:	gcc-c++
+BuildRequires:	cmake
+Provides:       charls
 
 %description
 An optimized implementation of the JPEG-LS standard for loss less and
@@ -25,11 +24,13 @@ loss less JPEG than to JPEG 2000, but interestingly the two different techniques
 result in vastly different performance characteristics.
 
 %package devel
-Summary:        Libraries and headers for CharLS
-Requires:       %{name}%{?_isa} = %{version}-%{release}
+Summary:	Libraries and headers for CharLS
+Requires:	%{name}%{?_isa} = %{version}-%{release}
+Provides:       charls-devel
 
 %description devel
 CharLS Library Header Files and Link Libraries.
+
 
 %prep
 %autosetup -n charls-%{version}
@@ -43,19 +44,18 @@ rm CharLS*.sln* -v
 
 %cmake_build
 
+
 %install
 %cmake_install
 
 
 %check
-pushd %{__cmake_builddir}
-# Enter a key + enter to finish
-echo "a" | ./charlstest
-popd
+%ctest
 
 
 %files
 %license LICENSE.md
+%doc CHANGELOG.md README.md SECURITY.md
 %{_libdir}/libcharls.so.2*
 
 %files devel
@@ -65,13 +65,29 @@ popd
 %{_libdir}/libcharls.so
 %{_libdir}/pkgconfig/charls.pc
 
-%changelog
-* Tue Sept 24 2024 Jyoti Kanase <v-jykanase@microsoft.com> - 2.4.2-1
-- Update to version 2.4.2
 
-* Wed Aug 09 2023 Archana Choudhary <archana1@microsoft.com> - 2.0.0-10
-- Initial CBL-Mariner import from Fedora 37 (license: MIT).
-- License verified
+%changelog
+* Wed Jul 17 2024 Fedora Release Engineering <releng@fedoraproject.org> - 2.4.2-6
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_41_Mass_Rebuild
+
+* Mon Jan 22 2024 Fedora Release Engineering <releng@fedoraproject.org> - 2.4.2-5
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Fri Jan 19 2024 Fedora Release Engineering <releng@fedoraproject.org> - 2.4.2-4
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Thu Jan 18 2024 Fedora Release Engineering <releng@fedoraproject.org> - 2.4.2-3
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Wed Jul 19 2023 Fedora Release Engineering <releng@fedoraproject.org> - 2.4.2-2
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_39_Mass_Rebuild
+
+* Sun Jun 04 2023 Orion Poplawski <orion@nwra.com> - 2.4.2-1
+- Update to 2.4.2
+- Provide lowercase names
+
+* Wed Jan 18 2023 Fedora Release Engineering <releng@fedoraproject.org> - 2.0.0-10
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_38_Mass_Rebuild
 
 * Wed Jul 20 2022 Fedora Release Engineering <releng@fedoraproject.org> - 2.0.0-9
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_37_Mass_Rebuild

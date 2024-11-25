@@ -1,16 +1,16 @@
 Name:           glew
-Version:        2.1.0
-Release:        7%{?dist}
+Version:        2.2.0
+Release:        8%{?dist}
 Summary:        The OpenGL Extension Wrangler Library
 License:        BSD and MIT
-Vendor:         Microsoft Corporation
-Distribution:   Azure Linux
-URL:            http://glew.sourceforge.net
+URL:            https://github.com/nigels-com/glew
 
-Source0:        https://sourceforge.net/projects/glew/files/glew/%{version}/glew-%{version}.tgz
+Source0:        https://github.com/nigels-com/glew/releases/download/glew-%{version}/glew-%{version}.tgz
 Patch0:         glew-2.1.0-install.patch
+Patch1:         glew-2.2.0-gcc12-cplusplus.patch
 BuildRequires:  gcc
 BuildRequires:  libGLU-devel
+BuildRequires:  make
 
 %description
 The OpenGL Extension Wrangler Library (GLEW) is a cross-platform C/C++
@@ -41,6 +41,9 @@ libGLEW
 %prep
 %autosetup -p1
 
+# update config.guess for new arch support
+cp /usr/lib/rpm/redhat/config.guess config/
+
 %build
 %make_build CFLAGS.EXTRA="$RPM_OPT_FLAGS -fPIC"\
      STRIP= \
@@ -65,7 +68,7 @@ chmod 0755 $RPM_BUILD_ROOT%{_libdir}/*.so*
 
 %files -n libGLEW
 %license LICENSE.txt
-%{_libdir}/libGLEW.so.*
+%{_libdir}/libGLEW.so.2.2*
 
 %files devel
 %{_libdir}/libGLEW.so
@@ -74,9 +77,45 @@ chmod 0755 $RPM_BUILD_ROOT%{_libdir}/*.so*
 %doc doc/*
 
 %changelog
-* Thu Jun 17 2021 Thomas Crain <thcrain@microsoft.com> - 2.1.0-7
-- Initial CBL-Mariner import from Fedora 32 (license: MIT).
-- Remove redhat-specific config.guess seeding
+* Thu Jul 18 2024 Fedora Release Engineering <releng@fedoraproject.org> - 2.2.0-8
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_41_Mass_Rebuild
+
+* Wed Jan 24 2024 Fedora Release Engineering <releng@fedoraproject.org> - 2.2.0-7
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Fri Jan 19 2024 Fedora Release Engineering <releng@fedoraproject.org> - 2.2.0-6
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Wed Jul 19 2023 Fedora Release Engineering <releng@fedoraproject.org> - 2.2.0-5
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_39_Mass_Rebuild
+
+* Thu Jan 19 2023 Fedora Release Engineering <releng@fedoraproject.org> - 2.2.0-4
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_38_Mass_Rebuild
+
+* Thu Jul 21 2022 Fedora Release Engineering <releng@fedoraproject.org> - 2.2.0-3
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_37_Mass_Rebuild
+
+* Tue Feb 22 2022 Hans de Goede <hdegoede@redhat.com> - 2.2.0-2
+- Fix 2.2.0 breaking c++ code build with -std=c++03 (#2053052, #2053073)
+
+* Wed Feb 09 2022 Orion Poplawski <orion@nwra.com> - 2.2.0-1
+- Update to 2.2.0 (bz#2049077)
+
+* Thu Jan 20 2022 Fedora Release Engineering <releng@fedoraproject.org> - 2.1.0-11
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_36_Mass_Rebuild
+
+* Thu Jul 22 2021 Fedora Release Engineering <releng@fedoraproject.org> - 2.1.0-10
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_35_Mass_Rebuild
+
+* Tue Jan 26 2021 Fedora Release Engineering <releng@fedoraproject.org> - 2.1.0-9
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_34_Mass_Rebuild
+
+* Sat Aug 01 2020 Fedora Release Engineering <releng@fedoraproject.org> - 2.1.0-8
+- Second attempt - Rebuilt for
+  https://fedoraproject.org/wiki/Fedora_33_Mass_Rebuild
+
+* Mon Jul 27 2020 Fedora Release Engineering <releng@fedoraproject.org> - 2.1.0-7
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_33_Mass_Rebuild
 
 * Tue Jan 28 2020 Fedora Release Engineering <releng@fedoraproject.org> - 2.1.0-6
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_32_Mass_Rebuild

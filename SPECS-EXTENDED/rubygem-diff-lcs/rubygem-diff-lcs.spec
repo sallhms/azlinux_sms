@@ -1,5 +1,3 @@
-Vendor:         Microsoft Corporation
-Distribution:   Azure Linux
 %global gem_name diff-lcs
 
 # %%check section needs rspec-expectations, however rspec-expectations depends
@@ -8,14 +6,17 @@ Distribution:   Azure Linux
 
 Name: rubygem-%{gem_name}
 Version: 1.5.0
-Release: 1%{?dist}
+Release: 6%{?dist}
 Summary: Provide a list of changes between two sequenced collections
-License: GPLv2+ or Artistic or MIT
+License: MIT OR Artistic-2.0 OR GPL-2.0-or-later
 URL: https://github.com/halostatue/diff-lcs
-Source0: https://github.com/halostatue/diff-lcs/archive/refs/tags/v%{version}.tar.gz#/rubygem-%{gem_name}-%{version}.tar.gz
-BuildRequires: rubygems-devel
-BuildRequires: rubygem-rspec
+Source0: https://rubygems.org/gems/%{gem_name}-%{version}.gem
 BuildRequires: ruby(release)
+BuildRequires: rubygems-devel
+BuildRequires: ruby
+%if ! 0%{?bootstrap}
+BuildRequires: rubygem(rspec)
+%endif
 BuildArch: noarch
 
 %description
@@ -33,13 +34,15 @@ BuildArch: noarch
 Documentation for %{name}.
 
 %prep
-%autosetup -n %{gem_name}-%{version}
-
+%setup -q -n %{gem_name}-%{version}
 
 %build
-gem build %{gem_name}
-%gem_install
+# Create the gem as gem install only works on a gem file
+gem build ../%{gem_name}-%{version}.gemspec
 
+# %%gem_install compiles any C extensions and installs the gem into ./%%gem_dir
+# by default, so that we can move it into the buildroot in %%install
+%gem_install
 
 %install
 mkdir -p %{buildroot}%{gem_dir}
@@ -48,7 +51,7 @@ cp -a .%{gem_dir}/* \
 
 
 mkdir -p %{buildroot}%{_bindir}
-cp -pa .%{_bindir}/* \
+cp -a .%{_bindir}/* \
         %{buildroot}%{_bindir}/
 
 find %{buildroot}%{gem_instdir}/bin -type f | xargs chmod a+x
@@ -56,6 +59,12 @@ find %{buildroot}%{gem_instdir}/bin -type f | xargs chmod a+x
 # Fix shebangs.
 sed -i 's|^#!.*|#!/usr/bin/ruby|' %{buildroot}%{gem_instdir}/bin/{htmldiff,ldiff}
 
+%if ! 0%{?bootstrap}
+%check
+pushd .%{gem_instdir}
+rspec spec
+popd
+%endif
 
 %files
 %dir %{gem_instdir}
@@ -80,12 +89,42 @@ sed -i 's|^#!.*|#!/usr/bin/ruby|' %{buildroot}%{gem_instdir}/bin/{htmldiff,ldiff
 %{gem_instdir}/spec
 
 %changelog
-* Mon Nov 28 2022 Muhammad Falak <mwani@microsoft.com> - 1.3-10
-- Switch to building tar.gz instead of .gem
-- License verified
+* Fri Jul 19 2024 Fedora Release Engineering <releng@fedoraproject.org> - 1.5.0-6
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_41_Mass_Rebuild
 
-* Fri Oct 15 2021 Pawel Winogrodzki <pawelwi@microsoft.com> - 1.3-9
-- Initial CBL-Mariner import from Fedora 32 (license: MIT).
+* Fri Jan 26 2024 Fedora Release Engineering <releng@fedoraproject.org> - 1.5.0-5
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Mon Jan 22 2024 Fedora Release Engineering <releng@fedoraproject.org> - 1.5.0-4
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Fri Jul 21 2023 Fedora Release Engineering <releng@fedoraproject.org> - 1.5.0-3
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_39_Mass_Rebuild
+
+* Fri Jan 20 2023 Fedora Release Engineering <releng@fedoraproject.org> - 1.5.0-2
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_38_Mass_Rebuild
+
+* Thu Oct 27 2022 Vít Ondruch <vondruch@redhat.com> - 1.5.0-1
+- Refresh the .spec file to the current standards.
+
+* Thu Oct 20 2022 Pavel Valena <pvalena@redhat.com> - 1.5.0-1
+- Update to diff-lcs 1.5.0.
+  Resolves: rhbz#1849864
+
+* Sat Jul 23 2022 Fedora Release Engineering <releng@fedoraproject.org> - 1.3-13
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_37_Mass_Rebuild
+
+* Fri Jan 21 2022 Fedora Release Engineering <releng@fedoraproject.org> - 1.3-12
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_36_Mass_Rebuild
+
+* Fri Jul 23 2021 Fedora Release Engineering <releng@fedoraproject.org> - 1.3-11
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_35_Mass_Rebuild
+
+* Wed Jan 27 2021 Fedora Release Engineering <releng@fedoraproject.org> - 1.3-10
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_34_Mass_Rebuild
+
+* Wed Jul 29 2020 Fedora Release Engineering <releng@fedoraproject.org> - 1.3-9
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_33_Mass_Rebuild
 
 * Thu Jan 30 2020 Fedora Release Engineering <releng@fedoraproject.org> - 1.3-8
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_32_Mass_Rebuild

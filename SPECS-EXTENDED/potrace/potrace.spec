@@ -1,17 +1,17 @@
-Vendor:         Microsoft Corporation
-Distribution:   Azure Linux
 Name:		potrace
 Version:	1.16
-Release:	3%{?dist}
+Release:	13%{?dist}
 Summary:	Transform bitmaps into vector graphics
 # README defines license as GPLv2+
-License:	GPLv2+
+# potrace/potrace-1.16/src/getopt.c is LGPL-2.0-or-later
+License:	GPL-2.0-or-later AND LGPL-2.0-or-later
 URL:		http://potrace.sourceforge.net
 Source0:	http://downloads.sourceforge.net/%{name}/%{name}-%{version}.tar.gz
 # Documentation
 Source1:	http://potrace.sourceforge.net/potrace.pdf
 Source2:	http://potrace.sourceforge.net/potracelib.pdf
 
+BuildRequires: make
 BuildRequires:	gcc
 BuildRequires:	zlib-devel
 
@@ -41,9 +41,9 @@ This package contains the potrace development library and headers.
 
 %package doc
 Summary:	Documentation on how to use the potrace library
-
+%if 0%{?fedora} > 10 || 0%{?rhel} > 5
 BuildArch:	noarch
-
+%endif
 
 %description doc
 This package contains documentation for the potrace algorithm and the potrace
@@ -57,11 +57,11 @@ cp -a %{SOURCE2} .
 %build
 %configure --enable-shared --disable-static \
  --enable-metric --with-libpotrace --with-pic
-make %{?_smp_mflags}
+%make_build
 
 %install
 rm -rf %{buildroot}
-make install DESTDIR=%{buildroot}
+%make_install
 find %{buildroot} -name *.la -exec rm -rf {} \;
 
 # Get rid of installed copy of placement.pdf
@@ -83,8 +83,39 @@ rm -rf %{buildroot}%{_docdir}/%{name}
 %doc potrace.pdf potracelib.pdf
 
 %changelog
-* Fri Oct 15 2021 Pawel Winogrodzki <pawelwi@microsoft.com> - 1.16-3
-- Initial CBL-Mariner import from Fedora 32 (license: MIT).
+* Fri Jul 19 2024 Fedora Release Engineering <releng@fedoraproject.org> - 1.16-13
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_41_Mass_Rebuild
+
+* Fri Jan 26 2024 Fedora Release Engineering <releng@fedoraproject.org> - 1.16-12
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Sun Jan 21 2024 Fedora Release Engineering <releng@fedoraproject.org> - 1.16-11
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Fri Jul 21 2023 Fedora Release Engineering <releng@fedoraproject.org> - 1.16-10
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_39_Mass_Rebuild
+
+* Fri Jan 20 2023 Fedora Release Engineering <releng@fedoraproject.org> - 1.16-9
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_38_Mass_Rebuild
+
+* Fri Jul 22 2022 Fedora Release Engineering <releng@fedoraproject.org> - 1.16-8
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_37_Mass_Rebuild
+
+* Fri Jan 21 2022 Fedora Release Engineering <releng@fedoraproject.org> - 1.16-7
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_36_Mass_Rebuild
+
+* Fri Jul 23 2021 Fedora Release Engineering <releng@fedoraproject.org> - 1.16-6
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_35_Mass_Rebuild
+
+* Wed Jan 27 2021 Fedora Release Engineering <releng@fedoraproject.org> - 1.16-5
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_34_Mass_Rebuild
+
+* Tue Jul 28 2020 Fedora Release Engineering <releng@fedoraproject.org> - 1.16-4
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_33_Mass_Rebuild
+
+* Tue Jul 14 2020 Tom Stellard <tstellar@redhat.com> - 1.16-3
+- Use make macros
+- https://fedoraproject.org/wiki/Changes/UseMakeBuildInstallMacro
 
 * Thu Jan 30 2020 Fedora Release Engineering <releng@fedoraproject.org> - 1.16-2
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_32_Mass_Rebuild

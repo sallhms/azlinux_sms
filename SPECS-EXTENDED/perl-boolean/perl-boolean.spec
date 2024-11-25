@@ -1,46 +1,41 @@
-Summary:        Boolean support for Perl
 Name:           perl-boolean
 Version:        0.46
-Release:        17%{?dist}
-License:        GPL+ OR Artistic
-Vendor:         Microsoft Corporation
-Distribution:   Azure Linux
+Release:        24%{?dist}
+Summary:        Boolean support for Perl
+License:        GPL-1.0-or-later OR Artistic-1.0-Perl
 URL:            https://metacpan.org/release/boolean
 Source0:        https://cpan.metacpan.org/authors/id/I/IN/INGY/boolean-%{version}.tar.gz
 BuildArch:      noarch
-
 BuildRequires:  make
 BuildRequires:  perl-generators
 BuildRequires:  perl-interpreter
 BuildRequires:  perl(:VERSION) >= 5.5.3
+BuildRequires:  perl(base)
 BuildRequires:  perl(Config)
 BuildRequires:  perl(Exporter)
 BuildRequires:  perl(ExtUtils::MakeMaker) >= 6.76
 BuildRequires:  perl(File::Find)
 BuildRequires:  perl(JSON::MaybeXS)
-BuildRequires:  perl(Test::More)
-BuildRequires:  perl(base)
 BuildRequires:  perl(lib)
 BuildRequires:  perl(overload)
 BuildRequires:  perl(strict)
+BuildRequires:  perl(Test::More)
 BuildRequires:  perl(threads)
 BuildRequires:  perl(warnings)
-
-Requires:       perl(:MODULE_COMPAT_%(eval "`perl -V:version`"; echo $version))
 
 %description
 Most programming languages have a native Boolean data type. Perl does not.
 
 %prep
-%autosetup -n boolean-%{version}
+%setup -q -n boolean-%{version}
 
 %build
 perl Makefile.PL INSTALLDIRS=vendor NO_PACKLIST=1 NO_PERLLOCAL=1
-%make_build
+%{make_build}
 
 %install
-%make_install
-%{_fixperms} %{buildroot}/*
+%{make_install}
+%{_fixperms} $RPM_BUILD_ROOT/*
 
 %check
 make test
@@ -52,9 +47,29 @@ make test
 %{_mandir}/man3/*
 
 %changelog
-* Wed Jan 26 2022 Pawel Winogrodzki <pawelwi@microsoft.com> - 0.46-17
-- Initial CBL-Mariner import from Fedora 36 (license: MIT).
-- License verified.
+* Fri Jul 19 2024 Fedora Release Engineering <releng@fedoraproject.org> - 0.46-24
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_41_Mass_Rebuild
+
+* Thu Jan 25 2024 Fedora Release Engineering <releng@fedoraproject.org> - 0.46-23
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Sun Jan 21 2024 Fedora Release Engineering <releng@fedoraproject.org> - 0.46-22
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Fri Jul 21 2023 Fedora Release Engineering <releng@fedoraproject.org> - 0.46-21
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_39_Mass_Rebuild
+
+* Fri Jan 20 2023 Fedora Release Engineering <releng@fedoraproject.org> - 0.46-20
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_38_Mass_Rebuild
+
+* Fri Jul 22 2022 Fedora Release Engineering <releng@fedoraproject.org> - 0.46-19
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_37_Mass_Rebuild
+
+* Tue May 31 2022 Jitka Plesnikova <jplesnik@redhat.com> - 0.46-18
+- Perl 5.36 rebuild
+
+* Fri Jan 21 2022 Fedora Release Engineering <releng@fedoraproject.org> - 0.46-17
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_36_Mass_Rebuild
 
 * Fri Jul 23 2021 Fedora Release Engineering <releng@fedoraproject.org> - 0.46-16
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_35_Mass_Rebuild

@@ -1,5 +1,3 @@
-Vendor:         Microsoft Corporation
-Distribution:   Azure Linux
 %global common_description %{expand:
 GeoLite2 databases are free IP geolocation databases comparable to, but less
 accurate than, MaxMind's GeoIP2 databases.  This product includes GeoLite2 data
@@ -7,10 +5,15 @@ created by MaxMind, available from http://www.maxmind.com.}
 
 
 Name:           geolite2
+# Upstream changed their license on 2019-12-30.  This is the last version
+# released under CC-BY-SA.
+# https://bugzilla.redhat.com/show_bug.cgi?id=1786211
 Version:        20191217
-Release:        3%{?dist}
+Release:        13%{?dist}
 Summary:        Free IP geolocation databases
-License:        CC-BY-SA
+# This work is licensed under the Creative Commons Attribution-ShareAlike 4.0 International License
+# This database incorporates GeoNames geographical data, which is made available under the Creative Commons Attribution 3.0 License
+License:        CC-BY-SA-4.0 AND CC-BY-3.0
 URL:            https://dev.maxmind.com/geoip/geoip2/geolite2/
 Source0:        https://geolite.maxmind.com/download/geoip/database/GeoLite2-ASN_%{version}.tar.gz
 Source1:        https://geolite.maxmind.com/download/geoip/database/GeoLite2-City_%{version}.tar.gz
@@ -71,8 +74,38 @@ done
 
 
 %changelog
-* Fri Oct 15 2021 Pawel Winogrodzki <pawelwi@microsoft.com> - 20191217-3
-- Initial CBL-Mariner import from Fedora 32 (license: MIT).
+* Thu Jul 18 2024 Fedora Release Engineering <releng@fedoraproject.org> - 20191217-13
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_41_Mass_Rebuild
+
+* Wed Jan 24 2024 Fedora Release Engineering <releng@fedoraproject.org> - 20191217-12
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Fri Jan 19 2024 Fedora Release Engineering <releng@fedoraproject.org> - 20191217-11
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Wed Jul 19 2023 Fedora Release Engineering <releng@fedoraproject.org> - 20191217-10
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_39_Mass_Rebuild
+
+* Fri Mar  3 2023 Paul Howarth <paul@city-fan.org> - 20191217-9
+- Use SPDX-format license tag
+
+* Thu Jan 19 2023 Fedora Release Engineering <releng@fedoraproject.org> - 20191217-8
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_38_Mass_Rebuild
+
+* Thu Jul 21 2022 Fedora Release Engineering <releng@fedoraproject.org> - 20191217-7
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_37_Mass_Rebuild
+
+* Thu Jan 20 2022 Fedora Release Engineering <releng@fedoraproject.org> - 20191217-6
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_36_Mass_Rebuild
+
+* Thu Jul 22 2021 Fedora Release Engineering <releng@fedoraproject.org> - 20191217-5
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_35_Mass_Rebuild
+
+* Tue Jan 26 2021 Fedora Release Engineering <releng@fedoraproject.org> - 20191217-4
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_34_Mass_Rebuild
+
+* Mon Jul 27 2020 Fedora Release Engineering <releng@fedoraproject.org> - 20191217-3
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_33_Mass_Rebuild
 
 * Tue Jan 28 2020 Fedora Release Engineering <releng@fedoraproject.org> - 20191217-2
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_32_Mass_Rebuild

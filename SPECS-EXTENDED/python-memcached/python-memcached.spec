@@ -1,22 +1,19 @@
-Vendor:         Microsoft Corporation
-Distribution:   Azure Linux
 Name:           python-memcached
 Version:        1.59
-Release:        7%{?dist}
+Release:        15%{?dist}
 Summary:        A Python memcached client library
 
 License:        Python
 URL:            https://github.com/linsomniac/python-memcached
-Source0:        https://github.com/linsomniac/python-memcached/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
+Source0:        https://github.com/linsomniac/python-memcached/archive/%{version}.tar.gz
 
 BuildArch:      noarch
 BuildRequires:  python3-devel
 BuildRequires:  python3-setuptools
 BuildRequires:  python3-six
-%if 0%{?with_check}
+# Required for running test suite
 BuildRequires:  %{_bindir}/memcached
 BuildRequires:  python3-pytest
-%endif
 
 %global _description\
 This software is a 100% Python interface to the memcached memory cache\
@@ -71,9 +68,32 @@ kill $(cat $pidfile)
 
 
 %changelog
-* Fri Mar 03 2023 Muhammad Falak <mwani@microsoft.com> - 1.59-7
-- Initial CBL-Mariner import from Fedora 36 (license: MIT).
-- License verified
+* Fri Jul 19 2024 Fedora Release Engineering <releng@fedoraproject.org> - 1.59-15
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_41_Mass_Rebuild
+
+* Fri Jun 07 2024 Python Maint <python-maint@redhat.com> - 1.59-14
+- Rebuilt for Python 3.13
+
+* Fri Jan 26 2024 Fedora Release Engineering <releng@fedoraproject.org> - 1.59-13
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Mon Jan 22 2024 Fedora Release Engineering <releng@fedoraproject.org> - 1.59-12
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Fri Jul 21 2023 Fedora Release Engineering <releng@fedoraproject.org> - 1.59-11
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_39_Mass_Rebuild
+
+* Tue Jun 13 2023 Python Maint <python-maint@redhat.com> - 1.59-10
+- Rebuilt for Python 3.12
+
+* Fri Jan 20 2023 Fedora Release Engineering <releng@fedoraproject.org> - 1.59-9
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_38_Mass_Rebuild
+
+* Fri Jul 22 2022 Fedora Release Engineering <releng@fedoraproject.org> - 1.59-8
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_37_Mass_Rebuild
+
+* Mon Jun 13 2022 Python Maint <python-maint@redhat.com> - 1.59-7
+- Rebuilt for Python 3.11
 
 * Fri Jan 21 2022 Fedora Release Engineering <releng@fedoraproject.org> - 1.59-6
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_36_Mass_Rebuild

@@ -1,16 +1,15 @@
-Vendor:         Microsoft Corporation
-Distribution:   Azure Linux
 %global source_name	usb-modeswitch-data
 
 Name:		usb_modeswitch-data
 Version:	20191128
-Release:	3%{?dist}
+Release:	12%{?dist}
 Summary:	USB Modeswitch gets mobile broadband cards in operational mode
 Summary(de):	USB Modeswitch aktiviert UMTS-Karten
-License:	GPLv2+
+License:	GPL-2.0-or-later
 URL:		http://www.draisberghof.de/usb_modeswitch/
 Source0:	http://www.draisberghof.de/usb_modeswitch/%{source_name}-%{version}.tar.bz2
 BuildArch:	noarch
+BuildRequires: make
 BuildRequires:	systemd
 Requires:	systemd
 Requires:	usb_modeswitch >= 2.4.0
@@ -58,8 +57,35 @@ make install \
 %doc ChangeLog README REFERENCE
 
 %changelog
-* Fri Oct 15 2021 Pawel Winogrodzki <pawelwi@microsoft.com> - 20191128-3
-- Initial CBL-Mariner import from Fedora 32 (license: MIT).
+* Sat Jul 20 2024 Fedora Release Engineering <releng@fedoraproject.org> - 20191128-12
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_41_Mass_Rebuild
+
+* Sat Jan 27 2024 Fedora Release Engineering <releng@fedoraproject.org> - 20191128-11
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Thu Aug 24 2023 Till Maas <opensource@till.name> - 20191128-10
+- Update license tage to use spdx notation
+
+* Sat Jul 22 2023 Fedora Release Engineering <releng@fedoraproject.org> - 20191128-9
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_39_Mass_Rebuild
+
+* Sat Jan 21 2023 Fedora Release Engineering <releng@fedoraproject.org> - 20191128-8
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_38_Mass_Rebuild
+
+* Sat Jul 23 2022 Fedora Release Engineering <releng@fedoraproject.org> - 20191128-7
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_37_Mass_Rebuild
+
+* Sat Jan 22 2022 Fedora Release Engineering <releng@fedoraproject.org> - 20191128-6
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_36_Mass_Rebuild
+
+* Fri Jul 23 2021 Fedora Release Engineering <releng@fedoraproject.org> - 20191128-5
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_35_Mass_Rebuild
+
+* Wed Jan 27 2021 Fedora Release Engineering <releng@fedoraproject.org> - 20191128-4
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_34_Mass_Rebuild
+
+* Wed Jul 29 2020 Fedora Release Engineering <releng@fedoraproject.org> - 20191128-3
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_33_Mass_Rebuild
 
 * Fri Jan 31 2020 Fedora Release Engineering <releng@fedoraproject.org> - 20191128-2
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_32_Mass_Rebuild

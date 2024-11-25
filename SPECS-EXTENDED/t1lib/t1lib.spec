@@ -1,16 +1,11 @@
-Vendor:         Microsoft Corporation
-Distribution:   Azure Linux
+Summary:        PostScript Type 1 font rasterizer
 Name:           t1lib
 Version:        5.1.2
-Release:        29%{?dist}
-
-Summary:        PostScript Type 1 font rasterizer
-
-License:        LGPLv2+ AND GPLv2+
-URL:            https://t1lib.org/
-Source0:        %{_distro_sources_url}/t1lib-%{version}.tar.gz
-# Patch originally from Debian at http://ftp.de.debian.org/debian/pool/main/t/t1lib/t1lib_5.1.2-3.diff.gz
-Patch0:         t1lib_5.1.2-3.patch
+Release:        38%{?dist}
+License:        LGPLv2+
+URL:            ftp://sunsite.unc.edu/pub/Linux/libs/graphics/t1lib-%{version}.lsm
+Source0:        ftp://sunsite.unc.edu/pub/Linux/libs/graphics/t1lib-%{version}.tar.gz
+Patch0:         http://ftp.de.debian.org/debian/pool/main/t/t1lib/t1lib_5.1.2-3.diff.gz
 Patch1:         t1lib-5.1.2-segf.patch
 # Fixes CVE-2010-2642, CVE-2011-0433
 # http://bugzilla.redhat.com/show_bug.cgi?id=679732
@@ -22,8 +17,12 @@ Patch3:         t1lib-5.1.2-type1-inv-rw-fix.patch
 # https://bugzilla.redhat.com/show_bug.cgi?id=926603
 Patch4:         t1lib-5.1.2-aarch64.patch
 Patch5:         t1lib-5.1.2-format-security.patch
+Patch6:         t1lib-5.1.2-t1.patch
+Patch7:         t1lib-configure-c99.patch
+Patch8:         t1lib-c99.patch
 BuildRequires:  gcc
-
+BuildRequires:  make
+BuildRequires:  libXaw-devel
 Requires(post): coreutils, findutils
 
 %description
@@ -57,13 +56,7 @@ Requires:       %{name}-devel = %{version}-%{release}
 This package contains static libraries for %{name}.
 
 %prep
-%setup -q
-%patch 0 -p1
-%patch 1 -p1 -b .segf
-%patch 2 -p1 -b .afm-fix
-%patch 3 -p1 -b .type1-inv-rw-fix
-%patch 4 -p1 -b .aarch64
-%patch 5 -p1 -b .format-security
+%autosetup -p1
 
 # use debian patches directly instead of duplicating them
 #patch -p1 < debian/patches/segfault.diff -b -z .segf
@@ -75,7 +68,6 @@ iconv -f latin1 -t utf8 < Changes > Changes.utf8
 touch -r Changes Changes.utf8
 mv Changes.utf8 Changes
 
-
 %build
 %configure
 
@@ -83,7 +75,7 @@ mv Changes.utf8 Changes
 sed -i 's|^hardcode_libdir_flag_spec=.*|hardcode_libdir_flag_spec=""|g' libtool
 sed -i 's|^runpath_var=LD_RUN_PATH|runpath_var=DIE_RPATH_DIE|g' libtool
 
-make %{?_smp_mflags} without_doc
+make without_doc
 touch -r lib/t1lib/t1lib.h.in lib/t1lib.h
 touch -r lib/t1lib/t1libx.h lib/t1libx.h
 ln README.t1lib-%{version} README
@@ -119,44 +111,68 @@ touch $RPM_BUILD_ROOT%{_datadir}/t1lib/{FontDatabase,t1lib.config}
 
 %ldconfig_postun
 
-
 %files
-%license LGPL LICENSE
-%doc Changes README
+%doc Changes LGPL LICENSE README
 %dir %{_datadir}/t1lib
 %ghost %verify(not size mtime md5) %{_datadir}/t1lib/t1lib.config
 %ghost %verify(not size mtime md5) %{_datadir}/t1lib/FontDatabase
 %{_libdir}/libt1.so.*
+%{_libdir}/libt1x.so.*
 %{_mandir}/man5/*
 %{_mandir}/man8/*
 %{_sbindir}/t1libconfig
 
 %files apps
 %{_bindir}/type1afm
+%{_bindir}/xglyph
 %{_mandir}/man1/*
 
 %files devel
 %doc doc/t1lib_doc.pdf
 %{_includedir}/t1lib*.h
 %{_libdir}/libt1.so
+%{_libdir}/libt1x.so
 
 %files static
 %{_libdir}/libt1.a
-
+%{_libdir}/libt1x.a
 
 %changelog
-* Thu Feb 22 2024 Pawel Winogrodzki <pawelwi@microsoft.com> - 5.1.2-29
-- Updating naming for 3.0 version of Azure Linux.
+* Sat Jul 20 2024 Fedora Release Engineering <releng@fedoraproject.org> - 5.1.2-38
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_41_Mass_Rebuild
 
-* Fri Jun 17 2022 Olivia Crain <oliviacrain@microsoft.com> - 5.1.2-28
-- Rename Debian patch to fix SRPM packing
-- Fix dead upstream URL
-- License verified
+* Mon Jul 01 2024 Terje Rosten <terje.rosten@ntnu.no> - 5.1.2-37
+- Use autosetup macro
 
-* Mon Mar 29 2021 Henry Li <lihl@microsoft.com> - 5.1.2-27
-- Initial CBL-Mariner import from Fedora 32 (license: MIT).
-- Remove libXaw-devel from build requirment
-- Remove x11-related binaries from file section
+* Sat Jan 27 2024 Fedora Release Engineering <releng@fedoraproject.org> - 5.1.2-36
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Sat Jul 22 2023 Fedora Release Engineering <releng@fedoraproject.org> - 5.1.2-35
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_39_Mass_Rebuild
+
+* Sat Jan 21 2023 Fedora Release Engineering <releng@fedoraproject.org> - 5.1.2-34
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_38_Mass_Rebuild
+
+* Wed Jan 18 2023 Florian Weimer <fweimer@redhat.com> - 5.1.2-33
+- C99 compatibility fixes (#2161950)
+
+* Sat Jul 23 2022 Fedora Release Engineering <releng@fedoraproject.org> - 5.1.2-32
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_37_Mass_Rebuild
+
+* Sat Jan 22 2022 Fedora Release Engineering <releng@fedoraproject.org> - 5.1.2-31
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_36_Mass_Rebuild
+
+* Fri Jul 23 2021 Fedora Release Engineering <releng@fedoraproject.org> - 5.1.2-30
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_35_Mass_Rebuild
+
+* Thu Mar 25 2021 Terje Rosten <terje.rosten@ntnu.no> - 5.1.2-29
+- Add patch to recognize .t1 fonts
+
+* Wed Jan 27 2021 Fedora Release Engineering <releng@fedoraproject.org> - 5.1.2-28
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_34_Mass_Rebuild
+
+* Wed Jul 29 2020 Fedora Release Engineering <releng@fedoraproject.org> - 5.1.2-27
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_33_Mass_Rebuild
 
 * Fri Jan 31 2020 Fedora Release Engineering <releng@fedoraproject.org> - 5.1.2-26
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_32_Mass_Rebuild
@@ -324,3 +340,4 @@ touch $RPM_BUILD_ROOT%{_datadir}/t1lib/{FontDatabase,t1lib.config}
 
 * Sun Oct 26 2003 Marius L. Jøhndal <mariuslj at ifi.uio.no> 0:5.0.0-0.fdr.1
 - Initial RPM release.
+

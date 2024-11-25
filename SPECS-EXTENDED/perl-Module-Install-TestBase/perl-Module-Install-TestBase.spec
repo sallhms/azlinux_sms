@@ -1,21 +1,22 @@
-Vendor:         Microsoft Corporation
-Distribution:   Azure Linux
 Name:           perl-Module-Install-TestBase
 Version:        0.86
-Release:        18%{?dist}
+Release:        32%{?dist}
 Summary:        Module::Install support for Test::Base
 License:        GPL+ or Artistic
 URL:            https://metacpan.org/release/Module-Install-TestBase
-Source0:        https://cpan.metacpan.org/authors/id/I/IN/INGY/Module-Install-TestBase-%{version}.tar.gz#/perl-Module-Install-TestBase-%{version}.tar.gz
+Source0:        https://cpan.metacpan.org/authors/id/I/IN/INGY/Module-Install-TestBase-%{version}.tar.gz
 BuildArch:      noarch
-BuildRequires:  perl-interpreter
+BuildRequires:  coreutils
+BuildRequires:  make
 BuildRequires:  perl-generators
-BuildRequires:  perl(ExtUtils::MakeMaker) >= 6.30
+BuildRequires:  perl-interpreter
+BuildRequires:  perl(Config)
+BuildRequires:  perl(ExtUtils::MakeMaker) >= 6.76
 BuildRequires:  perl(strict)
 BuildRequires:  perl(warnings)
 # Run-time:
 # Filter::Util::Call not used at tests
-# The Module::Install::Base version contrain is phony, bug #1134351,
+# The Module::Install::Base version constrain is phony, bug #1134351,
 # <https://github.com/ingydotnet/module-install-testbase-pm/issues/2>
 BuildRequires:  perl(Module::Install::Base)
 # Spiffy not used at tests
@@ -29,7 +30,6 @@ BuildRequires:  perl(vars)
 BuildRequires:  perl(File::Find)
 BuildRequires:  perl(Test::More)
 # Test::Pod not used
-Requires:   perl(:MODULE_COMPAT_%(eval "`perl -V:version`"; echo $version))
 Requires:   perl(Filter::Util::Call)
 Requires:   perl(Spiffy)
 Requires:   perl(Test::Base) >= 0.86
@@ -45,29 +45,108 @@ This Perl module adds the use_test_base directive to Module::Install. Now you
 can get full Test-Base support for you module with no external dependency on
 Test::Base.
 
+%package tests
+Summary:        Tests for %{name}
+Requires:       %{name} = %{?epoch:%{epoch}:}%{version}-%{release}
+Requires:       perl-Test-Harness
+
+%description tests
+Tests from %{name}. Execute them
+with "%{_libexecdir}/%{name}/test".
+
 %prep
 %setup -q -n Module-Install-TestBase-%{version}
+# Remove release tests
+rm t/release-pod-syntax.t
+perl -i -ne 'print $_ unless m{^t/release-pod-syntax.t}' MANIFEST
+
+# Help generators to recognize Perl scripts
+for F in t/*.t; do
+    perl -i -MConfig -ple 'print $Config{startperl} if $. == 1 && !s{\A#!\s*perl}{$Config{startperl}}' "$F"
+    chmod +x "$F"
+done
 
 %build
-perl Makefile.PL INSTALLDIRS=vendor
-make %{?_smp_mflags}
+perl Makefile.PL INSTALLDIRS=vendor NO_PACKLIST=1 NO_PERLLOCAL=1
+%{make_build}
 
 %install
-make pure_install DESTDIR=$RPM_BUILD_ROOT
-find $RPM_BUILD_ROOT -type f -name .packlist -exec rm -f {} \;
-%{_fixperms} $RPM_BUILD_ROOT/*
+%{make_install}
+%{_fixperms} %{buildroot}/*
+# Install tests
+mkdir -p %{buildroot}%{_libexecdir}/%{name}
+cp -a t %{buildroot}%{_libexecdir}/%{name}
+mkdir -p %{buildroot}%{_libexecdir}/%{name}/lib/Module/Install
+# t/000-compile-modules.t inspect ./lib, but rpmbuild follows symlinks
+# and that would place identical Provides to main and tests subpackage.
+# Fortunatelly the test only needs a file name. Hence create an empty file.
+# Bug #2063919.
+touch %{buildroot}%{_libexecdir}/%{name}/lib/Module/Install/TestBase.pm
+cat > %{buildroot}%{_libexecdir}/%{name}/test << 'EOF'
+#!/bin/sh
+cd %{_libexecdir}/%{name} && exec prove -I . -j "$(getconf _NPROCESSORS_ONLN)"
+EOF
+chmod +x %{buildroot}%{_libexecdir}/%{name}/test
 
 %check
+export HARNESS_OPTIONS=j$(perl -e 'if ($ARGV[0] =~ /.*-j([0-9][0-9]*).*/) {print $1} else {print 1}' -- '%{?_smp_mflags}')
 make test
 
 %files
-%doc Changes CONTRIBUTING LICENSE README
+%license LICENSE
+%doc Changes CONTRIBUTING README
 %{perl_vendorlib}/*
 %{_mandir}/man3/*
 
+%files tests
+%{_libexecdir}/%{name}
+
 %changelog
-* Fri Oct 15 2021 Pawel Winogrodzki <pawelwi@microsoft.com> - 0.86-18
-- Initial CBL-Mariner import from Fedora 32 (license: MIT).
+* Fri Jul 19 2024 Fedora Release Engineering <releng@fedoraproject.org> - 0.86-32
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_41_Mass_Rebuild
+
+* Thu Jan 25 2024 Fedora Release Engineering <releng@fedoraproject.org> - 0.86-31
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Sun Jan 21 2024 Fedora Release Engineering <releng@fedoraproject.org> - 0.86-30
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Thu Jul 20 2023 Fedora Release Engineering <releng@fedoraproject.org> - 0.86-29
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_39_Mass_Rebuild
+
+* Fri Jan 20 2023 Fedora Release Engineering <releng@fedoraproject.org> - 0.86-28
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_38_Mass_Rebuild
+
+* Fri Jul 22 2022 Fedora Release Engineering <releng@fedoraproject.org> - 0.86-27
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_37_Mass_Rebuild
+
+* Wed Jun 01 2022 Jitka Plesnikova <jplesnik@redhat.com> - 0.86-26
+- Perl 5.36 rebuild
+
+* Mon Mar 14 2022 Petr Pisar <ppisar@redhat.com> - 0.86-25
+- Do not provide perl(Module::Install::TestBase) by a tests package
+
+* Fri Jan 21 2022 Fedora Release Engineering <releng@fedoraproject.org> - 0.86-24
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_36_Mass_Rebuild
+
+* Mon Dec 20 2021 Petr Pisar <ppisar@redhat.com> - 0.86-23
+- Modernize a spec file
+- Package tests
+
+* Thu Jul 22 2021 Fedora Release Engineering <releng@fedoraproject.org> - 0.86-22
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_35_Mass_Rebuild
+
+* Fri May 21 2021 Jitka Plesnikova <jplesnik@redhat.com> - 0.86-21
+- Perl 5.34 rebuild
+
+* Wed Jan 27 2021 Fedora Release Engineering <releng@fedoraproject.org> - 0.86-20
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_34_Mass_Rebuild
+
+* Tue Jul 28 2020 Fedora Release Engineering <releng@fedoraproject.org> - 0.86-19
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_33_Mass_Rebuild
+
+* Tue Jun 23 2020 Jitka Plesnikova <jplesnik@redhat.com> - 0.86-18
+- Perl 5.32 rebuild
 
 * Thu Jan 30 2020 Fedora Release Engineering <releng@fedoraproject.org> - 0.86-17
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_32_Mass_Rebuild

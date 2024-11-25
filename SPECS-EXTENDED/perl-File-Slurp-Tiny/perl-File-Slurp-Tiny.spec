@@ -1,23 +1,17 @@
-Vendor:         Microsoft Corporation
-Distribution:   Azure Linux
-# Test suite needs patching if we have Test::More < 0.88
-%global old_test_more %(perl -MTest::More -e 'print (($Test::More::VERSION) < 0.88 ? 1 : 0);' 2>/dev/null || echo 0)
-
 Name:		perl-File-Slurp-Tiny
 Version:	0.004
-Release:	15%{?dist}
+Release:	27%{?dist}
 Summary:	A simple, sane and efficient file slurper
-License:	GPL+ or Artistic
+License:	GPL-1.0-or-later OR Artistic-1.0-Perl
 URL:		https://metacpan.org/release/File-Slurp-Tiny
-Source0:	https://cpan.metacpan.org/authors/id/L/LE/LEONT/File-Slurp-Tiny-%{version}.tar.gz#/perl-File-Slurp-Tiny-%{version}.tar.gz
-Patch0:		File-Slurp-Tiny-0.003-old-Test-More.patch
+Source0:	https://cpan.metacpan.org/modules/by-module/File/File-Slurp-Tiny-%{version}.tar.gz
 BuildArch:	noarch
 # Build
 BuildRequires:	coreutils
 BuildRequires:	findutils
 BuildRequires:	make
-BuildRequires:	perl-interpreter
 BuildRequires:	perl-generators
+BuildRequires:	perl-interpreter
 BuildRequires:	perl(ExtUtils::MakeMaker)
 # Module
 BuildRequires:	perl(Carp)
@@ -28,9 +22,9 @@ BuildRequires:	perl(strict)
 BuildRequires:	perl(warnings)
 # Test Suite
 BuildRequires:	perl(File::Temp)
-BuildRequires:	perl(Test::More)
-# Runtime
-Requires:	perl(:MODULE_COMPAT_%(eval "`perl -V:version`"; echo $version))
+BuildRequires:	perl(Test::More) >= 0.88
+# Dependencies
+# (none)
 
 %description
 This module provides functions for fast and correct slurping and spewing
@@ -39,41 +33,73 @@ of files.
 %prep
 %setup -q -n File-Slurp-Tiny-%{version}
 
-# Test suite needs patching if we have Test::More < 0.88
-%if %{old_test_more}
-%patch 0
-%endif
-
 %build
 perl Makefile.PL INSTALLDIRS=vendor
 make %{?_smp_mflags}
 
 %install
-rm -rf %{buildroot}
 make pure_install DESTDIR=%{buildroot}
-find %{buildroot} -type f -name .packlist -exec rm -f {} ';'
-%{_fixperms} %{buildroot}
+find %{buildroot} -type f -name .packlist -delete
+%{_fixperms} -c %{buildroot}
 
 %check
 make test
 
 %files
-%if 0%{?_licensedir:1}
 %license LICENSE
-%else
-%doc LICENSE
-%endif
 %doc Changes README
 %{perl_vendorlib}/File/
 %{_mandir}/man3/File::Slurp::Tiny.3*
 
 %changelog
-* Mon Jan 10 2022 Nicolas Guibourge <nicolasg@microsoft.com> - 0.004-15
-- Rename File-Slurp-Tiny-0.003-old-Test::More.patch to accomodate git clone from Windows.
-- License verified.
+* Fri Jul 19 2024 Fedora Release Engineering <releng@fedoraproject.org> - 0.004-27
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_41_Mass_Rebuild
 
-* Fri Oct 15 2021 Pawel Winogrodzki <pawelwi@microsoft.com> - 0.004-14
-- Initial CBL-Mariner import from Fedora 32 (license: MIT).
+* Thu Jan 25 2024 Fedora Release Engineering <releng@fedoraproject.org> - 0.004-26
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Sun Jan 21 2024 Fedora Release Engineering <releng@fedoraproject.org> - 0.004-25
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Thu Jul 20 2023 Fedora Release Engineering <releng@fedoraproject.org> - 0.004-24
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_39_Mass_Rebuild
+
+* Thu Apr 20 2023 Paul Howarth <paul@city-fan.org> - 0.004-23
+- Spec tidy-up
+  - Drop support for building with Test::More < 0.88
+  - Use SPDX-format license tag
+  - Use author-independent source URL
+  - Drop redundant buildroot cleaning in %%install section
+  - Simplify find command using -delete
+  - Fix permissions verbosely
+  - Use %%license unconditionally
+
+* Fri Jan 20 2023 Fedora Release Engineering <releng@fedoraproject.org> - 0.004-22
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_38_Mass_Rebuild
+
+* Fri Jul 22 2022 Fedora Release Engineering <releng@fedoraproject.org> - 0.004-21
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_37_Mass_Rebuild
+
+* Mon May 30 2022 Jitka Plesnikova <jplesnik@redhat.com> - 0.004-20
+- Perl 5.36 rebuild
+
+* Fri Jan 21 2022 Fedora Release Engineering <releng@fedoraproject.org> - 0.004-19
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_36_Mass_Rebuild
+
+* Thu Jul 22 2021 Fedora Release Engineering <releng@fedoraproject.org> - 0.004-18
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_35_Mass_Rebuild
+
+* Fri May 21 2021 Jitka Plesnikova <jplesnik@redhat.com> - 0.004-17
+- Perl 5.34 rebuild
+
+* Wed Jan 27 2021 Fedora Release Engineering <releng@fedoraproject.org> - 0.004-16
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_34_Mass_Rebuild
+
+* Tue Jul 28 2020 Fedora Release Engineering <releng@fedoraproject.org> - 0.004-15
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_33_Mass_Rebuild
+
+* Mon Jun 22 2020 Jitka Plesnikova <jplesnik@redhat.com> - 0.004-14
+- Perl 5.32 rebuild
 
 * Thu Jan 30 2020 Fedora Release Engineering <releng@fedoraproject.org> - 0.004-13
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_32_Mass_Rebuild

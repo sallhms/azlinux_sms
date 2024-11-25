@@ -1,8 +1,6 @@
-Vendor:         Microsoft Corporation
-Distribution:   Azure Linux
 Name:      plotutils
 Version:   2.6
-Release:   25%{?dist}
+Release:   35%{?dist}
 Summary:   GNU vector and raster graphics utilities and libraries
 
 # libxmi is GPLv2+
@@ -13,6 +11,7 @@ Source0:   ftp://ftp.gnu.org/gnu/plotutils/plotutils-%{version}.tar.gz
 Patch0:    plotutils-2.6-png15.patch
 Patch1:    plotutils-aarch64.patch
 Patch2:    plotutils-werror-format-security.patch
+Patch3: plotutils-configure-c99.patch
 
 BuildRequires:   gcc-c++
 BuildRequires:   make
@@ -46,9 +45,12 @@ applications
 
 %prep
 %setup -q
-%patch 0 -p1 -b .png15
-%patch 1 -p1 -b .aarch64
-%patch 2 -p1 -b .format-security
+%patch -P0 -p1 -b .png15
+%patch -P1 -p1 -b .aarch64
+%patch -P2 -p1 -b .format-security
+%patch -P3 -p1
+# Avoid attempting autotools rebuild.
+touch -r aclocal.m4 configure*
 
 %build
 %configure --disable-static --enable-libplotter --enable-libxmi --enable-ps-fonts-in-pcl
@@ -95,8 +97,38 @@ rm -f $RPM_BUILD_ROOT%{_infodir}/dir
 
 
 %changelog
-* Fri Oct 15 2021 Pawel Winogrodzki <pawelwi@microsoft.com> - 2.6-25
-- Initial CBL-Mariner import from Fedora 32 (license: MIT).
+* Fri Jul 19 2024 Fedora Release Engineering <releng@fedoraproject.org> - 2.6-35
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_41_Mass_Rebuild
+
+* Thu Jan 25 2024 Fedora Release Engineering <releng@fedoraproject.org> - 2.6-34
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Sun Jan 21 2024 Fedora Release Engineering <releng@fedoraproject.org> - 2.6-33
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Fri Jul 21 2023 Fedora Release Engineering <releng@fedoraproject.org> - 2.6-32
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_39_Mass_Rebuild
+
+* Fri Jan 20 2023 Fedora Release Engineering <releng@fedoraproject.org> - 2.6-31
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_38_Mass_Rebuild
+
+* Wed Jan 18 2023 Florian Weimer <fweimer@redhat.com> - 2.6-30
+- Port configure script to C99 (#2161952)
+
+* Fri Jul 22 2022 Fedora Release Engineering <releng@fedoraproject.org> - 2.6-29
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_37_Mass_Rebuild
+
+* Fri Jan 21 2022 Fedora Release Engineering <releng@fedoraproject.org> - 2.6-28
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_36_Mass_Rebuild
+
+* Fri Jul 23 2021 Fedora Release Engineering <releng@fedoraproject.org> - 2.6-27
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_35_Mass_Rebuild
+
+* Wed Jan 27 2021 Fedora Release Engineering <releng@fedoraproject.org> - 2.6-26
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_34_Mass_Rebuild
+
+* Tue Jul 28 2020 Fedora Release Engineering <releng@fedoraproject.org> - 2.6-25
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_33_Mass_Rebuild
 
 * Thu Jan 30 2020 Fedora Release Engineering <releng@fedoraproject.org> - 2.6-24
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_32_Mass_Rebuild

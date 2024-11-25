@@ -1,13 +1,16 @@
-Vendor:         Microsoft Corporation
-Distribution:   Azure Linux
+%if 0%{?fedora} > 35
+%global dict_dirname hunspell 
+%else
+%global dict_dirname myspell
+%endif
 Name: hunspell-sr
 Summary: Serbian hunspell dictionaries
 %global upstreamid 20130330
 Version: 0.%{upstreamid}
-Release: 15%{?dist}
+Release: 26%{?dist}
 Source: https://downloads.sourceforge.net/project/aoo-extensions/1572/10/dict-sr.oxt
 URL: http://extensions.services.openoffice.org/project/dict-sr
-License: LGPLv3
+License: LGPL-3.0-only
 BuildArch: noarch
 Requires: hunspell
 Supplements: (hunspell and langpacks-sr)
@@ -31,11 +34,11 @@ Serbian hyphenation rules.
 %build
 
 %install
-mkdir -p $RPM_BUILD_ROOT/%{_datadir}/myspell
-cp -p sr.dic $RPM_BUILD_ROOT/%{_datadir}/myspell/sr_YU.dic
-cp -p sr.aff $RPM_BUILD_ROOT/%{_datadir}/myspell/sr_YU.aff
-cp -p sr-Latn.dic $RPM_BUILD_ROOT/%{_datadir}/myspell/sh_YU.dic
-cp -p sr-Latn.aff $RPM_BUILD_ROOT/%{_datadir}/myspell/sh_YU.aff
+mkdir -p $RPM_BUILD_ROOT/%{_datadir}/%{dict_dirname}
+cp -p sr.dic $RPM_BUILD_ROOT/%{_datadir}/%{dict_dirname}/sr_YU.dic
+cp -p sr.aff $RPM_BUILD_ROOT/%{_datadir}/%{dict_dirname}/sr_YU.aff
+cp -p sr-Latn.dic $RPM_BUILD_ROOT/%{_datadir}/%{dict_dirname}/sh_YU.dic
+cp -p sr-Latn.aff $RPM_BUILD_ROOT/%{_datadir}/%{dict_dirname}/sh_YU.aff
 
 mkdir -p $RPM_BUILD_ROOT/%{_datadir}/hyphen
 cp -p hyph_sr.dic $RPM_BUILD_ROOT/%{_datadir}/hyphen/hyph_sr_YU.dic
@@ -44,7 +47,7 @@ cp -p hyph_sr-Latn.dic $RPM_BUILD_ROOT/%{_datadir}/hyphen/hyph_sh_YU.dic
 sr_YU_aliases="sr_ME sr_RS"
 sh_YU_aliases="sh_ME sh_RS bs_BA"
 
-pushd $RPM_BUILD_ROOT/%{_datadir}/myspell/
+pushd $RPM_BUILD_ROOT/%{_datadir}/%{dict_dirname}/
 for lang in $sr_YU_aliases; do
 	ln -s sr_YU.aff $lang.aff
 	ln -s sr_YU.dic $lang.dic
@@ -67,15 +70,49 @@ popd
 
 %files
 %doc registration/license*.txt
-%{_datadir}/myspell/*
+%{_datadir}/%{dict_dirname}/*
 
 %files -n hyphen-sr
 %doc registration/license*.txt
 %{_datadir}/hyphen/*
 
 %changelog
-* Fri Oct 15 2021 Pawel Winogrodzki <pawelwi@microsoft.com> - 0.20130330-15
-- Initial CBL-Mariner import from Fedora 32 (license: MIT).
+* Thu Jul 18 2024 Fedora Release Engineering <releng@fedoraproject.org> - 0.20130330-26
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_41_Mass_Rebuild
+
+* Wed Jan 24 2024 Fedora Release Engineering <releng@fedoraproject.org> - 0.20130330-25
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Sat Jan 20 2024 Fedora Release Engineering <releng@fedoraproject.org> - 0.20130330-24
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Thu Jul 20 2023 Fedora Release Engineering <releng@fedoraproject.org> - 0.20130330-23
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_39_Mass_Rebuild
+
+* Thu Feb 23 2023 Caolán McNamara <caolanm@redhat.com> - 0.20130330-22
+- migrated to SPDX license
+
+* Thu Jan 19 2023 Fedora Release Engineering <releng@fedoraproject.org> - 0.20130330-21
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_38_Mass_Rebuild
+
+* Thu Jul 21 2022 Fedora Release Engineering <releng@fedoraproject.org> - 0.20130330-20
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_37_Mass_Rebuild
+
+* Fri Feb 11 2022 Vishal Vijayraghavan <vishalvvr@fedoraproject.org> - 0.20130330-19
+- rename install directory name from myspell to hunspell
+- https://fedoraproject.org/wiki/Changes/Hunspell_dictionary_dir_change
+
+* Thu Jan 20 2022 Fedora Release Engineering <releng@fedoraproject.org> - 0.20130330-18
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_36_Mass_Rebuild
+
+* Thu Jul 22 2021 Fedora Release Engineering <releng@fedoraproject.org> - 0.20130330-17
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_35_Mass_Rebuild
+
+* Tue Jan 26 2021 Fedora Release Engineering <releng@fedoraproject.org> - 0.20130330-16
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_34_Mass_Rebuild
+
+* Tue Jul 28 2020 Fedora Release Engineering <releng@fedoraproject.org> - 0.20130330-15
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_33_Mass_Rebuild
 
 * Wed Jan 29 2020 Fedora Release Engineering <releng@fedoraproject.org> - 0.20130330-14
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_32_Mass_Rebuild

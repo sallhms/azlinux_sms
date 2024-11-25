@@ -1,14 +1,13 @@
-Vendor:         Microsoft Corporation
-Distribution:   Azure Linux
 Name:          sbc
-Version:       1.4
-Release:       6%{?dist}
+Version:       2.0
+Release:       5%{?dist}
 Summary:       Sub Band Codec used by bluetooth A2DP
 
-License:       GPLv2 and LGPLv2+
+License:       GPL-2.0-only AND LGPL-2.1-or-later
 URL:           http://www.bluez.org
 Source0:       http://www.kernel.org/pub/linux/bluetooth/%{name}-%{version}.tar.xz
 
+BuildRequires: make
 BuildRequires: gcc
 BuildRequires: libsndfile-devel
 Requires: lib%{name}%{?_isa} = %{version}-%{release}
@@ -37,7 +36,7 @@ Requires: lib%{name}%{?_isa} = %{version}-%{release}
 Files for development with %{name}.
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
 %configure --disable-static
@@ -66,8 +65,38 @@ find %{buildroot} -type f -name "*.la" -delete
 %{_libdir}/libsbc.so
 
 %changelog
-* Fri Oct 15 2021 Pawel Winogrodzki <pawelwi@microsoft.com> - 1.4-6
-- Initial CBL-Mariner import from Fedora 32 (license: MIT).
+* Sat Jul 20 2024 Fedora Release Engineering <releng@fedoraproject.org> - 2.0-5
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_41_Mass_Rebuild
+
+* Sat Jan 27 2024 Fedora Release Engineering <releng@fedoraproject.org> - 2.0-4
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Sat Jul 22 2023 Fedora Release Engineering <releng@fedoraproject.org> - 2.0-3
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_39_Mass_Rebuild
+
+* Sat Jan 21 2023 Fedora Release Engineering <releng@fedoraproject.org> - 2.0-2
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_38_Mass_Rebuild
+
+* Fri Nov 11 2022 Peter Robinson <pbrobinson@fedoraproject.org> - 2.0-1
+- Update to 2.0
+
+* Sat Jul 23 2022 Fedora Release Engineering <releng@fedoraproject.org> - 1.5-4
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_37_Mass_Rebuild
+
+* Sat Jan 22 2022 Fedora Release Engineering <releng@fedoraproject.org> - 1.5-3
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_36_Mass_Rebuild
+
+* Fri Jul 23 2021 Fedora Release Engineering <releng@fedoraproject.org> - 1.5-2
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_35_Mass_Rebuild
+
+* Tue Jun 15 2021 Peter Robinson <pbrobinson@fedoraproject.org> - 1.5-1
+- Update to 1.5
+
+* Wed Jan 27 2021 Fedora Release Engineering <releng@fedoraproject.org> - 1.4-7
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_34_Mass_Rebuild
+
+* Wed Jul 29 2020 Fedora Release Engineering <releng@fedoraproject.org> - 1.4-6
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_33_Mass_Rebuild
 
 * Thu Jan 30 2020 Fedora Release Engineering <releng@fedoraproject.org> - 1.4-5
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_32_Mass_Rebuild

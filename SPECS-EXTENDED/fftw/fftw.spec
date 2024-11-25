@@ -1,29 +1,59 @@
-%global quad 0
-# Quad precision support only available with gcc >= 4.6 (Fedora >= 15)
-# and only on these arches
-%ifarch %{ix86} x86_64
-%global quad 1
-%endif
-# build without mpich and openmpi support
+%if %{defined rhel}
 %bcond_with mpich
 %bcond_with openmpi
+%else
+# TODO check later if we can enable mpich on s390x
+%ifarch s390 s390x
+%bcond_with mpich
+%else
+%bcond_without mpich
+%endif
+%ifarch s390 s390x %{ix86}
+%bcond_with openmpi
+%else
+%bcond_without openmpi
+%endif
+%endif
 %if %{with mpich}
 %global mpi_list %{?mpi_list} mpich
 %endif
 %if %{with openmpi}
 %global mpi_list %{?mpi_list} openmpi
 %endif
-Summary:        A Fast Fourier Transform library
+
 Name:           fftw
 Version:        3.3.10
-Release:        4%{?dist}
-License:        GPLv2+
-Vendor:         Microsoft Corporation
-Distribution:   Azure Linux
-URL:            https://www.fftw.org
-Source0:        https://www.fftw.org/%{name}-%{version}.tar.gz
+Release:        13%{?dist}
+Summary:        A Fast Fourier Transform library
+# Generally, the code is under GPL but some headers are also under MIT or BSD:
+License:        GPL-2.0-or-later AND MIT AND BSD-2-Clause
+URL:            http://www.fftw.org
+Source0:        http://www.fftw.org/fftw-%{version}.tar.gz
+# https://github.com/FFTW/fftw3/pull/346
+Patch1:         fix_autotools_build.patch
+
 BuildRequires:  gcc-gfortran
-BuildRequires:  make
+
+%global quad 0
+# Quad precision support only available with gcc >= 4.6 (Fedora >= 15)
+# and only on these arches
+%ifarch %{ix86} x86_64 ia64
+%global quad 1
+%endif
+
+# Names of precisions to (maybe) build
+%global prec_names prec_name[0]=single;prec_name[1]=double;prec_name[2]=long;prec_name[3]=quad
+# Number of precisions to build; sometimes quad is not possible
+%global nprec 3
+%if %{quad}
+%global nprec 4
+%endif
+# Number of precisions to build for MPI
+%global nmpiprec 3
+
+# For check phase
+BuildRequires:  time
+BuildRequires:  perl-interpreter
 %if %{with mpich}
 BuildRequires:  mpich-devel
 BuildRequires:  nss-myhostname
@@ -34,10 +64,8 @@ BuildRequires:  openmpi-devel
 %if %{with mpich} || %{with openmpi}
 BuildRequires:  environment-modules
 %endif
-%if 0%{?with_check}
-BuildRequires:  perl-interpreter
-BuildRequires:  time
-%endif
+BuildRequires:  make
+
 
 %description
 FFTW is a C subroutine library for computing the Discrete Fourier
@@ -46,14 +74,15 @@ data, and of arbitrary input size.
 
 %package libs
 Summary:        FFTW run-time library
-Requires:       %{name}-libs-double%{?_isa} = %{version}-%{release}
-Requires:       %{name}-libs-long%{?_isa} = %{version}-%{release}
-# Pull in the actual libraries
-Requires:       %{name}-libs-single%{?_isa} = %{version}-%{release}
 Provides:       fftw3 = %{version}-%{release}
 # Libs rearranged in 3.3.1-2
 Obsoletes:      fftw-libs-threads < %{version}-%{release}
 Obsoletes:      fftw-libs-openmp < %{version}-%{release}
+
+# Pull in the actual libraries
+Requires:       %{name}-libs-single%{?_isa} = %{version}-%{release}
+Requires:       %{name}-libs-double%{?_isa} = %{version}-%{release}
+Requires:       %{name}-libs-long%{?_isa} = %{version}-%{release}
 %if %{quad}
 Requires:       %{name}-libs-quad%{?_isa} = %{version}-%{release}
 %endif
@@ -62,11 +91,12 @@ Requires:       %{name}-libs-quad%{?_isa} = %{version}-%{release}
 This is a dummy package package, pulling in the individual FFTW
 run-time libraries.
 
+
 %package devel
 Summary:        Headers, libraries and docs for the FFTW library
+Requires:       pkgconfig
 Requires:       %{name}%{?_isa} = %{version}-%{release}
 Requires:       %{name}-libs%{?_isa} = %{version}-%{release}
-Requires:       pkg-config
 Provides:       fftw3-devel%{?_isa} = %{version}-%{release}
 Provides:       fftw3-devel = %{version}-%{release}
 
@@ -91,7 +121,7 @@ Summary:        FFTW library, single precision
 This package contains the FFTW library compiled in single precision.
 
 %package libs-long
-Summary:        FFTW library, long double precision
+Summary:        FFTW library, long double precision 
 
 %description libs-long
 This package contains the FFTW library compiled in long double
@@ -119,22 +149,24 @@ the FFTW fast Fourier transform library.
 %if %{with mpich}
 %package mpich-libs
 Summary:        FFTW MPICH run-time library
-Requires:       %{name}-mpich-libs-double%{?_isa} = %{version}-%{release}
-Requires:       %{name}-mpich-libs-long%{?_isa} = %{version}-%{release}
+Provides:       fftw3-mpich = %{version}-%{release}
+
 # Pull in the actual libraries
 Requires:       %{name}-mpich-libs-single%{?_isa} = %{version}-%{release}
-Provides:       fftw3-mpich = %{version}-%{release}
+Requires:       %{name}-mpich-libs-double%{?_isa} = %{version}-%{release}
+Requires:       %{name}-mpich-libs-long%{?_isa} = %{version}-%{release}
 
 %description mpich-libs
 This is a dummy package package, pulling in the individual FFTW
 MPICH run-time libraries.
 
+
 %package mpich-devel
 Summary:        Headers, libraries and docs for the FFTW MPICH library
+Requires:       mpich-devel
+Requires:       pkgconfig
 Requires:       %{name}-devel%{?_isa} = %{version}-%{release}
 Requires:       %{name}-mpich-libs%{?_isa} = %{version}-%{release}
-Requires:       mpich-devel
-Requires:       pkg-config
 Provides:       fftw3-mpich-devel%{?_isa} = %{version}-%{release}
 Provides:       fftw3-mpich-devel = %{version}-%{release}
 
@@ -161,7 +193,7 @@ Requires:       %{name}-libs-single%{?_isa} = %{version}-%{release}
 This package contains the FFTW MPICH library compiled in single precision.
 
 %package mpich-libs-long
-Summary:        FFTW MPICH library, long double precision
+Summary:        FFTW MPICH library, long double precision 
 Requires:       %{name}-libs-long%{?_isa} = %{version}-%{release}
 
 %description mpich-libs-long
@@ -183,22 +215,24 @@ the FFTW fast Fourier transform library for MPICh.
 %if %{with openmpi}
 %package openmpi-libs
 Summary:        FFTW OpenMPI run-time library
-Requires:       %{name}-openmpi-libs-double%{?_isa} = %{version}-%{release}
-Requires:       %{name}-openmpi-libs-long%{?_isa} = %{version}-%{release}
+Provides:       fftw3-openmpi = %{version}-%{release}
+
 # Pull in the actual libraries
 Requires:       %{name}-openmpi-libs-single%{?_isa} = %{version}-%{release}
-Provides:       fftw3-openmpi = %{version}-%{release}
+Requires:       %{name}-openmpi-libs-double%{?_isa} = %{version}-%{release}
+Requires:       %{name}-openmpi-libs-long%{?_isa} = %{version}-%{release}
 
 %description openmpi-libs
 This is a dummy package package, pulling in the individual FFTW
 OpenMPI run-time libraries.
 
+
 %package openmpi-devel
 Summary:        Headers, libraries and docs for the FFTW OpenMPI library
+Requires:       openmpi-devel
+Requires:       pkgconfig
 Requires:       %{name}-devel%{?_isa} = %{version}-%{release}
 Requires:       %{name}-openmpi-libs%{?_isa} = %{version}-%{release}
-Requires:       openmpi-devel
-Requires:       pkg-config
 Provides:       fftw3-openmpi-devel%{?_isa} = %{version}-%{release}
 Provides:       fftw3-openmpi-devel = %{version}-%{release}
 
@@ -225,7 +259,7 @@ Requires:       %{name}-libs-single%{?_isa} = %{version}-%{release}
 This package contains the FFTW OpenMPI library compiled in single precision.
 
 %package openmpi-libs-long
-Summary:        FFTW OpenMPI library, long double precision
+Summary:        FFTW OpenMPI library, long double precision 
 Requires:       %{name}-libs-long%{?_isa} = %{version}-%{release}
 
 %description openmpi-libs-long
@@ -259,7 +293,7 @@ library.
 %if %{with mpich} || %{with openmpi}
 # Explicitly load shell support for the environment-modules package, used
 # below via 'module' pseudo-command.
-. %{_sysconfdir}/profile.d/modules.sh
+. /etc/profile.d/modules.sh
 %endif
 
 # Configure uses g77 by default, if present on system
@@ -268,11 +302,7 @@ export F77=gfortran
 BASEFLAGS="--enable-shared --disable-dependency-tracking --enable-threads"
 BASEFLAGS+=" --enable-openmp"
 
-# Precisions to build
-prec_name[0]=single
-prec_name[1]=double
-prec_name[2]=long
-prec_name[3]=quad
+%prec_names
 
 # Corresponding flags
 prec_flags[0]=--enable-single
@@ -283,122 +313,119 @@ prec_flags[3]=--enable-quad-precision
 %ifarch x86_64
 # Enable SSE2 and AVX support for x86_64
 for ((i=0; i<2; i++)) ; do
-    prec_flags[i]+=" --enable-sse2 --enable-avx"
+    prec_flags[i]+=" --enable-sse2 --enable-avx --enable-avx2"
+done
+%endif
+
+%ifarch %{arm64}
+# Compile support for NEON instructions
+for ((i=0; i<2; i++)) ; do
+    prec_flags[i]+=" --enable-neon"
+done
+BASEFLAGS+=" --enable-armv8-cntvct-el0"
+%endif
+
+%ifarch ppc ppc64
+# Compile support for Altivec instructions; only supported for single precision
+for ((i=0; i<1; i++)) ; do
+    prec_flags[i]+=" --enable-altivec"
 done
 %endif
 
 # Loop over precisions
-%if %{quad}
-for ((iprec=0; iprec<4; iprec++)) ; do
-%else
-for ((iprec=0; iprec<3; iprec++)) ; do
-%endif
+for ((iprec=0; iprec<%{nprec}; iprec++)) ; do
     mkdir ${prec_name[iprec]}${ver_name[iver]}
     cd ${prec_name[iprec]}${ver_name[iver]}
     ln -s ../configure .
-    %configure ${BASEFLAGS} ${prec_flags[iprec]}
+    %{configure} ${BASEFLAGS} ${prec_flags[iprec]}
     sed -i 's|^hardcode_libdir_flag_spec=.*|hardcode_libdir_flag_spec=""|g' libtool
     sed -i 's|^runpath_var=LD_RUN_PATH|runpath_var=DIE_RPATH_DIE|g' libtool
-    make %{?_smp_mflags}
+    %make_build
     cd ..
 done
 
-# TO-DO: Currently, mpi builds is not supported
 # MPI Builds - this duplicates the non-mpi builds, but oh well
-%if %{with mpich} || %{with openmpi}
-for mpi in %{mpi_list} ; do
+for mpi in %{?mpi_list} ; do
     module load mpi/${mpi}-%{_arch}
     # Loop over precisions - no quad precision support with MPI
-    for((iprec=0;iprec<3;iprec++)) ; do
+    for((iprec=0;iprec<%{nmpiprec};iprec++)) ; do
         mkdir ${mpi}-${prec_name[iprec]}${ver_name[iver]}
         cd ${mpi}-${prec_name[iprec]}${ver_name[iver]}
         ln -s ../configure .
         # Force linking the _mpi.so libraries with the mpi libs.  This works because
         # we get rid of all of the non-mpi components of these builds
         export CC=mpicc
-        %configure ${BASEFLAGS} ${prec_flags[iprec]} \
+        if [ $mpi = "openmpi" ]; then
+            export MPIRUN="mpirun --oversubscribe"
+        fi
+        %{configure} ${BASEFLAGS} ${prec_flags[iprec]} \
             --enable-mpi \
             --libdir=%{_libdir}/$mpi/lib \
             --bindir=%{_libdir}/$mpi/bin \
             --sbindir=%{_libdir}/$mpi/sbin \
             --includedir=%{_includedir}/$mpi-%{_arch} \
             --mandir=%{_libdir}/$mpi/share/man
-        make %{?_smp_mflags}
+        %make_build
         cd ..
     done
     module unload mpi/${mpi}-%{_arch}
 done
-%endif
 
 %install
+%prec_names
+
 %if %{with mpich} || %{with openmpi}
 # Explicitly load shell support for the environment-modules package, used
 # below via 'module' pseudo-command.
-source %{_sysconfdir}/profile.d/modules.sh
+source /etc/profile.d/modules.sh
 %endif
 
-%if %{quad}
-for ver in single double long quad ; do
-%else
-for ver in single double long ; do
-%endif
-    make -C $ver install DESTDIR=%{buildroot}
+for((iprec=0;iprec<%{nprec};iprec++)) ; do
+    %make_install -C ${prec_name[iprec]}
 done
 
-# TO-DO: Currently, mpi builds is not supported
 # MPI
-%if %{with mpich} || %{with openmpi}
-for mpi in %{mpi_list} ; do
+for mpi in %{?mpi_list} ; do
     module load mpi/${mpi}-%{_arch}
-    for ver in single double long ; do
-        make -C ${mpi}-${ver} install DESTDIR=%{buildroot}
+    for((iprec=0;iprec<%{nmpiprec};iprec++)) ; do
+        %make_install -C ${mpi}-${prec_name[iprec]}
         # Remove duplicated non-mpi libraries, binaries, and data
         find %{buildroot}%{_libdir}/${mpi}/lib -name libfftw\* -a \! -name \*_mpi.\* -delete
         rm -r %{buildroot}%{_libdir}/${mpi}/{bin,share}
     done
     module unload mpi/${mpi}-%{_arch}
 done
-%endif
 
 rm -f %{buildroot}%{_infodir}/dir
-find %{buildroot} -type f -name "*.la" -delete -print
+find %{buildroot} -name \*.la -delete
 
 %check
+%prec_names
 %if %{with mpich} || %{with openmpi}
 # Explicitly load shell support for the environment-modules package, used
 # below via 'module' pseudo-command.
-. %{_sysconfdir}/profile.d/modules.sh
+. /etc/profile.d/modules.sh
 %endif
 
 bdir=$(pwd)
-%if %{quad}
-for ver in single double long quad ; do
-%else
-for ver in single double long ; do
-%endif
-    export LD_LIBRARY_PATH=$bdir/$ver/.libs:$bdir/$ver/threads/.libs
-    make %{?_smp_mflags} -C $ver check
+for((iprec=0;iprec<%{nprec};iprec++)) ; do
+    export LD_LIBRARY_PATH=$bdir/${prec_name[iprec]}/.libs:$bdir/${prec_name[iprec]}/threads/.libs
+    %make_build -C ${prec_name[iprec]} check
 done
 
 # MPI
-%if %{with openmpi}
-%ifarch %{ix86}
-# disable Open MPI's vader byte transfer layer while running tests on 32-bit x86 platforms
-# as it is known to be troublesome <https://github.com/open-mpi/ompi/issues/4260>
-export OMPI_MCA_btl="^vader"
-%endif
-%endif
-
-%if %{with mpich} || %{with openmpi}
-for mpi in %{mpi_list} ; do
+# Allow oversubscription with openmpi
+export OMPI_MCA_rmaps_base_oversubscribe=1
+# For openmpi 5+
+export PRTE_MCA_rmaps_default_mapping_policy=:oversubscribe
+for mpi in %{?mpi_list} ; do
     module load mpi/${mpi}-%{_arch}
-    for ver in single double long ; do
-        export LD_LIBRARY_PATH=$bdir/$ver/.libs:$bdir/$ver/threads/.libs
-        make %{?_smp_mflags} -C ${mpi}-${ver}/mpi check
+    for((iprec=0;iprec<%{nmpiprec};iprec++)) ; do
+        export LD_LIBRARY_PATH=$bdir/${prec_name[iprec]}/.libs:$bdir/${prec_name[iprec]}/threads/.libs
+        %make_build -C ${mpi}-${prec_name[iprec]}/mpi check
     done
     module unload mpi/${mpi}-%{_arch}
 done
-%endif
 
 %ldconfig_scriptlets libs-single
 %ldconfig_scriptlets libs-double
@@ -519,11 +546,46 @@ done
 %endif
 
 %changelog
-* Tue Nov 22 2022 Sumedh Sharma <sumsharma@microsoft.com> - 3.3.10-4
-- Initial CBL-Mariner import from Fedora 37 (license: MIT)
-- Build with mpich and openmpi features disabled
-- Enable check section
-- License verified
+* Wed Jul 17 2024 Fedora Release Engineering <releng@fedoraproject.org> - 3.3.10-13
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_41_Mass_Rebuild
+
+* Tue Apr 09 2024 Sérgio Basto <sergio@serjux.com> - 3.3.10-12
+- Use https://github.com/FFTW/fftw3/pull/346 as fix_autotools_build.patch
+
+* Wed Jan 24 2024 Fedora Release Engineering <releng@fedoraproject.org> - 3.3.10-11
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Fri Jan 19 2024 Fedora Release Engineering <releng@fedoraproject.org> - 3.3.10-10
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+- Fix i686 build by disabling openmpi
+- Fix "The file FFTW3LibraryDepends.cmake is missing" in autotools build
+  https://github.com/FFTW/fftw3/issues/130#issuecomment-1902748460 (#2193075)
+- Disable mpich on s390x to fix the build
+
+* Thu Jul 27 2023 Lukáš Zaoral <lzaoral@redhat.com> - 3.3.10-9
+- migrate to SPDX license format
+
+* Wed Jul 19 2023 Fedora Release Engineering <releng@fedoraproject.org> - 3.3.10-8
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_39_Mass_Rebuild
+
+* Tue Mar 28 2023 David Cantrell <dcantrell@redhat.com> - 3.3.10-7
+- Rebuild
+
+* Mon Mar 27 2023 Trent Piepho <tpiepho@gmail.com> - 3.3.10-6
+- Enable AVX2 on x86-86
+- Enable NEON on aarch64
+- Clean up precision list
+- Fix for OpenMPI build with < 4 processors
+- Fix building with no enabled MPI types
+- Enable single precision Altivec on PPC
+- Enable CNTVCT_EL0 support on ARMv8
+
+* Thu Mar 02 2023 Orion Poplawski <orion@nwra.com> - 3.3.10-5
+- Use make macros
+- Drop openmpi vader workaround
+
+* Thu Jan 19 2023 Fedora Release Engineering <releng@fedoraproject.org> - 3.3.10-4
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_38_Mass_Rebuild
 
 * Thu Jul 21 2022 Fedora Release Engineering <releng@fedoraproject.org> - 3.3.10-3
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_37_Mass_Rebuild

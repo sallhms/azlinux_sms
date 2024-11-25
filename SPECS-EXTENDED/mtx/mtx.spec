@@ -1,8 +1,6 @@
-Vendor:         Microsoft Corporation
-Distribution:   Azure Linux
 Name: mtx
 Version: 1.3.12
-Release: 23%{?dist}
+Release: 32%{?dist}
 Summary: SCSI media changer control program
 License: GPLv2
 Source0: http://downloads.sourceforge.net/%{name}/%{name}-%{version}.tar.gz
@@ -12,6 +10,7 @@ Patch0: %{name}-1.3.12-destdir.patch
 # https://bugzilla.redhat.com/show_bug.cgi?id=538403
 Patch1: %{name}-1.3.12-argc.patch
 URL: http://mtx.sourceforge.net/
+BuildRequires: make
 BuildRequires: gcc
 
 
@@ -29,8 +28,8 @@ tape at a time, you should install MTX.
 %prep
 %setup -q
 
-%patch 0 -p2 -b .destdir
-%patch 1 -p2 -b .argc
+%patch -P0 -p2 -b .destdir
+%patch -P1 -p2 -b .argc
 
 # remove exec permission
 chmod a-x contrib/config_sgen_solaris.sh contrib/mtx-changer
@@ -54,8 +53,35 @@ make install DESTDIR=$RPM_BUILD_ROOT
 
 
 %changelog
-* Fri Oct 15 2021 Pawel Winogrodzki <pawelwi@microsoft.com> - 1.3.12-23
-- Initial CBL-Mariner import from Fedora 32 (license: MIT).
+* Thu Jul 18 2024 Fedora Release Engineering <releng@fedoraproject.org> - 1.3.12-32
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_41_Mass_Rebuild
+
+* Thu Jan 25 2024 Fedora Release Engineering <releng@fedoraproject.org> - 1.3.12-31
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Sun Jan 21 2024 Fedora Release Engineering <releng@fedoraproject.org> - 1.3.12-30
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Thu Jul 20 2023 Fedora Release Engineering <releng@fedoraproject.org> - 1.3.12-29
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_39_Mass_Rebuild
+
+* Thu Jan 19 2023 Fedora Release Engineering <releng@fedoraproject.org> - 1.3.12-28
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_38_Mass_Rebuild
+
+* Thu Jul 21 2022 Fedora Release Engineering <releng@fedoraproject.org> - 1.3.12-27
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_37_Mass_Rebuild
+
+* Thu Jan 20 2022 Fedora Release Engineering <releng@fedoraproject.org> - 1.3.12-26
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_36_Mass_Rebuild
+
+* Thu Jul 22 2021 Fedora Release Engineering <releng@fedoraproject.org> - 1.3.12-25
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_35_Mass_Rebuild
+
+* Tue Jan 26 2021 Fedora Release Engineering <releng@fedoraproject.org> - 1.3.12-24
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_34_Mass_Rebuild
+
+* Tue Jul 28 2020 Fedora Release Engineering <releng@fedoraproject.org> - 1.3.12-23
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_33_Mass_Rebuild
 
 * Wed Jan 29 2020 Fedora Release Engineering <releng@fedoraproject.org> - 1.3.12-22
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_32_Mass_Rebuild

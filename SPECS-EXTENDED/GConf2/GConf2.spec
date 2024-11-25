@@ -1,5 +1,3 @@
-Vendor:         Microsoft Corporation
-Distribution:   Azure Linux
 %define libxml2_version 2.4.12
 %define glib2_version 2.25.9
 %define dbus_version 1.0.1
@@ -9,15 +7,15 @@ Distribution:   Azure Linux
 %define defaults_service 1
 %endif
 
-Summary: A process-transparent configuration system
-Name: GConf2
+Name:    GConf2
 Version: 3.2.6
-Release: 31%{?dist}
-License: GPLv2+
-#VCS: git:git://git.gnome.org/gconf
-Source0: http://download.gnome.org/sources/GConf/3.2/GConf-%{version}.tar.xz
+Release: 42%{?dist}
+Summary: A process-transparent configuration system
+
+License: LGPLv2+ and GPLv2+
+URL:     https://gitlab.gnome.org/Archive/gconf/
+Source0: https://download.gnome.org/sources/GConf/3.2/GConf-%{version}.tar.xz
 Source1: macros.gconf2
-URL: http://projects.gnome.org/gconf/
 
 # http://bugzilla.gnome.org/show_bug.cgi?id=568845
 Patch0: GConf-gettext.patch
@@ -32,29 +30,25 @@ Patch2: gconf-3.2.6-gconf-engine_key_is_writable.patch
 Patch99: workaround-crash.patch
 Patch100: pkill-hack.patch
 
-BuildRequires: libxml2-devel >= %{libxml2_version}
-BuildRequires: libxslt-devel
-BuildRequires: glib2-devel >= %{glib2_version}
-BuildRequires: gtk-doc >= 0.9
-BuildRequires: pkgconfig >= 0.14
 BuildRequires: gettext
+BuildRequires: gtk-doc >= 0.9
 BuildRequires: intltool
-BuildRequires: perl(File::Find)
+BuildRequires: make
+BuildRequires: pkgconfig(dbus-glib-1) >= 0.8
+BuildRequires: pkgconfig(gobject-introspection-1.0) >= 0.6.7
+BuildRequires: pkgconfig(libxml-2.0) >= %{libxml2_version}
 %if 0%{?defaults_service}
-BuildRequires: polkit-devel >= 0.92
+BuildRequires: pkgconfig(polkit-gobject-1) >= 0.92
 %endif
-BuildRequires: dbus-glib-devel >= 0.8
-BuildRequires: gobject-introspection-devel >= 0.6.7
 BuildRequires: autoconf automake libtool
 # we need to do python shebang mangling using pathfix.py
 BuildRequires: python3-devel
-BuildRequires: python3-tools
 
 %if 0%{?defaults_service}
 Requires: dbus
 %endif
 # for patch100
-Requires:  /bin/pkill
+Requires: /usr/bin/pkill
 Conflicts: GConf2-dbus
 
 Provides: GConf2-gtk = 3.2.6-6
@@ -67,13 +61,7 @@ support workgroup administration.
 
 %package devel
 Summary: Headers and libraries for GConf development
-Requires: %{name} = %{version}-%{release}
-Requires: libxml2-devel >= %{libxml2_version}
-Requires: glib2-devel >= %{glib2_version}
-# we install a pc file
-Requires: pkgconfig
-# we install an automake macro
-Requires: automake
+Requires: %{name}%{?_isa} = %{version}-%{release}
 Conflicts: GConf2-dbus-devel
 
 %description devel
@@ -81,47 +69,36 @@ GConf development package. Contains files needed for doing
 development using GConf.
 
 %prep
-%setup -q -n GConf-%{version}
-%patch 0 -p1 -b .gettext
-%patch 1 -p1 -b .drop-spew
-%patch 2 -p1 -b .abi-break
-
-%patch 99 -p1 -b .workaround-crash
-%patch 100 -p1 -b .pkill-hack
-
-autoreconf -i -f
-
-2to3-%{python3_version} --write --nobackup gsettings/gsettings-schema-convert
-pathfix.py -pni "%{__python3} %{py3_shbang_opts}" . gsettings/gsettings-schema-convert
+%autosetup -p1 -n GConf-%{version}
 
 %build
+autoreconf --force --install
+
 %configure --disable-static \
       %{?defaults_service:--enable-defaults-service} \
       %{!?defaults_service:--disable-defaults-service} \
-      --disable-orbit --without-openldap --with-gtk=3.0
+      --disable-orbit --without-openldap --disable-gsettings-backend
 
 # drop unneeded direct library deps with --as-needed
 # libtool doesn't make this easy, so we do it the hard way
 sed -i -e 's/ -shared / -Wl,-O1,--as-needed\0 /g' -e 's/    if test "$export_dynamic" = yes && test -n "$export_dynamic_flag_spec"; then/      func_append compile_command " -Wl,-O1,--as-needed"\n      func_append finalize_command " -Wl,-O1,--as-needed"\n\0/' libtool
 
-make
+%make_build
 
 %install
-make install DESTDIR=$RPM_BUILD_ROOT
+%make_install
 
-mkdir -p $RPM_BUILD_ROOT%{_sysconfdir}/gconf/schemas
-mkdir -p $RPM_BUILD_ROOT%{_sysconfdir}/gconf/gconf.xml.system
-mkdir -p $RPM_BUILD_ROOT%{_rpmconfigdir}/macros.d/
-mkdir -p $RPM_BUILD_ROOT%{_localstatedir}/lib/rpm-state/gconf
-mkdir -p $RPM_BUILD_ROOT%{_datadir}/GConf/gsettings
+mkdir -p %{buildroot}%{_sysconfdir}/gconf/schemas
+mkdir -p %{buildroot}%{_sysconfdir}/gconf/gconf.xml.system
+mkdir -p %{buildroot}%{_rpmconfigdir}/macros.d/
+mkdir -p %{buildroot}%{_localstatedir}/lib/rpm-state/gconf
+mkdir -p %{buildroot}%{_datadir}/GConf/gsettings
 
-install -p -m 644 %{SOURCE1} $RPM_BUILD_ROOT%{_rpmconfigdir}/macros.d/
+install -p -m 644 %{SOURCE1} %{buildroot}%{_rpmconfigdir}/macros.d/
 
-rm -f $RPM_BUILD_ROOT%{_libdir}/*.la
-rm -f $RPM_BUILD_ROOT%{_libdir}/GConf/2/*.la
-rm -f $RPM_BUILD_ROOT%{_libdir}/gio/modules/*.la
+find %{buildroot} -name "*.la" -type f -delete
 
-mkdir -p $RPM_BUILD_ROOT%{_datadir}/GConf/gsettings
+mkdir -p %{buildroot}%{_datadir}/GConf/gsettings
 
 %find_lang %name
 
@@ -148,8 +125,6 @@ fi
 %dir %{_sysconfdir}/gconf/schemas
 %{_bindir}/gconf-merge-tree
 %{_bindir}/gconftool-2
-%{_bindir}/gsettings-data-convert
-%{_sysconfdir}/xdg/autostart/gsettings-data-convert.desktop
 %{_libexecdir}/gconfd-2
 %{_libdir}/*.so.*
 %{_libdir}/GConf/2/*.so
@@ -157,7 +132,6 @@ fi
 %{_datadir}/sgml/gconf
 %{_datadir}/GConf
 %{_mandir}/man1/*
-%exclude %{_mandir}/man1/gsettings-schema-convert.1*
 %dir %{_libdir}/GConf
 %dir %{_libdir}/GConf/2
 %{_rpmconfigdir}/macros.d/macros.gconf2
@@ -169,7 +143,6 @@ fi
 %endif
 %{_datadir}/dbus-1/services/org.gnome.GConf.service
 %{_localstatedir}/lib/rpm-state/gconf/
-%{_libdir}/gio/modules/libgsettingsgconfbackend.so
 %{_libdir}/girepository-1.0
 
 %files devel
@@ -179,24 +152,54 @@ fi
 %{_datadir}/gtk-doc/html/gconf
 %{_libdir}/pkgconfig/*
 %{_datadir}/gir-1.0
-%{_bindir}/gsettings-schema-convert
-%{_mandir}/man1/gsettings-schema-convert.1*
 
 %changelog
-* Mon Mar 21 2022 Pawel Winogrodzki <pawelwi@microsoft.com> - 3.2.6-31
-- Adding missing "BuildRequires:  perl(File::Find)".
+* Wed Jul 17 2024 Fedora Release Engineering <releng@fedoraproject.org> - 3.2.6-42
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_41_Mass_Rebuild
 
-* Wed Feb 23 2022 Pawel Winogrodzki <pawelwi@microsoft.com> - 3.2.6-30
-- Using the "%%python3_version" macro to use the proper "2to3-%%{python3_version}" tool.
-- License verified.
+* Mon Jan 22 2024 Fedora Release Engineering <releng@fedoraproject.org> - 3.2.6-41
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
 
-* Wed Mar 10 2021 Henry Li <lihl@microsoft.com> - 3.2.6-29
-- Add python3-tools as BuildRequire to provide 2to3-3.7
-- Change 2to3 to 2to3-3.7
+* Fri Jan 19 2024 Fedora Release Engineering <releng@fedoraproject.org> - 3.2.6-40
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
 
-* Thu Mar 04 2021 Henry Li <lihl@microsoft.com> - 3.2.6-28
-- Initial CBL-Mariner import from Fedora 31 (license: MIT).
-- Change from /usr/bin/pkill to /bin/pkill
+* Thu Jan 18 2024 Fedora Release Engineering <releng@fedoraproject.org> - 3.2.6-39
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Wed Jul 19 2023 Fedora Release Engineering <releng@fedoraproject.org> - 3.2.6-38
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_39_Mass_Rebuild
+
+* Wed Jan 18 2023 Fedora Release Engineering <releng@fedoraproject.org> - 3.2.6-37
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_38_Mass_Rebuild
+
+* Tue Aug 02 2022 Michael Catanzaro <mcatanzaro@redhat.com> - 3.2.6-36
+- Remove GIO GSettings backend, GLib should not load obsolete extensions
+- Move build stuff from %prep to %build
+
+* Wed Jul 20 2022 Fedora Release Engineering <releng@fedoraproject.org> - 3.2.6-35
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_37_Mass_Rebuild
+
+* Wed Jan 19 2022 Fedora Release Engineering <releng@fedoraproject.org> - 3.2.6-34
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_36_Mass_Rebuild
+
+* Fri Jan 07 2022 Miro Hrončok <mhroncok@redhat.com> - 3.2.6-33
+- Fix broken requirement on GConf2{?_isa}
+
+* Fri Jan 07 2022 David King <amigadave@amigadave.com> - 3.2.6-32
+- Update URL (#2036776)
+- Use pkgconfig for BuildRequires
+
+* Wed Jul 21 2021 Fedora Release Engineering <releng@fedoraproject.org> - 3.2.6-31
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_35_Mass_Rebuild
+
+* Mon Jan 25 2021 Fedora Release Engineering <releng@fedoraproject.org> - 3.2.6-30
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_34_Mass_Rebuild
+
+* Mon Jul 27 2020 Fedora Release Engineering <releng@fedoraproject.org> - 3.2.6-29
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_33_Mass_Rebuild
+
+* Tue Jan 28 2020 Fedora Release Engineering <releng@fedoraproject.org> - 3.2.6-28
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_32_Mass_Rebuild
 
 * Wed Jul 24 2019 Fedora Release Engineering <releng@fedoraproject.org> - 3.2.6-27
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_31_Mass_Rebuild

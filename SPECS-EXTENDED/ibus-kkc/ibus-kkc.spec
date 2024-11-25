@@ -1,23 +1,21 @@
-Vendor:         Microsoft Corporation
-Distribution:   Azure Linux
 Name:		ibus-kkc
 Version:	1.5.22
-Release:	16%{?dist}
+Release:	26%{?dist}
 Summary:	Japanese Kana Kanji input method for ibus
 
-License:	GPLv2+
+License:	GPL-2.0-or-later
 URL:		https://github.com/ueno/ibus-kkc
 Source0:	https://github.com/ueno/ibus-kkc/releases/download/v%{version}/%{name}-%{version}.tar.gz
 Patch0:		ibus-kkc-content-type.patch
 Patch1:         ibus-HEAD.patch
 
 BuildRequires:	vala
-BuildRequires:	perl(File::Find)
 BuildRequires:	intltool
 BuildRequires:	libkkc-devel >= 0.3.4
 BuildRequires:	ibus-devel
 BuildRequires:	gtk3-devel
 BuildRequires:	desktop-file-utils
+BuildRequires: make
 Requires:	ibus
 
 %description
@@ -25,13 +23,10 @@ A Japanese Kana Kanji Input Method Engine for ibus.
 
 
 %prep
-%setup -q
+%autosetup -p1
 rm src/*vala.stamp
 # don't touch XKB layout under Fedora
 sed -i 's!<layout>jp</layout>!<layout>default</layout>!' src/kkc.xml.in.in
-# for ibus 1.5.4 or later
-%patch 0 -p1 -b .content-type
-%patch 1 -p1 -b .orig
 
 
 %build
@@ -85,18 +80,8 @@ desktop-file-validate %{buildroot}/%{_datadir}/applications/ibus-setup-kkc.deskt
 %find_lang %{name}
 
 
-%post
-[ -x %{_bindir}/ibus ] && \
-  %{_bindir}/ibus write-cache --system &>/dev/null || :
-
-%postun
-[ -x %{_bindir}/ibus ] && \
-  %{_bindir}/ibus write-cache --system &>/dev/null || :
-
-
 %files -f %{name}.lang
-%license COPYING
-%doc AUTHORS ChangeLog README
+%doc AUTHORS COPYING ChangeLog README
 %{_datadir}/appdata/*.appdata.xml
 %{_datadir}/ibus-kkc
 %{_libexecdir}/ibus-*-kkc
@@ -105,14 +90,44 @@ desktop-file-validate %{buildroot}/%{_datadir}/applications/ibus-setup-kkc.deskt
 
 
 %changelog
-* Wed Feb 16 2022 Pawel Winogrodzki <pawelwi@microsoft.com> - 1.5.22-16
-- License verified.
+* Thu Jul 18 2024 Fedora Release Engineering <releng@fedoraproject.org> - 1.5.22-26
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_41_Mass_Rebuild
 
-* Tue Feb 15 2022 Pawel Winogrodzki <pawelwi@microsoft.com> - 1.5.22-15
-- Adding missing BRs on Perl modules.
+* Fri Feb 02 2024 Parag Nemade <pnemade AT redhat DOT com> - 1.5.22-25
+- Migrate to SPDX license expression
 
-* Fri Oct 15 2021 Pawel Winogrodzki <pawelwi@microsoft.com> - 1.5.22-14
-- Initial CBL-Mariner import from Fedora 32 (license: MIT).
+* Wed Jan 24 2024 Fedora Release Engineering <releng@fedoraproject.org> - 1.5.22-24
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Sat Jan 20 2024 Fedora Release Engineering <releng@fedoraproject.org> - 1.5.22-23
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Thu Jul 20 2023 Fedora Release Engineering <releng@fedoraproject.org> - 1.5.22-22
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_39_Mass_Rebuild
+
+* Thu Jan 19 2023 Fedora Release Engineering <releng@fedoraproject.org> - 1.5.22-21
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_38_Mass_Rebuild
+
+* Thu Jul 21 2022 Fedora Release Engineering <releng@fedoraproject.org> - 1.5.22-20
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_37_Mass_Rebuild
+
+* Thu Jan 20 2022 Fedora Release Engineering <releng@fedoraproject.org> - 1.5.22-19
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_36_Mass_Rebuild
+
+* Thu Jul 22 2021 Fedora Release Engineering <releng@fedoraproject.org> - 1.5.22-18
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_35_Mass_Rebuild
+
+* Fri Jun 18 2021 Takao Fujiwara <tfujiwar@redhat.com> - 1.5.22-17
+- Delete ibus write-cache in scriptlet
+
+* Wed Apr 21 2021 Takao Fujiwara <tfujiwar@redhat.com> - 1.5.22-16
+- Resolves: #1948197 Change post to posttrans
+
+* Tue Jan 26 2021 Fedora Release Engineering <releng@fedoraproject.org> - 1.5.22-15
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_34_Mass_Rebuild
+
+* Tue Jul 28 2020 Fedora Release Engineering <releng@fedoraproject.org> - 1.5.22-14
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_33_Mass_Rebuild
 
 * Wed Jan 29 2020 Fedora Release Engineering <releng@fedoraproject.org> - 1.5.22-13
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_32_Mass_Rebuild

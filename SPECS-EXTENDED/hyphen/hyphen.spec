@@ -1,21 +1,15 @@
-Vendor:         Microsoft Corporation
-Distribution:   Azure Linux
 Name:      hyphen
 Summary:   A text hyphenation library
 Version:   2.8.8
-Release:   14%{?dist}
-# Source:  https://github.com/hunspell/hyphen/archive/refs/heads/master.zip
-Source:    https://github.com/hunspell/hyphen/archive/refs/heads/hyphen-%{version}.tar.gz
-URL:       https://github.com/hunspell/hyphen
-License:   GPLv2 or LGPLv2+ or MPLv1.1
+Release:   25%{?dist}
+Source:    http://downloads.sourceforge.net/hunspell/hyphen-%{version}.tar.gz
+URL:       http://hunspell.sf.net
+License:   GPL-2.0-only OR LGPL-2.1-or-later OR MPL-1.1
 BuildRequires: perl-interpreter, patch, autoconf, automake, libtool
-# s390 lacks valgrind support
-# no working valgrind built for MIPS yet
-# tests with valgrind fail on arm
-# tests with valgrind fail on ppc64le
-%ifnarch s390 %{arm} %{mips} ppc64le
+%ifarch %{valgrind_arches}
 BuildRequires: valgrind
 %endif
+BuildRequires: make
 
 %description
 Hyphen is a library for high quality hyphenation and justification.
@@ -44,7 +38,7 @@ make %{?_smp_mflags}
 
 %check
 make check
-%ifnarch s390 %{arm} %{mips} ppc64le
+%ifarch %{valgrind_arches}
 VALGRIND=memcheck make check
 %endif
 
@@ -77,8 +71,41 @@ popd
 %{_bindir}/substrings.pl
 
 %changelog
-* Fri Oct 15 2021 Pawel Winogrodzki <pawelwi@microsoft.com> - 2.8.8-14
-- Initial CBL-Mariner import from Fedora 32 (license: MIT).
+* Thu Jul 18 2024 Fedora Release Engineering <releng@fedoraproject.org> - 2.8.8-25
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_41_Mass_Rebuild
+
+* Wed Mar 06 2024 David Abdurachmanov <davidlt@rivosinc.com> - 2.8.8-24
+- Properly check valgrind arches
+
+* Wed Jan 24 2024 Fedora Release Engineering <releng@fedoraproject.org> - 2.8.8-23
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Sat Jan 20 2024 Fedora Release Engineering <releng@fedoraproject.org> - 2.8.8-22
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Thu Jul 20 2023 Fedora Release Engineering <releng@fedoraproject.org> - 2.8.8-21
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_39_Mass_Rebuild
+
+* Thu Feb 23 2023 Caolán McNamara <caolanm@redhat.com> - 2.8.8-20
+- migrated to SPDX license
+
+* Thu Jan 19 2023 Fedora Release Engineering <releng@fedoraproject.org> - 2.8.8-19
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_38_Mass_Rebuild
+
+* Thu Jul 21 2022 Fedora Release Engineering <releng@fedoraproject.org> - 2.8.8-18
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_37_Mass_Rebuild
+
+* Thu Jan 20 2022 Fedora Release Engineering <releng@fedoraproject.org> - 2.8.8-17
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_36_Mass_Rebuild
+
+* Thu Jul 22 2021 Fedora Release Engineering <releng@fedoraproject.org> - 2.8.8-16
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_35_Mass_Rebuild
+
+* Tue Jan 26 2021 Fedora Release Engineering <releng@fedoraproject.org> - 2.8.8-15
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_34_Mass_Rebuild
+
+* Tue Jul 28 2020 Fedora Release Engineering <releng@fedoraproject.org> - 2.8.8-14
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_33_Mass_Rebuild
 
 * Wed Jan 29 2020 Fedora Release Engineering <releng@fedoraproject.org> - 2.8.8-13
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_32_Mass_Rebuild

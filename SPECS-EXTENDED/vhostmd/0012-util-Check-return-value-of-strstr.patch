@@ -1,0 +1,38 @@
+From 4350fcf7a5c4cb7d803db1a0df2b757230b90e25 Mon Sep 17 00:00:00 2001
+From: Jim Fehlig <jfehlig@suse.com>
+Date: Tue, 7 Jan 2020 11:47:33 -0700
+Subject: [PATCH 12/19] util: Check return value of strstr
+
+From coverity scan
+
+vhostmd-1.1/vhostmd/util.c:421: returned_null: "strstr" returns "NULL" (checked 6 out of 7 times).
+
+Signed-off-by: Jim Fehlig <jfehlig@suse.com>
+---
+ vhostmd/util.c | 10 ++++++----
+ 1 file changed, 6 insertions(+), 4 deletions(-)
+
+diff --git a/vhostmd/util.c b/vhostmd/util.c
+index 599c5c7..317dbc6 100644
+--- a/vhostmd/util.c
++++ b/vhostmd/util.c
+@@ -422,10 +422,12 @@ char *vu_str_replace(const char *haystack, const char *origstr, const char *news
+    cp = tempstr;
+    for (i=0; i <cnt; i++) {
+       p = strstr(cp, origstr);
+-      *p = '\0';
+-      strcat(dest, cp);
+-      strcat(dest, newstr);
+-      cp = p + origlen;
++      if (p) {
++         *p = '\0';
++         strcat(dest, cp);
++         strcat(dest, newstr);
++         cp = p + origlen;
++      }
+    }
+    strcat(dest, cp);
+ 
+-- 
+2.32.0
+

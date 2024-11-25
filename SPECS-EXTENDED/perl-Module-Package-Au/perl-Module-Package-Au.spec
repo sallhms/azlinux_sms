@@ -1,27 +1,26 @@
 Name:		perl-Module-Package-Au
 Version:	2
-Release:	18%{?dist}
+Release:	30%{?dist}
 Summary:	Reusable Module::Install bits
-License:	CC0
-Vendor:         Microsoft Corporation
-Distribution:   Azure Linux
+License:	CC0-1.0
 URL:		https://metacpan.org/release/Module-Package-Au
-Source0:	https://cpan.metacpan.org/authors/id/A/AU/AUDREYT/Module-Package-Au-%{version}.tar.gz#/%{name}-%{version}.tar.gz
-Patch0:		perl-Module-Package-Au-no-bundle.patch
+Source0:	https://cpan.metacpan.org/authors/id/A/AU/AUDREYT/Module-Package-Au-%{version}.tar.gz
 BuildArch:	noarch
+BuildRequires:	coreutils
+BuildRequires:	make
 BuildRequires:	perl-generators
-BuildRequires:	perl(FindBin)
-BuildRequires:	perl(File::Remove)
-BuildRequires:	perl(Module::CoreList)
-BuildRequires:	perl(ExtUtils::MakeMaker)
+BuildRequires:	perl-interpreter
+BuildRequires:	perl(ExtUtils::MakeMaker) >= 6.76
+BuildRequires:	perl(lib)
 BuildRequires:	perl(Module::Install::AuthorTests)
-BuildRequires:	perl(Module::Install::GithubMeta)
-BuildRequires:	perl(Module::Install::ReadmeFromPod)
-BuildRequires:	perl(Module::Install::ReadmeMarkdownFromPod)
+BuildRequires:	perl(Module::Install::GithubMeta) >= 0.10
+BuildRequires:	perl(Module::Install::ReadmeFromPod) >= 0.12
+BuildRequires:	perl(Module::Install::ReadmeMarkdownFromPod) >= 0.03
 BuildRequires:	perl(Module::Install::Repository)
+BuildRequires:	perl(inc::Module::Package)
 BuildRequires:	perl(Module::Package) >= 0.24
-BuildRequires:	perl(Pod::Markdown)
-Requires:	perl(:MODULE_COMPAT_%(eval "`perl -V:version`"; echo $version))
+BuildRequires:	perl(Module::Package::Plugin)
+BuildRequires:	perl(Pod::Markdown) >= 1.301
 
 # Don't "provide" private Perl libs
 %{?perl_default_filter}
@@ -31,38 +30,74 @@ This module defines a set of standard configurations for Makefile.PL
 files based on Module::Package.
 
 %prep
-%autosetup -n Module-Package-Au-%{version} -p1
+%setup -q -n Module-Package-Au-%{version}
 rm -rf inc/*
+perl -i -ne 'print $_ unless m{^inc/}' MANIFEST
 
 # Work around goofy perl versioning mistakes of the past
 sed -i 's|1.110730|1.301|g' lib/Module/Package/Au.pm
 sed -i 's|1.110730|1.301|g' META.yml
 
 %build
-perl Makefile.PL INSTALLDIRS=vendor
-%make_build
+perl Makefile.PL INSTALLDIRS=vendor NO_PACKLIST=1 NO_PERLLOCAL=1
+%{make_build}
 
 %install
-make pure_install DESTDIR=%{buildroot}
-find %{buildroot} -type f -name .packlist -exec rm -f {} ';'
-find %{buildroot} -type f -name '*.bs' -empty -exec rm -f {} ';'
+%{make_install}
+find %{buildroot} -type f -name '*.bs' -empty -delete
 %{_fixperms} %{buildroot}
 
 %check
 make test
 
 %files
-%license README
-%doc Changes
+%doc Changes README
 %{perl_vendorlib}/Module/Package/
 %{_mandir}/man3/Module::Package::Au.3pm*
 
 %changelog
-* Tue Mar 07 2023 Muhammad Falak <mwani@microsoft.com> - 2-18
-- License verified
+* Fri Jul 19 2024 Fedora Release Engineering <releng@fedoraproject.org> - 2-30
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_41_Mass_Rebuild
 
-* Fri Oct 15 2021 Pawel Winogrodzki <pawelwi@microsoft.com> - 2-17
-- Initial CBL-Mariner import from Fedora 32 (license: MIT).
+* Thu Jan 25 2024 Fedora Release Engineering <releng@fedoraproject.org> - 2-29
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Sun Jan 21 2024 Fedora Release Engineering <releng@fedoraproject.org> - 2-28
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Thu Jul 20 2023 Fedora Release Engineering <releng@fedoraproject.org> - 2-27
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_39_Mass_Rebuild
+
+* Mon Jun 26 2023 Jitka Plesnikova <jplesnik@redhat.com> - 2-26
+- Modernize spec
+- Update license to SPDX format
+
+* Fri Jan 20 2023 Fedora Release Engineering <releng@fedoraproject.org> - 2-25
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_38_Mass_Rebuild
+
+* Fri Jul 22 2022 Fedora Release Engineering <releng@fedoraproject.org> - 2-24
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_37_Mass_Rebuild
+
+* Wed Jun 01 2022 Jitka Plesnikova <jplesnik@redhat.com> - 2-23
+- Perl 5.36 rebuild
+
+* Fri Jan 21 2022 Fedora Release Engineering <releng@fedoraproject.org> - 2-22
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_36_Mass_Rebuild
+
+* Thu Jul 22 2021 Fedora Release Engineering <releng@fedoraproject.org> - 2-21
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_35_Mass_Rebuild
+
+* Fri May 21 2021 Jitka Plesnikova <jplesnik@redhat.com> - 2-20
+- Perl 5.34 rebuild
+
+* Wed Jan 27 2021 Fedora Release Engineering <releng@fedoraproject.org> - 2-19
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_34_Mass_Rebuild
+
+* Tue Jul 28 2020 Fedora Release Engineering <releng@fedoraproject.org> - 2-18
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_33_Mass_Rebuild
+
+* Tue Jun 23 2020 Jitka Plesnikova <jplesnik@redhat.com> - 2-17
+- Perl 5.32 rebuild
 
 * Thu Jan 30 2020 Fedora Release Engineering <releng@fedoraproject.org> - 2-16
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_32_Mass_Rebuild

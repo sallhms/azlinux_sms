@@ -1,15 +1,17 @@
-# Filter under-specified dependecies
-%global __requires_exclude %{?__requires_exclude:%{__requires_exclude}|}^perl\\((AnyEvent|Coro)\\)$
+# Enable Coro support via Perl XS Coro::Multicore module
+%if 0%{?rhel}
+%bcond_with perl_Coro_Multicore_enables_coro
+%else
+%bcond_without perl_Coro_Multicore_enables_coro
+%endif
 
-Summary:        Make Coro threads on multiple cores with specially supported modules
 Name:           perl-Coro-Multicore
 Version:        1.07
-Release:        3%{?dist}
+Release:        13%{?dist}
+Summary:        Make Coro threads on multiple cores with specially supported modules
 # COPYING:          GPL+ or Artistic
 # perlmulticore.h:  Public Domain or CC0
-License:        (GPL+ OR Artistic) AND (Public Domain OR CC0)
-Vendor:         Microsoft Corporation
-Distribution:   Azure Linux
+License:        (GPL+ or Artistic) and (Public Domain or CC0)
 URL:            https://metacpan.org/release/Coro-Multicore
 Source0:        https://cpan.metacpan.org/authors/id/M/ML/MLEHMANN/Coro-Multicore-%{version}.tar.gz
 # Declare POD encoding, submitted to upstream,
@@ -19,8 +21,9 @@ Patch0:         Coro-Multicore-0.02-Declare-POD-encoding.patch
 # 1.05 provided a fix, but forgot to return a value from thread_proc().
 # Keep the patch until upstream resolves it.
 Patch1:         Coro-Multicore-1.04-Fix-passing-context.patch
-
 BuildRequires:  coreutils
+BuildRequires:  perl-podlators
+%if %{with perl_Coro_Multicore_enables_coro}
 BuildRequires:  findutils
 BuildRequires:  gcc
 BuildRequires:  make
@@ -28,23 +31,25 @@ BuildRequires:  perl-devel
 BuildRequires:  perl-generators
 BuildRequires:  perl-interpreter
 BuildRequires:  perl-podlators
-# Run-time:
-BuildRequires:  perl(AnyEvent) >= 7
 BuildRequires:  perl(Canary::Stability)
-BuildRequires:  perl(Carp)
-BuildRequires:  perl(Coro) >= 6.44
 BuildRequires:  perl(Coro::MakeMaker)
 BuildRequires:  perl(ExtUtils::MakeMaker) >= 6.76
+# Run-time:
+BuildRequires:  perl(AnyEvent) >= 7
+BuildRequires:  perl(Carp)
+BuildRequires:  perl(Coro) >= 6.44
 BuildRequires:  perl(XSLoader)
-
-%if 0%{?with_check}
+# Tests:
 BuildRequires:  perl(Coro::AnyEvent)
-%endif
-
-Requires:       perl(:MODULE_COMPAT_%(eval "`perl -V:version`"; echo $version))
 Requires:       perl(AnyEvent) >= 7
 Requires:       perl(Carp)
 Requires:       perl(Coro) >= 6.44
+
+# Filter under-specified dependecies
+%global __requires_exclude %{?__requires_exclude:%{__requires_exclude}|}^perl\\((AnyEvent|Coro)\\)$
+%else
+%global debug_package %{nil}
+%endif
 
 %description
 While Coro threads (unlike ithreads) provide real threads similar to
@@ -61,7 +66,7 @@ prepared to allow this.
 # points to Coro-Multicore CVS tree.
 %package -n perlmulticore-devel
 Summary:        Perl Multicore specification and implementation
-License:        Public Domain OR CC0
+License:        Public Domain or CC0
 # Packaging guidelines require header-only packages:
 # to be architecture-specific, to deliver headers in -devel package, to
 # provide -static symbol for reverse build-requires.
@@ -74,11 +79,12 @@ operation, such as cryptography, SQL queries, disk I/O and so on.
 
 %package tests
 Summary:        Tests for %{name}
-License:        (GPL+ OR Artistic) AND (Public Domain OR CC0)
+BuildArch:      noarch
+%if %{with perl_Coro_Multicore_enables_coro}
 Requires:       %{name} = %{?epoch:%{epoch}:}%{version}-%{release}
 Requires:       perl-Test-Harness
 Requires:       perl(Coro) >= 6.44
-BuildArch:      noarch
+%endif
 
 %description tests
 Tests from %{name}. Execute them
@@ -86,52 +92,65 @@ with "%{_libexecdir}/%{name}/test".
 
 %prep
 %setup -q -n Coro-Multicore-%{version}
-%patch 0 -p1
-%patch 1 -p1
+%patch -P0 -p1
+%patch -P1 -p1
 
 %build
+%if %{with perl_Coro_Multicore_enables_coro}
 export CORO_MULTICORE_CHECK=0 PERL_CANARY_STABILITY_NOPROMPT=1
 perl Makefile.PL INSTALLDIRS=vendor \
-    NO_PACKLIST=1 NO_PERLLOCAL=1 OPTIMIZE="%{optflags}" </dev/null
-%make_build
+    NO_PACKLIST=1 NO_PERLLOCAL=1 OPTIMIZE="$RPM_OPT_FLAGS" </dev/null
+%{make_build}
+%endif
 
 # perlmulticore-devel:
 pod2man perlmulticore.h >perlmulticore.h.3
 
 %install
-%make_install
-find %{buildroot} -type f -name '*.bs' -size 0 -delete
-%{_fixperms} %{buildroot}/*
+%if %{with perl_Coro_Multicore_enables_coro}
+%{make_install}
+find $RPM_BUILD_ROOT -type f -name '*.bs' -size 0 -delete
+%{_fixperms} $RPM_BUILD_ROOT/*
+%endif
 
 # perlmulticore-devel:
-install -d %{buildroot}/%{_includedir}
-install -m 0644 perlmulticore.h %{buildroot}/%{_includedir}
-install -d %{buildroot}/%{_mandir}/man3
-install -m 0644 perlmulticore.h.3 %{buildroot}/%{_mandir}/man3
+install -d $RPM_BUILD_ROOT/%{_includedir}
+install -m 0644 perlmulticore.h $RPM_BUILD_ROOT/%{_includedir}
+install -d $RPM_BUILD_ROOT/%{_mandir}/man3
+install -m 0644 perlmulticore.h.3 $RPM_BUILD_ROOT/%{_mandir}/man3
 
 # Install tests
 mkdir -p %{buildroot}%{_libexecdir}/%{name}
+%if %{with perl_Coro_Multicore_enables_coro}
 cp -a t %{buildroot}%{_libexecdir}/%{name}
+%endif
 cat > %{buildroot}%{_libexecdir}/%{name}/test << 'EOF'
 #!/bin/sh
+%if %{with perl_Coro_Multicore_enables_coro}
 cd %{_libexecdir}/%{name} && exec prove -I . -j "$(getconf _NPROCESSORS_ONLN)"
+%else
+echo 'No upstream tests for perlmulticore-devel.'
+%endif
 EOF
 chmod +x %{buildroot}%{_libexecdir}/%{name}/test
 
 %check
+%if %{with perl_Coro_Multicore_enables_coro}
 export HARNESS_OPTIONS=j$(perl -e 'if ($ARGV[0] =~ /.*-j([0-9][0-9]*).*/) {print $1} else {print 1}' -- '%{?_smp_mflags}')
 make test
+%endif
 
+%if %{with perl_Coro_Multicore_enables_coro}
 %files
 %license COPYING
 %doc Changes README
 %{perl_vendorarch}/auto/*
 %{perl_vendorarch}/Coro*
 %{_mandir}/man3/Coro::Multicore.3*
+%endif
 
 %files -n perlmulticore-devel
 # COPYING file is about Perl module. Header files have a different license.
-%license %{_includedir}/perlmulticore.h
 %{_includedir}/perlmulticore.h
 %{_mandir}/man3/perlmulticore.h.3*
 
@@ -139,9 +158,38 @@ make test
 %{_libexecdir}/%{name}
 
 %changelog
-* Wed Jan 26 2022 Pawel Winogrodzki <pawelwi@microsoft.com> - 1.07-3
-- Initial CBL-Mariner import from Fedora 36 (license: MIT).
-- License verified.
+* Thu Jul 18 2024 Fedora Release Engineering <releng@fedoraproject.org> - 1.07-13
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_41_Mass_Rebuild
+
+* Tue Jun 11 2024 Jitka Plesnikova <jplesnik@redhat.com> - 1.07-12
+- Perl 5.40 rebuild
+
+* Thu Jan 25 2024 Fedora Release Engineering <releng@fedoraproject.org> - 1.07-11
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Sun Jan 21 2024 Fedora Release Engineering <releng@fedoraproject.org> - 1.07-10
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Fri Dec 15 2023 Florian Weimer <fweimer@redhat.com> - 1.07-9
+- Add perl_multicore_init argument to match pmapi_acquire member (#2254339)
+
+* Thu Jul 20 2023 Fedora Release Engineering <releng@fedoraproject.org> - 1.07-8
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_39_Mass_Rebuild
+
+* Tue Jul 11 2023 Jitka Plesnikova <jplesnik@redhat.com> - 1.07-7
+- Perl 5.38 rebuild
+
+* Fri Jan 20 2023 Fedora Release Engineering <releng@fedoraproject.org> - 1.07-6
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_38_Mass_Rebuild
+
+* Fri Jul 22 2022 Fedora Release Engineering <releng@fedoraproject.org> - 1.07-5
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_37_Mass_Rebuild
+
+* Wed Jun 01 2022 Jitka Plesnikova <jplesnik@redhat.com> - 1.07-4
+- Perl 5.36 rebuild
+
+* Fri Jan 21 2022 Fedora Release Engineering <releng@fedoraproject.org> - 1.07-3
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_36_Mass_Rebuild
 
 * Wed Aug 04 2021 Petr Pisar <ppisar@redhat.com> - 1.07-2
 - Do not package Coro::Multicore tests in case coro feature is disabled

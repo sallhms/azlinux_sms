@@ -1,8 +1,6 @@
-Vendor:         Microsoft Corporation
-Distribution:   Azure Linux
 Name:           gnome-desktop-testing
 Version:        2018.1
-Release:        4%{?dist}
+Release:        14%{?dist}
 Summary:        GNOME test runner for installed tests
 
 License:        LGPLv2+
@@ -10,12 +8,13 @@ URL:            https://live.gnome.org/Initiatives/GnomeGoals/InstalledTests
 Source0:        https://gitlab.gnome.org/GNOME/%{name}/-/archive/v%{version}/%{name}-v%{version}.tar.gz
 
 BuildRequires:  pkgconfig(gio-unix-2.0)
-BuildRequires:  systemd-devel
-BuildRequires:  pkgconfig(libgsystem)
+BuildRequires:  pkgconfig(libsystemd)
 BuildRequires:  git automake autoconf libtool
+BuildRequires: make
 
 # https://gitlab.gnome.org/GNOME/gnome-desktop-testing/merge_requests/1
 Patch0: 0001-Don-t-crash-on-unknown-command-line-options.patch
+Patch1: 0001-Resolve-RHELPLAN-170235-Fix-OpenScanHub-report.patch
 
 %description
 gnome-desktop-testing-runner is a basic runner for tests that are
@@ -27,24 +26,57 @@ installed in /usr/share/installed-tests.  For more information, see
 NOCONFIGURE=1 ./autogen.sh
 
 %build
-%configure --with-systemd-journal
-make %{?_smp_mflags}
+%configure
+%make_build
 
 %install
-make install DESTDIR=$RPM_BUILD_ROOT
+%make_install
 
 %files
-%doc COPYING README
+%license COPYING
+%doc README
 %{_bindir}/gnome-desktop-testing-runner
 %{_bindir}/ginsttest-runner
 
 %changelog
-* Tue Sep 19 2023 Jon Slobodzian <joslobo@microsoft.com> - 2018.1-4
-- Fix build issue for systemd/systemd-bootstrap confusion
-- License verified
+* Thu Jul 18 2024 Fedora Release Engineering <releng@fedoraproject.org> - 2018.1-14
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_41_Mass_Rebuild
 
-* Fri Oct 15 2021 Pawel Winogrodzki <pawelwi@microsoft.com> - 2018.1-3
-- Initial CBL-Mariner import from Fedora 32 (license: MIT).
+* Tue Jun 25 2024 Yaakov Selkowitz <yselkowi@redhat.com> - 2018.1-13
+- Sync patches from c10s
+- Drop unused libgsystem dependency
+- Modernize spec
+
+* Wed Jan 24 2024 Fedora Release Engineering <releng@fedoraproject.org> - 2018.1-12
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Fri Jan 19 2024 Fedora Release Engineering <releng@fedoraproject.org> - 2018.1-11
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Wed Jul 19 2023 Fedora Release Engineering <releng@fedoraproject.org> - 2018.1-10
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_39_Mass_Rebuild
+
+* Thu Jan 19 2023 Fedora Release Engineering <releng@fedoraproject.org> - 2018.1-9
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_38_Mass_Rebuild
+
+* Thu Jul 21 2022 Fedora Release Engineering <releng@fedoraproject.org> - 2018.1-8
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_37_Mass_Rebuild
+
+* Thu Jan 20 2022 Fedora Release Engineering <releng@fedoraproject.org> - 2018.1-7
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_36_Mass_Rebuild
+
+* Thu Jul 22 2021 Fedora Release Engineering <releng@fedoraproject.org> - 2018.1-6
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_35_Mass_Rebuild
+
+* Tue Jan 26 2021 Fedora Release Engineering <releng@fedoraproject.org> - 2018.1-5
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_34_Mass_Rebuild
+
+* Sat Aug 01 2020 Fedora Release Engineering <releng@fedoraproject.org> - 2018.1-4
+- Second attempt - Rebuilt for
+  https://fedoraproject.org/wiki/Fedora_33_Mass_Rebuild
+
+* Mon Jul 27 2020 Fedora Release Engineering <releng@fedoraproject.org> - 2018.1-3
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_33_Mass_Rebuild
 
 * Tue Jan 28 2020 Fedora Release Engineering <releng@fedoraproject.org> - 2018.1-2
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_32_Mass_Rebuild

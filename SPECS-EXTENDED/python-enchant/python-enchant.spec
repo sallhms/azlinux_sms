@@ -1,26 +1,31 @@
-Summary:        Python bindings for Enchant spellchecking library
+%global srcname enchant
+
 Name:           python-enchant
 Version:        3.2.2
-Release:        7%{?dist}
-License:        LGPL-2.0-or-later
-Vendor:         Microsoft Corporation
-Distribution:   Azure Linux
-URL:            https://github.com/pyenchant/pyenchant
+Release:        14%{?dist}
+Summary:        Python bindings for Enchant spellchecking library
+
+License:        LGPL-2.1-or-later
+URL:            https://pyenchant.github.io/pyenchant/
 Source0:        https://files.pythonhosted.org/packages/source/p/py%{srcname}/py%{srcname}-%{version}.tar.gz
-%global srcname enchant
-BuildRequires:  enchant-devel
+
 BuildArch:      noarch
+BuildRequires:  enchant2
 
 %description
 PyEnchant is a spellchecking library for Python, based on the Enchant
 library by Dom Lachowicz.
 
+
 %package -n python3-%{srcname}
 Summary:        Python 3 bindings for Enchant spellchecking library
-%{?python_provide:%python_provide python3-%{srcname}}
+
 BuildRequires:  python3-devel
 BuildRequires:  python3-setuptools
+
 Requires:       enchant2
+
+%{?python_provide:%python_provide python3-%{srcname}}
 
 %description -n python3-%{srcname}
 PyEnchant is a spellchecking library for Python 3, based on the Enchant
@@ -31,7 +36,7 @@ library by Dom Lachowicz.
 # Remove bundled egg-info
 rm -rf py%{srcname}.egg-info
 
-find . -name '*.py' | xargs sed -i '1s|^#!python|#!python3|'
+find . -name '*.py' | xargs sed -i '1s|^#!python|#!%{__python3}|'
 
 %build
 %py3_build
@@ -40,12 +45,13 @@ find . -name '*.py' | xargs sed -i '1s|^#!python|#!python3|'
 %py3_install
 
 # Directories used in windows build
-rm -rf %{buildroot}/%{python3_sitelib}/%{srcname}/lib
-rm -rf %{buildroot}/%{python3_sitelib}/%{srcname}/share
+rm -rf $RPM_BUILD_ROOT/%{python3_sitelib}/%{srcname}/lib
+rm -rf $RPM_BUILD_ROOT/%{python3_sitelib}/%{srcname}/share
 
 
 # Tests are not included in the upstream tarball
-#%%check
+%check
+%py3_check_import %{srcname} %{srcname}.checker %{srcname}.tokenize
 
 
 %files -n python3-%{srcname}
@@ -65,11 +71,32 @@ rm -rf %{buildroot}/%{python3_sitelib}/%{srcname}/share
 %{python3_sitelib}/%{srcname}/tokenize/__pycache__/*.py[co]
 %{python3_sitelib}/py%{srcname}-%{version}-py%{python3_version}.egg-info
 
+
 %changelog
-* Fri Jan 27 2023 Henry Li <lihl@microsoft.com> - 3.2.2-7
-- Initial CBL-Mariner import from Fedora 38 (license: MIT)
-- License Verified
-- Fix bogus URL
+* Fri Jul 19 2024 Fedora Release Engineering <releng@fedoraproject.org> - 3.2.2-14
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_41_Mass_Rebuild
+
+* Fri Jun 07 2024 Python Maint <python-maint@redhat.com> - 3.2.2-13
+- Rebuilt for Python 3.13
+
+* Fri Jan 26 2024 Fedora Release Engineering <releng@fedoraproject.org> - 3.2.2-12
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Mon Jan 22 2024 Fedora Release Engineering <releng@fedoraproject.org> - 3.2.2-11
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Mon Aug 21 2023 Parag Nemade <pnemade AT fedoraproject DOT org> - 3.2.2-10
+- Migrate to SPDX license expression
+
+* Fri Jul 21 2023 Fedora Release Engineering <releng@fedoraproject.org> - 3.2.2-9
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_39_Mass_Rebuild
+
+* Thu Jun 15 2023 Yaakov Selkowitz <yselkowi@redhat.com> - 3.2.2-8
+- Update BuildRequires to enchant2
+- Check imports as a minimal test
+
+* Tue Jun 13 2023 Python Maint <python-maint@redhat.com> - 3.2.2-7
+- Rebuilt for Python 3.12
 
 * Fri Jan 20 2023 Fedora Release Engineering <releng@fedoraproject.org> - 3.2.2-6
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_38_Mass_Rebuild

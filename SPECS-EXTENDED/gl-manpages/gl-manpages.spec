@@ -1,5 +1,3 @@
-Vendor:         Microsoft Corporation
-Distribution:   Azure Linux
 # FIXME:  Figure out what to do about the gles* manpages, maybe different conflicting packages...
 %global codate 20190306
 %global commit 4547332f0f27d98601a8f5732ce8e85e09dbdb93
@@ -7,10 +5,10 @@ Distribution:   Azure Linux
 
 Name:           gl-manpages
 Version:        1.1
-Release:        21%{?dist}
+Release:        32.%{codate}%{?dist}
 Summary:        OpenGL manpages
 
-License:        MIT and Open Publication
+License:        Apache-2.0 AND HPND AND HPND-sell-variant AND MIT AND OpenPBS-2.3 AND SGI-B-1.1 AND SGI-B-2.0 AND W3C-19980720 AND X11
 URL:            https://github.com/KhronosGroup/OpenGL-Refpages
 Source0:        https://github.com/KhronosGroup/OpenGL-Refpages/archive/%{commit}/%{name}-%{shortcommit}.tar.gz
 # FIXME: Bundle mathml and the Oasis dbmathl until they are packaged
@@ -26,6 +24,7 @@ Source5:        metainfo.xsl
 
 BuildArch:      noarch
 
+BuildRequires: make
 BuildRequires:  libxslt docbook-style-xsl docbook5-style-xsl python3
 
 %description
@@ -62,7 +61,7 @@ cp -n gl4/*.3G $RPM_BUILD_ROOT%{_mandir}/man3/
 # when matchin don't clobber the khronos version
 for MANP in `find gl-manpages-1.0.1 -name *.3gl` ; do
 	FN=${MANP//*\//}
-	cp -a -n $MANP $RPM_BUILD_ROOT%{_mandir}/man3/${FN/.3gl/.3G}
+	cp -a --update=none $MANP $RPM_BUILD_ROOT%{_mandir}/man3/${FN/.3gl/.3G}
 done
 find $RPM_BUILD_ROOT%{_mandir}/man3/ -type f -size -100b | xargs sed -i -e 's/\.3gl/\.3G/' -e 's,^\.so man3G/,.so man3/,'
 
@@ -72,9 +71,41 @@ find $RPM_BUILD_ROOT%{_mandir}/man3/ -type f -size -100b | xargs sed -i -e 's/\.
 
 
 %changelog
-* Thu Oct 14 2021 Pawel Winogrodzki <pawelwi@microsoft.com> - 1.1-21
-- Initial CBL-Mariner import from Fedora 32 (license: MIT).
-- Converting the 'Release' tag to the '[number].[distribution]' format.
+* Thu Jul 18 2024 Fedora Release Engineering <releng@fedoraproject.org> - 1.1-32.20190306
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_41_Mass_Rebuild
+
+* Wed Jan 24 2024 Fedora Release Engineering <releng@fedoraproject.org> - 1.1-31.20190306
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Fri Jan 19 2024 Fedora Release Engineering <releng@fedoraproject.org> - 1.1-30.20190306
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Thu Sep 07 2023 José Expósito <jexposit@redhat.com> - 1.1-29.20190306
+- SPDX Migration
+
+* Thu Jul 20 2023 Yanko Kaneti <yaneti@declera.com> - 1.1-28.20190306
+- Adjust for recent changes in behavior in coreutils cp --no-clobber
+
+* Wed Jul 19 2023 Fedora Release Engineering <releng@fedoraproject.org> - 1.1-27.20190306
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_39_Mass_Rebuild
+
+* Thu Jan 19 2023 Fedora Release Engineering <releng@fedoraproject.org> - 1.1-26.20190306
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_38_Mass_Rebuild
+
+* Thu Jul 21 2022 Fedora Release Engineering <releng@fedoraproject.org> - 1.1-25.20190306
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_37_Mass_Rebuild
+
+* Thu Jan 20 2022 Fedora Release Engineering <releng@fedoraproject.org> - 1.1-24.20190306
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_36_Mass_Rebuild
+
+* Thu Jul 22 2021 Fedora Release Engineering <releng@fedoraproject.org> - 1.1-23.20190306
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_35_Mass_Rebuild
+
+* Tue Jan 26 2021 Fedora Release Engineering <releng@fedoraproject.org> - 1.1-22.20190306
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_34_Mass_Rebuild
+
+* Mon Jul 27 2020 Fedora Release Engineering <releng@fedoraproject.org> - 1.1-21.20190306
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_33_Mass_Rebuild
 
 * Tue Jan 28 2020 Fedora Release Engineering <releng@fedoraproject.org> - 1.1-20.20190306
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_32_Mass_Rebuild

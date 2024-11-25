@@ -1,13 +1,14 @@
 Name:           sombok
 Version:        2.4.0
-Release:        12%{?dist}
+Release:        22%{?dist}
 Summary:        Unicode Text Segmentation Package
-License:        GPLv2+ or Artistic clarified
-Vendor:         Microsoft Corporation
-Distribution:   Azure Linux
+License:        (GPL-1.0-or-later OR Artistic-1.0-Perl) AND (GPL-2.0-or-later OR Artistic-1.0-Perl)
 URL:            http://sf.net/projects/linefold/
 Source0:        https://github.com/hatukanezumi/sombok/archive/%{name}-%{version}.tar.gz
+# A multilib-safe wrapper, bug #1853260
+Source1:        sombok.h
 
+BuildRequires: make
 BuildRequires:  libthai-devel
 BuildRequires:  autoconf
 BuildRequires:  automake
@@ -46,6 +47,11 @@ make %{?_smp_mflags}
 make install DESTDIR=$RPM_BUILD_ROOT
 find $RPM_BUILD_ROOT -name '*.la' -exec rm -f {} ';'
 
+# Rename sombok.h to sombok-ARCH.h and install a sombok.h wrapper to avoid
+# a file conflict on multilib systems, bug #1853260
+mv %{buildroot}/%{_includedir}/sombok.h %{buildroot}/%{_includedir}/sombok-%{_arch}.h
+install -m 0644 %{SOURCE1} %{buildroot}/%{_includedir}/sombok.h
+
 
 %ldconfig_scriptlets
 
@@ -63,8 +69,38 @@ find $RPM_BUILD_ROOT -name '*.la' -exec rm -f {} ';'
 
 
 %changelog
-* Fri Oct 15 2021 Pawel Winogrodzki <pawelwi@microsoft.com> - 2.4.0-12
-- Initial CBL-Mariner import from Fedora 32 (license: MIT).
+* Sat Jul 20 2024 Fedora Release Engineering <releng@fedoraproject.org> - 2.4.0-22
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_41_Mass_Rebuild
+
+* Sat Jan 27 2024 Fedora Release Engineering <releng@fedoraproject.org> - 2.4.0-21
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Sat Jul 22 2023 Fedora Release Engineering <releng@fedoraproject.org> - 2.4.0-20
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_39_Mass_Rebuild
+
+* Thu Jun 01 2023 Michal Josef Špaček <mspacek@redhat.com> - 2.4.0-19
+- Update license to SPDX format and fix licenses
+
+* Sat Jan 21 2023 Fedora Release Engineering <releng@fedoraproject.org> - 2.4.0-18
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_38_Mass_Rebuild
+
+* Sat Jul 23 2022 Fedora Release Engineering <releng@fedoraproject.org> - 2.4.0-17
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_37_Mass_Rebuild
+
+* Sat Jan 22 2022 Fedora Release Engineering <releng@fedoraproject.org> - 2.4.0-16
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_36_Mass_Rebuild
+
+* Fri Jul 23 2021 Fedora Release Engineering <releng@fedoraproject.org> - 2.4.0-15
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_35_Mass_Rebuild
+
+* Wed Jan 27 2021 Fedora Release Engineering <releng@fedoraproject.org> - 2.4.0-14
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_34_Mass_Rebuild
+
+* Wed Jul 29 2020 Fedora Release Engineering <releng@fedoraproject.org> - 2.4.0-13
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_33_Mass_Rebuild
+
+* Fri Jul 03 2020 Petr Pisar <ppisar@redhat.com> - 2.4.0-12
+- Make sombok-devel package multilib safe (bug #1853260)
 
 * Thu Jan 30 2020 Fedora Release Engineering <releng@fedoraproject.org> - 2.4.0-11
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_32_Mass_Rebuild

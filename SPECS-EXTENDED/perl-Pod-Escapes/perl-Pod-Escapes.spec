@@ -1,61 +1,124 @@
-Summary:        Resolve POD escape sequences
 Name:           perl-Pod-Escapes
+# Compete with perl.spec
+Epoch:          1
 Version:        1.07
-Release:        443%{?dist}
-License:        GPL+ OR Artistic
-Vendor:         Microsoft Corporation
-Distribution:   Azure Linux
+Release:        511%{?dist}
+Summary:        Resolve POD escape sequences
+License:        GPL-1.0-or-later OR Artistic-1.0-Perl
 URL:            https://metacpan.org/release/Pod-Escapes
-Source0:        https://cpan.metacpan.org/authors/id/N/NE/NEILB/Pod-Escapes-%{version}.tar.gz#/%{name}-%{version}.tar.gz
+Source0:        https://cpan.metacpan.org/authors/id/N/NE/NEILB/Pod-Escapes-%{version}.tar.gz
+BuildArch:      noarch
 BuildRequires:  coreutils
 BuildRequires:  make
 BuildRequires:  perl-generators
 BuildRequires:  perl-interpreter
+BuildRequires:  perl(Config)
+BuildRequires:  perl(ExtUtils::MakeMaker) >= 6.76
+BuildRequires:  perl(strict)
 # Run-time:
 BuildRequires:  perl(Exporter)
-BuildRequires:  perl(ExtUtils::MakeMaker)
-# Tests:
-BuildRequires:  perl(Test)
-BuildRequires:  perl(strict)
-BuildRequires:  perl(utf8)
 BuildRequires:  perl(vars)
 BuildRequires:  perl(warnings)
-Requires:       perl(:MODULE_COMPAT_%(eval "`perl -V:version`"; echo $version))
-BuildArch:      noarch
+# Tests:
+BuildRequires:  perl(Test)
+BuildRequires:  perl(utf8)
 
 %description
 This module provides things that are useful in decoding Pod E<...> sequences.
 
+%package tests
+Summary:        Tests for %{name}
+Requires:       %{name} = %{?epoch:%{epoch}:}%{version}-%{release}
+Requires:       perl-Test-Harness
+
+%description tests
+Tests from %{name}. Execute them
+with "%{_libexecdir}/%{name}/test".
+
 %prep
-%autosetup -n Pod-Escapes-%{version}
+%setup -q -n Pod-Escapes-%{version}
+# Help generators to recognize Perl scripts
+for F in t/*.t; do
+    perl -i -MConfig -ple 'print $Config{startperl} if $. == 1 && !s{\A#!.*perl\b}{$Config{startperl}}' "$F"
+    chmod +x "$F"
+done
 
 %build
-perl Makefile.PL INSTALLDIRS=vendor
-%make_build
+perl Makefile.PL INSTALLDIRS=vendor NO_PACKLIST=1 NO_PERLLOCAL=1
+%{make_build}
 
 %install
-make pure_install DESTDIR=%{buildroot}
-find %{buildroot} -type f -name .packlist -exec rm -f {} \;
+%{make_install}
 %{_fixperms} %{buildroot}/*
+# Install tests
+mkdir -p %{buildroot}%{_libexecdir}/%{name}
+cp -a t %{buildroot}%{_libexecdir}/%{name}
+cat > %{buildroot}%{_libexecdir}/%{name}/test << 'EOF'
+#!/bin/sh
+cd %{_libexecdir}/%{name} && exec prove -I . -j "$(getconf _NPROCESSORS_ONLN)"
+EOF
+chmod +x %{buildroot}%{_libexecdir}/%{name}/test
 
 %check
+export HARNESS_OPTIONS=j$(perl -e 'if ($ARGV[0] =~ /.*-j([0-9][0-9]*).*/) {print $1} else {print 1}' -- '%{?_smp_mflags}')
 make test
 
 %files
-%license META.yml
 %doc Changes README
-%{perl_vendorlib}/*
-%{_mandir}/man3/*
+%{perl_vendorlib}/Pod*
+%{_mandir}/man3/Pod::Escapes*
+
+%files tests
+%{_libexecdir}/%{name}
 
 %changelog
-* Tue Mar 07 2023 Muhammad Falak <mwani@microsoft.com> - 1.07-443
-- License verified
+* Fri Jul 19 2024 Fedora Release Engineering <releng@fedoraproject.org> - 1:1.07-511
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_41_Mass_Rebuild
 
-* Mon Nov 01 2021 Muhammad Falak <mwani@microsft.com> - 1.07-442
-- Remove epoch
+* Mon Jun 10 2024 Jitka Plesnikova <jplesnik@redhat.com> - 1:1.07-510
+- Increase release to favour standalone package
 
-* Fri Oct 15 2021 Pawel Winogrodzki <pawelwi@microsoft.com> - 1:1.07-441
-- Initial CBL-Mariner import from Fedora 32 (license: MIT).
+* Thu Jan 25 2024 Fedora Release Engineering <releng@fedoraproject.org> - 1:1.07-503
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Sun Jan 21 2024 Fedora Release Engineering <releng@fedoraproject.org> - 1:1.07-502
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Fri Sep 15 2023 Jitka Plesnikova <jplesnik@redhat.com> - 1:1.07-501
+- Package tests
+
+* Fri Jul 21 2023 Fedora Release Engineering <releng@fedoraproject.org> - 1:1.07-500
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_39_Mass_Rebuild
+
+* Tue Jul 11 2023 Jitka Plesnikova <jplesnik@redhat.com> - 1:1.07-499
+- Increase release to favour standalone package
+
+* Fri Jan 20 2023 Fedora Release Engineering <releng@fedoraproject.org> - 1:1.07-490
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_38_Mass_Rebuild
+
+* Fri Jul 22 2022 Fedora Release Engineering <releng@fedoraproject.org> - 1:1.07-489
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_37_Mass_Rebuild
+
+* Mon May 30 2022 Jitka Plesnikova <jplesnik@redhat.com> - 1:1.07-488
+- Increase release to favour standalone package
+
+* Fri Jan 21 2022 Fedora Release Engineering <releng@fedoraproject.org> - 1:1.07-479
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_36_Mass_Rebuild
+
+* Thu Jul 22 2021 Fedora Release Engineering <releng@fedoraproject.org> - 1:1.07-478
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_35_Mass_Rebuild
+
+* Fri May 21 2021 Jitka Plesnikova <jplesnik@redhat.com> - 1:1.07-477
+- Increase release to favour standalone package
+
+* Wed Jan 27 2021 Fedora Release Engineering <releng@fedoraproject.org> - 1:1.07-458
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_34_Mass_Rebuild
+
+* Tue Jul 28 2020 Fedora Release Engineering <releng@fedoraproject.org> - 1:1.07-457
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_33_Mass_Rebuild
+
+* Mon Jun 22 2020 Jitka Plesnikova <jplesnik@redhat.com> - 1:1.07-456
+- Increase release to favour standalone package
 
 * Thu Jan 30 2020 Fedora Release Engineering <releng@fedoraproject.org> - 1:1.07-440
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_32_Mass_Rebuild

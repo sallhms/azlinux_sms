@@ -1,17 +1,17 @@
-Vendor:         Microsoft Corporation
-Distribution:   Azure Linux
 Summary:    Small test program for liba52
 Name:       a52dec
 Version:    0.7.4
-Release:    38%{?dist}
-License:    GPLv2
+Release:    49%{?dist}
+License:    GPL-2.0-only
 URL:        http://liba52.sourceforge.net
 Source0:    %{url}/files/%{name}-%{version}.tar.gz
 Patch0:     a52dec-configure-optflags.patch
 Patch1:     a52dec-0.7.4-rpath64.patch
 Patch2:     liba52-silence.patch
+Patch3:     a52dec-configure-c99.patch
 
 BuildRequires: gcc
+BuildRequires: make
 
 Requires:   liba52%{?_isa} = %{version}-%{release}
 #Multilib transition
@@ -91,8 +91,42 @@ done
 
 
 %changelog
-* Fri Oct 15 2021 Pawel Winogrodzki <pawelwi@microsoft.com> - 0.7.4-38
-- Initial CBL-Mariner import from Fedora 32 (license: MIT).
+* Wed Jul 17 2024 Fedora Release Engineering <releng@fedoraproject.org> - 0.7.4-49
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_41_Mass_Rebuild
+
+* Mon Jan 22 2024 Fedora Release Engineering <releng@fedoraproject.org> - 0.7.4-48
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Fri Jan 19 2024 Fedora Release Engineering <releng@fedoraproject.org> - 0.7.4-47
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Wed Jul 19 2023 Fedora Release Engineering <releng@fedoraproject.org> - 0.7.4-46
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_39_Mass_Rebuild
+
+* Wed Jan 18 2023 Fedora Release Engineering <releng@fedoraproject.org> - 0.7.4-45
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_38_Mass_Rebuild
+
+* Wed Nov 30 2022 Peter Fordham <peter.fordham@gmail.com> - 0.7.4-44
+- Port configure script to C99
+
+* Wed Jul 20 2022 Fedora Release Engineering <releng@fedoraproject.org> - 0.7.4-43
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_37_Mass_Rebuild
+
+* Wed Jan 19 2022 Fedora Release Engineering <releng@fedoraproject.org> - 0.7.4-42
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_36_Mass_Rebuild
+
+* Wed Jul 21 2021 Fedora Release Engineering <releng@fedoraproject.org> - 0.7.4-41
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_35_Mass_Rebuild
+
+* Mon Jan 25 2021 Fedora Release Engineering <releng@fedoraproject.org> - 0.7.4-40
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_34_Mass_Rebuild
+
+* Fri Jul 31 2020 Fedora Release Engineering <releng@fedoraproject.org> - 0.7.4-39
+- Second attempt - Rebuilt for
+  https://fedoraproject.org/wiki/Fedora_33_Mass_Rebuild
+
+* Mon Jul 27 2020 Fedora Release Engineering <releng@fedoraproject.org> - 0.7.4-38
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_33_Mass_Rebuild
 
 * Tue Jan 28 2020 Fedora Release Engineering <releng@fedoraproject.org> - 0.7.4-37
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_32_Mass_Rebuild

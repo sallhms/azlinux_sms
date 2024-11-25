@@ -1,14 +1,18 @@
-Vendor:         Microsoft Corporation
-Distribution:   Azure Linux
+%if 0%{?fedora} >= 36 || 0%{?rhel} > 9
+%global dict_dirname hunspell
+%else
+%global dict_dirname myspell
+%endif
+
 Name: hunspell-ln
 Summary: Lingala hunspell dictionaries
 Version: 0.02
-Release: 19%{?dist}
+Release: 30%{?dist}
 Source: http://downloads.sourceforge.net/lingala/hunspell-ln-0.02.zip
 URL: http://lingala.sourceforge.net/
-License: GPLv2+
+License: GPL-2.0-or-later
 BuildArch: noarch
-Requires: hunspell
+Requires: hunspell-filesystem
 Supplements: (hunspell and langpacks-ln)
 
 %description
@@ -20,17 +24,51 @@ Lingala hunspell dictionaries.
 %build
 
 %install
-mkdir -p $RPM_BUILD_ROOT/%{_datadir}/myspell
-cp -p ln_CD.* $RPM_BUILD_ROOT/%{_datadir}/myspell
+mkdir -p $RPM_BUILD_ROOT/%{_datadir}/%{dict_dirname}
+cp -p ln_CD.* $RPM_BUILD_ROOT/%{_datadir}/%{dict_dirname}
 
 
 %files
-%license README_ln_CD.txt
-%{_datadir}/myspell/*
+%doc README_ln_CD.txt
+%{_datadir}/%{dict_dirname}/*
 
 %changelog
-* Fri Oct 15 2021 Pawel Winogrodzki <pawelwi@microsoft.com> - 0.02-19
-- Initial CBL-Mariner import from Fedora 32 (license: MIT).
+* Thu Jul 18 2024 Fedora Release Engineering <releng@fedoraproject.org> - 0.02-30
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_41_Mass_Rebuild
+
+* Wed Jan 24 2024 Fedora Release Engineering <releng@fedoraproject.org> - 0.02-29
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Sat Jan 20 2024 Fedora Release Engineering <releng@fedoraproject.org> - 0.02-28
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Thu Jul 20 2023 Fedora Release Engineering <releng@fedoraproject.org> - 0.02-27
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_39_Mass_Rebuild
+
+* Wed Feb 22 2023 Caolán McNamara <caolanm@redhat.com> - 0.02-26
+- migrated to SPDX license
+
+* Thu Jan 19 2023 Fedora Release Engineering <releng@fedoraproject.org> - 0.02-25
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_38_Mass_Rebuild
+
+* Thu Jul 21 2022 Fedora Release Engineering <releng@fedoraproject.org> - 0.02-24
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_37_Mass_Rebuild
+
+* Tue Mar 22 2022 Parag Nemade <pnemade AT redhat DOT com> - 0.02-23
+- Add conditional for new hunspell dir path and update to Requires:
+  hunspell-filesystem
+
+* Thu Jan 20 2022 Fedora Release Engineering <releng@fedoraproject.org> - 0.02-22
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_36_Mass_Rebuild
+
+* Thu Jul 22 2021 Fedora Release Engineering <releng@fedoraproject.org> - 0.02-21
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_35_Mass_Rebuild
+
+* Tue Jan 26 2021 Fedora Release Engineering <releng@fedoraproject.org> - 0.02-20
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_34_Mass_Rebuild
+
+* Tue Jul 28 2020 Fedora Release Engineering <releng@fedoraproject.org> - 0.02-19
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_33_Mass_Rebuild
 
 * Wed Jan 29 2020 Fedora Release Engineering <releng@fedoraproject.org> - 0.02-18
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_32_Mass_Rebuild
@@ -84,5 +122,5 @@ cp -p ln_CD.* $RPM_BUILD_ROOT/%{_datadir}/myspell
 * Fri Jul 24 2009 Fedora Release Engineering <rel-eng@lists.fedoraproject.org> - 0.02-2
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_12_Mass_Rebuild
 
-* Sun Apr 26 2009 Caolan McNamara <caolanm@redhat.com> - 0.02-1
+* Sun Apr 26 2009 Caolán McNamara <caolanm@redhat.com> - 0.02-1
 - initial version

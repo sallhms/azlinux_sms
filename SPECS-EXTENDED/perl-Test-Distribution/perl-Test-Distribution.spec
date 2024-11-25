@@ -1,12 +1,10 @@
 Name:		perl-Test-Distribution
 Version:	2.00
-Release:	34%{?dist}
+Release:	47%{?dist}
 Summary:	Perform tests on all modules of a distribution
-License:	GPL+ or Artistic
-Vendor:         Microsoft Corporation
-Distribution:   Azure Linux
+License:	GPL-1.0-or-later OR Artistic-1.0-Perl
 URL:		https://metacpan.org/release/Test-Distribution
-Source0:	https://cpan.metacpan.org/modules/by-module/Test/Test-Distribution-%{version}.tar.gz#/perl-Test-Distribution-%{version}.tar.gz
+Source0:	https://cpan.metacpan.org/modules/by-module/Test/Test-Distribution-%{version}.tar.gz
 Patch0:		Test-Distribution-2.00-utf8.patch
 BuildArch:	noarch
 # Build
@@ -29,7 +27,6 @@ BuildRequires:	perl(warnings)
 # Test Suite
 # (no additional dependencies)
 # Dependencies
-Requires:	perl(:MODULE_COMPAT_%(eval "`perl -V:version`"; echo $version))
 # these are considered "optional"; autoreq doesn't pick them up
 Requires:	perl(File::Find::Rule) >= 0.03
 Requires:	perl(Module::CoreList) >= 1.93
@@ -47,7 +44,7 @@ that they all define a $VERSION.
 %setup -q -n Test-Distribution-%{version}
 
 # Fix character encoding of documentation
-%patch 0
+%patch -P 0
 
 %build
 perl Build.PL --installdirs=vendor
@@ -66,8 +63,47 @@ perl Build.PL --installdirs=vendor
 %{_mandir}/man3/Test::Distribution.3*
 
 %changelog
-* Fri Oct 15 2021 Pawel Winogrodzki <pawelwi@microsoft.com> - 2.00-34
-- Initial CBL-Mariner import from Fedora 32 (license: MIT).
+* Fri Jul 19 2024 Fedora Release Engineering <releng@fedoraproject.org> - 2.00-47
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_41_Mass_Rebuild
+
+* Mon Jan 29 2024 Fedora Release Engineering <releng@fedoraproject.org> - 2.00-46
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Thu Jan 25 2024 Fedora Release Engineering <releng@fedoraproject.org> - 2.00-45
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Sun Jan 21 2024 Fedora Release Engineering <releng@fedoraproject.org> - 2.00-44
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Fri Jul 21 2023 Fedora Release Engineering <releng@fedoraproject.org> - 2.00-43
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_39_Mass_Rebuild
+
+* Fri Jan 20 2023 Fedora Release Engineering <releng@fedoraproject.org> - 2.00-42
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_38_Mass_Rebuild
+
+* Fri Jul 22 2022 Fedora Release Engineering <releng@fedoraproject.org> - 2.00-41
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_37_Mass_Rebuild
+
+* Wed Jun 01 2022 Jitka Plesnikova <jplesnik@redhat.com> - 2.00-40
+- Perl 5.36 rebuild
+
+* Fri Jan 21 2022 Fedora Release Engineering <releng@fedoraproject.org> - 2.00-39
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_36_Mass_Rebuild
+
+* Fri Jul 23 2021 Fedora Release Engineering <releng@fedoraproject.org> - 2.00-38
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_35_Mass_Rebuild
+
+* Fri May 21 2021 Jitka Plesnikova <jplesnik@redhat.com> - 2.00-37
+- Perl 5.34 rebuild
+
+* Wed Jan 27 2021 Fedora Release Engineering <releng@fedoraproject.org> - 2.00-36
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_34_Mass_Rebuild
+
+* Tue Jul 28 2020 Fedora Release Engineering <releng@fedoraproject.org> - 2.00-35
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_33_Mass_Rebuild
+
+* Tue Jun 23 2020 Jitka Plesnikova <jplesnik@redhat.com> - 2.00-34
+- Perl 5.32 rebuild
 
 * Thu Jan 30 2020 Fedora Release Engineering <releng@fedoraproject.org> - 2.00-33
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_32_Mass_Rebuild

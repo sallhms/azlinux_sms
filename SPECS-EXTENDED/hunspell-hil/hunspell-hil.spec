@@ -1,15 +1,20 @@
-Vendor:         Microsoft Corporation
-Distribution:   Azure Linux
+%if 0%{?fedora} >= 36 || 0%{?rhel} > 9
+%global dict_dirname hunspell
+%else
+%global dict_dirname myspell
+%endif
+
 Name: hunspell-hil
 Summary: Hiligaynon hunspell dictionaries
+Epoch: 1
 Version: 0.14
-Release: 20%{?dist}
+Release: 30%{?dist}
 Source: https://addons.mozilla.org/firefox/downloads/file/108895/litreoir_hiligaynon-%{version}-tb+fx+sm.xpi
 URL: http://extensions.services.openoffice.org/project/hunspell-hil
-License: GPLv2+
+License: GPL-2.0-or-later
 BuildArch: noarch
 
-Requires: hunspell
+Requires: hunspell-filesystem
 Supplements: (hunspell and langpacks-hil)
 
 %description
@@ -31,21 +36,52 @@ for i in dictionaries/README_hil_PH.txt; do
 done
 
 %install
-mkdir -p $RPM_BUILD_ROOT/%{_datadir}/myspell
-cp -p dictionaries/hil.dic $RPM_BUILD_ROOT/%{_datadir}/myspell/hil_PH.dic
-cp -p dictionaries/hil.aff $RPM_BUILD_ROOT/%{_datadir}/myspell/hil_PH.aff
+mkdir -p $RPM_BUILD_ROOT/%{_datadir}/%{dict_dirname}
+cp -p dictionaries/hil.dic $RPM_BUILD_ROOT/%{_datadir}/%{dict_dirname}/hil_PH.dic
+cp -p dictionaries/hil.aff $RPM_BUILD_ROOT/%{_datadir}/%{dict_dirname}/hil_PH.aff
 
 
 %files
-%license dictionaries/README_hil_PH.txt
-%{_datadir}/myspell/*
+%doc dictionaries/README_hil_PH.txt
+%{_datadir}/%{dict_dirname}/*
 
 %changelog
-* Mon Nov 01 2021 Muhammad Falak <mwani@microsft.com> - 0.14-20
-- Remove epoch
+* Thu Jul 18 2024 Fedora Release Engineering <releng@fedoraproject.org> - 1:0.14-30
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_41_Mass_Rebuild
 
-* Fri Oct 15 2021 Pawel Winogrodzki <pawelwi@microsoft.com> - 1:0.14-19
-- Initial CBL-Mariner import from Fedora 32 (license: MIT).
+* Wed Jan 24 2024 Fedora Release Engineering <releng@fedoraproject.org> - 1:0.14-29
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Sat Jan 20 2024 Fedora Release Engineering <releng@fedoraproject.org> - 1:0.14-28
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Thu Jul 20 2023 Fedora Release Engineering <releng@fedoraproject.org> - 1:0.14-27
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_39_Mass_Rebuild
+
+* Wed Feb 22 2023 Caolán McNamara <caolanm@redhat.com> - 1:0.14-26
+- migrated to SPDX license
+
+* Thu Jan 19 2023 Fedora Release Engineering <releng@fedoraproject.org> - 1:0.14-25
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_38_Mass_Rebuild
+
+* Thu Jul 21 2022 Fedora Release Engineering <releng@fedoraproject.org> - 1:0.14-24
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_37_Mass_Rebuild
+
+* Tue Mar 22 2022 Parag Nemade <pnemade AT redhat DOT com> - 1:0.14-23
+- Add conditional for new hunspell dir path and update to Requires:
+  hunspell-filesystem
+
+* Thu Jan 20 2022 Fedora Release Engineering <releng@fedoraproject.org> - 1:0.14-22
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_36_Mass_Rebuild
+
+* Thu Jul 22 2021 Fedora Release Engineering <releng@fedoraproject.org> - 1:0.14-21
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_35_Mass_Rebuild
+
+* Tue Jan 26 2021 Fedora Release Engineering <releng@fedoraproject.org> - 1:0.14-20
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_34_Mass_Rebuild
+
+* Tue Jul 28 2020 Fedora Release Engineering <releng@fedoraproject.org> - 1:0.14-19
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_33_Mass_Rebuild
 
 * Wed Jan 29 2020 Fedora Release Engineering <releng@fedoraproject.org> - 1:0.14-18
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_32_Mass_Rebuild

@@ -1,24 +1,14 @@
-Summary:        An encoder/decoder for the Free Lossless Audio Codec
-Name:           flac
-Version:        1.4.3
-Release:        1%{?dist}
-License:        BSD-3-Clause AND GPL-2.0-or-later AND GFDL-1.1-or-later
-Vendor:         Microsoft Corporation
-Distribution:   Azure Linux
-URL:            https://www.xiph.org/flac/
-Source0:        https://downloads.xiph.org/releases/flac/flac-%{version}.tar.xz
-BuildRequires:  autoconf
-BuildRequires:  automake
-BuildRequires:  doxygen
-BuildRequires:  gcc
-BuildRequires:  gcc-c++
-BuildRequires:  gettext-devel
-BuildRequires:  libogg-devel
-BuildRequires:  libtool
-Requires:       %{name}-libs%{?_isa} = %{version}-%{release}
-%if 0%{?with_check}
-BuildRequires:  sudo
-%endif
+Summary: An encoder/decoder for the Free Lossless Audio Codec
+Name: flac
+Version: 1.4.3
+Release: 5%{?dist}
+License: BSD-3-Clause AND GPL-2.0-or-later AND GFDL-1.1-or-later
+Source0: https://downloads.xiph.org/releases/flac/flac-%{version}.tar.xz
+URL: https://www.xiph.org/flac/
+Requires: %{name}-libs%{?_isa} = %{version}-%{release}
+BuildRequires: libogg-devel
+BuildRequires: gcc gcc-c++ automake autoconf libtool gettext-devel doxygen
+BuildRequires: make
 
 %description
 FLAC stands for Free Lossless Audio Codec. Grossly oversimplified, FLAC
@@ -31,7 +21,10 @@ various music players.
 This package contains the command-line tools and documentation.
 
 %package libs
-Summary:        Libraries for the Free Lossless Audio Codec
+Summary: Libraries for the Free Lossless Audio Codec
+Obsoletes: flac < 1.2.1-11
+# xmms-flac dropped in 1.3.3-8
+Obsoletes: xmms-flac < 1.3.3-8
 
 %description libs
 FLAC stands for Free Lossless Audio Codec. Grossly oversimplified, FLAC
@@ -43,26 +36,23 @@ various music players.
 This package contains the FLAC libraries.
 
 %package devel
-Summary:        Development libraries and header files from FLAC
-Requires:       %{name}-libs%{?_isa} = %{version}-%{release}
-Requires:       pkgconfig
+Summary: Development libraries and header files from FLAC
+Requires: %{name}-libs%{?_isa} = %{version}-%{release}
+Requires: pkgconfig
 
 %description devel
 This package contains all the files needed to develop applications that
 will use the Free Lossless Audio Codec.
 
 %prep
-%autosetup -p1
+%setup -q
 
 %build
 # use our libtool to avoid problems with RPATH
 ./autogen.sh -V
 
-# -funroll-loops makes encoding about 10% faster
-export CFLAGS="%{optflags} -funroll-loops"
 %configure \
     --htmldir=%{_docdir}/flac/html \
-    --disable-xmms-plugin \
     --disable-silent-rules \
     --disable-thorough-tests
 
@@ -71,21 +61,15 @@ export CFLAGS="%{optflags} -funroll-loops"
 %install
 %make_install
 
-
-mv %{buildroot}%{_docdir}/flac* ./flac-doc
-rm flac-doc/FLAC.tag
-
-find %{buildroot} -type f -name "*.la" -delete -print
+rm -r %{buildroot}%{_docdir}/flac
+rm %{buildroot}%{_libdir}/*.la
 
 %check
-useradd test
-chown -R test:test .
-sudo -u test make check && userdel test
+make check
 
 %ldconfig_scriptlets libs
 
 %files
-%doc flac-doc/*
 %{_bindir}/flac
 %{_bindir}/metaflac
 %{_mandir}/man1/*
@@ -97,27 +81,70 @@ sudo -u test make check && userdel test
 %{_libdir}/libFLAC++.so.10*
 
 %files devel
+%doc doc/api
 %{_includedir}/*
 %{_libdir}/*.so
 %{_libdir}/pkgconfig/*
 %{_datadir}/aclocal/*.m4
 
 %changelog
-* Mon Sep 04 2023 Muhammad Falak R Wani <mwani@microsoft.com> - 1.4.3-1
-- Upgrade version to address CVE-2020-22219
-- Use SPDX short identifier for license tag
-- Lint spec
-- Drop BR on nasm
-- Drop Obsoletes
+* Wed Jul 17 2024 Fedora Release Engineering <releng@fedoraproject.org> - 1.4.3-5
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_41_Mass_Rebuild
 
-* Mon Aug 22 2022 Muhammad Falak <mwani@microsoft.com> - 1.3.4-1
-- Bump version
-- Run `%check` section via a non-root user to enable ptest
-- License verified
+* Wed Jan 24 2024 Fedora Release Engineering <releng@fedoraproject.org> - 1.4.3-4
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
 
-* Thu Mar 18 2021 Henry Li <lihl@microsoft.com> - 1.3.3-3
-- Initial CBL-Mariner import from Fedora 32 (license: MIT).
-- Disable xmms which depends on x11 related components
+* Fri Jan 19 2024 Fedora Release Engineering <releng@fedoraproject.org> - 1.4.3-3
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Wed Jul 19 2023 Fedora Release Engineering <releng@fedoraproject.org> - 1.4.3-2
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_39_Mass_Rebuild
+
+* Tue Jun 27 2023 Miroslav Lichvar <mlichvar@redhat.com> 1.4.3-1
+- update to 1.4.3
+- convert license tag to SPDX
+
+* Thu Jan 19 2023 Fedora Release Engineering <releng@fedoraproject.org> - 1.4.2-2
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_38_Mass_Rebuild
+
+* Mon Oct 24 2022 Miroslav Lichvar <mlichvar@redhat.com> 1.4.2-1
+- update to 1.4.2
+
+* Mon Sep 26 2022 Miroslav Lichvar <mlichvar@redhat.com> 1.4.1-1
+- update to 1.4.1
+
+* Mon Sep 12 2022 Miroslav Lichvar <mlichvar@redhat.com> 1.4.0-1
+- update to 1.4.0
+
+* Thu Jul 21 2022 Fedora Release Engineering <releng@fedoraproject.org> - 1.3.4-2
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_37_Mass_Rebuild
+
+* Thu Feb 24 2022 Miroslav Lichvar <mlichvar@redhat.com> 1.3.4-1
+- update to 1.3.4 (CVE-2021-0561)
+
+* Thu Jan 20 2022 Fedora Release Engineering <releng@fedoraproject.org> - 1.3.3-10
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_36_Mass_Rebuild
+
+* Wed Jul 21 2021 Fedora Release Engineering <releng@fedoraproject.org> - 1.3.3-9
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_35_Mass_Rebuild
+
+* Mon May 31 2021 Miroslav Lichvar <mlichvar@redhat.com> 1.3.3-8
+- drop xmms plugin (#1965618)
+
+* Fri Feb 19 2021 Adam Jackson <ajax@redhat.com> - 1.3.3-7
+- Fix the previous change to actually build in RHEL
+
+* Thu Feb 18 2021 Adam Jackson <ajax@redhat.com> - 1.3.3-6
+- Disable xmms in RHEL
+
+* Tue Jan 26 2021 Fedora Release Engineering <releng@fedoraproject.org> - 1.3.3-5
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_34_Mass_Rebuild
+
+* Thu Jan 07 2021 Miroslav Lichvar <mlichvar@redhat.com> 1.3.3-4
+- fix out-of-bounds read in decoder (CVE-2020-0499)
+
+* Mon Jul 27 2020 Fedora Release Engineering <releng@fedoraproject.org> - 1.3.3-3
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_33_Mass_Rebuild
 
 * Tue Jan 28 2020 Fedora Release Engineering <releng@fedoraproject.org> - 1.3.3-2
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_32_Mass_Rebuild

@@ -1,55 +1,56 @@
-Summary:        Portable Tools Library
-Name:           ptlib
-Version:        2.10.11
-Release:        14%{?dist}
-License:        MPLv1.0
-Vendor:         Microsoft Corporation
-Distribution:   Azure Linux
-URL:            https://www.opalvoip.org/
-Source0:        https://download.gnome.org/sources/%{name}/2.10/%{name}-%{version}.tar.xz
-Patch1:         ptlib-2.10.10-mga-bison-parameter.patch
-Patch2:         ptlib-gcc5.patch
-Patch3:         ptlib-gcc8.patch
-Patch4:         ptlib-2.10.11-signed_int_overflow.patch
-Patch5:         ptlib-2.10.11-openssl11.patch
-Patch6:         ptlib-2.10.11-make43.patch
-Patch7:         ptlib-pkgconf-no-ldflags.patch
-BuildRequires:  make
-BuildRequires:  gcc
-BuildRequires:  gcc-c++
-BuildRequires:  pkgconfig
-BuildRequires:  expat-devel
-BuildRequires:  flex
-BuildRequires:  bison
-BuildRequires:  alsa-lib-devel
-BuildRequires:  libv4l-devel
-BuildRequires:  openldap-devel
-BuildRequires:  SDL-devel
-BuildRequires:  openssl-devel
-BuildRequires:  boost-devel
-BuildRequires:  pulseaudio-libs-devel
-BuildRequires:  perl-interpreter
+Name:		ptlib
+Summary:	Portable Tools Library
+Version:	2.10.11
+Release:	18%{?dist}
+URL:		http://www.opalvoip.org/
+License:	MPLv1.0
+
+Source0:	https://download.gnome.org/sources/%{name}/2.10/%{name}-%{version}.tar.xz
+Patch1:		ptlib-2.10.10-mga-bison-parameter.patch
+Patch2:		ptlib-gcc5.patch
+Patch3:		ptlib-gcc8.patch
+Patch4:		ptlib-2.10.11-signed_int_overflow.patch
+Patch5:		ptlib-2.10.11-openssl11.patch
+Patch6:		ptlib-2.10.11-make43.patch
+Patch7:		ptlib-pkgconf-no-ldflags.patch
+
+BuildRequires:	make
+BuildRequires:	gcc gcc-c++
+BuildRequires:	pkgconfig expat-devel flex bison
+BuildRequires:	alsa-lib-devel libv4l-devel
+BuildRequires:	openldap-devel SDL-devel openssl-devel
+BuildRequires:	boost-devel pulseaudio-libs-devel
+BuildRequires:	perl-interpreter
 
 %description
-PTLib (Portable Tools Library) is a moderately large class library that
-has it's genesis many years ago as PWLib (portable Windows Library), a
-method to product applications to run on both Microsoft Windows and Unix
-systems. It has also been ported to other systems such as Mac OSX, VxWorks
+PTLib (Portable Tools Library) is a moderately large class library that 
+has it's genesis many years ago as PWLib (portable Windows Library), a 
+method to product applications to run on both Microsoft Windows and Unix 
+systems. It has also been ported to other systems such as Mac OSX, VxWorks 
 and other embedded systems.
 
 It is supplied mainly to support the OPAL project, but that shouldn't stop
-you from using it in whatever project you have in mind if you so desire.
+you from using it in whatever project you have in mind if you so desire. 
 
 %package devel
-Summary:        Development package for ptlib
-Requires:       %{name}%{?_isa} = %{version}-%{release}
-Requires:       pkgconfig
+Summary:	Development package for ptlib
+Requires:	%{name}%{?_isa} = %{version}-%{release}
+Requires:	pkgconfig
 
 %description devel
 The ptlib-devel package includes the libraries and header files for ptlib.
 
 %prep
-%autosetup -p1
+%setup -q 
+%patch -P1 -p1 -b .bison
+%patch -P2 -p1 -b .gcc5
+%patch -P3 -p1 -b .gcc8
+%patch -P4 -p1 -b .signed_int_overflow
+%patch -P5 -p1 -b .openssl11
+%if 0%{?fedora} > 32 || 0%{?rhel} > 8
+%patch -P6 -p1 -b .make43
+%endif
+%patch -P7 -p1
 
 sed -i 's#bits/atomicity.h#ext/atomicity.h#g' configure*
 sed -i 's#bits/atomicity.h#ext/atomicity.h#g' include/ptlib/critsec.h
@@ -64,7 +65,7 @@ export STDCXXFLAGS="%{optflags} -std=gnu++98"
 %install
 %make_install PREFIX=%{_prefix} LIBDIR=%{_libdir}
 
-perl -pi -e 's@PTLIBDIR.*=.*@PTLIBDIR = %{_datadir}/ptlib@' %{buildroot}%{_datadir}/ptlib/make/ptbuildopts.mak
+perl -pi -e 's@PTLIBDIR.*=.*@PTLIBDIR = /usr/share/ptlib@' %{buildroot}%{_datadir}/ptlib/make/ptbuildopts.mak
 
 # hack to fixup things for bug 197318
 find %{buildroot}%{_libdir} -name '*.so*' -type f -exec chmod +x {} \;
@@ -98,9 +99,20 @@ chmod -R u+w %{buildroot}/*
 %attr(755,root,root) %{_bindir}/*
 
 %changelog
-* Wed Feb 01 2023 Sumedh Sharma <sumsharma@microsoft.com> - 2.10.11-14
-- Initial CBL-Mariner import from Fedora 37 (license: MIT)
-- License verified
+* Fri Jul 19 2024 Fedora Release Engineering <releng@fedoraproject.org> - 2.10.11-18
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_41_Mass_Rebuild
+
+* Fri Jan 26 2024 Fedora Release Engineering <releng@fedoraproject.org> - 2.10.11-17
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Sun Jan 21 2024 Fedora Release Engineering <releng@fedoraproject.org> - 2.10.11-16
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Fri Jul 21 2023 Fedora Release Engineering <releng@fedoraproject.org> - 2.10.11-15
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_39_Mass_Rebuild
+
+* Fri Jan 20 2023 Fedora Release Engineering <releng@fedoraproject.org> - 2.10.11-14
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_38_Mass_Rebuild
 
 * Fri Jul 22 2022 Fedora Release Engineering <releng@fedoraproject.org> - 2.10.11-13
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_37_Mass_Rebuild
@@ -216,6 +228,7 @@ chmod -R u+w %{buildroot}/*
 * Mon Nov 26 2012 Peter Robinson <pbrobinson@fedoraproject.org> 2.10.9-1
 - New 2.10.9 stable release
 
+* Sat Jul 21 2012 Fedora Release Engineering <rel-eng@lists.fedoraproject.org> - 2.10.2-4
 * Sat Aug 25 2012 Peter Robinson <pbrobinson@fedoraproject.org> - 2.10.7-1
 - New 2.10.7 stable release
 

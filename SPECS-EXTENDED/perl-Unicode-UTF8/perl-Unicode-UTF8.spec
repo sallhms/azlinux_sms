@@ -1,5 +1,3 @@
-%bcond_with perl_Unicode_UTF8_enables_Module_Install_ReadmeFromPod
-
 # Run optional test
 %if ! (0%{?rhel})
 %bcond_without perl_Unicode_UTF8_enables_optional_test
@@ -10,36 +8,20 @@
 Summary:	Encoding and decoding of UTF-8 encoding form
 Name:		perl-Unicode-UTF8
 Version:	0.62
-Release:	13%{?dist}
-License:	GPL+ or Artistic
-Vendor:         Microsoft Corporation
-Distribution:   Azure Linux
+Release:	26%{?dist}
+License:	GPL-1.0-or-later OR Artistic-1.0-Perl
 URL:		https://metacpan.org/release/Unicode-UTF8
-Source0:	https://cpan.metacpan.org/authors/id/C/CH/CHANSEN/Unicode-UTF8-%{version}.tar.gz#/perl-Unicode-UTF8-%{version}.tar.gz
+Source0:	https://cpan.metacpan.org/modules/by-module/Unicode/Unicode-UTF8-%{version}.tar.gz
 # Module Build
 BuildRequires:	coreutils
 BuildRequires:	findutils
 BuildRequires:	gcc
 BuildRequires:	make
-BuildRequires:	perl-interpreter
 BuildRequires:	perl-devel
 BuildRequires:	perl-generators
-BuildRequires:	perl(FindBin)
-%if %{with perl_Unicode_UTF8_enables_Module_Install_ReadmeFromPod}
+BuildRequires:	perl-interpreter
 BuildRequires:	perl(inc::Module::Install)
 BuildRequires:	perl(Module::Install::ReadmeFromPod)
-%else
-BuildRequires:	perl(base)
-BuildRequires:	perl(Config)
-BuildRequires:	perl(Cwd)
-BuildRequires:	perl(ExtUtils::MakeMaker)
-BuildRequires:	perl(Fcntl)
-BuildRequires:	perl(File::Basename)
-BuildRequires:	perl(File::Find)
-BuildRequires:	perl(File::Path)
-BuildRequires:	perl(Pod::Text)
-BuildRequires:	perl(vars)
-%endif
 # Module Runtime
 BuildRequires:	perl(Carp)
 BuildRequires:	perl(Exporter)
@@ -61,8 +43,7 @@ BuildRequires:	perl(Test::LeakTrace) >= 0.10
 BuildRequires:	perl(Test::Pod) >= 1.00
 BuildRequires:	perl(Variable::Magic)
 %endif
-# Runtime
-Requires:	perl(:MODULE_COMPAT_%(eval "`perl -V:version`"; echo $version))
+# Dependencies
 Requires:	perl(Exporter)
 Requires:	perl(XSLoader)
 
@@ -77,10 +58,8 @@ specified by Unicode and ISO/IEC 10646:2011.
 %setup -q -n Unicode-UTF8-%{version}
 
 # Unbundle inc::Module::Install, we'll use system version instead
-# unless we're on EL-6, where there's no Module::Install::ReadmeFromPod
-%if %{with perl_Unicode_UTF8_enables_Module_Install_ReadmeFromPod}
-rm -rf inc/
-%endif
+rm -rvf inc/
+perl -i -ne 'print $_ unless m{^inc/}' MANIFEST
 
 %build
 perl Makefile.PL INSTALLDIRS=vendor OPTIMIZE="%{optflags}"
@@ -96,19 +75,57 @@ find %{buildroot} -type f -name '*.bs' -empty -delete
 make test
 
 %files
-%license README
-%doc Changes
+%doc Changes README
 %{perl_vendorarch}/Unicode/
 %{perl_vendorarch}/auto/Unicode/
 %{_mandir}/man3/Unicode::UTF8.3*
 
 %changelog
-* Thu Jan 13 2022 Pawel Winogrodzki <pawelwi@microsoft.com> - 0.62-13
-- License verified.
+* Fri Jul 19 2024 Fedora Release Engineering <releng@fedoraproject.org> - 0.62-26
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_41_Mass_Rebuild
 
-* Mon Nov 02 2020 Joe Schmitt <joschmit@microsoft.com> - 0.62-12
-- Initial CBL-Mariner import from Fedora 32 (license: MIT).
-- Explicitly turn off perl_Unicode_UTF8_enables_Module_Install_ReadmeFromPod.
+* Tue Jun 11 2024 Jitka Plesnikova <jplesnik@redhat.com> - 0.62-25
+- Perl 5.40 rebuild
+
+* Thu Jan 25 2024 Fedora Release Engineering <releng@fedoraproject.org> - 0.62-24
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Sun Jan 21 2024 Fedora Release Engineering <releng@fedoraproject.org> - 0.62-23
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Fri Jul 21 2023 Fedora Release Engineering <releng@fedoraproject.org> - 0.62-22
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_39_Mass_Rebuild
+
+* Tue Jul 11 2023 Jitka Plesnikova <jplesnik@redhat.com> - 0.62-21
+- Perl 5.38 rebuild
+
+* Fri Jan 20 2023 Fedora Release Engineering <releng@fedoraproject.org> - 0.62-20
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_38_Mass_Rebuild
+
+* Fri Jul 22 2022 Fedora Release Engineering <releng@fedoraproject.org> - 0.62-19
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_37_Mass_Rebuild
+
+* Wed Jun 01 2022 Jitka Plesnikova <jplesnik@redhat.com> - 0.62-18
+- Perl 5.36 rebuild
+
+* Fri Jan 21 2022 Fedora Release Engineering <releng@fedoraproject.org> - 0.62-17
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_36_Mass_Rebuild
+
+* Tue Jul 27 2021 Fedora Release Engineering <releng@fedoraproject.org> - 0.62-16
+- Second attempt - Rebuilt for
+  https://fedoraproject.org/wiki/Fedora_35_Mass_Rebuild
+
+* Fri May 21 2021 Jitka Plesnikova <jplesnik@redhat.com> - 0.62-15
+- Perl 5.34 rebuild
+
+* Wed Jan 27 2021 Fedora Release Engineering <releng@fedoraproject.org> - 0.62-14
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_34_Mass_Rebuild
+
+* Tue Jul 28 2020 Fedora Release Engineering <releng@fedoraproject.org> - 0.62-13
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_33_Mass_Rebuild
+
+* Tue Jun 23 2020 Jitka Plesnikova <jplesnik@redhat.com> - 0.62-12
+- Perl 5.32 rebuild
 
 * Thu Jan 30 2020 Fedora Release Engineering <releng@fedoraproject.org> - 0.62-11
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_32_Mass_Rebuild

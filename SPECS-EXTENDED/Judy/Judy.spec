@@ -1,19 +1,18 @@
-Vendor:         Microsoft Corporation
-Distribution:   Azure Linux
 Name:		Judy
 Version:	1.0.5
-Release:	23%{?dist}
+Release:	37%{?dist}
 Summary:	General purpose dynamic array
-License:	LGPLv2+
+License:	LGPL-2.0-or-later
 URL:		http://sourceforge.net/projects/judy/
 Source0:	http://downloads.sf.net/judy/Judy-%{version}.tar.gz
 Source1:	README.Fedora
 Patch0:		Judy-1.0.4-test-shared.patch
 Patch1:		Judy-1.0.4-fix-Judy1-mans.patch
-Patch2:		Judy-1.0.5-undefined-behavior.patch
+Patch2:		04_fix_undefined_behavior_during_aggressive_loop_optimizations.patch
 BuildRequires:	coreutils
 BuildRequires:	gawk
 BuildRequires:	gcc >= 4.1
+BuildRequires:	hardlink
 BuildRequires:	make
 BuildRequires:	sed
 
@@ -40,21 +39,21 @@ for developing applications that use the Judy library.
 %setup -q -n judy-%{version}
 
 # Make tests use shared instead of static libJudy
-%patch 0 -p1 -b .test-shared
+%patch -P 0 -p1 -b .test-shared
 
 # The J1* man pages were incorrectly being symlinked to Judy, rather than Judy1
 # This patch corrects that; submitted upstream 2008/11/27
-%patch 1 -p1 -b .fix-Judy1-mans
+%patch -P 1 -p1 -b .fix-Judy1-mans
 
 # Fix some code with undefined behavior, commented on and removed by gcc
-%patch 2 -p1 -b .behavior
+# https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=782841
+%patch -P 2 -p1 -b .behavior
 
 # README.Fedora
 cp -p %{SOURCE1} .
 
 %build
-%set_build_flags
-export CFLAGS="$CFLAGS -fno-strict-aliasing -fno-tree-ccp -fno-tree-dominator-opts -fno-tree-copy-prop -fno-tree-vrp"
+export CFLAGS="%{optflags} -fno-strict-aliasing"
 %configure --disable-static
 make
 #%{?_smp_mflags}
@@ -63,13 +62,18 @@ make
 
 %install
 %make_install
+
 # get rid of static libs and libtool archives
 rm -f %{buildroot}%{_libdir}/*.{a,la}
+
 # clean out zero length and generated files from doc tree
 rm -rf doc/man
 rm -f doc/Makefile* doc/ext/README_deliver
 [ -s doc/ext/COPYRIGHT ] || rm -f doc/ext/COPYRIGHT
 [ -s doc/ext/LICENSE ] || rm -f doc/ext/LICENSE
+
+# hardlink identical manpages together
+hardlink -cv %{buildroot}%{_mandir}/man3/J*.3*
 
 %check
 cd test
@@ -79,7 +83,8 @@ cd -
 %files
 %license COPYING README.Fedora
 %doc AUTHORS ChangeLog README examples/
-%{_libdir}/libJudy.so.*
+%{_libdir}/libJudy.so.1
+%{_libdir}/libJudy.so.1.*
 
 %files devel
 %doc doc
@@ -88,8 +93,56 @@ cd -
 %{_mandir}/man3/J*.3*
 
 %changelog
-* Fri Oct 15 2021 Pawel Winogrodzki <pawelwi@microsoft.com> - 1.0.5-23
-- Initial CBL-Mariner import from Fedora 32 (license: MIT).
+* Wed Jul 17 2024 Fedora Release Engineering <releng@fedoraproject.org> - 1.0.5-37
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_41_Mass_Rebuild
+
+* Tue Jan 23 2024 Paul Howarth <paul@city-fan.org> - 1.0.5-36
+- Hard link manpages to avoid duplication
+
+* Mon Jan 22 2024 Fedora Release Engineering <releng@fedoraproject.org> - 1.0.5-35
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Fri Jan 19 2024 Fedora Release Engineering <releng@fedoraproject.org> - 1.0.5-34
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Thu Jan 18 2024 Fedora Release Engineering <releng@fedoraproject.org> - 1.0.5-33
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Wed Jul 19 2023 Fedora Release Engineering <releng@fedoraproject.org> - 1.0.5-32
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_39_Mass_Rebuild
+
+* Thu Jan 19 2023 Paul Howarth <paul@city-fan.org> - 1.0.5-31
+- Use SPDX-format license tag
+
+* Wed Jan 18 2023 Fedora Release Engineering <releng@fedoraproject.org> - 1.0.5-30
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_38_Mass_Rebuild
+
+* Wed Jul 20 2022 Fedora Release Engineering <releng@fedoraproject.org> - 1.0.5-29
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_37_Mass_Rebuild
+
+* Wed Jan 19 2022 Fedora Release Engineering <releng@fedoraproject.org> - 1.0.5-28
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_36_Mass_Rebuild
+
+* Wed Jul 21 2021 Fedora Release Engineering <releng@fedoraproject.org> - 1.0.5-27
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_35_Mass_Rebuild
+
+* Fri Jun  4 2021 Paul Howarth <paul@city-fan.org> - 1.0.5-26
+- Replace undefined behaviour patch with one from upstream author, as used
+  in debian since 2015
+  (https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=782841)
+- Drop gcc optimization flags as we can now use the distribution default
+  flags again
+
+* Mon Jan 25 2021 Fedora Release Engineering <releng@fedoraproject.org> - 1.0.5-25
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_34_Mass_Rebuild
+
+* Mon Jul 27 2020 Fedora Release Engineering <releng@fedoraproject.org> - 1.0.5-24
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_33_Mass_Rebuild
+
+* Wed Mar 25 2020 Paul Howarth <paul@city-fan.org> - 1.0.5-23
+- Don't pass gcc-only compiler flags to other compilers, e.g. clang
+  (based on https://src.fedoraproject.org/rpms/Judy/pull-request/3 from
+  Timm Baeder)
 
 * Tue Jan 28 2020 Fedora Release Engineering <releng@fedoraproject.org> - 1.0.5-22
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_32_Mass_Rebuild

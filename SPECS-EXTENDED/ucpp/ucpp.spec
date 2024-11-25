@@ -1,12 +1,11 @@
-Vendor:         Microsoft Corporation
-Distribution:   Azure Linux
 Summary: Embeddable, quick, light and fully compliant ISO C99 preprocessor
 Name: ucpp
 Version: 1.3.5
-Release: 5%{?dist}
+Release: 13%{?dist}
 URL: https://gitlab.com/scarabeusiv/ucpp
 Source0: https://gitlab.com/scarabeusiv/ucpp/-/archive/%{version}/ucpp-%{version}.tar.bz2
 License: BSD
+BuildRequires: make
 BuildRequires: libtool
 Requires: %{name}-libs%{?_isa} = %{version}-%{release}
 
@@ -71,8 +70,32 @@ rm %{buildroot}%{_libdir}/libucpp.la
 %{_libdir}/pkgconfig/libucpp.pc
 
 %changelog
-* Fri Oct 15 2021 Pawel Winogrodzki <pawelwi@microsoft.com> - 1.3.5-5
-- Initial CBL-Mariner import from Fedora 32 (license: MIT).
+* Sat Jul 20 2024 Fedora Release Engineering <releng@fedoraproject.org> - 1.3.5-13
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_41_Mass_Rebuild
+
+* Sat Jan 27 2024 Fedora Release Engineering <releng@fedoraproject.org> - 1.3.5-12
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Sat Jul 22 2023 Fedora Release Engineering <releng@fedoraproject.org> - 1.3.5-11
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_39_Mass_Rebuild
+
+* Sat Jan 21 2023 Fedora Release Engineering <releng@fedoraproject.org> - 1.3.5-10
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_38_Mass_Rebuild
+
+* Sat Jul 23 2022 Fedora Release Engineering <releng@fedoraproject.org> - 1.3.5-9
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_37_Mass_Rebuild
+
+* Sat Jan 22 2022 Fedora Release Engineering <releng@fedoraproject.org> - 1.3.5-8
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_36_Mass_Rebuild
+
+* Fri Jul 23 2021 Fedora Release Engineering <releng@fedoraproject.org> - 1.3.5-7
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_35_Mass_Rebuild
+
+* Wed Jan 27 2021 Fedora Release Engineering <releng@fedoraproject.org> - 1.3.5-6
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_34_Mass_Rebuild
+
+* Wed Jul 29 2020 Fedora Release Engineering <releng@fedoraproject.org> - 1.3.5-5
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_33_Mass_Rebuild
 
 * Thu Mar 19 2020 Dominik Mierzejewski <rpm@greysector.net> 1.3.5-4
 - fix FTBFS due to -Werror on s390x

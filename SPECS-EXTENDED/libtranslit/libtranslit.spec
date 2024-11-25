@@ -1,8 +1,6 @@
-Vendor:         Microsoft Corporation
-Distribution:   Azure Linux
 Name:		libtranslit
 Version:	0.0.3
-Release:	27%{?dist}
+Release:	44%{?dist}
 Summary:	ASCII to Unicode transliteration library with multiple backends
 
 License:	GPLv3+
@@ -36,6 +34,7 @@ m17n-lib for %{name}.
 %package	icu
 Summary:	Transliteration module using m17n-lib for %{name}
 BuildRequires:	pkgconfig(icu-io)
+BuildRequires: make
 Requires:	%{name}%{?_isa} = %{version}-%{release}
 
 %description	icu
@@ -84,8 +83,60 @@ find $RPM_BUILD_ROOT -name '*.la' -exec rm -f '{}' ';'
 
 
 %changelog
-* Fri Oct 15 2021 Pawel Winogrodzki <pawelwi@microsoft.com> - 0.0.3-27
-- Initial CBL-Mariner import from Fedora 32 (license: MIT).
+* Thu Jul 18 2024 Fedora Release Engineering <releng@fedoraproject.org> - 0.0.3-44
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_41_Mass_Rebuild
+
+* Wed Jan 31 2024 Pete Walter <pwalter@fedoraproject.org> - 0.0.3-43
+- Rebuild for ICU 74
+
+* Thu Jan 25 2024 Fedora Release Engineering <releng@fedoraproject.org> - 0.0.3-42
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Sun Jan 21 2024 Fedora Release Engineering <releng@fedoraproject.org> - 0.0.3-41
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Thu Jul 20 2023 Fedora Release Engineering <releng@fedoraproject.org> - 0.0.3-40
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_39_Mass_Rebuild
+
+* Tue Jul 11 2023 František Zatloukal <fzatlouk@redhat.com> - 0.0.3-39
+- Rebuilt for ICU 73.2
+
+* Thu Jan 19 2023 Fedora Release Engineering <releng@fedoraproject.org> - 0.0.3-38
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_38_Mass_Rebuild
+
+* Sat Dec 31 2022 Pete Walter <pwalter@fedoraproject.org> - 0.0.3-37
+- Rebuild for ICU 72
+
+* Mon Aug 01 2022 Frantisek Zatloukal <fzatlouk@redhat.com> - 0.0.3-36
+- Rebuilt for ICU 71.1
+
+* Thu Jul 21 2022 Fedora Release Engineering <releng@fedoraproject.org> - 0.0.3-35
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_37_Mass_Rebuild
+
+* Thu Jan 20 2022 Fedora Release Engineering <releng@fedoraproject.org> - 0.0.3-34
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_36_Mass_Rebuild
+
+* Thu Jul 22 2021 Fedora Release Engineering <releng@fedoraproject.org> - 0.0.3-33
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_35_Mass_Rebuild
+
+* Thu May 20 2021 Pete Walter <pwalter@fedoraproject.org> - 0.0.3-32
+- Rebuild for ICU 69
+
+* Wed May 19 2021 Pete Walter <pwalter@fedoraproject.org> - 0.0.3-31
+- Rebuild for ICU 69
+
+* Tue Jan 26 2021 Fedora Release Engineering <releng@fedoraproject.org> - 0.0.3-30
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_34_Mass_Rebuild
+
+* Sat Aug 01 2020 Fedora Release Engineering <releng@fedoraproject.org> - 0.0.3-29
+- Second attempt - Rebuilt for
+  https://fedoraproject.org/wiki/Fedora_33_Mass_Rebuild
+
+* Tue Jul 28 2020 Fedora Release Engineering <releng@fedoraproject.org> - 0.0.3-28
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_33_Mass_Rebuild
+
+* Fri May 15 2020 Pete Walter <pwalter@fedoraproject.org> - 0.0.3-27
+- Rebuild for ICU 67
 
 * Wed Jan 29 2020 Fedora Release Engineering <releng@fedoraproject.org> - 0.0.3-26
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_32_Mass_Rebuild

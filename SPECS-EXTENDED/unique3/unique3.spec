@@ -1,18 +1,18 @@
-Vendor:         Microsoft Corporation
-Distribution:   Azure Linux
 Name:           unique3
 Version:        3.0.2
-Release:        22%{?dist}
+Release:        30%{?dist}
 Summary:        Single instance support for applications
 
 License:        LGPLv2+
-URL:            https://github.com/Distrotech/libunique/tags
-Source0:        https://github.com/Distrotech/libunique/archive/refs/tags/3.0.2.tar.gz#/libunique-%{version}.tar.xz
+URL:            http://www.gnome.org/~ebassi/source/
+Source0:        http://download.gnome.org/sources/libunique/3.0/libunique-%{version}.tar.xz
 
+BuildRequires: make
 BuildRequires:  gnome-doc-utils >= 0.3.2
 BuildRequires:  libtool
 BuildRequires:  glib2-devel >= 2.25.0
 BuildRequires:  gtk3-devel >= 2.99.3
+BuildRequires:  gtk-doc >= 1.11
 
 BuildRequires: automake autoconf libtool
 
@@ -47,7 +47,7 @@ gtkdocize
 autoreconf -i -f -v
 
 %build
-%configure --disable-gtk-doc --disable-static --enable-introspection=no
+%configure --enable-gtk-doc --disable-static --enable-introspection=no
 %make_build
 
 %install
@@ -57,8 +57,7 @@ rm -f $RPM_BUILD_ROOT%{_libdir}/*.la
 %ldconfig_scriptlets
 
 %files
-%license COPYING
-%doc AUTHORS ChangeLog README
+%doc AUTHORS ChangeLog COPYING README
 %{_libdir}/lib*.so.*
 
 %files devel
@@ -70,12 +69,36 @@ rm -f $RPM_BUILD_ROOT%{_libdir}/*.la
 %doc %{_datadir}/gtk-doc
 
 %changelog
-* Mon Mar 21 2022 Pawel Winogrodzki <pawelwi@microsoft.com> - 3.0.2-22
-- Removing gtk-docs since they require a network connection.
-- License verified.
+* Sat Jul 20 2024 Fedora Release Engineering <releng@fedoraproject.org> - 3.0.2-30
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_41_Mass_Rebuild
 
-* Fri Oct 15 2021 Pawel Winogrodzki <pawelwi@microsoft.com> - 3.0.2-21
-- Initial CBL-Mariner import from Fedora 32 (license: MIT).
+* Sat Jan 27 2024 Fedora Release Engineering <releng@fedoraproject.org> - 3.0.2-29
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Sat Jul 22 2023 Fedora Release Engineering <releng@fedoraproject.org> - 3.0.2-28
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_39_Mass_Rebuild
+
+* Sat Jan 21 2023 Fedora Release Engineering <releng@fedoraproject.org> - 3.0.2-27
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_38_Mass_Rebuild
+
+* Sat Jul 23 2022 Fedora Release Engineering <releng@fedoraproject.org> - 3.0.2-26
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_37_Mass_Rebuild
+
+* Sat Jan 22 2022 Fedora Release Engineering <releng@fedoraproject.org> - 3.0.2-25
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_36_Mass_Rebuild
+
+* Fri Jul 23 2021 Fedora Release Engineering <releng@fedoraproject.org> - 3.0.2-24
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_35_Mass_Rebuild
+
+* Wed Jan 27 2021 Fedora Release Engineering <releng@fedoraproject.org> - 3.0.2-23
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_34_Mass_Rebuild
+
+* Sat Aug 01 2020 Fedora Release Engineering <releng@fedoraproject.org> - 3.0.2-22
+- Second attempt - Rebuilt for
+  https://fedoraproject.org/wiki/Fedora_33_Mass_Rebuild
+
+* Wed Jul 29 2020 Fedora Release Engineering <releng@fedoraproject.org> - 3.0.2-21
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_33_Mass_Rebuild
 
 * Fri Jan 31 2020 Fedora Release Engineering <releng@fedoraproject.org> - 3.0.2-20
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_32_Mass_Rebuild

@@ -1,12 +1,10 @@
-Vendor:         Microsoft Corporation
-Distribution:   Azure Linux
 Name:          perl-Net-IMAP-Simple-SSL
 Version:       1.3
-Release:       29%{?dist}
+Release:       41%{?dist}
 Summary:       Simple IMAP account handling with SSL
-License:       GPL+ or Artistic
+License:       GPL-1.0-or-later OR Artistic-1.0-Perl
 URL:           https://metacpan.org/release/Net-IMAP-Simple-SSL
-Source0:       https://cpan.metacpan.org/modules/by-module/Net/Net-IMAP-Simple-SSL-%{version}.tar.gz#/perl-Net-IMAP-Simple-SSL-%{version}.tar.gz
+Source0:       https://cpan.metacpan.org/modules/by-module/Net/Net-IMAP-Simple-SSL-%{version}.tar.gz
 
 BuildArch:     noarch
 BuildRequires: make
@@ -21,7 +19,6 @@ BuildRequires: perl(strict)
 BuildRequires: perl(vars)
 # Tests
 BuildRequires: perl(Test::More)
-Requires:      perl(:MODULE_COMPAT_%(eval "`%{__perl} -V:version`"; echo $version))
 
 %description
 Perl extension for simple IMAP account handling, mostly compatible
@@ -50,8 +47,44 @@ make %{?_smp_mflags} test
 %{_mandir}/man3/Net::IMAP::Simple::SSL.3*
 
 %changelog
-* Fri Oct 15 2021 Pawel Winogrodzki <pawelwi@microsoft.com> - 1.3-29
-- Initial CBL-Mariner import from Fedora 32 (license: MIT).
+* Fri Jul 19 2024 Fedora Release Engineering <releng@fedoraproject.org> - 1.3-41
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_41_Mass_Rebuild
+
+* Thu Jan 25 2024 Fedora Release Engineering <releng@fedoraproject.org> - 1.3-40
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Sun Jan 21 2024 Fedora Release Engineering <releng@fedoraproject.org> - 1.3-39
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Fri Jul 21 2023 Fedora Release Engineering <releng@fedoraproject.org> - 1.3-38
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_39_Mass_Rebuild
+
+* Fri Jan 20 2023 Fedora Release Engineering <releng@fedoraproject.org> - 1.3-37
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_38_Mass_Rebuild
+
+* Fri Jul 22 2022 Fedora Release Engineering <releng@fedoraproject.org> - 1.3-36
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_37_Mass_Rebuild
+
+* Wed Jun 01 2022 Jitka Plesnikova <jplesnik@redhat.com> - 1.3-35
+- Perl 5.36 rebuild
+
+* Fri Jan 21 2022 Fedora Release Engineering <releng@fedoraproject.org> - 1.3-34
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_36_Mass_Rebuild
+
+* Thu Jul 22 2021 Fedora Release Engineering <releng@fedoraproject.org> - 1.3-33
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_35_Mass_Rebuild
+
+* Fri May 21 2021 Jitka Plesnikova <jplesnik@redhat.com> - 1.3-32
+- Perl 5.34 rebuild
+
+* Wed Jan 27 2021 Fedora Release Engineering <releng@fedoraproject.org> - 1.3-31
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_34_Mass_Rebuild
+
+* Tue Jul 28 2020 Fedora Release Engineering <releng@fedoraproject.org> - 1.3-30
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_33_Mass_Rebuild
+
+* Tue Jun 23 2020 Jitka Plesnikova <jplesnik@redhat.com> - 1.3-29
+- Perl 5.32 rebuild
 
 * Thu Jan 30 2020 Fedora Release Engineering <releng@fedoraproject.org> - 1.3-28
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_32_Mass_Rebuild

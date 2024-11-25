@@ -1,321 +1,373 @@
-Summary:        Theora video compression codec
+# enable bootstrap mode (e.g. disables doc generation)
+%bcond bootstrap 0
+# enable devel-docs (transfig is unavailable in RHEL)
+%bcond devel_docs %[%{without bootstrap} && %{undefined rhel}]
+
 Name:           libtheora
+Epoch:          1
 Version:        1.1.1
-Release:        1%{?dist}
+Release:        38%{?dist}
+Summary:        Theora Video Compression Codec
 License:        BSD-3-Clause
-Vendor:         Microsoft Corporation
-Distribution:   Azure Linux
-Group:          Productivity/Multimedia/Other
-URL:            https://www.theora.org/
-Source0:        https://ftp.osuosl.org/pub/xiph/releases/theora/%{name}-%{version}.tar.gz
-BuildRequires:  gcc-c++
-BuildRequires:  libogg-devel
-BuildRequires:  libtool
+URL:            http://www.theora.org
+Source0:        http://downloads.xiph.org/releases/theora/%{name}-%{version}.tar.xz
+Patch0:         libtheora-1.1.1-fix-pp_sharp_mod-calc.patch
+# https://bugs.archlinux.org/task/35985
+Patch1:         libtheora-1.1.1-libpng16.patch
+Patch2:         libtheora-1.1.1-libm.patch
+
+BuildRequires: make
+BuildRequires:  autoconf automake libtool
+BuildRequires:  libogg-devel >= 2:1.1
 BuildRequires:  libvorbis-devel
-BuildRequires:  pkgconf-pkg-config
+BuildRequires:  SDL-devel libpng-devel
+%if %{without devel_docs}
+Obsoletes: %{name}-devel-docs < %{epoch}:%{version}-%{release}
+%else
+BuildRequires:  doxygen
+BuildRequires:  tetex-latex transfig
+%endif
 
 %description
-Theora is a free and open video compression format from the Xiph.org Foundation. Like all our
-multimedia technology it can be used to distribute film and video online and on disc without
-the licensing and royalty fees or vendor lock-in associated with other formats.
+Theora is Xiph.Org's first publicly released video codec, intended
+for use within the Ogg's project's Ogg multimedia streaming system.
+Theora is derived directly from On2's VP3 codec; Currently the two are
+nearly identical, varying only in encapsulating decoder tables in the
+bitstream headers, but Theora will make use of this extra freedom
+in the future to improve over what is possible with VP3.
 
-%package -n libtheora0
-Summary:        Theora video compression codec
-Group:          System/Libraries
-Provides:       %{name} = %{version}
-Obsoletes:      %{name} <= %{version}
-
-%description -n libtheora0
-Theora is a free and open video compression format from the Xiph.org Foundation. Like all our
-multimedia technology it can be used to distribute film and video online and on disc without
-the licensing and royalty fees or vendor lock-in associated with other formats.
-
-Theora scales from postage stamp to HD resolution, and is considered particularly competitive
-at low bitrates. It is in the same class as MPEG-4/DiVX, and like the Vorbis audio codec it
-has lots of room for improvement as encoder technology develops.
-
-Theora is in full public release as of November 3, 2008. The bitstream format for Theora I
-was frozen Thursday, 2004 July 1. All bitstreams encoded since that date will remain compatible
-with future releases.
-
-The package contains the library that can decode and encode Theora streams. Theora is also
-able to playback VP3 streams.
-
-%package -n libtheoradec1
-Summary:        Theora video decompression library
-Group:          System/Libraries
-
-%description -n libtheoradec1
-Theora is a free and open video compression format from the Xiph.org Foundation. Like all our
-multimedia technology it can be used to distribute film and video online and on disc without
-the licensing and royalty fees or vendor lock-in associated with other formats.
-
-This subpackage contains the decoder library.
-
-%package -n libtheoraenc1
-Summary:        Theora video compression library
-Group:          System/Libraries
-
-%description -n libtheoraenc1
-Theora is a free and open video compression format from the Xiph.org Foundation. Like all our
-multimedia technology it can be used to distribute film and video online and on disc without
-the licensing and royalty fees or vendor lock-in associated with other formats.
-
-This subpackage contains the encoder library.
 
 %package devel
-Summary:        Theora video compression codec
-Group:          Development/Libraries/C and C++
-Requires:       libogg-devel
-Requires:       libtheora0 = %{version}
-Requires:       libtheoradec1 = %{version}
-Requires:       libtheoraenc1 = %{version}
+Summary:        Development tools for Theora applications
+Requires:       libogg-devel >= 2:1.1
+Requires:       %{name}%{?_isa} = %{epoch}:%{version}-%{release}
 
 %description devel
-Theora is a free and open video compression format from the Xiph.org Foundation. Like all our
-multimedia technology it can be used to distribute film and video online and on disc without
-the licensing and royalty fees or vendor lock-in associated with other formats.
+The libtheora-devel package contains the header files needed to develop
+applications with libtheora.
 
-Theora scales from postage stamp to HD resolution, and is considered particularly competitive
-at low bitrates. It is in the same class as MPEG-4/DiVX, and like the Vorbis audio codec it
-has lots of room for improvement as encoder technology develops.
 
-Theora is in full public release as of November 3, 2008. The bitstream format for Theora I
-was frozen Thursday, 2004 July 1. All bitstreams encoded since that date will remain compatible
-with future releases.
+%package devel-docs
+Summary:        Documentation for developing Theora applications
+BuildArch:      noarch
 
-The package contains the library that can decode and encode Theora streams. Theora is also
-able to playback VP3 streams.
+%description devel-docs
+The libtheora-devel-docs package contains the documentation needed
+to develop applications with libtheora.
+
+
+%package -n theora-tools
+Summary:        Command line tools for Theora videos
+Requires:       %{name}%{?_isa} = %{epoch}:%{version}-%{release}
+
+%description -n theora-tools
+The theora-tools package contains simple command line tools for use
+with theora bitstreams.
+
 
 %prep
-%autosetup -n %{name}-%{version}
+%setup -q
+%patch -P0 -p1
+%patch -P1 -p0 -b .libpng16
+%patch -P2 -p1
+
+# Update config.guess/sub to fix builds on new architectures (aarch64/ppc64le)
+cp /usr/lib/rpm/redhat/config.* .
 
 %build
-ACLOCAL="aclocal -I m4" autoreconf -f -i
-%configure --disable-examples \
-    --disable-static \
-    --with-pic
-make %{?_smp_mflags} docdir=%{_docdir}/%{name}
+./autogen.sh
+# no custom CFLAGS please
+sed -i 's/CFLAGS="$CFLAGS $cflags_save"/CFLAGS="$cflags_save"/g' configure
+%configure --enable-shared --disable-static
+# Don't use rpath!
+sed -i 's|^hardcode_libdir_flag_spec=.*|hardcode_libdir_flag_spec=""|g' libtool
+sed -i 's|^runpath_var=LD_RUN_PATH|runpath_var=DIE_RPATH_DIE|g' libtool
+%{make_build}
+
+%if %{with devel_docs}
+make -C doc/spec %{?_smp_mflags}
+%endif
+
 
 %install
-%make_install docdir=%{_docdir}/%{name}
-install -d %{buildroot}%{_bindir}
-# Install remaining parts of documentation.
-cp -a AUTHORS CHANGES COPYING LICENSE README %{buildroot}%{_docdir}/%{name}
+%{make_install}
 
-%check
-make check
+find %{buildroot} -type f -name "*.la" -delete
+rm -r %{buildroot}/%{_docdir}/*
 
-%post   -n libtheora0 -p /sbin/ldconfig
-%postun -n libtheora0 -p /sbin/ldconfig
-%post   -n libtheoradec1 -p /sbin/ldconfig
-%postun -n libtheoradec1 -p /sbin/ldconfig
-%post   -n libtheoraenc1 -p /sbin/ldconfig
-%postun -n libtheoraenc1 -p /sbin/ldconfig
+mkdir -p %{buildroot}/%{_bindir}
+install -m 755 examples/.libs/dump_video $RPM_BUILD_ROOT/%{_bindir}/theora_dump_video
+install -m 755 examples/.libs/encoder_example $RPM_BUILD_ROOT/%{_bindir}/theora_encode
+install -m 755 examples/.libs/player_example $RPM_BUILD_ROOT/%{_bindir}/theora_player
+install -m 755 examples/.libs/png2theora $RPM_BUILD_ROOT/%{_bindir}/png2theora
+
+
+%ldconfig_scriptlets
+
 
 %files
-%license COPYING
-%doc README
-
-%files -n libtheora0
-%defattr(-,root,root)
-%{_libdir}/libtheora.so.0*
-
-%files -n libtheoradec1
-%defattr(-,root,root)
-%{_libdir}/libtheoradec.so.1*
-
-%files -n libtheoraenc1
-%defattr(-,root,root)
-%{_libdir}/libtheoraenc.so.1*
+%doc README COPYING
+%{_libdir}/*.so.*
 
 %files devel
-%defattr(-,root,root)
-%doc %dir %{_docdir}/%{name}
-%doc %{_docdir}/%{name}/*
 %{_includedir}/theora
 %{_libdir}/*.so
-%{_libdir}/pkgconfig/theoradec.pc
-%{_libdir}/pkgconfig/theoraenc.pc
-%{_libdir}/pkgconfig/theora.pc
-%exclude %{_libdir}/*.la
+%{_libdir}/pkgconfig/theora*.pc
+
+%if %{with devel_docs}
+%files devel-docs
+%doc doc/libtheora/html doc/vp3-format.txt doc/spec/Theora.pdf
+%doc doc/color.html doc/draft-ietf-avt-rtp-theora-00.txt
+%endif
+
+%files -n theora-tools
+%{_bindir}/*
+
 
 %changelog
-* Tue Nov 22 2022 Sumedh Sharma <sumsharma@microsoft.com> - 1.1.1-1
-- Initial CBL-Mariner import from openSUSE Tumbleweed (license: same as "License" tag)
-- Converting the 'Release' tag to the '[number].[distribution]' format
-- Disabled subpackage examples and devel-docs
-- Remove sources for obsolete -XXBit packages
-- Enable check section
-- License verified
+* Thu Jul 18 2024 Fedora Release Engineering <releng@fedoraproject.org> - 1:1.1.1-38
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_41_Mass_Rebuild
 
-* Mon Jun 21 2021 Matej Cepl <mcepl@suse.com>
-- Remove completely unnecessary python BR
+* Fri May 10 2024 Yaakov Selkowitz <yselkowi@redhat.com> - 1:1.1.1-37
+- Do not build devel-docs in RHEL/ELN builds
 
-* Sat Aug 30 2014 jengelh@inai.de
-- Split libtheoradec/enc from libtheora0 as they have different
-  SO numbers
-- Trim huge description; improve on RPM group classificaiton
+* Thu Jan 25 2024 Fedora Release Engineering <releng@fedoraproject.org> - 1:1.1.1-36
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
 
-* Thu May 23 2013 idonmez@suse.com
-- Update descriptions, thanks to Perry Werneck
+* Sun Jan 21 2024 Fedora Release Engineering <releng@fedoraproject.org> - 1:1.1.1-35
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
 
-* Sun Nov 20 2011 coolo@suse.com
-- add libtool as buildrequire to avoid implicit dependency
+* Thu Jul 20 2023 Fedora Release Engineering <releng@fedoraproject.org> - 1:1.1.1-34
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_39_Mass_Rebuild
 
-* Mon Aug 29 2011 crrodriguez@opensuse.org
-- remove examples that fail to build, also SDL and png
-  are only needed for those, so remove from buildrequires.
+* Thu Jan 19 2023 Fedora Release Engineering <releng@fedoraproject.org> - 1:1.1.1-33
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_38_Mass_Rebuild
 
-* Wed Jul 27 2011 crrodriguez@opensuse.org
-- remove fno-strict-aliasing from CFLAGS as it is no longer
-  needed and will slow down things.
+* Thu Jul 21 2022 Fedora Release Engineering <releng@fedoraproject.org> - 1:1.1.1-32
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_37_Mass_Rebuild
 
-* Mon May 23 2011 crrodriguez@opensuse.org
-- Disable doxygen documentation to avoid build dates in
-  - devel packages.
-- add missing BuildRequires libpng-devel
+* Thu Jan 20 2022 Fedora Release Engineering <releng@fedoraproject.org> - 1:1.1.1-31
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_36_Mass_Rebuild
 
-* Fri Dec 18 2009 jengelh@medozas.de
-- add baselibs.conf as a source
+* Thu Jul 22 2021 Fedora Release Engineering <releng@fedoraproject.org> - 1:1.1.1-30
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_35_Mass_Rebuild
 
-* Wed Oct  7 2009 adrian@suse.de
-- update to version 1.1.1
-  * minor bugfixes
+* Tue Jan 26 2021 Fedora Release Engineering <releng@fedoraproject.org> - 1:1.1.1-29
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_34_Mass_Rebuild
 
-* Sat Sep 26 2009 adrian@suse.de
-- update to version 1.1.0
-  * minor fixes since beta 3
+* Mon Aug 03 2020 Peter Robinson <pbrobinson@fedoraproject.org> - 1:1.1.1-28
+- Use new macros, update config.\* locations
 
-* Thu Aug 27 2009 adrian@suse.de
-- update to version 1.1 beta 3
-  * Much better encoder
-    (faster and more details at same compressions level)
-  * Playback received speed improvements, but bitstream format is
-    untouched
-- no package split yet for dec/enc/legacy libs due to 11.2 freeze
+* Sat Aug 01 2020 Fedora Release Engineering <releng@fedoraproject.org> - 1:1.1.1-27
+- Second attempt - Rebuilt for
+  https://fedoraproject.org/wiki/Fedora_33_Mass_Rebuild
 
-* Fri Jul 17 2009 adrian@suse.de
-- update to version 1.0 final
-  * new additional encoder and decoder libs with new api.
+* Tue Jul 28 2020 Fedora Release Engineering <releng@fedoraproject.org> - 1:1.1.1-26
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_33_Mass_Rebuild
 
-* Wed Jan  7 2009 olh@suse.de
-- obsolete old -XXbit packages (bnc#437293)
+* Wed Jan 29 2020 Fedora Release Engineering <releng@fedoraproject.org> - 1:1.1.1-25
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_32_Mass_Rebuild
 
-* Wed May 21 2008 cthiel@suse.de
-- fix baselibs.conf
+* Thu Jul 25 2019 Fedora Release Engineering <releng@fedoraproject.org> - 1:1.1.1-24
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_31_Mass_Rebuild
 
-* Thu Apr 10 2008 ro@suse.de
-- added baselibs.conf file to build xxbit packages
-  for multilib support
+* Fri Feb 01 2019 Fedora Release Engineering <releng@fedoraproject.org> - 1:1.1.1-23
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_30_Mass_Rebuild
 
-* Thu Dec 13 2007 crrodriguez@suse.de
-- fix package version numbers 1.0beta1 --> 1.0.beta2
-- libtheora 1.0.beta2
-  - Fix a crash bug on char-is-unsigned architectures (PowerPC)
-  - Fix a buffer sizing issue that caused rare encoder crashes
-  - Fix a buffer alignment issue
-  - Improved format documentation.
-- removed unneeded patch, use --with-pic configure option instead.
+* Fri Jul 13 2018 Fedora Release Engineering <releng@fedoraproject.org> - 1:1.1.1-22
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_29_Mass_Rebuild
 
-* Thu Nov  8 2007 adrian@suse.de
-- fix compiling with gcc 4.3 on ia32
+* Wed Feb 07 2018 Fedora Release Engineering <releng@fedoraproject.org> - 1:1.1.1-21
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_28_Mass_Rebuild
 
-* Wed Sep 26 2007 adrian@suse.de
-- update to 1.0beta1
-  From official changelog:
-  * Granulepos scheme modified to match other codecs. This bumps
-  the bitstream revision to 3.2.1. Bitstreams marked 3.2.0 are
-  handled correctly by this decoder. Older decoders will show
-  a one frame sync error in the less noticable direction.
-  * Switch to new spec compliant decoder from theora-exp branch.
-  Written by Dr. Timothy Terriberry.
-  * Add support to the encoder for using quantization settings
-  provided by the application.
-  * more assembly optimizations
+* Sat Feb 03 2018 Igor Gnatenko <ignatenkobrain@fedoraproject.org> - 1:1.1.1-20
+- Switch to %%ldconfig_scriptlets
 
-* Wed Aug 15 2007 coolo@suse.de
-- fixing upgrade (#293401)
+* Mon Aug 07 2017 Rex Dieter <rdieter@fedoraproject.org> - 1:1.1.1-19
+- disable bootstrap
 
-* Sat Aug 11 2007 crrodriguez@suse.de
-- fix build in x86_64
-- use library packaging policy
-- run make check in the check section
-- add missing call to ldconfig
+* Mon Aug 07 2017 Rex Dieter <rdieter@fedoraproject.org> - 1:1.1.1-18
+- support and enable bootstrap mode (ie, no docs)
 
-* Wed Mar 28 2007 sbrabec@suse.cz
-- Updated to version 1.0alpha7:
-  * Enable mmx assembly by default
-  * Avoid some relocations that caused problems on SELinux
-  * Other build fixes
-  * time testing mode (-f) for the dump_video example
-  * Merge theora-mmx simd acceleration (x86_32 and x86_64)
-  * Major RTP payload specification update
-  * Minor format specification updates
-  * Fix some spurious calls to free() instead of _ogg_free()
-  * Fix invalid array indexing in PixelLineSearch()
-  * Improve robustness against invalid input
-  * General warning cleanup
-  * The offset_y member meaning fix.
-- Use incremental versioning scheme.
-- Documentation repackaged.
-- Use less vague names for binaries.
+* Thu Aug 03 2017 Fedora Release Engineering <releng@fedoraproject.org> - 1:1.1.1-17
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_27_Binutils_Mass_Rebuild
 
-* Tue Aug  1 2006 dmueller@suse.de
-- Reenable test suite run with valgrind.
+* Wed Jul 26 2017 Fedora Release Engineering <releng@fedoraproject.org> - 1:1.1.1-16
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_27_Mass_Rebuild
 
-* Fri Jul 28 2006 aj@suse.de
-- Disable test suite run with valgrind.
+* Fri Feb 10 2017 Fedora Release Engineering <releng@fedoraproject.org> - 1:1.1.1-15
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_26_Mass_Rebuild
 
-* Fri Mar 10 2006 bk@suse.de
-- libtheora-devel: add libogg-devel to Requires (found by .la check)
+* Thu Feb 04 2016 Fedora Release Engineering <releng@fedoraproject.org> - 1:1.1.1-14
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_24_Mass_Rebuild
 
-* Mon Feb  6 2006 adrian@suse.de
-- add -fstack-protector
-- enable test suite run with valgrind
+* Wed Jun 17 2015 Fedora Release Engineering <rel-eng@lists.fedoraproject.org> - 1:1.1.1-13
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_23_Mass_Rebuild
 
-* Sun Jan 29 2006 aj@suse.de
-- Fix BuildRequires.
+* Sun Aug 17 2014 Fedora Release Engineering <rel-eng@lists.fedoraproject.org> - 1:1.1.1-12
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_21_22_Mass_Rebuild
 
-* Wed Jan 25 2006 mls@suse.de
-- converted neededforbuild to BuildRequires
+* Tue Jun 10 2014 Peter Robinson <pbrobinson@fedoraproject.org> 1.1.1-11
+- Update config.guess/sub for new architecture support
 
-* Wed Oct 19 2005 adrian@suse.de
-- update to version 1.0 alpha 5
-- enable test suite
-- generate API documentation with doxygen
+* Mon Jun 09 2014 Adam Jackson <ajax@redhat.com> 1.1.1-10
+- Fix FTBFS due to underlinked examples
 
-* Thu Apr 14 2005 sbrabec@suse.cz
-- Added audiofile-devel to neededforbuild.
+* Sat Jun 07 2014 Fedora Release Engineering <rel-eng@lists.fedoraproject.org> - 1:1.1.1-10
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_21_Mass_Rebuild
 
-* Wed Jan  5 2005 adrian@suse.de
-- update to version 1.0 alpha 4
+* Sat Aug  3 2013 Peter Robinson <pbrobinson@fedoraproject.org> 1:1.1.1-9
+- Add patch to fix FTBFS with libpng-1.6
 
-* Tue Oct 26 2004 adrian@suse.de
-- remove .svn directories
+* Sat Aug 03 2013 Fedora Release Engineering <rel-eng@lists.fedoraproject.org> - 1:1.1.1-8
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_20_Mass_Rebuild
 
-* Mon Oct 18 2004 adrian@suse.de
-- update to current cvs to get pc file
+* Fri May 10 2013 Hans de Goede <hdegoede@redhat.com> - 1:1.1.1-7
+- Remove no longer needed autoreconf call, %%configure from redhat-rpm-config
+  >= 9.1.0-42 updates config.guess and config.sub for new architecture support
 
-* Thu Aug 19 2004 adrian@suse.de
-- create -devel package
+* Fri May  3 2013 Hans de Goede <hdegoede@redhat.com> - 1:1.1.1-6
+- run autoreconf for aarch64 support (#925898)
+- add a patch from upstream fixing a crash when compiled with gcc-4.8 (#959001)
+- cleanup spec-file
 
-* Tue Jun 29 2004 adrian@suse.de
-- do not install the libtool scripts ...
+* Thu Feb 14 2013 Fedora Release Engineering <rel-eng@lists.fedoraproject.org> - 1:1.1.1-5
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_19_Mass_Rebuild
 
-* Sat Apr 24 2004 adrian@suse.de
-- use xorg-x11 packages
+* Thu Jul 19 2012 Fedora Release Engineering <rel-eng@lists.fedoraproject.org> - 1:1.1.1-4
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_18_Mass_Rebuild
 
-* Wed Apr 21 2004 adrian@suse.de
-- compile with -fno-strict-aliasing
+* Fri Jan 13 2012 Fedora Release Engineering <rel-eng@lists.fedoraproject.org> - 1:1.1.1-3
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_17_Mass_Rebuild
 
-* Sun Mar 21 2004 adrian@suse.de
-- update to alpha 3 release
-  on disc format is still not frozen, so this remain an internal package
+* Tue Dec 06 2011 Adam Jackson <ajax@redhat.com> - 1:1.1.1-2
+- Rebuild for new libpng
 
-* Wed Feb  4 2004 adrian@suse.de
-- remove binaries from example dir (they get installed anyway)
+* Thu Feb 17 2011 Adam Jackson <ajax@redhat.com> 1.1.1-1
+- libtheora 1.1.1
 
-* Fri Jan 30 2004 adrian@suse.de
-- initial package of current snapshot (post alpha2)
-- internal package only atm
+* Tue Feb 08 2011 Fedora Release Engineering <rel-eng@lists.fedoraproject.org> - 1:1.1.0-2
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_15_Mass_Rebuild
+
+* Fri Sep 25 2009 Adam Jackson <ajax@redhat.com> 1.1.0-1
+- libtheora 1.1.0
+
+* Mon Aug 24 2009 Matthias Clasen <mclasen@redhat.com> - 1.1beta3
+- 1.1beta3
+
+* Thu Aug 13 2009 Matthias Clasen <mclasen@redhat.com> - 1.1beta2
+- 1.1beta2
+
+* Wed Aug 12 2009 Ville Skyttä <ville.skytta@iki.fi> - 1:1.1beta1-2
+- Use xz compressed upstream tarball.
+
+* Wed Aug  5 2009 Matthias Clasen <mclasen@redhat.com> - 1.1beta1
+- 1.1beta1
+
+* Sat Jul 25 2009 Fedora Release Engineering <rel-eng@lists.fedoraproject.org> - 1:1.1alpha2-2
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_12_Mass_Rebuild
+
+* Wed Jun 03 2009 Adam Jackson <ajax@redhat.com> 1.1alpha2-1
+- 1.1alpha2
+
+* Tue Jun 02 2009 Adam Jackson <ajax@redhat.com> 1:1.1alpha1-1
+- libtheora 1.1alpha1.  Woo Thusnelda!
+
+* Tue Feb 24 2009 Matthias Clasen <mclasen@redhat.com> 1:1.0-3
+- Make -devel-docs noarch
+
+* Sat Dec 20 2008 Hans de Goede <hdegoede@redhat.com> 1:1.0-2
+- Put development documentation in its own subpackage to fix multilib
+  conflicts (rh 477290)
+
+* Tue Dec 16 2008 Hans de Goede <hdegoede@redhat.com> 1:1.0-1
+- 1.0 final release
+- need epoch because we were not using the special pre-release
+  version-release scheme used now a days in Fedora :(
+
+* Fri Oct  3 2008 Matthias Clasen <mclasen@redhat.com> 1.0rc1-2
+- Fix build on x86_64
+
+* Fri Oct  3 2008 Matthias Clasen <mclasen@redhat.com> 1.0rc1-1
+- Update to 1.0rc1
+
+* Wed May 14 2008 Hans de Goede <j.w.r.degoede@hhs.nl> 0:1.0beta3-2
+- Fix libtheoraenc getting build but not installed
+
+* Thu Apr 17 2008 Hans de Goede <j.w.r.degoede@hhs.nl> 1.0beta3-1
+- New upstream release 1.0beta3
+
+* Tue Feb 19 2008 Fedora Release Engineering <rel-eng@fedoraproject.org> - 0:1.0beta2-4
+- Autorebuild for GCC 4.3
+
+* Thu Nov 29 2007 Hans de Goede <j.w.r.degoede@hhs.nl> 1.0beta2-3
+- Update png2theora to latest svn version (bz 401681)
+
+* Wed Oct 24 2007 Hans de Goede <j.w.r.degoede@hhs.nl> 1.0beta2-2
+- Put Obsoletes/Provides theora-exp-devel in the -devel package instead of in
+  the -tools package (oops)
+- Install png2theora (bz 349951)
+
+* Thu Oct 18 2007 Hans de Goede <j.w.r.degoede@hhs.nl> 1.0beta2-1
+- New upstream bugfix release 1.0beta2
+
+* Thu Oct 11 2007 Hans de Goede <j.w.r.degoede@hhs.nl> 1.0beta1-1
+- New upstream release 1.0beta1 (bz 307571)
+
+* Fri Sep 14 2007 Hans de Goede <j.w.r.degoede@hhs.nl> 1.0alpha8-0.3.svn13393
+- Fix textrelocations on i386 (bz 253591)
+
+* Wed Aug 22 2007 Hans de Goede <j.w.r.degoede@hhs.nl> 1.0alpha8-0.2.svn13393
+- Fix Source0 URL
+
+* Sun Jul 29 2007 Hans de Goede <j.w.r.degoede@hhs.nl> 1.0alpha8-0.1.svn13393
+- Update to 1.0alpha8 svn (revision 13393) snapshot
+
+* Wed Apr 11 2007 Matthias Clasen <mclasen@redhat.com> - 0:1.0alpha7-3
+- Add api docs to the -devel package
+
+* Sun Mar 25 2007 Matthias Clasen <mclasen@redhat.com> - 0:1.0alpha7-2
+- Fix a directory ownership issue (#233872)
+- Small spec cleanups
+
+* Wed Aug 02 2006 Monty <cmontgom@redhat.com> - 0:1.0alpha7-1
+- Update to 1.0alpha7
+
+* Wed Jul 12 2006 Jesse Keating <jkeating@redhat.com> - 0:1.0alpha5-1.2.2
+- rebuild
+
+* Fri Feb 10 2006 Jesse Keating <jkeating@redhat.com> - 0:1.0alpha5-1.2.1
+- bump again for double-long bug on ppc(64)
+
+* Tue Feb 07 2006 Jesse Keating <jkeating@redhat.com> - 0:1.0alpha5-1.2
+- rebuilt for new gcc4.1 snapshot and glibc changes
+
+* Fri Dec 09 2005 Jesse Keating <jkeating@redhat.com>
+- rebuilt
+
+* Wed Nov 09 2005 John (J5) Palmieri <johnp@redhar.com> - 1.0alpha5-1
+- Update to 1.0alpha5
+
+* Wed Mar 02 2005 John (J5) Palmieri <johnp@redhar.com> - 1.0alpha4-2
+- rebuild with gcc 4.0
+
+* Mon Jan 03 2005 Colin Walters <walters@redhat.com> - 1.0alpha4-1
+- New upstream version 1.0alpha4 
+- Remove upstreamed patch libtheora-1.0alpha3-include.patch 
+- Use Theora_I_spec.pdf for spec
+- Add in .pc file (yay! another library sees the light)
+
+* Tue Oct 05 2004 Colin Walters <walters@redhat.com> - 1.0alpha3-5
+- Add BuildRequires on libvorbis-devel (134664)
+
+* Sat Jul 17 2004 Warren Togami <wtogami@redhat.com> - 1.0alpha3-4
+- Add Epoch dependencies for future Epoch increment safety measure
+
+* Thu Jul 15 2004 Colin Walters <walters@redhat.com> - 1.0alpha3-3
+- Apply patch to fix include path, thanks to Thomas Vander Stichele
+
+* Tue Jul 13 2004 Jeremy Katz <katzj@redhat.com> - 1.0alpha3-2
+- rebuild
+
+* Mon Jun 21 2004 Jeremy Katz <katzj@redhat.com> - 1.0alpha3-1
+- Initial build

@@ -1,16 +1,20 @@
-Vendor:         Microsoft Corporation
-Distribution:   Azure Linux
+%if 0%{?fedora} >= 36 || 0%{?rhel} > 9
+%global dict_dirname hunspell
+%else
+%global dict_dirname myspell
+%endif
+
 Name: hunspell-tet
 Summary: Tetum hunspell dictionaries
 %global upstreamid 20050108
 Version: 0.%{upstreamid}
-Release: 23%{?dist}
+Release: 34%{?dist}
 Source: http://download.services.openoffice.org/contrib/dictionaries/tet_ID.zip
 URL: http://borel.slu.edu/crubadan/apps.html
-License: GPLv2+
+License: GPL-2.0-or-later
 BuildArch: noarch
 
-Requires: hunspell
+Requires: hunspell-filesystem
 Supplements: (hunspell and langpacks-tet)
 
 %description
@@ -32,9 +36,9 @@ for i in README_tet_ID.txt; do
 done
 
 %install
-mkdir -p $RPM_BUILD_ROOT/%{_datadir}/myspell
-cp -p tet_ID.* $RPM_BUILD_ROOT/%{_datadir}/myspell/
-pushd $RPM_BUILD_ROOT/%{_datadir}/myspell/
+mkdir -p $RPM_BUILD_ROOT/%{_datadir}/%{dict_dirname}
+cp -p tet_ID.* $RPM_BUILD_ROOT/%{_datadir}/%{dict_dirname}/
+pushd $RPM_BUILD_ROOT/%{_datadir}/%{dict_dirname}/
 tet_ID_aliases="tet_TL"
 for lang in $tet_ID_aliases; do
         ln -s tet_ID.aff $lang.aff
@@ -44,12 +48,46 @@ popd
 
 
 %files
-%license README_tet_ID.txt
-%{_datadir}/myspell/*
+%doc README_tet_ID.txt
+%{_datadir}/%{dict_dirname}/*
 
 %changelog
-* Fri Oct 15 2021 Pawel Winogrodzki <pawelwi@microsoft.com> - 0.20050108-23
-- Initial CBL-Mariner import from Fedora 32 (license: MIT).
+* Thu Jul 18 2024 Fedora Release Engineering <releng@fedoraproject.org> - 0.20050108-34
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_41_Mass_Rebuild
+
+* Wed Jan 24 2024 Fedora Release Engineering <releng@fedoraproject.org> - 0.20050108-33
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Sat Jan 20 2024 Fedora Release Engineering <releng@fedoraproject.org> - 0.20050108-32
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Thu Jul 20 2023 Fedora Release Engineering <releng@fedoraproject.org> - 0.20050108-31
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_39_Mass_Rebuild
+
+* Thu Feb 23 2023 Caolán McNamara <caolanm@redhat.com> - 0.20050108-30
+- migrated to SPDX license
+
+* Thu Jan 19 2023 Fedora Release Engineering <releng@fedoraproject.org> - 0.20050108-29
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_38_Mass_Rebuild
+
+* Thu Jul 21 2022 Fedora Release Engineering <releng@fedoraproject.org> - 0.20050108-28
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_37_Mass_Rebuild
+
+* Tue Mar 22 2022 Parag Nemade <pnemade AT redhat DOT com> - 0.20050108-27
+- Add conditional for new hunspell dir path and update to Requires:
+  hunspell-filesystem
+
+* Thu Jan 20 2022 Fedora Release Engineering <releng@fedoraproject.org> - 0.20050108-26
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_36_Mass_Rebuild
+
+* Thu Jul 22 2021 Fedora Release Engineering <releng@fedoraproject.org> - 0.20050108-25
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_35_Mass_Rebuild
+
+* Tue Jan 26 2021 Fedora Release Engineering <releng@fedoraproject.org> - 0.20050108-24
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_34_Mass_Rebuild
+
+* Tue Jul 28 2020 Fedora Release Engineering <releng@fedoraproject.org> - 0.20050108-23
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_33_Mass_Rebuild
 
 * Wed Jan 29 2020 Fedora Release Engineering <releng@fedoraproject.org> - 0.20050108-22
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_32_Mass_Rebuild
@@ -106,14 +144,14 @@ popd
 * Fri Jul 24 2009 Fedora Release Engineering <rel-eng@lists.fedoraproject.org> - 0.20050108-5
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_12_Mass_Rebuild
 
-* Sat Jul 11 2009 Caolan McNamara <caolanm@redhat.com> - 0.20050108-4
+* Sat Jul 11 2009 Caolán McNamara <caolanm@redhat.com> - 0.20050108-4
 - tidy spec
 
 * Tue Feb 24 2009 Fedora Release Engineering <rel-eng@lists.fedoraproject.org> - 0.20050108-3
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_11_Mass_Rebuild
 
-* Thu Nov 27 2008 Caolan McNamara <caolanm@redhat.com> - 0.20050108-2
+* Thu Nov 27 2008 Caolán McNamara <caolanm@redhat.com> - 0.20050108-2
 - East Timor also
 
-* Wed Nov 05 2008 Caolan McNamara <caolanm@redhat.com> - 0.20050108-1
+* Wed Nov 05 2008 Caolán McNamara <caolanm@redhat.com> - 0.20050108-1
 - initial version

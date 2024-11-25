@@ -1,23 +1,21 @@
-
-Vendor:         Microsoft Corporation
-Distribution:   Azure Linux
 Name: libiptcdata
 Version: 1.0.5
-Release: 6%{?dist}
+Release: 19%{?dist}
 Summary: IPTC tag library
 
-License: GPLv2
+License: LGPL-2.0-only
 URL: https://github.com/ianw/%{name}
-Source0: https://github.com/ianw/%{name}/archive/refs/tags/release_1_0_5.tar.gz#/%{name}-release_1_0_5.tar.gz
+Source0: https://github.com/ianw/%{name}/releases/download/%{name}-%{version}.tar.gz
 
-BuildRequires:  %{_bindir}/xsltproc
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  gcc
 BuildRequires:  gettext
 BuildRequires:  gettext-devel
 BuildRequires:  libtool
+BuildRequires:  gtk-doc
 BuildRequires:  python3-devel
+BuildRequires:  python3-setuptools
 
 
 %description
@@ -31,6 +29,7 @@ metadata.
 Summary:        Python bindings for libiptcdata
 Requires:       %{name}%{?_isa} = %{version}-%{release}
 BuildRequires:  python3-devel
+BuildRequires: make
 
 %description -n python3-%{name}
 The libiptcdata-python package contains a Python module that allows Python
@@ -48,13 +47,16 @@ that you can use to develop libiptcdata applications.
 
 
 %prep
-%autosetup -n "%{name}-release_1_0_5"
+%autosetup
+# fix compatibility with gtk-doc 1.26
+gtkdocize
 autoreconf -fiv
 
 
 %build
+#configure --enable-gtk-doc --disable-python --disable-static
 export PYTHON_VERSION=%python3_version
-%configure --disable-gtk-doc --enable-python --disable-static
+%configure --enable-gtk-doc --enable-python --disable-static
 %make_build
 
 
@@ -79,16 +81,54 @@ find %{buildroot} -name "*.la" -exec rm -f {} \;
 %{_libdir}/lib*.so
 %{_libdir}/pkgconfig/*.pc
 %{_includedir}/libiptcdata
+%{_datadir}/gtk-doc/html/libiptcdata
 
 
 %changelog
-* Mon Mar 21 2022 Pawel Winogrodzki <pawelwi@microsoft.com> - 1.0.5-6
-- Adding BR on '%%{_bindir}/xsltproc'.
-- Disabled gtk doc generation to remove network dependency during build-time.
-- License verified.
+* Thu Jul 18 2024 Fedora Release Engineering <releng@fedoraproject.org> - 1.0.5-19
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_41_Mass_Rebuild
 
-* Fri Oct 15 2021 Pawel Winogrodzki <pawelwi@microsoft.com> - 1.0.5-5
-- Initial CBL-Mariner import from Fedora 32 (license: MIT).
+* Fri Jun 07 2024 Python Maint <python-maint@redhat.com> - 1.0.5-18
+- Rebuilt for Python 3.13
+
+* Thu Jan 25 2024 Fedora Release Engineering <releng@fedoraproject.org> - 1.0.5-17
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Sun Jan 21 2024 Fedora Release Engineering <releng@fedoraproject.org> - 1.0.5-16
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Thu Jul 20 2023 Fedora Release Engineering <releng@fedoraproject.org> - 1.0.5-15
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_39_Mass_Rebuild
+
+* Wed Jun 14 2023 Python Maint <python-maint@redhat.com> - 1.0.5-14
+- Rebuilt for Python 3.12
+
+* Thu Jan 19 2023 Fedora Release Engineering <releng@fedoraproject.org> - 1.0.5-13
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_38_Mass_Rebuild
+
+* Thu Jul 21 2022 Fedora Release Engineering <releng@fedoraproject.org> - 1.0.5-12
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_37_Mass_Rebuild
+
+* Mon Jun 13 2022 Python Maint <python-maint@redhat.com> - 1.0.5-11
+- Rebuilt for Python 3.11
+
+* Thu Jan 20 2022 Fedora Release Engineering <releng@fedoraproject.org> - 1.0.5-10
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_36_Mass_Rebuild
+
+* Thu Jul 22 2021 Fedora Release Engineering <releng@fedoraproject.org> - 1.0.5-9
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_35_Mass_Rebuild
+
+* Fri Jun 04 2021 Python Maint <python-maint@redhat.com> - 1.0.5-8
+- Rebuilt for Python 3.10
+
+* Tue Jan 26 2021 Fedora Release Engineering <releng@fedoraproject.org> - 1.0.5-7
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_34_Mass_Rebuild
+
+* Tue Jul 28 2020 Fedora Release Engineering <releng@fedoraproject.org> - 1.0.5-6
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_33_Mass_Rebuild
+
+* Tue May 26 2020 Miro Hrončok <mhroncok@redhat.com> - 1.0.5-5
+- Rebuilt for Python 3.9
 
 * Wed Jan 29 2020 Fedora Release Engineering <releng@fedoraproject.org> - 1.0.5-4
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_32_Mass_Rebuild

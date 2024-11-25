@@ -1,5 +1,6 @@
 {
  "Signatures": {
-  "geoclue2-2.7.0.tar.bz2": "1dce8e573cd338bc87a5bd725f89a6f543fac838e2a5d832515cb5ea0d86cf40"
+  "geoclue-2.7.0.tar.bz2": "1dce8e573cd338bc87a5bd725f89a6f543fac838e2a5d832515cb5ea0d86cf40",
+  "geoclue2.sysusers": "33b60eceec703aee2bcc51bf79b97d60aa0547eefd84793b61a6426a7791c7a5"
  }
 }

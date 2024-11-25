@@ -1,8 +1,6 @@
-Vendor:         Microsoft Corporation
-Distribution:   Azure Linux
 Name:       generic-logos
 Version:    18.0.0
-Release:    11%{?dist}
+Release:    23%{?dist}
 Summary:    Icons and pictures
 
 URL:        https://pagure.io/generic-logos
@@ -19,9 +17,10 @@ Provides:   system-logos = %{version}-%{release}
 Conflicts:  fedora-logos
 Conflicts:  anaconda-images <= 10
 Conflicts:  redhat-artwork <= 5.0.5
+BuildRequires: make
 BuildRequires: fdupes
 # For _kde4_* macros:
-BuildRequires: kde-filesystem
+BuildRequires: kde4-filesystem
 # For generating the EFI icon
 BuildRequires: libicns-utils
 Requires(post): coreutils
@@ -36,7 +35,8 @@ fedora-logos or fedora-remix-logos package.
 %package httpd
 Summary: Fedora-related icons and pictures used by httpd
 Provides: system-logos-httpd = %{version}-%{release}
-Provides: fedora-logos-httpd = %{version}-%{release}
+Provides: system-logos(httpd-logo-ng)
+Conflicts: fedora-logos-httpd
 Obsoletes:  generic-logos < 17.0.0-5
 BuildArch: noarch
 
@@ -158,8 +158,44 @@ fi
 %{_datadir}/pixmaps/poweredby.png
 
 %changelog
-* Fri Oct 15 2021 Pawel Winogrodzki <pawelwi@microsoft.com> - 18.0.0-11
-- Initial CBL-Mariner import from Fedora 32 (license: MIT).
+* Sat Jul 27 2024 Neal Gompa <ngompa@fedoraproject.org> - 18.0.0-23
+- Switch kde macros BR to kde4-filesystem
+
+* Thu Jul 18 2024 Fedora Release Engineering <releng@fedoraproject.org> - 18.0.0-22
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_41_Mass_Rebuild
+
+* Wed Jan 24 2024 Fedora Release Engineering <releng@fedoraproject.org> - 18.0.0-21
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Fri Jan 19 2024 Fedora Release Engineering <releng@fedoraproject.org> - 18.0.0-20
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Wed Jul 19 2023 Fedora Release Engineering <releng@fedoraproject.org> - 18.0.0-19
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_39_Mass_Rebuild
+
+* Thu Jan 19 2023 Fedora Release Engineering <releng@fedoraproject.org> - 18.0.0-18
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_38_Mass_Rebuild
+
+* Thu Jul 21 2022 Fedora Release Engineering <releng@fedoraproject.org> - 18.0.0-17
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_37_Mass_Rebuild
+
+* Thu Jan 20 2022 Fedora Release Engineering <releng@fedoraproject.org> - 18.0.0-16
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_36_Mass_Rebuild
+
+* Sun Oct 17 2021 Matt McCutchen <matt@mattmccutchen.net> - 18.0.0-15
+- Make generic-logos-httpd provide system-logos(httpd-logo-ng) (#2014863)
+
+* Thu Jul 22 2021 Fedora Release Engineering <releng@fedoraproject.org> - 18.0.0-14
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_35_Mass_Rebuild
+
+* Tue Jul  6 2021 Tom Callaway <spot@fedoraproject.org> - 18.0.0-13
+- fix generic-logos-httpd conflict with fedora-logos-httpd
+
+* Tue Jan 26 2021 Fedora Release Engineering <releng@fedoraproject.org> - 18.0.0-12
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_34_Mass_Rebuild
+
+* Mon Jul 27 2020 Fedora Release Engineering <releng@fedoraproject.org> - 18.0.0-11
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_33_Mass_Rebuild
 
 * Tue Jan 28 2020 Fedora Release Engineering <releng@fedoraproject.org> - 18.0.0-10
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_32_Mass_Rebuild

@@ -1,12 +1,10 @@
-Vendor:         Microsoft Corporation
-Distribution:   Azure Linux
 %global provider_dir %{_libdir}/cmpi
 
 Name:           sblim-cmpi-nfsv4
 Summary:        SBLIM nfsv4 instrumentation
 Version:        1.1.0
-Release:        24%{?dist}
-License:        EPL
+Release:        35%{?dist}
+License:        EPL-1.0
 URL:            http://sourceforge.net/projects/sblim/
 Source0:        http://downloads.sourceforge.net/project/sblim/providers/%{name}/%{version}/%{name}-%{version}.tar.bz2
 
@@ -17,6 +15,7 @@ Patch1:         sblim-cmpi-nfsv4-1.1.0-pegasus-interop.patch
 # Patch2: call systemctl in provider registration
 Patch2:         sblim-cmpi-nfsv4-1.1.0-prov-reg-sfcb-systemd.patch
 
+BuildRequires: make
 BuildRequires:  sblim-cmpi-base-devel sblim-cmpi-devel
 BuildRequires:  gcc
 Requires:       sblim-cmpi-base cim-server cim-schema
@@ -45,15 +44,14 @@ SBLIM Base Fsvol Testcase Files for SBLIM Testsuite
 
 %prep
 %setup -q
-%patch 0 -p1 -b .docdir
-%patch 1 -p1 -b .pegasus-interop
-%patch 2 -p1 -b .prov-reg-sfcb-systemd
+%autopatch -p1
 
 %build
+%global build_type_safety_c 0
 %ifarch s390 s390x ppc ppc64
 export CFLAGS="$RPM_OPT_FLAGS -fsigned-char"
 %else
-export CFLAGS="$RPM_OPT_FLAGS" 
+export CFLAGS="$RPM_OPT_FLAGS"
 %endif
 %configure \
         --disable-static \
@@ -99,8 +97,41 @@ mv $RPM_BUILD_ROOT/%{_libdir}/libLinux_NFSv4SystemConfigurationUtil.so $RPM_BUIL
 %postun -p /sbin/ldconfig
 
 %changelog
-* Fri Oct 15 2021 Pawel Winogrodzki <pawelwi@microsoft.com> - 1.1.0-24
-- Initial CBL-Mariner import from Fedora 32 (license: MIT).
+* Sat Jul 20 2024 Fedora Release Engineering <releng@fedoraproject.org> - 1.1.0-35
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_41_Mass_Rebuild
+
+* Sat Jan 27 2024 Fedora Release Engineering <releng@fedoraproject.org> - 1.1.0-34
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Wed Aug 16 2023 Florian Weimer <fweimer@redhat.com> - 1.1.0-33
+- Set build_type_safety_c to 0 (#2155657)
+
+* Sat Jul 22 2023 Fedora Release Engineering <releng@fedoraproject.org> - 1.1.0-32
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_39_Mass_Rebuild
+
+* Fri May 26 2023 Vitezslav Crhonek <vcrhonek@redhat.com> - 1.1.0-31
+- SPDX migration
+
+* Sat Jan 21 2023 Fedora Release Engineering <releng@fedoraproject.org> - 1.1.0-30
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_38_Mass_Rebuild
+
+* Wed Dec 21 2022 Florian Weimer <fweimer@redhat.com> - 1.1.0-29
+- Build in C89 mode (#2155657)
+
+* Sat Jul 23 2022 Fedora Release Engineering <releng@fedoraproject.org> - 1.1.0-28
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_37_Mass_Rebuild
+
+* Sat Jan 22 2022 Fedora Release Engineering <releng@fedoraproject.org> - 1.1.0-27
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_36_Mass_Rebuild
+
+* Fri Jul 23 2021 Fedora Release Engineering <releng@fedoraproject.org> - 1.1.0-26
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_35_Mass_Rebuild
+
+* Wed Jan 27 2021 Fedora Release Engineering <releng@fedoraproject.org> - 1.1.0-25
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_34_Mass_Rebuild
+
+* Wed Jul 29 2020 Fedora Release Engineering <releng@fedoraproject.org> - 1.1.0-24
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_33_Mass_Rebuild
 
 * Thu Jan 30 2020 Fedora Release Engineering <releng@fedoraproject.org> - 1.1.0-23
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_32_Mass_Rebuild

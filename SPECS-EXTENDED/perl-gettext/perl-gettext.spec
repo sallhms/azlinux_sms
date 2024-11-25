@@ -3,14 +3,12 @@
 
 Name:           perl-gettext
 Version:        1.07
-Release:        17%{?dist}
+Release:        33%{?dist}
 Summary:        Interface to gettext family of functions
 
-License:        GPL+ or Artistic
-Vendor:         Microsoft Corporation
-Distribution:   Azure Linux
+License:        GPL-1.0-or-later OR Artistic-1.0-Perl
 URL:            https://metacpan.org/release/gettext
-Source0:        https://cpan.metacpan.org/authors/id/P/PV/PVANDRY/%{tarname}-%{version}.tar.gz#/perl-%{tarname}-%{version}.tar.gz
+Source0:        https://cpan.metacpan.org/authors/id/P/PV/PVANDRY/%{tarname}-%{version}.tar.gz
 
 BuildRequires:  gcc
 BuildRequires:  %{__make}
@@ -31,6 +29,10 @@ BuildRequires:  perl(Encode)
 # Tests:
 BuildRequires:  perl(Test)
 
+# Need to allow LANG=en_US.UTF-8
+# Testsuite fails w/ LANG=C.UTF-8 on fedora >= 40
+BuildRequires:  glibc-langpack-en
+
 %description
 The gettext module permits access from perl to the gettext() family of
 functions for retrieving message strings from databases constructed to
@@ -39,7 +41,6 @@ internationalize software.
 
 %package -n perl-%{tarname}
 Summary:        %{summary}
-Requires:  perl(:MODULE_COMPAT_%(eval "`%{__perl} -V:version`"; echo $version))
 
 %description -n perl-%{tarname}
 The gettext module permits access from perl to the gettext() family of
@@ -50,17 +51,18 @@ internationalize software.
 %setup -q -n %{tarname}-%{version}
 
 %build
-%{__perl} Makefile.PL INSTALLDIRS=vendor OPTIMIZE="$RPM_OPT_FLAGS" NO_PACKLIST=1
-%{__make} %{?_smp_mflags}
+%{__perl} Makefile.PL INSTALLDIRS=vendor OPTIMIZE="$RPM_OPT_FLAGS" NO_PACKLIST=1 NO_PERLLOCAL=1
+%{make_build}
 
 
 %install
-%{__make} pure_install PERL_INSTALL_ROOT=$RPM_BUILD_ROOT
+%{make_install}
 %{_fixperms} $RPM_BUILD_ROOT/*
 
 
 %check
-%{__make} test
+# Testsuite fails w/ LANG=C.UTF-8 on fedora >= 40
+LANG=en_US.UTF-8 %{__make} test
 
 
 %files -n perl-%{tarname}
@@ -71,8 +73,59 @@ internationalize software.
 
 
 %changelog
-* Fri Oct 15 2021 Pawel Winogrodzki <pawelwi@microsoft.com> - 1.07-17
-- Initial CBL-Mariner import from Fedora 32 (license: MIT).
+* Fri Jul 19 2024 Fedora Release Engineering <releng@fedoraproject.org> - 1.07-33
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_41_Mass_Rebuild
+
+* Mon Jun 10 2024 Jitka Plesnikova <jplesnik@redhat.com> - 1.07-32
+- Perl 5.40 rebuild
+
+* Sat Jan 27 2024 Ralf Corsépius <corsepiu@fedoraproject.org> - 1.07-29
+- BR: glibc-langpack-en (RHBZ#2259131).
+
+* Thu Jan 25 2024 Fedora Release Engineering <releng@fedoraproject.org> - 1.07-30
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Sun Jan 21 2024 Fedora Release Engineering <releng@fedoraproject.org> - 1.07-29
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Fri Jul 21 2023 Fedora Release Engineering <releng@fedoraproject.org> - 1.07-28
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_39_Mass_Rebuild
+
+* Tue Jul 11 2023 Jitka Plesnikova <jplesnik@redhat.com> - 1.07-27
+- Perl 5.38 rebuild
+
+* Fri Jan 20 2023 Fedora Release Engineering <releng@fedoraproject.org> - 1.07-26
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_38_Mass_Rebuild
+
+* Mon Nov 28 2022 Ralf Corsépius <corsepiu@fedoraproject.org> - 1.07-25
+- Convert license to SPDX.
+- Modernize spec.
+- Update sources to sha215.
+
+* Fri Jul 22 2022 Fedora Release Engineering <releng@fedoraproject.org> - 1.07-24
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_37_Mass_Rebuild
+
+* Mon May 30 2022 Jitka Plesnikova <jplesnik@redhat.com> - 1.07-23
+- Perl 5.36 rebuild
+
+* Fri Jan 21 2022 Fedora Release Engineering <releng@fedoraproject.org> - 1.07-22
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_36_Mass_Rebuild
+
+* Tue Jul 27 2021 Fedora Release Engineering <releng@fedoraproject.org> - 1.07-21
+- Second attempt - Rebuilt for
+  https://fedoraproject.org/wiki/Fedora_35_Mass_Rebuild
+
+* Fri May 21 2021 Jitka Plesnikova <jplesnik@redhat.com> - 1.07-20
+- Perl 5.34 rebuild
+
+* Wed Jan 27 2021 Fedora Release Engineering <releng@fedoraproject.org> - 1.07-19
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_34_Mass_Rebuild
+
+* Tue Jul 28 2020 Fedora Release Engineering <releng@fedoraproject.org> - 1.07-18
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_33_Mass_Rebuild
+
+* Mon Jun 22 2020 Jitka Plesnikova <jplesnik@redhat.com> - 1.07-17
+- Perl 5.32 rebuild
 
 * Thu Jan 30 2020 Fedora Release Engineering <releng@fedoraproject.org> - 1.07-16
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_32_Mass_Rebuild

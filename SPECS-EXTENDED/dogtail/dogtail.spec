@@ -1,10 +1,8 @@
-Vendor:         Microsoft Corporation
-Distribution:   Azure Linux
 
 Summary: GUI test tool and automation framework
 Name: dogtail
 Version: 0.9.11
-Release: 8%{?dist}
+Release: 22%{?dist}
 License: GPLv2
 URL: https://gitlab.com/dogtail/dogtail/
 Source0: https://gitlab.com/dogtail/dogtail/raw/released/%{name}-%{version}.tar.gz
@@ -83,8 +81,50 @@ desktop-file-install $RPM_BUILD_ROOT/%{_datadir}/applications/sniff.desktop \
 
 
 %changelog
-* Fri Oct 15 2021 Pawel Winogrodzki <pawelwi@microsoft.com> - 0.9.11-8
-- Initial CBL-Mariner import from Fedora 32 (license: MIT).
+* Wed Jul 17 2024 Fedora Release Engineering <releng@fedoraproject.org> - 0.9.11-22
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_41_Mass_Rebuild
+
+* Fri Jun 07 2024 Python Maint <python-maint@redhat.com> - 0.9.11-21
+- Rebuilt for Python 3.13
+
+* Wed Jan 24 2024 Fedora Release Engineering <releng@fedoraproject.org> - 0.9.11-20
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Fri Jan 19 2024 Fedora Release Engineering <releng@fedoraproject.org> - 0.9.11-19
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Wed Jul 19 2023 Fedora Release Engineering <releng@fedoraproject.org> - 0.9.11-18
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_39_Mass_Rebuild
+
+* Tue Jun 13 2023 Python Maint <python-maint@redhat.com> - 0.9.11-17
+- Rebuilt for Python 3.12
+
+* Thu Jan 19 2023 Fedora Release Engineering <releng@fedoraproject.org> - 0.9.11-16
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_38_Mass_Rebuild
+
+* Thu Jul 21 2022 Fedora Release Engineering <releng@fedoraproject.org> - 0.9.11-15
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_37_Mass_Rebuild
+
+* Mon Jun 13 2022 Python Maint <python-maint@redhat.com> - 0.9.11-14
+- Rebuilt for Python 3.11
+
+* Thu Jan 20 2022 Fedora Release Engineering <releng@fedoraproject.org> - 0.9.11-13
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_36_Mass_Rebuild
+
+* Wed Jul 21 2021 Fedora Release Engineering <releng@fedoraproject.org> - 0.9.11-12
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_35_Mass_Rebuild
+
+* Fri Jun 04 2021 Python Maint <python-maint@redhat.com> - 0.9.11-11
+- Rebuilt for Python 3.10
+
+* Tue Jan 26 2021 Fedora Release Engineering <releng@fedoraproject.org> - 0.9.11-10
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_34_Mass_Rebuild
+
+* Mon Jul 27 2020 Fedora Release Engineering <releng@fedoraproject.org> - 0.9.11-9
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_33_Mass_Rebuild
+
+* Tue May 26 2020 Miro Hrončok <mhroncok@redhat.com> - 0.9.11-8
+- Rebuilt for Python 3.9
 
 * Tue Jan 28 2020 Fedora Release Engineering <releng@fedoraproject.org> - 0.9.11-7
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_32_Mass_Rebuild

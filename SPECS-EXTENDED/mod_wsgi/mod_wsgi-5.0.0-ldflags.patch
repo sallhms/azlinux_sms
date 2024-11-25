@@ -1,0 +1,88 @@
+From dbbbd249c5726767793fa0146a61941abba766f1 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Miro=20Hron=C4=8Dok?= <miro@hroncok.cz>
+Date: Mon, 15 Jan 2024 12:50:02 +0100
+Subject: [PATCH 1/2] Stop adding PYTHON_CFGDIR to LD_RUN_PATH and
+ PYTHON_LDFLAGS if there is no libpython
+
+The PYTHON_CFGDIR variable is more or less something like /usr/lib64/python3.12/config.
+
+Not only does this directory not exist on Python 3.6+ (it is called differently),
+but there is no libpython.so in it.
+Adding it to LD paths makes no difference.
+
+I could fix up the way the path is determined,
+but I decided not to touch this code not to break old use cases.
+
+Instead, the directory is only added to LD paths when there is something relevant in it.
+
+Fixes https://github.com/GrahamDumpleton/mod_wsgi/issues/872
+---
+ setup.py | 10 +++++++---
+ 1 file changed, 7 insertions(+), 3 deletions(-)
+
+diff --git a/setup.py b/setup.py
+index edbe7c8f..c51bee70 100644
+--- a/setup.py
++++ b/setup.py
+@@ -300,19 +300,21 @@ def get_apu_includes():
+         if not os.path.exists(PYTHON_CFGDIR):
+             PYTHON_CFGDIR = '%s-%s' % (PYTHON_CFGDIR, sys.platform)
+ 
+-    PYTHON_LDFLAGS = ['-L%s' % PYTHON_CFGDIR]
++    PYTHON_LDFLAGS = []
+     if PYTHON_LIBDIR != APXS_LIBDIR:
+-        PYTHON_LDFLAGS.insert(0, '-L%s' % PYTHON_LIBDIR)
++        PYTHON_LDFLAGS.append('-L%s' % PYTHON_LIBDIR)
+ 
+     PYTHON_LDLIBS = ['-lpython%s' % PYTHON_LDVERSION]
+ 
+     if os.path.exists(os.path.join(PYTHON_LIBDIR,
+             'libpython%s.a' % PYTHON_VERSION)):
+         PYTHON_LDLIBS = ['-lpython%s' % PYTHON_VERSION]
++        PYTHON_LDFLAGS.append('-L%s' % PYTHON_CFGDIR)
+ 
+     if os.path.exists(os.path.join(PYTHON_CFGDIR,
+             'libpython%s.a' % PYTHON_VERSION)):
+         PYTHON_LDLIBS = ['-lpython%s' % PYTHON_VERSION]
++        PYTHON_LDFLAGS.append('-L%s' % PYTHON_CFGDIR)
+ 
+ # Create the final set of compilation flags to be used.
+ 
+@@ -326,7 +328,9 @@ def get_apu_includes():
+ LD_RUN_PATHS = []
+ if os.name != 'nt':
+     LD_RUN_PATH = os.environ.get('LD_RUN_PATH', '')
+-    LD_RUN_PATHS = [PYTHON_CFGDIR]
++    LD_RUN_PATHS = []
++    if '-L%s' % PYTHON_CFGDIR in PYTHON_LDFLAGS:
++        LD_RUN_PATHS.append(PYTHON_CFGDIR)
+     if PYTHON_LIBDIR != APXS_LIBDIR:
+         LD_RUN_PATHS.insert(0, PYTHON_LIBDIR)
+     LD_RUN_PATH += ':' + ':'.join(LD_RUN_PATHS)
+
+From 7532634a52cdad466766c3ea52a539fd5fa5822d Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Miro=20Hron=C4=8Dok?= <miro@hroncok.cz>
+Date: Tue, 16 Jul 2024 11:10:12 +0200
+Subject: [PATCH 2/2] Don't set $LD_RUN_PATH when empty
+
+That lead to this failure when building in Fedora:
+
+    ERROR   0010: file '/usr/lib64/python3.12/site-packages/mod_wsgi/server/mod_wsgi-py312.cpython-312-x86_64-linux-gnu.so' contains an empty runpath in []
+---
+ setup.py | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/setup.py b/setup.py
+index c51bee70..670bccac 100644
+--- a/setup.py
++++ b/setup.py
+@@ -336,7 +336,8 @@ def get_apu_includes():
+     LD_RUN_PATH += ':' + ':'.join(LD_RUN_PATHS)
+     LD_RUN_PATH = LD_RUN_PATH.lstrip(':')
+ 
+-    os.environ['LD_RUN_PATH'] = LD_RUN_PATH
++    if LD_RUN_PATH:
++        os.environ['LD_RUN_PATH'] = LD_RUN_PATH
+ 
+ # On MacOS X, recent versions of Apple's Apache do not support compiling
+ # Apache modules with a target older than 10.8. This is because it

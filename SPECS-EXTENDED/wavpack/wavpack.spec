@@ -1,17 +1,16 @@
-Summary:        A completely open audiocodec
-Name:           wavpack
-Version:        5.6.0
-Release:        1%{?dist}
-License:        BSD
-Vendor:         Microsoft Corporation
-Distribution:   Azure Linux
-URL:            https://www.wavpack.com/
-Source:         https://www.wavpack.com/%{name}-%{version}.tar.bz2
+Name:		wavpack
+Summary:	A completely open audiocodec
+Version:	5.7.0
+Release:	3%{?dist}
+License:	BSD-3-Clause AND BSD-2-Clause AND LicenseRef-Fedora-Public-Domain
+Url:		http://www.wavpack.com/
+Source:		http://www.wavpack.com/%{name}-%{version}.tar.bz2
+# For autoreconf
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  libtool
-# For autoreconf
 BuildRequires:  make
+BuildRequires:  gettext-devel
 
 %description
 WavPack is a completely open audio compression format providing lossless,
@@ -21,9 +20,9 @@ version 4 format has been designed from the ground up to offer unparalleled
 performance and functionality.
 
 %package devel
-Summary:        WavPack - development files
-Requires:       %{name}%{?_isa} = %{version}-%{release}
-Requires:       pkgconfig
+Summary:	WavPack - development files
+Requires:	%{name}%{?_isa} = %{version}-%{release}
+Requires:	pkgconfig
 
 %description devel
 Files needed for developing apps using wavpack
@@ -38,17 +37,14 @@ autoreconf -ivf
 # for ARM is written for ARMv7 only and building WavPack for an ARM-non-v7
 # architecture will fail.
 # http://lists.busybox.net/pipermail/buildroot/2015-October/142117.html
-%configure --disable-static \
-%ifarch armv3l armv4b armv4l armv4tl armv5tel armv5tejl armv6l armv6hl
-    --disable-asm \
-%endif
+%configure --disable-static --disable-rpath --disable-asm
 
-%make_build
+make %{?_smp_mflags}
 
 %install
 %make_install
 rm -f %{buildroot}/%{_libdir}/*.la
-# Documentation installed through the %doc macro
+# we will install the documentation ourselves through the %doc macro
 rm -rf %{buildroot}/%{_docdir}/
 
 %ldconfig_scriptlets
@@ -70,12 +66,58 @@ rm -rf %{buildroot}/%{_docdir}/
 %doc ChangeLog doc/WavPack5PortingGuide.pdf doc/WavPack5LibraryDoc.pdf doc/WavPack5FileFormat.pdf
 
 %changelog
-* Wed Sep 06 2023 Archana Choudhary <archana1@microsoft.com> - 5.6.0-1
-- Upgrade to 5.6.0 - CVE-2021-44269 CVE-2022-2476
-- License verified
+* Mon Jul 29 2024 Tomas Korbar <tkorbar@redhat.com> - 5.7.0-3
+- Disable asm code parts
+- ASM code parts break support for cf-protection on x86_64,
+  since they do not contain such feature. This situation is
+  likely to repeat in the future and thus all code parts
+  should be compiled by compiler which knows distribution
+  settings.
 
-* Fri Oct 15 2021 Pawel Winogrodzki <pawelwi@microsoft.com> - 5.4.0-2
-- Initial CBL-Mariner import from Fedora 33 (license: MIT).
+* Sat Jul 20 2024 Fedora Release Engineering <releng@fedoraproject.org> - 5.7.0-2
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_41_Mass_Rebuild
+
+* Wed Mar 13 2024 Tomas Korbar <tkorbar@redhat.com> - 5.7.0-1
+- Rebase to 5.7.0
+- Resolves: rhbz#2267425
+
+* Sat Jan 27 2024 Fedora Release Engineering <releng@fedoraproject.org> - 5.6.0-6
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Thu Nov 02 2023 Tomas Korbar <tkorbar@redhat.com> - 5.6.0-5
+- Add licenses to fully conform to SPDX
+
+* Sat Jul 22 2023 Fedora Release Engineering <releng@fedoraproject.org> - 5.6.0-4
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_39_Mass_Rebuild
+
+* Sat Mar 11 2023 Tomas Korbar <tkorbar@redhat.com> - 5.6.0-3
+- Change the License tag to the SPDX format
+
+* Sat Jan 21 2023 Fedora Release Engineering <releng@fedoraproject.org> - 5.6.0-2
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_38_Mass_Rebuild
+
+* Thu Dec 08 2022 Tomas Korbar <tkorbar@redhat.com> - 5.6.0-1
+- Rebase to 5.6.0
+- Resolves: rhbz#2148994
+
+* Sat Jul 23 2022 Fedora Release Engineering <releng@fedoraproject.org> - 5.5.0-2
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_37_Mass_Rebuild
+
+* Wed Jul 13 2022 Tomas Korbar <tkorbar@redhat.com> - 5.5.0-1
+- Rebase to 5.5.0
+- Resolves: rhbz#2105686
+
+* Wed Apr  6 2022 Peter Lemenkov <lemenkov@gmail.com> - 5.4.0-5
+- Fix for CVE-2021-44269
+
+* Sat Jan 22 2022 Fedora Release Engineering <releng@fedoraproject.org> - 5.4.0-4
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_36_Mass_Rebuild
+
+* Fri Jul 23 2021 Fedora Release Engineering <releng@fedoraproject.org> - 5.4.0-3
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_35_Mass_Rebuild
+
+* Wed Jan 27 2021 Fedora Release Engineering <releng@fedoraproject.org> - 5.4.0-2
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_34_Mass_Rebuild
 
 * Sun Jan 17 2021 Sérgio Basto <sergio@serjux.com> - 5.4.0-1
 - Update wavpack to 5.4.0 (#1915740)
@@ -246,3 +288,4 @@ rm -rf %{buildroot}/%{_docdir}/
 * Sun Nov 13 2005 Peter Lemenkov <lemenkov@newmail.ru> 4.3-1
 - Initial build for FC-Extras
 - Version 4.3
+

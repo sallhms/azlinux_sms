@@ -1,14 +1,11 @@
-Vendor:         Microsoft Corporation
-Distribution:   Azure Linux
 Name: mythes-pl
 Summary: Polish thesaurus
 Version: 1.5
-Release: 26%{?dist}
-Source0: http://downloads.sourceforge.net/synonimy/OOo2-Thesaurus-%{version}.zip
-Source1: %{name}-LICENSE.txt
+Release: 35%{?dist}
+Source: httip://downloads.sourceforge.net/synonimy/OOo2-Thesaurus-%{version}.zip
 # URL is dead now, please don't file bugs to fix it
 URL: http://synonimy.ux.pl/
-License: LGPLv2
+License: LGPL-2.1-only
 BuildArch: noarch
 Requires: mythes
 Supplements: (mythes and langpacks-pl)
@@ -18,7 +15,6 @@ Polish thesaurus.
 
 %prep
 %autosetup -c
-cp %{SOURCE1} ./LICENSE.txt
 
 %build
 for i in README_th_pl_PL_v2.txt; do
@@ -38,16 +34,42 @@ cp -p th_pl_PL_v2.* $RPM_BUILD_ROOT/%{_datadir}/mythes
 
 
 %files
-%license LICENSE.txt
 %doc README_th_pl_PL_v2.txt
 %{_datadir}/mythes/*
 
 %changelog
-* Fri Dec 10 2021 Thomas Crain <thcrain@microsoft.com> - 1.5-26
-- License verified
+* Thu Jul 18 2024 Fedora Release Engineering <releng@fedoraproject.org> - 1.5-35
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_41_Mass_Rebuild
 
-* Fri Oct 15 2021 Pawel Winogrodzki <pawelwi@microsoft.com> - 1.5-25
-- Initial CBL-Mariner import from Fedora 32 (license: MIT).
+* Thu Jan 25 2024 Fedora Release Engineering <releng@fedoraproject.org> - 1.5-34
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Sun Jan 21 2024 Fedora Release Engineering <releng@fedoraproject.org> - 1.5-33
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Thu Jul 20 2023 Fedora Release Engineering <releng@fedoraproject.org> - 1.5-32
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_39_Mass_Rebuild
+
+* Fri Feb 24 2023 Caolán McNamara <caolanm@redhat.com> - 1.5-31
+- migrated to SPDX license
+
+* Thu Jan 19 2023 Fedora Release Engineering <releng@fedoraproject.org> - 1.5-30
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_38_Mass_Rebuild
+
+* Fri Jul 22 2022 Fedora Release Engineering <releng@fedoraproject.org> - 1.5-29
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_37_Mass_Rebuild
+
+* Thu Jan 20 2022 Fedora Release Engineering <releng@fedoraproject.org> - 1.5-28
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_36_Mass_Rebuild
+
+* Thu Jul 22 2021 Fedora Release Engineering <releng@fedoraproject.org> - 1.5-27
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_35_Mass_Rebuild
+
+* Tue Jan 26 2021 Fedora Release Engineering <releng@fedoraproject.org> - 1.5-26
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_34_Mass_Rebuild
+
+* Tue Jul 28 2020 Fedora Release Engineering <releng@fedoraproject.org> - 1.5-25
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_33_Mass_Rebuild
 
 * Wed Jan 29 2020 Fedora Release Engineering <releng@fedoraproject.org> - 1.5-24
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_32_Mass_Rebuild

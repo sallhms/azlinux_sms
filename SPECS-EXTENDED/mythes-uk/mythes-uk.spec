@@ -1,15 +1,13 @@
-Vendor:         Microsoft Corporation
-Distribution:   Azure Linux
 Name: mythes-uk
 Summary: Ukrainian thesaurus
 Version: 1.6.5
-Release: 19%{?dist}
+Release: 29%{?dist}
 Source: http://downloads.sourceforge.net/ispell-uk/spell-uk-%{version}.tgz
 URL: http://sourceforge.net/projects/ispell-uk
 #unused myspell dicts are under GPLv2+ or LGPLv2+ or MPLv1.1
 #unused hyphenation dicts are under GPLv2+
 #toplevel is GPLv2+ or LGPLv2+
-License: (GPLv2+ or LGPLv2+) and (GPLv2+ or LGPLv2+ or MPLv1.1) and GPLv2+
+License: ( GPL-2.0-or-later OR LGPL-2.1-or-later ) AND ( GPL-2.0-or-later OR LGPL-2.1-or-later OR MPL-1.1 ) AND GPL-2.0-or-later
 BuildRequires: perl-interpreter, mythes-devel
 BuildArch: noarch
 Requires: mythes
@@ -37,8 +35,38 @@ cp -p src/thesaurus/th_uk_UA_v2.* $RPM_BUILD_ROOT/%{_datadir}/mythes
 %{_datadir}/mythes/*
 
 %changelog
-* Fri Oct 15 2021 Pawel Winogrodzki <pawelwi@microsoft.com> - 1.6.5-19
-- Initial CBL-Mariner import from Fedora 32 (license: MIT).
+* Thu Jul 18 2024 Fedora Release Engineering <releng@fedoraproject.org> - 1.6.5-29
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_41_Mass_Rebuild
+
+* Thu Jan 25 2024 Fedora Release Engineering <releng@fedoraproject.org> - 1.6.5-28
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Sun Jan 21 2024 Fedora Release Engineering <releng@fedoraproject.org> - 1.6.5-27
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Thu Jul 20 2023 Fedora Release Engineering <releng@fedoraproject.org> - 1.6.5-26
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_39_Mass_Rebuild
+
+* Fri Feb 24 2023 Caolán McNamara <caolanm@redhat.com> - 1.6.5-25
+- migrated to SPDX license
+
+* Thu Jan 19 2023 Fedora Release Engineering <releng@fedoraproject.org> - 1.6.5-24
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_38_Mass_Rebuild
+
+* Fri Jul 22 2022 Fedora Release Engineering <releng@fedoraproject.org> - 1.6.5-23
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_37_Mass_Rebuild
+
+* Thu Jan 20 2022 Fedora Release Engineering <releng@fedoraproject.org> - 1.6.5-22
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_36_Mass_Rebuild
+
+* Thu Jul 22 2021 Fedora Release Engineering <releng@fedoraproject.org> - 1.6.5-21
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_35_Mass_Rebuild
+
+* Tue Jan 26 2021 Fedora Release Engineering <releng@fedoraproject.org> - 1.6.5-20
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_34_Mass_Rebuild
+
+* Tue Jul 28 2020 Fedora Release Engineering <releng@fedoraproject.org> - 1.6.5-19
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_33_Mass_Rebuild
 
 * Wed Jan 29 2020 Fedora Release Engineering <releng@fedoraproject.org> - 1.6.5-18
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_32_Mass_Rebuild

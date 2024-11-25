@@ -1,15 +1,17 @@
-Vendor:         Microsoft Corporation
-Distribution:   Azure Linux
 %global srcname d2to1
 
 Name: python-%{srcname}
 Version: 0.2.12
-Release: 18%{?dist}
+Release: 33.post1%{?dist}
 Summary: Allows using distutils2-like setup.cfg files with setup.py
 License: BSD
 
 URL: http://pypi.python.org/pypi/d2to1
-Source0: https://pypi.python.org/packages/source/d/%{srcname}/%{srcname}-%{version}.post1.tar.gz#/%{name}-%{version}.post1.tar.gz
+#Source0: http://pypi.python.org/packages/source/d/d2to1/%{srcname}-%{version}.tar.gz
+Source0: https://pypi.python.org/packages/source/d/d2to1/d2to1-0.2.12.post1.tar.gz
+
+# Compatibility with the newer setuptools
+Patch:   setuptools-compatibility.patch
 
 BuildArch: noarch
 
@@ -31,8 +33,8 @@ Requires:  python3-setuptools
 %description -n python3-d2to1 %_description
 
 %prep
-#%setup -q -n %{srcname}-%{version}
-%setup -q -n %{srcname}-%{version}.post1
+%dnl %setup -q -n %{srcname}-%{version}
+%autosetup -n %{srcname}-%{version}.post1 -p1
 
 find . -name '*.py' | xargs sed -i '1s|^#!python|#!%{__python3}|'
 
@@ -49,13 +51,57 @@ find . -name '*.py' | xargs sed -i '1s|^#!python|#!%{__python3}|'
 
 
 %changelog
-* Tue Apr 26 2022 Mandeep Plaha <mandeepplaha@microsoft.com> - 0.2.12-18
-- Updated source URL.
-- License verified.
+* Fri Jul 19 2024 Fedora Release Engineering <releng@fedoraproject.org> - 0.2.12-33.post1
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_41_Mass_Rebuild
 
-* Thu Oct 14 2021 Pawel Winogrodzki <pawelwi@microsoft.com> - 0.2.12-17
-- Initial CBL-Mariner import from Fedora 32 (license: MIT).
-- Converting the 'Release' tag to the '[number].[distribution]' format.
+* Tue Jun 11 2024 Python Maint <python-maint@redhat.com> - 0.2.12-32.post1
+- Rebuilt for Python 3.13
+
+* Fri Jun 07 2024 Python Maint <python-maint@redhat.com> - 0.2.12-31.post1
+- Rebuilt for Python 3.13
+
+* Fri Jan 26 2024 Fedora Release Engineering <releng@fedoraproject.org> - 0.2.12-30.post1
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Mon Jan 22 2024 Fedora Release Engineering <releng@fedoraproject.org> - 0.2.12-29.post1
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Fri Sep 22 2023 Lumír Balhar <lbalhar@redhat.com> - 0.2.12-28.post1
+- Fix compatibility with newer setuptools
+Resolves: rhbz#2239998
+
+* Fri Jul 21 2023 Fedora Release Engineering <releng@fedoraproject.org> - 0.2.12-27.post1
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_39_Mass_Rebuild
+
+* Tue Jun 13 2023 Python Maint <python-maint@redhat.com> - 0.2.12-26.post1
+- Rebuilt for Python 3.12
+
+* Fri Jan 20 2023 Fedora Release Engineering <releng@fedoraproject.org> - 0.2.12-25.post1
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_38_Mass_Rebuild
+
+* Fri Jul 22 2022 Fedora Release Engineering <releng@fedoraproject.org> - 0.2.12-24.post1
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_37_Mass_Rebuild
+
+* Mon Jun 13 2022 Python Maint <python-maint@redhat.com> - 0.2.12-23.post1
+- Rebuilt for Python 3.11
+
+* Fri Jan 21 2022 Fedora Release Engineering <releng@fedoraproject.org> - 0.2.12-22.post1
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_36_Mass_Rebuild
+
+* Fri Jul 23 2021 Fedora Release Engineering <releng@fedoraproject.org> - 0.2.12-21.post1
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_35_Mass_Rebuild
+
+* Fri Jun 04 2021 Python Maint <python-maint@redhat.com> - 0.2.12-20.post1
+- Rebuilt for Python 3.10
+
+* Wed Jan 27 2021 Fedora Release Engineering <releng@fedoraproject.org> - 0.2.12-19.post1
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_34_Mass_Rebuild
+
+* Wed Jul 29 2020 Fedora Release Engineering <releng@fedoraproject.org> - 0.2.12-18.post1
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_33_Mass_Rebuild
+
+* Tue May 26 2020 Miro Hrončok <mhroncok@redhat.com> - 0.2.12-17.post1
+- Rebuilt for Python 3.9
 
 * Thu Jan 30 2020 Fedora Release Engineering <releng@fedoraproject.org> - 0.2.12-16.post1
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_32_Mass_Rebuild

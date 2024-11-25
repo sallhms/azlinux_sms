@@ -1,13 +1,10 @@
 Name:           perl-Test-utf8
 Version:        1.02
-Release:        3%{?dist}
+Release:        15%{?dist}
 Summary:        Handy utf8 tests
-License:        GPL+ or Artistic
-Vendor:         Microsoft Corporation
-Distribution:   Azure Linux
+License:        GPL-1.0-or-later OR Artistic-1.0-Perl
 URL:            https://metacpan.org/release/Test-utf8
-Source0:        https://cpan.metacpan.org/modules/by-module/Test/Test-utf8-%{version}.tar.gz#/perl-Test-utf8-%{version}.tar.gz
-Source1:        LICENSE.PTR
+Source0:        https://cpan.metacpan.org/modules/by-module/Test/Test-utf8-%{version}.tar.gz
 # Do not require author's dependencies
 Patch0:         Test-utf8-1.02-Drop-useless-build-time-dependencies.patch
 # Until the POD has changed, there is no point in regenerating README. This
@@ -20,7 +17,6 @@ BuildRequires:  make
 BuildRequires:  perl-generators
 BuildRequires:  perl-interpreter
 BuildRequires:  perl(inc::Module::Install)
-BuildRequires:  perl(Module::CoreList)
 BuildRequires:  perl(Module::Install::Metadata)
 BuildRequires:  perl(Module::Install::WriteAll)
 BuildRequires:  sed
@@ -29,7 +25,6 @@ BuildRequires:  perl(base)
 BuildRequires:  perl(charnames)
 BuildRequires:  perl(Encode)
 BuildRequires:  perl(Exporter)
-BuildRequires:  perl(FindBin)
 BuildRequires:  perl(strict)
 BuildRequires:  perl(Test::Builder)
 BuildRequires:  perl(warnings)
@@ -37,7 +32,6 @@ BuildRequires:  perl(warnings)
 BuildRequires:  perl(Test::Builder::Tester) >= 0.09
 BuildRequires:  perl(Test::More)
 # Runtime
-Requires:       perl(:MODULE_COMPAT_%(eval "`perl -V:version`"; echo $version))
 
 %description
 This module is a collection of tests that's useful when dealing with utf8
@@ -45,8 +39,8 @@ strings in Perl.
 
 %prep
 %setup -q -n Test-utf8-%{version}
-%patch 0 -p1
-%patch 1 -p1
+%patch -P0 -p1
+%patch -P1 -p1
 # Remove bundled modules
 rm -rf ./inc/*
 sed -i -e '/^inc\//d' MANIFEST
@@ -59,23 +53,56 @@ perl Makefile.PL INSTALLDIRS=vendor NO_PACKLIST=1 NO_PERLLOCAL=1
 %{make_install}
 %{_fixperms} -c %{buildroot}
 
-cp %{SOURCE1} .
-
 %check
 make test
 
 %files
-%license LICENSE.PTR
 %doc CHANGES README
 %{perl_vendorlib}/Test/
 %{_mandir}/man3/Test::utf8.3*
 
 %changelog
-* Thu Jan 13 2022 Pawel Winogrodzki <pawelwi@microsoft.com> - 1.02-3
-- License verified.
+* Fri Jul 19 2024 Fedora Release Engineering <releng@fedoraproject.org> - 1.02-15
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_41_Mass_Rebuild
 
-* Fri Oct 15 2021 Pawel Winogrodzki <pawelwi@microsoft.com> - 1.02-2
-- Initial CBL-Mariner import from Fedora 32 (license: MIT).
+* Tue Jul  9 2024 Software Management Team <packaging-team-maint@redhat.com> - 1.02-14
+- Eliminate use of obsolete %%patchN syntax (rhbz#2283636)
+
+* Thu Jan 25 2024 Fedora Release Engineering <releng@fedoraproject.org> - 1.02-13
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Sun Jan 21 2024 Fedora Release Engineering <releng@fedoraproject.org> - 1.02-12
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Fri Jul 21 2023 Fedora Release Engineering <releng@fedoraproject.org> - 1.02-11
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_39_Mass_Rebuild
+
+* Fri Jan 20 2023 Fedora Release Engineering <releng@fedoraproject.org> - 1.02-10
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_38_Mass_Rebuild
+
+* Fri Jul 22 2022 Fedora Release Engineering <releng@fedoraproject.org> - 1.02-9
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_37_Mass_Rebuild
+
+* Wed Jun 01 2022 Jitka Plesnikova <jplesnik@redhat.com> - 1.02-8
+- Perl 5.36 rebuild
+
+* Fri Jan 21 2022 Fedora Release Engineering <releng@fedoraproject.org> - 1.02-7
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_36_Mass_Rebuild
+
+* Fri Jul 23 2021 Fedora Release Engineering <releng@fedoraproject.org> - 1.02-6
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_35_Mass_Rebuild
+
+* Fri May 21 2021 Jitka Plesnikova <jplesnik@redhat.com> - 1.02-5
+- Perl 5.34 rebuild
+
+* Wed Jan 27 2021 Fedora Release Engineering <releng@fedoraproject.org> - 1.02-4
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_34_Mass_Rebuild
+
+* Tue Jul 28 2020 Fedora Release Engineering <releng@fedoraproject.org> - 1.02-3
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_33_Mass_Rebuild
+
+* Tue Jun 23 2020 Jitka Plesnikova <jplesnik@redhat.com> - 1.02-2
+- Perl 5.32 rebuild
 
 * Mon Mar  2 2020 Paul Howarth <paul@city-fan.org> - 1.02-1
 - Update to 1.02

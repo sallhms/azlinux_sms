@@ -1,14 +1,23 @@
-Vendor:         Microsoft Corporation
-Distribution:   Azure Linux
+%if 0%{?rhel} && 0%{?rhel} > 9
+%bcond_with mythes
+%else
+%bcond_without mythes
+%endif
+
+%if 0%{?fedora} > 35
+%global dict_dirname hunspell 
+%else
+%global dict_dirname myspell
+%endif
 Name: hunspell-no
 Summary: Norwegian hunspell dictionaries
+Epoch: 1
 Version: 2.0.10
-Release: 13%{?dist}
+Release: 24%{?dist}
 
-Source0: https://alioth-archive.debian.org/releases/spell-norwegian/spell-norwegian/%{version}/no_NO-pack2-%{version}.zip
-Source1: %{name}-LICENSE.txt
+Source: https://alioth-archive.debian.org/releases/spell-norwegian/spell-norwegian/%{version}/no_NO-pack2-%{version}.zip
 URL: https://alioth-archive.debian.org/releases/spell-norwegian/spell-norwegian/
-License: GPL+
+License: GPL-1.0-or-later
 BuildArch: noarch
 
 Patch1:  rhbz959989.badsfxrules.patch
@@ -48,6 +57,7 @@ Supplements: (hyphen and langpacks-nn)
 %description -n hyphen-nn
 Nynorsk hyphenation rules
 
+%if %{with mythes}
 %package -n mythes-nb
 Summary: Bokmaal thesaurus
 Requires: mythes
@@ -63,6 +73,7 @@ Supplements: (mythes and langpacks-nn)
 
 %description -n mythes-nn
 Nynorsk thesaurus.
+%endif
 
 %prep
 %setup -q -c
@@ -72,9 +83,7 @@ unzip -q hyph_nb_NO.zip
 unzip -q hyph_nn_NO.zip
 unzip -q th_nb_NO_v2.zip
 unzip -q th_nn_NO_v2.zip
-%patch 1 -p0 -b .rhbz959989
-
-cp %{SOURCE1} ./LICENSE.txt
+%patch -P 1 -b .rhbz959989
 
 %build
 for i in README_nb_NO.txt README_nn_NO.txt README_hyph_nb_NO.txt \
@@ -90,50 +99,80 @@ for i in README_nb_NO.txt README_nn_NO.txt README_hyph_nb_NO.txt \
 done
 
 %install
-mkdir -p $RPM_BUILD_ROOT/%{_datadir}/myspell
-cp -p nn_NO.aff nn_NO.dic nb_NO.aff nb_NO.dic $RPM_BUILD_ROOT/%{_datadir}/myspell
+mkdir -p $RPM_BUILD_ROOT/%{_datadir}/%{dict_dirname}
+cp -p nn_NO.aff nn_NO.dic nb_NO.aff nb_NO.dic $RPM_BUILD_ROOT/%{_datadir}/%{dict_dirname}
 mkdir -p $RPM_BUILD_ROOT/%{_datadir}/hyphen
 cp -p hyph_nn_NO.dic hyph_nb_NO.dic $RPM_BUILD_ROOT/%{_datadir}/hyphen
+%if %{with mythes}
 mkdir -p $RPM_BUILD_ROOT/%{_datadir}/mythes
 cp -p th_nb_NO_v2.dat th_nb_NO_v2.idx th_nn_NO_v2.dat th_nn_NO_v2.idx $RPM_BUILD_ROOT/%{_datadir}/mythes
-
+%endif
 
 %files -n hunspell-nb
-%license LICENSE.txt
 %doc README_nb_NO.txt
-%{_datadir}/myspell/nb_NO.*
+%{_datadir}/%{dict_dirname}/nb_NO.*
 
 %files -n hunspell-nn
-%license LICENSE.txt
 %doc README_nn_NO.txt
-%{_datadir}/myspell/nn_NO.*
+%{_datadir}/%{dict_dirname}/nn_NO.*
 
 %files -n hyphen-nb
-%license LICENSE.txt
 %doc README_hyph_nb_NO.txt
 %{_datadir}/hyphen/hyph_nb_NO.*
 
 %files -n hyphen-nn
-%license LICENSE.txt
 %doc README_hyph_nn_NO.txt
 %{_datadir}/hyphen/hyph_nn_NO.*
 
+%if %{with mythes}
 %files -n mythes-nb
-%license LICENSE.txt
 %doc README_th_nb_NO_v2.txt
 %{_datadir}/mythes/th_nb_NO_v2.*
 
 %files -n mythes-nn
-%license LICENSE.txt
 %doc README_th_nb_NO_v2.txt
 %{_datadir}/mythes/th_nn_NO_v2.*
-
+%endif
 %changelog
-* Mon Nov 01 2021 Muhammad Falak <mwani@microsft.com> - 2.0.10-13
-- Remove epoch
+* Thu Jul 18 2024 Fedora Release Engineering <releng@fedoraproject.org> - 1:2.0.10-24
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_41_Mass_Rebuild
 
-* Fri Oct 15 2021 Pawel Winogrodzki <pawelwi@microsoft.com> - 1:2.0.10-12
-- Initial CBL-Mariner import from Fedora 32 (license: MIT).
+* Mon Apr 15 2024 Parag Nemade <pnemade AT redhat DOT com> - 1:2.0.10-23
+- The mythes package is not present in RHEL10
+
+* Wed Jan 24 2024 Fedora Release Engineering <releng@fedoraproject.org> - 1:2.0.10-22
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Sat Jan 20 2024 Fedora Release Engineering <releng@fedoraproject.org> - 1:2.0.10-21
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Thu Jul 20 2023 Fedora Release Engineering <releng@fedoraproject.org> - 1:2.0.10-20
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_39_Mass_Rebuild
+
+* Wed Feb 22 2023 Caolán McNamara <caolanm@redhat.com> - 1:2.0.10-19
+- migrated to SPDX license
+
+* Thu Jan 19 2023 Fedora Release Engineering <releng@fedoraproject.org> - 1:2.0.10-18
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_38_Mass_Rebuild
+
+* Thu Jul 21 2022 Fedora Release Engineering <releng@fedoraproject.org> - 1:2.0.10-17
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_37_Mass_Rebuild
+
+* Fri Feb 11 2022 Vishal Vijayraghavan <vishalvvr@fedoraproject.org> - 1:2.0.10-16
+- rename install directory name from myspell to hunspell
+- https://fedoraproject.org/wiki/Changes/Hunspell_dictionary_dir_change
+
+* Thu Jan 20 2022 Fedora Release Engineering <releng@fedoraproject.org> - 1:2.0.10-15
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_36_Mass_Rebuild
+
+* Thu Jul 22 2021 Fedora Release Engineering <releng@fedoraproject.org> - 1:2.0.10-14
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_35_Mass_Rebuild
+
+* Tue Jan 26 2021 Fedora Release Engineering <releng@fedoraproject.org> - 1:2.0.10-13
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_34_Mass_Rebuild
+
+* Tue Jul 28 2020 Fedora Release Engineering <releng@fedoraproject.org> - 1:2.0.10-12
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_33_Mass_Rebuild
 
 * Wed Jan 29 2020 Fedora Release Engineering <releng@fedoraproject.org> - 1:2.0.10-11
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_32_Mass_Rebuild

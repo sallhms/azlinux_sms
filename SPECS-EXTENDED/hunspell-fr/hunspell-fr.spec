@@ -1,16 +1,19 @@
-Vendor:         Microsoft Corporation
-Distribution:   Azure Linux
+%if 0%{?fedora} >= 36 || 0%{?rhel} > 9
+%global dict_dirname hunspell
+%else
+%global dict_dirname myspell
+%endif
+
 Name: hunspell-fr
 Summary: French hunspell dictionaries
 Version: 6.2
-Release: 6%{?dist}
-Source0: http://www.dicollecte.org/download/fr/hunspell-french-dictionaries-v%{version}.zip
-Source1: %{name}-LICENSE.txt
+Release: 17%{?dist}
+Source: http://www.dicollecte.org/download/fr/hunspell-french-dictionaries-v%{version}.zip
 URL: http://www.dicollecte.org/home.php?prj=fr
-License: MPLv2.0
+License: MPL-2.0
 BuildArch: noarch
 
-Requires: hunspell
+Requires: hunspell-filesystem
 Supplements: (hunspell and langpacks-fr)
 
 %description
@@ -18,16 +21,15 @@ French (France, Belgium, etc.) hunspell dictionaries.
 
 %prep
 %setup -q -c -n hunspell-fr
-cp %{SOURCE1} ./LICENSE.txt
 
 %build
 
 %install
-mkdir -p $RPM_BUILD_ROOT/%{_datadir}/myspell
-cp -p fr-toutesvariantes.dic $RPM_BUILD_ROOT/%{_datadir}/myspell/fr_FR.dic
-cp -p fr-toutesvariantes.aff $RPM_BUILD_ROOT/%{_datadir}/myspell/fr_FR.aff
+mkdir -p $RPM_BUILD_ROOT/%{_datadir}/%{dict_dirname}
+cp -p fr-toutesvariantes.dic $RPM_BUILD_ROOT/%{_datadir}/%{dict_dirname}/fr_FR.dic
+cp -p fr-toutesvariantes.aff $RPM_BUILD_ROOT/%{_datadir}/%{dict_dirname}/fr_FR.aff
 
-pushd $RPM_BUILD_ROOT/%{_datadir}/myspell/
+pushd $RPM_BUILD_ROOT/%{_datadir}/%{dict_dirname}/
 fr_FR_aliases="fr_BE fr_CA fr_CH fr_LU fr_MC"
 for lang in $fr_FR_aliases; do
 	ln -s fr_FR.aff $lang.aff
@@ -37,13 +39,46 @@ popd
 
 
 %files
-%license LICENSE.txt
 %doc README_dict_fr.txt
-%{_datadir}/myspell/*
+%{_datadir}/%{dict_dirname}/*
 
 %changelog
-* Fri Oct 15 2021 Pawel Winogrodzki <pawelwi@microsoft.com> - 6.2-6
-- Initial CBL-Mariner import from Fedora 32 (license: MIT).
+* Thu Jul 18 2024 Fedora Release Engineering <releng@fedoraproject.org> - 6.2-17
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_41_Mass_Rebuild
+
+* Wed Jan 24 2024 Fedora Release Engineering <releng@fedoraproject.org> - 6.2-16
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Sat Jan 20 2024 Fedora Release Engineering <releng@fedoraproject.org> - 6.2-15
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Thu Jul 20 2023 Fedora Release Engineering <releng@fedoraproject.org> - 6.2-14
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_39_Mass_Rebuild
+
+* Wed Feb 22 2023 Caolán McNamara <caolanm@redhat.com> - 6.0.2-13
+- migrated to SPDX license
+
+* Thu Jan 19 2023 Fedora Release Engineering <releng@fedoraproject.org> - 6.2-12
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_38_Mass_Rebuild
+
+* Thu Jul 21 2022 Fedora Release Engineering <releng@fedoraproject.org> - 6.2-11
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_37_Mass_Rebuild
+
+* Tue Mar 22 2022 Parag Nemade <pnemade AT redhat DOT com> - 6.2-10
+- Add conditional for new hunspell dir path and update to Requires:
+  hunspell-filesystem
+
+* Thu Jan 20 2022 Fedora Release Engineering <releng@fedoraproject.org> - 6.2-9
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_36_Mass_Rebuild
+
+* Thu Jul 22 2021 Fedora Release Engineering <releng@fedoraproject.org> - 6.2-8
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_35_Mass_Rebuild
+
+* Tue Jan 26 2021 Fedora Release Engineering <releng@fedoraproject.org> - 6.2-7
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_34_Mass_Rebuild
+
+* Tue Jul 28 2020 Fedora Release Engineering <releng@fedoraproject.org> - 6.2-6
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_33_Mass_Rebuild
 
 * Wed Jan 29 2020 Fedora Release Engineering <releng@fedoraproject.org> - 6.2-5
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_32_Mass_Rebuild

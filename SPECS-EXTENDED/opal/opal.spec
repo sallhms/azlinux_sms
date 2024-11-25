@@ -1,54 +1,60 @@
-Summary:        Open Phone Abstraction Library
-Name:           opal
-Version:        3.10.11
-Release:        13%{?dist}
-License:        MPLv1.0
-Vendor:         Microsoft Corporation
-Distribution:   Azure Linux
-URL:            https://www.opalvoip.org/
-Source0:        https://sourceforge.net/projects/opalvoip/files/v3.10%20Luyten/Stable%2011/%{name}-%{version}.tar.bz2
-Patch0:         opal-3.10-fix-cflags.patch
-BuildRequires:  make
-BuildRequires:  expat-devel
-BuildRequires:  gcc-c++
-BuildRequires:  gsm-devel
-BuildRequires:  libtheora-devel
-BuildRequires:  openldap-devel
-BuildRequires:  openssl-devel
-BuildRequires:  ptlib-devel = 2.10.11
-BuildRequires:  SDL-devel
-BuildRequires:  speex-devel
-BuildRequires:  speexdsp-devel
+Name:		opal
+Summary:	Open Phone Abstraction Library
+Version:	3.10.11
+Release:	18%{?dist}
+URL:		http://www.opalvoip.org/
+License:	MPLv1.0
+
+# We cannot use unmodified upstream source code because it contains some areas of legal concern.
+# rm -rf plugins/video/H.263-1998/ 
+# rm -rf plugins/video/H.264/
+# rm -rf plugins/video/MPEG4-ffmpeg/
+# Source0:	ftp://ftp.gnome.org/pub/gnome/sources/%{name}/3.10/%{name}-%{version}.tar.xz
+Source0:	%{name}-%{version}-clean.tar.xz
+Patch0:		opal-3.10-fix-cflags.patch
+Patch1:		opal-c99.patch
+
+BuildRequires: make
+BuildRequires:	expat-devel
+BuildRequires:	gcc-c++
+BuildRequires:	gsm-devel
+BuildRequires:	libtheora-devel
+BuildRequires:	openldap-devel
+BuildRequires:	openssl-devel
+BuildRequires:	ptlib-devel = 2.10.11
+BuildRequires:	SDL-devel
+BuildRequires:	speex-devel
+BuildRequires:	speexdsp-devel
 
 %description
 Open Phone Abstraction Library, implementation of the ITU H.323
 teleconferencing protocol, and successor of the openh323 library.
 
 %package devel
-Summary:        Development package for opal
-Requires:       opal = %{version}-%{release}
-Requires:       openssl-devel
-Requires:       ptlib-devel = 2.10.11
-Requires:       pkgconfig
+Summary:	Development package for opal
+Requires:	opal = %{version}-%{release}
+Requires:	openssl-devel
+Requires:	ptlib-devel = 2.10.11
+Requires:	pkgconfig
 
 %description devel
-The opal-devel package includes the development libraries and
+The opal-devel package includes the development libraries and 
 header files for opal.
 
 %prep
-%autosetup -p1
+%setup -q 
+%patch -P0 -p1 -b.cf
+%patch -P1 -p1
 
-rm -rf plugins/video/H.263-1998/
-rm -rf plugins/video/H.264/
-rm -rf plugins/video/MPEG4-ffmpeg/
-
-for file in dll so bin lib exe; do
+for file in dll so bin lib exe; do 
   find . -name "*.$file" -delete
-done
+done    
 
 %build
+# Note: SILK is only disabled because the SDK libs are not in Fedora
 %configure --disable-silk
-%make_build OPTCCFLAGS="%{optflags}"
+
+%make_build OPTCCFLAGS="$RPM_OPT_FLAGS"
 
 %install
 %make_install
@@ -90,9 +96,23 @@ EOF
 %{_libdir}/pkgconfig/opal.pc
 
 %changelog
-* Wed Feb 01 2023 Sumedh Sharma <sumsharma@microsoft.com> - 3.10.11-13
-- Initial CBL-Mariner import from Fedora 37 (license: MIT)
-- License verified
+* Thu Jul 18 2024 Fedora Release Engineering <releng@fedoraproject.org> - 3.10.11-18
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_41_Mass_Rebuild
+
+* Thu Jan 25 2024 Fedora Release Engineering <releng@fedoraproject.org> - 3.10.11-17
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Sun Jan 21 2024 Fedora Release Engineering <releng@fedoraproject.org> - 3.10.11-16
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Thu Jul 20 2023 Fedora Release Engineering <releng@fedoraproject.org> - 3.10.11-15
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_39_Mass_Rebuild
+
+* Thu Jan 19 2023 Fedora Release Engineering <releng@fedoraproject.org> - 3.10.11-14
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_38_Mass_Rebuild
+
+* Tue Dec  6 2022 Florian Weimer <fweimer@redhat.com> - 3.10.11-13
+- Port to C99
 
 * Fri Jul 22 2022 Fedora Release Engineering <releng@fedoraproject.org> - 3.10.11-12
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_37_Mass_Rebuild

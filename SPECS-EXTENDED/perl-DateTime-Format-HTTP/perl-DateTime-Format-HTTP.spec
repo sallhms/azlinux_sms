@@ -1,30 +1,32 @@
 Name:           perl-DateTime-Format-HTTP
 Version:        0.42
-Release:        16%{?dist}
+Release:        29%{?dist}
 Summary:        HTTP protocol date conversion routines
-License:        GPL+ or Artistic
-Vendor:         Microsoft Corporation
-Distribution:   Azure Linux
+License:        GPL-1.0-or-later OR Artistic-1.0-Perl
 URL:            https://metacpan.org/release/DateTime-Format-HTTP
-Source0:        https://cpan.metacpan.org/authors/id/C/CK/CKRAS/DateTime-Format-HTTP-%{version}.tar.gz#/perl-DateTime-Format-HTTP-%{version}.tar.gz
+Source0:        https://cpan.metacpan.org/modules/by-module/DateTime/DateTime-Format-HTTP-%{version}.tar.gz
 BuildArch:      noarch
 # Build
-BuildRequires:  perl-interpreter
+BuildRequires:  coreutils
+BuildRequires:  make
 BuildRequires:  perl-generators
-BuildRequires:  perl(ExtUtils::MakeMaker)
+BuildRequires:  perl-interpreter
+BuildRequires:  perl(ExtUtils::MakeMaker) >= 6.76
+BuildRequires:  sed
 # Runtime
 BuildRequires:  perl(DateTime) >= 0.17
-BuildRequires:  perl(HTTP::Date) >= 1.44
+BuildRequires:  perl(HTTP::Date) => 1.44
 BuildRequires:  perl(strict)
 BuildRequires:  perl(vars)
 BuildRequires:  perl(warnings)
 # Tests only
 BuildRequires:  perl(lib)
 BuildRequires:  perl(Test::More) >= 0.47
-Requires:  perl(:MODULE_COMPAT_%(eval "$(perl -V:version)"; echo $version))
+# Dependencies
 Requires:       perl(DateTime) >= 0.17
 Requires:       perl(HTTP::Date) >= 1.44
 
+# Filter underspecified dependencies
 %global __requires_exclude %{?__requires_exclude|%__requires_exclude|}^perl\\(DateTime\\)$
 %global __requires_exclude %{?__requires_exclude|%__requires_exclude|}^perl\\(HTTP::Date\\)$
 
@@ -34,28 +36,75 @@ HTTP protocol (and then some).
 
 %prep
 %setup -q -n DateTime-Format-HTTP-%{version}
+
+# Fix line endings
 sed -i -e 's/\r//' LICENSE README Changes CREDITS
 
 %build
-perl Makefile.PL INSTALLDIRS=vendor NO_PACKLIST=1
-make %{?_smp_mflags}
+perl Makefile.PL INSTALLDIRS=vendor NO_PACKLIST=1 NO_PERLLOCAL=1
+%{make_build}
 
 %install
-make pure_install DESTDIR=%{buildroot}
-%{_fixperms} %{buildroot}/*
+%{make_install}
+%{_fixperms} -c %{buildroot}
 
 %check
 make test
 
 %files
-%doc LICENSE Changes CREDITS README
-%{perl_vendorlib}/*
-%{_mandir}/man3/*.3*
-
+%license LICENSE
+%doc Changes CREDITS README
+%{perl_vendorlib}/DateTime/
+%{_mandir}/man3/DateTime::Format::HTTP.3*
 
 %changelog
-* Fri Oct 15 2021 Pawel Winogrodzki <pawelwi@microsoft.com> - 0.42-16
-- Initial CBL-Mariner import from Fedora 32 (license: MIT).
+* Thu Jul 18 2024 Fedora Release Engineering <releng@fedoraproject.org> - 0.42-29
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_41_Mass_Rebuild
+
+* Thu Jan 25 2024 Fedora Release Engineering <releng@fedoraproject.org> - 0.42-28
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Sun Jan 21 2024 Fedora Release Engineering <releng@fedoraproject.org> - 0.42-27
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Thu Jul 20 2023 Fedora Release Engineering <releng@fedoraproject.org> - 0.42-26
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_39_Mass_Rebuild
+
+* Fri Jan 20 2023 Fedora Release Engineering <releng@fedoraproject.org> - 0.42-25
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_38_Mass_Rebuild
+
+* Fri Jul 22 2022 Fedora Release Engineering <releng@fedoraproject.org> - 0.42-24
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_37_Mass_Rebuild
+
+* Wed Jun 01 2022 Jitka Plesnikova <jplesnik@redhat.com> - 0.42-23
+- Perl 5.36 rebuild
+
+* Fri Jan 21 2022 Fedora Release Engineering <releng@fedoraproject.org> - 0.42-22
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_36_Mass_Rebuild
+
+* Thu Jul 22 2021 Fedora Release Engineering <releng@fedoraproject.org> - 0.42-21
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_35_Mass_Rebuild
+
+* Sun May 23 2021 Jitka Plesnikova <jplesnik@redhat.com> - 0.42-20
+- Perl 5.34 rebuild
+
+* Wed Jan 27 2021 Fedora Release Engineering <releng@fedoraproject.org> - 0.42-19
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_34_Mass_Rebuild
+
+* Fri Jan  8 2021 Paul Howarth <paul@city-fan.org> - 0.42-18
+- Spec tidy-up
+  - Specify all build dependencies
+  - Use author-independent source URL
+  - Use %%{make_build} and %%{make_install}
+  - Fix permissions verbosely
+  - Use %%license macro
+  - Make %%files list more explicit
+
+* Tue Jul 28 2020 Fedora Release Engineering <releng@fedoraproject.org> - 0.42-17
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_33_Mass_Rebuild
+
+* Tue Jun 23 2020 Jitka Plesnikova <jplesnik@redhat.com> - 0.42-16
+- Perl 5.32 rebuild
 
 * Wed Jan 29 2020 Fedora Release Engineering <releng@fedoraproject.org> - 0.42-15
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_32_Mass_Rebuild

@@ -1,19 +1,18 @@
 Summary: POSIX regexp functions
 Name: librx
 Version: 1.5
-Release: 38%{?dist}
+Release: 48%{?dist}
 License: GPLv2+
-Vendor:         Microsoft Corporation
-Distribution:   Azure Linux
 URL: http://www.gnu.org/software/rx/rx.html
 # Originally downloaded from ftp://ftp.gnu.org/gnu/rx/rx-1.5.tar.bz2
 # The FSF no longer offers this code.
-Source0: %{_distro_sources_url}/rx-%{version}.tar.bz2
+Source0: rx-%{version}.tar.bz2
 Patch0: rx-1.5-shared.patch
 Patch1: rx-1.5-texinfo.patch
 Patch2: librx-1.5-libdir64.patch
 Patch3: rx-1.5-libtoolmode.patch
 BuildRequires: texinfo, libtool
+BuildRequires: make
 
 %description
 Rx is, among other things, an implementation of the interface
@@ -35,14 +34,20 @@ This package contains files needed for development with librx.
 
 %prep
 %setup -q -n rx-%{version}
-%patch 0 -p1
-%patch 1 -p1 -b .texipatch
-%ifarch x86_64 s390x ia64 %{power64} alpha sparc64 aarch64 %{mips64}
-%patch 2 -p1 -b .64bit
+%patch -P0 -p1
+%patch -P1 -p1 -b .texipatch
+%ifarch x86_64 s390x ia64 %{power64} alpha sparc64 aarch64 %{mips64} riscv64
+%patch -P2 -p1 -b .64bit
 %endif
-%patch 3 -p1 -b .libtoolmode
+%patch -P3 -p1 -b .libtoolmode
 
 %build
+# The package has many C99 compatibility issues.  It relies on
+# implicit function declarations.  It may not work on 64-bit
+# architectures because some pointers are truncated to 32 bits.
+%global build_type_safety_c 0
+%set_build_flags
+CC="$CC -std=gnu89"
 %configure
 make %{?_smp_mflags}
 make doc/rx.info
@@ -54,9 +59,8 @@ mkdir -p ${RPM_BUILD_ROOT}%{_libdir}
 mkdir -p ${RPM_BUILD_ROOT}%{_includedir}
 make install DESTDIR=${RPM_BUILD_ROOT}
 install -m 644 doc/rx.info ${RPM_BUILD_ROOT}%{_infodir}
-rm -rf ${RPM_BUILD_ROOT}/usr/librx.la
-rm -rf ${RPM_BUILD_ROOT}/usr/librx.a
-mv ${RPM_BUILD_ROOT}/usr/*.so* ${RPM_BUILD_ROOT}%{_libdir}
+rm -rf ${RPM_BUILD_ROOT}%{_libdir}/librx.la
+rm -rf ${RPM_BUILD_ROOT}%{_libdir}/librx.a
 chmod -x ${RPM_BUILD_ROOT}%{_includedir}/rxposix.h
 
 %ldconfig_scriptlets
@@ -65,23 +69,50 @@ chmod -x ${RPM_BUILD_ROOT}%{_includedir}/rxposix.h
 %{_libdir}/*.so.*
 
 %files devel
-%license COPYING
 %doc ANNOUNCE BUILDING COOKOFF rx/ChangeLog
 %{_includedir}/*
 %{_infodir}/*
 %{_libdir}/*.so
 
 %changelog
-* Thu Feb 22 2024 Pawel Winogrodzki <pawelwi@microsoft.com> - 1.5-38
-- Updating naming for 3.0 version of Azure Linux.
+* Thu Jul 18 2024 Fedora Release Engineering <releng@fedoraproject.org> - 1.5-48
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_41_Mass_Rebuild
 
-* Mon Apr 25 2022 Pawel Winogrodzki <pawelwi@microsoft.com> - 1.5-37
-- Updating source URLs.
-- License verified.
+* Fri Mar 01 2024 David Abdurachmanov <davidlt@rivosinc.com> - 1.5-47
+- Enable libdir64 patch for riscv64
 
-* Fri Dec 11 2020 Ruying Chen <v-ruyche@microsoft.com> - 1.5-36
-- Initial CBL-Mariner import from Fedora 32 (license: MIT).
-- Update installation directories to Mariner's location.
+* Thu Jan 25 2024 Fedora Release Engineering <releng@fedoraproject.org> - 1.5-46
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Sun Jan 21 2024 Fedora Release Engineering <releng@fedoraproject.org> - 1.5-45
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Wed Aug 16 2023 Florian Weimer <fweimer@redhat.com> - 1.5-44
+- Set build_type_safety_c to 0 (#2192889)
+
+* Thu Jul 20 2023 Fedora Release Engineering <releng@fedoraproject.org> - 1.5-43
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_39_Mass_Rebuild
+
+* Wed May 03 2023 Florian Weimer <fweimer@redhat.com> - 1.5-42
+- Build in C89 mode (#2192889)
+
+* Thu Jan 19 2023 Fedora Release Engineering <releng@fedoraproject.org> - 1.5-41
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_38_Mass_Rebuild
+
+* Thu Jul 21 2022 Fedora Release Engineering <releng@fedoraproject.org> - 1.5-40
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_37_Mass_Rebuild
+
+* Thu Jan 20 2022 Fedora Release Engineering <releng@fedoraproject.org> - 1.5-39
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_36_Mass_Rebuild
+
+* Thu Jul 22 2021 Fedora Release Engineering <releng@fedoraproject.org> - 1.5-38
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_35_Mass_Rebuild
+
+* Tue Jan 26 2021 Fedora Release Engineering <releng@fedoraproject.org> - 1.5-37
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_34_Mass_Rebuild
+
+* Tue Jul 28 2020 Fedora Release Engineering <releng@fedoraproject.org> - 1.5-36
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_33_Mass_Rebuild
 
 * Wed Jan 29 2020 Fedora Release Engineering <releng@fedoraproject.org> - 1.5-35
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_32_Mass_Rebuild

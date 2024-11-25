@@ -1,21 +1,27 @@
-Vendor:         Microsoft Corporation
-Distribution:   Azure Linux
 %global srcname requests-ftp
 
+# Disable python3 by default on RHEL < 7
+%if 0%{?rhel} && 0%{?rhel} <= 7
+%bcond_with python3
+%else
 %bcond_without python3
+%endif
 
 # Diable python2 by default on RHEL > 7 or Fedora > 28
+%if 0%{?rhel} > 7 || 0%{?fedora} > 28
 %bcond_with python2
-
+%else
+%bcond_without python2
+%endif
 
 Name:           python-%{srcname}
 Version:        0.3.1
-Release:        19%{?dist}
+Release:        35%{?dist}
 Summary:        FTP transport adapter for python-requests
 
-License:        ASL 2.0
+License:        Apache-2.0
 URL:            https://github.com/Lukasa/requests-ftp
-Source0:        https://pypi.python.org/packages/source/r/%{srcname}/%{srcname}-%{version}.tar.gz#/python-%{srcname}-%{version}.tar.gz
+Source0:        https://pypi.python.org/packages/source/r/%{srcname}/%{srcname}-%{version}.tar.gz
 
 BuildArch:      noarch
 
@@ -28,8 +34,10 @@ Patch2:         PR28-02-Adding-code-3-to-retr4ieve-status_code.patch
 Patch3:         PR28-03-fix-warning-in-interpreting-ftp-status-codes-minor-d.patch
 # 2caa427 is only test updates, tests not in pypi tarball
 # from 7321ab3
-Patch5:         PR28-05-Improve-logging-in-status-code-extraction.patch 
+Patch5:         PR28-05-Improve-logging-in-status-code-extraction.patch
 
+# Remove use of the cgi module, which is only used to implement STOR
+Patch6:         0001-Remove-use-of-the-cgi-module.patch
 
 %description
 Requests-FTP is an implementation of a very stupid FTP transport adapter for
@@ -108,9 +116,56 @@ rm -rf requests_ftp.egg-info
 %endif
 
 %changelog
-* Wed Feb 24 2021 Henry Li <lihl@microsoft.com> - 0.3.1-19
-- Initial CBL-Mariner import from Fedora 32 (license: MIT).
-- Disable python2 and enable python3
+* Fri Jul 19 2024 Fedora Release Engineering <releng@fedoraproject.org> - 0.3.1-35
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_41_Mass_Rebuild
+
+* Fri Jun 07 2024 Python Maint <python-maint@redhat.com> - 0.3.1-34
+- Rebuilt for Python 3.13
+
+* Mon Jan 29 2024 David Shea <reallylongword@gmail.com> - 0.3.1-33
+- Migrate to SPDX license
+
+* Fri Jan 26 2024 Fedora Release Engineering <releng@fedoraproject.org> - 0.3.1-32
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Mon Jan 22 2024 Fedora Release Engineering <releng@fedoraproject.org> - 0.3.1-31
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Mon Oct  2 2023 David Shea <reallylongword@gmail.com> - 0.3.1-30
+- Remove use of the cgi module
+
+* Fri Jul 21 2023 Fedora Release Engineering <releng@fedoraproject.org> - 0.3.1-29
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_39_Mass_Rebuild
+
+* Tue Jun 13 2023 Python Maint <python-maint@redhat.com> - 0.3.1-28
+- Rebuilt for Python 3.12
+
+* Fri Jan 20 2023 Fedora Release Engineering <releng@fedoraproject.org> - 0.3.1-27
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_38_Mass_Rebuild
+
+* Fri Jul 22 2022 Fedora Release Engineering <releng@fedoraproject.org> - 0.3.1-26
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_37_Mass_Rebuild
+
+* Mon Jun 13 2022 Python Maint <python-maint@redhat.com> - 0.3.1-25
+- Rebuilt for Python 3.11
+
+* Fri Jan 21 2022 Fedora Release Engineering <releng@fedoraproject.org> - 0.3.1-24
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_36_Mass_Rebuild
+
+* Fri Jul 23 2021 Fedora Release Engineering <releng@fedoraproject.org> - 0.3.1-23
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_35_Mass_Rebuild
+
+* Thu Jun 03 2021 Python Maint <python-maint@redhat.com> - 0.3.1-22
+- Rebuilt for Python 3.10
+
+* Wed Jan 27 2021 Fedora Release Engineering <releng@fedoraproject.org> - 0.3.1-21
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_34_Mass_Rebuild
+
+* Wed Jul 29 2020 Fedora Release Engineering <releng@fedoraproject.org> - 0.3.1-20
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_33_Mass_Rebuild
+
+* Sat May 23 2020 Miro Hrončok <mhroncok@redhat.com> - 0.3.1-19
+- Rebuilt for Python 3.9
 
 * Thu Jan 30 2020 Fedora Release Engineering <releng@fedoraproject.org> - 0.3.1-18
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_32_Mass_Rebuild

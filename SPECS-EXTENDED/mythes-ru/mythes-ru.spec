@@ -1,16 +1,14 @@
-Vendor:         Microsoft Corporation
-Distribution:   Azure Linux
 Name: mythes-ru
 Summary: Russian thesaurus
 %global upstreamid 20070613
 Version: 0.%{upstreamid}
-Release: 24%{?dist}
+Release: 32%{?dist}
 # Below source link is dead now
 # Source: http://download.i-rs.ru/pub/openoffice/dict/thes_ru_RU_v2.zip
-Source: %{_distro_sources_url}/thes_ru_RU_v2.zip
+Source: thes_ru_RU_v2.zip
 URL: http://wiki.services.openoffice.org/wiki/Dictionaries
 BuildRequires: unzip
-License: LGPLv2+
+License: LGPL-2.1-or-later
 BuildArch: noarch
 Requires: mythes
 Supplements: (mythes and langpacks-ru)
@@ -39,15 +37,38 @@ done
 %{_datadir}/mythes/*
 
 %changelog
-* Thu Feb 22 2024 Pawel Winogrodzki <pawelwi@microsoft.com> - 0.20070613-24
-- Updating naming for 3.0 version of Azure Linux.
+* Thu Jul 18 2024 Fedora Release Engineering <releng@fedoraproject.org> - 0.20070613-32
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_41_Mass_Rebuild
 
-* Mon Apr 25 2022 Pawel Winogrodzki <pawelwi@microsoft.com> - 0.20070613-23
-- Updating source URLs.
-- License verified.
+* Thu Jan 25 2024 Fedora Release Engineering <releng@fedoraproject.org> - 0.20070613-31
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
 
-* Fri Oct 15 2021 Pawel Winogrodzki <pawelwi@microsoft.com> - 0.20070613-22
-- Initial CBL-Mariner import from Fedora 32 (license: MIT).
+* Sun Jan 21 2024 Fedora Release Engineering <releng@fedoraproject.org> - 0.20070613-30
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Thu Jul 20 2023 Fedora Release Engineering <releng@fedoraproject.org> - 0.20070613-29
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_39_Mass_Rebuild
+
+* Fri Feb 24 2023 Caolán McNamara <caolanm@redhat.com> - 0.20070613-28
+- migrated to SPDX license
+
+* Thu Jan 19 2023 Fedora Release Engineering <releng@fedoraproject.org> - 0.20070613-27
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_38_Mass_Rebuild
+
+* Fri Jul 22 2022 Fedora Release Engineering <releng@fedoraproject.org> - 0.20070613-26
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_37_Mass_Rebuild
+
+* Thu Jan 20 2022 Fedora Release Engineering <releng@fedoraproject.org> - 0.20070613-25
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_36_Mass_Rebuild
+
+* Thu Jul 22 2021 Fedora Release Engineering <releng@fedoraproject.org> - 0.20070613-24
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_35_Mass_Rebuild
+
+* Tue Jan 26 2021 Fedora Release Engineering <releng@fedoraproject.org> - 0.20070613-23
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_34_Mass_Rebuild
+
+* Tue Jul 28 2020 Fedora Release Engineering <releng@fedoraproject.org> - 0.20070613-22
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_33_Mass_Rebuild
 
 * Wed Jan 29 2020 Fedora Release Engineering <releng@fedoraproject.org> - 0.20070613-21
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_32_Mass_Rebuild
@@ -101,7 +122,7 @@ done
 * Tue Feb 08 2011 Fedora Release Engineering <rel-eng@lists.fedoraproject.org> - 0.20070613-5
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_15_Mass_Rebuild
 
-* Sun Apr 04 2010 Caolan McNamara <caolanm@redhat.com> - 0.20070613-4
+* Sun Apr 04 2010 Caolán McNamara <caolanm@redhat.com> - 0.20070613-4
 - mythes now owns /usr/share/mythes
 
 * Sat Jul 25 2009 Fedora Release Engineering <rel-eng@lists.fedoraproject.org> - 0.20070613-3
@@ -110,5 +131,5 @@ done
 * Wed Feb 25 2009 Fedora Release Engineering <rel-eng@lists.fedoraproject.org> - 0.20070613-2
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_11_Mass_Rebuild
 
-* Wed Jan 21 2009 Caolan McNamara <caolanm@redhat.com> - 0.20070613-1
+* Wed Jan 21 2009 Caolán McNamara <caolanm@redhat.com> - 0.20070613-1
 - initial version

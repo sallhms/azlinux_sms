@@ -1,13 +1,13 @@
-Vendor:         Microsoft Corporation
-Distribution:   Azure Linux
 Name:          opusfile
 Version:       0.12
-Release:       2%{?dist}
+Release:       13%{?dist}
 Summary:       A high-level API for decoding and seeking within .opus files
 License:       BSD
 URL:           https://www.opus-codec.org/
 Source0:       https://downloads.xiph.org/releases/opus/%{name}-%{version}.tar.gz
+Patch1:        CVE-2022-47021.patch
 
+BuildRequires: make
 BuildRequires: gcc
 BuildRequires: libogg-devel
 BuildRequires: openssl-devel
@@ -34,7 +34,7 @@ Requires: pkgconfig
 Files for development with %{name}.
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
 %configure --disable-static
@@ -64,8 +64,41 @@ find %{buildroot} -type f -name "*.la" -delete
 %{_libdir}/libopusurl.so
 
 %changelog
-* Fri Oct 15 2021 Pawel Winogrodzki <pawelwi@microsoft.com> - 0.12-2
-- Initial CBL-Mariner import from Fedora 32 (license: MIT).
+* Thu Jul 18 2024 Fedora Release Engineering <releng@fedoraproject.org> - 0.12-13
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_41_Mass_Rebuild
+
+* Thu Jan 25 2024 Fedora Release Engineering <releng@fedoraproject.org> - 0.12-12
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Sun Jan 21 2024 Fedora Release Engineering <releng@fedoraproject.org> - 0.12-11
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Thu Jul 20 2023 Fedora Release Engineering <releng@fedoraproject.org> - 0.12-10
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_39_Mass_Rebuild
+
+* Wed Feb 01 2023 Peter Robinson <pbrobinson@fedoraproject.org> - 0.12-9
+- Add upstream fix for CVE-2022-47021
+
+* Thu Jan 19 2023 Fedora Release Engineering <releng@fedoraproject.org> - 0.12-8
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_38_Mass_Rebuild
+
+* Fri Jul 22 2022 Fedora Release Engineering <releng@fedoraproject.org> - 0.12-7
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_37_Mass_Rebuild
+
+* Thu Jan 20 2022 Fedora Release Engineering <releng@fedoraproject.org> - 0.12-6
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_36_Mass_Rebuild
+
+* Tue Sep 14 2021 Sahana Prasad <sahana@redhat.com> - 0.12-5
+- Rebuilt with OpenSSL 3.0.0
+
+* Thu Jul 22 2021 Fedora Release Engineering <releng@fedoraproject.org> - 0.12-4
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_35_Mass_Rebuild
+
+* Tue Jan 26 2021 Fedora Release Engineering <releng@fedoraproject.org> - 0.12-3
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_34_Mass_Rebuild
+
+* Tue Jul 28 2020 Fedora Release Engineering <releng@fedoraproject.org> - 0.12-2
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_33_Mass_Rebuild
 
 * Sun Jun 28 2020 David King <amigadave@amigadave.com> - 0.12-1
 - Update to 0.12

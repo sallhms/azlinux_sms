@@ -1,23 +1,25 @@
-Vendor:         Microsoft Corporation
-Distribution:   Azure Linux
 Name:           rasqal
 Version:        0.9.33
-Release:        13%{?dist}
+Release:        29%{?dist}
 Summary:        RDF Query Library
 
-License:        LGPLv2+ or ASL 2.0
+License:        LGPL-2.1-or-later OR Apache-2.0
 URL:            http://librdf.org/rasqal/
 Source:         http://download.librdf.org/source/%{name}-%{version}.tar.gz
 
+BuildRequires: make
 BuildRequires:  gcc-c++
 BuildRequires:  libxml2-devel
 BuildRequires:  mpfr-devel
-BuildRequires:  pcre-devel
 BuildRequires:  raptor2-devel
+BuildRequires:  libgcrypt-devel
 # for the testsuite
 BuildRequires:  perl(Pod::Usage)
 BuildRequires:  perl(XML::DOM)
-#BuildRequires:  %{_bindir}/rapper
+
+# Upstream PR: https://github.com/dajobe/rasqal/pull/11
+Patch1: define-printf.patch
+Patch2: rasqal-configure-c99-2.patch
 
 %description
 Rasqal is a library providing full support for querying Resource
@@ -34,6 +36,8 @@ Libraries, includes etc to develop with the Rasqal RDF query language library.
 
 %prep
 %setup -q
+%patch -P1 -p1 -b .printf
+%patch -P2 -p1
 
 # hack to nuke rpaths
 %if "%{_libdir}" != "/usr/lib"
@@ -43,6 +47,8 @@ sed -i -e 's|"/lib /usr/lib|"/%{_lib} %{_libdir}|' configure
 
 %build
 %configure \
+  --with-digest-library=gcrypt\
+  --disable-pcre \
   --disable-static\
   --enable-release
 
@@ -93,8 +99,59 @@ fi
 
 
 %changelog
-* Fri Oct 15 2021 Pawel Winogrodzki <pawelwi@microsoft.com> - 0.9.33-13
-- Initial CBL-Mariner import from Fedora 32 (license: MIT).
+* Fri Jul 19 2024 Fedora Release Engineering <releng@fedoraproject.org> - 0.9.33-29
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_41_Mass_Rebuild
+
+* Fri Jan 26 2024 Fedora Release Engineering <releng@fedoraproject.org> - 0.9.33-28
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Mon Jan 22 2024 Fedora Release Engineering <releng@fedoraproject.org> - 0.9.33-27
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Tue Dec 19 2023 Florian Weimer <fweimer@redhat.com> - 0.9.33-26
+- Fix another C compatibility issue in configure script
+
+* Fri Jul 21 2023 Fedora Release Engineering <releng@fedoraproject.org> - 0.9.33-25
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_39_Mass_Rebuild
+
+* Fri Feb 24 2023 Caolán McNamara <caolanm@redhat.com> - 0.9.33-24
+- migrated to SPDX license
+
+* Tue Jan 24 2023 Timm Bäder <tbaeder@redhat.com> - 0.9.33-23
+- Fix undefined printf() in configure check.
+- https://fedoraproject.org/wiki/Changes/PortingToModernC
+
+* Fri Jan 20 2023 Fedora Release Engineering <releng@fedoraproject.org> - 0.9.33-22
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_38_Mass_Rebuild
+
+* Wed Nov 30 2022 Caolán McNamara <caolanm@redhat.com> - 0.9.33-21
+- Resolves: rhbz#2128363 disable-pcre
+
+* Wed Nov 30 2022 Caolán McNamara <caolanm@redhat.com> - 0.9.33-20
+- rebuild for F38
+
+* Sat Jul 23 2022 Fedora Release Engineering <releng@fedoraproject.org> - 0.9.33-19
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_37_Mass_Rebuild
+
+* Fri Jan 21 2022 Fedora Release Engineering <releng@fedoraproject.org> - 0.9.33-18
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_36_Mass_Rebuild
+
+* Fri Jul 23 2021 Fedora Release Engineering <releng@fedoraproject.org> - 0.9.33-17
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_35_Mass_Rebuild
+
+* Wed Jan 27 2021 Fedora Release Engineering <releng@fedoraproject.org> - 0.9.33-16
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_34_Mass_Rebuild
+
+* Fri Sep 11 2020 Ben Beasley <code@musicinmybrain.net> - 0.9.33-15
+- BR: libgcrypt-devel, enforce use of non-bundled crypto digest implementations
+  (RHBZ #1099251)
+
+* Sat Aug 01 2020 Fedora Release Engineering <releng@fedoraproject.org> - 0.9.33-14
+- Second attempt - Rebuilt for
+  https://fedoraproject.org/wiki/Fedora_33_Mass_Rebuild
+
+* Wed Jul 29 2020 Fedora Release Engineering <releng@fedoraproject.org> - 0.9.33-13
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_33_Mass_Rebuild
 
 * Thu Jan 30 2020 Fedora Release Engineering <releng@fedoraproject.org> - 0.9.33-12
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_32_Mass_Rebuild

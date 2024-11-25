@@ -1,60 +1,65 @@
-%define _hardened_build 1
-Summary:        Active Directory enrollment
-Name:           adcli
-Version:        0.9.2
-Release:        2%{?dist}
-License:        LGPLv2+
-Vendor:         Microsoft Corporation
-Distribution:   Azure Linux
-URL:            https://gitlab.freedesktop.org/realmd/adcli
-Source0:        https://gitlab.freedesktop.org/realmd/adcli/uploads/ea560656ac921b3fe0d455976aaae9be/adcli-%{version}.tar.gz
-BuildRequires:  cyrus-sasl-devel
-BuildRequires:  gcc
-BuildRequires:  gettext-devel
-BuildRequires:  intltool
-BuildRequires:  krb5-devel
-BuildRequires:  libtool
-BuildRequires:  libxslt
-BuildRequires:  make
-BuildRequires:  openldap-devel
-BuildRequires:  xmlto
-Requires:       cyrus-sasl-gssapi
-Conflicts:      adcli-doc < %{version}-%{release}
+Name:    adcli
+Version: 0.9.2
+Release: 7%{?dist}
+Summary: Active Directory enrollment
+License: LGPL-2.1-or-later
+URL:     https://gitlab.freedesktop.org/realmd/adcli
+Source0: https://gitlab.freedesktop.org/realmd/adcli/uploads/ea560656ac921b3fe0d455976aaae9be/adcli-%{version}.tar.gz
+
+
+BuildRequires: gcc
+BuildRequires: intltool pkgconfig
+BuildRequires: libtool
+BuildRequires: gettext-devel
+BuildRequires: krb5-devel
+BuildRequires: openldap-devel
+BuildRequires: libxslt
+BuildRequires: xmlto
+BuildRequires: make
+
+Requires: cyrus-sasl-gssapi
+Conflicts: adcli-doc < %{version}-%{release}
+
 # adcli no longer has a library of development files
 # the adcli tool itself is to be used by callers
-Obsoletes:      adcli-devel < 0.5
+Obsoletes: adcli-devel < 0.5
 
 %description
 adcli is a tool for joining an Active Directory domain using
 standard LDAP and Kerberos calls.
+
+%define _hardened_build 1
 
 %prep
 %autosetup -p1
 
 %build
 autoreconf --force --install --verbose
-%configure --disable-static --disable-silent-rules %{nil}
+%configure --disable-static --disable-silent-rules \
+%if 0%{?rhel}
+    --with-vendor-error-message='Please check\n    https://red.ht/support_rhel_ad \nto get help for common issues.' \
+%endif
+    %{nil}
 %make_build
 
 %check
-%make_build check
+make check
 
 %install
 %make_install
-find %{buildroot} -type f -name "*.la" -delete -print
+find $RPM_BUILD_ROOT -name '*.la' -exec rm -f {} ';'
 
 %ldconfig_scriptlets
 
 %files
 %{_sbindir}/adcli
-%license COPYING
-%doc AUTHORS ChangeLog NEWS README
+%doc AUTHORS COPYING ChangeLog NEWS README
 %doc %{_mandir}/*/*
 
 %package doc
-Summary:        adcli documentation
-Conflicts:      adcli < %{version}-%{release}
-BuildArch:      noarch
+Summary: adcli documentation
+BuildArch: noarch
+Conflicts: adcli < %{version}-%{release}
 
 %description doc
 adcli is a tool for joining an Active Directory domain using
@@ -65,11 +70,23 @@ documentation.
 %doc %{_datadir}/doc/adcli/*
 
 %changelog
-* Wed Nov 02 2022 Sumedh Sharma <sumsharma@microsoft.com> - 0.9.2-2
-- Initial CBL-Mariner import from Fedora 37 (license: MIT)
-- Remove unsed configuration flags in build
-- Fix BR to add cyrus-sasl-devel
-- License verified
+* Wed Jul 17 2024 Fedora Release Engineering <releng@fedoraproject.org> - 0.9.2-7
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_41_Mass_Rebuild
+
+* Mon Jan 22 2024 Fedora Release Engineering <releng@fedoraproject.org> - 0.9.2-6
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Fri Jan 19 2024 Fedora Release Engineering <releng@fedoraproject.org> - 0.9.2-5
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Wed Oct 18 2023 Sumit Bose <sbose@redhat.com> - 0.9.2-4
+- migrated to SPDX license
+
+* Wed Jul 19 2023 Fedora Release Engineering <releng@fedoraproject.org> - 0.9.2-3
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_39_Mass_Rebuild
+
+* Wed Jan 18 2023 Fedora Release Engineering <releng@fedoraproject.org> - 0.9.2-2
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_38_Mass_Rebuild
 
 * Thu Sep 29 2022 Sumit Bose <sbose@redhat.com> - 0.9.2-1
 - Update to upstream release 0.9.2

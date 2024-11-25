@@ -1,22 +1,20 @@
-Vendor:         Microsoft Corporation
-Distribution:   Azure Linux
 
-%define git_long  e8e3d20f20da5ee3e37d347207b01890829a5475
-%define git_short e8e3d20
-%define snap 20130812
+%global git_long  e8e3d20f20da5ee3e37d347207b01890829a5475
+%global git_short e8e3d20
+%global snap 20130812
+
+# rpmdev-bumpspec / releng automation compatible
+%global baserelease 49
 
 Summary:	A C++ port of Lucene
 Name:		clucene
 Version:	2.3.3.4
-Release:	39%{?dist}
-# From 'COPYING':
-# - RSA license: src\CLucene\util\MD5Digester.cpp
-# - BSD license: cmake/MacroCheckGccVisibility.cmake, MacroEnsureVersion.cmake, and src/core/util/Compress.cpp
-License:	(ASL 2.0 or LGPLv2+) and BSD and RSA
+Release:	%{baserelease}.%{snap}.%{git_short}git%{?dist}
+License:	LGPLv2+ or ASL 2.0
 URL:		http://www.sourceforge.net/projects/clucene
 %if 0%{?snap}
 #  git archive e8e3d20f20da5ee3e37d347207b01890829a5475 --prefix=clucene-core-2.3.3.4/ | xz -9 > ../clucene-core-2.3.3.4-e8e3d20.tar.xz
-Source0:	%{_distro_sources_url}/clucene-core-2.3.3.4-%{git_short}.tar.xz
+Source0:	clucene-core-2.3.3.4-%{git_short}.tar.xz
 
 %else
 Source0:	http://downloads.sourceforge.net/clucene/clucene-core-%{version}.tar.gz
@@ -27,6 +25,7 @@ BuildRequires:	cmake
 BuildRequires:	gawk
 BuildRequires:	gcc-c++
 BuildRequires:	zlib-devel
+BuildRequires: make
 
 ## upstreamable patches
 # include LUCENE_SYS_INCLUDES in pkgconfig --cflags output
@@ -43,6 +42,13 @@ Patch51: clucene-core-2.3.3.4-install_contribs_lib.patch
 Patch52: clucene-core-2.3.3.4-CLuceneConfig.patch
 # Fix tests for undefined usleep
 Patch53: clucene-core-2.3.3.4-usleep.patch
+# Upstream at <https://sourceforge.net/p/clucene/bugs/232/> "Patches for
+# TestIndexSearcher failures":
+Patch54: 0001-Make-sure-to-return-value-from-non-void-function.patch
+Patch55: 0002-Avoid-deadlock-in-TestIndexSearcher.patch
+# Upstream at <https://sourceforge.net/p/clucene/code/merge-requests/3/> "Fix
+# missing #include <time.h>":
+Patch56: 0001-Fix-missing-include-time.h.patch
 
 %description
 CLucene is a C++ port of the popular Apache Lucene search engine
@@ -80,30 +86,29 @@ Requires:	%{name}-core%{?_isa} = %{version}-%{release}
 %prep
 %setup -n %{name}-core-%{version}
 
-%patch 50 -p1 -b .pkgconfig
-%patch 51 -p1 -b .install_contribs_lib
-%patch 52 -p1 -b .CLuceneConfig
-%patch 53 -p1 -b .usleep
+%patch -P50 -p1 -b .pkgconfig
+%patch -P51 -p1 -b .install_contribs_lib
+%patch -P52 -p1 -b .CLuceneConfig
+%patch -P53 -p1 -b .usleep
+%patch -P54 -p1 -b .return-value
+%patch -P55 -p1 -b .avoid-deadlock
+%patch -P56 -p1 -b .missing-include
 
 # nuke bundled code
 rm -rfv src/ext/{boost/,zlib/}
 
 
 %build
-mkdir %{_target_platform}
-pushd %{_target_platform}
 %{cmake} \
   -DBUILD_CONTRIBS_LIB:BOOL=ON \
   -DLIB_DESTINATION:PATH=%{_libdir} \
-  -DLUCENE_SYS_INCLUDES:PATH=%{_libdir} \
-  ..
-popd
+  -DLUCENE_SYS_INCLUDES:PATH=%{_libdir}
 
-make %{?_smp_mflags} -C %{_target_platform}
+%cmake_build
 
 
 %install
-make install/fast DESTDIR=%{buildroot} -C %{_target_platform}
+%cmake_install
 
 
 %check
@@ -145,16 +150,47 @@ time make -C %{_target_platform} test ARGS="--timeout 300 --output-on-failure" |
 
 
 %changelog
-* Thu Feb 22 2024 Pawel Winogrodzki <pawelwi@microsoft.com> - 2.3.3.4-39
-- Updating naming for 3.0 version of Azure Linux.
+* Wed Jul 17 2024 Fedora Release Engineering <releng@fedoraproject.org> - 2.3.3.4-49.20130812.e8e3d20git
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_41_Mass_Rebuild
 
-* Mon Apr 25 2022 Pawel Winogrodzki <pawelwi@microsoft.com> - 2.3.3.4-38
-- Updating source URLs.
-- License verified.
+* Wed Jan 24 2024 Fedora Release Engineering <releng@fedoraproject.org> - 2.3.3.4-48.20130812.e8e3d20git
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
 
-* Thu Oct 14 2021 Pawel Winogrodzki <pawelwi@microsoft.com> - 2.3.3.4-37
-- Initial CBL-Mariner import from Fedora 32 (license: MIT).
-- Converting the 'Release' tag to the '[number].[distribution]' format.
+* Fri Jan 19 2024 Fedora Release Engineering <releng@fedoraproject.org> - 2.3.3.4-47.20130812.e8e3d20git
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Wed Jul 19 2023 Fedora Release Engineering <releng@fedoraproject.org> - 2.3.3.4-46.20130812.e8e3d20git
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_39_Mass_Rebuild
+
+* Thu Jan 19 2023 Fedora Release Engineering <releng@fedoraproject.org> - 2.3.3.4-45.20130812.e8e3d20git
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_38_Mass_Rebuild
+
+* Tue Oct 18 2022 Stephan Bergmann <sbergman@redhat.com> - 2.3.3.4-44.20130812.e8e3d20git
+- Fix FTBFS (missing #include <time.h>)
+
+* Wed Jul 20 2022 Fedora Release Engineering <releng@fedoraproject.org> - 2.3.3.4-43.20130812.e8e3d20git
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_37_Mass_Rebuild
+
+* Wed Jan 19 2022 Fedora Release Engineering <releng@fedoraproject.org> - 2.3.3.4-42.20130812.e8e3d20git
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_36_Mass_Rebuild
+
+* Wed Jul 21 2021 Fedora Release Engineering <releng@fedoraproject.org> - 2.3.3.4-41.20130812.e8e3d20git
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_35_Mass_Rebuild
+
+* Tue Jan 26 2021 Fedora Release Engineering <releng@fedoraproject.org> - 2.3.3.4-40.20130812.e8e3d20git
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_34_Mass_Rebuild
+
+* Mon Jul 27 2020 Fedora Release Engineering <releng@fedoraproject.org> - 2.3.3.4-39.20130812.e8e3d20git
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_33_Mass_Rebuild
+
+* Tue Jul 21 2020 Rex Dieter <rdieter@fedoraproject.org> - 2.3.3.4-38.20130812.e8e3d20.git
+- pull in some upstream fixes (PR, previous commit)
+- use latest %%cmake macros
+- s/define/global/
+
+* Tue Jul 14 2020 Tom Stellard <tstellar@redhat.com> - 2.3.3.4-37.20130812.e8e3d20git
+- Use make macros
+- https://fedoraproject.org/wiki/Changes/UseMakeBuildInstallMacro
 
 * Tue Jan 28 2020 Fedora Release Engineering <releng@fedoraproject.org> - 2.3.3.4-36.20130812.e8e3d20git
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_32_Mass_Rebuild

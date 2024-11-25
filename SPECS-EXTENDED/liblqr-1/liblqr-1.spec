@@ -1,14 +1,13 @@
-Vendor:         Microsoft Corporation
-Distribution:   Azure Linux
 Name:           liblqr-1
 Version:        0.4.2
-Release:        15%{?dist}
+Release:        25%{?dist}
 Summary:        LiquidRescale library
 License:        GPLv3
 URL:            http://liquidrescale.wikidot.com/
 Source0:        http://liblqr.wikidot.com/local--files/en:download-page/%{name}-%{version}.tar.bz2
 BuildRequires:  gcc
 BuildRequires:  glib2-devel
+BuildRequires:  make
 
 %description
 The LiquidRescale (lqr) library provides a C/C++ API for
@@ -16,9 +15,8 @@ performing non-uniform resizing of images by the seam-carving
 technique.
 
 %package devel
-Summary:        LiquidRescale library  development kit
-License:        GPLv3
-Requires:       %{name} = %{version}-%{release}
+Summary:        LiquidRescale library development kit
+Requires:       %{name}%{?_isa} = %{version}-%{release}
 Requires:       glib2-devel, pkgconfig
 
 %description devel
@@ -26,23 +24,20 @@ The libqr-devel package contains the header files
 needed to develop applications with liblqr
 
 %prep
-%setup -q
+%autosetup
 
 %build
-export LDFLAGS="`pkg-config --libs glib-2.0` -lm"
+export LDFLAGS="%{build_ldflags} `pkg-config --libs glib-2.0` -lm"
 %configure
-%{__make} %{?_smp_mflags}
+%make_build
 
 %install
-%{__make} install DESTDIR=$RPM_BUILD_ROOT INSTALL="install -p"
+%make_install
 
 # remove .la files
 find $RPM_BUILD_ROOT -name \*.la -exec %{__rm} -f {} \;
 
-# Fedora MUST
-%ldconfig_scriptlets
-
-%files 
+%files
 %doc README ChangeLog COPYING
 %{_libdir}/liblqr-1.so.0.3.2
 %{_libdir}/liblqr-1.so.0
@@ -55,8 +50,38 @@ find $RPM_BUILD_ROOT -name \*.la -exec %{__rm} -f {} \;
 
 
 %changelog
-* Fri Oct 15 2021 Pawel Winogrodzki <pawelwi@microsoft.com> - 0.4.2-15
-- Initial CBL-Mariner import from Fedora 32 (license: MIT).
+* Thu Jul 18 2024 Fedora Release Engineering <releng@fedoraproject.org> - 0.4.2-25
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_41_Mass_Rebuild
+
+* Thu Jan 25 2024 Fedora Release Engineering <releng@fedoraproject.org> - 0.4.2-24
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Sun Jan 21 2024 Fedora Release Engineering <releng@fedoraproject.org> - 0.4.2-23
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Thu Jul 20 2023 Fedora Release Engineering <releng@fedoraproject.org> - 0.4.2-22
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_39_Mass_Rebuild
+
+* Thu Jan 19 2023 Fedora Release Engineering <releng@fedoraproject.org> - 0.4.2-21
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_38_Mass_Rebuild
+
+* Thu Jul 21 2022 Fedora Release Engineering <releng@fedoraproject.org> - 0.4.2-20
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_37_Mass_Rebuild
+
+* Thu Jan 27 2022 Neal Gompa <ngompa@fedoraproject.org> - 0.4.2-19
+- Minor spec cleanups
+
+* Thu Jan 20 2022 Fedora Release Engineering <releng@fedoraproject.org> - 0.4.2-18
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_36_Mass_Rebuild
+
+* Thu Jul 22 2021 Fedora Release Engineering <releng@fedoraproject.org> - 0.4.2-17
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_35_Mass_Rebuild
+
+* Tue Jan 26 2021 Fedora Release Engineering <releng@fedoraproject.org> - 0.4.2-16
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_34_Mass_Rebuild
+
+* Tue Jul 28 2020 Fedora Release Engineering <releng@fedoraproject.org> - 0.4.2-15
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_33_Mass_Rebuild
 
 * Wed Jan 29 2020 Fedora Release Engineering <releng@fedoraproject.org> - 0.4.2-14
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_32_Mass_Rebuild

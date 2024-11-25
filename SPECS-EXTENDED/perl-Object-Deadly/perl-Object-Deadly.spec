@@ -1,25 +1,30 @@
-Vendor:         Microsoft Corporation
-Distribution:   Azure Linux
 Name:           perl-Object-Deadly
 Version:        0.09
-Release:        35%{?dist}
+Release:        48%{?dist}
 Summary:        Perl module providing an object that dies whenever examined
-License:        GPL+ or Artistic
+License:        GPL-1.0-or-later OR Artistic-1.0-Perl
 URL:            https://metacpan.org/release/Object-Deadly
-Source0:        https://cpan.metacpan.org/authors/id/J/JJ/JJORE/Object-Deadly-%{version}.tar.gz#/perl-Object-Deadly-%{version}.tar.gz
+Source0:        https://cpan.metacpan.org/authors/id/J/JJ/JJORE/Object-Deadly-%{version}.tar.gz
 BuildArch:      noarch
+BuildRequires:  make
 BuildRequires:  perl-generators
-BuildRequires:  perl(ExtUtils::MakeMaker)
+BuildRequires:  perl-interpreter
+BuildRequires:  perl(ExtUtils::MakeMaker) >= 6.76
+BuildRequires:  perl(strict)
 # Run-time:
+BuildRequires:  perl(B)
 BuildRequires:  perl(Carp::Clan) >= 5.4
 BuildRequires:  perl(Devel::StackTrace)
 BuildRequires:  perl(Devel::Symdump)
-BuildRequires:  perl(Scalar::Util)
-# Tests:
-BuildRequires:  perl(Test::Exception)
 BuildRequires:  perl(English)
+BuildRequires:  perl(overload)
+BuildRequires:  perl(Scalar::Util)
+BuildRequires:  perl(vars)
+# Tests:
+BuildRequires:  perl(Symbol)
+BuildRequires:  perl(Test::Exception)
 BuildRequires:  perl(Test::More)
-Requires:       perl(:MODULE_COMPAT_%(eval "`%{__perl} -V:version`"; echo $version))
+Requires:       perl(Devel::StackTrace)
 
 %description
 Object::Deadly is meant to be used in testing. All possible
@@ -27,17 +32,43 @@ overloading and method calls die. You can pass this object into
 methods which are not supposed to accidentally trigger any potentially
 overloading.
 
+%package tests
+Summary:        Tests for %{name}
+Requires:       %{name} = %{?epoch:%{epoch}:}%{version}-%{release}
+Requires:       perl-Test-Harness
+
+%description tests
+Tests from %{name}. Execute them
+with "%{_libexecdir}/%{name}/test".
+
 %prep
 %setup -q -n Object-Deadly-%{version}
+# Help generators to recognize Perl scripts
+for F in t/*.t; do
+    perl -i -MConfig -ple 'print $Config{startperl} if $. == 1 && !s{\A#!.*perl\b}{$Config{startperl}}' "$F"
+    chmod +x "$F"
+done
 
 %build
-%{__perl} Makefile.PL INSTALLDIRS=vendor
-make %{?_smp_mflags}
+perl Makefile.PL INSTALLDIRS=vendor NO_PACKLIST=1 NO_PERLLOCAL=1
+%{make_build}
 
 %install
-make pure_install DESTDIR=$RPM_BUILD_ROOT
-find $RPM_BUILD_ROOT -type f -name .packlist -exec rm -f {} ';'
-chmod -R u+w $RPM_BUILD_ROOT/*
+%{make_install}
+%{_fixperms} $RPM_BUILD_ROOT/*
+# Install tests
+mkdir -p %{buildroot}%{_libexecdir}/%{name}
+cp -a t %{buildroot}%{_libexecdir}/%{name}
+# Remove author tests.
+rm -f %{buildroot}%{_libexecdir}/%{name}/t/01*
+rm -f %{buildroot}%{_libexecdir}/%{name}/t/02*
+rm -f %{buildroot}%{_libexecdir}/%{name}/t/03*
+rm -f %{buildroot}%{_libexecdir}/%{name}/t/04*
+cat > %{buildroot}%{_libexecdir}/%{name}/test << 'EOF'
+#!/bin/sh
+cd %{_libexecdir}/%{name} && exec prove -I . -j "$(getconf _NPROCESSORS_ONLN)"
+EOF
+chmod +x %{buildroot}%{_libexecdir}/%{name}/test
 
 %check
 make test
@@ -47,13 +78,56 @@ make test
 %{perl_vendorlib}/*
 %{_mandir}/man3/*.3*
 
-%changelog
-* Tue Jul 26 2022 Muhammad Falak <mwani@microsoft.com> - 0.09-35
-- Add an explicit BR on `perl(English)` to enable ptest
-- License verified
+%files tests
+%{_libexecdir}/%{name}
 
-* Fri Oct 15 2021 Pawel Winogrodzki <pawelwi@microsoft.com> - 0.09-34
-- Initial CBL-Mariner import from Fedora 32 (license: MIT).
+%changelog
+* Wed Aug 07 2024 Michal Josef Špaček <mspacek@redhat.com> - 0.09-48
+- Fix requires.
+- Package tests
+
+* Fri Jul 19 2024 Fedora Release Engineering <releng@fedoraproject.org> - 0.09-47
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_41_Mass_Rebuild
+
+* Thu Jan 25 2024 Fedora Release Engineering <releng@fedoraproject.org> - 0.09-46
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Sun Jan 21 2024 Fedora Release Engineering <releng@fedoraproject.org> - 0.09-45
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Fri Jul 21 2023 Fedora Release Engineering <releng@fedoraproject.org> - 0.09-44
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_39_Mass_Rebuild
+
+* Fri Jan 20 2023 Fedora Release Engineering <releng@fedoraproject.org> - 0.09-43
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_38_Mass_Rebuild
+
+* Fri Jul 22 2022 Fedora Release Engineering <releng@fedoraproject.org> - 0.09-42
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_37_Mass_Rebuild
+
+* Tue May 31 2022 Jitka Plesnikova <jplesnik@redhat.com> - 0.09-41
+- Perl 5.36 rebuild
+
+* Fri Jan 21 2022 Fedora Release Engineering <releng@fedoraproject.org> - 0.09-40
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_36_Mass_Rebuild
+
+* Thu Jul 22 2021 Fedora Release Engineering <releng@fedoraproject.org> - 0.09-39
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_35_Mass_Rebuild
+
+* Fri May 21 2021 Jitka Plesnikova <jplesnik@redhat.com> - 0.09-38
+- Perl 5.34 rebuild
+
+* Wed Jan 27 2021 Fedora Release Engineering <releng@fedoraproject.org> - 0.09-37
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_34_Mass_Rebuild
+
+* Tue Jul 28 2020 Fedora Release Engineering <releng@fedoraproject.org> - 0.09-36
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_33_Mass_Rebuild
+
+* Tue Jun 23 2020 Jitka Plesnikova <jplesnik@redhat.com> - 0.09-35
+- Perl 5.32 rebuild
+
+* Wed Feb 26 2020 Jitka Plesnikova <jplesnik@redhat.com> - 0.09-34
+- Use make_* macros
+- Specify all dependencies
 
 * Thu Jan 30 2020 Fedora Release Engineering <releng@fedoraproject.org> - 0.09-33
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_32_Mass_Rebuild

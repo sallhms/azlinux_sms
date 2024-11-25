@@ -1,13 +1,11 @@
-Vendor:         Microsoft Corporation
-Distribution:   Azure Linux
 Name:          perl-Font-TTF
 Version:       1.06
-Release:       13%{?dist}
+Release:       25%{?dist}
 Summary:       Perl library for modifying TTF font files
 # other files:  Artistic 2.0
 ## not in binary packages
 # t/testfont.*: OFL
-License:       Artistic 2.0
+License:       Artistic-2.0
 URL:           https://metacpan.org/release/Font-TTF
 Source0:       http://cpan.org/authors/id/B/BH/BHALLISSY/Font-TTF-%{version}.tar.gz
 BuildArch:     noarch
@@ -34,7 +32,6 @@ BuildRequires: perl(vars)
 BuildRequires: perl(File::Compare)
 BuildRequires: perl(Test::More)
 BuildRequires: perl(Test::Simple)
-Requires: perl(:MODULE_COMPAT_%(eval "$(perl -V:version)"; echo $version))
 
 %description
 Perl module for TrueType font hacking. Supports reading, processing and writing
@@ -48,7 +45,6 @@ module.
 
 %package XMLparse
 Summary:       XML Font parser
-Requires:      perl(:MODULE_COMPAT_%(eval "$(perl -V:version)"; echo $version))
 Conflicts:     perl-Font-TTF < 1.06-6
 
 %description XMLparse
@@ -102,8 +98,44 @@ make test
 
 
 %changelog
-* Fri Oct 15 2021 Pawel Winogrodzki <pawelwi@microsoft.com> - 1.06-13
-- Initial CBL-Mariner import from Fedora 32 (license: MIT).
+* Fri Jul 19 2024 Fedora Release Engineering <releng@fedoraproject.org> - 1.06-25
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_41_Mass_Rebuild
+
+* Thu Jan 25 2024 Fedora Release Engineering <releng@fedoraproject.org> - 1.06-24
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Sun Jan 21 2024 Fedora Release Engineering <releng@fedoraproject.org> - 1.06-23
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Thu Jul 20 2023 Fedora Release Engineering <releng@fedoraproject.org> - 1.06-22
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_39_Mass_Rebuild
+
+* Fri Jan 20 2023 Fedora Release Engineering <releng@fedoraproject.org> - 1.06-21
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_38_Mass_Rebuild
+
+* Fri Jul 22 2022 Fedora Release Engineering <releng@fedoraproject.org> - 1.06-20
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_37_Mass_Rebuild
+
+* Mon May 30 2022 Jitka Plesnikova <jplesnik@redhat.com> - 1.06-19
+- Perl 5.36 rebuild
+
+* Fri Jan 21 2022 Fedora Release Engineering <releng@fedoraproject.org> - 1.06-18
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_36_Mass_Rebuild
+
+* Thu Jul 22 2021 Fedora Release Engineering <releng@fedoraproject.org> - 1.06-17
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_35_Mass_Rebuild
+
+* Fri May 21 2021 Jitka Plesnikova <jplesnik@redhat.com> - 1.06-16
+- Perl 5.34 rebuild
+
+* Wed Jan 27 2021 Fedora Release Engineering <releng@fedoraproject.org> - 1.06-15
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_34_Mass_Rebuild
+
+* Tue Jul 28 2020 Fedora Release Engineering <releng@fedoraproject.org> - 1.06-14
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_33_Mass_Rebuild
+
+* Tue Jun 23 2020 Jitka Plesnikova <jplesnik@redhat.com> - 1.06-13
+- Perl 5.32 rebuild
 
 * Thu Jan 30 2020 Fedora Release Engineering <releng@fedoraproject.org> - 1.06-12
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_32_Mass_Rebuild

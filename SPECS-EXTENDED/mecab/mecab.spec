@@ -1,6 +1,6 @@
-Vendor:         Microsoft Corporation
-Distribution:   Azure Linux
 %define		mainver		0.996
+#%%define		betaver		pre3
+%define		baserelease	8
 
 # Note:
 # mecab dictionary requires mecab-devel to rebuild it,
@@ -8,13 +8,19 @@ Distribution:   Azure Linux
 
 Name:		mecab
 Version:	%{mainver}
-Release:	3%{?dist}
+%if %{?betaver:0}%{!?betaver:1}
+Release:	%{baserelease}%{?dist}
+%else
+Release:	0.%{baserelease}.%{betaver}%{?dist}
+%endif
 Summary:	Yet Another Part-of-Speech and Morphological Analyzer
 
-License:	BSD or LGPLv2+ or GPL+
-URL:		https://sourceforge.net/projects/mecab
+# SPDX confirmed
+License:	BSD-3-Clause OR LGPL-2.1-or-later OR GPL-2.0-or-later
+URL:		http://mecab.sourceforge.net/
 Source0:	http://mecab.googlecode.com/files/%{name}-%{version}.tar.gz
 
+BuildRequires:	make
 BuildRequires:	gcc-c++
 
 %description
@@ -34,7 +40,7 @@ This is the development package that provides header files and libraries
 for MeCab.
 
 %prep
-%setup -q -n %{name}-%{mainver}
+%setup -q -n %{name}-%{mainver}%{?betaver}
 
 
 mv doc/doxygen .
@@ -60,12 +66,10 @@ find . -name \*.cpp -print0 | xargs -0 %{__chmod} 0644
 	-e 's|^runpath_var=LD_RUN_PATH|runpath_var=DIE_RPATH_DIE|g' \
 	libtool
 
-%{__make} %{?_smp_mflags}
+%make_build
 
 %install
-%{__make} install \
-	DESTDIR=$RPM_BUILD_ROOT \
-	INSTALL="%{__install} -c -p"
+%make_install
 
 %{__rm} -f $RPM_BUILD_ROOT%{_libdir}/lib*.{a,la}
 %{__rm} -f doc/Makefile*
@@ -83,7 +87,8 @@ cd ..
 %ldconfig_scriptlets
 
 %files
-%doc AUTHORS BSD COPYING GPL LGPL
+%doc AUTHORS
+%license BSD COPYING GPL LGPL
 %doc doc/ example/
 %{_mandir}/man1/%{name}.1*
 
@@ -103,9 +108,42 @@ cd ..
 %{_includedir}/%{name}.h
 
 %changelog
-* Thu Oct 14 2021 Pawel Winogrodzki <pawelwi@microsoft.com> - 0.996-3
-- Switching to using full number for the 'Release' tag.
-- Initial CBL-Mariner import from Fedora 32 (license: MIT).
+* Thu Jul 18 2024 Fedora Release Engineering <releng@fedoraproject.org> - 0.996-8
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_41_Mass_Rebuild
+
+* Thu Jan 25 2024 Fedora Release Engineering <releng@fedoraproject.org> - 0.996-7
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Sun Jan 21 2024 Fedora Release Engineering <releng@fedoraproject.org> - 0.996-6
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Thu Jul 20 2023 Fedora Release Engineering <releng@fedoraproject.org> - 0.996-5
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_39_Mass_Rebuild
+
+* Tue Jun  8 2023 Mamoru TASAKA <mtasaka@fedoraproject.org> - 0.996-4
+- SPDX migration (ljavorsk)
+- Use %%license
+
+* Thu Jan 19 2023 Fedora Release Engineering <releng@fedoraproject.org> - 0.996-3.5
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_38_Mass_Rebuild
+
+* Thu Jul 21 2022 Fedora Release Engineering <releng@fedoraproject.org> - 0.996-3.4
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_37_Mass_Rebuild
+
+* Thu Jan 20 2022 Fedora Release Engineering <releng@fedoraproject.org> - 0.996-3.3
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_36_Mass_Rebuild
+
+* Thu Jul 22 2021 Fedora Release Engineering <releng@fedoraproject.org> - 0.996-3.2
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_35_Mass_Rebuild
+
+* Tue Jan 26 2021 Fedora Release Engineering <releng@fedoraproject.org> - 0.996-3.1
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_34_Mass_Rebuild
+
+* Thu Aug 20 2020 Mamoru TASAKA <mtasaka@fedoraproject.org> - 0.996-3
+- Use recent rpm macros
+
+* Tue Jul 28 2020 Fedora Release Engineering <releng@fedoraproject.org> - 0.996-2.5
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_33_Mass_Rebuild
 
 * Wed Jan 29 2020 Fedora Release Engineering <releng@fedoraproject.org> - 0.996-2.4
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_32_Mass_Rebuild

@@ -1,16 +1,16 @@
-Vendor:         Microsoft Corporation
-Distribution:   Azure Linux
-Summary:	Command line tool that displays bandwidth usage on an interface
-Name:		iftop
-Version:	1.0
-Release:	1%{?dist}
-License:	GPLv2+
-URL:		http://www.ex-parrot.com/~pdw/%{name}/
-Source:		http://www.ex-parrot.com/~pdw/%{name}/download/%{name}-%{version}pre4.tar.gz
-Patch0:		iftop-1.0-ncursesw.patch
-Patch1:		iftop-1.0-git20181003.patch
-Patch2:		iftop-1.0-gcc10.patch
-BuildRequires:	gcc, ncurses-devel, libpcap-devel
+Summary:        Command line tool that displays bandwidth usage on an interface
+Name:           iftop
+Version:        1.0
+Release:        0.34.pre4%{?dist}
+# {ip,sll,tcp}.h are BSD-4-Clause-UC, rest is GPL-2.0-or-later
+License:        GPL-2.0-or-later AND BSD-4-Clause-UC
+URL:            http://www.ex-parrot.com/~pdw/%{name}/
+Source0:        http://www.ex-parrot.com/~pdw/%{name}/download/%{name}-%{version}pre4.tar.gz
+Patch0:         iftop-1.0-ncursesw.patch
+Patch1:         iftop-1.0-git20181003.patch
+Patch2:         iftop-1.0-gcc10.patch
+Patch3:         iftop-configure-c99.patch
+BuildRequires:  gcc, make, ncurses-devel, libpcap-devel
 
 %description
 iftop does for network usage what top(1) does for CPU usage. It listens to
@@ -20,10 +20,13 @@ so slow?".
 
 %prep
 %setup -q -n %{name}-%{version}pre4
-%patch 0 -p1 -b .ncursesw
+%patch -P0 -p1 -b .ncursesw
 touch -c -r configure.ac{.ncursesw,}
-%patch 1 -p1 -b .git20181003
-%patch 2 -p1 -b .gcc10
+%patch -P1 -p1 -b .git20181003
+%patch -P2 -p1 -b .gcc10
+%patch -P3 -p1 -b .c99
+# Avoid re-running autoconf.
+touch -r aclocal.m4 configure*
 
 %build
 %configure
@@ -39,11 +42,38 @@ touch -c -r configure.ac{.ncursesw,}
 %{_mandir}/man8/%{name}.*
 
 %changelog
-* Thu Oct 14 2021 Pawel Winogrodzki <pawelwi@microsoft.com> - 1.0-1
-- Converting the 'Release' tag to the '[number].[distribution]' format.
+* Thu Jul 18 2024 Fedora Release Engineering <releng@fedoraproject.org> - 1.0-0.34.pre4
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_41_Mass_Rebuild
 
-* Fri Sep 24 2021 Muhammad Falak <mwani@microsoft.com.> 1.0-0.24.pre4
-- Initial CBL-Mariner import from Fedora 32 (license: MIT).
+* Wed Jan 24 2024 Fedora Release Engineering <releng@fedoraproject.org> - 1.0-0.33.pre4
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Sat Jan 20 2024 Fedora Release Engineering <releng@fedoraproject.org> - 1.0-0.32.pre4
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Thu Jul 20 2023 Fedora Release Engineering <releng@fedoraproject.org> - 1.0-0.31.pre4
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_39_Mass_Rebuild
+
+* Thu Jan 19 2023 Fedora Release Engineering <releng@fedoraproject.org> - 1.0-0.30.pre4
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_38_Mass_Rebuild
+
+* Thu Dec 22 2022 Florian Weimer <fweimer@redhat.com> - 1.0-0.29.pre4
+- Port configure script to C99
+
+* Thu Jul 21 2022 Fedora Release Engineering <releng@fedoraproject.org> - 1.0-0.28.pre4
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_37_Mass_Rebuild
+
+* Thu Jan 20 2022 Fedora Release Engineering <releng@fedoraproject.org> - 1.0-0.27.pre4
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_36_Mass_Rebuild
+
+* Thu Jul 22 2021 Fedora Release Engineering <releng@fedoraproject.org> - 1.0-0.26.pre4
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_35_Mass_Rebuild
+
+* Tue Jan 26 2021 Fedora Release Engineering <releng@fedoraproject.org> - 1.0-0.25.pre4
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_34_Mass_Rebuild
+
+* Tue Jul 28 2020 Fedora Release Engineering <releng@fedoraproject.org> - 1.0-0.24.pre4
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_33_Mass_Rebuild
 
 * Sun Feb 02 2020 Robert Scheck <robert@fedoraproject.org> 1.0-0.23.pre4
 - Added patch to declare variables as extern in header files

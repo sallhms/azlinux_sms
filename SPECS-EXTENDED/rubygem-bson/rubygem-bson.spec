@@ -1,19 +1,20 @@
-Vendor:         Microsoft Corporation
-Distribution:   Azure Linux
 # Generated from bson-1.3.1.gem by gem2rpm -*- rpm-spec -*-
 %global gem_name bson
 
 Name: rubygem-%{gem_name}
 Version: 4.15.0
-Release: 1%{?dist}
-Summary: Ruby Implementation of the BSON specification
-License: ASL 2.0
+Release: 8%{?dist}
+Summary: Ruby implementation of the BSON specification
+License: Apache-2.0
 # Keep the URL, while different URL is used in the upstream gemspec file.
 # Because there is a basic explanation about the bson
 # that is a beneficial for Fedora user.
 URL: http://bsonspec.org
-Source0: https://github.com/mongodb/%{gem_name}-ruby/archive/refs/tags/v%{version}.tar.gz#/rubygem-%{gem_name}-%{version}.tar.gz
+Source0: https://rubygems.org/gems/%{gem_name}-%{version}.gem
+# https://github.com/mongodb/bson-ruby/blob/e560ee5c65f9f82d8f3430b5a72d8c9a3f1e0fdb/lib/bson/decimal128.rb#L16
 Requires: rubygem(bigdecimal)
+# https://github.com/mongodb/bson-ruby/blob/e560ee5c65f9f82d8f3430b5a72d8c9a3f1e0fdb/lib/bson/ext_json.rb#L18
+Requires: rubygem(json)
 BuildRequires: ruby(release)
 BuildRequires: rubygems-devel >= 1.3.6
 BuildRequires: ruby-devel >= 2.3
@@ -33,6 +34,10 @@ A fully featured BSON specification implementation in Ruby.
 
 %package doc
 Summary: Documentation for %{name}
+# MIT: spec/shared
+# Git submodule originally living at:
+# https://github.com/mongodb-labs/mongo-ruby-spec-shared
+License: Apache-2.0 AND MIT
 Requires: %{name} = %{version}-%{release}
 BuildArch: noarch
 
@@ -40,11 +45,11 @@ BuildArch: noarch
 Documentation for %{name}.
 
 %prep
-%autosetup -n %{gem_name}-ruby-%{version}
+%setup -q -n %{gem_name}-%{version}
 
 %build
 # Create the gem as gem install only works on a gem file
-gem build %{gem_name}
+gem build ../%{gem_name}-%{version}.gemspec
 
 # %%gem_install compiles any C extensions and installs the gem into ./%%gem_dir
 # by default, so that we can move it into the buildroot in %%install
@@ -56,10 +61,10 @@ cp -a .%{gem_dir}/* \
         %{buildroot}%{gem_dir}/
 
 mkdir -p %{buildroot}%{gem_extdir_mri}
+cp -a .%{gem_extdir_mri}/{gem.build_complete,*.so} %{buildroot}%{gem_extdir_mri}/
 
 # Prevent dangling symlink in -debuginfo (rhbz#878863).
 rm -rf %{buildroot}%{gem_instdir}/ext/
-rm -rf $RPM_BUILD_ROOT%{gem_dir}/extensions/
 
 %check
 pushd .%{gem_instdir}
@@ -84,13 +89,62 @@ popd
 %{gem_instdir}/spec
 
 %changelog
-* Mon Nov 28 2022 Muhammad Falak <mwani@microsoft.com> - 4.15.0-1
-- Switch to building a tar.gz instead of a gem
-- License verified
+* Fri Jul 19 2024 Fedora Release Engineering <releng@fedoraproject.org> - 4.15.0-8
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_41_Mass_Rebuild
 
-* Thu Mar 11 2021 Henry Li <lihl@microsoft.com> - 4.7.0-4
-- Initial CBL-Mariner import from Fedora 32 (license: MIT).
-- Remove unnecessary files that won'be built
+* Fri Jan 26 2024 Fedora Release Engineering <releng@fedoraproject.org> - 4.15.0-7
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Mon Jan 22 2024 Fedora Release Engineering <releng@fedoraproject.org> - 4.15.0-6
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Wed Jan 03 2024 Vít Ondruch <vondruch@redhat.com> - 4.15.0-5
+- Rebuilt for https://fedoraproject.org/wiki/Changes/Ruby_3.3
+
+* Fri Jul 21 2023 Fedora Release Engineering <releng@fedoraproject.org> - 4.15.0-4
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_39_Mass_Rebuild
+
+* Fri Jan 20 2023 Fedora Release Engineering <releng@fedoraproject.org> - 4.15.0-3
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_38_Mass_Rebuild
+
+* Tue Jan 03 2023 Vít Ondruch <vondruch@redhat.com> - 4.15.0-2
+- Rebuilt for https://fedoraproject.org/wiki/Changes/Ruby_3.2
+
+* Tue Sep 20 2022 Vít Ondruch <vondruch@redhat.com> - 4.15.0-1
+- Update to bson 4.15.0.
+  Resolves: rhbz#1888046
+
+* Sat Jul 23 2022 Fedora Release Engineering <releng@fedoraproject.org> - 4.10.0-7
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_37_Mass_Rebuild
+
+* Thu Jan 27 2022 Mamoru TASAKA <mtasaka@fedoraproject.org> - 4.10.0-6
+- F-36: rebuild against ruby31
+- Apply upstream patch to use YAML.unsafe_load for ruby31
+
+* Fri Jan 21 2022 Fedora Release Engineering <releng@fedoraproject.org> - 4.10.0-5
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_36_Mass_Rebuild
+
+* Tue Jul 27 2021 Fedora Release Engineering <releng@fedoraproject.org> - 4.10.0-4
+- Second attempt - Rebuilt for
+  https://fedoraproject.org/wiki/Fedora_35_Mass_Rebuild
+
+* Wed Jan 27 2021 Fedora Release Engineering <releng@fedoraproject.org> - 4.10.0-3
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_34_Mass_Rebuild
+
+* Wed Jan  6 2021 Vít Ondruch <vondruch@redhat.com> - 4.10.0-2
+- Rebuilt for https://fedoraproject.org/wiki/Changes/Ruby_3.0
+
+* Fri Aug 07 2020 Jun Aruga <jaruga@redhat.com> - 4.10.0-1
+- Update to bson 4.10.0.
+
+* Wed Jul 29 2020 Fedora Release Engineering <releng@fedoraproject.org> - 4.8.1-2
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_33_Mass_Rebuild
+
+* Wed Mar 04 2020 Jun Aruga <jaruga@redhat.com> - 4.8.1-1
+- Update to bson 4.8.1.
+
+* Tue Mar 03 2020 Jun Aruga <jaruga@redhat.com> - 4.8.0-1
+- Update to bson 4.8.0.
 
 * Thu Jan 30 2020 Fedora Release Engineering <releng@fedoraproject.org> - 4.7.0-3
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_32_Mass_Rebuild

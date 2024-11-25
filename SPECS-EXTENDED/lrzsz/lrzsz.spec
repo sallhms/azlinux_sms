@@ -1,17 +1,19 @@
-Vendor:         Microsoft Corporation
-Distribution:   Azure Linux
 Summary: The lrz and lsz modem communications programs
 Name: lrzsz
 Version: 0.12.20
-Release: 50%{?dist}
-License: GPLv2+
+Release: 65%{?dist}
+License: GPL-2.0-or-later AND GPL-2.0-only
 Source: http://www.ohse.de/uwe/releases/%{name}-%{version}.tar.gz
 Patch1: lrzsz-0.12.20-glibc21.patch
 Patch2: lrzsz-0.12.20.patch
 Patch3: lrzsz-0.12.20-man.patch
 Patch4: lrzsz-0.12.20-aarch64.patch
+Patch5: lrzsz-configure-c99.patch
+Patch6: lrzsz-c99.patch
+Patch7: lrzsz-socklen.patch
 Url: http://www.ohse.de/uwe/software/lrzsz.html
 BuildRequires: gcc gettext
+BuildRequires: make
 
 %description
 Lrzsz (consisting of lrz and lsz) is a cosmetically modified
@@ -22,10 +24,13 @@ copylefted Zmodem solution for Linux systems.
 %prep
 %setup -q
 
-%patch 1 -p1 -b .glibc21
-%patch 2 -p1 -b .crc
-%patch 3 -p1 -b .man
-%patch 4 -p1 -b .aarch64
+%patch -P1 -p1 -b .glibc21
+%patch -P2 -p1 -b .crc
+%patch -P3 -p1 -b .man
+%patch -P4 -p1 -b .aarch64
+%patch -P5 -p1
+%patch -P6 -p1
+%patch -P7 -p1
 
 rm -f po/*.gmo
 
@@ -34,10 +39,12 @@ rm -f po/*.gmo
            --enable-syslog \
            --program-transform-name=s/l//
 
-make %{?_smp_mflags}
+%make_build
 
 %install
-%makeinstall
+%make_install 	prefix=%{buildroot}/usr \
+	datadir=%{buildroot}/usr/share
+
 for m in rb rx; do ln -s rz.1 %{buildroot}%{_mandir}/man1/$m.1; done
 for m in sb sx; do ln -s sz.1 %{buildroot}%{_mandir}/man1/$m.1; done
 
@@ -48,8 +55,55 @@ for m in sb sx; do ln -s sz.1 %{buildroot}%{_mandir}/man1/$m.1; done
 %{_mandir}/*/*
 
 %changelog
-* Fri Oct 15 2021 Pawel Winogrodzki <pawelwi@microsoft.com> - 0.12.20-50
-- Initial CBL-Mariner import from Fedora 32 (license: MIT).
+* Thu Jul 18 2024 Fedora Release Engineering <releng@fedoraproject.org> - 0.12.20-65
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_41_Mass_Rebuild
+
+* Thu Jan 25 2024 Fedora Release Engineering <releng@fedoraproject.org> - 0.12.20-64
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Sun Jan 21 2024 Fedora Release Engineering <releng@fedoraproject.org> - 0.12.20-63
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Mon Dec 18 2023 Florian Weimer <fweimer@redhat.com> - 0.12.20-62
+- Fix socket length incompatibility (C compatibility issue)
+
+* Tue Oct 31 2023 Tomas Korbar <tkorbar@redhat.com> - 0.12.20-61
+- Add additional SPDX licenses found by scancode tool
+
+* Thu Jul 20 2023 Fedora Release Engineering <releng@fedoraproject.org> - 0.12.20-60
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_39_Mass_Rebuild
+
+* Sun Mar 12 2023 Tomas Korbar <tkorbar@redhat.com> - 0.12.20-59
+- Change the License tag to the SPDX format
+
+* Fri Jan 27 2023 Florian Weimer <fweimer@redhat.com> - 0.12.20-58
+- Fix C99 compatibility issues (#2164996)
+
+* Thu Jan 19 2023 Fedora Release Engineering <releng@fedoraproject.org> - 0.12.20-57
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_38_Mass_Rebuild
+
+* Thu Jul 21 2022 Fedora Release Engineering <releng@fedoraproject.org> - 0.12.20-56
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_37_Mass_Rebuild
+
+* Thu Jan 20 2022 Fedora Release Engineering <releng@fedoraproject.org> - 0.12.20-55
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_36_Mass_Rebuild
+
+* Thu Jul 22 2021 Fedora Release Engineering <releng@fedoraproject.org> - 0.12.20-54
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_35_Mass_Rebuild
+
+* Tue Jan 26 2021 Fedora Release Engineering <releng@fedoraproject.org> - 0.12.20-53
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_34_Mass_Rebuild
+
+* Mon Aug 17 2020 Tomas Korbar <tkorbar@redhat.com> - 0.12.20-52
+- Use make macros
+- https://fedoraproject.org/wiki/Changes/UseMakeBuildInstallMacro
+
+* Sat Aug 01 2020 Fedora Release Engineering <releng@fedoraproject.org> - 0.12.20-51
+- Second attempt - Rebuilt for
+  https://fedoraproject.org/wiki/Fedora_33_Mass_Rebuild
+
+* Tue Jul 28 2020 Fedora Release Engineering <releng@fedoraproject.org> - 0.12.20-50
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_33_Mass_Rebuild
 
 * Wed Jan 29 2020 Fedora Release Engineering <releng@fedoraproject.org> - 0.12.20-49
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_32_Mass_Rebuild

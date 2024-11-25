@@ -536,3 +536,4 @@ index 185fe8a..a442e7a 100644
 +    DES_cblock ivec; // initialization vector
      int ivecoff; // current offset into initvec
  };
+ 

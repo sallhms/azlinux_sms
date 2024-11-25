@@ -1,27 +1,22 @@
-Vendor:         Microsoft Corporation
-Distribution:   Azure Linux
-
-# feature macro to enable samples (or not)
-%if 0%{?rhel} != 7
-%global samples 1
-%endif
+%global somajor 23
 
 Summary: Library for reading RAW files obtained from digital photo cameras
 Name: LibRaw
-Version: 0.19.5
-Release: 5%{?dist}
-License: BSD and (CDDL or LGPLv2)
-URL: http://www.libraw.org
+Version: 0.21.3
+Release: 1%{?dist}
+License: BSD-3-Clause and (CDDL-1.0 or LGPL-2.1-only)
+URL: https://www.libraw.org
+Source0: %{url}/data/%{name}-%{version}.tar.gz
+Patch0: LibRaw-pkgconfig.patch
 
 BuildRequires: gcc-c++
 BuildRequires: pkgconfig(lcms2)
 BuildRequires: pkgconfig(jasper)
 BuildRequires: pkgconfig(libjpeg)
+BuildRequires: pkgconfig(zlib)
 BuildRequires: autoconf automake libtool
+BuildRequires: make
 
-Source0: http://www.libraw.org/data/%{name}-%{version}.tar.gz
-Patch0:  LibRaw-0.6.0-pkgconfig.patch
-Patch1:  CVE-2020-15503.patch
 Provides: bundled(dcraw) = 9.25
 
 %description
@@ -33,7 +28,7 @@ drawbacks have already been eliminated and part will be fixed in future.
 
 %package devel
 Summary: LibRaw development libraries
-Requires:   %{name}%{?_isa} = %{version}-%{release}
+Requires: %{name}%{?_isa} = %{version}-%{release}
 
 %description devel
 LibRaw development libraries.
@@ -50,25 +45,23 @@ LibRaw static development libraries.
 
 %package samples
 Summary: LibRaw sample programs
-Requires: %{name} = %{version}-%{release}
+Requires: %{name}%{?_isa} = %{version}-%{release}
 
 %description samples
 LibRaw sample programs
 
 %prep
-%setup -q
-
-%patch 0 -p0 -b .pkgconfig
-%patch 1 -p1 -b .cve-2020-15503
+%autosetup -p1 -n %{name}-%{version}
 
 %build
 autoreconf -if
 %configure \
-    --enable-examples=%{?samples:yes}%{!?samples:no} \
+    --enable-examples=yes \
     --enable-jasper \
     --enable-jpeg \
     --enable-lcms \
-    --enable-openmp
+    --enable-openmp \
+    --enable-zlib
 
 # https://fedoraproject.org/wiki/Packaging:Guidelines#Beware_of_Rpath
 sed -i 's|^hardcode_libdir_flag_spec=.*|hardcode_libdir_flag_spec=""|g' libtool
@@ -90,13 +83,11 @@ rm -fv samples/*.o
 
 rm -fv %{buildroot}%{_libdir}/lib*.la
 
-%ldconfig_scriptlets
-
 %files
 %doc Changelog.txt
 %license LICENSE.CDDL LICENSE.LGPL COPYRIGHT
-%{_libdir}/libraw.so.19*
-%{_libdir}/libraw_r.so.19*
+%{_libdir}/libraw.so.%{somajor}{,.*}
+%{_libdir}/libraw_r.so.%{somajor}{,.*}
 
 %files static
 %{_libdir}/libraw.a
@@ -104,9 +95,7 @@ rm -fv %{buildroot}%{_libdir}/lib*.la
 
 %files devel
 %doc manual
-#if 0%{?samples}
 %doc samples
-#endif
 %{_includedir}/libraw/
 %{_libdir}/libraw.so
 %{_libdir}/libraw_r.so
@@ -114,21 +103,101 @@ rm -fv %{buildroot}%{_libdir}/lib*.la
 %{_libdir}/pkgconfig/libraw_r.pc
 %exclude %{_docdir}/libraw/*
 
-%if 0%{?samples}
 %files samples
 %{_bindir}/*
-%endif
 
 
 %changelog
-* Fri Oct 15 2021 Pawel Winogrodzki <pawelwi@microsoft.com> - 0.19.5-5
-- Initial CBL-Mariner import from Fedora 32 (license: MIT).
+* Fri Sep 20 2024 Gwyn Ciesla <gwync@protonmail.com> - 0.21.3-1
+- 0.21.3
 
-* Mon Aug 10 2020 Debarshi Ray <rishi@fedoraproject.org> - 0.19.5-4
-- Ensure that the patch for CVE-2020-15503 gets applied
+* Wed Jul 17 2024 Fedora Release Engineering <releng@fedoraproject.org> - 0.21.2-6
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_41_Mass_Rebuild
 
-* Fri Jul 03 2020 Gwyn Ciesla <gwync@protonmail.com> - 0.19.5-3
-- Patch for CVE-2020-15503
+* Mon Jan 22 2024 Fedora Release Engineering <releng@fedoraproject.org> - 0.21.2-5
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Fri Jan 19 2024 Fedora Release Engineering <releng@fedoraproject.org> - 0.21.2-4
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Thu Jan 18 2024 Fedora Release Engineering <releng@fedoraproject.org> - 0.21.2-3
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Tue Jan 09 2024 Gwyn Ciesla <gwync@protonmail.com> - 0.21.2-2
+- CR3-Qstep table: avoid wrong 64-bit code generation patch
+
+* Thu Dec 21 2023 Gwyn Ciesla <gwync@protonmail.com> - 0.21.2-1
+- 0.21.2, enable zlib support.
+
+* Tue Nov 28 2023 Orion Poplawski <orion@nwra.com> - 0.21.1-7
+- Rebuild for jasper 4.1
+
+* Tue Oct 10 2023 Neal Gompa <ngompa@fedoraproject.org> - 0.21.1-6
+- Clean and simplify spec and drop EL7 stuff
+- Use official released tarball
+
+* Wed Jul 19 2023 Fedora Release Engineering <releng@fedoraproject.org> - 0.21.1-5
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_39_Mass_Rebuild
+
+* Mon May 08 2023 Gwyn Ciesla <gwync@protonmail.com> - 0.21.1-4
+- Patch for CVE-2023-1729
+
+* Mon Mar 13 2023 Gwyn Ciesla <gwync@protonmail.com> - 0.21.1-3
+- migrate to SPDX license
+
+* Wed Jan 18 2023 Fedora Release Engineering <releng@fedoraproject.org> - 0.21.1-2
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_38_Mass_Rebuild
+
+* Thu Jan 05 2023 Gwyn Ciesla <gwync@protonmail.com> - 0.21.1-1
+- 0.21.1
+
+* Mon Dec 19 2022 Gwyn Ciesla <gwync@protonmail.com> - 0.21.0-1
+- 0.21.0
+
+* Wed Jul 20 2022 Fedora Release Engineering <releng@fedoraproject.org> - 0.20.2-7
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_37_Mass_Rebuild
+
+* Sun Feb 13 2022 Josef Ridky <jridky@redhat.com> - 0.20.2-6
+- Rebuilt for libjasper.so.6
+
+* Wed Jan 19 2022 Fedora Release Engineering <releng@fedoraproject.org> - 0.20.2-5
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_36_Mass_Rebuild
+
+* Mon Dec 13 2021 Debarshi Ray <rishi@fedoraproject.org> - 0.20.2-4
+- CDDL is not an approved license, but CDDL-1.0 is
+
+* Wed Jul 21 2021 Fedora Release Engineering <releng@fedoraproject.org> - 0.20.2-3
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_35_Mass_Rebuild
+
+* Mon Jan 25 2021 Fedora Release Engineering <releng@fedoraproject.org> - 0.20.2-2
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_34_Mass_Rebuild
+
+* Thu Oct 15 2020 Gwyn Ciesla <gwync@protonmail.com> - 0.20.2-1
+- 0.20.2
+
+* Wed Oct 14 2020 Gwyn Ciesla <gwync@protonmail.com> - 0.20.1-1
+- 0.20.1
+
+* Thu Sep 24 2020 Gwyn Ciesla <gwync@protonmail.com> - 0.20.0-3
+- Patch for CVE-2020-24890.
+
+* Mon Jul 27 2020 Fedora Release Engineering <releng@fedoraproject.org> - 0.20.0-2
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_33_Mass_Rebuild
+
+* Thu Jul 23 2020 Gwyn Ciesla <gwync@protonmail.com> - 0.20.0-1
+- 0.20.0 final.
+
+* Thu Jul 02 2020 Gwyn Ciesla <gwync@protonmail.com> - 0.20-0.rc1.3
+- RC1
+
+* Mon Jun 29 2020 Gwyn Ciesla <gwync@protonmail.com>- 0.20-0.beta1.2
+- Patch for CVE-2020-15365
+
+* Wed May 13 2020 Kalev Lember <klember@redhat.com> - 0.20-0.beta1.1
+- Add back pkgconfig patch lost in the previous commit
+
+* Thu May 07 2020 Gwyn Ciesla <gwync@protonmail.com> - 0.20-0.beta1
+- 0.20 Beta 1
 
 * Tue Jan 28 2020 Fedora Release Engineering <releng@fedoraproject.org> - 0.19.5-2
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_32_Mass_Rebuild

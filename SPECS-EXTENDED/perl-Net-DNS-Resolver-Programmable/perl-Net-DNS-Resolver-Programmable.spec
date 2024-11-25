@@ -1,27 +1,33 @@
-Summary:        Programmable DNS resolver class for offline emulation of DNS
 Name:           perl-Net-DNS-Resolver-Programmable
 Version:        0.009
-Release:        10%{?dist}
-License:        GPLv2+ OR Artistic
-Vendor:         Microsoft Corporation
-Distribution:   Azure Linux
+Release:        21%{?dist}
+Summary:        Programmable DNS resolver class for offline emulation of DNS
+# License contradicts itself, saying "same as perl" (which would be (GPL-1.0-or-later OR Artistic-1.0-Perl))
+# but then going on to clarify that as "either the GNU General Public License (version 2 or later) or the Artistic License"
+# Clarification requested at https://rt.cpan.org/Ticket/Display.html?id=147412
+License:        GPL-2.0-or-later OR Artistic-1.0-Perl
 URL:            https://metacpan.org/release/Net-DNS-Resolver-Programmable
-Source0:        https://cpan.metacpan.org/authors/id/B/BI/BIGPRESH/Net-DNS-Resolver-Programmable-%{version}.tar.gz#/%{name}-%{version}.tar.gz
+Source0:        https://cpan.metacpan.org/modules/by-module/Net/Net-DNS-Resolver-Programmable-%{version}.tar.gz
+BuildArch:      noarch
+# Module Build
 BuildRequires:  coreutils
+BuildRequires:  findutils
 BuildRequires:  make
-BuildRequires:  perl%{?fedora:-interpreter}
 BuildRequires:  perl-generators
+BuildRequires:  perl%{?fedora:-interpreter}
 BuildRequires:  perl(ExtUtils::MakeMaker)
+# Module Runtime
+BuildRequires:  perl(base)
+BuildRequires:  perl(constant)
 BuildRequires:  perl(Net::DNS) >= 0.69
 BuildRequires:  perl(Net::DNS::Packet)
 BuildRequires:  perl(Net::DNS::Resolver)
-BuildRequires:  perl(Test::More)
-BuildRequires:  perl(base)
-BuildRequires:  perl(constant)
 BuildRequires:  perl(strict)
 BuildRequires:  perl(warnings)
-Requires:       perl(:MODULE_COMPAT_%(eval "`perl -V:version`"; echo $version))
-BuildArch:      noarch
+# Test Suite
+BuildRequires:  perl(Test::More)
+# Dependencies
+# (none)
 
 %description
 Net::DNS::Resolver::Programmable is a Net::DNS::Resolver descendant class
@@ -31,11 +37,11 @@ specified as a means for retrieving DNS records, or even generating them
 on the fly.
 
 %prep
-%autosetup -n Net-DNS-Resolver-Programmable-%{version}
+%setup -q -n Net-DNS-Resolver-Programmable-%{version}
 
 %build
 perl Makefile.PL INSTALLDIRS=vendor
-%make_build
+make %{?_smp_mflags}
 
 %install
 make pure_install DESTDIR=%{buildroot}
@@ -52,11 +58,44 @@ make test
 %{_mandir}/man3/Net::DNS::Resolver::Programmable.3*
 
 %changelog
-* Tue Mar 07 2023 Muhammad Falak <mwani@microsoft.com> - 0.009-10
-- License verified
+* Fri Jul 19 2024 Fedora Release Engineering <releng@fedoraproject.org> - 0.009-21
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_41_Mass_Rebuild
 
-* Fri Oct 15 2021 Pawel Winogrodzki <pawelwi@microsoft.com> - 0.009-9
-- Initial CBL-Mariner import from Fedora 32 (license: MIT).
+* Thu Jan 25 2024 Fedora Release Engineering <releng@fedoraproject.org> - 0.009-20
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Sun Jan 21 2024 Fedora Release Engineering <releng@fedoraproject.org> - 0.009-19
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Fri Jul 21 2023 Fedora Release Engineering <releng@fedoraproject.org> - 0.009-18
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_39_Mass_Rebuild
+
+* Fri Jan 20 2023 Fedora Release Engineering <releng@fedoraproject.org> - 0.009-17
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_38_Mass_Rebuild
+
+* Fri Jul 22 2022 Fedora Release Engineering <releng@fedoraproject.org> - 0.009-16
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_37_Mass_Rebuild
+
+* Wed Jun 01 2022 Jitka Plesnikova <jplesnik@redhat.com> - 0.009-15
+- Perl 5.36 rebuild
+
+* Fri Jan 21 2022 Fedora Release Engineering <releng@fedoraproject.org> - 0.009-14
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_36_Mass_Rebuild
+
+* Thu Jul 22 2021 Fedora Release Engineering <releng@fedoraproject.org> - 0.009-13
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_35_Mass_Rebuild
+
+* Sun May 23 2021 Jitka Plesnikova <jplesnik@redhat.com> - 0.009-12
+- Perl 5.34 rebuild
+
+* Wed Jan 27 2021 Fedora Release Engineering <releng@fedoraproject.org> - 0.009-11
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_34_Mass_Rebuild
+
+* Tue Jul 28 2020 Fedora Release Engineering <releng@fedoraproject.org> - 0.009-10
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_33_Mass_Rebuild
+
+* Tue Jun 23 2020 Jitka Plesnikova <jplesnik@redhat.com> - 0.009-9
+- Perl 5.32 rebuild
 
 * Thu Jan 30 2020 Fedora Release Engineering <releng@fedoraproject.org> - 0.009-8
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_32_Mass_Rebuild

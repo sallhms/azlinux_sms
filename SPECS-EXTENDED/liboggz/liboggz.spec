@@ -1,17 +1,19 @@
-Summary:        Simple programming interface for Ogg files and streams
 Name:           liboggz
 Version:        1.1.1
-Release:        20%{?dist}
+Release:        29%{?dist}
+Summary:        Simple programming interface for Ogg files and streams
+
 License:        BSD
-Vendor:         Microsoft Corporation
-Distribution:   Azure Linux
-URL:            https://www.xiph.org/oggz/
-Source0:        https://downloads.xiph.org/releases/liboggz/%{name}-%{version}.tar.gz
+URL:            http://www.xiph.org/oggz/
+Source0:        http://downloads.xiph.org/releases/liboggz/%{name}-%{version}.tar.gz
 # Always have oggz_off_t == loff_t even on 64-bit platforms
-Patch0:         liboggz-1.1.1-multilib.patch
-BuildRequires:  doxygen
+Patch0:		liboggz-1.1.1-multilib.patch
+
 BuildRequires:  gcc
 BuildRequires:  libogg-devel >= 1.0
+BuildRequires:  doxygen
+BuildRequires:  docbook-utils
+BuildRequires: make
 
 %description
 Oggz provides a simple programming interface for reading and writing
@@ -20,9 +22,9 @@ by Monty at Xiph.Org, originally to support the Ogg Vorbis audio
 format.
 
 %package devel
-Summary:        Files needed for development using liboggz
-Requires:       libogg-devel >= 1.0
+Summary:	Files needed for development using liboggz
 Requires:       liboggz = %{version}-%{release}
+Requires:       libogg-devel >= 1.0
 Requires:       pkgconfig
 
 %description devel
@@ -36,7 +38,7 @@ development using liboggz.
 
 %package doc
 Summary:        Documentation for liboggz
-Requires:       liboggz = %{version}-%{release}
+Requires:	liboggz = %{version}-%{release}
 
 %description doc
 Oggz provides a simple programming interface for reading and writing
@@ -47,15 +49,16 @@ format.
 This package contains HTML documentation needed for development using
 liboggz.
 
+
 %prep
 %setup -q -n %{name}-%{version}
-%patch 0 -p1 -b .multilib
+%patch -P0 -p1 -b .multilib
 
 %build
 %configure --disable-static
 sed -i 's|^hardcode_libdir_flag_spec=.*|hardcode_libdir_flag_spec=""|g' libtool
 sed -i 's|^runpath_var=LD_RUN_PATH|runpath_var=DIE_RPATH_DIE|g' libtool
-%make_build
+make %{?_smp_mflags}
 
 
 %check
@@ -63,11 +66,11 @@ sed -i 's|^runpath_var=LD_RUN_PATH|runpath_var=DIE_RPATH_DIE|g' libtool
 #make check
 
 %install
-rm -rf ${buildroot}
+rm -rf $RPM_BUILD_ROOT
 %makeinstall docdir=$PWD/__docs_staging INSTALL="%{__install} -p"
 
 # remove unpackaged files from the buildroot
-find %{buildroot} -type f -name "*.la" -delete -print
+rm -f $RPM_BUILD_ROOT%{_libdir}/*.la
 
 # not particularly interested in the tex docs, the html version has everything
 rm -rf __docs_staging/latex
@@ -76,16 +79,17 @@ rm -rf __docs_staging/latex
 # independent of build time
 (cd include/oggz &&
     touch -r oggz_off_t_generated.h.in.multilib \
-      %{buildroot}%{_includedir}/oggz/oggz_off_t_generated.h
+      $RPM_BUILD_ROOT%{_includedir}/oggz/oggz_off_t_generated.h
 )
 
 
 %ldconfig_scriptlets
 
-
+                                                                                
 %files
-%license COPYING
-%doc AUTHORS ChangeLog README
+%doc AUTHORS ChangeLog COPYING README
+# 0 length NEWS file
+# %doc NEWS
 %{_libdir}/liboggz.so.*
 %{_mandir}/man1/*
 %{_bindir}/oggz*
@@ -98,12 +102,41 @@ rm -rf __docs_staging/latex
 %files doc
 %doc __docs_staging/*
 
-%changelog
-* Mon Jan 02 2023 Muhammad Falak <mwani@microsoft.com> - 1.1.1-20
-- License verified
 
-* Fri Oct 15 2021 Pawel Winogrodzki <pawelwi@microsoft.com> - 1.1.1-19
-- Initial CBL-Mariner import from Fedora 32 (license: MIT).
+%changelog
+* Thu Jul 18 2024 Fedora Release Engineering <releng@fedoraproject.org> - 1.1.1-29
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_41_Mass_Rebuild
+
+* Thu Jan 25 2024 Fedora Release Engineering <releng@fedoraproject.org> - 1.1.1-28
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Sun Jan 21 2024 Fedora Release Engineering <releng@fedoraproject.org> - 1.1.1-27
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Thu Jul 20 2023 Fedora Release Engineering <releng@fedoraproject.org> - 1.1.1-26
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_39_Mass_Rebuild
+
+* Thu Jan 19 2023 Fedora Release Engineering <releng@fedoraproject.org> - 1.1.1-25
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_38_Mass_Rebuild
+
+* Thu Jul 21 2022 Fedora Release Engineering <releng@fedoraproject.org> - 1.1.1-24
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_37_Mass_Rebuild
+
+* Thu Jan 20 2022 Fedora Release Engineering <releng@fedoraproject.org> - 1.1.1-23
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_36_Mass_Rebuild
+
+* Thu Jul 22 2021 Fedora Release Engineering <releng@fedoraproject.org> - 1.1.1-22
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_35_Mass_Rebuild
+
+* Tue Jan 26 2021 Fedora Release Engineering <releng@fedoraproject.org> - 1.1.1-21
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_34_Mass_Rebuild
+
+* Sat Aug 01 2020 Fedora Release Engineering <releng@fedoraproject.org> - 1.1.1-20
+- Second attempt - Rebuilt for
+  https://fedoraproject.org/wiki/Fedora_33_Mass_Rebuild
+
+* Tue Jul 28 2020 Fedora Release Engineering <releng@fedoraproject.org> - 1.1.1-19
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_33_Mass_Rebuild
 
 * Wed Jan 29 2020 Fedora Release Engineering <releng@fedoraproject.org> - 1.1.1-18
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_32_Mass_Rebuild

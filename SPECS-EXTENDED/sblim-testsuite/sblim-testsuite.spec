@@ -1,16 +1,15 @@
-Vendor:         Microsoft Corporation
-Distribution:   Azure Linux
 %global debug_package %{nil}
 
 Name:           sblim-testsuite
 Version:        1.3.0
-Release:        23%{?dist}
+Release:        32%{?dist}
 Summary:        SBLIM testsuite
 
-License:        EPL
+License:        EPL-1.0
 URL:            http://sblim.wiki.sourceforge.net/
 Source0:        http://downloads.sourceforge.net/sblim/%{name}-%{version}.tar.bz2
 BuildArch:      noarch
+BuildRequires: make
 BuildRequires:      perl-generators
 
 Requires:       perl-interpreter >= 5.6
@@ -27,9 +26,7 @@ SBLIM automated testsuite scripts.
 
 %prep
 %setup -q
-%patch 0 -p1 -b .perl-errors
-%patch 1 -p1 -b .docdir
-%patch 2 -p1 -b .unescaped-left-brace-warning-fix
+%autopatch -p1
 
 %build
 %configure
@@ -44,8 +41,35 @@ make install DESTDIR=$RPM_BUILD_ROOT
 %{_localstatedir}/lib/%{name}
 
 %changelog
-* Fri Oct 15 2021 Pawel Winogrodzki <pawelwi@microsoft.com> - 1.3.0-23
-- Initial CBL-Mariner import from Fedora 32 (license: MIT).
+* Sat Jul 20 2024 Fedora Release Engineering <releng@fedoraproject.org> - 1.3.0-32
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_41_Mass_Rebuild
+
+* Sat Jan 27 2024 Fedora Release Engineering <releng@fedoraproject.org> - 1.3.0-31
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Sat Jul 22 2023 Fedora Release Engineering <releng@fedoraproject.org> - 1.3.0-30
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_39_Mass_Rebuild
+
+* Mon May 29 2023 Vitezslav Crhonek <vcrhonek@redhat.com> - 1.3.0-29
+- SPDX migration
+
+* Sat Jan 21 2023 Fedora Release Engineering <releng@fedoraproject.org> - 1.3.0-28
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_38_Mass_Rebuild
+
+* Sat Jul 23 2022 Fedora Release Engineering <releng@fedoraproject.org> - 1.3.0-27
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_37_Mass_Rebuild
+
+* Sat Jan 22 2022 Fedora Release Engineering <releng@fedoraproject.org> - 1.3.0-26
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_36_Mass_Rebuild
+
+* Fri Jul 23 2021 Fedora Release Engineering <releng@fedoraproject.org> - 1.3.0-25
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_35_Mass_Rebuild
+
+* Wed Jan 27 2021 Fedora Release Engineering <releng@fedoraproject.org> - 1.3.0-24
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_34_Mass_Rebuild
+
+* Wed Jul 29 2020 Fedora Release Engineering <releng@fedoraproject.org> - 1.3.0-23
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_33_Mass_Rebuild
 
 * Thu Jan 30 2020 Fedora Release Engineering <releng@fedoraproject.org> - 1.3.0-22
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_32_Mass_Rebuild

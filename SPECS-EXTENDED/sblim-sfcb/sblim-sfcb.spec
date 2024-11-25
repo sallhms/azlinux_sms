@@ -1,5 +1,3 @@
-Vendor:         Microsoft Corporation
-Distribution:   Azure Linux
 #
 # $Id: sblim-sfcb.spec,v 1.5 2010/06/23 10:31:02 vcrhonek Exp $
 #
@@ -10,7 +8,7 @@ Name: sblim-sfcb
 Summary: Small Footprint CIM Broker
 URL: http://sblim.wiki.sourceforge.net/
 Version: 1.4.9
-Release: 20%{?dist}
+Release: 32%{?dist}
 License: EPL-1.0
 Source0: http://downloads.sourceforge.net/sblim/%{name}-%{version}.tar.bz2
 Source1: sfcb.service
@@ -43,14 +41,10 @@ Patch9: sblim-sfcb-1.4.9-fix-ppc-optimization-level.patch
 # Patch10: fixes docdir name and removes install of COPYING with license
 #   which is included through %%license
 Patch10: sblim-sfcb-1.4.9-docdir-license.patch
-# Patch11: fixes multiple definiton of variables (FTBFS with GCC 10)
-Patch11: sblim-sfcb-1.4.9-fix-multiple-definition.patch
-
 Provides: cim-server = 0
 Requires: cim-schema
-Requires: perl(LWP::UserAgent)
 Requires: sblim-sfcCommon
-
+BuildRequires: make
 BuildRequires: libcurl-devel
 BuildRequires: perl-generators
 BuildRequires: zlib-devel
@@ -63,7 +57,6 @@ BuildRequires: systemd
 BuildRequires: sblim-sfcCommon-devel
 BuildRequires: openslp-devel
 BuildRequires: gcc
-
 Requires(post): systemd-units
 Requires(preun): systemd-units
 Requires(postun): systemd-units
@@ -78,23 +71,22 @@ Programming Interface (CMPI).
 
 %prep
 %setup -q -T -b 0 -n %{name}-%{version}
-%patch 0 -p1 -b .sfcbrepos-schema-location
-%patch 1 -p1 -b .fix-provider-debugging
-%patch 2 -p1 -b .maxMsgLen
-%patch 3 -p1 -b .service
-%patch 4 -p1 -b .multilib-man-cfg
-%patch 5 -p1 -b .default-ecdh-curve-name
-%patch 6 -p1 -b .fix-ftbfs
-%patch 7 -p1 -b .fix-null-deref
-%patch 8 -p1 -b .fix-null-content-type-crash
-%patch 9 -p1 -b .fix-ppc-optimization-level
-%patch 10 -p1 -b .docdir-license
-%patch 11 -p1 -b .fix-multiple-definition
+%patch -P0 -p1 -b .sfcbrepos-schema-location
+%patch -P1 -p1 -b .fix-provider-debugging
+%patch -P2 -p1 -b .maxMsgLen
+%patch -P3 -p1 -b .service
+%patch -P4 -p1 -b .multilib-man-cfg
+%patch -P5 -p1 -b .default-ecdh-curve-name
+%patch -P6 -p1 -b .fix-ftbfs
+%patch -P7 -p1 -b .fix-null-deref
+%patch -P8 -p1 -b .fix-null-content-type-crash
+%patch -P9 -p1 -b .fix-ppc-optimization-level
+%patch -P10 -p1 -b .docdir-license
 
 %build
 %configure --enable-debug --enable-uds --enable-ssl --enable-pam --enable-ipv6 \
     --enable-slp --enable-large_volume_support --enable-optimized-enumeration --enable-relax-mofsyntax \
-    CFLAGS="$CFLAGS -D_GNU_SOURCE -fPIE -DPIE" LDFLAGS="$LDFLAGS -Wl,-z,now -pie"
+    CFLAGS="$CFLAGS -D_GNU_SOURCE -fPIE -DPIE -fcommon" LDFLAGS="$LDFLAGS -Wl,-z,now -pie"
  
 make 
 
@@ -132,7 +124,7 @@ cat _pkg_list
 %post 
 %{_datadir}/sfcb/genSslCert.sh %{_sysconfdir}/sfcb &>/dev/null || :
 /sbin/ldconfig
-%{_bindir}/sfcbrepos -f > /dev/null 2>1
+%{_bindir}/sfcbrepos -f > /dev/null 2>&1
 %systemd_post sblim-sfcb.service
 
 %preun
@@ -148,12 +140,48 @@ fi;
 %files -f _pkg_list
 
 %changelog
-* Tue Mar 01 2022 Pawel Winogrodzki <pawelwi@microsoft.com> - 1.4.9-20
-- Explicitly mentioning a run-time dependency on "perl(LWP::UserAgent)".
-- License verified.
+* Sat Jul 20 2024 Fedora Release Engineering <releng@fedoraproject.org> - 1.4.9-32
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_41_Mass_Rebuild
 
-* Fri Oct 15 2021 Pawel Winogrodzki <pawelwi@microsoft.com> - 1.4.9-19
-- Initial CBL-Mariner import from Fedora 32 (license: MIT).
+* Sat Jan 27 2024 Fedora Release Engineering <releng@fedoraproject.org> - 1.4.9-31
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Sat Jul 22 2023 Fedora Release Engineering <releng@fedoraproject.org> - 1.4.9-30
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_39_Mass_Rebuild
+
+* Tue Feb 14 2023 Vitezslav Crhonek <vcrhonek@redhat.com> - 1.4.9-29
+- SPDX migration
+
+* Sat Jan 21 2023 Fedora Release Engineering <releng@fedoraproject.org> - 1.4.9-28
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_38_Mass_Rebuild
+
+* Sat Jul 23 2022 Fedora Release Engineering <releng@fedoraproject.org> - 1.4.9-27
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_37_Mass_Rebuild
+
+* Thu Jan 27 2022 Vitezslav Crhonek <vcrhonek@redhat.com> - 1.4.9-26
+- Change build flags, fix errors during the start of the service
+
+* Sat Jan 22 2022 Fedora Release Engineering <releng@fedoraproject.org> - 1.4.9-25
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_36_Mass_Rebuild
+
+* Tue Sep 14 2021 Sahana Prasad <sahana@redhat.com> - 1.4.9-24
+- Rebuilt with OpenSSL 3.0.0
+
+* Fri Jul 23 2021 Fedora Release Engineering <releng@fedoraproject.org> - 1.4.9-23
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_35_Mass_Rebuild
+
+* Tue Mar 02 2021 Zbigniew Jędrzejewski-Szmek <zbyszek@in.waw.pl> - 1.4.9-22
+- Rebuilt for updated systemd-rpm-macros
+  See https://pagure.io/fesco/issue/2583.
+
+* Wed Jan 27 2021 Fedora Release Engineering <releng@fedoraproject.org> - 1.4.9-21
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_34_Mass_Rebuild
+
+* Wed Jul 29 2020 Fedora Release Engineering <releng@fedoraproject.org> - 1.4.9-20
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_33_Mass_Rebuild
+
+* Wed Jul 08 2020 Vitezslav Crhonek <vcrhonek@redhat.com> - 1.4.9-19
+- Fix sfcbrepos redirection
 
 * Wed Feb 12 2020 Vitezslav Crhonek <vcrhonek@redhat.com> - 1.4.9-18
 - Fixes multiple definiton of variables (FTBFS with GCC 10)

@@ -1,16 +1,15 @@
-Summary:        A portable and powerful and simple unit testing framework for C++
 Name:           cpptest
 Version:        1.1.2
-Release:        20%{?dist}
+Release:        25%{?dist}
+Summary:        A portable and powerful and simple unit testing framework for C++
+
 License:        LGPLv2+
-Vendor:         Microsoft Corporation
-Distribution:   Azure Linux
-URL:            https://%{name}.sourceforge.net/
-Source0:        https://downloads.sourceforge.net/%{name}/%{name}-%{version}.tar.gz
-BuildRequires:  doxygen
+URL:            http://%{name}.sourceforge.net/
+Source0:        http://downloads.sourceforge.net/%{name}/%{name}-%{version}.tar.gz
 BuildRequires:  gcc
 BuildRequires:  gcc-c++
-BuildRequires:  make
+BuildRequires:  doxygen
+BuildRequires: make
 
 %description
 CppTest is a portable and powerful, yet simple, unit testing framework
@@ -25,25 +24,26 @@ Requires:       %{name}%{?_isa} = %{version}-%{release}
 The %{name}-devel package contains libraries and header files for
 developing applications that use %{name}.
 
+
 %prep
 %setup -q
 #%patch0 -p1
 %build
-export CXXFLAGS="-std=c++14 %{optflags}"
+export CXXFLAGS="-std=c++14 $RPM_OPT_FLAGS"
 %configure --disable-static --enable-doc
-%make_build
+make %{?_smp_mflags} V=1
 
 
 %install
-make install DESTDIR=%{buildroot}
-find %{buildroot} -type f -name "*.la" -delete -print
+make install DESTDIR=$RPM_BUILD_ROOT
+find $RPM_BUILD_ROOT -name '*.la' -exec rm -f {} ';'
+
 %ldconfig_scriptlets
 
 %files
-%license COPYING
-%doc NEWS AUTHORS ChangeLog
+%doc NEWS COPYING AUTHORS ChangeLog
 %{_libdir}/*.so.*
-%{_docdir}/cpptest
+%{_datadir}/doc/cpptest
 
 %files devel
 %doc doc/html
@@ -51,11 +51,25 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %{_libdir}/*.so
 %{_libdir}/pkgconfig/*.pc
 
+
 %changelog
-* Wed Oct 19 2022 Muhammad Falak <mwani@microsoft.com> - 1.1.2-20
-- Initial CBL-Mariner import from Fedora 36 (license: MIT).
-- Switch to `%make_build` instead of `make`
-- License verified
+* Wed Jul 17 2024 Fedora Release Engineering <releng@fedoraproject.org> - 1.1.2-25
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_41_Mass_Rebuild
+
+* Wed Jan 24 2024 Fedora Release Engineering <releng@fedoraproject.org> - 1.1.2-24
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Fri Jan 19 2024 Fedora Release Engineering <releng@fedoraproject.org> - 1.1.2-23
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Wed Jul 19 2023 Fedora Release Engineering <releng@fedoraproject.org> - 1.1.2-22
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_39_Mass_Rebuild
+
+* Thu Jan 19 2023 Fedora Release Engineering <releng@fedoraproject.org> - 1.1.2-21
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_38_Mass_Rebuild
+
+* Wed Jul 20 2022 Fedora Release Engineering <releng@fedoraproject.org> - 1.1.2-20
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_37_Mass_Rebuild
 
 * Wed Jan 19 2022 Fedora Release Engineering <releng@fedoraproject.org> - 1.1.2-19
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_36_Mass_Rebuild

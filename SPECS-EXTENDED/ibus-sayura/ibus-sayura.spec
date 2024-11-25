@@ -1,10 +1,8 @@
-Vendor:         Microsoft Corporation
-Distribution:   Azure Linux
 Name:       ibus-sayura
 Version:    1.3.2
-Release:    20%{?dist}
+Release:    32%{?dist}
 Summary:    The Sinhala engine for IBus input platform
-License:    GPLv2+
+License:    GPL-2.0-or-later
 URL:        https://pagure.io/ibus-sayura
 Source0:    https://releases.pagure.org/ibus-sayura/%{name}-%{version}.tar.gz
 
@@ -16,6 +14,7 @@ BuildRequires:  gettext-devel
 BuildRequires:  libtool
 BuildRequires:  pkgconfig
 BuildRequires:  ibus-devel
+BuildRequires: make
 Requires:   ibus
 %description
 The Sayura engine for IBus platform. It provides Sinhala input method.
@@ -68,14 +67,6 @@ EOF
 
 %find_lang %{name}
 
-%post
-[ -x %{_bindir}/ibus ] && \
-  %{_bindir}/ibus write-cache --system &>/dev/null || :
-
-%postun
-[ -x %{_bindir}/ibus ] && \
-  %{_bindir}/ibus write-cache --system &>/dev/null || :
-
 %files -f %{name}.lang
 %license COPYING
 %doc AUTHORS README
@@ -85,8 +76,44 @@ EOF
 %{_datadir}/ibus/component/*
 
 %changelog
-* Fri Oct 15 2021 Pawel Winogrodzki <pawelwi@microsoft.com> - 1.3.2-20
-- Initial CBL-Mariner import from Fedora 32 (license: MIT).
+* Thu Jul 18 2024 Fedora Release Engineering <releng@fedoraproject.org> - 1.3.2-32
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_41_Mass_Rebuild
+
+* Wed Jan 24 2024 Fedora Release Engineering <releng@fedoraproject.org> - 1.3.2-31
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Sat Jan 20 2024 Fedora Release Engineering <releng@fedoraproject.org> - 1.3.2-30
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Thu Jul 20 2023 Fedora Release Engineering <releng@fedoraproject.org> - 1.3.2-29
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_39_Mass_Rebuild
+
+* Thu Jan 19 2023 Fedora Release Engineering <releng@fedoraproject.org> - 1.3.2-28
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_38_Mass_Rebuild
+
+* Wed Nov 16 2022 Takao Fujiwara <tfujiwar@redhat.com> - 1.3.2-27
+- Migrate license tag to SPDX
+
+* Thu Jul 21 2022 Fedora Release Engineering <releng@fedoraproject.org> - 1.3.2-26
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_37_Mass_Rebuild
+
+* Thu Jan 20 2022 Fedora Release Engineering <releng@fedoraproject.org> - 1.3.2-25
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_36_Mass_Rebuild
+
+* Thu Jul 22 2021 Fedora Release Engineering <releng@fedoraproject.org> - 1.3.2-24
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_35_Mass_Rebuild
+
+* Fri Jun 18 2021 Takao Fujiwara <tfujiwar@redhat.com> - 1.3.2-23
+- Delete ibus write-cache in scriptlet
+
+* Wed Apr 21 2021 Takao Fujiwara <tfujiwar@redhat.com> - 1.3.2-22
+- Resolves: #1948197 Change post to posttrans
+
+* Tue Jan 26 2021 Fedora Release Engineering <releng@fedoraproject.org> - 1.3.2-21
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_34_Mass_Rebuild
+
+* Tue Jul 28 2020 Fedora Release Engineering <releng@fedoraproject.org> - 1.3.2-20
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_33_Mass_Rebuild
 
 * Wed Jan 29 2020 Fedora Release Engineering <releng@fedoraproject.org> - 1.3.2-19
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_32_Mass_Rebuild

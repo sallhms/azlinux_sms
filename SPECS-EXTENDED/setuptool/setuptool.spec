@@ -1,18 +1,12 @@
-Vendor:         Microsoft Corporation
-Distribution:   Azure Linux
 Name: setuptool
 Version: 1.19.11
-Release: 23%{?dist}
+Release: 30%{?dist}
 Summary: A text mode system configuration tool
-License: GPLv2+
+License: GPL-2.0-or-later
 Url: http://git.fedorahosted.org/git/?p=setuptool.git
-Source0: %{_distro_sources_url}/%{name}-%{version}.tar.gz
-BuildRequires: newt-devel
-BuildRequires: gettext
-BuildRequires: perl-XML-Parser
-BuildRequires: glib2-devel
-BuildRequires: intltool
-BuildRequires: gcc
+Source: setuptool-%{version}.tar.gz
+BuildRequires: make
+BuildRequires: newt-devel, gettext, perl-XML-Parser, glib2-devel, intltool, gcc
 Requires: usermode
 
 %description
@@ -21,7 +15,7 @@ to access all of the text mode configuration programs included in the
 operating system distribution.
 
 %prep
-%setup -q
+%setup -q 
 
 %build
 %configure
@@ -34,8 +28,7 @@ make install DESTDIR=$RPM_BUILD_ROOT
 %find_lang setup
 
 %files -f setup.lang
-%license COPYING
-%doc README
+%doc README COPYING
 %{_bindir}/setup
 %config(noreplace) %{_sysconfdir}/pam.d/setup
 %config(noreplace) %{_sysconfdir}/security/console.apps/setup
@@ -47,16 +40,35 @@ make install DESTDIR=$RPM_BUILD_ROOT
 %{_mandir}/man1/setup.1.gz
 
 %changelog
-* Thu Feb 22 2024 Pawel Winogrodzki <pawelwi@microsoft.com> - 1.19.11-23
-- Updating naming for 3.0 version of Azure Linux.
+* Sat Jul 20 2024 Fedora Release Engineering <releng@fedoraproject.org> - 1.19.11-30
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_41_Mass_Rebuild
 
-* Mon Apr 25 2022 Mateusz Malisz <mamalisz@microsoft.com> - 1.19.11-22
-- Update Source0
-- Improve formatting
-- License verified.
+* Sat Jan 27 2024 Fedora Release Engineering <releng@fedoraproject.org> - 1.19.11-29
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
 
-* Fri Oct 15 2021 Pawel Winogrodzki <pawelwi@microsoft.com> - 1.19.11-21
-- Initial CBL-Mariner import from Fedora 32 (license: MIT).
+* Sat Jul 22 2023 Fedora Release Engineering <releng@fedoraproject.org> - 1.19.11-28
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_39_Mass_Rebuild
+
+* Wed Apr 26 2023 Michal Hlavinka <mhlavink@redhat.com> - 1.19.11-27
+- update license tag format (SPDX migration) for https://fedoraproject.org/wiki/Changes/SPDX_Licenses_Phase_1
+
+* Sat Jan 21 2023 Fedora Release Engineering <releng@fedoraproject.org> - 1.19.11-26
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_38_Mass_Rebuild
+
+* Sat Jul 23 2022 Fedora Release Engineering <releng@fedoraproject.org> - 1.19.11-25
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_37_Mass_Rebuild
+
+* Sat Jan 22 2022 Fedora Release Engineering <releng@fedoraproject.org> - 1.19.11-24
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_36_Mass_Rebuild
+
+* Fri Jul 23 2021 Fedora Release Engineering <releng@fedoraproject.org> - 1.19.11-23
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_35_Mass_Rebuild
+
+* Wed Jan 27 2021 Fedora Release Engineering <releng@fedoraproject.org> - 1.19.11-22
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_34_Mass_Rebuild
+
+* Wed Jul 29 2020 Fedora Release Engineering <releng@fedoraproject.org> - 1.19.11-21
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_33_Mass_Rebuild
 
 * Thu Jan 30 2020 Fedora Release Engineering <releng@fedoraproject.org> - 1.19.11-20
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_32_Mass_Rebuild
@@ -246,7 +258,7 @@ make install DESTDIR=$RPM_BUILD_ROOT
 
 * Fri Feb 13 2004 Elliot Lee <sopwith@redhat.com> 1.13-2.1
 - rebuilt
-
+  
 * Sat Jul 12 2003 Nalin Dahyabhai <nalin@redhat.com> 1.13-2
 - rebuild
 

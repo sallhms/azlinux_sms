@@ -1,5 +1,33 @@
 #global subver 1
 
+# Support Event
+%if 0%{?rhel} >= 9
+%bcond_with perl_AnyEvent_enables_Event
+%else
+%bcond_without perl_AnyEvent_enables_Event
+%endif
+
+# Support Glib
+%if 0%{?rhel} >= 9
+%bcond_with perl_AnyEvent_enables_Glib
+%else
+%bcond_without perl_AnyEvent_enables_Glib
+%endif
+
+# Support POE
+%if 0%{?rhel} >= 9
+%bcond_with perl_AnyEvent_enables_POE
+%else
+%bcond_without perl_AnyEvent_enables_POE
+%endif
+
+# Support Tk
+%if 0%{?rhel} >= 9
+%bcond_with perl_AnyEvent_enables_Tk
+%else
+%bcond_without perl_AnyEvent_enables_Tk
+%endif
+
 # A noarch-turned-arch package should not have debuginfo
 %global debug_package %{nil}
 
@@ -8,13 +36,11 @@
 
 Name:           perl-AnyEvent
 Version:        7.17
-Release:        3%{?dist}
+Release:        19%{?dist}
 Summary:        Framework for multiple event loops
-License:        GPL+ or Artistic
-Vendor:         Microsoft Corporation
-Distribution:   Azure Linux
+License:        GPL-1.0-or-later OR Artistic-1.0-Perl
 URL:            https://metacpan.org/release/AnyEvent
-Source0:        https://cpan.metacpan.org/modules/by-module/AnyEvent/AnyEvent-%{version}%{?subver}.tar.gz#/perl-AnyEvent-%{version}%{?subver}.tar.gz
+Source0:        https://cpan.metacpan.org/modules/by-module/AnyEvent/AnyEvent-%{version}%{?subver}.tar.gz
 
 # Build requirements
 BuildRequires:  coreutils
@@ -63,20 +89,27 @@ BuildRequires:  perl(warnings)
 # AnyEvent::AIO, EV and IO::Async::Loop are not (yet) in EPEL-7
 # Test suite does not currently test the Qt event loop
 %if 0%{!?perl_bootstrap:1}
+%if %{with perl_AnyEvent_enables_Event}
 BuildRequires:  perl(Event)
+%endif
+%if %{with perl_AnyEvent_enables_Glib}
 BuildRequires:  perl(Glib) >= 1.210
+%endif
+%if %{with perl_AnyEvent_enables_POE}
 BuildRequires:  perl(POE) >= 1.312
+%endif
+%if %{with perl_AnyEvent_enables_Tk}
 BuildRequires:  perl(Tk)
-
+%endif
+%if 0%{?fedora}
 BuildRequires:  perl(AnyEvent::AIO)
 BuildRequires:  perl(EV) >= 4.00
 BuildRequires:  perl(IO::AIO) >= 4.13
 BuildRequires:  perl(IO::Async::Loop) >= 0.33
-
+%endif
 %endif
 
 # Runtime requires
-Requires:       perl(:MODULE_COMPAT_%(eval "`perl -V:version`"; echo $version))
 Requires:       perl(File::Temp)
 %if %{have_weak_deps}
 # Optional but recommended
@@ -103,19 +136,27 @@ Requires:       perl(Unicode::Normalize)
 %global optional_deps                  AnyEvent::AIO
 %global optional_deps %{optional_deps}|Cocoa::EventLoop
 %global optional_deps %{optional_deps}|EV
+%if %{with perl_AnyEvent_enables_Event}
 %global optional_deps %{optional_deps}|Event
+%endif
 %global optional_deps %{optional_deps}|Event::Lib
 %global optional_deps %{optional_deps}|EventLoop
 %global optional_deps %{optional_deps}|FLTK
+%if %{with perl_AnyEvent_enables_Glib}
 %global optional_deps %{optional_deps}|Glib
+%endif
 %global optional_deps %{optional_deps}|IO::AIO
 %global optional_deps %{optional_deps}|IO::Async::Loop
 %global optional_deps %{optional_deps}|Irssi
+%if %{with perl_AnyEvent_enables_POE}
 %global optional_deps %{optional_deps}|POE
+%endif
 %global optional_deps %{optional_deps}|Qt
 %global optional_deps %{optional_deps}|Qt::isa
 %global optional_deps %{optional_deps}|Qt::slots
+%if %{with perl_AnyEvent_enables_Tk}
 %global optional_deps %{optional_deps}|Tk
+%endif
 %global optional_deps %{optional_deps}|UV
 
 # Don't include optional dependencies
@@ -147,6 +188,22 @@ make %{?_smp_mflags}
 make pure_install DESTDIR=%{buildroot}
 find %{buildroot} -type f -name .packlist -delete
 %{_fixperms} -c %{buildroot}
+%if !%{with perl_AnyEvent_enables_Event}
+rm %{buildroot}%{perl_vendorarch}/AnyEvent/Impl/Event.pm
+rm %{buildroot}%{_mandir}/man3/AnyEvent::Impl::Event.3*
+%endif
+%if !%{with perl_AnyEvent_enables_Glib}
+rm %{buildroot}%{perl_vendorarch}/AnyEvent/Impl/Glib.pm
+rm %{buildroot}%{_mandir}/man3/AnyEvent::Impl::Glib.3*
+%endif
+%if !%{with perl_AnyEvent_enables_POE}
+rm %{buildroot}%{perl_vendorarch}/AnyEvent/Impl/POE.pm
+rm %{buildroot}%{_mandir}/man3/AnyEvent::Impl::POE.3*
+%endif
+%if !%{with perl_AnyEvent_enables_Tk}
+rm %{buildroot}%{perl_vendorarch}/AnyEvent/Impl/Tk.pm
+rm %{buildroot}%{_mandir}/man3/AnyEvent::Impl::Tk.3*
+%endif
 
 
 %check
@@ -161,7 +218,48 @@ make test
 %doc Changes README
 %{perl_vendorarch}/AE.pm
 %{perl_vendorarch}/AnyEvent.pm
-%{perl_vendorarch}/AnyEvent/
+%dir %{perl_vendorarch}/AnyEvent/
+%{perl_vendorarch}/AnyEvent/constants.pl
+%{perl_vendorarch}/AnyEvent/DNS.pm
+%{perl_vendorarch}/AnyEvent/Debug.pm
+%{perl_vendorarch}/AnyEvent/FAQ.pod
+%{perl_vendorarch}/AnyEvent/Handle.pm
+%dir %{perl_vendorarch}/AnyEvent/Impl
+%{perl_vendorarch}/AnyEvent/Impl/Cocoa.pm
+%{perl_vendorarch}/AnyEvent/Impl/EV.pm
+%if %{with perl_AnyEvent_enables_Event}
+%{perl_vendorarch}/AnyEvent/Impl/Event.pm
+%endif
+%{perl_vendorarch}/AnyEvent/Impl/EventLib.pm
+%{perl_vendorarch}/AnyEvent/Impl/FLTK.pm
+%if %{with perl_AnyEvent_enables_Glib}
+%{perl_vendorarch}/AnyEvent/Impl/Glib.pm
+%endif
+%{perl_vendorarch}/AnyEvent/Impl/IOAsync.pm
+%{perl_vendorarch}/AnyEvent/Impl/Irssi.pm
+%{perl_vendorarch}/AnyEvent/Impl/Perl.pm
+%if %{with perl_AnyEvent_enables_POE}
+%{perl_vendorarch}/AnyEvent/Impl/POE.pm
+%endif
+%{perl_vendorarch}/AnyEvent/Impl/Qt.pm
+%if %{with perl_AnyEvent_enables_Tk}
+%{perl_vendorarch}/AnyEvent/Impl/Tk.pm
+%endif
+%{perl_vendorarch}/AnyEvent/Impl/UV.pm
+%{perl_vendorarch}/AnyEvent/Intro.pod
+%{perl_vendorarch}/AnyEvent/IO.pm
+%dir %{perl_vendorarch}/AnyEvent/IO
+%{perl_vendorarch}/AnyEvent/IO/IOAIO.pm
+%{perl_vendorarch}/AnyEvent/IO/Perl.pm
+%{perl_vendorarch}/AnyEvent/Log.pm
+%{perl_vendorarch}/AnyEvent/Loop.pm
+%{perl_vendorarch}/AnyEvent/Socket.pm
+%{perl_vendorarch}/AnyEvent/Strict.pm
+%{perl_vendorarch}/AnyEvent/TLS.pm
+%{perl_vendorarch}/AnyEvent/Util.pm
+%dir %{perl_vendorarch}/AnyEvent/Util
+%{perl_vendorarch}/AnyEvent/Util/idna.pl
+%{perl_vendorarch}/AnyEvent/Util/uts46data.pl
 %{_mandir}/man3/AE.3*
 %{_mandir}/man3/AnyEvent.3*
 %{_mandir}/man3/AnyEvent::DNS.3*
@@ -170,16 +268,24 @@ make test
 %{_mandir}/man3/AnyEvent::Handle.3*
 %{_mandir}/man3/AnyEvent::Impl::Cocoa.3*
 %{_mandir}/man3/AnyEvent::Impl::EV.3*
+%if %{with perl_AnyEvent_enables_Event}
 %{_mandir}/man3/AnyEvent::Impl::Event.3*
+%endif
 %{_mandir}/man3/AnyEvent::Impl::EventLib.3*
 %{_mandir}/man3/AnyEvent::Impl::FLTK.3*
+%if %{with perl_AnyEvent_enables_Glib}
 %{_mandir}/man3/AnyEvent::Impl::Glib.3*
+%endif
 %{_mandir}/man3/AnyEvent::Impl::IOAsync.3*
 %{_mandir}/man3/AnyEvent::Impl::Irssi.3*
+%if %{with perl_AnyEvent_enables_POE}
 %{_mandir}/man3/AnyEvent::Impl::POE.3*
+%endif
 %{_mandir}/man3/AnyEvent::Impl::Perl.3*
 %{_mandir}/man3/AnyEvent::Impl::Qt.3*
+%if %{with perl_AnyEvent_enables_Tk}
 %{_mandir}/man3/AnyEvent::Impl::Tk.3*
+%endif
 %{_mandir}/man3/AnyEvent::Impl::UV.3*
 %{_mandir}/man3/AnyEvent::Intro.3*
 %{_mandir}/man3/AnyEvent::IO.3*
@@ -194,8 +300,59 @@ make test
 
 
 %changelog
-* Fri Oct 15 2021 Pawel Winogrodzki <pawelwi@microsoft.com> - 7.17-3
-- Initial CBL-Mariner import from Fedora 32 (license: MIT).
+* Thu Jul 18 2024 Fedora Release Engineering <releng@fedoraproject.org> - 7.17-19
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_41_Mass_Rebuild
+
+* Thu Jan 25 2024 Fedora Release Engineering <releng@fedoraproject.org> - 7.17-18
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Sun Jan 21 2024 Fedora Release Engineering <releng@fedoraproject.org> - 7.17-17
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Thu Jul 20 2023 Fedora Release Engineering <releng@fedoraproject.org> - 7.17-16
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_39_Mass_Rebuild
+
+* Tue Mar  7 2023 Paul Howarth <paul@city-fan.org> - 7.17-15
+- Use SPDX-format license tag
+
+* Thu Jan 19 2023 Fedora Release Engineering <releng@fedoraproject.org> - 7.17-14
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_38_Mass_Rebuild
+
+* Fri Jul 22 2022 Fedora Release Engineering <releng@fedoraproject.org> - 7.17-13
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_37_Mass_Rebuild
+
+* Fri Jun 03 2022 Jitka Plesnikova <jplesnik@redhat.com> - 7.17-12
+- Perl 5.36 re-rebuild of bootstrapped packages
+
+* Tue May 31 2022 Jitka Plesnikova <jplesnik@redhat.com> - 7.17-11
+- Perl 5.36 rebuild
+
+* Thu Jan 20 2022 Fedora Release Engineering <releng@fedoraproject.org> - 7.17-10
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_36_Mass_Rebuild
+
+* Thu Jul 22 2021 Fedora Release Engineering <releng@fedoraproject.org> - 7.17-9
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_35_Mass_Rebuild
+
+* Mon May 24 2021 Jitka Plesnikova <jplesnik@redhat.com> - 7.17-8
+- Perl 5.34 re-rebuild of bootstrapped packages
+
+* Fri May 21 2021 Jitka Plesnikova <jplesnik@redhat.com> - 7.17-7
+- Perl 5.34 rebuild
+
+* Tue Jan 26 2021 Petr Pisar <ppisar@redhat.com> - 7.17-6
+- Conditionalize POE support
+- Conditionalize Tk support
+- Conditionalize Glib support
+- Conditionalize Event support
+
+* Tue Jul 28 2020 Fedora Release Engineering <releng@fedoraproject.org> - 7.17-5
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_33_Mass_Rebuild
+
+* Fri Jun 26 2020 Jitka Plesnikova <jplesnik@redhat.com> - 7.17-4
+- Perl 5.32 re-rebuild of bootstrapped packages
+
+* Tue Jun 23 2020 Jitka Plesnikova <jplesnik@redhat.com> - 7.17-3
+- Perl 5.32 rebuild
 
 * Wed Jan 29 2020 Fedora Release Engineering <releng@fedoraproject.org> - 7.17-2
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_32_Mass_Rebuild

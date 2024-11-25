@@ -1,0 +1,38 @@
+From d86c51d98ce8b891f3948f8aa54fc9634e6a8c67 Mon Sep 17 00:00:00 2001
+From: Jim Fehlig <jfehlig@suse.com>
+Date: Tue, 14 Jan 2020 16:04:09 -0700
+Subject: [PATCH 17/19] vhostmd: Check for valide file handle before calling
+ close
+
+From coverity scan
+
+vhostmd-1.1/vhostmd/vhostmd.c:778: var_tested_neg: Assigning: "fd" = a negative value.
+vhostmd-1.1/vhostmd/vhostmd.c:845: negative_returns: "fd" is passed to a parameter that cannot be negative.
+  843|      free(dir);
+  844|      free(buf);
+  845|->    close(fd);
+  846|      return -1;
+  847|   }
+
+Signed-off-by: Jim Fehlig <jfehlig@suse.com>
+---
+ vhostmd/vhostmd.c | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/vhostmd/vhostmd.c b/vhostmd/vhostmd.c
+index 1600a87..1395bc5 100644
+--- a/vhostmd/vhostmd.c
++++ b/vhostmd/vhostmd.c
+@@ -860,7 +860,8 @@ static int metrics_disk_create(void)
+  error:
+    free(dir);
+    free(buf);
+-   close(fd);
++   if (fd != -1)
++       close(fd);
+    return -1;
+ }
+ 
+-- 
+2.32.0
+

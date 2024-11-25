@@ -1,19 +1,19 @@
 %global date    20020801
+%global baserelease 21
+
+Name:           xhtml1-dtds
+Version:        1.0
+Release:        %{date}.%{baserelease}%{?dist}
+Summary:        XHTML 1.0 document type definitions
 
 # W3C Software License for DTDs etc:
 # http://www.w3.org/Consortium/Legal/IPR-FAQ-20000620#DTD
-Name:           xhtml1-dtds
-Version:        1.0
-Release:        20020804%{?dist}
-Summary:        XHTML 1.0 document type definitions
-License:        W3C
-Vendor:         Microsoft Corporation
-Distribution:   Azure Linux
+# https://www.w3.org/Consortium/Legal/copyright-software-19980720
+License:        W3C-19980720
 URL:            http://www.w3.org/TR/2002/REC-xhtml1-%{date}/
 # Source0 generated with Source99, see comments in the script
-Source0:        %{_distro_sources_url}/%{name}-%{date}.tar.xz
+Source0:        %{name}-%{date}.tar.xz
 Source1:        %{name}.catalog.xml
-Source2:        LICENSE.PTR
 Source99:       %{name}-prepare-tarball.sh
 Patch0:         %{name}-sgml-catalog.patch
 Patch1:         %{name}-sgml-dcl.patch
@@ -35,13 +35,14 @@ the foundation for future extensibility of XHTML.
 
 
 %prep
-%setup -q -n xhtml1-%{date}
-%patch 0 -p0
-%patch 1 -p1
+%setup -q -n xhtml1-20020801
+%patch -P0 -p0
+%patch -P1 -p1
 cp -p %{SOURCE1} DTD/catalog.xml
-cp %{SOURCE2} .
+
 
 %build
+
 
 %install
 rm -rf $RPM_BUILD_ROOT
@@ -82,6 +83,8 @@ touch %{name}-%{version}-%{release}.soc
 ln -s %{name}-%{version}-%{release}.soc %{name}.soc
 cd -
 
+
+
 %post
 cd %{_sysconfdir}/xml
 [ -e catalog ] || /usr/bin/xmlcatalog --noout --create catalog
@@ -104,7 +107,6 @@ cd - >/dev/null
 
 
 %files
-%license LICENSE.PTR
 %ghost %{_sysconfdir}/sgml/%{name}-%{version}-%{release}.soc
 %{_sysconfdir}/sgml/%{name}.soc
 %{_sysconfdir}/xml/%{name}*.xml
@@ -112,18 +114,38 @@ cd - >/dev/null
 
 
 %changelog
-* Thu Feb 22 2024 Pawel Winogrodzki <pawelwi@microsoft.com> - 1.0-20020804
-- Updating naming for 3.0 version of Azure Linux.
+* Sat Jul 20 2024 Fedora Release Engineering <releng@fedoraproject.org> - 1.0-20020801.21
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_41_Mass_Rebuild
 
-* Mon Apr 25 2022 Mateusz Malisz <mamalisz@microsoft.com> - 1.0-20020803
-- Update Source0
-- Improved formatting
-- Added LICENSE.PTR to clarify the package's license
-- License verified.
+* Sat Jan 27 2024 Fedora Release Engineering <releng@fedoraproject.org> - 1.0-20020801.20
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
 
-* Thu Oct 14 2021 Pawel Winogrodzki <pawelwi@microsoft.com> - 1.0-20020802
-- Switching to using full number for the 'Release' tag.
-- Initial CBL-Mariner import from Fedora 32 (license: MIT).
+* Mon Oct 23 2023 Ondrej Sloup <osloup@redhat.com> - 1.0-20020801.19
+- Update license tag to the SPDX format
+
+* Sat Jul 22 2023 Fedora Release Engineering <releng@fedoraproject.org> - 1.0-20020801.18
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_39_Mass_Rebuild
+
+* Sat Jan 21 2023 Fedora Release Engineering <releng@fedoraproject.org> - 1.0-20020801.17
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_38_Mass_Rebuild
+
+* Sat Jul 23 2022 Fedora Release Engineering <releng@fedoraproject.org> - 1.0-20020801.16
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_37_Mass_Rebuild
+
+* Sat Jan 22 2022 Fedora Release Engineering <releng@fedoraproject.org> - 1.0-20020801.15
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_36_Mass_Rebuild
+
+* Mon Aug 23 2021 Florian Weimer <fweimer@redhat.com> - 1.0-20020801.14
+- Add %%baserelease to help future mass rebuilds
+
+* Fri Jul 23 2021 Fedora Release Engineering <releng@fedoraproject.org> - 1.0-20020801.13.11
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_35_Mass_Rebuild
+
+* Thu Jan 28 2021 Fedora Release Engineering <releng@fedoraproject.org> - 1.0-20020801.13.10
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_34_Mass_Rebuild
+
+* Wed Jul 29 2020 Fedora Release Engineering <releng@fedoraproject.org> - 1.0-20020801.13.9
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_33_Mass_Rebuild
 
 * Fri Jan 31 2020 Fedora Release Engineering <releng@fedoraproject.org> - 1.0-20020801.13.8
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_32_Mass_Rebuild

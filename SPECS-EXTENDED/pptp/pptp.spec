@@ -1,17 +1,18 @@
-Vendor:         Microsoft Corporation
-Distribution:   Azure Linux
 Name:		pptp
 Version:	1.10.0
-Release:	10%{?dist}
+Release:	21%{?dist}
 Summary:	Point-to-Point Tunneling Protocol (PPTP) Client
-License:	GPLv2+
+License:	gpl-2.0-or-later
 URL:		http://pptpclient.sourceforge.net/
 Source0:	http://downloads.sf.net/pptpclient/pptp-%{version}.tar.gz
 Source1:	pptp-tmpfs.conf
+BuildRequires:	make
 BuildRequires:	/usr/bin/pod2man
 BuildRequires:	gcc, perl-generators
 Requires:	ppp >= 2.4.2, /sbin/ip
 Requires:	systemd-units
+# Patch sent upstream
+Patch0:		pptp-1.10.0-man-fix.patch
 
 %description
 Client for the proprietary Microsoft Point-to-Point Tunneling
@@ -29,16 +30,18 @@ tunnels.
 %prep
 %setup -q
 
+%patch -P0 -p1 -b .man-fix
+
 # Pacify rpmlint
 perl -pi -e 's/install -o root -m 555 pptp/install -m 755 pptp/;' Makefile
 
 %build
 OUR_CFLAGS="-Wall %{optflags} -Wextra -Wstrict-aliasing=2 -Wnested-externs -Wstrict-prototypes"
-make %{?_smp_mflags} CFLAGS="$OUR_CFLAGS" LDFLAGS="$RPM_LD_FLAGS" IP=/sbin/ip
+%{make_build} CFLAGS="$OUR_CFLAGS" LDFLAGS="$RPM_LD_FLAGS" IP=/sbin/ip
 
 %install
 rm -rf %{buildroot}
-make DESTDIR=%{buildroot} install
+%{make_install} DESTDIR=%{buildroot}
 install -d -m 750 %{buildroot}%{_localstatedir}/run/pptp
 
 
@@ -59,8 +62,41 @@ install -p -m 644 %{SOURCE1} %{buildroot}%{_prefix}/lib/tmpfiles.d/pptp.conf
 %{_mandir}/man8/pptpsetup.8*
 
 %changelog
-* Fri Oct 15 2021 Pawel Winogrodzki <pawelwi@microsoft.com> - 1.10.0-10
-- Initial CBL-Mariner import from Fedora 32 (license: MIT).
+* Fri Jul 19 2024 Fedora Release Engineering <releng@fedoraproject.org> - 1.10.0-21
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_41_Mass_Rebuild
+
+* Fri Jan 26 2024 Fedora Release Engineering <releng@fedoraproject.org> - 1.10.0-20
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Sun Jan 21 2024 Fedora Release Engineering <releng@fedoraproject.org> - 1.10.0-19
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Tue Dec 12 2023 Jaroslav Škarvada <jskarvad@redhat.com> - 1.10.0-18
+- Converted license tag to SPDX
+
+* Fri Jul 21 2023 Fedora Release Engineering <releng@fedoraproject.org> - 1.10.0-17
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_39_Mass_Rebuild
+
+* Fri Jan 20 2023 Fedora Release Engineering <releng@fedoraproject.org> - 1.10.0-16
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_38_Mass_Rebuild
+
+* Fri Jul 22 2022 Fedora Release Engineering <releng@fedoraproject.org> - 1.10.0-15
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_37_Mass_Rebuild
+
+* Fri Jan 21 2022 Fedora Release Engineering <releng@fedoraproject.org> - 1.10.0-14
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_36_Mass_Rebuild
+
+* Fri Jul 23 2021 Fedora Release Engineering <releng@fedoraproject.org> - 1.10.0-13
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_35_Mass_Rebuild
+
+* Wed Jan 27 2021 Fedora Release Engineering <releng@fedoraproject.org> - 1.10.0-12
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_34_Mass_Rebuild
+
+* Tue Jul 28 2020 Fedora Release Engineering <releng@fedoraproject.org> - 1.10.0-11
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_33_Mass_Rebuild
+
+* Thu May 14 2020 Jaroslav Škarvada <jskarvad@redhat.com> - 1.10.0-10
+- Fixed man page and typo in the built-in help
 
 * Thu Jan 30 2020 Fedora Release Engineering <releng@fedoraproject.org> - 1.10.0-9
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_32_Mass_Rebuild

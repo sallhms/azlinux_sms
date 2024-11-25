@@ -1,5 +1,3 @@
-Vendor:         Microsoft Corporation
-Distribution:   Azure Linux
 # Run optional test
 %if !%{defined perl_bootstrap}
 %if ! (0%{?rhel})
@@ -12,25 +10,23 @@ Distribution:   Azure Linux
 %global _with_perl_B_Debug_enables_optional_test 0
 %endif
 
-
 Name:           perl-B-Debug
 Version:        1.26
-Release:        425%{?dist}
+Release:        441%{?dist}
 Summary:        Walk Perl syntax tree, print debug information about op-codes
-License:        GPL+ or Artistic
+License:        GPL-1.0-or-later OR Artistic-1.0-Perl
 URL:            https://metacpan.org/release/B-Debug
-Source0:        https://cpan.metacpan.org/authors/id/R/RU/RURBAN/B-Debug-%{version}.tar.gz#/perl-B-Debug-%{version}.tar.gz
+Source0:        https://cpan.metacpan.org/authors/id/R/RU/RURBAN/B-Debug-%{version}.tar.gz
 BuildArch:      noarch
 BuildRequires:  make
 BuildRequires:  perl-generators
 BuildRequires:  perl-interpreter
 BuildRequires:  perl(ExtUtils::MakeMaker) >= 6.76
-BuildRequires:  perl(deprecate)
 # Run-time:
 BuildRequires:  perl(B)
 # B::Asmdata not used
 BuildRequires:  perl(Config)
-# deprecate since perl 5.27.1
+BuildRequires:  perl(deprecate)
 BuildRequires:  perl(strict)
 # Optional run-time:
 # B::Flags 0.04 not packaged
@@ -42,23 +38,45 @@ BuildRequires:  perl(warnings)
 # Optional test:
 BuildRequires:  perl(Test::Pod) >= 1.00
 %endif
-Requires:       perl(:MODULE_COMPAT_%(eval "`perl -V:version`"; echo $version))
-# deprecate since perl 5.27.1
+Requires:       perl(deprecate)
 
 %description
 Walk Perl syntax tree and print debug information about op-codes. See
 B::Concise and B::Terse for other details.
 
+%package tests
+Summary:        Tests for %{name}
+Requires:       %{name} = %{?epoch:%{epoch}:}%{version}-%{release}
+Requires:       perl-Test-Harness
+
+%description tests
+Tests from %{name}. Execute them
+with "%{_libexecdir}/%{name}/test".
+
 %prep
 %setup -q -n B-Debug-%{version}
+# Help generators to recognize Perl scripts
+for F in t/*.t; do
+    perl -i -MConfig -ple 'print $Config{startperl} if $. == 1 && !s{\A#!\s*perl}{$Config{startperl}}' "$F"
+    chmod +x "$F"
+done
 
 %build
-perl Makefile.PL INSTALLDIRS=vendor NO_PACKLIST=1
-make %{?_smp_mflags}
+perl Makefile.PL INSTALLDIRS=vendor NO_PACKLIST=1 NO_PERLLOCAL=1
+%{make_build}
 
 %install
-make pure_install DESTDIR=$RPM_BUILD_ROOT
-%{_fixperms} $RPM_BUILD_ROOT/*
+%{make_install}
+# Install tests
+mkdir -p %{buildroot}%{_libexecdir}/%{name}
+cp -a t %{buildroot}%{_libexecdir}/%{name}
+rm -f %{buildroot}%{_libexecdir}/%{name}/t/pod*
+cat > %{buildroot}%{_libexecdir}/%{name}/test << 'EOF'
+#!/bin/sh
+cd %{_libexecdir}/%{name} && exec prove -I . -j "$(getconf _NPROCESSORS_ONLN)"
+EOF
+chmod +x %{buildroot}%{_libexecdir}/%{name}/test
+%{_fixperms} %{buildroot}/*
 
 %check
 make test
@@ -69,13 +87,65 @@ make test
 %{perl_vendorlib}/*
 %{_mandir}/man3/*
 
-%changelog
-* Thu Apr 21 2022 Muhammad Falak <mwani@microsoft.com> - 1.26-425
-- Add an explicit BR on `perl(deprecate)` to enable ptest
-- License verified
+%files tests
+%{_libexecdir}/%{name}
 
-* Fri Oct 15 2021 Pawel Winogrodzki <pawelwi@microsoft.com> - 1.26-424
-- Initial CBL-Mariner import from Fedora 32 (license: MIT).
+%changelog
+* Thu Jul 18 2024 Fedora Release Engineering <releng@fedoraproject.org> - 1.26-441
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_41_Mass_Rebuild
+
+* Thu Jan 25 2024 Fedora Release Engineering <releng@fedoraproject.org> - 1.26-440
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Sun Jan 21 2024 Fedora Release Engineering <releng@fedoraproject.org> - 1.26-439
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Thu Jul 20 2023 Fedora Release Engineering <releng@fedoraproject.org> - 1.26-438
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_39_Mass_Rebuild
+
+* Fri Jan 20 2023 Fedora Release Engineering <releng@fedoraproject.org> - 1.26-437
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_38_Mass_Rebuild
+
+* Tue Dec 20 2022 Michal Josef Špaček <mspacek@redhat.com> - 1.26-436
+- Package tests
+- Update license to SPDX format
+- Use %{buildroot} macro
+
+* Fri Jul 22 2022 Fedora Release Engineering <releng@fedoraproject.org> - 1.26-435
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_37_Mass_Rebuild
+
+* Fri Jun 03 2022 Jitka Plesnikova <jplesnik@redhat.com> - 1.26-434
+- Perl 5.36 re-rebuild of bootstrapped packages
+
+* Mon May 30 2022 Jitka Plesnikova <jplesnik@redhat.com> - 1.26-433
+- Perl 5.36 rebuild
+
+* Thu Jan 20 2022 Fedora Release Engineering <releng@fedoraproject.org> - 1.26-432
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_36_Mass_Rebuild
+
+* Thu Jul 22 2021 Fedora Release Engineering <releng@fedoraproject.org> - 1.26-431
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_35_Mass_Rebuild
+
+* Mon May 24 2021 Jitka Plesnikova <jplesnik@redhat.com> - 1.26-430
+- Perl 5.34 re-rebuild of bootstrapped packages
+
+* Fri May 21 2021 Jitka Plesnikova <jplesnik@redhat.com> - 1.26-429
+- Perl 5.34 rebuild
+
+* Tue Jan 26 2021 Fedora Release Engineering <releng@fedoraproject.org> - 1.26-428
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_34_Mass_Rebuild
+
+* Tue Jul 28 2020 Fedora Release Engineering <releng@fedoraproject.org> - 1.26-427
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_33_Mass_Rebuild
+
+* Fri Jun 26 2020 Jitka Plesnikova <jplesnik@redhat.com> - 1.26-426
+- Perl 5.32 re-rebuild of bootstrapped packages
+
+* Mon Jun 22 2020 Jitka Plesnikova <jplesnik@redhat.com> - 1.26-425
+- Perl 5.32 rebuild
+
+* Tue Mar 10 2020 Petr Pisar <ppisar@redhat.com> - 1.26-424
+- Specify all dependencies
 
 * Wed Jan 29 2020 Fedora Release Engineering <releng@fedoraproject.org> - 1.26-423
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_32_Mass_Rebuild

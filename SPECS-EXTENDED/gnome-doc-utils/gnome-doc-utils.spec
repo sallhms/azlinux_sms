@@ -1,28 +1,27 @@
-Vendor:         Microsoft Corporation
-Distribution:   Azure Linux
 Name: gnome-doc-utils
 Version: 0.20.10
-Release: 24%{?dist}
+Release: 39%{?dist}
 Summary: Documentation utilities for GNOME
 
-License: GPLv2+ and LGPLv2+
+License: LGPL-2.1-or-later AND GPL-2.0-or-later AND GFDL-1.1-or-later
 URL:     https://wiki.gnome.org/Projects/GnomeDocUtils
 Source:  https://download.gnome.org/sources/%{name}/0.20/%{name}-%{version}.tar.xz
 #VCS: git:git://git.gnome.org/gnome-doc-utils
 # RH bug #438638 / GNOME bug #524207
 Patch1:  gnome-doc-utils-0.14.0-package.patch
 Patch2:  gnome-doc-utils-0.20.10-python3.patch
+Patch3:  gnome-doc-utils-0.20.10-configure-py312.patch
 
 BuildArch: noarch
 
 BuildRequires: gcc
-BuildRequires: perl(File::Find)
 BuildRequires: libxml2-devel >= 2.6.12
 BuildRequires: libxslt-devel >= 1.1.8
 BuildRequires: python3-libxml2
 BuildRequires: python3-devel
 BuildRequires: intltool
 BuildRequires: gettext
+BuildRequires: make
 
 Requires: libxml2 >= 2.6.12
 Requires: libxslt >= 1.1.8
@@ -45,7 +44,7 @@ all auxiliary files in your source tree.
 # note that this is an "inverse dependency" subpackage
 %package stylesheets
 Summary: XSL stylesheets used by gnome-doc-utils
-License: LGPLv2+
+License: LGPL-2.0-or-later
 # for the validation with xsltproc to use local dtds
 Requires: docbook-dtds
 # for /usr/share/pkgconfig
@@ -59,8 +58,9 @@ are used by the tools in gnome-doc-utils and by yelp.
 
 %prep
 %setup -q
-%patch 1 -p1 -b .package
-%patch 2 -p1 -b .python3
+%patch -P1 -p1 -b .package
+%patch -P2 -p1 -b .python3
+%patch -P3 -p1 -b .python312
 
 %build
 %configure --disable-scrollkeeper --enable-build-utils
@@ -92,14 +92,59 @@ sed -i -e '/^Requires:/d' %{buildroot}%{_datadir}/pkgconfig/xml2po.pc
 %{_datadir}/xml/mallard
 
 %changelog
-* Wed Feb 16 2022 Pawel Winogrodzki <pawelwi@microsoft.com> - 0.20.10-24
-- License verified.
+* Thu Jul 18 2024 Fedora Release Engineering <releng@fedoraproject.org> - 0.20.10-39
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_41_Mass_Rebuild
 
-* Tue Feb 15 2022 Pawel Winogrodzki <pawelwi@microsoft.com> - 0.20.10-23
-- Adding missing BRs on Perl modules.
+* Fri Jun 07 2024 Python Maint <python-maint@redhat.com> - 0.20.10-38
+- Rebuilt for Python 3.13
 
-* Fri Oct 15 2021 Pawel Winogrodzki <pawelwi@microsoft.com> - 0.20.10-22
-- Initial CBL-Mariner import from Fedora 32 (license: MIT).
+* Wed Jan 24 2024 Fedora Release Engineering <releng@fedoraproject.org> - 0.20.10-37
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Fri Jan 19 2024 Fedora Release Engineering <releng@fedoraproject.org> - 0.20.10-36
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Wed Jul 19 2023 Fedora Release Engineering <releng@fedoraproject.org> - 0.20.10-35
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_39_Mass_Rebuild
+
+* Wed Jul  5 2023 Mamoru TASAKA <mtasaka@fedoraproject.org> - 0.20.10-34
+- Workaround for python 3.12 distutils deprecation for configure script
+
+* Tue Jun 13 2023 Python Maint <python-maint@redhat.com> - 0.20.10-33
+- Rebuilt for Python 3.12
+
+* Sun Mar 05 2023 Gwyn Ciesla <gwync@protonmail.com> - 0.20.10-32
+- migrated to SPDX license
+
+* Thu Jan 19 2023 Fedora Release Engineering <releng@fedoraproject.org> - 0.20.10-31
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_38_Mass_Rebuild
+
+* Thu Jul 21 2022 Fedora Release Engineering <releng@fedoraproject.org> - 0.20.10-30
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_37_Mass_Rebuild
+
+* Mon Jun 13 2022 Python Maint <python-maint@redhat.com> - 0.20.10-29
+- Rebuilt for Python 3.11
+
+* Thu Jan 20 2022 Fedora Release Engineering <releng@fedoraproject.org> - 0.20.10-28
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_36_Mass_Rebuild
+
+* Thu Oct 14 2021 Mamoru TASAKA <mtasaka@fedoraproject.org> - 0.20.10-27
+- Fix on xml2po -o -p option for python 3
+
+* Thu Jul 22 2021 Fedora Release Engineering <releng@fedoraproject.org> - 0.20.10-26
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_35_Mass_Rebuild
+
+* Fri Jun 04 2021 Python Maint <python-maint@redhat.com> - 0.20.10-25
+- Rebuilt for Python 3.10
+
+* Tue Jan 26 2021 Fedora Release Engineering <releng@fedoraproject.org> - 0.20.10-24
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_34_Mass_Rebuild
+
+* Mon Jul 27 2020 Fedora Release Engineering <releng@fedoraproject.org> - 0.20.10-23
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_33_Mass_Rebuild
+
+* Tue May 26 2020 Miro Hrončok <mhroncok@redhat.com> - 0.20.10-22
+- Rebuilt for Python 3.9
 
 * Tue Jan 28 2020 Fedora Release Engineering <releng@fedoraproject.org> - 0.20.10-21
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_32_Mass_Rebuild

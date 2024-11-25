@@ -1,8 +1,6 @@
-Vendor:         Microsoft Corporation
-Distribution:   Azure Linux
-
+%if 0%{?fedora}
 %global with_python3_tests 1
-
+%endif
 
 %global pypi_name   PySocks
 %global modname     pysocks
@@ -10,10 +8,10 @@ Distribution:   Azure Linux
 
 Name:               python-%{modname}
 Version:            1.7.1
-Release:            5%{?dist}
+Release:            25%{?dist}
 Summary:            %{sum}
 
-License:            BSD
+License:            BSD-3-Clause
 URL:                https://github.com/Anorov/%{pypi_name}
 Source0:            %pypi_source
 BuildArch:          noarch
@@ -117,8 +115,68 @@ rm -rfv test/bin
 
 
 %changelog
-* Fri Oct 15 2021 Pawel Winogrodzki <pawelwi@microsoft.com> - 1.7.1-5
-- Initial CBL-Mariner import from Fedora 32 (license: MIT).
+* Fri Jul 19 2024 Fedora Release Engineering <releng@fedoraproject.org> - 1.7.1-25
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_41_Mass_Rebuild
+
+* Fri Jun 07 2024 Python Maint <python-maint@redhat.com> - 1.7.1-24
+- Rebuilt for Python 3.13
+
+* Fri Jun 07 2024 Python Maint <python-maint@redhat.com> - 1.7.1-23
+- Bootstrap for Python 3.13
+
+* Fri Jan 26 2024 Fedora Release Engineering <releng@fedoraproject.org> - 1.7.1-22
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Mon Jan 22 2024 Fedora Release Engineering <releng@fedoraproject.org> - 1.7.1-21
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Fri Jul 21 2023 Fedora Release Engineering <releng@fedoraproject.org> - 1.7.1-20
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_39_Mass_Rebuild
+
+* Fri Jun 16 2023 Python Maint <python-maint@redhat.com> - 1.7.1-19
+- Rebuilt for Python 3.12
+
+* Tue Jun 13 2023 Python Maint <python-maint@redhat.com> - 1.7.1-18
+- Bootstrap for Python 3.12
+
+* Sun Mar 12 2023 Tim Orling <ticotimo@gmail.com> - 1.7.1-17
+- migrated to SPDX license
+
+* Fri Jan 20 2023 Fedora Release Engineering <releng@fedoraproject.org> - 1.7.1-16
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_38_Mass_Rebuild
+
+* Fri Jul 22 2022 Fedora Release Engineering <releng@fedoraproject.org> - 1.7.1-15
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_37_Mass_Rebuild
+
+* Mon Jun 13 2022 Python Maint <python-maint@redhat.com> - 1.7.1-14
+- Rebuilt for Python 3.11
+
+* Mon Jun 13 2022 Python Maint <python-maint@redhat.com> - 1.7.1-13
+- Bootstrap for Python 3.11
+
+* Fri Jan 21 2022 Fedora Release Engineering <releng@fedoraproject.org> - 1.7.1-12
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_36_Mass_Rebuild
+
+* Fri Jul 23 2021 Fedora Release Engineering <releng@fedoraproject.org> - 1.7.1-11
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_35_Mass_Rebuild
+
+* Thu Jun 03 2021 Python Maint <python-maint@redhat.com> - 1.7.1-10
+- Rebuilt for Python 3.10
+
+* Wed Jun 02 2021 Python Maint <python-maint@redhat.com> - 1.7.1-9
+- Bootstrap for Python 3.10
+
+* Wed Jan 27 2021 Fedora Release Engineering <releng@fedoraproject.org> - 1.7.1-8
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_34_Mass_Rebuild
+
+* Wed Jul 29 2020 Fedora Release Engineering <releng@fedoraproject.org> - 1.7.1-7
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_33_Mass_Rebuild
+
+* Sat May 23 2020 Miro Hrončok <mhroncok@redhat.com> - 1.7.1-6
+- Rebuilt for Python 3.9
+
+* Fri May 22 2020 Miro Hrončok <mhroncok@redhat.com> - 1.7.1-5
+- Bootstrap for Python 3.9
 
 * Thu Jan 30 2020 Fedora Release Engineering <releng@fedoraproject.org> - 1.7.1-4
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_32_Mass_Rebuild

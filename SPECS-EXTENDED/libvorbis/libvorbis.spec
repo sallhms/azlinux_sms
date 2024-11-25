@@ -1,16 +1,16 @@
-Vendor:         Microsoft Corporation
-Distribution:   Azure Linux
 %{!?_pkgdocdir: %global _pkgdocdir %{_docdir}/%{name}-%{version}}
 
 Summary:	The Vorbis General Audio Compression Codec
 Name:		libvorbis
 Version:	1.3.7
-Release:	1%{?dist}
-License:	BSD
+Release:	11%{?dist}
+Epoch:		1
+License:	BSD-3-Clause
 URL:		https://www.xiph.org/
 Source:		https://downloads.xiph.org/releases/vorbis/%{name}-%{version}.tar.xz
 BuildRequires:  gcc
 BuildRequires:	pkgconfig(ogg) >= 1.0
+BuildRequires: make
 
 %description
 Ogg Vorbis is a fully open, non-proprietary, patent- and royalty-free,
@@ -22,7 +22,7 @@ that support Ogg Vorbis.
 
 %package devel
 Summary: Development tools for Vorbis applications
-Requires:	%{name}%{?_isa} = %{version}-%{release}
+Requires:	%{name}%{?_isa} = %{epoch}:%{version}-%{release}
 
 %description devel
 The libvorbis-devel package contains the header files and documentation
@@ -30,7 +30,7 @@ needed to develop applications with Ogg Vorbis.
 
 %package devel-docs
 Summary: Documentation for developing Vorbis applications
-Requires: %{name}-devel = %{version}-%{release}
+Requires: %{name}-devel = %{epoch}:%{version}-%{release}
 BuildArch: noarch
 
 %description devel-docs
@@ -39,7 +39,6 @@ Documentation for developing applications with libvorbis.
 %prep
 
 %setup -q
-sed -i "s|-O20|$RPM_OPT_FLAGS|" configure
 sed -i "s/-ffast-math//" configure
 sed -i "s/-mcpu=750//" configure
 
@@ -77,16 +76,38 @@ make check
 %ldconfig_scriptlets
 
 %changelog
-* Wed Sep 06 2023 Archana Choudhary <archana1@microsoft.com> - 1.3.7-1
-- Upgrade to 1.3.7 - CVE-2018-10392 CVE-2018-10393
-- Remove patch libvorbis-1.3.6-git.patch
-- License verified
+* Thu Jul 18 2024 Fedora Release Engineering <releng@fedoraproject.org> - 1:1.3.7-11
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_41_Mass_Rebuild
 
-* Mon Nov 01 2021 Muhammad Falak <mwani@microsft.com> - 1.3.6-8
-- Remove epoch
+* Thu Jan 25 2024 Fedora Release Engineering <releng@fedoraproject.org> - 1:1.3.7-10
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
 
-* Fri Oct 15 2021 Pawel Winogrodzki <pawelwi@microsoft.com> - 1:1.3.6-7
-- Initial CBL-Mariner import from Fedora 32 (license: MIT).
+* Sun Jan 21 2024 Fedora Release Engineering <releng@fedoraproject.org> - 1:1.3.7-9
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Thu Jul 20 2023 Fedora Release Engineering <releng@fedoraproject.org> - 1:1.3.7-8
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_39_Mass_Rebuild
+
+* Thu Jan 19 2023 Fedora Release Engineering <releng@fedoraproject.org> - 1:1.3.7-7
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_38_Mass_Rebuild
+
+* Thu Jul 21 2022 Fedora Release Engineering <releng@fedoraproject.org> - 1:1.3.7-6
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_37_Mass_Rebuild
+
+* Thu Jan 20 2022 Fedora Release Engineering <releng@fedoraproject.org> - 1:1.3.7-5
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_36_Mass_Rebuild
+
+* Thu Jul 22 2021 Fedora Release Engineering <releng@fedoraproject.org> - 1:1.3.7-4
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_35_Mass_Rebuild
+
+* Tue Jan 26 2021 Fedora Release Engineering <releng@fedoraproject.org> - 1:1.3.7-3
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_34_Mass_Rebuild
+
+* Tue Jul 28 2020 Fedora Release Engineering <releng@fedoraproject.org> - 1:1.3.7-2
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_33_Mass_Rebuild
+
+* Thu Jul 16 2020 David King <amigadave@amigadave.com> - 1.3.7-1
+- Update to 1.3.7
 
 * Wed Jan 29 2020 Fedora Release Engineering <releng@fedoraproject.org> - 1:1.3.6-6
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_32_Mass_Rebuild

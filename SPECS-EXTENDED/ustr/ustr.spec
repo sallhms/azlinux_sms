@@ -27,16 +27,15 @@
 
 Name: ustr
 Version: 1.0.4
-Release: 31%{?dist}
+Release: 39%{?dist}
 Summary: String library, very low memory overhead, simple to import
 License: MIT or LGPLv2+ or BSD
-Vendor:         Microsoft Corporation
-Distribution:   Azure Linux
 URL: http://www.and.org/ustr/
 Source0: http://www.and.org/ustr/%{version}/%{name}-%{version}.tar.bz2
 Patch0: c99-inline.patch
 # BuildRequires: make gcc sed
 
+BuildRequires: make
 BuildRequires:  gcc
 %description
  Micro string library, very low overhead from plain strdup() (Ave. 44% for
@@ -83,7 +82,7 @@ Requires: %{name}-debug = %{version}-%{release}
 
 %prep
 %setup -q
-%patch 0 -p1
+%patch -P0 -p1
 
 %build
 make %{?_smp_mflags} all-shared CFLAGS="${CFLAGS:-%optflags}  -fgnu89-inline" \
@@ -143,8 +142,32 @@ make $@ %{ustr_make_install} prefix=%{_prefix} \
 
 
 %changelog
-* Fri Oct 15 2021 Pawel Winogrodzki <pawelwi@microsoft.com> - 1.0.4-31
-- Initial CBL-Mariner import from Fedora 32 (license: MIT).
+* Sat Jul 20 2024 Fedora Release Engineering <releng@fedoraproject.org> - 1.0.4-39
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_41_Mass_Rebuild
+
+* Sat Jan 27 2024 Fedora Release Engineering <releng@fedoraproject.org> - 1.0.4-38
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Sat Jul 22 2023 Fedora Release Engineering <releng@fedoraproject.org> - 1.0.4-37
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_39_Mass_Rebuild
+
+* Sat Jan 21 2023 Fedora Release Engineering <releng@fedoraproject.org> - 1.0.4-36
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_38_Mass_Rebuild
+
+* Sat Jul 23 2022 Fedora Release Engineering <releng@fedoraproject.org> - 1.0.4-35
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_37_Mass_Rebuild
+
+* Sat Jan 22 2022 Fedora Release Engineering <releng@fedoraproject.org> - 1.0.4-34
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_36_Mass_Rebuild
+
+* Fri Jul 23 2021 Fedora Release Engineering <releng@fedoraproject.org> - 1.0.4-33
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_35_Mass_Rebuild
+
+* Wed Jan 27 2021 Fedora Release Engineering <releng@fedoraproject.org> - 1.0.4-32
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_34_Mass_Rebuild
+
+* Wed Jul 29 2020 Fedora Release Engineering <releng@fedoraproject.org> - 1.0.4-31
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_33_Mass_Rebuild
 
 * Fri Jan 31 2020 Fedora Release Engineering <releng@fedoraproject.org> - 1.0.4-30
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_32_Mass_Rebuild

@@ -1,13 +1,11 @@
-Vendor:         Microsoft Corporation
-Distribution:   Azure Linux
-%global dataversion 0.2.7
+%global dataversion 1:0.2.7
 
 Name:		libkkc
 Version:	0.3.5
-Release:	21%{?dist}
+Release:	30%{?dist}
 Summary:	Japanese Kana Kanji conversion library
 
-License:	GPLv3+
+License:	GPL-3.0-or-later
 URL:		https://github.com/ueno/libkkc
 Source0:	https://github.com/ueno/libkkc/releases/download/v%{version}/%{name}-%{version}.tar.gz
 # remove for next release:
@@ -15,9 +13,14 @@ Source1:        README.md
 Patch0:		libkkc-HEAD.patch
 Patch1:         libkkc-POT.skip.patch
 Patch2:         libkkc-vala-abstract-create.patch
+# https://github.com/ueno/libkkc/pull/40
+# Fix compilation with gcc14 -Werror=int-conversion
+Patch3:         libkkc-pr40-int-conversion-fix.patch
+# https://bugzilla.redhat.com/show_bug.cgi?id=2306455
+# Fix invalid escape on default.json
+Patch4:         libkkc-Fix-invalid-escape-on-json-file.patch
 
 BuildRequires:  gcc-c++
-BuildRequires:  perl(File::Find)
 BuildRequires:	marisa-devel
 BuildRequires:	vala
 BuildRequires:	pkgconfig(gee-0.8)
@@ -26,6 +29,8 @@ BuildRequires:	gobject-introspection-devel
 BuildRequires:	intltool
 BuildRequires:	python3-devel
 BuildRequires:	python3-marisa
+BuildRequires: make
+BuildRequires: chrpath
 
 Requires:	skkdic
 Requires:	%{name}-data >= %{dataversion}
@@ -74,7 +79,7 @@ autoreconf -f
 
 %build
 %configure --disable-static --disable-silent-rules PYTHON=python3
-make %{?_smp_mflags}
+%make_build
 
 
 %check
@@ -82,9 +87,12 @@ make check
 
 
 %install
-%make_install INSTALL="install -p"
+%make_install
 
 find $RPM_BUILD_ROOT -name '*.la' -exec rm -f {} ';'
+
+# https://bugzilla.redhat.com/show_bug.cgi?id=1987650
+chrpath --delete $RPM_BUILD_ROOT%{_bindir}/kkc
 
 %find_lang %{name}
 
@@ -93,8 +101,7 @@ find $RPM_BUILD_ROOT -name '*.la' -exec rm -f {} ';'
 
 
 %files -f %{name}.lang
-%license COPYING
-%doc README data/rules/README.rules
+%doc README data/rules/README.rules COPYING
 %{_libdir}/*.so.*
 %{_libdir}/girepository-1.0/*.typelib
 
@@ -114,17 +121,49 @@ find $RPM_BUILD_ROOT -name '*.la' -exec rm -f {} ';'
 
 
 %changelog
-* Wed Feb 16 2022 Pawel Winogrodzki <pawelwi@microsoft.com> - 0.3.5-21
-- License verified.
+* Wed Aug 21 2024 Mamoru TASAKA <mtasaka@fedoraproject.org> - 0.3.5-30
+- Fix FTBFS with gcc14 -Werror=int-conversion (bug 2300903)
+- Fix invalid escape on json file (bug 2306455)
 
-* Tue Feb 15 2022 Pawel Winogrodzki <pawelwi@microsoft.com> - 0.3.5-20
-- Adding missing BRs on Perl modules.
+* Thu Jul 18 2024 Fedora Release Engineering <releng@fedoraproject.org> - 0.3.5-29
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_41_Mass_Rebuild
 
-* Mon Nov 01 2021 Muhammad Falak <mwani@microsft.com> - 0.3.5-19
-- Remove epoch from libkkc-data
+* Thu Jan 25 2024 Fedora Release Engineering <releng@fedoraproject.org> - 0.3.5-28
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
 
-* Fri Oct 15 2021 Pawel Winogrodzki <pawelwi@microsoft.com> - 0.3.5-18
-- Initial CBL-Mariner import from Fedora 32 (license: MIT).
+* Sun Jan 21 2024 Fedora Release Engineering <releng@fedoraproject.org> - 0.3.5-27
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Fri Sep 29 2023 Parag Nemade <pnemade AT fedoraproject DOT org> - 0.3.5-26
+- Migrate to SPDX license expression
+
+* Thu Jul 20 2023 Fedora Release Engineering <releng@fedoraproject.org> - 0.3.5-25
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_39_Mass_Rebuild
+
+* Thu Jan 19 2023 Fedora Release Engineering <releng@fedoraproject.org> - 0.3.5-24
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_38_Mass_Rebuild
+
+* Thu Jul 21 2022 Fedora Release Engineering <releng@fedoraproject.org> - 0.3.5-23
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_37_Mass_Rebuild
+
+* Thu Jan 20 2022 Fedora Release Engineering <releng@fedoraproject.org> - 0.3.5-22
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_36_Mass_Rebuild
+
+* Tue Dec 14 2021 Jens Petersen <petersen@redhat.com>
+- Use make macros (Tom Stellard, #4)
+- https://fedoraproject.org/wiki/Changes/UseMakeBuildInstallMacro
+
+* Tue Nov 16 2021 Jens Petersen <petersen@redhat.com> - 0.3.5-21
+- delete the libdir rpath in the kkc executable for FTBFS (#1987650)
+
+* Thu Jul 22 2021 Fedora Release Engineering <releng@fedoraproject.org> - 0.3.5-20
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_35_Mass_Rebuild
+
+* Tue Jan 26 2021 Fedora Release Engineering <releng@fedoraproject.org> - 0.3.5-19
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_34_Mass_Rebuild
+
+* Tue Jul 28 2020 Fedora Release Engineering <releng@fedoraproject.org> - 0.3.5-18
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_33_Mass_Rebuild
 
 * Wed Jan 29 2020 Fedora Release Engineering <releng@fedoraproject.org> - 0.3.5-17
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_32_Mass_Rebuild
@@ -278,4 +317,3 @@ find $RPM_BUILD_ROOT -name '*.la' -exec rm -f {} ';'
 
 * Thu Jan 24 2013 Daiki Ueno <dueno@redhat.com> - 0.0.1-1
 - initial packaging
-

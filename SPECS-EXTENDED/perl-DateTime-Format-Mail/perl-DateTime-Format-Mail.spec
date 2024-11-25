@@ -2,20 +2,19 @@
 %bcond_without perl_DateTime_Format_Mail_enables_extra_test
 
 Name:           perl-DateTime-Format-Mail
+Epoch:          1
 Version:        0.403
-Release:        13%{?dist}
+Release:        25%{?dist}
 Summary:        Convert between DateTime and RFC2822/822 formats
-License:        GPL+ or Artistic        
-Vendor:         Microsoft Corporation
-Distribution:   Azure Linux
+License:        GPL-1.0-or-later OR Artistic-1.0-Perl
 URL:            https://metacpan.org/release/DateTime-Format-Mail            
-Source0:        https://cpan.metacpan.org/authors/id/B/BO/BOOK/DateTime-Format-Mail-%{version}.tar.gz#/perl-DateTime-Format-Mail-%{version}.tar.gz
+Source0:        https://cpan.metacpan.org/modules/by-module/DateTime/DateTime-Format-Mail-%{version}.tar.gz
 BuildArch:      noarch
 # Build
 BuildRequires:  coreutils
 BuildRequires:  make
-BuildRequires:  perl-interpreter
 BuildRequires:  perl-generators
+BuildRequires:  perl-interpreter
 BuildRequires:  perl(ExtUtils::MakeMaker) >= 6.76
 BuildRequires:  perl(strict)
 BuildRequires:  perl(warnings)
@@ -36,7 +35,7 @@ BuildRequires:  perl(Test::Pod::Coverage) >= 1.08
 BuildRequires:  perl(Test::CPAN::Meta)
 %endif
 # Dependencies
-Requires:       perl(:MODULE_COMPAT_%(eval "`perl -V:version`"; echo $version))
+# (none)
 
 %description
 RFCs 2822 and 822 specify date formats to be used by email. This module parses
@@ -58,7 +57,7 @@ make %{?_smp_mflags}
 
 %install
 make pure_install DESTDIR=%{buildroot}
-%{_fixperms} %{buildroot}
+%{_fixperms} -c %{buildroot}
 
 %check
 make test %{?with_perl_DateTime_Format_Mail_enables_extra_test:\
@@ -71,11 +70,49 @@ make test %{?with_perl_DateTime_Format_Mail_enables_extra_test:\
 %{_mandir}/man3/DateTime::Format::Mail.3*
 
 %changelog
-* Mon Nov 01 2021 Muhammad Falak <mwani@microsft.com> - 0.403-13
-- Remove epoch
+* Thu Jul 18 2024 Fedora Release Engineering <releng@fedoraproject.org> - 1:0.403-25
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_41_Mass_Rebuild
 
-* Fri Oct 15 2021 Pawel Winogrodzki <pawelwi@microsoft.com> - 1:0.403-12
-- Initial CBL-Mariner import from Fedora 32 (license: MIT).
+* Thu Jan 25 2024 Fedora Release Engineering <releng@fedoraproject.org> - 1:0.403-24
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Sun Jan 21 2024 Fedora Release Engineering <releng@fedoraproject.org> - 1:0.403-23
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Thu Jul 20 2023 Fedora Release Engineering <releng@fedoraproject.org> - 1:0.403-22
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_39_Mass_Rebuild
+
+* Mon Mar 27 2023 Paul Howarth <paul@city-fan.org> - 1:0.403-21
+- Use SPDX-format license tag
+- Use author-independent source URL
+- Fix permissions verbosely
+
+* Fri Jan 20 2023 Fedora Release Engineering <releng@fedoraproject.org> - 1:0.403-20
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_38_Mass_Rebuild
+
+* Fri Jul 22 2022 Fedora Release Engineering <releng@fedoraproject.org> - 1:0.403-19
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_37_Mass_Rebuild
+
+* Wed Jun 01 2022 Jitka Plesnikova <jplesnik@redhat.com> - 1:0.403-18
+- Perl 5.36 rebuild
+
+* Fri Jan 21 2022 Fedora Release Engineering <releng@fedoraproject.org> - 1:0.403-17
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_36_Mass_Rebuild
+
+* Thu Jul 22 2021 Fedora Release Engineering <releng@fedoraproject.org> - 1:0.403-16
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_35_Mass_Rebuild
+
+* Sun May 23 2021 Jitka Plesnikova <jplesnik@redhat.com> - 1:0.403-15
+- Perl 5.34 rebuild
+
+* Wed Jan 27 2021 Fedora Release Engineering <releng@fedoraproject.org> - 1:0.403-14
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_34_Mass_Rebuild
+
+* Tue Jul 28 2020 Fedora Release Engineering <releng@fedoraproject.org> - 1:0.403-13
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_33_Mass_Rebuild
+
+* Tue Jun 23 2020 Jitka Plesnikova <jplesnik@redhat.com> - 1:0.403-12
+- Perl 5.32 rebuild
 
 * Wed Jan 29 2020 Fedora Release Engineering <releng@fedoraproject.org> - 1:0.403-11
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_32_Mass_Rebuild

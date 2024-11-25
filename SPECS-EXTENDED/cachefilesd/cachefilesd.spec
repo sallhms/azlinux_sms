@@ -1,17 +1,16 @@
-Vendor:         Microsoft Corporation
-Distribution:   Azure Linux
+# % define buildid .local
 
 Name:		cachefilesd
 Version:	0.10.10
-Release:	9%{?dist}
+Release:	19%{?dist}%{?buildid}
 Summary:	CacheFiles user-space management daemon
-License:	GPLv2+
+License:	GPL-2.0-or-later
 URL:		http://people.redhat.com/~dhowells/fscache/
 Source0:	http://people.redhat.com/dhowells/fscache/cachefilesd-%{version}.tar.bz2
-Source1:	%{name}-LICENSE.txt
 
 BuildRequires:  gcc
 BuildRequires: systemd-units
+BuildRequires: make
 Requires(post): systemd-units
 Requires(preun): systemd-units
 Requires(postun): systemd-units
@@ -28,7 +27,6 @@ the local disk.
 
 %prep
 %setup -q
-cp %{SOURCE1} ./LICENSE.txt
 
 %build
 make all \
@@ -61,7 +59,6 @@ install -m 644 cachefilesd.service %{buildroot}%{_unitdir}/cachefilesd.service
 %systemd_postun_with_restart cachefilesd.service
 
 %files
-%license LICENSE.txt
 %doc README
 %doc howto.txt
 %doc selinux/move-cache.txt
@@ -75,8 +72,39 @@ install -m 644 cachefilesd.service %{buildroot}%{_unitdir}/cachefilesd.service
 %{_localstatedir}/cache/fscache
 
 %changelog
-* Fri Oct 15 2021 Pawel Winogrodzki <pawelwi@microsoft.com> - 0.10.10-9
-- Initial CBL-Mariner import from Fedora 32 (license: MIT).
+* Wed Jul 17 2024 Fedora Release Engineering <releng@fedoraproject.org> - 0.10.10-19
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_41_Mass_Rebuild
+
+* Tue Jan 23 2024 Fedora Release Engineering <releng@fedoraproject.org> - 0.10.10-18
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Fri Jan 19 2024 Fedora Release Engineering <releng@fedoraproject.org> - 0.10.10-17
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Fri Oct 06 2023 Pavel Reichl <preichl@redhat.com> - 0.10.10-16
+- Convert License tag to SPDX format
+
+* Wed Jan 18 2023 Fedora Release Engineering <releng@fedoraproject.org> - 0.10.10-15
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_38_Mass_Rebuild
+
+* Wed Jul 20 2022 Fedora Release Engineering <releng@fedoraproject.org> - 0.10.10-14
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_37_Mass_Rebuild
+
+* Wed Jan 19 2022 Fedora Release Engineering <releng@fedoraproject.org> - 0.10.10-13
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_36_Mass_Rebuild
+
+* Wed Jul 21 2021 Fedora Release Engineering <releng@fedoraproject.org> - 0.10.10-12
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_35_Mass_Rebuild
+
+* Tue Mar 02 2021 Zbigniew Jędrzejewski-Szmek <zbyszek@in.waw.pl> - 0.10.10-11
+- Rebuilt for updated systemd-rpm-macros
+  See https://pagure.io/fesco/issue/2583.
+
+* Tue Jan 26 2021 Fedora Release Engineering <releng@fedoraproject.org> - 0.10.10-10
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_34_Mass_Rebuild
+
+* Mon Jul 27 2020 Fedora Release Engineering <releng@fedoraproject.org> - 0.10.10-9
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_33_Mass_Rebuild
 
 * Tue Jan 28 2020 Fedora Release Engineering <releng@fedoraproject.org> - 0.10.10-8
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_32_Mass_Rebuild

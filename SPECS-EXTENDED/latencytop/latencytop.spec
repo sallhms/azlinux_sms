@@ -1,21 +1,20 @@
-Vendor:         Microsoft Corporation
-Distribution:   Azure Linux
 Name:           latencytop
 Version:        0.5
-Release:        27%{?dist}
+Release:        36%{?dist}
 Summary:        System latency monitor (with GUI)
 
 License:        GPLv2
 URL:            http://www.latencytop.org/
 Source0:        http://www.latencytop.org/download/%{name}-%{version}.tar.gz
-Source1:        %{name}-LICENSE.txt
 Patch0:         latencytop-Makefile-fixes.patch
 Patch1:         latencytop-Makefile-default-to-no-gtk.patch
 Patch2:         latencytop-remove-the-fsync-view.patch
 Patch3:         latencytop-better-error-message.patch
+Patch4:         latencytop-add-return-type-c99.patch
 
 BuildRequires:  gcc
 BuildRequires:  ncurses-devel glib2-devel gtk2-devel pkgconfig
+BuildRequires: make
 Requires:       %{name}-common = %{version}-%{release}
 
 %description
@@ -50,11 +49,11 @@ This package contains files needed by both the GUI and TUI builds of LatencyTOP.
 
 %prep
 %setup -q
-%patch 0 -p1
-%patch 1 -p1
-%patch 2 -p2
-%patch 3 -p2
-mv %{SOURCE1} ./LICENSE.txt
+%patch -P0 -p1
+%patch -P1 -p1
+%patch -P2 -p2
+%patch -P3 -p2
+%patch -P4 -p1
 
 %build
 export CFLAGS="${CFLAGS:-%{optflags}}"
@@ -77,16 +76,42 @@ ln -s latencytop.8 %{buildroot}%{_mandir}/man8/latencytop-tui.8
 %{_sbindir}/latencytop-tui
 
 %files common
-%license LICENSE.txt
 %{_datadir}/%{name}
 %{_mandir}/man8/*
 
 %changelog
-* Fri Dec 10 2021 Thomas Crain <thcrain@microsoft.com> - 0.5-27
-- License verified
+* Thu Jul 18 2024 Fedora Release Engineering <releng@fedoraproject.org> - 0.5-36
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_41_Mass_Rebuild
 
-* Fri Oct 15 2021 Pawel Winogrodzki <pawelwi@microsoft.com> - 0.5-26
-- Initial CBL-Mariner import from Fedora 32 (license: MIT).
+* Thu Jan 25 2024 Fedora Release Engineering <releng@fedoraproject.org> - 0.5-35
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Sun Jan 21 2024 Fedora Release Engineering <releng@fedoraproject.org> - 0.5-34
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Thu Jul 20 2023 Fedora Release Engineering <releng@fedoraproject.org> - 0.5-33
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_39_Mass_Rebuild
+
+* Thu Jan 19 2023 Fedora Release Engineering <releng@fedoraproject.org> - 0.5-32
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_38_Mass_Rebuild
+
+* Thu Jan 12 2023 Peter Fordham <peter.fordham@gmail.com> - 0.5-31
+- Add a missing return type for C99 compliance.
+
+* Thu Jul 21 2022 Fedora Release Engineering <releng@fedoraproject.org> - 0.5-30
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_37_Mass_Rebuild
+
+* Thu Jan 20 2022 Fedora Release Engineering <releng@fedoraproject.org> - 0.5-29
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_36_Mass_Rebuild
+
+* Thu Jul 22 2021 Fedora Release Engineering <releng@fedoraproject.org> - 0.5-28
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_35_Mass_Rebuild
+
+* Tue Jan 26 2021 Fedora Release Engineering <releng@fedoraproject.org> - 0.5-27
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_34_Mass_Rebuild
+
+* Tue Jul 28 2020 Fedora Release Engineering <releng@fedoraproject.org> - 0.5-26
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_33_Mass_Rebuild
 
 * Wed Jan 29 2020 Fedora Release Engineering <releng@fedoraproject.org> - 0.5-25
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_32_Mass_Rebuild

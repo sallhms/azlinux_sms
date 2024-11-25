@@ -1,13 +1,12 @@
-Vendor:         Microsoft Corporation
-Distribution:   Azure Linux
 # Tests require network access so fail in koji; build using --with tests to run them yourself
 %bcond_with tests
 
 Name:		GeoIP
 Version:	1.6.12
-Release:	8%{?dist}
+Release:	19%{?dist}
 Summary:	Library for country/city/organization to IP address or hostname mapping
-License:	LGPLv2+
+# Note: bundled GeoIP.dat data is CC-BY-SA-3.0 but we don't use or package it
+License:	LGPL-2.1-or-later
 URL:		http://www.maxmind.com/app/c
 Source0:	https://github.com/maxmind/geoip-api-c/releases/download/v%{version}/GeoIP-%{version}.tar.gz
 BuildRequires:	coreutils
@@ -15,7 +14,12 @@ BuildRequires:	gcc
 BuildRequires:	make
 BuildRequires:	sed
 BuildRequires:	zlib-devel
+Requires:	GeoIP-data
 
+# For compatibility with original release of GeoIP in old distributions
+%if 0%{?fedora} < 22 && 0%{?rhel} < 8
+Requires:	geoipupdate
+%endif
 
 # Old name of GeoIP library package
 Obsoletes:	geoip < %{version}-%{release}
@@ -63,11 +67,7 @@ rm -f %{buildroot}%{_libdir}/*.la
 %ldconfig_scriptlets
 
 %files
-%if 0%{?_licensedir:1}
-%license COPYING
-%else
-%doc COPYING
-%endif
+%license COPYING LICENSE
 %doc AUTHORS ChangeLog NEWS.md README.md
 %{_bindir}/geoiplookup
 %{_bindir}/geoiplookup6
@@ -83,12 +83,45 @@ rm -f %{buildroot}%{_libdir}/*.la
 %{_libdir}/pkgconfig/geoip.pc
 
 %changelog
-* Wed May 17 2023 Andy Zaugg <azaugg@linkedin.com> - 1.6.12-8
-- Dropping GeoIP-data package requirement
+* Wed Jul 17 2024 Fedora Release Engineering <releng@fedoraproject.org> - 1.6.12-19
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_41_Mass_Rebuild
 
-* Fri Oct 15 2021 Pawel Winogrodzki <pawelwi@microsoft.com> - 1.6.12-7
-- Initial CBL-Mariner import from Fedora 31 (license: MIT).
-- License verified
+* Mon Jan 22 2024 Fedora Release Engineering <releng@fedoraproject.org> - 1.6.12-18
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Fri Jan 19 2024 Fedora Release Engineering <releng@fedoraproject.org> - 1.6.12-17
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Thu Jan 18 2024 Fedora Release Engineering <releng@fedoraproject.org> - 1.6.12-16
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Wed Jul 19 2023 Fedora Release Engineering <releng@fedoraproject.org> - 1.6.12-15
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_39_Mass_Rebuild
+
+* Fri Mar  3 2023 Paul Howarth <paul@city-fan.org> - 1.6.12-14
+- Use SPDX-format license tag
+- Package LICENSE file
+
+* Wed Jan 18 2023 Fedora Release Engineering <releng@fedoraproject.org> - 1.6.12-13
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_38_Mass_Rebuild
+
+* Wed Jul 20 2022 Fedora Release Engineering <releng@fedoraproject.org> - 1.6.12-12
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_37_Mass_Rebuild
+
+* Wed Jan 19 2022 Fedora Release Engineering <releng@fedoraproject.org> - 1.6.12-11
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_36_Mass_Rebuild
+
+* Wed Jul 21 2021 Fedora Release Engineering <releng@fedoraproject.org> - 1.6.12-10
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_35_Mass_Rebuild
+
+* Mon Jan 25 2021 Fedora Release Engineering <releng@fedoraproject.org> - 1.6.12-9
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_34_Mass_Rebuild
+
+* Mon Jul 27 2020 Fedora Release Engineering <releng@fedoraproject.org> - 1.6.12-8
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_33_Mass_Rebuild
+
+* Tue Jan 28 2020 Fedora Release Engineering <releng@fedoraproject.org> - 1.6.12-7
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_32_Mass_Rebuild
 
 * Wed Jul 24 2019 Fedora Release Engineering <releng@fedoraproject.org> - 1.6.12-6
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_31_Mass_Rebuild

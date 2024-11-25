@@ -1,22 +1,22 @@
-Vendor:         Microsoft Corporation
-Distribution:   Azure Linux
 %global rcver %{nil}
 
 Name:		libgadu
 Version:	1.12.2
-Release:	11%{?dist}
+Release:	27%{?dist}
 Summary:	A Gadu-gadu protocol compatible communications library
 License:	LGPLv2
 Source0:	https://github.com/wojtekka/libgadu/releases/download/%{version}%{?rcver}/libgadu-%{version}%{?rcver}.tar.gz
 Patch0:	libgadu-1.12.2-gcc10.patch
+Patch1:	%{name}-fix-openssl-symbol-clash.patch
 URL:		http://libgadu.net/
-BuildRequires:  gcc
 BuildRequires:	curl-devel
 BuildRequires:	doxygen
 BuildRequires:	expat-devel
+BuildRequires:	gcc
 BuildRequires:	gnutls-devel
 BuildRequires:	gsm-devel
 BuildRequires:	libxml2-devel
+BuildRequires:	make
 # protobuf-c-1.0.0 is an incompatible update from 0.15
 BuildRequires:	protobuf-c-devel >= 1.0.0
 BuildRequires:	speex-devel
@@ -60,7 +60,8 @@ Pakiet libgadu-doc zawiera dokumentację biblioteki libgadu.
 
 %prep
 %setup -q -n %{name}-%{version}%{?rcver}
-%patch 0 -p1 -b .gcc10
+%patch -P 0 -p1 -b .gcc10
+%patch -P 1 -p1 -b .openssl
 
 # bug 1126750: touch to force rebuild with protobuf-c-1.0.0 (incompatible with 0.15)
 touch packets.proto
@@ -97,8 +98,57 @@ make check
 %doc docs/protocol.html docs/html
 
 %changelog
-* Fri Oct 15 2021 Pawel Winogrodzki <pawelwi@microsoft.com> - 1.12.2-11
-- Initial CBL-Mariner import from Fedora 32 (license: MIT).
+* Thu Jul 18 2024 Fedora Release Engineering <releng@fedoraproject.org> - 1.12.2-27
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_41_Mass_Rebuild
+
+* Mon Feb  5 2024 Paul Howarth <paul@city-fan.org> - 1.12.2-26
+- Drop redundant test dependency perl-Test-Vars (rhbz#2260472)
+- Fix use of deprecated patch syntax
+
+* Thu Jan 25 2024 Fedora Release Engineering <releng@fedoraproject.org> - 1.12.2-25
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Sun Jan 21 2024 Fedora Release Engineering <releng@fedoraproject.org> - 1.12.2-24
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Thu Jul 20 2023 Fedora Release Engineering <releng@fedoraproject.org> - 1.12.2-23
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_39_Mass_Rebuild
+
+* Thu Jan 19 2023 Fedora Release Engineering <releng@fedoraproject.org> - 1.12.2-22
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_38_Mass_Rebuild
+
+* Thu Jul 21 2022 Fedora Release Engineering <releng@fedoraproject.org> - 1.12.2-21
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_37_Mass_Rebuild
+
+* Thu Jan 20 2022 Fedora Release Engineering <releng@fedoraproject.org> - 1.12.2-20
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_36_Mass_Rebuild
+
+* Sat Nov 06 2021 Adrian Reber <adrian@lisas.de> - 1.12.2-19
+- Rebuilt for protobuf 3.19.0
+
+* Tue Oct 26 2021 Adrian Reber <adrian@lisas.de> - 1.12.2-18
+- Rebuilt for protobuf 3.18.1
+
+* Thu Jul 22 2021 Fedora Release Engineering <releng@fedoraproject.org> - 1.12.2-17
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_35_Mass_Rebuild
+
+* Tue Jan 26 2021 Fedora Release Engineering <releng@fedoraproject.org> - 1.12.2-16
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_34_Mass_Rebuild
+
+* Fri Jan 15 2021 Dominik Mierzejewski <rpm@greysector.net> - 1.12.2-15
+- fix SHA1_Init symbol clash with OpenSSL 1.1.x in test suite
+
+* Thu Jan 14 08:33:18 CET 2021 Adrian Reber <adrian@lisas.de> - 1.12.2-14
+- Rebuilt for protobuf 3.14
+
+* Thu Sep 24 2020 Adrian Reber <adrian@lisas.de> - 1.12.2-13
+- Rebuilt for protobuf 3.13
+
+* Tue Jul 28 2020 Fedora Release Engineering <releng@fedoraproject.org> - 1.12.2-12
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_33_Mass_Rebuild
+
+* Sun Jun 14 2020 Adrian Reber <adrian@lisas.de> - 1.12.2-11
+- Rebuilt for protobuf 3.12
 
 * Mon Feb 24 2020 Than Ngo <than@redhat.com> - 1.12.2-10
 - Fixed FTBFS

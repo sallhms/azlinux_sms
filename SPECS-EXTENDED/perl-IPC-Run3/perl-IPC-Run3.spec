@@ -1,14 +1,13 @@
 Name:           perl-IPC-Run3
-Version:        0.048
-Release:        19%{?dist}
+Version:        0.049
+Release:        2%{?dist}
 Summary:        Run a subprocess in batch mode
-License:        GPL+ or Artistic or BSD
-Vendor:         Microsoft Corporation
-Distribution:   Azure Linux
+License:        GPL-1.0-or-later OR Artistic-1.0-Perl OR BSD-2-Clause
 URL:            https://metacpan.org/release/IPC-Run3
-Source0:        https://cpan.metacpan.org/authors/id/R/RJ/RJBS/IPC-Run3-%{version}.tar.gz#/perl-IPC-Run3-%{version}.tar.gz
+Source0:        https://cpan.metacpan.org/authors/id/R/RJ/RJBS/IPC-Run3-%{version}.tar.gz
 BuildArch:      noarch
 
+BuildRequires:  %{__make}
 BuildRequires:  perl-generators
 BuildRequires:  perl(Carp)
 BuildRequires:  perl(Exporter)
@@ -25,11 +24,12 @@ BuildRequires:  perl(strict)
 # For improved tests
 BuildRequires:  perl(Test::Pod::Coverage)
 BuildRequires:  perl(Test::Pod)
-Requires:       perl(:MODULE_COMPAT_%(eval "`%{__perl} -V:version`"; echo $version))
 
 # RHBZ #1062267 / https://rt.cpan.org/Public/Bug/Display.html?id=52317
-# Patch from
+# Patch against IPC-Run3-0.048 from
 # https://github.com/rschupp/IPC-Run3/commit/8ebe48760cfdc78fbf4fc46413dde9470121b99e
+# FIXME: For now, keep the patch, but do not apply it.
+# Upstream considers the issue to be a known implementation limitation.
 Patch0:         0001-test-and-fix-for-RT-52317-Calling-run3-garbles-STDIN.patch
 
 %description
@@ -40,21 +40,17 @@ API and none of the bloat and rarely used features of IPC::Run.
 
 %prep
 %setup -q -n IPC-Run3-%{version}
-%patch 0 -p1
-
-# Perms in tarballs are broken 
-find -type f -exec chmod -x {} \;
 
 %build
-%{__perl} Makefile.PL INSTALLDIRS=vendor NO_PACKLIST=1
-make %{?_smp_mflags}
+%{__perl} Makefile.PL INSTALLDIRS=vendor NO_PACKLIST=1 NO_PERLLOCAL=1
+%{make_build}
 
 %install
-make pure_install DESTDIR=$RPM_BUILD_ROOT
+%{make_install}
 %{_fixperms} $RPM_BUILD_ROOT/*
 
 %check
-make test RELEASE_TESTING=1
+%{__make} test RELEASE_TESTING=1
 
 %files
 %doc Changes README
@@ -63,8 +59,53 @@ make test RELEASE_TESTING=1
 %{_mandir}/man3/*
 
 %changelog
-* Fri Oct 15 2021 Pawel Winogrodzki <pawelwi@microsoft.com> - 0.048-19
-- Initial CBL-Mariner import from Fedora 32 (license: MIT).
+* Fri Jul 19 2024 Fedora Release Engineering <releng@fedoraproject.org> - 0.049-2
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_41_Mass_Rebuild
+
+* Sat Jan 27 2024 Fedora Release Engineering <releng@fedoraproject.org> - 0.049-1
+- Update to 0.049.
+- Do not apply 0001-test-and-fix-for-RT-52317-Calling-run3-garbles-STDIN.patch
+
+* Thu Jan 25 2024 Fedora Release Engineering <releng@fedoraproject.org> - 0.048-31
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Sun Jan 21 2024 Fedora Release Engineering <releng@fedoraproject.org> - 0.048-30
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Thu Jul 20 2023 Fedora Release Engineering <releng@fedoraproject.org> - 0.048-29
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_39_Mass_Rebuild
+
+* Fri Jan 20 2023 Fedora Release Engineering <releng@fedoraproject.org> - 0.048-28
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_38_Mass_Rebuild
+
+* Mon Nov 28 2022 Ralf Corsépius <corsepiu@fedoraproject.org> - 0.048-27
+- Convert License to SPDX.
+- Modernize spec.
+- Update sources sha512.
+
+* Fri Jul 22 2022 Fedora Release Engineering <releng@fedoraproject.org> - 0.048-26
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_37_Mass_Rebuild
+
+* Tue May 31 2022 Jitka Plesnikova <jplesnik@redhat.com> - 0.048-25
+- Perl 5.36 rebuild
+
+* Fri Jan 21 2022 Fedora Release Engineering <releng@fedoraproject.org> - 0.048-24
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_36_Mass_Rebuild
+
+* Thu Jul 22 2021 Fedora Release Engineering <releng@fedoraproject.org> - 0.048-23
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_35_Mass_Rebuild
+
+* Fri May 21 2021 Jitka Plesnikova <jplesnik@redhat.com> - 0.048-22
+- Perl 5.34 rebuild
+
+* Wed Jan 27 2021 Fedora Release Engineering <releng@fedoraproject.org> - 0.048-21
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_34_Mass_Rebuild
+
+* Tue Jul 28 2020 Fedora Release Engineering <releng@fedoraproject.org> - 0.048-20
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_33_Mass_Rebuild
+
+* Tue Jun 23 2020 Jitka Plesnikova <jplesnik@redhat.com> - 0.048-19
+- Perl 5.32 rebuild
 
 * Thu Jan 30 2020 Fedora Release Engineering <releng@fedoraproject.org> - 0.048-18
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_32_Mass_Rebuild

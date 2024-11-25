@@ -1,11 +1,10 @@
-Vendor:         Microsoft Corporation
-Distribution:   Azure Linux
 Summary:	High-level API for X Keyboard Extension
 Name:		libxklavier
 Version:	5.4
-Release: 	16%{?dist}
-License:	LGPLv2+
+Release: 	26%{?dist}
+License:	LGPL-2.0-or-later
 URL: http://www.freedesktop.org/wiki/Software/LibXklavier
+BuildRequires: make
 BuildRequires: libxml2-devel
 BuildRequires: libxkbfile-devel
 BuildRequires: libX11-devel
@@ -17,6 +16,10 @@ BuildRequires: gobject-introspection-devel
 Requires: iso-codes
 #Source: http://download.gnome.org/sources/libxklavier/5.3/%{name}-%{version}.tar.xz
 Source: http://people.freedesktop.org/~svu/libxklavier-5.4.tar.bz2
+
+Patch01: 0001-props-fix-the-max-lengths-for-set_name-description-s.patch
+Patch02: 0002-config-use-our-name-description-setter-functions.patch
+Patch03: 0003-props-validate-name-and-descriptions-for-valid-UTF-8.patch
 
 %description
 libxklavier is a library providing a high-level API for the X Keyboard
@@ -34,7 +37,7 @@ This package contains libraries, header files and developer documentation
 needed to develop libxklavier applications.
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
 %configure \
@@ -69,8 +72,38 @@ rm -f $RPM_BUILD_ROOT%{_libdir}/*.{a,la}
 %{_datadir}/gir-1.0/Xkl-1.0.gir
 
 %changelog
-* Fri Oct 15 2021 Pawel Winogrodzki <pawelwi@microsoft.com> - 5.4-16
-- Initial CBL-Mariner import from Fedora 32 (license: MIT).
+* Thu Jul 18 2024 Fedora Release Engineering <releng@fedoraproject.org> - 5.4-26
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_41_Mass_Rebuild
+
+* Mon Jan 22 2024 Peter Hutterer <peter.hutterer@redhat.com> - 5.4-25
+- Fix invalid UTF-8 truncations in XKB descriptions and names
+
+* Sun Jan 21 2024 Fedora Release Engineering <releng@fedoraproject.org> - 5.4-24
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Thu Jul 20 2023 Fedora Release Engineering <releng@fedoraproject.org> - 5.4-23
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_39_Mass_Rebuild
+
+* Thu Jan 19 2023 Fedora Release Engineering <releng@fedoraproject.org> - 5.4-22
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_38_Mass_Rebuild
+
+* Thu Jul 21 2022 Fedora Release Engineering <releng@fedoraproject.org> - 5.4-21
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_37_Mass_Rebuild
+
+* Thu Jan 20 2022 Fedora Release Engineering <releng@fedoraproject.org> - 5.4-20
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_36_Mass_Rebuild
+
+* Thu Jul 22 2021 Fedora Release Engineering <releng@fedoraproject.org> - 5.4-19
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_35_Mass_Rebuild
+
+* Tue Jan 26 2021 Fedora Release Engineering <releng@fedoraproject.org> - 5.4-18
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_34_Mass_Rebuild
+
+* Thu Nov  5 12:21:14 AEST 2020 Peter Hutterer <peter.hutterer@redhat.com> - 5.4-17
+- Add BuildRequires for make
+
+* Tue Jul 28 2020 Fedora Release Engineering <releng@fedoraproject.org> - 5.4-16
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_33_Mass_Rebuild
 
 * Wed Jan 29 2020 Fedora Release Engineering <releng@fedoraproject.org> - 5.4-15
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_32_Mass_Rebuild

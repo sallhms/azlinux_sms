@@ -1,24 +1,36 @@
-Vendor:         Microsoft Corporation
-Distribution:   Azure Linux
 %global gem_name coderay
+
+%if %{undefined rhel}
+%bcond_without shoulda
+%endif
 
 Name: rubygem-%{gem_name}
 Version: 1.1.3
-Release: 1%{?dist}
+Release: 9%{?dist}
 Summary: Fast syntax highlighting for selected languages
 License: MIT
 URL: http://coderay.rubychan.de
-Source0: https://github.com/rubychan/coderay/archive/refs/tags/v%{version}.tar.gz#/%{gem_name}-%{version}.tar.gz
+Source0: https://rubygems.org/gems/%{gem_name}-%{version}.gem
+# git clone https://github.com/rubychan/coderay --no-checkout
+# cd coderay && git archive -v -o coderay-1.1.3-tests.txz v1.1.3 test spec
+Source1: %{gem_name}-%{version}-tests.txz
+# Fix test suite for ruby 3.0 change for methods on subclass of Array
+# https://github.com/rubychan/coderay/pull/255
+Patch0: rubygem-coderay-1.1.3-fix-tests-Array-on-ruby-3.0.patch
 BuildRequires: ruby(release)
 BuildRequires: rubygems-devel
 BuildRequires: ruby >= 1.8.6
 BuildRequires: rubygem(test-unit)
-BuildRequires: git
+BuildRequires: rubygem(rspec)
+%if %{with shoulda}
+BuildRequires: rubygem(shoulda-context)
+%endif
 BuildArch: noarch
 
 %description
 Fast and easy syntax highlighting for selected languages, written in Ruby.
 Comes with RedCloth integration and LOC counter.
+
 
 %package doc
 Summary: Documentation for %{name}
@@ -29,46 +41,104 @@ BuildArch: noarch
 Documentation for %{name}.
 
 %prep
-%autosetup -p1 -n %{gem_name}-%{version}
+%setup -q -n %{gem_name}-%{version} -b 1
+
+pushd ..
+%patch -P0 -p1
+popd
 
 %build
-gem build %{gem_name}
+gem build ../%{gem_name}-%{version}.gemspec
+
+%gem_install
 
 %install
-gem install -V --local --force --install-dir %{buildroot}/%{gemdir} %{gem_name}-%{version}.rc1.gem
-mkdir -p %{buildroot}%{gem_instdir}
-#add lib and bin files to buildroot from Source0
-cp -a lib/ %{buildroot}%{gem_instdir}/
-cp -a bin/ %{buildroot}%{gem_instdir}/
-#add MIT-LICENSE file to buildroot from Source0
-cp MIT-LICENSE %{buildroot}%{gem_instdir}/
+mkdir -p %{buildroot}%{gem_dir}
+cp -a .%{gem_dir}/* \
+        %{buildroot}%{gem_dir}/
+
+
+mkdir -p %{buildroot}%{_bindir}
+cp -a .%{_bindir}/* \
+        %{buildroot}%{_bindir}/
+
+find %{buildroot}%{gem_instdir}/bin -type f | xargs chmod a+x
 
 %check
+pushd .%{gem_instdir}
+cp -r %{_builddir}/spec .
+cp -r %{_builddir}/test .
+
+# Comment out simplecov.
+for file in \
+  spec/spec_helper.rb \
+  test/executable/suite.rb \
+  test/functional/for_redcloth.rb \
+  test/functional/suite.rb \
+  test/unit/suite.rb; do
+  sed -i "/^require 'simplecov'/ s/^/#/" "${file}"
+done
+
+# See https://github.com/rubychan/coderay/blob/master/rake_tasks/test.rake
 LANG=C.UTF-8
 ruby ./test/functional/suite.rb
 ruby ./test/functional/for_redcloth.rb
 ruby ./test/unit/suite.rb
+# This test depends on rubygem-shoulda-context.
+%if %{with shoulda}
+ruby ./test/executable/suite.rb
+%endif
+rspec spec
+popd
 
 %files
 %dir %{gem_instdir}
+%{_bindir}/coderay
 %license %{gem_instdir}/MIT-LICENSE
 %{gem_instdir}/bin
 %{gem_libdir}
-%exclude /%{gemdir}/cache
-/%{gemdir}/specifications
+%exclude %{gem_cache}
+%{gem_spec}
 
 %files doc
-%doc /%{gemdir}/doc/
-%doc /%{gemdir}/gems/%{gem_name}-%{version}.rc1/README_INDEX.rdoc
+%doc %{gem_docdir}
+%doc %{gem_instdir}/README_INDEX.rdoc
 
 %changelog
-* Tue Mar 22 2022 Neha Agarwal <nehaagarwal@microsoft.com> - 1.1.3-1
-- Update to v1.1.3.
-- License verified.
-- Build from .tar.gz source.
+* Fri Jul 19 2024 Fedora Release Engineering <releng@fedoraproject.org> - 1.1.3-9
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_41_Mass_Rebuild
 
-* Fri Oct 15 2021 Pawel Winogrodzki <pawelwi@microsoft.com> - 1.1.2-8
-- Initial CBL-Mariner import from Fedora 32 (license: MIT).
+* Fri Jan 26 2024 Fedora Release Engineering <releng@fedoraproject.org> - 1.1.3-8
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Mon Jan 22 2024 Fedora Release Engineering <releng@fedoraproject.org> - 1.1.3-7
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Fri Jul 21 2023 Fedora Release Engineering <releng@fedoraproject.org> - 1.1.3-6
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_39_Mass_Rebuild
+
+* Fri Jan 20 2023 Fedora Release Engineering <releng@fedoraproject.org> - 1.1.3-5
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_38_Mass_Rebuild
+
+* Sat Jul 23 2022 Fedora Release Engineering <releng@fedoraproject.org> - 1.1.3-4
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_37_Mass_Rebuild
+
+* Fri Jan 21 2022 Fedora Release Engineering <releng@fedoraproject.org> - 1.1.3-3
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_36_Mass_Rebuild
+
+* Fri Jul 23 2021 Fedora Release Engineering <releng@fedoraproject.org> - 1.1.3-2
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_35_Mass_Rebuild
+
+* Mon Mar 01 2021 Jun Aruga <jaruga@redhat.com> - 1.1.3-1
+- update to new version
+  Resolves: rhbz#1842013
+  Resolves: rhbz#1923366
+
+* Wed Jan 27 2021 Fedora Release Engineering <releng@fedoraproject.org> - 1.1.2-9
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_34_Mass_Rebuild
+
+* Wed Jul 29 2020 Fedora Release Engineering <releng@fedoraproject.org> - 1.1.2-8
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_33_Mass_Rebuild
 
 * Thu Jan 30 2020 Fedora Release Engineering <releng@fedoraproject.org> - 1.1.2-7
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_32_Mass_Rebuild

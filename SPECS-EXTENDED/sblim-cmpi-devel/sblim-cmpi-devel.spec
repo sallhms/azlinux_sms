@@ -1,12 +1,10 @@
-Vendor:         Microsoft Corporation
-Distribution:   Azure Linux
 
 Name:           sblim-cmpi-devel
 Version:        2.0.3
-Release:        21%{?dist}
+Release:        31%{?dist}
 Summary:        SBLIM CMPI Provider Development Support
 
-License:        EPL
+License:        EPL-1.0
 URL:            http://sblim.wiki.sourceforge.net/
 Source0:        http://downloads.sourceforge.net/sblim/%{name}-%{version}.tar.bz2
 # Source1: macro definitions
@@ -14,6 +12,7 @@ Source1: macros.sblim-cmpi-devel
 
 # Patch0:       remove version from docdir
 Patch0:         sblim-cmpi-devel-2.0.3-docdir.patch
+BuildRequires: make
 BuildRequires:  gcc
 
 
@@ -24,7 +23,7 @@ C++ provider development it is also necessary to have
 tog-pegasus-devel installed.
 
 %package -n libcmpiCppImpl0
-License:        EPL
+License:        EPL-1.0
 Summary:        CMPI C++ wrapper library
 Conflicts:      tog-pegasus-libs
 BuildRequires:  gcc-c++
@@ -34,15 +33,14 @@ This packages provides the C++ wrapper library for CMPI development
 
 %prep
 %setup -q
-%patch 0 -p1 -b .docdir
+%patch -P0 -p1 -b .docdir
 
 %build
 %configure
-make %{?_smp_mflags}
+%make_build
 
 %install
-rm -rf $RPM_BUILD_ROOT
-make install DESTDIR=$RPM_BUILD_ROOT
+%make_install
 # remove unused libtool files
 rm -f $RPM_BUILD_ROOT/%{_libdir}/*a
 # install macro definitions
@@ -60,8 +58,41 @@ cp %{SOURCE1} $RPM_BUILD_ROOT%{_rpmconfigdir}/macros.d
 %{_libdir}/libcmpiCppImpl.so*
 
 %changelog
-* Fri Oct 15 2021 Pawel Winogrodzki <pawelwi@microsoft.com> - 2.0.3-21
-- Initial CBL-Mariner import from Fedora 32 (license: MIT).
+* Sat Jul 20 2024 Fedora Release Engineering <releng@fedoraproject.org> - 2.0.3-31
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_41_Mass_Rebuild
+
+* Fri May 10 2024 Vitezslav Crhonek <vcrhonek@redhat.com> - 2.0.3-30
+- Update license tag in subpackage to SPDX format
+
+* Sat Jan 27 2024 Fedora Release Engineering <releng@fedoraproject.org> - 2.0.3-30
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Sat Jul 22 2023 Fedora Release Engineering <releng@fedoraproject.org> - 2.0.3-29
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_39_Mass_Rebuild
+
+* Tue Apr 25 2023 Vitezslav Crhonek <vcrhonek@redhat.com> - 2.0.3-28
+- SPDX migration
+
+* Sat Jan 21 2023 Fedora Release Engineering <releng@fedoraproject.org> - 2.0.3-27
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_38_Mass_Rebuild
+
+* Sat Jul 23 2022 Fedora Release Engineering <releng@fedoraproject.org> - 2.0.3-26
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_37_Mass_Rebuild
+
+* Sat Jan 22 2022 Fedora Release Engineering <releng@fedoraproject.org> - 2.0.3-25
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_36_Mass_Rebuild
+
+* Mon Sep 13 2021 Timm Bäder <tbaeder@redhat.com> - 2.0.3.24
+- Use %%make_build and %%make_install macros
+
+* Fri Jul 23 2021 Fedora Release Engineering <releng@fedoraproject.org> - 2.0.3-23
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_35_Mass_Rebuild
+
+* Wed Jan 27 2021 Fedora Release Engineering <releng@fedoraproject.org> - 2.0.3-22
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_34_Mass_Rebuild
+
+* Wed Jul 29 2020 Fedora Release Engineering <releng@fedoraproject.org> - 2.0.3-21
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_33_Mass_Rebuild
 
 * Thu Jan 30 2020 Fedora Release Engineering <releng@fedoraproject.org> - 2.0.3-20
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_32_Mass_Rebuild

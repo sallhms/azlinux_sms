@@ -1,16 +1,14 @@
 Name:		keybinder3
 Version:	0.3.2
-Release:	11%{?dist}
+Release:	19%{?dist}
 Summary:	A library for registering global keyboard shortcuts
 License:	MIT
-Vendor:         Microsoft Corporation
-Distribution:   Azure Linux
 URL:		https://github.com/kupferlauncher/keybinder
 Source0:	%{url}/releases/download/keybinder-3.0-v%{version}/keybinder-3.0-%{version}.tar.gz
 Patch0:     %{url}/pull/18.patch#/fix_gtkdoc.patch
 
-BuildRequires:  %{_bindir}/xsltproc
-BuildRequires:	pkgconfig(gtk+-3.0), gnome-common, gobject-introspection-devel
+BuildRequires:	pkgconfig(gtk+-3.0), gtk-doc, gobject-introspection-devel
+BuildRequires: make
 
 %description
 Keybinder is a library for registering global keyboard shortcuts. 
@@ -30,6 +28,7 @@ This package contains the development files for %{name}.
 Summary: Documentation for %{name}
 BuildArch: noarch
 Requires: %{name} = %{version}-%{release}
+Requires: devhelp
 %description doc
 This package contains documentation for %{name}.
 
@@ -37,7 +36,7 @@ This package contains documentation for %{name}.
 %autosetup -p1 -n keybinder-3.0-%{version}
 
 %build
-%configure --disable-gtk-doc
+%configure --enable-gtk-doc
 %make_build
 
 %install
@@ -65,15 +64,35 @@ rm -rf %{buildroot}/%{_libdir}/libkeybinder-3.0.la
 %{_datadir}/gtk-doc/html/keybinder-3.0/*
 
 %changelog
-* Mon Mar 21 2022 Pawel Winogrodzki <pawelwi@microsoft.com> - 0.3.2-11
-- Adding BR on '%%{_bindir}/xsltproc'.
-- Disabled gtk doc generation to remove network dependency during build-time.
-- License verified.
+* Thu Jul 18 2024 Fedora Release Engineering <releng@fedoraproject.org> - 0.3.2-19
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_41_Mass_Rebuild
 
-* Wed Aug 25 2021 Pawel Winogrodzki <pawelwi@microsoft.com> - 0.3.2-10
-- Initial CBL-Mariner import from Fedora 32 (license: MIT).
-- Removing 'Requires' on 'devhelp' from the 'doc'.
-  We don't provide 'devhelp' and one can use a browser instead.
+* Wed Jan 24 2024 Fedora Release Engineering <releng@fedoraproject.org> - 0.3.2-18
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Sun Jan 21 2024 Fedora Release Engineering <releng@fedoraproject.org> - 0.3.2-17
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Thu Jul 20 2023 Fedora Release Engineering <releng@fedoraproject.org> - 0.3.2-16
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_39_Mass_Rebuild
+
+* Thu Jan 19 2023 Fedora Release Engineering <releng@fedoraproject.org> - 0.3.2-15
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_38_Mass_Rebuild
+
+* Thu Jul 21 2022 Fedora Release Engineering <releng@fedoraproject.org> - 0.3.2-14
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_37_Mass_Rebuild
+
+* Thu Jan 20 2022 Fedora Release Engineering <releng@fedoraproject.org> - 0.3.2-13
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_36_Mass_Rebuild
+
+* Thu Jul 22 2021 Fedora Release Engineering <releng@fedoraproject.org> - 0.3.2-12
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_35_Mass_Rebuild
+
+* Tue Jan 26 2021 Fedora Release Engineering <releng@fedoraproject.org> - 0.3.2-11
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_34_Mass_Rebuild
+
+* Tue Jul 28 2020 Fedora Release Engineering <releng@fedoraproject.org> - 0.3.2-10
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_33_Mass_Rebuild
 
 * Tue Apr 14 2020 Leigh Scott <leigh123linux@gmail.com> - 0.3.2-9
 - Fix FTBFS

@@ -1,28 +1,27 @@
-Vendor:         Microsoft Corporation
-Distribution:   Azure Linux
 %global tarball libdmx
 #global gitdate 20130524
 %global gitversion 5074d9d64
 
 Summary: X.Org X11 DMX runtime library
 Name: libdmx
-Version: 1.1.4
-Release: 8%{?dist}
+Version: 1.1.5
+Release: 4%{?gitdate:.%{gitdate}git%{gitversion}}%{?dist}
+# SPDX
 License: MIT
 URL: http://www.x.org
 
 %if 0%{?gitdate}
-Source0:    %{tarball}-%{gitdate}.tar.bz2
+Source0:    %{tarball}-%{gitdate}.tar.xz
 Source1:    make-git-snapshot.sh
 Source2:    commitid
 %else
-Source0: https://xorg.freedesktop.org/archive/individual/lib/%{name}-%{version}.tar.bz2
+Source0: https://xorg.freedesktop.org/archive/individual/lib/%{name}-%{version}.tar.xz
 %endif
 
 Requires: libX11 >= 1.6.0
 
 BuildRequires: pkgconfig(xext)
-BuildRequires: autoconf automake libtool
+BuildRequires: autoconf automake libtool make
 BuildRequires: xorg-x11-util-macros
 BuildRequires: libX11-devel >= 1.6.0
 
@@ -67,9 +66,41 @@ rm -f $RPM_BUILD_ROOT%{_libdir}/*.la
 %{_includedir}/X11/extensions/dmxext.h
 
 %changelog
-* Thu Oct 14 2021 Pawel Winogrodzki <pawelwi@microsoft.com> - 1.1.4-8
-- Initial CBL-Mariner import from Fedora 32 (license: MIT).
-- Converting the 'Release' tag to the '[number].[distribution]' format.
+* Thu Jul 18 2024 Fedora Release Engineering <releng@fedoraproject.org> - 1.1.5-4
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_41_Mass_Rebuild
+
+* Thu Jan 25 2024 Fedora Release Engineering <releng@fedoraproject.org> - 1.1.5-3
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Sun Jan 21 2024 Fedora Release Engineering <releng@fedoraproject.org> - 1.1.5-2
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Thu Oct 05 2023 José Expósito <jexposit@redhat.com> - 1.1.5-1
+- libdmx 1.1.5
+
+* Thu Jul 20 2023 Fedora Release Engineering <releng@fedoraproject.org> - 1.1.4-15
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_39_Mass_Rebuild
+
+* Thu Jan 19 2023 Fedora Release Engineering <releng@fedoraproject.org> - 1.1.4-14
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_38_Mass_Rebuild
+
+* Thu Jul 21 2022 Fedora Release Engineering <releng@fedoraproject.org> - 1.1.4-13
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_37_Mass_Rebuild
+
+* Thu Jan 20 2022 Fedora Release Engineering <releng@fedoraproject.org> - 1.1.4-12
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_36_Mass_Rebuild
+
+* Thu Jul 22 2021 Fedora Release Engineering <releng@fedoraproject.org> - 1.1.4-11
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_35_Mass_Rebuild
+
+* Tue Jan 26 2021 Fedora Release Engineering <releng@fedoraproject.org> - 1.1.4-10
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_34_Mass_Rebuild
+
+* Tue Dec 01 2020 Peter Hutterer <peter.hutterer@redhat.com> 1.1.4-9
+- Add make to BuildRequires
+
+* Tue Jul 28 2020 Fedora Release Engineering <releng@fedoraproject.org> - 1.1.4-8
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_33_Mass_Rebuild
 
 * Wed Jan 29 2020 Fedora Release Engineering <releng@fedoraproject.org> - 1.1.4-7
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_32_Mass_Rebuild

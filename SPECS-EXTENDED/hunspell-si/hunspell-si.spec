@@ -1,13 +1,17 @@
-Vendor:         Microsoft Corporation
-Distribution:   Azure Linux
+%if 0%{?fedora} >= 36 || 0%{?rhel} > 9
+%global dict_dirname hunspell 
+%else
+%global dict_dirname myspell
+%endif
+
 Name: hunspell-si
 Summary: Sinhala hunspell dictionaries
 Version: 0.2.1
-Release: 21%{?dist}
+Release: 33%{?dist}
 Source: http://www.sandaru1.com/si-LK.tar.gz
 #Following URL is down since few months informed to upstream
 URL: http://www.sandaru1.com/2009/08/29/sinhala-spell-checker-for-firefox/
-License: GPLv2+
+License: GPL-2.0-or-later
 BuildArch: noarch
 Requires: hunspell
 Supplements: (hunspell and langpacks-si)
@@ -22,17 +26,55 @@ Sinhala hunspell dictionaries.
 #nothing to build
 
 %install
-mkdir -p $RPM_BUILD_ROOT/%{_datadir}/myspell
-cp -p dictionaries/si-LK.aff $RPM_BUILD_ROOT/%{_datadir}/myspell/si_LK.aff
-cp -p dictionaries/si-LK.dic $RPM_BUILD_ROOT/%{_datadir}/myspell/si_LK.dic
+mkdir -p $RPM_BUILD_ROOT/%{_datadir}/%{dict_dirname}
+cp -p dictionaries/si-LK.aff $RPM_BUILD_ROOT/%{_datadir}/%{dict_dirname}/si_LK.aff
+cp -p dictionaries/si-LK.dic $RPM_BUILD_ROOT/%{_datadir}/%{dict_dirname}/si_LK.dic
 
 %files
 %doc LICENSE README
-%{_datadir}/myspell/*
+%{_datadir}/%{dict_dirname}/*
 
 %changelog
-* Fri Oct 15 2021 Pawel Winogrodzki <pawelwi@microsoft.com> - 0.2.1-21
-- Initial CBL-Mariner import from Fedora 32 (license: MIT).
+* Sat Aug 03 2024 Parag Nemade <pnemade AT redhat DOT com> - 0.2.1-33
+- Add conditional for RHEL for using hunspell directory
+- Add tmt CI tests
+
+* Thu Jul 18 2024 Fedora Release Engineering <releng@fedoraproject.org> - 0.2.1-32
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_41_Mass_Rebuild
+
+* Wed Jan 24 2024 Fedora Release Engineering <releng@fedoraproject.org> - 0.2.1-31
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Sat Jan 20 2024 Fedora Release Engineering <releng@fedoraproject.org> - 0.2.1-30
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Thu Jul 20 2023 Fedora Release Engineering <releng@fedoraproject.org> - 0.2.1-29
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_39_Mass_Rebuild
+
+* Thu Jan 19 2023 Fedora Release Engineering <releng@fedoraproject.org> - 0.2.1-28
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_38_Mass_Rebuild
+
+* Wed Nov 23 2022 Parag Nemade <pnemade AT redhat DOT com> - 0.2.1-27
+- Update license tag to SPDX format
+
+* Thu Jul 21 2022 Fedora Release Engineering <releng@fedoraproject.org> - 0.2.1-26
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_37_Mass_Rebuild
+
+* Fri Feb 11 2022 Vishal Vijayraghavan <vishalvvr@fedoraproject.org> - 0.2.1-25
+- rename install directory name from myspell to hunspell
+- https://fedoraproject.org/wiki/Changes/Hunspell_dictionary_dir_change
+
+* Thu Jan 20 2022 Fedora Release Engineering <releng@fedoraproject.org> - 0.2.1-24
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_36_Mass_Rebuild
+
+* Thu Jul 22 2021 Fedora Release Engineering <releng@fedoraproject.org> - 0.2.1-23
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_35_Mass_Rebuild
+
+* Tue Jan 26 2021 Fedora Release Engineering <releng@fedoraproject.org> - 0.2.1-22
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_34_Mass_Rebuild
+
+* Tue Jul 28 2020 Fedora Release Engineering <releng@fedoraproject.org> - 0.2.1-21
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_33_Mass_Rebuild
 
 * Wed Jan 29 2020 Fedora Release Engineering <releng@fedoraproject.org> - 0.2.1-20
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_32_Mass_Rebuild

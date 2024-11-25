@@ -1,12 +1,10 @@
-Vendor:         Microsoft Corporation
-Distribution:   Azure Linux
 Name:           perl-PPI-HTML
 Version:        1.08
-Release:        24%{?dist}
+Release:        35%{?dist}
 Summary:        Generate syntax-highlighted HTML for Perl using PPI
 License:        GPL+ or Artistic
 URL:            https://metacpan.org/release/PPI-HTML
-Source0:        https://cpan.metacpan.org/modules/by-module/PPI/PPI-HTML-%{version}.tar.gz#/perl-PPI-HTML-%{version}.tar.gz
+Source0:        https://cpan.metacpan.org/modules/by-module/PPI/PPI-HTML-%{version}.tar.gz
 BuildArch:      noarch
 # Build
 BuildRequires:  coreutils
@@ -14,12 +12,10 @@ BuildRequires:  findutils
 BuildRequires:  make
 BuildRequires:  perl-generators
 BuildRequires:  perl-interpreter
-BuildRequires:  perl(FindBin)
 BuildRequires:  perl(inc::Module::Install)
-BuildRequires:  perl(Module::CoreList)
 # Module Run-time:
 BuildRequires:  perl(CSS::Tiny) >= 1.10
-BuildRequires:  perl(Params::Util) >= 0.05
+BuildRequires:  perl(Params::Util) => 0.05
 BuildRequires:  perl(PPI::Document)
 BuildRequires:  perl(strict)
 BuildRequires:  perl(vars)
@@ -32,9 +28,8 @@ BuildRequires:  perl(File::Spec::Functions)
 BuildRequires:  perl(lib)
 BuildRequires:  perl(Test::More) >= 0.47
 # Dependencies
-Requires:       perl(:MODULE_COMPAT_%(eval "`perl -V:version`"; echo $version))
 Requires:       perl(CSS::Tiny) >= 1.10
-Requires:       perl(Params::Util) >= 0.05
+Requires:       perl(Params::Util) => 0.05
 Requires:       perl(PPI) >= 0.990
 
 # Filter under specified dependencies
@@ -70,11 +65,44 @@ make test
 %{_mandir}/man3/PPI::HTML.3*
 
 %changelog
-* Thu Jan 13 2022 Pawel Winogrodzki <pawelwi@microsoft.com> - 1.08-24
-- License verified.
+* Fri Jul 19 2024 Fedora Release Engineering <releng@fedoraproject.org> - 1.08-35
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_41_Mass_Rebuild
 
-* Fri Oct 15 2021 Pawel Winogrodzki <pawelwi@microsoft.com> - 1.08-23
-- Initial CBL-Mariner import from Fedora 32 (license: MIT).
+* Thu Jan 25 2024 Fedora Release Engineering <releng@fedoraproject.org> - 1.08-34
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Sun Jan 21 2024 Fedora Release Engineering <releng@fedoraproject.org> - 1.08-33
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Fri Jul 21 2023 Fedora Release Engineering <releng@fedoraproject.org> - 1.08-32
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_39_Mass_Rebuild
+
+* Fri Jan 20 2023 Fedora Release Engineering <releng@fedoraproject.org> - 1.08-31
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_38_Mass_Rebuild
+
+* Fri Jul 22 2022 Fedora Release Engineering <releng@fedoraproject.org> - 1.08-30
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_37_Mass_Rebuild
+
+* Wed Jun 01 2022 Jitka Plesnikova <jplesnik@redhat.com> - 1.08-29
+- Perl 5.36 rebuild
+
+* Fri Jan 21 2022 Fedora Release Engineering <releng@fedoraproject.org> - 1.08-28
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_36_Mass_Rebuild
+
+* Thu Jul 22 2021 Fedora Release Engineering <releng@fedoraproject.org> - 1.08-27
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_35_Mass_Rebuild
+
+* Fri May 21 2021 Jitka Plesnikova <jplesnik@redhat.com> - 1.08-26
+- Perl 5.34 rebuild
+
+* Wed Jan 27 2021 Fedora Release Engineering <releng@fedoraproject.org> - 1.08-25
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_34_Mass_Rebuild
+
+* Tue Jul 28 2020 Fedora Release Engineering <releng@fedoraproject.org> - 1.08-24
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_33_Mass_Rebuild
+
+* Tue Jun 23 2020 Jitka Plesnikova <jplesnik@redhat.com> - 1.08-23
+- Perl 5.32 rebuild
 
 * Thu Jan 30 2020 Fedora Release Engineering <releng@fedoraproject.org> - 1.08-22
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_32_Mass_Rebuild

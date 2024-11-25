@@ -1,12 +1,13 @@
 Name:           perl-Text-Diff
 Version:        1.45
-Release:        9%{?dist}
+Release:        22%{?dist}
 Summary:        Perform diffs on files and record sets
-License:        (GPL+ or Artistic) and (GPLv2+ or Artistic) and MIT
-Vendor:         Microsoft Corporation
-Distribution:   Azure Linux
+# lib/Text/Diff.pm - GPL-2.0-or-later OR Artistic-1.0-Perl
+# lib/Text/Diff/Config.pm - MIT
+# lib/Text/Diff/Table.pm - GPL-1.0-or-later OR Artistic-1.0-Perl
+License:        (GPL-1.0-or-later OR Artistic-1.0-Perl) AND (GPL-2.0-or-later OR Artistic-1.0-Perl) AND MIT
 URL:            https://metacpan.org/release/Text-Diff
-Source0:        https://cpan.metacpan.org/authors/id/N/NE/NEILB/Text-Diff-%{version}.tar.gz#/perl-Text-Diff-%{version}.tar.gz
+Source0:        https://cpan.metacpan.org/authors/id/N/NE/NEILB/Text-Diff-%{version}.tar.gz
 BuildArch:      noarch
 BuildRequires:  make
 BuildRequires:  perl-interpreter
@@ -27,7 +28,6 @@ BuildRequires:  perl(Data::Dumper)
 BuildRequires:  perl(IO::File)
 BuildRequires:  perl(Test)
 BuildRequires:  perl(Test::More)
-Requires:       perl(:MODULE_COMPAT_%(eval "$(perl -V:version)"; echo $version))
 Requires:       perl(Algorithm::Diff) >= 1.19
 
 # Remove under-specified dependencies
@@ -61,8 +61,47 @@ make test
 %{_mandir}/man3/*
 
 %changelog
-* Fri Oct 15 2021 Pawel Winogrodzki <pawelwi@microsoft.com> - 1.45-9
-- Initial CBL-Mariner import from Fedora 32 (license: MIT).
+* Fri Jul 19 2024 Fedora Release Engineering <releng@fedoraproject.org> - 1.45-22
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_41_Mass_Rebuild
+
+* Thu Jan 25 2024 Fedora Release Engineering <releng@fedoraproject.org> - 1.45-21
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Sun Jan 21 2024 Fedora Release Engineering <releng@fedoraproject.org> - 1.45-20
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Fri Jul 21 2023 Fedora Release Engineering <releng@fedoraproject.org> - 1.45-19
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_39_Mass_Rebuild
+
+* Thu Jun 01 2023 Michal Josef Špaček <mspacek@redhat.com> - 1.45-18
+- Update license to SPDX format
+
+* Fri Jan 20 2023 Fedora Release Engineering <releng@fedoraproject.org> - 1.45-17
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_38_Mass_Rebuild
+
+* Fri Jul 22 2022 Fedora Release Engineering <releng@fedoraproject.org> - 1.45-16
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_37_Mass_Rebuild
+
+* Mon May 30 2022 Jitka Plesnikova <jplesnik@redhat.com> - 1.45-15
+- Perl 5.36 rebuild
+
+* Fri Jan 21 2022 Fedora Release Engineering <releng@fedoraproject.org> - 1.45-14
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_36_Mass_Rebuild
+
+* Fri Jul 23 2021 Fedora Release Engineering <releng@fedoraproject.org> - 1.45-13
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_35_Mass_Rebuild
+
+* Fri May 21 2021 Jitka Plesnikova <jplesnik@redhat.com> - 1.45-12
+- Perl 5.34 rebuild
+
+* Wed Jan 27 2021 Fedora Release Engineering <releng@fedoraproject.org> - 1.45-11
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_34_Mass_Rebuild
+
+* Tue Jul 28 2020 Fedora Release Engineering <releng@fedoraproject.org> - 1.45-10
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_33_Mass_Rebuild
+
+* Tue Jun 23 2020 Jitka Plesnikova <jplesnik@redhat.com> - 1.45-9
+- Perl 5.32 rebuild
 
 * Thu Jan 30 2020 Fedora Release Engineering <releng@fedoraproject.org> - 1.45-8
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_32_Mass_Rebuild

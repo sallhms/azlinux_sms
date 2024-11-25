@@ -1,12 +1,11 @@
-Vendor:         Microsoft Corporation
-Distribution:   Azure Linux
 %global _hardened_build 1
 
 Summary: The client program for the Telnet remote login protocol
 Name: telnet
 Version: 0.17
-Release: 81%{?dist}
-License: BSD
+Release: 93%{?dist}
+Epoch: 1
+License: BSD-3-Clause AND BSD-4-Clause AND BSD-4-Clause-UC
 Source0: ftp://ftp.uk.linux.org/pub/linux/Networking/netkit/netkit-telnet-%{version}.tar.gz
 Url: http://web.archive.org/web/20070819111735/www.hcs.harvard.edu/~dholland/computers/old-netkit.html
 # telnet-client tarball is snapshot of the OpenBSD client telnet
@@ -42,7 +41,10 @@ Patch30: netkit-telnet-0.17-manpage.patch
 Patch31: netkit-telnet-0.17-telnetrc.patch
 Patch32: telnet-log-address.patch
 Patch33: telnet-0.17-overflow-exploit.patch
+Patch34: telnet-0.17-pty-retry.patch
+Patch35: telnet-c99.patch
 
+BuildRequires: make
 BuildRequires: ncurses-devel systemd gcc gcc-c++
 BuildRequires: perl-interpreter
 
@@ -69,35 +71,37 @@ You may enable the daemon by editing /etc/xinetd.d/telnet
 mv telnet telnet-NETKIT
 %setup -T -D -q -a 2 -n netkit-telnet-%{version}
 
-%patch 1 -p0 -b .cvs
-%patch 5 -p0 -b .fix
-%patch 6 -p1 -b .env
-%patch 10 -p0 -b .pek
-%patch 7 -p1 -b .issue
-%patch 8 -p1 -b .sa-01-49
-%patch 11 -p1 -b .8bit
-%patch 12 -p1 -b .argv
-%patch 13 -p1 -b .confverb
-%patch 14 -p1 -b .cleanup_race 
-%patch 15 -p0 -b .pty_read
-%patch 16 -p1 -b .CAN-2005-468_469
+%patch -P1 -p0 -b .cvs
+%patch -P5 -p0 -b .fix
+%patch -P6 -p1 -b .env
+%patch -P10 -p0 -b .pek
+%patch -P7 -p1 -b .issue
+%patch -P8 -p1 -b .sa-01-49
+%patch -P11 -p1 -b .8bit
+%patch -P12 -p1 -b .argv
+%patch -P13 -p1 -b .confverb
+%patch -P14 -p1 -b .cleanup_race 
+%patch -P15 -p0 -b .pty_read
+%patch -P16 -p1 -b .CAN-2005-468_469
 #%patch17 -p1 -b .linemode
-%patch 18 -p1 -b .gethost
-%patch 19 -p1 -b .gethost2
-%patch 20 -p1 -b .nodns
-%patch 21 -p1 -b .errnosysbsd
-%patch 22 -p1 -b .reallynodns
-%patch 23 -p1 -b .rh678324
-%patch 24 -p1 -b .rh674942
-%patch 25 -p1 -b .rh704604
-%patch 26 -p1 -b .rh825946
-%patch 27 -p1 -b .ipv6-support
-%patch 28 -p1 -b .core-dump
-%patch 29 -p1 -b .gcc7
-%patch 30 -p1 -b .manpage
-%patch 31 -p1 -b .telnetrc
-%patch 32 -p1 -b .log-address
-%patch 33 -p1 -b .overflow
+%patch -P18 -p1 -b .gethost
+%patch -P19 -p1 -b .gethost2
+%patch -P20 -p1 -b .nodns
+%patch -P21 -p1 -b .errnosysbsd
+%patch -P22 -p1 -b .reallynodns
+%patch -P23 -p1 -b .rh678324
+%patch -P24 -p1 -b .rh674942
+%patch -P25 -p1 -b .rh704604
+%patch -P26 -p1 -b .rh825946
+%patch -P27 -p1 -b .ipv6-support
+%patch -P28 -p1 -b .core-dump
+%patch -P29 -p1 -b .gcc7
+%patch -P30 -p1 -b .manpage
+%patch -P31 -p1 -b .telnetrc
+%patch -P32 -p1 -b .log-address
+%patch -P33 -p1 -b .overflow
+%patch -P34 -p1 -b .pty-retry
+%patch -P35 -p1 -b .c99
 
 %build
 %ifarch s390 s390x
@@ -106,9 +110,9 @@ mv telnet telnet-NETKIT
     export CC_FLAGS="$RPM_OPT_FLAGS -fpie"
 %endif
 
-export LD_FLAGS="$LD_FLAGS -z now -pie"
+export LD_FLAGS="$RPM_LD_FLAGS -z now -pie"
 
-sh configure --with-c-compiler=gcc 
+sh configure --with-c-compiler=%{__cc} 
 perl -pi -e '
     s,-O2,\$(CC_FLAGS),;
     s,LDFLAGS=.*,LDFLAGS=\$(LD_FLAGS),;
@@ -124,20 +128,19 @@ perl -pi -e 's|install[ ]+-s|install|g' \
     ./telnetlogin/Makefile \
     ./telnet-NETKIT/Makefile
 
-make %{?_smp_mflags}
+%{make_build}
 
 %install
 mkdir -p ${RPM_BUILD_ROOT}%{_bindir}
 mkdir -p ${RPM_BUILD_ROOT}%{_sbindir}
-mkdir -p ${RPM_BUILD_ROOT}%{_unitdir}
 mkdir -p ${RPM_BUILD_ROOT}%{_mandir}/man1
 mkdir -p ${RPM_BUILD_ROOT}%{_mandir}/man5
 mkdir -p ${RPM_BUILD_ROOT}%{_mandir}/man8
 
 make INSTALLROOT=${RPM_BUILD_ROOT} install
 
-install -p -m644 %SOURCE5 ${RPM_BUILD_ROOT}%{_unitdir}/telnet@.service
-install -p -m644 %SOURCE6 ${RPM_BUILD_ROOT}%{_unitdir}/telnet.socket
+install -D -p -m644 %SOURCE5 ${RPM_BUILD_ROOT}%{_unitdir}/telnet@.service
+install -D -p -m644 %SOURCE6 ${RPM_BUILD_ROOT}%{_unitdir}/telnet.socket
 
 %post server
 %systemd_post telnet.socket
@@ -150,7 +153,6 @@ install -p -m644 %SOURCE6 ${RPM_BUILD_ROOT}%{_unitdir}/telnet.socket
 
 %files
 %doc README
-%defattr(-,root,root,-)
 %{_bindir}/telnet
 %{_mandir}/man1/telnet.1*
 
@@ -162,13 +164,52 @@ install -p -m644 %SOURCE6 ${RPM_BUILD_ROOT}%{_unitdir}/telnet.socket
 %{_mandir}/man8/telnetd.8*
 
 %changelog
-* Thu Oct 28 2021 Muhammad Falak <mwani@microsft.com> - 0.17-81
-- Remove epoch
+* Sat Jul 20 2024 Fedora Release Engineering <releng@fedoraproject.org> - 1:0.17-93
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_41_Mass_Rebuild
 
-* Fri Oct 15 2021 Pawel Winogrodzki <pawelwi@microsoft.com> - 1:0.17-80
-- Initial CBL-Mariner import from Fedora 32 (license: MIT).
+* Sat Jan 27 2024 Fedora Release Engineering <releng@fedoraproject.org> - 1:0.17-92
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
 
-* Fri Mar 27 2020 Michal Ruprich <michalruprich@gmail.com> - 1:0.17-79
+* Thu Dec 21 2023 Florian Weimer <fweimer@redhat.com> - 1:0.17-91
+- Fix tracefile setting, C type errors (#2255510)
+
+* Sat Jul 22 2023 Fedora Release Engineering <releng@fedoraproject.org> - 1:0.17-90
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_39_Mass_Rebuild
+
+* Mon Mar 20 2023 Michal Ruprich <mruprich@redhat.com> - 1:0.17-89
+- SPDX migration
+
+* Sat Jan 21 2023 Fedora Release Engineering <releng@fedoraproject.org> - 1:0.17-88
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_38_Mass_Rebuild
+
+* Sat Jul 23 2022 Fedora Release Engineering <releng@fedoraproject.org> - 1:0.17-87
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_37_Mass_Rebuild
+
+* Sat Jan 22 2022 Fedora Release Engineering <releng@fedoraproject.org> - 1:0.17-86
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_36_Mass_Rebuild
+
+* Fri Jul 23 2021 Fedora Release Engineering <releng@fedoraproject.org> - 1:0.17-85
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_35_Mass_Rebuild
+
+* Tue Mar 02 2021 Zbigniew Jędrzejewski-Szmek <zbyszek@in.waw.pl> - 1:0.17-84
+- Rebuilt for updated systemd-rpm-macros
+  See https://pagure.io/fesco/issue/2583.
+
+* Wed Jan 27 2021 Fedora Release Engineering <releng@fedoraproject.org> - 1:0.17-83
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_34_Mass_Rebuild
+
+* Thu Nov 19 2020 Michal Ruprich <mruprich@redhat.com> - 1:0.17-82
+- Changing LD_FLAGS to RPM_LD_FLAGS
+- Use make_build macro and remove hard-coded gcc
+- https://docs.fedoraproject.org/en-US/packaging-guidelines/#_parallel_make
+
+* Fri Sep 25 2020 Michal Ruprich <mruprich@redhat.com> - 1:0.17-81
+- Resolves: #1882606 - in.telnetd needs to tolerate temporary EIO errors
+
+* Wed Jul 29 2020 Fedora Release Engineering <releng@fedoraproject.org> - 1:0.17-80
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_33_Mass_Rebuild
+
+* Fri Mar 27 2020 Michal Ruprich <mruprich@redhat.com> - 1:0.17-79
 - Resolves: #1814478 - Arbitrary remote code execution in utility.c via short writes or urgent data
 
 * Fri Jan 31 2020 Fedora Release Engineering <releng@fedoraproject.org> - 1:0.17-78

@@ -1,5 +1,3 @@
-Vendor:         Microsoft Corporation
-Distribution:   Azure Linux
 # This spec file is very similar with mecab-jumandic
 
 %define		majorver	2.7.0
@@ -15,16 +13,18 @@ Distribution:   Azure Linux
 
 Name:		mecab-ipadic
 Version:	%{majorver}.%{date}
-Release:	21%{?dist}
+Release:	31%{?dist}
 Summary:	IPA dictionary for MeCab
 
-License:	mecab-ipadic
-URL:		https://sourceforge.net/projects/mecab
+# SPDX confirmed
+License:	NAIST-2003
+URL:		http://mecab.sourceforge.net/
 Source0:	http://downloads.sourceforge.net/mecab/%{name}-%{majorver}-%{date}.tar.gz
 #Source2:	http://www.icot.or.jp/ARCHIVE/terms-and-conditions-for-IFS-J.html
 Source2:	http://www.jipdec.or.jp/icot/ARCHIVE/terms-and-conditions-for-IFS-J.html
 Source3:	LICENSE.Fedora
 
+BuildRequires: make
 BuildRequires:	mecab-devel >= %{mecabver}
 Requires:	mecab >= %{mecabver}
 
@@ -98,17 +98,52 @@ if test -f %{_sysconfdir}/mecabrc ; then
 fi
 
 %files
-%doc COPYING LICENSE.* README
+%license COPYING
+%license LICENSE.*
+%doc README
 %{_libdir}/mecab/dic/ipadic/
 
 %files EUCJP
-%doc COPYING LICENSE.* README
+%license COPYING
+%license LICENSE.*
+%doc README
 %{_libdir}/mecab/dic/ipadic-EUCJP/
 
 
 %changelog
-* Fri Oct 15 2021 Pawel Winogrodzki <pawelwi@microsoft.com> - 2.7.0.20070801-21
-- Initial CBL-Mariner import from Fedora 32 (license: MIT).
+* Thu Jul 18 2024 Fedora Release Engineering <releng@fedoraproject.org> - 2.7.0.20070801-31
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_41_Mass_Rebuild
+
+* Thu Jan 25 2024 Fedora Release Engineering <releng@fedoraproject.org> - 2.7.0.20070801-30
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Sun Jan 21 2024 Fedora Release Engineering <releng@fedoraproject.org> - 2.7.0.20070801-29
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Thu Jul 20 2023 Fedora Release Engineering <releng@fedoraproject.org> - 2.7.0.20070801-28
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_39_Mass_Rebuild
+
+* Tue Jun  6 2023 Mamoru TASAKA <mtasaka@fedoraproject.org> - 2.7.0.20070801-27
+- SPDX migration (ljavorsk)
+- Use %%license
+
+* Thu Jan 19 2023 Fedora Release Engineering <releng@fedoraproject.org> - 2.7.0.20070801-26
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_38_Mass_Rebuild
+
+* Thu Jul 21 2022 Fedora Release Engineering <releng@fedoraproject.org> - 2.7.0.20070801-25
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_37_Mass_Rebuild
+
+* Thu Jan 20 2022 Fedora Release Engineering <releng@fedoraproject.org> - 2.7.0.20070801-24
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_36_Mass_Rebuild
+
+* Thu Jul 22 2021 Fedora Release Engineering <releng@fedoraproject.org> - 2.7.0.20070801-23
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_35_Mass_Rebuild
+
+* Tue Jan 26 2021 Fedora Release Engineering <releng@fedoraproject.org> - 2.7.0.20070801-22
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_34_Mass_Rebuild
+
+* Tue Jul 28 2020 Fedora Release Engineering <releng@fedoraproject.org> - 2.7.0.20070801-21
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_33_Mass_Rebuild
 
 * Wed Jan 29 2020 Fedora Release Engineering <releng@fedoraproject.org> - 2.7.0.20070801-20
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_32_Mass_Rebuild

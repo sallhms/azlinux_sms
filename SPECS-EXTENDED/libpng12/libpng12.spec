@@ -1,13 +1,16 @@
-Vendor:         Microsoft Corporation
-Distribution:   Azure Linux
 Summary: Old version of libpng, needed to run old binaries
 Name: libpng12
 Version: 1.2.57
-Release: 16%{?dist}
+Release: 21%{?dist}
 License: zlib
 URL: http://www.libpng.org/pub/png/
 
-Source0: https://downloads.sourceforge.net/project/libpng/%{name}/older-releases/%{version}/libpng-%{version}.tar.xz#/%{name}-%{version}.tar.xz
+# Obsolete old temporary packaging of libpng 1.2
+Obsoletes: libpng-compat <= 2:1.5.10
+
+# Note: non-current tarballs get moved to the history/ subdirectory,
+# so look there if you fail to retrieve the version you want
+Source0: https://ftp-osl.osuosl.org/pub/libpng/src/libpng12/libpng-%{version}.tar.xz
 
 Patch0: libpng12-multilib.patch
 Patch1: libpng12-pngconf.patch
@@ -33,17 +36,20 @@ The libpng12-devel package contains header files and documentation necessary
 for developing programs using libpng12.
 
 %prep
-%autosetup -n libpng-%{version} -p1
+%setup -q -n libpng-%{version}
+
+%patch -P0 -p1
+%patch -P1 -p1
 
 %build
 %configure \
   --disable-static \
   --without-libpng-compat
 
-%make_build
+make %{?_smp_mflags}
 
 %install
-%make_install
+make DESTDIR=$RPM_BUILD_ROOT install
 
 ## unpackaged files
 # We don't ship .la files.
@@ -62,20 +68,36 @@ rm -fv $RPM_BUILD_ROOT%{_mandir}/man3/{libpng,libpngpf}.3*
 make check
 
 %files
+%{!?_licensedir:%global license %%doc}
 %license LICENSE
 %doc libpng-%{version}.txt README TODO CHANGES
 %{_libdir}/libpng12.so.0*
 
 %files devel
+#doc example.c
 %{_bindir}/libpng12-config
 %{_includedir}/libpng12/
 %{_libdir}/libpng12.so
 %{_libdir}/pkgconfig/libpng12.pc
 
 %changelog
-* Thu Mar 09 2023 Muhammad Falak R Wani <mwani@microsoft.com> - 1.2.57-16
-- Initial CBL-Mariner import from Fedora 36 (license: MIT)
-- License verified.
+* Thu Jul 18 2024 Fedora Release Engineering <releng@fedoraproject.org> - 1.2.57-21
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_41_Mass_Rebuild
+
+* Thu Jan 25 2024 Fedora Release Engineering <releng@fedoraproject.org> - 1.2.57-20
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Sun Jan 21 2024 Fedora Release Engineering <releng@fedoraproject.org> - 1.2.57-19
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Thu Jul 20 2023 Fedora Release Engineering <releng@fedoraproject.org> - 1.2.57-18
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_39_Mass_Rebuild
+
+* Thu Jan 19 2023 Fedora Release Engineering <releng@fedoraproject.org> - 1.2.57-17
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_38_Mass_Rebuild
+
+* Thu Jul 21 2022 Fedora Release Engineering <releng@fedoraproject.org> - 1.2.57-16
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_37_Mass_Rebuild
 
 * Thu Jan 20 2022 Fedora Release Engineering <releng@fedoraproject.org> - 1.2.57-15
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_36_Mass_Rebuild

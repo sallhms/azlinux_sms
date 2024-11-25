@@ -1,13 +1,11 @@
-Vendor:         Microsoft Corporation
-Distribution:   Azure Linux
 Summary: A wrapper library for PKCS#11
 Name: pakchois
 Version: 0.4
-Release: 23%{?dist}
+Release: 31%{?dist}
 License: LGPLv2+
 URL: http://www.manyfish.co.uk/pakchois/
 Source0: http://www.manyfish.co.uk/pakchois/pakchois-%{version}.tar.gz
-Source1: %{name}-LICENSE.txt
+BuildRequires: make
 BuildRequires:  gcc
 BuildRequires: gettext
 
@@ -27,7 +25,6 @@ The development library for the pakchois PKCS#11 wrapper library.
 
 %prep
 %setup -q
-cp %{SOURCE1} ./LICENSE.txt
 
 %build
 # The module path used here will pick up opensc, coolkey, and
@@ -46,7 +43,6 @@ rm -f $RPM_BUILD_ROOT%{_libdir}/lib*.la
 %ldconfig_scriptlets
 
 %files
-%license LICENSE.txt
 %doc AUTHORS NEWS README
 %{_libdir}/*.so.*
 
@@ -57,11 +53,35 @@ rm -f $RPM_BUILD_ROOT%{_libdir}/lib*.la
 %{_libdir}/*.so
 
 %changelog
-* Fri Dec 10 2021 Thomas Crain <thcrain@microsoft.com> - 0.4-23
-- License verified
+* Thu Jul 18 2024 Fedora Release Engineering <releng@fedoraproject.org> - 0.4-31
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_41_Mass_Rebuild
 
-* Fri Oct 15 2021 Pawel Winogrodzki <pawelwi@microsoft.com> - 0.4-22
-- Initial CBL-Mariner import from Fedora 32 (license: MIT).
+* Thu Jan 25 2024 Fedora Release Engineering <releng@fedoraproject.org> - 0.4-30
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Sun Jan 21 2024 Fedora Release Engineering <releng@fedoraproject.org> - 0.4-29
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Thu Jul 20 2023 Fedora Release Engineering <releng@fedoraproject.org> - 0.4-28
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_39_Mass_Rebuild
+
+* Thu Jan 19 2023 Fedora Release Engineering <releng@fedoraproject.org> - 0.4-27
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_38_Mass_Rebuild
+
+* Fri Jul 22 2022 Fedora Release Engineering <releng@fedoraproject.org> - 0.4-26
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_37_Mass_Rebuild
+
+* Thu Jan 20 2022 Fedora Release Engineering <releng@fedoraproject.org> - 0.4-25
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_36_Mass_Rebuild
+
+* Thu Jul 22 2021 Fedora Release Engineering <releng@fedoraproject.org> - 0.4-24
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_35_Mass_Rebuild
+
+* Tue Jan 26 2021 Fedora Release Engineering <releng@fedoraproject.org> - 0.4-23
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_34_Mass_Rebuild
+
+* Tue Jul 28 2020 Fedora Release Engineering <releng@fedoraproject.org> - 0.4-22
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_33_Mass_Rebuild
 
 * Wed Jan 29 2020 Fedora Release Engineering <releng@fedoraproject.org> - 0.4-21
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_32_Mass_Rebuild

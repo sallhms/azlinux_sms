@@ -1,58 +1,105 @@
 Name:           perl-Class-Factory-Util
 Version:        1.7
-Release:        34%{?dist}
+Release:        47%{?dist}
 Summary:        Provide utility methods for factory classes 
-
-License:        GPL+ or Artistic
-Vendor:         Microsoft Corporation
-Distribution:   Azure Linux
+License:        GPL-1.0-or-later OR Artistic-1.0-Perl
 URL:            https://metacpan.org/release/Class-Factory-Util            
-Source0: https://cpan.metacpan.org/authors/id/D/DR/DROLSKY/Class-Factory-Util-%{version}.tar.gz        
-
+Source0:        https://cpan.metacpan.org/modules/by-module/Class/Class-Factory-Util-%{version}.tar.gz
 BuildArch:      noarch
+# Build
+BuildRequires:  coreutils
 BuildRequires:  perl-generators
+BuildRequires:  perl-interpreter
 BuildRequires:  perl(Module::Build)
+BuildRequires:  perl(Module::Build::Compat) >= 0.02
+# Module
 BuildRequires:  perl(Carp)
+BuildRequires:  perl(strict)
+BuildRequires:  perl(vars)
+# Test Suite
 BuildRequires:  perl(lib)
 BuildRequires:  perl(Test)
 BuildRequires:  perl(Test::More)
+# Optional Tests
 BuildRequires:  perl(Test::Pod) >= 1.14
 BuildRequires:  perl(Test::Pod::Coverage) >= 1.04
-Requires:  perl(:MODULE_COMPAT_%(eval "`%{__perl} -V:version`"; echo $version))
+# Dependencies
+# (none)
 
 %description
 This module exports utility functions that are useful for factory classes.
 
-
 %prep
 %setup -q -n Class-Factory-Util-%{version}
 
-
 %build
-%{__perl} Build.PL installdirs=vendor
+perl Build.PL --installdirs=vendor
 ./Build
 
-
 %install
-./Build install destdir=%{buildroot} create_packlist=0
-find %{buildroot} -depth -type d -exec rmdir {} 2>/dev/null \;
-
-%{_fixperms} %{buildroot}/*
-
+./Build install --destdir=%{buildroot} --create_packlist=0
+%{_fixperms} -c %{buildroot}
 
 %check
 ./Build test
 
-
 %files
-%doc LICENSE Changes
-%{perl_vendorlib}/*
-%{_mandir}/man3/*.3*
+%license LICENSE
+%doc Changes README
+%{perl_vendorlib}/Class/
+%{_mandir}/man3/Class::Factory::Util.3*
 
 
 %changelog
-* Fri Oct 15 2021 Pawel Winogrodzki <pawelwi@microsoft.com> - 1.7-34
-- Initial CBL-Mariner import from Fedora 32 (license: MIT).
+* Thu Jul 18 2024 Fedora Release Engineering <releng@fedoraproject.org> - 1.7-47
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_41_Mass_Rebuild
+
+* Thu Jan 25 2024 Fedora Release Engineering <releng@fedoraproject.org> - 1.7-46
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Sun Jan 21 2024 Fedora Release Engineering <releng@fedoraproject.org> - 1.7-45
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Thu Jul 20 2023 Fedora Release Engineering <releng@fedoraproject.org> - 1.7-44
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_39_Mass_Rebuild
+
+* Fri Mar 10 2023 Paul Howarth <paul@city-fan.org> - 1.7-43
+- Spec clean-up
+  - Use author-independent source URL
+  - Use SPDX-format license tag
+  - Classify buildreqs by usage
+  - Don't need to remove empty directories from the buildroot
+  - Fix permissions verbosely
+  - Use %%license
+  - Make %%files list more explicit
+  - Package README file
+
+* Fri Jan 20 2023 Fedora Release Engineering <releng@fedoraproject.org> - 1.7-42
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_38_Mass_Rebuild
+
+* Fri Jul 22 2022 Fedora Release Engineering <releng@fedoraproject.org> - 1.7-41
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_37_Mass_Rebuild
+
+* Tue May 31 2022 Jitka Plesnikova <jplesnik@redhat.com> - 1.7-40
+- Perl 5.36 rebuild
+
+* Fri Jan 21 2022 Fedora Release Engineering <releng@fedoraproject.org> - 1.7-39
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_36_Mass_Rebuild
+
+* Thu Jul 22 2021 Fedora Release Engineering <releng@fedoraproject.org> - 1.7-38
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_35_Mass_Rebuild
+
+* Fri May 21 2021 Jitka Plesnikova <jplesnik@redhat.com> - 1.7-37
+- Perl 5.34 rebuild
+
+* Wed Jan 27 2021 Fedora Release Engineering <releng@fedoraproject.org> - 1.7-36
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_34_Mass_Rebuild
+
+* Tue Jul 28 2020 Fedora Release Engineering <releng@fedoraproject.org> - 1.7-35
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_33_Mass_Rebuild
+
+* Tue Jun 23 2020 Jitka Plesnikova <jplesnik@redhat.com> - 1.7-34
+- Perl 5.32 rebuild
 
 * Wed Jan 29 2020 Fedora Release Engineering <releng@fedoraproject.org> - 1.7-33
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_32_Mass_Rebuild

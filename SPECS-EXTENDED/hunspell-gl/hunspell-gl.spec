@@ -1,17 +1,20 @@
-Vendor:         Microsoft Corporation
-Distribution:   Azure Linux
+%if 0%{?fedora} >= 36 || 0%{?rhel} > 9
+%global dict_dirname hunspell
+%else
+%global dict_dirname myspell
+%endif
+
 Name: hunspell-gl
 Summary: Galician hunspell dictionaries
 %global upstreamid 20080515
 Version: 0.%{upstreamid}
-Release: 21%{?dist}
-Source0: https://downloads.sourceforge.net/project/aoo-extensions/800/2/corrector_ooo3.oxt
-Source1: %{name}-LICENSE.txt
+Release: 33%{?dist}
+Source: https://downloads.sourceforge.net/project/aoo-extensions/800/2/corrector_ooo3.oxt
 URL: http://wiki.mancomun.org/index.php/Corrector_ortogr%C3%A1fico_para_OpenOffice.org#Descrici.C3.B3n
-License: GPLv2
+License: GPL-2.0-only
 BuildArch: noarch
 
-Requires: hunspell
+Requires: hunspell-filesystem
 Supplements: (hunspell and langpacks-gl)
 
 %description
@@ -19,23 +22,58 @@ Galician hunspell dictionaries.
 
 %prep
 %autosetup -c -n hunspell-gl
-cp %{SOURCE1} ./LICENSE.txt
 
 %build
 
 %install
-mkdir -p $RPM_BUILD_ROOT/%{_datadir}/myspell
-cp -p dictionaries/*.dic dictionaries/*.aff $RPM_BUILD_ROOT/%{_datadir}/myspell
+mkdir -p $RPM_BUILD_ROOT/%{_datadir}/%{dict_dirname}
+cp -p dictionaries/*.dic dictionaries/*.aff $RPM_BUILD_ROOT/%{_datadir}/%{dict_dirname}
 
 
 %files
-%license LICENSE.txt
 %doc dictionaries/README-gl-ES.txt
-%{_datadir}/myspell/*
+%{_datadir}/%{dict_dirname}/*
 
 %changelog
-* Fri Oct 15 2021 Pawel Winogrodzki <pawelwi@microsoft.com> - 0.20080515-21
-- Initial CBL-Mariner import from Fedora 32 (license: MIT).
+* Thu Jul 18 2024 Fedora Release Engineering <releng@fedoraproject.org> - 0.20080515-33
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_41_Mass_Rebuild
+
+* Mon Jan 29 2024 Fedora Release Engineering <releng@fedoraproject.org> - 0.20080515-32
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Wed Jan 24 2024 Fedora Release Engineering <releng@fedoraproject.org> - 0.20080515-31
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Sat Jan 20 2024 Fedora Release Engineering <releng@fedoraproject.org> - 0.20080515-30
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Thu Jul 20 2023 Fedora Release Engineering <releng@fedoraproject.org> - 0.20080515-29
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_39_Mass_Rebuild
+
+* Wed Feb 22 2023 Caolán McNamara <caolanm@redhat.com> - 0.20080515-28
+- migrated to SPDX license
+
+* Thu Jan 19 2023 Fedora Release Engineering <releng@fedoraproject.org> - 0.20080515-27
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_38_Mass_Rebuild
+
+* Thu Jul 21 2022 Fedora Release Engineering <releng@fedoraproject.org> - 0.20080515-26
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_37_Mass_Rebuild
+
+* Tue Mar 22 2022 Parag Nemade <pnemade AT redhat DOT com> - 0.20080515-25
+- Add conditional for new hunspell dir path and update to Requires:
+  hunspell-filesystem
+
+* Thu Jan 20 2022 Fedora Release Engineering <releng@fedoraproject.org> - 0.20080515-24
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_36_Mass_Rebuild
+
+* Thu Jul 22 2021 Fedora Release Engineering <releng@fedoraproject.org> - 0.20080515-23
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_35_Mass_Rebuild
+
+* Tue Jan 26 2021 Fedora Release Engineering <releng@fedoraproject.org> - 0.20080515-22
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_34_Mass_Rebuild
+
+* Tue Jul 28 2020 Fedora Release Engineering <releng@fedoraproject.org> - 0.20080515-21
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_33_Mass_Rebuild
 
 * Wed Jan 29 2020 Fedora Release Engineering <releng@fedoraproject.org> - 0.20080515-20
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_32_Mass_Rebuild
@@ -95,21 +133,21 @@ cp -p dictionaries/*.dic dictionaries/*.aff $RPM_BUILD_ROOT/%{_datadir}/myspell
 * Tue Feb 24 2009 Fedora Release Engineering <rel-eng@lists.fedoraproject.org> - 0.20080515-2
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_11_Mass_Rebuild
 
-* Fri May 16 2008 Caolan McNamara <caolanm@redhat.com> - 0.20080515-1
+* Fri May 16 2008 Caolán McNamara <caolanm@redhat.com> - 0.20080515-1
 - latest dictionaries
 
-* Wed Apr 16 2008 Caolan McNamara <caolanm@redhat.com> - 0.20080410-1
+* Wed Apr 16 2008 Caolán McNamara <caolanm@redhat.com> - 0.20080410-1
 - latest dictionaries
 
-* Fri Nov 09 2007 Caolan McNamara <caolanm@redhat.com> - 0.20071107-1
+* Fri Nov 09 2007 Caolán McNamara <caolanm@redhat.com> - 0.20071107-1
 - latest dictionaries
 
-* Tue Aug 21 2007 Caolan McNamara <caolanm@redhat.com> - 0.20070802-1
+* Tue Aug 21 2007 Caolán McNamara <caolanm@redhat.com> - 0.20070802-1
 - latest dictionaries
 - clarify license
 
-* Sat May 05 2007 Caolan McNamara <caolanm@redhat.com> - 0.20070504-1
+* Sat May 05 2007 Caolán McNamara <caolanm@redhat.com> - 0.20070504-1
 - latest dictionaries
 
-* Thu Dec 07 2006 Caolan McNamara <caolanm@redhat.com> - 0.20061002-1
+* Thu Dec 07 2006 Caolán McNamara <caolanm@redhat.com> - 0.20061002-1
 - initial version

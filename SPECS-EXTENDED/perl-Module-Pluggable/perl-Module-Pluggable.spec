@@ -6,14 +6,13 @@
 %endif
 
 Name:           perl-Module-Pluggable
+Epoch:          2
 Version:        5.2
-Release:        15%{?dist}
+Release:        29%{?dist}
 Summary:        Automatically give your module the ability to have plugins
-License:        GPL+ or Artistic
-Vendor:         Microsoft Corporation
-Distribution:   Azure Linux
+License:        GPL-1.0-or-later OR Artistic-1.0-Perl
 URL:            https://metacpan.org/release/Module-Pluggable
-Source0:        https://cpan.metacpan.org/authors/id/S/SI/SIMONW/Module-Pluggable-%{version}.tar.gz#/perl-Module-Pluggable-%{version}.tar.gz
+Source0:        https://cpan.metacpan.org/authors/id/S/SI/SIMONW/Module-Pluggable-%{version}.tar.gz
 BuildArch:      noarch
 BuildRequires:  coreutils
 BuildRequires:  findutils
@@ -49,7 +48,6 @@ BuildRequires:  perl(File::Copy)
 BuildRequires:  perl(File::Path)
 BuildRequires:  perl(File::Temp)
 %endif
-Requires:       perl(:MODULE_COMPAT_%(eval "`perl -V:version`"; echo $version))
 Requires:       perl(File::Spec::Functions) >= 3.00
 Requires:       perl(deprecate)
 # Recommended run-time:
@@ -57,6 +55,9 @@ Recommends:     perl(Module::Runtime) >= 0.012
 
 # Filter under-specified dependencies
 %global __requires_exclude %{?__requires_exclude:%__requires_exclude|}^perl\\(File::Spec::Functions\\)$
+# Remove private modules
+%global __requires_exclude %{?__requires_exclude:%__requires_exclude|}^perl\\(No::Middle\\)$
+%global __provides_exclude_from %{?__provides_exclude_from:%__provides_exclude_from|}^%{_libexecdir}
 
 %description
 This package provides a simple but, hopefully, extensible way of having
@@ -64,17 +65,38 @@ This package provides a simple but, hopefully, extensible way of having
 your name space that looks through a search path for .pm files and turn those
 into class names. Optionally it instantiates those classes for you.
 
+%package tests
+Summary:        Tests for %{name}
+Requires:       %{name} = %{?epoch:%{epoch}:}%{version}-%{release}
+Requires:       perl-Test-Harness
+
+%description tests
+Tests from %{name}. Execute them
+with "%{_libexecdir}/%{name}/test".
+
 %prep
 %setup -q -n Module-Pluggable-%{version}
 find -type f -exec chmod -x {} +
+# Help generators to recognize Perl scripts
+for F in t/*.t; do
+    perl -i -MConfig -ple 'print $Config{startperl} if $. == 1 && !s{\A#!\s*perl}{$Config{startperl}}' "$F"
+    chmod +x "$F"
+done
 
 %build
-perl Makefile.PL INSTALLDIRS=vendor
-make %{?_smp_mflags}
+perl Makefile.PL INSTALLDIRS=vendor NO_PACKLIST=1 NO_PERLLOCAL=1
+%{make_build}
 
 %install
-make pure_install DESTDIR=%{buildroot}
-find %{buildroot} -type f -name .packlist -exec rm -f {} ';'
+%{make_install}
+# Install tests
+mkdir -p %{buildroot}%{_libexecdir}/%{name}
+cp -a t %{buildroot}%{_libexecdir}/%{name}
+cat > %{buildroot}%{_libexecdir}/%{name}/test << 'EOF'
+#!/bin/sh
+cd %{_libexecdir}/%{name} && exec prove -I . -j "$(getconf _NPROCESSORS_ONLN)"
+EOF
+chmod +x %{buildroot}%{_libexecdir}/%{name}/test
 %{_fixperms} %{buildroot}/*
 
 %check
@@ -85,12 +107,59 @@ make test
 %{perl_vendorlib}/*
 %{_mandir}/man3/*
 
-%changelog
-* Mon Nov 01 2021 Muhammad Falak <mwani@microsft.com> - 5.2-15
-- Remove epoch
+%files tests
+%{_libexecdir}/%{name}
 
-* Fri Oct 15 2021 Pawel Winogrodzki <pawelwi@microsoft.com> - 2:5.2-14
-- Initial CBL-Mariner import from Fedora 32 (license: MIT).
+%changelog
+* Fri Jul 19 2024 Fedora Release Engineering <releng@fedoraproject.org> - 2:5.2-29
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_41_Mass_Rebuild
+
+* Thu Jan 25 2024 Fedora Release Engineering <releng@fedoraproject.org> - 2:5.2-28
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Sun Jan 21 2024 Fedora Release Engineering <releng@fedoraproject.org> - 2:5.2-27
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Thu Jul 20 2023 Fedora Release Engineering <releng@fedoraproject.org> - 2:5.2-26
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_39_Mass_Rebuild
+
+* Fri Jan 20 2023 Fedora Release Engineering <releng@fedoraproject.org> - 2:5.2-25
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_38_Mass_Rebuild
+
+* Wed Dec 07 2022 Michal Josef Špaček <mspacek@redhat.com> - 2:5.2-24
+- Fix required packages in *tests package
+
+* Wed Dec 07 2022 Michal Josef Špaček <mspacek@redhat.com> - 2:5.2-23
+- Fix list of provided packages in *tests package
+
+* Thu Dec 01 2022 Michal Josef Špaček <mspacek@redhat.com> - 2:5.2-22
+- Package tests
+- Simplify build and install phases
+- Update license to SPDX format
+
+* Fri Jul 22 2022 Fedora Release Engineering <releng@fedoraproject.org> - 2:5.2-21
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_37_Mass_Rebuild
+
+* Tue May 31 2022 Jitka Plesnikova <jplesnik@redhat.com> - 2:5.2-20
+- Perl 5.36 rebuild
+
+* Fri Jan 21 2022 Fedora Release Engineering <releng@fedoraproject.org> - 2:5.2-19
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_36_Mass_Rebuild
+
+* Thu Jul 22 2021 Fedora Release Engineering <releng@fedoraproject.org> - 2:5.2-18
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_35_Mass_Rebuild
+
+* Fri May 21 2021 Jitka Plesnikova <jplesnik@redhat.com> - 2:5.2-17
+- Perl 5.34 rebuild
+
+* Wed Jan 27 2021 Fedora Release Engineering <releng@fedoraproject.org> - 2:5.2-16
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_34_Mass_Rebuild
+
+* Tue Jul 28 2020 Fedora Release Engineering <releng@fedoraproject.org> - 2:5.2-15
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_33_Mass_Rebuild
+
+* Tue Jun 23 2020 Jitka Plesnikova <jplesnik@redhat.com> - 2:5.2-14
+- Perl 5.32 rebuild
 
 * Thu Jan 30 2020 Fedora Release Engineering <releng@fedoraproject.org> - 2:5.2-13
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_32_Mass_Rebuild

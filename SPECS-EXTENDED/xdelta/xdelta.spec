@@ -1,20 +1,16 @@
-Vendor:         Microsoft Corporation
-Distribution:   Azure Linux
 Summary: A binary file delta generator
 Name: xdelta
 Version: 3.1.0
-Release: 11%{?dist}
+Release: 19%{?dist}
 License: ASL 2.0
 Source0: https://github.com/jmacd/xdelta-devel/releases/download/v%{version}/xdelta3-%{version}.tar.gz
 URL: http://xdelta.org/
 
 # for testsuite
+BuildRequires: make
 BuildRequires:  gcc, gcc-c++
 BuildRequires: ncompress
 BuildRequires: xz-devel
-%if 0%{?with_check}
-BuildRequires: sudo
-%endif
 
 # Man page day fixes
 # ~> proposal: http://code.google.com/p/xdelta/issues/detail?id=158
@@ -29,11 +25,11 @@ algorithm to replace the standard diff program used by RCS
 
 %prep
 %setup -q -n %{name}3-%{version}
-%patch 1 -p2 -b .man-page-day
+%patch -P1 -p2 -b .man-page-day
 
 %build
 %configure
-make %{?_smp_mflags} V=0
+%make_build V=0
 
 %install
 mkdir -p $RPM_BUILD_ROOT/%{_bindir}
@@ -52,8 +48,7 @@ ln -s xdelta3.1 xdelta.1
 popd
 
 %check
-useradd test
-sudo -u test ./xdelta3 test && userdel test
+./xdelta3 test
 
 %files
 %doc README.md COPYING
@@ -61,12 +56,36 @@ sudo -u test ./xdelta3 test && userdel test
 %{_mandir}/man1/xdelta*
 
 %changelog
-* Mon Aug 22 2022 Muhammad Falak <mwani@microsoft.com> - 3.1.0-11
-- Run the `%check` section via a non-root user to fix ptest build
-- License verified
+* Sat Jul 20 2024 Fedora Release Engineering <releng@fedoraproject.org> - 3.1.0-19
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_41_Mass_Rebuild
 
-* Fri Oct 15 2021 Pawel Winogrodzki <pawelwi@microsoft.com> - 3.1.0-10
-- Initial CBL-Mariner import from Fedora 32 (license: MIT).
+* Sat Jan 27 2024 Fedora Release Engineering <releng@fedoraproject.org> - 3.1.0-18
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Sat Jul 22 2023 Fedora Release Engineering <releng@fedoraproject.org> - 3.1.0-17
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_39_Mass_Rebuild
+
+* Sat Jan 21 2023 Fedora Release Engineering <releng@fedoraproject.org> - 3.1.0-16
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_38_Mass_Rebuild
+
+* Sat Jul 23 2022 Fedora Release Engineering <releng@fedoraproject.org> - 3.1.0-15
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_37_Mass_Rebuild
+
+* Sat Jan 22 2022 Fedora Release Engineering <releng@fedoraproject.org> - 3.1.0-14
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_36_Mass_Rebuild
+
+* Fri Jul 23 2021 Fedora Release Engineering <releng@fedoraproject.org> - 3.1.0-13
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_35_Mass_Rebuild
+
+* Wed Jan 27 2021 Fedora Release Engineering <releng@fedoraproject.org> - 3.1.0-12
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_34_Mass_Rebuild
+
+* Wed Jul 29 2020 Fedora Release Engineering <releng@fedoraproject.org> - 3.1.0-11
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_33_Mass_Rebuild
+
+* Tue Jul 14 2020 Tom Stellard <tstellar@redhat.com> - 3.1.0-10
+- Use make macros
+- https://fedoraproject.org/wiki/Changes/UseMakeBuildInstallMacro
 
 * Fri Jan 31 2020 Fedora Release Engineering <releng@fedoraproject.org> - 3.1.0-9
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_32_Mass_Rebuild

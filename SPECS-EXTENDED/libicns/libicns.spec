@@ -1,8 +1,6 @@
-Vendor:         Microsoft Corporation
-Distribution:   Azure Linux
 Name:           libicns
 Version:        0.8.1
-Release:        20%{?dist}
+Release:        31%{?dist}
 Summary:        Library for manipulating Macintosh icns files
 
 # libicns, icns2png and icontainer2icns are under LGPLv2+
@@ -17,6 +15,7 @@ Patch0:         %{name}-0.8.1-gcc6.patch
 BuildRequires:  gcc
 BuildRequires:  libpng-devel
 BuildRequires:  jasper-devel
+BuildRequires: make
 
 %description
 libicns is a library providing functionality for easily reading and 
@@ -45,7 +44,7 @@ icontainer2icns - extract icns files from icontainers
 
 %prep
 %setup -q
-%patch 0 -p1
+%patch -P0 -p1
 
 
 %build
@@ -82,8 +81,41 @@ find $RPM_BUILD_ROOT -name '*.la' -exec rm -f {} ';'
 
 
 %changelog
-* Fri Oct 15 2021 Pawel Winogrodzki <pawelwi@microsoft.com> - 0.8.1-20
-- Initial CBL-Mariner import from Fedora 32 (license: MIT).
+* Thu Jul 18 2024 Fedora Release Engineering <releng@fedoraproject.org> - 0.8.1-31
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_41_Mass_Rebuild
+
+* Thu Jan 25 2024 Fedora Release Engineering <releng@fedoraproject.org> - 0.8.1-30
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Sun Jan 21 2024 Fedora Release Engineering <releng@fedoraproject.org> - 0.8.1-29
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Tue Nov 28 2023 Orion Poplawski <orion@nwra.com> - 0.8.1-28
+- Rebuild for jasper 4.1
+
+* Thu Jul 20 2023 Fedora Release Engineering <releng@fedoraproject.org> - 0.8.1-27
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_39_Mass_Rebuild
+
+* Thu Jan 19 2023 Fedora Release Engineering <releng@fedoraproject.org> - 0.8.1-26
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_38_Mass_Rebuild
+
+* Thu Jul 21 2022 Fedora Release Engineering <releng@fedoraproject.org> - 0.8.1-25
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_37_Mass_Rebuild
+
+* Sun Feb 13 2022 Josef Ridky <jridky@redhat.com> - 0.8.1-24
+- Rebuilt for libjasper.so.6
+
+* Thu Jan 20 2022 Fedora Release Engineering <releng@fedoraproject.org> - 0.8.1-23
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_36_Mass_Rebuild
+
+* Thu Jul 22 2021 Fedora Release Engineering <releng@fedoraproject.org> - 0.8.1-22
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_35_Mass_Rebuild
+
+* Tue Jan 26 2021 Fedora Release Engineering <releng@fedoraproject.org> - 0.8.1-21
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_34_Mass_Rebuild
+
+* Tue Jul 28 2020 Fedora Release Engineering <releng@fedoraproject.org> - 0.8.1-20
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_33_Mass_Rebuild
 
 * Wed Jan 29 2020 Fedora Release Engineering <releng@fedoraproject.org> - 0.8.1-19
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_32_Mass_Rebuild

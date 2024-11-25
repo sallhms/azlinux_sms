@@ -1,11 +1,10 @@
-Vendor:         Microsoft Corporation
-Distribution:   Azure Linux
 Name:		pbzip2
 Version:	1.1.13
-Release:	3%{?dist}
+Release:	13%{?dist}
 Summary:	Parallel implementation of bzip2
 URL:		https://launchpad.net/pbzip2
-License:	BSD
+License:	bzip2-1.0.6
+BuildRequires: make
 BuildRequires:	gcc-c++
 BuildRequires:	bzip2-devel
 Source0:	https://launchpad.net/pbzip2/1.1/%{version}/+download/pbzip2-%{version}.tar.gz
@@ -47,8 +46,38 @@ ln -sf ./%{name} %{buildroot}%{_bindir}/pbzcat
 
 
 %changelog
-* Fri Oct 15 2021 Pawel Winogrodzki <pawelwi@microsoft.com> - 1.1.13-3
-- Initial CBL-Mariner import from Fedora 32 (license: MIT).
+* Thu Jul 18 2024 Fedora Release Engineering <releng@fedoraproject.org> - 1.1.13-13
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_41_Mass_Rebuild
+
+* Thu Jan 25 2024 Fedora Release Engineering <releng@fedoraproject.org> - 1.1.13-12
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Sun Jan 21 2024 Fedora Release Engineering <releng@fedoraproject.org> - 1.1.13-11
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Sat Aug 05 2023 Ondřej Budai <ondrej@budai.cz> - 1.1.13-10
+- SPDX migration
+
+* Thu Jul 20 2023 Fedora Release Engineering <releng@fedoraproject.org> - 1.1.13-9
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_39_Mass_Rebuild
+
+* Thu Jan 19 2023 Fedora Release Engineering <releng@fedoraproject.org> - 1.1.13-8
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_38_Mass_Rebuild
+
+* Fri Jul 22 2022 Fedora Release Engineering <releng@fedoraproject.org> - 1.1.13-7
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_37_Mass_Rebuild
+
+* Thu Jan 20 2022 Fedora Release Engineering <releng@fedoraproject.org> - 1.1.13-6
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_36_Mass_Rebuild
+
+* Thu Jul 22 2021 Fedora Release Engineering <releng@fedoraproject.org> - 1.1.13-5
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_35_Mass_Rebuild
+
+* Tue Jan 26 2021 Fedora Release Engineering <releng@fedoraproject.org> - 1.1.13-4
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_34_Mass_Rebuild
+
+* Tue Jul 28 2020 Fedora Release Engineering <releng@fedoraproject.org> - 1.1.13-3
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_33_Mass_Rebuild
 
 * Wed Jan 29 2020 Fedora Release Engineering <releng@fedoraproject.org> - 1.1.13-2
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_32_Mass_Rebuild

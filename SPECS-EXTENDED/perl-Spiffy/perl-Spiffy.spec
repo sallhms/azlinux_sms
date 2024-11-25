@@ -1,15 +1,20 @@
-Vendor:         Microsoft Corporation
-Distribution:   Azure Linux
+# Perform release tests
+%bcond_without perl_Spiffy_enables_extra_test
+
 Name:           perl-Spiffy
 Version:        0.46
-Release:        17%{?dist}
+Release:        31%{?dist}
 Summary:        Framework for doing object oriented (OO) programming in Perl
-License:        GPL+ or Artistic
+License:        GPL-1.0-or-later OR Artistic-1.0-Perl
 URL:            https://metacpan.org/release/Spiffy
-Source0:        https://cpan.metacpan.org/authors/id/I/IN/INGY/Spiffy-%{version}.tar.gz#/perl-Spiffy-%{version}.tar.gz
+Source0:        https://cpan.metacpan.org/authors/id/I/IN/INGY/Spiffy-%{version}.tar.gz
 BuildArch:      noarch
-BuildRequires:  perl-interpreter
+# Build:
+BuildRequires:  coreutils
+BuildRequires:  findutils
+BuildRequires:  make
 BuildRequires:  perl-generators
+BuildRequires:  perl-interpreter
 BuildRequires:  perl(ExtUtils::MakeMaker) >= 6.30
 # Run-time:
 BuildRequires:  perl(Carp)
@@ -26,9 +31,11 @@ BuildRequires:  perl(base)
 BuildRequires:  perl(Cwd)
 BuildRequires:  perl(lib)
 BuildRequires:  perl(Test::More)
+%if %{with perl_Spiffy_enables_extra_test}
 # Release Tests:
 BuildRequires:  perl(Test::Pod) >= 1.41
-Requires:       perl(:MODULE_COMPAT_%(eval "`perl -V:version`"; echo $version))
+%endif
+# Dependencies:
 Requires:       perl(Data::Dumper)
 Requires:       perl(Filter::Util::Call)
 Requires:       perl(overload)
@@ -54,15 +61,13 @@ perl Makefile.PL INSTALLDIRS=vendor
 make %{?_smp_mflags}
 
 %install
-make pure_install DESTDIR=$RPM_BUILD_ROOT
-find $RPM_BUILD_ROOT -type f -name .packlist -exec rm -f {} \;
-%{_fixperms} $RPM_BUILD_ROOT/*
+make pure_install DESTDIR=%{buildroot}
+find %{buildroot} -type f -name .packlist -delete
+%{_fixperms} -c %{buildroot}
 
 %check
-make test RELEASE_TESTING=1
-
-# Support use of %%license on old distributions
-%{!?_licensedir:%global license %%doc}
+unset RELEASE_TESTING
+make test %{?with_perl_Spiffy_enables_extra_test:RELEASE_TESTING=1}
 
 %files
 %license LICENSE
@@ -70,11 +75,56 @@ make test RELEASE_TESTING=1
 %{perl_vendorlib}/Spiffy.pm
 %doc %{perl_vendorlib}/Spiffy.pod
 %{perl_vendorlib}/Spiffy/
-%{_mandir}/man3/Spiffy.3pm*
+%{_mandir}/man3/Spiffy.3*
 
 %changelog
-* Fri Oct 15 2021 Pawel Winogrodzki <pawelwi@microsoft.com> - 0.46-17
-- Initial CBL-Mariner import from Fedora 32 (license: MIT).
+* Fri Jul 19 2024 Fedora Release Engineering <releng@fedoraproject.org> - 0.46-31
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_41_Mass_Rebuild
+
+* Thu Jan 25 2024 Fedora Release Engineering <releng@fedoraproject.org> - 0.46-30
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Sun Jan 21 2024 Fedora Release Engineering <releng@fedoraproject.org> - 0.46-29
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Fri Jul 21 2023 Fedora Release Engineering <releng@fedoraproject.org> - 0.46-28
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_39_Mass_Rebuild
+
+* Thu May 04 2023 Michal Josef Špaček <mspacek@redhat.com> - 0.46-27
+- Update license to SPDX format
+
+* Fri Jan 20 2023 Fedora Release Engineering <releng@fedoraproject.org> - 0.46-26
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_38_Mass_Rebuild
+
+* Fri Jul 22 2022 Fedora Release Engineering <releng@fedoraproject.org> - 0.46-25
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_37_Mass_Rebuild
+
+* Tue May 31 2022 Jitka Plesnikova <jplesnik@redhat.com> - 0.46-24
+- Perl 5.36 rebuild
+
+* Fri Jan 21 2022 Fedora Release Engineering <releng@fedoraproject.org> - 0.46-23
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_36_Mass_Rebuild
+
+* Thu Jul 22 2021 Fedora Release Engineering <releng@fedoraproject.org> - 0.46-22
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_35_Mass_Rebuild
+
+* Fri May 21 2021 Jitka Plesnikova <jplesnik@redhat.com> - 0.46-21
+- Perl 5.34 rebuild
+
+* Wed Jan 27 2021 Fedora Release Engineering <releng@fedoraproject.org> - 0.46-20
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_34_Mass_Rebuild
+
+* Fri Oct 23 2020 Paul Howarth <paul@city-fan.org> - 0.46-19
+- Spec tidy-up
+  - Specify all build dependencies
+  - Simplify find command using -delete
+  - Fix permissions verbosely
+
+* Tue Jul 28 2020 Fedora Release Engineering <releng@fedoraproject.org> - 0.46-18
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_33_Mass_Rebuild
+
+* Tue Jun 23 2020 Jitka Plesnikova <jplesnik@redhat.com> - 0.46-17
+- Perl 5.32 rebuild
 
 * Thu Jan 30 2020 Fedora Release Engineering <releng@fedoraproject.org> - 0.46-16
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_32_Mass_Rebuild

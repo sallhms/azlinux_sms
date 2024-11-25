@@ -1,5 +1,7 @@
 {
  "Signatures": {
-  "libgovirt-0.3.9.tar.xz": "b12fc3579f2d007e43fef1dcc0f4b3f8c1070c2fb6a3f58b23c53c766243217c"
+  "etrunko-57E1C130.keyring": "ed5ffdf96e216915301e08043cf05670d5d202eb5a061ed3b8e4d5ccaf0b1d51",
+  "libgovirt-0.3.9.tar.xz": "b12fc3579f2d007e43fef1dcc0f4b3f8c1070c2fb6a3f58b23c53c766243217c",
+  "libgovirt-0.3.9.tar.xz.sig": "b2f694be00436a4b34c7a12f0f838fdb9cb06dfd238d6da0b268fc1166f36f6a"
  }
 }

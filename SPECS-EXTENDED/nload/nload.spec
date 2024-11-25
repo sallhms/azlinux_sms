@@ -1,13 +1,12 @@
-Vendor:         Microsoft Corporation
-Distribution:   Azure Linux
 Name:           nload
 Version:        0.7.4
-Release:        18%{?dist}
+Release:        28%{?dist}
 Summary:        A tool can monitor network traffic and bandwidth usage in real time
 License:        GPLv2+
 URL:            http://www.roland-riegel.de/nload/
-Source0:        http://downloads.sourceforge.net/%{name}/%{name}-%{version}.tar.gz
+Source:         https://github.com/rolandriegel/%{name}/archive/v%{name}/%{name}-%{version}.tar.gz
 
+BuildRequires:  make
 BuildRequires:  gcc-c++
 BuildRequires:  ncurses-devel
 BuildRequires:  gcc
@@ -24,10 +23,10 @@ network usage.
 %build
 # --enable-debug do not strip debugging symbols, required for debug-info package
 %configure --enable-debug
-make %{?_smp_mflags}
+%make_build
 
 %install
-make install DESTDIR="%{buildroot}" INSTALL="install -p"
+%make_install DESTDIR="%{buildroot}" INSTALL="install -p"
 
 %files
 %doc AUTHORS ChangeLog COPYING NEWS README
@@ -35,8 +34,40 @@ make install DESTDIR="%{buildroot}" INSTALL="install -p"
 %{_bindir}/%{name}
 
 %changelog
-* Fri Sep 24 2021 Muhammad Falak <mwani@microsoft.com> - 0.7.4-18
-- Initial CBL-Mariner import from Fedora 32 (license: MIT).
+* Thu Jul 18 2024 Fedora Release Engineering <releng@fedoraproject.org> - 0.7.4-28
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_41_Mass_Rebuild
+
+* Thu Jan 25 2024 Fedora Release Engineering <releng@fedoraproject.org> - 0.7.4-27
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Sun Jan 21 2024 Fedora Release Engineering <releng@fedoraproject.org> - 0.7.4-26
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Thu Jul 20 2023 Fedora Release Engineering <releng@fedoraproject.org> - 0.7.4-25
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_39_Mass_Rebuild
+
+* Thu Jan 19 2023 Fedora Release Engineering <releng@fedoraproject.org> - 0.7.4-24
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_38_Mass_Rebuild
+
+* Fri Jul 29 2022 Jonathan Wright <jonathan@almalinux.org> - 0.7.4-23
+- Tidy specfile a bit
+- Update source URL
+- Initial build for EPEL9
+
+* Fri Jul 22 2022 Fedora Release Engineering <releng@fedoraproject.org> - 0.7.4-22
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_37_Mass_Rebuild
+
+* Thu Jan 20 2022 Fedora Release Engineering <releng@fedoraproject.org> - 0.7.4-21
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_36_Mass_Rebuild
+
+* Thu Jul 22 2021 Fedora Release Engineering <releng@fedoraproject.org> - 0.7.4-20
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_35_Mass_Rebuild
+
+* Tue Jan 26 2021 Fedora Release Engineering <releng@fedoraproject.org> - 0.7.4-19
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_34_Mass_Rebuild
+
+* Tue Jul 28 2020 Fedora Release Engineering <releng@fedoraproject.org> - 0.7.4-18
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_33_Mass_Rebuild
 
 * Wed Jan 29 2020 Fedora Release Engineering <releng@fedoraproject.org> - 0.7.4-17
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_32_Mass_Rebuild

@@ -1,13 +1,13 @@
-Vendor:         Microsoft Corporation
-Distribution:   Azure Linux
 Summary: Old version of libpng, needed to run old binaries
 Name: libpng15
 Version: 1.5.30
-Release: 15%{?dist}
+Release: 20%{?dist}
 License: zlib
 URL: http://www.libpng.org/pub/png/
 
-Source0: https://downloads.sourceforge.net/project/libpng/%{name}/%{version}/libpng-%{version}.tar.xz#/%{name}-%{version}.tar.xz
+# Note: non-current tarballs get moved to the history/ subdirectory,
+# so look there if you fail to retrieve the version you want
+Source0: https://ftp-osl.osuosl.org/pub/libpng/src/libpng15/libpng-%{version}.tar.xz
 
 Source1: pngusr.dfa
 
@@ -25,7 +25,11 @@ This version should be used only if you are unable to use the current
 version of libpng.
 
 %prep
-%autosetup -n libpng-%{version} -p1
+%setup -q -n libpng-%{version}
+
+%patch -P0 -p1
+%patch -P1 -p1
+
 # Provide pngusr.dfa for build.
 cp -p %{SOURCE1} .
 
@@ -46,13 +50,27 @@ rm -rf $RPM_BUILD_ROOT%{_includedir}/*
 rm -rf $RPM_BUILD_ROOT%{_bindir}/*
 
 %files
-%license LICENSE
+%doc LICENSE
 %{_libdir}/libpng15.so.*
 
 %changelog
-* Thu Mar 09 2023 Muhammad Falak R Wani <mwani@microsoft.com> - 1.5.30-15
-- Initial CBL-Mariner import from Fedora 36 (license: MIT)
-- License verified.
+* Thu Jul 18 2024 Fedora Release Engineering <releng@fedoraproject.org> - 1.5.30-20
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_41_Mass_Rebuild
+
+* Thu Jan 25 2024 Fedora Release Engineering <releng@fedoraproject.org> - 1.5.30-19
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Sun Jan 21 2024 Fedora Release Engineering <releng@fedoraproject.org> - 1.5.30-18
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Thu Jul 20 2023 Fedora Release Engineering <releng@fedoraproject.org> - 1.5.30-17
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_39_Mass_Rebuild
+
+* Thu Jan 19 2023 Fedora Release Engineering <releng@fedoraproject.org> - 1.5.30-16
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_38_Mass_Rebuild
+
+* Thu Jul 21 2022 Fedora Release Engineering <releng@fedoraproject.org> - 1.5.30-15
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_37_Mass_Rebuild
 
 * Thu Jan 20 2022 Fedora Release Engineering <releng@fedoraproject.org> - 1.5.30-14
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_36_Mass_Rebuild
@@ -564,3 +582,4 @@ Resolves: #226038
 
 * Thu Jul 10 1997 Erik Troan <ewt@redhat.com>
 - built against glibc
+

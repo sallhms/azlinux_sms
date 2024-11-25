@@ -1,12 +1,11 @@
-Vendor:         Microsoft Corporation
-Distribution:   Azure Linux
 Name:           perl-Error
+Epoch:          1
 Version:        0.17029
-Release:        4%{?dist}
+Release:        16%{?dist}
 Summary:        Error/exception handling in an OO-ish way
-License:        (GPL+ or Artistic) and MIT
+License:        (GPL-1.0-or-later OR Artistic-1.0-Perl) AND X11
 URL:            https://metacpan.org/release/Error
-Source0:        https://cpan.metacpan.org/modules/by-module/Error/Error-%{version}.tar.gz#/perl-Error-%{version}.tar.gz
+Source0:        https://cpan.metacpan.org/modules/by-module/Error/Error-%{version}.tar.gz
 BuildArch:      noarch
 # Build
 BuildRequires:  coreutils
@@ -25,14 +24,13 @@ BuildRequires:  perl(vars)
 BuildRequires:  perl(warnings)
 # Tests
 BuildRequires:  perl(base)
+BuildRequires:  perl(blib)
 BuildRequires:  perl(File::Spec)
 BuildRequires:  perl(IO::Handle)
 BuildRequires:  perl(IPC::Open3)
 BuildRequires:  perl(lib)
-BuildRequires:  perl(blib)
 BuildRequires:  perl(Test::More)
 # Dependencies
-Requires:       perl(:MODULE_COMPAT_%(eval "`perl -V:version`"; echo $version))
 Requires:       perl(Carp)
 
 # Avoid provides/requires from examples
@@ -61,29 +59,61 @@ find %{buildroot} -type f -name .packlist -delete
 make test
 
 %files
-%if 0%{?_licensedir:1}
 %license LICENSE
-%else
-%doc LICENSE
-%endif
-# GPL+ or Artistic
+# GPL-1.0-or-later OR Artistic-1.0-Perl
 %doc ChangeLog Changes README examples/
 %{perl_vendorlib}/Error.pm
 %{_mandir}/man3/Error.3*
-# MIT
+# X11
 %{perl_vendorlib}/Error/
 %{_mandir}/man3/Error::Simple.3*
 
 %changelog
-* Fri Apr 22 2022 Muhammad Falak <mwani@microsoft.com> - 0.17029-4
-- Add an explicit BR on `perl(blib)` to enable ptest
-- License verified
+* Fri Jul 19 2024 Fedora Release Engineering <releng@fedoraproject.org> - 1:0.17029-16
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_41_Mass_Rebuild
 
-* Mon Nov 01 2021 Muhammad Falak <mwani@microsoft.com> - 0.17029-3
-- Remove epoch
+* Thu Jan 25 2024 Fedora Release Engineering <releng@fedoraproject.org> - 1:0.17029-15
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
 
-* Fri Oct 15 2021 Pawel Winogrodzki <pawelwi@microsoft.com> - 1:0.17029-2
-- Initial CBL-Mariner import from Fedora 31 (license: MIT).
+* Sun Jan 21 2024 Fedora Release Engineering <releng@fedoraproject.org> - 1:0.17029-14
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Thu Jul 20 2023 Fedora Release Engineering <releng@fedoraproject.org> - 1:0.17029-13
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_39_Mass_Rebuild
+
+* Thu Apr  6 2023 Paul Howarth <paul@city-fan.org> - 1:0.17029-12
+- Use SPDX-format license tag
+- Use %%license unconditionally
+
+* Fri Jan 20 2023 Fedora Release Engineering <releng@fedoraproject.org> - 1:0.17029-11
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_38_Mass_Rebuild
+
+* Fri Jul 22 2022 Fedora Release Engineering <releng@fedoraproject.org> - 1:0.17029-10
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_37_Mass_Rebuild
+
+* Mon May 30 2022 Jitka Plesnikova <jplesnik@redhat.com> - 1:0.17029-9
+- Perl 5.36 rebuild
+
+* Fri Jan 21 2022 Fedora Release Engineering <releng@fedoraproject.org> - 1:0.17029-8
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_36_Mass_Rebuild
+
+* Thu Jul 22 2021 Fedora Release Engineering <releng@fedoraproject.org> - 1:0.17029-7
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_35_Mass_Rebuild
+
+* Fri May 21 2021 Jitka Plesnikova <jplesnik@redhat.com> - 1:0.17029-6
+- Perl 5.34 rebuild
+
+* Wed Jan 27 2021 Fedora Release Engineering <releng@fedoraproject.org> - 1:0.17029-5
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_34_Mass_Rebuild
+
+* Tue Jul 28 2020 Fedora Release Engineering <releng@fedoraproject.org> - 1:0.17029-4
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_33_Mass_Rebuild
+
+* Mon Jun 22 2020 Jitka Plesnikova <jplesnik@redhat.com> - 1:0.17029-3
+- Perl 5.32 rebuild
+
+* Tue Mar 10 2020 Paul Howarth <paul@city-fan.org> - 1:0.17029-2
+- BR: perl(blib) for t/00-compile.t
 
 * Tue Jan 28 2020 Paul Howarth <paul@city-fan.org> - 1:0.17029-1
 - Update to 0.17029

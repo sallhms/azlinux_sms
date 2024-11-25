@@ -1,9 +1,7 @@
-Vendor:         Microsoft Corporation
-Distribution:   Azure Linux
 Summary: A heuristic autodialer for PPP connections
 Name: wvdial
 Version: 1.61
-Release: 25%{?dist}
+Release: 33%{?dist}
 License: LGPLv2+
 URL: http://alumnit.ca/wiki/?WvDial
 #Old location for <1.61 was http://alumnit.ca/download/wvdial-%%{version}.tar.gz
@@ -23,6 +21,7 @@ Patch6: wvdial-1.61-ftbfs_with_gcc_4.5.patch
 # _BSD_SOURCE is deprecated.
 Patch7: wvdial-1.61-use_DEFAULT_SOURCE.patch
 
+BuildRequires: make
 BuildRequires:  gcc-c++
 BuildRequires: libwvstreams-devel lockdev-devel openssl-devel
 BuildRequires: pkgconfig
@@ -36,13 +35,13 @@ negotiate the PPP connection using any mechanism needed.
 
 %prep
 %setup -q
-%patch 1 -p1 -b .remotename
-%patch 2 -p1 -b .9nums
-%patch 3 -p1 -b .compuserve
-%patch 4 -p1 -b .manpages
-%patch 5 -p1 -b .typo_pon_wvdial
-%patch 6 -p1 -b .ftbfs_with_gcc_45
-%patch 7 -p1 -b ._DEFAULT_SOURCE
+%patch -P1 -p1 -b .remotename
+%patch -P2 -p1 -b .9nums
+%patch -P3 -p1 -b .compuserve
+%patch -P4 -p1 -b .manpages
+%patch -P5 -p1 -b .typo_pon_wvdial
+%patch -P6 -p1 -b .ftbfs_with_gcc_45
+%patch -P7 -p1 -b ._DEFAULT_SOURCE
 
 %build
 %configure
@@ -77,8 +76,32 @@ touch %{buildroot}%{_sysconfdir}/wvdial.conf
 %verify(not md5 size mtime) %config(noreplace) %{_sysconfdir}/wvdial.conf
 
 %changelog
-* Fri Oct 15 2021 Pawel Winogrodzki <pawelwi@microsoft.com> - 1.61-25
-- Initial CBL-Mariner import from Fedora 32 (license: MIT).
+* Sat Jul 20 2024 Fedora Release Engineering <releng@fedoraproject.org> - 1.61-33
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_41_Mass_Rebuild
+
+* Sat Jan 27 2024 Fedora Release Engineering <releng@fedoraproject.org> - 1.61-32
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Sat Jul 22 2023 Fedora Release Engineering <releng@fedoraproject.org> - 1.61-31
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_39_Mass_Rebuild
+
+* Sat Jan 21 2023 Fedora Release Engineering <releng@fedoraproject.org> - 1.61-30
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_38_Mass_Rebuild
+
+* Sat Jul 23 2022 Fedora Release Engineering <releng@fedoraproject.org> - 1.61-29
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_37_Mass_Rebuild
+
+* Sat Jan 22 2022 Fedora Release Engineering <releng@fedoraproject.org> - 1.61-28
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_36_Mass_Rebuild
+
+* Fri Jul 23 2021 Fedora Release Engineering <releng@fedoraproject.org> - 1.61-27
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_35_Mass_Rebuild
+
+* Wed Jan 27 2021 Fedora Release Engineering <releng@fedoraproject.org> - 1.61-26
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_34_Mass_Rebuild
+
+* Wed Jul 29 2020 Fedora Release Engineering <releng@fedoraproject.org> - 1.61-25
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_33_Mass_Rebuild
 
 * Fri Jan 31 2020 Fedora Release Engineering <releng@fedoraproject.org> - 1.61-24
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_32_Mass_Rebuild

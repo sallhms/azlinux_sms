@@ -1,39 +1,39 @@
+Name:      libgta
+Version:   1.2.1
 %global so_version 1
-
-Summary:        Library that implements the Generic Tagged Arrays file format
-Name:           libgta
-Version:        1.2.1
-Release:        9%{?dist}
-License:        LGPLv2+
-Vendor:         Microsoft Corporation
-Distribution:   Azure Linux
-URL:            https://marlam.de/gta/
-Source0:        https://marlam.de/gta/releases/%{name}-%{version}.tar.xz
-BuildRequires:  cmake
-BuildRequires:  doxygen
-BuildRequires:  gcc
+Release:   13%{?dist}
+Summary:   Library that implements the Generic Tagged Arrays file format
+License:   LGPLv2+
+URL:       https://marlam.de/gta/
+Source0:   https://marlam.de/gta/releases/%{name}-%{version}.tar.xz
+BuildRequires: cmake
+BuildRequires: gcc
+BuildRequires: doxygen
 
 %description
 Libgta is a portable library that implements the GTA (Generic Tagged Arrays)
 file format. It provides interfaces for C and C++.
 
+
 %package devel
-Summary:        Development Libraries for %{name}
-Requires:       %{name}%{?_isa} = %{version}-%{release}
-Requires:       pkgconfig
+Summary:  Development Libraries for %{name}
+Requires: %{name}%{?_isa} = %{version}-%{release}
+Requires: pkgconfig
 
 %description devel
 The %{name}-devel package contains libraries and header files for
 developing applications that use %{name}.
 
+
 %package doc
-Summary:        API documentation for %{name}
-Requires:       %{name} = %{version}-%{release}
-BuildArch:      noarch
+Summary:  API documentation for %{name}
+Requires: %{name} = %{version}-%{release}
+BuildArch: noarch
 
 %description doc
 The %{name}-doc package contains HTML API documentation and
 examples for %{name}.
+
 
 %prep
 %setup -q
@@ -56,9 +56,8 @@ rm -rf %{buildroot}%{_docdir}
 %ldconfig_scriptlets
 
 
-%files
-%license COPYING
-%doc AUTHORS README
+%files 
+%doc COPYING AUTHORS README
 %{_libdir}/%{name}.so.%{so_version}
 %{_libdir}/%{name}.so.%{so_version}.*
 
@@ -71,10 +70,22 @@ rm -rf %{buildroot}%{_docdir}
 %files doc
 %doc doc/example*
 
+
 %changelog
-* Wed Aug 09 2023 Archana Choudhary <archana1@microsoft.com> - 1.2.1-9
-- Initial CBL-Mariner import from Fedora 37 (license: MIT).
-- License verified
+* Thu Jul 18 2024 Fedora Release Engineering <releng@fedoraproject.org> - 1.2.1-13
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_41_Mass_Rebuild
+
+* Thu Jan 25 2024 Fedora Release Engineering <releng@fedoraproject.org> - 1.2.1-12
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Sun Jan 21 2024 Fedora Release Engineering <releng@fedoraproject.org> - 1.2.1-11
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Thu Jul 20 2023 Fedora Release Engineering <releng@fedoraproject.org> - 1.2.1-10
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_39_Mass_Rebuild
+
+* Thu Jan 19 2023 Fedora Release Engineering <releng@fedoraproject.org> - 1.2.1-9
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_38_Mass_Rebuild
 
 * Thu Jul 21 2022 Fedora Release Engineering <releng@fedoraproject.org> - 1.2.1-8
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_37_Mass_Rebuild

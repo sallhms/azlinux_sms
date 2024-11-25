@@ -1,12 +1,11 @@
 Name:           perl-TermReadKey
 Version:        2.38
-Release:        7%{?dist}
+Release:        23%{?dist}
 Summary:        A perl module for simple terminal control
-License:        (Copyright only) and (Artistic or GPL+)
-Vendor:         Microsoft Corporation
-Distribution:   Azure Linux
+License:        TermReadKey AND (GPL-1.0-or-later OR Artistic-1.0-Perl)
 URL:            https://metacpan.org/release/TermReadKey
-Source0:        https://cpan.metacpan.org/authors/id/J/JS/JSTOWE/TermReadKey-%{version}.tar.gz#/perl-TermReadKey-%{version}.tar.gz
+Source0:        https://cpan.metacpan.org/authors/id/J/JS/JSTOWE/TermReadKey-%{version}.tar.gz
+Patch0: perl-TermReadKey-configure-c99.patch
 # Build
 BuildRequires:  findutils
 BuildRequires:  gcc
@@ -29,7 +28,6 @@ BuildRequires:  perl(vars)
 # Tests only
 BuildRequires:  perl(Fcntl)
 BuildRequires:  perl(Test::More)
-Requires:       perl(:MODULE_COMPAT_%(eval "$(perl -V:version)"; echo $version))
 
 %{?perl_default_filter}
 
@@ -42,8 +40,22 @@ main goals is to have the functions as portable as possible, so you
 can just plug in "use Term::ReadKey" on any architecture and have a
 good likelyhood of it working.
 
+%package tests
+Summary:        Tests for %{name}
+Requires:       %{name} = %{?epoch:%{epoch}:}%{version}-%{release}
+Requires:       perl-Test-Harness
+
+%description tests
+Tests from %{name}. Execute them
+with "%{_libexecdir}/%{name}/test".
+
 %prep
-%setup -q -n TermReadKey-%{version} 
+%autosetup -p1 -n TermReadKey-%{version}
+# Help generators to recognize Perl scripts
+for F in t/*.t; do
+    perl -i -MConfig -ple 'print $Config{startperl} if $. == 1 && !s{\A#!.*perl\b}{$Config{startperl}}' "$F"
+    chmod +x "$F"
+done
 
 %build
 CFLAGS="%{optflags}" perl Makefile.PL INSTALLDIRS=vendor NO_PACKLIST=1 NO_PERLLOCAL=1
@@ -54,18 +66,78 @@ CFLAGS="%{optflags}" perl Makefile.PL INSTALLDIRS=vendor NO_PACKLIST=1 NO_PERLLO
 find %{buildroot} -type f -name '*.bs' -a -size 0 -delete
 %{_fixperms} %{buildroot}/*
 
+# Install tests
+mkdir -p %{buildroot}%{_libexecdir}/%{name}
+cp -a t %{buildroot}%{_libexecdir}/%{name}
+cat > %{buildroot}%{_libexecdir}/%{name}/test << 'EOF'
+#!/bin/sh
+cd %{_libexecdir}/%{name} && exec prove -I . -j "$(getconf _NPROCESSORS_ONLN)"
+EOF
+chmod +x %{buildroot}%{_libexecdir}/%{name}/test
+
 %check
 make test
 
 %files
 %doc Changes example README
-%{perl_vendorarch}/*
-%{perl_vendorarch}/auto/*
-%{_mandir}/man3/*
+%{perl_vendorarch}/Term*
+%{perl_vendorarch}/auto/Term*
+%{_mandir}/man3/Term::ReadKey*
+
+%files tests
+%{_libexecdir}/%{name}
 
 %changelog
-* Fri Oct 15 2021 Pawel Winogrodzki <pawelwi@microsoft.com> - 2.38-7
-- Initial CBL-Mariner import from Fedora 32 (license: MIT).
+* Fri Jul 19 2024 Fedora Release Engineering <releng@fedoraproject.org> - 2.38-23
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_41_Mass_Rebuild
+
+* Mon Jun 10 2024 Jitka Plesnikova <jplesnik@redhat.com> - 2.38-22
+- Perl 5.40 rebuild
+
+* Thu Feb 01 2024 Jitka Plesnikova <jplesnik@redhat.com> - 2.38-21
+- Package tests
+
+* Thu Jan 25 2024 Fedora Release Engineering <releng@fedoraproject.org> - 2.38-20
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Sun Jan 21 2024 Fedora Release Engineering <releng@fedoraproject.org> - 2.38-19
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Fri Jul 21 2023 Fedora Release Engineering <releng@fedoraproject.org> - 2.38-18
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_39_Mass_Rebuild
+
+* Tue Jul 11 2023 Jitka Plesnikova <jplesnik@redhat.com> - 2.38-17
+- Perl 5.38 rebuild
+
+* Fri Jan 20 2023 Fedora Release Engineering <releng@fedoraproject.org> - 2.38-16
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_38_Mass_Rebuild
+
+* Fri Nov 25 2022 Florian Weimer <fweimer@redhat.com> - 2.38-15
+- Port Configure.pm to C99
+
+* Fri Jul 22 2022 Fedora Release Engineering <releng@fedoraproject.org> - 2.38-14
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_37_Mass_Rebuild
+
+* Mon May 30 2022 Jitka Plesnikova <jplesnik@redhat.com> - 2.38-13
+- Perl 5.36 rebuild
+
+* Fri Jan 21 2022 Fedora Release Engineering <releng@fedoraproject.org> - 2.38-12
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_36_Mass_Rebuild
+
+* Fri Jul 23 2021 Fedora Release Engineering <releng@fedoraproject.org> - 2.38-11
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_35_Mass_Rebuild
+
+* Fri May 21 2021 Jitka Plesnikova <jplesnik@redhat.com> - 2.38-10
+- Perl 5.34 rebuild
+
+* Wed Jan 27 2021 Fedora Release Engineering <releng@fedoraproject.org> - 2.38-9
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_34_Mass_Rebuild
+
+* Tue Jul 28 2020 Fedora Release Engineering <releng@fedoraproject.org> - 2.38-8
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_33_Mass_Rebuild
+
+* Mon Jun 22 2020 Jitka Plesnikova <jplesnik@redhat.com> - 2.38-7
+- Perl 5.32 rebuild
 
 * Thu Feb 06 2020 Tom Stellard <tstellar@redhat.com> - 2.38-6
 - Spec file cleanups: Use make_build and make_install macros

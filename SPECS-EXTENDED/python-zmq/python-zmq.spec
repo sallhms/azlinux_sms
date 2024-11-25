@@ -1,169 +1,254 @@
-Vendor:         Microsoft Corporation
-Distribution:   Azure Linux
-# we don't want to provide private python extension libs in python3 dirs
-%global __provides_exclude_from ^%{python3_sitearch}/.*\\.so$
+## START: Set by rpmautospec
+## (rpmautospec version 0.6.3)
+## RPMAUTOSPEC: autorelease, autochangelog
+%define autorelease(e:s:pb:n) %{?-p:0.}%{lua:
+    release_number = 11;
+    base_release_number = tonumber(rpm.expand("%{?-b*}%{!?-b:1}"));
+    print(release_number + base_release_number - 1);
+}%{?-e:.%{-e*}}%{?-s:.%{-s*}}%{!?-n:%{?dist}}
+## END: Set by rpmautospec
 
-%global checkout b58cb3a2ee8baaab543729e398fc1cde25ff68c3
-
-%global srcname pyzmq
-%global modname zmq
-
-%global run_tests 0
-
-Name:           python-zmq
-Version:        18.1.0
-Release:        4%{?dist}
-Summary:        Software library for fast, message-based applications
-
-License:        LGPLv3+ and ASL 2.0 and BSD
-URL:            http://www.zeromq.org/bindings:python
-# VCS:          git:http://github.com/zeromq/pyzmq.git
-# git checkout with the commands:
-# git clone http://github.com/zeromq/pyzmq.git pyzmq.git
-# cd pyzmq.git
-# git archive --format=tar --prefix=pyzmq-%%{version}/ %%{checkout} | xz -z --force - > pyzmq-%%{version}.tar.xz
-Source0:        https://github.com/zeromq/pyzmq/archive/v%{version}.tar.gz#/pyzmq-%{version}.tar.gz
-
-Provides:       python%{python3_pkgversion}-pyzmq = %{version}
-BuildRequires:  gcc
-BuildRequires:  chrpath
-BuildRequires:  %{_bindir}/pathfix.py
-
-BuildRequires:  zeromq-devel
-
-# For some tests
-# czmq currently FTBFS, so enable it some time later
-#BuildRequires:  czmq-devel
-
-BuildRequires:  python%{python3_pkgversion}-devel
-BuildRequires:  python%{python3_pkgversion}-setuptools
-BuildRequires:  python%{python3_pkgversion}-Cython
-%if 0%{?run_tests}
-BuildRequires:  python%{python3_pkgversion}-pytest
-BuildRequires:  python%{python3_pkgversion}-tornado
-%endif
-
-
-%description
+%global common_description %{expand:
 The 0MQ lightweight messaging kernel is a library which extends the
 standard socket interfaces with features traditionally provided by
 specialized messaging middle-ware products. 0MQ sockets provide an
 abstraction of asynchronous message queues, multiple messaging
 patterns, message filtering (subscriptions), seamless access to
-multiple transport protocols and more.
+multiple transport protocols and more.}
 
-This package contains the python bindings.
+Name:           python-zmq
+Version:        25.1.1
+Release:        %autorelease
+Summary:        Software library for fast, message-based applications
+
+License:        MPLv2.0 and ASL 2.0 and BSD
+URL:            https://zeromq.org/languages/python/
+Source0:        %{pypi_source pyzmq}
+
+# Python 3.13 compatibility
+Patch:          https://github.com/zeromq/pyzmq/pull/1961.patch
+
+BuildRequires:  gcc
+
+BuildRequires:  pkgconfig(libzmq)
+
+BuildRequires:  python%{python3_pkgversion}-devel
+BuildRequires:  python%{python3_pkgversion}-pytest
+BuildRequires:  python%{python3_pkgversion}-pytest-asyncio
+BuildRequires:  python%{python3_pkgversion}-tornado
+BuildRequires:  python%{python3_pkgversion}-numpy
+
+# The gevent tests are automatically skipped when gevent is not installed.
+# When bootstrapping new Python versions, gevent is often not available until very late.
+# This bcond allows to ship zmq without gevent when needed.
+%bcond gevent 1
+%if %{with gevent}
+BuildRequires:  python%{python3_pkgversion}-gevent
+%endif
+
+%description %{common_description}
 
 
 %package -n python%{python3_pkgversion}-zmq
 Summary:        %{summary}
-License:        LGPLv3+
-%{?python_provide:%python_provide python%{python3_pkgversion}-%{modname}}
-%description -n python%{python3_pkgversion}-zmq
-The 0MQ lightweight messaging kernel is a library which extends the
-standard socket interfaces with features traditionally provided by
-specialized messaging middle-ware products. 0MQ sockets provide an
-abstraction of asynchronous message queues, multiple messaging
-patterns, message filtering (subscriptions), seamless access to
-multiple transport protocols and more.
+License:        MPL-2.0
+%py_provides    python%{python3_pkgversion}-pyzmq
+
+%description -n python%{python3_pkgversion}-zmq %{common_description}
 
 This package contains the python bindings.
 
 
 %package -n python%{python3_pkgversion}-zmq-tests
 Summary:        %{summary}, testsuite
-License:        LGPLv3+
+License:        MPL-2.0
 Requires:       python%{python3_pkgversion}-zmq = %{version}-%{release}
-%{?python_provide:%python_provide python%{python3_pkgversion}-%{modname}-tests}
-%description -n python%{python3_pkgversion}-zmq-tests
-The 0MQ lightweight messaging kernel is a library which extends the
-standard socket interfaces with features traditionally provided by
-specialized messaging middle-ware products. 0MQ sockets provide an
-abstraction of asynchronous message queues, multiple messaging
-patterns, message filtering (subscriptions), seamless access to
-multiple transport protocols and more.
+%py_provides    python%{python3_pkgversion}-pyzmq-tests
+
+%description -n python%{python3_pkgversion}-zmq-tests %{common_description}
 
 This package contains the testsuite for the python bindings.
 
 
 %prep
-%setup -q -n %{srcname}-%{version}
+%autosetup -p1 -n pyzmq-%{version}
+
+# Upstream is testing with cython 3 on 3.12
+sed -i -e '/cython>=3/d' pyproject.toml test-requirements.txt
+sed -i -e '/min_cython_version/s/"3.*"/"0.29"/' setup.py
 
 # remove bundled libraries
 rm -rf bundled
 
-# forcibly regenerate the Cython-generated .c files:
+# remove the Cython .c files in order to regenerate them:
 find zmq -name "*.c" -delete
-%{__python3} setup.py cython
 
 # remove shebangs
-for lib in zmq/eventloop/*.py; do
-    sed '/\/usr\/bin\/env/d' $lib > $lib.new &&
-    touch -r $lib $lib.new &&
-    mv $lib.new $lib
-done
+grep -lr "^#\!/usr/bin/env python" | xargs sed -i "1d"
 
 # remove excecutable bits
-chmod -x examples/pubsub/topics_pub.py
-chmod -x examples/pubsub/topics_sub.py
+find . -type f -executable | xargs chmod -x
 
-# delete hidden files
-#find examples -name '.*' | xargs rm -v
-
+%generate_buildrequires
+%pyproject_buildrequires
 
 %build
-%py3_build
-
+%pyproject_wheel
 
 %install
-%global RPATH /zmq/{backend/cython,devices}
-%py3_install
-pathfix.py -pn -i %{__python3} %{buildroot}%{python3_sitearch}
-
+%pyproject_install
+%pyproject_save_files zmq
 
 %check
-%if 0%{?run_tests}
-    # Make sure we import from the install directory
-    #rm zmq/__*.py
-    PYTHONPATH=%{buildroot}%{python3_sitearch} \
-        %{__python3} setup.py test
+# to avoid partially initialized zmq module from cwd
+# test_draft seems to get incorrectly run - https://github.com/zeromq/pyzmq/issues/1853
+cd %{_topdir}
+%pytest --pyargs zmq -v --asyncio-mode auto \
+%ifarch ppc64le
+-k "not (test_draft or test_green_device or (Green and (test_raw or test_timeout or test_poll)))"  # this crashes on Python 3.12, TODO investigate
+%else
+-k "not test_draft"
 %endif
 
 
-%files -n python%{python3_pkgversion}-zmq
-%license COPYING.*
+%files -n python%{python3_pkgversion}-zmq -f %{pyproject_files}
 %doc README.md
-# examples/
-%{python3_sitearch}/%{srcname}-*.egg-info
-%{python3_sitearch}/zmq/
 %exclude %{python3_sitearch}/zmq/tests
 
 %files -n python%{python3_pkgversion}-zmq-tests
-%{python3_sitearch}/zmq/tests/
+%{python3_sitearch}/zmq/tests
 
 
 %changelog
-* Fri Oct 15 2021 Pawel Winogrodzki <pawelwi@microsoft.com> - 18.1.0-4
-- Initial CBL-Mariner import from Fedora 32 (license: MIT).
+## START: Generated by rpmautospec
+* Sat Jun 08 2024 Python Maint <python-maint@redhat.com> - 25.1.1-11
+- Rebuilt for Python 3.13
 
-* Thu Jan 30 2020 Fedora Release Engineering <releng@fedoraproject.org> - 18.1.0-3
+* Sat Jun 08 2024 Python Maint <python-maint@redhat.com> - 25.1.1-10
+- Bootstrap for Python 3.13
+
+* Sat Apr 13 2024 Miroslav Suchý <msuchy@redhat.com> - 25.1.1-9
+- convert MPLv2.0 license to SPDX
+
+* Tue Mar 12 2024 Miro Hrončok <miro@hroncok.cz> - 25.1.1-8
+- Python 3.13 compatibility
+
+* Sun Feb 18 2024 Orion Poplawski <orion@nwra.com> - 25.1.1-6
+- Ignore test_draft failures
+
+* Fri Jan 26 2024 Fedora Release Engineering <releng@fedoraproject.org> - 25.1.1-5
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Mon Jan 22 2024 Fedora Release Engineering <releng@fedoraproject.org> - 25.1.1-4
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Sun Oct 22 2023 Denis Arnaud <denis.arnaud_fedora@m4x.org> - 25.1.1-3
+- Fixed the ZeroMQ dependency
+
+* Sun Oct 22 2023 Denis Arnaud <denis.arnaud_fedora@m4x.org> - 25.1.1-2
+- Upstream upgrade to v25.1.1
+
+* Sun Oct 22 2023 Denis Arnaud <denis.arnaud_fedora@m4x.org> - 25.1.1-1
+- Build for ZeroMQ 4.3.5
+
+* Fri Jul 21 2023 Fedora Release Engineering <releng@fedoraproject.org> - 25.1.0-3
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_39_Mass_Rebuild
+
+* Wed Jun 28 2023 Miro Hrončok <miro@hroncok.cz> - 25.1.0-2
+- Temporarily deselect tests crashing on ppc64le to unblock the Py3.12
+  rebuild
+
+* Wed Jun 28 2023 Orion Poplawski <orion@nwra.com> - 25.1.0-1
+- Update to 25.1.0
+
+* Thu Jun 22 2023 Python Maint <python-maint@redhat.com> - 24.0.1-3
+- Rebuilt for Python 3.12
+
+* Fri Jan 20 2023 Fedora Release Engineering <releng@fedoraproject.org> - 24.0.1-2
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_38_Mass_Rebuild
+
+* Sun Jan 08 2023 Kevin Fenzi <kevin@scrye.com> - 24.0.1-1
+- Update to 24.0.1. Fixes rhbz#2128693
+
+* Sun Sep 18 2022 Kevin Fenzi <kevin@scrye.com> - 24.0.0-1
+- Update to 24.0.0. Fixes rhbz#2127189
+
+* Wed Aug 03 2022 Miro Hrončok <miro@hroncok.cz> - 23.2.0-3
+- Remove old cruft
+
+* Wed Aug 03 2022 Miro Hrončok <miro@hroncok.cz> - 23.2.0-2
+- Run the tests
+
+* Wed Aug 03 2022 Charalampos Stratakis <cstratak@redhat.com> - 23.2.0-1
+- Update to 23.2.0
+
+* Fri Jul 22 2022 Fedora Release Engineering <releng@fedoraproject.org> - 22.3.0-4
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_37_Mass_Rebuild
+
+* Mon Jun 13 2022 Python Maint <python-maint@redhat.com> - 22.3.0-3
+- Rebuilt for Python 3.11
+
+* Fri Jan 21 2022 Fedora Release Engineering <releng@fedoraproject.org> - 22.3.0-2
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_36_Mass_Rebuild
+
+* Sun Jan 09 2022 Kevin Fenzi <kevin@scrye.com> - 22.3.0-1
+- Update to 22.3.0. Fixes rhbz#2004837
+
+* Sun Aug 08 2021 Kevin Fenzi <kevin@scrye.com> - 22.2.1-1
+- Update to 22.2.1. Fixes rhbz#1989975
+
+* Fri Jul 23 2021 Fedora Release Engineering <releng@fedoraproject.org> - 22.0.3-3
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_35_Mass_Rebuild
+
+* Thu Jun 03 2021 Python Maint <python-maint@redhat.com> - 22.0.3-2
+- Rebuilt for Python 3.10
+
+* Sat Feb 13 2021 Kevin Fenzi <kevin@scrye.com> - 22.0.3-1
+- Update to 22.0.3. Fixes rhbz#1928104
+
+* Wed Feb 03 2021 Kevin Fenzi <kevin@scrye.com> - 22.0.2-1
+- Update to 22.0.2. Fixes rhbz#1922110
+
+* Fri Jan 29 2021 Kevin Fenzi <kevin@scrye.com> - 21.0.2-1
+- Update to 21.0.2. Fixes rhbz#1920351
+
+* Wed Jan 27 2021 Fedora Release Engineering <releng@fedoraproject.org> - 21.0.0-2
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_34_Mass_Rebuild
+
+* Sat Jan 16 2021 Kevin Fenzi <kevin@scrye.com> - 21.0.0-1
+- Update to 21.0.0. Fixes rhbz#1916136
+
+* Fri Jan 01 2021 Kevin Fenzi <kevin@scrye.com> - 20.0.0-1
+- Update to 20.0.0. Fixes rhbz#1832893
+
+* Tue Nov 24 2020 Joel Capitao <jcapitao@redhat.com> - 19.0.2-1
+- Update to 19.0.2
+
+* Wed Jul 29 2020 Fedora Release Engineering <releng@fedoraproject.org> - 19.0.0-3
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_33_Mass_Rebuild
+
+* Sat May 23 2020 Miro Hrončok <miro@hroncok.cz> - 19.0.0-2
+- Rebuilt for Python 3.9
+
+* Sat Apr 04 2020 Carl George <carl@george.computer> - 19.0.0-1
+- Update to 19.0.0
+
+* Thu Jan 30 2020 Fedora Release Engineering <releng@fedoraproject.org> - 18.1.0-4
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_32_Mass_Rebuild
 
-* Tue Jan 14 2020 Jochen Breuer <jbreuer@suse.de> - 18.1.0-3
-- Providing python-pyzmq, since some packages are still relying on that.
-  See: https://bugzilla.redhat.com/show_bug.cgi?id=1789889
+* Tue Jan 14 2020 Jochen Breuer <brejoc@gmail.com> - 18.1.0-3
+- Adding python-pyzqm in provides
 
-* Fri Nov 29 2019 Miro Hrončok <mhroncok@redhat.com> - 18.1.0-2
+* Fri Nov 29 2019 Miro Hrončok <miro@hroncok.cz> - 18.1.0-2
 - Subpackages python2-zmq, python2-zmq-test have been removed
-  See https://fedoraproject.org/wiki/Changes/RetirePython2
 
 * Sun Oct 06 2019 Kevin Fenzi <kevin@scrye.com> - 18.1.0-1
 - Update to 18.1.0. Fixes bug #1742606
 
-* Thu Oct 03 2019 Miro Hrončok <mhroncok@redhat.com> - 18.0.2-4
+* Thu Oct 03 2019 Miro Hrončok <miro@hroncok.cz> - 18.0.2-4
 - Rebuilt for Python 3.8.0rc1 (#1748018)
 
-* Fri Aug 16 2019 Miro Hrončok <mhroncok@redhat.com> - 18.0.2-3
+* Fri Aug 16 2019 Miro Hrončok <miro@hroncok.cz> - 18.0.2-3
 - Rebuilt for Python 3.8
 
 * Fri Jul 26 2019 Fedora Release Engineering <releng@fedoraproject.org> - 18.0.2-2
@@ -172,31 +257,42 @@ pathfix.py -pn -i %{__python3} %{buildroot}%{python3_sitearch}
 * Sun Jun 30 2019 Kevin Fenzi <kevin@scrye.com> - 18.0.2-1
 - Update to 18.0.2. Fixes bug #1724706
 
+* Tue May 14 2019 Miro Hrončok <miro@hroncok.cz> - 18.0.1-2
+- Regenerate Cython files
+
 * Mon Apr 29 2019 Kevin Fenzi <kevin@scrye.com> - 18.0.1-1
 - Update to 18.0.1. Fixes bug #1601128
 
-* Sat Feb 02 2019 Fedora Release Engineering <releng@fedoraproject.org> - 17.0.0-4
+* Tue Feb 12 2019 Miro Hrončok <miro@hroncok.cz> - 17.0.0-7
+- https://fedoraproject.org/wiki/Changes/Python_Extension_Flags
+
+* Sat Feb 02 2019 Fedora Release Engineering <releng@fedoraproject.org> - 17.0.0-6
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_30_Mass_Rebuild
 
-* Sat Jul 14 2018 Fedora Release Engineering <releng@fedoraproject.org> - 17.0.0-3
+* Mon Jan 28 2019 Igor Gnatenko <ignatenkobrain@fedoraproject.org> - 17.0.0-5
+- Remove obsolete Group tag
+
+* Sat Jul 14 2018 Fedora Release Engineering <releng@fedoraproject.org> - 17.0.0-4
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_29_Mass_Rebuild
 
-* Sun Jun 17 2018 Miro Hrončok <mhroncok@redhat.com> - 17.0.0-2
+* Tue Jul 10 2018 Igor Gnatenko <ignatenkobrain@fedoraproject.org> - 17.0.0-3
+- add BuildRequires: gcc
+
+* Sun Jun 17 2018 Miro Hrončok <miro@hroncok.cz> - 17.0.0-2
 - Rebuilt for Python 3.7
 
-* Sat May 12 2018 Miro Hrončok <mhroncok@redhat.com> - 17.0.0-1
-- Update to 17.0.0 (#1538381)
-- Fix shebangs
+* Sat May 12 2018 Miro Hrončok <miro@hroncok.cz> - 17.0.0-1
+- Update to 17.0.0 (#1538381), fix shebangs
 
 * Fri Feb 09 2018 Fedora Release Engineering <releng@fedoraproject.org> - 16.0.2-7
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_28_Mass_Rebuild
 
-* Wed Jan 31 2018 Iryna Shcherbina <ishcherb@redhat.com> - 16.0.2-6
+* Wed Jan 31 2018 Iryna Shcherbina <shcherbina.iryna@gmail.com> - 16.0.2-6
 - Update Python 2 dependency declarations to new packaging standards
-  (See https://fedoraproject.org/wiki/FinalizingFedoraSwitchtoPython3)
 
 * Thu Aug 03 2017 Fedora Release Engineering <releng@fedoraproject.org> - 16.0.2-5
-- Rebuilt for https://fedoraproject.org/wiki/Fedora_27_Binutils_Mass_Rebuild
+- Rebuilt for
+  https://fedoraproject.org/wiki/Fedora_27_Binutils_Mass_Rebuild
 
 * Thu Jul 27 2017 Fedora Release Engineering <releng@fedoraproject.org> - 16.0.2-4
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_27_Mass_Rebuild
@@ -204,163 +300,183 @@ pathfix.py -pn -i %{__python3} %{buildroot}%{python3_sitearch}
 * Sat Feb 11 2017 Fedora Release Engineering <releng@fedoraproject.org> - 16.0.2-3
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_26_Mass_Rebuild
 
-* Mon Dec 19 2016 Miro Hrončok <mhroncok@redhat.com> - 16.0.2-2
+* Mon Dec 19 2016 Miro Hrončok <miro@hroncok.cz> - 16.0.2-2
 - Rebuild for Python 3.6
 
 * Wed Nov 23 2016 Kevin Fenzi <kevin@scrye.com> - 16.0.2-1
 - Update to 16.0.2. Fixes bug #1397615
 
-* Sun Nov 13 2016 Thomas Spura <tomspur@fedoraproject.org> - 16.0.1-1
-- update to 16.0.1
-- build twice (for installing and testing in-place)
+* Sun Nov 13 2016 Thomas Spura <thomas.spura@gmail.com> - 16.0.1-1
+- Update to 16.0.1
+- Build twice: once for installing later and once for in-place testing:
+  Testing in-place and installing conflicts (you seem to be able to do only
+  one of them at the same time). Building twice seems to fix this
 
-* Tue Jul 19 2016 Fedora Release Engineering <rel-eng@lists.fedoraproject.org> - 15.3.0-2
-- https://fedoraproject.org/wiki/Changes/Automatic_Provides_for_Python_RPM_Packages
+* Tue Jul 19 2016 Fedora Release Engineering <releng@fedoraproject.org> - 15.3.0-2
+- https://fedoraproject.org/wiki/Changes/Automatic_Provides_for_Python_RPM_
+  Packages
 
 * Tue Jul 12 2016 Orion Poplawski <orion@cora.nwra.com> - 15.3.0-1
 - Update to 15.3.0
 
-* Tue Jul 12 2016 Orion Poplawski <orion@cora.nwra.com> - 14.7.0-7
+* Tue Jul 12 2016 Orion Poplawski <orion@cora.nwra.com> - 14.7.0-13
 - Use modern provides filtering
 
-* Thu Feb 04 2016 Fedora Release Engineering <releng@fedoraproject.org> - 14.7.0-6
+* Thu Feb 04 2016 Fedora Release Engineering <releng@fedoraproject.org> - 14.7.0-12
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_24_Mass_Rebuild
 
-* Mon Nov 16 2015 Thomas Spura <tomspur@fedoraproject.org> - 14.7.0-5
+* Mon Nov 16 2015 Thomas Spura <thomas.spura@gmail.com> - 14.7.0-11
 - Use setupegg.py for building/installing to have an unzip'ed egg
 
-* Tue Nov 10 2015 Fedora Release Engineering <rel-eng@lists.fedoraproject.org> - 14.7.0-4
+* Tue Nov 10 2015 Peter Robinson <pbrobinson@fedoraproject.org> - 14.7.0-10
 - Rebuilt for https://fedoraproject.org/wiki/Changes/python3.5
 
-* Fri Oct 16 2015 Thomas Spura <tomspur@fedoraproject.org> - 14.7.0-3
+* Fri Oct 16 2015 Thomas Spura <thomas.spura@gmail.com> - 14.7.0-9
 - rebuilt to pick up new obsoletes/provides
 
-* Wed Oct 14 2015 Thomas Spura <tomspur@fedoraproject.org> - 14.7.0-2
-- Use python_provide and py_build macros
-- Cleanup spec
+* Wed Oct 14 2015 Thomas Spura <thomas.spura@gmail.com> - 14.7.0-8
+- Close %%if properly
 
-* Mon Jun 29 2015 Ralph Bean <rbean@redhat.com> - 14.7.0-2
-- Support python34 on EPEL7.
+* Wed Oct 14 2015 Thomas Spura <thomas.spura@gmail.com> - 14.7.0-7
+- Disable python3 tests again as they are randomly hanging on koji
 
-* Tue Jun 23 2015 Thomas Spura <tomspur@fedoraproject.org> - 14.7.0-1
-- update to 14.7.0
+* Wed Oct 14 2015 Thomas Spura <thomas.spura@gmail.com> - 14.7.0-6
+- Cleanup spec and use py_build macros
+
+* Wed Oct 14 2015 Thomas Spura <thomas.spura@gmail.com> - 14.7.0-5
+- use python_provide macro
+
+* Tue Sep 01 2015 Ralph Bean <rbean@redhat.com> - 14.7.0-4
+- Get ready to support python34 on EPEL7.
+
+* Tue Jun 23 2015 Thomas Spura <thomas.spura@gmail.com> - 14.7.0-3
 - temporarily disable python3 testsuite as it hangs on koji
 
-* Thu Jun 18 2015 Fedora Release Engineering <rel-eng@lists.fedoraproject.org> - 14.4.1-2
+* Tue Jun 23 2015 Thomas Spura <thomas.spura@gmail.com> - 14.7.0-2
+- czmq currently FTBFS, so enable it some time later
+
+* Tue Jun 23 2015 Thomas Spura <thomas.spura@gmail.com> - 14.7.0-1
+- update to 14.7.0
+
+* Thu Jun 18 2015 Dennis Gilmore <dennis@ausil.us> - 14.4.1-2
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_23_Mass_Rebuild
 
-* Mon Nov 17 2014 Thomas Spura <tomspur@fedoraproject.org> - 14.4.1-1
-- update to 14.4.1
-- build against zeromq-4
+* Mon Nov 17 2014 Thomas Spura <thomas.spura@gmail.com> - 14.4.1-1
+- Update to 14.4.1 and rebuild against zeromq-4
 
-* Wed Aug 27 2014 Thomas Spura <tomspur@fedoraproject.org> - 14.3.1-1
+* Wed Aug 27 2014 Thomas Spura <thomas.spura@gmail.com> - 14.3.1-1
 - update to 14.3.1
 
-* Sun Aug 17 2014 Fedora Release Engineering <rel-eng@lists.fedoraproject.org> - 13.0.2-4
+* Sun Aug 17 2014 Peter Robinson <pbrobinson@fedoraproject.org> - 13.0.2-4
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_21_22_Mass_Rebuild
 
-* Sun Jun 08 2014 Fedora Release Engineering <rel-eng@lists.fedoraproject.org> - 13.0.2-3
+* Sun Jun 08 2014 Dennis Gilmore <dennis@ausil.us> - 13.0.2-3
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_21_Mass_Rebuild
 
-* Wed May 14 2014 Bohuslav Kabrda <bkabrda@redhat.com> - 13.0.2-2
+* Fri May 16 2014 Slavek Kabrda <bkabrda@redhat.com> - 13.0.2-2
 - Rebuilt for https://fedoraproject.org/wiki/Changes/Python_3.4
 
-* Mon Aug  5 2013 Thomas Spura <tomspur@fedoraproject.org> - 13.0.2-1
+* Mon Aug 05 2013 Thomas Spura <thomas.spura@gmail.com> - 13.0.2-1
+- Fix changelog/release from last commit
+
+* Mon Aug 05 2013 Thomas Spura <thomas.spura@gmail.com> - 13.0.0-3
 - update to new version (fixes FTBFS)
 
-* Sun Aug 04 2013 Fedora Release Engineering <rel-eng@lists.fedoraproject.org> - 13.0.0-2
+* Sun Aug 04 2013 Dennis Gilmore <dennis@ausil.us> - 13.0.0-2
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_20_Mass_Rebuild
 
-* Wed Mar 20 2013 Thomas Spura <tomspur@fedoraproject.org> - 13.0.0-1
+* Wed Mar 20 2013 Thomas Spura <thomas.spura@gmail.com> - 13.0.0-1
 - update to 13.0.0
-- add BSD to license list
 
-* Thu Feb 14 2013 Fedora Release Engineering <rel-eng@lists.fedoraproject.org> - 2.2.0.1-2
+* Thu Feb 14 2013 Dennis Gilmore <dennis@ausil.us> - 2.2.0.1-4
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_19_Mass_Rebuild
 
-* Mon Oct 15 2012 Thomas Spura <tomspur@fedoraproject.org> - 2.2.0.1-1
-- update to 2.2.0.1
-- move to BR zeromq3
-- not all *.c files may be deleted, when receneration of .c files by Cython
-- remove bundled folder explicitely
+* Mon Oct 15 2012 Thomas Spura <thomas.spura@gmail.com> - 2.2.0.1-3
+- not all *.c files may be deleted, when receneration of .c files by
+  Cython/remove bundled folder explicitely
 
-* Sat Aug 04 2012 David Malcolm <dmalcolm@redhat.com> - 2.2.0-5
+* Mon Oct 15 2012 Thomas Spura <thomas.spura@gmail.com> - 2.2.0.1-2
+- Fix date in changelog
+
+* Mon Oct 15 2012 Thomas Spura <thomas.spura@gmail.com> - 2.2.0.1-1
+- update to 2.2.0.1 and move to BR zeromq3
+
+* Sun Aug 05 2012 David Malcolm <dmalcolm@redhat.com> - 2.2.0-5
 - rebuild for https://fedoraproject.org/wiki/Features/Python_3.3
 
-* Fri Aug  3 2012 David Malcolm <dmalcolm@redhat.com> - 2.2.0-4
+* Fri Aug 03 2012 David Malcolm <dmalcolm@redhat.com> - 2.2.0-4
 - force regeneration of .c files by Cython (needed for python 3.3 support)
 
-* Fri Aug  3 2012 David Malcolm <dmalcolm@redhat.com> - 2.2.0-3
+* Fri Aug 03 2012 David Malcolm <dmalcolm@redhat.com> - 2.2.0-3
 - remove rhel logic from with_python3 conditional
 
-* Sat Jul 21 2012 Fedora Release Engineering <rel-eng@lists.fedoraproject.org> - 2.2.0-2
+* Sat Jul 21 2012 Dennis Gilmore <dennis@ausil.us> - 2.2.0-2
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_18_Mass_Rebuild
 
-* Thu Apr 26 2012 Thomas Spura <tomspur@fedoraproject.org> - 2.2.0-1
+* Thu Apr 26 2012 Thomas Spura <thomas.spura@gmail.com> - 2.2.0-1
 - update to 2.2.0
 
-* Wed Mar  7 2012 Thomas Spura <tomspur@fedoraproject.org> - 2.1.11-1
+* Wed Mar 07 2012 Thomas Spura <thomas.spura@gmail.com> - 2.1.11-1
 - update to new version
 
-* Sat Jan 14 2012 Fedora Release Engineering <rel-eng@lists.fedoraproject.org> - 2.1.9-4
+* Sat Jan 14 2012 Dennis Gilmore <dennis@ausil.us> - 2.1.9-6
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_17_Mass_Rebuild
 
-* Wed Dec 14 2011 Thomas Spura <tomspur@fedoraproject.org> - 2.1.9-3
-- tests package requires main package
-- filter python3 libs
+* Wed Dec 14 2011 Thomas Spura <thomas.spura@gmail.com> - 2.1.9-5
+- tests package requires main package - filter python3 libs
 
-* Thu Dec  8 2011 Thomas Spura <tomspur@fedoraproject.org> - 2.1.9-2
-- use proper buildroot macro
+* Thu Dec 08 2011 Thomas Spura <thomas.spura@gmail.com> - 2.1.9-4
 - don't include tests twice
 
-* Wed Sep 21 2011 Thomas Spura <tomspur@fedoraproject.org> - 2.1.9-1
-- update to new version
-- run testsuite on python3
+* Thu Dec 08 2011 Thomas Spura <thomas.spura@gmail.com> - 2.1.9-3
+- also bump the release
 
-* Sun Jul 31 2011 Thomas Spura <tomspur@fedoraproject.org> - 2.1.4-2
-- don't delete the tests, needed by ipython-tests on runtime
-- don't use _sourcedir macro
+* Thu Dec 08 2011 Thomas Spura <thomas.spura@gmail.com> - 2.1.9-2
+- use proper buildroot macro
 
-* Wed Apr  6 2011 Thomas Spura <tomspur@fedoraproject.org> - 2.1.4-1
-- update to new version (#690199)
+* Wed Sep 21 2011 Thomas Spura <thomas.spura@gmail.com> - 2.1.9-1
+- update to new version - run testsuite on python3
+
+* Sun Jul 31 2011 Thomas Spura <thomas.spura@gmail.com> - 2.1.4-4
+- don't delete the tests, needed by ipython-tests on runtime - don't use
+  _sourcedir macro
+
+* Wed Apr 06 2011 Thomas Spura <tomspur@fedoraproject.org> - 2.1.4-3
+- upload buildutils, fetched from upstream git repo
+
+* Wed Apr 06 2011 Thomas Spura <tomspur@fedoraproject.org> - 2.1.4-2
+- also upload new sources
+
+* Wed Apr 06 2011 Thomas Spura <tomspur@fedoraproject.org> - 2.1.4-1
+- update to new version 2.1.4 (#690199)
 
 * Wed Mar 23 2011 Thomas Spura <tomspur@fedoraproject.org> - 2.1.1-1
-- update to new version (#682201)
+- update to new version
 
-* Wed Feb 09 2011 Fedora Release Engineering <rel-eng@lists.fedoraproject.org> - 2.0.10.1-2
+* Wed Feb 09 2011 Dennis Gilmore <dennis@ausil.us> - 2.0.10.1-2
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_15_Mass_Rebuild
 
 * Sun Jan 30 2011 Thomas Spura <tomspur@fedoraproject.org> - 2.0.10.1-1
-- update to new version (fixes memory leak)
-- no need to run 2to3 on python3 subpackage
+- update to new version (fixes memory leak) - no need to run 2to3 on
+  python3 subpackage
 
-* Thu Jan 13 2011 Thomas Spura <tomspur@fedoraproject.org> - 2.0.10-1
-- update to new version
-- remove patch (is upstream)
-- run tests differently
+* Tue Jan 18 2011 Thomas Spura <tomspur@fedoraproject.org> - 2.0.10-1
+- update to new version - remove patch (is upstream) - run tests
+  differently
 
-* Wed Dec 29 2010 David Malcolm <dmalcolm@redhat.com> - 2.0.8-2
+* Thu Dec 30 2010 David Malcolm <dmalcolm@redhat.com> - 2.0.8-3
 - rebuild for newer python3
 
-* Thu Sep 23 2010 Thomas Spura <tomspur@fedoraproject.org> - 2.0.8-1
-- update to new version to be comply with zeromp
+* Thu Sep 23 2010 Thomas Spura <tomspur@fedoraproject.org> - 2.0.8-2
+- forgot to upload the new sources
 
-* Sun Aug 22 2010 Thomas Spura <tomspur@fedoraproject.org> - 0.1.20100725git18f5d06-4
+* Thu Sep 23 2010 Thomas Spura <tomspur@fedoraproject.org> - 2.0.8-1
+- update to new version to be comply with zeromq
+
+* Sun Aug 22 2010 Thomas Spura <tomspur@fedoraproject.org> - 0.1.20100725git18f5d06-2
 - rebuild with python3.2
   http://lists.fedoraproject.org/pipermail/devel/2010-August/141368.html
 
-* Thu Aug  5 2010 Thomas Spura <tomspur@fedoraproject.org> - 0.1.20100725git18f5d06-3
-- add missing BR for 2to3
-
-* Tue Aug  3 2010 Thomas Spura <tomspur@fedoraproject.org> - 0.1.20100725git18f5d06-2
-- build python3 subpackage
-- rename to from pyzmq to python-zmq
-- change license
-
-* Sun Jul 25 2010 Thomas Spura <tomspur@fedoraproject.org> - 0.1.20100725git18f5d06-1
-- renew git snapshot
-- start from version 0.1 like upstream (not the version from zeromq)
-- remove buildroot / %%clean
-
-* Sat Jun 12 2010 Thomas Spura <tomspur@fedoraproject.org - 2.0.7-1
-- initial package (based on upstreams example one)
+* Mon Aug 16 2010 Thomas Spura <tomspur@fedoraproject.org> - 0.1.20100725git18f5d06-1
+- initial import (#603245)
+## END: Generated by rpmautospec

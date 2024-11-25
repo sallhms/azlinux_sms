@@ -1,26 +1,27 @@
-Summary:        Good-old rdate date and time-setting software
-Name:           openrdate
-Version:        1.2
-Release:        23%{?dist}
-License:        BSD AND BSD WITH advertising
-Vendor:         Microsoft Corporation
-Distribution:   Azure Linux
-URL:            https://sourceforge.net/projects/openrdate
-Source0:        http://downloads.sourceforge.net/%{name}/%{name}-%{version}.tar.gz
-Patch0:         openrdate_sysctl.patch
-BuildRequires:  gcc
-BuildRequires:  make
+Name:		openrdate
+Version:	1.2
+Release:	28%{?dist}
+Summary:	Good-old rdate date and time-setting software
+License:	BSD and BSD with advertising
+URL:		http://sourceforge.net/projects/openrdate
+Source0:	http://downloads.sourceforge.net/%{name}/%{name}-%{version}.tar.gz
 # openrdate-1.2-1 replaces rdate-1.4-24, which does not have active upstream
-Provides:       rdate = %{version}-%{release}
-Obsoletes:      rdate < 1.4-25
+Provides:	rdate = %{version}-%{release}
+Obsoletes:	rdate < 1.4-25
 
+BuildRequires: make
+BuildRequires:  gcc
+
+Patch0:openrdate_sysctl.patch
 %description
 Good-old date- and time-setting rdate software implementing RFC 868
 (inetd time) and RFC 2030 (SNTP/NTP) protocols. An independent package
 of OpenBSD's rdate program.
 
+
 %prep
-%autosetup -p1
+%setup -q
+%patch -P0 -p1
 
 %build
 %configure
@@ -30,15 +31,28 @@ make %{?_smp_mflags}
 make install DESTDIR=%{buildroot}
 
 %files
-%license COPYING
-%doc AUTHORS ChangeLog NEWS README
+%doc AUTHORS ChangeLog COPYING NEWS README
 %{_bindir}/rdate
 %{_mandir}/man8/rdate.8*
 
 %changelog
-* Mon Jan 16 2023 Suresh Thelkar <sthelkar@microsoft.com> - 1.2-23
-- Initial CBL-Mariner import from Fedora 36 (license: MIT)
-- License verified
+* Thu Jul 18 2024 Fedora Release Engineering <releng@fedoraproject.org> - 1.2-28
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_41_Mass_Rebuild
+
+* Thu Jan 25 2024 Fedora Release Engineering <releng@fedoraproject.org> - 1.2-27
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Sun Jan 21 2024 Fedora Release Engineering <releng@fedoraproject.org> - 1.2-26
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Thu Jul 20 2023 Fedora Release Engineering <releng@fedoraproject.org> - 1.2-25
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_39_Mass_Rebuild
+
+* Thu Jan 19 2023 Fedora Release Engineering <releng@fedoraproject.org> - 1.2-24
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_38_Mass_Rebuild
+
+* Fri Jul 22 2022 Fedora Release Engineering <releng@fedoraproject.org> - 1.2-23
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_37_Mass_Rebuild
 
 * Thu Jan 20 2022 Fedora Release Engineering <releng@fedoraproject.org> - 1.2-22
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_36_Mass_Rebuild
@@ -108,3 +122,4 @@ make install DESTDIR=%{buildroot}
 
 * Mon May 27 2013 Honza Horak <hhorak@redhat.com> - 1.2-1
 - Initial packaging
+

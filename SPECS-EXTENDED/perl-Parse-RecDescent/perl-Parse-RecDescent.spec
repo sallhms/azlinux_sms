@@ -1,22 +1,20 @@
-Vendor:         Microsoft Corporation
-Distribution:   Azure Linux
 Name:           perl-Parse-RecDescent
 Version:        1.967015
-Release:        11%{?dist}
+Release:        23%{?dist}
 Summary:        Generate Recursive-Descent Parsers
-License:        (GPL+ or Artistic) and (GPLv2+ or Artistic)
+License:        ( GPL-1.0-or-later OR Artistic-1.0-Perl ) OR ( GPL-2.0-or-later OR Artistic-1.0-Perl )
 # demo/demo_another_Cgrammar.pl:    GPLv2+ or Artistic
 URL:            https://metacpan.org/release/Parse-RecDescent
-Source0:        https://cpan.metacpan.org/authors/id/J/JT/JTBRAUN/Parse-RecDescent-%{version}.tar.gz#/perl-Parse-RecDescent-%{version}.tar.gz
+Source0:        https://cpan.metacpan.org/authors/id/J/JT/JTBRAUN/Parse-RecDescent-%{version}.tar.gz
 Patch0:         Parse-RecDescent-1.967002-utf8.patch
 BuildArch:      noarch
 # Build:
 BuildRequires:  coreutils
 BuildRequires:  findutils
 BuildRequires:  make
-BuildRequires:  perl-interpreter
 BuildRequires:  perl-generators
-BuildRequires:  perl(ExtUtils::MakeMaker) >= 6.58
+BuildRequires:  perl-interpreter
+BuildRequires:  perl(ExtUtils::MakeMaker) >= 6.76
 BuildRequires:  perl(warnings)
 # Run-time
 BuildRequires:  perl(Carp)
@@ -30,7 +28,6 @@ BuildRequires:  perl(Test::More)
 BuildRequires:  perl(Test::Pod) >= 1.14
 BuildRequires:  perl(Test::Warn)
 # Runtime
-Requires:       perl(:MODULE_COMPAT_%(eval "`perl -V:version`"; echo $version))
 Requires:       perl(Data::Dumper)
 
 %description
@@ -56,19 +53,18 @@ provides:
 %setup -q -n Parse-RecDescent-%{version}
 
 # Recode as UTF8
-%patch 0 -p1
+%patch -P0 -p1
 
 # Fix permissions and script interpreters
 chmod -c a-x demo/* tutorial/*
 perl -pi -e 's|^#!\s?/usr/local/bin/perl\b|#!/usr/bin/perl|' demo/*
 
 %build
-perl Makefile.PL INSTALLDIRS=vendor
-make %{?_smp_mflags}
+perl Makefile.PL INSTALLDIRS=vendor NO_PACKLIST=1 NO_PERLLOCAL=1
+%{make_build}
 
 %install
-make pure_install DESTDIR=%{buildroot}
-find %{buildroot} -type f -name .packlist -delete
+%{make_install}
 %{_fixperms} -c %{buildroot}
 
 %check
@@ -80,8 +76,44 @@ make test
 %{_mandir}/man3/Parse::RecDescent.3*
 
 %changelog
-* Fri Oct 15 2021 Pawel Winogrodzki <pawelwi@microsoft.com> - 1.967015-11
-- Initial CBL-Mariner import from Fedora 32 (license: MIT).
+* Fri Jul 19 2024 Fedora Release Engineering <releng@fedoraproject.org> - 1.967015-23
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_41_Mass_Rebuild
+
+* Thu Jan 25 2024 Fedora Release Engineering <releng@fedoraproject.org> - 1.967015-22
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Sun Jan 21 2024 Fedora Release Engineering <releng@fedoraproject.org> - 1.967015-21
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Fri Jul 21 2023 Fedora Release Engineering <releng@fedoraproject.org> - 1.967015-20
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_39_Mass_Rebuild
+
+* Fri Jan 20 2023 Fedora Release Engineering <releng@fedoraproject.org> - 1.967015-19
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_38_Mass_Rebuild
+
+* Fri Jul 22 2022 Fedora Release Engineering <releng@fedoraproject.org> - 1.967015-18
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_37_Mass_Rebuild
+
+* Tue May 31 2022 Jitka Plesnikova <jplesnik@redhat.com> - 1.967015-17
+- Perl 5.36 rebuild
+
+* Fri Jan 21 2022 Fedora Release Engineering <releng@fedoraproject.org> - 1.967015-16
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_36_Mass_Rebuild
+
+* Thu Jul 22 2021 Fedora Release Engineering <releng@fedoraproject.org> - 1.967015-15
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_35_Mass_Rebuild
+
+* Fri May 21 2021 Jitka Plesnikova <jplesnik@redhat.com> - 1.967015-14
+- Perl 5.34 rebuild
+
+* Wed Jan 27 2021 Fedora Release Engineering <releng@fedoraproject.org> - 1.967015-13
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_34_Mass_Rebuild
+
+* Tue Jul 28 2020 Fedora Release Engineering <releng@fedoraproject.org> - 1.967015-12
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_33_Mass_Rebuild
+
+* Tue Jun 23 2020 Jitka Plesnikova <jplesnik@redhat.com> - 1.967015-11
+- Perl 5.32 rebuild
 
 * Thu Jan 30 2020 Fedora Release Engineering <releng@fedoraproject.org> - 1.967015-10
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_32_Mass_Rebuild

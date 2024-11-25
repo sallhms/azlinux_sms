@@ -1,11 +1,10 @@
 Summary:	Library for easy parsing of XMP metadata
 Name:		exempi
-Version:	2.6.1
-Release:	2%{?dist}
-License:	BSD
+Version:	2.6.4
+Release:	6%{?dist}
+License:	BSD-3-Clause
 URL:		http://libopenraw.freedesktop.org/wiki/Exempi
 Source0:	https://gitlab.freedesktop.org/libopenraw/%{name}/-/archive/%{version}/%{name}-%{version}.tar.bz2
-Patch0:		exempi-e23c213-typeinfos.patch
 BuildRequires:	gcc-c++
 BuildRequires:	boost-devel expat-devel zlib-devel pkgconfig
 # Work around for aarch64 support (https://bugzilla.redhat.com/show_bug.cgi?id=925327)
@@ -43,7 +42,13 @@ sed -i 's|^runpath_var=LD_RUN_PATH|runpath_var=DIE_RPATH_DIE|g' libtool
 %make_build
 
 %check
+%ifarch s390x
+# testcore test fails on big endian arches since exempi 2.5.2:
+# https://gitlab.freedesktop.org/libopenraw/exempi/-/issues/23
+make check || [ "$(grep '^FAIL:' exempi/test-suite.log)" = "FAIL: tests/testcore" ]
+%else
 make check
+%endif
 
 %install
 %make_install
@@ -52,7 +57,7 @@ rm -rf %{buildroot}%{_libdir}/*.la
 rm -rf %{buildroot}%{_libdir}/*.a
 
 %files
-%license COPYING LICENSE
+%license COPYING
 %doc AUTHORS ChangeLog README.md
 %{_bindir}/exempi
 %{_libdir}/libexempi.so.8*
@@ -64,15 +69,68 @@ rm -rf %{buildroot}%{_libdir}/*.a
 %{_libdir}/pkgconfig/*.pc
 
 %changelog
-* Tue Aug 16 2022 Olivia Crain <oliviacrain@microsoft.com> - 2.6.1-2
-- Bump to rebuild with zlib 1.2.1-2 (fixes CVE-2022-37434)
+* Wed Jul 17 2024 Fedora Release Engineering <releng@fedoraproject.org> - 2.6.4-6
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_41_Mass_Rebuild
 
-* Thu Mar 03 2022 Pawel Winogrodzki <pawelwi@microsoft.com> - 2.6.1-1
-- Updating to version 2.6.1.
-- License verified.
+* Mon Jan 29 2024 Matej Mužila <mmuzila@redhat.com> - 2.6.4-5
+- migrated to SPDX license
 
-* Fri Oct 15 2021 Pawel Winogrodzki <pawelwi@microsoft.com> - 2.5.1-3
-- Initial CBL-Mariner import from Fedora 32 (license: MIT).
+* Wed Jan 24 2024 Fedora Release Engineering <releng@fedoraproject.org> - 2.6.4-4
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Fri Jan 19 2024 Fedora Release Engineering <releng@fedoraproject.org> - 2.6.4-3
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Wed Jul 19 2023 Fedora Release Engineering <releng@fedoraproject.org> - 2.6.4-2
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_39_Mass_Rebuild
+
+* Mon Jul 10 2023 Nikola Forró <nforro@redhat.com> - 2.6.4-1
+- Update to version 2.6.4
+  Resolves #2221013
+
+* Thu Jan 19 2023 Fedora Release Engineering <releng@fedoraproject.org> - 2.6.3-2
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_38_Mass_Rebuild
+
+* Mon Dec 12 2022 Nikola Forró <nforro@redhat.com> - 2.6.3-1
+- Update to version 2.6.3
+  Resolves #2152330
+
+* Thu Jul 21 2022 Fedora Release Engineering <releng@fedoraproject.org> - 2.6.2-2
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_37_Mass_Rebuild
+
+* Mon Jun 27 2022 Nikola Forró <nforro@redhat.com> - 2.6.2-1
+- Update to version 2.6.2
+  Resolves #2101146
+
+* Mon Feb 14 2022 Nikola Forró <nforro@redhat.com> - 2.6.1-1
+- Update to version 2.6.1
+  Resolves #1850332
+
+* Thu Jan 20 2022 Fedora Release Engineering <releng@fedoraproject.org> - 2.6.0-0.2.20211007gite23c213
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_36_Mass_Rebuild
+
+* Thu Oct 07 2021 Nikola Forró <nforro@redhat.com> - 2.6.0-0.1.20211007gite23c213
+- Update to (unreleased) version 2.6.0 to resolve licensing issues
+  and not to deviate from upstream
+
+* Fri Sep 17 2021 Nikola Forró <nforro@redhat.com> - 2.5.3-0.1.20210917git2062d44
+- Update to (unreleased) version 2.5.3 to resolve licensing issues
+
+* Wed Jul 21 2021 Fedora Release Engineering <releng@fedoraproject.org> - 2.5.1-7
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_35_Mass_Rebuild
+
+* Tue Jan 26 2021 Fedora Release Engineering <releng@fedoraproject.org> - 2.5.1-6
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_34_Mass_Rebuild
+
+* Tue Jul 28 2020 Jeff Law <law@redhat.com> - 2.5.1-5
+- Force C++14 as this code is not C++17 ready
+
+* Mon Jul 27 2020 Fedora Release Engineering <releng@fedoraproject.org> - 2.5.1-4
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_33_Mass_Rebuild
+
+* Tue Jul 14 2020 Tom Stellard <tstellar@redhat.com> - 2.5.1-3
+- Use make macros
+- https://fedoraproject.org/wiki/Changes/UseMakeBuildInstallMacro
 
 * Tue Jan 28 2020 Fedora Release Engineering <releng@fedoraproject.org> - 2.5.1-2
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_32_Mass_Rebuild

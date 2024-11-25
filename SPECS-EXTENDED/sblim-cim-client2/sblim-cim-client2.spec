@@ -1,27 +1,26 @@
-Vendor:         Microsoft Corporation
-Distribution:   Azure Linux
 
 %global project_folder %{name}-%{version}-src
 %global archive_folder build
 
 Name:           sblim-cim-client2
 Version:        2.2.5
-Release:        16%{?dist}
+Release:        30%{?dist}
 Summary:        Java CIM Client library
 
-License:        EPL
+License:        EPL-1.0
 URL:            http://sourceforge.net/projects/sblim/
 Source0:        http://downloads.sourceforge.net/project/sblim/%{name}/%{version}/%{name}-%{version}-src.zip
 Patch0:         sblim-cim-client2-2.2.5-fix-for-java-11-openjdk.patch
 
 BuildArch:      noarch
+#ExclusiveArch:  %{java_arches} noarch
 
 BuildRequires:  java-devel >= 1.4
-BuildRequires:  jpackage-utils >= 1.5.32
-BuildRequires:  ant >= 1.6
+BuildRequires:  jpackage-utils >= 0:1.5.32
+BuildRequires:  ant >= 0:1.6
 
-Requires:       java >= 1.4
-Requires:       jpackage-utils >= 1.5.32
+Requires:       java-headless >= 1.4
+Requires:       jpackage-utils >= 0:1.5.32
 
 %description
 The purpose of this package is to provide a CIM Client Class Library for Java
@@ -49,7 +48,7 @@ Manual and sample code for %{name}.
 
 %prep
 %setup -q -n %{project_folder}
-%patch 0 -p1 -b .fix-for-java-11-openjdk
+%autopatch -p1
 
 dos2unixConversion() {
         fileName=$1
@@ -71,8 +70,6 @@ dosFiles2unix 'smpl/org/sblim/cimclient/samples/*'
 export ANT_OPTS="-Xmx256m"
 ant \
         -Dbuild.compiler=modern \
-        -Dcompile.source=1.6 \
-        -Dcompile.target=1.6 \
         -DManifest.version=%{version}\
         package java-doc
 
@@ -100,7 +97,7 @@ cp -pr %{archive_folder}/doc/* $RPM_BUILD_ROOT%{_javadocdir}/%{name}
 %dir %{_pkgdocdir}
 %config(noreplace) %{_sysconfdir}/java/sblim-cim-client2.properties
 %config(noreplace) %{_sysconfdir}/java/sblim-slp-client2.properties
-%license %{_pkgdocdir}/COPYING
+%doc %{_pkgdocdir}/COPYING
 %doc %{_pkgdocdir}/README
 %doc %{_pkgdocdir}/ChangeLog
 %doc %{_pkgdocdir}/NEWS
@@ -110,22 +107,69 @@ cp -pr %{archive_folder}/doc/* $RPM_BUILD_ROOT%{_javadocdir}/%{name}
 %{_javadocdir}/%{name}
 
 %files manual
-%license %{_pkgdocdir}/COPYING
+%doc %{_pkgdocdir}/COPYING
 %doc %{_pkgdocdir}/org
 
+
 %changelog
-* Thu Feb 17 2022 Pawel Winogrodzki <pawelwi@microsoft.com> - 2.2.5-16
-- Updating used version of Java.
+* Sat Jul 20 2024 Fedora Release Engineering <releng@fedoraproject.org> - 2.2.5-30
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_41_Mass_Rebuild
 
-* Wed Jan 05 2022 Thomas Crain <thcrain@microsoft.com> - 2.2.5-15
-- Rename java-headless dependency to java
-- License verified
+* Mon Mar 04 2024 Vitezslav Crhonek <vcrhonek@redhat.com> - 2.2.5-29
+- Fix patch application
+- Fix to build with java-21-openjdk
+  Resolves: #2266686
 
-* Wed Nov 03 2021 Muhammad Falak <mwani@microsft.com> - 2.2.5-14
-- Remove epoch
+* Tue Feb 27 2024 Jiri Vanek <jvanek@redhat.com> - 2.2.5-28
+- Rebuilt for java-21-openjdk as system jdk
 
-* Fri Oct 15 2021 Pawel Winogrodzki <pawelwi@microsoft.com> - 2.2.5-13
-- Initial CBL-Mariner import from Fedora 32 (license: MIT).
+* Sat Jan 27 2024 Fedora Release Engineering <releng@fedoraproject.org> - 2.2.5-27
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Sat Jul 22 2023 Fedora Release Engineering <releng@fedoraproject.org> - 2.2.5-26
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_39_Mass_Rebuild
+
+* Tue Apr 25 2023 Vitezslav Crhonek <vcrhonek@redhat.com> - 2.2.5-25
+- SPDX migration
+
+* Sat Jan 21 2023 Fedora Release Engineering <releng@fedoraproject.org> - 2.2.5-24
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_38_Mass_Rebuild
+
+* Sat Jul 23 2022 Fedora Release Engineering <releng@fedoraproject.org> - 2.2.5-23
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_37_Mass_Rebuild
+
+* Fri Jul 08 2022 Jiri Vanek <jvanek@redhat.com> - 2.2.5-22
+- Rebuilt for Drop i686 JDKs
+
+* Tue Feb 08 2022 Vitezslav Crhonek <vcrhonek@redhat.com> - 2.2.5-21
+- Fix for java-17-openjdk as system jdk
+  Resolves: #2051208
+
+* Sat Feb 05 2022 Jiri Vanek <jvanek@redhat.com> - 2.2.5-20
+- Rebuilt for java-17-openjdk as system jdk
+
+* Sat Jan 22 2022 Fedora Release Engineering <releng@fedoraproject.org> - 2.2.5-19
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_36_Mass_Rebuild
+
+* Fri Jul 23 2021 Fedora Release Engineering <releng@fedoraproject.org> - 2.2.5-18
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_35_Mass_Rebuild
+
+* Wed Jan 27 2021 Fedora Release Engineering <releng@fedoraproject.org> - 2.2.5-17
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_34_Mass_Rebuild
+
+* Mon Aug 03 2020 Vitezslav Crhonek <vcrhonek@redhat.com> - 2.2.5-16
+- Fix for java-11-openjdk as sytem JDK
+  Resolves: #1858089
+
+* Sat Aug 01 2020 Fedora Release Engineering <releng@fedoraproject.org> - 2.2.5-15
+- Second attempt - Rebuilt for
+  https://fedoraproject.org/wiki/Fedora_33_Mass_Rebuild
+
+* Wed Jul 29 2020 Fedora Release Engineering <releng@fedoraproject.org> - 2.2.5-14
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_33_Mass_Rebuild
+
+* Sat Jul 11 2020 Jiri Vanek <jvanek@redhat.com> - 2.2.5-13
+- Rebuilt for JDK-11, see https://fedoraproject.org/wiki/Changes/Java11
 
 * Thu Jan 30 2020 Fedora Release Engineering <releng@fedoraproject.org> - 2.2.5-12
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_32_Mass_Rebuild

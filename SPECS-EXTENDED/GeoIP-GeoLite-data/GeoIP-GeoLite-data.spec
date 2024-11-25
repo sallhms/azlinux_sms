@@ -1,30 +1,35 @@
-Summary:        Free GeoLite IP geolocation country database
-Name:           GeoIP-GeoLite-data
+Name:		GeoIP-GeoLite-data
 # The geolite databases were traditionally updated on the first Tuesday of each month,
 # hence we use a versioning scheme of YYYY.MM for the Fedora package.
 #
 # No further releases of IPv4 GeoLite Legacy databases will be made from April 2018.
-Version:        2018.06
-Release:        12%{?dist}
+Version:	2018.06
+Release:	17%{?dist}
+Summary:	Free GeoLite IP geolocation country database
 # License specified at http://dev.maxmind.com/geoip/legacy/geolite/#License
-License:        CC-BY-SA
-Vendor:         Microsoft Corporation
-Distribution:   Azure Linux
-URL:            https://dev.maxmind.com/geoip/legacy/geolite/
-Source0:        %{_distro_sources_url}/GeoIP.dat.gz
-Source1:        %{_distro_sources_url}/GeoIPv6.dat.gz
-Source2:        %{_distro_sources_url}/GeoLiteCity.dat.gz
-Source3:        %{_distro_sources_url}/GeoLiteCityv6.dat.gz
-Source4:        %{_distro_sources_url}/GeoIPASNum.dat.gz
-Source5:        %{_distro_sources_url}/GeoIPASNumv6.dat.gz
+License:	CC-BY-SA-3.0
+URL:		http://dev.maxmind.com/geoip/legacy/geolite/
+Source0:	http://geolite.maxmind.com/download/geoip/database/GeoLiteCountry/GeoIP.dat.gz
+Source1:	http://geolite.maxmind.com/download/geoip/database/GeoIPv6.dat.gz
+Source2:	http://geolite.maxmind.com/download/geoip/database/GeoLiteCity.dat.gz
+Source3:	http://geolite.maxmind.com/download/geoip/database/GeoLiteCityv6-beta/GeoLiteCityv6.dat.gz
+Source4:	http://download.maxmind.com/download/geoip/database/asnum/GeoIPASNum.dat.gz
+Source5:	http://download.maxmind.com/download/geoip/database/asnum/GeoIPASNumv6.dat.gz
+BuildArch:	noarch
+# For compatibility with monolithic GeoIP packages in Fedora 21 and older
+# releases, we ensure that all databases are installed together; going
+# forward, only the IPv4 country database is installed by default and the user
+# can choose whether or not to install the databases from the extra package
+%if 0%{?fedora} < 22 && 0%{?rhel} < 8
+Requires:	GeoIP-GeoLite-data-extra = %{version}-%{release}
+%endif
+# This data has previously been available in differently-named packages
+Obsoletes:	GeoIP-data < 1.6.4-10
+Provides:	GeoIP-data = %{version}
+Obsoletes:	geoip-geolite < %{version}
+Provides:	geoip-geolite = %{version}
 # The data was unbundled from GeoIP at 1.6.4-3
-Source6:        LICENSE
-Conflicts:      GeoIP < 1.6.4-3
-Obsoletes:      GeoIP-data < 1.6.4-10
-Provides:       GeoIP-data = %{version}
-Obsoletes:      geoip-geolite < %{version}
-Provides:       geoip-geolite = %{version}
-BuildArch:      noarch
+Conflicts:	GeoIP < 1.6.4-3
 
 %description
 The GeoLite databases are free IP geolocation databases. This package contains
@@ -34,8 +39,9 @@ This product includes GeoLite data created by MaxMind, available from
 http://www.maxmind.com/
 
 %package extra
-Summary:        Free GeoLite IP geolocation databases
-Requires:       %{name} = %{version}-%{release}
+Summary:	Free GeoLite IP geolocation databases
+License:	CC-BY-SA-3.0
+Requires:	%{name} = %{version}-%{release}
 
 %description extra
 The GeoLite databases are free IP geolocation databases. This package contains
@@ -81,8 +87,6 @@ ln -sf GeoIPASNumv6.dat %{buildroot}%{_datadir}/GeoIP/GeoLiteASNumv6.dat
 ln -sf GeoLiteCity.dat %{buildroot}%{_datadir}/GeoIP/GeoIPCity.dat
 ln -sf GeoLiteCityv6.dat %{buildroot}%{_datadir}/GeoIP/GeoIPCityv6.dat
 
-install -m 644 %{SOURCE6} LICENSE
-
 %preun
 # If the package is being uninstalled (rather than upgraded), we remove
 # the GeoIP.dat symlink, provided that it points to GeoLiteCountry.dat;
@@ -121,7 +125,6 @@ fi
 exit 0
 
 %files
-%license LICENSE
 %dir %{_datadir}/GeoIP/
 # The databases are %%verify(not md5 size mtime) so that they can be updated
 # via cron scripts and rpm will not moan about the files having changed
@@ -143,12 +146,26 @@ exit 0
 %{_datadir}/GeoIP/GeoLiteASNumv6.dat
 
 %changelog
-* Thu Feb 22 2024 Pawel Winogrodzki <pawelwi@microsoft.com> - 2018.06-12
-- Updating naming for 3.0 version of Azure Linux.
+* Wed Jul 17 2024 Fedora Release Engineering <releng@fedoraproject.org> - 2018.06-17
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_41_Mass_Rebuild
 
-* Wed Mar 08 2023 Sumedh Sharma <sumsharma@microsoft.com> - 2018.06-11
-- Initial CBL-Mariner import from Fedora 37 (license: MIT)
-- license verified
+* Mon Jan 22 2024 Fedora Release Engineering <releng@fedoraproject.org> - 2018.06-16
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Fri Jan 19 2024 Fedora Release Engineering <releng@fedoraproject.org> - 2018.06-15
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Thu Jan 18 2024 Fedora Release Engineering <releng@fedoraproject.org> - 2018.06-14
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Wed Jul 19 2023 Fedora Release Engineering <releng@fedoraproject.org> - 2018.06-13
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_39_Mass_Rebuild
+
+* Fri Mar  3 2023 Paul Howarth <paul@city-fan.org> - 2018.06-12
+- Use SPDX-format license tag
+
+* Wed Jan 18 2023 Fedora Release Engineering <releng@fedoraproject.org> - 2018.06-11
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_38_Mass_Rebuild
 
 * Wed Jul 20 2022 Fedora Release Engineering <releng@fedoraproject.org> - 2018.06-10
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_37_Mass_Rebuild

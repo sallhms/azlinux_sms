@@ -1,10 +1,10 @@
-Vendor:         Microsoft Corporation
-Distribution:   Azure Linux
 Name:           graphite2
 Version:        1.3.14
-Release:        3%{?dist}
+Release:        16%{?dist}
 Summary:        Font rendering capabilities for complex non-Roman writing systems
-License:        (LGPLv2+ or GPLv2+ or MPLv1.1) and (Netscape or GPLv2+ or LGPLv2+)
+
+# As per COPYING file this library is tri-licensed
+License:        LGPL-2.1-or-later OR MPL-2.0 OR GPL-2.0-or-later
 
 URL:            https://sourceforge.net/projects/silgraphite/
 Source0:        https://downloads.sourceforge.net/project/silgraphite/graphite2//%{name}-%{version}.tgz
@@ -12,16 +12,13 @@ Source0:        https://downloads.sourceforge.net/project/silgraphite/graphite2/
 Patch0:         graphite-arm-nodefaultlibs.patch
 Patch1:         graphite2-1.2.0-cmakepath.patch
 
-BuildRequires:  asciidoc
 BuildRequires:  cmake
-BuildRequires:  doxygen
 BuildRequires:  gcc
 BuildRequires:  gcc-c++
-
 BuildRequires:  freetype-devel
-%if 0%{?with_check}
-BuildRequires:  python3-pip
-%endif
+
+# needed for running the test suite
+BuildRequires:  python3-fonttools
 
 %description
 Graphite2 is a project within SIL’s Non-Roman Script Initiative and Language
@@ -45,22 +42,18 @@ Includes and definitions for developing with graphite2.
 
 
 %build
-%cmake -DGRAPHITE2_COMPARE_RENDERER=OFF  .
-%make_build
-
-make docs
-sed -i -e 's!<a id="id[a-z]*[0-9]*"></a>!!g' doc/manual.html
+%cmake -DGRAPHITE2_COMPARE_RENDERER=OFF
+%cmake_build
 
 
 %install
-%make_install
+%cmake_install
 
 find %{buildroot} -type f -name "*.la" -print -delete
 
 
 %check
-pip3 install fonttools
-ctest
+%ctest
 
 
 %files
@@ -73,8 +66,6 @@ ctest
 
 
 %files devel
-%doc doc/manual.html
-
 %{_includedir}/%{name}/
 
 %dir %{_libdir}/%{name}/
@@ -86,14 +77,52 @@ ctest
 
 
 %changelog
-* Wed Apr 20 2022 Muhammad Falak <mwani@microsoft.com> - 1.3.14-3
-- Add an explicit BR on pip to enable ptest
-- License verified
+* Thu Jul 18 2024 Fedora Release Engineering <releng@fedoraproject.org> - 1.3.14-16
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_41_Mass_Rebuild
 
-* Tue Mar 30 2021 Henry Li <lihl@microsoft.com> - 1.3.14-2
-- Initial CBL-Mariner import from Fedora 32 (license: MIT).
-- Remove texlive-related dependencies.
-- Remove python3-fonttools from build requirement.
+* Wed Jan 24 2024 Fedora Release Engineering <releng@fedoraproject.org> - 1.3.14-15
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Sat Jan 20 2024 Fedora Release Engineering <releng@fedoraproject.org> - 1.3.14-14
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Mon Nov 06 2023 Parag Nemade <pnemade AT redhat DOT com> - 1.3.14-13
+- Migrate to SPDX license expression
+- Drop Netscape license reference as no test file using it in 1.3.x releases
+
+* Thu Jul 20 2023 Fedora Release Engineering <releng@fedoraproject.org> - 1.3.14-12
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_39_Mass_Rebuild
+
+* Thu Jan 19 2023 Fedora Release Engineering <releng@fedoraproject.org> - 1.3.14-11
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_38_Mass_Rebuild
+
+* Thu Jul 21 2022 Fedora Release Engineering <releng@fedoraproject.org> - 1.3.14-10
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_37_Mass_Rebuild
+
+* Thu Jan 20 2022 Fedora Release Engineering <releng@fedoraproject.org> - 1.3.14-9
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_36_Mass_Rebuild
+
+* Thu Jul 22 2021 Fedora Release Engineering <releng@fedoraproject.org> - 1.3.14-8
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_35_Mass_Rebuild
+
+* Tue Jan 26 2021 Fedora Release Engineering <releng@fedoraproject.org> - 1.3.14-7
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_34_Mass_Rebuild
+
+* Wed Sep 30 2020 Fabio Valentini <decathorpe@gmail.com> - 1.3.14-6
+- Stop building the HTML manual, texlive is breaking things too frequently.
+
+* Sat Aug 01 2020 Fabio Valentini <decathorpe@gmail.com> - 1.3.14-5
+- Adapt to new cmake macros.
+
+* Sat Aug 01 2020 Fedora Release Engineering <releng@fedoraproject.org> - 1.3.14-4
+- Second attempt - Rebuilt for
+  https://fedoraproject.org/wiki/Fedora_33_Mass_Rebuild
+
+* Tue Jul 28 2020 Fedora Release Engineering <releng@fedoraproject.org> - 1.3.14-3
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_33_Mass_Rebuild
+
+* Tue May 26 2020 Fabio Valentini <decathorpe@gmail.com> - 1.3.14-2
+- Add missing build dependencies for building the manual with TeXLive 2020.
 
 * Wed Apr 08 2020 Fabio Valentini <decathorpe@gmail.com> - 1.3.14-1
 - Update to version 1.3.14.

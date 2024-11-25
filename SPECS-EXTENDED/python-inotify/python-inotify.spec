@@ -1,17 +1,19 @@
-Vendor:         Microsoft Corporation
-Distribution:   Azure Linux
 %global oname  pyinotify
 
 Summary:       Monitor filesystem events with Python under Linux
 Name:          python-inotify
 Version:       0.9.6
-Release:       21%{?dist}
+Release:       36%{?dist}
 License:       MIT
 URL:           https://github.com/seb-m/pyinotify
 Source0:       http://seb.dbzteam.org/pub/pyinotify/releases/pyinotify-%{version}.tar.gz
 Patch01:       pyinotify-0.9.6-epoint.patch
+# Upstream pull request https://github.com/seb-m/pyinotify/pull/205
+# Upstream issue https://github.com/seb-m/pyinotify/issues/204
+Patch02:       pyinotify-python-3.12-fix.patch
 BuildRequires: gmp-devel
-BuildRequires: python3-devel
+BuildRequires: python%{python3_pkgversion}-devel
+BuildRequires: python%{python3_pkgversion}-setuptools
 BuildArch:     noarch
 %global _description \
 This is a Python module for watching filesystems changes. pyinotify \
@@ -20,14 +22,13 @@ is an event-driven notifier, where notifications are exported from \
 kernel space to user space.
 %description %_description
 
-%package    -n python3-inotify
+%package    -n python%{python3_pkgversion}-inotify
 Summary:       %{summary}
-%{?python_provide:%python_provide python3-inotify}
-%description -n python3-inotify %_description
+%{?python_provide:%python_provide python%{python3_pkgversion}-inotify}
+%description -n python%{python3_pkgversion}-inotify %_description
 
 %prep
-%setup -q -n %{oname}-%{version}
-%patch 01 -p1
+%autosetup -p1 -n %{oname}-%{version}
 sed -i '1c#! %{__python3}' python3/pyinotify.py
 
 %build
@@ -36,7 +37,10 @@ sed -i '1c#! %{__python3}' python3/pyinotify.py
 %install
 %py3_install
 
-%files -n python3-inotify
+%check
+%py3_check_import pyinotify
+
+%files -n python%{python3_pkgversion}-inotify
 %license COPYING
 %doc ACKS README.md
 %{_bindir}/%{oname}
@@ -44,8 +48,53 @@ sed -i '1c#! %{__python3}' python3/pyinotify.py
 %{python3_sitelib}/__pycache__/%{oname}*
 
 %changelog
-* Fri Oct 15 2021 Pawel Winogrodzki <pawelwi@microsoft.com> - 0.9.6-21
-- Initial CBL-Mariner import from Fedora 32 (license: MIT).
+* Fri Jul 19 2024 Fedora Release Engineering <releng@fedoraproject.org> - 0.9.6-36
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_41_Mass_Rebuild
+
+* Fri Jun 07 2024 Python Maint <python-maint@redhat.com> - 0.9.6-35
+- Rebuilt for Python 3.13
+
+* Fri Jan 26 2024 Fedora Release Engineering <releng@fedoraproject.org> - 0.9.6-34
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Mon Jan 22 2024 Fedora Release Engineering <releng@fedoraproject.org> - 0.9.6-33
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Thu Aug 10 2023 Troy Curtis, Jr <troycurtisjr@fedoraproject.org> - 0.9.6-32
+- Fixes build for Python 3.12 (#2219556)
+
+* Fri Jul 21 2023 Fedora Release Engineering <releng@fedoraproject.org> - 0.9.6-31
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_39_Mass_Rebuild
+
+* Tue Jun 13 2023 Python Maint <python-maint@redhat.com> - 0.9.6-30
+- Rebuilt for Python 3.12
+
+* Fri Jan 20 2023 Fedora Release Engineering <releng@fedoraproject.org> - 0.9.6-29
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_38_Mass_Rebuild
+
+* Fri Jul 22 2022 Fedora Release Engineering <releng@fedoraproject.org> - 0.9.6-28
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_37_Mass_Rebuild
+
+* Mon Jun 13 2022 Python Maint <python-maint@redhat.com> - 0.9.6-27
+- Rebuilt for Python 3.11
+
+* Fri Jan 21 2022 Fedora Release Engineering <releng@fedoraproject.org> - 0.9.6-26
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_36_Mass_Rebuild
+
+* Fri Jul 23 2021 Fedora Release Engineering <releng@fedoraproject.org> - 0.9.6-25
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_35_Mass_Rebuild
+
+* Fri Jun 04 2021 Python Maint <python-maint@redhat.com> - 0.9.6-24
+- Rebuilt for Python 3.10
+
+* Wed Jan 27 2021 Fedora Release Engineering <releng@fedoraproject.org> - 0.9.6-23
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_34_Mass_Rebuild
+
+* Wed Jul 29 2020 Fedora Release Engineering <releng@fedoraproject.org> - 0.9.6-22
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_33_Mass_Rebuild
+
+* Tue May 26 2020 Miro Hrončok <mhroncok@redhat.com> - 0.9.6-21
+- Rebuilt for Python 3.9
 
 * Thu Jan 30 2020 Fedora Release Engineering <releng@fedoraproject.org> - 0.9.6-20
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_32_Mass_Rebuild

@@ -1,15 +1,20 @@
-Vendor:         Microsoft Corporation
-Distribution:   Azure Linux
 Name:         amtterm
 License:      GPLv2+
 Version:      1.6
-Release:      10%{?dist}
+Release:      21%{?dist}
 Summary:      Serial-over-lan (sol) client for Intel AMT
 URL:          http://www.kraxel.org/blog/linux/amtterm/
 Source:       http://www.kraxel.org/releases/%{name}/%{name}-%{version}.tar.gz
+
 Requires:     xdg-utils
+Requires:     perl(SOAP::Lite)
 
 BuildRequires:  gcc
+BuildRequires: desktop-file-utils
+BuildRequires: pkgconfig(gtk+-3.0)
+BuildRequires: pkgconfig(gdk-3.0)
+BuildRequires: pkgconfig(vte-2.91)
+BuildRequires: make
 
 %description
 Serial-over-lan (sol) client for Intel AMT.
@@ -26,22 +31,58 @@ make prefix=/usr
 
 %install
 make prefix=/usr DESTDIR=%{buildroot} STRIP="" install
-
-rm -f %{buildroot}%{_datadir}/applications/gamt.desktop
-rm -f %{buildroot}%{_mandir}/man1/gamt.1
+desktop-file-install --dir=%{buildroot}%{_datadir}/applications/ \
+    %{buildroot}/%{_datadir}/applications/gamt.desktop
 
 %files
 %doc COPYING
 %{_bindir}/amtterm
 %{_bindir}/amttool
+%{_bindir}/gamt
 %{_mandir}/man1/amtterm.1.gz
 %{_mandir}/man1/amttool.1.gz
+%{_mandir}/man1/gamt.1.gz
 %{_mandir}/man7/amt-howto.7.gz
+%{_datadir}/applications/gamt.desktop
 
 %changelog
-* Mon Feb 01 2021 Joe Schmitt <joschmit@microsoft.com> - 1.6-10
-- Initial CBL-Mariner import from Fedora 32 (license: MIT).
-- Remove GUI support
+* Wed Jul 17 2024 Fedora Release Engineering <releng@fedoraproject.org> - 1.6-21
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_41_Mass_Rebuild
+
+* Mon Jan 22 2024 Fedora Release Engineering <releng@fedoraproject.org> - 1.6-20
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Fri Jan 19 2024 Fedora Release Engineering <releng@fedoraproject.org> - 1.6-19
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Wed Jul 19 2023 Fedora Release Engineering <releng@fedoraproject.org> - 1.6-18
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_39_Mass_Rebuild
+
+* Wed Jan 18 2023 Fedora Release Engineering <releng@fedoraproject.org> - 1.6-17
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_38_Mass_Rebuild
+
+* Wed Jul 20 2022 Fedora Release Engineering <releng@fedoraproject.org> - 1.6-16
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_37_Mass_Rebuild
+
+* Wed Jan 19 2022 Fedora Release Engineering <releng@fedoraproject.org> - 1.6-15
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_36_Mass_Rebuild
+
+* Wed Jul 21 2021 Fedora Release Engineering <releng@fedoraproject.org> - 1.6-14
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_35_Mass_Rebuild
+
+* Tue Jan 26 2021 Fedora Release Engineering <releng@fedoraproject.org> - 1.6-13
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_34_Mass_Rebuild
+
+* Wed Aug 19 2020 Gerd Hoffman <kraxel@redhat.com> - 1.6-12
+- Add missing perl dependency for amttool.
+- Resolves: rhbz#1869766
+
+* Fri Jul 31 2020 Fedora Release Engineering <releng@fedoraproject.org> - 1.6-11
+- Second attempt - Rebuilt for
+  https://fedoraproject.org/wiki/Fedora_33_Mass_Rebuild
+
+* Mon Jul 27 2020 Fedora Release Engineering <releng@fedoraproject.org> - 1.6-10
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_33_Mass_Rebuild
 
 * Tue Jan 28 2020 Fedora Release Engineering <releng@fedoraproject.org> - 1.6-9
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_32_Mass_Rebuild

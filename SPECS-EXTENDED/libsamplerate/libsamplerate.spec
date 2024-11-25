@@ -1,18 +1,16 @@
-Summary:        Sample rate conversion library for audio data
-Name:           libsamplerate
-Version:        0.2.2
-Release:        4%{?dist}
-License:        BSD-2-Clause
-Vendor:         Microsoft Corporation
-Distribution:   Azure Linux
-URL:            https://libsndfile.github.io/libsamplerate/
-Source0:        https://github.com/libsndfile/%{name}/releases/download/%{version}/%{name}-%{version}.tar.xz
-BuildRequires:  alsa-lib-devel
-BuildRequires:  fftw-devel >= 0.15.0
-BuildRequires:  gcc
-BuildRequires:  libsndfile-devel >= 1.0.6
-BuildRequires:  make
-BuildRequires:  pkg-config
+Summary:	Sample rate conversion library for audio data
+Name:		libsamplerate
+Version:	0.2.2
+Release:	9%{?dist}
+License:	BSD-2-Clause
+URL:		https://libsndfile.github.io/libsamplerate/
+Source0:	https://github.com/libsndfile/%{name}/releases/download/%{version}/%{name}-%{version}.tar.xz
+BuildRequires:	alsa-lib-devel
+BuildRequires:	fftw-devel >= 0.15.0
+BuildRequires:	gcc
+BuildRequires:	libsndfile-devel >= 1.0.6
+BuildRequires:	pkgconfig
+BuildRequires:	make
 
 %description
 Secret Rabbit Code is a sample rate converter for audio. It is capable
@@ -21,10 +19,11 @@ factor of 12 and upsample by the same factor. The ratio of input and
 output sample rates can be a real number. The conversion ratio can
 also vary with time for speeding up and slowing down effects.
 
+
 %package devel
-Summary:        Development related files for %{name}
-Requires:       %{name} = %{version}-%{release}
-Requires:       pkg-config
+Summary:	Development related files for %{name}
+Requires:	%{name} = %{version}-%{release}
+Requires:	pkgconfig
 
 %description devel
 Secret Rabbit Code is a sample rate converter for audio. It is capable
@@ -34,8 +33,10 @@ output sample rates can be a real number. The conversion ratio can
 also vary with time for speeding up and slowing down effects.
 This package contains development files for %{name}
 
+
 %prep
-%autosetup
+%setup -q
+
 
 %build
 %configure --disable-dependency-tracking --disable-static
@@ -44,15 +45,18 @@ sed -i 's|^hardcode_libdir_flag_spec=.*|hardcode_libdir_flag_spec=""|g' libtool
 sed -i 's|^runpath_var=LD_RUN_PATH|runpath_var=DIE_RPATH_DIE|g' libtool
 %make_build
 
+
 %install
 %make_install
 rm %{buildroot}%{_libdir}/%{name}.la
 
+
 %check
-%{set_build_flags}
+%set_build_flags
 export LD_LIBRARY_PATH=`pwd`/src/.libs
 %make_build check
 unset LD_LIBRARY_PATH
+
 
 %files
 %doc AUTHORS README.md
@@ -68,10 +72,23 @@ unset LD_LIBRARY_PATH
 %exclude %{_pkgdocdir}/README.md
 
 %changelog
-* Thu Nov 24 2022 Sumedh Sharma <sumsharma@microsoft.com> - 0.2.2-4
-- Initial CBL-Mariner import from Fedora 37 (license: MIT)
-- Enable check section
-- License verified
+* Thu Jul 18 2024 Fedora Release Engineering <releng@fedoraproject.org> - 0.2.2-9
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_41_Mass_Rebuild
+
+* Thu Jan 25 2024 Fedora Release Engineering <releng@fedoraproject.org> - 0.2.2-8
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Sun Jan 21 2024 Fedora Release Engineering <releng@fedoraproject.org> - 0.2.2-7
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Thu Sep  7 2023 Jarsolav Kysela <perex@perex.cz> - 0.2.2-6
+- SPDX license
+
+* Thu Jul 20 2023 Fedora Release Engineering <releng@fedoraproject.org> - 0.2.2-5
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_39_Mass_Rebuild
+
+* Thu Jan 19 2023 Fedora Release Engineering <releng@fedoraproject.org> - 0.2.2-4
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_38_Mass_Rebuild
 
 * Thu Jul 21 2022 Fedora Release Engineering <releng@fedoraproject.org> - 0.2.2-3
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_37_Mass_Rebuild

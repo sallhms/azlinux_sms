@@ -1,26 +1,24 @@
-Summary:        Module::Install extension to automatically generate LICENSE files
 Name:           perl-Module-Install-AutoLicense
 Version:        0.10
-Release:        12%{?dist}
-License:        GPL+ OR Artistic
-Vendor:         Microsoft Corporation
-Distribution:   Azure Linux
+Release:        23%{?dist}
+Summary:        Module::Install extension to automatically generate LICENSE files
+License:        GPL-1.0-or-later OR Artistic-1.0-Perl
 URL:            https://metacpan.org/release/Module-Install-AutoLicense
-Source0:        https://cpan.metacpan.org/authors/id/B/BI/BINGOS/Module-Install-AutoLicense-%{version}.tar.gz#/%{name}-%{version}.tar.gz
+Source0:        https://cpan.metacpan.org/authors/id/B/BI/BINGOS/Module-Install-AutoLicense-%{version}.tar.gz
 Patch0:         Use-Module-Install-AutoLicense-for-tarball.patch
+BuildArch:      noarch
 BuildRequires:  coreutils
+BuildRequires:  findutils
 BuildRequires:  make
+BuildRequires:  perl-interpreter >= 1:5.6.0
 BuildRequires:  perl-generators
-BuildRequires:  perl-interpreter
-BuildRequires:  sed
-BuildRequires:  perl(Capture::Tiny) >= 0.05
+BuildRequires:  perl(base)
 BuildRequires:  perl(Config)
+BuildRequires:  perl(Capture::Tiny) >= 0.05
 BuildRequires:  perl(File::Path)
-BuildRequires:  perl(File::Remove)
 BuildRequires:  perl(File::Temp)
-BuildRequires:  perl(FindBin)
-BuildRequires:  perl(Module::Build)
-BuildRequires:  perl(Module::CoreList)
+BuildRequires:  perl(lib)
+BuildRequires:  perl(inc::Module::Install) >= 0.85
 BuildRequires:  perl(Module::Install) >= 0.85
 BuildRequires:  perl(Module::Install::Base)
 BuildRequires:  perl(Module::Install::Can)
@@ -29,19 +27,15 @@ BuildRequires:  perl(Module::Install::Makefile)
 BuildRequires:  perl(Module::Install::Metadata)
 BuildRequires:  perl(Module::Install::WriteAll)
 BuildRequires:  perl(Software::License) >= 0.01
+BuildRequires:  perl(strict)
 BuildRequires:  perl(Test::More) >= 0.47
 BuildRequires:  perl(Test::Pod) >= 1.00
 BuildRequires:  perl(Test::Pod::Coverage) >= 1.00
-BuildRequires:  perl(base)
-BuildRequires:  perl(inc::Module::Install) >= 0.85
-BuildRequires:  perl(lib)
-BuildRequires:  perl(strict)
 BuildRequires:  perl(vars)
 BuildRequires:  perl(warnings)
-Requires:       perl(:MODULE_COMPAT_%(eval "`perl -V:version`"; echo $version))
+BuildRequires:  sed
 Requires:       perl(Module::Install) >= 0.85
 Requires:       perl(Software::License) >= 0.01
-BuildArch:      noarch
 
 %description
 Module::Install::AutoLicense is a Module::Install extension that generates
@@ -49,35 +43,68 @@ a LICENSE file automatically whenever the author runs Makefile.PL. On the
 user side it does nothing.
 
 %prep
-%autosetup -n Module-Install-AutoLicense-%{version} -p1
+%setup -q -n Module-Install-AutoLicense-%{version}
+%patch -P0 -p1
 rm -r inc
 sed -i -e '/^inc\// d' MANIFEST
 find -type f -exec chmod -x {} +
 
 %build
 perl Makefile.PL INSTALLDIRS=vendor
-%make_build
+make %{?_smp_mflags}
 
 %install
-make pure_install DESTDIR=%{buildroot}
-find %{buildroot} -type f -name .packlist -delete
-%{_fixperms} %{buildroot}/*
+make pure_install DESTDIR=$RPM_BUILD_ROOT
+find $RPM_BUILD_ROOT -type f -name .packlist -delete
+%{_fixperms} $RPM_BUILD_ROOT/*
 
 %check
 make test
 
 %files
-%license LICENSE
 %doc Changes
 %{perl_vendorlib}/*
 %{_mandir}/man3/*
 
 %changelog
-* Tue Mar 07 2023 Muhammad Falak <mwani@microsoft.com> - 0.10-12
-- License verified
+* Fri Jul 19 2024 Fedora Release Engineering <releng@fedoraproject.org> - 0.10-23
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_41_Mass_Rebuild
 
-* Fri Oct 15 2021 Pawel Winogrodzki <pawelwi@microsoft.com> - 0.10-11
-- Initial CBL-Mariner import from Fedora 32 (license: MIT).
+* Thu Jan 25 2024 Fedora Release Engineering <releng@fedoraproject.org> - 0.10-22
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Sun Jan 21 2024 Fedora Release Engineering <releng@fedoraproject.org> - 0.10-21
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Thu Jul 20 2023 Fedora Release Engineering <releng@fedoraproject.org> - 0.10-20
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_39_Mass_Rebuild
+
+* Fri Jan 20 2023 Fedora Release Engineering <releng@fedoraproject.org> - 0.10-19
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_38_Mass_Rebuild
+
+* Fri Jul 22 2022 Fedora Release Engineering <releng@fedoraproject.org> - 0.10-18
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_37_Mass_Rebuild
+
+* Wed Jun 01 2022 Jitka Plesnikova <jplesnik@redhat.com> - 0.10-17
+- Perl 5.36 rebuild
+
+* Fri Jan 21 2022 Fedora Release Engineering <releng@fedoraproject.org> - 0.10-16
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_36_Mass_Rebuild
+
+* Thu Jul 22 2021 Fedora Release Engineering <releng@fedoraproject.org> - 0.10-15
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_35_Mass_Rebuild
+
+* Fri May 21 2021 Jitka Plesnikova <jplesnik@redhat.com> - 0.10-14
+- Perl 5.34 rebuild
+
+* Wed Jan 27 2021 Fedora Release Engineering <releng@fedoraproject.org> - 0.10-13
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_34_Mass_Rebuild
+
+* Tue Jul 28 2020 Fedora Release Engineering <releng@fedoraproject.org> - 0.10-12
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_33_Mass_Rebuild
+
+* Tue Jun 23 2020 Jitka Plesnikova <jplesnik@redhat.com> - 0.10-11
+- Perl 5.32 rebuild
 
 * Thu Jan 30 2020 Fedora Release Engineering <releng@fedoraproject.org> - 0.10-10
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_32_Mass_Rebuild

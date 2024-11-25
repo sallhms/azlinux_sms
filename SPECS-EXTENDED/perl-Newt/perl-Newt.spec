@@ -1,10 +1,8 @@
-Vendor:         Microsoft Corporation
-Distribution:   Azure Linux
 Summary: Perl bindings for the Newt library
 Name: perl-Newt
 Version: 1.08
-Release: 56%{?dist}
-URL: https://metacpan.org/pod/Newt
+Release: 70%{?dist}
+URL: https://metacpan.org/release/Newt-1.08
 Source: https://cpan.metacpan.org/authors/id/A/AM/AMEDINA/Newt-1.08.tar.gz
 Patch0: newt-perl-1.08-debian.patch
 Patch1: newt-perl-1.08-typemap.patch
@@ -15,13 +13,13 @@ Patch5: perl-Newt-bz385751.patch
 Patch6: perl-Newt-1.08-export.patch
 Patch7: perl-Newt-1.08-pod.patch
 Patch8: perl-Newt-1.08-formdestroy.patch
+BuildRequires: make
 BuildRequires:  gcc
 BuildRequires: newt-devel, perl-devel
 BuildRequires: perl-generators
 BuildRequires: perl(ExtUtils::MakeMaker)
 Obsoletes: newt-perl < 1.08-15
 Provides: newt-perl = %{version}-%{release}
-Requires: %(eval `perl -V:version`; echo "perl(:MODULE_COMPAT_$version)")
 License: GPL+ or Artistic
 
 %description
@@ -30,15 +28,15 @@ library, which provides a color text mode user interface.
 
 %prep
 %setup -q -n Newt-%{version}
-%patch 0 -p1 -b .debian
-%patch 1 -p1 -b .valist
-%patch 2 -p1 -b .fix
-%patch 3 -p1 -b .exes
-%patch 4 -p1 -b .lang
-%patch 5 -p1 -b .bz385751
-%patch 6 -p1 -b .export
-%patch 7 -p1 -b .doc
-%patch 8 -p1 -b .formdestroy
+%patch -P0 -p1 -b .debian
+%patch -P1 -p1 -b .valist
+%patch -P2 -p1 -b .fix
+%patch -P3 -p1 -b .exes
+%patch -P4 -p1 -b .lang
+%patch -P5 -p1 -b .bz385751
+%patch -P6 -p1 -b .export
+%patch -P7 -p1 -b .doc
+%patch -P8 -p1 -b .formdestroy
 rm -rf newtlib
 
 %build
@@ -61,8 +59,50 @@ chmod -R u+w $RPM_BUILD_ROOT/*
 %{_mandir}/man3/Newt*
 
 %changelog
-* Fri Oct 15 2021 Pawel Winogrodzki <pawelwi@microsoft.com> - 1.08-56
-- Initial CBL-Mariner import from Fedora 32 (license: MIT).
+* Fri Jul 19 2024 Fedora Release Engineering <releng@fedoraproject.org> - 1.08-70
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_41_Mass_Rebuild
+
+* Mon Jun 10 2024 Jitka Plesnikova <jplesnik@redhat.com> - 1.08-69
+- Perl 5.40 rebuild
+
+* Thu Jan 25 2024 Fedora Release Engineering <releng@fedoraproject.org> - 1.08-68
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Sun Jan 21 2024 Fedora Release Engineering <releng@fedoraproject.org> - 1.08-67
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Fri Jul 21 2023 Fedora Release Engineering <releng@fedoraproject.org> - 1.08-66
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_39_Mass_Rebuild
+
+* Tue Jul 11 2023 Jitka Plesnikova <jplesnik@redhat.com> - 1.08-65
+- Perl 5.38 rebuild
+
+* Fri Jan 20 2023 Fedora Release Engineering <releng@fedoraproject.org> - 1.08-64
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_38_Mass_Rebuild
+
+* Fri Jul 22 2022 Fedora Release Engineering <releng@fedoraproject.org> - 1.08-63
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_37_Mass_Rebuild
+
+* Mon May 30 2022 Jitka Plesnikova <jplesnik@redhat.com> - 1.08-62
+- Perl 5.36 rebuild
+
+* Fri Jan 21 2022 Fedora Release Engineering <releng@fedoraproject.org> - 1.08-61
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_36_Mass_Rebuild
+
+* Thu Jul 22 2021 Fedora Release Engineering <releng@fedoraproject.org> - 1.08-60
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_35_Mass_Rebuild
+
+* Fri May 21 2021 Jitka Plesnikova <jplesnik@redhat.com> - 1.08-59
+- Perl 5.34 rebuild
+
+* Wed Jan 27 2021 Fedora Release Engineering <releng@fedoraproject.org> - 1.08-58
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_34_Mass_Rebuild
+
+* Tue Jul 28 2020 Fedora Release Engineering <releng@fedoraproject.org> - 1.08-57
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_33_Mass_Rebuild
+
+* Mon Jun 22 2020 Jitka Plesnikova <jplesnik@redhat.com> - 1.08-56
+- Perl 5.32 rebuild
 
 * Thu Jan 30 2020 Fedora Release Engineering <releng@fedoraproject.org> - 1.08-55
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_32_Mass_Rebuild

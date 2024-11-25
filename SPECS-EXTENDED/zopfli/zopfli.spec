@@ -1,16 +1,18 @@
-%global __cmake_in_source_build 1
-Summary:        Zlib compatible better compressor
+%undefine __cmake_in_source_build
+%global so_ver 1.0.3
+
 Name:           zopfli
-Version:        1.0.3
-Release:        7%{?dist}
-License:        ASL 2.0
-Vendor:         Microsoft Corporation
-Distribution:   Azure Linux
+Version:        %{so_ver}
+Release:        11%{?dist}
+Summary:        Zlib compatible better compressor
+
+License:        Apache-2.0
 URL:            https://github.com/google/%{name}
 Source0:        %{URL}/archive/%{name}-%{version}.tar.gz
-BuildRequires:  cmake
+
 BuildRequires:  gcc
 BuildRequires:  gcc-c++
+BuildRequires:  cmake
 
 %description
 Zopfli is a compression algorithm bit-stream compatible with
@@ -21,8 +23,8 @@ sent over a network many times, for example, static content for the
 web.
 
 %package        devel
-Summary:        Development files for zopfli and zopflipng.
 Requires:       %{name} = %{version}-%{release}
+Summary:        Development files for zopfli and zopflipng.
 
 %description    devel
 Devolopment files for zopfli and zopflipng.
@@ -44,12 +46,12 @@ Devolopment files for zopfli and zopflipng.
 %{_bindir}/%{name}png
 
 %{_libdir}/lib%{name}.so.1
-%{_libdir}/lib%{name}.so.%{version}
+%{_libdir}/lib%{name}.so.%{so_ver}
 
 %{_libdir}/lib%{name}png.so.1
-%{_libdir}/lib%{name}png.so.%{version}
+%{_libdir}/lib%{name}png.so.%{so_ver}
 
-%files devel
+%files          devel
 %{_libdir}/lib%{name}.so
 %{_libdir}/lib%{name}png.so
 
@@ -57,10 +59,22 @@ Devolopment files for zopfli and zopflipng.
 %{_includedir}/%{name}png_lib.h
 %{_libdir}/cmake/Zopfli/*.cmake
 
+
 %changelog
-* Wed Jan 18 2023 Suresh Thelkar <sthelkar@microsoft.com> - 1.0.3-7
-- Initial CBL-Mariner import from Fedora 36 (license: MIT)
-- License verified
+* Sat Jul 20 2024 Fedora Release Engineering <releng@fedoraproject.org> - 1.0.3-11
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_41_Mass_Rebuild
+
+* Sat Jan 27 2024 Fedora Release Engineering <releng@fedoraproject.org> - 1.0.3-10
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Sat Jul 22 2023 Fedora Release Engineering <releng@fedoraproject.org> - 1.0.3-9
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_39_Mass_Rebuild
+
+* Sat Jan 21 2023 Fedora Release Engineering <releng@fedoraproject.org> - 1.0.3-8
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_38_Mass_Rebuild
+
+* Sat Jul 23 2022 Fedora Release Engineering <releng@fedoraproject.org> - 1.0.3-7
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_37_Mass_Rebuild
 
 * Sat Jan 22 2022 Fedora Release Engineering <releng@fedoraproject.org> - 1.0.3-6
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_36_Mass_Rebuild

@@ -1,20 +1,26 @@
-%bcond_with java
+# Parallel build broken
 %global _smp_mflags -j1
-%global __requires_exclude_from ^%{_docdir}/.*$
-%global __provides_exclude_from ^%{python3_sitearch}/.*\\.so$
 
-Summary:        Reference implementation of OGC KML 2.2
+%bcond_with java
+
+%if 0%{?fedora}
+%bcond_without mingw
+%else
+%bcond_with mingw
+%endif
+
 Name:           libkml
 Version:        1.3.0
-Release:        41%{?dist}
+Release:        49%{?dist}
+Summary:        Reference implementation of OGC KML 2.2
+
 License:        BSD
-Vendor:         Microsoft Corporation
-Distribution:   Azure Linux
 URL:            https://github.com/libkml/libkml
 Source0:        https://github.com/libkml/libkml/archive/%{version}/libkml-%{version}.tar.gz
 # TODO: Port to minizip-2.x, meanwhile bundle version 1.3.0
 # wget -O minizip-1.3.0.tar.gz http://sourceforge.net/projects/libkml-files/files/1.3.0/minizip.tar.gz/download
 Source1:        minizip-1.3.0.tar.gz
+
 ## See https://github.com/libkml/libkml/pull/239
 Patch0:         0001-Fix-build-failure-due-to-failure-to-convert-pointer-.patch
 Patch1:         0002-Fix-mistaken-use-of-std-cerr-instead-of-std-endl.patch
@@ -33,35 +39,62 @@ Patch8:         libkml_test_strcmp.patch
 # MinGW build fixes
 Patch9:         libkml_mingw.patch
 
-BuildRequires:  boost-devel
 BuildRequires:  cmake
 BuildRequires:  curl-devel
+BuildRequires:  boost-devel
 BuildRequires:  expat-devel
-BuildRequires:  gcc-c++
 BuildRequires:  gtest-devel
+BuildRequires:  gcc-c++
 BuildRequires:  make
 BuildRequires:  python3-devel
 BuildRequires:  swig
 BuildRequires:  uriparser-devel
 BuildRequires:  zlib-devel
-Provides:       bundled(minizip) = 1.3.0
 %if %{with java}
 BuildRequires:  java-devel
 BuildRequires:  junit
 %endif
+
+%if %{with mingw}
+BuildRequires:  mingw32-filesystem >= 95
+BuildRequires:  mingw32-gcc-c++
+BuildRequires:  mingw32-boost
+BuildRequires:  mingw32-curl
+BuildRequires:  mingw32-expat
+BuildRequires:  mingw32-python3
+BuildRequires:  mingw32-uriparser
+BuildRequires:  mingw32-zlib
+
+BuildRequires:  mingw64-filesystem >= 95
+BuildRequires:  mingw64-gcc-c++
+BuildRequires:  mingw64-boost
+BuildRequires:  mingw64-curl
+BuildRequires:  mingw64-expat
+BuildRequires:  mingw64-python3
+BuildRequires:  mingw64-uriparser
+BuildRequires:  mingw64-zlib
+%endif
+
+Provides:       bundled(minizip) = 1.3.0
+
+%global __requires_exclude_from ^%{_docdir}/.*$
+%global __provides_exclude_from ^%{python3_sitearch}/.*\\.so$
+
 
 %description
 Reference implementation of OGC KML 2.2.
 It also includes implementations of Google's gx: extensions used by Google
 Earth, as well as several utility libraries for working with other formats.
 
+
 %package -n python3-%{name}
 Summary:        Python 3 bindings for %{name}
-%{?python_provide:%python_provide python3-%{name}}
 Requires:       %{name}%{?_isa} = %{version}-%{release}
+%{?python_provide:%python_provide python3-%{name}}
 
 %description -n python3-%{name}
 The python3-%{name} package contains Python 3 bindings for %{name}.
+
 
 %if %{with java}
 %package java
@@ -83,6 +116,47 @@ Requires:       expat-devel
 The %{name}-devel package contains libraries and header files for
 developing applications that use %{name}.
 
+%if %{with mingw}
+%package -n mingw32-%{name}
+Summary:        MinGW Windows %{name} library
+Requires:       mingw32-boost
+BuildArch:      noarch
+
+%description -n mingw32-%{name}
+MinGW Windows %{name} library.
+
+
+%package -n mingw32-python3-%{name}
+Summary:        MinGW Windows Python 3 %{name} library
+Requires:       mingw32-%{name} = %{version}-%{release}
+BuildArch:      noarch
+
+%description -n mingw32-python3-%{name}
+MinGW Windows Python 3 %{name} library.
+
+
+%package -n mingw64-%{name}
+Summary:        MinGW Windows %{name} library
+Requires:       mingw64-boost
+BuildArch:      noarch
+
+%description -n mingw64-%{name}
+MinGW Windows %{name} library.
+
+
+%package -n mingw64-python3-%{name}
+Summary:        MinGW Windows Python 3 %{name} library
+Requires:       mingw64-%{name} = %{version}-%{release}
+BuildArch:      noarch
+
+%description -n mingw64-python3-%{name}
+MinGW Windows Python 3 %{name} library.
+
+
+%{?mingw_debug_package}
+%endif
+
+
 %prep
 %autosetup -p1 -a1
 
@@ -94,8 +168,14 @@ pushd minizip
 %cmake -DBUILD_SHARED_LIBS=OFF
 %cmake_build
 )
+
+%if %{with mingw}
+(
+%mingw_cmake -DBUILD_SHARED_LIBS=OFF
+%mingw_make_build
+)
+%endif
 popd
-ls -la minizip
 
 # Native build
 %cmake -DWITH_SWIG=ON -DWITH_PYTHON=ON \
@@ -104,16 +184,46 @@ ls -la minizip
 %endif
   -DCMAKE_INSTALL_DIR=%{_libdir}/cmake/%{name} \
   -DINCLUDE_INSTALL_DIR=%{_includedir}/kml \
-  -DPYTHON_LIBRARY=%{_libdir}/libpython%{python3_version}$(python3-config --abiflags).so \
-  -DPYTHON_INCLUDE_DIR=%{_includedir}/python%{python3_version}$(python3-config --abiflags)/ \
+  -DPYTHON_LIBRARY=%{_usr}/%{_lib}/libpython%{python3_version}$(python3-config --abiflags).so \
+  -DPYTHON_INCLUDE_DIR=%{_usr}/include/python%{python3_version}$(python3-config --abiflags)/ \
   -DPYTHON_INSTALL_DIR=%{python3_sitearch} \
-  -DMINIZIP_INCLUDE_DIR=$PWD -DMINIZIP_LIBRARY=$PWD/minizip/libminizip.a \
+  -DMINIZIP_INCLUDE_DIR=$PWD -DMINIZIP_LIBRARY=$PWD/minizip/%{_vpath_builddir}/libminizip.a \
   -DBUILD_TESTING=ON \
+  -DBUILD_EXAMPLES=ON
 %cmake_build
+
+%if %{with mingw}
+export MINGW32_CMAKE_ARGS="\
+  -DCMAKE_INSTALL_DIR=%{mingw32_libdir}/cmake/%{name} \
+  -DINCLUDE_INSTALL_DIR=%{mingw32_includedir}/kml \
+  -DPYTHON_LIBRARY=%{mingw32_libdir}/libpython%{mingw32_python3_version}.dll.a \
+  -DPYTHON_INCLUDE_DIR=%{mingw32_includedir}/python%{mingw32_python3_version}/ \
+  -DPYTHON_INSTALL_DIR=%{mingw32_python3_sitearch} \
+  -DMINIZIP_INCLUDE_DIR=$PWD -DMINIZIP_LIBRARY=$PWD/minizip/build_win32/libminizip.a"
+
+export MINGW64_CMAKE_ARGS="\
+  -DCMAKE_INSTALL_DIR=%{mingw64_libdir}/cmake/%{name} \
+  -DINCLUDE_INSTALL_DIR=%{mingw64_includedir}/kml \
+  -DPYTHON_LIBRARY=%{mingw64_libdir}/libpython%{mingw64_python3_version}.dll.a \
+  -DPYTHON_INCLUDE_DIR=%{mingw64_includedir}/python%{mingw64_python3_version}/ \
+  -DPYTHON_INSTALL_DIR=%{mingw64_python3_sitearch} \
+  -DMINIZIP_INCLUDE_DIR=$PWD -DMINIZIP_LIBRARY=$PWD/minizip/build_win64/libminizip.a"
+
+# MinGW build
+%mingw_cmake -DWITH_SWIG=ON -DWITH_PYTHON=ON \
+  -DBUILD_TESTING=OFF \
+  -DBUILD_EXAMPLES=OFF
+%mingw_make_build
+%endif
 
 
 %install
 %cmake_install
+
+%if %{with mingw}
+%mingw_make_install
+%mingw_debug_install_post
+%endif
 
 
 %check
@@ -143,11 +253,59 @@ ls -la minizip
 %{_libdir}/pkgconfig/%{name}.pc
 %{_libdir}/cmake/%{name}/
 
+
+
+%if %{with mingw}
+%files -n mingw32-%{name}
+%license LICENSE
+%{mingw32_bindir}/%{name}*.dll
+%{mingw32_includedir}/kml/
+%{mingw32_libdir}/%{name}*.dll.a
+%{mingw32_libdir}/pkgconfig/%{name}.pc
+%{mingw32_libdir}/cmake/%{name}/
+
+%files -n mingw32-python3-%{name}
+%{mingw32_python3_sitearch}/*.py*
+
+%files -n mingw64-%{name}
+%license LICENSE
+%{mingw64_bindir}/%{name}*.dll
+%{mingw64_includedir}/kml/
+%{mingw64_libdir}/%{name}*.dll.a
+%{mingw64_libdir}/pkgconfig/%{name}.pc
+%{mingw64_libdir}/cmake/%{name}/
+
+%files -n mingw64-python3-%{name}
+%{mingw64_python3_sitearch}/*.py*
+%endif
+
 %changelog
-* Wed Aug 16 2023 Archana Choudhary <archana1@microsoft.com> - 1.3.0-41
-- Initial CBL-Mariner import from Fedora 37 (license: MIT).
-- License verified.
-- Remove examples from build
+* Thu Jul 18 2024 Fedora Release Engineering <releng@fedoraproject.org> - 1.3.0-49
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_41_Mass_Rebuild
+
+* Sat Jun 08 2024 Python Maint <python-maint@redhat.com> - 1.3.0-48
+- Rebuilt for Python 3.13
+
+* Thu Jan 25 2024 Fedora Release Engineering <releng@fedoraproject.org> - 1.3.0-47
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Sun Jan 21 2024 Fedora Release Engineering <releng@fedoraproject.org> - 1.3.0-46
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Thu Jul 20 2023 Fedora Release Engineering <releng@fedoraproject.org> - 1.3.0-45
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_39_Mass_Rebuild
+
+* Tue Jun 13 2023 Python Maint <python-maint@redhat.com> - 1.3.0-44
+- Rebuilt for Python 3.12
+
+* Thu Jan 19 2023 Fedora Release Engineering <releng@fedoraproject.org> - 1.3.0-43
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_38_Mass_Rebuild
+
+* Wed Oct 19 2022 Sandro Mani <manisandro@gmail.com> - 1.3.0-42
+- Rebuild (python-3.11)
+
+* Sat Sep 24 2022 Tom Rix <trix@redhat.com> - 1.3.0-41
+- Add mingw build conditional
 
 * Thu Jul 21 2022 Fedora Release Engineering <releng@fedoraproject.org> - 1.3.0-40
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_37_Mass_Rebuild

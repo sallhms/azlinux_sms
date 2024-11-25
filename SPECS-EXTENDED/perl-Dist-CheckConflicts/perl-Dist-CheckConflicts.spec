@@ -1,25 +1,24 @@
-# We need to patch the test suite if we have an old version of Test::More
-%global old_test_more %(perl -MTest::More -e 'print (($Test::More::VERSION < 0.88) ? 1 : 0);' 2>/dev/null || echo 0)
 # Run extra test
-
+%if 0%{?fedora}
 %bcond_without perl_Dist_CheckConflicts_enables_extra_test
-
-
-
+%else
+%bcond_with perl_Dist_CheckConflicts_enables_extra_test
+%endif
 
 Name:		perl-Dist-CheckConflicts
 Version:	0.11
-Release:	18%{?dist}
+Release:	31%{?dist}
 Summary:	Declare version conflicts for your dist
-License:	GPL+ or Artistic
-Vendor:         Microsoft Corporation
-Distribution:   Azure Linux
+License:	GPL-1.0-or-later OR Artistic-1.0-Perl
 URL:		https://metacpan.org/release/Dist-CheckConflicts
-Source0:	https://cpan.metacpan.org/authors/id/D/DO/DOY/Dist-CheckConflicts-%{version}.tar.gz#/perl-Dist-CheckConflicts-%{version}.tar.gz
-Patch0:		Dist-CheckConflicts-0.11-old-Test-More.patch
+Source0:	https://cpan.metacpan.org/modules/by-module/Dist/Dist-CheckConflicts-%{version}.tar.gz
 BuildArch:	noarch
 # Module Build
+BuildRequires:	coreutils
+BuildRequires:	findutils
+BuildRequires:	make
 BuildRequires:	perl-generators
+BuildRequires:	perl-interpreter
 BuildRequires:	perl(ExtUtils::MakeMaker) >= 6.30
 # Module
 BuildRequires:	perl(base)
@@ -29,12 +28,13 @@ BuildRequires:	perl(Module::Runtime) >= 0.009
 BuildRequires:	perl(strict)
 BuildRequires:	perl(warnings)
 # Test Suite
+BuildRequires:	perl(blib)
 BuildRequires:	perl(File::Spec)
 BuildRequires:	perl(IO::Handle)
 BuildRequires:	perl(IPC::Open3)
 BuildRequires:	perl(lib)
 BuildRequires:	perl(Test::Fatal)
-BuildRequires:	perl(Test::More) >= 0.47
+BuildRequires:	perl(Test::More) >= 0.88
 # Extra Tests
 %if %{with perl_Dist_CheckConflicts_enables_extra_test}
 BuildRequires:	perl(Pod::Coverage::TrustPod)
@@ -43,8 +43,8 @@ BuildRequires:	perl(Test::NoTabs)
 BuildRequires:	perl(Test::Pod) >= 1.41
 BuildRequires:	perl(Test::Pod::Coverage) >= 1.08
 %endif
-# Runtime
-Requires:	perl(:MODULE_COMPAT_%(eval "`perl -V:version`"; echo $version))
+# Dependencies
+# (none)
 
 %description
 One shortcoming of the CPAN clients that currently exist is that they have no
@@ -67,20 +67,14 @@ this manually.
 %prep
 %setup -q -n Dist-CheckConflicts-%{version}
 
-# Test suite needs patching if we have Test::More < 0.88
-%if %{old_test_more}
-%patch 0
-%endif
-
 %build
 perl Makefile.PL INSTALLDIRS=vendor
 make %{?_smp_mflags}
 
 %install
-rm -rf %{buildroot}
 make pure_install DESTDIR=%{buildroot}
-find %{buildroot} -type f -name .packlist -exec rm -f {} \;
-%{_fixperms} %{buildroot}
+find %{buildroot} -type f -name .packlist -delete
+%{_fixperms} -c %{buildroot}
 
 %check
 make test
@@ -89,14 +83,60 @@ make test TEST_FILES="$(echo $(find xt/ -name '*.t'))"
 %endif
 
 %files
-%doc Changes LICENSE README
+%license LICENSE
+%doc Changes README
 %{perl_vendorlib}/Dist/
-%{_mandir}/man3/Dist::CheckConflicts.3pm*
+%{_mandir}/man3/Dist::CheckConflicts.3*
 
 %changelog
-* Wed Apr 28 2021 Thomas Crain <thcrain@microsoft.com> - 0.11-18
-- Initial CBL-Mariner import from Fedora 32 (license: MIT).
-- Remove colons from patchnames
+* Fri Jul 19 2024 Fedora Release Engineering <releng@fedoraproject.org> - 0.11-31
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_41_Mass_Rebuild
+
+* Thu Jan 25 2024 Fedora Release Engineering <releng@fedoraproject.org> - 0.11-30
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Sun Jan 21 2024 Fedora Release Engineering <releng@fedoraproject.org> - 0.11-29
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Thu Jul 20 2023 Fedora Release Engineering <releng@fedoraproject.org> - 0.11-28
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_39_Mass_Rebuild
+
+* Fri Jan 20 2023 Fedora Release Engineering <releng@fedoraproject.org> - 0.11-27
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_38_Mass_Rebuild
+
+* Fri Jul 22 2022 Fedora Release Engineering <releng@fedoraproject.org> - 0.11-26
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_37_Mass_Rebuild
+
+* Wed Jun 01 2022 Jitka Plesnikova <jplesnik@redhat.com> - 0.11-25
+- Perl 5.36 rebuild
+
+* Fri Jan 21 2022 Fedora Release Engineering <releng@fedoraproject.org> - 0.11-24
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_36_Mass_Rebuild
+
+* Thu Jul 22 2021 Fedora Release Engineering <releng@fedoraproject.org> - 0.11-23
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_35_Mass_Rebuild
+
+* Fri May 21 2021 Jitka Plesnikova <jplesnik@redhat.com> - 0.11-22
+- Perl 5.34 rebuild
+
+* Wed Jan 27 2021 Fedora Release Engineering <releng@fedoraproject.org> - 0.11-21
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_34_Mass_Rebuild
+
+* Tue Jul 28 2020 Fedora Release Engineering <releng@fedoraproject.org> - 0.11-20
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_33_Mass_Rebuild
+
+* Tue Jun 23 2020 Jitka Plesnikova <jplesnik@redhat.com> - 0.11-19
+- Perl 5.32 rebuild
+
+* Tue Mar 10 2020 Paul Howarth <paul@city-fan.org> - 0.11-18
+- Spec tidy-up
+  - Use author-independent source URL
+  - Drop support for building with Test::More < 0.88
+  - Specify all build dependencies
+  - Drop redundant buildroot cleaning in %%install section
+  - Simplify find command using -delete
+  - Fix permissions verbosely
+  - Use %%license where possible
 
 * Wed Jan 29 2020 Fedora Release Engineering <releng@fedoraproject.org> - 0.11-17
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_32_Mass_Rebuild

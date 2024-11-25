@@ -1,21 +1,20 @@
-Vendor:         Microsoft Corporation
-Distribution:   Azure Linux
 %global _hardened_build 1
 
 Name:		libtnc
 Version:	1.25
-Release:	26%{?dist}
+Release:	44%{?dist}
 Summary:	Library implementation of the Trusted Network Connect (TNC) specification
 License:	GPLv2
-Source0:	https://sourceforge.net/projects/%{name}/files/%{name}/%{version}/%{name}-%{version}.tar.gz
+Source0:	http://dl.sourceforge.net/sourceforge/%{name}/%{name}-%{version}.tar.gz
 Patch0:		libtnc-1.25-bootstrap.patch
 Patch1:		libtnc-1.25-syserror.patch
+Patch2:		libtnc-1.25-symbolfix.patch
 URL:		http://libtnc.sourceforge.net/
 BuildRequires:  gcc
-BuildRequires:  make
 BuildRequires:	perl-devel
 BuildRequires:	perl-generators
 BuildRequires:	libxml2-devel, zlib-devel, perl(ExtUtils::MakeMaker)
+BuildRequires: make
 
 %description
 This library provides functions for loading and interfacing with loadable IMC
@@ -45,10 +44,15 @@ pushd Interface-TNC
 tar xf Interface-TNC-1.0.tar.gz
 popd
 
-%patch 0 -p1 -b .bootstrap
-%patch 1 -p1 -b .syserror
+%patch -P0 -p1 -b .bootstrap
+%patch -P1 -p1 -b .syserror
+%patch -P2 -p1 -b .symbolfix
 
 %build
+# Switch to C89 mode due to many C99 compatibility issues.
+%global build_type_safety_c 0
+%set_build_flags
+CC="$CC -std=gnu89"
 CFLAGS="%{optflags} -fPIC -DPIC"
 %configure --with-pic
 sed -i 's|^hardcode_libdir_flag_spec=.*|hardcode_libdir_flag_spec=""|g' libtool
@@ -57,7 +61,8 @@ make %{?_smp_mflags}
 
 pushd Interface-TNC/Interface-TNC-1.0
 %{__perl} Makefile.PL INSTALLDIRS=vendor
-make %{?_smp_mflags}
+# Switch to C89 mode due to undefined functions.  See bug #2154693.
+make CC="$CC" %{?_smp_mflags}
 popd
 
 %install
@@ -80,8 +85,7 @@ popd
 %ldconfig_scriptlets
 
 %files
-%license COPYING
-%doc README
+%doc COPYING README
 %{_libdir}/libosc_im*.so.*
 %{_libdir}/libsample_im*.so.*
 %{_libdir}/libtnc.so.*
@@ -101,12 +105,66 @@ popd
 %{_mandir}/man3/Interface::TNC*
 
 %changelog
-* Fri Mar 04 2022 Pawel Winogrodzki <pawelwi@microsoft.com> - 1.25-26
-- Fixing building with GCC 11 using Fedora 36 spec (license: MIT) for guidance.
-- License verified.
+* Thu Jul 18 2024 Fedora Release Engineering <releng@fedoraproject.org> - 1.25-44
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_41_Mass_Rebuild
 
-* Fri Oct 15 2021 Pawel Winogrodzki <pawelwi@microsoft.com> - 1.25-25
-- Initial CBL-Mariner import from Fedora 32 (license: MIT).
+* Mon Jun 10 2024 Jitka Plesnikova <jplesnik@redhat.com> - 1.25-43
+- Perl 5.40 rebuild
+
+* Thu Jan 25 2024 Fedora Release Engineering <releng@fedoraproject.org> - 1.25-42
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Sun Jan 21 2024 Fedora Release Engineering <releng@fedoraproject.org> - 1.25-41
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Wed Aug 16 2023 Florian Weimer <fweimer@redhat.com> - 1.25-40
+- Set build_type_safety_c to 0 (#2154692)
+
+* Thu Jul 20 2023 Fedora Release Engineering <releng@fedoraproject.org> - 1.25-39
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_39_Mass_Rebuild
+
+* Tue Jul 11 2023 Jitka Plesnikova <jplesnik@redhat.com> - 1.25-38
+- Perl 5.38 rebuild
+
+* Thu Jan 19 2023 Fedora Release Engineering <releng@fedoraproject.org> - 1.25-37
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_38_Mass_Rebuild
+
+* Wed Jan 11 2023 Tom Callaway <spot@fedoraproject.org> - 1.25-36
+- fix missing symbols that the perl module was looking for in this crufty old dinosaur
+
+* Sun Dec 18 2022 Florian Weimer <fweimer@redhat.com> - 1.25-35
+- Build in C89 due to C99 compatibility issues (#2154692)
+
+* Thu Jul 21 2022 Fedora Release Engineering <releng@fedoraproject.org> - 1.25-34
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_37_Mass_Rebuild
+
+* Mon May 30 2022 Jitka Plesnikova <jplesnik@redhat.com> - 1.25-33
+- Perl 5.36 rebuild
+
+* Thu Jan 20 2022 Fedora Release Engineering <releng@fedoraproject.org> - 1.25-32
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_36_Mass_Rebuild
+
+* Thu Jul 22 2021 Fedora Release Engineering <releng@fedoraproject.org> - 1.25-31
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_35_Mass_Rebuild
+
+* Fri May 21 2021 Jitka Plesnikova <jplesnik@redhat.com> - 1.25-30
+- Perl 5.34 rebuild
+
+* Tue Jan 26 2021 Fedora Release Engineering <releng@fedoraproject.org> - 1.25-29
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_34_Mass_Rebuild
+
+* Sat Aug 01 2020 Fedora Release Engineering <releng@fedoraproject.org> - 1.25-28
+- Second attempt - Rebuilt for
+  https://fedoraproject.org/wiki/Fedora_33_Mass_Rebuild
+
+* Tue Jul 28 2020 Fedora Release Engineering <releng@fedoraproject.org> - 1.25-27
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_33_Mass_Rebuild
+
+* Tue Jul 14 2020 Tom Callaway <spot@fedoraproject.org> - 1.25-26
+- use syserror instead of sys_errlist because sys_errlist is gone in latest glibc
+
+* Mon Jun 22 2020 Jitka Plesnikova <jplesnik@redhat.com> - 1.25-25
+- Perl 5.32 rebuild
 
 * Wed Jan 29 2020 Fedora Release Engineering <releng@fedoraproject.org> - 1.25-24
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_32_Mass_Rebuild

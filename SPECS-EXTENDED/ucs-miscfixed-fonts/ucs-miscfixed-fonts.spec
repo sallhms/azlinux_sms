@@ -1,5 +1,3 @@
-Vendor:         Microsoft Corporation
-Distribution:   Azure Linux
 %global fontname ucs-miscfixed
 %global fontconf 66-%{fontname}.conf
 
@@ -9,15 +7,15 @@ locations such as terminals.
 
 Name: %{fontname}-fonts
 Version: 0.3
-Release: 23%{?dist}
-License: Public Domain
+Release: 34%{?dist}
+License: LicenseRef-Fedora-Public-Domain
 URL: http://www.cl.cam.ac.uk/~mgk25/ucs-fonts.html
 Source0: http://www.cl.cam.ac.uk/~mgk25/download/ucs-fonts.tar.gz
 Source1: 66-ucs-miscfixed.conf
 BuildArch: noarch
 Summary: Selected set of bitmap fonts
 BuildRequires: fontpackages-devel
-BuildRequires: xorg-x11-font-utils
+BuildRequires: mkfontdir bdftopcf fonttosfnt
 Conflicts: ucs-miscfixed-opentype-fonts
 
 %description
@@ -63,15 +61,48 @@ ln -s %{_fontconfig_templatedir}/%{fontconf} \
 
 %_font_pkg -f %{fontconf} *.bdf
 
-%license README	
+%doc README	
 
 %_font_pkg -n ucs-miscfixed-opentype-fonts -f %{fontconf} *.otb
 
-%license README
+%doc README
 
 %changelog
-* Fri Oct 15 2021 Pawel Winogrodzki <pawelwi@microsoft.com> - 0.3-23
-- Initial CBL-Mariner import from Fedora 32 (license: MIT).
+* Sat Jul 20 2024 Fedora Release Engineering <releng@fedoraproject.org> - 0.3-34
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_41_Mass_Rebuild
+
+* Sat Jan 27 2024 Fedora Release Engineering <releng@fedoraproject.org> - 0.3-33
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Sat Jul 22 2023 Fedora Release Engineering <releng@fedoraproject.org> - 0.3-32
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_39_Mass_Rebuild
+
+* Fri Jul 07 2023 Gwyn Ciesla <gwync@protonmail.com> - 0.3-31
+- Convert to SPDX license.
+
+* Sat Jan 21 2023 Fedora Release Engineering <releng@fedoraproject.org> - 0.3-30
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_38_Mass_Rebuild
+
+* Sat Jul 23 2022 Fedora Release Engineering <releng@fedoraproject.org> - 0.3-29
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_37_Mass_Rebuild
+
+* Sat Jan 22 2022 Fedora Release Engineering <releng@fedoraproject.org> - 0.3-28
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_36_Mass_Rebuild
+
+* Fri Jul 23 2021 Fedora Release Engineering <releng@fedoraproject.org> - 0.3-27
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_35_Mass_Rebuild
+
+* Tue Mar 02 2021 Parag Nemade <pnemade AT redhat DOT com> - 0.3-26
+- Resolves: rhbz#1933581 - Don't BuildRequires xorg-x11-font-utils
+
+* Wed Jan 27 2021 Fedora Release Engineering <releng@fedoraproject.org> - 0.3-25
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_34_Mass_Rebuild
+
+* Tue Dec 29 2020 Peng Wu <pwu@redhat.com> - 0.3-24
+- Rebuilt with fonttosfnt 1.2.1
+
+* Wed Jul 29 2020 Fedora Release Engineering <releng@fedoraproject.org> - 0.3-23
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_33_Mass_Rebuild
 
 * Thu Feb  6 2020 Peng Wu <pwu@redhat.com> - 0.3-22
 - Provide OpenType Bitmap fonts

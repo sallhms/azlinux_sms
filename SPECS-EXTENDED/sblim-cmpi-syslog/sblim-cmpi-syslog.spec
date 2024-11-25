@@ -1,19 +1,17 @@
-Vendor:         Microsoft Corporation
-Distribution:   Azure Linux
 %global provider_dir %{_libdir}/cmpi
 
 Summary:        SBLIM syslog instrumentation
 Name:           sblim-cmpi-syslog
 Version:        0.9.0
-Release:        20%{?dist}
-License:        EPL
+Release:        28%{?dist}
+License:        EPL-1.0
 URL:            http://sourceforge.net/projects/sblim/
 # The source for this package was pulled from upstream's vcs.  Use the
 # following commands to generate the tarball:
 #  cvs -z3 -d:pserver:anonymous@sblim.cvs.sourceforge.net:/cvsroot/sblim co -P cmpi-syslog
 #  mv cmpi-syslog sblim-cmpi-syslog-0.8.0
 #  tar -cJvf sblim-cmpi-syslog-0.8.0.tar.xz sblim-cmpi-syslog-0.8.0
-Source0:        %{_distro_sources_url}/%{name}-%{version}.tar.bz2
+Source0:        %{name}-%{version}.tar.bz2
 
 # use Pegasus' root/interop instead of root/PG_Interop
 Patch0:         sblim-cmpi-syslog-0.9.0-pegasus-interop.patch
@@ -24,7 +22,9 @@ Patch2:         sblim-cmpi-syslog-0.9.0-prov-reg-sfcb-systemd.patch
 Patch3:         sblim-cmpi-syslog-0.9.0-format-security.patch
 # Patch4: fix possible buffer overflow, remove usage of obsolete tmpnam()
 Patch4:         sblim-cmpi-syslog-0.9.0-buffer-overflow-remove-tmpnam.patch
+Patch5: sblim-cmpi-syslog-c99.patch
 
+BuildRequires: make
 BuildRequires:  perl-generators
 BuildRequires:  sblim-cmpi-devel
 BuildRequires:  sblim-cmpi-base-devel >= 1.5.4
@@ -55,17 +55,16 @@ SBLIM Base Syslog Testcase Files for SBLIM Testsuite
 
 %prep
 %setup -q
-%patch 0 -p1 -b .interop
-%patch 1 -p1 -b .docdir
-%patch 2 -p1 -b .prov-reg-sfcb-systemd
-%patch 3 -p1 -b .format-security
-%patch 4 -p1 -b .buffer-overflow-remove-tmpnam
+%autopatch -p1
+# removing COPYING, because it's misleading
+rm -f COPYING
+# ./autoconfiscate.sh
 
 %build
 %ifarch s390 s390x ppc ppc64
 export CFLAGS="$RPM_OPT_FLAGS -fsigned-char"
 %else
-export CFLAGS="$RPM_OPT_FLAGS"
+export CFLAGS="$RPM_OPT_FLAGS" 
 %endif
 %configure \
         TESTSUITEDIR=%{_datadir}/sblim-testsuite \
@@ -94,8 +93,6 @@ $RPM_BUILD_ROOT/%{_datadir}/sblim-testsuite/system/linux/msglogtest.sh \
 $RPM_BUILD_ROOT/%{_datadir}/sblim-testsuite/system/linux/messagelog.sh
 
 %files
-%license COPYING
-%doc AUTHORS ChangeLog INSTALL NEWS README
 %{_bindir}/syslog-service.sh
 %{provider_dir}/lib[Ss]yslog*.so*
 %{_datadir}/%{name}
@@ -128,16 +125,38 @@ $RPM_BUILD_ROOT/%{_datadir}/sblim-testsuite/system/linux/messagelog.sh
 %postun -p /sbin/ldconfig
 
 %changelog
-* Thu Feb 22 2024 Pawel Winogrodzki <pawelwi@microsoft.com> - 0.9.0-20
-- Updating naming for 3.0 version of Azure Linux.
+* Sat Jul 20 2024 Fedora Release Engineering <releng@fedoraproject.org> - 0.9.0-28
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_41_Mass_Rebuild
 
-* Mon Apr 25 2022 Mateusz Malisz <mamalisz@microsoft.com> - 0.9.0-19
-- Update Source0
-- Add %%doc and %%license
-- License verified.
+* Sat Jan 27 2024 Fedora Release Engineering <releng@fedoraproject.org> - 0.9.0-27
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
 
-* Fri Oct 15 2021 Pawel Winogrodzki <pawelwi@microsoft.com> - 0.9.0-18
-- Initial CBL-Mariner import from Fedora 32 (license: MIT).
+* Sat Jul 22 2023 Fedora Release Engineering <releng@fedoraproject.org> - 0.9.0-26
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_39_Mass_Rebuild
+
+* Mon May 29 2023 Vitezslav Crhonek <vcrhonek@redhat.com> - 0.9.0-25
+- SPDX migration
+
+* Mon Apr 17 2023 Florian Weimer <fweimer@redhat.com> - 0.9.0-24
+- Port to C99
+
+* Sat Jan 21 2023 Fedora Release Engineering <releng@fedoraproject.org> - 0.9.0-23
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_38_Mass_Rebuild
+
+* Sat Jul 23 2022 Fedora Release Engineering <releng@fedoraproject.org> - 0.9.0-22
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_37_Mass_Rebuild
+
+* Sat Jan 22 2022 Fedora Release Engineering <releng@fedoraproject.org> - 0.9.0-21
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_36_Mass_Rebuild
+
+* Fri Jul 23 2021 Fedora Release Engineering <releng@fedoraproject.org> - 0.9.0-20
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_35_Mass_Rebuild
+
+* Wed Jan 27 2021 Fedora Release Engineering <releng@fedoraproject.org> - 0.9.0-19
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_34_Mass_Rebuild
+
+* Wed Jul 29 2020 Fedora Release Engineering <releng@fedoraproject.org> - 0.9.0-18
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_33_Mass_Rebuild
 
 * Thu Jan 30 2020 Fedora Release Engineering <releng@fedoraproject.org> - 0.9.0-17
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_32_Mass_Rebuild

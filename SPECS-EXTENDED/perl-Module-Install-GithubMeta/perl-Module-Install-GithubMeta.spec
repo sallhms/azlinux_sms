@@ -1,16 +1,14 @@
 Name:       perl-Module-Install-GithubMeta 
 Version:    0.30
-Release:    17%{?dist}
+Release:    29%{?dist}
 # lib/Module/Install/GithubMeta.pm -> GPL+ or Artistic
-License:    GPL+ or Artistic 
-Vendor:         Microsoft Corporation
-Distribution:   Azure Linux
+License:    GPL-1.0-or-later OR Artistic-1.0-Perl
 Summary:    A Module::Install extension to include GitHub meta information in META.yml 
 Source:     https://cpan.metacpan.org/authors/id/B/BI/BINGOS/Module-Install-GithubMeta-%{version}.tar.gz 
 Url:        https://metacpan.org/release/Module-Install-GithubMeta
-Requires:   perl(:MODULE_COMPAT_%(eval "`perl -V:version`"; echo $version))
 BuildArch:  noarch
 
+BuildRequires: make
 BuildRequires: perl-generators
 BuildRequires: perl(base)
 BuildRequires: perl(Capture::Tiny) >= 0.05
@@ -22,7 +20,6 @@ BuildRequires: perl(Fcntl)
 BuildRequires: perl(File::Path)
 BuildRequires: perl(File::Find)
 BuildRequires: perl(File::Spec)
-BuildRequires: perl(FindBin)
 BuildRequires: perl(Module::Build)
 BuildRequires: perl(Module::Install) >= 0.85
 BuildRequires: perl(strict)
@@ -70,11 +67,47 @@ make test
 %{_mandir}/man3/*.3*
 
 %changelog
-* Thu Jan 13 2022 Pawel Winogrodzki <pawelwi@microsoft.com> - 0.30-17
-- License verified.
+* Fri Jul 19 2024 Fedora Release Engineering <releng@fedoraproject.org> - 0.30-29
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_41_Mass_Rebuild
 
-* Fri Oct 15 2021 Pawel Winogrodzki <pawelwi@microsoft.com> - 0.30-16
-- Initial CBL-Mariner import from Fedora 32 (license: MIT).
+* Thu Jan 25 2024 Fedora Release Engineering <releng@fedoraproject.org> - 0.30-28
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Sun Jan 21 2024 Fedora Release Engineering <releng@fedoraproject.org> - 0.30-27
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Thu Jul 20 2023 Fedora Release Engineering <releng@fedoraproject.org> - 0.30-26
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_39_Mass_Rebuild
+
+* Fri Jan 20 2023 Fedora Release Engineering <releng@fedoraproject.org> - 0.30-25
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_38_Mass_Rebuild
+
+* Fri Jul 22 2022 Fedora Release Engineering <releng@fedoraproject.org> - 0.30-24
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_37_Mass_Rebuild
+
+* Wed Jun 01 2022 Jitka Plesnikova <jplesnik@redhat.com> - 0.30-23
+- Perl 5.36 rebuild
+
+* Fri Jan 21 2022 Fedora Release Engineering <releng@fedoraproject.org> - 0.30-22
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_36_Mass_Rebuild
+
+* Thu Dec 23 2021 Paul Howarth <paul@city-fan.org> - 0.30-21
+- Rebuild to attempt to work around https://pagure.io/releng/issue/10472
+
+* Thu Jul 22 2021 Fedora Release Engineering <releng@fedoraproject.org> - 0.30-20
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_35_Mass_Rebuild
+
+* Fri May 21 2021 Jitka Plesnikova <jplesnik@redhat.com> - 0.30-19
+- Perl 5.34 rebuild
+
+* Wed Jan 27 2021 Fedora Release Engineering <releng@fedoraproject.org> - 0.30-18
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_34_Mass_Rebuild
+
+* Tue Jul 28 2020 Fedora Release Engineering <releng@fedoraproject.org> - 0.30-17
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_33_Mass_Rebuild
+
+* Tue Jun 23 2020 Jitka Plesnikova <jplesnik@redhat.com> - 0.30-16
+- Perl 5.32 rebuild
 
 * Thu Jan 30 2020 Fedora Release Engineering <releng@fedoraproject.org> - 0.30-15
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_32_Mass_Rebuild

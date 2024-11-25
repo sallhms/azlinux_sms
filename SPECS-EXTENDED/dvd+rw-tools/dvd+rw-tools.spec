@@ -1,8 +1,6 @@
-Vendor:         Microsoft Corporation
-Distribution:   Azure Linux
 Name:		dvd+rw-tools
 Version:	7.1
-Release:	33%{?dist}
+Release:	42%{?dist}
 Summary:	Toolchain to master DVD+RW/+R media
 License:	GPLv2
 URL:		http://fy.chalmers.se/~appro/linux/DVD+RW/
@@ -25,6 +23,7 @@ Patch12:	dvd+rw-tools-7.1-sysmacro-inc.patch
 Requires:	genisoimage
 BuildRequires:	gcc gcc-c++
 BuildRequires:	kernel-headers m4
+BuildRequires: make
 
 %description
 Collection of tools to master DVD+RW/+R media. For further
@@ -32,18 +31,18 @@ information see http://fy.chalmers.se/~appro/linux/DVD+RW/.
 
 %prep
 %setup -q
-%patch 1 -p1 -b .manpatch
-%patch 2 -p1 -b .wexit
-%patch 3 -p1 -b .glibc2.6.90
-%patch 4 -p1 -b .reload
-%patch 5 -p0 -b .wctomb
-%patch 6 -p0 -b .dvddl
-%patch 7 -p1 -b .noevent
-%patch 8 -p1 -b .lastshort
-%patch 9 -p1 -b .format
-%patch 10 -p1 -b .pow
-%patch 11 -p1 -b .freespace
-%patch 12 -p1 -b .sysmacro
+%patch -P1 -p1 -b .manpatch
+%patch -P2 -p1 -b .wexit
+%patch -P3 -p1 -b .glibc2.6.90
+%patch -P4 -p1 -b .reload
+%patch -P5 -p0 -b .wctomb
+%patch -P6 -p0 -b .dvddl
+%patch -P7 -p1 -b .noevent
+%patch -P8 -p1 -b .lastshort
+%patch -P9 -p1 -b .format
+%patch -P10 -p1 -b .pow
+%patch -P11 -p1 -b .freespace
+%patch -P12 -p1 -b .sysmacro
 
 install -m 644 %{SOURCE1} index.html
 
@@ -64,8 +63,35 @@ make WARN="-DDEFAULT_BUF_SIZE_MB=16 -DRLIMIT_MEMLOCK" %{?_smp_mflags}
 %{_mandir}/man1/*.1*
 
 %changelog
-* Fri Oct 15 2021 Pawel Winogrodzki <pawelwi@microsoft.com> - 7.1-33
-- Initial CBL-Mariner import from Fedora 32 (license: MIT).
+* Wed Jul 17 2024 Fedora Release Engineering <releng@fedoraproject.org> - 7.1-42
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_41_Mass_Rebuild
+
+* Wed Jan 24 2024 Fedora Release Engineering <releng@fedoraproject.org> - 7.1-41
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Fri Jan 19 2024 Fedora Release Engineering <releng@fedoraproject.org> - 7.1-40
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Wed Jul 19 2023 Fedora Release Engineering <releng@fedoraproject.org> - 7.1-39
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_39_Mass_Rebuild
+
+* Thu Jan 19 2023 Fedora Release Engineering <releng@fedoraproject.org> - 7.1-38
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_38_Mass_Rebuild
+
+* Thu Jul 21 2022 Fedora Release Engineering <releng@fedoraproject.org> - 7.1-37
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_37_Mass_Rebuild
+
+* Thu Jan 20 2022 Fedora Release Engineering <releng@fedoraproject.org> - 7.1-36
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_36_Mass_Rebuild
+
+* Wed Jul 21 2021 Fedora Release Engineering <releng@fedoraproject.org> - 7.1-35
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_35_Mass_Rebuild
+
+* Tue Jan 26 2021 Fedora Release Engineering <releng@fedoraproject.org> - 7.1-34
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_34_Mass_Rebuild
+
+* Mon Jul 27 2020 Fedora Release Engineering <releng@fedoraproject.org> - 7.1-33
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_33_Mass_Rebuild
 
 * Tue Jan 28 2020 Fedora Release Engineering <releng@fedoraproject.org> - 7.1-32
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_32_Mass_Rebuild

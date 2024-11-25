@@ -1,29 +1,26 @@
-Name:           mosh
-Version:        1.4.0
-Release:        7%{?dist}
-Summary:        Mobile shell that supports roaming and intelligent local echo
-Vendor:         Microsoft Corporation
-Distribution:   Azure Linux
+Name:		mosh
+Version:	1.4.0
+Release:	6%{?dist}
+Summary:	Mobile shell that supports roaming and intelligent local echo
 
-License:        GPLv3+
-URL:            https://mosh.mit.edu/
-Source0:        https://github.com/mobile-shell/mosh/releases/download/%{name}-%{version}/%{name}-%{version}.tar.gz
+License:	GPLv3+
+URL:		https://mosh.mit.edu/
+Source0:	https://mosh.mit.edu/mosh-%{version}.tar.gz
 
-BuildRequires:  libutempter-devel
-BuildRequires:  ncurses-devel
-BuildRequires:  openssl-devel
-BuildRequires:  perl-diagnostics
-BuildRequires:  perl-generators
-BuildRequires:  protobuf-compiler
-BuildRequires:  protobuf-devel
-BuildRequires:  protobuf-static
-BuildRequires:  zlib-devel
+BuildRequires:	libutempter-devel
+BuildRequires:	ncurses-devel
+BuildRequires:	openssl-devel
+BuildRequires:	perl-diagnostics
+BuildRequires:	perl-generators
+BuildRequires:	protobuf-compiler
+BuildRequires:	protobuf-devel
+BuildRequires:	zlib-devel
 BuildRequires:  gcc
 BuildRequires:  gcc-c++
 BuildRequires:  make
-Requires:       openssh-clients
-Requires:       openssl
-Requires:       perl-IO-Socket-IP
+Requires:	openssh-clients
+Requires:	openssl
+Requires:	perl(IO::Socket::IP)
 
 %description
 Mosh is a remote terminal application that supports:
@@ -34,12 +31,11 @@ Mosh is a remote terminal application that supports:
 
 
 %prep
-%autosetup -p1
+%setup -q
 
 
 %build
-export CXXFLAGS="${CXXFLAGS} -std=c++17"
-%configure --disable-silent-rules CC=gcc CXX=g++
+%configure --disable-silent-rules
 %make_build
 
 
@@ -59,12 +55,8 @@ export CXXFLAGS="${CXXFLAGS} -std=c++17"
 
 
 %changelog
-- Tue Sep 24 2024 Rohit Rawat <rohitrawat@microsoft.com> - 1.4.0-7
-- AzureLinux move from 2.0 branch to 3.0
-
-* Sun Aug 11 2024 Chris Co <chrco@microsoft.com> - 1.4.0-6
-- Initial Azure Linux import from Fedora 40 (license: MIT)
-- License verified
+* Thu Jul 18 2024 Fedora Release Engineering <releng@fedoraproject.org> - 1.4.0-6
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_41_Mass_Rebuild
 
 * Thu Jan 25 2024 Fedora Release Engineering <releng@fedoraproject.org> - 1.4.0-5
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild

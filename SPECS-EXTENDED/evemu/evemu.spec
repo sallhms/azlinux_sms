@@ -1,5 +1,3 @@
-Vendor:         Microsoft Corporation
-Distribution:   Azure Linux
 %if 0%{?rhel} && 0%{?rhel} < 8
 %bcond_without legacy_python
 %endif
@@ -9,10 +7,10 @@ Distribution:   Azure Linux
 
 Name:           evemu
 Version:        2.7.0
-Release:        14%{?dist}
+Release:        31%{?gitdate:.%{gitdate}git%{gitversion}}%{?dist}
 Summary:        Event Device Query and Emulation Program
 
-License:        GPLv3+
+License:        GPL-3.0-only AND LGPL-3.0-only AND GPL-3.0-or-later
 URL:            http://www.freedesktop.org/wiki/Evemu
 
 %if 0%{?gitdate}
@@ -23,7 +21,7 @@ Source2:        commitid
 Source0:        http://www.freedesktop.org/software/%{name}/%{name}-%{version}.tar.xz
 %endif
 
-BuildRequires:  automake libtool gcc gcc-c++
+BuildRequires:  automake libtool gcc gcc-c++ make
 %if %{with legacy_python}
 BuildRequires:  python2-devel
 %else
@@ -40,7 +38,7 @@ and replay that stream on a virtual input device.
 
 %package libs
 Summary:        Event Device Query and Emulation Program Library
-License:        LGPLv3+
+License:        LGPL-3.0-or-later
 Conflicts:      evemu < 2.7.0-8
 
 %description libs
@@ -98,9 +96,59 @@ rm -f %{buildroot}%{_libdir}/*.la
 %endif
 
 %changelog
-* Thu Oct 14 2021 Pawel Winogrodzki <pawelwi@microsoft.com> - 2.7.0-14
-- Initial CBL-Mariner import from Fedora 32 (license: MIT).
-- Converting the 'Release' tag to the '[number].[distribution]' format.
+* Wed Jul 17 2024 Fedora Release Engineering <releng@fedoraproject.org> - 2.7.0-31
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_41_Mass_Rebuild
+
+* Wed Jul 17 2024 Miroslav Suchý <msuchy@redhat.com> - 2.7.0-30
+- convert license to SPDX
+
+* Fri Jun 07 2024 Python Maint <python-maint@redhat.com> - 2.7.0-29
+- Rebuilt for Python 3.13
+
+* Wed Jan 24 2024 Fedora Release Engineering <releng@fedoraproject.org> - 2.7.0-28
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Fri Jan 19 2024 Fedora Release Engineering <releng@fedoraproject.org> - 2.7.0-27
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Fri Sep 08 2023 Peter Hutterer <peter.hutterer@redhat.com> - 2.7.0-26
+- SPDX migration
+
+* Wed Jul 19 2023 Fedora Release Engineering <releng@fedoraproject.org> - 2.7.0-25
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_39_Mass_Rebuild
+
+* Thu Jun 15 2023 Python Maint <python-maint@redhat.com> - 2.7.0-24
+- Rebuilt for Python 3.12
+
+* Thu Jan 19 2023 Fedora Release Engineering <releng@fedoraproject.org> - 2.7.0-23
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_38_Mass_Rebuild
+
+* Thu Jul 21 2022 Fedora Release Engineering <releng@fedoraproject.org> - 2.7.0-22
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_37_Mass_Rebuild
+
+* Mon Jun 13 2022 Python Maint <python-maint@redhat.com> - 2.7.0-21
+- Rebuilt for Python 3.11
+
+* Thu Jan 20 2022 Fedora Release Engineering <releng@fedoraproject.org> - 2.7.0-20
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_36_Mass_Rebuild
+
+* Wed Jul 21 2021 Fedora Release Engineering <releng@fedoraproject.org> - 2.7.0-19
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_35_Mass_Rebuild
+
+* Fri Jun 04 2021 Python Maint <python-maint@redhat.com> - 2.7.0-18
+- Rebuilt for Python 3.10
+
+* Tue Jan 26 2021 Fedora Release Engineering <releng@fedoraproject.org> - 2.7.0-17
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_34_Mass_Rebuild
+
+* Tue Dec 01 2020 Peter Hutterer <peter.hutterer@redhat.com> 2.7.0-16
+- Add make to BuildRequires
+
+* Mon Jul 27 2020 Fedora Release Engineering <releng@fedoraproject.org> - 2.7.0-15
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_33_Mass_Rebuild
+
+* Tue May 26 2020 Miro Hrončok <mhroncok@redhat.com> - 2.7.0-14
+- Rebuilt for Python 3.9
 
 * Tue Jan 28 2020 Fedora Release Engineering <releng@fedoraproject.org> - 2.7.0-13
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_32_Mass_Rebuild

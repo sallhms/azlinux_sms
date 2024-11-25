@@ -1,19 +1,17 @@
-Vendor:         Microsoft Corporation
-Distribution:   Azure Linux
 %define plugindir %{_libdir}/esmtp-plugins
 
 Summary:        SMTP client library
 Name:           libesmtp
 Version:        1.0.6
-Release:        21%{?dist}
+Release:        31%{?dist}
 License:        LGPLv2+
-#Source0:        https://github.com/libesmtp/libESMTP/archive/refs/tags/v1.0.6.tar.gz
-Source:         https://github.com/libesmtp/libESMTP/archive/refs/tags/%{name}-%{version}.tar.bz2
-URL:            https://github.com/libesmtp
+Source:         http://www.stafford.uklinux.net/libesmtp/%{name}-%{version}.tar.bz2
+URL:            http://www.stafford.uklinux.net/libesmtp/
 BuildRequires:  gcc
 BuildRequires:  openssl-devel pkgconfig autoconf automake libtool
+BuildRequires: make
 Patch0: libesmtp-1.0.6-openssl-1.1.patch
-Patch1: CVE-2019-19977-avoid-stach-overrwrite-6.patch
+Patch1: libesmtp-configure-c99.patch
 
 %description
 LibESMTP is a library to manage posting (or submission of) electronic
@@ -37,7 +35,9 @@ The libesmtp-devel package contains headers and development libraries
 necessary for building programs against libesmtp.
 
 %prep 
-%autosetup -p1
+%setup -q
+%patch -P0 -p1 -b .openssl-1.1
+%patch -P1 -p1
 
 autoreconf -fi
 
@@ -96,13 +96,41 @@ install -p -m644 -D libesmtp.pc $RPM_BUILD_ROOT%{_libdir}/pkgconfig/libesmtp.pc
 %{_libdir}/pkgconfig/libesmtp.pc
 
 %changelog
-* Tue Jun 6 2023 Dan Streetman <ddstreet@ieee.org> - 1.0.6-21
-- Fix buffer overflow for CVE-2019-19977
-- Change from %setup to %autosetup
-- License verified
+* Thu Jul 18 2024 Fedora Release Engineering <releng@fedoraproject.org> - 1.0.6-31
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_41_Mass_Rebuild
 
-* Fri Oct 15 2021 Pawel Winogrodzki <pawelwi@microsoft.com> - 1.0.6-20
-- Initial CBL-Mariner import from Fedora 32 (license: MIT).
+* Thu Jan 25 2024 Fedora Release Engineering <releng@fedoraproject.org> - 1.0.6-30
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Sun Jan 21 2024 Fedora Release Engineering <releng@fedoraproject.org> - 1.0.6-29
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Thu Jul 20 2023 Fedora Release Engineering <releng@fedoraproject.org> - 1.0.6-28
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_39_Mass_Rebuild
+
+* Thu Jan 19 2023 Fedora Release Engineering <releng@fedoraproject.org> - 1.0.6-27
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_38_Mass_Rebuild
+
+* Fri Jan 13 2023 Florian Weimer <fweimer@redhat.com> - 1.0.6-26
+- C99 compatibility fix for the configure script
+
+* Thu Jul 21 2022 Fedora Release Engineering <releng@fedoraproject.org> - 1.0.6-25
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_37_Mass_Rebuild
+
+* Thu Jan 20 2022 Fedora Release Engineering <releng@fedoraproject.org> - 1.0.6-24
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_36_Mass_Rebuild
+
+* Tue Sep 14 2021 Sahana Prasad <sahana@redhat.com> - 1.0.6-23
+- Rebuilt with OpenSSL 3.0.0
+
+* Thu Jul 22 2021 Fedora Release Engineering <releng@fedoraproject.org> - 1.0.6-22
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_35_Mass_Rebuild
+
+* Tue Jan 26 2021 Fedora Release Engineering <releng@fedoraproject.org> - 1.0.6-21
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_34_Mass_Rebuild
+
+* Tue Jul 28 2020 Fedora Release Engineering <releng@fedoraproject.org> - 1.0.6-20
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_33_Mass_Rebuild
 
 * Wed Jan 29 2020 Fedora Release Engineering <releng@fedoraproject.org> - 1.0.6-19
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_32_Mass_Rebuild

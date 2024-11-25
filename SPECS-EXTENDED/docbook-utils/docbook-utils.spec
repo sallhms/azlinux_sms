@@ -1,13 +1,11 @@
 Name: docbook-utils
 Version: 0.6.14
-Release: 50%{?dist}
+Release: 62%{?dist}
 
 Summary: Shell scripts for managing DocBook documents
-Vendor:         Microsoft Corporation
-Distribution:   Azure Linux
 URL: http://sources.redhat.com/docbook-tools/
 
-License: GPLv2+
+License: GPL-2.0-or-later
 
 Requires: docbook-style-dsssl >= 1.72
 Requires: docbook-dtds
@@ -15,11 +13,12 @@ Requires: perl-SGMLSpm >= 1.03ii
 Requires: which grep gawk
 Requires: text-www-browser
 
-# In the absence of an already-installed text-www-browser, prefer elinks
-Suggests: elinks
+# In the absence of an already-installed text-www-browser, prefer lynx
+Suggests: lynx
 
 BuildRequires: perl-generators
 BuildRequires: perl-SGMLSpm, openjade, docbook-style-dsssl
+BuildRequires: make
 
 BuildArch: noarch
 Source0: ftp://sources.redhat.com/pub/docbook-tools/new-trials/SOURCES/%{name}-%{version}.tar.gz
@@ -47,17 +46,33 @@ This package contains scripts are for easy conversion from DocBook
 files to other formats (for example, HTML, RTF, and PostScript), and
 for comparing SGML files.
 
+%package pdf
+Requires: texlive-jadetex >= 7
+Requires: docbook-utils = %{version}
+Requires: tex(dvips)
+Requires: texlive-collection-fontsrecommended
+Requires: texlive-collection-htmlxml
+License: GPL-1.0-or-later
+Obsoletes: stylesheets-db2pdf <= %{version}-%{release}
+Provides: stylesheets-db2pdf = %{version}-%{release}
+Summary: A script for converting DocBook documents to PDF format
+URL: http://sources.redhat.com/docbook-tools/
+
+%description pdf
+This package contains a script for converting DocBook documents to
+PDF format.
+
 %prep
 %setup -q
-%patch 0 -p1 -b .spaces
-%patch 1 -p1 -b .2ndspaces
-%patch 2 -p1 -b .w3mtxtconvert
-%patch 3 -p1 -b .grepnocolors
-%patch 4 -p1 -b .sgmlinclude
-%patch 5 -p1 -b .rtfman
-%patch 6 -p1 -b .papersize
-%patch 7 -p1 -b .finalecho
-%patch 8 -p1 -b .newgrep
+%patch -P0 -p1 -b .spaces
+%patch -P1 -p1 -b .2ndspaces
+%patch -P2 -p1 -b .w3mtxtconvert
+%patch -P3 -p1 -b .grepnocolors
+%patch -P4 -p1 -b .sgmlinclude
+%patch -P5 -p1 -b .rtfman
+%patch -P6 -p1 -b .papersize
+%patch -P7 -p1 -b .finalecho
+%patch -P8 -p1 -b .newgrep
 
 %build
 ./configure --prefix=%{_prefix} --mandir=%{_mandir} --libdir=%{_libdir}
@@ -66,7 +81,7 @@ make %{?_smp_mflags}
 %install
 export DESTDIR=$RPM_BUILD_ROOT
 make install prefix=%{_prefix} mandir=%{_mandir} docdir=/tmp
-for util in html rtf
+for util in dvi html pdf ps rtf
 do
 	ln -s docbook2$util $RPM_BUILD_ROOT%{_bindir}/db2$util
 	ln -s jw.1.gz $RPM_BUILD_ROOT/%{_mandir}/man1/db2$util.1
@@ -79,13 +94,6 @@ install -p -m 644 %{SOURCE2} $RPM_BUILD_ROOT%{_datadir}/sgml/docbook/utils-%{ver
 install -p -m 755 %{SOURCE3} $RPM_BUILD_ROOT%{_datadir}/sgml/docbook/utils-%{version}/helpers/docbook2man-spec.pl
 
 rm -rf $RPM_BUILD_ROOT/tmp
-
-rm -f %{buildroot}%{_bindir}/docbook2pdf
-rm -f %{buildroot}%{_bindir}/docbook2dvi
-rm -f %{buildroot}%{_bindir}/docbook2ps
-rm -rf %{buildroot}%{_mandir}/*/docbook2pdf.*
-rm -rf %{buildroot}%{_mandir}/*/docbook2dvi.*
-rm -rf %{buildroot}%{_mandir}/*/docbook2ps.*
 
 %files
 %doc README COPYING TODO
@@ -100,7 +108,9 @@ rm -rf %{buildroot}%{_mandir}/*/docbook2ps.*
 %{_bindir}/db2rtf
 %{_bindir}/sgmldiff
 %{_datadir}/sgml/docbook/utils-%{version}
+%{_mandir}/*/db2dvi.*
 %{_mandir}/*/db2html.*
+%{_mandir}/*/db2ps.*
 %{_mandir}/*/db2rtf.*
 %{_mandir}/*/docbook2html.*
 %{_mandir}/*/docbook2rtf.*
@@ -112,10 +122,57 @@ rm -rf %{buildroot}%{_mandir}/*/docbook2ps.*
 %{_mandir}/*/sgmldiff.*
 %{_mandir}/*/*-spec.*
 
+%files pdf
+%{_bindir}/docbook2pdf
+%{_bindir}/docbook2dvi
+%{_bindir}/docbook2ps
+%{_bindir}/db2dvi
+%{_bindir}/db2pdf
+%{_bindir}/db2ps
+%{_mandir}/*/db2pdf.*
+%{_mandir}/*/docbook2pdf.*
+%{_mandir}/*/docbook2dvi.*
+%{_mandir}/*/docbook2ps.*
+
 %changelog
-* Wed Jan 20 2021 Joe Schmitt <joschmit@microsoft.com> - 0.6.14-50
-- Initial CBL-Mariner import from Fedora 32 (license: MIT).
-- Remove pdf utils
+* Wed Jul 17 2024 Fedora Release Engineering <releng@fedoraproject.org> - 0.6.14-62
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_41_Mass_Rebuild
+
+* Mon Jun 17 2024 Miroslav Suchý <msuchy@redhat.com> - 0.6.14-61
+- convert license to SPDX
+
+* Wed Jan 24 2024 Fedora Release Engineering <releng@fedoraproject.org> - 0.6.14-60
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Fri Jan 19 2024 Fedora Release Engineering <releng@fedoraproject.org> - 0.6.14-59
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Mon Oct 23 2023 Ondrej Sloup <osloup@redhat.com> - 0.6.14-58
+- Update license tag to the SPDX format
+
+* Wed Jul 19 2023 Fedora Release Engineering <releng@fedoraproject.org> - 0.6.14-57
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_39_Mass_Rebuild
+
+* Thu Jan 19 2023 Fedora Release Engineering <releng@fedoraproject.org> - 0.6.14-56
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_38_Mass_Rebuild
+
+* Thu Jul 21 2022 Fedora Release Engineering <releng@fedoraproject.org> - 0.6.14-55
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_37_Mass_Rebuild
+
+* Thu Jan 20 2022 Fedora Release Engineering <releng@fedoraproject.org> - 0.6.14-54
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_36_Mass_Rebuild
+
+* Wed Jul 21 2021 Fedora Release Engineering <releng@fedoraproject.org> - 0.6.14-53
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_35_Mass_Rebuild
+
+* Tue Jan 26 2021 Fedora Release Engineering <releng@fedoraproject.org> - 0.6.14-52
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_34_Mass_Rebuild
+
+* Mon Jan 18 2021 Kamil Dudka <kdudka@redhat.com> - 0.6.14-51
+- suggest lynx rather than elinks to satisfy text-www-browser
+
+* Mon Jul 27 2020 Fedora Release Engineering <releng@fedoraproject.org> - 0.6.14-50
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_33_Mass_Rebuild
 
 * Tue Jan 28 2020 Fedora Release Engineering <releng@fedoraproject.org> - 0.6.14-49
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_32_Mass_Rebuild

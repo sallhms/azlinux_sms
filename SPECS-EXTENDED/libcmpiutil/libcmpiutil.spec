@@ -1,21 +1,20 @@
 # -*- rpm-spec -*-
-Summary:        CMPI Utility Library
-Name:           libcmpiutil
-Version:        0.5.7
-Release:        20%{?dist}
-License:        LGPL-2.0-or-later
-Vendor:         Microsoft Corporation
-Distribution:   Azure Linux
-URL:            https://gitlab.com/libvirt/libvirt-cim
-Source:         https://libvirt.org/sources/CIM/libcmpiutil-%{version}.tar.gz
-Patch0:         libcmpiutil-0.5.6-cast-align.patch
-BuildRequires:  bison
-BuildRequires:  flex
+
+Summary: CMPI Utility Library
+Name: libcmpiutil
+Version: 0.5.7
+Release: 25%{?dist}%{?extra_release}
+License: LGPLv2+
+Source: ftp://libvirt.org/libvirt-cim/libcmpiutil-%{version}.tar.gz
+Patch0: libcmpiutil-0.5.6-cast-align.patch
+URL: http://libvirt.org/CIM/
 BuildRequires:  gcc
-BuildRequires:  libxml2-devel
-BuildRequires:  make
-BuildRequires:  sblim-cmpi-devel
-BuildConflicts: tog-pegasus-devel
+BuildRequires: tog-pegasus-devel
+BuildRequires: flex
+BuildRequires: bison
+BuildRequires: libxml2-devel
+BuildRequires: make
+BuildConflicts: sblim-cmpi-devel
 
 %description
 Libcmpiutil is a library of utility functions for CMPI providers.
@@ -25,10 +24,10 @@ most CMPI providers by encapsulating common procedures with more
 instance properties to standardizing method dispatch and argument checking.
 
 %package devel
-Summary:        Libraries, includes, etc. to use the CMPI utility library
-Requires:       %{name} = %{version}-%{release}
-Requires:       pkgconfig
-Requires:       sblim-cmpi-devel
+Summary: Libraries, includes, etc. to use the CMPI utility library
+Requires: tog-pegasus-devel
+Requires: pkgconfig
+Requires: %{name} = %{version}-%{release}
 
 %description devel
 Includes and documentations for the CMPI utility library
@@ -41,19 +40,19 @@ instance properties to standardizing method dispatch and argument checking.
 %setup -q
 chmod -x *.c *.y *.h *.l
 
-%patch 0
+%patch -P0 -p0
 
 %build
 # FIXME: Package has c11 inline compatibility issues.
 # Work-around by appending -std=gnu89 to CFLAGS.
 # Proper fix would be to fix the sources.
-%configure --enable-static=no --disable-silent-rules CFLAGS="%{optflags} -std=gnu89"
+%configure --enable-static=no --disable-silent-rules CFLAGS="${RPM_OPT_FLAGS} -std=gnu89"
 make %{?_smp_mflags}
 
 %install
-make DESTDIR=%{buildroot} INSTALL="install -p" install
-find %{buildroot} -type f -name "*.la" -delete -print
-rm -f %{buildroot}%{_libdir}/*.a
+make DESTDIR=$RPM_BUILD_ROOT INSTALL="install -p" install
+rm -f $RPM_BUILD_ROOT%{_libdir}/*.la
+rm -f $RPM_BUILD_ROOT%{_libdir}/*.a
 
 %ldconfig_scriptlets
 
@@ -71,10 +70,23 @@ rm -f %{buildroot}%{_libdir}/*.a
 %doc doc/SubmittingPatches
 
 %changelog
-* Tue Jan 17 2023 Suresh Thelkar <sthelkar@microsoft.com> - 0.5.7-20
-- Initial CBL-Mariner import from Fedora 36 (license: MIT)
-- Build against sblim-cmpi-devel and instead of tog-pegasus-devel
-- License verified
+* Thu Jul 18 2024 Fedora Release Engineering <releng@fedoraproject.org> - 0.5.7-25
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_41_Mass_Rebuild
+
+* Thu Jan 25 2024 Fedora Release Engineering <releng@fedoraproject.org> - 0.5.7-24
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Sun Jan 21 2024 Fedora Release Engineering <releng@fedoraproject.org> - 0.5.7-23
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Thu Jul 20 2023 Fedora Release Engineering <releng@fedoraproject.org> - 0.5.7-22
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_39_Mass_Rebuild
+
+* Thu Jan 19 2023 Fedora Release Engineering <releng@fedoraproject.org> - 0.5.7-21
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_38_Mass_Rebuild
+
+* Thu Jul 21 2022 Fedora Release Engineering <releng@fedoraproject.org> - 0.5.7-20
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_37_Mass_Rebuild
 
 * Thu Jan 20 2022 Fedora Release Engineering <releng@fedoraproject.org> - 0.5.7-19
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_36_Mass_Rebuild

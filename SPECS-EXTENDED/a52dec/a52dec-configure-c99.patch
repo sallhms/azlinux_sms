@@ -1,0 +1,23 @@
+Avoid an undeclared exit function call in obscure configure check.
+This improves compatibility with strict(er) C99 compilers, which may
+not support implicit function declarations because they were removed
+from the C language in 1999.
+
+Not submitted upstream as regeneration of configure with new autoconf
+would fix.
+
+diff --git a/configure b/configure
+index b81fdff..49bcfc6 100755
+--- a/configure
++++ b/configure
+@@ -3850,8 +3850,8 @@ main ()
+   for (i = 0; i < 256; i++)
+     if (XOR (islower (i), ISLOWER (i))
+         || toupper (i) != TOUPPER (i))
+-      exit(2);
+-  exit (0);
++      return 2;
++  return 0;
+ }
+ _ACEOF
+ rm -f conftest$ac_exeext

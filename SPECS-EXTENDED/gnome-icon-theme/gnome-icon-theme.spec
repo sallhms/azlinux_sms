@@ -1,10 +1,8 @@
-Vendor:         Microsoft Corporation
-Distribution:   Azure Linux
 Summary:    GNOME icon theme
 Name:       gnome-icon-theme
 Version:    3.12.0
-License:    CC-BY-SA or LGPLv3+
-Release:    16%{?dist}
+License:    LGPL-3.0-or-later
+Release:    24%{?dist}
 URL:        http://www.gnome.org
 
 #VCS: git:git://git.gnome.org/gnome-icon-theme
@@ -12,11 +10,11 @@ Source0: http://download.gnome.org/sources/gnome-icon-theme/3.12/%{name}-%{versi
 Source1: legacy-icon-mapping.xml
 
 BuildRequires:  gcc
-BuildRequires:  perl(File::Find)
 BuildRequires: gtk2
 BuildRequires: icon-naming-utils >= 0.8.7
 BuildRequires: intltool
 BuildRequires: librsvg2
+BuildRequires: make
 Requires: hicolor-icon-theme
 
 BuildArch: noarch
@@ -103,8 +101,7 @@ gtk-update-icon-cache --force %{_datadir}/icons/gnome &>/dev/null || :
 gtk-update-icon-cache --force %{_datadir}/icons/gnome &>/dev/null || :
 
 %files -f files.txt
-%license COPYING COPYING_CCBYSA3 COPYING_LGPL
-%doc AUTHORS
+%doc COPYING AUTHORS
 %ghost %{_datadir}/icons/gnome/icon-theme.cache
 
 %files legacy -f legacy.txt
@@ -113,14 +110,38 @@ gtk-update-icon-cache --force %{_datadir}/icons/gnome &>/dev/null || :
 %{_datadir}/pkgconfig/gnome-icon-theme.pc
 
 %changelog
-* Wed Feb 16 2022 Pawel Winogrodzki <pawelwi@microsoft.com> - 3.12.0-16
-- License verified.
+* Thu Jul 18 2024 Fedora Release Engineering <releng@fedoraproject.org> - 3.12.0-24
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_41_Mass_Rebuild
 
-* Tue Feb 15 2022 Pawel Winogrodzki <pawelwi@microsoft.com> - 3.12.0-15
-- Adding missing BRs on Perl modules.
+* Wed Jul 17 2024 Miroslav Suchý <msuchy@redhat.com> - 3.12.0-23
+- convert license to SPDX
 
-* Fri Oct 15 2021 Pawel Winogrodzki <pawelwi@microsoft.com> - 3.12.0-14
-- Initial CBL-Mariner import from Fedora 32 (license: MIT).
+* Wed Jan 24 2024 Fedora Release Engineering <releng@fedoraproject.org> - 3.12.0-22
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Fri Jan 19 2024 Fedora Release Engineering <releng@fedoraproject.org> - 3.12.0-21
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Wed Jul 19 2023 Fedora Release Engineering <releng@fedoraproject.org> - 3.12.0-20
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_39_Mass_Rebuild
+
+* Thu Jan 19 2023 Fedora Release Engineering <releng@fedoraproject.org> - 3.12.0-19
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_38_Mass_Rebuild
+
+* Thu Jul 21 2022 Fedora Release Engineering <releng@fedoraproject.org> - 3.12.0-18
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_37_Mass_Rebuild
+
+* Thu Jan 20 2022 Fedora Release Engineering <releng@fedoraproject.org> - 3.12.0-17
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_36_Mass_Rebuild
+
+* Thu Jul 22 2021 Fedora Release Engineering <releng@fedoraproject.org> - 3.12.0-16
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_35_Mass_Rebuild
+
+* Tue Jan 26 2021 Fedora Release Engineering <releng@fedoraproject.org> - 3.12.0-15
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_34_Mass_Rebuild
+
+* Mon Jul 27 2020 Fedora Release Engineering <releng@fedoraproject.org> - 3.12.0-14
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_33_Mass_Rebuild
 
 * Tue Jan 28 2020 Fedora Release Engineering <releng@fedoraproject.org> - 3.12.0-13
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_32_Mass_Rebuild

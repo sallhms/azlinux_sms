@@ -2,28 +2,27 @@
 
 Name:           python-%{srcname}
 Version:        1.5.0
-Release:        6%{?dist}
-Summary:        Python 3 compatible NTLM library
-Vendor:		Microsoft Corporation
-Distribution:   Azure Linux
-License:        LGPLv3+
+Release:        15%{?dist}
+Summary:        Python 3 compatible NTLM library (requires md4, thus legacy OpenSSL settings)
+
+License:        MIT
 URL:            https://pypi.python.org/pypi/ntlm-auth
 Source:         https://github.com/jborean93/ntlm-auth/archive/v%{version}/%{srcname}-%{version}.tar.gz
 BuildArch:      noarch
 
 BuildRequires:  python3-devel
-BuildRequires:  python3dist(setuptools)
+BuildRequires:  %{py3_dist setuptools}
 # For tests
-%if 0%{?with_check}
-BuildRequires:  python3dist(requests)
-BuildRequires:  python3dist(cryptography)
-BuildRequires:  python3-pip
-%endif
-
+BuildRequires:  %{py3_dist pytest}
+BuildRequires:  %{py3_dist requests}
+BuildRequires:  %{py3_dist cryptography}
 
 %global _description %{expand:
 This package allows Python clients running on any operating system to provide
-NTLM authentication to a supporting server.}
+NTLM authentication to a supporting server.
+
+With OpenSSL 3 or above, the legacy OpenSSL provider needs to be set in
+order to support md4 in Python.}
 
 %description %{_description}
 
@@ -31,7 +30,6 @@ NTLM authentication to a supporting server.}
 Summary:        %{summary}
 Obsoletes:      python3-ntlm3 < 1.0.3-1
 Provides:       python3-ntlm3 = %{version}-%{release}
-%{?python_provide:%python_provide python3-%{srcname}}
 
 %description -n python3-%{srcname} %{_description}
 
@@ -45,8 +43,26 @@ Provides:       python3-ntlm3 = %{version}-%{release}
 %py3_install
 
 %check
-%{__python3} -m pip install pytest==7.1.2
-%pytest -vv
+# see https://github.com/jborean93/ntlm-auth/issues/22
+cat > openssl.cnf << EOF
+openssl_conf = openssl_init
+
+[openssl_init]
+providers = provider_sect
+
+[provider_sect]
+default = default_sect
+legacy = legacy_sect
+
+[default_sect]
+activate = 1
+
+[legacy_sect]
+activate = 1
+EOF
+export OPENSSL_CONF=${PWD}/openssl.cnf
+
+%pytest
 
 %files -n python3-%{srcname}
 %doc CHANGES.md README.md
@@ -55,12 +71,39 @@ Provides:       python3-ntlm3 = %{version}-%{release}
 %{python3_sitelib}/ntlm_auth/
 
 %changelog
-* Thu Sep 01 2022 Muhammad Falak <mwani@microsoft.com> - 1.5.0-6
-- Add BR on `pip` & drop BR on `pytest` to enable ptest
+* Fri Jul 19 2024 Fedora Release Engineering <releng@fedoraproject.org> - 1.5.0-15
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_41_Mass_Rebuild
 
-* Mon Dec 27 2021 Suresh Babu Chalamalasetty <schalam@microsoft.com> - 1.5.0-5
-- Initial CBL-Mariner import from Fedora 35 (license: MIT)
-- License verified
+* Fri Jun 07 2024 Python Maint <python-maint@redhat.com> - 1.5.0-14
+- Rebuilt for Python 3.13
+
+* Fri Jan 26 2024 Fedora Release Engineering <releng@fedoraproject.org> - 1.5.0-13
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Mon Jan 22 2024 Fedora Release Engineering <releng@fedoraproject.org> - 1.5.0-12
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Fri Jul 21 2023 Fedora Release Engineering <releng@fedoraproject.org> - 1.5.0-11
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_39_Mass_Rebuild
+
+* Wed Jun 14 2023 Python Maint <python-maint@redhat.com> - 1.5.0-10
+- Rebuilt for Python 3.12
+
+* Fri Jan 20 2023 Fedora Release Engineering <releng@fedoraproject.org> - 1.5.0-9
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_38_Mass_Rebuild
+
+* Fri Aug 19 2022 Maxwell G <gotmax@e.email> - 1.5.0-8
+- Fix license (the project was relicensed to MIT 5 years ago)
+- Tweak description
+
+* Fri Jul 22 2022 Fedora Release Engineering <releng@fedoraproject.org> - 1.5.0-7
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_37_Mass_Rebuild
+
+* Tue Jun 14 2022 Python Maint <python-maint@redhat.com> - 1.5.0-6
+- Rebuilt for Python 3.11
+
+* Fri Jan 21 2022 Fedora Release Engineering <releng@fedoraproject.org> - 1.5.0-5
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_36_Mass_Rebuild
 
 * Fri Jul 23 2021 Fedora Release Engineering <releng@fedoraproject.org> - 1.5.0-4
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_35_Mass_Rebuild

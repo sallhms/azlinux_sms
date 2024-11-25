@@ -1,15 +1,14 @@
-Vendor:         Microsoft Corporation
-Distribution:   Azure Linux
 Summary:        Audio/Video Control library for IEEE-1394 devices
 Name:           libavc1394
 Version:        0.5.4
-Release:        13%{?dist}
-License:        GPLv2+ and LGPLv2+
+Release:        24%{?dist}
+License:        GPL-2.0-or-later AND LGPL-2.0-or-later
 URL:            http://sourceforge.net/projects/libavc1394/
 Source:         https://sourceforge.net/projects/libavc1394/files/libavc1394/libavc1394-%{version}.tar.gz
 Patch1:         libavc1394-%{version}-librom.patch
 BuildRequires:  libraw1394-devel
 BuildRequires:  chrpath, gcc
+BuildRequires:  make
 
 # libraw1394 is not built on s390*
 ExcludeArch:    s390 s390x
@@ -23,14 +22,14 @@ to control devices like the tape on a VCR or camcorder.
 Summary: Development libs for libavc1394
 
 Requires: %{name}%{?_isa} = %{version}-%{release}
-Requires: libraw1394-devel, pkgconfig
+Requires: libraw1394-devel%{?_isa}
 
 %description devel
 Development libraries required to build applications using libavc1394.
 
 %prep
-%setup -q
-%patch 1 -p1 -b .librom
+%autosetup -N
+%patch -P 1 -p1 -b .librom
 chmod -x test/dvcont.c
 
 %build
@@ -54,8 +53,8 @@ chrpath -d $RPM_BUILD_ROOT%{_bindir}/*
 %{_bindir}/dvcont
 %{_bindir}/mkrfc2734
 %{_bindir}/panelctl
-%{_mandir}/man1/dvcont.1.gz
-%{_mandir}/man1/panelctl.1.gz
+%{_mandir}/man1/dvcont.1*
+%{_mandir}/man1/panelctl.1*
 %{_mandir}/man1/mkrfc2734.1*
 # libs are LGPLv2+
 %{_libdir}/libavc1394.so.*
@@ -68,8 +67,41 @@ chrpath -d $RPM_BUILD_ROOT%{_bindir}/*
 %{_libdir}/librom1394.so
 
 %changelog
-* Fri Oct 15 2021 Pawel Winogrodzki <pawelwi@microsoft.com> - 0.5.4-13
-- Initial CBL-Mariner import from Fedora 32 (license: MIT).
+* Thu Jul 18 2024 Fedora Release Engineering <releng@fedoraproject.org> - 0.5.4-24
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_41_Mass_Rebuild
+
+* Wed May 08 2024 Antonio Trande <sagitter@fedoraproject.org> - 0.5.4-23
+- Fix patch command
+
+* Thu Jan 25 2024 Fedora Release Engineering <releng@fedoraproject.org> - 0.5.4-22
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Sun Jan 21 2024 Fedora Release Engineering <releng@fedoraproject.org> - 0.5.4-21
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Thu Jul 20 2023 Fedora Release Engineering <releng@fedoraproject.org> - 0.5.4-20
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_39_Mass_Rebuild
+
+* Thu Jan 19 2023 Fedora Release Engineering <releng@fedoraproject.org> - 0.5.4-19
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_38_Mass_Rebuild
+
+* Thu Jul 21 2022 Fedora Release Engineering <releng@fedoraproject.org> - 0.5.4-18
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_37_Mass_Rebuild
+
+* Thu Jan 20 2022 Fedora Release Engineering <releng@fedoraproject.org> - 0.5.4-17
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_36_Mass_Rebuild
+
+* Thu Jul 22 2021 Fedora Release Engineering <releng@fedoraproject.org> - 0.5.4-16
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_35_Mass_Rebuild
+
+* Tue Jan 26 2021 Fedora Release Engineering <releng@fedoraproject.org> - 0.5.4-15
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_34_Mass_Rebuild
+
+* Tue Jul 28 2020 Fedora Release Engineering <releng@fedoraproject.org> - 0.5.4-14
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_33_Mass_Rebuild
+
+* Thu Apr 16 2020 Antonio Trande <sagitter@fedoraproject.org> - 0.5.4-13
+- Some minor fixes
 
 * Wed Jan 29 2020 Fedora Release Engineering <releng@fedoraproject.org> - 0.5.4-12
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_32_Mass_Rebuild
@@ -83,7 +115,7 @@ chrpath -d $RPM_BUILD_ROOT%{_bindir}/*
 * Fri Jul 13 2018 Fedora Release Engineering <releng@fedoraproject.org> - 0.5.4-9
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_29_Mass_Rebuild
 
-* Thu Feb 22 2018 Antonio Trande <sagitterATfedoraproject.org> - 0.5.4-8
+* Thu Feb 22 2018 Antonio Trande <sagitter@fedoraproject.org> - 0.5.4-8
 - Add gcc BR
 
 * Fri Feb 16 2018 Antonio Trande <sagitter@fedoraproject.org> - 0.5.4-7

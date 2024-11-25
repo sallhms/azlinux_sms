@@ -1,13 +1,11 @@
-%bcond_with ecore
+%bcond_without ecore
 
 Name:          dbus-c++
 Version:       0.9.0
-Release:       23%{?dist}
+Release:       33%{?dist}
 Summary:       Native C++ bindings for D-Bus
 
 License:       LGPLv2+
-Vendor:         Microsoft Corporation
-Distribution:   Azure Linux
 URL:           http://sourceforge.net/projects/dbus-cplusplus/
 Source0:       http://downloads.sourceforge.net/dbus-cplusplus/lib%{name}-%{version}.tar.gz
 
@@ -21,16 +19,21 @@ Patch3: dbus-c++-macro_collision.patch
 Patch4: dbus-c++-threading.patch
 # https://sourceforge.net/p/dbus-cplusplus/patches/19/
 Patch5: dbus-c++-writechar.patch
+# Fix template/operator issues
+# https://github.com/pkgw/dbus-cplusplus/commit/a0b9ef3b469ca23c6a3229d8abb967cbbddcee38
+Patch6: dbus-c++-template-operators.patch
 
 BuildRequires:  gcc
 BuildRequires:  gcc-c++
 BuildRequires: dbus-devel
 BuildRequires: glib2-devel
+BuildRequires: gtkmm24-devel
 BuildRequires: autoconf automake libtool
 BuildRequires: expat-devel
 %if %{with ecore}
 BuildRequires: ecore-devel
 %endif
+BuildRequires: make
 
 %description
 dbus-c++ attempts to provide a C++ API for D-Bus.
@@ -63,11 +66,12 @@ developing applications that use %{name}.
 %setup -q -n lib%{name}-%{version}
 sed -i 's/\r//' AUTHORS
 sed -i 's/libtoolize --force --copy/libtoolize -if --copy/' bootstrap
-%patch 1 -p1 -b .gcc47
-%patch 2 -p1 -b .linkfix
-%patch 3 -p1 -b .collision
-%patch 4 -p1 -b .threading
-%patch 5 -p1 -b .writechar
+%patch -P1 -p1 -b .gcc47
+%patch -P2 -p1 -b .linkfix
+%patch -P3 -p1 -b .collision
+%patch -P4 -p1 -b .threading
+%patch -P5 -p1 -b .writechar
+%patch -P6 -p1 -b .template-operators
 
 %build
 autoreconf -vfi
@@ -109,9 +113,38 @@ find $RPM_BUILD_ROOT -name '*.la' -print -delete
 %{_libdir}/pkgconfig/*
 
 %changelog
-* Tue Jan 12 2021 Joe Schmitt <joschmit@microsoft.com> - 0.9.0-23
-- Initial CBL-Mariner import from Fedora 32 (license: MIT).
-- Disable ecore support
+* Wed Jul 17 2024 Fedora Release Engineering <releng@fedoraproject.org> - 0.9.0-33
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_41_Mass_Rebuild
+
+* Wed Jan 24 2024 Fedora Release Engineering <releng@fedoraproject.org> - 0.9.0-32
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Fri Jan 19 2024 Fedora Release Engineering <releng@fedoraproject.org> - 0.9.0-31
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Wed Jul 19 2023 Fedora Release Engineering <releng@fedoraproject.org> - 0.9.0-30
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_39_Mass_Rebuild
+
+* Thu Jan 19 2023 Fedora Release Engineering <releng@fedoraproject.org> - 0.9.0-29
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_38_Mass_Rebuild
+
+* Thu Jul 21 2022 Fedora Release Engineering <releng@fedoraproject.org> - 0.9.0-28
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_37_Mass_Rebuild
+
+* Wed Mar 23 2022 Nils Philippsen <nils@tiptoe.de> - 0.9.0-27
+- Fix FTBFS on Fedora >= 36 (#2045301)
+
+* Thu Jan 20 2022 Fedora Release Engineering <releng@fedoraproject.org> - 0.9.0-26
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_36_Mass_Rebuild
+
+* Wed Jul 21 2021 Fedora Release Engineering <releng@fedoraproject.org> - 0.9.0-25
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_35_Mass_Rebuild
+
+* Tue Jan 26 2021 Fedora Release Engineering <releng@fedoraproject.org> - 0.9.0-24
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_34_Mass_Rebuild
+
+* Mon Jul 27 2020 Fedora Release Engineering <releng@fedoraproject.org> - 0.9.0-23
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_33_Mass_Rebuild
 
 * Tue Jan 28 2020 Fedora Release Engineering <releng@fedoraproject.org> - 0.9.0-22
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_32_Mass_Rebuild

@@ -1,5 +1,7 @@
 {
  "Signatures": {
-  "rubygem-rspec-mocks-3.12.1.tar.gz": "ee150e437b00eaed9a86a6276830dd0093deb5b4dc3344903311ca851a4812a8"
+  "rspec-mocks-3.13.2.gem": "2327335def0e1665325a9b617e3af9ae20272741d80ac550336309a7c59abdef",
+  "rspec-related-create-full-tarball.sh": "af6dd6d70935e1f7d897b3671d98df339185810668016aa55a36d03fdad52a01",
+  "rubygem-rspec-mocks-3.13.2-full.tar.gz": "3ae9ed440f5412fa219fec36259a9f90dce4bb169ff0876ae1d2da8c49a6be80"
  }
 }

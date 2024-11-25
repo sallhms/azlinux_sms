@@ -1,13 +1,16 @@
-Vendor:         Microsoft Corporation
-Distribution:   Azure Linux
+%undefine __cmake_in_source_build
+
 Name:           woff2
 Version:        1.0.2
-Release:        9%{?dist}
+Release:        20%{?dist}
 Summary:        Web Open Font Format 2.0 library
 
 License:        MIT
 URL:            https://github.com/google/woff2
 Source0:        https://github.com/google/woff2/archive/v%{version}/%{name}-%{version}.tar.gz
+
+# https://github.com/google/woff2/pull/121
+Patch0:         covscan.patch
 
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
@@ -35,26 +38,24 @@ Requires:       %{name}%{?_isa} = %{version}-%{release}
 Development files and utils for %{name}
 
 %prep
-%autosetup -n %{name}-%{version}
+%autosetup -p1 -n %{name}-%{version}
 
 %build
-mkdir -p %{_target_platform}
-pushd %{_target_platform}
-%cmake .. \
+%cmake \
     -DCMAKE_INSTALL_PREFIX="%{_prefix}" \
-    -DCMAKE_INSTALL_LIBDIR="%{_libdir}"
-popd
-
-make %{?_smp_mflags} -C %{_target_platform}
+    -DCMAKE_INSTALL_LIBDIR="%{_libdir}" \
+    -DCMAKE_SKIP_RPATH=TRUE
+%cmake_build
 
 %install
-%make_install -C %{_target_platform}
-pushd %{_target_platform}
-mkdir -p  %{buildroot}%{_bindir}/
+%cmake_install
+mkdir -p %{buildroot}%{_bindir}/
+
+cd %{_vpath_builddir}
 install -m 755 woff2_decompress %{buildroot}%{_bindir}/
 install -m 755 woff2_compress %{buildroot}%{_bindir}/
 install -m 755 woff2_info %{buildroot}%{_bindir}/
-popd
+cd -
 
 %files
 %license LICENSE
@@ -77,8 +78,41 @@ popd
 %{_libdir}/pkgconfig/libwoff2enc.pc
 
 %changelog
-* Fri Oct 15 2021 Pawel Winogrodzki <pawelwi@microsoft.com> - 1.0.2-9
-- Initial CBL-Mariner import from Fedora 32 (license: MIT).
+* Sat Jul 20 2024 Fedora Release Engineering <releng@fedoraproject.org> - 1.0.2-20
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_41_Mass_Rebuild
+
+* Sat Jan 27 2024 Fedora Release Engineering <releng@fedoraproject.org> - 1.0.2-19
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Sat Jul 22 2023 Fedora Release Engineering <releng@fedoraproject.org> - 1.0.2-18
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_39_Mass_Rebuild
+
+* Sat Jan 21 2023 Fedora Release Engineering <releng@fedoraproject.org> - 1.0.2-17
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_38_Mass_Rebuild
+
+* Fri Jan 20 2023 Eike Rathke <erack@redhat.com> - 1.0.2-16
+- Migrated to SPDX license IDs
+
+* Sat Jul 23 2022 Fedora Release Engineering <releng@fedoraproject.org> - 1.0.2-15
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_37_Mass_Rebuild
+
+* Sat Jan 22 2022 Fedora Release Engineering <releng@fedoraproject.org> - 1.0.2-14
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_36_Mass_Rebuild
+
+* Fri Jul 23 2021 Fedora Release Engineering <releng@fedoraproject.org> - 1.0.2-13
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_35_Mass_Rebuild
+
+* Thu Jun 10 2021 Eike Rathke <erack@redhat.com> - 1.0.2-12
+- Add Coverity Scan fixes patch
+
+* Mon Apr 19 2021 Eike Rathke <erack@redhat.com> - 1.0.2-11
+- Get rid of all things RPATH
+
+* Wed Jan 27 2021 Fedora Release Engineering <releng@fedoraproject.org> - 1.0.2-10
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_34_Mass_Rebuild
+
+* Wed Jul 29 2020 Fedora Release Engineering <releng@fedoraproject.org> - 1.0.2-9
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_33_Mass_Rebuild
 
 * Mon Apr 06 2020 Tomas Popela <tpopela@redhat.com> - 1.0.2-8
 - Package woff2_decompress, woff2_compress and woff2_info in a tools subpackage.

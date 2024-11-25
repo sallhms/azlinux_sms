@@ -1,68 +1,73 @@
-Summary:        Library to program and control the FTDI USB controller
-Name:           libftdi
-Version:        1.5
-Release:        2%{?dist}
-License:        BSD and GPLv2
-Vendor:         Microsoft Corporation
-Distribution:   Azure Linux
-URL:            https://www.intra2net.com/en/developer/libftdi/
-Source0:        https://www.intra2net.com/en/developer/%{name}/download/%{name}1-%{version}.tar.bz2
+Name:		libftdi
+Version:	1.5
+Release:	14%{?dist}
+Summary:	Library to program and control the FTDI USB controller
+
+License:	LGPLv2
+URL:		https://www.intra2net.com/en/developer/libftdi/
+Source0:	https://www.intra2net.com/en/developer/%{name}/download/%{name}1-%{version}.tar.bz2
+
 # http://developer.intra2net.com/git/?p=libftdi;a=commitdiff;h=cdb28383402d248dbc6062f4391b038375c52385;hp=5c2c58e03ea999534e8cb64906c8ae8b15536c30
-Patch0:         libftdi-1.5-fix_pkgconfig_path.patch
+Patch0:		libftdi-1.5-fix_pkgconfig_path.patch
+# http://developer.intra2net.com/mailarchive/html/libftdi/2023/msg00003.html
+Patch1:		libftdi-1.5-no-distutils.patch
+# http://developer.intra2net.com/mailarchive/html/libftdi/2023/msg00005.html
+Patch2:		libftdi-1.5-cmake-deps.patch
 
-BuildRequires:  boost-devel
-BuildRequires:  cmake
-BuildRequires:  gcc
-BuildRequires:  gcc-c++
-BuildRequires:  libconfuse-devel
-BuildRequires:  libusbx-devel
-BuildRequires:  make
-BuildRequires:  python3-devel
-BuildRequires:  swig
-BuildRequires:  systemd
+BuildRequires:	cmake
+BuildRequires:	gcc
+BuildRequires:	gcc-c++
+BuildRequires:	doxygen
+BuildRequires:	boost-devel
+BuildRequires:	libconfuse-devel
+BuildRequires:	libusbx-devel
+BuildRequires:	make
+BuildRequires:	python3-devel
+BuildRequires:	swig
+BuildRequires:	systemd
+Requires:	systemd
 
-Requires:       systemd
 
 %description
 A library (using libusb) to talk to FTDI's FT2232C,
 FT232BM and FT245BM type chips including the popular bitbang mode.
 
 %package devel
-Summary:        Header files and static libraries for libftdi
-
-Requires:       %{name}%{?_isa} = %{version}-%{release}
-Requires:       cmake-filesystem
-Requires:       python3-%{name}%{?_isa} = %{version}-%{release}
+Summary:	Header files and static libraries for libftdi
+Requires:	%{name}%{?_isa} = %{version}-%{release}
+Requires:	python3-%{name}%{?_isa} = %{version}-%{release}
+Requires:	cmake-filesystem
 
 %description devel
 Header files and static libraries for libftdi
 
+
 %package -n python3-libftdi
 %{?python_provide:%python_provide python3-libftdi}
-Summary:        Libftdi library Python 3 binding
-
-Requires:       %{name}%{?_isa} = %{version}-%{release}
+Summary:	Libftdi library Python 3 binding
+Requires:	%{name}%{?_isa} = %{version}-%{release}
 
 %description -n python3-libftdi
 Libftdi Python 3 Language bindings.
 
-%package c++
-Summary:        Libftdi library C++ binding
 
-Requires:       %{name}%{?_isa} = %{version}-%{release}
+%package c++
+Summary:	Libftdi library C++ binding
+Requires:	%{name}%{?_isa} = %{version}-%{release}
 
 %description c++
 Libftdi library C++ language binding.
 
-%package c++-devel
-Summary:        Libftdi library C++ binding development headers and libraries
 
-Requires:       %{name}-c++ = %{version}-%{release}
-Requires:       %{name}-devel = %{version}-%{release}
+%package c++-devel
+Summary:	Libftdi library C++ binding development headers and libraries
+Requires:	%{name}-devel = %{version}-%{release}
+Requires:	%{name}-c++ = %{version}-%{release}
 
 %description c++-devel
 Libftdi library C++ binding development headers and libraries
 for building C++ applications with libftdi.
+
 
 %prep
 %autosetup -p1 -n %{name}1-%{version}
@@ -72,7 +77,7 @@ sed -i -e 's/GROUP="plugdev"/TAG+="uaccess"/g' packages/99-libftdi.rules
 
 
 %build
-%cmake -DSTATICLIBS=off -DFTDIPP=on -DPYTHON_BINDINGS=on -DDOCUMENTATION=off -DLIB_SUFFIX:STRING="" .
+%cmake -DSTATICLIBS=off -DFTDIPP=on -DPYTHON_BINDINGS=on -DDOCUMENTATION=on -DEXAMPLES=off
 %cmake_build
 
 %install
@@ -80,23 +85,8 @@ sed -i -e 's/GROUP="plugdev"/TAG+="uaccess"/g' packages/99-libftdi.rules
 
 install -D -pm 0644 packages/99-libftdi.rules %{buildroot}%{_udevrulesdir}/69-libftdi.rules
 
-mkdir -p %{buildroot}%{_libdir}/udev/rules.d/
-install -pm 0644 packages/99-libftdi.rules %{buildroot}%{_libdir}/udev/rules.d/69-libftdi.rules
-
-# Cleanup examples
-rm -f %{buildroot}%{_bindir}/simple
-rm -f %{buildroot}%{_bindir}/bitbang
-rm -f %{buildroot}%{_bindir}/bitbang2
-rm -f %{buildroot}%{_bindir}/bitbang_ft2232
-rm -f %{buildroot}%{_bindir}/bitbang_cbus
-rm -f %{buildroot}%{_bindir}/find_all
-rm -f %{buildroot}%{_bindir}/find_all_pp
-rm -f %{buildroot}%{_bindir}/baud_test
-rm -f %{buildroot}%{_bindir}/serial_read
-rm -f %{buildroot}%{_bindir}/serial_test
-
-rm -f %{buildroot}%{_docdir}/libftdi1/example.conf
-rm -f %{buildroot}%{_docdir}/libftdipp1/example.conf
+rm -f %{buildroot}%{_datadir}/doc/libftdi1/example.conf
+rm -f %{buildroot}%{_datadir}/doc/libftdipp1/example.conf
 
 
 %check
@@ -104,7 +94,7 @@ rm -f %{buildroot}%{_docdir}/libftdipp1/example.conf
 
 
 %files
-%license COPYING-CMAKE-SCRIPTS COPYING.LIB
+%license COPYING.LIB
 %{_libdir}/libftdi1.so.2*
 %{_udevrulesdir}/69-libftdi.rules
 
@@ -131,21 +121,74 @@ rm -f %{buildroot}%{_docdir}/libftdipp1/example.conf
 %{_includedir}/libftdi1/*.hpp
 %{_libdir}/pkgconfig/libftdipp1.pc
 
-%ldconfig_scriptlets
-
-%ldconfig_scriptlets c++
 
 %changelog
-* Fri Jul 08 2022 Pawel Winogrodzki <pawelwi@microsoft.com> - 1.5-2
-- Disabling doc building due to unstable builds.
+* Thu Jul 18 2024 Fedora Release Engineering <releng@fedoraproject.org> - 1.5-14
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_41_Mass_Rebuild
 
-* Wed May 25 2022 Pawel Winogrodzki <pawelwi@microsoft.com> - 1.5-1
-- Updating to 1.5 using Fedora 36 (license: MIT) for guidance.
-- License verified.
+* Sat Jun 08 2024 Python Maint <python-maint@redhat.com> - 1.5-13
+- Rebuilt for Python 3.13
 
-* Wed Jun 02 2021 Thomas Crain <thcrain@microsoft.com> - 1.4-3
-- Initial CBL-Mariner import from Fedora 32 (license: MIT).
-- Explicitly set an empty libdir suffix for CMake
+* Thu Jan 25 2024 Fedora Release Engineering <releng@fedoraproject.org> - 1.5-12
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Sun Jan 21 2024 Fedora Release Engineering <releng@fedoraproject.org> - 1.5-11
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Thu Jul 20 2023 Fedora Release Engineering <releng@fedoraproject.org> - 1.5-10
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_39_Mass_Rebuild
+
+* Tue Jun 13 2023 Python Maint <python-maint@redhat.com> - 1.5-9
+- Rebuilt for Python 3.12
+
+* Tue Jun 06 2023 Dan Horák <dan[at]danny.cz> - 1.5-8
+- Fix parallel build
+
+* Fri Feb 03 2023 Dan Horák <dan[at]danny.cz> - 1.5-7
+- Prepare for distutils removal (rhbz#2154854)
+
+* Thu Jan 19 2023 Fedora Release Engineering <releng@fedoraproject.org> - 1.5-6
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_38_Mass_Rebuild
+
+* Thu Jul 21 2022 Fedora Release Engineering <releng@fedoraproject.org> - 1.5-5
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_37_Mass_Rebuild
+
+* Mon Jun 13 2022 Python Maint <python-maint@redhat.com> - 1.5-4
+- Rebuilt for Python 3.11
+
+* Thu Jan 20 2022 Fedora Release Engineering <releng@fedoraproject.org> - 1.5-3
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_36_Mass_Rebuild
+
+* Tue Aug 17 2021 Björn Esser <besser82@fedoraproject.org> - 1.5-2
+- Add patch to fix includedir in pkgconfig file
+
+* Sun Aug 15 2021 Peter Robinson <pbrobinson@fedoraproject.org> - 1.5-1
+- Update to 1.5
+
+* Thu Jul 22 2021 Fedora Release Engineering <releng@fedoraproject.org> - 1.4-10
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_35_Mass_Rebuild
+
+* Fri Jun 04 2021 Python Maint <python-maint@redhat.com> - 1.4-9
+- Rebuilt for Python 3.10
+
+* Tue May 04 2021 Richard Hughes <rhughes@redhat.com> - 1.4-8
+- Install the udev file to a non-deprecated location
+
+* Tue Jan 26 2021 Fedora Release Engineering <releng@fedoraproject.org> - 1.4-7
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_34_Mass_Rebuild
+
+* Thu Oct 01 2020 Kamil Dudka <kdudka@redhat.com> - 1.4-6
+- make the package build with updated %%cmake macro (#1863999)
+
+* Sat Aug 01 2020 Fedora Release Engineering <releng@fedoraproject.org> - 1.4-5
+- Second attempt - Rebuilt for
+  https://fedoraproject.org/wiki/Fedora_33_Mass_Rebuild
+
+* Tue Jul 28 2020 Fedora Release Engineering <releng@fedoraproject.org> - 1.4-4
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_33_Mass_Rebuild
+
+* Tue May 26 2020 Miro Hrončok <mhroncok@redhat.com> - 1.4-3
+- Rebuilt for Python 3.9
 
 * Wed Jan 29 2020 Fedora Release Engineering <releng@fedoraproject.org> - 1.4-2
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_32_Mass_Rebuild

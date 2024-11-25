@@ -1,15 +1,19 @@
+%global gitver rel-2-4-19
+
 Summary: Utilities for the IBM Power Linux RAID adapters
 Name:    iprutils
-Version: 2.4.17.1
-Release: 5%{?dist}
-License: CPL
-Vendor:         Microsoft Corporation
-Distribution:   Azure Linux
-URL:     http://sourceforge.net/projects/iprdd/
-Source0: https://sourceforge.net/projects/iprdd/files/iprutils%20for%202.6%20kernels/2.4.17/%{name}-%{version}.tar.gz
+Version: 2.4.19
+Release: 13%{?dist}
+License: CPL-1.0
+URL:     https://github.com/bjking1/iprutils
+Source0: https://github.com/bjking1/iprutils/archive/%{gitver}/%{name}-%{version}.tar.gz
 
 # missing man page
 Source1: iprdbg.8.gz
+
+Patch10: iprutils-2.4.19-covscan.patch
+
+#ExclusiveArch: ppc64le
 
 BuildRequires: libtool
 BuildRequires: ncurses-devel
@@ -17,6 +21,7 @@ BuildRequires: libcap-devel
 BuildRequires: kernel-headers
 BuildRequires: systemd
 BuildRequires: zlib-devel
+BuildRequires: make
 
 
 %description
@@ -25,7 +30,7 @@ supported by the ipr SCSI storage device driver.
 
 
 %prep
-%autosetup -p1
+%autosetup -p1 -n %{name}-%{gitver}
 
 autoreconf -vif
 
@@ -74,8 +79,45 @@ rm %{buildroot}/%{_sysconfdir}/ha.d/resource.d/iprha
 
 
 %changelog
-* Fri Oct 15 2021 Pawel Winogrodzki <pawelwi@microsoft.com> - 2.4.17.1-5
-- Initial CBL-Mariner import from Fedora 32 (license: MIT).
+* Mon Aug 05 2024 Than Ngo <than@redhat.com> - 2.4.19-13
+- fix license tag
+
+* Thu Jul 18 2024 Fedora Release Engineering <releng@fedoraproject.org> - 2.4.19-12
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_41_Mass_Rebuild
+
+* Mon Jul 08 2024 Than Ngo <than@redhat.com> - 2.4.19-11
+- fixed covscan issues and test
+- limit to ppc64le
+
+* Wed Jan 24 2024 Fedora Release Engineering <releng@fedoraproject.org> - 2.4.19-10
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Sat Jan 20 2024 Fedora Release Engineering <releng@fedoraproject.org> - 2.4.19-9
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Thu Jul 20 2023 Fedora Release Engineering <releng@fedoraproject.org> - 2.4.19-8
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_39_Mass_Rebuild
+
+* Thu Jan 19 2023 Fedora Release Engineering <releng@fedoraproject.org> - 2.4.19-7
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_38_Mass_Rebuild
+
+* Thu Jul 21 2022 Fedora Release Engineering <releng@fedoraproject.org> - 2.4.19-6
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_37_Mass_Rebuild
+
+* Thu Jan 20 2022 Fedora Release Engineering <releng@fedoraproject.org> - 2.4.19-5
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_36_Mass_Rebuild
+
+* Thu Jul 22 2021 Fedora Release Engineering <releng@fedoraproject.org> - 2.4.19-4
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_35_Mass_Rebuild
+
+* Tue Jan 26 2021 Fedora Release Engineering <releng@fedoraproject.org> - 2.4.19-3
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_34_Mass_Rebuild
+
+* Tue Jul 28 2020 Fedora Release Engineering <releng@fedoraproject.org> - 2.4.19-2
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_33_Mass_Rebuild
+
+* Thu Jul 09 2020 Than Ngo <than@redhat.com> - 2.4.19-1
+- rebase to 2.4.19
 
 * Wed Jan 29 2020 Fedora Release Engineering <releng@fedoraproject.org> - 2.4.17.1-4
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_32_Mass_Rebuild

@@ -1,19 +1,19 @@
-Vendor:         Microsoft Corporation
-Distribution:   Azure Linux
 %global debug_package   %{nil}
 
 Name:           PEGTL
 Version:        2.8.3
-Release:        2%{?dist}
+Release:        11%{?dist}
 Summary:        Parsing Expression Grammar Template Library
 License:        MIT
-URL:            https://github.com/taocpp/%{name}/
-Source0:        https://github.com/taocpp/%{name}/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
+URL:            https://github.com/taocpp/%{name}
+Source:         %{url}/archive/%{version}/%{name}-%{version}.tar.gz
+
+Patch:          PEGTL-compiler-warning.patch
 
 BuildRequires:  gcc-c++
-BuildRequires: /usr/bin/make
-
-Patch0: PEGTL-compiler-warning.patch
+BuildRequires:  cmake
+# Faster than make, with no disadvantages
+BuildRequires:  ninja-build
 
 %description
 The Parsing Expression Grammar Template Library (PEGTL) is a zero-dependency
@@ -31,28 +31,66 @@ The %{name}-devel package contains C++ header files for developing
 applications that use %{name}.
 
 %prep
-%setup -q -n %{name}-%{version}
+%autosetup -p1
 
-%patch 0 -p1 -b .compiler
-
-%check
-make
+%build
+# Default cmake path is /usr/share/pegtl/cmake. This is OK, but we prefer
+# /usr/share/cmake/pegtl to reduce clutter in /usr/share.
+%cmake \
+    -DPEGTL_INSTALL_INCLUDE_DIR:PATH='%{_includedir}' \
+    -DPEGTL_INSTALL_DOC_DIR:PATH='%{_pkgdocdir}' \
+    -DPEGTL_INSTALL_CMAKE_DIR:PATH='%{_datadir}/cmake/pegtl' \
+    -GNinja
+%cmake_build
 
 %install
-install -d -m 0755 %{buildroot}%{_includedir}
-pushd include/
-cp -R tao/ %{buildroot}%{_includedir}
-popd
+%cmake_install
+# The default installation of documentation is useless: it just installs the
+# LICENSE file where we do not want it. Remove its handiwork and deal with
+# documentation manually.
+rm -rv %{buildroot}%{_pkgdocdir}
+
+%check
+%ctest
 
 %files devel
 %doc README.md doc/
 %license LICENSE
 %{_includedir}/tao/pegtl.hpp
-%{_includedir}/tao/pegtl
+%{_includedir}/tao/pegtl/
+%{_datadir}/cmake/pegtl/
 
 %changelog
-* Fri Oct 15 2021 Pawel Winogrodzki <pawelwi@microsoft.com> - 2.8.3-2
-- Initial CBL-Mariner import from Fedora 33 (license: MIT).
+* Sun Sep 22 2024 Benjamin A. Beasley <code@musicinmybrain.net> - 2.8.3-11
+- Switch to CMake, run tests, and ship CMake files
+- Use a better source URL
+
+* Wed Jul 17 2024 Fedora Release Engineering <releng@fedoraproject.org> - 2.8.3-10
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_41_Mass_Rebuild
+
+* Mon Jan 22 2024 Fedora Release Engineering <releng@fedoraproject.org> - 2.8.3-9
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Fri Jan 19 2024 Fedora Release Engineering <releng@fedoraproject.org> - 2.8.3-8
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Wed Jul 19 2023 Fedora Release Engineering <releng@fedoraproject.org> - 2.8.3-7
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_39_Mass_Rebuild
+
+* Wed Jan 18 2023 Fedora Release Engineering <releng@fedoraproject.org> - 2.8.3-6
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_38_Mass_Rebuild
+
+* Wed Jul 20 2022 Fedora Release Engineering <releng@fedoraproject.org> - 2.8.3-5
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_37_Mass_Rebuild
+
+* Wed Jan 19 2022 Fedora Release Engineering <releng@fedoraproject.org> - 2.8.3-4
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_36_Mass_Rebuild
+
+* Wed Jul 21 2021 Fedora Release Engineering <releng@fedoraproject.org> - 2.8.3-3
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_35_Mass_Rebuild
+
+* Mon Jan 25 2021 Fedora Release Engineering <releng@fedoraproject.org> - 2.8.3-2
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_34_Mass_Rebuild
 
 * Thu Sep 03 2020 Attila Lakatos <alakatos@redhat.com> - 2.8.3-1
 - Update to 2.8.3

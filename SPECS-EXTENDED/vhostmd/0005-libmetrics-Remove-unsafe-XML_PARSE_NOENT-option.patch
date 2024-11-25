@@ -1,0 +1,41 @@
+From 3d4f3acdfc9f937bea946bb1c7dfad1f3516a6ce Mon Sep 17 00:00:00 2001
+From: Jim Fehlig <jfehlig@suse.com>
+Date: Mon, 6 Jan 2020 17:42:39 -0700
+Subject: [PATCH 05/19] libmetrics: Remove unsafe XML_PARSE_NOENT option
+
+From coverity scan
+
+Error: UNSAFE_XML_PARSE_CONFIG:
+vhostmd-1.1/libmetrics/libmetrics.c:412: unsafe_xml_parse_config: XML parse option should not have flag "XML_PARSE_NOENT" set, which is vulnerable to XML external entity attack.
+  410|      mdisk->doc = xmlCtxtReadMemory(mdisk->pctxt, mdisk->buffer,
+  411|              mdisk->length, "mdisk.xml", NULL,
+  412|->            XML_PARSE_NOENT | XML_PARSE_NONET |
+  413|              XML_PARSE_NOWARNING);
+  414|      if (!mdisk->doc) {
+
+It should be safe to remove the option.
+
+Signed-off-by: Jim Fehlig <jfehlig@suse.com>
+---
+ libmetrics/libmetrics.c | 5 ++---
+ 1 file changed, 2 insertions(+), 3 deletions(-)
+
+diff --git a/libmetrics/libmetrics.c b/libmetrics/libmetrics.c
+index 4b2369a..2819f80 100644
+--- a/libmetrics/libmetrics.c
++++ b/libmetrics/libmetrics.c
+@@ -418,9 +418,8 @@ retry:
+    }
+ 
+    mdisk->doc = xmlCtxtReadMemory(mdisk->pctxt, mdisk->buffer, 
+-           mdisk->length, "mdisk.xml", NULL, 
+-           XML_PARSE_NOENT | XML_PARSE_NONET |
+-           XML_PARSE_NOWARNING);
++                                  mdisk->length, "mdisk.xml", NULL, 
++                                  XML_PARSE_NONET | XML_PARSE_NOWARNING);
+    if (!mdisk->doc) {
+       libmsg("%s(): libxml failed to parse mdisk.xml buffer\n", __func__);
+       goto error;
+-- 
+2.32.0
+

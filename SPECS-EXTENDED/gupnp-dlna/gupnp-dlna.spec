@@ -1,61 +1,52 @@
-%global docs 0
-Summary:        A collection of helpers for building UPnP AV applications
-Name:           gupnp-dlna
-Version:        0.12.0
-Release:        4%{?dist}
-License:        LGPLv2+
-Vendor:         Microsoft Corporation
-Distribution:   Azure Linux
-URL:            https://www.gupnp.org/
-Source0:        https://github.com/GNOME/%{name}/archive/refs/tags/%{name}-%{version}.tar.gz
-BuildRequires:  glib2-devel
-BuildRequires:  gobject-introspection-devel
-BuildRequires:  gssdp-devel
-BuildRequires:  gstreamer1-devel
-BuildRequires:  gstreamer1-plugins-base-devel
-BuildRequires:  gtk-doc
-BuildRequires:  gupnp-av-devel
-BuildRequires:  gupnp-devel
-BuildRequires:  libxml2-devel
-BuildRequires:  meson
-BuildRequires:  vala
+Name:          gupnp-dlna
+Version:       0.12.0
+Release:       8%{?dist}
+Summary:       A collection of helpers for building UPnP AV applications
+License:       LGPLv2+
+URL:           http://www.gupnp.org/
+Source0:       http://ftp.gnome.org/pub/GNOME/sources/%{name}/0.12/%{name}-%{version}.tar.xz
+
+BuildRequires: glib2-devel
+BuildRequires: gobject-introspection-devel
+BuildRequires: gssdp-devel
+BuildRequires: gstreamer1-devel
+BuildRequires: gstreamer1-plugins-base-devel
+BuildRequires: gtk-doc
+BuildRequires: gupnp-av-devel
+BuildRequires: gupnp-devel
+BuildRequires: libxml2-devel
+BuildRequires: meson
+BuildRequires: vala
 
 %description
 GUPnP is an object-oriented open source framework for creating UPnP
 devices and control points, written in C using GObject and libsoup.
 The GUPnP API is intended to be easy to use, efficient and flexible.
 
-GUPnP-dlna is a collection of helpers for building DLNA (Digital
+GUPnP-dlna is a collection of helpers for building DLNA (Digital 
 Living Network Alliance) compliant applications using GUPnP.
 
 %package devel
-Summary:        Development package for %{name}
-Requires:       %{name}%{?_isa} = %{version}-%{release}
+Summary: Development package for %{name}
+Requires: %{name}%{?_isa} = %{version}-%{release}
 
 %description devel
-Contains libraries and header files for developing applications that
+Contains libraries and header files for developing applications that 
 use %{name}.
 
-%if %{with docs}
 %package docs
-Summary:        Development package for %{name}
-Requires:       %{name} = %{version}-%{release}
-BuildArch:      noarch
+Summary: Development package for %{name}
+Requires: %{name} = %{version}-%{release}
+BuildArch: noarch
 
 %description docs
 Contains developer documentation for %{name}.
-%endif
 
 %prep
-%autosetup -n %{name}-%{name}-%{version}
+%setup -q
 
 %build
-%meson \
-%if %{with docs}
-     -Dgtk_doc=true
-%else
-     -Dgtk_doc=false
-%endif
+%meson -Dgtk_doc=true
 %meson_build
 
 %install
@@ -90,19 +81,28 @@ Contains developer documentation for %{name}.
 %dir %{_datadir}/vala/vapi
 %{_datadir}/vala/vapi/gupnp-dlna*
 
-%if %{with docs}
 %files docs
 %dir %{_datadir}/gtk-doc
 %dir %{_datadir}/gtk-doc/html
 %{_datadir}/gtk-doc/html/gupnp-dlna
 %{_datadir}/gtk-doc/html/gupnp-dlna-gst
 %{_datadir}/gtk-doc/html/gupnp-dlna-metadata
-%endif
 
 %changelog
-* Wed Feb 01 2023 Sumedh Sharma <sumsharma@microsoft.com> - 0.12.0-4
-- Initial CBL-Mariner import from Fedora 37 (license: MIT)
-- License verified
+* Thu Jul 18 2024 Fedora Release Engineering <releng@fedoraproject.org> - 0.12.0-8
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_41_Mass_Rebuild
+
+* Wed Jan 24 2024 Fedora Release Engineering <releng@fedoraproject.org> - 0.12.0-7
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Sat Jan 20 2024 Fedora Release Engineering <releng@fedoraproject.org> - 0.12.0-6
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Thu Jul 20 2023 Fedora Release Engineering <releng@fedoraproject.org> - 0.12.0-5
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_39_Mass_Rebuild
+
+* Thu Jan 19 2023 Fedora Release Engineering <releng@fedoraproject.org> - 0.12.0-4
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_38_Mass_Rebuild
 
 * Thu Jul 21 2022 Fedora Release Engineering <releng@fedoraproject.org> - 0.12.0-3
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_37_Mass_Rebuild
@@ -197,7 +197,7 @@ Contains developer documentation for %{name}.
 - 0.10.2 release
 - http://ftp.gnome.org/pub/GNOME/sources/gupnp-dlna/0.10/gupnp-dlna-0.10.2.news
 
-* Wed Apr 10 2013 Peter Robinson <pbrobinson@fedoraproject.org> 0.10.1-1
+ * Wed Apr 10 2013 Peter Robinson <pbrobinson@fedoraproject.org> 0.10.1-1
 - 0.10.1 release
 - http://ftp.gnome.org/pub/GNOME/sources/gupnp-dlna/0.10/gupnp-dlna-0.10.1.news
 

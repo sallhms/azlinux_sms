@@ -1,12 +1,10 @@
-Vendor:         Microsoft Corporation
-Distribution:   Azure Linux
 
 Summary: Open implementation of Service Location Protocol V2
 Name:    openslp
 Version: 2.0.0
-Release: 26%{?dist}
+Release: 37%{?dist}
 
-License: BSD
+License: BSD-3-Clause
 URL:     http://sourceforge.net/projects/openslp/
 Source0: http://downloads.sf.net/openslp/openslp-%{version}.tar.gz
 
@@ -27,15 +25,16 @@ Patch3:  openslp-2.0.0-null-pointer-deref.patch
 Patch4:  openslp-2.0.0-openssl-1.1-fix.patch
 # Patch5: fixes possible overflow in SLPFoldWhiteSpace,
 #   backported from upstream, CVE-2016-7567
-Patch5:  CVE-2016-7567.patch
+Patch5:  openslp-2.0.0-cve-2016-7567.patch
 # Patch6: fixes heap memory corruption in slpd/slpd_process.c, which allows
 #   denial of service or potentially code execution,
 #   backported form upstream, CVE-2017-17833
-Patch6:  CVE-2017-17833.patch
+Patch6:  openslp-2.0.0-cve-2017-17833.patch
 # Patch7: fixes a heap overwrite vulnerability
 #   leading to remote code execution
-Patch7:  CVE-2019-5544.patch
+Patch7:  openslp-2.0.0-cve-2019-5544.patch
 
+BuildRequires: make
 BuildRequires: automake libtool
 BuildRequires: bison
 BuildRequires: flex 
@@ -68,13 +67,13 @@ OpenSLP server daemon to dynamically register services.
 %prep
 %setup -q
 
-%patch 1 -p1 -b .multicast-set
-%patch 2 -p2 -b .systemd
-%patch 3 -p1 -b .null-pointer-deref
-%patch 4 -p1 -b .openssl-1.1-fix
-%patch 5 -p1 -b .cve-2016-7567
-%patch 6 -p1 -b .cve-2017-17833
-%patch 7 -p1 -b .cve-2019-5544
+%patch -P1 -p1 -b .multicast-set
+%patch -P2 -p2 -b .systemd
+%patch -P3 -p1 -b .null-pointer-deref
+%patch -P4 -p1 -b .openssl-1.1-fix
+%patch -P5 -p1 -b .cve-2016-7567
+%patch -P6 -p1 -b .cve-2017-17833
+%patch -P7 -p1 -b .cve-2019-5544
 
 # tarball goof (?), it wants to re-automake anyway, so let's do it right.
 #libtoolize --force
@@ -101,7 +100,6 @@ export LDFLAGS="-pie -Wl,-z,now"
   --localstatedir=/var \
   --disable-dependency-tracking \
   --disable-static \
-  --enable-slpv2-security \
   --disable-rpath \
   --enable-async-api
 
@@ -173,12 +171,46 @@ rm -f  $RPM_BUILD_ROOT%{_libdir}/lib*.la
 
 
 %changelog
-* Wed Nov 23 2022 Pawel Winogrodzki <pawelwi@microsoft.com> - 2.0.0-26
-- License verified.
-- Re-named patch files to work with Mariner's vulnerability detection.
+* Thu Jul 18 2024 Fedora Release Engineering <releng@fedoraproject.org> - 2.0.0-37
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_41_Mass_Rebuild
 
-* Fri Oct 15 2021 Pawel Winogrodzki <pawelwi@microsoft.com> - 2.0.0-25
-- Initial CBL-Mariner import from Fedora 32 (license: MIT).
+* Thu Jan 25 2024 Fedora Release Engineering <releng@fedoraproject.org> - 2.0.0-36
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Sun Jan 21 2024 Fedora Release Engineering <releng@fedoraproject.org> - 2.0.0-35
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Thu Jul 20 2023 Fedora Release Engineering <releng@fedoraproject.org> - 2.0.0-34
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_39_Mass_Rebuild
+
+* Tue Apr 25 2023 Vitezslav Crhonek <vcrhonek@redhat.com> - 2.0.0-33
+- SPDX migration
+
+* Thu Jan 19 2023 Fedora Release Engineering <releng@fedoraproject.org> - 2.0.0-32
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_38_Mass_Rebuild
+
+* Fri Jul 22 2022 Fedora Release Engineering <releng@fedoraproject.org> - 2.0.0-31
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_37_Mass_Rebuild
+
+* Thu Jan 20 2022 Fedora Release Engineering <releng@fedoraproject.org> - 2.0.0-30
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_36_Mass_Rebuild
+
+* Thu Jul 22 2021 Fedora Release Engineering <releng@fedoraproject.org> - 2.0.0-29
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_35_Mass_Rebuild
+
+* Wed Mar 17 2021 Vitezslav Crhonek <vcrhonek@redhat.com> - 2.0.0-28
+- Don't enable SLPv2 Security feature - it is disabled during run of
+  configure script anyway as it uses deprecated crypto
+
+* Tue Mar 02 2021 Zbigniew Jędrzejewski-Szmek <zbyszek@in.waw.pl> - 2.0.0-27
+- Rebuilt for updated systemd-rpm-macros
+  See https://pagure.io/fesco/issue/2583.
+
+* Tue Jan 26 2021 Fedora Release Engineering <releng@fedoraproject.org> - 2.0.0-26
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_34_Mass_Rebuild
+
+* Tue Jul 28 2020 Fedora Release Engineering <releng@fedoraproject.org> - 2.0.0-25
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_33_Mass_Rebuild
 
 * Wed Jan 29 2020 Fedora Release Engineering <releng@fedoraproject.org> - 2.0.0-24
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_32_Mass_Rebuild

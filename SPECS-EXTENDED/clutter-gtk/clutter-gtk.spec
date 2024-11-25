@@ -1,19 +1,22 @@
 %global         clutter_version 1.23.7
 %global         gtk3_version 3.21.0
+
 %global         api_ver 1.0
-Summary:        A basic GTK clutter widget
+
 Name:           clutter-gtk
 Version:        1.8.4
-Release:        15%{?dist}
-License:        LGPL-2.0-or-later
-Vendor:         Microsoft Corporation
-Distribution:   Azure Linux
-URL:            https://www.clutter-project.org
-Source0:        https://download.gnome.org/sources/clutter-gtk/1.8/clutter-gtk-%{version}.tar.xz
+Release:        19%{?dist}
+Summary:        A basic GTK clutter widget
+
+License:        LGPLv2+
+URL:            http://www.clutter-project.org
+Source0:        http://download.gnome.org/sources/clutter-gtk/1.8/clutter-gtk-%{version}.tar.xz
+
 BuildRequires:  clutter-devel >= %{clutter_version}
-BuildRequires:  gobject-introspection-devel
 BuildRequires:  gtk3-devel >= %{gtk3_version}
-BuildRequires:  make
+BuildRequires:  gobject-introspection-devel
+BuildRequires: make
+
 Requires:       clutter%{?_isa} >= %{clutter_version}
 Requires:       gtk3%{?_isa} >= %{gtk3_version}
 
@@ -30,20 +33,28 @@ Requires:       %{name}%{?_isa} = %{version}-%{release}
 Header files and libraries for building a extension library for the
 clutter-gtk.
 
+
 %prep
-%autosetup -p1
+%setup -q
+
 
 %build
+
 %configure
-%make_build
+make %{?_smp_mflags} V=1
+
 
 %install
 %make_install
 
 #Remove libtool archives.
-find %{buildroot} -type f -name "*.la" -delete -print
+find %{buildroot} -type f -name "*.la" -delete
 
 %find_lang cluttergtk-1.0
+
+%check
+make check %{?_smp_mflags} V=1
+
 
 %ldconfig_scriptlets
 
@@ -61,9 +72,20 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %{_datadir}/gtk-doc/html/clutter-gtk-1.0
 
 %changelog
-* Thu Jan 05 2023 Sumedh Sharma <sumsharma@microsoft.com> - 1.8.4-15
-- Initial CBL-Mariner import from Fedora 37 (license: MIT)
-- License verified
+* Wed Jul 17 2024 Fedora Release Engineering <releng@fedoraproject.org> - 1.8.4-19
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_41_Mass_Rebuild
+
+* Wed Jan 24 2024 Fedora Release Engineering <releng@fedoraproject.org> - 1.8.4-18
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Fri Jan 19 2024 Fedora Release Engineering <releng@fedoraproject.org> - 1.8.4-17
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Wed Jul 19 2023 Fedora Release Engineering <releng@fedoraproject.org> - 1.8.4-16
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_39_Mass_Rebuild
+
+* Thu Jan 19 2023 Fedora Release Engineering <releng@fedoraproject.org> - 1.8.4-15
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_38_Mass_Rebuild
 
 * Wed Jul 20 2022 Fedora Release Engineering <releng@fedoraproject.org> - 1.8.4-14
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_37_Mass_Rebuild
@@ -313,6 +335,7 @@ find %{buildroot} -type f -name "*.la" -delete -print
 
 * Tue Feb 24 2009 Fedora Release Engineering <rel-eng@lists.fedoraproject.org> - 0.8.2-3
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_11_Mass_Rebuild
+
 
 * Fri Jan 23 2009 Allisson Azevedo <allisson@gmail.com> 0.8.2-2
 - Rebuild

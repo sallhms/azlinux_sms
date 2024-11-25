@@ -1,14 +1,11 @@
-Vendor:         Microsoft Corporation
-Distribution:   Azure Linux
 Name: mythes-da
 Summary: Danish thesaurus
 %global upstreamid 20100629.15.16
 Version: 0.%{upstreamid}
-Release: 20%{?dist}
-Source0: https://excellmedia.dl.sourceforge.net/project/aoo-extensions/1388/12/danskesynonymer.oxt
-Source1: %{name}-LICENSE.txt
+Release: 29%{?dist}
+Source: https://excellmedia.dl.sourceforge.net/project/aoo-extensions/1388/12/danskesynonymer.oxt
 URL: https://extensions.openoffice.org/fr/project/danske-synonymer
-License: GPLv2 or LGPLv2 or MPLv1.1
+License: GPL-2.0-only OR LGPL-2.1-only OR MPL-1.1
 BuildArch: noarch
 Requires: mythes
 Supplements: (mythes and langpacks-da)
@@ -18,7 +15,6 @@ Danish thesaurus.
 
 %prep
 %autosetup -c
-cp %{SOURCE1} ./LICENSE.txt
 
 %build
 for i in README_th_da_DK.txt README_th_da_DK.txt README_th_en-US.txt; do
@@ -34,16 +30,42 @@ cp -p th_da_DK.idx $RPM_BUILD_ROOT/%{_datadir}/mythes/th_da_DK_v2.idx
 
 
 %files
-%license LICENSE.txt
 %doc README_th_da_DK.txt README_th_en-US.txt release_note.txt
 %{_datadir}/mythes/*
 
 %changelog
-* Fri Dec 10 2021 Thomas Crain <thcrain@microsoft.com> - 0.20100629.15.16-20
-- License verified
+* Thu Jul 18 2024 Fedora Release Engineering <releng@fedoraproject.org> - 0.20100629.15.16-29
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_41_Mass_Rebuild
 
-* Fri Oct 15 2021 Pawel Winogrodzki <pawelwi@microsoft.com> - 0.20100629.15.16-19
-- Initial CBL-Mariner import from Fedora 32 (license: MIT).
+* Thu Jan 25 2024 Fedora Release Engineering <releng@fedoraproject.org> - 0.20100629.15.16-28
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Sun Jan 21 2024 Fedora Release Engineering <releng@fedoraproject.org> - 0.20100629.15.16-27
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Thu Jul 20 2023 Fedora Release Engineering <releng@fedoraproject.org> - 0.20100629.15.16-26
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_39_Mass_Rebuild
+
+* Wed Feb 23 2023 Caolán McNamara <caolanm@redhat.com> - 0.20100629.15.16-25
+- migrated to SPDX license
+
+* Thu Jan 19 2023 Fedora Release Engineering <releng@fedoraproject.org> - 0.20100629.15.16-24
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_38_Mass_Rebuild
+
+* Fri Jul 22 2022 Fedora Release Engineering <releng@fedoraproject.org> - 0.20100629.15.16-23
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_37_Mass_Rebuild
+
+* Thu Jan 20 2022 Fedora Release Engineering <releng@fedoraproject.org> - 0.20100629.15.16-22
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_36_Mass_Rebuild
+
+* Thu Jul 22 2021 Fedora Release Engineering <releng@fedoraproject.org> - 0.20100629.15.16-21
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_35_Mass_Rebuild
+
+* Tue Jan 26 2021 Fedora Release Engineering <releng@fedoraproject.org> - 0.20100629.15.16-20
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_34_Mass_Rebuild
+
+* Tue Jul 28 2020 Fedora Release Engineering <releng@fedoraproject.org> - 0.20100629.15.16-19
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_33_Mass_Rebuild
 
 * Wed Jan 29 2020 Fedora Release Engineering <releng@fedoraproject.org> - 0.20100629.15.16-18
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_32_Mass_Rebuild

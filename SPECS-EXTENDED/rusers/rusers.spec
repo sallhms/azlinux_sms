@@ -1,5 +1,3 @@
-Vendor:         Microsoft Corporation
-Distribution:   Azure Linux
 %if %{?WITH_SELINUX:0}%{!?WITH_SELINUX:1}
 %global WITH_SELINUX 1
 %endif
@@ -7,7 +5,7 @@ Distribution:   Azure Linux
 Summary: Displays the users logged into machines on the local network
 Name: rusers
 Version: 0.17
-Release: 96%{?dist}
+Release: 106%{?dist}
 License: BSD
 Url: http://rstatd.sourceforge.net/
 Source: http://ftp.linux.org.uk/pub/linux/Networking/netkit/netkit-rusers-%{version}.tar.gz
@@ -37,6 +35,8 @@ Patch18: rusers-0.17-freerpc.patch
 Patch19: rstatd-man.patch
 # Provide the BSD 3-clause license text as COPYING file
 Patch20: rusers-0.17-license.patch
+Patch21: rusers-0.17-incompatible-pointer-types.patch
+BuildRequires: make
 BuildRequires: gcc
 BuildRequires: procps libselinux-devel
 BuildRequires: rpcsvc-proto-devel
@@ -95,6 +95,7 @@ who is logged into your machine.
 %patch 18 -p1 -b .freerpc
 %patch 19 -p1 -b .rstatd-man
 %patch 20 -p1 -b .license
+%patch 21 -p1 -b .incompatible-pointer-types
 
 %build
 cat > MCONFIG <<EOF
@@ -165,8 +166,40 @@ install -m 0644 %SOURCE3 ${RPM_BUILD_ROOT}%{_unitdir}/rstatd.service
 %{_unitdir}/rstatd.service
 
 %changelog
-* Fri Oct 15 2021 Pawel Winogrodzki <pawelwi@microsoft.com> - 0.17-96
-- Initial CBL-Mariner import from Fedora 32 (license: MIT).
+* Fri Jul 19 2024 Fedora Release Engineering <releng@fedoraproject.org> - 0.17-106
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_41_Mass_Rebuild
+
+* Mon Feb 12 2024 Petr Kubat <pkubat@redhat.com> - 0.17-105
+- fix incompatible-pointer-types (#2261669)
+- move to new patch apply notation
+
+* Fri Jan 26 2024 Fedora Release Engineering <releng@fedoraproject.org> - 0.17-104
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Fri Jul 21 2023 Fedora Release Engineering <releng@fedoraproject.org> - 0.17-103
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_39_Mass_Rebuild
+
+* Fri Jan 20 2023 Fedora Release Engineering <releng@fedoraproject.org> - 0.17-102
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_38_Mass_Rebuild
+
+* Sat Jul 23 2022 Fedora Release Engineering <releng@fedoraproject.org> - 0.17-101
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_37_Mass_Rebuild
+
+* Fri Jan 21 2022 Fedora Release Engineering <releng@fedoraproject.org> - 0.17-100
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_36_Mass_Rebuild
+
+* Fri Jul 23 2021 Fedora Release Engineering <releng@fedoraproject.org> - 0.17-99
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_35_Mass_Rebuild
+
+* Tue Mar 02 2021 Zbigniew Jędrzejewski-Szmek <zbyszek@in.waw.pl> - 0.17-98
+- Rebuilt for updated systemd-rpm-macros
+  See https://pagure.io/fesco/issue/2583.
+
+* Wed Jan 27 2021 Fedora Release Engineering <releng@fedoraproject.org> - 0.17-97
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_34_Mass_Rebuild
+
+* Wed Jul 29 2020 Fedora Release Engineering <releng@fedoraproject.org> - 0.17-96
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_33_Mass_Rebuild
 
 * Thu Jan 30 2020 Fedora Release Engineering <releng@fedoraproject.org> - 0.17-95
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_32_Mass_Rebuild

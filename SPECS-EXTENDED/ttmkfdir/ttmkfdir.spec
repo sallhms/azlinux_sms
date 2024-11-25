@@ -1,16 +1,13 @@
-Vendor:         Microsoft Corporation
-Distribution:   Azure Linux
 Summary: Utility to create fonts.scale files for truetype fonts
 Name: ttmkfdir
 Version: 3.0.9
-Release: 61%{?dist}
-# Only licensing attribution ("GNU Library General Public License") is in README, no version.
-License: LGPLv2+
+Release: 71%{?dist}
+# Only licensing attribution is in README, no version.
+License: LGPL-2.0-or-later
 # This is a Red Hat maintained package which is specific to
 # our distribution.  Thus the source is only available from
 # within this srpm.
-Source0: %{_distro_sources_url}/%{name}-%{version}.tar.bz2
-Source1: %{name}-LICENSE.txt
+Source0: %{name}-%{version}.tar.bz2
 Patch: ttmkfdir-3.0.9-cpp.patch
 Patch1: ttmkfdir-3.0.9-zlib.patch
 Patch2: ttmkfdir-3.0.9-fix-freetype217.patch
@@ -23,8 +20,10 @@ Patch8: ttmkfdir-3.0.9-font-scale.patch
 Patch9: ttmkfdir-3.0.9-bug434301.patch
 Patch10:ttmkfdir-3.0.9-freetype-header-fix2.patch
 Patch11:ttmkfdir-3.0.9-fedora-ldflags.patch
+Patch12:ttmkfdir-3.0.9-tag.patch
 Source10: ttmkfdir.1
 
+BuildRequires: make
 BuildRequires: freetype-devel >= 2.0
 BuildRequires: flex libtool
 BuildRequires: bzip2-devel
@@ -38,34 +37,59 @@ by the font server.
 
 %prep
 %autosetup -p1
-cp %{SOURCE1} ./LICENSE.txt
 
 %build
-make %{?_smp_mflags} OPTFLAGS="$RPM_OPT_FLAGS"
+%{make_build} OPTFLAGS="$RPM_OPT_FLAGS" RPM_LD_FLAGS="$RPM_LD_FLAGS -pie"
 
 %install
-make DESTDIR=$RPM_BUILD_ROOT PREFIX="%{_prefix}" install INSTALL="install -p"
+%{make_install} PREFIX="%{_prefix}"
 mkdir -p %{buildroot}%{_mandir}/man1/
 cp -p %{SOURCE10} %{buildroot}%{_mandir}/man1/
 
 %files
-%license LICENSE.txt
 %doc README
 %{_bindir}/ttmkfdir
 %{_mandir}/man1/ttmkfdir.1*
 
 %changelog
-* Thu Feb 22 2024 Pawel Winogrodzki <pawelwi@microsoft.com> - 3.0.9-61
-- Updating naming for 3.0 version of Azure Linux.
+* Sat Jul 20 2024 Fedora Release Engineering <releng@fedoraproject.org> - 3.0.9-71
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_41_Mass_Rebuild
 
-* Mon Apr 25 2022 Mateusz Malisz <mamalisz@microsoft.com> - 3.0.9-61
-- Update Source0
+* Sat Jan 27 2024 Fedora Release Engineering <releng@fedoraproject.org> - 3.0.9-70
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
 
-* Fri Dec 10 2021 Thomas Crain <thcrain@microsoft.com> - 3.0.9-60
-- License verified
+* Sat Jul 22 2023 Fedora Release Engineering <releng@fedoraproject.org> - 3.0.9-69
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_39_Mass_Rebuild
 
-* Fri Oct 15 2021 Pawel Winogrodzki <pawelwi@microsoft.com> - 3.0.9-59
-- Initial CBL-Mariner import from Fedora 31 (license: MIT).
+* Fri Jul 07 2023 Parag Nemade <pnemade AT redhat DOT com> - 3.0.9-68
+- Migrate to SPDX license expression
+
+* Sat Jan 21 2023 Fedora Release Engineering <releng@fedoraproject.org> - 3.0.9-67
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_38_Mass_Rebuild
+
+* Sat Jul 23 2022 Fedora Release Engineering <releng@fedoraproject.org> - 3.0.9-66
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_37_Mass_Rebuild
+
+* Sat Jan 22 2022 Fedora Release Engineering <releng@fedoraproject.org> - 3.0.9-65
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_36_Mass_Rebuild
+
+* Fri Jul 23 2021 Fedora Release Engineering <releng@fedoraproject.org> - 3.0.9-64
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_35_Mass_Rebuild
+
+* Wed Jan 27 2021 Fedora Release Engineering <releng@fedoraproject.org> - 3.0.9-63
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_34_Mass_Rebuild
+
+* Wed Jul 29 2020 Fedora Release Engineering <releng@fedoraproject.org> - 3.0.9-62
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_33_Mass_Rebuild
+
+* Mon Mar 30 2020 Timm Baeder <tbaeder@redhat.com> - 3.0.9-60
+- Pass -pie separately to %%{make_build}
+- Pass --tag=CC to libtool invocations
+
+* Mon Mar 16 2020 Tom Stellard <tstellar@redhat.com> - 3.0.9-59
+- Use make_build and make_install macros
+- https://docs.fedoraproject.org/en-US/packaging-guidelines/#_parallel_make
+- https://docs.fedoraproject.org/en-US/packaging-guidelines/#_why_the_makeinstall_macro_should_not_be_used
 
 * Tue Jan 28 2020 Kalev Lember <klember@redhat.com> - 3.0.9-58
 - Avoid hardcoding /usr prefix
@@ -101,7 +125,7 @@ cp -p %{SOURCE10} %{buildroot}%{_mandir}/man1/
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_26_Mass_Rebuild
 
 * Tue Feb 23 2016 Pravin Satpute <psatpute@redhat.com> - 3.0.9-48
-- Removed ttmkfdir-3.0.9-freetype-header-fix.patch
+- Removed ttmkfdir-3.0.9-freetype-header-fix.patch 
 - Resolves #1308197: ttmkfdir: FTBFS in rawhide
 
 * Fri Feb 05 2016 Fedora Release Engineering <releng@fedoraproject.org> - 3.0.9-47
@@ -279,10 +303,10 @@ cp -p %{SOURCE10} %{buildroot}%{_mandir}/man1/
 
 * Mon Jan 13 2003 Yu Shao <yshao@redhat.com> 3.0.6-1
 - added iso8859-13 support from Nerijus Baliunas #77289
-- added README
+- added README 
 
 * Wed Jan 8 2003 Yu Shao <yshao@redhat.com> 3.0.5-1
-- encoding.l fix and ttc support patch
+- encoding.l fix and ttc support patch 
 - default read system encodings.dir instead of the one
 - in current directory
 
@@ -290,7 +314,7 @@ cp -p %{SOURCE10} %{buildroot}%{_mandir}/man1/
 - make ttmkfdir keep silent with FIRSTINDEX. #61769
 
 * Wed Dec 18 2002 Yu Shao <yshao@redhat.com> 3.0.3-1
-- Applied new patches to make ttmkfdir provide more infomation when meets
+- Applied new patches to make ttmkfdir provide more infomation when meets 
 - bad fonts
 
 * Mon Dec  9 2002 Mike A. Harris <mharris@devel.capslock.lan> 3.0.2-1

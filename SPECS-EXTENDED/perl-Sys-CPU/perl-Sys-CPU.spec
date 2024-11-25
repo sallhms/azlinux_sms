@@ -1,20 +1,20 @@
-Vendor:         Microsoft Corporation
-Distribution:   Azure Linux
 Name:           perl-Sys-CPU
 Version:        0.61
-Release:        22%{?dist}
+Release:        38%{?dist}
 Summary:        Getting CPU information
 
-# Some code was copied from Unix::Processors, which is LGPLv3 or Artistic 2.0
-# The rest of the code is under the standard Perl license (GPL+ or Artistic).
+# Some code was copied from Unix::Processors, which is LGPL-3.0-only OR Artistic-2.0
+# The rest of the code is under the standard Perl license (GPL-1.0-or-later OR Artistic-1.0-Perl).
 # See <https://bugzilla.redhat.com/show_bug.cgi?id=585336>.
-License:        (GPL+ or Artistic) and (LGPLv3 or Artistic 2.0)
-URL:            https://metacpan.org/release/MZSANFORD/Sys-CPU-0.61/view/CPU.pm
-Source0:        https://cpan.metacpan.org/authors/id/M/MZ/MZSANFORD/Sys-CPU-%{version}.tar.gz#/perl-Sys-CPU-%{version}.tar.gz
+License:        (GPL-1.0-or-later OR Artistic-1.0-Perl) AND (LGPL-3.0-only OR Artistic-2.0)
+URL:            https://metacpan.org/release/Sys-CPU
+Source0:        https://cpan.metacpan.org/authors/id/M/MZ/MZSANFORD/Sys-CPU-%{version}.tar.gz
 # Support cpu_type on ARM and AArch64, bug #1093266, CPAN RT#95400
 Patch0:         Sys-CPU-0.61-Add-support-for-cpu_type-on-ARM-and-AArch64-Linux-pl.patch
 # Accept undefined cpu_clock on ARM and AArch64, bug #1093266, CPAN RT#95400
 Patch1:         Sys-CPU-0.61-cpu_clock-can-be-undefined-on-an-ARM.patch
+# Add support for RISC-V 64-bit (RV64GC) aka riscv64
+Patch2:         add-support-riscv64.patch
 BuildRequires:  findutils
 BuildRequires:  gcc
 BuildRequires:  make
@@ -26,7 +26,6 @@ BuildRequires:  perl(ExtUtils::MakeMaker)
 # Run-time:
 BuildRequires:  perl(DynaLoader)
 BuildRequires:  perl(Exporter)
-Requires:       perl(:MODULE_COMPAT_%(eval "`%{__perl} -V:version`"; echo $version))
 
 %{?perl_default_filter}
 
@@ -36,8 +35,10 @@ Currently only number of CPU's supported.
 
 %prep
 %setup -q -n Sys-CPU-%{version}
-%patch 0 -p1
-%patch 1 -p1
+%patch -P 0 -p1
+%patch -P 1 -p1
+%patch -P 2 -p1
+sed -i 's/\r//' Changes README
 
 %build
 %{__perl} Makefile.PL INSTALLDIRS=vendor
@@ -60,9 +61,57 @@ find %{buildroot} -type f -name CPU.bs -exec rm -f {} ';'
 
 
 %changelog
-* Fri Oct 15 2021 Pawel Winogrodzki <pawelwi@microsoft.com> - 0.61-22
-- Removing readme file modification.
-- Initial CBL-Mariner import from Fedora 32 (license: MIT).
+* Fri Jul 19 2024 Fedora Release Engineering <releng@fedoraproject.org> - 0.61-38
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_41_Mass_Rebuild
+
+* Mon Jun 10 2024 Jitka Plesnikova <jplesnik@redhat.com> - 0.61-37
+- Perl 5.40 rebuild
+
+* Wed Feb 21 2024 David Abdurachmanov <davidlt@rivosinc.com> - 0.61-36
+- Add support for riscv64
+
+* Thu Jan 25 2024 Fedora Release Engineering <releng@fedoraproject.org> - 0.61-35
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Sun Jan 21 2024 Fedora Release Engineering <releng@fedoraproject.org> - 0.61-34
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Fri Jul 21 2023 Fedora Release Engineering <releng@fedoraproject.org> - 0.61-33
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_39_Mass_Rebuild
+
+* Tue Jul 11 2023 Jitka Plesnikova <jplesnik@redhat.com> - 0.61-32
+- Perl 5.38 rebuild
+
+* Thu Jun 01 2023 Michal Josef Špaček <mspacek@redhat.com> - 0.61-31
+- Fix %patch macro
+- Update license to SPDX format
+
+* Fri Jan 20 2023 Fedora Release Engineering <releng@fedoraproject.org> - 0.61-30
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_38_Mass_Rebuild
+
+* Fri Jul 22 2022 Fedora Release Engineering <releng@fedoraproject.org> - 0.61-29
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_37_Mass_Rebuild
+
+* Mon May 30 2022 Jitka Plesnikova <jplesnik@redhat.com> - 0.61-28
+- Perl 5.36 rebuild
+
+* Fri Jan 21 2022 Fedora Release Engineering <releng@fedoraproject.org> - 0.61-27
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_36_Mass_Rebuild
+
+* Thu Jul 22 2021 Fedora Release Engineering <releng@fedoraproject.org> - 0.61-26
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_35_Mass_Rebuild
+
+* Fri May 21 2021 Jitka Plesnikova <jplesnik@redhat.com> - 0.61-25
+- Perl 5.34 rebuild
+
+* Wed Jan 27 2021 Fedora Release Engineering <releng@fedoraproject.org> - 0.61-24
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_34_Mass_Rebuild
+
+* Tue Jul 28 2020 Fedora Release Engineering <releng@fedoraproject.org> - 0.61-23
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_33_Mass_Rebuild
+
+* Mon Jun 22 2020 Jitka Plesnikova <jplesnik@redhat.com> - 0.61-22
+- Perl 5.32 rebuild
 
 * Thu Jan 30 2020 Fedora Release Engineering <releng@fedoraproject.org> - 0.61-21
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_32_Mass_Rebuild

@@ -1,17 +1,21 @@
-Vendor:         Microsoft Corporation
-Distribution:   Azure Linux
 Name:           systemd-bootchart
-Version:        233
-Release:        8%{?dist}
+Version:        235
+Release:        1%{?dist}
 Summary:        Boot performance graphing tool
 
-License:        GPLv2+ and LGPLv2+
+# Automatically converted from old format: GPLv2+ and LGPLv2+ - review is highly recommended.
+License:        GPL-2.0-or-later AND LicenseRef-Callaway-LGPLv2+
 URL:            https://github.com/systemd/systemd-bootchart
-Source0:        https://github.com/systemd/%{name}/releases/download/v%{version}/%{name}-%{version}.tar.xz
+Source0:        https://github.com/systemd/%{name}/archive/v%{version}/%{name}-%{version}.tar.gz
 
+BuildRequires:  make
+BuildRequires:  automake
+BuildRequires:  autoconf
+BuildRequires:  libtool
+BuildRequires:  intltool
 BuildRequires:  gcc
 BuildRequires:  systemd
-BuildRequires:  systemd-devel
+BuildRequires:  pkgconfig(libsystemd) >= 221
 BuildRequires:  %{_bindir}/xsltproc
 BuildRequires:  docbook-style-xsl
 %{?systemd_requires}
@@ -27,6 +31,7 @@ are displayed separately.
 %autosetup -p1
 
 %build
+./autogen.sh
 %configure --disable-silent-rules
 %make_build
 
@@ -54,12 +59,45 @@ are displayed separately.
 %{_mandir}/man5/bootchart.conf.d.5*
 
 %changelog
-* Tue Sep 19 2023 Jon Slobodzian <joslobo@microsoft.com> - 233-8
-- Fix build issue for systemd/systemd-bootstrap confusion
-- License verified
+* Wed Oct 30 2024 Andrea Bolognani <abologna@redhat.com> - 235-1
+- Update to v235 (RHBZ #2247564)
 
-* Fri Oct 15 2021 Pawel Winogrodzki <pawelwi@microsoft.com> - 233-7
-- Initial CBL-Mariner import from Fedora 32 (license: MIT).
+* Wed Sep 04 2024 Miroslav Suchý <msuchy@redhat.com> - 234-5
+- convert license to SPDX
+
+* Sat Jul 20 2024 Fedora Release Engineering <releng@fedoraproject.org> - 234-4
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_41_Mass_Rebuild
+
+* Sat Jan 27 2024 Fedora Release Engineering <releng@fedoraproject.org> - 234-3
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Sat Jul 22 2023 Fedora Release Engineering <releng@fedoraproject.org> - 234-2
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_39_Mass_Rebuild
+
+* Sat Apr 29 2023 Dominique Martinet <asmadeus@codewreck.org> - 234-1
+- Update to fix segfault in svg_ps_bars
+
+* Sat Jan 21 2023 Fedora Release Engineering <releng@fedoraproject.org> - 233-13
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_38_Mass_Rebuild
+
+* Sat Jul 23 2022 Fedora Release Engineering <releng@fedoraproject.org> - 233-12
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_37_Mass_Rebuild
+
+* Sat Jan 22 2022 Fedora Release Engineering <releng@fedoraproject.org> - 233-11
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_36_Mass_Rebuild
+
+* Fri Jul 23 2021 Fedora Release Engineering <releng@fedoraproject.org> - 233-10
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_35_Mass_Rebuild
+
+* Tue Mar 02 2021 Zbigniew Jędrzejewski-Szmek <zbyszek@in.waw.pl> - 233-9
+- Rebuilt for updated systemd-rpm-macros
+  See https://pagure.io/fesco/issue/2583.
+
+* Wed Jan 27 2021 Fedora Release Engineering <releng@fedoraproject.org> - 233-8
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_34_Mass_Rebuild
+
+* Wed Jul 29 2020 Fedora Release Engineering <releng@fedoraproject.org> - 233-7
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_33_Mass_Rebuild
 
 * Fri Jan 31 2020 Fedora Release Engineering <releng@fedoraproject.org> - 233-6
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_32_Mass_Rebuild

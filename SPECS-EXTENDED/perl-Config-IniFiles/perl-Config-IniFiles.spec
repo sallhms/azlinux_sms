@@ -1,8 +1,6 @@
-Vendor:         Microsoft Corporation
-Distribution:   Azure Linux
 Name:           perl-Config-IniFiles
-Version:        3.000002
-Release:        6%{?dist}
+Version:        3.000003
+Release:        14%{?dist}
 Summary:        A module for reading .ini-style configuration files
 # LICENSE:                              GPL+ or Artistic
 # lib/Config/IniFiles.pm:               GPL+ or Artistic
@@ -10,12 +8,12 @@ Summary:        A module for reading .ini-style configuration files
 # t/30parameters-with-empty-values.t:   MIT
 License:        GPL+ or Artistic
 URL:            https://metacpan.org/release/Config-IniFiles
-Source0:        https://cpan.metacpan.org/authors/id/S/SH/SHLOMIF/Config-IniFiles-%{version}.tar.gz#/perl-Config-IniFiles-%{version}.tar.gz
+Source0:        https://cpan.metacpan.org/authors/id/S/SH/SHLOMIF/Config-IniFiles-%{version}.tar.gz
 BuildRequires:  coreutils
 BuildRequires:  findutils
 BuildRequires:  make
-BuildRequires:  perl-interpreter
 BuildRequires:  perl-generators
+BuildRequires:  perl-interpreter
 BuildRequires:  perl(Module::Build) >= 0.36
 # Module::Build::Compat not used, we run Build.PL
 BuildRequires:  perl(strict)
@@ -32,22 +30,19 @@ BuildRequires:  perl(List::Util) >= 1.33
 BuildRequires:  perl(Symbol)
 BuildRequires:  perl(vars)
 # Tests:
-%if 0%{?with_check}
+BuildRequires:  perl(base)
+BuildRequires:  perl(blib)
 BuildRequires:  perl(English)
 BuildRequires:  perl(Exporter)
 BuildRequires:  perl(File::Spec)
 BuildRequires:  perl(IO::File)
 BuildRequires:  perl(IO::Handle)
 BuildRequires:  perl(IPC::Open3)
-BuildRequires:  perl(Scalar::Util)
-BuildRequires:  perl(Test::More)
-BuildRequires:  perl(base)
-BuildRequires:  perl(blib)
 BuildRequires:  perl(lib)
 BuildRequires:  perl(parent)
-%endif
+BuildRequires:  perl(Scalar::Util)
+BuildRequires:  perl(Test::More)
 BuildArch:      noarch
-Requires:       perl(:MODULE_COMPAT_%(eval "`perl -V:version`"; echo $version))
 # Not autodetected. Found in lib/Config/IniFiles.pm:2761
 Requires:       perl(IO::Scalar) >= 2.109
 # Also not autodetected
@@ -85,12 +80,50 @@ perl Build.PL installdirs=vendor
 %{_mandir}/man3/*.3pm*
 
 %changelog
-* Thu Sep 01 2022 Muhammad Falak <mwani@microsoft.com> - 3.000002-6
-- Add BR on `perl(blib)` to enable ptest
-- License verified
+* Thu Jul 18 2024 Fedora Release Engineering <releng@fedoraproject.org> - 3.000003-14
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_41_Mass_Rebuild
 
-* Fri Oct 15 2021 Pawel Winogrodzki <pawelwi@microsoft.com> - 3.000002-5
-- Initial CBL-Mariner import from Fedora 32 (license: MIT).
+* Thu Jan 25 2024 Fedora Release Engineering <releng@fedoraproject.org> - 3.000003-13
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Sun Jan 21 2024 Fedora Release Engineering <releng@fedoraproject.org> - 3.000003-12
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Thu Jul 20 2023 Fedora Release Engineering <releng@fedoraproject.org> - 3.000003-11
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_39_Mass_Rebuild
+
+* Fri Jan 20 2023 Fedora Release Engineering <releng@fedoraproject.org> - 3.000003-10
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_38_Mass_Rebuild
+
+* Fri Jul 22 2022 Fedora Release Engineering <releng@fedoraproject.org> - 3.000003-9
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_37_Mass_Rebuild
+
+* Tue May 31 2022 Jitka Plesnikova <jplesnik@redhat.com> - 3.000003-8
+- Perl 5.36 rebuild
+
+* Fri Jan 21 2022 Fedora Release Engineering <releng@fedoraproject.org> - 3.000003-7
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_36_Mass_Rebuild
+
+* Thu Jul 22 2021 Fedora Release Engineering <releng@fedoraproject.org> - 3.000003-6
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_35_Mass_Rebuild
+
+* Fri May 21 2021 Jitka Plesnikova <jplesnik@redhat.com> - 3.000003-5
+- Perl 5.34 rebuild
+
+* Wed Jan 27 2021 Fedora Release Engineering <releng@fedoraproject.org> - 3.000003-4
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_34_Mass_Rebuild
+
+* Tue Jul 28 2020 Fedora Release Engineering <releng@fedoraproject.org> - 3.000003-3
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_33_Mass_Rebuild
+
+* Tue Jun 23 2020 Jitka Plesnikova <jplesnik@redhat.com> - 3.000003-2
+- Perl 5.32 rebuild
+
+* Wed Mar 25 2020 Tom Callaway <spot@fedoraproject.org> - 3.000003-1
+- update to 3.000003
+
+* Thu Mar 19 2020 Petr Pisar <ppisar@redhat.com> - 3.000002-5
+- Build-require blib for the tests
 
 * Wed Jan 29 2020 Fedora Release Engineering <releng@fedoraproject.org> - 3.000002-4
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_32_Mass_Rebuild

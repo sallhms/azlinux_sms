@@ -1,13 +1,12 @@
-Vendor:         Microsoft Corporation
-Distribution:   Azure Linux
 Summary: Maintains identical copies of files on multiple machines
 Name: rdist
 Version: 6.1.5
-Release: 73%{?dist}
+Release: 85%{?dist}
+Epoch: 1
 # On Feb 17, 2011, Michael A. Cooper gave permission via email for all of his
 # copyrighted work in rdist to be relicensed to the same BSD as the rest of
 # rdist. This is done in Patch15. Documentation of this is in Source3.
-License: BSD
+License: BSD-3-Clause AND BSD-4-Clause-UC
 Source0: http://www.MagniComp.com/download/rdist/rdist-%{version}.tar.gz
 Source1: http://people.redhat.com/pknirsch/src/rdist-v1.1.tar.bz2
 # http://www.magnicomp.com/rdist/rdist-eu-license.shtml
@@ -29,7 +28,12 @@ Patch12: rdist-6.1.5-stat64.patch
 Patch13: rdist-6.1.5-re_args.patch
 Patch14: rdist-6.1.5-fix-msgsndnotify-loop.patch
 Patch15: rdist-6.1.5-license-fix.patch
+Patch16: rdist-6.1.5-fpic.patch
+Patch17: rdist-c99.patch
+Patch18: rdist-wait-union.patch
+
 URL: http://www.MagniComp.com/rdist
+BuildRequires: make
 BuildRequires: byacc bison gcc
 
 %description
@@ -64,6 +68,9 @@ cp %{SOURCE3} .
 %patch 12 -p1 -b .stat64
 %patch 13 -p1 -b .re_args
 %patch 14 -p1 -b .fix-msgsndnotify-loop
+%patch 16 -p1 -b .pic
+%patch 17 -p1 -b .c99
+%patch 18 -p1 -b .union
 
 %build
 make
@@ -92,11 +99,47 @@ install -m644 doc/rdistd.man ${RPM_BUILD_ROOT}%{_mandir}/man8/rdistd.8
 %{_mandir}/man8/rdistd.8*
 
 %changelog
-* Fri Oct 29 2021 Muhammad Falak <mwani@microsft.com> - 6.1.5-73
-- Remove epoch
+* Fri Jul 19 2024 Fedora Release Engineering <releng@fedoraproject.org> - 1:6.1.5-85
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_41_Mass_Rebuild
 
-* Fri Oct 15 2021 Pawel Winogrodzki <pawelwi@microsoft.com> - 1:6.1.5-72
-- Initial CBL-Mariner import from Fedora 32 (license: MIT).
+* Mon Feb 12 2024 Michal Ruprich <mruprich@redhat.com> - 1:6.1.5-84
+- Fix FTBFS in Fedora rawhide/f40 (rhbz #2261648)
+
+* Fri Jan 26 2024 Fedora Release Engineering <releng@fedoraproject.org> - 1:6.1.5-83
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Mon Jan 22 2024 Fedora Release Engineering <releng@fedoraproject.org> - 1:6.1.5-82
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Fri Jul 21 2023 Fedora Release Engineering <releng@fedoraproject.org> - 1:6.1.5-81
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_39_Mass_Rebuild
+
+* Mon Mar 20 2023 Michal Ruprich <mruprich@redhat.com> - 1:6.1.5-80
+- SPDX migration
+
+* Fri Jan 20 2023 Fedora Release Engineering <releng@fedoraproject.org> - 1:6.1.5-79
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_38_Mass_Rebuild
+
+* Mon Dec 19 2022 Florian Weimer <fweimer@redhat.com> - 1:6.1.5-78
+- C99 compatibility fix (#2154845)
+
+* Sat Jul 23 2022 Fedora Release Engineering <releng@fedoraproject.org> - 1:6.1.5-77
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_37_Mass_Rebuild
+
+* Tue Feb 01 2022 Michal Ruprich <mruprich@redhat.com> - 1:6.1.5-76
+- Resolves a FTBFS bug, needed to add -fPIC(rhbz#2046939)
+
+* Fri Jan 21 2022 Fedora Release Engineering <releng@fedoraproject.org> - 1:6.1.5-75
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_36_Mass_Rebuild
+
+* Fri Jul 23 2021 Fedora Release Engineering <releng@fedoraproject.org> - 1:6.1.5-74
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_35_Mass_Rebuild
+
+* Wed Jan 27 2021 Fedora Release Engineering <releng@fedoraproject.org> - 1:6.1.5-73
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_34_Mass_Rebuild
+
+* Wed Jul 29 2020 Fedora Release Engineering <releng@fedoraproject.org> - 1:6.1.5-72
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_33_Mass_Rebuild
 
 * Thu Jan 30 2020 Fedora Release Engineering <releng@fedoraproject.org> - 1:6.1.5-71
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_32_Mass_Rebuild

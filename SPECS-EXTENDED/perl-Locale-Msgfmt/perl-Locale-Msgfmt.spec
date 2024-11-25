@@ -1,21 +1,20 @@
-Vendor:         Microsoft Corporation
-Distribution:   Azure Linux
 Name:           perl-Locale-Msgfmt
 Version:        0.15
-Release:        28%{?dist}
+Release:        40%{?dist}
 Summary:        Compile .po files to .mo files
-License:        GPL+ or Artistic
+License:        GPL-1.0-or-later OR Artistic-1.0-Perl
 URL:            https://metacpan.org/release/Locale-Msgfmt
-Source0:        https://cpan.metacpan.org/authors/id/A/AZ/AZAWAWI/Locale-Msgfmt-%{version}.tar.gz#/perl-Locale-Msgfmt-%{version}.tar.gz
+Source0:        https://cpan.metacpan.org/authors/id/S/SZ/SZABGAB/Locale-Msgfmt-%{version}.tar.gz
+# Update Makefile.PL to not use Module::Install::DSL CPAN RT#148295
+Patch0:         Locale-Msgfmt-0.15-Remove-using-of-MI-DSL.patch
 BuildArch:      noarch
 BuildRequires:  coreutils
-BuildRequires:  findutils
 BuildRequires:  make
-BuildRequires:  perl-interpreter
 BuildRequires:  perl-generators
-BuildRequires:  perl(inc::Module::Install::DSL) >= 0.92
+BuildRequires:  perl-interpreter
+BuildRequires:  perl(inc::Module::Install)
 BuildRequires:  perl(Module::Install::Metadata)
-BuildRequires:  sed
+BuildRequires:  perl(Module::Install::WriteAll)
 # Run-time
 BuildRequires:  perl(Exporter)
 BuildRequires:  perl(File::Spec)
@@ -26,11 +25,9 @@ BuildRequires:  perl(warnings)
 BuildRequires:  perl(File::Copy)
 BuildRequires:  perl(File::Path)
 BuildRequires:  perl(File::Temp)
-BuildRequires:  perl(FindBin)
 BuildRequires:  perl(Getopt::Long)
 BuildRequires:  perl(Locale::Maketext::Gettext)
 BuildRequires:  perl(Test::More)
-Requires:       perl(:MODULE_COMPAT_%(eval "`perl -V:version`"; echo $version))
 
 %description
 This module does the same thing as msgfmt from GNU gettext-tools, 
@@ -39,21 +36,21 @@ examples on home page.
 
 %prep
 %setup -q -n Locale-Msgfmt-%{version}
+%patch -P0 -p1
 
 # Remove bundled libraries
 rm -r inc
-sed -i -e '/^inc\// d' MANIFEST
+perl -i -ne 'print $_ unless m{^inc/}' MANIFEST
 find -type f -exec chmod -x {} +
 
 %build
-perl Makefile.PL installdirs=vendor
-make %{?_smp_mflags}
+perl Makefile.PL installdirs=vendor NO_PACKLIST=1 NO_PERLLOCAL=1
+%{make_build}
 
 %install
-make pure_install DESTDIR=$RPM_BUILD_ROOT
+%{make_install}
 mkdir $RPM_BUILD_ROOT%{_bindir}
 cp -v script/msgfmt.pl $RPM_BUILD_ROOT%{_bindir}
-find $RPM_BUILD_ROOT -type f -name .packlist -delete
 %{_fixperms} $RPM_BUILD_ROOT/*
 
 %check
@@ -61,16 +58,53 @@ make test
 
 %files
 %doc Changes README
-%{perl_vendorlib}/*
+%{perl_vendorlib}/Locale*
+%{perl_vendorlib}/Module*
 %{_bindir}/msgfmt.pl
-%{_mandir}/man3/*
+%{_mandir}/man3/Locale*
 
 %changelog
-* Thu Jan 13 2022 Pawel Winogrodzki <pawelwi@microsoft.com> - 0.15-28
-- License verified.
+* Fri Jul 19 2024 Fedora Release Engineering <releng@fedoraproject.org> - 0.15-40
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_41_Mass_Rebuild
 
-* Fri Oct 15 2021 Pawel Winogrodzki <pawelwi@microsoft.com> - 0.15-27
-- Initial CBL-Mariner import from Fedora 32 (license: MIT).
+* Thu Jan 25 2024 Fedora Release Engineering <releng@fedoraproject.org> - 0.15-39
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Sun Jan 21 2024 Fedora Release Engineering <releng@fedoraproject.org> - 0.15-38
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Thu Jul 20 2023 Fedora Release Engineering <releng@fedoraproject.org> - 0.15-37
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_39_Mass_Rebuild
+
+* Tue May 09 2023 Jitka Plesnikova <jplesnik@redhat.com> - 0.15-36
+- Update Makefile.PL to not use Module::Install::DSL
+
+* Fri Jan 20 2023 Fedora Release Engineering <releng@fedoraproject.org> - 0.15-35
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_38_Mass_Rebuild
+
+* Fri Jul 22 2022 Fedora Release Engineering <releng@fedoraproject.org> - 0.15-34
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_37_Mass_Rebuild
+
+* Wed Jun 01 2022 Jitka Plesnikova <jplesnik@redhat.com> - 0.15-33
+- Perl 5.36 rebuild
+
+* Fri Jan 21 2022 Fedora Release Engineering <releng@fedoraproject.org> - 0.15-32
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_36_Mass_Rebuild
+
+* Thu Jul 22 2021 Fedora Release Engineering <releng@fedoraproject.org> - 0.15-31
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_35_Mass_Rebuild
+
+* Fri May 21 2021 Jitka Plesnikova <jplesnik@redhat.com> - 0.15-30
+- Perl 5.34 rebuild
+
+* Wed Jan 27 2021 Fedora Release Engineering <releng@fedoraproject.org> - 0.15-29
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_34_Mass_Rebuild
+
+* Tue Jul 28 2020 Fedora Release Engineering <releng@fedoraproject.org> - 0.15-28
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_33_Mass_Rebuild
+
+* Tue Jun 23 2020 Jitka Plesnikova <jplesnik@redhat.com> - 0.15-27
+- Perl 5.32 rebuild
 
 * Thu Jan 30 2020 Fedora Release Engineering <releng@fedoraproject.org> - 0.15-26
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_32_Mass_Rebuild

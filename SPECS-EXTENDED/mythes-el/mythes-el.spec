@@ -1,16 +1,14 @@
-Vendor:         Microsoft Corporation
-Distribution:   Azure Linux
 Name: mythes-el
 Summary: Greek thesaurus
 %global upstreamid 20070412
 Version: 0.%{upstreamid}
-Release: 26%{?dist}
+Release: 34%{?dist}
 # below links are dead and can't find any mirror for it
 # please don't report any FTBFS bugs
 #Source: http://www.ellak.gr/pub/oo_extras/th_el.zip
-Source: %{_distro_sources_url}/th_el.zip
+Source: th_el.zip
 URL: wiki.services.openoffice.org/wiki/Dictionaries
-License: GPLv2+
+License: GPL-2.0-or-later
 BuildArch: noarch
 Requires: mythes
 Supplements: (mythes and langpacks-el)
@@ -46,19 +44,42 @@ done
 
 
 %files
-%license README_th_el_GR_v2.txt
+%doc README_th_el_GR_v2.txt
 %{_datadir}/mythes/*
 
 %changelog
-* Thu Feb 22 2024 Pawel Winogrodzki <pawelwi@microsoft.com> - 0.20070412-26
-- Updating naming for 3.0 version of Azure Linux.
+* Thu Jul 18 2024 Fedora Release Engineering <releng@fedoraproject.org> - 0.20070412-34
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_41_Mass_Rebuild
 
-* Mon Apr 25 2022 Pawel Winogrodzki <pawelwi@microsoft.com> - 0.20070412-25
-- Updating source URLs.
-- License verified.
+* Thu Jan 25 2024 Fedora Release Engineering <releng@fedoraproject.org> - 0.20070412-33
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
 
-* Fri Oct 15 2021 Pawel Winogrodzki <pawelwi@microsoft.com> - 0.20070412-24
-- Initial CBL-Mariner import from Fedora 32 (license: MIT).
+* Sun Jan 21 2024 Fedora Release Engineering <releng@fedoraproject.org> - 0.20070412-32
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Thu Jul 20 2023 Fedora Release Engineering <releng@fedoraproject.org> - 0.20070412-31
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_39_Mass_Rebuild
+
+* Wed Feb 23 2023 Caolán McNamara <caolanm@redhat.com> - 0.20070412-30
+- migrated to SPDX license
+
+* Thu Jan 19 2023 Fedora Release Engineering <releng@fedoraproject.org> - 0.20070412-29
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_38_Mass_Rebuild
+
+* Fri Jul 22 2022 Fedora Release Engineering <releng@fedoraproject.org> - 0.20070412-28
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_37_Mass_Rebuild
+
+* Thu Jan 20 2022 Fedora Release Engineering <releng@fedoraproject.org> - 0.20070412-27
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_36_Mass_Rebuild
+
+* Thu Jul 22 2021 Fedora Release Engineering <releng@fedoraproject.org> - 0.20070412-26
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_35_Mass_Rebuild
+
+* Tue Jan 26 2021 Fedora Release Engineering <releng@fedoraproject.org> - 0.20070412-25
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_34_Mass_Rebuild
+
+* Tue Jul 28 2020 Fedora Release Engineering <releng@fedoraproject.org> - 0.20070412-24
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_33_Mass_Rebuild
 
 * Wed Jan 29 2020 Fedora Release Engineering <releng@fedoraproject.org> - 0.20070412-23
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_32_Mass_Rebuild
@@ -112,20 +133,20 @@ done
 * Tue Feb 08 2011 Fedora Release Engineering <rel-eng@lists.fedoraproject.org> - 0.20070412-7
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_15_Mass_Rebuild
 
-* Sat Apr 03 2010 Caolan McNamara <caolanm@redhat.com> - 0.20070412-6
+* Sat Apr 03 2010 Caolán McNamara <caolanm@redhat.com> - 0.20070412-6
 - mythes now owns /usr/share/mythes
 
 * Sat Jul 25 2009 Fedora Release Engineering <rel-eng@lists.fedoraproject.org> - 0.20070412-5
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_12_Mass_Rebuild
 
-* Sat Jul 11 2009 Caolan McNamara <caolanm@redhat.com> - 0.20070412-4
+* Sat Jul 11 2009 Caolán McNamara <caolanm@redhat.com> - 0.20070412-4
 - tidy spec
 
-* Fri Jun 12 2009 Caolan McNamara <caolanm@redhat.com> - 0.20070412-3
+* Fri Jun 12 2009 Caolán McNamara <caolanm@redhat.com> - 0.20070412-3
 - extend coverage
 
 * Wed Feb 25 2009 Fedora Release Engineering <rel-eng@lists.fedoraproject.org> - 0.20070412-2
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_11_Mass_Rebuild
 
-* Thu Jan 15 2009 Caolan McNamara <caolanm@redhat.com> - 0.20070412-1
+* Thu Jan 15 2009 Caolán McNamara <caolanm@redhat.com> - 0.20070412-1
 - initial version

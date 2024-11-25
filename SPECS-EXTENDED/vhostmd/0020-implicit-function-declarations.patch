@@ -1,0 +1,74 @@
+From cf555d3bf079ff60b363dba4dc48a349dce5d3b4 Mon Sep 17 00:00:00 2001
+From: Yaakov Selkowitz <yselkowi@redhat.com>
+Date: Sun, 24 Dec 2023 14:54:09 -0500
+Subject: [PATCH] Fix implicit declarations
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+Errors raised in Fedora rawhide and ELN which have added the
+-Werror=implicit-function-declaration flag for C:
+
+virt-util.c:96:9: error: implicit declaration of function ‘calloc’
+virt-util.c:129:10: error: implicit declaration of function ‘free’
+
+virtio.c:160:9: error: implicit declaration of function ‘free’
+virtio.c:254:31: error: implicit declaration of function ‘bsearch’
+virtio.c:259:13: error: implicit declaration of function ‘qsort’
+virtio.c:586:33: error: implicit declaration of function ‘calloc’
+
+libmetrics.c:136:28: error: implicit declaration of function 'atoi'
+libmetrics.c:142:29: error: implicit declaration of function 'atoll'
+libmetrics.c:148:28: error: implicit declaration of function 'atof'
+libmetrics.c:170:12: error: implicit declaration of function 'calloc'
+libmetrics.c:189:12: error: implicit declaration of function 'free'
+libmetrics.c:311:7: error: implicit declaration of function 'posix_memalign'
+libmetrics.c:385:26: error: implicit declaration of function 'malloc'
+libmetrics.c:848:28: error: implicit declaration of function 'realloc'
+
+Signed-off-by: Yaakov Selkowitz <yselkowi@redhat.com>
+---
+ libmetrics/libmetrics.c | 1 +
+ vhostmd/virt-util.c     | 1 +
+ vhostmd/virtio.c        | 1 +
+ 3 files changed, 3 insertions(+)
+
+diff --git a/libmetrics/libmetrics.c b/libmetrics/libmetrics.c
+index 8819074..c83fd03 100644
+--- a/libmetrics/libmetrics.c
++++ b/libmetrics/libmetrics.c
+@@ -21,6 +21,7 @@
+ #include <config.h>
+ 
+ #include <stdio.h>
++#include <stdlib.h>
+ #include <string.h>
+ #include <fcntl.h>
+ #include <unistd.h>
+diff --git a/vhostmd/virt-util.c b/vhostmd/virt-util.c
+index a94cccd..40765c3 100644
+--- a/vhostmd/virt-util.c
++++ b/vhostmd/virt-util.c
+@@ -21,6 +21,7 @@
+ #include <config.h>
+ 
+ #include <stdio.h>
++#include <stdlib.h>
+ #include <string.h>
+ #include <libvirt/libvirt.h>
+ 
+diff --git a/vhostmd/virtio.c b/vhostmd/virtio.c
+index a6c2515..98340ce 100644
+--- a/vhostmd/virtio.c
++++ b/vhostmd/virtio.c
+@@ -30,6 +30,7 @@
+ #include <search.h>
+ #include <dirent.h>
+ #include <pthread.h>
++#include <stdlib.h>
+ #include <libvirt/libvirt.h>
+ 
+ #include "util.h"
+-- 
+2.43.0
+

@@ -1,20 +1,26 @@
-Vendor:         Microsoft Corporation
-Distribution:   Azure Linux
 Name:           gavl
 Version:        1.4.0
-Release:        21%{?dist}
+Release:        27%{?dist}
 Summary:        A library for handling uncompressed audio and video data
 
 License:        GPLv3+
-URL:            https://gmerlin.sourceforge.net/
-Source0:        https://downloads.sourceforge.net/gmerlin/%{name}-%{version}.tar.gz
+URL:            http://gmerlin.sourceforge.net/
+Source0:        http://downloads.sourceforge.net/gmerlin/gavl-%{version}.tar.gz
 Patch1:         gavl-1.1.1-system_libgdither.patch
+Patch2: gavl-configure-c99.patch
+Patch3: gavl-c99.patch
 
 BuildRequires:  libtool
+
 BuildRequires:  doxygen
+
 BuildRequires:  libpng-devel >= 1.0.8
 BuildRequires:  libgdither-devel
-BuildRequires:  make
+BuildRequires: make
+# Gavl use an internal tweaked libsamplerate version
+# ufortunately the libsamplerate doesn't want a patch 
+# that will break ABI
+#BuildRequires: libsamplerate-devel
 
 
 
@@ -39,7 +45,9 @@ developing applications that use %{name}.
 
 %prep
 %setup -q
-%patch 1 -p1 -b .gdither
+%patch -P1 -p1 -b .gdither
+%patch -P2 -p1
+%patch -P3 -p1
 
 #Disable buildtime cpu detection
 sed -i -i 's/LQT_TRY_CFLAGS/dnl LQT_TRY_CFLAGS/g' configure.ac
@@ -57,12 +65,12 @@ sh autogen.sh
   --enable-libgdither
 
 
-%make_build
+make %{?_smp_mflags}
 
 
 %install
 rm -rf $RPM_BUILD_ROOT
-%make_install
+make install DESTDIR=$RPM_BUILD_ROOT INSTALL="install -p"
 find $RPM_BUILD_ROOT -name '*.la' -exec rm -f {} ';'
 
 # Prevent timestamps build difference
@@ -74,8 +82,7 @@ touch -r include/gavl/gavl.h $RPM_BUILD_ROOT%{_includedir}/gavl/gavl_version.h
 
 
 %files
-%license COPYING
-%doc AUTHORS README TODO
+%doc AUTHORS COPYING README TODO
 %exclude %{_docdir}/gavl/apiref
 %{_libdir}/*.so.*
 
@@ -87,9 +94,26 @@ touch -r include/gavl/gavl.h $RPM_BUILD_ROOT%{_includedir}/gavl/gavl_version.h
 
 
 %changelog
-* Thu Mar 09 2023 Muhammad Falak R Wani <mwani@microsoft.com> - 1.4.0-21
-- Initial CBL-Mariner import from Fedora 36 (license: MIT)
-- License verified.
+* Thu Jul 18 2024 Fedora Release Engineering <releng@fedoraproject.org> - 1.4.0-27
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_41_Mass_Rebuild
+
+* Wed Jan 24 2024 Fedora Release Engineering <releng@fedoraproject.org> - 1.4.0-26
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Fri Jan 19 2024 Fedora Release Engineering <releng@fedoraproject.org> - 1.4.0-25
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Wed Jul 19 2023 Fedora Release Engineering <releng@fedoraproject.org> - 1.4.0-24
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_39_Mass_Rebuild
+
+* Fri Apr 14 2023 Florian Weimer <fweimer@redhat.com> - 1.4.0-23
+- Port to C99
+
+* Thu Jan 19 2023 Fedora Release Engineering <releng@fedoraproject.org> - 1.4.0-22
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_38_Mass_Rebuild
+
+* Thu Jul 21 2022 Fedora Release Engineering <releng@fedoraproject.org> - 1.4.0-21
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_37_Mass_Rebuild
 
 * Thu Jan 20 2022 Fedora Release Engineering <releng@fedoraproject.org> - 1.4.0-20
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_36_Mass_Rebuild

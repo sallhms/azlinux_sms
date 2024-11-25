@@ -1,16 +1,15 @@
-Vendor:         Microsoft Corporation
-Distribution:   Azure Linux
 Summary: A library for interfacing IEEE 1284-compatible devices
 Name: libieee1284
 Version: 0.2.11
-Release: 33%{?dist}
+Release: 44%{?dist}
 License: GPLv2+
 URL: http://cyberelk.net/tim/libieee1284/
 Source0: http://downloads.sourceforge.net/%{name}/%{name}-%{version}.tar.bz2
 Patch1: libieee1284-strict-aliasing.patch
-Patch2: libieee1284-aarch64.patch
-BuildRequires:  gcc
+BuildRequires: gcc
 BuildRequires: xmlto
+BuildRequires: make
+BuildRequires: libtool
 
 %description
 The libieee1284 library is for communicating with parallel port devices.
@@ -26,19 +25,17 @@ developing applications that use libieee1284.
 %prep
 %setup -q
 # Fixed strict aliasing warnings (bug #605170).
-%patch 1 -p1 -b .strict-aliasing
-
-# Add support for building on aarch64 (bug #925774).
-%patch 2 -p1 -b .aarch64
+%patch -P1 -p1 -b .strict-aliasing
 
 %build
+autoreconf -iv
 touch doc/interface.xml
 %configure --without-python
-make %{?_smp_mflags}
+%make_build
 
 %install
 rm -rf %{buildroot}
-make DESTDIR=%{buildroot} INSTALL="install -p" install
+%make_install
 rm -f %{buildroot}%{_libdir}/python*/*/*a
 rm -f %{buildroot}%{_libdir}/*.a
 rm -f %{buildroot}%{_libdir}/*.la
@@ -56,8 +53,42 @@ rm -f %{buildroot}%{_libdir}/*.la
 %ldconfig_scriptlets
 
 %changelog
-* Fri Oct 15 2021 Pawel Winogrodzki <pawelwi@microsoft.com> - 0.2.11-33
-- Initial CBL-Mariner import from Fedora 32 (license: MIT).
+* Thu Jul 18 2024 Fedora Release Engineering <releng@fedoraproject.org> - 0.2.11-44
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_41_Mass_Rebuild
+
+* Thu Jan 25 2024 Fedora Release Engineering <releng@fedoraproject.org> - 0.2.11-43
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Sun Jan 21 2024 Fedora Release Engineering <releng@fedoraproject.org> - 0.2.11-42
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Thu Jul 20 2023 Fedora Release Engineering <releng@fedoraproject.org> - 0.2.11-41
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_39_Mass_Rebuild
+
+* Thu Jan 19 2023 Fedora Release Engineering <releng@fedoraproject.org> - 0.2.11-40
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_38_Mass_Rebuild
+
+* Thu Jul 21 2022 Fedora Release Engineering <releng@fedoraproject.org> - 0.2.11-39
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_37_Mass_Rebuild
+
+* Thu Jan 20 2022 Fedora Release Engineering <releng@fedoraproject.org> - 0.2.11-38
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_36_Mass_Rebuild
+
+* Wed Aug 18 2021 Tim Waugh <twaugh@redhat.com> - 0.2.11-37
+- Fix build on aarch64 with patch from Sérgio M. Basto (bug #1987649)
+
+* Thu Jul 22 2021 Fedora Release Engineering <releng@fedoraproject.org> - 0.2.11-36
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_35_Mass_Rebuild
+
+* Tue Jan 26 2021 Fedora Release Engineering <releng@fedoraproject.org> - 0.2.11-35
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_34_Mass_Rebuild
+
+* Tue Jul 28 2020 Fedora Release Engineering <releng@fedoraproject.org> - 0.2.11-34
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_33_Mass_Rebuild
+
+* Mon Jul 13 2020 Tom Stellard <tstellar@redhat.com> - 0.2.11-33
+- Use make macros
+- https://fedoraproject.org/wiki/Changes/UseMakeBuildInstallMacro
 
 * Wed Jan 29 2020 Fedora Release Engineering <releng@fedoraproject.org> - 0.2.11-32
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_32_Mass_Rebuild

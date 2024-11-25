@@ -1,14 +1,11 @@
-Vendor:         Microsoft Corporation
-Distribution:   Azure Linux
 Name: hyphen-ia
 Summary: Interlingua hyphenation rules
 %global upstreamid 20050628
 Version: 0.%{upstreamid}
-Release: 20%{?dist}
-Source0: http://www.ctan.org/get/language/hyphenation/iahyphen.tex
-Source1: %{name}-LICENSE.txt
+Release: 29%{?dist}
+Source: http://www.ctan.org/get/language/hyphenation/iahyphen.tex
 URL: http://www.ctan.org/tex-archive/help/Catalogue/entries/iahyphen.html
-License: LPPL
+License: LPPL-1.3a
 BuildArch: noarch
 BuildRequires: hyphen-devel
 Requires: hyphen
@@ -21,8 +18,7 @@ Interlingua hyphenation rules.
 %prep
 %setup -T -q -c -n hyphen-ia
 cp -p %{SOURCE0} .
-%patch 0 -p0 -b .clean
-cp %{SOURCE1} ./LICENSE.txt
+%patch -P0 -p0 -b .clean
 
 %build
 substrings.pl iahyphen.tex hyph_ia.dic ISO8859-1
@@ -36,16 +32,42 @@ cp -p hyph_ia.dic $RPM_BUILD_ROOT/%{_datadir}/hyphen
 
 
 %files
-%license LICENSE.txt
 %doc README
 %{_datadir}/hyphen/*
 
 %changelog
-* Tue Feb 15 2022 Pawel Winogrodzki <pawelwi@microsoft.com> - 0.20050628-20
-- License verified.
+* Thu Jul 18 2024 Fedora Release Engineering <releng@fedoraproject.org> - 0.20050628-29
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_41_Mass_Rebuild
 
-* Fri Oct 15 2021 Pawel Winogrodzki <pawelwi@microsoft.com> - 0.20050628-19
-- Initial CBL-Mariner import from Fedora 32 (license: MIT).
+* Wed Jan 24 2024 Fedora Release Engineering <releng@fedoraproject.org> - 0.20050628-28
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Sat Jan 20 2024 Fedora Release Engineering <releng@fedoraproject.org> - 0.20050628-27
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Thu Jul 20 2023 Fedora Release Engineering <releng@fedoraproject.org> - 0.20050628-26
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_39_Mass_Rebuild
+
+* Tue Mar 28 2023 Caolán McNamara <caolanm@redhat.com> - 0.20050628-25
+- migrated to SPDX license
+
+* Thu Jan 19 2023 Fedora Release Engineering <releng@fedoraproject.org> - 0.20050628-24
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_38_Mass_Rebuild
+
+* Thu Jul 21 2022 Fedora Release Engineering <releng@fedoraproject.org> - 0.20050628-23
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_37_Mass_Rebuild
+
+* Thu Jan 20 2022 Fedora Release Engineering <releng@fedoraproject.org> - 0.20050628-22
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_36_Mass_Rebuild
+
+* Thu Jul 22 2021 Fedora Release Engineering <releng@fedoraproject.org> - 0.20050628-21
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_35_Mass_Rebuild
+
+* Tue Jan 26 2021 Fedora Release Engineering <releng@fedoraproject.org> - 0.20050628-20
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_34_Mass_Rebuild
+
+* Tue Jul 28 2020 Fedora Release Engineering <releng@fedoraproject.org> - 0.20050628-19
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_33_Mass_Rebuild
 
 * Wed Jan 29 2020 Fedora Release Engineering <releng@fedoraproject.org> - 0.20050628-18
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_32_Mass_Rebuild
@@ -99,8 +121,8 @@ cp -p hyph_ia.dic $RPM_BUILD_ROOT/%{_datadir}/hyphen
 * Fri Jul 24 2009 Fedora Release Engineering <rel-eng@lists.fedoraproject.org> - 0.20050628-2
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_12_Mass_Rebuild
 
-* Sat Mar 28 2009 Caolan McNamara <caolanm@redhat.com> - 0.20050628-1
+* Sat Mar 28 2009 Caolán McNamara <caolanm@redhat.com> - 0.20050628-1
 - bump to next day for consistency
 
-* Tue Mar 17 2009 Caolan McNamara <caolanm@redhat.com> - 0.20050627-1
+* Tue Mar 17 2009 Caolán McNamara <caolanm@redhat.com> - 0.20050627-1
 - initial version

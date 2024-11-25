@@ -1,16 +1,15 @@
-Vendor:         Microsoft Corporation
-Distribution:   Azure Linux
 Name: hyphen-hu
 Summary: Hungarian hyphenation rules
 %global upstreamid 20090612
 Version: 0.%{upstreamid}
-Release: 26%{?dist}
+Release: 34%{?dist}
 # Source URL is dead now
 # Source: http://download.github.com/nagybence-huhyphn-aa3fc85.tar.gz
-Source: %{_distro_sources_url}/nagybence-huhyphn-aa3fc85.tar.gz
+Source: nagybence-huhyphn-aa3fc85.tar.gz
 URL: http://www.tipogral.hu/
-License: GPLv2
+License: GPL-2.0-only
 BuildArch: noarch
+BuildRequires: make
 Requires: hyphen
 Supplements: (hyphen and langpacks-hu)
 
@@ -37,15 +36,38 @@ cp -p hyph_hu.dic $RPM_BUILD_ROOT/%{_datadir}/hyphen/hyph_hu_HU.dic
 %{_datadir}/hyphen/*
 
 %changelog
-* Thu Feb 22 2024 Pawel Winogrodzki <pawelwi@microsoft.com> - 0.20090612-26
-- Updating naming for 3.0 version of Azure Linux.
+* Thu Jul 18 2024 Fedora Release Engineering <releng@fedoraproject.org> - 0.20090612-34
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_41_Mass_Rebuild
 
-* Mon Apr 25 2022 Pawel Winogrodzki <pawelwi@microsoft.com> - 0.20090612-25
-- Updating source URLs.
-- License verified.
+* Wed Jan 24 2024 Fedora Release Engineering <releng@fedoraproject.org> - 0.20090612-33
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
 
-* Fri Oct 15 2021 Pawel Winogrodzki <pawelwi@microsoft.com> - 0.20090612-24
-- Initial CBL-Mariner import from Fedora 32 (license: MIT).
+* Sat Jan 20 2024 Fedora Release Engineering <releng@fedoraproject.org> - 0.20090612-32
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Thu Jul 20 2023 Fedora Release Engineering <releng@fedoraproject.org> - 0.20090612-31
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_39_Mass_Rebuild
+
+* Thu Feb 23 2023 Caolán McNamara <caolanm@redhat.com> - 0.20090612-30
+- migrated to SPDX license
+
+* Thu Jan 19 2023 Fedora Release Engineering <releng@fedoraproject.org> - 0.20090612-29
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_38_Mass_Rebuild
+
+* Thu Jul 21 2022 Fedora Release Engineering <releng@fedoraproject.org> - 0.20090612-28
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_37_Mass_Rebuild
+
+* Thu Jan 20 2022 Fedora Release Engineering <releng@fedoraproject.org> - 0.20090612-27
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_36_Mass_Rebuild
+
+* Thu Jul 22 2021 Fedora Release Engineering <releng@fedoraproject.org> - 0.20090612-26
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_35_Mass_Rebuild
+
+* Tue Jan 26 2021 Fedora Release Engineering <releng@fedoraproject.org> - 0.20090612-25
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_34_Mass_Rebuild
+
+* Tue Jul 28 2020 Fedora Release Engineering <releng@fedoraproject.org> - 0.20090612-24
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_33_Mass_Rebuild
 
 * Wed Jan 29 2020 Fedora Release Engineering <releng@fedoraproject.org> - 0.20090612-23
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_32_Mass_Rebuild
@@ -78,7 +100,7 @@ cp -p hyph_hu.dic $RPM_BUILD_ROOT/%{_datadir}/hyphen/hyph_hu_HU.dic
 * Thu Feb 04 2016 Fedora Release Engineering <releng@fedoraproject.org> - 0.20090612-14
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_24_Mass_Rebuild
 
-* Tue Nov 03 2015 Caolan McNamara <caolanm@redhat.com> - 0.20090612-13
+* Tue Nov 03 2015 Caolán McNamara <caolanm@redhat.com> - 0.20090612-13
 - Resolves: rhbz#1275688 wrong country code for Hungary
 
 * Wed Jun 17 2015 Fedora Release Engineering <rel-eng@lists.fedoraproject.org> - 0.20090612-12
@@ -93,7 +115,7 @@ cp -p hyph_hu.dic $RPM_BUILD_ROOT/%{_datadir}/hyphen/hyph_hu_HU.dic
 * Thu Feb 14 2013 Fedora Release Engineering <rel-eng@lists.fedoraproject.org> - 0.20090612-9
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_19_Mass_Rebuild
 
-* Tue Nov 06 2012 Caolan McNamara <caolanm@redhat.com> - 0.20090612-8
+* Tue Nov 06 2012 Caolán McNamara <caolanm@redhat.com> - 0.20090612-8
 - clarify license
 
 * Thu Jul 19 2012 Fedora Release Engineering <rel-eng@lists.fedoraproject.org> - 0.20090612-7
@@ -105,23 +127,23 @@ cp -p hyph_hu.dic $RPM_BUILD_ROOT/%{_datadir}/hyphen/hyph_hu_HU.dic
 * Wed Feb 09 2011 Fedora Release Engineering <rel-eng@lists.fedoraproject.org> - 0.20090612-5
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_15_Mass_Rebuild
 
-* Thu Nov 05 2009 Caolan McNamara <caolanm@redhat.com> - 0.20090612-4
+* Thu Nov 05 2009 Caolán McNamara <caolanm@redhat.com> - 0.20090612-4
 - new source location
 
 * Fri Jul 24 2009 Fedora Release Engineering <rel-eng@lists.fedoraproject.org> - 0.20090612-3
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_12_Mass_Rebuild
 
-* Wed Jun 24 2009 Caolan McNamara <caolanm@redhat.com> - 0.20090612-2
+* Wed Jun 24 2009 Caolán McNamara <caolanm@redhat.com> - 0.20090612-2
 - vanilla patgen's limit is too small
 
-* Mon Jun 15 2009 Caolan McNamara <caolanm@redhat.com> - 0.20090612-1
+* Mon Jun 15 2009 Caolán McNamara <caolanm@redhat.com> - 0.20090612-1
 - latest version
 
 * Tue Feb 24 2009 Fedora Release Engineering <rel-eng@lists.fedoraproject.org> - 0.20081106-2
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_11_Mass_Rebuild
 
-* Sun Nov 09 2008 Caolan McNamara <caolanm@redhat.com> - 0.20081106-1
+* Sun Nov 09 2008 Caolán McNamara <caolanm@redhat.com> - 0.20081106-1
 - latest version
 
-* Fri Nov 23 2007 Caolan McNamara <caolanm@redhat.com> - 0.20070907-1
+* Fri Nov 23 2007 Caolán McNamara <caolanm@redhat.com> - 0.20070907-1
 - initial version

@@ -1,10 +1,8 @@
-Vendor:         Microsoft Corporation
-Distribution:   Azure Linux
 Summary: Tool for decoding raw image data from digital cameras
 Name: dcraw
 Version: 9.28.0
-Release: 10%{?dist}
-License: GPLv2+
+Release: 24%{?dist}
+License: GPL-2.0-or-later
 URL: http://www.dechifro.org/dcraw/
 Source0: http://www.dechifro.org/dcraw/archive/dcraw-%{version}.tar.gz
 Patch0: dcraw-9.21-lcms2-error-reporting.patch
@@ -71,8 +69,50 @@ done
 %{_mandir}/man1/*
 
 %changelog
-* Fri Oct 15 2021 Pawel Winogrodzki <pawelwi@microsoft.com> - 9.28.0-10
-- Initial CBL-Mariner import from Fedora 32 (license: MIT).
+* Wed Jul 17 2024 Fedora Release Engineering <releng@fedoraproject.org> - 9.28.0-24
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_41_Mass_Rebuild
+
+* Wed Jan 24 2024 Fedora Release Engineering <releng@fedoraproject.org> - 9.28.0-23
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Fri Jan 19 2024 Fedora Release Engineering <releng@fedoraproject.org> - 9.28.0-22
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Tue Nov 28 2023 Orion Poplawski <orion@nwra.com> - 9.28.0-21
+- Rebuild for jasper 4.1
+
+* Wed Jul 19 2023 Fedora Release Engineering <releng@fedoraproject.org> - 9.28.0-20
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_39_Mass_Rebuild
+
+* Tue May 02 2023 Josef Ridky <jridky@redhat.com> - 9.28.0-19
+- move to SPDX license format
+
+* Thu Jan 19 2023 Fedora Release Engineering <releng@fedoraproject.org> - 9.28.0-18
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_38_Mass_Rebuild
+
+* Thu Jul 21 2022 Fedora Release Engineering <releng@fedoraproject.org> - 9.28.0-17
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_37_Mass_Rebuild
+
+* Sun Feb 13 2022 Josef Ridky <jridky@redhat.com> - 9.28.0-16
+- Bump for correct jasper so linking
+
+* Sun Feb 13 2022 Josef Ridky <jridky@redhat.com> - 9.28.0-15
+- Bump spec for jasper rebuild
+
+* Fri Feb 11 2022 Josef Ridky <jridky@redhat.com> - 9.28.0-14
+- rebuild for new jasper library
+
+* Thu Jan 20 2022 Fedora Release Engineering <releng@fedoraproject.org> - 9.28.0-13
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_36_Mass_Rebuild
+
+* Wed Jul 21 2021 Fedora Release Engineering <releng@fedoraproject.org> - 9.28.0-12
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_35_Mass_Rebuild
+
+* Tue Jan 26 2021 Fedora Release Engineering <releng@fedoraproject.org> - 9.28.0-11
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_34_Mass_Rebuild
+
+* Mon Jul 27 2020 Fedora Release Engineering <releng@fedoraproject.org> - 9.28.0-10
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_33_Mass_Rebuild
 
 * Fri Mar 20 2020 Josef Ridky <jridky@redhat.com> - 9.28.0-9
 - Fix CVE-2018-19655

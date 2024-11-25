@@ -1,64 +1,85 @@
 %global remove_lf() for i in %*; do tr -d '\\r' < $i > $i. && touch $i $i. && mv -f $i. $i; done
 
-Summary:        Process the special UTF-7 variant required by IMAP
 Name:           perl-Encode-IMAPUTF7
 Version:        1.05
-Release:        18%{?dist}
-License:        GPL+ OR Artistic
-Vendor:         Microsoft Corporation
-Distribution:   Azure Linux
+Release:        26%{?dist}
+Summary:        Process the special UTF-7 variant required by IMAP
+License:        GPL+ or Artistic
 URL:            https://metacpan.org/release/Encode-IMAPUTF7
 Source0:        https://cpan.metacpan.org/authors/id/P/PM/PMAKHOLM/Encode-IMAPUTF7-%{version}.tar.gz
 BuildArch:      noarch
-
+# Use Exporter for encode and decode which are used in import
+# error since perl 5.39.1 (CPAN RT#149091)
+Patch0:         Encode-IMAPUTF7-1.05-Use-Exporter-for-encode-decode.patch
+BuildRequires:  coreutils
 BuildRequires:  make
-BuildRequires:  perl-generators
 BuildRequires:  perl-interpreter
-BuildRequires:	perl(FindBin)
+BuildRequires:  perl-generators
+BuildRequires:  perl(base)
 BuildRequires:  perl(Encode)
 BuildRequires:  perl(Encode::Encoding)
-BuildRequires:  perl(ExtUtils::MakeMaker)
+BuildRequires:  perl(Exporter)
+BuildRequires:  perl(ExtUtils::MakeMaker) >= 6.76
 BuildRequires:  perl(File::Basename)
 BuildRequires:  perl(File::Spec)
 BuildRequires:  perl(MIME::Base64)
-BuildRequires:	perl(Module::CoreList)
+BuildRequires:  perl(strict)
 BuildRequires:  perl(Test::More)
 BuildRequires:  perl(Test::NoWarnings)
-BuildRequires:  perl(base)
-BuildRequires:  perl(strict)
 BuildRequires:  perl(warnings)
 
-Requires:       perl(:MODULE_COMPAT_%(eval "`perl -V:version`"; echo $version))
 
 %description
 This module is able to encode and decode IMAP mailbox names using the UTF-7
 modification specified in RFC2060 section 5.1.3.
 
 %prep
-%autosetup -n Encode-IMAPUTF7-%{version}
+%autosetup -p1 -n Encode-IMAPUTF7-%{version}
 %remove_lf README Changes
 
 %build
-perl Makefile.PL INSTALLDIRS=vendor NO_PACKLIST=1
-%make_build
+perl Makefile.PL INSTALLDIRS=vendor NO_PACKLIST=1 NO_PERLLOCAL=1
+%{make_build}
 
 %install
-make pure_install DESTDIR=%{buildroot}
-%{_fixperms} %{buildroot}/*
+%{make_install}
+%_fixperms %buildroot/*
 
 %check
 make test
 
 %files
-%license README
 %doc Changes README
 %{perl_vendorlib}/*
-%{_mandir}/man3/*
+%_mandir/man3/*
 
 %changelog
-* Wed Jan 19 2022 Pawel Winogrodzki <pawelwi@microsoft.com> - 1.05-18
-- Initial CBL-Mariner import from Fedora 36 (license: MIT).
-- License verified.
+* Fri Jul 19 2024 Fedora Release Engineering <releng@fedoraproject.org> - 1.05-26
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_41_Mass_Rebuild
+
+* Thu May 09 2024 Jitka Plesnikova <jplesnik@redhat.com> - 1.05-25
+- Export symbols which are used in import
+
+* Thu Jan 25 2024 Fedora Release Engineering <releng@fedoraproject.org> - 1.05-24
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Sun Jan 21 2024 Fedora Release Engineering <releng@fedoraproject.org> - 1.05-23
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Thu Jul 20 2023 Fedora Release Engineering <releng@fedoraproject.org> - 1.05-22
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_39_Mass_Rebuild
+
+* Fri Jan 20 2023 Fedora Release Engineering <releng@fedoraproject.org> - 1.05-21
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_38_Mass_Rebuild
+
+* Fri Jul 22 2022 Fedora Release Engineering <releng@fedoraproject.org> - 1.05-20
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_37_Mass_Rebuild
+
+* Tue May 31 2022 Jitka Plesnikova <jplesnik@redhat.com> - 1.05-19
+- Perl 5.36 rebuild
+
+* Fri Jan 21 2022 Fedora Release Engineering <releng@fedoraproject.org> - 1.05-18
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_36_Mass_Rebuild
 
 * Thu Jul 22 2021 Fedora Release Engineering <releng@fedoraproject.org> - 1.05-17
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_35_Mass_Rebuild

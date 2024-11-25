@@ -1,13 +1,12 @@
-Vendor:         Microsoft Corporation
-Distribution:   Azure Linux
 Name:		sblim-indication_helper
 Version:	0.5.0
-Release:	4%{?dist}
+Release:	14%{?dist}
 Summary:	Toolkit for CMPI indication providers
 
 License:	EPL-1.0
 URL:		https://sourceforge.net/projects/sblim/
 Source0:	http://downloads.sourceforge.net/sblim/%{name}-%{version}.tar.bz2
+BuildRequires: make
 BuildRequires:	sblim-cmpi-devel 
 BuildRequires:	gcc gcc-c++
 
@@ -34,10 +33,10 @@ This package holds the development files for sblim-indication_helper.
 
 %build
 %configure --disable-static --with-pic
-make %{?_smp_mflags}
+%make_build
 
 %install
-make install DESTDIR=$RPM_BUILD_ROOT
+%make_install
 rm $RPM_BUILD_ROOT/%{_libdir}/libind_helper.la
 
 %ldconfig_scriptlets
@@ -52,8 +51,38 @@ rm $RPM_BUILD_ROOT/%{_libdir}/libind_helper.la
 %{_libdir}/libind_helper.so
 
 %changelog
-* Fri Oct 15 2021 Pawel Winogrodzki <pawelwi@microsoft.com> - 0.5.0-4
-- Initial CBL-Mariner import from Fedora 32 (license: MIT).
+* Sat Jul 20 2024 Fedora Release Engineering <releng@fedoraproject.org> - 0.5.0-14
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_41_Mass_Rebuild
+
+* Sat Jan 27 2024 Fedora Release Engineering <releng@fedoraproject.org> - 0.5.0-13
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Sat Jul 22 2023 Fedora Release Engineering <releng@fedoraproject.org> - 0.5.0-12
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_39_Mass_Rebuild
+
+* Tue Apr 25 2023 Vitezslav Crhonek <vcrhonek@redhat.com> - 0.5.0-11
+- SPDX migration
+
+* Sat Jan 21 2023 Fedora Release Engineering <releng@fedoraproject.org> - 0.5.0-10
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_38_Mass_Rebuild
+
+* Sat Jul 23 2022 Fedora Release Engineering <releng@fedoraproject.org> - 0.5.0-9
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_37_Mass_Rebuild
+
+* Sat Jan 22 2022 Fedora Release Engineering <releng@fedoraproject.org> - 0.5.0-8
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_36_Mass_Rebuild
+
+* Fri Jul 23 2021 Fedora Release Engineering <releng@fedoraproject.org> - 0.5.0-7
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_35_Mass_Rebuild
+
+* Wed Jan 27 2021 Fedora Release Engineering <releng@fedoraproject.org> - 0.5.0-6
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_34_Mass_Rebuild
+
+* Thu Nov 26 2020 Vitezslav Crhonek <vcrhonek@redhat.com> - 0.5.0-5
+- Use make macros, patch by Tom Stellard <tstellar@redhat.com>
+
+* Wed Jul 29 2020 Fedora Release Engineering <releng@fedoraproject.org> - 0.5.0-4
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_33_Mass_Rebuild
 
 * Thu Jan 30 2020 Fedora Release Engineering <releng@fedoraproject.org> - 0.5.0-3
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_32_Mass_Rebuild

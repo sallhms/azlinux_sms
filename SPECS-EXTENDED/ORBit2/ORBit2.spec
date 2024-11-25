@@ -1,31 +1,31 @@
 %define libidl_version 0.8.2-1
 %define glib2_version 2.2.0
-Summary:        A high-performance CORBA Object Request Broker
-Name:           ORBit2
-Version:        2.14.19
-Release:        30%{?dist}
-License:        LGPLv2+ AND GPLv2+
-Vendor:         Microsoft Corporation
-Distribution:   Azure Linux
-URL:            https://www.gnome.org/projects/ORBit2
-Source:         https://download.gnome.org/sources/%{name}/2.14/%{name}-%{version}.tar.gz
-Patch0:         ORBit2-2.14.3-multilib.patch
+
+Summary: A high-performance CORBA Object Request Broker
+Name: ORBit2
+Version: 2.14.19
+Release: 37%{?dist}
+#VCS: git:git://git.gnome.org/ORBit2
+Source: http://download.gnome.org/sources/ORBit2/2.14/%{name}-%{version}.tar.bz2
+License: LGPL-2.0-or-later AND GPL-2.0-or-later
+URL: http://www.gnome.org/projects/ORBit2
+BuildRequires: make
+BuildRequires: libIDL-devel >= %{libidl_version}
+BuildRequires: glib2-devel >= %{glib2_version}
+BuildRequires: pkgconfig >= 0.14
+BuildRequires: libtool
+BuildRequires: autoconf
+BuildRequires: automake
+BuildRequires: gtk-doc
+BuildRequires: chrpath
+
+Patch0: ORBit2-2.14.3-multilib.patch
 # handle ref leaks in the a11y stack more gracefully
-Patch1:         ORBit2-2.14.3-ref-leaks.patch
-Patch2:         ORBit2-make-j-safety.patch
-Patch3:         ORBit2-allow-deprecated.patch
-BuildRequires:  autoconf
-BuildRequires:  automake
-BuildRequires:  chrpath
-BuildRequires:  glib2-devel >= %{glib2_version}
-BuildRequires:  gtk-doc
-BuildRequires:  libIDL-devel >= %{libidl_version}
-BuildRequires:  libtool
-BuildRequires:  make
-BuildRequires:  pkgconfig
-%if 0%{?with_check}
-BuildRequires:  procps-ng
-%endif
+Patch1: ORBit2-2.14.3-ref-leaks.patch
+Patch2: ORBit2-make-j-safety.patch
+Patch3: ORBit2-allow-deprecated.patch
+Patch4: ORBit2-configure-c99.patch
+Patch5: pointer-type.patch
 
 %description
 ORBit is a high-performance CORBA (Common Object Request Broker
@@ -39,17 +39,17 @@ run on.
 You will need to install this package and ORBit-devel if you want to
 write programs that use CORBA technology.
 
-%package  devel
-Summary:        Development libraries, header files and utilities for ORBit
-Requires:       %{name} = %{version}-%{release}
-# we install an automake macro
-Requires:       automake
-Requires:       glib2-devel >= %{glib2_version}
-Requires:       indent
-Requires:       libIDL-devel >= %{libidl_version}
+%package devel
+Summary: Development libraries, header files and utilities for ORBit
+Requires: %{name} = %{version}-%{release}
+Requires: indent
+Requires: libIDL-devel >= %{libidl_version}
+Requires: glib2-devel >= %{glib2_version}
 # we install a pc file
-Requires:       pkgconfig
-Conflicts:      ORBit-devel <= 1:0.5.8
+Requires: pkgconfig
+# we install an automake macro
+Requires: automake
+Conflicts: ORBit-devel <= 1:0.5.8
 
 %description devel
 ORBit is a high-performance CORBA (Common Object Request Broker
@@ -61,26 +61,32 @@ necessary to write programs that use CORBA technology. If you want to
 write such programs, you'll also need to install the ORBIT package.
 
 %prep
-%autosetup -p1 %{name}-%{version}
+%setup -q
+%patch -P 0 -p1 -b .multilib
+%patch -P 1 -p1 -b .ref-leaks
+%patch -P 2 -p1 -b .make-j
+%patch -P 3 -p1 -b .deprecated
+%patch -P 4 -p1
+%patch -P 5 -p0
 
 %build
 %configure --disable-gtk-doc --enable-purify --disable-static --disable-rpath
-%make_build %{?_smp_mflags}
+make %{?_smp_mflags}
 
 %install
-make install DESTDIR=%{buildroot}
+make install DESTDIR=$RPM_BUILD_ROOT
 
-rm -f %{buildroot}%{_libdir}/*.la
-rm -f %{buildroot}%{_libdir}/ORBit-2.0/*.*a
-rm -f %{buildroot}%{_libdir}/orbit-2.0/*.*a
+rm -f $RPM_BUILD_ROOT%{_libdir}/*.la
+rm -f $RPM_BUILD_ROOT%{_libdir}/ORBit-2.0/*.*a
+rm -f $RPM_BUILD_ROOT%{_libdir}/orbit-2.0/*.*a
 
 # fix multilib conflict caused by orbit-config.h
 %define wordsize %{__isa_bits}
 
-mv %{buildroot}%{_includedir}/orbit-2.0/orbit/orbit-config.h \
-   %{buildroot}%{_includedir}/orbit-2.0/orbit/orbit-config-%{wordsize}.h
+mv $RPM_BUILD_ROOT%{_includedir}/orbit-2.0/orbit/orbit-config.h \
+   $RPM_BUILD_ROOT%{_includedir}/orbit-2.0/orbit/orbit-config-%{wordsize}.h
 
-cat >%{buildroot}%{_includedir}/orbit-2.0/orbit/orbit-config.h <<EOF
+cat >$RPM_BUILD_ROOT%{_includedir}/orbit-2.0/orbit/orbit-config.h <<EOF
 #ifndef ORBIT_MULTILIB
 #define ORBIT_MULTILIB
 
@@ -97,25 +103,16 @@ cat >%{buildroot}%{_includedir}/orbit-2.0/orbit/orbit-config.h <<EOF
 #endif
 EOF
 
-chrpath --delete %{buildroot}%{_libdir}/libORBitCosNaming-2.so.0.1.0
-chrpath --delete %{buildroot}%{_libdir}/libORBit-imodule-2.so.0.0.0
-chrpath --delete %{buildroot}%{_libdir}/orbit-2.0/Everything_module.so
-chrpath --delete %{buildroot}%{_bindir}/ior-decode-2
-chrpath --delete %{buildroot}%{_bindir}/typelib-dump
-
-%check
-cd test
-# command 'killall' is not found in mariner.
-# use 'pkill' instead to terminate the timeout-server test process, using the created process name
-sed 's/\(^.*\)killall\(.*$\)/\1pkill -9 lt-timeout-serv/' < timeout.sh > timeout.tmp.sh
-install -m 0777 timeout.tmp.sh timeout.sh
-make check-TESTS
+chrpath --delete $RPM_BUILD_ROOT%{_libdir}/libORBitCosNaming-2.so.0.1.0
+chrpath --delete $RPM_BUILD_ROOT%{_libdir}/libORBit-imodule-2.so.0.0.0
+chrpath --delete $RPM_BUILD_ROOT%{_libdir}/orbit-2.0/Everything_module.so
+chrpath --delete $RPM_BUILD_ROOT%{_bindir}/ior-decode-2
+chrpath --delete $RPM_BUILD_ROOT%{_bindir}/typelib-dump
 
 %ldconfig_scriptlets
 
 %files
-%license COPYING
-%doc AUTHORS README TODO
+%doc AUTHORS COPYING README TODO
 %{_libdir}/*.so.*
 %dir %{_libdir}/orbit-2.0
 %{_libdir}/orbit-2.0/*.so*
@@ -136,10 +133,29 @@ make check-TESTS
 %{_datadir}/gtk-doc
 
 %changelog
-* Wed Oct 26 2022 Sumedh Sharma <sumsharma@microsoft.com> - 2.14.19-30
-- Initial CBL-Mariner import from Fedora 37 (license: MIT).
-- Enable check section.
-- License verified.
+* Wed Jul 17 2024 Fedora Release Engineering <releng@fedoraproject.org> - 2.14.19-37
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_41_Mass_Rebuild
+
+* Tue Jan 30 2024 Gwyn Ciesla <gwync@protonmail.com> - 2.14.19-36
+- Patch for modern C.
+
+* Mon Jan 22 2024 Fedora Release Engineering <releng@fedoraproject.org> - 2.14.19-35
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Fri Jan 19 2024 Fedora Release Engineering <releng@fedoraproject.org> - 2.14.19-34
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Wed Jul 19 2023 Fedora Release Engineering <releng@fedoraproject.org> - 2.14.19-33
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_39_Mass_Rebuild
+
+* Thu Apr 13 2023 Florian Weimer <fweimer@redhat.com> - 2.14.19-32
+- Port configure script to C99 (#2186427)
+
+* Wed Mar 08 2023 Gwyn Ciesla <gwync@protonmail.com> - 2.14.19-31
+- migrated to SPDX license
+
+* Wed Jan 18 2023 Fedora Release Engineering <releng@fedoraproject.org> - 2.14.19-30
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_38_Mass_Rebuild
 
 * Wed Jul 20 2022 Fedora Release Engineering <releng@fedoraproject.org> - 2.14.19-29
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_37_Mass_Rebuild
@@ -625,7 +641,7 @@ make check-TESTS
 * Fri May 19 2000 Jonathan Blandford <jrb@redhat.com>
 - Upgraded to 0.5.1
 
-* Thu Feb 03 2000 Elliot Lee <sopwith@redhat.com> 0.5.0-3
+* Tue Feb  3 2000 Elliot Lee <sopwith@redhat.com> 0.5.0-3
 - Strip shared libraries
 
 * Mon Aug 30 1999 Elliot Lee <sopwith@redhat.com> 0.4.94-1
@@ -635,5 +651,6 @@ make check-TESTS
 - Fixed configure.in so spec.in could be used.
 
 * Mon Nov 23 1998 Pablo Saratxaga <srtxg@chanae.alphanet.ch>
+
 - improved %%files section, and added use of %%{prefix} and install-info
   (well,... no. The info file has not dir info inside, commented out)

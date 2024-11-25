@@ -1,9 +1,7 @@
-Vendor:         Microsoft Corporation
-Distribution:   Azure Linux
 Summary:        Streaming library for IEEE1394
 Name:           libiec61883
 Version:        1.2.0
-Release:        24%{?dist}
+Release:        35%{?dist}
 License:        LGPLv2+
 Source:         http://www.kernel.org/pub/linux/libs/ieee1394/%{name}-%{version}.tar.gz
 # Fedora specific patches.
@@ -13,9 +11,13 @@ Patch1:         libiec61883-channel-allocation-without-local-node-rw.patch
 URL:            http://ieee1394.wiki.kernel.org/index.php/Libraries#libiec61883
 ExcludeArch:    s390 s390x
 
+BuildRequires:  autoconf
+BuildRequires:  automake
 BuildRequires:  gcc
 # Works only with newer libraw1394 versions
 BuildRequires:  libraw1394-devel
+BuildRequires:  libtool
+BuildRequires:  make
 
 %description
 The libiec61883 library provides an higher level API for streaming DV,
@@ -39,22 +41,17 @@ Requires:       %{name} = %{version}-%{release}
 Utilities that make use of iec61883
 
 %prep
-%setup -q
-%patch 0 -p1
-%patch 1 -p1
+%autosetup -p1
 
 %build
+autoreconf -vif
 %configure --disable-static
-sed -i 's|^hardcode_libdir_flag_spec=.*|hardcode_libdir_flag_spec=""|g' libtool
-sed -i 's|^runpath_var=LD_RUN_PATH|runpath_var=DIE_RPATH_DIE|g' libtool
-make %{?_smp_mflags}
+%make_build
 
 %install
-make install DESTDIR=$RPM_BUILD_ROOT INSTALL="install -p"
+%make_install
 
-find $RPM_BUILD_ROOT -name '*.la' -exec rm -f {} ';'
-
-%ldconfig_scriptlets
+find %{buildroot} -name '*.la' -delete
 
 %files
 %doc AUTHORS COPYING NEWS README
@@ -71,8 +68,47 @@ find $RPM_BUILD_ROOT -name '*.la' -exec rm -f {} ';'
 %{_mandir}/man1/*.1*
 
 %changelog
-* Fri Oct 15 2021 Pawel Winogrodzki <pawelwi@microsoft.com> - 1.2.0-24
-- Initial CBL-Mariner import from Fedora 32 (license: MIT).
+* Thu Jul 18 2024 Fedora Release Engineering <releng@fedoraproject.org> - 1.2.0-35
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_41_Mass_Rebuild
+
+* Thu Jan 25 2024 Fedora Release Engineering <releng@fedoraproject.org> - 1.2.0-34
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Sun Jan 21 2024 Fedora Release Engineering <releng@fedoraproject.org> - 1.2.0-33
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Thu Jul 20 2023 Fedora Release Engineering <releng@fedoraproject.org> - 1.2.0-32
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_39_Mass_Rebuild
+
+* Thu Jan 19 2023 Fedora Release Engineering <releng@fedoraproject.org> - 1.2.0-31
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_38_Mass_Rebuild
+
+* Thu Jul 21 2022 Fedora Release Engineering <releng@fedoraproject.org> - 1.2.0-30
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_37_Mass_Rebuild
+
+* Wed May 25 2022 Simone Caronni <negativo17@gmail.com> - 1.2.0-29
+- Rebuild autotools scripts to avoid running sed.
+- Drop ldconfig scriptlets.
+
+* Thu Jan 20 2022 Fedora Release Engineering <releng@fedoraproject.org> - 1.2.0-28
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_36_Mass_Rebuild
+
+* Thu Jul 22 2021 Fedora Release Engineering <releng@fedoraproject.org> - 1.2.0-27
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_35_Mass_Rebuild
+
+* Tue Jan 26 2021 Fedora Release Engineering <releng@fedoraproject.org> - 1.2.0-26
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_34_Mass_Rebuild
+
+* Tue Jan 05 2021 Nils Philippsen <nils@tiptoe.de> - 1.2.0-25
+- Indent consistently
+- Use %%autosetup
+
+* Tue Jan 05 2021 Tom Stellard <tstellar@redhat.com> - 1.2.0-25
+- Use make macros
+- https://fedoraproject.org/wiki/Changes/UseMakeBuildInstallMacro
+
+* Tue Jul 28 2020 Fedora Release Engineering <releng@fedoraproject.org> - 1.2.0-24
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_33_Mass_Rebuild
 
 * Wed Jan 29 2020 Fedora Release Engineering <releng@fedoraproject.org> - 1.2.0-23
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_32_Mass_Rebuild

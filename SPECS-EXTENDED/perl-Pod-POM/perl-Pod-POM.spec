@@ -1,33 +1,48 @@
-Vendor:         Microsoft Corporation
-Distribution:   Azure Linux
 %{!?perl_vendorlib: %global perl_vendorlib %(eval "`%{__perl} -V:installvendorlib`"; echo $installvendorlib)}
 
 Name:           perl-Pod-POM
 Version:        2.01
-Release:        16%{?dist}
+Release:        28%{?dist}
 Summary:        Object-oriented interface to Perl POD documents
 License:        GPL+ or Artistic
 URL:            https://metacpan.org/release/Pod-POM
-Source0:        https://cpan.metacpan.org/authors/id/N/NE/NEILB/Pod-POM-%{version}.tar.gz#/perl-Pod-POM-%{version}.tar.gz
+Source0:        https://cpan.metacpan.org/authors/id/N/NE/NEILB/Pod-POM-%{version}.tar.gz
 BuildArch:      noarch
+BuildRequires:  coreutils
+BuildRequires:  findutils
+BuildRequires:  make
 BuildRequires:  perl-generators
-BuildRequires:  perl(Cwd)
+BuildRequires:  perl-interpreter
+BuildRequires:  perl(:VERSION) >= 5.6
 BuildRequires:  perl(ExtUtils::MakeMaker)
-BuildRequires:  perl(File::Path)
+BuildRequires:  perl(strict)
+BuildRequires:  perl(warnings)
 # Run-time:
-BuildRequires:  perl(base)
 BuildRequires:  perl(constant)
 BuildRequires:  perl(Encode)
 BuildRequires:  perl(Exporter)
+# File::Basename not used at tests
+# FindBin not used at tests
+# Getopt::Long not used at tests
+# Getopt::Std not used at tests
+# lib not used at tests
+BuildRequires:  perl(overload)
 BuildRequires:  perl(parent)
 BuildRequires:  perl(Text::Wrap)
+BuildRequires:  perl(vars)
 # Tests:
-BuildRequires:  perl(File::Slurper)
+BuildRequires:  perl(Cwd)
+BuildRequires:  perl(File::Slurper) >= 0.004
 BuildRequires:  perl(FindBin)
 BuildRequires:  perl(lib)
 BuildRequires:  perl(Test::More)
+BuildRequires:  perl(utf8)
 BuildRequires:  perl(YAML::Tiny)
-Requires:  perl(:MODULE_COMPAT_%(eval "`%{__perl} -V:version`"; echo $version))
+# Optional tests:
+BuildRequires:  perl(Scalar::Util)
+# Text::Diff not helpful
+# Test::Differences not helpful
+Requires:  perl(Encode)
 
 %description
 This module implements a parser to convert Pod documents into a simple
@@ -72,12 +87,47 @@ PERL_HASH_SEED=0 make test
 
 
 %changelog
-* Thu Jul 28 2022 Muhammad Falak <mwani@microsoft.com> - 2.01-16
-- Add an explicit BR on `perl(FindBin)` to enable ptest
-- License verified
+* Fri Jul 19 2024 Fedora Release Engineering <releng@fedoraproject.org> - 2.01-28
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_41_Mass_Rebuild
 
-* Fri Oct 15 2021 Pawel Winogrodzki <pawelwi@microsoft.com> - 2.01-15
-- Initial CBL-Mariner import from Fedora 32 (license: MIT).
+* Thu Jan 25 2024 Fedora Release Engineering <releng@fedoraproject.org> - 2.01-27
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Sun Jan 21 2024 Fedora Release Engineering <releng@fedoraproject.org> - 2.01-26
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Fri Jul 21 2023 Fedora Release Engineering <releng@fedoraproject.org> - 2.01-25
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_39_Mass_Rebuild
+
+* Fri Jan 20 2023 Fedora Release Engineering <releng@fedoraproject.org> - 2.01-24
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_38_Mass_Rebuild
+
+* Fri Jul 22 2022 Fedora Release Engineering <releng@fedoraproject.org> - 2.01-23
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_37_Mass_Rebuild
+
+* Wed Jun 01 2022 Jitka Plesnikova <jplesnik@redhat.com> - 2.01-22
+- Perl 5.36 rebuild
+
+* Fri Jan 21 2022 Fedora Release Engineering <releng@fedoraproject.org> - 2.01-21
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_36_Mass_Rebuild
+
+* Thu Jul 22 2021 Fedora Release Engineering <releng@fedoraproject.org> - 2.01-20
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_35_Mass_Rebuild
+
+* Fri May 21 2021 Jitka Plesnikova <jplesnik@redhat.com> - 2.01-19
+- Perl 5.34 rebuild
+
+* Wed Jan 27 2021 Fedora Release Engineering <releng@fedoraproject.org> - 2.01-18
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_34_Mass_Rebuild
+
+* Tue Jul 28 2020 Fedora Release Engineering <releng@fedoraproject.org> - 2.01-17
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_33_Mass_Rebuild
+
+* Tue Jun 23 2020 Jitka Plesnikova <jplesnik@redhat.com> - 2.01-16
+- Perl 5.32 rebuild
+
+* Wed Mar 11 2020 Petr Pisar <ppisar@redhat.com> - 2.01-15
+- Specify all dependencies
 
 * Thu Jan 30 2020 Fedora Release Engineering <releng@fedoraproject.org> - 2.01-14
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_32_Mass_Rebuild

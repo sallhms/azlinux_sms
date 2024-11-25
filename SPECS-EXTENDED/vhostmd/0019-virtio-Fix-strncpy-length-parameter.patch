@@ -1,0 +1,36 @@
+From 99995e4ba138f43b277620bd43a096c72f354548 Mon Sep 17 00:00:00 2001
+From: Jim Fehlig <jfehlig@suse.com>
+Date: Tue, 14 Jan 2020 16:22:48 -0700
+Subject: [PATCH 19/19] virtio: Fix strncpy length parameter
+
+Leave an extra byte for null-terminator in call to strncpy. From
+coverity scan
+
+vhostmd-1.1/vhostmd/virtio.c:194: buffer_size_warning: Calling "strncpy" with a maximum size argument of 108 bytes on destination array "address.sun_path" of size 108 bytes might leave the destination string unterminated.
+  192|       address.sun_family = AF_LOCAL;
+  193|
+  194|->     strncpy(address.sun_path, c->uds_name, SUN_PATH_LEN);
+  195|
+  196|       if ((c->fd = socket(AF_LOCAL, SOCK_STREAM, 0)) == -1)
+
+Signed-off-by: Jim Fehlig <jfehlig@suse.com>
+---
+ vhostmd/virtio.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/vhostmd/virtio.c b/vhostmd/virtio.c
+index f227b45..a6c2515 100644
+--- a/vhostmd/virtio.c
++++ b/vhostmd/virtio.c
+@@ -191,7 +191,7 @@ static int vio_channel_open(channel_t * c)
+     bzero(&address, sizeof(address));
+     address.sun_family = AF_LOCAL;
+ 
+-    strncpy(address.sun_path, c->uds_name, SUN_PATH_LEN);
++    strncpy(address.sun_path, c->uds_name, SUN_PATH_LEN - 1);
+ 
+     if ((c->fd = socket(AF_LOCAL, SOCK_STREAM, 0)) == -1)
+         goto error;
+-- 
+2.32.0
+

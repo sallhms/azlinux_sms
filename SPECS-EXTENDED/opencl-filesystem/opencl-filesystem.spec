@@ -1,32 +1,61 @@
-Summary:        OpenCL filesystem layout
-Name:           opencl-filesystem
-Version:        1.0
-Release:        13%{?dist}
-License:        Public Domain
-Vendor:         Microsoft Corporation
-Distribution:   Azure Linux
-URL:            http://www.khronos.org/registry/cl/
-BuildArch:      noarch
+Name:		opencl-filesystem
+Version:	1.0
+Release:	21%{?dist}
+Summary:	OpenCL filesystem layout
+
+License:	LicenseRef-Not-Copyrightable
+URL:		http://www.khronos.org/registry/cl/
+
+BuildArch:	noarch
+
 
 %description
 This package provides some directories required by packages which use OpenCL.
 
+
 %prep
+
 
 %install
 # ICD Loader Vendor Enumeration
 # http://www.khronos.org/registry/cl/extensions/khr/cl_khr_icd.txt
 mkdir -p %{buildroot}/%{_sysconfdir}/OpenCL/vendors/
 
+
 %files
 %{_sysconfdir}/OpenCL/
 
-%changelog
-* Fri Dec 10 2021 Thomas Crain <thcrain@microsoft.com> - 1.0-13
-- License verified
 
-* Fri Oct 15 2021 Pawel Winogrodzki <pawelwi@microsoft.com> - 1.0-12
-- Initial CBL-Mariner import from Fedora 32 (license: MIT).
+%changelog
+* Thu Jul 18 2024 Fedora Release Engineering <releng@fedoraproject.org> - 1.0-21
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_41_Mass_Rebuild
+
+* Thu Jan 25 2024 Fedora Release Engineering <releng@fedoraproject.org> - 1.0-20
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Sun Jan 21 2024 Fedora Release Engineering <releng@fedoraproject.org> - 1.0-19
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Thu Jul 20 2023 Fedora Release Engineering <releng@fedoraproject.org> - 1.0-18
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_39_Mass_Rebuild
+
+* Thu Jan 19 2023 Fedora Release Engineering <releng@fedoraproject.org> - 1.0-17
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_38_Mass_Rebuild
+
+* Fri Jul 22 2022 Fedora Release Engineering <releng@fedoraproject.org> - 1.0-16
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_37_Mass_Rebuild
+
+* Thu Jan 20 2022 Fedora Release Engineering <releng@fedoraproject.org> - 1.0-15
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_36_Mass_Rebuild
+
+* Thu Jul 22 2021 Fedora Release Engineering <releng@fedoraproject.org> - 1.0-14
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_35_Mass_Rebuild
+
+* Tue Jan 26 2021 Fedora Release Engineering <releng@fedoraproject.org> - 1.0-13
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_34_Mass_Rebuild
+
+* Tue Jul 28 2020 Fedora Release Engineering <releng@fedoraproject.org> - 1.0-12
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_33_Mass_Rebuild
 
 * Wed Jan 29 2020 Fedora Release Engineering <releng@fedoraproject.org> - 1.0-11
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_32_Mass_Rebuild

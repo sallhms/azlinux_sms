@@ -1,23 +1,17 @@
-%{!?python3_sitelib: %define python3_sitelib %(python3 -c "from distutils.sysconfig import get_python_lib;print(get_python_lib())")}
-%{!?python3_version: %define python3_version %(python3 -c "import sys; sys.stdout.write(sys.version[:3])")}
-%{!?__python3: %global __python3 /usr/bin/python3}
-%{!?py3_build: %define py3_build CFLAGS="%{optflags}" %{__python3} setup.py build}
-%{!?py3_install: %define py3_install %{__python3} setup.py install --skip-build --root %{buildroot}}
-
 %global modulename pytest-runner
 %global _modulename pytest_runner
 
-Summary:        Invoke py.test as distutils command with dependency resolution
 Name:           python-%{modulename}
 Version:        4.0
-Release:        13%{?dist}
+Release:        24%{?dist}
+Summary:        Invoke py.test as distutils command with dependency resolution
+
 License:        MIT
 URL:            https://pypi.python.org/pypi/pytest-runner
-Vendor:         Microsoft Corporation
-Distribution:   Azure Linux
 # setuptools-scm requires a pypi tarball and doesn't like github tarball
 Source0:        https://files.pythonhosted.org/packages/source/p/%{modulename}/%{modulename}-%{version}.tar.gz
-BuildArch:      noarch
+
+BuildArch: noarch
 
 %global _description \
 Setup scripts can use pytest-runner to add setup.py test support for pytest runner.
@@ -27,12 +21,11 @@ Setup scripts can use pytest-runner to add setup.py test support for pytest runn
 %package -n python3-%{modulename}
 Summary:        %{summary}
 %{?python_provide:%python_provide python3-%{modulename}}
+Requires:       python3-pytest
 BuildRequires:  python3-devel
 BuildRequires:  python3-setuptools
-BuildRequires:  python3-xml
 BuildRequires:  python3-setuptools_scm
 BuildRequires:  python3-pytest
-Requires:       python3-pytest
 
 %description -n python3-%{modulename} %{_description}
 
@@ -58,12 +51,44 @@ Python 3 version.
 %{python3_sitelib}/__pycache__/ptr.*
 
 %changelog
-* Tue Sep 03 2024 Pawel Winogrodzki <pawelwi@microsoft.com> - 4.0-13
-- Release bump to fix package information.
-- License verified.
+* Fri Jul 19 2024 Fedora Release Engineering <releng@fedoraproject.org> - 4.0-24
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_41_Mass_Rebuild
 
-* Thu Oct 22 2020 Steve Laughman <steve.laughman@microsoft.com> - 4.0-12
-- Initial CBL-Mariner import from Fedora 33 (license: MIT)
+* Fri Jun 07 2024 Python Maint <python-maint@redhat.com> - 4.0-23
+- Rebuilt for Python 3.13
+
+* Fri Jan 26 2024 Fedora Release Engineering <releng@fedoraproject.org> - 4.0-22
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Mon Jan 22 2024 Fedora Release Engineering <releng@fedoraproject.org> - 4.0-21
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Fri Jul 21 2023 Fedora Release Engineering <releng@fedoraproject.org> - 4.0-20
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_39_Mass_Rebuild
+
+* Tue Jun 13 2023 Python Maint <python-maint@redhat.com> - 4.0-19
+- Rebuilt for Python 3.12
+
+* Fri Jan 20 2023 Fedora Release Engineering <releng@fedoraproject.org> - 4.0-18
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_38_Mass_Rebuild
+
+* Fri Jul 22 2022 Fedora Release Engineering <releng@fedoraproject.org> - 4.0-17
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_37_Mass_Rebuild
+
+* Mon Jun 13 2022 Python Maint <python-maint@redhat.com> - 4.0-16
+- Rebuilt for Python 3.11
+
+* Fri Jan 21 2022 Fedora Release Engineering <releng@fedoraproject.org> - 4.0-15
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_36_Mass_Rebuild
+
+* Fri Jul 23 2021 Fedora Release Engineering <releng@fedoraproject.org> - 4.0-14
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_35_Mass_Rebuild
+
+* Wed Jun 02 2021 Python Maint <python-maint@redhat.com> - 4.0-13
+- Rebuilt for Python 3.10
+
+* Wed Jan 27 2021 Fedora Release Engineering <releng@fedoraproject.org> - 4.0-12
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_34_Mass_Rebuild
 
 * Wed Jul 29 2020 Fedora Release Engineering <releng@fedoraproject.org> - 4.0-11
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_33_Mass_Rebuild

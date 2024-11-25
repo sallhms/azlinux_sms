@@ -1,10 +1,9 @@
-Vendor:         Microsoft Corporation
-Distribution:   Azure Linux
 %global debug_package %{nil}
 
 Name:		libkkc-data
 Version:	0.2.7
-Release:	18%{?dist}
+Release:	27%{?dist}
+Epoch:		1
 Summary:	Language model data for libkkc
 
 License:	GPLv3+
@@ -15,6 +14,7 @@ Patch0:		https://github.com/ueno/libkkc/commit/ba1c1bd3eb86d887fc3689c3142732658
 BuildRequires:	gcc
 BuildRequires:	python3-devel
 BuildRequires:	python3-marisa
+BuildRequires: make
 
 %description
 The %{name} package contains the language model data that libkkc uses
@@ -23,17 +23,17 @@ at run time.
 
 %prep
 %setup -q
-%patch 0 -p4 -b .orig
+%patch -P0 -p4 -b .orig
 
 
 %build
 export PYTHON=%{__python3}
 %configure --disable-static
-make %{?_smp_mflags}
+%make_build
 
 
 %install
-%make_install INSTALL="install -p"
+%make_install
 
 
 %files
@@ -42,11 +42,39 @@ make %{?_smp_mflags}
 
 
 %changelog
-* Mon Nov 01 2021 Muhammad Falak <mwani@microsft.com> - 0.2.7-18
-- Remove epoch
+* Thu Jul 18 2024 Fedora Release Engineering <releng@fedoraproject.org> - 1:0.2.7-27
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_41_Mass_Rebuild
 
-* Fri Oct 15 2021 Pawel Winogrodzki <pawelwi@microsoft.com> - 1:0.2.7-17
-- Initial CBL-Mariner import from Fedora 32 (license: MIT).
+* Thu Jan 25 2024 Fedora Release Engineering <releng@fedoraproject.org> - 1:0.2.7-26
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Sun Jan 21 2024 Fedora Release Engineering <releng@fedoraproject.org> - 1:0.2.7-25
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Thu Jul 20 2023 Fedora Release Engineering <releng@fedoraproject.org> - 1:0.2.7-24
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_39_Mass_Rebuild
+
+* Thu Jan 19 2023 Fedora Release Engineering <releng@fedoraproject.org> - 1:0.2.7-23
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_38_Mass_Rebuild
+
+* Thu Jul 21 2022 Fedora Release Engineering <releng@fedoraproject.org> - 1:0.2.7-22
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_37_Mass_Rebuild
+
+* Thu Jan 20 2022 Fedora Release Engineering <releng@fedoraproject.org> - 1:0.2.7-21
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_36_Mass_Rebuild
+
+* Thu Jul 22 2021 Fedora Release Engineering <releng@fedoraproject.org> - 1:0.2.7-20
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_35_Mass_Rebuild
+
+* Tue Jan 26 2021 Fedora Release Engineering <releng@fedoraproject.org> - 1:0.2.7-19
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_34_Mass_Rebuild
+
+* Tue Jul 28 2020 Fedora Release Engineering <releng@fedoraproject.org> - 1:0.2.7-18
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_33_Mass_Rebuild
+
+* Mon Jul 13 2020 Tom Stellard <tstellar@redhat.com> - 1:0.2.7-17
+- Use make macros
+- https://fedoraproject.org/wiki/Changes/UseMakeBuildInstallMacro
 
 * Wed Jan 29 2020 Fedora Release Engineering <releng@fedoraproject.org> - 1:0.2.7-16
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_32_Mass_Rebuild

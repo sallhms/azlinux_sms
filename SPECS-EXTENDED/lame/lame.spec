@@ -1,29 +1,24 @@
-Vendor:         Microsoft Corporation
-Distribution:   Azure Linux
 Name:           lame
 Version:        3.100
-Release:        9%{?dist}
+Release:        18%{?dist}
 Summary:        Free MP3 audio compressor
-
-License:        GPLv2+
+License:        LGPL-2.0-or-later AND LGPL-2.1-or-later
 URL:            http://lame.sourceforge.net/
-Source0:        http://downloads.sourceforge.net/sourceforge/lame/%{name}-%{version}.tar.gz
+Source0:        https://downloads.sourceforge.net/%{name}/%{name}-%{version}.tar.gz
 Patch1:         %{name}-noexecstack.patch
 Patch2:         libmp3lame-symbols.patch
 
 BuildRequires:  gcc
+BuildRequires:  make
 BuildRequires:  ncurses-devel
 %ifarch %{ix86}
 BuildRequires:  nasm
 %endif
 Requires:       %{name}-libs = %{version}-%{release}
 
-Obsoletes:      %{name}-mp3x < 3.100-7
-
-
 %description
 LAME is an open source MP3 encoder whose quality and speed matches
-commercial encoders. LAME handles MPEG1,2 and 2.5 layer III encoding
+commercial encoders. LAME handles MPEG-1, 2 and 2.5 layer III encoding
 with both constant and variable bitrates.
 
 %package        libs
@@ -38,9 +33,6 @@ Requires:       %{name}-libs = %{version}-%{release}
 
 %description    devel
 This package development files for %{name}.
-
-
-
 
 
 %prep
@@ -77,9 +69,6 @@ rm -rf %{buildroot}%{_docdir}/%{name}
 make test
 
 
-%ldconfig_scriptlets libs
-
-
 %files
 %doc README TODO USAGE doc/html/*.html
 %{_bindir}/lame
@@ -89,7 +78,7 @@ make test
 %files libs
 %doc ChangeLog
 %license COPYING LICENSE
-%{_libdir}/libmp3lame.so.0*
+%{_libdir}/libmp3lame.so.0{,.*}
 
 %files devel
 %doc API HACKING STYLEGUIDE
@@ -98,11 +87,36 @@ make test
 %{_includedir}/lame.h
 
 
-
-
 %changelog
-* Fri Oct 15 2021 Pawel Winogrodzki <pawelwi@microsoft.com> - 3.100-9
-- Initial CBL-Mariner import from Fedora 32 (license: MIT).
+* Thu Jul 18 2024 Fedora Release Engineering <releng@fedoraproject.org> - 3.100-18
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_41_Mass_Rebuild
+
+* Thu Jan 25 2024 Fedora Release Engineering <releng@fedoraproject.org> - 3.100-17
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Sun Jan 21 2024 Fedora Release Engineering <releng@fedoraproject.org> - 3.100-16
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Thu Jul 20 2023 Fedora Release Engineering <releng@fedoraproject.org> - 3.100-15
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_39_Mass_Rebuild
+
+* Thu Jan 19 2023 Fedora Release Engineering <releng@fedoraproject.org> - 3.100-14
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_38_Mass_Rebuild
+
+* Thu Jul 21 2022 Fedora Release Engineering <releng@fedoraproject.org> - 3.100-13
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_37_Mass_Rebuild
+
+* Thu Jan 20 2022 Fedora Release Engineering <releng@fedoraproject.org> - 3.100-12
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_36_Mass_Rebuild
+
+* Thu Jul 22 2021 Fedora Release Engineering <releng@fedoraproject.org> - 3.100-11
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_35_Mass_Rebuild
+
+* Tue Jan 26 2021 Fedora Release Engineering <releng@fedoraproject.org> - 3.100-10
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_34_Mass_Rebuild
+
+* Tue Jul 28 2020 Fedora Release Engineering <releng@fedoraproject.org> - 3.100-9
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_33_Mass_Rebuild
 
 * Wed Jan 29 2020 Fedora Release Engineering <releng@fedoraproject.org> - 3.100-8
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_32_Mass_Rebuild

@@ -1,15 +1,14 @@
-Vendor:         Microsoft Corporation
-Distribution:   Azure Linux
 Name:		polkit-pkla-compat
 Version:	0.1
-Release:	17%{?dist}
+Release:	29%{?dist}
 Summary:	Rules for polkit to add compatibility with pklocalauthority
 # GPLv2-licensed ltmain.sh and Apache-licensed mocklibc are not shipped in
 # the binary package.
-License:	LGPLv2+
+License:	LGPL-2.0-or-later
 URL:		https://pagure.io/polkit-pkla-compat
 Source0:	http://releases.pagure.org/polkit-pkla-compat/polkit-pkla-compat-%{version}.tar.xz
 
+BuildRequires: make
 BuildRequires:  gcc
 BuildRequires:	docbook-style-xsl, libxslt, glib2-devel, polkit-devel
 # To ensure the polkitd group already exists when this is installed
@@ -27,10 +26,10 @@ of later polkit releases.
 
 %build
 %configure
-make %{?_smp_mflags} V=1
+%make_build
 
 %install
-%make_install INSTALL='install -p'
+%make_install
 
 %check
 make check
@@ -51,8 +50,46 @@ make check
 %dir %{_localstatedir}/lib/polkit-1/localauthority/*.d
 
 %changelog
-* Fri Oct 15 2021 Pawel Winogrodzki <pawelwi@microsoft.com> - 0.1-17
-- Initial CBL-Mariner import from Fedora 32 (license: MIT).
+* Fri Jul 19 2024 Fedora Release Engineering <releng@fedoraproject.org> - 0.1-29
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_41_Mass_Rebuild
+
+* Thu Jan 25 2024 Fedora Release Engineering <releng@fedoraproject.org> - 0.1-28
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Sun Jan 21 2024 Fedora Release Engineering <releng@fedoraproject.org> - 0.1-27
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Mon Aug 07 2023 Jan Rybar <jrybar@redhat.com> - 0.1-26
+- use build macros, on behalf of original author Tom Stellard (tstellar)
+- Pagure doesn't allow one-click rebase, AFAIK
+
+* Mon Aug 07 2023 Lukáš Zaoral <lzaoral@redhat.com> - 0.1-25
+- migrate to SPDX license format
+
+* Fri Jul 21 2023 Fedora Release Engineering <releng@fedoraproject.org> - 0.1-24
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_39_Mass_Rebuild
+
+* Fri Jan 20 2023 Fedora Release Engineering <releng@fedoraproject.org> - 0.1-23
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_38_Mass_Rebuild
+
+* Fri Jul 22 2022 Fedora Release Engineering <releng@fedoraproject.org> - 0.1-22
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_37_Mass_Rebuild
+
+* Fri Jan 21 2022 Fedora Release Engineering <releng@fedoraproject.org> - 0.1-21
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_36_Mass_Rebuild
+
+* Fri Jul 23 2021 Fedora Release Engineering <releng@fedoraproject.org> - 0.1-20
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_35_Mass_Rebuild
+
+* Wed Jan 27 2021 Fedora Release Engineering <releng@fedoraproject.org> - 0.1-19
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_34_Mass_Rebuild
+
+* Sat Aug 01 2020 Fedora Release Engineering <releng@fedoraproject.org> - 0.1-18
+- Second attempt - Rebuilt for
+  https://fedoraproject.org/wiki/Fedora_33_Mass_Rebuild
+
+* Tue Jul 28 2020 Fedora Release Engineering <releng@fedoraproject.org> - 0.1-17
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_33_Mass_Rebuild
 
 * Thu Jan 30 2020 Fedora Release Engineering <releng@fedoraproject.org> - 0.1-16
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_32_Mass_Rebuild

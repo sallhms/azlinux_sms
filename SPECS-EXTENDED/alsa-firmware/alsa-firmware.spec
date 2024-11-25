@@ -1,22 +1,21 @@
 # This is a firmware package, so binaries (which are not run on the host)
 # in the end package are expected.
 %define _binaries_in_noarch_packages_terminate_build   0
+
 Summary:        Firmware for several ALSA-supported sound cards
 Name:           alsa-firmware
 Version:        1.2.4
-Release:        8%{?dist}
+Release:        13%{?dist}
 # See later in the spec for a breakdown of licensing
-License:        GPL+ AND BSD AND GPLv2+ AND GPLv2 AND LGPLv2+
-Vendor:         Microsoft Corporation
-Distribution:   Azure Linux
-URL:            https://www.alsa-project.org/
+License:        GPL-1.0-or-later and BSD-3-Clause and GPL-2.0-or-later and GPL-2.0-only and LGPL-2.1-or-later
+URL:            http://www.alsa-project.org/
 Source:         ftp://ftp.alsa-project.org/pub/firmware/%{name}-%{version}.tar.bz2
-BuildRequires:  autoconf
-BuildRequires:  automake
-BuildRequires:  libtool
-BuildRequires:  make
-#Requires:       alsa-tools-firmware >= 1.1.7
+
+Requires:       alsa-tools-firmware >= 1.1.7
 Requires:       systemd
+BuildRequires:  libtool autoconf automake
+BuildRequires: make
+
 # noarch, since the package is firmware
 BuildArch:      noarch
 
@@ -25,10 +24,13 @@ This package contains the firmware binaries for a number of sound cards.
 Some (but not all of these) require firmware loaders which are included in
 the alsa-tools-firmware package.
 
+
 %prep
-%autosetup -p1
+%setup -q
+
 
 %build
+
 # Leaving this directory in place ends up with the following crazy, broken
 # symlinks in the output RPM, with no sign of the actual firmware (*.bin) files
 # themselves:
@@ -42,13 +44,10 @@ the alsa-tools-firmware package.
 # Probably an upstream package bug.
 sed -i s#'multisound/Makefile \\'## configure.ac
 sed -i s#multisound## Makefile.am
-# Mixartloader elf has architecture powerpc, which is not supported in mariner.
-sed -i s#'mixartloader/Makefile \\'## configure.ac
-sed -i s#mixartloader## Makefile.am
 
 autoreconf -vif
 %configure --disable-loader
-%make_build
+make %{?_smp_mflags}
 
 # Rename README files from firmware subdirs that have them
 for i in hdsploader mixartloader pcxhrloader usx2yloader vxloader ca0132
@@ -59,12 +58,14 @@ mv aica/license.txt LICENSE.aica_firmware
 mv aica/Dreamcast_sound.txt aica_dreamcast_sound.txt
 mv ca0132/creative.txt LICENSE.creative_txt
 
+
 %install
 make install DESTDIR=%{buildroot}
 
+
 %files
-%license LICENSE* COPYING
-%doc README*
+%license LICENSE*
+%doc COPYING README*
 %doc aica_dreamcast_sound.txt
 
 # License: KOS (3-clause BSD)
@@ -160,6 +161,9 @@ make install DESTDIR=%{buildroot}
 /lib/firmware/korg
 
 # License: GPL (undefined version)
+/lib/firmware/mixart
+
+# License: GPL (undefined version)
 /lib/firmware/multiface_firmware*
 
 # License: GPL (undefined version)
@@ -189,16 +193,30 @@ make install DESTDIR=%{buildroot}
 /lib/firmware/cs46xx
 
 # Even with --disable-loader, we still get usxxx firmware here; looking at the
-# alsa-tools-firmware package, it seems like these devices probably use an old-
+# alsa-tools-firmware package, it seems like these devices probably use an old- 
 # style hotplug loading method
 # License: GPL (undefined version)
 %{_datadir}/alsa/firmware
 
+
 %changelog
-* Fri Dec 16 2022 Sumedh Sharma <sumsharma@microsoft.com> - 1.2.4-8
-- Initial CBL-Mariner import from Fedora 37 (license: MIT)
-- Remove mixartloader elf files (architecture mistmatch: powerpc)
-- License verified
+* Wed Jul 17 2024 Fedora Release Engineering <releng@fedoraproject.org> - 1.2.4-13
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_41_Mass_Rebuild
+
+* Mon Jan 22 2024 Fedora Release Engineering <releng@fedoraproject.org> - 1.2.4-12
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Fri Jan 19 2024 Fedora Release Engineering <releng@fedoraproject.org> - 1.2.4-11
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Wed Jul 19 2023 Fedora Release Engineering <releng@fedoraproject.org> - 1.2.4-10
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_39_Mass_Rebuild
+
+* Tue Jun  6 2023 Jaroslav Kysela <perex@perex.cz> - 1.2.4-9
+- update SPDX licenses
+
+* Wed Jan 18 2023 Fedora Release Engineering <releng@fedoraproject.org> - 1.2.4-8
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_38_Mass_Rebuild
 
 * Wed Jul 20 2022 Fedora Release Engineering <releng@fedoraproject.org> - 1.2.4-7
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_37_Mass_Rebuild

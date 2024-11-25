@@ -1,22 +1,14 @@
-%{!?python3_sitelib: %define python3_sitelib %(python3 -c "from distutils.sysconfig import get_python_lib;print(get_python_lib())")}
-%{!?__python3: %global __python3 /usr/bin/python3}
-%{!?py3_build: %define py3_build CFLAGS="%{optflags}" %{__python3} setup.py build}
-%{!?py3_install: %define py3_install %{__python3} setup.py install --skip-build --root %{buildroot}}
+%bcond_with bootstrap
 
-%bcond_with check
-
-# NOTE(hguemar): discussed with maintainer to allow rebuild on RHEL/CentOS
-# No impact on Fedora/EPEL!
-
-Summary:        Useful extra bits for Python
 Name:           python-extras
 Version:        1.0.0
-Release:        16%{?dist}
+Release:        34%{?dist}
+Summary:        Useful extra bits for Python
+
 License:        MIT
 URL:            https://github.com/testing-cabal/extras
-Vendor:         Microsoft Corporation
-Distribution:   Azure Linux
-Source0:        https://pypi.io/packages/source/e/extras/extras-%{version}.tar.gz
+Source:         %pypi_source extras
+
 BuildArch:      noarch
 
 %global _description\
@@ -28,47 +20,101 @@ general use outside of a testing context.\
 
 %package -n python3-extras
 Summary:        %summary
-%{?python_provide:%python_provide python3-extras}
 BuildRequires:  python3-devel
-BuildRequires:  python3-setuptools
-BuildRequires:  python3-xml
-#%if %{with check}
-#BuildRequires:  python3-testtools
-#%endif
+%if %{without bootstrap}
+BuildRequires:  python3-pytest
+BuildRequires:  python3-testtools
+%endif
 
 %description -n python3-extras %_description
 
 %prep
 %setup -q -n extras-%{version}
-# Remove bundled egg-info
-rm -vrf *.egg-info
+# don't include extras.tests
+sed -e '/extras\.tests/d' -i setup.py
+
+%generate_buildrequires
+%pyproject_buildrequires
 
 %build
-%py3_build
+%pyproject_wheel
 
 %install
-%py3_install
+%pyproject_install
+%pyproject_save_files extras
 
-#%if %{with check}
-#%check
-#%{__python3} setup.py test
-#%endif
+%check
+%if %{without bootstrap}
+%pytest -v
+%endif
 
-%files -n python3-extras
-%license LICENSE
-%doc NEWS
-%doc README.rst
-%{python3_sitelib}/extras/
-%{python3_sitelib}/extras-*.egg-info/
+%files -n python3-extras -f %{pyproject_files}
+%doc NEWS README.rst
 
 %changelog
-* Tue Sep 03 2024 Pawel Winogrodzki <pawelwi@microsoft.com> - 1.0.0-16
-- Release bump to fix package information.
-- License verified.
+* Mon Jul 29 2024 Michel Lind <salimma@fedoraproject.org> - 1.0.0-35
+- Switch to pytest for running tests (rhbz#2259522)
 
-* Tue Oct 13 2020 Steve Laughman <steve.laughman@microsoft.com> - 1.6.0-15
-- Initial CBL-Mariner import from Fedora 33 (license: MIT)
-- Disable circular dependency check
+* Fri Jul 19 2024 Fedora Release Engineering <releng@fedoraproject.org> - 1.0.0-34
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_41_Mass_Rebuild
+
+* Fri Jun 07 2024 Python Maint <python-maint@redhat.com> - 1.0.0-33
+- Rebuilt for Python 3.13
+
+* Fri Jun 07 2024 Python Maint <python-maint@redhat.com> - 1.0.0-32
+- Bootstrap for Python 3.13
+
+* Fri Jan 26 2024 Fedora Release Engineering <releng@fedoraproject.org> - 1.0.0-31
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Mon Jan 22 2024 Fedora Release Engineering <releng@fedoraproject.org> - 1.0.0-30
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Fri Jul 21 2023 Fedora Release Engineering <releng@fedoraproject.org> - 1.0.0-29
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_39_Mass_Rebuild
+
+* Fri Jun 16 2023 Python Maint <python-maint@redhat.com> - 1.0.0-28
+- Rebuilt for Python 3.12
+
+* Tue Jun 13 2023 Python Maint <python-maint@redhat.com> - 1.0.0-27
+- Bootstrap for Python 3.12
+
+* Fri Jan 20 2023 Fedora Release Engineering <releng@fedoraproject.org> - 1.0.0-26
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_38_Mass_Rebuild
+
+* Fri Jul 22 2022 Fedora Release Engineering <releng@fedoraproject.org> - 1.0.0-25
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_37_Mass_Rebuild
+
+* Wed Jun 15 2022 Python Maint <python-maint@redhat.com> - 1.0.0-24
+- Rebuilt for Python 3.11
+
+* Mon Jun 13 2022 Python Maint <python-maint@redhat.com> - 1.0.0-23
+- Bootstrap for Python 3.11
+
+* Fri Apr 29 2022 Carl George <carl@george.computer> - 1.0.0-22
+- Switch to bootstrap macros
+
+* Fri Apr 29 2022 Carl George <carl@george.computer> - 1.0.0-21
+- Disable tests for EPEL9 bootstrap
+
+* Sat Apr 23 2022 Carl George <carl@george.computer> - 1.0.0-20
+- Convert to pyproject macros
+
+* Fri Jan 21 2022 Fedora Release Engineering <releng@fedoraproject.org> - 1.0.0-19
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_36_Mass_Rebuild
+
+* Tue Jul 27 2021 Fedora Release Engineering <releng@fedoraproject.org> - 1.0.0-18
+- Second attempt - Rebuilt for
+  https://fedoraproject.org/wiki/Fedora_35_Mass_Rebuild
+
+* Fri Jun 04 2021 Python Maint <python-maint@redhat.com> - 1.0.0-17
+- Rebuilt for Python 3.10
+
+* Wed Jun 02 2021 Python Maint <python-maint@redhat.com> - 1.0.0-16
+- Bootstrap for Python 3.10
+
+* Wed Jan 27 2021 Fedora Release Engineering <releng@fedoraproject.org> - 1.0.0-15
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_34_Mass_Rebuild
 
 * Wed Jul 29 2020 Fedora Release Engineering <releng@fedoraproject.org> - 1.0.0-14
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_33_Mass_Rebuild

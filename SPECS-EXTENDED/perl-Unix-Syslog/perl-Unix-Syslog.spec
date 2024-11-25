@@ -1,24 +1,22 @@
-Vendor:         Microsoft Corporation
-Distribution:   Azure Linux
 # Tests require accessible syslog
 %bcond_with test
 
 Name:           perl-Unix-Syslog
 Version:        1.1
-Release:        36%{?dist}
+Release:        51%{?dist}
 Summary:        Perl interface to the UNIX syslog(3) calls
-License:        Artistic 2.0
+License:        Artistic-2.0
 URL:            https://metacpan.org/release/Unix-Syslog
-Source0:        https://cpan.metacpan.org/authors/id/M/MH/MHARNISCH/Unix-Syslog-%{version}.tar.gz#/perl-Unix-Syslog-%{version}.tar.gz
+Source0:        https://cpan.metacpan.org/modules/by-module/Unix/Unix-Syslog-%{version}.tar.gz
 # Module Build
 BuildRequires:  coreutils
 BuildRequires:  findutils
 BuildRequires:  gcc
 BuildRequires:  make
-BuildRequires:  perl-interpreter
 BuildRequires:  perl-devel
 BuildRequires:  perl-generators
-BuildRequires:  perl(ExtUtils::MakeMaker)
+BuildRequires:  perl-interpreter
+BuildRequires:  perl(ExtUtils::MakeMaker) >= 6.76
 # Module Runtime
 BuildRequires:  perl(DynaLoader)
 BuildRequires:  perl(Exporter)
@@ -29,7 +27,6 @@ BuildRequires:  perl(vars)
 BuildRequires:  syslog
 %endif
 # Dependencies
-Requires:       perl(:MODULE_COMPAT_%(eval "`perl -V:version`"; echo $version))
 Requires:       syslog
 
 # Don't "provide" private Perl libs
@@ -45,14 +42,13 @@ syslog.h should be able to use this module right away.
 %setup -q -n Unix-Syslog-%{version}
 
 %build
-perl Makefile.PL INSTALLDIRS=vendor OPTIMIZE="%{optflags}"
-make %{?_smp_mflags}
+perl Makefile.PL INSTALLDIRS=vendor NO_PACKLIST=1 NO_PERLLOCAL=1 OPTIMIZE="%{optflags}"
+%{make_build}
 
 %install
-make pure_install DESTDIR=%{buildroot}
-find %{buildroot} -type f -name .packlist -delete
-find %{buildroot} -type f -name '*.bs' -a -empty -delete
-%{_fixperms} %{buildroot}
+%{make_install}
+find %{buildroot} -type f -name '*.bs' -empty -delete
+%{_fixperms} -c %{buildroot}
 
 %check
 %if %{with test}
@@ -60,19 +56,63 @@ make test
 %endif
 
 %files
-%if 0%{?_licensedir:1}
 %license Artistic
-%else
-%doc Artistic
-%endif
 %doc README Changes
 %{perl_vendorarch}/Unix/
 %{perl_vendorarch}/auto/Unix/
 %{_mandir}/man3/Unix::Syslog.3*
 
 %changelog
-* Fri Oct 15 2021 Pawel Winogrodzki <pawelwi@microsoft.com> - 1.1-36
-- Initial CBL-Mariner import from Fedora 32 (license: MIT).
+* Fri Jul 19 2024 Fedora Release Engineering <releng@fedoraproject.org> - 1.1-51
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_41_Mass_Rebuild
+
+* Mon Jun 10 2024 Jitka Plesnikova <jplesnik@redhat.com> - 1.1-50
+- Perl 5.40 rebuild
+
+* Thu Jan 25 2024 Fedora Release Engineering <releng@fedoraproject.org> - 1.1-49
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Sun Jan 21 2024 Fedora Release Engineering <releng@fedoraproject.org> - 1.1-48
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Fri Jul 21 2023 Fedora Release Engineering <releng@fedoraproject.org> - 1.1-47
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_39_Mass_Rebuild
+
+* Tue Jul 11 2023 Jitka Plesnikova <jplesnik@redhat.com> - 1.1-46
+- Perl 5.38 rebuild
+
+* Fri Jan 20 2023 Fedora Release Engineering <releng@fedoraproject.org> - 1.1-45
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_38_Mass_Rebuild
+
+* Fri Jul 22 2022 Fedora Release Engineering <releng@fedoraproject.org> - 1.1-44
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_37_Mass_Rebuild
+
+* Mon May 30 2022 Jitka Plesnikova <jplesnik@redhat.com> - 1.1-43
+- Perl 5.36 rebuild
+
+* Fri Jan 21 2022 Fedora Release Engineering <releng@fedoraproject.org> - 1.1-42
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_36_Mass_Rebuild
+
+* Tue Jul 27 2021 Fedora Release Engineering <releng@fedoraproject.org> - 1.1-41
+- Second attempt - Rebuilt for
+  https://fedoraproject.org/wiki/Fedora_35_Mass_Rebuild
+
+* Fri May 21 2021 Jitka Plesnikova <jplesnik@redhat.com> - 1.1-40
+- Perl 5.34 rebuild
+
+* Wed Jan 27 2021 Fedora Release Engineering <releng@fedoraproject.org> - 1.1-39
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_34_Mass_Rebuild
+
+* Tue Jul 28 2020 Fedora Release Engineering <releng@fedoraproject.org> - 1.1-38
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_33_Mass_Rebuild
+
+* Mon Jun 22 2020 Jitka Plesnikova <jplesnik@redhat.com> - 1.1-37
+- Perl 5.32 rebuild
+
+* Thu Feb 06 2020 Tom Stellard <tstellar@redhat.com> - 1.1-36
+- Spec file cleanups: Use make_build, make_install macros, and use NO_PACKLIST=1
+  - https://docs.fedoraproject.org/en-US/packaging-guidelines/#_parallel_make
+  - https://fedoraproject.org/wiki/Perl/Tips#ExtUtils::MakeMaker
 
 * Thu Jan 30 2020 Fedora Release Engineering <releng@fedoraproject.org> - 1.1-35
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_32_Mass_Rebuild

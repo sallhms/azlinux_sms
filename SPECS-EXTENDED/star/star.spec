@@ -1,12 +1,10 @@
-Vendor:         Microsoft Corporation
-Distribution:   Azure Linux
 %global ALTERNATIVES %{_sbindir}/alternatives
 
 Summary:  An archiving tool with ACL support
 Name: star
 Version: 1.6
-Release: 4%{?dist}
-License: CDDL
+Release: 15%{?dist}
+License: CDDL-1.0 AND GPL-2.0-only
 URL: http://freecode.com/projects/star
 Source: https://downloads.sourceforge.net/s-tar/%{name}-%{version}.tar.bz2
 
@@ -29,7 +27,9 @@ Patch4: star-1.5.2-rmt-rh-access.patch
 # ~> downstream
 # ~> related to #968980
 Patch5: star-1.5.2-use-ssh-by-default.patch
+Patch6: star-configure-c99.patch
 
+BuildRequires: make
 BuildRequires: libattr-devel libacl-devel libtool libselinux-devel
 BuildRequires: e2fsprogs-devel
 
@@ -58,6 +58,7 @@ copies files from one directory tree to another.
 %package -n     rmt
 Summary: Provides certain programs with access to remote tape devices
 # we need to be greater than the version from 'dump' package
+Epoch: 2
 
 %description -n rmt
 The rmt utility provides remote access to tape devices for programs
@@ -90,7 +91,7 @@ star_recode()
 
 star_recode AN-1.5 AN-1.5.2 star/star.4
 
-for PLAT in %{arm} %{power64} aarch64 %{mips} x86_64 s390 s390x sh3 sh4 sh4a sparcv9; do
+for PLAT in %{arm} %{power64} aarch64 i686 %{mips} x86_64 s390 s390x sh3 sh4 sh4a sparcv9 riscv64; do
     for AFILE in gcc cc; do
             [ ! -e RULES/${PLAT}-linux-${AFILE}.rul ] \
             && ln -s i586-linux-${AFILE}.rul RULES/${PLAT}-linux-${AFILE}.rul
@@ -100,7 +101,10 @@ done
 %build
 # This is config/work-around for atypical build system.  Variables used are
 # docummented makefiles.5.  GMAKE_NOWARN silences irritating warnings in
-# GNU/Linux ecosystem.
+# GNU/Linux ecosystem.  Build in C89 mode (-std=gnu89) because these
+# many of these warnings are actually errors as later C standards are
+# concerned.
+%global build_type_safety_c 0
 %global make_flags GMAKE_NOWARN=true                                    \\\
     RUNPATH=                                                            \\\
     LDPATH=                                                             \\\
@@ -109,9 +113,8 @@ done
     INS_BASE=$RPM_BUILD_ROOT%{_prefix}                                  \\\
     INS_RBASE=$RPM_BUILD_ROOT                                           \\\
     INSTALL='sh $(SRCROOT)/conf/install-sh -c -m $(INSMODEINS)'         \\\
-    COPTX="$RPM_OPT_FLAGS -DTRY_EXT2_FS"                                \\\
+    COPTX="%build_cflags -DTRY_EXT2_FS"                      		\\\
     LDOPTX="$RPM_LD_FLAGS"                                              \\\
-    LINKMODE=dynamic                                                    \\\
     DEFCCOM=gcc
 
 # Note: disable optimalisation by COPTX='-g3 -O0' LDOPTX='-g3 -O0'
@@ -199,12 +202,44 @@ fi
 %{_sysconfdir}/rmt
 
 %changelog
-* Fri Oct 29 2021 Muhammad Falak <mwani@microsft.com> - 1.6-4
-- Remove epoch
+* Sat Jul 20 2024 Fedora Release Engineering <releng@fedoraproject.org> - 1.6-15
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_41_Mass_Rebuild
 
-* Wed Sep 01 2021 Pawel Winogrodzki <pawelwi@microsoft.com> - 1.6-3
-- Initial CBL-Mariner import from Fedora 32 (license: MIT).
-- Using "LINKMODE=dynamic" to fix build issues.
+* Thu Mar 28 2024 David Abdurachmanov <david.abdurachmanov@gmail.com> - 1.6-14
+- Enable riscv64
+
+* Mon Jan 29 2024 Florian Weimer <fweimer@redhat.com> - 1.6-13
+- Link in build configuration for i686 to use Fedora build flags
+
+* Sat Jan 27 2024 Fedora Release Engineering <releng@fedoraproject.org> - 1.6-12
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Wed Aug 16 2023 Florian Weimer <fweimer@redhat.com> - 1.6-11
+- Set build_type_safety_c to 0 (#2187168)
+
+* Sat Jul 22 2023 Fedora Release Engineering <releng@fedoraproject.org> - 1.6-10
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_39_Mass_Rebuild
+
+* Mon Apr 17 2023 Florian Weimer <fweimer@redhat.com> - 1.6-9
+- Build in C89 mode (#2187168)
+
+* Sat Jan 21 2023 Fedora Release Engineering <releng@fedoraproject.org> - 1.6-8
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_38_Mass_Rebuild
+
+* Sat Jul 23 2022 Fedora Release Engineering <releng@fedoraproject.org> - 1.6-7
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_37_Mass_Rebuild
+
+* Sat Jan 22 2022 Fedora Release Engineering <releng@fedoraproject.org> - 1.6-6
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_36_Mass_Rebuild
+
+* Fri Jul 23 2021 Fedora Release Engineering <releng@fedoraproject.org> - 1.6-5
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_35_Mass_Rebuild
+
+* Wed Jan 27 2021 Fedora Release Engineering <releng@fedoraproject.org> - 1.6-4
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_34_Mass_Rebuild
+
+* Wed Jul 29 2020 Fedora Release Engineering <releng@fedoraproject.org> - 1.6-3
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_33_Mass_Rebuild
 
 * Fri Jan 31 2020 Fedora Release Engineering <releng@fedoraproject.org> - 1.6-2
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_32_Mass_Rebuild

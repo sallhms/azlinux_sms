@@ -1,0 +1,94 @@
+From 4f7b23e19c88c92d834d5f975c846b47eaa03c79 Mon Sep 17 00:00:00 2001
+From: Jim Fehlig <jfehlig@suse.com>
+Date: Tue, 14 Jan 2020 15:33:39 -0700
+Subject: [PATCH 16/19] vhostmd: Check return value of file functions
+
+Check return value of ftruncate, lseek, and write functions as
+reported by coverity. Example from coverity scan
+
+vhostmd-1.1/vhostmd/vhostmd.c: scope_hint: In function 'metrics_disk_create'
+vhostmd-1.1/vhostmd/vhostmd.c:821:4: warning: ignoring return value of 'ftruncate', declared with attribute warn_unused_result [-Wunused-result]
+    ftruncate(fd, mdisk_size);
+    ^~~~~~~~~~~~~~~~~~~~~~~~~
+  819|
+  820|      /* truncate to a possible new size */
+  821|->    ftruncate(fd, mdisk_size);
+  822|
+  823|      /* zero fill metrics data */
+
+Signed-off-by: Jim Fehlig <jfehlig@suse.com>
+---
+ vhostmd/vhostmd.c | 33 +++++++++++++++++++++++++--------
+ 1 file changed, 25 insertions(+), 8 deletions(-)
+
+diff --git a/vhostmd/vhostmd.c b/vhostmd/vhostmd.c
+index 4d04989..1600a87 100644
+--- a/vhostmd/vhostmd.c
++++ b/vhostmd/vhostmd.c
+@@ -675,8 +675,12 @@ static int metrics_disk_busy(int fd, int busy)
+ {
+    md_header.busy = (uint32_t)(htonl(busy));
+    
+-   lseek(fd, offsetof(mdisk_header, busy), SEEK_SET);
+-   write(fd, &(md_header.busy), sizeof(uint32_t));
++   if (lseek(fd, offsetof(mdisk_header, busy), SEEK_SET) == -1)
++       return -1;
++
++   if (write(fd, &(md_header.busy), sizeof(uint32_t)) == -1)
++       return -1;
++
+    return 0;
+ }
+ 
+@@ -724,6 +728,8 @@ error:
+ 
+ static int metrics_disk_update(int fd, vu_buffer *buf)
+ {
++   int ret = -1;
++    
+    if (buf->use > MDISK_SIZE) {
+       vu_log(VHOSTMD_ERR, "Metrics data is larger than metrics disk");
+       return -1;
+@@ -731,11 +737,17 @@ static int metrics_disk_update(int fd, vu_buffer *buf)
+       
+    metrics_disk_busy(fd, 1);
+    metrics_disk_header_update(fd, buf);
+-   lseek(fd, MDISK_HEADER_SIZE, SEEK_SET);
+-   write(fd, buf->content, buf->use);
++   if (lseek(fd, MDISK_HEADER_SIZE, SEEK_SET) == -1)
++       goto out;
++
++   if (write(fd, buf->content, buf->use) == -1)
++       goto out;
++
++   ret = 0;
++
++out:
+    metrics_disk_busy(fd, 0);
+-
+-   return 0;
++   return ret;
+ }
+ 
+ static int metrics_free()
+@@ -819,10 +831,15 @@ static int metrics_disk_create(void)
+    }
+ 
+    /* truncate to a possible new size */
+-   ftruncate(fd, mdisk_size);
++   if (ftruncate(fd, mdisk_size) == -1){
++      vu_log(VHOSTMD_ERR, "Failed to truncate metrics disk: %s",
++             strerror(errno));
++      goto error;
++   }
+ 
+    /* zero fill metrics data */
+-   lseek(fd, MDISK_HEADER_SIZE, SEEK_SET);
++   if (lseek(fd, MDISK_HEADER_SIZE, SEEK_SET) == -1)
++      goto error;
+    for (i = 0; i < size / MDISK_SIZE_MIN; i++)
+       if (write(fd, buf, MDISK_SIZE_MIN) != MDISK_SIZE_MIN) {
+          vu_log(VHOSTMD_ERR, "Error creating disk of requested "
+-- 
+2.32.0
+

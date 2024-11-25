@@ -1,8 +1,6 @@
-Vendor:         Microsoft Corporation
-Distribution:   Azure Linux
 Name:           sblim-wbemcli
 Version:        1.6.3
-Release:        18%{?dist}
+Release:        28%{?dist}
 Summary:        SBLIM WBEM Command Line Interface
 
 License:        EPL-1.0
@@ -13,7 +11,9 @@ Patch1:         sblim-wbemcli-1.6.2-https-segfaults.patch
 Patch2:         sblim-wbemcli-1.6.1-ssl-proto-option.patch
 Patch3:         sblim-wbemcli-1.6.3-fix-exit-status.patch
 Patch4:         sblim-wbemcli-1.6.3-covscan-fixes.patch
+Patch5:         sblim-wbemcli-1.6.3-fix-cmx-crash.patch
 
+BuildRequires: make
 BuildRequires:  curl-devel >= 7.9.3
 BuildRequires:  binutils-devel >= 2.17.50.0.3-4
 BuildRequires:  autoconf automake libtool pkgconfig
@@ -28,11 +28,12 @@ scripts.
 %prep
 %setup -q
 autoreconf --install --force
-%patch 0 -p1 -b .gcc43
-%patch 1 -p1 -b .https-segfaults
-%patch 2 -p1 -b .ssl-proto-option
-%patch 3 -p1 -b .fix-exit-status
-%patch 4 -p1 -b .covscan-fixes
+%patch -P0 -p1 -b .gcc43
+%patch -P1 -p1 -b .https-segfaults
+%patch -P2 -p1 -b .ssl-proto-option
+%patch -P3 -p1 -b .fix-exit-status
+%patch -P4 -p1 -b .covscan-fixes
+%patch -P5 -p1 -b .fix-cmx-crash
 
 %build
 %configure CACERT=/etc/pki/Pegasus/client.pem
@@ -49,8 +50,38 @@ mkdir -p $RPM_BUILD_ROOT/%{_datadir}/%{name}
 %{_datadir}/%{name}
 
 %changelog
-* Fri Oct 15 2021 Pawel Winogrodzki <pawelwi@microsoft.com> - 1.6.3-18
-- Initial CBL-Mariner import from Fedora 32 (license: MIT).
+* Sat Jul 20 2024 Fedora Release Engineering <releng@fedoraproject.org> - 1.6.3-28
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_41_Mass_Rebuild
+
+* Sat Jan 27 2024 Fedora Release Engineering <releng@fedoraproject.org> - 1.6.3-27
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Sat Jul 22 2023 Fedora Release Engineering <releng@fedoraproject.org> - 1.6.3-26
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_39_Mass_Rebuild
+
+* Mon Feb 13 2023 Vitezslav Crhonek <vcrhonek@redhat.com> - 1.6.3-25
+- SPDX migration
+
+* Sat Jan 21 2023 Fedora Release Engineering <releng@fedoraproject.org> - 1.6.3-24
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_38_Mass_Rebuild
+
+* Sat Jul 23 2022 Fedora Release Engineering <releng@fedoraproject.org> - 1.6.3-23
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_37_Mass_Rebuild
+
+* Tue May 03 2022 Vitezslav Crhonek <vcrhonek@redhat.com> - 1.6.3-22
+- Fix crash when using "cmx" command with no additional parameter
+
+* Sat Jan 22 2022 Fedora Release Engineering <releng@fedoraproject.org> - 1.6.3-21
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_36_Mass_Rebuild
+
+* Fri Jul 23 2021 Fedora Release Engineering <releng@fedoraproject.org> - 1.6.3-20
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_35_Mass_Rebuild
+
+* Wed Jan 27 2021 Fedora Release Engineering <releng@fedoraproject.org> - 1.6.3-19
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_34_Mass_Rebuild
+
+* Wed Jul 29 2020 Fedora Release Engineering <releng@fedoraproject.org> - 1.6.3-18
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_33_Mass_Rebuild
 
 * Thu Jan 30 2020 Fedora Release Engineering <releng@fedoraproject.org> - 1.6.3-17
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_32_Mass_Rebuild

@@ -1,12 +1,12 @@
+%{?python_enable_dependency_generator}
 %global srcname yubico
 
-Vendor:         Microsoft Corporation
-Distribution:   Azure Linux
 Name:           python-%{srcname}
 Version:        1.3.3
-Release:        9%{?dist}
+Release:        17%{?dist}
 Summary:        Pure-python library for interacting with Yubikeys
-License:        BSD
+
+License:        BSD-2-Clause
 URL:            https://github.com/Yubico/%{name}
 Source0:        https://github.com/Yubico/%{name}/archive/%{name}-%{version}.tar.gz
 Patch0001:      0001-literal-comparison.patch
@@ -53,9 +53,32 @@ Pure-python library for interacting with Yubikeys. For Python 3.
 
 
 %changelog
-* Fri Mar 03 2023 Muhammad Falak <mwani@microsoft.com> - 2.73.0-2
-- Initial CBL-Mariner import from Fedora 36 (license: MIT).
-- License verified
+* Fri Jul 19 2024 Fedora Release Engineering <releng@fedoraproject.org> - 1.3.3-17
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_41_Mass_Rebuild
+
+* Fri Jun 07 2024 Python Maint <python-maint@redhat.com> - 1.3.3-16
+- Rebuilt for Python 3.13
+
+* Fri Jan 26 2024 Fedora Release Engineering <releng@fedoraproject.org> - 1.3.3-15
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Mon Jan 22 2024 Fedora Release Engineering <releng@fedoraproject.org> - 1.3.3-14
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Fri Jul 21 2023 Fedora Release Engineering <releng@fedoraproject.org> - 1.3.3-13
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_39_Mass_Rebuild
+
+* Tue Jun 13 2023 Python Maint <python-maint@redhat.com> - 1.3.3-12
+- Rebuilt for Python 3.12
+
+* Fri Jan 20 2023 Fedora Release Engineering <releng@fedoraproject.org> - 1.3.3-11
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_38_Mass_Rebuild
+
+* Fri Jul 22 2022 Fedora Release Engineering <releng@fedoraproject.org> - 1.3.3-10
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_37_Mass_Rebuild
+
+* Thu Jun 16 2022 Python Maint <python-maint@redhat.com> - 1.3.3-9
+- Rebuilt for Python 3.11
 
 * Fri Jan 21 2022 Fedora Release Engineering <releng@fedoraproject.org> - 1.3.3-8
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_36_Mass_Rebuild

@@ -1,15 +1,14 @@
-Vendor:         Microsoft Corporation
-Distribution:   Azure Linux
 Summary: A utility for removing files based on when they were last accessed
 Name: tmpwatch
 Version: 2.11
-Release: 17%{?dist}
-URL: https://fedorahosted.org/tmpwatch/
-Source0: https://fedorahosted.org/releases/t/m/tmpwatch/tmpwatch-%{version}.tar.bz2
-License: GPLv2
+Release: 27%{?dist}
+URL: https://pagure.io/%{name}
+Source0: https://releases.pagure.org/%{name}/%{name}-%{version}.tar.bz2
+License: GPL-2.0-only
 Requires: psmisc
 Provides: bundled(gnulib)
 # configure is looking for /sbin/fuser
+BuildRequires: make
 BuildRequires:  gcc
 BuildRequires: psmisc
 
@@ -43,8 +42,38 @@ ln -s $(echo %{_bindir} |sed 's,/[^/]\+,/..,g; s,^/,,')%{_sbindir}/tmpwatch \
 %{_mandir}/man8/tmpwatch.8*
 
 %changelog
-* Fri Oct 15 2021 Pawel Winogrodzki <pawelwi@microsoft.com> - 2.11-17
-- Initial CBL-Mariner import from Fedora 32 (license: MIT).
+* Sat Jul 20 2024 Fedora Release Engineering <releng@fedoraproject.org> - 2.11-27
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_41_Mass_Rebuild
+
+* Sat Jan 27 2024 Fedora Release Engineering <releng@fedoraproject.org> - 2.11-26
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Sat Jul 22 2023 Fedora Release Engineering <releng@fedoraproject.org> - 2.11-25
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_39_Mass_Rebuild
+
+* Sat Jan 21 2023 Fedora Release Engineering <releng@fedoraproject.org> - 2.11-24
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_38_Mass_Rebuild
+
+* Sat Jul 23 2022 Fedora Release Engineering <releng@fedoraproject.org> - 2.11-23
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_37_Mass_Rebuild
+
+* Sat Jan 22 2022 Fedora Release Engineering <releng@fedoraproject.org> - 2.11-22
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_36_Mass_Rebuild
+
+* Mon Dec 06 2021 Jiri Kucera <jkucera@redhat.com> - 2.11-21
+- Reupload sources
+
+* Fri Jul 23 2021 Fedora Release Engineering <releng@fedoraproject.org> - 2.11-20
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_35_Mass_Rebuild
+
+* Sun Jun 13 2021 Georg Sauthoff <fedora@gms.tf> - 2.11-19
+- Update project and source urls (fixes fedora#1843843)
+
+* Wed Jan 27 2021 Fedora Release Engineering <releng@fedoraproject.org> - 2.11-18
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_34_Mass_Rebuild
+
+* Wed Jul 29 2020 Fedora Release Engineering <releng@fedoraproject.org> - 2.11-17
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_33_Mass_Rebuild
 
 * Fri Jan 31 2020 Fedora Release Engineering <releng@fedoraproject.org> - 2.11-16
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_32_Mass_Rebuild
@@ -265,7 +294,7 @@ ln -s $(echo %{_bindir} |sed 's,/[^/]\+,/..,g; s,^/,,')%{_sbindir}/tmpwatch \
 * Tue May 21 2002 Mike A. Harris <mharris@redhat.com> 2.8.4-1
 - Bump release and rebuild in new environment
 
-* Fri Apr 13 2002 Mike A. Harris <mharris@redhat.com> 2.8.3-1
+* Sat Apr 13 2002 Mike A. Harris <mharris@redhat.com> 2.8.3-1
 - Added support for large files with 64bit offsets by adding to CFLAGS
   -D_LARGEFILE_SOURCE -D_FILE_OFFSET_BITS=64 bug (#56961)
 

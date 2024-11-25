@@ -1,22 +1,20 @@
-Vendor:         Microsoft Corporation
-Distribution:   Azure Linux
-%global _hardened_build 1
-%global commit0 e60d4cca3d0e702c60ad0f9e2eecaa461baa4744
-
 Name: libcli
-Version: 1.9.7
-Release: 1%{?dist}
+Version: 1.10.7
+Release: 9%{?dist}
 Summary: A shared library for a Cisco-like cli
-License: LGPLv2+
-URL: https://github.com/dparrish/libcli
-Source0: https://github.com/dparrish/libcli/archives/%{commit0}.tar.gz
-Patch0: libcli-win32issue.patch
+License: LGPL-2.1-or-later
+URL: http://sites.dparrish.com/libcli
+Source0: https://github.com/dparrish/libcli/archive/V%{version}/%{name}-%{version}.tar.gz
+
+# https://github.com/dparrish/libcli/pull/93
+Patch0: calloc.patch
 
 %package devel
 Summary: Development files for libcli
 Requires: %{name}%{?_isa} = %{version}-%{release}
 
 BuildRequires:  gcc
+BuildRequires: make
 %description
 Libcli provides a shared library for including a Cisco-like command-line 
 interface into other software. It's a telnet interface which supports 
@@ -32,9 +30,9 @@ user-definable function tree.
 These are the development files.
 
 %prep
-%setup -qn %{name}-%{commit0}
+%setup -q
 
-%patch 0 -p1
+%patch -P 0 -p0
 
 %build
 
@@ -44,25 +42,64 @@ make %{?_smp_mflags}
 install -d -p %{buildroot}%{_includedir}
 install -p -m 644 libcli*.h %{buildroot}%{_includedir}/
 install -d -p %{buildroot}%{_libdir}
-install -p -m 755 libcli.so.1.9.7 %{buildroot}%{_libdir}/
-ln -s %{_libdir}/libcli.so.1.9.7 %{buildroot}%{_libdir}/libcli.so.1.9
-ln -s %{_libdir}/libcli.so.1.9 %{buildroot}%{_libdir}/libcli.so
+install -p -m 755 libcli.so.%{version} %{buildroot}%{_libdir}/
+ln -s %{_libdir}/libcli.so.%{version} %{buildroot}%{_libdir}/libcli.so.1.10
+ln -s %{_libdir}/libcli.so.1.10 %{buildroot}%{_libdir}/libcli.so
 
 %ldconfig_scriptlets
 
 %files
 %doc COPYING
-%{_libdir}/*.so.*
+%{_libdir}/*.so.1.10*
 
 %files devel
-%doc README
+%doc README.md
 %{_libdir}/*.so
 %{_includedir}/*.h
 
 %changelog
-* Thu Oct 14 2021 Pawel Winogrodzki <pawelwi@microsoft.com> - 1.9.7-1
-- Initial CBL-Mariner import from Fedora 32 (license: MIT).
-- Converting the 'Release' tag to the '[number].[distribution]' format.
+* Thu Jul 18 2024 Fedora Release Engineering <releng@fedoraproject.org> - 1.10.7-9
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_41_Mass_Rebuild
+
+* Wed Jan 31 2024 Gwyn Ciesla <gwync@protonmail.com> - 1.10.7-8
+- Patch for calloc parameter order.
+
+* Thu Jan 25 2024 Fedora Release Engineering <releng@fedoraproject.org> - 1.10.7-7
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Sun Jan 21 2024 Fedora Release Engineering <releng@fedoraproject.org> - 1.10.7-6
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Thu Jul 20 2023 Fedora Release Engineering <releng@fedoraproject.org> - 1.10.7-5
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_39_Mass_Rebuild
+
+* Fri Mar 03 2023 Gwyn Ciesla <gwync@protonmail.com> - 1.10.7-4
+- migrated to SPDX license
+
+* Thu Jan 19 2023 Fedora Release Engineering <releng@fedoraproject.org> - 1.10.7-3
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_38_Mass_Rebuild
+
+* Thu Jul 21 2022 Fedora Release Engineering <releng@fedoraproject.org> - 1.10.7-2
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_37_Mass_Rebuild
+
+* Wed Feb 02 2022 Gwyn Ciesla <gwync@protonmail.com> - 1.10.7-1
+- 1.10.7
+
+* Thu Jan 20 2022 Fedora Release Engineering <releng@fedoraproject.org> - 1.9.7-0.20160141gite60d4cc
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_36_Mass_Rebuild
+
+* Thu Jul 22 2021 Fedora Release Engineering <releng@fedoraproject.org> - 1.9.7-0.20160140gite60d4cc
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_35_Mass_Rebuild
+
+* Tue Jan 26 2021 Fedora Release Engineering <releng@fedoraproject.org> - 1.9.7-0.20160139gite60d4cc
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_34_Mass_Rebuild
+
+* Sat Aug 01 2020 Fedora Release Engineering <releng@fedoraproject.org> - 1.9.7-0.20160138gite60d4cc
+- Second attempt - Rebuilt for
+  https://fedoraproject.org/wiki/Fedora_33_Mass_Rebuild
+
+* Tue Jul 28 2020 Fedora Release Engineering <releng@fedoraproject.org> - 1.9.7-0.20160137gite60d4cc
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_33_Mass_Rebuild
 
 * Wed Jan 29 2020 Fedora Release Engineering <releng@fedoraproject.org> - 1.9.7-0.20160136gite60d4cc
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_32_Mass_Rebuild

@@ -1,17 +1,20 @@
+%if ! (0%{?rhel})
 # Perform optional tests
-%{bcond_without perl_Module_Install_ReadmeFromPod_enablas_optional_test}
+%{bcond_without perl_Module_Install_ReadmeFromPod_enables_optional_test}
 # Support output to PDF
+%{bcond_without perl_Module_Install_ReadmeFromPod_enables_pdf}
+%else
+%{bcond_with perl_Module_Install_ReadmeFromPod_enables_optional_test}
 %{bcond_with perl_Module_Install_ReadmeFromPod_enables_pdf}
+%endif
 
-Summary:        Module::Install extension to automatically convert POD to a README
 Name:           perl-Module-Install-ReadmeFromPod
 Version:        0.30
-Release:        13%{?dist}
-License:        GPL+ OR Artistic
-Vendor:         Microsoft Corporation
-Distribution:   Azure Linux
+Release:        26%{?dist}
+Summary:        Module::Install extension to automatically convert POD to a README
+License:        GPL-1.0-or-later OR Artistic-1.0-Perl
 URL:            https://metacpan.org/release/Module-Install-ReadmeFromPod
-Source0:        https://cpan.metacpan.org/authors/id/B/BI/BINGOS/Module-Install-ReadmeFromPod-%{version}.tar.gz#/%{name}-%{version}.tar.gz
+Source0:        https://cpan.metacpan.org/authors/id/B/BI/BINGOS/Module-Install-ReadmeFromPod-%{version}.tar.gz
 # Regenerate README in UTF-8
 Patch0:         Module-Install-ReadmeFromPod-0.26-Regenerate-README-in-UTF-8.patch
 # Remove a bogus test that fails on PDF binary files randomly, CPAN RT#130221
@@ -19,20 +22,16 @@ Patch1:         Module-Install-ReadmeFromPod-0.30-Do-not-test-PDF-file-for-new-l
 BuildArch:      noarch
 BuildRequires:  coreutils
 BuildRequires:  make
-BuildRequires:  perl(Config)
-BuildRequires:  perl(File::Remove)
-BuildRequires:  perl(FindBin)
-BuildRequires:  perl(Module::CoreList)
-BuildRequires:  perl(Module::Install::AuthorRequires) >= 0.02
-BuildRequires:  perl(Module::Install::AutoLicense)
-BuildRequires:  perl(Module::Install::GithubMeta)
-BuildRequires:  perl(Module::Install::Metadata)
-BuildRequires:  perl(inc::Module::Install)
-BuildRequires:  perl(lib)
-BuildRequires:  perl(strict)
 BuildRequires:  perl-generators
 BuildRequires:  perl-interpreter
-BuildRequires:  sed
+BuildRequires:  perl(Config)
+BuildRequires:  perl(inc::Module::Install)
+BuildRequires:  perl(lib)
+BuildRequires:  perl(Module::Install::AutoLicense)
+BuildRequires:  perl(Module::Install::AuthorRequires) >= 0.02
+BuildRequires:  perl(Module::Install::GithubMeta)
+BuildRequires:  perl(Module::Install::Metadata)
+BuildRequires:  perl(strict)
 # Build script uses lib/Module/Install/ReadmeFromPod.pm
 # Run-time:
 BuildRequires:  perl(base)
@@ -55,12 +54,11 @@ BuildRequires:  perl(File::Path)
 BuildRequires:  perl(File::Temp)
 BuildRequires:  perl(Test::InDistDir)
 BuildRequires:  perl(Test::More) >= 0.47
-%if %{with perl_Module_Install_ReadmeFromPod_enablas_optional_test}
+%if %{with perl_Module_Install_ReadmeFromPod_enables_optional_test}
 # Optional tests:
 BuildRequires:  perl(Test::Pod) >= 1.00
 BuildRequires:  perl(Test::Pod::Coverage) >= 1.00
 %endif
-Requires:       perl(:MODULE_COMPAT_%(eval "`perl -V:version`"; echo $version))
 %if %{with perl_Module_Install_ReadmeFromPod_enables_pdf}
 Suggests:       perl(App::pod2pdf)
 %endif
@@ -83,10 +81,12 @@ POD, whenever the author runs Makefile.PL. Several output formats are
 supported: plain-text, HTML, PDF or manual page.
 
 %prep
-%autosetup -n Module-Install-ReadmeFromPod-%{version} -p1
+%setup -q -n Module-Install-ReadmeFromPod-%{version}
+%patch -P0 -p1
+%patch -P1 -p1
 # Remove bundled modules
 rm -r inc
-sed -i -e '/^inc\// d' MANIFEST
+perl -i -ne 'print $_ unless m{^inc/}' MANIFEST
 # Drop executable bit from documentation
 chmod -x tools/git-log.pl
 
@@ -108,12 +108,50 @@ make test
 %{_mandir}/man3/*
 
 %changelog
-* Tue Mar 07 2023 Muhammad Falak <mwani@microsoft.com> - 0.30-13
-- License verified
+* Fri Jul 19 2024 Fedora Release Engineering <releng@fedoraproject.org> - 0.30-26
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_41_Mass_Rebuild
 
-* Mon Nov 02 2020 Joe Schmitt <joschmit@microsoft.com> - 0.30-12
-- Initial CBL-Mariner import from Fedora 32 (license: MIT).
-- Explicitly turn off perl_Module_Install_ReadmeFromPod_enables_pdf.
+* Tue Jul  9 2024 Software Management Team <packaging-team-maint@redhat.com> - 0.30-25
+- Eliminate use of obsolete %%patchN syntax (rhbz#2283636)
+
+* Thu Jan 25 2024 Fedora Release Engineering <releng@fedoraproject.org> - 0.30-24
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Sun Jan 21 2024 Fedora Release Engineering <releng@fedoraproject.org> - 0.30-23
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Thu Jul 20 2023 Fedora Release Engineering <releng@fedoraproject.org> - 0.30-22
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_39_Mass_Rebuild
+
+* Fri Jan 20 2023 Fedora Release Engineering <releng@fedoraproject.org> - 0.30-21
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_38_Mass_Rebuild
+
+* Fri Jul 22 2022 Fedora Release Engineering <releng@fedoraproject.org> - 0.30-20
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_37_Mass_Rebuild
+
+* Wed Jun 01 2022 Jitka Plesnikova <jplesnik@redhat.com> - 0.30-19
+- Perl 5.36 rebuild
+
+* Fri Jan 21 2022 Fedora Release Engineering <releng@fedoraproject.org> - 0.30-18
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_36_Mass_Rebuild
+
+* Thu Jul 22 2021 Fedora Release Engineering <releng@fedoraproject.org> - 0.30-17
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_35_Mass_Rebuild
+
+* Fri May 21 2021 Jitka Plesnikova <jplesnik@redhat.com> - 0.30-16
+- Perl 5.34 rebuild
+
+* Wed Jan 27 2021 Fedora Release Engineering <releng@fedoraproject.org> - 0.30-15
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_34_Mass_Rebuild
+
+* Mon Jan 18 2021 Jitka Plesnikova <jplesnik@redhat.com> - 0.30-14
+- Disable support output to PDF on RHEL
+
+* Tue Jul 28 2020 Fedora Release Engineering <releng@fedoraproject.org> - 0.30-13
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_33_Mass_Rebuild
+
+* Tue Jun 23 2020 Jitka Plesnikova <jplesnik@redhat.com> - 0.30-12
+- Perl 5.32 rebuild
 
 * Thu Jan 30 2020 Fedora Release Engineering <releng@fedoraproject.org> - 0.30-11
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_32_Mass_Rebuild

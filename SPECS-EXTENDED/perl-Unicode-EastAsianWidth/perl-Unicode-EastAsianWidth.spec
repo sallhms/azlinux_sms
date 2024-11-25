@@ -1,26 +1,26 @@
-Summary:        East Asian Width properties
-Name:           perl-Unicode-EastAsianWidth
-Version:        12.0
-Release:        4%{?dist}
-License:        CC0
-Vendor:         Microsoft Corporation
-Distribution:   Azure Linux
-URL:            https://metacpan.org/release/Unicode-EastAsianWidth
-Source0:        https://cpan.metacpan.org/authors/id/A/AU/AUDREYT/Unicode-EastAsianWidth-%{version}.tar.gz#/%{name}-%{version}.tar.gz
-Patch0:         perl-Unicode-EastAsianWidth-no-inc.patch
-BuildRequires:  perl-generators
-BuildRequires:  perl(Exporter)
-BuildRequires:  perl(ExtUtils::MakeMaker)
-BuildRequires:  perl(File::Remove)
-BuildRequires:  perl(FindBin)
-BuildRequires:  perl(Module::CoreList)
-BuildRequires:  perl(Module::Package)
-BuildRequires:  perl(Module::Package::Au)
-BuildRequires:  perl(Pod::Markdown)
-BuildRequires:  perl(Test)
-BuildRequires:  perl(base)
-Requires:       perl(:MODULE_COMPAT_%(eval "`perl -V:version`"; echo $version))
-BuildArch:      noarch
+Name:		perl-Unicode-EastAsianWidth
+Version:	12.0
+Release:	15%{?dist}
+Summary:	East Asian Width properties
+License:	CC0-1.0
+URL:		https://metacpan.org/release/Unicode-EastAsianWidth
+Source0:	https://cpan.metacpan.org/authors/id/A/AU/AUDREYT/Unicode-EastAsianWidth-%{version}.tar.gz
+BuildArch:	noarch
+BuildRequires:	coreutils
+BuildRequires:	make
+BuildRequires:	perl-generators
+BuildRequires:	perl-interpreter
+BuildRequires:	perl(base)
+BuildRequires:	perl(Exporter)
+BuildRequires:	perl(ExtUtils::MakeMaker) >= 6.76
+BuildRequires:	perl(lib)
+BuildRequires:	perl(Module::Package)
+BuildRequires:	perl(Module::Package::Au)
+BuildRequires:	perl(strict)
+BuildRequires:	perl(Test)
+BuildRequires:	perl(vars)
+BuildRequires:	perl(warnings)
+
 # Don't "provide" private Perl libs
 %{?perl_default_filter}
 
@@ -31,34 +31,66 @@ status of East Asian characters, as specified in
 
 %prep
 %setup -q -n Unicode-EastAsianWidth-%{version}
-%patch 0 -p1 -b .noinc
-rm -rf inc/*
+rm -rf inc
+perl -i -ne 'print $_ unless m{^inc/}' MANIFEST
 
 %build
-perl Makefile.PL INSTALLDIRS=vendor
-%make_build
+perl Makefile.PL INSTALLDIRS=vendor NO_PACKLIST=1 NO_PERLLOCAL=1
+%{make_build}
 
 %install
-make pure_install DESTDIR=%{buildroot}
-find %{buildroot} -type f -name .packlist -exec rm -f {} ';'
-find %{buildroot} -type f -name '*.bs' -empty -exec rm -f {} ';'
+%{make_install}
+find %{buildroot} -type f -name '*.bs' -empty -delete
 %{_fixperms} %{buildroot}
 
 %check
 make test
 
 %files
-%license README
-%doc Changes
+%doc Changes README
 %{perl_vendorlib}/Unicode/
 %{_mandir}/man3/Unicode::EastAsianWidth.3pm*
 
 %changelog
-* Tue Mar 07 2023 Muhammad Falak <mwani@microsoft.com> - 12.0-4
-- License verified
+* Fri Jul 19 2024 Fedora Release Engineering <releng@fedoraproject.org> - 12.0-15
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_41_Mass_Rebuild
 
-* Fri Oct 15 2021 Pawel Winogrodzki <pawelwi@microsoft.com> - 12.0-3
-- Initial CBL-Mariner import from Fedora 32 (license: MIT).
+* Thu Jan 25 2024 Fedora Release Engineering <releng@fedoraproject.org> - 12.0-14
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Sun Jan 21 2024 Fedora Release Engineering <releng@fedoraproject.org> - 12.0-13
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Fri Jul 21 2023 Fedora Release Engineering <releng@fedoraproject.org> - 12.0-12
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_39_Mass_Rebuild
+
+* Mon Jun 26 2023 Jitka Plesnikova <jplesnik@redhat.com> - 12.0-11
+- Modernize spec
+- Update license to SPDX format
+
+* Fri Jan 20 2023 Fedora Release Engineering <releng@fedoraproject.org> - 12.0-10
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_38_Mass_Rebuild
+
+* Fri Jul 22 2022 Fedora Release Engineering <releng@fedoraproject.org> - 12.0-9
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_37_Mass_Rebuild
+
+* Wed Jun 01 2022 Jitka Plesnikova <jplesnik@redhat.com> - 12.0-8
+- Perl 5.36 rebuild
+
+* Fri Jul 23 2021 Fedora Release Engineering <releng@fedoraproject.org> - 12.0-7
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_35_Mass_Rebuild
+
+* Fri May 21 2021 Jitka Plesnikova <jplesnik@redhat.com> - 12.0-6
+- Perl 5.34 rebuild
+
+* Wed Jan 27 2021 Fedora Release Engineering <releng@fedoraproject.org> - 12.0-5
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_34_Mass_Rebuild
+
+* Tue Jul 28 2020 Fedora Release Engineering <releng@fedoraproject.org> - 12.0-4
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_33_Mass_Rebuild
+
+* Tue Jun 23 2020 Jitka Plesnikova <jplesnik@redhat.com> - 12.0-3
+- Perl 5.32 rebuild
 
 * Thu Jan 30 2020 Fedora Release Engineering <releng@fedoraproject.org> - 12.0-2
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_32_Mass_Rebuild

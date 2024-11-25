@@ -1,8 +1,6 @@
-Vendor:         Microsoft Corporation
-Distribution:   Azure Linux
 Name: docbook-simple
 Version: 1.1
-Release: 25%{?dist}
+Release: 33%{?dist}
 Summary: Simplified DocBook is a small subset of the DocBook XML DTD
 License: Freely redistributable without restriction
 URL: http://www.oasis-open.org/docbook/xml/simple/
@@ -10,7 +8,6 @@ Source0: http://www.docbook.org/xml/simple/1.1/%{name}-%{version}.zip
 Source1: %{name}.README.redhat
 Source2: %{name}.xml
 Source3: %{name}.cat
-Source4: LICENSE.PTR
 BuildArch: noarch
 BuildRequires: unzip
 Requires: sgml-common
@@ -62,10 +59,11 @@ install -p -m 644 %{SOURCE3} $SGML_CAT_DIR
 
 cp -p %{SOURCE1} ./README
 
-cp %{SOURCE4} .
+%clean
+rm -rf $RPM_BUILD_ROOT
+rm -rf ../%{version}
 
 %files
-%license LICENSE.PTR
 %doc sdocbook.css
 %doc README
 %dir %{_datadir}/xml/docbook/simple/
@@ -157,12 +155,35 @@ if [ "$1" = 0 ]; then
 fi
 
 %changelog
-* Thu Dec 16 2021 Pawel Winogrodzki <pawelwi@microsoft.com> - 1.1-25
-- Removing the explicit %%clean stage.
-- License verified.
+* Wed Jul 17 2024 Fedora Release Engineering <releng@fedoraproject.org> - 1.1-33
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_41_Mass_Rebuild
 
-* Fri Oct 15 2021 Pawel Winogrodzki <pawelwi@microsoft.com> - 1.1-24
-- Initial CBL-Mariner import from Fedora 32 (license: MIT).
+* Wed Jan 24 2024 Fedora Release Engineering <releng@fedoraproject.org> - 1.1-32
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Fri Jan 19 2024 Fedora Release Engineering <releng@fedoraproject.org> - 1.1-31
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Wed Jul 19 2023 Fedora Release Engineering <releng@fedoraproject.org> - 1.1-30
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_39_Mass_Rebuild
+
+* Thu Jan 19 2023 Fedora Release Engineering <releng@fedoraproject.org> - 1.1-29
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_38_Mass_Rebuild
+
+* Thu Jul 21 2022 Fedora Release Engineering <releng@fedoraproject.org> - 1.1-28
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_37_Mass_Rebuild
+
+* Thu Jan 20 2022 Fedora Release Engineering <releng@fedoraproject.org> - 1.1-27
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_36_Mass_Rebuild
+
+* Wed Jul 21 2021 Fedora Release Engineering <releng@fedoraproject.org> - 1.1-26
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_35_Mass_Rebuild
+
+* Tue Jan 26 2021 Fedora Release Engineering <releng@fedoraproject.org> - 1.1-25
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_34_Mass_Rebuild
+
+* Mon Jul 27 2020 Fedora Release Engineering <releng@fedoraproject.org> - 1.1-24
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_33_Mass_Rebuild
 
 * Tue Jan 28 2020 Fedora Release Engineering <releng@fedoraproject.org> - 1.1-23
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_32_Mass_Rebuild

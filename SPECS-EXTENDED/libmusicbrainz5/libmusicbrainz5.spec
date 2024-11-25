@@ -1,18 +1,19 @@
-Vendor:         Microsoft Corporation
-Distribution:   Azure Linux
 
 # Fedora package review: http://bugzilla.redhat.com/718395
+
+%global __cmake_in_source_build 1
 
 Summary: Library for accessing MusicBrainz servers
 Name: libmusicbrainz5
 Version: 5.1.0
-Release: 15%{?dist}
+Release: 25%{?dist}
 License: LGPLv2
 URL: http://www.musicbrainz.org/
 Source0: https://github.com/metabrainz/libmusicbrainz/releases/download/release-5.1.0/libmusicbrainz-%{version}.tar.gz
 # Filed upstream as http://tickets.musicbrainz.org/browse/LMB-41
 Patch0: doxygen.patch
 Patch1: 0001-Don-t-emit-errors-unless-compiled-for-debug.patch
+Patch2: 0002-libxml2-2-12.patch
 BuildRequires:  gcc
 BuildRequires:  gcc-c++
 BuildRequires: cmake
@@ -38,8 +39,9 @@ applications which will use %{name}.
 
 %prep
 %setup -q -n libmusicbrainz-%{version}
-%patch 0 -p1 -b .doxygen
-%patch 1 -p1 -b .silence-warnings
+%patch -P0 -p1 -b .doxygen
+%patch -P1 -p1 -b .silence-warnings
+%patch -P2 -p1 -b .libxml2
 
 # omit "Generated on ..." timestamps that induce multilib conflicts
 # this is *supposed* to be the doxygen default in fedora these days, but
@@ -48,15 +50,15 @@ echo "HTML_TIMESTAMP      = NO" >> Doxyfile.cmake
 
 
 %build
-%{cmake} .
+%cmake
 
-make %{?_smp_mflags} V=1
-make %{?_smp_mflags} docs
+%cmake_build
+
+%cmake_build --target docs
 
 
 %install
-
-make install/fast DESTDIR=%{buildroot}
+%cmake_install
 
 rm -f docs/installdox
 
@@ -76,8 +78,38 @@ rm -f docs/installdox
 
 
 %changelog
-* Fri Oct 15 2021 Pawel Winogrodzki <pawelwi@microsoft.com> - 5.1.0-15
-- Initial CBL-Mariner import from Fedora 32 (license: MIT).
+* Thu Jul 18 2024 Fedora Release Engineering <releng@fedoraproject.org> - 5.1.0-25
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_41_Mass_Rebuild
+
+* Thu Jan 25 2024 Fedora Release Engineering <releng@fedoraproject.org> - 5.1.0-24
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Sun Jan 21 2024 Fedora Release Engineering <releng@fedoraproject.org> - 5.1.0-23
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Thu Jul 20 2023 Fedora Release Engineering <releng@fedoraproject.org> - 5.1.0-22
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_39_Mass_Rebuild
+
+* Thu Jan 19 2023 Fedora Release Engineering <releng@fedoraproject.org> - 5.1.0-21
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_38_Mass_Rebuild
+
+* Thu Jul 21 2022 Fedora Release Engineering <releng@fedoraproject.org> - 5.1.0-20
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_37_Mass_Rebuild
+
+* Thu Jan 20 2022 Fedora Release Engineering <releng@fedoraproject.org> - 5.1.0-19
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_36_Mass_Rebuild
+
+* Thu Jul 22 2021 Fedora Release Engineering <releng@fedoraproject.org> - 5.1.0-18
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_35_Mass_Rebuild
+
+* Tue Jan 26 2021 Fedora Release Engineering <releng@fedoraproject.org> - 5.1.0-17
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_34_Mass_Rebuild
+
+* Tue Jul 28 2020 Fedora Release Engineering <releng@fedoraproject.org> - 5.1.0-16
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_33_Mass_Rebuild
+
+* Tue Jul 21 2020 Rex Dieter <rdieter@fedoraproject.org> - 5.1.0-15
+- use %%cmake_build, %%cmake_install
 
 * Wed Jan 29 2020 Fedora Release Engineering <releng@fedoraproject.org> - 5.1.0-14
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_32_Mass_Rebuild

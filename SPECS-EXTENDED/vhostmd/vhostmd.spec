@@ -1,18 +1,42 @@
-Vendor:         Microsoft Corporation
-Distribution:   Azure Linux
 %global have_xen 0
 
 Summary:       Virtualization host metrics daemon
 Name:          vhostmd
 Version:       1.1
-Release:       3%{?dist}
-License:       GPLv2+
+Release:       16%{?dist}
+License:       LGPL-2.1-or-later
 
 URL:           https://github.com/vhostmd/vhostmd
 
 Source0:       https://github.com/vhostmd/vhostmd/archive/v%{version}/%{name}-%{version}.tar.gz
 Source1:       vhostmd.conf
 
+# Prevents updates from previous versions with the old config file
+# from breaking (RHBZ#1782897).
+# https://github.com/vhostmd/vhostmd/commit/83cc269f6892852be94467cea771b3ad1da8a369
+Patch0001:     0001-Relax-virtio-requirement-in-config-file.patch
+Patch0002:     0002-libmetrics-Set-pointer-NULL-after-free.patch
+Patch0003:     0003-libmetrics-Initialize-local-variable-ret-to-failure.patch
+Patch0004:     0004-libmetrics-Check-return-value-of-asprintf.patch
+Patch0005:     0005-libmetrics-Remove-unsafe-XML_PARSE_NOENT-option.patch
+Patch0006:     0006-libmetrics-Ensure-libmetrics-mutex-is-unlocked-in-er.patch
+Patch0007:     0007-libmetrics-Fix-potential-memory-leak.patch
+Patch0008:     0008-libmetrics-Use-proper-conversion-specifier-when-call.patch
+Patch0009:     0009-libmetrics-Fix-potential-leak-of-FILE-pointer.patch
+Patch0010:     0010-util-Add-missing-call-to-va_end.patch
+Patch0011:     0011-util-Fix-potential-memory-leak.patch
+Patch0012:     0012-util-Check-return-value-of-strstr.patch
+Patch0013:     0013-Check-return-value-of-asprintf.patch
+Patch0014:     0014-vhostmd-Fix-memory-leak-in-parse_transports.patch
+Patch0015:     0015-vhostmd-Remove-unsafe-XML_PARSE_NOENT-option.patch
+Patch0016:     0016-vhostmd-Check-return-value-of-file-functions.patch
+Patch0017:     0017-vhostmd-Check-for-valide-file-handle-before-calling-.patch
+Patch0018:     0018-vhostmd-Fix-memory-leak-in-vhostmd_run.patch
+Patch0019:     0019-virtio-Fix-strncpy-length-parameter.patch
+# https://github.com/vhostmd/vhostmd/pull/13
+Patch0020:     0020-implicit-function-declarations.patch
+
+BuildRequires: make
 BuildRequires: gcc
 BuildRequires: chrpath
 BuildRequires: perl-generators
@@ -27,6 +51,11 @@ BuildRequires: systemd
 %if %{have_xen}
 BuildRequires: xen-devel
 %endif
+
+# This is hopefully temporary, but required to run vhostmd.xml as
+# currently written.  For more information see:
+# https://bugzilla.redhat.com/show_bug.cgi?id=1897130
+Requires:      libvirt
 
 
 %description 
@@ -98,11 +127,7 @@ rm $RPM_BUILD_ROOT%{_datadir}/vhostmd/scripts/pagerate.pl
 
 %pre
 # UID:GID 112:112 reserved, see RHBZ#534109.
-getent group vhostmd >/dev/null || groupadd -g 112 -r vhostmd
-getent passwd vhostmd >/dev/null || \
-useradd -u 112 -r -g vhostmd -d %{_datadir}/vhostmd -s /usr/sbin/nologin \
--c "Virtual Host Metrics Daemon" vhostmd
-exit 0
+%sysusers_create_inline u vhostmd 112 "Virtual Host Metrics Daemon" %{_datadir}/vhostmd /sbin/nologin
 
 
 %post
@@ -154,9 +179,46 @@ exit 0
 
 
 %changelog
-* Fri Apr 30 2021 Pawel Winogrodzki <pawelwi@microsoft.com> - 1.1-3
-- Initial CBL-Mariner import from Fedora 32 (license: MIT).
-- Making binaries paths compatible with CBL-Mariner's paths.
+* Sat Jul 20 2024 Fedora Release Engineering <releng@fedoraproject.org> - 1.1-16
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_41_Mass_Rebuild
+
+* Sat Jan 27 2024 Fedora Release Engineering <releng@fedoraproject.org> - 1.1-15
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Sat Jul 22 2023 Fedora Release Engineering <releng@fedoraproject.org> - 1.1-14
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_39_Mass_Rebuild
+
+* Sat Jan 21 2023 Fedora Release Engineering <releng@fedoraproject.org> - 1.1-13
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_38_Mass_Rebuild
+
+* Sat Jul 23 2022 Fedora Release Engineering <releng@fedoraproject.org> - 1.1-12
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_37_Mass_Rebuild
+
+* Sat Jan 22 2022 Fedora Release Engineering <releng@fedoraproject.org> - 1.1-11
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_36_Mass_Rebuild
+
+* Thu Jul 29 2021 Richard W.M. Jones <rjones@redhat.com> - 1.1-10
+- Miscellaneous upstream fixes.
+
+* Fri Jul 23 2021 Fedora Release Engineering <releng@fedoraproject.org> - 1.1-9
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_35_Mass_Rebuild
+
+* Tue Mar 02 2021 Zbigniew Jędrzejewski-Szmek <zbyszek@in.waw.pl> - 1.1-8
+- Rebuilt for updated systemd-rpm-macros
+  See https://pagure.io/fesco/issue/2583.
+
+* Tue Feb 09 2021 Richard W.M. Jones <rjones@redhat.com> - 1.1-7
+- Unify vhostmd.conf with RHEL 8.4 (RHBZ#1924966).
+
+* Thu Feb 04 2021 Richard W.M. Jones <rjones@redhat.com> - 1.1-6
+- Increase release so > RHEL 8 (RHBZ#1924966).
+- Unify spec files between RHEL and Fedora.
+
+* Wed Jan 27 2021 Fedora Release Engineering <releng@fedoraproject.org> - 1.1-4
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_34_Mass_Rebuild
+
+* Wed Jul 29 2020 Fedora Release Engineering <releng@fedoraproject.org> - 1.1-3
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_33_Mass_Rebuild
 
 * Fri Jan 31 2020 Fedora Release Engineering <releng@fedoraproject.org> - 1.1-2
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_32_Mass_Rebuild

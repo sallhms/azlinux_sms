@@ -1,12 +1,10 @@
-Vendor:         Microsoft Corporation
-Distribution:   Azure Linux
 Name:           perl-Test-HasVersion
 Version:        0.014
-Release:        14%{?dist}
+Release:        27%{?dist}
 Summary:        Check Perl modules have version numbers
-License:        GPL+ or Artistic
+License:        GPL-1.0-or-later OR Artistic-1.0-Perl
 URL:            https://metacpan.org/release/Test-HasVersion
-Source0:        https://cpan.metacpan.org/modules/by-module/Test/Test-HasVersion-%{version}.tar.gz#/perl-Test-HasVersion-%{version}.tar.gz
+Source0:        https://cpan.metacpan.org/modules/by-module/Test/Test-HasVersion-%{version}.tar.gz
 BuildArch:      noarch
 # Module Build
 BuildRequires:  coreutils
@@ -26,8 +24,8 @@ BuildRequires:  perl(Test::More)
 # Optional Tests
 BuildRequires:  perl(Test::Pod) >= 1.18
 BuildRequires:  perl(Test::Pod::Coverage) >= 1.04
-# Runtime
-Requires:       perl(:MODULE_COMPAT_%(eval "`perl -V:version`"; echo $version))
+# Dependencies
+# (none)
 
 %description
 Do you want to check that every one of your Perl modules in a distribution has
@@ -49,6 +47,9 @@ make %{?_smp_mflags}
 %install
 make pure_install DESTDIR=%{buildroot}
 find %{buildroot} -type f -name .packlist -delete
+# test_version described in Test::HasVersion manpage
+mkdir -p %{buildroot}%{_mandir}/man1
+echo ".so man3/Test::HasVersion.$(perl -MConfig -e 'print $Config{man3ext}')" > %{buildroot}%{_mandir}/man1/test_version.1
 %{_fixperms} -c %{buildroot}
 
 %check
@@ -59,11 +60,51 @@ make test
 %doc Changes README
 %{_bindir}/test_version
 %{perl_vendorlib}/Test/
+%{_mandir}/man1/test_version.1*
 %{_mandir}/man3/Test::HasVersion.3*
 
 %changelog
-* Fri Oct 15 2021 Pawel Winogrodzki <pawelwi@microsoft.com> - 0.014-14
-- Initial CBL-Mariner import from Fedora 31 (license: MIT).
+* Fri Sep  6 2024 Paul Howarth <paul@city-fan.org> - 0.014-27
+- Add manpage for test_version
+
+* Fri Jul 19 2024 Fedora Release Engineering <releng@fedoraproject.org> - 0.014-26
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_41_Mass_Rebuild
+
+* Thu Jan 25 2024 Fedora Release Engineering <releng@fedoraproject.org> - 0.014-25
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Sun Jan 21 2024 Fedora Release Engineering <releng@fedoraproject.org> - 0.014-24
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Fri Jul 21 2023 Fedora Release Engineering <releng@fedoraproject.org> - 0.014-23
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_39_Mass_Rebuild
+
+* Fri Jan 20 2023 Fedora Release Engineering <releng@fedoraproject.org> - 0.014-22
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_38_Mass_Rebuild
+
+* Fri Jul 22 2022 Fedora Release Engineering <releng@fedoraproject.org> - 0.014-21
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_37_Mass_Rebuild
+
+* Tue May 31 2022 Jitka Plesnikova <jplesnik@redhat.com> - 0.014-20
+- Perl 5.36 rebuild
+
+* Fri Jan 21 2022 Fedora Release Engineering <releng@fedoraproject.org> - 0.014-19
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_36_Mass_Rebuild
+
+* Fri Jul 23 2021 Fedora Release Engineering <releng@fedoraproject.org> - 0.014-18
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_35_Mass_Rebuild
+
+* Fri May 21 2021 Jitka Plesnikova <jplesnik@redhat.com> - 0.014-17
+- Perl 5.34 rebuild
+
+* Wed Jan 27 2021 Fedora Release Engineering <releng@fedoraproject.org> - 0.014-16
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_34_Mass_Rebuild
+
+* Tue Jul 28 2020 Fedora Release Engineering <releng@fedoraproject.org> - 0.014-15
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_33_Mass_Rebuild
+
+* Tue Jun 23 2020 Jitka Plesnikova <jplesnik@redhat.com> - 0.014-14
+- Perl 5.32 rebuild
 
 * Thu Sep 26 2019 Paul Howarth <paul@city-fan.org> - 0.014-13
 - Use author-independent source URL

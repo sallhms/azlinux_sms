@@ -1,16 +1,19 @@
-Vendor:         Microsoft Corporation
-Distribution:   Azure Linux
+%if 0%{?fedora} >= 36 || 0%{?rhel} > 9
+%global dict_dirname hunspell
+%else
+%global dict_dirname myspell
+%endif
+
 Name: hunspell-hu
 Summary: Hungarian hunspell dictionaries
 Version: 1.6.1
-Release: 18%{?dist}
-Source0: http://downloads.sourceforge.net/magyarispell/hu_HU-%{version}.tar.gz
-Source1: %{name}-LICENSE.txt
+Release: 29%{?dist}
+Source: http://downloads.sourceforge.net/magyarispell/hu_HU-%{version}.tar.gz
 URL: http://magyarispell.sourceforge.net
-License: LGPLv2+ or GPLv2+ or MPLv1.1
+License: LGPL-2.1-or-later OR GPL-2.0-or-later OR MPL-1.1
 BuildArch: noarch
 
-Requires: hunspell
+Requires: hunspell-filesystem
 Supplements: (hunspell and langpacks-hu)
 
 %description
@@ -18,24 +21,56 @@ Hungarian hunspell dictionaries.
 
 %prep
 %setup -q -n hu_HU-%{version}
-cp %{SOURCE1} ./LICENSE.txt
 
 %build
 chmod -x *
 
 %install
-mkdir -p $RPM_BUILD_ROOT/%{_datadir}/myspell
-cp -p *.dic *.aff $RPM_BUILD_ROOT/%{_datadir}/myspell
+mkdir -p $RPM_BUILD_ROOT/%{_datadir}/%{dict_dirname}
+cp -p *.dic *.aff $RPM_BUILD_ROOT/%{_datadir}/%{dict_dirname}
 
 
 %files
-%license LICENSE.txt
 %doc README_hu_HU.txt LEIRAS.txt
-%{_datadir}/myspell/*
+%{_datadir}/%{dict_dirname}/*
 
 %changelog
-* Fri Oct 15 2021 Pawel Winogrodzki <pawelwi@microsoft.com> - 1.6.1-18
-- Initial CBL-Mariner import from Fedora 32 (license: MIT).
+* Thu Jul 18 2024 Fedora Release Engineering <releng@fedoraproject.org> - 1.6.1-29
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_41_Mass_Rebuild
+
+* Wed Jan 24 2024 Fedora Release Engineering <releng@fedoraproject.org> - 1.6.1-28
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Sat Jan 20 2024 Fedora Release Engineering <releng@fedoraproject.org> - 1.6.1-27
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Thu Jul 20 2023 Fedora Release Engineering <releng@fedoraproject.org> - 1.6.1-26
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_39_Mass_Rebuild
+
+* Wed Feb 22 2023 Caolán McNamara <caolanm@redhat.com> - 1.6.1-25
+- migrated to SPDX license
+
+* Thu Jan 19 2023 Fedora Release Engineering <releng@fedoraproject.org> - 1.6.1-24
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_38_Mass_Rebuild
+
+* Thu Jul 21 2022 Fedora Release Engineering <releng@fedoraproject.org> - 1.6.1-23
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_37_Mass_Rebuild
+
+* Tue Mar 22 2022 Parag Nemade <pnemade AT redhat DOT com> - 1.6.1-22
+- Add conditional for new hunspell dir path and update to Requires:
+  hunspell-filesystem
+
+* Thu Jan 20 2022 Fedora Release Engineering <releng@fedoraproject.org> - 1.6.1-21
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_36_Mass_Rebuild
+
+* Thu Jul 22 2021 Fedora Release Engineering <releng@fedoraproject.org> - 1.6.1-20
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_35_Mass_Rebuild
+
+* Tue Jan 26 2021 Fedora Release Engineering <releng@fedoraproject.org> - 1.6.1-19
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_34_Mass_Rebuild
+
+* Tue Jul 28 2020 Fedora Release Engineering <releng@fedoraproject.org> - 1.6.1-18
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_33_Mass_Rebuild
 
 * Wed Jan 29 2020 Fedora Release Engineering <releng@fedoraproject.org> - 1.6.1-17
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_32_Mass_Rebuild
@@ -86,16 +121,16 @@ cp -p *.dic *.aff $RPM_BUILD_ROOT/%{_datadir}/myspell
 * Wed Feb 09 2011 Fedora Release Engineering <rel-eng@lists.fedoraproject.org> - 1.6.1-2
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_15_Mass_Rebuild
 
-* Wed Mar 31 2010 Caolan McNamara <caolanm@redhat.com> - 1.6.1-1
+* Wed Mar 31 2010 Caolán McNamara <caolanm@redhat.com> - 1.6.1-1
 - latest version
 
-* Sat Feb 06 2010 Caolan McNamara <caolanm@redhat.com> - 1.6-1
+* Sat Feb 06 2010 Caolán McNamara <caolanm@redhat.com> - 1.6-1
 - latest version
 
-* Thu Nov 05 2009 Caolan McNamara <caolanm@redhat.com> - 1.5-2
+* Thu Nov 05 2009 Caolán McNamara <caolanm@redhat.com> - 1.5-2
 - source audit shows content changed silently upstream
 
-* Thu Sep 17 2009 Caolan McNamara <caolanm@redhat.com> - 1.5-1
+* Thu Sep 17 2009 Caolán McNamara <caolanm@redhat.com> - 1.5-1
 - latest version
 
 * Fri Jul 24 2009 Fedora Release Engineering <rel-eng@lists.fedoraproject.org> - 1.4-3
@@ -104,29 +139,29 @@ cp -p *.dic *.aff $RPM_BUILD_ROOT/%{_datadir}/myspell
 * Tue Feb 24 2009 Fedora Release Engineering <rel-eng@lists.fedoraproject.org> - 1.4-2
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_11_Mass_Rebuild
 
-* Sun Nov 23 2008 Caolan McNamara <caolanm@redhat.com> - 1.4-1
+* Sun Nov 23 2008 Caolán McNamara <caolanm@redhat.com> - 1.4-1
 - latest version
 
-* Mon Mar 17 2008 Caolan McNamara <caolanm@redhat.com> - 1.3-1
+* Mon Mar 17 2008 Caolán McNamara <caolanm@redhat.com> - 1.3-1
 - latest version
 
-* Mon Nov 05 2007 Caolan McNamara <caolanm@redhat.com> - 1.2.2-1
+* Mon Nov 05 2007 Caolán McNamara <caolanm@redhat.com> - 1.2.2-1
 - latest version
 
-* Tue Oct 02 2007 Caolan McNamara <caolanm@redhat.com> - 1.2.1-1
+* Tue Oct 02 2007 Caolán McNamara <caolanm@redhat.com> - 1.2.1-1
 - latest version
 
-* Fri Aug 03 2007 Caolan McNamara <caolanm@redhat.com> - 1.2-2
+* Fri Aug 03 2007 Caolán McNamara <caolanm@redhat.com> - 1.2-2
 - clarify that this is tri-licenced
 
-* Fri Jun 01 2007 Caolan McNamara <caolanm@redhat.com> - 1.2-1
+* Fri Jun 01 2007 Caolán McNamara <caolanm@redhat.com> - 1.2-1
 - next version
 
-* Sat May 05 2007 Caolan McNamara <caolanm@redhat.com> - 1.1.1-1
+* Sat May 05 2007 Caolán McNamara <caolanm@redhat.com> - 1.1.1-1
 - latest canonical version
 
-* Wed Feb 14 2007 Caolan McNamara <caolanm@redhat.com> - 0.20061105-2
+* Wed Feb 14 2007 Caolán McNamara <caolanm@redhat.com> - 0.20061105-2
 - match licence
 
-* Thu Dec 07 2006 Caolan McNamara <caolanm@redhat.com> - 0.20061105-1
+* Thu Dec 07 2006 Caolán McNamara <caolanm@redhat.com> - 0.20061105-1
 - initial version

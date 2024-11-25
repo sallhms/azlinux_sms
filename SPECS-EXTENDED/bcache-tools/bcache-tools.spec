@@ -1,22 +1,20 @@
-Vendor:         Microsoft Corporation
-Distribution:   Azure Linux
 Summary: Tools for Linux kernel block layer cache
 Name: bcache-tools
 Version: 1.1
-Release: 3%{?dist}
+Release: 8%{?dist}
 License: GPLv2
 URL: http://bcache.evilpiepirate.org/
 VCS: git://git.kernel.org/pub/scm/linux/kernel/git/colyli/bcache-tools.git
 # git clone git://git.kernel.org/pub/scm/linux/kernel/git/colyli/bcache-tools.git
 # cd bcache-tools/
 # git archive --format=tar --prefix=bcache-tools-1.1/ bcache-tools-1.1 | gzip > ../bcache-tools-1.1.tar.gz
-Source0: %{_distro_sources_url}/%{name}-%{version}.tar.gz
+Source0: %{name}-%{version}.tar.gz
 # This part is a prerelease version obtained by https://gist.github.com/djwong/6343451:
 # git clone https://gist.github.com/6343451.git
 # cd 6343451/
 # git archive --format=tar --prefix=bcache-status-20140220/ 6d278f9886ab5f64bd896080b1b543ba7ef6c7a6 | gzip > ../bcache-status-20140220.tar.gz
 # see also http://article.gmane.org/gmane.linux.kernel.bcache.devel/1951
-Source1: %{_distro_sources_url}/bcache-status-20140220.tar.gz
+Source1: bcache-status-20140220.tar.gz
 # bcache status not provided as a true package, so this is a self maintained
 # man page for it
 # http://article.gmane.org/gmane.linux.kernel.bcache.devel/1946
@@ -56,16 +54,16 @@ This package contains the utilities for manipulating bcache.
 %prep
 %setup -q -n bcache-tools-%{version}
 tar xzf %{SOURCE1} --strip-components=1
-%patch 0 -p1 -b .man
-%patch 1 -p1 -b .cmdline
-%patch 2 -p1 -b .fedconfmake
+%patch -P0 -p1 -b .man
+%patch -P1 -p1 -b .cmdline
+%patch -P2 -p1 -b .fedconfmake
 chmod +x configure
-%patch 3 -p1 -b .noprobe
-%patch 4 -p1 -b .util-linux-hdr
+%patch -P3 -p1 -b .noprobe
+%patch -P4 -p1 -b .util-linux-hdr
 
-%patch 5 -p1 -b .python3
-%patch 6 -p1 -b .rootgc
-%patch 7 -p1 -b .man
+%patch -P5 -p1 -b .python3
+%patch -P6 -p1 -b .rootgc
+%patch -P7 -p1 -b .man
 
 %build
 %configure
@@ -95,8 +93,7 @@ rm %{buildroot}%{_datarootdir}/initramfs-tools/hooks/bcache
 install -p  -m 755 bcache-status %{buildroot}%{_sbindir}/bcache-status
 
 %files
-%license COPYING
-%doc README
+%doc README COPYING
 %{_udevrulesdir}/*
 %{_mandir}/man8/*
 %{_udevlibdir}/bcache-register
@@ -108,15 +105,29 @@ install -p  -m 755 bcache-status %{buildroot}%{_sbindir}/bcache-status
 %{dracutlibdir}/modules.d/90bcache
 
 %changelog
-* Thu Feb 22 2024 Pawel Winogrodzki <pawelwi@microsoft.com> - 1.1-3
-- Updating naming for 3.0 version of Azure Linux.
+* Wed Jul 17 2024 Fedora Release Engineering <releng@fedoraproject.org> - 1.1-8
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_41_Mass_Rebuild
 
-* Mon Apr 25 2022 Pawel Winogrodzki <pawelwi@microsoft.com> - 1.1-2
-- Updating source URLs.
-- License verified.
+* Tue Jan 23 2024 Fedora Release Engineering <releng@fedoraproject.org> - 1.1-7
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
 
-* Fri Oct 15 2021 Pawel Winogrodzki <pawelwi@microsoft.com> - 1.1-1
-- Initial CBL-Mariner import from Fedora 33 (license: MIT).
+* Fri Jan 19 2024 Fedora Release Engineering <releng@fedoraproject.org> - 1.1-6
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Wed Jul 19 2023 Fedora Release Engineering <releng@fedoraproject.org> - 1.1-5
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_39_Mass_Rebuild
+
+* Wed Jan 18 2023 Fedora Release Engineering <releng@fedoraproject.org> - 1.1-4
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_38_Mass_Rebuild
+
+* Wed Jul 20 2022 Fedora Release Engineering <releng@fedoraproject.org> - 1.1-3
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_37_Mass_Rebuild
+
+* Wed Jan 19 2022 Fedora Release Engineering <releng@fedoraproject.org> - 1.1-2
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_36_Mass_Rebuild
+
+* Wed Jul 21 2021 Fedora Release Engineering <releng@fedoraproject.org> - 1.1-1
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_35_Mass_Rebuild
 
 * Sat Jan 30 2021 Rolf Fokkens <rolf@rolffokkens.nl> - 1.1-0
 - Changed upstream to git://git.kernel.org/pub/scm/linux/kernel/git/colyli/bcache-tools.git

@@ -1,20 +1,28 @@
 Name:           perl-FreezeThaw
 Version:        0.5001
-Release:        30%{?dist}
+Release:        45%{?dist}
 Summary:        Convert Perl structures to strings and back
-License:        GPL+ or Artistic
-Vendor:         Microsoft Corporation
-Distribution:   Azure Linux
+License:        GPL-1.0-or-later OR Artistic-1.0-Perl
 URL:            https://metacpan.org/release/FreezeThaw
-Source0:        https://cpan.metacpan.org/authors/id/I/IL/ILYAZ/modules/FreezeThaw-%{version}.tar.gz#/perl-FreezeThaw-%{version}.tar.gz
+Source0:        https://cpan.metacpan.org/authors/id/I/IL/ILYAZ/modules/FreezeThaw-%{version}.tar.gz
 BuildArch:      noarch
+# Build
+BuildRequires:  coreutils
+BuildRequires:  findutils
+BuildRequires:  make
 BuildRequires:  perl-generators
-BuildRequires:  perl(dumpvar.pl)
+BuildRequires:  perl-interpreter
+BuildRequires:  perl(ExtUtils::MakeMaker) >= 6.76
+# Runtime
 BuildRequires:  perl(Carp)
 BuildRequires:  perl(Exporter)
-BuildRequires:  perl(ExtUtils::MakeMaker)
+BuildRequires:  perl(strict)
+BuildRequires:  perl(vars)
+# Test Suite
+BuildRequires:  perl(dumpvar.pl)
 BuildRequires:  perl(Math::BigInt)
-Requires:       perl(:MODULE_COMPAT_%(eval "`perl -V:version`"; echo $version))
+BuildRequires:  perl(overload)
+# Dependencies
 
 %description
 Converts data to/from stringified form, appropriate for
@@ -22,35 +30,80 @@ saving-to/reading-from permanent storage.
 
 %prep
 %setup -q -n FreezeThaw-%{version}
+
 # Fix permissions
-find -type d -exec chmod 0755 {} \;
-find -type f -exec chmod 0644 {} \;
+find -type f -exec chmod -c -x {} \;
 
 %build
-perl Makefile.PL INSTALLDIRS=vendor
-make %{?_smp_mflags}
+perl Makefile.PL INSTALLDIRS=vendor NO_PACKLIST=1 NO_PERLLOCAL=1
+%{make_build}
 
 %install
-make pure_install PERL_INSTALL_ROOT=%{buildroot}
-find %{buildroot} -type f -name .packlist -exec rm -f {} ';'
-find %{buildroot} -type d -depth -exec rmdir {} 2>/dev/null ';'
-chmod -R u+w %{buildroot}/*
+%{make_install}
+%{_fixperms} -c %{buildroot}
 
 %check
 make test
 
 %files
 %doc Changes README
-%{perl_vendorlib}/*
-%{_mandir}/man3/*.3pm*
+%{perl_vendorlib}/FreezeThaw.pm
+%{_mandir}/man3/FreezeThaw.3*
 
 %changelog
-* Fri Apr 22 2022 Muhammad Falak <mwani@microsoft.com> - 0.5001-30
-- Add an explict BR on `perl(dumpvar.pl)` to enable ptest
-- License verified
+* Fri Jul 19 2024 Fedora Release Engineering <releng@fedoraproject.org> - 0.5001-45
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_41_Mass_Rebuild
 
-* Fri Oct 15 2021 Pawel Winogrodzki <pawelwi@microsoft.com> - 0.5001-29
-- Initial CBL-Mariner import from Fedora 32 (license: MIT).
+* Thu Jan 25 2024 Fedora Release Engineering <releng@fedoraproject.org> - 0.5001-44
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Sun Jan 21 2024 Fedora Release Engineering <releng@fedoraproject.org> - 0.5001-43
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Thu Jul 20 2023 Fedora Release Engineering <releng@fedoraproject.org> - 0.5001-42
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_39_Mass_Rebuild
+
+* Fri Jan 20 2023 Fedora Release Engineering <releng@fedoraproject.org> - 0.5001-41
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_38_Mass_Rebuild
+
+* Fri Jul 22 2022 Fedora Release Engineering <releng@fedoraproject.org> - 0.5001-40
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_37_Mass_Rebuild
+
+* Mon May 30 2022 Jitka Plesnikova <jplesnik@redhat.com> - 0.5001-39
+- Perl 5.36 rebuild
+
+* Fri Jan 21 2022 Fedora Release Engineering <releng@fedoraproject.org> - 0.5001-38
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_36_Mass_Rebuild
+
+* Thu Jul 22 2021 Fedora Release Engineering <releng@fedoraproject.org> - 0.5001-37
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_35_Mass_Rebuild
+
+* Fri May 21 2021 Jitka Plesnikova <jplesnik@redhat.com> - 0.5001-36
+- Perl 5.34 rebuild
+
+* Wed Jan 27 2021 Fedora Release Engineering <releng@fedoraproject.org> - 0.5001-35
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_34_Mass_Rebuild
+
+* Tue Jul 28 2020 Fedora Release Engineering <releng@fedoraproject.org> - 0.5001-34
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_33_Mass_Rebuild
+
+* Sat Jun 27 2020 Jitka Plesnikova <jplesnik@redhat.com> - 0.5001-33
+- Perl 5.32 re-rebuild updated packages
+
+* Wed Jun 24 2020 Paul Howarth <paul@city-fan.org> - 0.5001-32
+- Spec tidy-up
+  - Classify buildreqs by usage
+  - Fix permissions verbosely
+  - Make %%files list more explicit
+
+* Mon Jun 22 2020 Jitka Plesnikova <jplesnik@redhat.com> - 0.5001-31
+- Perl 5.32 rebuild
+
+* Thu Mar 12 2020 Petr Pisar <ppisar@redhat.com> - 0.5001-30
+- Build-require dumpvar.pl for the tests
+
+* Mon Feb 24 2020 Jitka Plesnikova <jplesnik@redhat.com> - 0.5001-29
+- Modernize spec
 
 * Thu Jan 30 2020 Fedora Release Engineering <releng@fedoraproject.org> - 0.5001-28
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_32_Mass_Rebuild

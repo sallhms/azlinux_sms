@@ -1,5 +1,3 @@
-Vendor:         Microsoft Corporation
-Distribution:   Azure Linux
 %global nssdir /%{_lib}
 %global pamdir /%{_lib}/security
 
@@ -7,9 +5,9 @@ Distribution:   Azure Linux
 
 Name:           nss-pam-ldapd
 Version:        0.9.10
-Release:        5%{?dist}
+Release:        17%{?dist}
 Summary:        An nsswitch module which uses directory servers
-License:        LGPLv2+
+License:        LGPL-2.0-or-later
 URL:            http://arthurdejong.org/nss-pam-ldapd/
 Source0:        http://arthurdejong.org/nss-pam-ldapd/nss-pam-ldapd-%{version}.tar.gz
 Source1:        http://arthurdejong.org/nss-pam-ldapd/nss-pam-ldapd-%{version}.tar.gz.sig
@@ -21,6 +19,7 @@ Source4:        nslcd.service
 Patch0001:      0001-Disable-pylint-tests.patch
 Patch0002:      0002-Watch-for-uint32_t-overflows.patch
 
+BuildRequires: make
 BuildRequires:  gcc
 BuildRequires:  openldap-devel, krb5-devel
 BuildRequires:  autoconf, automake
@@ -42,6 +41,9 @@ Obsoletes:      nss_ldap < 265-11
 Provides:       pam_ldap = 185-15
 Obsoletes:      pam_ldap < 185-15
 
+# For user/group creation
+Requires(pre):  shadow-utils
+
 %description
 The nss-pam-ldapd daemon, nslcd, uses a directory server to look up name
 service information (users, groups, etc.) on behalf of a lightweight
@@ -54,7 +56,9 @@ autoreconf -f -i
 %build
 %configure --libdir=%{nssdir} \
            --disable-utils \
-           --with-pam-seclib-dir=%{pamdir}
+           --with-pam-seclib-dir=%{pamdir} \
+           --with-nslcd-pidfile=/run/nslcd/nslcd.pid \
+           --with-nslcd-socket=/run/nslcd/socket
 %make_build
 
 %check
@@ -71,7 +75,7 @@ ln -s libnss_ldap.so.2 $RPM_BUILD_ROOT/%{nssdir}/libnss_ldap.so
 sed -i -e 's,^uid.*,uid nslcd,g' -e 's,^gid.*,gid ldap,g' \
 $RPM_BUILD_ROOT/%{_sysconfdir}/nslcd.conf
 touch -r nslcd.conf $RPM_BUILD_ROOT/%{_sysconfdir}/nslcd.conf
-mkdir -p -m 0755 $RPM_BUILD_ROOT/var/run/nslcd
+mkdir -p -m 0755 $RPM_BUILD_ROOT/run/nslcd
 mkdir -p -m 0755 $RPM_BUILD_ROOT/%{_tmpfilesdir}
 install -p -m 0644 %{SOURCE3} $RPM_BUILD_ROOT/%{_tmpfilesdir}/%{name}.conf
 
@@ -84,7 +88,7 @@ install -p -m 0644 %{SOURCE3} $RPM_BUILD_ROOT/%{_tmpfilesdir}/%{name}.conf
 %attr(0600,root,root) %config(noreplace) %verify(not md5 size mtime) /etc/nslcd.conf
 %attr(0644,root,root) %config(noreplace) %{_tmpfilesdir}/%{name}.conf
 %{_unitdir}/nslcd.service
-%attr(0775,nslcd,root) /var/run/nslcd
+%attr(0775,nslcd,root) /run/nslcd
 
 %pre
 getent group  ldap  > /dev/null || \
@@ -106,8 +110,47 @@ getent passwd nslcd > /dev/null || \
 %systemd_postun_with_restart nslcd.service
 
 %changelog
-* Fri Oct 15 2021 Pawel Winogrodzki <pawelwi@microsoft.com> - 0.9.10-5
-- Initial CBL-Mariner import from Fedora 32 (license: MIT).
+* Thu Jul 18 2024 Fedora Release Engineering <releng@fedoraproject.org> - 0.9.10-17
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_41_Mass_Rebuild
+
+* Thu Jan 25 2024 Fedora Release Engineering <releng@fedoraproject.org> - 0.9.10-16
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Sun Jan 21 2024 Fedora Release Engineering <releng@fedoraproject.org> - 0.9.10-15
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Thu Jul 20 2023 Fedora Release Engineering <releng@fedoraproject.org> - 0.9.10-14
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_39_Mass_Rebuild
+
+* Wed May 17 2023 Davide Cavalca <dcavalca@fedoraproject.org> - 0.9.10-13
+- Add missing Requires on shadow-utils for user creation in pre
+  Fixes: RHBZ#2208017
+- Convert license tag to SPDX
+
+* Thu Jan 19 2023 Fedora Release Engineering <releng@fedoraproject.org> - 0.9.10-12
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_38_Mass_Rebuild
+
+* Fri Jul 22 2022 Fedora Release Engineering <releng@fedoraproject.org> - 0.9.10-11
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_37_Mass_Rebuild
+
+* Thu Jan 20 2022 Fedora Release Engineering <releng@fedoraproject.org> - 0.9.10-10
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_36_Mass_Rebuild
+
+* Wed Sep 22 2021 Moving temporary files from /var/run to /run
+- Resolves: rhbz#1893472
+
+* Thu Jul 22 2021 Fedora Release Engineering <releng@fedoraproject.org> - 0.9.10-8
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_35_Mass_Rebuild
+
+* Tue Mar 02 2021 Zbigniew Jędrzejewski-Szmek <zbyszek@in.waw.pl> - 0.9.10-7
+- Rebuilt for updated systemd-rpm-macros
+  See https://pagure.io/fesco/issue/2583.
+
+* Tue Jan 26 2021 Fedora Release Engineering <releng@fedoraproject.org> - 0.9.10-6
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_34_Mass_Rebuild
+
+* Tue Jul 28 2020 Fedora Release Engineering <releng@fedoraproject.org> - 0.9.10-5
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_33_Mass_Rebuild
 
 * Wed Jan 29 2020 Fedora Release Engineering <releng@fedoraproject.org> - 0.9.10-4
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_32_Mass_Rebuild

@@ -1,14 +1,14 @@
 Name:           libdatrie
-Version:        0.2.9
-Release:        12%{?dist}
+Version:        0.2.13
+Release:        10%{?dist}
 Summary:        Implementation of Double-Array structure for representing trie
-License:        LGPLv2+
-Vendor:         Microsoft Corporation
-Distribution:   Azure Linux
+License:        LGPL-2.1-or-later
 URL:            http://linux.thai.net/projects/datrie
 Source0:        http://linux.thai.net/pub/thailinux/software/libthai/%{name}-%{version}.tar.xz
-Patch0:         libdatrie-fixes-docs.patch
 BuildRequires:  autoconf, automake, libtool
+BuildRequires:  autoconf-archive
+BuildRequires:  doxygen
+BuildRequires:  make
 
 %description
 datrie is an implementation of double-array structure for representing trie.
@@ -30,7 +30,6 @@ developing applications that use %{name}.
 
 %prep
 %setup -q
-%patch 0 -p1 -b .docs
 
 %build
 autoreconf -f -i -v
@@ -49,8 +48,6 @@ find %{buildroot} -name '*.*a' -delete -print
 %check
 LD_LIBRARY_PATH=../datrie/.libs %make_build check
 
-%ldconfig_scriptlets
-
 %files
 %license COPYING
 %{_libdir}/libdatrie.so.*
@@ -62,11 +59,47 @@ LD_LIBRARY_PATH=../datrie/.libs %make_build check
 %{_libdir}/pkgconfig/datrie-0.2.pc
 %{_bindir}/trietool*
 %{_mandir}/man1/trietool*
+%{_pkgdocdir}-devel/*.{html,css,png,js,svg}
 
 %changelog
-* Mon Nov 02 2020 Joe Schmitt <joschmit@microsoft.com> - 0.2.9-12
-- Initial CBL-Mariner import from Fedora 32 (license: MIT).
-- Remove doxygen dependency.
+* Thu Jul 18 2024 Fedora Release Engineering <releng@fedoraproject.org> - 0.2.13-10
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_41_Mass_Rebuild
+
+* Thu Jan 25 2024 Fedora Release Engineering <releng@fedoraproject.org> - 0.2.13-9
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Sun Jan 21 2024 Fedora Release Engineering <releng@fedoraproject.org> - 0.2.13-8
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Thu Jul 20 2023 Fedora Release Engineering <releng@fedoraproject.org> - 0.2.13-7
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_39_Mass_Rebuild
+
+* Wed May 17 2023 Peng Wu <pwu@redhat.com> - 0.2.13-6
+- Migrate to SPDX license
+
+* Thu Jan 19 2023 Fedora Release Engineering <releng@fedoraproject.org> - 0.2.13-5
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_38_Mass_Rebuild
+
+* Thu Jul 21 2022 Fedora Release Engineering <releng@fedoraproject.org> - 0.2.13-4
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_37_Mass_Rebuild
+
+* Thu Jan 20 2022 Fedora Release Engineering <releng@fedoraproject.org> - 0.2.13-3
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_36_Mass_Rebuild
+
+* Thu Jul 22 2021 Fedora Release Engineering <releng@fedoraproject.org> - 0.2.13-2
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_35_Mass_Rebuild
+
+* Mon Feb  1 2021 Peng Wu <pwu@redhat.com> - 0.2.13-1
+- Update to 0.2.13
+
+* Tue Jan 26 2021 Fedora Release Engineering <releng@fedoraproject.org> - 0.2.9-14
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_34_Mass_Rebuild
+
+* Wed Oct 14 2020 Peng Wu <pwu@redhat.com> - 0.2.9-13
+- Fixes FTBFS
+
+* Tue Jul 28 2020 Fedora Release Engineering <releng@fedoraproject.org> - 0.2.9-12
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_33_Mass_Rebuild
 
 * Wed Jan 29 2020 Fedora Release Engineering <releng@fedoraproject.org> - 0.2.9-11
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_32_Mass_Rebuild

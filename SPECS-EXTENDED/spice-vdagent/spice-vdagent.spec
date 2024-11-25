@@ -1,13 +1,15 @@
-Vendor:         Microsoft Corporation
-Distribution:   Azure Linux
 Name:           spice-vdagent
 Version:        0.22.1
-Release:        1%{?dist}
+Release:        7%{?dist}
 Summary:        Agent for Spice guests
-License:        GPLv3+
+License:        GPL-3.0-or-later
 URL:            https://spice-space.org/
 Source0:        https://spice-space.org/download/releases/%{name}-%{version}.tar.bz2
-BuildRequires:  make
+Source1:        https://spice-space.org/download/releases/%{name}-%{version}.tar.bz2.sig
+Source2:        victortoso-E37A484F.keyring
+Patch0000:      0001-vdagent-Remove-watch-event-on-vdagent_display_destro.patch
+
+BuildRequires: make
 BuildRequires:  systemd-devel
 BuildRequires:  glib2-devel >= 2.50
 BuildRequires:  spice-protocol >= 0.14.3
@@ -33,6 +35,7 @@ Features:
 
 
 %prep
+gpgv2 --quiet --keyring %{SOURCE2} %{SOURCE1} %{SOURCE0}
 %autosetup -p1
 autoreconf -fi
 
@@ -57,8 +60,7 @@ autoreconf -fi
 
 
 %files
-%license COPYING
-%doc CHANGELOG.md README.md
+%doc COPYING CHANGELOG.md README.md
 /usr/lib/udev/rules.d/70-spice-vdagentd.rules
 %{_unitdir}/spice-vdagentd.service
 %{_unitdir}/spice-vdagentd.socket
@@ -75,12 +77,58 @@ autoreconf -fi
 
 
 %changelog
-* Fri Mar 18 2022 Pawel Winogrodzki <pawelwi@microsoft.com> - 0.22.1-1
-- Updating to version 0.22.1 using Fedora 36 spec (license: MIT) for guidance.
-- License verified.
+* Sat Jul 20 2024 Fedora Release Engineering <releng@fedoraproject.org> - 0.22.1-7
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_41_Mass_Rebuild
 
-* Fri Oct 15 2021 Pawel Winogrodzki <pawelwi@microsoft.com> - 0.20.0-3
-- Initial CBL-Mariner import from Fedora 32 (license: MIT).
+* Tue Apr 09 2024 Marc-André Lureau <marcandre.lureau@redhat.com> - 0.22.1-6
+- Fix crash with X11 handling code. rhbz#2274147
+
+* Sat Jan 27 2024 Fedora Release Engineering <releng@fedoraproject.org> - 0.22.1-5
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Sat Jul 22 2023 Fedora Release Engineering <releng@fedoraproject.org> - 0.22.1-4
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_39_Mass_Rebuild
+
+* Sat Jan 21 2023 Fedora Release Engineering <releng@fedoraproject.org> - 0.22.1-3
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_38_Mass_Rebuild
+
+* Sat Jul 23 2022 Fedora Release Engineering <releng@fedoraproject.org> - 0.22.1-2
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_37_Mass_Rebuild
+
+* Mon Feb 14 2022 Victor Toso <victortoso@redhat.com> 0.22.1-1
+- Update to spice-vdagent 0.22.1
+
+* Thu Feb 10 2022 Victor Toso <victortoso@redhat.com> 0.22.0-1
+- Update to spice-vdagent 0.22.0
+
+* Mon Feb 07 2022 Stephen Gallagher <sgallagh@redhat.com> - 0.21.0-7
+- Fix build against GLib >= 2.68
+
+* Sat Jan 22 2022 Fedora Release Engineering <releng@fedoraproject.org> - 0.21.0-6
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_36_Mass_Rebuild
+
+* Fri Jul 23 2021 Fedora Release Engineering <releng@fedoraproject.org> - 0.21.0-5
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_35_Mass_Rebuild
+
+* Fri Jul 16 2021 Rex Dieter <rdieter@fedoraproject.org> - 0.21.0-4
+- use upstream-able patch (upstream merge request 37)
+
+* Wed Jul 14 2021 Rex Dieter <rdieter@fedoraproject.org> - 0.21.0-3
+- add user spice-vdgant.service (#1951580)
+- use %%make_build/%%make_install
+
+* Tue Mar 02 2021 Zbigniew Jędrzejewski-Szmek <zbyszek@in.waw.pl> - 0.21.0-2
+- Rebuilt for updated systemd-rpm-macros
+  See https://pagure.io/fesco/issue/2583.
+
+* Mon Feb  8 2021 Victor Toso <victortoso@redhat.com> 0.21.0-1
+- Update to spice-vdagent 0.21.0
+
+* Wed Jan 27 2021 Fedora Release Engineering <releng@fedoraproject.org> - 0.20.0-4
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_34_Mass_Rebuild
+
+* Wed Jul 29 2020 Fedora Release Engineering <releng@fedoraproject.org> - 0.20.0-3
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_33_Mass_Rebuild
 
 * Thu Mar 26 2020 Victor Toso <victortoso@redhat.com> 0.20.0-2
 - Fix agent shutdown

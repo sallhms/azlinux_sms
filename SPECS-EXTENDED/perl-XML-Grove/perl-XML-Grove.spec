@@ -1,14 +1,13 @@
-Vendor:         Microsoft Corporation
-Distribution:   Azure Linux
 %global cpan_version 0.46alpha
 Name:           perl-XML-Grove
+Epoch:          1
 Version:        0.46
-Release:        2%{?dist}
+Release:        0.23.alpha%{?dist}
 Summary:        Simple access to infoset of parsed XML, HTML, or SGML instances
 
-License:        GPL+ or Artistic
+License:        GPL-1.0-or-later OR Artistic-1.0-Perl
 URL:            https://metacpan.org/release/XML-Grove
-Source0:        https://cpan.metacpan.org/authors/id/K/KM/KMACLEOD/XML-Grove-%{cpan_version}.tar.gz#/perl-XML-Grove-%{cpan_version}.tar.gz
+Source0:        https://cpan.metacpan.org/authors/id/K/KM/KMACLEOD/XML-Grove-%{cpan_version}.tar.gz
 Patch1:         perl-XML-Grove-test.patch
 # Patch is based on upstream changes
 # see http://perl-xml.cvs.sourceforge.net/perl-xml/XML-Grove/COPYING?revision=1.2&view=markup
@@ -28,7 +27,6 @@ BuildRequires:  perl(vars)
 # Tests
 BuildRequires:  perl(utf8)
 BuildRequires:  perl(XML::Parser::PerlSAX)
-Requires:       perl(:MODULE_COMPAT_%(eval "`perl -V:version`"; echo $version))
 
 %description
 XML::Grove is a tree-based object model for accessing the information
@@ -43,8 +41,8 @@ the objects using normal Perl syntax.
 
 %prep
 %setup -q -n XML-Grove-%{cpan_version}
-%patch 1 -p1 -b .test
-%patch 2 -p1
+%patch -P1 -p1 -b .test
+%patch -P2 -p1
 
 %build
 perl Makefile.PL INSTALLDIRS=vendor NO_PACKLIST=1
@@ -68,12 +66,44 @@ make test
 
 
 %changelog
-* Mon Nov 01 2021 Muhammad Falak <mwani@microsft.com> - 0.46-2
-- Remove epoch
+* Fri Jul 19 2024 Fedora Release Engineering <releng@fedoraproject.org> - 1:0.46-0.23.alpha
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_41_Mass_Rebuild
 
-* Thu Oct 14 2021 Pawel Winogrodzki <pawelwi@microsoft.com> - 1:0.46-1
-- Initial CBL-Mariner import from Fedora 32 (license: MIT).
-- Converting the 'Release' tag to the '[number].[distribution]' format.
+* Thu Jan 25 2024 Fedora Release Engineering <releng@fedoraproject.org> - 1:0.46-0.22.alpha
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Sun Jan 21 2024 Fedora Release Engineering <releng@fedoraproject.org> - 1:0.46-0.21.alpha
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Fri Jul 21 2023 Fedora Release Engineering <releng@fedoraproject.org> - 1:0.46-0.20.alpha
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_39_Mass_Rebuild
+
+* Fri Jan 20 2023 Fedora Release Engineering <releng@fedoraproject.org> - 1:0.46-0.19.alpha
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_38_Mass_Rebuild
+
+* Fri Jul 22 2022 Fedora Release Engineering <releng@fedoraproject.org> - 1:0.46-0.18.alpha
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_37_Mass_Rebuild
+
+* Wed Jun 01 2022 Jitka Plesnikova <jplesnik@redhat.com> - 1:0.46-0.17.alpha
+- Perl 5.36 rebuild
+
+* Fri Jan 21 2022 Fedora Release Engineering <releng@fedoraproject.org> - 1:0.46-0.16.alpha
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_36_Mass_Rebuild
+
+* Fri Jul 23 2021 Fedora Release Engineering <releng@fedoraproject.org> - 1:0.46-0.15.alpha
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_35_Mass_Rebuild
+
+* Sun May 23 2021 Jitka Plesnikova <jplesnik@redhat.com> - 1:0.46-0.14.alpha
+- Perl 5.34 rebuild
+
+* Wed Jan 27 2021 Fedora Release Engineering <releng@fedoraproject.org> - 1:0.46-0.13.alpha
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_34_Mass_Rebuild
+
+* Tue Jul 28 2020 Fedora Release Engineering <releng@fedoraproject.org> - 1:0.46-0.12.alpha
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_33_Mass_Rebuild
+
+* Tue Jun 23 2020 Jitka Plesnikova <jplesnik@redhat.com> - 1:0.46-0.11.alpha
+- Perl 5.32 rebuild
 
 * Thu Jan 30 2020 Fedora Release Engineering <releng@fedoraproject.org> - 1:0.46-0.10.alpha
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_32_Mass_Rebuild

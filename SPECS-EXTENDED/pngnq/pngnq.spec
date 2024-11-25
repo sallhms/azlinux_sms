@@ -1,14 +1,15 @@
-Vendor:         Microsoft Corporation
-Distribution:   Azure Linux
 Name: pngnq
 Summary: Pngnq is a tool for quantizing PNG images in RGBA format
 Version: 1.1
-Release: 23%{?dist}
-License: BSD with advertising and MIT and BSD
+Release: 35%{?dist}
+License: BSD-4-Clause and MIT and BSD-3-Clause
 URL: http://pngnq.sourceforge.net/
 Source0: http://downloads.sourceforge.net/pngnq/pngnq-%{version}.tar.gz
 Patch0: pngnq-libpng15.patch
+Patch1: pngnq-c99.patch
+Patch2: pngnq-gcc14.patch
 
+BuildRequires: make
 BuildRequires: libpng-devel
 BuildRequires: gcc
 
@@ -35,8 +36,44 @@ on many types of images.
 %{_mandir}/man1/*1*
 
 %changelog
-* Fri Oct 15 2021 Pawel Winogrodzki <pawelwi@microsoft.com> - 1.1-23
-- Initial CBL-Mariner import from Fedora 32 (license: MIT).
+* Fri Jul 19 2024 Fedora Release Engineering <releng@fedoraproject.org> - 1.1-35
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_41_Mass_Rebuild
+
+* Mon Apr 22 2024 Josef Ridky <jridky@redhat.com> - 1.1-34
+- fix gcc14 issue (#2261523)
+
+* Thu Jan 25 2024 Fedora Release Engineering <releng@fedoraproject.org> - 1.1-33
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Sun Jan 21 2024 Fedora Release Engineering <releng@fedoraproject.org> - 1.1-32
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Fri Jul 21 2023 Fedora Release Engineering <releng@fedoraproject.org> - 1.1-31
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_39_Mass_Rebuild
+
+* Wed Jul 19 2023 Josef Ridky <jridky@redhat.com> - 1.1-30
+- Migrate to SPDX license format
+
+* Fri Jan 20 2023 Fedora Release Engineering <releng@fedoraproject.org> - 1.1-29
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_38_Mass_Rebuild
+
+* Wed Jan 11 2023 Florian Weimer <fweimer@redhat.com> - 1.1-28
+- C99 compatibility fix
+
+* Fri Jul 22 2022 Fedora Release Engineering <releng@fedoraproject.org> - 1.1-27
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_37_Mass_Rebuild
+
+* Fri Jan 21 2022 Fedora Release Engineering <releng@fedoraproject.org> - 1.1-26
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_36_Mass_Rebuild
+
+* Fri Jul 23 2021 Fedora Release Engineering <releng@fedoraproject.org> - 1.1-25
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_35_Mass_Rebuild
+
+* Wed Jan 27 2021 Fedora Release Engineering <releng@fedoraproject.org> - 1.1-24
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_34_Mass_Rebuild
+
+* Tue Jul 28 2020 Fedora Release Engineering <releng@fedoraproject.org> - 1.1-23
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_33_Mass_Rebuild
 
 * Thu Jan 30 2020 Fedora Release Engineering <releng@fedoraproject.org> - 1.1-22
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_32_Mass_Rebuild

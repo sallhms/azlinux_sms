@@ -1,21 +1,27 @@
-Summary:        A GObject library for interacting with oVirt REST API
-Name:           libgovirt
-Version:        0.3.9
-Release:        3%{?dist}
-License:        LGPLv2+
-Vendor:         Microsoft Corporation
-Distribution:   Azure Linux
-URL:            https://gitlab.gnome.org/GNOME/libgovirt
-Source0:        https://download.gnome.org/sources/libgovirt/0.3/%{name}-%{version}.tar.xz
-Patch1:         0001-Fix-i18n-generation.patch
-BuildRequires:  meson
-BuildRequires:  pkgconfig(glib-2.0)
-BuildRequires:  pkgconfig(rest-1.0)
-BuildRequires:  pkgconfig(gobject-introspection-1.0)
-%if 0%{?with_check}
-BuildRequires:  dconf
-BuildRequires:  glib-networking
-%endif
+# -*- rpm-spec -*-
+Summary: A GObject library for interacting with oVirt REST API
+Name: libgovirt
+Version: 0.3.9
+Release: 3%{?dist}%{?extra_release}
+License: LGPL-2.1-or-later
+Source0: http://download.gnome.org/sources/libgovirt/0.3/%{name}-%{version}.tar.xz
+Source1: http://download.gnome.org/sources/libgovirt/0.3/%{name}-%{version}.tar.xz.sig
+Source2: etrunko-57E1C130.keyring
+URL: https://gitlab.gnome.org/GNOME/libgovirt
+
+Patch1: 0001-Fix-i18n-generation.patch
+
+BuildRequires: meson
+BuildRequires: pkgconfig(glib-2.0)
+BuildRequires: pkgconfig(rest-1.0)
+BuildRequires: pkgconfig(gobject-introspection-1.0)
+#needed for make check
+BuildRequires: glib-networking
+BuildRequires: dconf
+#needed for GPG signature check
+BuildRequires: gettext
+BuildRequires: git
+BuildRequires: gnupg2
 
 %description
 libgovirt is a library that allows applications to use oVirt REST API
@@ -23,10 +29,10 @@ to list VMs managed by an oVirt instance, and to get the connection
 parameters needed to make a SPICE/VNC connection to them.
 
 %package devel
-Summary:        Libraries, includes, etc. to compile with the libgovirt library
-Requires:       %{name}%{?_isa} = %{version}-%{release}
-Requires:       glib2-devel
-Requires:       pkgconfig
+Summary: Libraries, includes, etc. to compile with the libgovirt library
+Requires: %{name}%{?_isa} = %{version}-%{release}
+Requires: pkgconfig
+Requires: glib2-devel
 
 %description devel
 libgovirt is a library that allows applications to use oVirt REST API
@@ -36,7 +42,8 @@ parameters needed to make a SPICE/VNC connection to them.
 Libraries, includes, etc. to compile with the libgovirt library
 
 %prep
-%autosetup -p1
+gpgv2 --quiet --keyring %{SOURCE2} %{SOURCE1} %{SOURCE0}
+%autosetup -S git_am
 
 %build
 %meson
@@ -50,8 +57,7 @@ Libraries, includes, etc. to compile with the libgovirt library
 %meson_test
 
 %files -f %{name}.lang
-%license COPYING
-%doc AUTHORS MAINTAINERS README
+%doc AUTHORS COPYING MAINTAINERS README
 %{_libdir}/%{name}.so.2*
 %{_libdir}/girepository-1.0/GoVirt-1.0.typelib
 
@@ -64,9 +70,8 @@ Libraries, includes, etc. to compile with the libgovirt library
 %{_datadir}/gir-1.0/GoVirt-1.0.gir
 
 %changelog
-* Wed Mar 08 2023 Sumedh Sharma <sumsharma@microsoft.com> - 0.3.9-3
-- Initial CBL-Mariner import from Fedora 38 (license: MIT)
-- license verified
+* Thu Jul 20 2023 Fedora Release Engineering <releng@fedoraproject.org> - 0.3.9-3
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_39_Mass_Rebuild
 
 * Thu Jan 19 2023 Fedora Release Engineering <releng@fedoraproject.org> - 0.3.9-2
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_38_Mass_Rebuild
@@ -185,3 +190,5 @@ Libraries, includes, etc. to compile with the libgovirt library
 
 * Wed Feb 20 2013 Christophe Fergeau <cfergeau@redhat.com> 0.0.3-1
 - Initial import of libgovirt 0.0.3
+
+

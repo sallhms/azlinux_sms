@@ -1,19 +1,17 @@
 Summary:        A MOD music file player library
 Name:           libmikmod
 Version:        3.3.11.1
-Release:        14%{?dist}
-License:        GPLv2 AND LGPLv2+
-Vendor:         Microsoft Corporation
-Distribution:   Azure Linux
-URL:            https://mikmod.sourceforge.net/
-Source0:        https://downloads.sourceforge.net/mikmod/libmikmod-%{version}.tar.gz
+Release:        19%{?dist}
+License:        GPLv2 and LGPLv2+
+URL:            http://mikmod.sourceforge.net/
+Source0:        http://downloads.sourceforge.net/mikmod/libmikmod-%{version}.tar.gz
 Patch0:         libmikmod-64bit.patch
 Patch1:         libmikmod-multilib.patch
 Patch2:         libmikmod-cflags.patch
-BuildRequires:  alsa-lib-devel
+Patch3:         libmikmod-autoconf.patch
 BuildRequires:  gcc
-BuildRequires:  make
-BuildRequires:  pulseaudio-libs-devel
+BuildRequires:  alsa-lib-devel pulseaudio-libs-devel
+BuildRequires:  autoconf automake libtool make
 
 %description
 libmikmod is a library used by the mikmod MOD music file player for
@@ -22,9 +20,9 @@ XM, ULT and IT.
 
 %package devel
 Summary:        Header files and documentation for compiling mikmod applications
+Provides:       mikmod-devel = %{version}-%{release}
 Requires:       %{name}%{?_isa} = %{version}-%{release}
 Requires:       pulseaudio-libs-devel%{?_isa}
-Provides:       mikmod-devel = %{version}-%{release}
 
 %description devel
 This package includes the header files you will need to compile
@@ -34,13 +32,14 @@ applications for mikmod.
 %autosetup -p1
 
 %build
+autoreconf -vi
 %configure --enable-dl --enable-alsa --disable-simd
 %make_build
 
 %install
 %make_install INSTALL="install -p"
 rm -f %{buildroot}%{_infodir}/dir %{buildroot}%{_libdir}/*.a
-find %{buildroot} -type f -name "*.la" -delete -print
+find %{buildroot} -name '*.la' -print -delete
 
 %ldconfig_scriptlets
 
@@ -59,9 +58,24 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %{_mandir}/man1/%{name}-config*
 
 %changelog
-* Tue Dec 13 2022 Sumedh Sharma <sumsharma@microsoft.com> - 3.3.11.1-14
-- Initial CBL-Mariner import from Fedora 37 (license: MIT)
-- License Verified
+* Thu Jul 18 2024 Fedora Release Engineering <releng@fedoraproject.org> - 3.3.11.1-19
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_41_Mass_Rebuild
+
+* Thu Jan 25 2024 Fedora Release Engineering <releng@fedoraproject.org> - 3.3.11.1-18
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Sun Jan 21 2024 Fedora Release Engineering <releng@fedoraproject.org> - 3.3.11.1-17
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Thu Jul 20 2023 Fedora Release Engineering <releng@fedoraproject.org> - 3.3.11.1-16
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_39_Mass_Rebuild
+
+* Thu Jan 19 2023 Fedora Release Engineering <releng@fedoraproject.org> - 3.3.11.1-15
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_38_Mass_Rebuild
+
+* Fri Jan 06 2023 Peter Fordham <peter.fordham@gmail.com> - 3.3.11.1-14
+- Fix autoconf check for C99 and update build to run autoreconf.
+  https://sourceforge.net/p/mikmod/bugs/29/
 
 * Thu Jul 21 2022 Fedora Release Engineering <releng@fedoraproject.org> - 3.3.11.1-13
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_37_Mass_Rebuild

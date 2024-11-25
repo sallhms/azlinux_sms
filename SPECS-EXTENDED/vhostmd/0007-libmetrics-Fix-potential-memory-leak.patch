@@ -1,0 +1,49 @@
+From 2cbce5fcb652226bf159f9cd9649f5869d76f6b7 Mon Sep 17 00:00:00 2001
+From: Jim Fehlig <jfehlig@suse.com>
+Date: Mon, 6 Jan 2020 18:40:33 -0700
+Subject: [PATCH 07/19] libmetrics: Fix potential memory leak
+
+From coverity scan
+
+vhostmd-1.1/libmetrics/libmetrics.c:613:18: warning: Potential leak of memory pointed to by 'pmdef.context'
+         errno = ENOMEM;
+
+Signed-off-by: Jim Fehlig <jfehlig@suse.com>
+---
+ libmetrics/libmetrics.c | 6 ++++--
+ 1 file changed, 4 insertions(+), 2 deletions(-)
+
+diff --git a/libmetrics/libmetrics.c b/libmetrics/libmetrics.c
+index 756645c..6817df9 100644
+--- a/libmetrics/libmetrics.c
++++ b/libmetrics/libmetrics.c
+@@ -586,7 +586,8 @@ int get_metric(const char *metric_name, metric **mdef, metric_context context)
+    int ret = -1;
+ 
+    *mdef = NULL;
+-
++   memset(&pmdef, 0, sizeof(private_metric));
++   
+    if (mdisk == NULL) {
+        errno = ENODEV;
+        return -1;
+@@ -628,6 +629,8 @@ int get_metric(const char *metric_name, metric **mdef, metric_context context)
+       *mdef = lmdef;
+       ret = 0;
+    }
++
++out:
+    if (pmdef.name)
+       free(pmdef.name);
+    if (pmdef.value)
+@@ -635,7 +638,6 @@ int get_metric(const char *metric_name, metric **mdef, metric_context context)
+    if (pmdef.context)
+       free(pmdef.context);
+ 
+-out:
+    /* unlock library data */
+    pthread_mutex_unlock(&libmetrics_mutex);
+    return ret;
+-- 
+2.32.0
+

@@ -1,8 +1,6 @@
-Vendor:         Microsoft Corporation
-Distribution:   Azure Linux
 Name:           sblim-cmpi-base
 Version:        1.6.4
-Release:        17%{?dist}
+Release:        26%{?dist}
 Summary:        SBLIM CMPI Base Providers
 
 License:        EPL-1.0
@@ -27,6 +25,7 @@ Patch8:         sblim-cmpi-base-1.6.4-fix-get-os-install-date.patch
 # Patch9: fixes possible null pointer dereferences after strstr calls
 Patch9:         sblim-cmpi-base-1.6.4-fix-possible-null-dereference.patch
 Requires:       cim-server sblim-indication_helper
+BuildRequires: make
 BuildRequires:  perl-generators
 BuildRequires:  sblim-cmpi-devel sblim-indication_helper-devel
 BuildRequires:  autoconf automake libtool pkgconfig
@@ -59,16 +58,16 @@ Testcase Files for the SBLIM Testsuite.
 %prep
 %setup -q
 autoreconf --install --force
-%patch 0 -p0 -b .missing-fclose
-%patch 1 -p0 -b .methods-enable
-%patch 2 -p1 -b .double-fclose
-%patch 3 -p1 -b .docdir
-%patch 4 -p1 -b .pegasus-interop
-%patch 5 -p1 -b .prov-reg-sfcb-systemd
-%patch 6 -p1 -b .list-lib-dependencies
-%patch 7 -p1 -b .dont-install-license
-%patch 8 -p1 -b .fix-get-os-install-date
-%patch 9 -p1 -b .fix-possible-null-dereference.patch
+%patch -P0 -p0 -b .missing-fclose
+%patch -P1 -p0 -b .methods-enable
+%patch -P2 -p1 -b .double-fclose
+%patch -P3 -p1 -b .docdir
+%patch -P4 -p1 -b .pegasus-interop
+%patch -P5 -p1 -b .prov-reg-sfcb-systemd
+%patch -P6 -p1 -b .list-lib-dependencies
+%patch -P7 -p1 -b .dont-install-license
+%patch -P8 -p1 -b .fix-get-os-install-date
+%patch -P9 -p1 -b .fix-possible-null-dereference.patch
 
 %build
 %configure TESTSUITEDIR=%{_datadir}/sblim-testsuite --disable-static
@@ -121,8 +120,35 @@ rm -f $RPM_BUILD_ROOT/%{_libdir}/cmpi/*a
 %postun -p /sbin/ldconfig
 
 %changelog
-* Fri Oct 15 2021 Pawel Winogrodzki <pawelwi@microsoft.com> - 1.6.4-17
-- Initial CBL-Mariner import from Fedora 32 (license: MIT).
+* Sat Jul 20 2024 Fedora Release Engineering <releng@fedoraproject.org> - 1.6.4-26
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_41_Mass_Rebuild
+
+* Sat Jan 27 2024 Fedora Release Engineering <releng@fedoraproject.org> - 1.6.4-25
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Sat Jul 22 2023 Fedora Release Engineering <releng@fedoraproject.org> - 1.6.4-24
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_39_Mass_Rebuild
+
+* Wed Feb 15 2023 Vitezslav Crhonek <vcrhonek@redhat.com> - 1.6.4-23
+- SPDX migration
+
+* Sat Jan 21 2023 Fedora Release Engineering <releng@fedoraproject.org> - 1.6.4-22
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_38_Mass_Rebuild
+
+* Sat Jul 23 2022 Fedora Release Engineering <releng@fedoraproject.org> - 1.6.4-21
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_37_Mass_Rebuild
+
+* Sat Jan 22 2022 Fedora Release Engineering <releng@fedoraproject.org> - 1.6.4-20
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_36_Mass_Rebuild
+
+* Fri Jul 23 2021 Fedora Release Engineering <releng@fedoraproject.org> - 1.6.4-19
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_35_Mass_Rebuild
+
+* Wed Jan 27 2021 Fedora Release Engineering <releng@fedoraproject.org> - 1.6.4-18
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_34_Mass_Rebuild
+
+* Wed Jul 29 2020 Fedora Release Engineering <releng@fedoraproject.org> - 1.6.4-17
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_33_Mass_Rebuild
 
 * Tue Feb 04 2020 Vitezslav Crhonek <vcrhonek@redhat.com> - 1.6.4-16
 - Fix possible null pointer dereferences after strstr calls

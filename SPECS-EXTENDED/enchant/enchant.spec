@@ -1,9 +1,11 @@
-Vendor:         Microsoft Corporation
-Distribution:   Azure Linux
+# avoid incompatible pointer type errors with GCC 14
+%global build_type_safety_c 2
+
 Summary: An Enchanting Spell Checking Library
 Name: enchant
 Version: 1.6.0
-Release: 27%{?dist}
+Release: 36%{?dist}
+Epoch: 1
 License: LGPLv2+
 Source: http://www.abisource.com/downloads/enchant/%{version}/enchant-%{version}.tar.gz
 URL: http://www.abisource.com/
@@ -13,20 +15,21 @@ BuildRequires: aspell-devel
 BuildRequires: hunspell-devel
 BuildRequires: libvoikko-devel
 BuildRequires: automake, libtool
+BuildRequires: make
 
 %description
 A library that wraps other spell checking backends.
 
 %package aspell
 Summary: Integration with aspell for libenchant
-Requires: enchant = %{version}-%{release}
+Requires: enchant = %{epoch}:%{version}-%{release}
 
 %description aspell
 Libraries necessary to integrate applications using libenchant with aspell.
 
 %package voikko
 Summary: Integration with voikko for libenchant
-Requires: enchant = %{version}-%{release}
+Requires: enchant = %{epoch}:%{version}-%{release}
 
 %description voikko
 Libraries necessary to integrate applications using libenchant with voikko.
@@ -34,7 +37,7 @@ Libraries necessary to integrate applications using libenchant with voikko.
 
 %package devel
 Summary: Support files necessary to compile applications with libenchant.
-Requires: enchant = %{version}-%{release}
+Requires: enchant = %{epoch}:%{version}-%{release}
 Requires: glib2-devel
 
 %description devel
@@ -44,7 +47,7 @@ Libraries, headers, and support files necessary to compile applications using li
 %setup -q
 
 %build
-%configure --enable-myspell --with-myspell-dir=/usr/share/myspell --disable-static --disable-ispell --disable-hspell --disable-zemberek
+%configure --enable-myspell --with-myspell-dir=/usr/share/hunspell --disable-static --disable-ispell --disable-hspell --disable-zemberek
 make %{?_smp_mflags}
 
 %install
@@ -76,11 +79,38 @@ rm -f $RPM_BUILD_ROOT/%{_libdir}/enchant/*.la
 %ldconfig_scriptlets
 
 %changelog
-* Mon Nov 01 2021 Muhammad Falak <mwani@microsft.com> - 1.6.0-27
-- Remove epoch
+* Wed Jul 17 2024 Fedora Release Engineering <releng@fedoraproject.org> - 1:1.6.0-36
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_41_Mass_Rebuild
 
-* Fri Oct 15 2021 Pawel Winogrodzki <pawelwi@microsoft.com> - 1:1.6.0-26
-- Initial CBL-Mariner import from Fedora 32 (license: MIT).
+* Wed Jan 24 2024 Fedora Release Engineering <releng@fedoraproject.org> - 1:1.6.0-35
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Fri Jan 19 2024 Fedora Release Engineering <releng@fedoraproject.org> - 1:1.6.0-34
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Wed Jul 19 2023 Fedora Release Engineering <releng@fedoraproject.org> - 1:1.6.0-33
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_39_Mass_Rebuild
+
+* Thu Jan 19 2023 Fedora Release Engineering <releng@fedoraproject.org> - 1:1.6.0-32
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_38_Mass_Rebuild
+
+* Thu Jul 21 2022 Fedora Release Engineering <releng@fedoraproject.org> - 1:1.6.0-31
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_37_Mass_Rebuild
+
+* Mon Mar 28 2022 Parag Nemade <pnemade AT redhat DOT com> - 1:1.6.0-30
+- Update myspell directory path to /usr/share/hunspell
+
+* Thu Jan 20 2022 Fedora Release Engineering <releng@fedoraproject.org> - 1:1.6.0-29
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_36_Mass_Rebuild
+
+* Wed Jul 21 2021 Fedora Release Engineering <releng@fedoraproject.org> - 1:1.6.0-28
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_35_Mass_Rebuild
+
+* Tue Jan 26 2021 Fedora Release Engineering <releng@fedoraproject.org> - 1:1.6.0-27
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_34_Mass_Rebuild
+
+* Mon Jul 27 2020 Fedora Release Engineering <releng@fedoraproject.org> - 1:1.6.0-26
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_33_Mass_Rebuild
 
 * Tue Jan 28 2020 Fedora Release Engineering <releng@fedoraproject.org> - 1:1.6.0-25
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_32_Mass_Rebuild

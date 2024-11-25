@@ -1,11 +1,9 @@
-Vendor:         Microsoft Corporation
-Distribution:   Azure Linux
 Summary:	Decode camera RAW files
 Name:		libopenraw
 Version:	0.1.3
-Release:	8%{?dist}
-License:	LGPLv3+
-URL:		http://libopenraw.freedesktop.org
+Release:	18%{?dist}
+License:	LGPL-3.0-or-later
+URL:		http://libopenraw.freedesktop.org/wiki
 Source0:	http://libopenraw.freedesktop.org/download/%{name}-%{version}.tar.bz2
 
 BuildRequires:  boost-devel
@@ -15,6 +13,7 @@ BuildRequires:  pkgconfig(gdk-pixbuf-2.0)
 BuildRequires:  pkgconfig(glib-2.0)
 BuildRequires:  pkgconfig(libcurl)
 BuildRequires:  pkgconfig(libxml-2.0) >= 2.5.0
+BuildRequires: make
 
 %description
 libopenraw is an ongoing project to provide a free software
@@ -49,8 +48,6 @@ developing applications that use %{name}-gnome.
 
 %package pixbuf-loader
 Summary:	RAW image loader for GTK+ applications
-
-Requires:	gtk2
 Requires:	%{name}%{?_isa} = %{version}-%{release}
 
 %description pixbuf-loader
@@ -59,6 +56,8 @@ digital cameras, in GTK+ applications.
 
 %prep
 %autosetup
+# this may be installed into a different prefix than gdk-pixbuf2 (e.g. flatpaks)
+sed -i -e '/gdk_pixbuf_moduledir/s/PKG_CONFIG/& --define-variable=prefix=${prefix}/' configure
 
 %build
 %configure --disable-static --enable-gnome --disable-silent-rules
@@ -106,8 +105,38 @@ find $RPM_BUILD_ROOT -type f -name "*.la" -delete
 %{_libdir}/gdk-pixbuf-2.0/*/loaders/*.so
 
 %changelog
-* Fri Oct 15 2021 Pawel Winogrodzki <pawelwi@microsoft.com> - 0.1.3-8
-- Initial CBL-Mariner import from Fedora 32 (license: MIT).
+* Thu Jul 18 2024 Fedora Release Engineering <releng@fedoraproject.org> - 0.1.3-18
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_41_Mass_Rebuild
+
+* Thu Jul 18 2024 Yaakov Selkowitz <yselkowi@redhat.com> - 0.1.3-17
+- Drop obsolete gtk2 dependency
+
+* Thu Jan 25 2024 Fedora Release Engineering <releng@fedoraproject.org> - 0.1.3-16
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Sun Jan 21 2024 Fedora Release Engineering <releng@fedoraproject.org> - 0.1.3-15
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Thu Jul 20 2023 Fedora Release Engineering <releng@fedoraproject.org> - 0.1.3-14
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_39_Mass_Rebuild
+
+* Thu Jan 19 2023 Fedora Release Engineering <releng@fedoraproject.org> - 0.1.3-13
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_38_Mass_Rebuild
+
+* Thu Jul 21 2022 Fedora Release Engineering <releng@fedoraproject.org> - 0.1.3-12
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_37_Mass_Rebuild
+
+* Thu Jan 20 2022 Fedora Release Engineering <releng@fedoraproject.org> - 0.1.3-11
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_36_Mass_Rebuild
+
+* Thu Jul 22 2021 Fedora Release Engineering <releng@fedoraproject.org> - 0.1.3-10
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_35_Mass_Rebuild
+
+* Tue Jan 26 2021 Fedora Release Engineering <releng@fedoraproject.org> - 0.1.3-9
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_34_Mass_Rebuild
+
+* Tue Jul 28 2020 Fedora Release Engineering <releng@fedoraproject.org> - 0.1.3-8
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_33_Mass_Rebuild
 
 * Wed Jan 29 2020 Fedora Release Engineering <releng@fedoraproject.org> - 0.1.3-7
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_32_Mass_Rebuild

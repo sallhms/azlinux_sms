@@ -7,13 +7,11 @@
 
 Name:		perl-Ref-Util-XS
 Version:	0.117
-Release:	9%{?dist}
+Release:	24%{?dist}
 Summary:	Utility functions for checking references
 License:	MIT
-Vendor:         Microsoft Corporation
-Distribution:   Azure Linux
 URL:		https://metacpan.org/release/Ref-Util-XS
-Source0:	https://cpan.metacpan.org/authors/id/X/XS/XSAWYERX/Ref-Util-XS-%{version}.tar.gz#/perl-Ref-Util-XS-%{version}.tar.gz
+Source0:	https://cpan.metacpan.org/modules/by-module/Ref/Ref-Util-XS-%{version}.tar.gz
 # Build
 BuildRequires:	coreutils
 BuildRequires:	findutils
@@ -38,8 +36,8 @@ BuildRequires:	perl(B::Concise)
 BuildRequires:	perl(CPAN::Meta) >= 2.120900
 BuildRequires:	perl(Readonly)
 %endif
-# Runtime
-Requires:	perl(:MODULE_COMPAT_%(eval "`perl -V:version`"; echo $version))
+# Dependencies
+# (none)
 
 # Avoid provides for private objects
 %{?perl_default_filter}
@@ -72,8 +70,54 @@ make test
 %{_mandir}/man3/Ref::Util::XS.3*
 
 %changelog
-* Fri Oct 15 2021 Pawel Winogrodzki <pawelwi@microsoft.com> - 0.117-9
-- Initial CBL-Mariner import from Fedora 32 (license: MIT).
+* Fri Jul 19 2024 Fedora Release Engineering <releng@fedoraproject.org> - 0.117-24
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_41_Mass_Rebuild
+
+* Mon Jun 10 2024 Jitka Plesnikova <jplesnik@redhat.com> - 0.117-23
+- Perl 5.40 rebuild
+
+* Thu Jan 25 2024 Fedora Release Engineering <releng@fedoraproject.org> - 0.117-22
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Sun Jan 21 2024 Fedora Release Engineering <releng@fedoraproject.org> - 0.117-21
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Fri Jul 21 2023 Fedora Release Engineering <releng@fedoraproject.org> - 0.117-20
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_39_Mass_Rebuild
+
+* Tue Jul 11 2023 Jitka Plesnikova <jplesnik@redhat.com> - 0.117-19
+- Perl 5.38 rebuild
+
+* Thu May 11 2023 Paul Howarth <paul@city-fan.org> - 0.117-18
+- SPDX migration
+- Use author-independent source URL
+
+* Fri Jan 20 2023 Fedora Release Engineering <releng@fedoraproject.org> - 0.117-17
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_38_Mass_Rebuild
+
+* Fri Jul 22 2022 Fedora Release Engineering <releng@fedoraproject.org> - 0.117-16
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_37_Mass_Rebuild
+
+* Wed Jun 01 2022 Jitka Plesnikova <jplesnik@redhat.com> - 0.117-15
+- Perl 5.36 rebuild
+
+* Fri Jan 21 2022 Fedora Release Engineering <releng@fedoraproject.org> - 0.117-14
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_36_Mass_Rebuild
+
+* Thu Jul 22 2021 Fedora Release Engineering <releng@fedoraproject.org> - 0.117-13
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_35_Mass_Rebuild
+
+* Fri May 21 2021 Jitka Plesnikova <jplesnik@redhat.com> - 0.117-12
+- Perl 5.34 rebuild
+
+* Wed Jan 27 2021 Fedora Release Engineering <releng@fedoraproject.org> - 0.117-11
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_34_Mass_Rebuild
+
+* Tue Jul 28 2020 Fedora Release Engineering <releng@fedoraproject.org> - 0.117-10
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_33_Mass_Rebuild
+
+* Tue Jun 23 2020 Jitka Plesnikova <jplesnik@redhat.com> - 0.117-9
+- Perl 5.32 rebuild
 
 * Thu Jan 30 2020 Fedora Release Engineering <releng@fedoraproject.org> - 0.117-8
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_32_Mass_Rebuild

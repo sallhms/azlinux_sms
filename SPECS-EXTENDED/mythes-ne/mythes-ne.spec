@@ -1,13 +1,10 @@
-Vendor:         Microsoft Corporation
-Distribution:   Azure Linux
 Name: mythes-ne
 Summary: Nepali thesaurus
 Version: 1.1
-Release: 20%{?dist}
+Release: 29%{?dist}
 Source0: http://download.services.openoffice.org/contrib/dictionaries/thes_ne_NP_v2.zip
-Source1: %{name}-LICENSE.txt
 URL: https://wiki.openoffice.org/wiki/Dictionaries
-License: LGPLv2
+License: LGPL-2.0-or-later
 BuildArch: noarch
 BuildRequires: mythes-devel
 Requires: mythes
@@ -18,7 +15,6 @@ Nepali thesaurus.
 
 %prep
 %autosetup -c
-cp %{SOURCE1} ./LICENSE.txt
 
 %build
 
@@ -28,16 +24,42 @@ cp -p th_ne_NP_v2.* $RPM_BUILD_ROOT/%{_datadir}/mythes/
 
 
 %files
-%license LICENSE.txt
 %doc README_th_ne_NP_v2.txt
 %{_datadir}/mythes/*
 
 %changelog
-* Fri Dec 1 2021 Thomas Crain <thcrain@microsoft.com> - 1.1-20
-- License verified
+* Thu Jul 18 2024 Fedora Release Engineering <releng@fedoraproject.org> - 1.1-29
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_41_Mass_Rebuild
 
-* Fri Oct 15 2021 Pawel Winogrodzki <pawelwi@microsoft.com> - 1.1-19
-- Initial CBL-Mariner import from Fedora 32 (license: MIT).
+* Thu Jan 25 2024 Fedora Release Engineering <releng@fedoraproject.org> - 1.1-28
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Sun Jan 21 2024 Fedora Release Engineering <releng@fedoraproject.org> - 1.1-27
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Thu Jul 20 2023 Fedora Release Engineering <releng@fedoraproject.org> - 1.1-26
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_39_Mass_Rebuild
+
+* Tue Mar 28 2023 Caolán McNamara <caolanm@redhat.com> - 1.1-25
+- migrated to SPDX license
+
+* Thu Jan 19 2023 Fedora Release Engineering <releng@fedoraproject.org> - 1.1-24
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_38_Mass_Rebuild
+
+* Fri Jul 22 2022 Fedora Release Engineering <releng@fedoraproject.org> - 1.1-23
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_37_Mass_Rebuild
+
+* Thu Jan 20 2022 Fedora Release Engineering <releng@fedoraproject.org> - 1.1-22
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_36_Mass_Rebuild
+
+* Thu Jul 22 2021 Fedora Release Engineering <releng@fedoraproject.org> - 1.1-21
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_35_Mass_Rebuild
+
+* Tue Jan 26 2021 Fedora Release Engineering <releng@fedoraproject.org> - 1.1-20
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_34_Mass_Rebuild
+
+* Tue Jul 28 2020 Fedora Release Engineering <releng@fedoraproject.org> - 1.1-19
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_33_Mass_Rebuild
 
 * Wed Jan 29 2020 Fedora Release Engineering <releng@fedoraproject.org> - 1.1-18
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_32_Mass_Rebuild
@@ -91,5 +113,5 @@ cp -p th_ne_NP_v2.* $RPM_BUILD_ROOT/%{_datadir}/mythes/
 * Tue Feb 08 2011 Fedora Release Engineering <rel-eng@lists.fedoraproject.org> - 1.1-2
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_15_Mass_Rebuild
 
-* Tue Mar 16 2010 Caolan McNamara <caolanm@redhat.com> - 1.1-1
+* Tue Mar 16 2010 Caolán McNamara <caolanm@redhat.com> - 1.1-1
 - initial version

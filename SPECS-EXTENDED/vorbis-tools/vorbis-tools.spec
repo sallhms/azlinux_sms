@@ -1,26 +1,32 @@
-Summary:        The Vorbis General Audio Compression Codec tools
-Name:           vorbis-tools
-Version:        1.4.2
-Release:        6%{?dist}
-License:        GPL-2.0-only
-Vendor:         Microsoft Corporation
-Distribution:   Azure Linux
-URL:            https://www.xiph.org/
-Source:         https://ftp.osuosl.org/pub/xiph/releases/vorbis/%{name}-%{version}.tar.gz
+Summary:	The Vorbis General Audio Compression Codec tools
+Name:		vorbis-tools
+Version:	1.4.2
+Release:	12%{?dist}
+Epoch:		1
+License:	GPLv2
+URL:		https://www.xiph.org/
+Source:		https://ftp.osuosl.org/pub/xiph/releases/vorbis/%{name}-%{version}.tar.gz
+
 # http://lists.xiph.org/pipermail/vorbis-dev/2021-January/020538.html
 # http://lists.xiph.org/pipermail/vorbis-dev/2013-May/020336.html
-Patch0:         vorbis-tools-1.4.2-man-page.patch
-BuildRequires:  flac-devel
-BuildRequires:  gcc
-BuildRequires:  gettext
-BuildRequires:  libao-devel
-BuildRequires:  libcurl-devel
-BuildRequires:  libvorbis-devel
-BuildRequires:  make
-BuildRequires:  speex-devel
-Provides:       vorbis = %{version}-%{release}
+Patch1:		vorbis-tools-1.4.2-man-page.patch
+Patch2:		vorbis-tools-c99.patch
+# fix out-of-bounds read in oggenc (CVE-2023-43361)
+Patch3:		vorbis-tools-1.4.2-CVE-2023-43361.patch
+
+BuildRequires:	flac-devel
+BuildRequires:	gettext
+BuildRequires:	gcc
+BuildRequires:	libao-devel
+BuildRequires:	libcurl-devel
+BuildRequires:	libvorbis-devel
+BuildRequires:	make
+BuildRequires:	speex-devel
+Obsoletes:	vorbis < %{epoch}:%{version}-%{release}
+Provides:	vorbis = %{epoch}:%{version}-%{release}
+
 # source code of vorbis-tools contains a copy of vasnprintf.c from gnulib
-Provides:       bundled(gnulib)
+Provides: bundled(gnulib)
 
 %description
 Ogg Vorbis is a fully open, non-proprietary, patent- and royalty-free,
@@ -30,31 +36,55 @@ and variable bitrates from 16 to 128 kbps/channel.
 The vorbis package contains an encoder, a decoder, a playback tool, and a
 comment editor.
 
+
 %prep
 %autosetup -p1
 
+
 %build
 # fix FTBFS if "-Werror=format-security" flag is used (#1025257)
-export CFLAGS="%{optflags} -Wno-error=format-security"
+export CFLAGS="$RPM_OPT_FLAGS -Wno-error=format-security"
+
+# uncomment this when debugging
+#CFLAGS="$CFLAGS -O0"
+
 %configure
 %make_build
 
+
 %install
 %make_install
-rm -rf %{buildroot}/%{_docdir}/%{name}*
+rm -rf $RPM_BUILD_ROOT%{_docdir}/%{name}*
 %find_lang %{name}
 
+
 %files -f %{name}.lang
-%license COPYING
-%doc AUTHORS README ogg123/ogg123rc-example
+%doc AUTHORS COPYING README ogg123/ogg123rc-example
 %{_bindir}/*
 %{_mandir}/man1/*
 
+
 %changelog
-* Tue Jan 03 2023 Sumedh Sharma <sumsharma@microsoft.com> - 1.4.2-6
-- Initial CBL-Mariner import from Fedora 37 (license: MIT)
-- Remove epoch
-- License verified
+* Sat Jul 20 2024 Fedora Release Engineering <releng@fedoraproject.org> - 1:1.4.2-12
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_41_Mass_Rebuild
+
+* Sat Jan 27 2024 Fedora Release Engineering <releng@fedoraproject.org> - 1:1.4.2-11
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Thu Jan 18 2024 Lukáš Zaoral <lzaoral@redhat.com> - 1:1.4.2-10
+- fix out-of-bounds read in oggenc (CVE-2023-43361)
+
+* Sat Jul 22 2023 Fedora Release Engineering <releng@fedoraproject.org> - 1:1.4.2-9
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_39_Mass_Rebuild
+
+* Tue Feb 07 2023 Florian Weimer <fweimer@redhat.com> - 1:1.4.2-8
+- Fix C99 compatibility issue
+
+* Sat Jan 21 2023 Fedora Release Engineering <releng@fedoraproject.org> - 1:1.4.2-7
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_38_Mass_Rebuild
+
+* Wed Sep 14 2022 Michel Alexandre Salim <salimma@fedoraproject.org> - 1:1.4.2-6
+- Rebuilt for flac 1.4.0
 
 * Sat Jul 23 2022 Fedora Release Engineering <releng@fedoraproject.org> - 1:1.4.2-5
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_37_Mass_Rebuild

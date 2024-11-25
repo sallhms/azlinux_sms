@@ -1,67 +1,64 @@
 # work around upstream versioning being decimal rather than v-string
-%global upstream_version 4.76
+%global upstream_version 4.81
 %global extraversion %{nil}
-
-Summary:        Asynchronous Input/Output
-Name:           perl-IO-AIO
-Version:        %{upstream_version}%{extraversion}
-Release:        2%{?dist}
-License:        GPL+ OR Artistic
-Vendor:         Microsoft Corporation
-Distribution:   Azure Linux
-URL:            https://metacpan.org/release/IO-AIO
-Source0:        https://cpan.metacpan.org/modules/by-module/IO/IO-AIO-%{upstream_version}.tar.gz
-Patch0:         IO-AIO-4.4-shellbang.patch
-
-# Module Build
-BuildRequires:  coreutils
-BuildRequires:  findutils
-BuildRequires:  gcc
-BuildRequires:  make
-BuildRequires:  perl-devel
-BuildRequires:  perl-generators
-BuildRequires:  perl-interpreter
-BuildRequires:  perl(Canary::Stability) >= 2001
-BuildRequires:  perl(Carp)
-BuildRequires:  perl(Config)
-BuildRequires:  perl(Exporter)
-BuildRequires:  perl(ExtUtils::MakeMaker)
-# Script Runtime
-BuildRequires:  perl(Getopt::Long)
-BuildRequires:  perl(Pod::Usage)
-BuildRequires:  perl(Time::HiRes)
-BuildRequires:  perl(XSLoader)
-BuildRequires:  perl(base)
-BuildRequires:  perl(common::sense)
-
-%if 0%{?with_check}
-BuildRequires:  perl(Fcntl)
-BuildRequires:  perl(File::Temp)
-BuildRequires:  perl(FindBin)
-BuildRequires:  perl(POSIX)
-BuildRequires:  perl(Test)
-BuildRequires:  perl(lib)
-BuildRequires:  perl(strict)
-BuildRequires:  perl(vars)
+%if "%{upstream_version}%{extraversion}" != "%{upstream_version}"
+Provides:	perl(IO::AIO) = %{upstream_version}%{extraversion}
 %endif
 
-Requires:       perl(:MODULE_COMPAT_%(eval "`perl -V:version`"; echo $version))
-Requires:       perl(XSLoader)
+Name:		perl-IO-AIO
+Version:	%{upstream_version}%{extraversion}
+Release:	3%{?dist}
+Summary:	Asynchronous Input/Output
+License:	GPL-2.0-or-later
+URL:		https://metacpan.org/release/IO-AIO
+Source0:	https://cpan.metacpan.org/modules/by-module/IO/IO-AIO-%{upstream_version}.tar.gz
+Patch0:		IO-AIO-4.4-shellbang.patch
+# Module Build
+BuildRequires:	coreutils
+BuildRequires:	findutils
+BuildRequires:	gcc
+BuildRequires:	make
+BuildRequires:	perl-devel
+BuildRequires:	perl-generators
+BuildRequires:	perl-interpreter
+BuildRequires:	perl(Canary::Stability) >= 2001
+BuildRequires:	perl(Config)
+BuildRequires:	perl(ExtUtils::MakeMaker)
+# Module Runtime
+BuildRequires:	perl(base)
+BuildRequires:	perl(Carp)
+BuildRequires:	perl(common::sense)
+BuildRequires:	perl(Exporter)
+BuildRequires:	perl(XSLoader)
+# Script Runtime
+BuildRequires:	perl(Getopt::Long)
+BuildRequires:	perl(Pod::Usage)
+BuildRequires:	perl(Time::HiRes)
+# Test Suite
+BuildRequires:	perl(Fcntl)
+BuildRequires:	perl(File::Temp)
+BuildRequires:	perl(FindBin)
+BuildRequires:	perl(lib)
+BuildRequires:	perl(POSIX)
+BuildRequires:	perl(strict)
+BuildRequires:	perl(Test)
+BuildRequires:	perl(vars)
+# Dependencies
+Requires:	perl(XSLoader)
+
 # Avoid provides for private shared objects
 %{?perl_default_filter}
-%if "%{upstream_version}%{extraversion}" != "%{upstream_version}"
-Provides:       perl(IO::AIO) = %{upstream_version}%{extraversion}
-%endif
 
 %description
 This module implements asynchronous I/O using whatever means your operating
 system supports.
 
 %package -n treescan
-Summary:        Scan directory trees, list dirs/files, stat, sync, grep
-Requires:       %{name} = %{version}-%{release}
-Requires:       perl(Pod::Usage)
-BuildArch:      noarch
+Summary:	Scan directory trees, list directories/files, stat, sync, grep
+License:	GPL-1.0-or-later OR Artistic-1.0-Perl
+BuildArch:	noarch
+Requires:	%{name} = %{version}-%{release}
+Requires:	perl(Pod::Usage)
 
 %description -n treescan
 The treescan command scans directories and their contents recursively. By
@@ -74,7 +71,7 @@ If no paths are given, treescan will use the current directory.
 %setup -q -n IO-AIO-%{upstream_version}
 
 # Fix shellbang in treescan
-%patch 0
+%patch -P 0
 
 %build
 PERL_CANARY_STABILITY_NOPROMPT=1 perl Makefile.PL \
@@ -102,9 +99,73 @@ make test
 %{_mandir}/man1/treescan.1*
 
 %changelog
-* Thu Jan 27 2022 Pawel Winogrodzki <pawelwi@microsoft.com> - 4.76-2
-- Initial CBL-Mariner import from Fedora 36 (license: MIT).
-- License verified.
+* Fri Jul 19 2024 Fedora Release Engineering <releng@fedoraproject.org> - 4.81-3
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_41_Mass_Rebuild
+
+* Mon Jun 10 2024 Jitka Plesnikova <jplesnik@redhat.com> - 4.81-2
+- Perl 5.40 rebuild
+
+* Wed Feb 21 2024 Paul Howarth <paul@city-fan.org> - 4.81-1
+- Update to 4.81
+  - Work around a bug in musl w.r.t. to O_SEARCH and use EIO_O_PATH instead,
+    verifying the semantics against the subset of O_PATH and O_SEARCH
+  - aio_copy now tries to preallocate the destination file
+  - fexecve configure test used the wrong pointer type
+
+* Thu Jan 25 2024 Fedora Release Engineering <releng@fedoraproject.org> - 4.80-6
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Sun Jan 21 2024 Fedora Release Engineering <releng@fedoraproject.org> - 4.80-5
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Wed Dec 13 2023 Paul Howarth <paul@city-fan.org> - 4.80-4
+- Fix use of incompatible pointer type in configure test for fexecve()
+
+* Thu Jul 20 2023 Fedora Release Engineering <releng@fedoraproject.org> - 4.80-3
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_39_Mass_Rebuild
+
+* Tue Jul 11 2023 Jitka Plesnikova <jplesnik@redhat.com> - 4.80-2
+- Perl 5.38 rebuild
+
+* Sun Apr  2 2023 Paul Howarth <paul@city-fan.org> - 4.80-1
+- Update to 4.8
+  - Remove long-obsolete "paths must be absolute" text in aio_open/stat
+    descriptions
+  - Another workaround for the low-quality musl libc
+  - Test for umount separately, as it is more portable
+  - Some low-quality posix attempts (openbsd, osx) declare the availability of
+    fexecve() but then don't even bother to implement a stub
+- Avoid use of deprecated patch syntax
+
+* Fri Jan 20 2023 Fedora Release Engineering <releng@fedoraproject.org> - 4.79-2
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_38_Mass_Rebuild
+
+* Mon Sep 26 2022 Paul Howarth <paul@city-fan.org> - 4.79-1
+- Update to 4.79
+  - The autoconf result of the mount check was not used, so it failed to
+    compile on most systems
+  - Fix format string usage for croak in extract_stringvec function
+
+* Tue Sep  6 2022 Paul Howarth <paul@city-fan.org> - 4.78-1
+- Update to 4.78
+  - Add IO::AIO::mount and IO::AIO::umount
+  - Add a bunch of symbols from sys/mount.h
+
+* Mon Sep  5 2022 Paul Howarth <paul@city-fan.org> - 4.77-1
+- Update to 4.77
+  - Add MFD_HUGETLB_2MB and MFD_HUGETLB_1GB constants
+  - Add fexecve
+  - Add lots of missing functions to @EXPORT_OK
+- Use SPDX-format license tags
+
+* Fri Jul 22 2022 Fedora Release Engineering <releng@fedoraproject.org> - 4.76-4
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_37_Mass_Rebuild
+
+* Tue May 31 2022 Jitka Plesnikova <jplesnik@redhat.com> - 4.76-3
+- Perl 5.36 rebuild
+
+* Fri Jan 21 2022 Fedora Release Engineering <releng@fedoraproject.org> - 4.76-2
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_36_Mass_Rebuild
 
 * Wed Jul 28 2021 Paul Howarth <paul@city-fan.org> - 4.76-1
 - Update to 4.76

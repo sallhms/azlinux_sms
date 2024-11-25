@@ -1,25 +1,29 @@
-Vendor:         Microsoft Corporation
-Distribution:   Azure Linux
 %define realname bytesize
 %define with_python3 1
-%define with_gtk_doc 0
+%define with_gtk_doc 1
 %define with_tools 1
+
+%if (! 0%{?fedora} && 0%{?rhel} <= 7) || %{with_python3} == 0
+%define with_python3 0
+%define python3_opts --without-python3
+%define with_tools 0
+%endif
 
 %if %{with_tools} != 1
 %define tools_opts --without-tools
 %endif
 
-%define configure_opts %{?python3_opts} %{?tools_opts} --without-gtk-doc
+%define configure_opts %{?python3_opts} %{?tools_opts}
 
 Name:        libbytesize
-Version:     2.5
-Release:     3%{?dist}
+Version:     2.11
+Release:     99%{?dist}
 Summary:     A library for working with sizes in bytes
-License:     LGPLv2+
+License:     LGPL-2.1-or-later
 URL:         https://github.com/storaged-project/libbytesize
 Source0:     https://github.com/storaged-project/libbytesize/releases/download/%{version}/%{name}-%{version}.tar.gz
 
-BuildRequires:  %{_bindir}/xsltproc
+BuildRequires: make
 BuildRequires: gcc
 BuildRequires: gmp-devel
 BuildRequires: mpfr-devel
@@ -50,7 +54,6 @@ with the libbytesize library.
 %package -n python3-%{realname}
 Summary: Python 3 bindings for libbytesize
 Requires: %{name}%{?_isa} = %{version}-%{release}
-Requires: python3-six
 
 %description -n python3-%{realname}
 This package contains Python 3 bindings for libbytesize making the use of
@@ -72,7 +75,7 @@ for doing calculations with storage sizes.
 
 %build
 %configure %{?configure_opts}
-%{__make} %{?_smp_mflags}
+%make_build
 
 %install
 %{make_install}
@@ -111,14 +114,122 @@ find %{buildroot} -type f -name "*.la" | xargs %{__rm}
 %endif
 
 %changelog
-* Mon Mar 21 2022 Pawel Winogrodzki <pawelwi@microsoft.com> - 2.5-3
-- Adding BR on '%%{_bindir}/xsltproc'.
-- Disabled gtk doc generation to remove network dependency during build-time.
-- License verified.
+* Tue Aug 20 2024 Packit <hello@packit.dev> - 2.11-99
+- Update to version 2.11
 
-* Thu Mar 04 2021 Henry Li <lihl@microsoft.com> - 2.5-2
-- Initial CBL-Mariner import from Fedora 32 (license: MIT).
-- Remove condition checking that does not apply to CBL-Mariner
+* Thu Jul 18 2024 Fedora Release Engineering <releng@fedoraproject.org> - 2.10-5
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_41_Mass_Rebuild
+
+* Fri Jun 07 2024 Python Maint <python-maint@redhat.com> - 2.10-4
+- Rebuilt for Python 3.13
+
+* Thu Jan 25 2024 Fedora Release Engineering <releng@fedoraproject.org> - 2.10-3
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Sun Jan 21 2024 Fedora Release Engineering <releng@fedoraproject.org> - 2.10-2
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Wed Oct 18 2023 Packit <hello@packit.dev> - 2.10-1
+- New version - 2.10 (Vojtech Trefny)
+- Rename 'master' branch to 'main' (Vojtech Trefny)
+- remove dependency on python3-six and python2 crumbs (Alexandre Detiste)
+- ci: Bump actions/checkout from v3 to v4 (Vojtech Trefny)
+- Squashed 'translation-canary/' changes from 4d4e65b..5bb8125 (Vojtech Trefny)
+- dist: Fix release number in spec (Vojtech Trefny)
+
+* Thu Jul 20 2023 Fedora Release Engineering <releng@fedoraproject.org> - 2.9-23
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_39_Mass_Rebuild
+
+* Wed Jul 05 2023 Python Maint <python-maint@redhat.com> - 2.9-22
+- Rebuilt for Python 3.12
+
+* Wed Jul 05 2023 Packit <hello@packit.dev> - 2.9-21
+- New version - 2.9 (Vojtech Trefny)
+- build: Exit before AC_OUTPUT on error (Tomas Bzatek)
+- tests: fix locale tests on musl (triallax)
+- Update translation files (Weblate)
+- Translated using Weblate (Korean) (김인수)
+- ci: Manually prepare spec file for Packit (Vojtech Trefny)
+
+* Wed Jun 14 2023 Python Maint <python-maint@redhat.com> - 2.8-22
+- Rebuilt for Python 3.12
+
+* Fri Mar 24 2023 Vojtech Trefny <vtrefny@redhat.com> - 2.8-21
+- New version - 2.8 (Vojtech Trefny)
+- ci: Do not use release descriptions for Packit builds (Vojtech Trefny)
+- Do not hardcode pylint executable name in Makefile (Vojtech Trefny)
+- Remove unused test dependencies variables from Makefile (Vojtech Trefny)
+- docs: Remove information about Python 2 support (Vojtech Trefny)
+- Various docstring fixes (Vojtech Trefny)
+- Replace C++ style comments with C style (Vojtech Trefny)
+- Make use of error optional (Vojtech Trefny)
+- spec: Fix source archive URL (Vojtech Trefny)
+- ci: Add Packit automation for downstream builds (Vojtech Trefny)
+- spec: Bump release to 21 for Packit daily builds (Vojtech Trefny)
+- ci: Use Packit for daily builds in Copr (Vojtech Trefny)
+- ci: Remove GitHub action for RPM builds (Vojtech Trefny)
+- ci: Add Packit configuration for RPM builds on pull requests (Vojtech Trefny)
+- configure.ac: Remove invalid email address for bug reports (Vojtech Trefny)
+- ci: Update chroots for RPM builds (Vojtech Trefny)
+- Translated using Weblate (Kazakh) (Baurzhan Muftakhidinov)
+- Added translation using Weblate (Kazakh) (Baurzhan Muftakhidinov)
+- misc: Remove "warn: false" from Ansible "command" (Vojtech Trefny)
+- Translated using Weblate (Georgian) (Temuri Doghonadze)
+- spec: Change license string to the SPDX format required by Fedora (Vojtech Trefny)
+- Added translation using Weblate (Georgian) (Temuri Doghonadze)
+- Update translation files (Weblate)
+- Translated using Weblate (Korean) (김인수)
+- ci: Update Fedora versions for RPM build tests (Vojtech Trefny)
+- ci: Rename csmock.Dockerfile to ci.Dockerfile (Vojtech Trefny)
+- ci: Update the csmock GitHub actions configuration (Vojtech Trefny)
+- ci: Run rpmbuild tests in GitHub actions (Vojtech Trefny)
+- Add a GitHub action for running csmock static analysis (Vojtech Trefny)
+- README: Remove the Travis CI badge (Vojtech Trefny)
+- Sync spec with downstream (Vojtech Trefny)
+
+* Thu Jan 19 2023 Fedora Release Engineering <releng@fedoraproject.org> - 2.7-5
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_38_Mass_Rebuild
+
+* Fri Nov 11 2022 Vojtech Trefny <vtrefny@redhat.com> - 2.7-4
+- Change license string to the SPDX format required by Fedora
+
+* Thu Jul 21 2022 Fedora Release Engineering <releng@fedoraproject.org> - 2.7-3
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_37_Mass_Rebuild
+
+* Mon Jun 13 2022 Python Maint <python-maint@redhat.com> - 2.7-2
+- Rebuilt for Python 3.11
+
+* Wed May 25 2022 Vojtech Trefny <vtrefny@redhat.com> - 2.7-1
+- Fix skipping tests when required locale is missing (vtrefny)
+- Remove Travis CI configuration (vtrefny)
+- Fix some warnings and typos in docstrings and comments (vtrefny)
+- Fix warnings dicovered by the GCC analyzer (vtrefny)
+- build: avoid bashisms in configure (sam)
+- Update translation files (noreply)
+- Translated using Weblate (Croatian) (linux.hr)
+- Revert "Translations update from Weblate" (vtrefny)
+- Update translation files (noreply)
+- Added translation using Weblate (Croatian) (linux.hr)
+- Do not use distutils to get Python library path (vtrefny)
+
+* Thu Jan 20 2022 Fedora Release Engineering <releng@fedoraproject.org> - 2.6-3
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_36_Mass_Rebuild
+
+* Thu Jul 22 2021 Fedora Release Engineering <releng@fedoraproject.org> - 2.6-2
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_35_Mass_Rebuild
+
+* Wed Jul 07 2021 Vojtech Trefny <vtrefny@redhat.com> - 2.6-1
+- Make sure Size can be interpreted as integer in Python 3.10 (vtrefny)
+- Translated using Weblate (Finnish) (ricky.tigg)
+- Squashed 'translation-canary/' changes from fccbb1b..4d4e65b (vtrefny)
+- Translated using Weblate (Korean) (simmon)
+- Added translation using Weblate (Korean) (simmon)
+- Update translation files (noreply)
+- Added translation using Weblate (Sinhala) (r45xveza)
+- Sync spec with downstream (vtrefny)
+
+* Thu Jun 03 2021 Python Maint <python-maint@redhat.com> - 2.5-2
+- Rebuilt for Python 3.10
 
 * Wed Jan 27 2021 Vojtech Trefny <vtrefny@redhat.com> - 2.5-1
 - Translated using Weblate (Hebrew) (sh.yaron)
@@ -135,6 +246,9 @@ find %{buildroot} -type f -name "*.la" | xargs %{__rm}
 - Translated using Weblate (Spanish) (fitoschido)
 - Sync spec with downstream (vtrefny)
 
+* Tue Jan 26 2021 Fedora Release Engineering <releng@fedoraproject.org> - 2.4-2
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_34_Mass_Rebuild
+
 * Fri Jul 31 2020 Vojtech Trefny <vtrefny@redhat.com> - 2.4-1
 - Add Travis build status badge (vtrefny)
 - Add Travis CI config and Dockerfiles for running tests (vtrefny)
@@ -144,6 +258,16 @@ find %{buildroot} -type f -name "*.la" | xargs %{__rm}
 - Update translation files (noreply)
 - Added translation using Weblate (Bengali (India)) (akarshan.biswas)
 - Fix library version in pkgconfig file (vtrefny)
+
+* Tue Jul 28 2020 Fedora Release Engineering <releng@fedoraproject.org> - 2.3-4
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_33_Mass_Rebuild
+
+* Mon Jul 13 2020 Tom Stellard <tstellar@redhat.com> - 2.3-3
+- Use make macros
+- https://fedoraproject.org/wiki/Changes/UseMakeBuildInstallMacro
+
+* Sat May 23 2020 Miro Hrončok <mhroncok@redhat.com> - 2.3-2
+- Rebuilt for Python 3.9
 
 * Thu May 21 2020 Vojtech Trefny <vtrefny@redhat.com> - 2.3-1
 - Fix memory leak in bs_size_new_from_str (vtrefny)

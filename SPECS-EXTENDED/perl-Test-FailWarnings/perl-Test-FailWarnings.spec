@@ -1,17 +1,17 @@
 Name:           perl-Test-FailWarnings
 Version:        0.008
-Release:        20%{?dist}
+Release:        34%{?dist}
 Summary:        Add test failures if warnings are caught
-License:        ASL 2.0 
-Vendor:         Microsoft Corporation
-Distribution:   Azure Linux
+License:        Apache-2.0
+
 URL:            https://metacpan.org/release/Test-FailWarnings
-Source0:        https://cpan.metacpan.org/authors/id/D/DA/DAGOLDEN/Test-FailWarnings-%{version}.tar.gz#/perl-Test-FailWarnings-%{version}.tar.gz
+Source0:        https://cpan.metacpan.org/authors/id/D/DA/DAGOLDEN/Test-FailWarnings-%{version}.tar.gz
 
 BuildArch:      noarch
-BuildRequires:  perl-interpreter
+BuildRequires:  make
 BuildRequires:  perl-generators
-BuildRequires:  perl(ExtUtils::MakeMaker) >= 6.17
+BuildRequires:  perl-interpreter
+BuildRequires:  perl(ExtUtils::MakeMaker) >= 6.76
 BuildRequires:  perl(strict)
 BuildRequires:  perl(warnings)
 # Run-time:
@@ -20,6 +20,7 @@ BuildRequires:  perl(Cwd)
 BuildRequires:  perl(File::Spec)
 BuildRequires:  perl(Test::More) >= 0.86
 # Tests:
+BuildRequires:  perl(blib)
 BuildRequires:  perl(Capture::Tiny) >= 0.12
 BuildRequires:  perl(constant)
 BuildRequires:  perl(File::Spec::Functions)
@@ -27,9 +28,7 @@ BuildRequires:  perl(File::Temp)
 BuildRequires:  perl(IO::Handle)
 BuildRequires:  perl(IPC::Open3)
 BuildRequires:  perl(lib)
-BuildRequires:  perl(blib)
 BuildRequires:  perl(List::Util)
-Requires:       perl(:MODULE_COMPAT_%(eval "`%{__perl} -V:version`"; echo $version))
 
 %{?perl_default_filter}
 
@@ -42,18 +41,15 @@ need to know the test count in advance.
 %setup -q -n Test-FailWarnings-%{version}
 
 %build
-%{__perl} Makefile.PL INSTALLDIRS=vendor
-make %{?_smp_mflags}
+/usr/bin/perl Makefile.PL INSTALLDIRS=vendor NO_PACKLIST=1 NO_PERLLOCAL=1
+%{make_build}
 
 %install
-make pure_install DESTDIR=$RPM_BUILD_ROOT
-
-find $RPM_BUILD_ROOT -type f -name .packlist -exec rm -f {} \;
-
+%{make_install}
 %{_fixperms} $RPM_BUILD_ROOT/*
 
 %check
-make test
+%{make_build} test
 
 %files
 %doc Changes CONTRIBUTING LICENSE README
@@ -61,12 +57,55 @@ make test
 %{_mandir}/man3/*
 
 %changelog
-* Mon Apr 25 2022 Muhammad Falak <mwani@microsoft.com> - 0.008-20
-- Add an explicit BR on `perl(blib)` to enable ptest
-- License verified
+* Fri Jul 19 2024 Fedora Release Engineering <releng@fedoraproject.org> - 0.008-34
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_41_Mass_Rebuild
 
-* Fri Oct 15 2021 Pawel Winogrodzki <pawelwi@microsoft.com> - 0.008-19
-- Initial CBL-Mariner import from Fedora 32 (license: MIT).
+* Thu Jan 25 2024 Fedora Release Engineering <releng@fedoraproject.org> - 0.008-33
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Sun Jan 21 2024 Fedora Release Engineering <releng@fedoraproject.org> - 0.008-32
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Fri Jul 21 2023 Fedora Release Engineering <releng@fedoraproject.org> - 0.008-31
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_39_Mass_Rebuild
+
+* Thu Jun 01 2023 Michal Josef Špaček <mspacek@redhat.com> - 0.008-30
+- Update license to SPDX format
+
+* Fri Jan 20 2023 Fedora Release Engineering <releng@fedoraproject.org> - 0.008-29
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_38_Mass_Rebuild
+
+* Fri Jul 22 2022 Fedora Release Engineering <releng@fedoraproject.org> - 0.008-28
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_37_Mass_Rebuild
+
+* Tue May 31 2022 Jitka Plesnikova <jplesnik@redhat.com> - 0.008-27
+- Perl 5.36 rebuild
+
+* Fri Jan 21 2022 Fedora Release Engineering <releng@fedoraproject.org> - 0.008-26
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_36_Mass_Rebuild
+
+* Fri Dec 24 2021 Emmanuel Seyman <emmanuel@seyman.fr> - 0.008-25
+- Replace %%{__perl} with /usr/bin/perl
+- Use %%{make_build} and %%{make_install} where appropriate
+- Pass NO_PACKLIST and NO_PERLLOCAL to Makefile.PL
+
+* Fri Jul 23 2021 Fedora Release Engineering <releng@fedoraproject.org> - 0.008-24
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_35_Mass_Rebuild
+
+* Fri May 21 2021 Jitka Plesnikova <jplesnik@redhat.com> - 0.008-23
+- Perl 5.34 rebuild
+
+* Wed Jan 27 2021 Fedora Release Engineering <releng@fedoraproject.org> - 0.008-22
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_34_Mass_Rebuild
+
+* Tue Jul 28 2020 Fedora Release Engineering <releng@fedoraproject.org> - 0.008-21
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_33_Mass_Rebuild
+
+* Tue Jun 23 2020 Jitka Plesnikova <jplesnik@redhat.com> - 0.008-20
+- Perl 5.32 rebuild
+
+* Tue Mar 17 2020 Jitka Plesnikova <jplesnik@redhat.com> - 0.008-19
+- Add perl(blib) for tests
 
 * Thu Jan 30 2020 Fedora Release Engineering <releng@fedoraproject.org> - 0.008-18
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_32_Mass_Rebuild

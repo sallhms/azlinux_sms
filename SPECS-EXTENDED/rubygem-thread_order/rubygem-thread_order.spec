@@ -1,20 +1,17 @@
-Vendor:         Microsoft Corporation
-Distribution:   Azure Linux
 %global	gem_name	thread_order
 
 Name:		rubygem-%{gem_name}
 Version:	1.1.1
-Release:	5%{?dist}
+Release:	12%{?dist}
 
 Summary:	Test helper for ordering threaded code
 License:	MIT
 URL:		https://github.com/JoshCheek/thread_order
-Source0:	https://github.com/JoshCheek/thread_order/archive/refs/tags/v%{version}.tar.gz#/rubygem-%{gem_name}-%{version}.tar.gz
+Source0:	https://rubygems.org/gems/%{gem_name}-%{version}.gem
 
 BuildRequires:	ruby(release)
 BuildRequires:	rubygems-devel
 BuildRequires:	rubygem(rspec) >= 3
-BuildRequires:	git
 BuildArch:	noarch
 
 %description
@@ -29,7 +26,9 @@ BuildArch:	noarch
 Documentation for %{name}.
 
 %prep
-%autosetup -S git -n %{gem_name}-%{version}
+gem unpack %{SOURCE0}
+%setup -q -D -T -n %{gem_name}-%{version}
+gem spec %{SOURCE0} -l --ruby > %{gem_name}.gemspec
 
 %build
 gem build %{gem_name}.gemspec
@@ -84,12 +83,32 @@ popd
 %doc	%{gem_docdir}
 
 %changelog
-* Mon Nov 28 2022 Muhammad Falak <mwani@microsoft.com> - 1.1.1-5
-- Switch to build from .tar.gz
-- License verified
+* Fri Jul 19 2024 Fedora Release Engineering <releng@fedoraproject.org> - 1.1.1-12
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_41_Mass_Rebuild
 
-* Fri Oct 15 2021 Pawel Winogrodzki <pawelwi@microsoft.com> - 1.1.1-4
-- Initial CBL-Mariner import from Fedora 32 (license: MIT).
+* Fri Jan 26 2024 Fedora Release Engineering <releng@fedoraproject.org> - 1.1.1-11
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Fri Jul 21 2023 Fedora Release Engineering <releng@fedoraproject.org> - 1.1.1-10
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_39_Mass_Rebuild
+
+* Fri Jan 20 2023 Fedora Release Engineering <releng@fedoraproject.org> - 1.1.1-9
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_38_Mass_Rebuild
+
+* Sat Jul 23 2022 Fedora Release Engineering <releng@fedoraproject.org> - 1.1.1-8
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_37_Mass_Rebuild
+
+* Fri Jan 21 2022 Fedora Release Engineering <releng@fedoraproject.org> - 1.1.1-7
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_36_Mass_Rebuild
+
+* Fri Jul 23 2021 Fedora Release Engineering <releng@fedoraproject.org> - 1.1.1-6
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_35_Mass_Rebuild
+
+* Wed Jan 27 2021 Fedora Release Engineering <releng@fedoraproject.org> - 1.1.1-5
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_34_Mass_Rebuild
+
+* Wed Jul 29 2020 Fedora Release Engineering <releng@fedoraproject.org> - 1.1.1-4
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_33_Mass_Rebuild
 
 * Thu Jan 30 2020 Fedora Release Engineering <releng@fedoraproject.org> - 1.1.1-3
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_32_Mass_Rebuild

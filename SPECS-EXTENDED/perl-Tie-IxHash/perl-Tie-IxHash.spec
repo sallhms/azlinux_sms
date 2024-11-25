@@ -7,16 +7,15 @@
 
 Name:           perl-Tie-IxHash
 Version:        1.23
-Release:        22%{?dist}
+Release:        39%{?dist}
 Summary:        Ordered associative arrays for Perl
 
-License:        GPL+ or Artistic
-Vendor:         Microsoft Corporation
-Distribution:   Azure Linux
+License:        GPL-1.0-or-later OR Artistic-1.0-Perl
 URL:            https://metacpan.org/release/Tie-IxHash
-Source0:        https://cpan.metacpan.org/authors/id/C/CH/CHORNY/Tie-IxHash-%{version}.tar.gz#/perl-Tie-IxHash-%{version}.tar.gz
+Source0:        https://cpan.metacpan.org/authors/id/C/CH/CHORNY/Tie-IxHash-%{version}.tar.gz
 
 BuildArch:      noarch
+BuildRequires:  coreutils
 BuildRequires:  make
 BuildRequires:  perl-generators
 BuildRequires:  perl-interpreter
@@ -34,7 +33,6 @@ BuildRequires:  perl(Test::More)
 # Optional tests:
 BuildRequires:  perl(Test::Pod) >= 1.14
 %endif
-Requires:       perl(:MODULE_COMPAT_%(eval "`perl -V:version`"; echo $version))
 
 %description
 This Perl module implements Perl hashes that preserve the order in
@@ -50,6 +48,10 @@ familiar perl array operations can also be performed on the IxHash.
 # Fix line endings
 sed -i -e 's/\r$//' Changes README
 
+%if !%{with perl_Tie_IxHash_enables_optional_test} || %{defined perl_bootstrap}
+rm t/pod.t
+perl -i -ne 'print $_ unless m{^t/pod\.t}' MANIFEST
+%endif
 
 %build
 perl Makefile.PL INSTALLDIRS=vendor NO_PACKLIST=1
@@ -72,8 +74,59 @@ make test
 
 
 %changelog
-* Fri Oct 15 2021 Pawel Winogrodzki <pawelwi@microsoft.com> - 1.23-22
-- Initial CBL-Mariner import from Fedora 32 (license: MIT).
+* Fri Jul 19 2024 Fedora Release Engineering <releng@fedoraproject.org> - 1.23-39
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_41_Mass_Rebuild
+
+* Thu Jan 25 2024 Fedora Release Engineering <releng@fedoraproject.org> - 1.23-38
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Sun Jan 21 2024 Fedora Release Engineering <releng@fedoraproject.org> - 1.23-37
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Fri Jul 21 2023 Fedora Release Engineering <releng@fedoraproject.org> - 1.23-36
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_39_Mass_Rebuild
+
+* Thu Jun 01 2023 Michal Josef Špaček <mspacek@redhat.com> - 1.23-35
+- Update license to SPDX format
+
+* Fri Jan 20 2023 Fedora Release Engineering <releng@fedoraproject.org> - 1.23-34
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_38_Mass_Rebuild
+
+* Fri Jul 22 2022 Fedora Release Engineering <releng@fedoraproject.org> - 1.23-33
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_37_Mass_Rebuild
+
+* Fri Jun 03 2022 Jitka Plesnikova <jplesnik@redhat.com> - 1.23-32
+- Perl 5.36 re-rebuild of bootstrapped packages
+
+* Mon May 30 2022 Jitka Plesnikova <jplesnik@redhat.com> - 1.23-31
+- Perl 5.36 rebuild
+
+* Fri Jan 21 2022 Fedora Release Engineering <releng@fedoraproject.org> - 1.23-30
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_36_Mass_Rebuild
+
+* Fri Jul 23 2021 Fedora Release Engineering <releng@fedoraproject.org> - 1.23-29
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_35_Mass_Rebuild
+
+* Mon May 24 2021 Jitka Plesnikova <jplesnik@redhat.com> - 1.23-28
+- Perl 5.34 re-rebuild of bootstrapped packages
+
+* Fri May 21 2021 Jitka Plesnikova <jplesnik@redhat.com> - 1.23-27
+- Perl 5.34 rebuild
+
+* Wed Feb 03 2021 Petr Pisar <ppisar@redhat.com> - 1.23-26
+- Remove the optional tests if they are disabled
+
+* Wed Jan 27 2021 Fedora Release Engineering <releng@fedoraproject.org> - 1.23-25
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_34_Mass_Rebuild
+
+* Tue Jul 28 2020 Fedora Release Engineering <releng@fedoraproject.org> - 1.23-24
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_33_Mass_Rebuild
+
+* Fri Jun 26 2020 Jitka Plesnikova <jplesnik@redhat.com> - 1.23-23
+- Perl 5.32 re-rebuild of bootstrapped packages
+
+* Mon Jun 22 2020 Jitka Plesnikova <jplesnik@redhat.com> - 1.23-22
+- Perl 5.32 rebuild
 
 * Thu Jan 30 2020 Fedora Release Engineering <releng@fedoraproject.org> - 1.23-21
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_32_Mass_Rebuild

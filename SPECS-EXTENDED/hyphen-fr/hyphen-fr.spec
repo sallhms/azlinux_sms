@@ -1,13 +1,10 @@
-Vendor:         Microsoft Corporation
-Distribution:   Azure Linux
 Name: hyphen-fr
 Summary: French hyphenation rules
 Version: 3.0
-Release: 6%{?dist}
-Source0: http://www.dicollecte.org/download/fr/hyph-fr-v3.0.zip
-Source1: %{name}-LICENSE.txt
+Release: 17%{?dist}
+Source: http://www.dicollecte.org/download/fr/hyph-fr-v3.0.zip
 URL: http://www.dicollecte.org/download.php?prj=fr
-License: LGPLv2+
+License: LGPL-2.1-or-later
 BuildArch: noarch
 
 Requires: hyphen
@@ -18,13 +15,12 @@ French hyphenation rules.
 
 %prep
 %autosetup -c
-cp %{SOURCE1} ./LICENSE.txt
 
 %build
 
 %install
 mkdir -p $RPM_BUILD_ROOT/%{_datadir}/hyphen
-cp -p *.dic $RPM_BUILD_ROOT/%{_datadir}/hyphen
+cp -p hyph_fr.dic $RPM_BUILD_ROOT/%{_datadir}/hyphen/hyph_fr_FR.dic
 
 pushd $RPM_BUILD_ROOT/%{_datadir}/hyphen/
 fr_FR_aliases="fr_BE fr_CA fr_CH fr_LU fr_MC"
@@ -35,13 +31,45 @@ popd
 
 
 %files
-%license LICENSE.txt
 %doc README_hyph_fr-3.0.txt
 %{_datadir}/hyphen/*
 
 %changelog
-* Fri Oct 15 2021 Pawel Winogrodzki <pawelwi@microsoft.com> - 3.0-6
-- Initial CBL-Mariner import from Fedora 32 (license: MIT).
+* Thu Jul 18 2024 Fedora Release Engineering <releng@fedoraproject.org> - 3.0-17
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_41_Mass_Rebuild
+
+* Wed Jan 24 2024 Fedora Release Engineering <releng@fedoraproject.org> - 3.0-16
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Sat Jan 20 2024 Fedora Release Engineering <releng@fedoraproject.org> - 3.0-15
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Thu Jul 20 2023 Fedora Release Engineering <releng@fedoraproject.org> - 3.0-14
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_39_Mass_Rebuild
+
+* Thu Feb 23 2023 Caolan McNamara <caolanm@redhat.com> - 3.0-13
+- migrated to SPDX license
+
+* Thu Jan 19 2023 Fedora Release Engineering <releng@fedoraproject.org> - 3.0-12
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_38_Mass_Rebuild
+
+* Thu Jul 21 2022 Fedora Release Engineering <releng@fedoraproject.org> - 3.0-11
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_37_Mass_Rebuild
+
+* Thu Jan 20 2022 Fedora Release Engineering <releng@fedoraproject.org> - 3.0-10
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_36_Mass_Rebuild
+
+* Thu Jul 22 2021 Fedora Release Engineering <releng@fedoraproject.org> - 3.0-9
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_35_Mass_Rebuild
+
+* Mon Mar 22 2021 Caolan McNamara <caolanm@redhat.com> - 3.0-8
+- fix dangling links
+
+* Tue Jan 26 2021 Fedora Release Engineering <releng@fedoraproject.org> - 3.0-7
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_34_Mass_Rebuild
+
+* Tue Jul 28 2020 Fedora Release Engineering <releng@fedoraproject.org> - 3.0-6
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_33_Mass_Rebuild
 
 * Wed Jan 29 2020 Fedora Release Engineering <releng@fedoraproject.org> - 3.0-5
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_32_Mass_Rebuild

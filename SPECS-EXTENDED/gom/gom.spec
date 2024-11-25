@@ -1,23 +1,22 @@
-Vendor:         Microsoft Corporation
-Distribution:   Azure Linux
 Name:           gom
-Version:        0.4
-Release:        3%{?dist}
+Version:        0.5.3
+Release:        1%{?dist}
 Summary:        GObject to SQLite object mapper library
 
-License:        LGPLv2+
+# documentation is GFDL-1.1-or-later
+License:        LGPL-2.1-or-later AND GFDL-1.1-or-later
 URL:            https://wiki.gnome.org/Projects/Gom
-Source0:        https://download.gnome.org/sources/gom/0.4/gom-%{version}.tar.xz
+Source0:        https://download.gnome.org/sources/gom/0.5/gom-%{version}.tar.xz
 
-BuildRequires:  %{_bindir}/xsltproc
 BuildRequires:  gobject-introspection-devel
 BuildRequires:  meson
 BuildRequires:  pkgconfig(gdk-pixbuf-2.0)
 BuildRequires:  pkgconfig(gio-2.0)
 BuildRequires:  pkgconfig(gobject-2.0)
 BuildRequires:  pkgconfig(sqlite3)
-BuildRequires:  pygobject3-devel
 BuildRequires:  python3-devel
+BuildRequires:  python3-gobject-base
+BuildRequires:  /usr/bin/gi-docgen
 
 %description
 Gom provides an object mapper from GObjects to SQLite. It helps you write
@@ -33,10 +32,10 @@ The %{name}-devel package contains libraries and header files for
 developing applications that use %{name}.
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
-%meson -Denable-gtk-doc=false
+%meson -Denable-gtk-doc=true
 %meson_build
 
 %install
@@ -46,6 +45,7 @@ developing applications that use %{name}.
 
 %files
 %license COPYING
+%doc NEWS README
 %{_libdir}/girepository-1.0/Gom-1.0.typelib
 %{_libdir}/libgom-1.0.so.0*
 %dir %{python3_sitearch}/gi
@@ -57,17 +57,71 @@ developing applications that use %{name}.
 %{_libdir}/libgom-1.0.so
 %{_libdir}/pkgconfig/gom-1.0.pc
 %{_datadir}/gir-1.0/Gom-1.0.gir
+%doc %{_docdir}/gom-1.0/
 
 %changelog
-* Mon Mar 21 2022 Pawel Winogrodzki <pawelwi@microsoft.com> - 0.4-3
-- Adding BR on '%%{_bindir}/xsltproc'.
-- Disabled gtk doc generation to remove network dependency during build-time.
-- License verified.
+* Mon Aug 05 2024 nmontero <nmontero@redhat.com> - 0.5.3-1
+- Update to 0.5.3
 
-* Fri Oct 15 2021 Pawel Winogrodzki <pawelwi@microsoft.com> - 0.4-2
-- Initial CBL-Mariner import from Fedora 32 (license: MIT).
+* Thu Jul 18 2024 Fedora Release Engineering <releng@fedoraproject.org> - 0.5.2-2
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_41_Mass_Rebuild
 
-* Mon Feb 17 2020 Kalev Lember <klember@redhat.com> - 0.4-1
+* Tue Jul 09 2024 David King <amigadave@amigadave.com> - 0.5.2-1
+- Update to 0.5.2
+
+* Fri Jun 07 2024 Python Maint <python-maint@redhat.com> - 0.5.1-3
+- Rebuilt for Python 3.13
+
+* Fri Jun 07 2024 Python Maint <python-maint@redhat.com> - 0.5.1-2
+- Rebuilt for Python 3.13
+
+* Sat Apr 13 2024 David King <amigadave@amigadave.com> - 0.5.1-1
+- Update to 0.5.1
+
+* Mon Mar 04 2024 David King <amigadave@amigadave.com> - 0.5.0-1
+- Update to 0.5.0
+
+* Wed Jan 24 2024 Fedora Release Engineering <releng@fedoraproject.org> - 0.4-14
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Sat Jan 20 2024 Fedora Release Engineering <releng@fedoraproject.org> - 0.4-13
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Thu Jul 20 2023 Fedora Release Engineering <releng@fedoraproject.org> - 0.4-12
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_39_Mass_Rebuild
+
+* Thu Jun 15 2023 Python Maint <python-maint@redhat.com> - 0.4-11
+- Rebuilt for Python 3.12
+
+* Thu Jan 19 2023 Fedora Release Engineering <releng@fedoraproject.org> - 0.4-10
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_38_Mass_Rebuild
+
+* Thu Jul 21 2022 Fedora Release Engineering <releng@fedoraproject.org> - 0.4-9
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_37_Mass_Rebuild
+
+* Mon Jun 13 2022 Python Maint <python-maint@redhat.com> - 0.4-8
+- Rebuilt for Python 3.11
+
+* Thu Jan 20 2022 Fedora Release Engineering <releng@fedoraproject.org> - 0.4-7
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_36_Mass_Rebuild
+
+* Thu Jul 22 2021 Fedora Release Engineering <releng@fedoraproject.org> - 0.4-6
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_35_Mass_Rebuild
+
+* Fri Jun 04 2021 Python Maint <python-maint@redhat.com> - 0.4-5
+- Rebuilt for Python 3.10
+
+* Tue Jan 26 2021 Fedora Release Engineering <releng@fedoraproject.org> - 0.4-4
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_34_Mass_Rebuild
+
+* Tue Jul 28 2020 Fedora Release Engineering <releng@fedoraproject.org> - 0.4-3
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_33_Mass_Rebuild
+
+* Tue May 26 2020 Miro Hrončok <mhroncok@redhat.com> - 0.4-2
+- Rebuilt for Python 3.9
+
+* Mon Feb 17 2020 Bastien Nocera <bnocera@redhat.com> - 0.4-1
++ gom-0.4-1
 - Update to 0.4
 
 * Wed Jan 29 2020 Fedora Release Engineering <releng@fedoraproject.org> - 0.3.3-12

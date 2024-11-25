@@ -1,14 +1,11 @@
-Vendor:         Microsoft Corporation
-Distribution:   Azure Linux
 Name: 		perl-Test-ClassAPI
 Version: 	1.07
-Release: 	11%{?dist}
+Release: 	28%{?dist}
 Summary: 	Provides basic first-pass API testing for large class trees
-License: 	GPL+ or Artistic
+License: 	GPL-1.0-or-later OR Artistic-1.0-Perl
 URL: 		https://metacpan.org/release/Test-ClassAPI
-Source0: 	https://cpan.metacpan.org/authors/id/E/ET/ETHER/Test-ClassAPI-%{version}.tar.gz#/perl-Test-ClassAPI-%{version}.tar.gz
+Source0: 	https://cpan.metacpan.org/authors/id/E/ET/ETHER/Test-ClassAPI-%{version}.tar.gz
 
-Requires:  	perl(:MODULE_COMPAT_%(eval "`%{__perl} -V:version`"; echo $version))
 BuildArch: 	noarch
 
 BuildRequires:  %{__perl}
@@ -46,17 +43,17 @@ This module aims to provide such a capability.
 %setup -q -n Test-ClassAPI-%{version}
 
 %build
-%{__perl} Makefile.PL INSTALLDIRS=vendor NO_PACKLIST=1
-%{__make} %{?_smp_mflags}
+%{__perl} Makefile.PL INSTALLDIRS=vendor NO_PACKLIST=1 NO_PERLLOCAL=1
+%{make_build}
 
 %install
-%{__make} pure_install DESTDIR=$RPM_BUILD_ROOT
+%{make_install}
 chmod -R u+w $RPM_BUILD_ROOT/*
 
 
 %check
 %if !%{defined perl_bootstrap}
-make test AUTOMATED_TESTING=1
+%{__make} test AUTOMATED_TESTING=1
 %endif
 
 %files
@@ -66,8 +63,60 @@ make test AUTOMATED_TESTING=1
 %{_mandir}/man3/*
 
 %changelog
-* Fri Oct 15 2021 Pawel Winogrodzki <pawelwi@microsoft.com> - 1.07-11
-- Initial CBL-Mariner import from Fedora 32 (license: MIT).
+* Fri Jul 19 2024 Fedora Release Engineering <releng@fedoraproject.org> - 1.07-28
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_41_Mass_Rebuild
+
+* Thu Jan 25 2024 Fedora Release Engineering <releng@fedoraproject.org> - 1.07-27
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Sun Jan 21 2024 Fedora Release Engineering <releng@fedoraproject.org> - 1.07-26
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Fri Jul 21 2023 Fedora Release Engineering <releng@fedoraproject.org> - 1.07-25
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_39_Mass_Rebuild
+
+* Fri Jan 20 2023 Fedora Release Engineering <releng@fedoraproject.org> - 1.07-24
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_38_Mass_Rebuild
+
+* Tue Nov 29 2022 Ralf Corsépius <corsepiu@fedoraproject.org> - 1.07-23
+- Spec file cosmetics.
+
+* Mon Nov 28 2022 Ralf Corsépius <corsepiu@fedoraproject.org> - 1.07-22
+- Modernize spec.
+- Convert license to SPDX.
+
+* Fri Jul 22 2022 Fedora Release Engineering <releng@fedoraproject.org> - 1.07-21
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_37_Mass_Rebuild
+
+* Fri Jun 03 2022 Jitka Plesnikova <jplesnik@redhat.com> - 1.07-20
+- Perl 5.36 re-rebuild of bootstrapped packages
+
+* Tue May 31 2022 Jitka Plesnikova <jplesnik@redhat.com> - 1.07-19
+- Perl 5.36 rebuild
+
+* Fri Jan 21 2022 Fedora Release Engineering <releng@fedoraproject.org> - 1.07-18
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_36_Mass_Rebuild
+
+* Fri Jul 23 2021 Fedora Release Engineering <releng@fedoraproject.org> - 1.07-17
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_35_Mass_Rebuild
+
+* Mon May 24 2021 Jitka Plesnikova <jplesnik@redhat.com> - 1.07-16
+- Perl 5.34 re-rebuild of bootstrapped packages
+
+* Fri May 21 2021 Jitka Plesnikova <jplesnik@redhat.com> - 1.07-15
+- Perl 5.34 rebuild
+
+* Wed Jan 27 2021 Fedora Release Engineering <releng@fedoraproject.org> - 1.07-14
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_34_Mass_Rebuild
+
+* Tue Jul 28 2020 Fedora Release Engineering <releng@fedoraproject.org> - 1.07-13
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_33_Mass_Rebuild
+
+* Fri Jun 26 2020 Jitka Plesnikova <jplesnik@redhat.com> - 1.07-12
+- Perl 5.32 re-rebuild of bootstrapped packages
+
+* Tue Jun 23 2020 Jitka Plesnikova <jplesnik@redhat.com> - 1.07-11
+- Perl 5.32 rebuild
 
 * Thu Jan 30 2020 Fedora Release Engineering <releng@fedoraproject.org> - 1.07-10
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_32_Mass_Rebuild

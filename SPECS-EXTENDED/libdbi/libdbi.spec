@@ -1,9 +1,7 @@
-Vendor:         Microsoft Corporation
-Distribution:   Azure Linux
 Summary: Database Independent Abstraction Layer for C
 Name: libdbi
 Version: 0.9.0
-Release: 16%{?dist}
+Release: 25%{?dist}
 License: LGPLv2+
 URL: http://libdbi.sourceforge.net/
 
@@ -16,6 +14,7 @@ Patch1: libdbi-aarch64.patch
 
 BuildRequires: openjade docbook-style-dsssl
 BuildRequires: gcc
+BuildRequires: make
 Conflicts: libdbi-dbd-mysql < 0.8
 Conflicts: libdbi-dbd-pgsql < 0.8
 
@@ -49,7 +48,7 @@ The libdbi-doc package contains guides for development of applications with libd
 %prep
 %setup -q -n %{name}-%{version}
 
-%patch 1 -p1
+%patch -P1 -p1
 
 %build
 %configure
@@ -91,8 +90,35 @@ rm -rf ${RPM_BUILD_ROOT}%{_docdir}/%{name}-%{version}
 %doc doc/driver-guide/
 
 %changelog
-* Fri Oct 15 2021 Pawel Winogrodzki <pawelwi@microsoft.com> - 0.9.0-16
-- Initial CBL-Mariner import from Fedora 32 (license: MIT).
+* Thu Jul 18 2024 Fedora Release Engineering <releng@fedoraproject.org> - 0.9.0-25
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_41_Mass_Rebuild
+
+* Thu Jan 25 2024 Fedora Release Engineering <releng@fedoraproject.org> - 0.9.0-24
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Sun Jan 21 2024 Fedora Release Engineering <releng@fedoraproject.org> - 0.9.0-23
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Thu Jul 20 2023 Fedora Release Engineering <releng@fedoraproject.org> - 0.9.0-22
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_39_Mass_Rebuild
+
+* Thu Jan 19 2023 Fedora Release Engineering <releng@fedoraproject.org> - 0.9.0-21
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_38_Mass_Rebuild
+
+* Thu Jul 21 2022 Fedora Release Engineering <releng@fedoraproject.org> - 0.9.0-20
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_37_Mass_Rebuild
+
+* Thu Jan 20 2022 Fedora Release Engineering <releng@fedoraproject.org> - 0.9.0-19
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_36_Mass_Rebuild
+
+* Thu Jul 22 2021 Fedora Release Engineering <releng@fedoraproject.org> - 0.9.0-18
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_35_Mass_Rebuild
+
+* Tue Jan 26 2021 Fedora Release Engineering <releng@fedoraproject.org> - 0.9.0-17
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_34_Mass_Rebuild
+
+* Tue Jul 28 2020 Fedora Release Engineering <releng@fedoraproject.org> - 0.9.0-16
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_33_Mass_Rebuild
 
 * Wed Jan 29 2020 Fedora Release Engineering <releng@fedoraproject.org> - 0.9.0-15
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_32_Mass_Rebuild

@@ -7,22 +7,21 @@
 
 Name:           perl-Unicode-LineBreak
 Version:        2019.001
-Release:        7%{?dist}
+Release:        22%{?dist}
 Summary:        UAX #14 Unicode Line Breaking Algorithm
-License:        GPL+ or Artistic
-Vendor:         Microsoft Corporation
-Distribution:   Azure Linux
+License:        GPL-1.0-or-later OR Artistic-1.0-Perl
 URL:            https://metacpan.org/release/Unicode-LineBreak
-Source0:        https://cpan.metacpan.org/authors/id/N/NE/NEZUMI/Unicode-LineBreak-%{version}.tar.gz#/perl-Unicode-LineBreak-%{version}.tar.gz
+Source0:        https://cpan.metacpan.org/authors/id/N/NE/NEZUMI/Unicode-LineBreak-%{version}.tar.gz
 
 BuildRequires:  gcc
 BuildRequires:  libthai-devel
 BuildRequires:  coreutils
 BuildRequires:  findutils
 BuildRequires:  make
-BuildRequires:  perl-interpreter
 BuildRequires:  perl-devel
 BuildRequires:  perl-generators
+BuildRequires:  perl-interpreter
+BuildRequires:  perl(:VERSION) >= 5.8
 BuildRequires:  perl(Config)
 BuildRequires:  perl(ExtUtils::MakeMaker)
 BuildRequires:  perl(strict)
@@ -36,24 +35,28 @@ BuildRequires:  perl(Encode) >= 1.98
 BuildRequires:  perl(Exporter)
 BuildRequires:  perl(MIME::Charset) >= 1.006.2
 BuildRequires:  perl(overload)
-BuildRequires:  perl(strict)
 BuildRequires:  perl(vars)
 BuildRequires:  perl(warnings)
 BuildRequires:  perl(XSLoader)
 # Tests
-%if 0%{?with_check}
 BuildRequires:  perl(FindBin)
+BuildRequires:  perl(lib)
 BuildRequires:  perl(Test::More) >= 0.45
-%endif
-
 %if %{with perl_Unicode_LineBreak_enables_optional_test}
 # Optional tests
 BuildRequires:  perl(Test::Pod) >= 1.00
 %endif
-Requires:       perl(:MODULE_COMPAT_%(eval "`%{__perl} -V:version`"; echo $version))
 Requires:       perl(Encode) >= 1.98
 Requires:       perl(MIME::Charset) >= 1.006.2
 
+
+%if 0%{?rhel} == 6
+%filter_from_provides /^perl(Unicode::LineBreak)$/d
+%filter_from_requires /^perl(Unicode::LineBreak::Constants)$/d
+%{?perl_default_filter}
+%endif
+
+%if 0%{?fedora} || 0%{?rhel} > 6
 %{?filter_setup:
 %filter_from_requires /perl(Unicode::LineBreak::Constants)/d
 %filter_from_provides /^perl(Unicode::LineBreak)$/d
@@ -64,6 +67,7 @@ Requires:       perl(MIME::Charset) >= 1.006.2
 %global __requires_exclude %__requires_exclude|^perl\\(Encode\\)\s*$
 %global __requires_exclude %__requires_exclude|^perl\\(MIME::Charset\\)\s*$
 %global __provides_exclude %{?__provides_exclude:%__provides_exclude|}^perl\\(Unicode::LineBreak\\)$
+%endif
 
 
 %description
@@ -117,13 +121,56 @@ make test
 
 
 %changelog
-* Thu Aug 25 2022 Muhammad Falak <mwani@micrsofot.com> - 2019.001-7
-- Add BR on `perl(FindBin)` to fix ptest build
-- License verified
+* Fri Jul 19 2024 Fedora Release Engineering <releng@fedoraproject.org> - 2019.001-22
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_41_Mass_Rebuild
 
-* Mon Nov 02 2020 Joe Schmitt <joschmit@microsoft.com> - 2019.001-6
-- Initial CBL-Mariner import from Fedora 32 (license: MIT).
-- Always fliter excludes on perl requires.
+* Mon Jun 10 2024 Jitka Plesnikova <jplesnik@redhat.com> - 2019.001-21
+- Perl 5.40 rebuild
+
+* Thu Jan 25 2024 Fedora Release Engineering <releng@fedoraproject.org> - 2019.001-20
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Sun Jan 21 2024 Fedora Release Engineering <releng@fedoraproject.org> - 2019.001-19
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Fri Jul 21 2023 Fedora Release Engineering <releng@fedoraproject.org> - 2019.001-18
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_39_Mass_Rebuild
+
+* Tue Jul 11 2023 Jitka Plesnikova <jplesnik@redhat.com> - 2019.001-17
+- Perl 5.38 rebuild
+
+* Thu Jun 01 2023 Michal Josef Špaček <mspacek@redhat.com> - 2019.001-16
+- Update license to SPDX format
+
+* Fri Jan 20 2023 Fedora Release Engineering <releng@fedoraproject.org> - 2019.001-15
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_38_Mass_Rebuild
+
+* Fri Jul 22 2022 Fedora Release Engineering <releng@fedoraproject.org> - 2019.001-14
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_37_Mass_Rebuild
+
+* Wed Jun 01 2022 Jitka Plesnikova <jplesnik@redhat.com> - 2019.001-13
+- Perl 5.36 rebuild
+
+* Fri Jan 21 2022 Fedora Release Engineering <releng@fedoraproject.org> - 2019.001-12
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_36_Mass_Rebuild
+
+* Fri Jul 23 2021 Fedora Release Engineering <releng@fedoraproject.org> - 2019.001-11
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_35_Mass_Rebuild
+
+* Fri May 21 2021 Jitka Plesnikova <jplesnik@redhat.com> - 2019.001-10
+- Perl 5.34 rebuild
+
+* Wed Jan 27 2021 Fedora Release Engineering <releng@fedoraproject.org> - 2019.001-9
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_34_Mass_Rebuild
+
+* Tue Jul 28 2020 Fedora Release Engineering <releng@fedoraproject.org> - 2019.001-8
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_33_Mass_Rebuild
+
+* Tue Jun 23 2020 Jitka Plesnikova <jplesnik@redhat.com> - 2019.001-7
+- Perl 5.32 rebuild
+
+* Fri Mar 13 2020 Petr Pisar <ppisar@redhat.com> - 2019.001-6
+- Specify all dependencies
 
 * Thu Jan 30 2020 Fedora Release Engineering <releng@fedoraproject.org> - 2019.001-5
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_32_Mass_Rebuild

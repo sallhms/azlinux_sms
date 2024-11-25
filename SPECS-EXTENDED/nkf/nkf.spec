@@ -1,15 +1,15 @@
 Name:		nkf
+Epoch:		1
 Version:	2.1.4
-Release:	18%{?dist}
-License:	BSD
-Vendor:         Microsoft Corporation
-Distribution:   Azure Linux
+Release:	34%{?dist}
+License:	Zlib
 URL:		http://nkf.osdn.jp/
 Source0:	http://iij.dl.osdn.jp/nkf/64158/%{name}-%{version}.tar.gz
 ## snippet from the source code
 Source3:	nkf.copyright
 Source4:	nkf.1j
 Patch0:		%{name}-fix-man.patch
+BuildRequires: make
 BuildRequires:	perl-devel
 BuildRequires:	perl-generators
 BuildRequires:	perl(ExtUtils::MakeMaker)
@@ -24,7 +24,6 @@ EUC.
 
 %package -n perl-NKF
 Summary:	Perl extension for Network Kanji Filter
-Requires:	perl(:MODULE_COMPAT_%(eval "`%{__perl} -V:version`"; echo $version))
 
 %description -n perl-NKF
 This is a Perl Extension version of nkf (Network Kanji Filter).
@@ -36,11 +35,12 @@ Conversion details are specified by flags before the last argument.
 cp -p %{SOURCE4} .
 
 %build
-make CFLAGS="$RPM_OPT_FLAGS" nkf
+%set_build_flags
+%make_build CFLAGS="$CFLAGS" LDFLAGS="$LDFLAGS"
 cp -p %{SOURCE3} .
 pushd NKF.mod
-CFLAGS="$RPM_OPT_FLAGS" perl Makefile.PL PREFIX=%{_prefix} INSTALLDIRS=vendor
-make %{?_smp_mflags}
+perl Makefile.PL PREFIX=%{_prefix} INSTALLDIRS=vendor
+%make_build CLFAGS="$CFLAGS" LDFLAGS="$LDFLAGS"
 popd
 
 %install
@@ -54,7 +54,7 @@ install -m 755 -p nkf $RPM_BUILD_ROOT%{_bindir}
 install -m 644 -p nkf.1 $RPM_BUILD_ROOT%{_mandir}/man1
 install -m 644 -p nkf.1utf8 $RPM_BUILD_ROOT%{_mandir}/ja/man1/nkf.1
 pushd NKF.mod
-make install DESTDIR=$RPM_BUILD_ROOT INSTALL="/usr/bin/install -p"
+%make_install
 rm -f	$RPM_BUILD_ROOT%{perl_vendorarch}/perllocal.pod		\
 	$RPM_BUILD_ROOT%{perl_archlib}/perllocal.pod		\
 	$RPM_BUILD_ROOT%{perl_vendorarch}/auto/NKF/NKF.bs	\
@@ -81,11 +81,61 @@ make test
 %{_mandir}/man3/NKF.3pm.gz
 
 %changelog
-* Fri Oct 29 2021 Muhammad Falak <mwani@microsft.com> - 2.1.4-18
-- Remove epoch
+* Thu Jul 18 2024 Fedora Release Engineering <releng@fedoraproject.org> - 1:2.1.4-34
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_41_Mass_Rebuild
 
-* Fri Oct 15 2021 Pawel Winogrodzki <pawelwi@microsoft.com> - 1:2.1.4-17
-- Initial CBL-Mariner import from Fedora 32 (license: MIT).
+* Mon Jun 10 2024 Jitka Plesnikova <jplesnik@redhat.com> - 1:2.1.4-33
+- Perl 5.40 rebuild
+
+* Thu Jan 25 2024 Fedora Release Engineering <releng@fedoraproject.org> - 1:2.1.4-32
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Sun Jan 21 2024 Fedora Release Engineering <releng@fedoraproject.org> - 1:2.1.4-31
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Thu Jul 20 2023 Fedora Release Engineering <releng@fedoraproject.org> - 1:2.1.4-30
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_39_Mass_Rebuild
+
+* Tue Jul 11 2023 Jitka Plesnikova <jplesnik@redhat.com> - 1:2.1.4-29
+- Perl 5.38 rebuild
+
+* Thu Jan 19 2023 Fedora Release Engineering <releng@fedoraproject.org> - 1:2.1.4-28
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_38_Mass_Rebuild
+
+* Fri Dec  2 2022 Akira TAGOH <tagoh@redhat.com> - 1:2.1.4-27
+- Convert License tag to SPDX.
+
+* Fri Jul 22 2022 Fedora Release Engineering <releng@fedoraproject.org> - 1:2.1.4-26
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_37_Mass_Rebuild
+
+* Mon May 30 2022 Jitka Plesnikova <jplesnik@redhat.com> - 1:2.1.4-25
+- Perl 5.36 rebuild
+
+* Fri Apr 15 2022 Timm Bäder <tbaeder@redhat.com> - 1:2.1.4-24
+- Use make_build macro
+- https://docs.fedoraproject.org/en-US/packaging-guidelines/#_parallel_make 
+
+* Thu Jan 20 2022 Fedora Release Engineering <releng@fedoraproject.org> - 1:2.1.4-23
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_36_Mass_Rebuild
+
+* Thu Jul 22 2021 Fedora Release Engineering <releng@fedoraproject.org> - 1:2.1.4-22
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_35_Mass_Rebuild
+
+* Thu Jul  8 2021 Akira TAGOH <tagoh@redhat.com> - 1:2.1.4-21
+- Correct the license tag to zlib.
+  Resolves: rhbz#1974186
+
+* Fri May 21 2021 Jitka Plesnikova <jplesnik@redhat.com> - 1:2.1.4-20
+- Perl 5.34 rebuild
+
+* Tue Jan 26 2021 Fedora Release Engineering <releng@fedoraproject.org> - 1:2.1.4-19
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_34_Mass_Rebuild
+
+* Tue Jul 28 2020 Fedora Release Engineering <releng@fedoraproject.org> - 1:2.1.4-18
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_33_Mass_Rebuild
+
+* Mon Jun 22 2020 Jitka Plesnikova <jplesnik@redhat.com> - 1:2.1.4-17
+- Perl 5.32 rebuild
 
 * Wed Jan 29 2020 Fedora Release Engineering <releng@fedoraproject.org> - 1:2.1.4-16
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_32_Mass_Rebuild

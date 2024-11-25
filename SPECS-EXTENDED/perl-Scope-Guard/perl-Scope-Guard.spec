@@ -1,19 +1,17 @@
 Name:           perl-Scope-Guard
 Summary:        Lexically scoped resource management
 Version:        0.21
-Release:        14%{?dist}
-License:        GPL+ or Artistic
-Source0:        https://cpan.metacpan.org/authors/id/C/CH/CHOCOLATE/Scope-Guard-%{version}.tar.gz 
-Vendor:         Microsoft Corporation
-Distribution:   Azure Linux
+Release:        28%{?dist}
+License:        GPL-1.0-or-later OR Artistic-1.0-Perl
 URL:            https://metacpan.org/release/Scope-Guard
+Source0:        https://cpan.metacpan.org/modules/by-module/Scope/Scope-Guard-%{version}.tar.gz
 BuildArch:      noarch
 # Module Build
 BuildRequires:  coreutils
 BuildRequires:  findutils
 BuildRequires:  make
-BuildRequires:  perl-interpreter
 BuildRequires:  perl-generators
+BuildRequires:  perl-interpreter
 BuildRequires:  perl(ExtUtils::MakeMaker)
 # Module Runtime
 BuildRequires:  perl(Carp)
@@ -22,10 +20,8 @@ BuildRequires:  perl(strict)
 BuildRequires:  perl(warnings)
 # Test Suite
 BuildRequires:  perl(Test::More)
-# Runtime
-Requires:       perl(:MODULE_COMPAT_%(eval "`perl -V:version`"; echo $version))
-
-%{?perl_default_filter}
+# Dependencies
+# (none)
 
 %description
 This module provides a convenient way to perform cleanup or other forms of
@@ -33,7 +29,7 @@ resource management at the end of a scope. It is particularly useful when
 dealing with exceptions: the Scope::Guard constructor takes a reference to
 a subroutine that is guaranteed to be called even if the thread of
 execution is aborted prematurely. This effectively allows lexically-scoped
-"promises" to be made that are automatically honored by perl's garbage
+"promises" to be made that are automatically honored by Perl's garbage
 collector.
 
 %prep
@@ -45,8 +41,8 @@ make %{?_smp_mflags}
 
 %install
 make pure_install DESTDIR=%{buildroot}
-find %{buildroot} -type f -name .packlist -exec rm -f {} \;
-%{_fixperms} %{buildroot}
+find %{buildroot} -type f -name .packlist -delete
+%{_fixperms} -c %{buildroot}
 
 %check
 make test
@@ -57,8 +53,53 @@ make test
 %{_mandir}/man3/Scope::Guard.3*
 
 %changelog
-* Fri Oct 15 2021 Pawel Winogrodzki <pawelwi@microsoft.com> - 0.21-14
-- Initial CBL-Mariner import from Fedora 32 (license: MIT).
+* Fri Jul 19 2024 Fedora Release Engineering <releng@fedoraproject.org> - 0.21-28
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_41_Mass_Rebuild
+
+* Thu Jan 25 2024 Fedora Release Engineering <releng@fedoraproject.org> - 0.21-27
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Sun Jan 21 2024 Fedora Release Engineering <releng@fedoraproject.org> - 0.21-26
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Fri Jul 21 2023 Fedora Release Engineering <releng@fedoraproject.org> - 0.21-25
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_39_Mass_Rebuild
+
+* Fri Mar 31 2023 Paul Howarth <paul@city-fan.org> - 0.21-24
+- Use author-independent source URL
+- Drop redundant use of %%{?perl_default_filter}
+- Simplify find command using -delete
+- Fix permissions verbosely
+
+* Fri Mar 31 2023 Michal Josef Špaček <mspacek@redhat.com> - 0.21-23
+- Update license to SPDX format
+
+* Fri Jan 20 2023 Fedora Release Engineering <releng@fedoraproject.org> - 0.21-22
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_38_Mass_Rebuild
+
+* Fri Jul 22 2022 Fedora Release Engineering <releng@fedoraproject.org> - 0.21-21
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_37_Mass_Rebuild
+
+* Mon May 30 2022 Jitka Plesnikova <jplesnik@redhat.com> - 0.21-20
+- Perl 5.36 rebuild
+
+* Fri Jan 21 2022 Fedora Release Engineering <releng@fedoraproject.org> - 0.21-19
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_36_Mass_Rebuild
+
+* Thu Jul 22 2021 Fedora Release Engineering <releng@fedoraproject.org> - 0.21-18
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_35_Mass_Rebuild
+
+* Fri May 21 2021 Jitka Plesnikova <jplesnik@redhat.com> - 0.21-17
+- Perl 5.34 rebuild
+
+* Wed Jan 27 2021 Fedora Release Engineering <releng@fedoraproject.org> - 0.21-16
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_34_Mass_Rebuild
+
+* Tue Jul 28 2020 Fedora Release Engineering <releng@fedoraproject.org> - 0.21-15
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_33_Mass_Rebuild
+
+* Mon Jun 22 2020 Jitka Plesnikova <jplesnik@redhat.com> - 0.21-14
+- Perl 5.32 rebuild
 
 * Thu Jan 30 2020 Fedora Release Engineering <releng@fedoraproject.org> - 0.21-13
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_32_Mass_Rebuild

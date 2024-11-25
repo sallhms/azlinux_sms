@@ -7,7 +7,7 @@ DefaultDependencies=no
 
 [Service]
 Type=forking
-PIDFile=/var/run/portreserve.pid
+PIDFile=/run/portreserve.pid
 ExecStart=/sbin/portreserve
 Restart=no
 

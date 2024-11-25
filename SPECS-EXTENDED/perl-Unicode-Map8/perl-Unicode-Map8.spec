@@ -1,12 +1,10 @@
 Name:           perl-Unicode-Map8
 Version:        0.13
-Release:        35%{?dist}
+Release:        49%{?dist}
 Summary:        Mapping table between 8-bit chars and Unicode for Perl
-License:        GPL+ or Artistic
-Vendor:         Microsoft Corporation
-Distribution:   Azure Linux
+License:        GPL-1.0-or-later OR Artistic-1.0-Perl
 URL:            https://metacpan.org/release/Unicode-Map8
-Source0:        https://cpan.metacpan.org/modules/by-module/Unicode/Unicode-Map8-%{version}.tar.gz#/perl-Unicode-Map8-%{version}.tar.gz
+Source0:        https://cpan.metacpan.org/modules/by-module/Unicode/Unicode-Map8-%{version}.tar.gz
 Patch0:         perl-Unicode-Map8-0.12-declaration.patch
 Patch1:         perl-Unicode-Map8-0.12-type.patch
 Patch2:         perl-Unicode-Map8-0.13-recode.patch
@@ -31,7 +29,7 @@ BuildRequires:  perl(Unicode::CharName)
 # Test Suite
 # (no additional dependencies)
 # Dependencies
-Requires:       perl(:MODULE_COMPAT_%(eval "`perl -V:version`"; echo $version))
+# (no additional dependencies)
 
 %{?perl_default_filter}
 
@@ -48,11 +46,11 @@ tables in RFC 1345.  New maps can easily be installed.
 %setup -q -n Unicode-Map8-%{version}
 
 # Patches from openSUSE to fix test suite on x86_64
-%patch 0 -p0
-%patch 1 -p0
+%patch -P 0 -p0
+%patch -P 1 -p0
 
 # Re-code docs as UTF8
-%patch 2
+%patch -P 2
 
 
 %build
@@ -81,8 +79,50 @@ make test
 
 
 %changelog
-* Fri Oct 15 2021 Pawel Winogrodzki <pawelwi@microsoft.com> - 0.13-35
-- Initial CBL-Mariner import from Fedora 32 (license: MIT).
+* Fri Jul 19 2024 Fedora Release Engineering <releng@fedoraproject.org> - 0.13-49
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_41_Mass_Rebuild
+
+* Mon Jun 10 2024 Jitka Plesnikova <jplesnik@redhat.com> - 0.13-48
+- Perl 5.40 rebuild
+
+* Thu Jan 25 2024 Fedora Release Engineering <releng@fedoraproject.org> - 0.13-47
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Sun Jan 21 2024 Fedora Release Engineering <releng@fedoraproject.org> - 0.13-46
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Fri Jul 21 2023 Fedora Release Engineering <releng@fedoraproject.org> - 0.13-45
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_39_Mass_Rebuild
+
+* Tue Jul 11 2023 Jitka Plesnikova <jplesnik@redhat.com> - 0.13-44
+- Perl 5.38 rebuild
+
+* Fri Jan 20 2023 Fedora Release Engineering <releng@fedoraproject.org> - 0.13-43
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_38_Mass_Rebuild
+
+* Fri Jul 22 2022 Fedora Release Engineering <releng@fedoraproject.org> - 0.13-42
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_37_Mass_Rebuild
+
+* Tue May 31 2022 Jitka Plesnikova <jplesnik@redhat.com> - 0.13-41
+- Perl 5.36 rebuild
+
+* Fri Jan 21 2022 Fedora Release Engineering <releng@fedoraproject.org> - 0.13-40
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_36_Mass_Rebuild
+
+* Fri Jul 23 2021 Fedora Release Engineering <releng@fedoraproject.org> - 0.13-39
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_35_Mass_Rebuild
+
+* Fri May 21 2021 Jitka Plesnikova <jplesnik@redhat.com> - 0.13-38
+- Perl 5.34 rebuild
+
+* Wed Jan 27 2021 Fedora Release Engineering <releng@fedoraproject.org> - 0.13-37
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_34_Mass_Rebuild
+
+* Tue Jul 28 2020 Fedora Release Engineering <releng@fedoraproject.org> - 0.13-36
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_33_Mass_Rebuild
+
+* Tue Jun 23 2020 Jitka Plesnikova <jplesnik@redhat.com> - 0.13-35
+- Perl 5.32 rebuild
 
 * Thu Jan 30 2020 Fedora Release Engineering <releng@fedoraproject.org> - 0.13-34
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_32_Mass_Rebuild

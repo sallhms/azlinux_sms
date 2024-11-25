@@ -1,22 +1,20 @@
 Name:           perl-Module-Package
 Version:        0.30
-Release:        24%{?dist}
+Release:        36%{?dist}
 Summary:        Postmodern Perl Module Packaging
-License:        GPL+ or Artistic
-Vendor:         Microsoft Corporation
-Distribution:   Azure Linux
+License:        GPL-1.0-or-later OR Artistic-1.0-Perl
 URL:            https://metacpan.org/release/Module-Package
-Source0:        https://cpan.metacpan.org/authors/id/I/IN/INGY/Module-Package-%{version}.tar.gz#/perl-Module-Package-%{version}.tar.gz
+Source0:        https://cpan.metacpan.org/authors/id/I/IN/INGY/Module-Package-%{version}.tar.gz
 # Fix building on Perl without "." in @INC, CPAN RT#121748
 Patch0:         Module-Package-0.30-Fix-building-on-Perl-without-.-in-INC.patch
 BuildArch:      noarch
+BuildRequires:  make
 BuildRequires:  perl-generators
 BuildRequires:  perl(ExtUtils::MakeMaker)
 # Run-time:
 BuildRequires:  perl(Cwd)
 BuildRequires:  perl(Data::Dumper)
 BuildRequires:  perl(File::Path)
-BuildRequires:  perl(FindBin)
 BuildRequires:  perl(IO::All) >= 0.41
 BuildRequires:  perl(Module::Install) >= 1.01
 BuildRequires:  perl(Module::Install::AuthorRequires) >= 0.02
@@ -25,7 +23,6 @@ BuildRequires:  perl(Module::Install::ManifestSkip) >= 0.19
 BuildRequires:  perl(Moo) >= 0.009008
 # Tests:
 BuildRequires:  perl(Test::More)
-Requires:       perl(:MODULE_COMPAT_%(eval "`%{__perl} -V:version`"; echo $version))
 Requires:       perl(Data::Dumper)
 Requires:       perl(File::Path)
 
@@ -35,7 +32,7 @@ Module::Install does, but just a bit better.
 
 %prep
 %setup -q -n Module-Package-%{version}
-%patch 0 -p1
+%patch -P0 -p1
 # XXX: Do not unbundle ./inc/ because of bootstrap
 
 %build
@@ -58,11 +55,49 @@ make test
 %{_mandir}/man3/*
 
 %changelog
-* Wed Jan 19 2022 Pawel Winogrodzki <pawelwi@microsoft.com> - 0.30-24
-- License verified.
+* Fri Jul 19 2024 Fedora Release Engineering <releng@fedoraproject.org> - 0.30-36
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_41_Mass_Rebuild
 
-* Fri Oct 15 2021 Pawel Winogrodzki <pawelwi@microsoft.com> - 0.30-23
-- Initial CBL-Mariner import from Fedora 32 (license: MIT).
+* Thu Jan 25 2024 Fedora Release Engineering <releng@fedoraproject.org> - 0.30-35
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Sun Jan 21 2024 Fedora Release Engineering <releng@fedoraproject.org> - 0.30-34
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Thu Jul 20 2023 Fedora Release Engineering <releng@fedoraproject.org> - 0.30-33
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_39_Mass_Rebuild
+
+* Fri Jan 20 2023 Fedora Release Engineering <releng@fedoraproject.org> - 0.30-32
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_38_Mass_Rebuild
+
+* Wed Nov 09 2022 Michal Josef Špaček <mspacek@redhat.com> - 0.30-31
+- Fix whitespace
+- Update license to SPDX format
+- Use %license macro
+
+* Fri Jul 22 2022 Fedora Release Engineering <releng@fedoraproject.org> - 0.30-30
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_37_Mass_Rebuild
+
+* Wed Jun 01 2022 Jitka Plesnikova <jplesnik@redhat.com> - 0.30-29
+- Perl 5.36 rebuild
+
+* Fri Jan 21 2022 Fedora Release Engineering <releng@fedoraproject.org> - 0.30-28
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_36_Mass_Rebuild
+
+* Thu Jul 22 2021 Fedora Release Engineering <releng@fedoraproject.org> - 0.30-27
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_35_Mass_Rebuild
+
+* Fri May 21 2021 Jitka Plesnikova <jplesnik@redhat.com> - 0.30-26
+- Perl 5.34 rebuild
+
+* Wed Jan 27 2021 Fedora Release Engineering <releng@fedoraproject.org> - 0.30-25
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_34_Mass_Rebuild
+
+* Tue Jul 28 2020 Fedora Release Engineering <releng@fedoraproject.org> - 0.30-24
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_33_Mass_Rebuild
+
+* Tue Jun 23 2020 Jitka Plesnikova <jplesnik@redhat.com> - 0.30-23
+- Perl 5.32 rebuild
 
 * Thu Jan 30 2020 Fedora Release Engineering <releng@fedoraproject.org> - 0.30-22
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_32_Mass_Rebuild

@@ -1,0 +1,58 @@
+From 06e73264b2338d20aa6e3f17b9820be3768439bf Mon Sep 17 00:00:00 2001
+From: Jim Fehlig <jfehlig@suse.com>
+Date: Mon, 6 Jan 2020 16:14:18 -0700
+Subject: [PATCH 02/19] libmetrics: Set pointer NULL after free
+
+From a coverity scan
+
+vhostmd-1.1/libmetrics/libmetrics.c:185:10: warning: Attempt to free released memory
+         free(mdisk->buffer);
+
+Some error conditions will call mdisk_content_free(), which could result
+in a double-free when the entire mdisk is freed and mdisk_content_free()
+is called again. Protect agains these potential double-frees by setting
+the mdisk contents NULL after freeing them.
+
+Signed-off-by: Jim Fehlig <jfehlig@suse.com>
+---
+ libmetrics/libmetrics.c | 24 ++++++++++++++++--------
+ 1 file changed, 16 insertions(+), 8 deletions(-)
+
+diff --git a/libmetrics/libmetrics.c b/libmetrics/libmetrics.c
+index 6c80681..a5582e7 100644
+--- a/libmetrics/libmetrics.c
++++ b/libmetrics/libmetrics.c
+@@ -177,14 +177,22 @@ static metric_disk * mdisk_alloc()
+ static void mdisk_content_free()
+ {
+    if (mdisk) {
+-      if (mdisk->doc)
+-          xmlFreeDoc(mdisk->doc);
+-      if (mdisk->pctxt)
+-         xmlFreeParserCtxt(mdisk->pctxt);
+-      if (mdisk->buffer)
+-         free(mdisk->buffer);
+-      if (mdisk->disk_name)
+-         free(mdisk->disk_name);
++       if (mdisk->doc) {
++           xmlFreeDoc(mdisk->doc);
++           mdisk->doc = NULL;
++       }
++       if (mdisk->pctxt) {
++           xmlFreeParserCtxt(mdisk->pctxt);
++           mdisk->pctxt = NULL;
++       }
++       if (mdisk->buffer) {
++           free(mdisk->buffer);
++           mdisk->buffer = NULL;
++       }
++       if (mdisk->disk_name) {
++           free(mdisk->disk_name);
++           mdisk->disk_name = NULL;
++       }
+    }
+ }
+ 
+-- 
+2.32.0
+

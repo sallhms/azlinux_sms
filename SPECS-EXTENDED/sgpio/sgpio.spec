@@ -1,16 +1,16 @@
-Vendor:         Microsoft Corporation
-Distribution:   Azure Linux
 Summary: SGPIO captive backplane tool
 Name: sgpio
 Version: 1.2.0.10
-Release: 28%{?dist}
-License: GPLv2+
-URL: http://sources.redhat.com/lvm2/wiki/DMRAID_Eventing
-Source0: %{_distro_sources_url}/%{name}-1.2-0.10-src.tar.gz
+Release: 37%{?dist}
+License: GPL-2.0-or-later
+URL: https://sourceware.org/lvm2/wiki/DMRAID_Eventing
+Source: sgpio-1.2-0.10-src.tar.gz
 # there is no official download link for the latest package
 #Source: http://sources.redhat.com/lvm2/wiki/DMRAID_Eventing?action=AttachFile&do=get&target=sgpio-1.2.tgz
 Patch0: sgpio-1.2-makefile.patch
 Patch1: sgpio-1.2-coverity.patch
+Patch2: sgpio-1.2-buffer-overflow.patch
+BuildRequires: make
 BuildRequires:  gcc
 BuildRequires: dos2unix
 
@@ -20,34 +20,61 @@ Intel SGPIO enclosure management utility
 %prep
 %setup -q -n sgpio
 dos2unix --keepdate Makefile README
-%patch 0 -p1 -b .makefile
-%patch 1 -p1 -b .coverity
+%patch -P0 -p1 -b .makefile
+%patch -P1 -p1 -b .coverity
+%patch -P2 -p1 -b .buffer-overflow
 chmod a-x *
 
 %build
 #@@@ workaround for #474755 - remove with next update
 make clean
-make %{?_smp_mflags} CFLAGS="$RPM_OPT_FLAGS" LDFLAGS="$RPM_LD_FLAGS"
+%make_build CFLAGS="$RPM_OPT_FLAGS" LDFLAGS="$RPM_LD_FLAGS"
 
 %install
-make install INSTALL="%{__install} -p" DESTDIR=$RPM_BUILD_ROOT SBIN_DIR=$RPM_BUILD_ROOT%{_sbindir} MANDIR=$RPM_BUILD_ROOT%{_mandir}
+%make_install SBIN_DIR=$RPM_BUILD_ROOT%{_sbindir} MANDIR=$RPM_BUILD_ROOT%{_mandir}
 
 %files
-%license LICENSE_GPL
 %doc README
 %{_sbindir}/sgpio
 %{_mandir}/man1/sgpio.*
 
 %changelog
-* Thu Feb 22 2024 Pawel Winogrodzki <pawelwi@microsoft.com> - 1.2.0.10-28
-- Updating naming for 3.0 version of Azure Linux.
+* Sat Jul 20 2024 Fedora Release Engineering <releng@fedoraproject.org> - 1.2.0.10-37
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_41_Mass_Rebuild
 
-* Mon Apr 25 2022 Mateusz Malisz <mamalisz@microsoft.com> - 1.2.0.10-27
-- Update Source0
-- License verified.
+* Sat Jan 27 2024 Fedora Release Engineering <releng@fedoraproject.org> - 1.2.0.10-36
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
 
-* Fri Oct 15 2021 Pawel Winogrodzki <pawelwi@microsoft.com> - 1.2.0.10-26
-- Initial CBL-Mariner import from Fedora 32 (license: MIT).
+* Tue Oct 31 2023 Lukáš Zaoral <lzaoral@redhat.com> - 1.2.0.10-35
+- fix buffer overflow with high port numbers
+
+* Sat Jul 22 2023 Fedora Release Engineering <releng@fedoraproject.org> - 1.2.0.10-34
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_39_Mass_Rebuild
+
+* Wed Mar 01 2023 Gwyn Ciesla <gwync@protonmail.com> - 1.2.0.10-33
+- migrated to SPDX license
+
+* Sat Jan 21 2023 Fedora Release Engineering <releng@fedoraproject.org> - 1.2.0.10-32
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_38_Mass_Rebuild
+
+* Sat Jul 23 2022 Fedora Release Engineering <releng@fedoraproject.org> - 1.2.0.10-31
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_37_Mass_Rebuild
+
+* Sat Jan 22 2022 Fedora Release Engineering <releng@fedoraproject.org> - 1.2.0.10-30
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_36_Mass_Rebuild
+
+* Fri Jul 23 2021 Fedora Release Engineering <releng@fedoraproject.org> - 1.2.0.10-29
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_35_Mass_Rebuild
+
+* Wed Jan 27 2021 Fedora Release Engineering <releng@fedoraproject.org> - 1.2.0.10-28
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_34_Mass_Rebuild
+
+* Mon Aug 24 2020 Jan Synáček <jsynacek@redhat.com> - 1.2.0.10-27
+- Use make macros
+- https://fedoraproject.org/wiki/Changes/UseMakeBuildInstallMacro
+
+* Wed Jul 29 2020 Fedora Release Engineering <releng@fedoraproject.org> - 1.2.0.10-26
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_33_Mass_Rebuild
 
 * Thu Jan 30 2020 Fedora Release Engineering <releng@fedoraproject.org> - 1.2.0.10-25
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_32_Mass_Rebuild
@@ -122,7 +149,7 @@ make install INSTALL="%{__install} -p" DESTDIR=$RPM_BUILD_ROOT SBIN_DIR=$RPM_BUI
 - rebuild for F12
 
 * Tue Apr 14 2009  Jiri Moskovcak <jmoskovc@redhat.com> 1.2.0.10-2
-- move the EOL conversion and the removal of
+- move the EOL conversion and the removal of 
   executable bits from %%install to %%prep section
 
 * Wed Dec 10 2008 Jiri Moskovcak <jmoskovc@redhat.com> 1.2.0_10-1

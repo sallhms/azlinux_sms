@@ -1,85 +1,97 @@
-%{!?python3_sitelib: %define python3_sitelib %(python3 -c "from distutils.sysconfig import get_python_lib;print(get_python_lib())")}
-%{!?__python3: %global __python3 /usr/bin/python3}
-
 %global pypi_name testscenarios
 
 Name:           python-%{pypi_name}
 Version:        0.5.0
-Release:        23%{?dist}
+Release:        34%{?dist}
 Summary:        Testscenarios, a pyunit extension for dependency injection
+
 License:        ASL 2.0 and BSD
-URL:            https://launchpad.net/testscenarios
-Vendor:         Microsoft Corporation
-Distribution:   Azure Linux
-Source0:        https://pypi.python.org/packages/source/t/%{pypi_name}/%{pypi_name}-%{version}.tar.gz
+URL:            https://github.com/testing-cabal/testscenarios
+Source:         %pypi_source
 BuildArch:      noarch
+
 BuildRequires:  python3-devel
-BuildRequires:  python3-setuptools
-BuildRequires:  python3-pbr
-BuildRequires:  python3-testtools
-BuildRequires:  python3-xml
-%if 0%{?with_check}
-BuildRequires:  python3-pip
-%endif
 
-%global _description\
-testscenarios provides clean dependency injection for python unittest style\
-tests. This can be used for interface testing (testing many implementations via\
-a single test suite) or for classic dependency injection (provide tests with\
-dependencies externally to the test code itself, allowing easy testing in\
-different situations).
-
-%description %_description
-
-%package -n python3-%{pypi_name}
-Summary:        Testscenarios, a pyunit extension for dependency injection
-Requires:       python3-pbr
-Requires:       python3-testtools
-
-%description -n python3-%{pypi_name}
+%global _description %{expand:
 testscenarios provides clean dependency injection for python unittest style
 tests. This can be used for interface testing (testing many implementations via
 a single test suite) or for classic dependency injection (provide tests with
 dependencies externally to the test code itself, allowing easy testing in
-different situations).
+different situations).}
+
+%description %{_description}
+
+%package -n python3-%{pypi_name}
+Summary:        %{summary}
+
+%description -n python3-%{pypi_name} %{_description}
 
 %prep
 %setup -q -n %{pypi_name}-%{version}
-# Remove bundled egg-info
-rm -rf %{pypi_name}.egg-info
 # Remove unknown test options from setup.py
 sed -i '/^buffer = 1$/d' setup.cfg
 sed -i '/^catch = 1$/d' setup.cfg
 
+%generate_buildrequires
+%pyproject_buildrequires
+
 %build
-CFLAGS="%{optflags}" %{__python3} setup.py build
+%pyproject_wheel
+
 
 %install
-%{__python3} setup.py install --skip-build --root %{buildroot}
+%pyproject_install
+%pyproject_save_files %{pypi_name}
 
 %check
-%{__python3} setup.py test
+%{python3} setup.py test
 
-%files -n python3-%{pypi_name}
-%license Apache-2.0
-%license BSD
-%doc GOALS
-%doc HACKING
-%doc NEWS
-%doc README
-%doc doc/
-%{python3_sitelib}/*
+%files -n python3-%{pypi_name} -f %{pyproject_files}
+%license Apache-2.0 BSD
+%doc GOALS HACKING NEWS README doc/
 
 %changelog
-* Tue Sep 03 2024 Pawel Winogrodzki <pawelwi@microsoft.com> - 0.5.0-23
-- Release bump to fix package information.
+* Fri Jul 19 2024 Fedora Release Engineering <releng@fedoraproject.org> - 0.5.0-34
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_41_Mass_Rebuild
 
-* Fri Apr 29 2022 Muhammad Falak <mwani@microsoft.com> - 0.5.0-22
-- Add BR on `pip` to enable ptest
-- License verified
+* Fri Jun 07 2024 Python Maint <python-maint@redhat.com> - 0.5.0-33
+- Rebuilt for Python 3.13
 
-* Tue Oct 13 2020 Steve Laughman <steve.laughman@microsoft.com> - 0.5.0-21
-- Initial CBL-Mariner import from Fedora 33 (license: MIT)
+* Fri Jan 26 2024 Fedora Release Engineering <releng@fedoraproject.org> - 0.5.0-32
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Mon Jan 22 2024 Fedora Release Engineering <releng@fedoraproject.org> - 0.5.0-31
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Fri Jul 21 2023 Fedora Release Engineering <releng@fedoraproject.org> - 0.5.0-30
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_39_Mass_Rebuild
+
+* Tue Jun 13 2023 Python Maint <python-maint@redhat.com> - 0.5.0-29
+- Rebuilt for Python 3.12
+
+* Fri Jan 20 2023 Fedora Release Engineering <releng@fedoraproject.org> - 0.5.0-28
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_38_Mass_Rebuild
+
+* Fri Jul 22 2022 Fedora Release Engineering <releng@fedoraproject.org> - 0.5.0-27
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_37_Mass_Rebuild
+
+* Wed Jun 15 2022 Python Maint <python-maint@redhat.com> - 0.5.0-26
+- Rebuilt for Python 3.11
+
+* Sat Apr 30 2022 Carl George <carl@george.computer> - 0.5.0-25
+- Convert to pyproject macros
+
+* Fri Jan 21 2022 Fedora Release Engineering <releng@fedoraproject.org> - 0.5.0-24
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_36_Mass_Rebuild
+
+* Fri Jul 23 2021 Fedora Release Engineering <releng@fedoraproject.org> - 0.5.0-23
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_35_Mass_Rebuild
+
+* Wed Jun 02 2021 Python Maint <python-maint@redhat.com> - 0.5.0-22
+- Rebuilt for Python 3.10
+
+* Wed Jan 27 2021 Fedora Release Engineering <releng@fedoraproject.org> - 0.5.0-21
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_34_Mass_Rebuild
 
 * Wed Jul 29 2020 Fedora Release Engineering <releng@fedoraproject.org> - 0.5.0-20
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_33_Mass_Rebuild

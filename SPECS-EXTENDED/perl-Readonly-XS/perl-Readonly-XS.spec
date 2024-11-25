@@ -1,15 +1,13 @@
-Vendor:         Microsoft Corporation
-Distribution:   Azure Linux
 # Provides/Requires filtering is different from rpm 4.9 onwards
 %global rpm49 %(rpm --version | perl -p -e 's/^.* (\\d+)\\.(\\d+).*/sprintf("%d.%03d",$1,$2) ge 4.009 ? 1 : 0/e' 2>/dev/null || echo 0)
 
 Name:		perl-Readonly-XS
 Version:	1.05
-Release:	37%{?dist}
+Release:	52%{?dist}
 Summary:	Companion module for Readonly
-License:	GPL+ or Artistic
+License:	GPL-1.0-or-later OR Artistic-1.0-Perl
 URL:		https://metacpan.org/release/Readonly-XS
-Source0:	https://cpan.metacpan.org/authors/id/R/RO/ROODE/Readonly-XS-%{version}.tar.gz#/perl-Readonly-XS-%{version}.tar.gz
+Source0:	https://cpan.metacpan.org/authors/id/R/RO/ROODE/Readonly-XS-%{version}.tar.gz
 Patch0:		Readonly-XS-1.05-prereq.patch
 Patch1:		Readonly-XS-1.05-interpreter.patch
 # Build (perl-devel split from main perl package at F-7)
@@ -30,7 +28,6 @@ BuildRequires:	perl(XSLoader)
 # Test suite
 BuildRequires:	perl(Test::More)
 # Runtime
-Requires:	perl(:MODULE_COMPAT_%(eval "`perl -V:version`"; echo $version))
 Requires:	perl(Carp)
 Requires:	perl(Readonly) >= 1.02
 
@@ -45,10 +42,10 @@ scalar variables.
 %setup -q -n Readonly-XS-%{version}
 
 # Build process does not actually need perl(Readonly)
-%patch 0
+%patch -P 0
 
 # Fix script interpreter for test suite since we're packaging it
-%patch 1
+%patch -P 1
 
 # And tests don't need to be executable either
 chmod -c -x t/test.t
@@ -79,8 +76,54 @@ make test
 %{_mandir}/man3/Readonly::XS.3*
 
 %changelog
-* Fri Oct 15 2021 Pawel Winogrodzki <pawelwi@microsoft.com> - 1.05-37
-- Initial CBL-Mariner import from Fedora 32 (license: MIT).
+* Fri Jul 19 2024 Fedora Release Engineering <releng@fedoraproject.org> - 1.05-52
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_41_Mass_Rebuild
+
+* Mon Jun 10 2024 Jitka Plesnikova <jplesnik@redhat.com> - 1.05-51
+- Perl 5.40 rebuild
+
+* Thu Jan 25 2024 Fedora Release Engineering <releng@fedoraproject.org> - 1.05-50
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Sun Jan 21 2024 Fedora Release Engineering <releng@fedoraproject.org> - 1.05-49
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Fri Jul 21 2023 Fedora Release Engineering <releng@fedoraproject.org> - 1.05-48
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_39_Mass_Rebuild
+
+* Tue Jul 11 2023 Jitka Plesnikova <jplesnik@redhat.com> - 1.05-47
+- Perl 5.38 rebuild
+
+* Tue May 09 2023 Michal Josef Špaček <mspacek@redhat.com> - 1.05-46
+- Remove patch warning
+- Update license to SPDX format
+
+* Fri Jan 20 2023 Fedora Release Engineering <releng@fedoraproject.org> - 1.05-45
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_38_Mass_Rebuild
+
+* Fri Jul 22 2022 Fedora Release Engineering <releng@fedoraproject.org> - 1.05-44
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_37_Mass_Rebuild
+
+* Mon May 30 2022 Jitka Plesnikova <jplesnik@redhat.com> - 1.05-43
+- Perl 5.36 rebuild
+
+* Fri Jan 21 2022 Fedora Release Engineering <releng@fedoraproject.org> - 1.05-42
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_36_Mass_Rebuild
+
+* Thu Jul 22 2021 Fedora Release Engineering <releng@fedoraproject.org> - 1.05-41
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_35_Mass_Rebuild
+
+* Fri May 21 2021 Jitka Plesnikova <jplesnik@redhat.com> - 1.05-40
+- Perl 5.34 rebuild
+
+* Wed Jan 27 2021 Fedora Release Engineering <releng@fedoraproject.org> - 1.05-39
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_34_Mass_Rebuild
+
+* Tue Jul 28 2020 Fedora Release Engineering <releng@fedoraproject.org> - 1.05-38
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_33_Mass_Rebuild
+
+* Mon Jun 22 2020 Jitka Plesnikova <jplesnik@redhat.com> - 1.05-37
+- Perl 5.32 rebuild
 
 * Thu Jan 30 2020 Fedora Release Engineering <releng@fedoraproject.org> - 1.05-36
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_32_Mass_Rebuild

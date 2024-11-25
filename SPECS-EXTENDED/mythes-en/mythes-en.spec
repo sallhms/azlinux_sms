@@ -1,18 +1,15 @@
-Vendor:         Microsoft Corporation
-Distribution:   Azure Linux
 Name: mythes-en
 Summary: English thesaurus
 Version: 3.0
-Release: 34%{?dist}
-# https source does not exist
-Source: http://www.danielnaber.de/wn2ooo/wn2ooo20050723.tgz#/%{name}-%{version}.tgz
+Release: 40%{?dist}
+Source: http://www.danielnaber.de/wn2ooo/wn2ooo20050723.tgz
 URL: http://www.danielnaber.de/wn2ooo/
 BuildRequires: python3-devel
 BuildRequires: perl-interpreter
 BuildRequires: wordnet = %{version}
 # License BSD is for the th_gen_idx.pl file
 # License Artistic Clarified is for python files
-License: BSD and Artistic clarified
+License: BSD-3-Clause-Modification AND ClArtistic
 BuildArch: noarch
 Requires: mythes
 Supplements: (mythes and langpacks-en)
@@ -24,7 +21,7 @@ English thesaurus.
 
 %prep
 %setup -q -c %{name}-%{version}
-%patch 0 -p1 -b .python3
+%patch -P0 -p1 -b .python3
 
 %build
 export WNHOME=/usr/share/wordnet-%{version}
@@ -46,14 +43,30 @@ popd
 
 
 %files
-%license wn2ooo/LICENSE_th_gen_idx.txt
-%doc wn2ooo/README.txt
+%doc wn2ooo/LICENSE_th_gen_idx.txt wn2ooo/README.txt
 %{_datadir}/mythes/*
 
 %changelog
-* Thu Mar 09 2023 Muhammad Falak R Wani <mwani@microsoft.com> - 3.0-34
-- Initial CBL-Mariner import from Fedora 36 (license: MIT)
-- License verified.
+* Thu Jul 18 2024 Fedora Release Engineering <releng@fedoraproject.org> - 3.0-40
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_41_Mass_Rebuild
+
+* Thu Jan 25 2024 Fedora Release Engineering <releng@fedoraproject.org> - 3.0-39
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Sun Jan 21 2024 Fedora Release Engineering <releng@fedoraproject.org> - 3.0-38
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Thu Jul 20 2023 Fedora Release Engineering <releng@fedoraproject.org> - 3.0-37
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_39_Mass_Rebuild
+
+* Wed Feb 23 2023 Caolán McNamara <caolanm@redhat.com> - 3.0-36
+- migrated to SPDX license
+
+* Thu Jan 19 2023 Fedora Release Engineering <releng@fedoraproject.org> - 3.0-35
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_38_Mass_Rebuild
+
+* Fri Jul 22 2022 Fedora Release Engineering <releng@fedoraproject.org> - 3.0-34
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_37_Mass_Rebuild
 
 * Thu Jan 20 2022 Fedora Release Engineering <releng@fedoraproject.org> - 3.0-33
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_36_Mass_Rebuild

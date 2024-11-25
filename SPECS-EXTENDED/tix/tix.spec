@@ -3,28 +3,29 @@
 %{!?tcl_sitelib: %global tcl_sitelib %{_datadir}/tcl%{tcl_version}}
 %global tixmajor 8.4
 %global tcltkver 8.4.13
-Summary:        A set of extension widgets for Tk
-Name:           tix
-Version:        %{tixmajor}.3
-Release:        35%{?dist}
-License:        TCL
-Vendor:         Microsoft Corporation
-Distribution:   Azure Linux
-URL:            https://tix.sourceforge.net/
-Source0:        https://downloads.sourceforge.net/project/%{name}/%{name}/%{version}/Tix%{version}-src.tar.gz
+
+Summary: A set of extension widgets for Tk
+Name: tix
+Epoch: 1
+Version: %{tixmajor}.3
+Release: 41%{?dist}
+License: TCL
+URL: http://tix.sourceforge.net/
+Source0: http://downloads.sourceforge.net/project/%{name}/%{name}/%{version}/Tix%{version}-src.tar.gz
 #  0: Fixes BZ#81297 (soname of libraries)
-Patch0:         tix-8.4.2-link.patch
-Patch1:         tix-8.4.3-tcl86.patch
-Patch2:         tix-8.4.3-covscan-fixes.patch
-BuildRequires:  gcc
-BuildRequires:  libX11-devel
-BuildRequires:  make
-BuildRequires:  tcl-devel >= %{tcltkver}
-BuildRequires:  tk-devel >= %{tcltkver}
-Requires:       /etc/ld.so.conf.d
-Requires:       tcl >= %{tcltkver}
-Requires:       tcl(abi) = 8.6
-Requires:       tk >= %{tcltkver}
+Patch0: tix-8.4.2-link.patch
+Patch1: tix-8.4.3-tcl86.patch
+Patch2: tix-8.4.3-covscan-fixes.patch
+Patch3: tix-implicit-int.patch
+Patch4: tix-configure-c99.patch
+Patch5: tix-c89.patch
+Requires: tcl(abi) = 8.6
+Requires: tcl >= %{tcltkver}, tk >= %{tcltkver}
+Requires: /etc/ld.so.conf.d
+BuildRequires: make
+Buildrequires: tcl-devel >= %{tcltkver}, tk-devel >= %{tcltkver}
+BuildRequires: libX11-devel
+BuildRequires: gcc
 
 %description
 Tix, the Tk Interface eXtension, is a powerful set of user interface
@@ -33,8 +34,8 @@ applications. Using Tix together with Tk will greatly enhance the
 appearance and functionality of your application.
 
 %package devel
-Summary:        Tk Interface eXtension development files
-Requires:       tix = %{version}-%{release}
+Summary: Tk Interface eXtension development files
+Requires: tix = %{epoch}:%{version}-%{release}
 
 %description devel
 Tix, the Tk Interface eXtension, is a powerful set of user interface
@@ -46,8 +47,8 @@ This package contains the tix development files needed for building
 tix applications.
 
 %package doc
-Summary:        Tk Interface eXtension documentation
-Requires:       tix = %{version}-%{release}
+Summary: Tk Interface eXtension documentation
+Requires: tix = %{epoch}:%{version}-%{release}
 
 %description doc
 Tix, the Tk Interface eXtension, is a powerful set of user interface
@@ -75,49 +76,46 @@ sed -i 's/\r//' docs/Release-8.4.0.txt
 %make_install PKG_LIB_FILE=libTix.so
 
 # move shared lib to tcl sitearch
-mv %{buildroot}/%{tcl_sitearch}/Tix%{version}/libTix.so \
-	%{buildroot}/%{tcl_sitearch}
+mv $RPM_BUILD_ROOT%{tcl_sitearch}/Tix%{version}/libTix.so \
+	$RPM_BUILD_ROOT%{tcl_sitearch}
 pwd
 # make links
 ln -sf ../libTix.so \
-	%{buildroot}/%{tcl_sitearch}/Tix%{version}/libTix.so
-ln -sf tcl%{tcl_version}/Tix%{version}/libTix.so %{buildroot}/%{_libdir}/libTix.so
-ln -sf tcl%{tcl_version}/Tix%{version}/libTix.so %{buildroot}/%{_libdir}/libtix.so
+	$RPM_BUILD_ROOT%{tcl_sitearch}/Tix%{version}/libTix.so
+ln -sf tcl%{tcl_version}/Tix%{version}/libTix.so $RPM_BUILD_ROOT%{_libdir}/libTix.so
+ln -sf tcl%{tcl_version}/Tix%{version}/libTix.so $RPM_BUILD_ROOT%{_libdir}/libtix.so
 
 # install demo scripts
-mkdir -p %{buildroot}/%{tcl_sitelib}/Tix%{tixmajor}
-cp -a demos %{buildroot}/%{tcl_sitelib}/Tix%{tixmajor}
+mkdir -p $RPM_BUILD_ROOT%{tcl_sitelib}/Tix%{tixmajor}
+cp -a demos $RPM_BUILD_ROOT%{tcl_sitelib}/Tix%{tixmajor}
 
 # the header and man pages were in the previous package, keeping for now...
-mkdir -p %{buildroot}/%{_includedir}
-install -m 0644 generic/tix.h %{buildroot}/%{_includedir}/tix.h
-mkdir -p %{buildroot}/%{_mandir}/mann
-cp man/*.n %{buildroot}/%{_mandir}/mann
+mkdir -p $RPM_BUILD_ROOT%{_includedir}
+install -m 0644 generic/tix.h $RPM_BUILD_ROOT%{_includedir}/tix.h
+mkdir -p $RPM_BUILD_ROOT%{_mandir}/mann
+cp man/*.n $RPM_BUILD_ROOT%{_mandir}/mann
 
 # Handle unique library path (so apps can actually find the library)
-mkdir -p %{buildroot}/%{_sysconfdir}/ld.so.conf.d
-echo "%{tcl_sitearch}" > %{buildroot}/%{_sysconfdir}/ld.so.conf.d/tix-%{_arch}.conf
+mkdir -p $RPM_BUILD_ROOT%{_sysconfdir}/ld.so.conf.d
+echo "%{tcl_sitearch}" > $RPM_BUILD_ROOT%{_sysconfdir}/ld.so.conf.d/tix-%{_arch}.conf
 
 # ship docs except pdf
 rm -rf docs/pdf
 find docs -name .cvsignore -exec rm '{}' ';'
 
 # these files end up in the doc directory
-rm -f %{buildroot}/%{_libdir}/Tix%{tixmajor}/README.txt
-rm -f %{buildroot}/%{_libdir}/Tix%{tixmajor}/license.terms
-
-%check
-%make_build tests
+rm -f $RPM_BUILD_ROOT%{_libdir}/Tix%{tixmajor}/README.txt
+rm -f $RPM_BUILD_ROOT%{_libdir}/Tix%{tixmajor}/license.terms
 
 %post -p /sbin/ldconfig
+
 %postun -p /sbin/ldconfig
 
 %files
-%license license.terms
-%doc *.txt *.html
 %{tcl_sitearch}/libTix.so
 %{tcl_sitearch}/Tix%{version}
 %{_sysconfdir}/ld.so.conf.d/*
+%doc *.txt *.html license.terms
 
 %files devel
 %{_includedir}/tix.h
@@ -130,10 +128,26 @@ rm -f %{buildroot}/%{_libdir}/Tix%{tixmajor}/license.terms
 %doc %{tcl_sitelib}/Tix%{tixmajor}
 
 %changelog
-* Tue Jan 03 2023 Sumedh Sharma <sumsharma@microsoft.com> - 8.4.3-35
-- Initial CBL-Mariner import from Fedora 37 (license: MIT)
-- Remove epoch
-- License verified
+* Sat Jul 20 2024 Fedora Release Engineering <releng@fedoraproject.org> - 1:8.4.3-41
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_41_Mass_Rebuild
+
+* Mon Jan 29 2024 Florian Weimer <fweimer@redhat.com> - 1:8.4.3-40
+- Fix C89 compatibility issues (GCC 14 build failure)
+
+* Sat Jan 27 2024 Fedora Release Engineering <releng@fedoraproject.org> - 1:8.4.3-39
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Sat Jul 22 2023 Fedora Release Engineering <releng@fedoraproject.org> - 1:8.4.3-38
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_39_Mass_Rebuild
+
+* Fri Jun 02 2023 Vitezslav Crhonek <vcrhonek@redhat.com> - 1:8.4.3-37
+- SPDX migration
+
+* Sat Jan 21 2023 Fedora Release Engineering <releng@fedoraproject.org> - 1:8.4.3-36
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_38_Mass_Rebuild
+
+* Fri Nov 18 2022 Florian Weimer <fweimer@redhat.com> - 1:8.4.3-35
+- Remove implicit ints and implicit function declarations
 
 * Sat Jul 23 2022 Fedora Release Engineering <releng@fedoraproject.org> - 1:8.4.3-34
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_37_Mass_Rebuild

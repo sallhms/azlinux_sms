@@ -1,9 +1,7 @@
-Vendor:         Microsoft Corporation
-Distribution:   Azure Linux
 Summary: The libglade library for loading user interfaces
 Name: libglade2
 Version: 2.6.4
-Release: 24%{?dist}
+Release: 33%{?dist}
 License: LGPLv2+
 Source: http://download.gnome.org/sources/libglade/2.6/libglade-%{version}.tar.bz2
 URL: http://www.gnome.org
@@ -15,6 +13,7 @@ BuildRequires: fontconfig
 BuildRequires: pango-devel
 BuildRequires: libtool
 BuildRequires: gettext-devel
+BuildRequires: make
 
 # http://bugzilla.gnome.org/show_bug.cgi?id=121025
 Patch1: libglade-2.0.1-nowarning.patch
@@ -44,8 +43,8 @@ that you can use to develop libglade applications.
 %prep
 %setup -q -n libglade-%{version}
 
-%patch 1 -p1 -b .nowarning
-%patch 2 -p1 -b .secondary
+%patch -P1 -p1 -b .nowarning
+%patch -P2 -p1 -b .secondary
 
 %build
 %configure --disable-gtk-doc --disable-static
@@ -77,8 +76,35 @@ find $RPM_BUILD_ROOT -name '*.la' -delete
 %{_datadir}/gtk-doc/html/libglade
 
 %changelog
-* Fri Oct 15 2021 Pawel Winogrodzki <pawelwi@microsoft.com> - 2.6.4-24
-- Initial CBL-Mariner import from Fedora 32 (license: MIT).
+* Thu Jul 18 2024 Fedora Release Engineering <releng@fedoraproject.org> - 2.6.4-33
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_41_Mass_Rebuild
+
+* Thu Jan 25 2024 Fedora Release Engineering <releng@fedoraproject.org> - 2.6.4-32
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Sun Jan 21 2024 Fedora Release Engineering <releng@fedoraproject.org> - 2.6.4-31
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Thu Jul 20 2023 Fedora Release Engineering <releng@fedoraproject.org> - 2.6.4-30
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_39_Mass_Rebuild
+
+* Thu Jan 19 2023 Fedora Release Engineering <releng@fedoraproject.org> - 2.6.4-29
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_38_Mass_Rebuild
+
+* Thu Jul 21 2022 Fedora Release Engineering <releng@fedoraproject.org> - 2.6.4-28
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_37_Mass_Rebuild
+
+* Thu Jan 20 2022 Fedora Release Engineering <releng@fedoraproject.org> - 2.6.4-27
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_36_Mass_Rebuild
+
+* Thu Jul 22 2021 Fedora Release Engineering <releng@fedoraproject.org> - 2.6.4-26
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_35_Mass_Rebuild
+
+* Tue Jan 26 2021 Fedora Release Engineering <releng@fedoraproject.org> - 2.6.4-25
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_34_Mass_Rebuild
+
+* Tue Jul 28 2020 Fedora Release Engineering <releng@fedoraproject.org> - 2.6.4-24
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_33_Mass_Rebuild
 
 * Wed Jan 29 2020 Fedora Release Engineering <releng@fedoraproject.org> - 2.6.4-23
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_32_Mass_Rebuild

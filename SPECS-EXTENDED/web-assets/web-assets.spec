@@ -1,22 +1,19 @@
-#disable the httpd stuff while we're waiting on getting the path issues
-#cleared up
-%global enable_httpd 1
+%bcond_without httpd
+%bcond_without nginx
 
 Name:           web-assets
 Version:        5
-Release:        12%{?dist}
+Release:        22%{?dist}
 Summary:        A simple framework for bits pushed to browsers
-BuildArch:      noarch
-
 License:        MIT
-Vendor:         Microsoft Corporation
-Distribution:   Azure Linux
 URL:            https://fedoraproject.org/wiki/User:Patches/PackagingDrafts/Web_Assets
-
-Source1:        LICENSE
+Source0:        LICENSE
+Source1:        README.devel
 Source2:        macros.web-assets
-Source3:        web-assets.conf
-Source4:        README.devel
+Source3:        httpd-web-assets.conf
+Source4:        nginx-web-assets.conf
+BuildArch:      noarch
+BuildRequires:  coreutils
 
 %description
 %{summary}.
@@ -25,6 +22,7 @@ Source4:        README.devel
 Summary:        The basic directory layout for Web Assets
 #there's nothing copyrightable about a few directories and symlinks
 License:        Public Domain
+Requires:       fonts-filesystem
 
 %description filesystem
 %{summary}.
@@ -37,23 +35,32 @@ Requires:       web-assets-filesystem = %{version}-%{release}
 %description devel
 %{summary}.
 
-%if 0%{?enable_httpd}
+%if %{with httpd}
 %package httpd
 Summary:        Web Assets aliases for the Apache HTTP daemon
 License:        MIT
 Requires:       web-assets-filesystem = %{version}-%{release}
 Requires:       httpd
-Requires(post): systemd
-Requires(postun): systemd
 
 %description httpd
 %{summary}.
 %endif
 
+%if %{with nginx}
+%package nginx
+Summary:        Web Assets aliases for the nginx daemon
+License:        MIT
+Requires:       web-assets-filesystem = %{version}-%{release}
+Requires:       nginx
+
+%description nginx
+%{summary}.
+%endif
+
 %prep
 %setup -c -T
-cp %{SOURCE1} LICENSE
-cp %{SOURCE4} README.devel
+cp %{SOURCE0} LICENSE
+cp %{SOURCE1} README.devel
 
 %build
 #nothing to do
@@ -61,21 +68,31 @@ cp %{SOURCE4} README.devel
 %install
 mkdir -p %{buildroot}%{_datadir}/web-assets
 mkdir -p %{buildroot}%{_datadir}/javascript
-
 ln -sf ../javascript %{buildroot}%{_datadir}/web-assets/javascript
 ln -sf ../javascript %{buildroot}%{_datadir}/web-assets/js
 ln -sf ../fonts %{buildroot}%{_datadir}/web-assets/fonts
-
 install -Dpm0644 %{SOURCE2} %{buildroot}%{_rpmconfigdir}/macros.d/macros.web-assets
-
-%if 0%{?enable_httpd}
+%if %{with httpd}
 install -Dpm0644 %{SOURCE3} %{buildroot}%{_sysconfdir}/httpd/conf.d/web-assets.conf
+%endif
+%if %{with nginx}
+install -Dpm0644 %{SOURCE4} %{buildroot}%{_sysconfdir}/nginx/default.d/web-assets.conf
+%endif
 
+%if %{with httpd}
 %post httpd
-systemctl reload-or-try-restart httpd.service || :
+[ -x %{_bindir}/systemctl ] && reload-or-try-restart httpd.service || :
 
 %postun httpd
-systemctl reload-or-try-restart httpd.service || :
+[ -x %{_bindir}/systemctl ] && reload-or-try-restart httpd.service || :
+%endif
+
+%if %{with nginx}
+%post nginx
+[ -x %{_bindir}/systemctl ] && systemctl reload-or-try-restart nginx.service || :
+
+%postun nginx
+[ -x %{_bindir}/systemctl ] && systemctl reload-or-try-restart nginx.service || :
 %endif
 
 %files filesystem
@@ -84,17 +101,54 @@ systemctl reload-or-try-restart httpd.service || :
 
 %files devel
 %{_rpmconfigdir}/macros.d/macros.web-assets
-%doc LICENSE README.devel
+%license LICENSE
+%doc README.devel
 
-%if 0%{?enable_httpd}
+%if %{with httpd}
 %files httpd
 %config(noreplace) %{_sysconfdir}/httpd/conf.d/web-assets.conf
-%doc LICENSE
+%license LICENSE
+%endif
+
+%if %{with nginx}
+%files nginx
+%config(noreplace) %{_sysconfdir}/nginx/default.d/web-assets.conf
+%license LICENSE
 %endif
 
 %changelog
-* Fri Oct 15 2021 Pawel Winogrodzki <pawelwi@microsoft.com> - 5-12
-- Initial CBL-Mariner import from Fedora 32 (license: MIT).
+* Sat Jul 20 2024 Fedora Release Engineering <releng@fedoraproject.org> - 5-22
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_41_Mass_Rebuild
+
+* Sat Jan 27 2024 Fedora Release Engineering <releng@fedoraproject.org> - 5-21
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Sat Jul 22 2023 Fedora Release Engineering <releng@fedoraproject.org> - 5-20
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_39_Mass_Rebuild
+
+* Sat Jan 21 2023 Fedora Release Engineering <releng@fedoraproject.org> - 5-19
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_38_Mass_Rebuild
+
+* Sat Jul 23 2022 Fedora Release Engineering <releng@fedoraproject.org> - 5-18
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_37_Mass_Rebuild
+
+* Wed Mar 23 2022 Petr Pisar <ppisar@redhat.com> - 5-17
+- Make a dependency on systemd optional for restarting httpd
+
+* Tue Mar 22 2022 Petr Menšík <pemensik@redhat.com> - 5-16
+- Add nginx aliases support
+
+* Sat Jan 22 2022 Fedora Release Engineering <releng@fedoraproject.org> - 5-15
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_36_Mass_Rebuild
+
+* Fri Jul 23 2021 Fedora Release Engineering <releng@fedoraproject.org> - 5-14
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_35_Mass_Rebuild
+
+* Wed Jan 27 2021 Fedora Release Engineering <releng@fedoraproject.org> - 5-13
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_34_Mass_Rebuild
+
+* Wed Jul 29 2020 Fedora Release Engineering <releng@fedoraproject.org> - 5-12
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_33_Mass_Rebuild
 
 * Fri Jan 31 2020 Fedora Release Engineering <releng@fedoraproject.org> - 5-11
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_32_Mass_Rebuild

@@ -1,5 +1,3 @@
-Vendor:         Microsoft Corporation
-Distribution:   Azure Linux
 #
 # $Id: sblim-sfcc.spec,v 1.4 2010/03/03 07:57:28 vcrhonek Exp $
 #
@@ -9,13 +7,16 @@ Distribution:   Azure Linux
 Summary: Small Footprint CIM Client Library
 Name: sblim-sfcc
 Version: 2.2.8
-Release: 15%{?dist}
+Release: 27%{?dist}
 License: EPL-1.0
 URL: http://www.sblim.org
 Source0: http://downloads.sourceforge.net/project/sblim/%{name}/%{name}-%{version}.tar.bz2
 # Patch0: fixes docdir name and removes install of COPYING with license
 #   which is included through %%license
 Patch0: sblim-sfcc-2.2.8-docdir-license.patch
+Patch1: c99.patch
+Patch2: c89.patch
+BuildRequires: make
 BuildRequires: curl-devel chrpath
 BuildRequires: gcc gcc-c++
 
@@ -33,7 +34,7 @@ Small Footprint CIM Client Library Header Files and Link Libraries
 %prep
 
 %setup -q
-%patch 0 -p1 -b .docdir-license
+%autopatch -p1
 
 %build
 chmod a-x backend/cimxml/*.[ch]
@@ -65,8 +66,45 @@ chrpath --delete $RPM_BUILD_ROOT%{_libdir}/libcmpisfcc.so.1.0.0
 %{_libdir}/libcmpisfcc.so
 
 %changelog
-* Fri Oct 15 2021 Pawel Winogrodzki <pawelwi@microsoft.com> - 2.2.8-15
-- Initial CBL-Mariner import from Fedora 32 (license: MIT).
+* Sat Jul 20 2024 Fedora Release Engineering <releng@fedoraproject.org> - 2.2.8-27
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_41_Mass_Rebuild
+
+* Thu Feb 01 2024 Vitezslav Crhonek <vcrhonek@redhat.com> - 2.2.8-26
+- Fix bogus date in changelog, use autopatch
+
+* Thu Feb 01 2024 Florian Weimer <fweimer@redhat.com> - 2.2.8-25
+- Add pointer casts for GCC 14/C89 compatibility
+
+* Sat Jan 27 2024 Fedora Release Engineering <releng@fedoraproject.org> - 2.2.8-24
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Sat Jul 22 2023 Fedora Release Engineering <releng@fedoraproject.org> - 2.2.8-23
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_39_Mass_Rebuild
+
+* Tue Apr 25 2023 Vitezslav Crhonek <vcrhonek@redhat.com> - 2.2.8-22
+- SPDX migration
+
+* Sat Jan 21 2023 Timm Bäder <tbaeder@redhat.com> - 2.2.8-21
+- Add downstream patch to fix c99 incompatibilities
+- https://fedoraproject.org/wiki/Changes/PortingToModernC
+
+* Sat Jan 21 2023 Fedora Release Engineering <releng@fedoraproject.org> - 2.2.8-20
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_38_Mass_Rebuild
+
+* Sat Jul 23 2022 Fedora Release Engineering <releng@fedoraproject.org> - 2.2.8-19
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_37_Mass_Rebuild
+
+* Sat Jan 22 2022 Fedora Release Engineering <releng@fedoraproject.org> - 2.2.8-18
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_36_Mass_Rebuild
+
+* Fri Jul 23 2021 Fedora Release Engineering <releng@fedoraproject.org> - 2.2.8-17
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_35_Mass_Rebuild
+
+* Wed Jan 27 2021 Fedora Release Engineering <releng@fedoraproject.org> - 2.2.8-16
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_34_Mass_Rebuild
+
+* Wed Jul 29 2020 Fedora Release Engineering <releng@fedoraproject.org> - 2.2.8-15
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_33_Mass_Rebuild
 
 * Thu Jan 30 2020 Fedora Release Engineering <releng@fedoraproject.org> - 2.2.8-14
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_32_Mass_Rebuild

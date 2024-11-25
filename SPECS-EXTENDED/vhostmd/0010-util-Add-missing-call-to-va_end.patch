@@ -1,0 +1,55 @@
+From 69fcc2075d7cb1f16eb7d27ae3559fa3c77f5514 Mon Sep 17 00:00:00 2001
+From: Jim Fehlig <jfehlig@suse.com>
+Date: Tue, 7 Jan 2020 11:36:56 -0700
+Subject: [PATCH 10/19] util: Add missing call to va_end
+
+From coverity scan
+
+Error: VARARGS (CWE-237):
+vhostmd-1.1/vhostmd/util.c:209: va_init: Initializing va_list "argptr".
+vhostmd-1.1/vhostmd/util.c:218: missing_va_end: va_end was not called for "argptr".
+  216|           grow_size = (count > 1000) ? count : 1000;
+  217|           if (buffer_grow(buf, grow_size) < 0)
+  218|->             return;
+  219|
+  220|           size = buf->size - buf->use - 1;
+
+Error: VARARGS (CWE-237):
+vhostmd-1.1/vhostmd/util.c:209: va_init: Initializing va_list "argptr".
+vhostmd-1.1/vhostmd/util.c:226: missing_va_end: va_end was not called for "argptr".
+  224|       buf->use += count;
+  225|       buf->content[buf->use] = '\0';
+  226|-> }
+  227|
+  228|   /*
+
+Signed-off-by: Jim Fehlig <jfehlig@suse.com>
+---
+ vhostmd/util.c | 5 ++++-
+ 1 file changed, 4 insertions(+), 1 deletion(-)
+
+diff --git a/vhostmd/util.c b/vhostmd/util.c
+index 5747f16..1f9545b 100644
+--- a/vhostmd/util.c
++++ b/vhostmd/util.c
+@@ -214,13 +214,16 @@ void vu_buffer_vsprintf(vu_buffer *buf, const char *format, ...)
+         va_end(locarg);
+ 
+         grow_size = (count > 1000) ? count : 1000;
+-        if (buffer_grow(buf, grow_size) < 0)
++        if (buffer_grow(buf, grow_size) < 0) {
++            va_end(argptr);
+             return;
++        }
+ 
+         size = buf->size - buf->use - 1;
+         va_copy(locarg, argptr);
+     }
+     va_end(locarg);
++    va_end(argptr);
+     buf->use += count;
+     buf->content[buf->use] = '\0';
+ }
+-- 
+2.32.0
+

@@ -1,5 +1,3 @@
-Vendor:         Microsoft Corporation
-Distribution:   Azure Linux
 # hardened build if not overridden
 %{!?_hardened_build:%global _hardened_build 1}
 
@@ -9,11 +7,10 @@ Distribution:   Azure Linux
 
 Summary: ACPI Event Daemon
 Name: acpid
-Version: 2.0.32
-Release: 3%{?dist}
-License: GPLv2+
+Version: 2.0.34
+Release: 10%{?dist}
+License: GPL-2.0-or-later
 Source: http://downloads.sourceforge.net/acpid2/%{name}-%{version}.tar.xz
-Source2: acpid.video.conf
 Source3: acpid.power.conf
 Source4: acpid.power.sh
 Source5: acpid.service
@@ -21,9 +18,10 @@ Source6: acpid.sysconfig
 Source7: acpid.socket
 # https://sourceforge.net/p/acpid2/tickets/14/
 Patch0: acpid-2.0.32-kacpimon-dynamic-connections.patch
-ExclusiveArch: ia64 x86_64 %{ix86} %{arm} aarch64
+ExclusiveArch: ia64 x86_64 %{ix86} %{arm} aarch64 riscv64
 URL: http://sourceforge.net/projects/acpid2/
 BuildRequires: systemd, gcc
+BuildRequires: make
 Requires(post): systemd
 Requires(preun): systemd
 Requires(postun): systemd
@@ -34,7 +32,7 @@ acpid is a daemon that dispatches ACPI events to user-space programs.
 
 %prep
 %setup -q
-%patch 0 -p1 -b .kacpimon-dynamic-connections
+%patch -P0 -p1 -b .kacpimon-dynamic-connections
 
 %build
 %configure
@@ -51,7 +49,6 @@ mkdir -p %{buildroot}%{_unitdir}
 mkdir -p %{buildroot}%{_sysconfdir}/sysconfig
 
 chmod 755 %{buildroot}%{_sysconfdir}/acpi/events
-install -p -m 644 %{SOURCE2} %{buildroot}%{_sysconfdir}/acpi/events/videoconf
 install -p -m 644 %{SOURCE3} %{buildroot}%{_sysconfdir}/acpi/events/powerconf
 install -p -m 755 %{SOURCE4} %{buildroot}%{_sysconfdir}/acpi/actions/power.sh
 install -p -m 644 %{SOURCE5} %{SOURCE7} %{buildroot}%{_unitdir}
@@ -64,7 +61,6 @@ install -p -m 644 %{SOURCE6} %{buildroot}%{_sysconfdir}/sysconfig/acpid
 %dir %{_sysconfdir}/acpi
 %dir %{_sysconfdir}/acpi/events
 %dir %{_sysconfdir}/acpi/actions
-%config(noreplace) %attr(0644,root,root) %{_sysconfdir}/acpi/events/videoconf
 %config(noreplace) %attr(0644,root,root) %{_sysconfdir}/acpi/events/powerconf
 %config(noreplace) %attr(0755,root,root) %{_sysconfdir}/acpi/actions/power.sh
 %config(noreplace) %attr(0644,root,root) %{_sysconfdir}/sysconfig/acpid
@@ -101,8 +97,63 @@ fi
 	/bin/systemctl try-restart acpid.service >/dev/null 2>&1 || :
 
 %changelog
-* Fri Oct 15 2021 Pawel Winogrodzki <pawelwi@microsoft.com> - 2.0.32-3
-- Initial CBL-Mariner import from Fedora 32 (license: MIT).
+* Mon Aug 12 2024 Jaroslav Škarvada <jskarvad@redhat.com> - 2.0.34-10
+- Dropped videoconf, obsolete for some time
+  Resolves: rhbz#2296943
+
+* Wed Jul 17 2024 Fedora Release Engineering <releng@fedoraproject.org> - 2.0.34-9
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_41_Mass_Rebuild
+
+* Fri Feb 23 2024 Songsong Zhang <U2FsdGVkX1@gmail.com> - 2.0.34-8
+- Add riscv64 support
+
+* Mon Jan 22 2024 Fedora Release Engineering <releng@fedoraproject.org> - 2.0.34-7
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Fri Jan 19 2024 Fedora Release Engineering <releng@fedoraproject.org> - 2.0.34-6
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Wed Aug  9 2023 Jaroslav Škarvada <jskarvad@redhat.com> - 2.0.34-5
+- SPDX license fix
+
+* Wed Aug  9 2023 Jaroslav Škarvada <jskarvad@redhat.com> - 2.0.34-4
+- Converted license to SPDX
+
+* Wed Jul 19 2023 Fedora Release Engineering <releng@fedoraproject.org> - 2.0.34-3
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_39_Mass_Rebuild
+
+* Wed Jan 18 2023 Fedora Release Engineering <releng@fedoraproject.org> - 2.0.34-2
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_38_Mass_Rebuild
+
+* Sat Sep 24 2022 Jaroslav Škarvada <jskarvad@redhat.com> - 2.0.34-1
+- New version
+  Resolves: rhbz#2127331
+
+* Wed Jul 20 2022 Fedora Release Engineering <releng@fedoraproject.org> - 2.0.33-3
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_37_Mass_Rebuild
+
+* Wed Jan 19 2022 Fedora Release Engineering <releng@fedoraproject.org> - 2.0.33-2
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_36_Mass_Rebuild
+
+* Tue Oct  5 2021 Jaroslav Škarvada <jskarvad@redhat.com> - 2.0.33-1
+- New version
+  Resolves: rhbz#2004773
+
+* Wed Jul 21 2021 Fedora Release Engineering <releng@fedoraproject.org> - 2.0.32-7
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_35_Mass_Rebuild
+
+* Thu Jul 01 2021 FeRD (Frank Dana) <ferdnyc@gmail.com> - 2.0.32-6
+- Updated socket path from /var/run => /run in acpid.socket
+
+* Tue Mar 02 2021 Zbigniew Jędrzejewski-Szmek <zbyszek@in.waw.pl> - 2.0.32-5
+- Rebuilt for updated systemd-rpm-macros
+  See https://pagure.io/fesco/issue/2583.
+
+* Mon Jan 25 2021 Fedora Release Engineering <releng@fedoraproject.org> - 2.0.32-4
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_34_Mass_Rebuild
+
+* Mon Jul 27 2020 Fedora Release Engineering <releng@fedoraproject.org> - 2.0.32-3
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_33_Mass_Rebuild
 
 * Tue Jan 28 2020 Fedora Release Engineering <releng@fedoraproject.org> - 2.0.32-2
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_32_Mass_Rebuild

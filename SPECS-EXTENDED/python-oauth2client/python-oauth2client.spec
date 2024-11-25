@@ -3,28 +3,25 @@
 # Share doc between python- and python3-
 %global _docdir_fmt %{name}
 
-Vendor:         Microsoft Corporation
-Distribution:   Azure Linux
-
 Name:           python-%{srcname}
 Version:        4.1.3
-Release:        17%{?dist}
+Release:        27%{?dist}
 Summary:        %{sum}
 
-License:        ASL 2.0
+License:        Apache-2.0
 URL:            https://github.com/google/%{srcname}
-Source0:        https://github.com/google/%{srcname}/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
+Source0:        https://github.com/google/%{srcname}/archive/v%{version}.tar.gz#/%{srcname}-%{version}.tar.gz
 Patch0:         docs-build-fix.patch
 Patch1:         doc-fix.patch
 Patch2:         keyring-remove.patch
 
 BuildArch:      noarch
+#BuildRequires:  %{_bindir}/tox
 BuildRequires:  python3-devel
 
 BuildRequires:  python3-setuptools
 BuildRequires:  python3-devel
 BuildRequires:  python3-fasteners
-BuildRequires:  python3-mock
 BuildRequires:  python3-pyasn1 >= 0.1.7
 BuildRequires:  python3-pyasn1-modules >= 0.0.5
 BuildRequires:  python3-pytest
@@ -44,9 +41,9 @@ This is a python client module for accessing resources protected by OAuth 2.0
 
 %prep
 %setup -q -n %{srcname}-%{version}
-%patch 0 -p1 -b .doc
-%patch 1 -p1 -b .doc2
-%patch 2 -p1 -b .keyring
+%patch -P0 -p1 -b .doc
+%patch -P1 -p1 -b .doc2
+%patch -P2 -p1 -b .keyring
 
 # Remove the version constraint on httplib2.  From reading upstream's git log,
 # it seems the only reason they require a new version is to force python3
@@ -60,11 +57,29 @@ rm -f docs/source/oauth2client.contrib.appengine.rst oauth2client/appengine.py
 # Remove keyring support
 rm oauth2client/contrib/keyring_storage.py tests/contrib/test_keyring_storage.py docs/source/oauth2client.contrib.keyring_storage.rst
 
+# Remove deprecated PyPI mock dependency, replacing it with unittest.mock.  See
+# https://fedoraproject.org/wiki/Changes/DeprecatePythonMock.  Since
+# oauth2client is deprecated/archived upstream, this patch must be
+# downstream-only. The find-then-modify pattern keeps us from discarding mtimes
+# on any sources that do not need modification.
+find docs tests -type f \( -name '*.py' -o -name '*.py.doc' \) -exec \
+    gawk '/^import mock$/ { print FILENAME; nextfile }' '{}' '+' |
+  xargs -r -t sed -r -i 's/^import mock$/from unittest &/'
+sed -r -i 's/\bmock.*//' tox.ini
+
+
 %build
 %py3_build
 
 %install
 %py3_install
+
+%check
+#tox -v --sitepackages -e py%%{python3_version_nodots}
+
+# We remove tests currently, we will ship them eventually
+# This is a bit of a hack until I package the test scripts in a separate package
+rm -r $(find %{_buildrootdir} -type d -name 'tests') || /bin/true
 
 
 %files -n python3-%{srcname}
@@ -74,9 +89,38 @@ rm oauth2client/contrib/keyring_storage.py tests/contrib/test_keyring_storage.py
 %{python3_sitelib}/%{srcname}*.egg-info
 
 %changelog
-* Mon Mar 06 2023 Muhammad Falak R Wani <mwani@microsoft.com> - 4.1.3-17
-- Initial CBL-Mariner import from Fedora 36 (license: MIT).
-- License Verified
+* Fri Jul 19 2024 Fedora Release Engineering <releng@fedoraproject.org> - 4.1.3-27
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_41_Mass_Rebuild
+
+* Fri Jun 07 2024 Python Maint <python-maint@redhat.com> - 4.1.3-26
+- Rebuilt for Python 3.13
+
+* Fri Jan 26 2024 Fedora Release Engineering <releng@fedoraproject.org> - 4.1.3-25
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Mon Jan 22 2024 Fedora Release Engineering <releng@fedoraproject.org> - 4.1.3-24
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Fri Jul 21 2023 Fedora Release Engineering <releng@fedoraproject.org> - 4.1.3-23
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_39_Mass_Rebuild
+
+* Wed Jun 14 2023 Python Maint <python-maint@redhat.com> - 4.1.3-22
+- Rebuilt for Python 3.12
+
+* Wed Jun 07 2023 Jan Friesse <jfriesse@redhat.com> - 4.1.3-21
+- migrated to SPDX license
+
+* Fri Jan 20 2023 Fedora Release Engineering <releng@fedoraproject.org> - 4.1.3-20
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_38_Mass_Rebuild
+
+* Fri Jul 22 2022 Fedora Release Engineering <releng@fedoraproject.org> - 4.1.3-19
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_37_Mass_Rebuild
+
+* Mon Jun 13 2022 Python Maint <python-maint@redhat.com> - 4.1.3-18
+- Rebuilt for Python 3.11
+
+* Fri Feb 11 2022 Benjamin A. Beasley <code@musicinmybrain.net> - 4.1.3-17
+- Remove dependency on deprecated PyPI mock
 
 * Fri Jan 21 2022 Fedora Release Engineering <releng@fedoraproject.org> - 4.1.3-16
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_36_Mass_Rebuild

@@ -1,7 +1,7 @@
 {
  "Signatures": {
-  "beust-jcommander-1.78.tar.gz": "8c4300d857a5a27b1183c2f45dffa8eebdafa3fb629bf5026f26e8d17fb9a625",
-  "beust-jcommander-build.xml": "9113464bee854acba51596ffce8497a546157bd019b251149b06ad7ab6930d5e",
-  "beust-jcommander.pom": "38550ab84a095de67fad9913b35ab3fd449824cfe0a0028448f2e513b602e529"
+  "beust-jcommander-1.82.tar.gz": "8065401aa1dbac8ca9f96c402647c6bf25572d2cd8ae7790291ff69530e5aeb6",
+  "generate-tarball.sh": "1dae678cdbe74a1fd0076bd73deef1aebf1fb7a15ba2b1a2447afde09c4978e2",
+  "jcommander-1.82.pom": "246344170b513b801ccf812234d4e1324a0f6ed2a81e90aa618913b66b9cc173"
  }
 }

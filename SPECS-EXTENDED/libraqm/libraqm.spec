@@ -1,21 +1,15 @@
-Vendor:         Microsoft Corporation
-Distribution:   Azure Linux
 Name:				libraqm
-Version:			0.7.0
-Release:			7%{?dist}
+Version:			0.8.0
+Release:			8%{?dist}
 License:			MIT
 Summary:			Complex Textlayout Library
 Summary(ar):		مكتبة رقم للنّصوص المركّبة
 URL:				https://github.com/HOST-Oman/libraqm
-Source:				https://github.com/HOST-Oman/libraqm/releases/download/v%{version}/raqm-%{version}.tar.gz
+Source:				%{url}/releases/download/v%{version}/raqm-%{version}.tar.xz
+Patch0:                         libraqm-3f50e35.patch
 
-%if 0%{?el7}
-BuildRequires:      python2
-%else
-BuildRequires:      python3
-%endif
-BuildRequires:    %{_bindir}/xsltproc
-BuildRequires:    gcc
+BuildRequires:		meson
+BuildRequires:		gcc
 BuildRequires:		freetype-devel
 BuildRequires:		harfbuzz-devel
 BuildRequires:		fribidi-devel
@@ -55,14 +49,11 @@ This package contains documentation files for raqm.
 وثائق مكتبة رقم.
 
 %prep
-%setup -q -n raqm-%{version}
-%if ! 0%{?el7}
-sed s:python:%{__python3}:g -i tests/Makefile.in #Fixed in next release on upstream
-%endif
-%configure --disable-gtk-doc
+%autosetup -p1 -n raqm-%{version}
 
 %build
-make %{?_smp_mflags}
+%meson -Ddocs=true
+%meson_build
 
 %check
 %if 0%{?el7}
@@ -70,13 +61,13 @@ export LC_ALL=en_US.UTF-8
 %else
 export LC_ALL=C.utf8
 %endif
-make check
+%meson_test
 
 %install
-%make_install
+%meson_install
 rm -f %{buildroot}%{_libdir}/*.{la,a}
 
-%ldconfig_scriptlets devel
+%ldconfig_scriptlets
 
 %files
 %license COPYING
@@ -91,17 +82,53 @@ rm -f %{buildroot}%{_libdir}/*.{la,a}
 
 %files docs
 %license COPYING
-%doc AUTHORS NEWS README
+%doc AUTHORS NEWS README.md
 %{_datadir}/gtk-doc/html/raqm
 
 %changelog
-* Mon Mar 21 2022 Pawel Winogrodzki <pawelwi@microsoft.com> - 0.7.0-7
-- Adding BR on '%%{_bindir}/xsltproc'.
-- Disabled gtk doc generation to remove network dependency during build-time.
-- License verified.
+* Thu Jul 18 2024 Fedora Release Engineering <releng@fedoraproject.org> - 0.8.0-8
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_41_Mass_Rebuild
 
-* Fri Oct 15 2021 Pawel Winogrodzki <pawelwi@microsoft.com> - 0.7.0-6
-- Initial CBL-Mariner import from Fedora 32 (license: MIT).
+* Thu Jan 25 2024 Fedora Release Engineering <releng@fedoraproject.org> - 0.8.0-7
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Sun Jan 21 2024 Fedora Release Engineering <releng@fedoraproject.org> - 0.8.0-6
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Thu Jul 20 2023 Fedora Release Engineering <releng@fedoraproject.org> - 0.8.0-5
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_39_Mass_Rebuild
+
+* Thu Jan 19 2023 Fedora Release Engineering <releng@fedoraproject.org> - 0.8.0-4
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_38_Mass_Rebuild
+
+* Fri Jan 06 2023 Peter Fordham <peter.fordham@gmail.com> - 0.8.0-3
+- Patch in fix from upstream for C99 compatibilty issue with strdup in test.
+  https://github.com/HOST-Oman/libraqm/commit/3f50e35d239059823162cbfba3c7adfe8e5f1907
+
+* Thu Jul 21 2022 Fedora Release Engineering <releng@fedoraproject.org> - 0.8.0-2
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_37_Mass_Rebuild
+
+* Wed Jan 26 2022 Neal Gompa <ngompa@fedoraproject.org> - 0.8.0-1
+- Update to 0.8.0
+
+* Thu Jan 20 2022 Fedora Release Engineering <releng@fedoraproject.org> - 0.7.2-2
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_36_Mass_Rebuild
+
+* Sun Oct 03 2021 Neal Gompa <ngompa@fedoraproject.org> - 0.7.2-1
+- Update to 0.7.2
+- Minor cleanups to the spec
+
+* Sat Oct 02 2021 Kalev Lember <klember@redhat.com> - 0.7.0-9
+- Backport upstream patch to fix failing self tests (#1987659)
+
+* Thu Jul 22 2021 Fedora Release Engineering <releng@fedoraproject.org> - 0.7.0-8
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_35_Mass_Rebuild
+
+* Tue Jan 26 2021 Fedora Release Engineering <releng@fedoraproject.org> - 0.7.0-7
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_34_Mass_Rebuild
+
+* Tue Jul 28 2020 Fedora Release Engineering <releng@fedoraproject.org> - 0.7.0-6
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_33_Mass_Rebuild
 
 * Wed Jan 29 2020 Fedora Release Engineering <releng@fedoraproject.org> - 0.7.0-5
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_32_Mass_Rebuild

@@ -1,14 +1,13 @@
-Vendor:         Microsoft Corporation
-Distribution:   Azure Linux
 Name: omping
 Version: 0.0.4
-Release: 21%{?dist}
+Release: 33%{?dist}
 Summary: Utility to test IP multicast functionality
 License: ISC
 URL: https://github.com/jfriesse/omping
 Source0: https://github.com/jfriesse/%{name}/releases/download/%{version}/%{name}-%{version}.tar.gz
 
 BuildRequires: gcc
+BuildRequires: make
 
 %description
 Omping (Open Multicast Ping) is tool to test IP multicast functionality
@@ -19,10 +18,10 @@ primarily in local network.
 
 %build
 %set_build_flags
-make %{?_smp_mflags}
+%make_build
 
 %install
-make DESTDIR="%{buildroot}" PREFIX="%{_prefix}" install
+%make_install PREFIX="%{_prefix}"
 
 %files
 %doc AUTHORS
@@ -31,8 +30,46 @@ make DESTDIR="%{buildroot}" PREFIX="%{_prefix}" install
 %{_mandir}/man8/*
 
 %changelog
-* Fri Oct 15 2021 Pawel Winogrodzki <pawelwi@microsoft.com> - 0.0.4-21
-- Initial CBL-Mariner import from Fedora 32 (license: MIT).
+* Thu Jul 18 2024 Fedora Release Engineering <releng@fedoraproject.org> - 0.0.4-33
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_41_Mass_Rebuild
+
+* Thu Jan 25 2024 Fedora Release Engineering <releng@fedoraproject.org> - 0.0.4-32
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Sun Jan 21 2024 Fedora Release Engineering <releng@fedoraproject.org> - 0.0.4-31
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Thu Jul 20 2023 Fedora Release Engineering <releng@fedoraproject.org> - 0.0.4-30
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_39_Mass_Rebuild
+
+* Tue Jun 06 2023 Jan Friesse <jfriesse@redhat.com> - 0.0.4-29
+- migrated to SPDX license
+
+* Thu Jan 19 2023 Fedora Release Engineering <releng@fedoraproject.org> - 0.0.4-28
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_38_Mass_Rebuild
+
+* Fri Jul 22 2022 Fedora Release Engineering <releng@fedoraproject.org> - 0.0.4-27
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_37_Mass_Rebuild
+
+* Thu Jan 20 2022 Fedora Release Engineering <releng@fedoraproject.org> - 0.0.4-26
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_36_Mass_Rebuild
+
+* Thu Jul 22 2021 Fedora Release Engineering <releng@fedoraproject.org> - 0.0.4-25
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_35_Mass_Rebuild
+
+* Tue Jan 26 2021 Fedora Release Engineering <releng@fedoraproject.org> - 0.0.4-24
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_34_Mass_Rebuild
+
+* Tue Jul 28 2020 Fedora Release Engineering <releng@fedoraproject.org> - 0.0.4-23
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_33_Mass_Rebuild
+
+* Wed Jul 22 2020 Jan Friesse <jfriesse@redhat.com> - 0.0.4-22
+- Use make macros
+- https://fedoraproject.org/wiki/Changes/UseMakeBuildInstallMacro
+
+* Thu Mar 19 2020 Jan Friesse <jfriesse@redhat.com> - 0.0.4-21
+- Add CI tests
+- Enable gating
 
 * Wed Jan 29 2020 Fedora Release Engineering <releng@fedoraproject.org> - 0.0.4-20
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_32_Mass_Rebuild

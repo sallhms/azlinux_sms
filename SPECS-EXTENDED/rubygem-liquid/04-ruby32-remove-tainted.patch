@@ -1,0 +1,36 @@
+diff -urp '--exclude=*~' liquid-4.0.3.orig/lib/liquid/standardfilters.rb liquid-4.0.3/lib/liquid/standardfilters.rb
+--- liquid-4.0.3.orig/lib/liquid/standardfilters.rb	2022-10-10 15:06:06.431493629 +0900
++++ liquid-4.0.3/lib/liquid/standardfilters.rb	2022-10-10 15:14:19.632431108 +0900
+@@ -39,7 +39,7 @@ module Liquid
+     end
+ 
+     def escape(input)
+-      CGI.escapeHTML(input.to_s).untaint unless input.nil?
++      CGI.escapeHTML(input.to_s) unless input.nil?
+     end
+     alias_method :h, :escape
+ 
+diff -urp '--exclude=*~' liquid-4.0.3.orig/lib/liquid/variable.rb liquid-4.0.3/lib/liquid/variable.rb
+--- liquid-4.0.3.orig/lib/liquid/variable.rb	2022-10-10 15:06:06.434493665 +0900
++++ liquid-4.0.3/lib/liquid/variable.rb	2022-10-10 15:13:09.322584677 +0900
+@@ -120,7 +120,7 @@ module Liquid
+       parsed_args
+     end
+ 
+-    def taint_check(context, obj)
++    def taint_check(context, obj) ; return
+       return unless obj.tainted?
+       return if Template.taint_mode == :lax
+ 
+diff -urp '--exclude=*~' liquid-4.0.3.orig/test/integration/drop_test.rb liquid-4.0.3/test/integration/drop_test.rb
+--- liquid-4.0.3.orig/test/integration/drop_test.rb	2022-10-10 15:06:06.435493677 +0900
++++ liquid-4.0.3/test/integration/drop_test.rb	2022-10-10 15:16:19.125869632 +0900
+@@ -48,7 +48,7 @@ class ProductDrop < Liquid::Drop
+   end
+ 
+   def user_input
+-    "foo".taint
++    #"foo".taint
+   end
+ 
+   protected

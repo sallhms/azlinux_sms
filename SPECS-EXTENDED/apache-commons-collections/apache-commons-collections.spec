@@ -1,76 +1,46 @@
-Vendor:         Microsoft Corporation
-Distribution:   Azure Linux
-#
-# spec file for package apache-commons-collections
-#
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
-#
-# All modifications and additions to the file contributed by third parties
-# remain the property of their copyright owners, unless otherwise agreed
-# upon. The license for this file, and modifications and additions to the
-# file, is the same license as for the pristine package itself (unless the
-# license for the pristine package is not an Open Source License, in which
-# case the license is the MIT License). An "Open Source License" is a
-# license that conforms to the Open Source Definition (Version 1.9)
-# published by the Open Source Initiative.
+%bcond_with bootstrap
 
-# Please submit bugfixes or comments via https://bugs.opensuse.org/
-#
-
-
-%define base_name       collections
-%define short_name      commons-%{base_name}
 Name:           apache-commons-collections
 Version:        3.2.2
-Release:        7%{?dist}
-Summary:        Commons Collections Package
+Release:        37%{?dist}
+Summary:        Provides new interfaces, implementations and utilities for Java Collections
 License:        Apache-2.0
-Group:          Development/Libraries/Java
-URL:            https://commons.apache.org/proper/commons-collections
-Source0:        http://www.apache.org/dist/commons/%{base_name}/source/%{short_name}-%{version}-src.tar.gz
-Source1:        commons-collections-testframework.pom
-Patch0:         jakarta-commons-collections-javadoc-nonet.patch
-Patch1:         commons-collections-3.2-build_xml.patch
-# PATCH-FIX-UPSTREAM build with jdk8
-Patch2:         java8-compat.patch
-# PATCH-FIX-UPSTREAM add missing MANIFEST.MF file
-Patch3:         commons-collections-missing-MF.patch
-Patch4:         commons-collections-3.2.2-tf.javadoc.patch
-Patch5:         commons-collections-jdk11.patch
-BuildRequires:  ant
-BuildRequires:  ant-junit
-BuildRequires:  fdupes
-BuildRequires:  java-devel >= 1.8
-BuildRequires:  javapackages-local-bootstrap
-BuildRequires:  junit
-Provides:       %{short_name} = %{version}-%{release}
-Obsoletes:      %{short_name} < %{version}-%{release}
-Provides:       jakarta-%{short_name} = %{version}-%{release}
-Obsoletes:      jakarta-%{short_name} < %{version}-%{release}
+URL:            http://commons.apache.org/collections/
 BuildArch:      noarch
+#ExclusiveArch:  %{java_arches} noarch
+
+Source0:        http://www.apache.org/dist/commons/collections/source/commons-collections-%{version}-src.tar.gz
+
+Patch0:         0001-Port-to-Java-8.patch
+Patch1:         0002-Port-to-OpenJDK-11.patch
+Patch2:         0003-Port-to-OpenJDK-21.patch
+
+%if %{with bootstrap}
+BuildRequires:  javapackages-bootstrap
+%else
+BuildRequires:  maven-local
+BuildRequires:  mvn(junit:junit)
+BuildRequires:  mvn(org.apache.commons:commons-parent:pom:)
+BuildRequires:  mvn(org.apache.maven.plugins:maven-antrun-plugin)
+%endif
 
 %description
-The introduction of the Collections API by Sun in JDK 1.2
-has been a boon to quick and effective Java programming.
-Ready access to powerful data structures has accelerated
-development by reducing the need for custom container
-classes around each core object.  Most Java2 APIs are
+The introduction of the Collections API by Sun in JDK 1.2 has been a
+boon to quick and effective Java programming. Ready access to powerful
+data structures has accelerated development by reducing the need for
+custom container classes around each core object. Most Java2 APIs are
 significantly easier to use because of the Collections API.
 However, there are certain holes left unfilled by Sun's
-implementations, and the Jakarta-Commons Collections
-Component strives to fulfill them. Among the features of
-this package are: - special-purpose implementations of
-Lists and Maps for fast access
-
-- adapter classes from Java1-style containers (arrays,
-  enumerations) to Java2-style collections
-
-- methods to test or create typical set theory properties
-  of collections such as union, intersection, and closure
+implementations, and the Jakarta-Commons Collections Component strives
+to fulfill them. Among the features of this package are:
+- special-purpose implementations of Lists and Maps for fast access
+- adapter classes from Java1-style containers (arrays, enumerations) to
+Java2-style collections.
+- methods to test or create typical set-theory properties of collections
+such as union, intersection, and closure.
 
 %package testframework
-Summary:        Test framework for %{name}
-Group:          Development/Libraries/Java
+Summary:        Testframework for %{name}
 Requires:       %{name} = %{version}-%{release}
 
 %description testframework
@@ -78,165 +48,244 @@ Requires:       %{name} = %{version}-%{release}
 
 %package javadoc
 Summary:        Javadoc for %{name}
-Group:          Documentation/HTML
-Provides:       %{name}-testframework-javadoc = %{version}-%{release}
-Obsoletes:      %{name}-testframework-javadoc < %{version}-%{release}
 
 %description javadoc
 %{summary}.
 
 %prep
-%setup -q -n %{short_name}-%{version}-src
+%setup -q -n commons-collections-%{version}-src
+
 # remove all binary libs
-find . -name "*.jar" -delete
-find . -name "*.class" -delete
+find . -name "*.jar" -exec rm -f {} \;
+find . -name "*.class" -exec rm -f {} \;
+
+%patch 0 -p1
+%patch 1 -p1
+%patch 2 -p1
+
+# Port to maven-antrun-plugin 3.0.0
+sed -i s/tasks/target/ pom.xml
+
 # Fix file eof
 sed -i 's/\r//' LICENSE.txt PROPOSAL.html README.txt NOTICE.txt
 
-%patch 0 -p1
-%patch 1
-%patch 2 -p1
-%patch 3 -p1
-%patch 4 -p1
-%patch 5 -p1
-
-# Substitute version into testframework pom
-cp -p %{SOURCE1} pom-testframework.xml
-sed -i 's/@VERSION@/%{version}/' pom-testframework.xml
-
-%pom_remove_parent .
+%mvn_package :commons-collections-testframework testframework
+%mvn_file ':commons-collections{,-testframework}' %{name}@1 commons-collections@1
 
 %build
-echo "junit.jar=$(build-classpath junit)" >>build.properties
-ant \
-    -Dant.build.javac.source=8 -Dant.build.javac.target=8 \
-    -Dant.build.javadoc.source=8 -Dtf.build.docs=build/docs/apidocs/ \
-    -Djava.io.tmpdir=. jar javadoc tf.validate tf.jar dist.bin dist.src tf.javadoc
+%mvn_build -- -Dcommons.packageId=collections
 
 %install
-# jars
-install -d -m 755 %{buildroot}%{_javadir}
-install -m 644 build/%{short_name}-%{version}.jar %{buildroot}%{_javadir}/%{name}.jar
-install -m 644 build/%{short_name}-testframework-%{version}.jar %{buildroot}%{_javadir}/%{name}-testframework.jar
-(cd %{buildroot}%{_javadir} && for jar in *; do ln -sf ${jar} `echo $jar| sed  "s|apache-||g"`; done)
-
-# poms
-install -Dpm 644 pom.xml %{buildroot}%{_mavenpomdir}/JPP-%{short_name}.pom
-install -Dpm 644 pom-testframework.xml %{buildroot}%{_mavenpomdir}/JPP-%{short_name}-testframework.pom
-%add_maven_depmap JPP-%{short_name}.pom %{short_name}.jar -a "org.apache.commons:%{short_name}"
-%add_maven_depmap JPP-%{short_name}-testframework.pom %{short_name}-testframework.jar -f "testframework" -a "org.apache.commons:%{short_name}-testframework"
-
-# javadoc
-install -d -m 755 %{buildroot}%{_javadocdir}/%{name}
-cp -pr build/docs/apidocs/* %{buildroot}%{_javadocdir}/%{name}
-%fdupes -s %{buildroot}%{_javadocdir}/%{name}
+%mvn_artifact commons-collections:commons-collections-testframework:%{version} target/commons-collections-testframework-%{version}.jar
+%mvn_install
 
 %files -f .mfiles
+%doc PROPOSAL.html README.txt
 %license LICENSE.txt NOTICE.txt
-%doc PROPOSAL.html README.txt RELEASE-NOTES.txt
-%{_javadir}/%{name}.jar
 
 %files testframework -f .mfiles-testframework
-%{_javadir}/%{name}-testframework.jar
 
-%files javadoc
+%files javadoc -f .mfiles-javadoc
 %license LICENSE.txt NOTICE.txt
-%{_javadocdir}/%{name}
 
 %changelog
-* Thu Oct 14 2021 Pawel Winogrodzki <pawelwi@microsoft.com> - 3.2.2-7
-- Converting the 'Release' tag to the '[number].[distribution]' format.
+* Wed Jul 17 2024 Fedora Release Engineering <releng@fedoraproject.org> - 3.2.2-37
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_41_Mass_Rebuild
 
-* Tue Nov 17 2020 Ruying Chen <v-ruyche@microsoft.com> - 3.2.2-6.7
-- Initial CBL-Mariner import from openSUSE Tumbleweed (license: same as "License" tag).
-- Use javapackages-local-bootstrap to avoid build cycle.
-- Fix linebreak in sed command.
+* Tue Feb 27 2024 Jiri Vanek <jvanek@redhat.com> - 3.2.2-36
+- Rebuilt for java-21-openjdk as system jdk
 
-* Mon Mar 25 2019 Fridrich Strba <fstrba@suse.com>
-- Remove pom parent, since we don't use it when not building with
-  maven
-* Tue Jul 10 2018 fstrba@suse.com
-- Added patch:
-  * commons-collections-jdk11.patch
-    + resolve ambiguity with toArray(null)
-  + fixes tests with jdk11
-* Tue May 15 2018 fstrba@suse.com
-- Build with source and target 8 to prepare for a possible removal
-  of 1.6 compatibility
-- Run fdupes on documentation
-* Fri Sep 29 2017 fstrba@suse.com
-- Don't condition the maven defines on release version, but on
-  _maven_repository being defined
-* Thu Sep 14 2017 fstrba@suse.com
-- Fix build with jdk9 by specifying java source and target 1.6
-- Added patch:
-  * commons-collections-3.2.2-tf.javadoc.patch
-  - Fix unresolved symbols when building tf.javadoc
-* Fri May 19 2017 tchvatal@suse.com
-- Fix build with new javapackages-tools
-* Thu Dec 17 2015 tchvatal@suse.com
-- Version update to 3.2.2:
-  * Various bugfixes
-  * Unix formating in the archive
-  * Fixes bnc#954102
-- Refresh patches for the dos2unix conversion:
-  * commons-collections-3.2-build_xml.patch
-  * jakarta-commons-collections-javadoc-nonet.patch
-- Add patch to add missing MANIFEST.MF file:
-  * commons-collections-missing-MF.patch
-* Wed Jul 29 2015 tchvatal@suse.com
-- Fix build with jdk8:
-  * java8-compat.patch
-* Wed Mar 18 2015 tchvatal@suse.com
-- Fix build with new javapackages-tools
-* Mon Jul  7 2014 tchvatal@suse.com
-- Do not depend on junit4 but use junit
-* Thu May 15 2014 darin@darins.net
-- no bytecode check from sles
-* Mon Sep  9 2013 tchvatal@suse.com
-- Move from jpackage-utils to javapackage-tools
-* Thu Sep  5 2013 mvyskocil@suse.com
-- update to 3.2.1
-- rename to apache-commons-collections
-- deleted patches
-  * jakarta-commons-collections-navigation.patch
-  * jakarta-commons-collections-target15.patch
-- added patches
-  * commons-collections-3.2-build_xml.patch
-- use newest add_maven_depmap from javapackages-tools
-- drop -tomcat5 subpackage
-* Tue Nov 11 2008 mvyskocil@suse.cz
-- fix of bnc#441085: yast2-schema is missing on media (openSUSE-11. 1-DVD-ppc-Build0113)
-  - unittest disabled as it fails on ppc with openjdk b11
-* Mon Aug 25 2008 mvyskocil@suse.cz
-- target=1.5 source=1.5
-* Thu Mar 13 2008 mvyskocil@suse.cz
-- merged with jpackage-1.7
-- update to 3.2
-- changes in BuildRequires:
-  - java2-devel-packages was substituded by java-devel
-  - added ant-junit
-  - maven build support and a maven specific BuildRequires
-- added maven pom files
-- provides and obsoletes contains a version
-- the gcj build support
-- new subpackages:
-  - jakarta-commons-collections-testframework
-  - jakarta-commons-collections-testframework-javadoc
-  - jakarta-commons-collections-tomcat5
-* Mon Sep 25 2006 skh@suse.de
-- don't use icecream
-- use source="1.4" and target="1.4" for build with java 1.5
-* Wed Jan 25 2006 mls@suse.de
-- converted neededforbuild to BuildRequires
-* Wed Jul 27 2005 jsmeix@suse.de
-- Adjustments in the spec file.
-* Mon Jul 18 2005 jsmeix@suse.de
-- Current version 3.1 from JPackage.org
-* Mon Feb 21 2005 skh@suse.de
-- update to version 3.1
-- don't use icecream
-* Thu Sep 16 2004 skh@suse.de
-- Fix prerequires of javadoc subpackage
-* Thu Sep  2 2004 skh@suse.de
-- Initial package created with version 2.1.1 (JPackage 1.5)
+* Tue Feb 20 2024 Marian Koncek <mkoncek@redhat.com> - 3.2.2-35
+- Port to OpenJDK 21
+
+* Mon Jan 22 2024 Fedora Release Engineering <releng@fedoraproject.org> - 3.2.2-34
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Fri Jan 19 2024 Fedora Release Engineering <releng@fedoraproject.org> - 3.2.2-33
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Mon Dec 04 2023 Mikolaj Izdebski <mizdebsk@redhat.com> - 3.2.2-32
+- Port to apache-commons-parent 65
+
+* Fri Sep 01 2023 Mikolaj Izdebski <mizdebsk@redhat.com> - 3.2.2-31
+- Convert License tag to SPDX format
+
+* Wed Jul 19 2023 Fedora Release Engineering <releng@fedoraproject.org> - 3.2.2-30
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_39_Mass_Rebuild
+
+* Wed Jan 18 2023 Fedora Release Engineering <releng@fedoraproject.org> - 3.2.2-29
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_38_Mass_Rebuild
+
+* Wed Jul 20 2022 Fedora Release Engineering <releng@fedoraproject.org> - 3.2.2-28
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_37_Mass_Rebuild
+
+* Sat Feb 05 2022 Jiri Vanek <jvanek@redhat.com> - 3.2.2-27
+- Rebuilt for java-17-openjdk as system jdk
+
+* Wed Jan 19 2022 Fedora Release Engineering <releng@fedoraproject.org> - 3.2.2-26
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_36_Mass_Rebuild
+
+* Tue Nov 02 2021 Mikolaj Izdebski <mizdebsk@redhat.com> - 3.2.2-25
+- Bump Java compiler source/target levels to 1.7
+
+* Wed Jul 21 2021 Fedora Release Engineering <releng@fedoraproject.org> - 3.2.2-24
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_35_Mass_Rebuild
+
+* Mon May 17 2021 Mikolaj Izdebski <mizdebsk@redhat.com> - 3.2.2-23
+- Bootstrap build
+- Non-bootstrap build
+
+* Fri Mar 05 2021 Mat Booth <mat.booth@redhat.com> - 3.2.2-22
+- Backport fix to build with maven-antrun-plugin 3.0.0
+
+* Tue Jan 26 2021 Fedora Release Engineering <releng@fedoraproject.org> - 3.2.2-21
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_34_Mass_Rebuild
+
+* Mon Jul 27 2020 Fedora Release Engineering <releng@fedoraproject.org> - 3.2.2-20
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_33_Mass_Rebuild
+
+* Fri Jul 10 2020 Jiri Vanek <jvanek@redhat.com> - 3.2.2-19
+- Rebuilt for JDK-11, see https://fedoraproject.org/wiki/Changes/Java11
+
+* Fri Jun 26 2020 Alexander Kurtakov <akurtako@redhat.com> 3.2.2-18
+- Rebuild to verify xmvn/maven switch to jakarta-annotations.
+
+* Thu Jun 25 2020 Roland Grunberg <rgrunber@redhat.com> - 3.2.2-17
+- Fix ambiguous reference in AbstractTestCollection to build on Java 11.
+
+* Tue Jan 28 2020 Fedora Release Engineering <releng@fedoraproject.org> - 3.2.2-16
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_32_Mass_Rebuild
+
+* Fri Nov 15 2019 Fabio Valentini <decathorpe@gmail.com> - 3.2.2-15
+- Adapt build and install scriptlets to fix issues in dependencies.
+
+* Tue Nov 05 2019 Fabio Valentini <decathorpe@gmail.com> - 3.2.2-14
+- Really actually skip tests to fix builds with xmvn 3.1.0.
+
+* Tue Nov 05 2019 Mikolaj Izdebski <mizdebsk@redhat.com> - 3.2.2-13
+- Mass rebuild for javapackages-tools 201902
+
+* Wed Jul 24 2019 Fedora Release Engineering <releng@fedoraproject.org> - 3.2.2-13
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_31_Mass_Rebuild
+
+* Fri Jun 28 2019 Mikolaj Izdebski <mizdebsk@redhat.com> - 3.2.2-12
+- Enable tests
+
+* Fri May 24 2019 Mikolaj Izdebski <mizdebsk@redhat.com> - 3.2.2-11
+- Mass rebuild for javapackages-tools 201901
+
+* Fri Feb 08 2019 Mat Booth <mat.booth@redhat.com> - 3.2.2-12
+- Rebuild to regenerate OSGi metadata
+
+* Thu Jan 31 2019 Fedora Release Engineering <releng@fedoraproject.org> - 3.2.2-11
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_30_Mass_Rebuild
+
+* Thu Jul 12 2018 Fedora Release Engineering <releng@fedoraproject.org> - 3.2.2-10
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_29_Mass_Rebuild
+
+* Thu Jul 12 2018 Mikolaj Izdebski <mizdebsk@redhat.com> - 3.2.2-9
+- Remove workaround for symlink->directory rpm bug
+
+* Tue Apr 24 2018 Mat Booth <mat.booth@redhat.com> - 3.2.2-8
+- Allow testframework to still be built even with tests disabled, which is
+  needed by other packages
+
+* Wed Feb 07 2018 Fedora Release Engineering <releng@fedoraproject.org> - 3.2.2-7
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_28_Mass_Rebuild
+
+* Mon Sep 18 2017 Mikolaj Izdebski <mizdebsk@redhat.com> - 3.2.2-6
+- Temporarly disable running tests
+
+* Wed Jul 26 2017 Fedora Release Engineering <releng@fedoraproject.org> - 3.2.2-5
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_27_Mass_Rebuild
+
+* Fri Feb 10 2017 Fedora Release Engineering <releng@fedoraproject.org> - 3.2.2-4
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_26_Mass_Rebuild
+
+* Wed Mar 23 2016 Michael Simacek <msimacek@redhat.com> - 3.2.2-3
+- Add workaround for symlink->directory rpm bug
+
+* Wed Feb 03 2016 Fedora Release Engineering <releng@fedoraproject.org> - 3.2.2-2
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_24_Mass_Rebuild
+
+* Mon Nov 16 2015 Michael Simacek <msimacek@redhat.com> - 3.2.2-1
+- Update to upstream version 3.2.2
+- Merge two javadoc subpackages
+- Install with XMVn
+- Specfile cleanup
+
+* Wed Jun 17 2015 Fedora Release Engineering <rel-eng@lists.fedoraproject.org> - 3.2.1-26
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_23_Mass_Rebuild
+
+* Thu Oct 23 2014 Mikolaj Izdebski <mizdebsk@redhat.com> - 3.2.1-25
+- Remove requires on apache-commons-parent
+
+* Fri Oct 17 2014 Timothy St. Clair <tstclair@redhat.com> - 3.2.1-24
+- Fix broken Java 8 build
+
+* Tue Oct 14 2014 Mikolaj Izdebski <mizdebsk@redhat.com> - 3.2.1-23
+- Remove legacy Obsoletes/Provides for jakarta-commons
+
+* Sat Jun 07 2014 Fedora Release Engineering <rel-eng@lists.fedoraproject.org> - 3.2.1-22
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_21_Mass_Rebuild
+
+* Wed May 21 2014 Mikolaj Izdebski <mizdebsk@redhat.com> - 3.2.1-21
+- Use .mfiles generated during build
+
+* Tue Mar 04 2014 Stanislav Ochotnicky <sochotnicky@redhat.com> - 3.2.1-20
+- Use Requires: java-headless rebuild (#1067528)
+
+* Mon Aug 12 2013 Mat Booth <fedora@matbooth.co.uk> - 3.2.1-19
+- Fix FTBFS rhbz #991965
+
+* Sat Aug 03 2013 Fedora Release Engineering <rel-eng@lists.fedoraproject.org> - 3.2.1-18
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_20_Mass_Rebuild
+
+* Mon Apr 29 2013 Mikolaj Izdebski <mizdebsk@redhat.com> - 3.2.1-17
+- Remove unneeded BR: maven-idea-plugin
+
+* Wed Feb 13 2013 Fedora Release Engineering <rel-eng@lists.fedoraproject.org> - 3.2.1-16
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_19_Mass_Rebuild
+
+* Wed Feb 06 2013 Java SIG <java-devel@lists.fedoraproject.org> - 3.2.1-15
+- Update for https://fedoraproject.org/wiki/Fedora_19_Maven_Rebuild
+- Replace maven BuildRequires with maven-local
+
+* Wed Jul 18 2012 Fedora Release Engineering <rel-eng@lists.fedoraproject.org> - 3.2.1-14
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_18_Mass_Rebuild
+
+* Wed Feb 08 2012 Jaromir Capik <jcapik@redhat.com> 3.2.1-13
+- saxon dependency removed - not needed
+- minor spec file changes according to the latest guidelines
+
+* Thu Jan 12 2012 Fedora Release Engineering <rel-eng@lists.fedoraproject.org> - 3.2.1-12
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_17_Mass_Rebuild
+
+* Mon Jun 6 2011 Chris Spike <spike@fedoraproject.org> 3.2.1-11
+- Added *-testframework depmap entries.
+
+* Wed Mar 16 2011 Alexander Kurtakov <akurtako@redhat.com> 3.2.1-10
+- Drop tomcat5 subpackage.
+
+* Mon Feb 07 2011 Fedora Release Engineering <rel-eng@lists.fedoraproject.org> - 3.2.1-9
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_15_Mass_Rebuild
+
+* Mon Nov 8 2010 Alexander Kurtakov <akurtako@redhat.com> 3.2.1-8
+- Add commons-collections:commons-collections depmap.
+
+* Mon Oct 4 2010 Alexander Kurtakov <akurtako@redhat.com> 3.2.1-7
+- Fix pom name.
+- Use newer maven plugins names.
+
+* Tue Aug 31 2010 Carl Green <carlgreen at gmail.com> - 3.2.1-6
+- Change package to own files in directories, not the directories
+
+* Mon Aug 30 2010 Carl Green <carlgreen at gmail.com> - 3.2.1-5
+- Remove source and patches no longer needed for Maven
+- Fix non-standard groups and remove empty sections
+- Fix file permissions
+
+* Sat Aug 28 2010 Carl Green <carlgreen at gmail.com> - 3.2.1-4
+- Renamed from jakarta-commons-collections
+- Updated to use maven2
+- Replaced saxon:group instruction with xsl:for-each-group in pom-maven2jpp-newdepmap.xsl

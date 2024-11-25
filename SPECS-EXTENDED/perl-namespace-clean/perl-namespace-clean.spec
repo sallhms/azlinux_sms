@@ -8,12 +8,10 @@
 Name:		perl-namespace-clean
 Summary:	Keep your namespace tidy
 Version:	0.27
-Release:	15%{?dist}
-License:	GPL+ or Artistic
-Vendor:         Microsoft Corporation
-Distribution:   Azure Linux
+Release:	27%{?dist}
+License:	GPL-1.0-or-later OR Artistic-1.0-Perl
 URL:		https://metacpan.org/release/namespace-clean
-Source0:	https://cpan.metacpan.org/authors/id/R/RI/RIBASUSHI/namespace-clean-%{version}.tar.gz#/perl-namespace-clean-%{version}.tar.gz
+Source0:	https://cpan.metacpan.org/authors/id/R/RI/RIBASUSHI/namespace-clean-%{version}.tar.gz
 BuildArch:	noarch
 # Module Build
 BuildRequires:	coreutils
@@ -34,23 +32,19 @@ BuildRequires:	perl(strict)
 BuildRequires:	perl(vars)
 BuildRequires:	perl(warnings)
 # Test Suite
-%if 0%{?with_check}
 BuildRequires:	perl(Config)
 BuildRequires:	perl(DB)
 BuildRequires:	perl(File::Glob)
 BuildRequires:	perl(FindBin)
 BuildRequires:	perl(IPC::Open2)
-BuildRequires:	perl(Test::More)
 BuildRequires:	perl(lib)
 BuildRequires:	perl(sort)
-BuildRequires:	perl-debugger
-%endif
+BuildRequires:	perl(Test::More)
 %if %{with perl_namespace_clean_enables_optional_test}
 # Optional Tests
 BuildRequires:	perl(Variable::Magic)
 %endif
 # Runtime
-Requires:	perl(:MODULE_COMPAT_%(eval "`perl -V:version`"; echo $version))
 Requires:	perl(B::Hooks::EndOfScope) >= 0.12
 Requires:	perl(Package::Stash) >= 0.23
 
@@ -92,12 +86,47 @@ make test
 %{_mandir}/man3/namespace::clean.3*
 
 %changelog
-* Thu Sep 01 2022 Muhammad Falak <mwani@microsoft.com> - 0.27-15
-- Add BR on perl-debugger to enable ptest
-- License verified
+* Fri Jul 19 2024 Fedora Release Engineering <releng@fedoraproject.org> - 0.27-27
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_41_Mass_Rebuild
 
-* Fri Oct 15 2021 Pawel Winogrodzki <pawelwi@microsoft.com> - 0.27-14
-- Initial CBL-Mariner import from Fedora 32 (license: MIT).
+* Thu Jan 25 2024 Fedora Release Engineering <releng@fedoraproject.org> - 0.27-26
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Sun Jan 21 2024 Fedora Release Engineering <releng@fedoraproject.org> - 0.27-25
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Fri Jul 21 2023 Fedora Release Engineering <releng@fedoraproject.org> - 0.27-24
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_39_Mass_Rebuild
+
+* Wed May 03 2023 Michal Josef Špaček <mspacek@redhat.com> - 0.27-23
+- Update license to SPDX format
+
+* Fri Jan 20 2023 Fedora Release Engineering <releng@fedoraproject.org> - 0.27-22
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_38_Mass_Rebuild
+
+* Fri Jul 22 2022 Fedora Release Engineering <releng@fedoraproject.org> - 0.27-21
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_37_Mass_Rebuild
+
+* Wed Jun 01 2022 Jitka Plesnikova <jplesnik@redhat.com> - 0.27-20
+- Perl 5.36 rebuild
+
+* Fri Jan 21 2022 Fedora Release Engineering <releng@fedoraproject.org> - 0.27-19
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_36_Mass_Rebuild
+
+* Fri Jul 23 2021 Fedora Release Engineering <releng@fedoraproject.org> - 0.27-18
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_35_Mass_Rebuild
+
+* Fri May 21 2021 Jitka Plesnikova <jplesnik@redhat.com> - 0.27-17
+- Perl 5.34 rebuild
+
+* Wed Jan 27 2021 Fedora Release Engineering <releng@fedoraproject.org> - 0.27-16
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_34_Mass_Rebuild
+
+* Tue Jul 28 2020 Fedora Release Engineering <releng@fedoraproject.org> - 0.27-15
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_33_Mass_Rebuild
+
+* Tue Jun 23 2020 Jitka Plesnikova <jplesnik@redhat.com> - 0.27-14
+- Perl 5.32 rebuild
 
 * Thu Jan 30 2020 Fedora Release Engineering <releng@fedoraproject.org> - 0.27-13
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_32_Mass_Rebuild

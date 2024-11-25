@@ -1,18 +1,21 @@
-Vendor:         Microsoft Corporation
-Distribution:   Azure Linux
+%global gitdate 20131022
 %global gitfullrev 08767aa863cd27d1755ba0aff65b8cc1a0c1446a
 %global gitrev %(c=%{gitfullrev}; echo ${c:0:6})
 Name:           urlview
 Version:        0.9
-Release:        29%{?dist}
+Release:        38.%{gitdate}git%{gitrev}%{?dist}
 Summary:        URL extractor/launcher
 
-License:        GPLv2
+License:        GPL-2.0-only AND GPL-2.0-or-later AND LGPL-2.0-or-later
 URL:            https://github.com/sigpipe/urlview
 Source0:        https://github.com/sigpipe/urlview/archive/%{gitrev}/urlview-%{gitrev}.tar.gz
 
+BuildRequires: make
 BuildRequires:  gcc
 BuildRequires:  ncurses-devel
+
+# mutt packages before 5:1.5.16-2 included urlview
+Conflicts:      mutt < 5:1.5.16-2
 
 Patch1:         urlview-default.patch
 
@@ -23,7 +26,7 @@ view a specific item.
 
 %prep
 %setup -q -n %{name}-%{gitfullrev}
-%patch 1 -p1 -b .default
+%patch -P1 -p1 -b .default
 
 %build
 %configure
@@ -38,8 +41,7 @@ echo '.so man1/urlview.1' > $RPM_BUILD_ROOT%{_mandir}/man5/urlview.conf.5
 echo '.so man1/urlview.1' > $RPM_BUILD_ROOT%{_mandir}/man1/url_handler.sh.1
 
 %files
-%license COPYING
-%doc AUTHORS ChangeLog README sample.urlview
+%doc AUTHORS ChangeLog COPYING README sample.urlview
 %config(noreplace) %{_sysconfdir}/urlview.conf
 %{_bindir}/urlview
 %{_bindir}/url_handler.sh
@@ -48,13 +50,38 @@ echo '.so man1/urlview.1' > $RPM_BUILD_ROOT%{_mandir}/man1/url_handler.sh.1
 %{_mandir}/man5/urlview.conf.5*
 
 %changelog
-* Fri Feb 04 2022 Pawel Winogrodzki <pawelwi@microsoft.com> - 0.9-29
-- Removing 'Conflicts' on an older package never present in CBL-Mariner.
-- License verified.
+* Sat Jul 20 2024 Fedora Release Engineering <releng@fedoraproject.org> - 0.9-38.20131022git08767a
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_41_Mass_Rebuild
 
-* Thu Oct 14 2021 Pawel Winogrodzki <pawelwi@microsoft.com> - 0.9-28
-- Initial CBL-Mariner import from Fedora 32 (license: MIT).
-- Converting the 'Release' tag to the '[number].[distribution]' format.
+* Sat Jan 27 2024 Fedora Release Engineering <releng@fedoraproject.org> - 0.9-37.20131022git08767a
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Wed Nov 01 2023 Tomas Korbar <tkorbar@redhat.com> - 0.9-36.20131022git08767a
+- Add licenses to fully conform to SPDX
+
+* Sat Jul 22 2023 Fedora Release Engineering <releng@fedoraproject.org> - 0.9-35.20131022git08767a
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_39_Mass_Rebuild
+
+* Sat Mar 11 2023 Tomas Korbar <tkorbar@redhat.com> - 0.9-34.20131022git08767a
+- Change the License tag to the SPDX format
+
+* Sat Jan 21 2023 Fedora Release Engineering <releng@fedoraproject.org> - 0.9-33.20131022git08767a
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_38_Mass_Rebuild
+
+* Sat Jul 23 2022 Fedora Release Engineering <releng@fedoraproject.org> - 0.9-32.20131022git08767a
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_37_Mass_Rebuild
+
+* Sat Jan 22 2022 Fedora Release Engineering <releng@fedoraproject.org> - 0.9-31.20131022git08767a
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_36_Mass_Rebuild
+
+* Fri Jul 23 2021 Fedora Release Engineering <releng@fedoraproject.org> - 0.9-30.20131022git08767a
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_35_Mass_Rebuild
+
+* Wed Jan 27 2021 Fedora Release Engineering <releng@fedoraproject.org> - 0.9-29.20131022git08767a
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_34_Mass_Rebuild
+
+* Wed Jul 29 2020 Fedora Release Engineering <releng@fedoraproject.org> - 0.9-28.20131022git08767a
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_33_Mass_Rebuild
 
 * Fri Jan 31 2020 Fedora Release Engineering <releng@fedoraproject.org> - 0.9-27.20131022git08767a
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_32_Mass_Rebuild

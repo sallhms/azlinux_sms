@@ -1,40 +1,37 @@
-Name:		realmd
-Version:	0.17.1
-Release:	1%{?dist}
-Summary:	Kerberos realm enrollment service
-License:	LGPLv2+
-Vendor:         Microsoft Corporation
-Distribution:   Azure Linux
-URL:		https://gitlab.freedesktop.org/realmd/realmd
-Source0:	https://gitlab.freedesktop.org/realmd/realmd/-/archive/0.17.1/realmd-%{version}.tar.gz
+Name:    realmd
+Version: 0.17.1
+Release: 13%{?dist}
+Summary: Kerberos realm enrollment service
+License: LGPL-2.1-or-later
+URL:     https://gitlab.freedesktop.org/realmd/realmd
+Source0: https://gitlab.freedesktop.org/realmd/realmd/uploads/204d05bd487908ece2ce2705a01d2b26/realmd-%{version}.tar.gz
 
-Patch1:	        0001-service-allow-multiple-names-and-_srv_-ad_server-opt.patch			
-Patch2:		0002-service-fix-error-message-when-removing-host-from-AD.patch
-Patch3:		0003-doc-fix-reference-in-realmd.conf-man-page.patch
-Patch4:		0001-sssd-package-fix.patch
-Patch5:		0001-tools-fix-ccache-handling-for-leave-operation.patch
-Patch6:		0001-ipa-Propagate-hostname-error.patch
+Patch0001: 0001-service-allow-multiple-names-and-_srv_-ad_server-opt.patch
+Patch0002: 0002-service-fix-error-message-when-removing-host-from-AD.patch
+Patch0003: 0003-doc-fix-reference-in-realmd.conf-man-page.patch
+Patch0004: 0001-sssd-package-fix.patch
+Patch0005: 0001-tools-fix-ccache-handling-for-leave-operation.patch
+Patch0006: 0001-ipa-Propagate-hostname-error.patch
 
-BuildRequires:	gcc
-BuildRequires:	perl(File::Find)
-BuildRequires:	automake
-BuildRequires:	autoconf
-BuildRequires:	intltool pkgconfig
-BuildRequires:	gettext-devel
-BuildRequires:	glib2-devel >= 2.32.0
-BuildRequires:	openldap-devel
-BuildRequires:	polkit-devel
-BuildRequires:	krb5-devel
-BuildRequires:	systemd-devel
-BuildRequires:  systemd-units
-BuildRequires:	libxslt
-BuildRequires:	xmlto
-BuildRequires:	python3
-BuildRequires:  e2fsprogs-devel
+BuildRequires: make
+BuildRequires: gcc
+BuildRequires: automake
+BuildRequires: autoconf
+BuildRequires: intltool pkgconfig
+BuildRequires: gettext-devel
+BuildRequires: glib2-devel >= 2.32.0
+BuildRequires: openldap-devel
+BuildRequires: polkit-devel
+BuildRequires: krb5-devel
+BuildRequires: systemd-devel
+BuildRequires: libxslt
+BuildRequires: xmlto
+BuildRequires: python3
+BuildRequires: samba-common-tools
 
-Requires:	authselect
-Requires:	polkit
-
+Requires: authselect
+Requires: polkit
+Conflicts: realmd-devel-docs < %{version}-%{release}
 
 %description
 realmd is a DBus system service which manages discovery and enrollment in realms
@@ -42,7 +39,8 @@ and domains like Active Directory or IPA. The control center uses realmd as the
 back end to 'join' a domain simply and automatically configure things correctly.
 
 %package devel-docs
-Summary:	Developer documentation files for %{name}
+Summary: Developer documentation files for %{name}
+Conflicts: realmd < %{version}-%{release}
 
 %description devel-docs
 The %{name}-devel package contains developer documentation for developing
@@ -56,17 +54,21 @@ applications that use %{name}.
 %build
 autoreconf -fi
 %configure --disable-silent-rules \
-           --with-distro="redhat" \
-           --disable-doc
-make %{?_smp_mflags}
+%if 0%{?rhel}
+    --with-vendor-error-message='Please check\n    https://red.ht/support_rhel_ad \nto get help for common issues.' \
+%endif
+    %{nil}
+
+%make_build
 
 %check
 make check
 
 %install
-make install DESTDIR=%{buildroot}
+%make_install
 
 %find_lang realmd
+
 %post
 %systemd_post realmd.service
 
@@ -77,8 +79,7 @@ make install DESTDIR=%{buildroot}
 %systemd_postun_with_restart realmd.service
 
 %files -f realmd.lang
-%license COPYING
-%doc AUTHORS NEWS README
+%doc AUTHORS COPYING NEWS README
 %{_sysconfdir}/dbus-1/system.d/org.freedesktop.realmd.conf
 %{_sbindir}/realm
 %dir %{_prefix}/lib/realmd
@@ -88,6 +89,8 @@ make install DESTDIR=%{buildroot}
 %{_unitdir}/realmd.service
 %{_datadir}/dbus-1/system-services/org.freedesktop.realmd.service
 %{_datadir}/polkit-1/actions/org.freedesktop.realmd.policy
+%{_mandir}/man8/realm.8.gz
+%{_mandir}/man5/realmd.conf.5.gz
 %{_localstatedir}/cache/realmd/
 
 %files devel-docs
@@ -95,20 +98,111 @@ make install DESTDIR=%{buildroot}
 %doc ChangeLog
 
 %changelog
-* Thu Sept 26 2024 Jyoti kanase <v-jykanase@microsoft.com> - 0.17.1-1
-- Update to version 0.17.1
+* Fri Jul 19 2024 Fedora Release Engineering <releng@fedoraproject.org> - 0.17.1-13
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_41_Mass_Rebuild
 
-* Wed Feb 16 2022 Pawel Winogrodzki <pawelwi@microsoft.com> - 0.16.3-25
-- License verified.
+* Fri Mar 01 2024 Adam Williamson <awilliam@redhat.com> - 0.17.1-12
+- Revert security hardening for now (it broke domain enrolment)
 
-* Tue Feb 15 2022 Pawel Winogrodzki <pawelwi@microsoft.com> - 0.16.3-24
-- Adding missing BRs on Perl modules.
+* Thu Feb 29 2024 Sumit Bose <sbose@redhat.com> - 0.17.1-11
+- Update Systemd security settings as part of https://fedoraproject.org/wiki/Changes/SystemdSecurityHardening
 
-* Fri Dec 11 2020 Ruying Chen <v-ruyche@microsoft.com> - 0.16.3-23
-- Initial CBL-Mariner import from Fedora 32 (license: MIT).
-- Add e2fsprogs-devel buildrequirement for missing header file.
-- Specify distro for generating configuration file.
-- Disable doc.
+* Mon Feb 26 2024 Sumit Bose <sbose@redhat.com> - 0.17.1-10
+- Propagate FreeIPA hostname error
+  Resolves: rhbz#2264944
+
+* Fri Feb 09 2024 Sumit Bose <sbose@redhat.com> - 0.17.1-9
+- fix ccache handling for leave operation
+  Resolves: jira#SSSD-6420
+
+* Mon Feb 05 2024 Sumit Bose <sbose@redhat.com> - 0.17.1-8
+- improve sssd package handling due to removed sssd meta package
+  Resolves: rhbz#2255725
+
+* Fri Jan 26 2024 Fedora Release Engineering <releng@fedoraproject.org> - 0.17.1-7
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Mon Jan 22 2024 Fedora Release Engineering <releng@fedoraproject.org> - 0.17.1-6
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Fri Dec 01 2023 Sumit Bose <sbose@redhat.com> - 0.17.1-5
+- allow multiple names and _srv_ ad_server option
+  Resolves: jira#SSSD-6077
+
+* Wed Oct 18 2023 Sumit Bose <sbose@redhat.com> - 0.17.1-4
+- migrated to SPDX license
+
+* Wed Oct 18 2023 Tom Stellard <tstellar@redhat.com>
+- Use make macros
+- https://fedoraproject.org/wiki/Changes/UseMakeBuildInstallMacro
+
+* Fri Jul 21 2023 Fedora Release Engineering <releng@fedoraproject.org> - 0.17.1-3
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_39_Mass_Rebuild
+
+* Fri Jan 20 2023 Fedora Release Engineering <releng@fedoraproject.org> - 0.17.1-2
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_38_Mass_Rebuild
+
+* Thu Sep 29 2022 Sumit Bose <sbose@redhat.com> - 0.17.1-1
+- Updated to upstream 0.17.1
+  Resolves: rhbz#1628302
+
+* Sat Jul 23 2022 Fedora Release Engineering <releng@fedoraproject.org> - 0.17.0-11
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_37_Mass_Rebuild
+
+* Mon Apr 25 2022 Andreas Schneider <asn@redhat.com> - 0.17.0-10
+- resolves rhbz#2078447 - Fix detction for new samba commandline options
+
+* Fri Jan 21 2022 Fedora Release Engineering <releng@fedoraproject.org> - 0.17.0-9
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_36_Mass_Rebuild
+
+* Wed Dec 15 2021 Sumit Bose <sbose@redhat.com> - 0.17.0-8
+- Fix LDAP socket timeout, duplicate log messages and Samba CLI
+  Resolves: rhbz#1817869, rhbz#2024248, rhbz#2028530
+
+* Fri Jul 23 2021 Fedora Release Engineering <releng@fedoraproject.org> - 0.17.0-7
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_35_Mass_Rebuild
+
+* Tue May 11 2021 Sumit Bose <sbose@redhat.com> - 0.17.0-6
+- Add man page section, enable restart after update
+  Resolves: rhbz#1926046
+
+* Tue Apr 06 2021 Sumit Bose <sbose@redhat.com> - 0.17.0-5
+- Add missing configure option
+  Resolves: rhbz#1889386
+
+* Tue Apr 06 2021 Sumit Bose <sbose@redhat.com> - 0.17.0-4
+- Add vendor error message, autoconf-2.71 fixes, downstream gating
+  Resolves: rhbz#1889386
+
+* Wed Mar 03 2021 Sumit Bose <sbose@redhat.com> - 0.17.0-3
+- Use authselect instead of authconfig
+  Resolves: rhbz#1934124
+
+* Sat Feb 20 2021 Sumit Bose <sbose@redhat.com> - 0.17.0-2
+- Add Conflicts to avoid update/downgrade issues
+
+* Fri Feb 19 2021 Sumit Bose <sbose@redhat.com> - 0.17.0-1
+- Updated to upstream 0.17.0
+
+* Wed Jan 27 2021 Fedora Release Engineering <releng@fedoraproject.org> - 0.16.3-28
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_34_Mass_Rebuild
+
+* Wed Nov 04 2020 Sumit Bose <sbose@redhat.com> - 0.16.3-27
+- Sync with latest upstream patches
+
+* Wed Aug 12 2020 Sumit Bose <sbose@redhat.com> - 0.16.3-25
+- Sync with latest upstream patches
+
+* Sat Aug 01 2020 Fedora Release Engineering <releng@fedoraproject.org> - 0.16.3-25
+- Second attempt - Rebuilt for
+  https://fedoraproject.org/wiki/Fedora_33_Mass_Rebuild
+
+* Wed Jul 29 2020 Fedora Release Engineering <releng@fedoraproject.org> - 0.16.3-24
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_33_Mass_Rebuild
+
+* Wed Mar 18 2020 Sumit Bose <sbose@redhat.com> - 0.16.3-23
+- Sync with latest upstream patches and fix package URL
+  Resolves: rhbz#1800897
 
 * Thu Jan 30 2020 Fedora Release Engineering <releng@fedoraproject.org> - 0.16.3-22
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_32_Mass_Rebuild

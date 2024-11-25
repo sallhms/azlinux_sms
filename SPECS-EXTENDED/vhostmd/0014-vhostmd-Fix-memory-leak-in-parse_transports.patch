@@ -1,0 +1,36 @@
+From 71a94a18c470ebbd870253b8aedbb7b3b24a274b Mon Sep 17 00:00:00 2001
+From: Jim Fehlig <jfehlig@suse.com>
+Date: Tue, 14 Jan 2020 15:08:54 -0700
+Subject: [PATCH 14/19] vhostmd: Fix memory leak in parse_transports
+
+From coverity scan
+
+vhostmd-1.1/vhostmd/vhostmd.c:455: alloc_fn: Storage is returned from allocation function "xmlXPathEval".
+vhostmd-1.1/vhostmd/vhostmd.c:455: var_assign: Assigning: "obj" = storage returned from "xmlXPathEval((xmlChar *)"//vhostmd/globals/transport", ctxt)".
+vhostmd-1.1/vhostmd/vhostmd.c:474: leaked_storage: Variable "obj" going out of scope leaks the storage it points to.
+  472|   #else
+  473|   	     vu_log (VHOSTMD_ERR, "No support for xenstore transport in this vhostmd");
+  474|-> 	     return -1;
+  475|   #endif
+  476|   	 }
+
+Signed-off-by: Jim Fehlig <jfehlig@suse.com>
+---
+ vhostmd/vhostmd.c | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/vhostmd/vhostmd.c b/vhostmd/vhostmd.c
+index 7374ec9..3d1d53e 100644
+--- a/vhostmd/vhostmd.c
++++ b/vhostmd/vhostmd.c
+@@ -472,6 +472,7 @@ static int parse_transports(xmlDocPtr xml,
+              transports |= XENSTORE;
+ #else
+ 	     vu_log (VHOSTMD_ERR, "No support for xenstore transport in this vhostmd");
++         xmlXPathFreeObject(obj);
+ 	     return -1;
+ #endif
+ 	 }
+-- 
+2.32.0
+

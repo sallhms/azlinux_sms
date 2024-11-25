@@ -1,20 +1,27 @@
-Vendor:         Microsoft Corporation
-Distribution:   Azure Linux
 %global srcname kerberos
 %global sum A high-level wrapper for Kerberos (GSSAPI) operations
 
 Name:           python-%{srcname}
 Version:        1.3.0
-Release:        9%{?dist}
+Release:        26%{?dist}
 Summary:        %{sum}
 
-License:        ASL 2.0
+License:        Apache-2.0
 # SVN browser is at https://trac.calendarserver.org/browser/PyKerberos
 URL:            https://pypi.python.org/pypi/kerberos
-Source0:        https://pypi.python.org/packages/source/k/%{srcname}/%{srcname}-%{version}.tar.gz#/python-%{srcname}-%{version}.tar.gz
+Source0:        https://pypi.python.org/packages/source/k/%{srcname}/%{srcname}-%{version}.tar.gz
 Source1:        LICENSE
 
+# SystemError thrown with Python 3.10
+# https://github.com/apple/ccs-pykerberos/issues/88
+# https://bugzilla.redhat.com/2008899
+Patch1:         PY_SSIZE_T_CLEAN.patch
+# https://bugzilla.redhat.com/show_bug.cgi?id=2245868
+Patch2:         include_unistd.patch
+
 BuildRequires:  python3-devel
+BuildRequires:  python3-setuptools
+BuildRequires:  python3-requests
 BuildRequires:  krb5-devel
 BuildRequires:  gcc
 
@@ -36,7 +43,7 @@ Summary:        %{sum}
 %{desc}
 
 %prep
-%setup -q -n %{srcname}-%{version}
+%autosetup -p1 -n %{srcname}-%{version}
 
 %build
 %{py3_build}
@@ -45,6 +52,11 @@ Summary:        %{sum}
 install -m 644 $RPM_SOURCE_DIR/LICENSE LICENSE 
 %{py3_install}
 
+%check
+# Regression test for https://bugzilla.redhat.com/2008899
+export PYTHONPATH=%{buildroot}%{python3_sitearch}
+%{python3} -c 'import kerberos; kerberos.channelBindings(application_data=b"")'
+
 %files -n python3-%{srcname}
 %license LICENSE
 %doc README.rst
@@ -52,8 +64,60 @@ install -m 644 $RPM_SOURCE_DIR/LICENSE LICENSE
 
 
 %changelog
-* Fri Oct 15 2021 Pawel Winogrodzki <pawelwi@microsoft.com> - 1.3.0-9
-- Initial CBL-Mariner import from Fedora 32 (license: MIT).
+* Fri Jul 19 2024 Fedora Release Engineering <releng@fedoraproject.org> - 1.3.0-26
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_41_Mass_Rebuild
+
+* Fri Jun 07 2024 Python Maint <python-maint@redhat.com> - 1.3.0-25
+- Rebuilt for Python 3.13
+
+* Fri Jan 26 2024 Fedora Release Engineering <releng@fedoraproject.org> - 1.3.0-24
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Mon Jan 22 2024 Fedora Release Engineering <releng@fedoraproject.org> - 1.3.0-23
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Wed Oct 25 2023 Rob Crittenden <rcritten@redhat.com> - 1.3.0-22
+- Python.h no longer includes <unistd.h> (#2245868)
+
+* Fri Jul 21 2023 Fedora Release Engineering <releng@fedoraproject.org> - 1.3.0-21
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_39_Mass_Rebuild
+
+* Tue Jun 13 2023 Python Maint <python-maint@redhat.com> - 1.3.0-20
+- Rebuilt for Python 3.12
+
+* Thu Feb 23 2023 Rob Crittenden <rcritten@redhat.com> - 1.3.0-19
+- migrated to SPDX license
+
+* Fri Jan 20 2023 Fedora Release Engineering <releng@fedoraproject.org> - 1.3.0-18
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_38_Mass_Rebuild
+
+* Fri Jul 22 2022 Fedora Release Engineering <releng@fedoraproject.org> - 1.3.0-17
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_37_Mass_Rebuild
+
+* Mon Jun 13 2022 Python Maint <python-maint@redhat.com> - 1.3.0-16
+- Rebuilt for Python 3.11
+
+* Fri Jan 21 2022 Fedora Release Engineering <releng@fedoraproject.org> - 1.3.0-15
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_36_Mass_Rebuild
+
+* Wed Sep 29 2021 Miro Hrončok <mhroncok@redhat.com> - 1.3.0-14
+- Fix SystemError thrown with Python 3.10
+
+* Tue Jul 27 2021 Fedora Release Engineering <releng@fedoraproject.org> - 1.3.0-13
+- Second attempt - Rebuilt for
+  https://fedoraproject.org/wiki/Fedora_35_Mass_Rebuild
+
+* Thu Jun 03 2021 Python Maint <python-maint@redhat.com> - 1.3.0-12
+- Rebuilt for Python 3.10
+
+* Wed Jan 27 2021 Fedora Release Engineering <releng@fedoraproject.org> - 1.3.0-11
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_34_Mass_Rebuild
+
+* Wed Jul 29 2020 Fedora Release Engineering <releng@fedoraproject.org> - 1.3.0-10
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_33_Mass_Rebuild
+
+* Sat May 23 2020 Miro Hrončok <mhroncok@redhat.com> - 1.3.0-9
+- Rebuilt for Python 3.9
 
 * Thu Jan 30 2020 Fedora Release Engineering <releng@fedoraproject.org> - 1.3.0-8
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_32_Mass_Rebuild

@@ -1,16 +1,19 @@
-Vendor:         Microsoft Corporation
-Distribution:   Azure Linux
+%if 0%{?fedora} >= 36 || 0%{?rhel} > 9
+%global dict_dirname hunspell
+%else
+%global dict_dirname myspell
+%endif
+
 Name: hunspell-fy
 Summary: Frisian hunspell dictionaries
 Version: 3.0.0
-Release: 6%{?dist}
-Source0: https://addons.mozilla.org/firefox/downloads/file/499875/frysk_wurdboek-%{version}-tb+fx+sm.xpi
-Source1: %{name}-LICENSE.txt
+Release: 18%{?dist}
+Source: https://addons.mozilla.org/firefox/downloads/file/499875/frysk_wurdboek-%{version}-tb+fx+sm.xpi
 URL: http://www.mozilla-nl.org/projecten/frysk
-License: GPLv3+
+License: GPL-3.0-or-later
 BuildArch: noarch
 
-Requires: hunspell
+Requires: hunspell-filesystem
 Supplements: (hunspell and langpacks-fy)
 
 %description
@@ -18,7 +21,6 @@ Frisian hunspell dictionaries.
 
 %prep
 %autosetup -c -n hunspell-fy
-cp %{SOURCE1} ./LICENSE.txt
 
 %build
 for i in README-fy.txt; do
@@ -30,10 +32,10 @@ for i in README-fy.txt; do
 done
 
 %install
-mkdir -p $RPM_BUILD_ROOT/%{_datadir}/myspell
-cp -p dictionaries/fy-NL.aff $RPM_BUILD_ROOT/%{_datadir}/myspell/fy_NL.aff
-cp -p dictionaries/fy-NL.dic $RPM_BUILD_ROOT/%{_datadir}/myspell/fy_NL.dic
-pushd $RPM_BUILD_ROOT/%{_datadir}/myspell/
+mkdir -p $RPM_BUILD_ROOT/%{_datadir}/%{dict_dirname}
+cp -p dictionaries/fy-NL.aff $RPM_BUILD_ROOT/%{_datadir}/%{dict_dirname}/fy_NL.aff
+cp -p dictionaries/fy-NL.dic $RPM_BUILD_ROOT/%{_datadir}/%{dict_dirname}/fy_NL.dic
+pushd $RPM_BUILD_ROOT/%{_datadir}/%{dict_dirname}/
 fy_NL_aliases="fy_DE"
 for lang in $fy_NL_aliases; do
         ln -s fy_NL.aff $lang.aff
@@ -43,13 +45,49 @@ popd
 
 
 %files
-%license LICENSE.txt
 %doc README-fy.txt
-%{_datadir}/myspell/*
+%{_datadir}/%{dict_dirname}/*
 
 %changelog
-* Fri Oct 15 2021 Pawel Winogrodzki <pawelwi@microsoft.com> - 3.0.0-6
-- Initial CBL-Mariner import from Fedora 32 (license: MIT).
+* Thu Jul 18 2024 Fedora Release Engineering <releng@fedoraproject.org> - 3.0.0-18
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_41_Mass_Rebuild
+
+* Wed Jan 24 2024 Fedora Release Engineering <releng@fedoraproject.org> - 3.0.0-17
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Sat Jan 20 2024 Fedora Release Engineering <releng@fedoraproject.org> - 3.0.0-16
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Thu Jul 20 2023 Fedora Release Engineering <releng@fedoraproject.org> - 3.0.0-15
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_39_Mass_Rebuild
+
+* Wed Feb 22 2023 Caolán McNamara <caolanm@redhat.com> - 3.0.0-14
+- migrated to SPDX license
+
+* Thu Jan 19 2023 Fedora Release Engineering <releng@fedoraproject.org> - 3.0.0-13
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_38_Mass_Rebuild
+
+* Thu Jul 21 2022 Fedora Release Engineering <releng@fedoraproject.org> - 3.0.0-12
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_37_Mass_Rebuild
+
+* Tue Mar 22 2022 Parag Nemade <pnemade AT redhat DOT com> - 3.0.0-11
+- Add conditional for new hunspell dir path and update to Requires:
+  hunspell-filesystem
+
+* Thu Jan 20 2022 Fedora Release Engineering <releng@fedoraproject.org> - 3.0.0-10
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_36_Mass_Rebuild
+
+* Thu Jul 22 2021 Fedora Release Engineering <releng@fedoraproject.org> - 3.0.0-9
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_35_Mass_Rebuild
+
+* Fri Jun 04 2021 Parag Nemade <pnemade AT redhat DOT com> - 3.0.0-8
+- Correct the license to GPLv3+ as given in README-fy.txt file
+
+* Tue Jan 26 2021 Fedora Release Engineering <releng@fedoraproject.org> - 3.0.0-7
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_34_Mass_Rebuild
+
+* Tue Jul 28 2020 Fedora Release Engineering <releng@fedoraproject.org> - 3.0.0-6
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_33_Mass_Rebuild
 
 * Wed Jan 29 2020 Fedora Release Engineering <releng@fedoraproject.org> - 3.0.0-5
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_32_Mass_Rebuild

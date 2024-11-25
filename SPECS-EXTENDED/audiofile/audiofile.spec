@@ -1,18 +1,20 @@
-Vendor:         Microsoft Corporation
-Distribution:   Azure Linux
+%global make_check 1
 
 Summary: Library for accessing various audio file formats
 Name: audiofile
 Version: 0.3.6
-Release: 27%{?dist}
+Release: 39%{?dist}
+Epoch: 1
 # library is LGPL / the two programs GPL / see README
-License: LGPLv2+ and GPLv2+
+License: LGPL-2.1-or-later and GPL-2.0-or-later
 Source: http://audiofile.68k.org/%{name}-%{version}.tar.gz
 URL: http://audiofile.68k.org/
 BuildRequires:  gcc-c++
 BuildRequires: libtool
 BuildRequires: alsa-lib-devel
 BuildRequires: flac-devel
+BuildRequires: make
+BuildRequires: chrpath
 # optional for rebuilding manual pages from .txt
 #BuildRequires: asciidoc
 
@@ -27,6 +29,8 @@ Patch5: audiofile-0.3.6-pull44.patch
 Patch6: 822b732fd31ffcb78f6920001e9b1fbd815fa712.patch
 Patch7: 941774c8c0e79007196d7f1e7afdc97689f869b3.patch
 Patch8: fde6d79fb8363c4a329a184ef0b107156602b225.patch
+Patch9: integer-overflow.patch
+Patch10: audiofile-0.3.6-CVE-2022-24599.patch
 
 %description
 The Audio File library is an implementation of the Audio File Library
@@ -39,7 +43,7 @@ any of the sound file formats it can handle.
 
 %package devel
 Summary: Development files for Audio File applications
-Requires: %{name}%{?_isa} = %{version}-%{release}
+Requires: %{name}%{?_isa} = %{epoch}:%{version}-%{release}
 
 %description devel
 The audiofile-devel package contains libraries, include files, and
@@ -47,19 +51,20 @@ other resources you can use to develop Audio File applications.
 
 %prep
 %setup -q
-%patch 0 -p1 -b .CVE-2015-7747
-%patch 1 -p1 -b .left-shift-neg
-%patch 2 -p1 -b .narrowing-conversion
-%patch 3 -p1 -b .pull42
-%patch 4 -p1 -b .pull43
-%patch 5 -p1 -b .pull44
-%patch 6 -p1 -b .CVE-2018-17095
-%patch 7 -p1 -b .CVE-2018-13440
-%patch 8 -p1 -b .CVE-2018-13440
-
+%patch -P 0 -p1 -b .CVE-2015-7747
+%patch -P 1 -p1 -b .left-shift-neg
+%patch -P 2 -p1 -b .narrowing-conversion
+%patch -P 3 -p1 -b .pull42
+%patch -P 4 -p1 -b .pull43
+%patch -P 5 -p1 -b .pull44
+%patch -P 6 -p1 -b .CVE-2018-17095
+%patch -P 7 -p1 -b .CVE-2018-13440
+%patch -P 8 -p1 -b .CVE-2018-13440
+%patch -P 9 -p1 -b .integer-overflow
+%patch -P 10 -p1 -b .CVE-2022-24599
 
 %build
-%configure
+%configure --disable-rpath
 %make_build
 
 %install
@@ -68,11 +73,13 @@ other resources you can use to develop Audio File applications.
 rm -f $RPM_BUILD_ROOT%{_libdir}/*.la
 rm -f $RPM_BUILD_ROOT%{_libdir}/*.a
 
-# Disable check temporarily
-# BUG(@mfrw): [41224018]
-# The check section produces a ~35Gb log file which breaks Ptest pipeline
-%check
+chrpath --delete $RPM_BUILD_ROOT%{_bindir}/sfconvert
+chrpath --delete $RPM_BUILD_ROOT%{_bindir}/sfinfo
+
+#%check
+#%if %{make_check}
 #make check
+#%endif
 
 
 %ldconfig_scriptlets
@@ -94,16 +101,50 @@ rm -f $RPM_BUILD_ROOT%{_libdir}/*.a
 %{_mandir}/man3/*
 
 %changelog
-* Wed Sep 07 2022 Muhammad Falak <mwani@microsoft.com> - 0.3.6-27
-- Drop macro `%make_check`
-- Drop check section as it produces a 35GB log file breaking ptest
-- License verified
+* Wed Jul 17 2024 Fedora Release Engineering <releng@fedoraproject.org> - 1:0.3.6-39
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_41_Mass_Rebuild
 
-* Mon Nov 01 2021 Muhammad Falak <mwani@microsft.com> - 0.3.6-26
-- Remove epoch
+* Mon Jan 22 2024 Fedora Release Engineering <releng@fedoraproject.org> - 1:0.3.6-38
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
 
-* Fri Oct 15 2021 Pawel Winogrodzki <pawelwi@microsoft.com> - 1:0.3.6-25
-- Initial CBL-Mariner import from Fedora 32 (license: MIT).
+* Fri Jan 19 2024 Fedora Release Engineering <releng@fedoraproject.org> - 1:0.3.6-37
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Mon Nov 13 2023 Gwyn Ciesla <gwync@protonmail.com> - 1:0.3.6-36
+Patch for CVE-2022-24599
+
+* Wed Jul 19 2023 Fedora Release Engineering <releng@fedoraproject.org> - 1:0.3.6-35
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_39_Mass_Rebuild
+
+* Thu Mar 02 2023 Gwyn Ciesla <gwync@protonmail.com> - 1:0.3.6-34
+- migrated to SPDX license
+
+* Wed Jan 18 2023 Fedora Release Engineering <releng@fedoraproject.org> - 1:0.3.6-33
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_38_Mass_Rebuild
+
+* Tue Sep 13 2022 Michel Alexandre Salim <salimma@fedoraproject.org> - 1:0.3.6-32
+- Rebuilt for flac 1.4.0
+
+* Wed Jul 20 2022 Fedora Release Engineering <releng@fedoraproject.org> - 1:0.3.6-31
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_37_Mass_Rebuild
+
+* Wed Jan 19 2022 Fedora Release Engineering <releng@fedoraproject.org> - 1:0.3.6-30
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_36_Mass_Rebuild
+
+* Wed Jul 21 2021 Fedora Release Engineering <releng@fedoraproject.org> - 1:0.3.6-29
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_35_Mass_Rebuild
+
+* Thu May 27 2021 Gwyn Ciesla <gwync@protonmail.com> - 1:0.3.6-28
+- Disable RPATH.
+
+* Tue Jan 26 2021 Fedora Release Engineering <releng@fedoraproject.org> - 1:0.3.6-27
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_34_Mass_Rebuild
+
+* Mon Jan 04 2021 Timm Bäder <tbaeder@redhat.com> - 1:0.3.6-26
+- Fix a integer overflow warning with gcc and error with clang
+
+* Mon Jul 27 2020 Fedora Release Engineering <releng@fedoraproject.org> - 1:0.3.6-25
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_33_Mass_Rebuild
 
 * Tue Jan 28 2020 Fedora Release Engineering <releng@fedoraproject.org> - 1:0.3.6-24
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_32_Mass_Rebuild

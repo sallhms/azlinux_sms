@@ -1,9 +1,7 @@
-Vendor:         Microsoft Corporation
-Distribution:   Azure Linux
 Summary: Library of Optimized Inner Loops, CPU optimized functions
 Name: liboil
 Version: 0.3.16
-Release: 22%{?dist}
+Release: 34%{?dist}
 # See COPYING which details everything, various BSD licenses apply
 License: BSD
 URL: http://liboil.freedesktop.org/
@@ -11,9 +9,11 @@ Source: http://liboil.freedesktop.org/download/%{name}-%{version}.tar.gz
 
 # https://bugzilla.redhat.com/show_bug.cgi?id=435771
 Patch4: liboil-0.3.13-disable-ppc64-opts.patch
+Patch5: liboil-configure-c99.patch
 
 BuildRequires:  gcc
 BuildRequires: glib2-devel, pkgconfig
+BuildRequires: make
 
 %description
 Liboil is a library of simple functions that are optimized for various CPUs.
@@ -39,9 +39,18 @@ extended instructions provided by modern CPUs (Altivec, MMX, SSE, etc.).
 
 %prep
 %setup -q
-%patch 4 -p0 -b .disable-ppc64-opts
+%patch -P4 -p0 -b .disable-ppc64-opts
+%patch -P5 -p1
 
 %build
+# configure tests try to compile code containing ASMs to a .o file
+# In an LTO world, that always works as compilation does not happen until
+# link time.  As a result we get the wrong results from configure.
+# This can be fixed by using -ffat-lto-objects
+# -ffat-lto-objects forces compilation even with LTO.  It is the default
+# for F33, but not expected to be enabled by default for F34
+%define _lto_cflags -flto=auto -ffat-lto-objects
+
 %configure
 # Remove standard rpath from oil-bugreport
 sed -i 's|^hardcode_libdir_flag_spec=.*|hardcode_libdir_flag_spec=""|g' libtool
@@ -71,8 +80,44 @@ rm -f %{buildroot}%{_libdir}/*.a
 
 
 %changelog
-* Fri Oct 15 2021 Pawel Winogrodzki <pawelwi@microsoft.com> - 0.3.16-22
-- Initial CBL-Mariner import from Fedora 32 (license: MIT).
+* Thu Jul 18 2024 Fedora Release Engineering <releng@fedoraproject.org> - 0.3.16-34
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_41_Mass_Rebuild
+
+* Thu Jan 25 2024 Fedora Release Engineering <releng@fedoraproject.org> - 0.3.16-33
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Sun Jan 21 2024 Fedora Release Engineering <releng@fedoraproject.org> - 0.3.16-32
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Thu Jul 20 2023 Fedora Release Engineering <releng@fedoraproject.org> - 0.3.16-31
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_39_Mass_Rebuild
+
+* Sun Feb 05 2023 Florian Weimer <fweimer@redhat.com> - 0.3.16-30
+- Port configure script to C99 (#2167172)
+
+* Thu Jan 19 2023 Fedora Release Engineering <releng@fedoraproject.org> - 0.3.16-29
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_38_Mass_Rebuild
+
+* Thu Jul 21 2022 Fedora Release Engineering <releng@fedoraproject.org> - 0.3.16-28
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_37_Mass_Rebuild
+
+* Thu Jan 20 2022 Fedora Release Engineering <releng@fedoraproject.org> - 0.3.16-27
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_36_Mass_Rebuild
+
+* Thu Jul 22 2021 Fedora Release Engineering <releng@fedoraproject.org> - 0.3.16-26
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_35_Mass_Rebuild
+
+* Tue Jan 26 2021 Fedora Release Engineering <releng@fedoraproject.org> - 0.3.16-25
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_34_Mass_Rebuild
+
+* Fri Aug 21 2020 Jeff Law <law@redhat.com> - 0.3.16-24
+- Re-enable LTO
+
+* Tue Jul 28 2020 Fedora Release Engineering <releng@fedoraproject.org> - 0.3.16-23
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_33_Mass_Rebuild
+
+* Tue Jul 14 2020 Jeff Law <law@redhat.com> - 0.3.16-22
+- Disable LTO
 
 * Wed Jan 29 2020 Fedora Release Engineering <releng@fedoraproject.org> - 0.3.16-21
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_32_Mass_Rebuild

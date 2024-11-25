@@ -1,18 +1,18 @@
 #TODO: BR:/R: perl(IP::Authority) when available
-Summary:        Perl module for manipulation of IPv4 and IPv6 addresses
+
 Name:           perl-Net-IP
 Version:        1.26
-Release:        32%{?dist}
+Release:        34%{?dist}
+Summary:        Perl module for manipulation of IPv4 and IPv6 addresses
 # Some ambiguity here, see http://rt.cpan.org/Ticket/Display.html?id=28689
 # HPND (MIT-like) for the IP.pm itself, and "like Perl itself" for all the other
 # scripts included.
 License:        HPND AND (GPL-1.0-or-later OR Artistic-1.0-Perl)
-Vendor:         Microsoft Corporation
-Distribution:   Azure Linux
 URL:            https://metacpan.org/release/Net-IP
 Source:         https://cpan.metacpan.org/modules/by-module/Net/Net-IP-%{version}.tar.gz
 Patch0:         Net-IP-1.26-rt60439.patch
 Patch1:         Net-IP-1.26-shellbang.patch
+BuildArch:      noarch
 # Build:
 BuildRequires:  coreutils
 BuildRequires:  findutils
@@ -20,20 +20,19 @@ BuildRequires:  make
 BuildRequires:  perl-generators
 BuildRequires:  perl-interpreter
 BuildRequires:  perl(Config)
+BuildRequires:  perl(ExtUtils::MakeMaker)
 # Run-time:
 BuildRequires:  perl(Exporter)
-BuildRequires:  perl(ExtUtils::MakeMaker)
-# Tests:
-BuildRequires:  perl(File::Basename)
-BuildRequires:  perl(FileHandle)
-# Script Run-time:
-BuildRequires:  perl(Getopt::Std)
 BuildRequires:  perl(Math::BigInt)
-BuildRequires:  perl(lib)
 BuildRequires:  perl(overload)
 BuildRequires:  perl(strict)
 BuildRequires:  perl(vars)
-BuildArch:      noarch
+# Script Run-time:
+BuildRequires:  perl(Getopt::Std)
+# Tests:
+BuildRequires:  perl(File::Basename)
+BuildRequires:  perl(FileHandle)
+BuildRequires:  perl(lib)
 # Dependencies:
 # Not yet packaged: IP::Authority
 
@@ -50,10 +49,10 @@ handy IP "cheat sheet".
 %setup -q -n Net-IP-%{version}
 
 # Apply fix for zero networks (#197425, CPAN RT#20265, CPAN RT#60439)
-%patch 0
+%patch -P 0
 
 # Fix shellbangs in shipped scripts
-%patch 1
+%patch -P 1
 
 %build
 perl Makefile.PL INSTALLDIRS=vendor
@@ -82,9 +81,14 @@ PERL5LIB=%{buildroot}%{perl_vendorlib} ./iptab
 %{_mandir}/man3/Net::IP.3*
 
 %changelog
-* Thu Oct 19 2023 Archana Choudhary <archana1@microsoft.com> - 1.26-32
-- Initial CBL-Mariner import from Fedora 39 (license: MIT).
-- License verified
+* Fri Jul 19 2024 Fedora Release Engineering <releng@fedoraproject.org> - 1.26-34
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_41_Mass_Rebuild
+
+* Thu Jan 25 2024 Fedora Release Engineering <releng@fedoraproject.org> - 1.26-33
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Sun Jan 21 2024 Fedora Release Engineering <releng@fedoraproject.org> - 1.26-32
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
 
 * Fri Jul 21 2023 Fedora Release Engineering <releng@fedoraproject.org> - 1.26-31
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_39_Mass_Rebuild

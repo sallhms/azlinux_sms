@@ -1,12 +1,11 @@
-Vendor:         Microsoft Corporation
-Distribution:   Azure Linux
 # SPDX-License-Identifier: MIT
 %global forgeurl https://pagure.io/fonts-rpm-macros
+Epoch: 1
 Version: 2.0.5
 %forgemeta
 
 #https://src.fedoraproject.org/rpms/redhat-rpm-config/pull-request/51
-%global _spectemplatedir %{_datadir}/rpmdevtools/azl
+%global _spectemplatedir %{_datadir}/rpmdevtools/fedora
 %global _docdir_fmt     %{name}
 %global ftcgtemplatedir %{_datadir}/fontconfig/templates
 
@@ -16,20 +15,18 @@ Version: 2.0.5
 %global _fontconfig_confdir     %{_sysconfdir}/fonts/conf.d
 %global _fontconfig_templatedir %{_datadir}/fontconfig/conf.avail
 
-%global _rpmluadir /usr/lib/rpm/lua/
-%global rpmmacrodir %{_rpmmacrodir}
-
 BuildArch: noarch
 
 Name:      fonts-rpm-macros
-Release:   13%{?dist}
+Release:   17%{?dist}
 Summary:   Build-stage rpm automation for fonts packages
 
 License:   GPL-3.0-or-later
 URL:       https://docs.fedoraproject.org/en-US/packaging-guidelines/FontsPolicy/
 Source:    %{forgesource}
 Patch0:    %{name}-omit-foundry-in-family.patch
-Patch1:    update_for_azl.patch
+Patch1:    %{name}-drop-yaml.patch
+Patch2:    %{name}-epoch-in-req.patch
 
 Requires:  fonts-srpm-macros = %{?epoch:%{epoch}:}%{version}-%{release}
 Requires:  fonts-filesystem  = %{?epoch:%{epoch}:}%{version}-%{release}
@@ -44,7 +41,9 @@ Requires:  libappstream-glib
 Requires:  uchardet
 
 # For the experimental generator
+%if 0%{?fedora} || 0%{?rhel} < 10
 Requires:  python3-ruamel-yaml
+%endif
 Requires:  python3-lxml
 
 %description
@@ -57,6 +56,12 @@ will pull it in for fonts packages only.
 %package -n fonts-srpm-macros
 Summary:   Source-stage rpm automation for fonts packages
 Requires:  redhat-rpm-config
+# macros.forge and forge.lua were split into a separate package.
+# redhat-rpm-config pulls in forge-srpm-macros but better to explicitly Require
+# it.
+%if (0%{?fedora} >= 40 || 0%{?rhel} >= 10)
+Requires:  forge-srpm-macros
+%endif
 
 %description -n fonts-srpm-macros
 This package provides SRPM-stage rpm automation to simplify the creation of
@@ -98,8 +103,11 @@ for template in templates/rpm/*\.spec ; do
   grep -v '^%%dnl' "${template}" > "${target}"
   touch -r "${template}" "${target}"
 done
-%patch 0 -p1 -b .1-omit-foundry-in-family
-%patch 1 -p1
+%patch -P0 -p1 -b .0-omit-foundry-in-family
+%if 0%{?rhel} >= 10
+%patch -P1 -p1 -b .1-drop-yaml
+%endif
+%patch -P2 -p1 -b .2-epoch-in-req
 
 %install
 install -m 0755 -d    %{buildroot}%{_fontbasedir} \
@@ -117,12 +125,12 @@ install -m 0644 -vp   templates/fontconfig/*{conf,txt} \
 install -m 0755 -vd   %{buildroot}%{rpmmacrodir}
 install -m 0644 -vp   rpm/macros.d/macros.fonts-* \
                       %{buildroot}%{rpmmacrodir}
-install -m 0755 -vd   %{buildroot}%{_rpmluadir}/azl/srpm
+install -m 0755 -vd   %{buildroot}%{_rpmluadir}/fedora/srpm
 install -m 0644 -vp   rpm/lua/srpm/*lua \
-                      %{buildroot}%{_rpmluadir}/azl/srpm
-install -m 0755 -vd   %{buildroot}%{_rpmluadir}/azl/rpm
+                      %{buildroot}%{_rpmluadir}/fedora/srpm
+install -m 0755 -vd   %{buildroot}%{_rpmluadir}/fedora/rpm
 install -m 0644 -vp   rpm/lua/rpm/*lua \
-                      %{buildroot}%{_rpmluadir}/azl/rpm
+                      %{buildroot}%{_rpmluadir}/fedora/rpm
 
 install -m 0755 -vd   %{buildroot}%{_bindir}
 install -m 0755 -vp   bin/* %{buildroot}%{_bindir}
@@ -131,13 +139,13 @@ install -m 0755 -vp   bin/* %{buildroot}%{_bindir}
 %license LICENSE.txt
 %{_bindir}/*
 %{rpmmacrodir}/macros.fonts-rpm*
-%{_rpmluadir}/azl/rpm/*.lua
+%{_rpmluadir}/fedora/rpm/*.lua
 
 %files -n fonts-srpm-macros
 %license LICENSE.txt
 %doc     *.md changelog.txt
 %{rpmmacrodir}/macros.fonts-srpm*
-%{_rpmluadir}/azl/srpm/*.lua
+%{_rpmluadir}/fedora/srpm/*.lua
 
 %files -n fonts-filesystem
 %dir %{_datadir}/fontconfig
@@ -155,14 +163,24 @@ install -m 0755 -vp   bin/* %{buildroot}%{_bindir}
 %doc %{ftcgtemplatedir}/*txt
 
 %changelog
-* Thu Feb 22 2024 Pawel Winogrodzki <pawelwi@microsoft.com> - 2.0.5-13
-- Updating file paths for 3.0 version of Azure Linux.
-- Resetting 'Epoch' for 3.0 version of Azure Linux.
+* Wed Jul 17 2024 Fedora Release Engineering <releng@fedoraproject.org> - 1:2.0.5-17
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_41_Mass_Rebuild
 
-* Tue May 16 2023 Bala <balakumaran.kannan@microsoft.com> - 1:2.0.5-12
-- Initial CBL-Mariner import from Fedora 38 (license: MIT)
-- License verified
-- Updated the path relevant to Mariner
+* Wed Jun 19 2024 Akira TAGOH <tagoh@redhat.com> - 1:2.0.5-16
+- Add %%{epoch} in Requires line if needed
+- Support fontpkgheader macro for meta packages.
+
+* Mon Jun  3 2024 Akira TAGOH <tagoh@redhat.com> - 1:2.0.5-15
+- Drop YAML support in gen-fontconf for RHEL10 or later.
+
+* Wed Jan 24 2024 Fedora Release Engineering <releng@fedoraproject.org> - 1:2.0.5-14
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Fri Jan 19 2024 Fedora Release Engineering <releng@fedoraproject.org> - 1:2.0.5-13
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Wed Jul 19 2023 Fedora Release Engineering <releng@fedoraproject.org> - 1:2.0.5-12
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_39_Mass_Rebuild
 
 * Thu Jan 19 2023 Fedora Release Engineering <releng@fedoraproject.org> - 1:2.0.5-11
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_38_Mass_Rebuild

@@ -1,38 +1,33 @@
-Summary:        Library handling decoding of several popular sound file formats
 Name:           SDL_sound
 Version:        1.0.3
-Release:        32%{?dist}
-License:        LGPL-2.0-or-later
-Vendor:         Microsoft Corporation
-Distribution:   Azure Linux
-URL:            https://www.icculus.org/SDL_sound
-Source0:        https://icculus.org/SDL_sound/downloads/%{name}-%{version}.tar.gz
-BuildRequires:  make
-BuildRequires:  SDL-devel
-BuildRequires:  flac-devel
-BuildRequires:  speex-devel 
-BuildRequires:  libvorbis-devel
-BuildRequires:  libogg-devel
-BuildRequires:  libmikmod-devel
-BuildRequires:  libmodplug-devel
-BuildRequires:  physfs-devel
-BuildRequires:  doxygen
+Release:        37%{?dist}
+Summary:        Library handling decoding of several popular sound file formats
+License:        LGPLv2+
+URL:            http://www.icculus.org/SDL_sound
+# This is:
+# http://www.icculus.org/SDL_sound/downloads/%{name}-%{version}.tar.gz
+# With PBProjects.tar.gz (contains binaries) removed
+Source0:        %{name}-%{version}-clean.tar.gz
+BuildRequires: make
+BuildRequires:  SDL-devel flac-devel speex-devel libvorbis-devel libogg-devel
+BuildRequires:  mikmod-devel libmodplug-devel physfs-devel doxygen
 # SDL_sound uses a very stripped down mpg123-libs called mpglib
 Provides:       bundled(mpglib)
 Provides:       bundled(mpg123-libs)
 
 %description
-SDL_sound is a library that handles the decoding of several popular sound file
+SDL_sound is a library that handles the decoding of several popular sound file 
 formats, such as .WAV and .OGG.
 
-It is meant to make the programmer's sound playback tasks simpler. The
-programmer gives SDL_sound a filename, or feeds it data directly from one of
-many sources, and then reads the decoded waveform data back at her leisure.
-If resource constraints are a concern, SDL_sound can process sound data in
-programmer-specified blocks. Alternately, SDL_sound can decode a whole sound
-file and hand back a single pointer to the whole waveform. SDL_sound can
-also handle sample rate, audio format, and channel conversion on-the-fly
+It is meant to make the programmer's sound playback tasks simpler. The 
+programmer gives SDL_sound a filename, or feeds it data directly from one of 
+many sources, and then reads the decoded waveform data back at her leisure. 
+If resource constraints are a concern, SDL_sound can process sound data in 
+programmer-specified blocks. Alternately, SDL_sound can decode a whole sound 
+file and hand back a single pointer to the whole waveform. SDL_sound can 
+also handle sample rate, audio format, and channel conversion on-the-fly 
 and behind-the-scenes, if the programmer desires.
+
 
 %package        devel
 Summary:        %{summary}
@@ -44,26 +39,27 @@ Requires:       SDL-devel
 
 This package contains the headers and libraries for SDL_sound development.
 
+
 %prep
-%autosetup -p1 -n %{name}-%{version}
+%setup -q
 # Avoid lib64 rpaths
-#sed -i -e 's|"/lib /usr/lib|"/%{_lib} %{_libdir}|' configure
-rm -r PBProjects.tar.gz
+sed -i -e 's|"/lib /usr/lib|"/%{_lib} %{_libdir}|' configure
+
 
 %build
-export CFLAGS="%{optflags} -D__EXPORT__= -Wno-pointer-sign -Wno-deprecated-declarations"
+export CFLAGS="$RPM_OPT_FLAGS -D__EXPORT__= -Wno-pointer-sign -Wno-deprecated-declarations"
 # no smpeg because of patents!
 %configure --disable-dependency-tracking --disable-static \
     --disable-smpeg --enable-mpglib --enable-mikmod --enable-ogg \
     --enable-modplug --enable-speex --enable-flac --enable-midi
-%make_build
+make %{?_smp_mflags}
 doxygen Doxyfile
 
 
 %install
 %make_install
 # Avoid conflict with SDL2_sound, users who want this should use SDL2_sound
-rm %{buildroot}/%{_bindir}/playsound*
+rm $RPM_BUILD_ROOT%{_bindir}/playsound*
 
 # Add namespaces to man pages (livna bug #1181)
 cp -a docs/man/man3 man3
@@ -87,12 +83,15 @@ mv rate.3 Sound_AudioInfo::rate.3
 mv url.3 Sound_DecoderInfo::url.3
 popd
 
-mkdir -p %{buildroot}/%{_mandir}
-mv man3 %{buildroot}/%{_mandir}
+mkdir -p $RPM_BUILD_ROOT/%{_mandir}
+mv man3 $RPM_BUILD_ROOT/%{_mandir}
 
-find %{buildroot} -type f -name "*.la" -exec rm -f {} ';'
+find $RPM_BUILD_ROOT -type f -name "*.la" -exec rm -f {} ';'
+
+
 
 %ldconfig_scriptlets
+
 
 %files
 %license COPYING
@@ -105,10 +104,25 @@ find %{buildroot} -type f -name "*.la" -exec rm -f {} ';'
 %{_includedir}/SDL/SDL_sound.h
 %{_mandir}/man3/*
 
+
 %changelog
-* Tue Dec 13 2022 Sumedh Sharma <sumsharma@microsoft.com> - 1.0.3-32
-- Initial CBL-Mariner import from Fedora 37 (license: MIT)
-- License verified
+* Wed Jul 17 2024 Fedora Release Engineering <releng@fedoraproject.org> - 1.0.3-37
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_41_Mass_Rebuild
+
+* Mon Jan 22 2024 Fedora Release Engineering <releng@fedoraproject.org> - 1.0.3-36
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Fri Jan 19 2024 Fedora Release Engineering <releng@fedoraproject.org> - 1.0.3-35
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Wed Jul 19 2023 Fedora Release Engineering <releng@fedoraproject.org> - 1.0.3-34
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_39_Mass_Rebuild
+
+* Wed Jan 18 2023 Fedora Release Engineering <releng@fedoraproject.org> - 1.0.3-33
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_38_Mass_Rebuild
+
+* Tue Sep 13 2022 Michel Alexandre Salim <salimma@fedoraproject.org> - 1.0.3-32
+- Rebuilt for flac 1.4.0
 
 * Wed Jul 20 2022 Fedora Release Engineering <releng@fedoraproject.org> - 1.0.3-31
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_37_Mass_Rebuild

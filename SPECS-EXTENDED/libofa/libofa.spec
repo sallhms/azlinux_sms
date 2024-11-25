@@ -1,29 +1,31 @@
+
 # Fedora Review: http://bugzilla.redhat.com/204954
-Summary:        Open Fingerprint Architecture library
-Name:           libofa
-Version:        0.9.3
-Release:        42%{?dist}
-License:        GPL-2.0-only
-Vendor:         Microsoft Corporation
-Distribution:   Azure Linux
-URL:            https://code.google.com/p/musicip-libofa/
-# Source0:	http://musicip-libofa.googlecode.com/files/libofa-%{version}.tar.gz
-Source0:        https://storage.googleapis.com/google-code-archive-downloads/v2/code.google.com/musicip-libofa/libofa-%{version}.tar.gz
-Patch1:         libofa-0.9.3-gcc41.patch
+
+Summary: 	Open Fingerprint Architecture library	
+Name:		libofa	
+Version:	0.9.3	
+Release:	48%{?dist}
+
+License:	GPLv2
+Url:		http://code.google.com/p/musicip-libofa/
+Source0:	http://musicip-libofa.googlecode.com/files/libofa-%{version}.tar.gz	
+
+Patch1: libofa-0.9.3-gcc41.patch
 # Use Libs.private
-Patch2:         libofa-0.9.3-pkgconfig.patch
-Patch3:         libofa-0.9.3-gcc44.patch
-Patch4:         libofa-0.9.3-curl.patch
-Patch5:         libofa-0.9.3-gcc47.patch
-# these are used only in the examples.
-BuildRequires:  curl-devel
-BuildRequires:  expat-devel
-BuildRequires:  fftw-devel
-BuildRequires:  findutils
+Patch2: libofa-0.9.3-pkgconfig.patch
+Patch3: libofa-0.9.3-gcc44.patch
+Patch4: libofa-0.9.3-curl.patch
+Patch5: libofa-0.9.3-gcc47.patch
+Patch6: libofa-configure-c99.patch
+
+BuildRequires:	findutils
 BuildRequires:  gcc-c++
-BuildRequires:  make
-BuildRequires:  pkgconfig
-BuildRequires:  sed
+BuildRequires:	pkgconfig sed
+BuildRequires:	fftw3-devel 
+# these are used only in the examples.
+BuildRequires:	curl-devel
+BuildRequires:	expat-devel
+BuildRequires: make
 
 %description
 Currently, MusicDNS and the Open Fingerprint Architecture are being used to:
@@ -33,23 +35,25 @@ Currently, MusicDNS and the Open Fingerprint Architecture are being used to:
 * find out more about tracks by connecting to MusicBrainz
 
 %package devel
-Summary:        Development headers and libraries for %{name}
-Requires:       %{name}%{?_isa} = %{version}-%{release}
+Summary: Development headers and libraries for %{name}	
+Requires: %{name}%{?_isa} = %{version}-%{release}
 # removed by patch2
-#Requires: expat-devel fftw3-devel
+#Requires: expat-devel fftw3-devel 
 %description devel
 %{summary}.
+
 
 %prep
 %setup -q
 
 find . -name README -or -name \*.cpp -or -name \*.h | xargs --no-run-if-empty sed -i -e 's|\r||'  ||:
 
-%patch 1 -p1 -b .gcc41
-%patch 2 -p1 -b .pkgconfig
-%patch 3 -p1 -b .gcc43
-%patch 4 -p1 -b .curl
-%patch 5 -p1 -b .gcc47
+%patch -P1 -p1 -b .gcc41
+%patch -P2 -p1 -b .pkgconfig
+%patch -P3 -p1 -b .gcc43
+%patch -P4 -p1 -b .curl
+%patch -P5 -p1 -b .gcc47
+%patch -P6 -p1 -b .configure-c99
 
 ## pkg-config < 0.20.0 (apparently?) doesn't grok URL
 %if "%(pkg-config --version 2>/dev/null)" < "0.20.0"
@@ -69,7 +73,7 @@ sed -i -e "s|^URL:|#URL:|" *.pc.in ||:
 %make_install
 
 # unpackaged files
-find %{buildroot} -type f -name "*.la" -delete -print
+rm -f $RPM_BUILD_ROOT%{_libdir}/lib*.la
 
 # prepare docs
 make -C examples clean
@@ -78,7 +82,7 @@ rm -rf examples/.deps examples/Makefile examples/*.gcc43
 
 %ldconfig_scriptlets
 
-%files
+%files 
 %doc AUTHORS README
 %license COPYING
 %{_libdir}/libofa.so.0*
@@ -89,10 +93,28 @@ rm -rf examples/.deps examples/Makefile examples/*.gcc43
 %{_libdir}/pkgconfig/libofa.pc
 %{_libdir}/libofa.so
 
+
 %changelog
-* Mon Jan 16 2023 Suresh Thelkar <sthelkar@microsoft.com> - 0.9.3-42
-- Initial CBL-Mariner import from Fedora 36 (license: MIT)
-- License verified
+* Thu Jul 18 2024 Fedora Release Engineering <releng@fedoraproject.org> - 0.9.3-48
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_41_Mass_Rebuild
+
+* Thu Jan 25 2024 Fedora Release Engineering <releng@fedoraproject.org> - 0.9.3-47
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Sun Jan 21 2024 Fedora Release Engineering <releng@fedoraproject.org> - 0.9.3-46
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Thu Jul 20 2023 Fedora Release Engineering <releng@fedoraproject.org> - 0.9.3-45
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_39_Mass_Rebuild
+
+* Thu Jan 19 2023 Fedora Release Engineering <releng@fedoraproject.org> - 0.9.3-44
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_38_Mass_Rebuild
+
+* Wed Nov 23 2022 Florian Weimer <fweimer@redhat.com> - 0.9.3-43
+- Avoid undeclared exit function in configure (#2145212)
+
+* Thu Jul 21 2022 Fedora Release Engineering <releng@fedoraproject.org> - 0.9.3-42
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_37_Mass_Rebuild
 
 * Thu Jan 20 2022 Fedora Release Engineering <releng@fedoraproject.org> - 0.9.3-41
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_36_Mass_Rebuild

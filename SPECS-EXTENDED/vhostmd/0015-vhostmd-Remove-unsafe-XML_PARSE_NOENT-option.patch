@@ -1,0 +1,36 @@
+From d9eeede678521776d327784d0307de6c98920bb8 Mon Sep 17 00:00:00 2001
+From: Jim Fehlig <jfehlig@suse.com>
+Date: Tue, 14 Jan 2020 15:12:28 -0700
+Subject: [PATCH 15/19] vhostmd: Remove unsafe XML_PARSE_NOENT option
+
+From coverity scan
+
+vhostmd-1.1/vhostmd/vhostmd.c:553: unsafe_xml_parse_config: XML parse option should not have flag "XML_PARSE_NOENT" set, which is vulnerable to XML external entty attack.
+  551|
+  552|      xml = xmlCtxtReadFile(pctxt, filename, NULL,
+  553|->                          XML_PARSE_NOENT | XML_PARSE_NONET |
+  554|                            XML_PARSE_NOWARNING);
+  555|      if (!xml) {
+
+Signed-off-by: Jim Fehlig <jfehlig@suse.com>
+---
+ vhostmd/vhostmd.c | 3 +--
+ 1 file changed, 1 insertion(+), 2 deletions(-)
+
+diff --git a/vhostmd/vhostmd.c b/vhostmd/vhostmd.c
+index 3d1d53e..4d04989 100644
+--- a/vhostmd/vhostmd.c
++++ b/vhostmd/vhostmd.c
+@@ -552,8 +552,7 @@ static int parse_config_file(const char *filename)
+       goto out;
+ 
+    xml = xmlCtxtReadFile(pctxt, filename, NULL,
+-                         XML_PARSE_NOENT | XML_PARSE_NONET |
+-                         XML_PARSE_NOWARNING);
++                         XML_PARSE_NONET | XML_PARSE_NOWARNING);
+    if (!xml) {
+       vu_log(VHOSTMD_ERR, "libxml failed to parse config file %s",
+                   filename);
+-- 
+2.32.0
+

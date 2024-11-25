@@ -1,15 +1,20 @@
+# Run optional test
+%if ! (0%{?rhel})
+%bcond_without perl_XML_Twig_enables_optional_test
+%else
+%bcond_with perl_XML_Twig_enables_optional_test
+%endif
+
 Name:           perl-XML-Twig
 Version:        3.52
-Release:        13%{?dist}
+Release:        26%{?dist}
 Summary:        Perl module for processing huge XML documents in tree mode
-License:        GPL+ or Artistic
-Vendor:         Microsoft Corporation
-Distribution:   Azure Linux
+License:        GPL-1.0-or-later OR Artistic-1.0-Perl
 URL:            https://metacpan.org/release/XML-Twig
-Source0:        https://cpan.metacpan.org/authors/id/M/MI/MIROD/XML-Twig-%{version}.tar.gz#/perl-XML-Twig-%{version}.tar.gz
+Source0:        https://cpan.metacpan.org/authors/id/M/MI/MIROD/XML-Twig-%{version}.tar.gz
 BuildArch:      noarch
+BuildRequires:  coreutils
 BuildRequires:  expat >= 2.0.1
-BuildRequires:  findutils
 BuildRequires:  glibc-common
 BuildRequires:  make
 BuildRequires:  perl-interpreter
@@ -44,6 +49,7 @@ BuildRequires:  perl(lib)
 BuildRequires:  perl(Test)
 BuildRequires:  perl(Test::More)
 # Optional tests:
+%if %{with perl_XML_Twig_enables_optional_test}
 BuildRequires:  perl(IO::String)
 BuildRequires:  perl(LWP)
 BuildRequires:  perl(HTML::Entities)
@@ -59,7 +65,7 @@ BuildRequires:  perl(XML::Filter::BufferText)
 BuildRequires:  perl(XML::Handler::YAWriter)
 BuildRequires:  perl(XML::SAX::Writer) >= 0.39
 BuildRequires:  perl(XML::Simple)
-Requires:       perl(:MODULE_COMPAT_%(eval "$(perl -V:version)"; echo $version))
+%endif
 Requires:       perl(Encode)
 Requires:       perl(HTML::TreeBuilder) >= 4.00
 Requires:       perl(IO::Scalar)
@@ -88,11 +94,11 @@ iconv -f iso88591 -t utf8 < Changes > Changes.utf8 && \
     mv -f Changes.utf8 Changes
 
 %build
-perl Makefile.PL -y INSTALLDIRS=perl NO_PACKLIST=1
-make %{?_smp_mflags}
+perl Makefile.PL -y INSTALLDIRS=perl NO_PACKLIST=1 NO_PERLLOCAL=1
+%{make_build}
 
 %install
-make pure_install DESTDIR=%{buildroot}
+%{make_install}
 %{_fixperms} %{buildroot}/*
 
 %check
@@ -106,8 +112,47 @@ make test
 %{_mandir}/man3/*
 
 %changelog
-* Fri Oct 15 2021 Pawel Winogrodzki <pawelwi@microsoft.com> - 3.52-13
-- Initial CBL-Mariner import from Fedora 32 (license: MIT).
+* Fri Jul 19 2024 Fedora Release Engineering <releng@fedoraproject.org> - 3.52-26
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_41_Mass_Rebuild
+
+* Thu Jan 25 2024 Fedora Release Engineering <releng@fedoraproject.org> - 3.52-25
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Sun Jan 21 2024 Fedora Release Engineering <releng@fedoraproject.org> - 3.52-24
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Fri Jul 21 2023 Fedora Release Engineering <releng@fedoraproject.org> - 3.52-23
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_39_Mass_Rebuild
+
+* Fri Jan 20 2023 Fedora Release Engineering <releng@fedoraproject.org> - 3.52-22
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_38_Mass_Rebuild
+
+* Fri Jul 22 2022 Fedora Release Engineering <releng@fedoraproject.org> - 3.52-21
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_37_Mass_Rebuild
+
+* Wed Jun 01 2022 Jitka Plesnikova <jplesnik@redhat.com> - 3.52-20
+- Perl 5.36 rebuild
+
+* Fri Jan 21 2022 Fedora Release Engineering <releng@fedoraproject.org> - 3.52-19
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_36_Mass_Rebuild
+
+* Fri Jul 23 2021 Fedora Release Engineering <releng@fedoraproject.org> - 3.52-18
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_35_Mass_Rebuild
+
+* Sun May 23 2021 Jitka Plesnikova <jplesnik@redhat.com> - 3.52-17
+- Perl 5.34 rebuild
+
+* Wed Jan 27 2021 Fedora Release Engineering <releng@fedoraproject.org> - 3.52-16
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_34_Mass_Rebuild
+
+* Mon Dec 14 2020 Jitka Plesnikova <jplesnik@redhat.com> - 3.52-15
+- Do not run optional test on RHEL
+
+* Tue Jul 28 2020 Fedora Release Engineering <releng@fedoraproject.org> - 3.52-14
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_33_Mass_Rebuild
+
+* Tue Jun 23 2020 Jitka Plesnikova <jplesnik@redhat.com> - 3.52-13
+- Perl 5.32 rebuild
 
 * Thu Jan 30 2020 Fedora Release Engineering <releng@fedoraproject.org> - 3.52-12
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_32_Mass_Rebuild

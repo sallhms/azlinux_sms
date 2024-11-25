@@ -1,26 +1,32 @@
-Summary:        Braille translation and back-translation library
 Name:           liblouis
-Version:        3.26.0
-Release:        1%{?dist}
-License:        LGPL-2.1-or-later
-Vendor:         Microsoft Corporation
-Distribution:   Azure Linux
-URL:            https://github.com/liblouis/liblouis
+Version:        3.28.0
+Release:        7%{?dist}
+Summary:        Braille translation and back-translation library
+
+# LGPL-2.1-or-later: the project as a whole
+# LGPL-2.0-or-later: parts of gnulib
+# - gnulib/_Noreturn.h
+# - gnulib/arg-nonnull.h
+# - gnulib/c++defs.h
+# - gnulib/warn-on-use.h
+License:        LGPL-2.1-or-later AND LGPL-2.0-or-later
+URL:            http://liblouis.org
 Source0:        https://github.com/%{name}/%{name}/releases/download/v%{version}/%{name}-%{version}.tar.gz
-BuildRequires:  chrpath
-BuildRequires:  fdupes
+
 BuildRequires:  gcc
+BuildRequires:  hardlink
 BuildRequires:  help2man
 BuildRequires:  libyaml-devel
 BuildRequires:  make
-BuildRequires:  python3-devel
 BuildRequires:  texinfo
-Provides:       bundled(gnulib)
-%if %{with docs}
 BuildRequires:  texinfo-tex
 BuildRequires:  texlive-eurosym
 BuildRequires:  texlive-xetex
-%endif
+BuildRequires:  python3-devel
+
+Provides:       bundled(gnulib)
+
+Requires:       %{name}-tables = %{version}-%{release}
 
 %description
 Liblouis is an open-source braille translator and back-translator named in
@@ -39,64 +45,102 @@ Linux. It has, however, gone far beyond these routines.
 
 %package        devel
 Summary:        Development files for %{name}
-License:        LGPL-2.1-or-later
 Requires:       %{name}%{?_isa} = %{version}-%{release}
-Requires:       pkgconfig
+License:        LGPL-2.1-or-later
 
 %description    devel
 The %{name}-devel package contains libraries and header files for
 developing applications that use %{name}.
 
+
+%package        tables
+Summary:        Data tables
+# LGPL-2.1-or-later: most of the tables
+# LGPL-3.0-or-later:
+# - tables/Es-Es-G0.utb
+# - tables/et-g0.utb
+# - tables/is-chardefs6.cti
+# - tables/is-chardefs8.cti
+# - tables/pt-pt-g2.ctb
+# - tables/sr-chardefs.cti
+# - tables/sr-g1.ctb
+License:        LGPL-2.1-or-later AND LGPL-3.0-or-later
+BuildArch:      noarch
+
+%description    tables
+Data tables for liblouis, containing attributes and dot patterns.
+
+
 %package        utils
 Summary:        Command-line utilities to test %{name}
-License:        GPL-3.0-or-later
 Requires:       %{name}%{?_isa} = %{version}-%{release}
+# GPL-3.0-or-later: the source code in tools
+# LGPL-2.0-or-later AND LGPL-2.1-or-later: tools/gnulib
+# LGPL-3.0-or-later: tools/gnulib/version-etc.{c,h}
+# LGPL-3.0-or-later OR GPL-2.0-or-later:
+# - tools/gnulib/unistr/u16-mbtoucr.c
+# - tools/gnulib/unistr/u16-to-u8.c
+License:        GPL-3.0-or-later AND LGPL-3.0-or-later AND LGPL-2.1-or-later AND LGPL-2.0-or-later AND (LGPL-3.0-or-later OR GPL-2.0-or-later)
 
 %description    utils
 Six test programs are provided as part of the liblouis package. They
 are intended for testing liblouis and for debugging tables. None of
 them is suitable for braille transcription.
 
+
 %package -n python3-louis
 Summary:        Python 3 language bindings for %{name}
-License:        LGPL-2.1-or-later
-%{?python_provide:%python_provide python3-louis}
-Requires:       %{name} = %{version}-%{release}
-Obsoletes:      %{name}-python3 < 2.6.2-3
-Provides:       %{name}-python3 = %{version}-%{release}
 BuildArch:      noarch
+Requires:       %{name} = %{version}-%{release}
+License:        LGPL-2.1-or-later
 
 %description -n python3-louis
 This package provides Python 3 language bindings for %{name}.
 
-%if %{with docs}
+
 %package doc
 Summary:        Documentation for %{name}
-License:        LGPL-2.1-or-later
-Requires:       %{name} = %{version}-%{release}
 BuildArch:      noarch
+Requires:       %{name} = %{version}-%{release}
+# See doc/liblouis.texi
+License:        LGPL-3.0-or-later
 
 %description doc
 This package provides the documentation for liblouis.
-%endif
 
 
 %prep
 %autosetup
 chmod 664 tables/*
 
+
+%generate_buildrequires
+cd python
+%pyproject_buildrequires
+
+
 %build
 %configure --disable-static --enable-ucs4
-# parallel builds fail
-make
 
-%if %{with docs}
-cd doc; xetex %{name}.texi
+# Get rid of undesirable hardcoded rpaths; workaround libtool reordering
+# -Wl,--as-needed after all the libraries.
+sed -e 's|^hardcode_libdir_flag_spec=.*|hardcode_libdir_flag_spec=""|g' \
+    -e 's|^runpath_var=LD_RUN_PATH|runpath_var=DIE_RPATH_DIE|g' \
+    -e 's|CC="\(.*g..\)"|CC="\1 -Wl,--as-needed"|' \
+    -i libtool
+
+# parallel builds fail
+%if 0%{?rhel}
+LD_LIBRARY_PATH=$PWD/liblouis/.libs \
 %endif
+make
+cd doc; xetex %{name}.texi
+cd ../python
+%pyproject_wheel
 
 
 %check
-make check
+LD_LIBRARY_PATH=%{buildroot}%{_libdir} make check
 
 
 %install
@@ -106,29 +150,22 @@ rm -f %{buildroot}/%{_libdir}/%{name}.la
 rm -rf %{buildroot}/%{_bindir}/lou_maketable*
 rm -rf %{buildroot}/%{_defaultdocdir}/%{name}/
 
-# Replace table files with identical content by symlinks
-%fdupes -s %{buildroot}%{_datadir}/%{name}/tables/
+# Install internal.h for MuseScore
+install -pm 0644 liblouis/internal.h %{buildroot}%{_includedir}/%{name}
 
-cd python/louis
+# Hardlink table files with identical content
+hardlink -t %{buildroot}%{_datadir}/%{name}/tables/
 
-install -d %{buildroot}%{python3_sitelib}/louis
-install -pm 0644 __init__.py %{buildroot}%{python3_sitelib}/louis/
-
-# Remove Rpaths from the executables. We must do that in the %%install section
-# because, otherwise, the test suite wouldn't build.
-for f in %{buildroot}%{_bindir}/lou_* ; do
-  chrpath --delete $f
-done
-
-
-%ldconfig_scriptlets
+cd python
+%pyproject_install
+%pyproject_save_files louis
+cd -
 
 
 %files
 %doc README AUTHORS NEWS ChangeLog TODO
 %license COPYING.LESSER
 %{_libdir}/%{name}.so.*
-%{_datadir}/%{name}/
 %{_infodir}/%{name}.info*
 
 %files devel
@@ -137,27 +174,72 @@ done
 %{_libdir}/pkgconfig/%{name}.pc
 %{_libdir}/%{name}.so
 
+%files tables
+%{_datadir}/%{name}/
+
 %files utils
 %license COPYING
 %{_bindir}/lou_*
 %{_mandir}/man1/lou_*.1*
 
-%files -n python3-louis
-%{python3_sitelib}/louis/
+%files -n python3-louis -f %{pyproject_files}
 
-%if %{with docs}
 %files doc
 %doc doc/%{name}.{html,txt,pdf}
-%endif
+
 
 %changelog
-* Tue Jul 18 2023 CBL-Mariner Servicing Account <cblmargh@microsoft.com> - 3.26.0-1
-- Auto-upgrade to 3.26.0 - to fix CVE-2023-26767, CVE-2023-26768, CVE-2023-26769
-- oliviacrain: Fix LGPL version in license tags 
+* Thu Jul 18 2024 Fedora Release Engineering <releng@fedoraproject.org> - 3.28.0-7
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_41_Mass_Rebuild
 
-* Fri Jan 13 2023 Suresh Thelkar <sthelkar@microsoft.com> - 3.24.0-2
-- Initial CBL-Mariner import from Fedora 37 (license: MIT)
-- License verified
+* Fri Jun 07 2024 Python Maint <python-maint@redhat.com> - 3.28.0-6
+- Rebuilt for Python 3.13
+
+* Mon Feb 12 2024 Jerry James <loganjerry@gmail.com> - 3.28.0-5
+- Hardlink, rather than symlink, duplicate table files
+
+* Mon Feb 12 2024 Yaakov Selkowitz <yselkowi@redhat.com> - 3.28.0-4
+- Fix RHEL build after RPATH removal
+
+* Thu Jan 25 2024 Fedora Release Engineering <releng@fedoraproject.org> - 3.28.0-3
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Sun Jan 21 2024 Fedora Release Engineering <releng@fedoraproject.org> - 3.28.0-2
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Wed Jan  3 2024 Jerry James <loganjerry@gmail.com> - 3.28.0-1
+- Update to 3.28.0
+- Install internal.h for MuseScore
+- Drop ancient obsoletes
+- Build the python package with dist-info
+- Add tables subpackage for the noarch data
+- Complete and correct SPDX migration
+- Remove need for chrpath
+- Minor spec file cleanups
+
+* Thu Jul 20 2023 Fedora Release Engineering <releng@fedoraproject.org> - 3.25.0-3
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_39_Mass_Rebuild
+
+* Tue Jun 13 2023 Python Maint <python-maint@redhat.com> - 3.25.0-2
+- Rebuilt for Python 3.12
+
+* Tue Mar 07 2023 Martin Gieseking <martin.gieseking@uos.de> - 3.25.0-1
+- Update to 3.25.0
+
+* Thu Jan 19 2023 Fedora Release Engineering <releng@fedoraproject.org> - 3.24.0-2
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_38_Mass_Rebuild
+
+* Tue Dec 06 2022 Martin Gieseking <martin.gieseking@uos.de> - 3.24.0-1
+- Update to 3.24.0
+
+* Mon Sep 12 2022 Martin Gieseking <martin.gieseking@uos.de> - 3.23.0-1
+- Update to 3.23.0
+
+* Thu Jul 21 2022 Fedora Release Engineering <releng@fedoraproject.org> - 3.22.0-3
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_37_Mass_Rebuild
+
+* Mon Jun 13 2022 Python Maint <python-maint@redhat.com> - 3.22.0-2
+- Rebuilt for Python 3.11
 
 * Thu Jun 09 2022 Martin Gieseking <martin.gieseking@uos.de> - 3.22.0-1
 - Update to 3.22.0

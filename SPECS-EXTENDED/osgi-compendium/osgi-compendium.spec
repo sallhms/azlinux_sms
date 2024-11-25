@@ -1,56 +1,38 @@
-Vendor:         Microsoft Corporation
-Distribution:   Azure Linux
-#
-# spec file for package osgi-compendium
-#
-# Copyright (c) 2020 SUSE LLC
-#
-# All modifications and additions to the file contributed by third parties
-# remain the property of their copyright owners, unless otherwise agreed
-# upon. The license for this file, and modifications and additions to the
-# file, is the same license as for the pristine package itself (unless the
-# license for the pristine package is not an Open Source License, in which
-# case the license is the MIT License). An "Open Source License" is a
-# license that conforms to the Open Source Definition (Version 1.9)
-# published by the Open Source Initiative.
-
-# Please submit bugfixes or comments via https://bugs.opensuse.org/
-#
-
+%bcond_with bootstrap
 
 Name:           osgi-compendium
 Version:        7.0.0
-Release:        2%{?dist}
+Release:        21%{?dist}
 Summary:        Interfaces and Classes for use in compiling OSGi bundles
 License:        Apache-2.0
-Group:          Development/Libraries/Java
 URL:            http://www.osgi.org
-Source0:        https://osgi.org/download/r7/osgi.cmpn-%{version}.jar
-Source1:        %{name}-build.xml
-BuildRequires:  ant
-BuildRequires:  fdupes
-BuildRequires:  geronimo-jpa-3_0-api
-BuildRequires:  glassfish-servlet-api
-BuildRequires:  javapackages-local-bootstrap
-BuildRequires:  osgi-annotation
-BuildRequires:  osgi-core
-BuildRequires:  unzip
 BuildArch:      noarch
+#ExclusiveArch:  %{java_arches} noarch
+
+Source0:        https://osgi.org/download/r7/osgi.cmpn-%{version}.jar
+
+%if %{with bootstrap}
+BuildRequires:  javapackages-bootstrap
+%else
+BuildRequires:  maven-local
+BuildRequires:  mvn(org.apache.felix:maven-bundle-plugin)
+BuildRequires:  mvn(org.osgi:osgi.annotation)
+BuildRequires:  mvn(org.osgi:osgi.core)
+%endif
 
 %description
 OSGi Compendium, Interfaces and Classes for use in compiling bundles.
 
 %package javadoc
 Summary:        API documentation for %{name}
-Group:          Documentation/HTML
 
 %description javadoc
 This package provides %{summary}.
 
 %prep
 %setup -q -c
-cp %{SOURCE1} build.xml
 
+# Delete pre-built binaries
 rm -r org
 find -name '*.class' -delete
 
@@ -86,50 +68,115 @@ mv META-INF/maven/org.osgi/osgi.cmpn/pom.xml .
 
 %pom_add_dep org.osgi:osgi.annotation::provided
 %pom_add_dep org.osgi:osgi.core::provided
-%pom_add_dep javax.servlet:javax.servlet-api::provided
-%pom_add_dep javax.persistence:persistence-api::provided
-
+# Don't compile in Servlet, Jax RS and JPA support
+rm -r src/main/java/org/osgi/service/http
 rm -r src/main/java/org/osgi/service/jaxrs
-
-mkdir -p lib
-build-jar-repository -s lib geronimo-jpa-3.0-api glassfish-servlet-api osgi-annotation osgi-core
+rm -r src/main/java/org/osgi/service/jpa
+rm -r src/main/java/org/osgi/service/transaction/control/jpa
 
 %build
-ant jar javadoc
+%mvn_build -- -Dmaven.compiler.source=1.8 -Dmaven.compiler.target=1.8
 
 %install
-# jar
-install -dm 0755 %{buildroot}%{_javadir}/%{name}
-install -pm 0644 target/osgi.cmpn-%{version}.jar %{buildroot}%{_javadir}/%{name}/osgi.cmpn.jar
-# pom
-install -dm 0755 %{buildroot}%{_mavenpomdir}/%{name}
-install -pm 0644 pom.xml %{buildroot}%{_mavenpomdir}/%{name}/osgi.cmpn.pom
-%add_maven_depmap %{name}/osgi.cmpn.pom %{name}/osgi.cmpn.jar
-# javadoc
-install -dm 0755 %{buildroot}%{_javadocdir}/%{name}
-cp -pr target/site/apidocs/* %{buildroot}%{_javadocdir}/%{name}/
-%fdupes -s %{buildroot}%{_javadocdir}
+%mvn_install
+
 
 %files -f .mfiles
 %license LICENSE
 %doc about.html
 
-%files javadoc
+%files javadoc -f .mfiles-javadoc
 %license LICENSE
-%{_javadocdir}/%{name}
+
 
 %changelog
-* Thu Oct 14 2021 Pawel Winogrodzki <pawelwi@microsoft.com> - 7.0.0-2
-- Converting the 'Release' tag to the '[number].[distribution]' format.
+* Thu Jul 18 2024 Fedora Release Engineering <releng@fedoraproject.org> - 7.0.0-21
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_41_Mass_Rebuild
 
-* Mon Nov 16 2020 Ruying Chen <v-ruyche@microsoft.com> - 7.0.0-1.4
-- Initial CBL-Mariner import from openSUSE Tumbleweed (license: same as "License" tag).
-- Use javapackages-local-bootstrap to avoid build cycle.
+* Tue Feb 27 2024 Jiri Vanek <jvanek@redhat.com> - 7.0.0-20
+- Rebuilt for java-21-openjdk as system jdk
 
-* Wed Apr  1 2020 Fridrich Strba <fstrba@suse.com>
-- Update to upstream version 7.0.0
-* Mon Apr 15 2019 Fridrich Strba <fstrba@suse.com>
-- Build classpath using directly the geronimo-jpa-3.0-ap instead of
-  the jta_api symlink
-* Mon Feb 11 2019 Fridrich Strba <fstrba@suse.com>
-- Initial packaging of osgi-compendium 6.0.0
+* Fri Feb 23 2024 Jiri Vanek <jvanek@redhat.com> - 7.0.0-19
+- bump of release for for java-21-openjdk as system jdk
+
+* Thu Jan 25 2024 Fedora Release Engineering <releng@fedoraproject.org> - 7.0.0-18
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Sun Jan 21 2024 Fedora Release Engineering <releng@fedoraproject.org> - 7.0.0-17
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Fri Sep 01 2023 Mikolaj Izdebski <mizdebsk@redhat.com> - 7.0.0-16
+- Convert License tag to SPDX format
+
+* Thu Jul 20 2023 Fedora Release Engineering <releng@fedoraproject.org> - 7.0.0-15
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_39_Mass_Rebuild
+
+* Thu Jan 19 2023 Fedora Release Engineering <releng@fedoraproject.org> - 7.0.0-14
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_38_Mass_Rebuild
+
+* Fri Jul 22 2022 Fedora Release Engineering <releng@fedoraproject.org> - 7.0.0-13
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_37_Mass_Rebuild
+
+* Sat Feb 05 2022 Jiri Vanek <jvanek@redhat.com> - 7.0.0-12
+- Rebuilt for java-17-openjdk as system jdk
+
+* Thu Jan 20 2022 Fedora Release Engineering <releng@fedoraproject.org> - 7.0.0-11
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_36_Mass_Rebuild
+
+* Thu Jul 22 2021 Fedora Release Engineering <releng@fedoraproject.org> - 7.0.0-10
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_35_Mass_Rebuild
+
+* Mon May 17 2021 Mikolaj Izdebski <mizdebsk@redhat.com> - 7.0.0-9
+- Bootstrap build
+- Non-bootstrap build
+
+* Tue Jan 26 2021 Fedora Release Engineering <releng@fedoraproject.org> - 7.0.0-8
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_34_Mass_Rebuild
+
+* Wed Nov 25 2020 Mat Booth <mat.booth@redhat.com> - 7.0.0-7
+- Rebuild to regenerate OSGi metadata
+
+* Tue Jul 28 2020 Fedora Release Engineering <releng@fedoraproject.org> - 7.0.0-6
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_33_Mass_Rebuild
+
+* Sat Jul 11 2020 Jiri Vanek <jvanek@redhat.com> - 7.0.0-5
+- Rebuilt for JDK-11, see https://fedoraproject.org/wiki/Changes/Java11
+
+* Wed Jan 29 2020 Fedora Release Engineering <releng@fedoraproject.org> - 7.0.0-4
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_32_Mass_Rebuild
+
+* Tue Nov 05 2019 Mikolaj Izdebski <mizdebsk@redhat.com> - 7.0.0-4
+- Mass rebuild for javapackages-tools 201902
+
+* Thu Jul 25 2019 Fedora Release Engineering <releng@fedoraproject.org> - 7.0.0-3
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_31_Mass_Rebuild
+
+* Fri May 24 2019 Mikolaj Izdebski <mizdebsk@redhat.com> - 7.0.0-3
+- Mass rebuild for javapackages-tools 201901
+
+* Tue Mar 19 2019 Mat Booth <mat.booth@redhat.com> - 7.0.0-2
+- Allow conditionally compiling in support for Jax RS and JPA
+
+* Wed Mar 06 2019 Mat Booth <mat.booth@redhat.com> - 7.0.0-1
+- Update to OSGi R7
+
+* Fri Feb 01 2019 Fedora Release Engineering <releng@fedoraproject.org> - 6.0.0-7
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_30_Mass_Rebuild
+
+* Fri Jul 13 2018 Fedora Release Engineering <releng@fedoraproject.org> - 6.0.0-6
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_29_Mass_Rebuild
+
+* Thu Feb 08 2018 Fedora Release Engineering <releng@fedoraproject.org> - 6.0.0-5
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_28_Mass_Rebuild
+
+* Thu Jul 27 2017 Fedora Release Engineering <releng@fedoraproject.org> - 6.0.0-4
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_27_Mass_Rebuild
+
+* Sat Feb 11 2017 Fedora Release Engineering <releng@fedoraproject.org> - 6.0.0-3
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_26_Mass_Rebuild
+
+* Mon Oct 10 2016 Mikolaj Izdebski <mizdebsk@redhat.com> - 6.0.0-2
+- Fix scopes of injected Maven dependencies
+
+* Mon Oct 12 2015 Michael Simacek <msimacek@redhat.com> - 6.0.0-1
+- Initial packaging

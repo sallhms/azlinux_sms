@@ -1,14 +1,18 @@
-Vendor:         Microsoft Corporation
-Distribution:   Azure Linux
+# Don't ship Java extensions in Fedora as they are not compiled from the source
+# Shipping sources instead of binary jars was requested by
+# https://lists.oasis-open.org/archives/docbook-apps/201408/msg00008.html
+# Sources available in the docbook stylesheets svn repository, but not packaged.
+%bcond extensions 0
+
 Name: docbook5-style-xsl
 Version: 1.79.2
-Release: 11%{?dist}
+Release: 21%{?dist}
 
 Summary: Norman Walsh's XSL stylesheets for DocBook 5.X
 
 # Package is licensed as MIT/X (http://wiki.docbook.org/topic/DocBookLicense),
-# some .js files inside ./slides/ are either Public Domain or licensed under W3C
-License: MIT and Public Domain and W3C
+# some .js files under ./slides/browser/ are licensed MPLv1.1
+License: MIT and MPLv1.1
 URL: https://github.com/docbook/xslt10-stylesheets
 
 Provides: docbook-xsl-ns = %{version}
@@ -20,7 +24,7 @@ Requires(postun): libxml2 >= 2.4.8
 Conflicts: passivetex < 1.21
 
 BuildArch: noarch
-Source0: https://github.com/docbook/xslt10-stylesheets/releases/download/release%2F%{version}/docbook-xsl-%{version}.tar.bz2
+Source0: https://github.com/docbook/xslt10-stylesheets/releases/download/release%2F{%version}/docbook-xsl-%{version}.tar.bz2
 
 %description
 These XSL namespace aware stylesheets allow you to transform any
@@ -28,12 +32,44 @@ DocBook 5 document to other formats, such as HTML, manpages, FO,
 XHMTL and other formats. They are highly customizable. For more
 information see W3C page about XSL.
 
+%if %{with extensions}
+%package extensions
+Summary: Norman Walsh's XSL stylesheets extensions for DocBook 5.X
+# Package is licensed as MIT/X (http://wiki.docbook.org/topic/DocBookLicense),
+# some .js files under ./slides/browser/ are licensed MPLv1.1
+License: MIT and ASL 2.0
+Requires: docbook-xsl-ns = %{version}
+# Provide an alternative to removed JAR files via Fedora Packages
+# lucene-core.jar (lucene-core-3.0.0.jar), lucene-analysis-common.jar (lucene-analyzers-3.0.0.jar)
+Requires: lucene-core lucene-analysis-common
+# ant-apache-xalan2.jar (xalan27.jar)
+Requires: ant-apache-xalan2
+# tagsoup.jar (tagsoup-1.2.1.jar)
+Requires: tagsoup
+
+%description extensions
+This package contains Java extensions for XSL namespace aware stylesheets.
+%endif
+
 %prep
 %setup -q -n docbook-xsl-%{version}
-#remove .gitignore files
+
+# Remove .gitignore files
 rm -rf $(find -name '.gitignore' -type f)
-#make ruby scripts executable
+
+# Remove ant buildsystem
+find . -name build.xml -delete
+
+# Remove binary JAR files
+rm -f extensions/*.jar
+rm -fr tools/
+
+# Make ruby scripts executable
 chmod +x epub/bin/dbtoepub
+
+# Remove misc
+rm slides/slidy/scripts/slidy.js.gz
+rm roundtrip/template.dot
 
 %build
 
@@ -58,6 +94,12 @@ rm -rf $DESTDIR%{_datadir}/sgml/docbook/xsl-ns-stylesheets/install.sh
 %{_datadir}/sgml/docbook/xsl-ns-stylesheets-%{version}
 %{_datadir}/sgml/docbook/xsl-ns-stylesheets
 %exclude %{_datadir}/sgml/docbook/xsl-ns-stylesheets-%{version}/extensions
+
+%if %{with extensions}
+%files extensions
+%doc extensions/README.txt extensions/LICENSE.txt
+%{_datadir}/sgml/docbook/xsl-ns-stylesheets-%{version}/extensions
+%endif
 
 %post
 CATALOG=%{_sysconfdir}/xml/catalog
@@ -90,12 +132,42 @@ if [ "$1" = 0 ]; then
 fi
 
 %changelog
-* Fri Dec 24 2021 Pawel Winogrodzki <pawelwi@microsoft.com> - 1.79.2-11
-- License verified.
+* Tue Jul 23 2024 Yaakov Selkowitz <yselkowi@redhat.com> - 1.79.2-21
+- Drop unused tools directory
+- Limit Java dependency to extensions subpackage
 
-* Mon Jun 14 2021 Pawel Winogrodzki <pawelwi@microsoft.com> - 1.79.2-10
-- Initial CBL-Mariner import from Fedora 32 (license: MIT).
-- Removing the "*-extensions" subpackage.
+* Wed Jul 17 2024 Fedora Release Engineering <releng@fedoraproject.org> - 1.79.2-20
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_41_Mass_Rebuild
+
+* Sat Jun 29 2024 Ondrej Sloup <osloup@redhat.com> - 1.79.2-19
+- Remove binary JAR files and replace them with available dependencies (rhbz#2260534)
+
+* Wed Jan 24 2024 Fedora Release Engineering <releng@fedoraproject.org> - 1.79.2-18
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Fri Jan 19 2024 Fedora Release Engineering <releng@fedoraproject.org> - 1.79.2-17
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Wed Jul 19 2023 Fedora Release Engineering <releng@fedoraproject.org> - 1.79.2-16
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_39_Mass_Rebuild
+
+* Thu Jan 19 2023 Fedora Release Engineering <releng@fedoraproject.org> - 1.79.2-15
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_38_Mass_Rebuild
+
+* Thu Jul 21 2022 Fedora Release Engineering <releng@fedoraproject.org> - 1.79.2-14
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_37_Mass_Rebuild
+
+* Thu Jan 20 2022 Fedora Release Engineering <releng@fedoraproject.org> - 1.79.2-13
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_36_Mass_Rebuild
+
+* Wed Jul 21 2021 Fedora Release Engineering <releng@fedoraproject.org> - 1.79.2-12
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_35_Mass_Rebuild
+
+* Tue Jan 26 2021 Fedora Release Engineering <releng@fedoraproject.org> - 1.79.2-11
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_34_Mass_Rebuild
+
+* Mon Jul 27 2020 Fedora Release Engineering <releng@fedoraproject.org> - 1.79.2-10
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_33_Mass_Rebuild
 
 * Tue Jan 28 2020 Fedora Release Engineering <releng@fedoraproject.org> - 1.79.2-9
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_32_Mass_Rebuild

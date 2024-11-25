@@ -1,21 +1,27 @@
-Vendor:         Microsoft Corporation
-Distribution:   Azure Linux
 Name: perl-Encode-Detect
 Version: 1.01
-Release: 33%{?dist}
+Release: 48%{?dist}
 Summary: Encode::Encoding subclass that detects the encoding of data
 
-License: MPLv1.1 or GPLv2+ or LGPLv2+
+License: MPL-1.1 OR GPL-2.0-or-later OR LGPL-2.0-or-later
 URL: https://metacpan.org/release/Encode-Detect
-Source0: https://cpan.metacpan.org/authors/id/J/JG/JGMYERS/Encode-Detect-%{version}.tar.gz#/perl-Encode-Detect-%{version}.tar.gz
+Source0: https://cpan.metacpan.org/authors/id/J/JG/JGMYERS/Encode-Detect-%{version}.tar.gz
 
+BuildRequires: coreutils
 BuildRequires: perl-devel
 BuildRequires: perl-generators
+BuildRequires: perl-interpreter
 BuildRequires: perl(ExtUtils::CBuilder)
 BuildRequires: perl(Module::Build)
+# Run-time
+BuildRequires: perl(base)
+BuildRequires: perl(DynaLoader)
+BuildRequires: perl(Encode)
+BuildRequires: perl(Encode::Encoding)
+BuildRequires: perl(strict)
+BuildRequires: perl(warnings)
+# Tests
 BuildRequires: perl(Test::More)
-Requires: perl(:MODULE_COMPAT_%(eval "`%{__perl} -V:version`"; echo $version))
-Requires: perl(Encode::Encoding)
 
 %description
 This Perl module is an Encode::Encoding subclass that uses
@@ -24,13 +30,6 @@ decodes it using the encoder of the detected charset.
 
 %prep
 %setup -q -n Encode-Detect-%{version}
-cat <<EOF >%{name}-req
-#!/bin/sh
-%{__perl_requires} $* |\
-  sed -e '/perl(base)/d'
-EOF
-%define __perl_requires %{_builddir}/Encode-Detect-%{version}/%{name}-req
-%{__chmod} +x %{__perl_requires}
 
 %build
 %{__perl} Build.PL installdirs=vendor optimize="${RPM_OPT_FLAGS}"
@@ -40,10 +39,8 @@ EOF
 ./Build test
 
 %install
-%{__rm} -rf "${RPM_BUILD_ROOT}"
 ./Build install destdir="${RPM_BUILD_ROOT}" create_packlist=0
-find "${RPM_BUILD_ROOT}" -type f -name "*.bs" -size 0 -exec %{__rm} -f {} \;
-find "${RPM_BUILD_ROOT}" -depth -type d -exec rmdir {} 2>/dev/null \;
+find "${RPM_BUILD_ROOT}" -type f -name "*.bs" -empty -delete
 %{_fixperms} "${RPM_BUILD_ROOT}"/*
 
 %files
@@ -54,8 +51,54 @@ find "${RPM_BUILD_ROOT}" -depth -type d -exec rmdir {} 2>/dev/null \;
 %{_mandir}/man3/Encode::Detect::Detector.3*
 
 %changelog
-* Fri Oct 15 2021 Pawel Winogrodzki <pawelwi@microsoft.com> - 1.01-33
-- Initial CBL-Mariner import from Fedora 32 (license: MIT).
+* Fri Jul 19 2024 Fedora Release Engineering <releng@fedoraproject.org> - 1.01-48
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_41_Mass_Rebuild
+
+* Mon Jun 10 2024 Jitka Plesnikova <jplesnik@redhat.com> - 1.01-47
+- Perl 5.40 rebuild
+
+* Thu Jan 25 2024 Fedora Release Engineering <releng@fedoraproject.org> - 1.01-46
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Sun Jan 21 2024 Fedora Release Engineering <releng@fedoraproject.org> - 1.01-45
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Thu Jul 20 2023 Fedora Release Engineering <releng@fedoraproject.org> - 1.01-44
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_39_Mass_Rebuild
+
+* Tue Jul 11 2023 Jitka Plesnikova <jplesnik@redhat.com> - 1.01-43
+- Perl 5.38 rebuild
+
+* Wed Jun 07 2023 Michal Josef Špaček <mspacek@redhat.com> - 1.01-42
+- Update license to SPDX format
+- Modernize spec
+
+* Fri Jan 20 2023 Fedora Release Engineering <releng@fedoraproject.org> - 1.01-41
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_38_Mass_Rebuild
+
+* Fri Jul 22 2022 Fedora Release Engineering <releng@fedoraproject.org> - 1.01-40
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_37_Mass_Rebuild
+
+* Tue May 31 2022 Jitka Plesnikova <jplesnik@redhat.com> - 1.01-39
+- Perl 5.36 rebuild
+
+* Fri Jan 21 2022 Fedora Release Engineering <releng@fedoraproject.org> - 1.01-38
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_36_Mass_Rebuild
+
+* Thu Jul 22 2021 Fedora Release Engineering <releng@fedoraproject.org> - 1.01-37
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_35_Mass_Rebuild
+
+* Fri May 21 2021 Jitka Plesnikova <jplesnik@redhat.com> - 1.01-36
+- Perl 5.34 rebuild
+
+* Wed Jan 27 2021 Fedora Release Engineering <releng@fedoraproject.org> - 1.01-35
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_34_Mass_Rebuild
+
+* Tue Jul 28 2020 Fedora Release Engineering <releng@fedoraproject.org> - 1.01-34
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_33_Mass_Rebuild
+
+* Tue Jun 23 2020 Jitka Plesnikova <jplesnik@redhat.com> - 1.01-33
+- Perl 5.32 rebuild
 
 * Wed Jan 29 2020 Fedora Release Engineering <releng@fedoraproject.org> - 1.01-32
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_32_Mass_Rebuild

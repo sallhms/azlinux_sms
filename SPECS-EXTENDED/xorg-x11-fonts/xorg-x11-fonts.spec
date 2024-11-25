@@ -1,49 +1,99 @@
-Vendor:         Microsoft Corporation
-Distribution:   Azure Linux
 %global _catalogue /etc/X11/fontpath.d
 # NOTE: Fonts strictly intended for X core fonts, should be installed into _x11fontdir.
 %global _x11fontdir %{_datadir}/X11/fonts
+%global _x11fontencodingsdir %{_x11fontdir}/encodings
+
+# A macro to de-duplicate a set of calls used in multiple fonts.
+# Usage: font_update_dirs [-f] [-t] <directory>
+#	-f ... run fontscale
+# 	-t ... run ttmkfdir
+# 	-u ... uninstall mode, only perform actions if the target directory exists
+# 	<directory>
+%global font_update_dirs(ftu) (							\
+if [ -z "%*" ]; then								\
+	echo "Missing directory argument";					\
+	exit 1;									\
+fi										\
+fontdir="%{_x11fontdir}/%%1"							\
+if [ -z "%%{-u}" -o -d $fontdir ]; then						\
+   if [ ! -z "%%{-f}" ]; then							\
+	   mkfontscale "$fontdir";						\
+   fi										\
+   if [ ! -z "%%{-t}" ]; then							\
+	ttmkfdir -d "$fontdir" -o "$fontdir/fonts.scale";			\
+   fi										\
+   mkfontdir "$fontdir";							\
+   fc-cache "$fontdir";								\
+   mkdir -p "%{_x11fontencodingsdir}/large";					\
+   mkfontscale -n -e "%{_x11fontencodingsdir}" -e "%{_x11fontencodingsdir}/large" "%{_x11fontencodingsdir}";	\
+fi										\
+)
 
 Summary:    X.Org X11 fonts
 Name:       xorg-x11-fonts
 Version:    7.5
-Release:    25%{?dist}
-License:    MIT and Lucida and Public Domain
+Release:    39%{?dist}
+License:    HPND AND Adobe-Utopia AND Cronyx AND MIT AND Lucida-Bitmap-Fonts AND Bitstream-Charter AND X11
 URL:        https://www.x.org
 
 BuildArch:  noarch
 
+# Not copyrightable, see fedora-license-data!394
 Source0:    https://www.x.org/pub/individual/font/encodings-1.0.5.tar.bz2
+# SPDX: HPND
 Source1:    https://www.x.org/pub/individual/font/font-adobe-100dpi-1.0.3.tar.bz2
 Source2:    https://www.x.org/pub/individual/font/font-adobe-75dpi-1.0.3.tar.bz2
+# SPDX: Adobe-Utopia
 Source3:    https://www.x.org/pub/individual/font/font-adobe-utopia-100dpi-1.0.4.tar.bz2
 Source4:    https://www.x.org/pub/individual/font/font-adobe-utopia-75dpi-1.0.4.tar.bz2
 Source5:    https://www.x.org/pub/individual/font/font-adobe-utopia-type1-1.0.4.tar.bz2
+# SPDX: Cronyx
 Source6:    https://www.x.org/pub/individual/font/font-alias-1.0.3.tar.bz2
+# SPDX: MIT
 Source7:    https://www.x.org/pub/individual/font/font-arabic-misc-1.0.3.tar.bz2
+# SPDX: Lucida-Bitmap-Fonts
 Source8:    https://www.x.org/pub/individual/font/font-bh-100dpi-1.0.3.tar.bz2
 Source9:    https://www.x.org/pub/individual/font/font-bh-75dpi-1.0.3.tar.bz2
+# Not copyrightable, see fedora-license-data#333
 Source10:   https://www.x.org/pub/individual/font/font-bh-lucidatypewriter-100dpi-1.0.3.tar.bz2
 Source11:   https://www.x.org/pub/individual/font/font-bh-lucidatypewriter-75dpi-1.0.3.tar.bz2
+# SPDX: HPND
 Source12:   https://www.x.org/pub/individual/font/font-bitstream-100dpi-1.0.3.tar.bz2
 Source13:   https://www.x.org/pub/individual/font/font-bitstream-75dpi-1.0.3.tar.bz2
+# SPDX: Bitstream-Charter
 Source14:   https://www.x.org/pub/individual/font/font-bitstream-type1-1.0.3.tar.bz2
+# SPDX: Cronyx
 Source15:   https://www.x.org/pub/individual/font/font-cronyx-cyrillic-1.0.3.tar.bz2
+# SPDX: LicenseRef-Fedora-UltraPermissive
 Source16:   https://www.x.org/pub/individual/font/font-cursor-misc-1.0.3.tar.bz2
-Source17:   https://www.x.org/pub/individual/font/font-daewoo-misc-1.0.3.tar.bz2
+# Daewoo-misc has no license terms, just Copyright (#1952723)
+# Source17:   https://www.x.org/pub/individual/font/font-daewoo-misc-1.0.3.tar.bz2
+# SPDX: HPND for dec/isas
 Source18:   https://www.x.org/pub/individual/font/font-dec-misc-1.0.3.tar.bz2
 Source19:   https://www.x.org/pub/individual/font/font-isas-misc-1.0.3.tar.bz2
+# Not copyrightable, see fedora-license-data#327
 Source20:   https://www.x.org/pub/individual/font/font-jis-misc-1.0.3.tar.bz2
+# SPDX LicenseRef-Fedora-Public-Domain
 Source21:   https://www.x.org/pub/individual/font/font-micro-misc-1.0.3.tar.bz2
+# SPDX: Cronyx AND LicenseRef-Fedora-Public-Domain AND LicenseRef-Fedora-UltraPermissive
 Source22:   https://www.x.org/pub/individual/font/font-misc-cyrillic-1.0.3.tar.bz2
+# SPDX: MIT
 Source23:   https://www.x.org/pub/individual/font/font-misc-ethiopic-1.0.3.tar.bz2
+# SPDX LicenseRef-Fedora-Public-Domain
 Source24:   https://www.x.org/pub/individual/font/font-misc-misc-1.1.2.tar.bz2
+# SPDX: MIT
 Source25:   https://www.x.org/pub/individual/font/font-mutt-misc-1.0.3.tar.bz2
+# SPDX: HPND
 Source26:   https://www.x.org/pub/individual/font/font-schumacher-misc-1.1.2.tar.bz2
+# SPDX: Cronyx
 Source27:   https://www.x.org/pub/individual/font/font-screen-cyrillic-1.0.4.tar.bz2
+# SPDX: HPND
 Source28:   https://www.x.org/pub/individual/font/font-sony-misc-1.0.3.tar.bz2
+# MIT
 Source29:   https://www.x.org/pub/individual/font/font-sun-misc-1.0.3.tar.bz2
+# SPDX LicenseRef-Fedora-Public-Domain
 Source30:   https://www.x.org/pub/individual/font/font-winitzki-cyrillic-1.0.3.tar.bz2
+# X11
 Source31:   https://www.x.org/pub/individual/font/font-xfree86-type1-1.0.4.tar.bz2
 
 # Luxi fonts are under a bad license
@@ -57,7 +107,9 @@ Source31:   https://www.x.org/pub/individual/font/font-xfree86-type1-1.0.4.tar.b
 # to request for relicensing
 # http://www.x.org/pub/individual/font/font-misc-meltho-1.0.0.tar.bz2
 
-BuildRequires:  bdftopcf
+BuildRequires:  gcc
+BuildRequires:  make
+BuildRequires:  bdftopcf mkfontscale
 BuildRequires:  font-util >= 1.1.0
 BuildRequires:  pkgconfig(xorg-macros) >= 1.3
 BuildRequires:  ucs2any
@@ -215,12 +267,12 @@ Requires(postun):   mkfontdir
 Contains a set of Cyrillic fonts.
 
 %prep
-%setup -q -c %{name}-%{version} -a1 -a2 -a3 -a4 -a5 -a6 -a7 -a8 -a9 -a10 -a11 -a12 -a13 -a14 -a15 -a16 -a17 -a18 -a19 -a20 -a21 -a22 -a23 -a24 -a25 -a26 -a27 -a28 -a29 -a30 -a31
+%setup -q -c %{name}-%{version} -a1 -a2 -a3 -a4 -a5 -a6 -a7 -a8 -a9 -a10 -a11 -a12 -a13 -a14 -a15 -a16 -a18 -a19 -a20 -a21 -a22 -a23 -a24 -a25 -a26 -a27 -a28 -a29 -a30 -a31
 
 %build
 # Build all apps
 {
-    for app in * ; do
+    for app in encodings-* font-* ; do
         pushd $app
             autoreconf -vif
             case $app in
@@ -244,7 +296,7 @@ Contains a set of Cyrillic fonts.
                     %configure --with-fontrootdir=%{_x11fontdir}
                     ;;
             esac
-            make %{?_smp_mflags}
+            %make_build
         popd
     done
 }
@@ -253,7 +305,7 @@ Contains a set of Cyrillic fonts.
 %install
 # Install all apps
 {
-    for app in * ; do
+    for app in encodings-* font-* ; do
         pushd $app
             %make_install
         popd
@@ -293,182 +345,173 @@ done
     done
 }
 
-
-# xorg-x11-fonts-update-dirs is provided by xorg-x11-font-utils to deduplicate
-# stuff run in %%post
-
 %post misc
 {
 # Only run fc-cache in the Type1 dir, gzipped pcf's take forever
-  xorg-x11-fonts-update-dirs --skip-fontscale %{_x11fontdir}/misc
+  %font_update_dirs misc || :
 }
 
 %postun misc
 {
   # Rebuild fonts.dir when uninstalling package. (exclude the local, CID dirs)
-  if [ "$1" = "0" -a -d %{_x11fontdir}/misc ]; then
-    xorg-x11-fonts-update-dirs --skip-fontscale %{_x11fontdir}/misc
+  if [ "$1" = "0" ]; then
+    %font_update_dirs -u misc || :
   fi
 }
 
 %post Type1
 {
-  xorg-x11-fonts-update-dirs %{_x11fontdir}/Type1
-} 
+  %font_update_dirs -f Type1 || :
+}
 
 %postun Type1
 {
-  FONTDIR=%{_x11fontdir}/Type1
-  if [ "$1" = "0" -a -d $FONTDIR ]; then
-    xorg-x11-fonts-update-dirs $FONTDIR
+  if [ "$1" = "0" ]; then
+    %font_update_dirs -u -f Type1 || :
   fi
 }
 
 %post ethiopic
 {
-  xorg-x11-fonts-update-dirs --skip-fontscale --need-ttmkfdir %{_x11fontdir}/TTF
-  xorg-x11-fonts-update-dirs %{_x11fontdir}/OTF
+  %font_update_dirs -t TTF || :
+  %font_update_dirs -f OTF || :
 }
 
 %postun ethiopic
 {
-  FONTDIR=%{_x11fontdir}/TTF
-  if [ "$1" = "0" -a -d $FONTDIR ]; then
-    xorg-x11-fonts-update-dirs --skip-fontscale --need-ttmkfdir $FONTDIR
-  fi
-  FONTDIR=%{_x11fontdir}/OTF
-  if [ "$1" = "0" -a -d $FONTDIR ]; then
-    xorg-x11-fonts-update-dirs $FONTDIR
+  if [ "$1" = "0" ]; then
+    %font_update_dirs -u -t TTF || :
+    %font_update_dirs -u -f OTF || :
   fi
 }
 
 %post 75dpi
-mkfontdir %{_x11fontdir}/75dpi
+mkfontdir %{_x11fontdir}/75dpi || :
 
 %post 100dpi
-mkfontdir %{_x11fontdir}/100dpi
+mkfontdir %{_x11fontdir}/100dpi || :
 
 %post ISO8859-1-75dpi
-mkfontdir %{_x11fontdir}/75dpi
+mkfontdir %{_x11fontdir}/75dpi || :
 
 %post ISO8859-1-100dpi
-mkfontdir %{_x11fontdir}/100dpi
+mkfontdir %{_x11fontdir}/100dpi || :
 
 %post ISO8859-2-75dpi
-mkfontdir %{_x11fontdir}/75dpi
+mkfontdir %{_x11fontdir}/75dpi || :
 
 %post ISO8859-2-100dpi
-mkfontdir %{_x11fontdir}/100dpi
+mkfontdir %{_x11fontdir}/100dpi || :
 
 %post ISO8859-9-75dpi
-mkfontdir %{_x11fontdir}/75dpi
+mkfontdir %{_x11fontdir}/75dpi || :
 
 %post ISO8859-9-100dpi
-mkfontdir %{_x11fontdir}/100dpi
+mkfontdir %{_x11fontdir}/100dpi || :
 
 %post ISO8859-14-75dpi
-mkfontdir %{_x11fontdir}/75dpi
+mkfontdir %{_x11fontdir}/75dpi || :
 
 %post ISO8859-14-100dpi
-mkfontdir %{_x11fontdir}/100dpi
+mkfontdir %{_x11fontdir}/100dpi || :
 
 %post ISO8859-15-75dpi
-mkfontdir %{_x11fontdir}/75dpi
+mkfontdir %{_x11fontdir}/75dpi || :
 
 %post ISO8859-15-100dpi
-mkfontdir %{_x11fontdir}/100dpi
+mkfontdir %{_x11fontdir}/100dpi || :
 
 %post cyrillic
-mkfontdir %{_x11fontdir}/cyrillic
+mkfontdir %{_x11fontdir}/cyrillic || :
 
 %postun 75dpi
 {
   if [ "$1" = "0" -a -d %{_x11fontdir}/75dpi ]; then
-    mkfontdir %{_x11fontdir}/75dpi
+    mkfontdir %{_x11fontdir}/75dpi || :
   fi
 }
 
 %postun 100dpi
 {
   if [ "$1" = "0" -a -d %{_x11fontdir}/100dpi ]; then
-    mkfontdir %{_x11fontdir}/100dpi
+    mkfontdir %{_x11fontdir}/100dpi || :
   fi
 }
 
 %postun ISO8859-1-75dpi
 {
   if [ "$1" = "0" -a -d %{_x11fontdir}/75dpi ]; then
-    mkfontdir %{_x11fontdir}/75dpi
+    mkfontdir %{_x11fontdir}/75dpi || :
   fi
 }
 
 %postun ISO8859-1-100dpi
 {
   if [ "$1" = "0" -a -d %{_x11fontdir}/100dpi ]; then
-    mkfontdir %{_x11fontdir}/100dpi
+    mkfontdir %{_x11fontdir}/100dpi || :
   fi
 }
 
 %postun ISO8859-2-75dpi
 {
   if [ "$1" = "0" -a -d %{_x11fontdir}/75dpi ]; then
-    mkfontdir %{_x11fontdir}/75dpi
+    mkfontdir %{_x11fontdir}/75dpi || :
   fi
 }
 
 %postun ISO8859-2-100dpi
 {
   if [ "$1" = "0" -a -d %{_x11fontdir}/100dpi  ]; then
-    mkfontdir %{_x11fontdir}/100dpi
+    mkfontdir %{_x11fontdir}/100dpi || :
   fi
 }
 
 %postun ISO8859-9-75dpi
 {
   if [ "$1" = "0" -a -d %{_x11fontdir}/75dpi ]; then
-    mkfontdir %{_x11fontdir}/75dpi
+    mkfontdir %{_x11fontdir}/75dpi || :
   fi
 }
 
 %postun ISO8859-9-100dpi
 {
   if [ "$1" = "0" -a -d %{_x11fontdir}/100dpi  ]; then
-    mkfontdir %{_x11fontdir}/100dpi
+    mkfontdir %{_x11fontdir}/100dpi || :
   fi
 }
 
 %postun ISO8859-14-75dpi
 {
   if [ "$1" = "0" -a -d %{_x11fontdir}/75dpi ]; then
-    mkfontdir %{_x11fontdir}/75dpi
+    mkfontdir %{_x11fontdir}/75dpi || :
   fi
 }
 
 %postun ISO8859-14-100dpi
 {
   if [ "$1" = "0" -a -d %{_x11fontdir}/100dpi  ]; then
-    mkfontdir %{_x11fontdir}/100dpi
+    mkfontdir %{_x11fontdir}/100dpi || :
   fi
 }
 
 %postun ISO8859-15-75dpi
 {
   if [ "$1" = "0" -a -d %{_x11fontdir}/75dpi ]; then
-    mkfontdir %{_x11fontdir}/75dpi
+    mkfontdir %{_x11fontdir}/75dpi || :
   fi
 }
 
 %postun ISO8859-15-100dpi
 {
   if [ "$1" = "0" -a -d %{_x11fontdir}/100dpi  ]; then
-    mkfontdir %{_x11fontdir}/100dpi
+    mkfontdir %{_x11fontdir}/100dpi || :
   fi
 }
 
 %postun cyrillic
 {
   if [ "$1" = "0" -a -d %{_x11fontdir}/cyrillic ]; then
-    mkfontdir %{_x11fontdir}/cyrillic
+    mkfontdir %{_x11fontdir}/cyrillic || :
   fi
 }
 
@@ -932,8 +975,55 @@ mkfontdir %{_x11fontdir}/cyrillic
 %ghost %verify(not md5 size mtime) %{_x11fontdir}/cyrillic/fonts.cache-*
 
 %changelog
-* Fri Oct 15 2021 Pawel Winogrodzki <pawelwi@microsoft.com> - 7.5-25
-- Initial CBL-Mariner import from Fedora 32 (license: MIT).
+* Sat Jul 20 2024 Fedora Release Engineering <releng@fedoraproject.org> - 7.5-39
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_41_Mass_Rebuild
+
+* Sat Jan 27 2024 Fedora Release Engineering <releng@fedoraproject.org> - 7.5-38
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Fri Sep 29 2023 Peter Hutterer <peter.hutterer@redhat.com> - 7.5-37
+- SPDX migration
+
+* Sat Jul 22 2023 Fedora Release Engineering <releng@fedoraproject.org> - 7.5-36
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_39_Mass_Rebuild
+
+* Sat Jan 21 2023 Fedora Release Engineering <releng@fedoraproject.org> - 7.5-35
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_38_Mass_Rebuild
+
+* Sat Jul 23 2022 Fedora Release Engineering <releng@fedoraproject.org> - 7.5-34
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_37_Mass_Rebuild
+
+* Sat Jan 22 2022 Fedora Release Engineering <releng@fedoraproject.org> - 7.5-33
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_36_Mass_Rebuild
+
+* Fri Jul 23 2021 Fedora Release Engineering <releng@fedoraproject.org> - 7.5-32
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_35_Mass_Rebuild
+
+* Fri Apr 23 2021 Peter Hutterer <peter.hutterer@redhat.com> 7.5-31
+- Drop the daewoo-misc fonts, they have no upstream license terms and may be
+  proprietary (#1952723)
+
+* Fri Mar 12 2021 Peter Hutterer <peter.hutterer@redhat.com> 7.5-30
+- Replace the external xorg-x11-fonts-update-dirs script with an rpm macro
+  doing the same thing, removing our runtime reliance on
+  xorg-x11-font-utils (#1938074)
+
+* Fri Mar 12 2021 Peter Hutterer <peter.hutterer@redhat.com> 7.5-29
+- BuildRequire mkfontscale now that it's separated out from
+  xorg-x11-font-utils (#1938069)
+- Use the make_build rpm macro
+
+* Mon Feb 22 2021 Adam Williamson <awilliam@redhat.com> - 7.5-28
+- Make scriptlets non-failable (#1926533)
+
+* Thu Jan 28 2021 Fedora Release Engineering <releng@fedoraproject.org> - 7.5-27
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_34_Mass_Rebuild
+
+* Thu Nov  5 10:26:36 AEST 2020 Peter Hutterer <peter.hutterer@redhat.com> - 7.5-26
+- Add BuildRequires for make
+
+* Wed Jul 29 2020 Fedora Release Engineering <releng@fedoraproject.org> - 7.5-25
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_33_Mass_Rebuild
 
 * Fri Jan 31 2020 Fedora Release Engineering <releng@fedoraproject.org> - 7.5-24
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_32_Mass_Rebuild
@@ -1051,7 +1141,7 @@ mkfontdir %{_x11fontdir}/cyrillic
 * Tue Jun 08 2010 Peter Hutterer <peter.hutterer@redhat.com> 7.2-11
 - Require xorg-x11-font-utils >= 7.2-11 for font-utils 1.1.0
 - Fix bashism in spec file (&>)
-- Remove perl hack for DEFAULT_FONTS_DIR, fixed upstream 
+- Remove perl hack for DEFAULT_FONTS_DIR, fixed upstream
 - Remove perl and autoconf requirement.
 - Create %%ghost files {misc|705dpi|...}/fonts.scale.
 - Drop fontdir alias patches

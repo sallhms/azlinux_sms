@@ -1,8 +1,6 @@
-Vendor:         Microsoft Corporation
-Distribution:   Azure Linux
 Name: libwvstreams
 Version: 4.6.1
-Release: 34%{?dist}
+Release: 44%{?dist}
 Summary: WvStreams is a network programming library written in C++
 Source: http://wvstreams.googlecode.com/files/wvstreams-%{version}.tar.gz
 #fixed multilib issue (bug #192717)
@@ -22,10 +20,12 @@ Patch7: wvstreams-4.6.1-magic.patch
 Patch8: 0001-Use-explicit-cast-and-prevent-compiler-error.patch
 Patch9: wvstreams-4.6.1-fix-stack-size.patch
 Patch10: wvstreams-4.6.1-gcc10.patch
+# patch was taken from debian
 Patch11: wvstreams-4.6.1-openssl11.patch
 URL: https://code.google.com/p/wvstreams/
-BuildRequires:  gcc-c++
-BuildRequires:  openssl-devel, pkgconfig, zlib-devel, readline-devel, dbus-devel
+BuildRequires: gcc-c++
+BuildRequires: openssl-devel, pkgconfig, zlib-devel, readline-devel, dbus-devel
+BuildRequires: make
 License: LGPLv2+
 
 %description
@@ -50,17 +50,17 @@ doing network applications development. This package contains static libraries.
 
 %prep
 %setup -q -n wvstreams-%{version}
-%patch 1 -p1 -b .multilib
-%patch 2 -p1 -b .xplctarget
-%patch 3 -p1 -b .make
-%patch 4 -p1 -b .statinclude
-%patch 5 -p1 -b .gcc
-%patch 6 -p1 -b .gcc47
-%patch 7 -p1 -b .magic
-%patch 8 -p1 -b .cast
-%patch 9 -p1 -b .fix-stack-size
-%patch 10 -p1 -b .gcc10
-%patch 11 -p1 -b .openssl11
+%patch -P1 -p1 -b .multilib
+%patch -P2 -p1 -b .xplctarget
+%patch -P3 -p1 -b .make
+%patch -P4 -p1 -b .statinclude
+%patch -P5 -p1 -b .gcc
+%patch -P6 -p1 -b .gcc47
+%patch -P7 -p1 -b .magic
+%patch -P8 -p1 -b .cast
+%patch -P9 -p1 -b .fix-stack-size
+%patch -P10 -p1 -b .gcc10
+%patch -P11 -p1 -b .openssl11
 
 %build
 
@@ -118,12 +118,42 @@ popd
 %ldconfig_scriptlets
 
 %changelog
-* Tue Aug 10 2021 Thomas Crain <thcrain@microsoft.com> - 4.6.1-34
-- Add patch to enable compatibility with recent versions of openssl
+* Thu Jul 18 2024 Fedora Release Engineering <releng@fedoraproject.org> - 4.6.1-44
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_41_Mass_Rebuild
 
-* Tue Jul 06 2021 Pawel Winogrodzki <pawelwi@microsoft.com> - 4.6.1-33
-- Initial CBL-Mariner import from Fedora 32 (license: MIT).
-- Removing BR on 'compat-openssl10-devel' and leaving only 'openssl-devel'.
+* Thu Jan 25 2024 Fedora Release Engineering <releng@fedoraproject.org> - 4.6.1-43
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Sun Jan 21 2024 Fedora Release Engineering <releng@fedoraproject.org> - 4.6.1-42
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Thu Jul 20 2023 Fedora Release Engineering <releng@fedoraproject.org> - 4.6.1-41
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_39_Mass_Rebuild
+
+* Thu Jan 19 2023 Fedora Release Engineering <releng@fedoraproject.org> - 4.6.1-40
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_38_Mass_Rebuild
+
+* Thu Jul 21 2022 Fedora Release Engineering <releng@fedoraproject.org> - 4.6.1-39
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_37_Mass_Rebuild
+
+* Thu Jan 20 2022 Fedora Release Engineering <releng@fedoraproject.org> - 4.6.1-38
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_36_Mass_Rebuild
+
+* Tue Sep 14 2021 Sahana Prasad <sahana@redhat.com> - 4.6.1-37
+- Rebuilt with OpenSSL 3.0.0
+
+* Thu Jul 22 2021 Fedora Release Engineering <releng@fedoraproject.org> - 4.6.1-36
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_35_Mass_Rebuild
+
+* Tue Jan 26 2021 Fedora Release Engineering <releng@fedoraproject.org> - 4.6.1-35
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_34_Mass_Rebuild
+
+* Tue Sep 22 2020 Jaroslav Škarvada <jskarvad@redhat.com> - 4.6.1-34
+- Fixed build with openssl-1.1, dropped compat-openssl10 requirement
+  Resolves: rhbz#1879697
+
+* Tue Jul 28 2020 Fedora Release Engineering <releng@fedoraproject.org> - 4.6.1-33
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_33_Mass_Rebuild
 
 * Wed Jan 29 2020 Fedora Release Engineering <releng@fedoraproject.org> - 4.6.1-32
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_32_Mass_Rebuild

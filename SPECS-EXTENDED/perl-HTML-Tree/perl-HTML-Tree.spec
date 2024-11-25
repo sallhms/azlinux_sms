@@ -1,12 +1,18 @@
+# Perform optional tests
+%if 0%{?rhel} >= 7
+%bcond_with perl_HTML_Tree_enable_optional_test
+%else
+%bcond_without perl_HTML_Tree_enable_optional_test
+%endif
+
 Name:           perl-HTML-Tree
+Epoch:          1
 Version:        5.07
-Release:        12%{?dist}
+Release:        27%{?dist}
 Summary:        HTML tree handling modules for Perl
-License:        GPL+ or Artistic
-Vendor:         Microsoft Corporation
-Distribution:   Azure Linux
+License:        GPL-1.0-or-later OR Artistic-1.0-Perl
 URL:            https://metacpan.org/release/HTML-Tree
-Source0:        https://cpan.metacpan.org/authors/id/K/KE/KENTNL/HTML-Tree-%{version}.tar.gz#/perl-HTML-Tree-%{version}.tar.gz
+Source0:        https://cpan.metacpan.org/authors/id/K/KE/KENTNL/HTML-Tree-%{version}.tar.gz
 BuildArch:      noarch
 BuildRequires:  perl-interpreter
 BuildRequires:  perl-generators
@@ -32,12 +38,11 @@ BuildRequires:  perl(warnings)
 %if !%{defined perl_bootstrap}
 # HTML::FormatText (perl-HTML-Format) has BR: perl(HTML::TreeBuilder) from this package
 BuildRequires:  perl(HTML::FormatText)
-%if ! (0%{?rhel} >= 7)
+%if %{with perl_HTML_Tree_enable_optional_test}
 # perl-Test-LeakTrace -> perl-Test-Valgrind -> perl-XML-Twig -> perl-HTML-Tree
 BuildRequires:  perl(Test::LeakTrace)
 %endif
 %endif
-Requires:       perl(:MODULE_COMPAT_%(eval "`perl -V:version`"; echo $version))
 Requires:       perl(HTML::Parser) >= 3.46
 Requires:       perl(HTML::Tagset) >= 3.02
 
@@ -70,11 +75,56 @@ perl Build.PL installdirs=vendor
 %{_mandir}/man3/HTML::*3*
 
 %changelog
-* Mon Nov 01 2021 Muhammad Falak <mwani@microsft.com> - 5.07-12
-- Remove epoch
+* Fri Jul 19 2024 Fedora Release Engineering <releng@fedoraproject.org> - 1:5.07-27
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_41_Mass_Rebuild
 
-* Fri Oct 15 2021 Pawel Winogrodzki <pawelwi@microsoft.com> - 1:5.07-11
-- Initial CBL-Mariner import from Fedora 32 (license: MIT).
+* Thu Jan 25 2024 Fedora Release Engineering <releng@fedoraproject.org> - 1:5.07-26
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Sun Jan 21 2024 Fedora Release Engineering <releng@fedoraproject.org> - 1:5.07-25
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Thu Jul 20 2023 Fedora Release Engineering <releng@fedoraproject.org> - 1:5.07-24
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_39_Mass_Rebuild
+
+* Wed May 31 2023 Michal Josef Špaček <mspacek@redhat.com> - 1:5.07-23
+- Update license to SPDX format
+
+* Fri Jan 20 2023 Fedora Release Engineering <releng@fedoraproject.org> - 1:5.07-22
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_38_Mass_Rebuild
+
+* Fri Jul 22 2022 Fedora Release Engineering <releng@fedoraproject.org> - 1:5.07-21
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_37_Mass_Rebuild
+
+* Fri Jun 03 2022 Jitka Plesnikova <jplesnik@redhat.com> - 1:5.07-20
+- Perl 5.36 re-rebuild of bootstrapped packages
+
+* Wed Jun 01 2022 Jitka Plesnikova <jplesnik@redhat.com> - 1:5.07-19
+- Perl 5.36 rebuild
+
+* Fri Jan 21 2022 Fedora Release Engineering <releng@fedoraproject.org> - 1:5.07-18
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_36_Mass_Rebuild
+
+* Thu Jul 22 2021 Fedora Release Engineering <releng@fedoraproject.org> - 1:5.07-17
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_35_Mass_Rebuild
+
+* Mon May 24 2021 Jitka Plesnikova <jplesnik@redhat.com> - 1:5.07-16
+- Perl 5.34 re-rebuild of bootstrapped packages
+
+* Fri May 21 2021 Jitka Plesnikova <jplesnik@redhat.com> - 1:5.07-15
+- Perl 5.34 rebuild
+
+* Wed Jan 27 2021 Fedora Release Engineering <releng@fedoraproject.org> - 1:5.07-14
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_34_Mass_Rebuild
+
+* Tue Jul 28 2020 Fedora Release Engineering <releng@fedoraproject.org> - 1:5.07-13
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_33_Mass_Rebuild
+
+* Fri Jun 26 2020 Jitka Plesnikova <jplesnik@redhat.com> - 1:5.07-12
+- Perl 5.32 re-rebuild of bootstrapped packages
+
+* Tue Jun 23 2020 Jitka Plesnikova <jplesnik@redhat.com> - 1:5.07-11
+- Perl 5.32 rebuild
 
 * Thu Jan 30 2020 Fedora Release Engineering <releng@fedoraproject.org> - 1:5.07-10
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_32_Mass_Rebuild

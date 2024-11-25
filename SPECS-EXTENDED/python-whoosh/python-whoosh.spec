@@ -1,22 +1,18 @@
 # For bootstrapping sphinxcontrib-websupport
 %bcond_without docs
 
+%global mod_name Whoosh
+
 Name:           python-whoosh
 Version:        2.7.4
-Release:        21%{?dist}
-Summary:        Fast, pure-Python full text indexing, search, and spell checking library
+Release:        33%{?dist}
+Summary:        Fast, pure-Python full text indexing, search, and spell checking library 
 
-License:        BSD
-Vendor:         Microsoft Corporation
-Distribution:   Azure Linux
-URL:            https://github.com/mchaput/whoosh
-Source0:        https://github.com/mchaput/whoosh/archive/refs/tags/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
+License:        BSD 
+URL:            http://pythonhosted.org/Whoosh/
+Source0:        https://pypi.python.org/packages/source/W/%{mod_name}/%{mod_name}-%{version}.tar.gz
 
 BuildArch:      noarch
-
-%if 0%{?with_check}
-BuildRequires:  python3-pip
-%endif
 
 %if %{with docs}
 BuildRequires:  python%{python3_pkgversion}-sphinx
@@ -43,7 +39,7 @@ functionality to their applications and websites. Every part of how Whoosh
 works can be extended or replaced to meet your needs exactly.
 
 %prep
-%setup -q -n whoosh-%{version}
+%setup -q -n %{mod_name}-%{version}
 # pytest 4
 sed -i 's/\[pytest\]/\[tool:pytest\]/' setup.cfg
 
@@ -60,7 +56,6 @@ rm -rf docs/html/.doctrees
 %py3_install
 
 %check
-%{__python3} -m pip install wheel
 %{__python3} setup.py test
 
 %files -n python%{python3_pkgversion}-whoosh
@@ -73,16 +68,50 @@ rm -rf docs/html/.doctrees
 %{python3_sitelib}/*.egg-info/
 
 %changelog
-* Fri Jul 22 2022 Muhammad Falak <mwani@microsoft.com> - 2.7.4-21
-- Install `wheel` package in %check section to enable build
-- Switch to github tarball
+* Fri Jul 19 2024 Fedora Release Engineering <releng@fedoraproject.org> - 2.7.4-33
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_41_Mass_Rebuild
 
-* Thu Apr 21 2022 Muhammad Falak <mwani@microsoft.com> - 2.7.4-20
-- Add an explicit BR on `pip` to enable ptest
-- License verified
+* Fri Jun 07 2024 Python Maint <python-maint@redhat.com> - 2.7.4-32
+- Rebuilt for Python 3.13
 
-* Fri Oct 15 2021 Pawel Winogrodzki <pawelwi@microsoft.com> - 2.7.4-19
-- Initial CBL-Mariner import from Fedora 32 (license: MIT).
+* Fri Jan 26 2024 Fedora Release Engineering <releng@fedoraproject.org> - 2.7.4-31
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Mon Jan 22 2024 Fedora Release Engineering <releng@fedoraproject.org> - 2.7.4-30
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Fri Jul 21 2023 Fedora Release Engineering <releng@fedoraproject.org> - 2.7.4-29
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_39_Mass_Rebuild
+
+* Wed Jun 14 2023 Python Maint <python-maint@redhat.com> - 2.7.4-28
+- Rebuilt for Python 3.12
+
+* Fri Jan 20 2023 Fedora Release Engineering <releng@fedoraproject.org> - 2.7.4-27
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_38_Mass_Rebuild
+
+* Fri Jul 22 2022 Fedora Release Engineering <releng@fedoraproject.org> - 2.7.4-26
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_37_Mass_Rebuild
+
+* Mon Jun 13 2022 Python Maint <python-maint@redhat.com> - 2.7.4-25
+- Rebuilt for Python 3.11
+
+* Fri Jan 21 2022 Fedora Release Engineering <releng@fedoraproject.org> - 2.7.4-24
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_36_Mass_Rebuild
+
+* Fri Jul 23 2021 Fedora Release Engineering <releng@fedoraproject.org> - 2.7.4-23
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_35_Mass_Rebuild
+
+* Wed Jun 02 2021 Python Maint <python-maint@redhat.com> - 2.7.4-22
+- Rebuilt for Python 3.10
+
+* Wed Jan 27 2021 Fedora Release Engineering <releng@fedoraproject.org> - 2.7.4-21
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_34_Mass_Rebuild
+
+* Wed Jul 29 2020 Fedora Release Engineering <releng@fedoraproject.org> - 2.7.4-20
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_33_Mass_Rebuild
+
+* Fri May 22 2020 Miro Hrončok <mhroncok@redhat.com> - 2.7.4-19
+- Rebuilt for Python 3.9
 
 * Thu Jan 30 2020 Fedora Release Engineering <releng@fedoraproject.org> - 2.7.4-18
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_32_Mass_Rebuild

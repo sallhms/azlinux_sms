@@ -1,17 +1,17 @@
 %{!?_pkgdocdir: %global _pkgdocdir %{_docdir}/%{name}-%{version}}
-%bcond_with docs
-Summary:        Audio Plugin Standard
+
 Name:           lv2
 Version:        1.18.8
-Release:        3%{?dist}
+Release:        9%{?dist}
+Summary:        Audio Plugin Standard
+
 # lv2specgen template.html is CC-AT-SA
 License:        ISC
-Vendor:         Microsoft Corporation
-Distribution:   Azure Linux
 URL:            https://lv2plug.in
-Source:         https://lv2plug.in/spec/%{name}-%{version}.tar.xz
+Source:         https://lv2plug.in/spec/lv2-%{version}.tar.xz
+
 BuildRequires:  asciidoc
-BuildRequires:  cairo-devel >= 1.8.10
+Buildrequires:  cairo-devel >= 1.8.10
 BuildRequires:  doxygen
 BuildRequires:  gcc-c++
 BuildRequires:  graphviz
@@ -19,9 +19,10 @@ BuildRequires:  libsndfile-devel
 BuildRequires:  meson
 BuildRequires:  pkgconfig(samplerate)
 BuildRequires:  python3-pygments
-BuildRequires:  python3-rdflib
-BuildRequires:  python3-markdown
-BuildRequires:  python3-lxml
+Buildrequires:  python3-rdflib
+Buildrequires:  python3-markdown
+Buildrequires:  python3-lxml
+
 # this package replaces lv2core 
 Provides:       lv2core = 6.0-4
 Obsoletes:      lv2core < 6.0-4
@@ -30,7 +31,7 @@ Obsoletes:      lv2-ui < 2.4-5
 
 %description
 LV2 is a standard for plugins and matching host applications, mainly
-targeted at audio processing and generation.
+targeted at audio processing and generation.  
 
 There are a large number of open source and free software synthesis
 packages in use or development at this time. This API ('LV2') attempts
@@ -44,9 +45,10 @@ LADSPA which many hosts have outgrown.
 
 %package        devel
 Summary:        API for the LV2 Audio Plugin Standard
+
 Requires:       %{name}%{?_isa} = %{version}-%{release}
-Requires:       python3-markdown
 Requires:       python3-rdflib
+Requires:       python3-markdown
 Provides:       lv2core-devel = 6.0-4
 Obsoletes:      lv2core-devel < 6.0-4
 Provides:       lv2-ui-devel = 2.4-5
@@ -60,16 +62,14 @@ Definitive technical documentation on LV2 plug-ins for both the host
 and plug-in is contained within copious comments within the lv2.h
 header file.
 
-%if %{with docs}
 %package        doc
 Summary:        Documentation for the LV2 Audio Plugin Standard
+BuildArch:      noarch
 Obsoletes:      %{name}-docs < 1.6.0-2
 Provides:       %{name}-docs = %{version}-%{release}
-BuildArch:      noarch
 
 %description    doc
 Documentation for the LV2 plugin API.
-%endif
 
 %package        example-plugins
 Summary:        Examples of the LV2 Audio Plugin Standard
@@ -85,11 +85,7 @@ sed -i '1s|^#!.*|#!%{__python3}|' lv2specgen/lv2specgen.py
 
 %build
 %meson \
-%if %{with docs}
   -D docs=enabled \
-%else
-  -D docs=disabled \
-%endif
   -D old_headers=true \
   -D tests=disabled
 
@@ -101,8 +97,57 @@ sed -i '1s|^#!.*|#!%{__python3}|' lv2specgen/lv2specgen.py
 # Let RPM pick docs in the files section
 rm -fr %{buildroot}%{_docdir}/%{name}
 
-%check
-%meson_test
+%pretrans devel -p <lua>
+-- Remove all symlinks existed in lv2-devel-1.18.2-2.fc36
+
+hdir = "%{_includedir}/%{name}"
+pdir = hdir .. "/lv2plug.in"
+
+-- List parent directories in reverse order
+-- inside lv2 specific directories
+parent_dirs = {}
+table.insert(parent_dirs, pdir .. "/ns/extensions")
+table.insert(parent_dirs, pdir .. "/ns/ext")
+table.insert(parent_dirs, pdir .. "/ns")
+table.insert(parent_dirs, hdir)
+
+for i = 1, #parent_dirs, 1 do -- not use ipairs here to guarantee order
+    parent = parent_dirs[i]
+
+    dir_entry = posix.dir(parent)
+    if not(dir_entry) then
+        goto skip_2
+    end
+    for j, path in pairs(dir_entry) do
+        exclude_list = {"." , ".."}
+        for k, ex in ipairs(exclude_list) do
+            if path == ex then
+                goto skip_1
+            end
+        end
+
+        fullpath = parent .. "/"
+        fullpath = fullpath .. path
+        st = posix.stat(fullpath)
+        if st and st.type == "link" then
+            os.remove(fullpath)
+        end
+
+        ::skip_1::
+    end
+    ::skip_2::
+end
+
+-- Remove extra symlinks
+pathlist = {}
+table.insert(pathlist, "%{_inclduedir}/lv2.h")
+for i = 1, #pathlist, 1 do
+    fullpath = pathlist[i]
+    st = posix.stat(fullpath)
+    if st and st.type == "link" then
+        os.remove(fullpath)
+    end
+end
 
 %files
 %license COPYING
@@ -151,17 +196,32 @@ rm -fr %{buildroot}%{_docdir}/%{name}
 %{_libdir}/%{name}/eg-sampler.lv2
 %{_libdir}/%{name}/eg-scope.lv2
 
-%if %{with docs}
 %files doc
 %doc %{_vpath_builddir}/doc/*
-%endif
 
 %changelog
-* Thu Nov 24 2022 Sumedh Sharma <sumsharma@microsoft.com> - 1.18.8-3
-- Initial CBL-Mariner import from Fedora 37 (license: MIT)
-- Disable subpackage docs.
-- Disable check section with missing dependency on codespell
-- License verified
+* Thu Jul 18 2024 Fedora Release Engineering <releng@fedoraproject.org> - 1.18.8-9
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_41_Mass_Rebuild
+
+* Thu Jan 25 2024 Fedora Release Engineering <releng@fedoraproject.org> - 1.18.8-8
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Sun Jan 21 2024 Fedora Release Engineering <releng@fedoraproject.org> - 1.18.8-7
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Thu Jul 20 2023 Fedora Release Engineering <releng@fedoraproject.org> - 1.18.8-6
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_39_Mass_Rebuild
+
+* Thu Jan 19 2023 Fedora Release Engineering <releng@fedoraproject.org> - 1.18.8-5
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_38_Mass_Rebuild
+
+* Fri Sep 30 2022 Mamoru TASAKA <mtasaka@fedoraproject.org> - 1.18.8-4
+- Fix pretrans lua script error for first installation (not upgrade)
+  (#2131236)
+
+* Fri Sep 23 2022 Mamoru TASAKA <mtasaka@fedoraproject.org> - 1.18.8-3
+- Remove all symlinks in previous -devel subpackage in %%pre_trans
+  to ensure update transaction (#2123422)
 
 * Sat Sep 17 2022 Guido Aulisi <guido.aulisi@gmail.com> - 1.18.8-2
 - Readd old headers #2127286
@@ -317,3 +377,4 @@ rm -fr %{buildroot}%{_docdir}/%{name}
 
 * Fri Apr 20 2012 Brendan Jones <brendan.jones.it@gmail.com> - 1.0.0-1
 - Created
+

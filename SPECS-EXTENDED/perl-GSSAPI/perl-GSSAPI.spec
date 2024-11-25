@@ -1,5 +1,3 @@
-Vendor:         Microsoft Corporation
-Distribution:   Azure Linux
 #
 # Rebuild option:
 #
@@ -8,28 +6,38 @@ Distribution:   Azure Linux
 
 Name:           perl-GSSAPI
 Version:        0.28
-Release:        31%{?dist}
+Release:        47%{?dist}
 Summary:        Perl extension providing access to the GSSAPIv2 library
-License:        GPL+ or Artistic
+License:        GPL-1.0-or-later OR Artistic-1.0-Perl
 URL:            https://metacpan.org/release/GSSAPI
-Source0:        https://cpan.metacpan.org/authors/id/A/AG/AGROLMS/GSSAPI-%{version}.tar.gz#/perl-GSSAPI-%{version}.tar.gz
+Source0:        https://cpan.metacpan.org/authors/id/A/AG/AGROLMS/GSSAPI-%{version}.tar.gz
+# Fix a crash in gss_release_oid() when destructing out_mech (rhbz #1994263, CPAN RT#121873)
+Patch0:         GSSAPI-0.28-Fix-a-crash-in-gss_release_oid-when-destructing-out_.patch
+BuildRequires:  coreutils
 BuildRequires:  findutils
 BuildRequires:  gcc
 BuildRequires:  krb5-devel
-BuildRequires:  which
-%{?_with_testsuite:BuildRequires: perl(constant)}
-%{?_with_testsuite:BuildRequires: perl(Carp)}
-%{?_with_testsuite:BuildRequires: perl(Exporter)}
+BuildRequires:  make
 BuildRequires:  perl-devel
 BuildRequires:  perl-generators
 BuildRequires:  perl-interpreter
+BuildRequires:  perl(Config)
 BuildRequires:  perl(ExtUtils::MakeMaker) >= 6.76
-%{?_with_testsuite:BuildRequires: perl(ExtUtils::testlib)}
 BuildRequires:  perl(Getopt::Long)
-%{?_with_testsuite:BuildRequires: perl(Test::More)}
-%{?_with_testsuite:BuildRequires: perl(Test::Pod) >= 1.00}
+BuildRequires:  perl(strict)
+BuildRequires:  which
+# Run-time
+%{?_with_testsuite:BuildRequires: perl(Carp)}
+%{?_with_testsuite:BuildRequires: perl(constant)}
+%{?_with_testsuite:BuildRequires: perl(Exporter)}
+%{?_with_testsuite:BuildRequires: perl(overload)}
+%{?_with_testsuite:BuildRequires: perl(warnings)}
 %{?_with_testsuite:BuildRequires: perl(XSLoader)}
-Requires:       perl(:MODULE_COMPAT_%(eval "`perl -V:version`"; echo $version))
+# Tests
+%{?_with_testsuite:BuildRequires: perl(ExtUtils::testlib)}
+%{?_with_testsuite:BuildRequires: perl(Test::More)}
+# Optional tests
+%{?_with_testsuite:BuildRequires: perl(Test::Pod) >= 1.00}
 
 %description
 This module gives access to the routines of the GSSAPI library, as
@@ -38,15 +46,15 @@ distribution from MIT.
 
 %prep
 %setup -q -n GSSAPI-%{version}
+%patch -P0 -p1
 chmod -c a-x examples/*.pl
 
 %build
-perl Makefile.PL INSTALLDIRS=vendor OPTIMIZE="%{optflags}" NO_PACKLIST=1 \
-                 NO_PERLLOCAL=1
-%make_build
+perl Makefile.PL INSTALLDIRS=vendor OPTIMIZE="%{optflags}" NO_PACKLIST=1 NO_PERLLOCAL=1
+%{make_build}
 
 %install
-%make_install
+%{make_install}
 find %{buildroot} -type f -name '*.bs' -empty -delete
 %{_fixperms} %{buildroot}/*
 
@@ -61,8 +69,56 @@ find %{buildroot} -type f -name '*.bs' -empty -delete
 %{_mandir}/man3/*
 
 %changelog
-* Fri Oct 15 2021 Pawel Winogrodzki <pawelwi@microsoft.com> - 0.28-31
-- Initial CBL-Mariner import from Fedora 32 (license: MIT).
+* Fri Jul 19 2024 Fedora Release Engineering <releng@fedoraproject.org> - 0.28-47
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_41_Mass_Rebuild
+
+* Mon Jun 10 2024 Jitka Plesnikova <jplesnik@redhat.com> - 0.28-46
+- Perl 5.40 rebuild
+
+* Thu Jan 25 2024 Fedora Release Engineering <releng@fedoraproject.org> - 0.28-45
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Sun Jan 21 2024 Fedora Release Engineering <releng@fedoraproject.org> - 0.28-44
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Thu Jul 20 2023 Fedora Release Engineering <releng@fedoraproject.org> - 0.28-43
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_39_Mass_Rebuild
+
+* Tue Jul 11 2023 Jitka Plesnikova <jplesnik@redhat.com> - 0.28-42
+- Perl 5.38 rebuild
+
+* Fri Jan 20 2023 Fedora Release Engineering <releng@fedoraproject.org> - 0.28-41
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_38_Mass_Rebuild
+
+* Fri Jul 22 2022 Fedora Release Engineering <releng@fedoraproject.org> - 0.28-40
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_37_Mass_Rebuild
+
+* Mon May 30 2022 Jitka Plesnikova <jplesnik@redhat.com> - 0.28-39
+- Perl 5.36 rebuild
+
+* Fri Jan 21 2022 Fedora Release Engineering <releng@fedoraproject.org> - 0.28-38
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_36_Mass_Rebuild
+
+* Thu Aug 19 2021 Jitka Plesnikova <jplesnik@redhat.com> - 0.28-25
+- Fix a crash in gss_release_oid() when destructing out_mech
+
+* Mon Aug 16 2021 Jitka Plesnikova <jplesnik@redhat.com> - 0.28-36
+- Fix comparison of OID structure
+
+* Thu Jul 22 2021 Fedora Release Engineering <releng@fedoraproject.org> - 0.28-35
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_35_Mass_Rebuild
+
+* Fri May 21 2021 Jitka Plesnikova <jplesnik@redhat.com> - 0.28-34
+- Perl 5.34 rebuild
+
+* Wed Jan 27 2021 Fedora Release Engineering <releng@fedoraproject.org> - 0.28-33
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_34_Mass_Rebuild
+
+* Tue Jul 28 2020 Fedora Release Engineering <releng@fedoraproject.org> - 0.28-32
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_33_Mass_Rebuild
+
+* Mon Jun 22 2020 Jitka Plesnikova <jplesnik@redhat.com> - 0.28-31
+- Perl 5.32 rebuild
 
 * Tue Feb 04 2020 Tom Stellard <tstellar@redhat.com> - 0.28-30
 - Spec file cleanups: Use make_build and make_install macros

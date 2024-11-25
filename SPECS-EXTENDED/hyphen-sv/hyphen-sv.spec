@@ -1,13 +1,10 @@
-Vendor:         Microsoft Corporation
-Distribution:   Azure Linux
 Name: hyphen-sv
 Summary: Swedish hyphenation rules
 Version: 1.00.1
-Release: 23%{?dist}
-Source0: https://downloads.sourceforge.net/project/aoo-extensions/1966/4/hyph_sv_se.oxt
-Source1: %{name}-LICENSE.txt
+Release: 35%{?dist}
+Source: https://downloads.sourceforge.net/project/aoo-extensions/1966/4/hyph_sv_se.oxt
 URL: http://extensions.services.openoffice.org/node/1968
-License: LGPLv2+ or GPLv2+
+License: LGPL-2.1-or-later OR GPL-2.0-or-later
 BuildArch: noarch
 Requires: hyphen
 Supplements: (hyphen and langpacks-sv)
@@ -17,10 +14,9 @@ Swedish hyphenation rules.
 
 %prep
 %autosetup -c -n hyphen-sv
-cp %{SOURCE1} ./LICENSE.txt
 
 %build
-chmod -x *
+chmod -x *.dic *.txt
 for i in README_sv_SE.txt; do
   if ! iconv -f utf-8 -t utf-8 -o /dev/null $i > /dev/null 2>&1; then
     iconv -f ISO-8859-1 -t UTF-8 $i > $i.new
@@ -45,13 +41,48 @@ popd
 
 
 %files
-%license LICENSE.txt
 %doc README_sv_SE.txt
 %{_datadir}/hyphen/*
 
 %changelog
-* Fri Oct 15 2021 Pawel Winogrodzki <pawelwi@microsoft.com> - 1.00.1-23
-- Initial CBL-Mariner import from Fedora 32 (license: MIT).
+* Thu Jul 18 2024 Fedora Release Engineering <releng@fedoraproject.org> - 1.00.1-35
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_41_Mass_Rebuild
+
+* Mon Jan 29 2024 Fedora Release Engineering <releng@fedoraproject.org> - 1.00.1-34
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Wed Jan 24 2024 Fedora Release Engineering <releng@fedoraproject.org> - 1.00.1-33
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Sat Jan 20 2024 Fedora Release Engineering <releng@fedoraproject.org> - 1.00.1-32
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Thu Jul 20 2023 Fedora Release Engineering <releng@fedoraproject.org> - 1.00.1-31
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_39_Mass_Rebuild
+
+* Thu Feb 23 2023 Caolán McNamara <caolanm@redhat.com> - 1.00.1-30
+- migrated to SPDX license
+
+* Thu Jan 19 2023 Fedora Release Engineering <releng@fedoraproject.org> - 1.00.1-29
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_38_Mass_Rebuild
+
+* Tue Aug 02 2022 Caolán McNamara <caolanm@redhat.com> - 1.00.1-28
+- Resolves: rhbz#2113447 FTBFS in Fedora rawhide/f37
+
+* Thu Jul 21 2022 Fedora Release Engineering <releng@fedoraproject.org> - 1.00.1-27
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_37_Mass_Rebuild
+
+* Thu Jan 20 2022 Fedora Release Engineering <releng@fedoraproject.org> - 1.00.1-26
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_36_Mass_Rebuild
+
+* Thu Jul 22 2021 Fedora Release Engineering <releng@fedoraproject.org> - 1.00.1-25
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_35_Mass_Rebuild
+
+* Tue Jan 26 2021 Fedora Release Engineering <releng@fedoraproject.org> - 1.00.1-24
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_34_Mass_Rebuild
+
+* Tue Jul 28 2020 Fedora Release Engineering <releng@fedoraproject.org> - 1.00.1-23
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_33_Mass_Rebuild
 
 * Wed Jan 29 2020 Fedora Release Engineering <releng@fedoraproject.org> - 1.00.1-22
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_32_Mass_Rebuild

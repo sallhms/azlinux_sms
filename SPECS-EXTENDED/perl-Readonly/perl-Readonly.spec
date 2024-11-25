@@ -1,18 +1,16 @@
 Name:		perl-Readonly
 Version:	2.05
-Release:	12%{?dist}
+Release:	27%{?dist}
 Summary:	Facility for creating read-only scalars, arrays, hashes
-License:	GPL+ or Artistic
-Vendor:         Microsoft Corporation
-Distribution:   Azure Linux
+License:	GPL-1.0-or-later OR Artistic-1.0-Perl
 URL:		https://metacpan.org/release/Readonly
-Source0:	https://cpan.metacpan.org/authors/id/S/SA/SANKO/Readonly-%{version}.tar.gz#/perl-Readonly-%{version}.tar.gz
+Source0:	https://cpan.metacpan.org/authors/id/S/SA/SANKO/Readonly-%{version}.tar.gz
 Patch0:		Readonly-2.05-interpreter.patch
 BuildArch:	noarch
 # Module Build
 BuildRequires:	coreutils
-BuildRequires:	perl-interpreter
 BuildRequires:	perl-generators
+BuildRequires:	perl-interpreter
 BuildRequires:	perl(Module::Build::Tiny) >= 0.035
 # Module Runtime
 BuildRequires:	perl(Carp)
@@ -25,7 +23,6 @@ BuildRequires:	perl(lib)
 BuildRequires:	perl(Test::More) >= 0.88
 BuildRequires:	perl(warnings)
 # Runtime
-Requires:	perl(:MODULE_COMPAT_%(eval "`perl -V:version`"; echo $version))
 Requires:	perl(Carp)
 Requires:	perl(Storable)
 
@@ -46,7 +43,7 @@ Readonly:
 %setup -q -n Readonly-%{version}
 
 # Fix script interpreter for test suite since we're packaging it
-%patch 0
+%patch -P0
 
 %build
 perl Build.PL --installdirs=vendor
@@ -65,9 +62,53 @@ perl Build.PL --installdirs=vendor
 %{_mandir}/man3/Readonly.3*
 
 %changelog
-* Fri Oct 30 2020 Joe Schmitt <joschmit@microsoft.com> - 2.05-12
-- Initial CBL-Mariner import from Fedora 32 (license: MIT).
-- Always set a BR on perl-generators.
+* Fri Jul 19 2024 Fedora Release Engineering <releng@fedoraproject.org> - 2.05-27
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_41_Mass_Rebuild
+
+* Sat Jul 13 2024 Michal Josef Špaček <mspacek@redhat.com> - 2.05-26
+- Remove obsolete if
+
+* Tue Jul  9 2024 Software Management Team <packaging-team-maint@redhat.com> - 2.05-25
+- Eliminate use of obsolete %%patchN syntax (rhbz#2283636)
+
+* Thu Jan 25 2024 Fedora Release Engineering <releng@fedoraproject.org> - 2.05-24
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Sun Jan 21 2024 Fedora Release Engineering <releng@fedoraproject.org> - 2.05-23
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Fri Jul 21 2023 Fedora Release Engineering <releng@fedoraproject.org> - 2.05-22
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_39_Mass_Rebuild
+
+* Fri Mar 03 2023 Michal Josef Špaček <mspacek@redhat.com> - 2.05-21
+- Update license to SPDX format
+
+* Fri Jan 20 2023 Fedora Release Engineering <releng@fedoraproject.org> - 2.05-20
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_38_Mass_Rebuild
+
+* Fri Jul 22 2022 Fedora Release Engineering <releng@fedoraproject.org> - 2.05-19
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_37_Mass_Rebuild
+
+* Wed Jun 01 2022 Jitka Plesnikova <jplesnik@redhat.com> - 2.05-18
+- Perl 5.36 rebuild
+
+* Fri Jan 21 2022 Fedora Release Engineering <releng@fedoraproject.org> - 2.05-17
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_36_Mass_Rebuild
+
+* Thu Jul 22 2021 Fedora Release Engineering <releng@fedoraproject.org> - 2.05-16
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_35_Mass_Rebuild
+
+* Fri May 21 2021 Jitka Plesnikova <jplesnik@redhat.com> - 2.05-15
+- Perl 5.34 rebuild
+
+* Wed Jan 27 2021 Fedora Release Engineering <releng@fedoraproject.org> - 2.05-14
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_34_Mass_Rebuild
+
+* Tue Jul 28 2020 Fedora Release Engineering <releng@fedoraproject.org> - 2.05-13
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_33_Mass_Rebuild
+
+* Tue Jun 23 2020 Jitka Plesnikova <jplesnik@redhat.com> - 2.05-12
+- Perl 5.32 rebuild
 
 * Thu Jan 30 2020 Fedora Release Engineering <releng@fedoraproject.org> - 2.05-11
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_32_Mass_Rebuild

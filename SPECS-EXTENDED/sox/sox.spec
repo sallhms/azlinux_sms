@@ -1,12 +1,10 @@
-Vendor:         Microsoft Corporation
-Distribution:   Azure Linux
 Summary: A general purpose sound file conversion tool
 Name: sox
 # A mistake in naming, 14.4.2rc2 breaks upgrade path.
 # This workaround will go away with rebase to 14.4.3
 # it affects Source, %%prep and Version
 Version: 14.4.2.0
-Release: 33%{?dist}
+Release: 39%{?dist}
 License: GPLv2+ and LGPLv2+ and MIT
 # Modified source tarball with libgsm license, without unlicensed liblpc10:
 # _Source: http://downloads.sourceforge.net/%%{name}/%%{name}-%%{version}.tar.gz
@@ -68,6 +66,7 @@ Patch1006: sox-14.4.2-bug_1480678_fix.patch
 Patch1007: sox-14.4.2-bug_1545867_fix.patch
 # 9000 - 9999: Tests:
 Patch9000: sox-14.4.2-installcheck_fix.patch
+Patch9001: sox-sample_tes-t-c99.patch
 # https://lists.fedoraproject.org/archives/list/devel@lists.fedoraproject.org/thread/IJFYI5Q2BYZKIGDFS2WLOBDUSEGWHIKV/
 BuildRequires: make
 BuildRequires: gcc
@@ -94,18 +93,19 @@ which will use the SoX sound file format converter.
 
 %prep
 %setup -q -n %{name}-downstream-%{name}-%{version}.modified
-%patch 0 -p1
-%patch 1 -p1 -b .lpc
-%patch 2 -p1
-%patch 1000 -p1
-%patch 1001 -p1
-%patch 1002 -p1
-%patch 1003 -p1
-%patch 1004 -p1
-%patch 1005 -p1
-%patch 1006 -p1
-%patch 1007 -p1
-%patch 9000 -p1
+%patch -P0 -p1
+%patch -P1 -p1 -b .lpc
+%patch -P2 -p1
+%patch -P1000 -p1
+%patch -P1001 -p1
+%patch -P1002 -p1
+%patch -P1003 -p1
+%patch -P1004 -p1
+%patch -P1005 -p1
+%patch -P1006 -p1
+%patch -P1007 -p1
+%patch -P9000 -p1
+%patch -P9001 -p1
 #regenerate scripts from older autoconf to support aarch64
 autoreconf -vfi
 
@@ -118,7 +118,7 @@ CFLAGS="$RPM_OPT_FLAGS -D_FILE_OFFSET_BITS=64"
            --with-distro=Fedora \
            --with-dyn-default
 
-%make_build
+make V=1 %{?_smp_mflags}
 
 %install
 make install DESTDIR=$RPM_BUILD_ROOT
@@ -150,9 +150,26 @@ rm -f $RPM_BUILD_ROOT%{_libdir}/sox/*.a
 
 
 %changelog
-* Mon Mar 06 2023 Muhammad Falak R Wani <mwani@microsoft.com> - 14.4.2.0-33
-- Initial CBL-Mariner import from Fedora 36 (license: MIT).
-- License Verified
+* Sat Jul 20 2024 Fedora Release Engineering <releng@fedoraproject.org> - 14.4.2.0-39
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_41_Mass_Rebuild
+
+* Sat Jan 27 2024 Fedora Release Engineering <releng@fedoraproject.org> - 14.4.2.0-38
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Sat Jul 22 2023 Fedora Release Engineering <releng@fedoraproject.org> - 14.4.2.0-37
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_39_Mass_Rebuild
+
+* Sat Jan 21 2023 Fedora Release Engineering <releng@fedoraproject.org> - 14.4.2.0-36
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_38_Mass_Rebuild
+
+* Mon Nov 28 2022 Florian Weimer <fweimer@redhat.com> - 14.4.2.0-35
+- Fix C99 compatibile issue in src/sox_sample_test.h
+
+* Wed Sep 14 2022 Michel Alexandre Salim <salimma@fedoraproject.org> - 14.4.2.0-34
+- Rebuilt for flac 1.4.0
+
+* Sat Jul 23 2022 Fedora Release Engineering <releng@fedoraproject.org> - 14.4.2.0-33
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_37_Mass_Rebuild
 
 * Sat Jan 22 2022 Fedora Release Engineering <releng@fedoraproject.org> - 14.4.2.0-32
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_36_Mass_Rebuild

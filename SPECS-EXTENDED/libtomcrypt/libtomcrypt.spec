@@ -1,16 +1,40 @@
-Summary:        A comprehensive, portable cryptographic toolkit
+%if 0%{?fedora}
+%global _with_docs 1
+%endif
+
 Name:           libtomcrypt
 Version:        1.18.2
-Release:        9%{?dist}
-License:        Public Domain OR WTFPL
-Vendor:         Microsoft Corporation
-Distribution:   Azure Linux
-URL:            https://www.libtom.net/
+Release:        20%{?dist}
+Summary:        A comprehensive, portable cryptographic toolkit
+License:        Public Domain or WTFPL
+URL:            http://www.libtom.net/
+
 Source0:        https://github.com/libtom/%{name}/archive/v%{version}/%{name}-%{version}.tar.gz
-Patch0:         CVE-2019-17362.patch
 
 BuildRequires:  libtommath-devel >= 1.0
 BuildRequires:  libtool
+
+%{?_with_docs:
+BuildRequires:  ghostscript
+BuildRequires:  texlive-latex-bin-bin
+BuildRequires:  texlive-makeindex-bin
+BuildRequires:  texlive-mfware-bin
+BuildRequires:  tex(alltt.sty)
+BuildRequires:  tex(amssymb.sty)
+BuildRequires:  tex(cmr10.tfm)
+BuildRequires:  tex(color.sty)
+BuildRequires:  tex(fancyhdr.sty)
+BuildRequires:  tex(float.sty)
+BuildRequires:  tex(geometry.sty)
+BuildRequires:  tex(graphicx.sty)
+BuildRequires:  tex(hyperref.sty)
+BuildRequires:  tex(hyphen.tex)
+BuildRequires:  tex(layout.sty)
+BuildRequires:  tex(makeidx.sty)
+BuildRequires:  tex(mf.mf)
+BuildRequires:  tex(tcti1000.tfm)
+BuildRequires: make
+}
 
 %description
 A comprehensive, modular and portable cryptographic toolkit that provides
@@ -21,7 +45,7 @@ cryptography and a plethora of other routines.
 Designed from the ground up to be very simple to use. It has a modular and
 standard API that allows new ciphers, hashes and PRNGs to be added or removed
 without change to the overall end application. It features easy to use functions
-and a complete user manual which has many source snippet examples.
+and a complete user manual which has many source snippet examples. 
 
 %package        devel
 Summary:        Development files for %{name}
@@ -31,8 +55,19 @@ Requires:       %{name}%{?_isa} = %{version}-%{release}
 The %{name}-devel package contains libraries and header files for
 developing applications that use %{name}.
 
+%{?_with_docs:
+%package        doc
+Summary:        Documentation files for %{name}
+BuildArch:      noarch
+Provides:       %{name}-doc = %{version}-%{release}
+Obsoletes:      %{name}-doc < 1.17-19
+
+%description    doc
+The %{name}-doc package contains documentation for use with %{name}.
+}
+
 %prep
-%autosetup -p1
+%setup -q
 
 %build
 %set_build_flags
@@ -43,6 +78,9 @@ export EXTRALIBS="-ltommath"
 export CFLAGS="%{build_cflags} -DLTM_DESC -DUSE_LTM"
 %make_build V=1 -f makefile.shared library
 %make_build V=1 -f makefile.shared test
+%{?_with_docs:
+%make_build V=1 -f makefile docs
+}
 
 %check
 ./test
@@ -51,7 +89,7 @@ export CFLAGS="%{build_cflags} -DLTM_DESC -DUSE_LTM"
 %make_install INSTALL_OPTS="-m 755" INCPATH="%{_includedir}" LIBPATH="%{_libdir}" -f makefile.shared
 
 # Remove unneeded files
-find %{buildroot} -type f -name "*.la" -delete -print
+find %{buildroot} -name '*.la' -delete
 find %{buildroot} -name '*.a' -delete
 
 # Fix pkgconfig path
@@ -71,16 +109,54 @@ sed -i \
 %{_libdir}/*.so
 %{_libdir}/pkgconfig/*.pc
 
+%{?_with_docs:
+%files doc
+%doc doc/crypt.pdf
+}
+
 %changelog
-* Thu Nov 24 2022 Pawel Winogrodzki <pawelwi@microsoft.com> - 1.18.2-9
-- Patching CVE-2019-17362.
+* Thu Jul 18 2024 Fedora Release Engineering <releng@fedoraproject.org> - 1.18.2-20
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_41_Mass_Rebuild
 
-* Fri Feb 04 2022 Pawel Winogrodzki <pawelwi@microsoft.com> - 1.18.2-8
-- Removing docs to drop dependency on 'ghostscript'.
-- License verified.
+* Thu Jan 25 2024 Fedora Release Engineering <releng@fedoraproject.org> - 1.18.2-19
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
 
-* Fri Oct 15 2021 Pawel Winogrodzki <pawelwi@microsoft.com> - 1.18.2-7
-- Initial CBL-Mariner import from Fedora 32 (license: MIT).
+* Sun Jan 21 2024 Fedora Release Engineering <releng@fedoraproject.org> - 1.18.2-18
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Thu Jul 20 2023 Fedora Release Engineering <releng@fedoraproject.org> - 1.18.2-17
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_39_Mass_Rebuild
+
+* Thu Jan 19 2023 Fedora Release Engineering <releng@fedoraproject.org> - 1.18.2-16
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_38_Mass_Rebuild
+
+* Thu Jul 21 2022 Fedora Release Engineering <releng@fedoraproject.org> - 1.18.2-15
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_37_Mass_Rebuild
+
+* Thu Jan 20 2022 Fedora Release Engineering <releng@fedoraproject.org> - 1.18.2-14
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_36_Mass_Rebuild
+
+* Thu Jul 22 2021 Fedora Release Engineering <releng@fedoraproject.org> - 1.18.2-13
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_35_Mass_Rebuild
+
+* Tue Mar 30 2021 Petr Pisar <ppisar@redhat.com> - 1.18.2-12
+- Build-require more TeX packages (bug #1943028)
+
+* Tue Jan 26 2021 Fedora Release Engineering <releng@fedoraproject.org> - 1.18.2-11
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_34_Mass_Rebuild
+
+* Thu Aug 13 2020 Gerd Pokorra <gp@zimt.uni-siegen.de> - 1.18.2-10
+- Add missing dependency tex(tcti1000.tfm), bug-id 1863674
+
+* Sat Aug 01 2020 Fedora Release Engineering <releng@fedoraproject.org> - 1.18.2-9
+- Second attempt - Rebuilt for
+  https://fedoraproject.org/wiki/Fedora_33_Mass_Rebuild
+
+* Tue Jul 28 2020 Fedora Release Engineering <releng@fedoraproject.org> - 1.18.2-8
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_33_Mass_Rebuild
+
+* Sat Apr 11 2020 Gerd Pokorra <gp@zimt.uni-siegen.de> - 1.18.2-7
+- Rebuilt with libtommath 1.2.0
 
 * Wed Jan 29 2020 Fedora Release Engineering <releng@fedoraproject.org> - 1.18.2-6
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_32_Mass_Rebuild

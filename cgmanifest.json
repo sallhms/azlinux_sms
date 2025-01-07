@@ -4310,9 +4310,9 @@
       "component": {
         "type": "other",
         "other": {
-          "name": "gi-docgen",
-          "version": "2024.1",
-          "downloadUrl": "https://gitlab.gnome.org/GNOME/gi-docgen/-/archive/2024.1/gi-docgen-2024.1.tar.bz2"
+          "name": "ghc-srpm-macros",
+          "version": "1.9.2",
+          "downloadUrl": "https://src.fedoraproject.org/rpms/ghc-srpm-macros"
         }
       }
     },

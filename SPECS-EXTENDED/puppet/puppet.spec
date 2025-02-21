@@ -214,7 +214,6 @@ useradd -r -u 52 -g puppet -s /sbin/nologin \
 %changelog
 * Wed Dec 11 2024 Sumit Jena <v-sumitjena@microsoft.com> - 8.6.0-1
 - Update to version 8.6.0
-- License verified
 
 * Sun Apr 24 2022 Pawel Winogrodzki <pawelwi@microsoft.com> - 7.12.1-4
 - Updating Ruby vendor lib path macro.

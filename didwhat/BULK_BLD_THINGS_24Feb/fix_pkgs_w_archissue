@@ -1,0 +1,58 @@
+
+
+print_usage()
+{
+	echo "Usage:"
+	echo "$0 <path-to-the-specs-dir> <full-path-of-list-file-for-pkgs_w_archissue>"
+	exit
+}
+
+#set -x
+#set -v
+
+if [ $# -lt 2 ]
+then
+	print_usage
+fi
+
+specsdir=$1
+if [ ! -d $specsdir ]
+then
+	echo "The directory $specsdir was not found"
+	print_usage
+fi
+
+listingfile=$2
+if [ ! -f $listingfile ]
+then
+	echo "The file $listingfile was not found"
+	print_usage
+fi
+
+#for fil in `cat list_pkgs_w_archissue`
+#for fil in `cat test_list_pkgs_w_archissue`
+for fil in `cat $listingfile`
+do
+	if [ -f $specsdir/$fil ] 
+	then
+		echo "Do you want to want to modify $fil?"
+		read confirmed
+		case "$confirmed" in 
+			yes | y | Y | YES )
+				echo $fil " being modified"
+				cat $specsdir/$fil | awk '/^ExclusiveArch:/ {print "#"$0} !/^ExclusiveArch:/ {print $0}' > temporaryfile
+				mv temporaryfile $specsdir/$fil
+				;;
+			[nN]*)
+				echo "Skipping $fil"
+				;;
+			*)
+				echo "Sorry, answer not recognized"
+				echo "Please enter yes or no"
+				exit 1
+				;;
+		esac
+	else
+		echo "$specsdir/$fil missing"
+	fi
+done

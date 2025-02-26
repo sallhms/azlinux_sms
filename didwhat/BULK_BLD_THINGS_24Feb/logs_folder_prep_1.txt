@@ -1,0 +1,1396 @@
+AZLINUX_ROOT=/four_disk/bb_08Feb/azlinux_sms/
+DNLDS_ROOT=/SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/
+DATA_PATH_FOR_LISTS=/home/neerajs/utils/BULK_BLD_THINGS/
+SPEC_EXT_DIR=/four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+LIST_OF_REM_FOLDERS=/home/neerajs/utils/BULK_BLD_THINGS//folders_to_rem
+LIST_OF_COPY_FOLDERS=/home/neerajs/utils/BULK_BLD_THINGS//folders_to_copy
+
+
+Starting removal for folders from the extended dir /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//OpenEXR
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//PEGTL
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//PyGreSQL
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//SDL
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//SDL2
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//SuperLU
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//advancecomp
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//alsa-plugins
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//amtk
+/four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//annobin not found
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//ansible-freeipa
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//apache-commons-codec
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//apache-commons-collections4
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//apache-commons-compress
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//apache-commons-io
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//apache-commons-jexl
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//apache-commons-net
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//apache-commons-vfs2
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//arpwatch
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//asio
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//aspell-en
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//babeltrace
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//babl
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//bats
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//bcel
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//beust-jcommander
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//boom-boot
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//booth
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//botan2
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//breezy
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//buildah
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//bwidget
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//cairomm
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//capstone
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//cdrdao
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//certmonger
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//cfitsio
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//cglib
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//cim-schema
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//cjkuni-uming-fonts
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//cjose
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//cldr-emoji-annotation
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//console-setup
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//containernetworking-plugins
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//corosync
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//corosync-qdevice
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//cppcheck
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//cpuid
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//criu
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//crypto-policies
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//dbxtool
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//delve
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//device-mapper-persistent-data
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//discount
+/four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//distribution-gpg-keys not found
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//dleyna-connector-dbus
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//dmraid
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//dotconf
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//dovecot
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//dpkg
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//dropwatch
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//drpm
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//dyninst
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//ecj
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//edac-utils
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//efax
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//efi-rpm-macros
+/four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//egl-wayland not found
+/four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//eglexternalplatform not found
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//elinks
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//exiv2
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//facter
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//fence-virt
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//fetchmail
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//flite
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//foomatic-db
+/four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//freeglut not found
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//freeradius
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//freexl
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//fuse-sshfs
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//gcr
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//gdal
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//ghc-srpm-macros
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//glassfish-annotation-api
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//gnome-keyring
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//go-rpm-macros
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//google-noto-cjk-fonts
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//google-noto-emoji-fonts
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//gphoto2
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//gpsbabel
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//graphene
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//gsl
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//gspell
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//gssdp
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//gssntlmssp
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//gstreamer1
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//gstreamer1-plugins-base
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//gtk-vnc
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//gupnp
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//gupnp-av
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//gupnp-igd
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//hawtjni-runtime
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//hdf
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//highlight
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//httpcomponents-core
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//hunspell-az
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//hunspell-ca
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//hunspell-csb
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//hunspell-de
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//hunspell-es
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//hunspell-eu
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//hunspell-ga
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//hunspell-it
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//hunspell-mr
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//hunspell-nl
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//hunspell-pl
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//hunspell-pt
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//hunspell-ro
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//hunspell-ru
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//hyphen-ca
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//hyphen-it
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//hyphen-pt
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//hyphen-ru
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//hyphen-tk
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//ibus
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//ibus-chewing
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//ibus-hangul
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//ibus-libzhuyin
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//ibus-m17n
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//ibus-table
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//ibus-table-chinese
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//iio-sensor-proxy
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//imaptest
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//indent
+/four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//iniparser not found
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//intel-cmt-cat
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//irssi
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//iso-codes
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//isomd5sum
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//iwd
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//jansi
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//javacc
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//jdepend
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//jdom2
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//jimtcl
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//jline
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//jose
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//js-jquery
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//jsoncpp
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//jsoup
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//kde-filesystem
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//keycloak-httpd-client-install
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//kronosnet
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//kyotocabinet
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//ladspa
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//langtable
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//lasso
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//lcov
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//ledmon
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//lensfun
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//libXScrnSaver
+/four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//libXres not found
+/four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//libXv not found
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//libappstream-glib
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//libblockdev
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//libbsd
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//libcdio
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//libcdio-paranoia
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//libcdr
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//libchewing
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//libdazzle
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//libdc1394
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//libdvdnav
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//libdvdread
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//libeasyfc
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//libetonyek
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//libgeotiff
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//libgexiv2
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//libgit2-glib
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//libgphoto2
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//libgsf
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//libgxps
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//libid3tag
+/four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//libidn2 not found
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//libimobiledevice
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//libiodbc
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//libipt
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//liblangtag
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//libldb
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//liblockfile
+/four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//libmicrohttpd not found
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//libmpcdec
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//libmtp
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//libmwaw
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//libnet
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//libnumbertext
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//libogg
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//libosinfo
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//libotf
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//libotr
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//libpaper
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//libpeas
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//libpfm
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//libpinyin
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//libplist
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//libproxy
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//libqb
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//librabbitmq
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//libreport
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//librevenge
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//libsass
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//libsecret
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//libsigc++20
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//libsigsegv
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//libsmbios
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//libspiro
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//libsrtp
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//libstemmer
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//libtdb
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//libteam
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//libtevent
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//libthai
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//libusbmuxd
+/four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//libuser not found
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//libutempter
+/four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//libva not found
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//libvarlink
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//libvdpau
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//libvisual
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//libvpx
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//libwnck3
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//libwpg
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//libwps
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//libxmlb
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//lilv
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//lksctp-tools
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//logwatch
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//lpsolve
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//lua-expat
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//lua-filesystem
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//lua-json
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//lua-lpeg
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//lua-lunit
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//lua-term
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//lzip
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//m17n-db
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//m17n-lib
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//mailx
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//man-pages-cs
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//man-pages-es
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//man-pages-it
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//man-pages-ja
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//man-pages-ko
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//man-pages-pl
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//man-pages-zh-CN
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//mariadb-connector-odbc
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//marisa
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//maven-parent
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//mcelog
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//mdds
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//meanwhile
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//memkind
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//microdnf
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//minicom
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//minizip
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//mksh
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//mobile-broadband-provider-info
+/four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//mock not found
+/four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//mock-core-configs not found
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//mod_auth_gssapi
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//mod_auth_mellon
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//mod_auth_openidc
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//mod_authnz_pam
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//mod_http2
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//mod_intercept_form_submit
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//mod_md
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//mod_security
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//mod_security_crs
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//mod_wsgi
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//mrtg
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//mt-st
+/four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//mtr not found
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//mutt
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//mythes
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//mythes-ca
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//mythes-de
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//netcdf
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//netpbm
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//nodejs-nodemon
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//nodejs-packaging
+/four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//nss-mdns not found
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//nvmetcli
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//objenesis
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//ocaml-camlp5
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//ocaml-curses
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//ocaml-extlib
+/four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//ocaml-parsexp not found
+/four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//ocaml-sexplib not found
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//ocaml-tyxml
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//ocaml-xml-light
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//ocl-icd
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//oddjob
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//ogdi
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//opencc
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//opencl-headers
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//opencryptoki
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//opendnssec
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//openjpeg2
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//openoffice-lv
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//openwsman
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//optipng
+/four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//opus not found
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//os-prober
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//osgi-annotation
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//osgi-core
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//osinfo-db
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//osinfo-db-tools
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//pacemaker
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//papi
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//paps
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//pcp
+/four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//perl-Algorithm-C3 not found
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//perl-Alien-Build
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//perl-Alien-pkgconf
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//perl-AnyEvent-BDB
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//perl-Archive-Extract
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//perl-Authen-SASL
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//perl-B-Hooks-EndOfScope
+/four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//perl-B-Hooks-OP-Check not found
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//perl-Business-ISBN
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//perl-Business-ISBN-Data
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//perl-CBOR-XS
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//perl-Class-C3
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//perl-Class-Data-Inheritable
+/four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//perl-Class-ISA not found
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//perl-Class-Tiny
+/four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//perl-Class-XSAccessor not found
+/four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//perl-Clone not found
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//perl-Color-ANSI-Util
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//perl-Color-RGB-Util
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//perl-ColorThemeBase-Static
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//perl-Compress-Raw-Lzma
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//perl-Config-AutoConf
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//perl-Config-INI
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//perl-Config-Tiny
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//perl-Convert-ASN1
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//perl-Cpanel-JSON-XS
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//perl-Crypt-CBC
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//perl-Crypt-OpenSSL-RSA
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//perl-Crypt-OpenSSL-Random
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//perl-Crypt-PasswdMD5
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//perl-DBD-MySQL
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//perl-Data-Munge
+/four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//perl-Data-OptList not found
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//perl-Data-Peek
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//perl-Data-Section
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//perl-Date-Manip
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//perl-DateTime
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//perl-DateTime-Format-Builder
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//perl-DateTime-Format-ISO8601
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//perl-DateTime-Format-Strptime
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//perl-DateTime-Locale
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//perl-DateTime-TimeZone
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//perl-Devel-CallChecker
+/four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//perl-Devel-Caller not found
+/four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//perl-Devel-Cycle not found
+/four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//perl-Devel-GlobalDestruction not found
+/four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//perl-Devel-GlobalDestruction-XS not found
+/four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//perl-Devel-Hide not found
+/four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//perl-Devel-LexAlias not found
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//perl-Devel-Size
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//perl-Digest-CRC
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//perl-DynaLoader-Functions
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//perl-EV
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//perl-Email-Address
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//perl-Email-Date-Format
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//perl-Event
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//perl-Exception-Class
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//perl-ExtUtils-Config
+/four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//perl-ExtUtils-Depends not found
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//perl-ExtUtils-Helpers
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//perl-ExtUtils-InstallPaths
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//perl-FCGI
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//perl-FFI-CheckLib
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//perl-File-BOM
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//perl-File-BaseDir
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//perl-File-Find-Object
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//perl-File-Find-Object-Rule
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//perl-File-Find-Rule-Perl
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//perl-File-MimeInfo
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//perl-File-ReadBackwards
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//perl-File-ShareDir
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//perl-File-Slurp
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//perl-File-Slurper
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//perl-GD
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//perl-GD-Barcode
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//perl-IO-Compress-Lzma
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//perl-IO-Socket-INET6
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//perl-Image-Info
+/four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//perl-Import-Into not found
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//perl-Importer
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//perl-JSON-Color
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//perl-JSON-MaybeXS
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//perl-LDAP
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//perl-LWP-Protocol-https
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//perl-List-MoreUtils-XS
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//perl-Locale-Codes
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//perl-Locale-Maketext-Gettext
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//perl-MIME-Charset
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//perl-MIME-Lite
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//perl-MIME-Types
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//perl-MRO-Compat
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//perl-Mail-AuthenticationResults
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//perl-Mail-DKIM
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//perl-Mail-IMAPTalk
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//perl-Mail-SPF
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//perl-Math-Int64
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//perl-Mixin-Linewise
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//perl-Module-Build-Tiny
+/four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//perl-Module-Implementation not found
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//perl-Module-Load-Util
+/four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//perl-Module-Runtime not found
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//perl-Module-Signature
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//perl-Mojolicious
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//perl-Moo
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//perl-Mozilla-CA
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//perl-Net-DNS
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//perl-Net-DNS-Resolver-Mock
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//perl-Net-Daemon
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//perl-Net-LibIDN2
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//perl-Net-Telnet
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//perl-Object-HashBase
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//perl-PAR-Dist
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//perl-PPI
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//perl-PPIx-QuoteLike
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//perl-PPIx-Regexp
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//perl-Package-DeprecationManager
+/four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//perl-Package-Generator not found
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//perl-Package-Stash
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//perl-Package-Stash-XS
+/four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//perl-PadWalker not found
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//perl-Parallel-Iterator
+/four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//perl-Params-Util not found
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//perl-Params-Validate
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//perl-Params-ValidationCompiler
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//perl-Path-Tiny
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//perl-Perl-Critic
+/four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//perl-Perl-Destruct-Level not found
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//perl-Perl-MinimumVersion
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//perl-Perl4-CoreLibs
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//perl-PerlIO-utf8_strict
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//perl-Pod-Coverage-TrustPod
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//perl-Pod-Eventual
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//perl-Pod-Markdown
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//perl-Pod-Spell
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//perl-Razor-Agent
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//perl-Regexp-Pattern-Perl
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//perl-Return-MultiLevel
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//perl-Role-Tiny
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//perl-SGMLSpm
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//perl-SNMP_Session
+/four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//perl-SUPER not found
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//perl-Scope-Upper
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//perl-Software-License
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//perl-Specio
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//perl-String-CRC32
+/four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//perl-Sub-Exporter not found
+/four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//perl-Sub-Exporter-Progressive not found
+/four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//perl-Sub-Identify not found
+/four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//perl-Sub-Install not found
+/four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//perl-Sub-Quote not found
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//perl-Term-Table
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//perl-Term-UI
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//perl-Test-Differences
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//perl-Test-Harness
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//perl-Test-Inter
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//perl-Test-Manifest
+/four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//perl-Test-Memory-Cycle not found
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//perl-Test-MinimumVersion
+/four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//perl-Test-Output not found
+/four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//perl-Test-Requires not found
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//perl-Test-Script
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//perl-Test-Simple
+/four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//perl-Test-Taint not found
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//perl-Test-TrailingSpace
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//perl-Test-Warn
+/four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//perl-Test-Without-Module not found
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//perl-Test2-Plugin-NoWarnings
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//perl-Test2-Suite
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//perl-Text-CSV_XS
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//perl-Tree-DAG_Node
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//perl-Variable-Magic
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//perl-XML-Generator
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//perl-XML-LibXSLT
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//perl-XML-Writer
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//perl-XString
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//perl-YAML-LibYAML
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//perl-YAML-PP
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//perl-YAML-Syck
+/four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//perl-bareword-filehandles not found
+/four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//perl-indirect not found
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//perl-libnet
+/four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//perl-multidimensional not found
+/four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//perl-strictures not found
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//perltidy
+/four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//pesign not found
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//pinfo
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//pipewire
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//pkcs11-helper
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//plexus-pom
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//po4a
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//podman
+/four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//poetry not found
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//powertop
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//ppp
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//pps-tools
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//procmail
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//proj
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//ps_mem
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//psl-make-dafsa
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//psutils
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//publicsuffix-list
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//pulseaudio
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//puppet
+/four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//pybind11 not found
+/four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//pyflakes not found
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//pykickstart
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//pylint
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//pyparted
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//pyserial
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//python-IPy
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//python-aiodns
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//python-aiohttp
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//python-alsa
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//python-argcomplete
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//python-astroid
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//python-beautifulsoup4
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//python-betamax
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//python-blinker
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//python-blivet
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//python-cheetah
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//python-cmd2
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//python-colorama
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//python-configshell
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//python-cups
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//python-curio
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//python-dbusmock
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//python-ddt
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//python-debtcollector
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//python-dmidecode
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//python-dns
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//python-dulwich
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//python-entrypoints
+/four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//python-evdev not found
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//python-faker
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//python-fasteners
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//python-fixtures
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//python-flake8
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//python-flask
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//python-genshi
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//python-gssapi
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//python-httplib2
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//python-humanize
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//python-hwdata
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//python-iso8601
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//python-isodate
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//python-isort
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//python-itsdangerous
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//python-jwcrypto
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//python-kdcproxy
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//python-lazy-object-proxy
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//python-lit
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//python-mccabe
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//python-mimeparse
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//python-msal
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//python-mutagen
+/four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//python-openpyxl not found
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//python-openstackdocstheme
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//python-oslo-i18n
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//python-paramiko
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//python-productmd
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//python-pycares
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//python-pymongo
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//python-pyperclip
+/four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//python-pyroute2 not found
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//python-pyrsistent
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//python-pytest-relaxed
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//python-pytest-subtests
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//python-pytest-timeout
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//python-qrcode
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//python-rdflib
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//python-recommonmark
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//python-requests-file
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//python-requests-kerberos
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//python-requests-mock
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//python-requests-toolbelt
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//python-requests_ntlm
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//python-rfc3986
+/four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//python-rpm-generators not found
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//python-rtslib
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//python-s3transfer
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//python-semantic_version
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//python-simpleline
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//python-sniffio
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//python-soupsieve
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//python-suds
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//python-systemd
+/four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//python-templated-dictionary not found
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//python-testpath
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//python-testresources
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//python-testtools
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//python-toml
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//python-tornado
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//python-tox
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//python-trio
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//python-urwid
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//python-varlink
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//python-voluptuous
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//python-waitress
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//python-webtest
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//python-winrm
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//python-zmq
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//pyusb
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//pyxattr
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//qpdf
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//qr-code-generator
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//qt5-qtconnectivity
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//qt5-qtsensors
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//qt5-qtserialport
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//rarian
+/four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//rasdaemon not found
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//rear
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//resource-agents
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//rhash
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//rhino
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//ripgrep
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//rp-pppoe
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//rpmlint
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//rubygem-flexmock
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//rubygem-mysql2
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//rubygem-pkg-config
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//rubygem-rouge
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//rubygem-rspec-expectations
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//rubygem-rspec-mocks
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//rubygem-rspec-support
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//rust-cbindgen
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//samba
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//satyr
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//scl-utils
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//scotch
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//serd
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//shapelib
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//sip
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//skkdic
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//slirp4netns
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//smc-tools
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//sord
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//spausedd
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//speexdsp
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//spice-protocol
+/four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//spirv-headers not found
+/four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//spirv-tools not found
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//squid
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//sratom
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//stunnel
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//subscription-manager
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//suitesparse
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//switcheroo-control
+/four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//sysfsutils not found
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//tang
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//targetcli
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//tbb
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//teckit
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//tk
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//tn5250
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//trilead-ssh2
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//tss2
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//twolame
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//uchardet
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//udftools
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//udica
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//udisks2
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//uglify-js
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//unicode-emoji
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//unicode-ucd
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//units
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//upower
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//uriparser
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//usb_modeswitch
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//usbguard
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//usbmuxd
+/four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//usermode not found
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//uthash
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//v4l-utils
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//virt-p2v
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//virt-top
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//virt-who
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//watchdog
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//webrtc-audio-processing
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//whois
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//wireshark
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//wsmancli
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//x3270
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//xalan-j2
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//xbean
+/four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//xcb-util not found
+/four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//xcb-util-image not found
+/four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//xcb-util-keysyms not found
+/four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//xcb-util-renderutil not found
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//xcb-util-wm
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//xdg-dbus-proxy
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//xerces-j2
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//xfconf
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//xfsdump
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//xmlrpc-c
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//xmlunit
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//xrestop
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//xterm
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//yelp-tools
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//yelp-xsl
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//ypserv
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//z3
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//zenity
+Will remove /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//zziplib
+/four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED//libselinux not found
+
+
+Starting copy of folders from the downloads dir /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to the extended dir /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy openexr from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Failed to copy openexr from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy PEGTL from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy PyGreSQL from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy sdl12-compat from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Failed to copy sdl12-compat from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy SDL2 from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy SuperLU from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy advancecomp from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy alsa-plugins from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy amtk from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy ansible-freeipa from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy apache-commons-codec from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy apache-commons-collections4 from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy apache-commons-compress from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy apache-commons-io from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy apache-commons-jexl from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy apache-commons-net from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy apache-commons-vfs from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy arpwatch from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy asio from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy aspell-en from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy babeltrace from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy babl from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy bats from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy bcel from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy beust-jcommander from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy boom-boot from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy booth from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy botan2 from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy breezy from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy buildah from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy bwidget from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy cairomm from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy capstone from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy cdrdao from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy certmonger from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy cfitsio from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy cglib from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy cim-schema from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy cjkuni-uming-fonts from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy cjose from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy cldr-emoji-annotation from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy console-setup from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy containernetworking-plugins from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy corosync from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy corosync-qdevice from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy cppcheck from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy cpuid from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy criu from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy crypto-policies from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy fwupd from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy delve from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy device-mapper-persistent-data from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy discount from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy dleyna from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy dmraid from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy dotconf from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy dovecot from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy dpkg from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy dropwatch from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy drpm from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy dyninst from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy ecj from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy edac-utils from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy efax from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy efi-rpm-macros from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy elinks from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy exiv2 from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy facter from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy fence-agents from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy fetchmail from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy flite from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy foomatic-db from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy freeradius from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy freexl from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy fuse-sshfs from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy gcr from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy gdal from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy ghc-srpm-macros from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy jakarta-annotations from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy gnome-keyring from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy go-rpm-macros from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy google-noto-sans-cjk-vf-fonts from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy google-noto-emoji-fonts from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy gphoto2 from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy gpsbabel from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy graphene from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy gsl from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy gspell from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy gssdp from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy gssntlmssp from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy gstreamer1 from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy gstreamer1-plugins-base from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy gtk-vnc from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy gupnp from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy gupnp-av from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy gupnp-igd from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy hawtjni from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy hdf from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy highlight from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy httpcomponents-core from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy hunspell-az from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy hunspell-ca from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy hunspell-csb from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy hunspell-de from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy hunspell-es from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy hunspell-eu from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy hunspell-ga from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy hunspell-it from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy hunspell-mr from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy hunspell-nl from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy hunspell-pl from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy hunspell-pt from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy hunspell-ro from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy hunspell-ru from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy hyphen-ca from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy hyphen-it from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy hyphen-pt from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy hyphen-ru from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy hyphen-tk from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy ibus from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy ibus-chewing from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy ibus-hangul from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy ibus-libzhuyin from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy ibus-m17n from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy ibus-table from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy ibus-table-chinese from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy iio-sensor-proxy from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy imaptest from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy indent from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy intel-cmt-cat from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy irssi from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy iso-codes from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy isomd5sum from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy iwd from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy jansi from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy javacc from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy jdepend from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy jdom2 from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy jimtcl from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy jline from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy jose from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy js-jquery from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy jsoncpp from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy jsoup from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy kde-filesystem from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy keycloak-httpd-client-install from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy kronosnet from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy kyotocabinet from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy ladspa from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy langtable from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy lasso from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy lcov from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy ledmon from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy lensfun from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy libXScrnSaver from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy libappstream-glib from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy libblockdev from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy libbsd from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy libcdio from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy libcdio-paranoia from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy libcdr from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy libchewing from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy libdazzle from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy libdc1394 from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy libdvdnav from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy libdvdread from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy libeasyfc from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy libetonyek from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy libgeotiff from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy libgexiv2 from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy libgit2-glib from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy libgphoto2 from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy libgsf from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy libgxps from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy libid3tag from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy libimobiledevice from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy libiodbc from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy libipt from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy liblangtag from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy libldb from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy liblockfile from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy libmpcdec from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy libmtp from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy libmwaw from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy libnet from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy libnumbertext from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy libogg from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy libosinfo from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy libotf from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy libotr from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy libpaper from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy libpeas from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy libpfm from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy libpinyin from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy libplist from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy libproxy from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy libqb from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy librabbitmq from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy libreport from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy librevenge from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy libsass from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy libsecret from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy libsigc++20 from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy libsigsegv from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy libsmbios from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy libspiro from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy libsrtp from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy snowball from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy libtdb from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy libteam from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy libtevent from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy libthai from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy libusbmuxd from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy libutempter from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy libvarlink from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy libvdpau from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy libvisual from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy libvpx from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy libwnck3 from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy libwpg from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy libwps from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy libxmlb from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy lilv from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy lksctp-tools from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy logwatch from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy lpsolve from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy lua-expat from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy lua-filesystem from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy lua-json from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy lua-lpeg from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy lua-lunitx from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy lua-term from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy lzip from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy m17n-db from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy m17n-lib from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy s-nail from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy man-pages-l10n from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy man-pages-l10n from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Failed to copy man-pages-l10n from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy man-pages-l10n from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Failed to copy man-pages-l10n from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy man-pages-ja from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy man-pages-l10n from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Failed to copy man-pages-l10n from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy man-pages-l10n from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Failed to copy man-pages-l10n from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy man-pages-zh-CN from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy mariadb-connector-odbc from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy marisa from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy maven-parent from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy mcelog from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy mdds from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy meanwhile from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy memkind from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy microdnf from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy minicom from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy minizip-ng from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy mksh from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy mobile-broadband-provider-info from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy mod_auth_gssapi from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy mod_auth_mellon from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy mod_auth_openidc from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy mod_authnz_pam from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy mod_http2 from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy mod_intercept_form_submit from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy mod_md from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy mod_security from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy mod_security_crs from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy mod_wsgi from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy mrtg from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy mt-st from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy mutt from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy mythes from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy mythes-ca from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy mythes-de from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy netcdf from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy netpbm from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy nodejs-nodemon from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy nodejs-packaging from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy nvmetcli from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy objenesis from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy ocaml-camlp5 from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy ocaml-curses from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy ocaml-extlib from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy ocaml-tyxml from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy ocaml-xml-light from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy ocl-icd from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy oddjob from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy ogdi from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy opencc from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy opencl-headers from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy opencryptoki from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy opendnssec from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy openjpeg from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy openoffice-lv from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy openwsman from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy optipng from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy opus from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy os-prober from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy osgi-annotation from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy osgi-core from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy osinfo-db from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy osinfo-db-tools from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy pacemaker from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy papi from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy paps from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy pcp from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy perl-Alien-Build from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy perl-Alien-pkgconf from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy perl-AnyEvent-BDB from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy perl-Archive-Extract from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy perl-Authen-SASL from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy perl-B-Hooks-EndOfScope from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy perl-Business-ISBN from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy perl-Business-ISBN-Data from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy perl-CBOR-XS from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy perl-Class-C3 from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy perl-Class-Data-Inheritable from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy perl-Class-Tiny from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy perl-Color-ANSI-Util from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy perl-Color-RGB-Util from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy perl-ColorThemeBase-Static from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy perl-Compress-Raw-Lzma from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy perl-Config-AutoConf from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy perl-Config-INI from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy perl-Config-Tiny from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy perl-Convert-ASN1 from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy perl-Cpanel-JSON-XS from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy perl-Crypt-CBC from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy perl-Crypt-OpenSSL-RSA from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy perl-Crypt-OpenSSL-Random from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy perl-Crypt-PasswdMD5 from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy perl-DBD-MySQL from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy perl-Data-Munge from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy perl-Data-Peek from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy perl-Data-Section from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy perl-Date-Manip from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy perl-DateTime from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy perl-DateTime-Format-Builder from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy perl-DateTime-Format-ISO8601 from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy perl-DateTime-Format-Strptime from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy perl-DateTime-Locale from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy perl-DateTime-TimeZone from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy perl-Devel-CallChecker from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy perl-Devel-Size from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy perl-Digest-CRC from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy perl-DynaLoader-Functions from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy perl-EV from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy perl-Email-Address from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy perl-Email-Date-Format from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy perl-Event from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy perl-Exception-Class from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy perl-ExtUtils-Config from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy perl-ExtUtils-Helpers from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy perl-ExtUtils-InstallPaths from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy perl-FCGI from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy perl-FFI-CheckLib from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy perl-File-BOM from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy perl-File-BaseDir from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy perl-File-Find-Object from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy perl-File-Find-Object-Rule from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy perl-File-Find-Rule-Perl from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy perl-File-MimeInfo from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy perl-File-ReadBackwards from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy perl-File-ShareDir from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy perl-File-Slurp from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy perl-File-Slurper from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy perl-GD from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy perl-GD-Barcode from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy perl-IO-Compress-Lzma from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy perl-IO-Socket-INET6 from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy perl-Image-Info from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy perl-Importer from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy perl-JSON-Color from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy perl-JSON-MaybeXS from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy perl-LDAP from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy perl-LWP-Protocol-https from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy perl-List-MoreUtils-XS from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy perl-Locale-Codes from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy perl-Locale-Maketext-Gettext from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy perl-MIME-Charset from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy perl-MIME-Lite from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy perl-MIME-Types from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy perl-MRO-Compat from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy perl-Mail-AuthenticationResults from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy perl-Mail-DKIM from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy perl-Mail-IMAPTalk from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy perl-Mail-SPF from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy perl-Math-Int64 from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy perl-Mixin-Linewise from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy perl-Module-Build-Tiny from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy perl-Module-Load-Util from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy perl-Module-Signature from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy perl-Mojolicious from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy perl-Moo from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy perl-Mozilla-CA from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy perl-Net-DNS from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy perl-Net-DNS-Resolver-Mock from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy perl-Net-Daemon from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy perl-Net-LibIDN2 from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy perl-Net-Telnet from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy perl-Object-HashBase from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy perl-PAR-Dist from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy perl-PPI from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy perl-PPIx-QuoteLike from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy perl-PPIx-Regexp from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy perl-Package-DeprecationManager from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy perl-Package-Stash from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy perl-Package-Stash-XS from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy perl-Parallel-Iterator from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy perl-Params-Validate from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy perl-Params-ValidationCompiler from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy perl-Path-Tiny from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy perl-Perl-Critic from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy perl-Perl-MinimumVersion from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy perl-Perl4-CoreLibs from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy perl-PerlIO-utf8_strict from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy perl-Pod-Coverage-TrustPod from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy perl-Pod-Eventual from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy perl-Pod-Markdown from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy perl-Pod-Spell from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy perl-Razor-Agent from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy perl-Regexp-Pattern-Perl from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy perl-Return-MultiLevel from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy perl-Role-Tiny from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy perl-SGMLSpm from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy perl-SNMP_Session from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy perl-Scope-Upper from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy perl-Software-License from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy perl-Specio from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy perl-String-CRC32 from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy perl-Term-Table from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy perl-Term-UI from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy perl-Test-Differences from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy perl-Test-Harness from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy perl-Test-Inter from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy perl-Test-Manifest from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy perl-Test-MinimumVersion from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy perl-Test-Script from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy perl-Test-Simple from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy perl-Test-TrailingSpace from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy perl-Test-Warn from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy perl-Test2-Plugin-NoWarnings from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+/SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs//perl-Test2-Suite not found
+Will copy perl-Text-CSV_XS from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy perl-Tree-DAG_Node from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy perl-Variable-Magic from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy perl-XML-Generator from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy perl-XML-LibXSLT from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy perl-XML-Writer from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy perl-XString from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy perl-YAML-LibYAML from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy perl-YAML-PP from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy perl-YAML-Syck from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy perl-libnet from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy perltidy from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy pinfo from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy pipewire from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy pkcs11-helper from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy plexus-pom from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy po4a from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy podman from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy powertop from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy ppp from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy pps-tools from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy procmail from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy proj from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy ps_mem from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy libpsl from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy psutils from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy publicsuffix-list from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy pulseaudio from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy puppet from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy pykickstart from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy pylint from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy pyparted from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy pyserial from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy python-IPy from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy python-aiodns from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy python-aiohttp from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy python-alsa from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy python-argcomplete from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy python-astroid from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy python-beautifulsoup4 from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy python-betamax from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy python-blinker from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy python-blivet from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy python-cheetah from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy python-cmd2 from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy python-colorama from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy python-configshell from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy python-cups from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy python-curio from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy python-dbusmock from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy python-ddt from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy python-debtcollector from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy python-dmidecode from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy python-dns from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy python-dulwich from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy python-entrypoints from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy python-faker from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy python-fasteners from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy python-fixtures from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy python-flake8 from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy python-flask from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy python-genshi from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy python-gssapi from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy python-httplib2 from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy python-humanize from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy python-hwdata from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy python-iso8601 from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy python-isodate from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy python-isort from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy python-itsdangerous from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy python-jwcrypto from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy python-kdcproxy from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy python-lazy-object-proxy from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy llvm from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy python-mccabe from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy python-mimeparse from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy python-msal from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy python-mutagen from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy python-openstackdocstheme from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy python-oslo-i18n from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy python-paramiko from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy python-productmd from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy python-pycares from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy python-pymongo from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy python-pyperclip from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy python-pyrsistent from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy python-pytest-relaxed from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy python-pytest-subtests from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy python-pytest-timeout from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy python-qrcode from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy python-rdflib from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy python-recommonmark from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy python-requests-file from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy python-requests-kerberos from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy python-requests-mock from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy python-requests-toolbelt from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy python-requests_ntlm from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy python-rfc3986 from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy python-rtslib from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy python-s3transfer from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy python-semantic_version from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy python-simpleline from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy python-sniffio from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy python-soupsieve from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy python-suds from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy python-systemd from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy python-testpath from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy python-testresources from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy python-testtools from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy python-toml from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy python-tornado from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy python-tox from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy python-trio from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy python-urwid from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy python-varlink from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy python-voluptuous from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy python-waitress from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy python-webtest from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy python-winrm from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy python-zmq from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy pyusb from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy pyxattr from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy qpdf from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy qr-code-generator from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy qt5-qtconnectivity from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy qt5-qtsensors from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy qt5-qtserialport from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy rarian from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy rear from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy resource-agents from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy rhash from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy rhino from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy rust-ripgrep from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy rp-pppoe from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy rpmlint from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy rubygem-flexmock from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy rubygem-mysql2 from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy rubygem-pkg-config from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy rubygem-rouge from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy rubygem-rspec-expectations from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy rubygem-rspec-mocks from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy rubygem-rspec-support from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy rust-cbindgen from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy samba from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy satyr from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy scl-utils from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy scotch from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy serd from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy shapelib from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy sip from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy skkdic from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy slirp4netns from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy smc-tools from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy sord from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy spausedd from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy speexdsp from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy spice-protocol from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy squid from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy sratom from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy stunnel from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy subscription-manager from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy suitesparse from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy switcheroo-control from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy tang from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy targetcli from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy tbb from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy teckit from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy tk from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy tn5250 from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy trilead-ssh2 from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy tss2 from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy twolame from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy uchardet from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy udftools from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy udica from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy udisks2 from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy uglify-js from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy unicode-emoji from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy unicode-ucd from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy units from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy upower from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy uriparser from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy usb_modeswitch from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy usbguard from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy usbmuxd from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy uthash from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy v4l-utils from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy virt-p2v from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy virt-top from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy virt-who from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy watchdog from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy webrtc-audio-processing from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy whois from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy wireshark from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy wsmancli from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy x3270 from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy xalan-j2 from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy xbean from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy xcb-util-wm from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy xdg-dbus-proxy from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy xerces-j2 from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy xfconf from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy xfsdump from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy xmlrpc-c from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy xmlunit from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy xrestop from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy xterm from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy yelp-tools from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy yelp-xsl from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy ypserv from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy z3 from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy zenity from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/
+Will copy zziplib from /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ to /four_disk/bb_08Feb/azlinux_sms//SPECS-EXTENDED/

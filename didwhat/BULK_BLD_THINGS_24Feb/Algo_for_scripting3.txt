@@ -1,0 +1,138 @@
+
+    1. First prepare a list with four columns, old package name (same as the old 
+       folder name for the package), new name of the folder for the package name, 
+       whether the upgrade is merged into 3.0-dev or not and whether the package 
+       download from Fedora 41 was successful or not.
+       (Note that, the old package name is the same as the folder name in SPECS-EXTENDED
+       and the new folder name is the folder that was created on successful download of 
+       this package).
+    2. To begin with the build list will the list of folders in SPECS-EXTENDED.
+
+    3. Then going by the old package name determine
+        a. which packages moved to core (i.e. not in extended and only in core)
+        b. which packages are in both core and extended
+        c. which packages are only in extended
+
+       NEW ALGO FOR THIS POINT
+       =======================
+       NO NEED TO DO ANYTHING HERE.  THE INFORMATION HAS BEEN KEPT READY IN 
+       THE CSV FILE THAT WE WILL USE AS INPUT TO THE SCRIPT.
+
+    4. Doing basic arrangement of the code.  
+        a. The packages that have been moved to core:
+               i. Simply remove it from the build list.  
+              ii. Nothing more is needed as the package does not have a folder
+                  in SPECS-EXTENDED.
+
+           NEW ALGO FOR THIS POINT
+           =======================
+               i. Remove the package name if it exists in the build list, 
+                  pkgs_to_build.
+
+        b. The packages that are present both in the core and extended:
+               i. Delete their folders from SPECS-EXTENDED, because they should
+                  no more be there in SPECS-EXTENDED.
+              ii. Any deletions of this kind must be noted as a git operation 
+                  that would be required in case a PR is to be raised. 
+                  (GENERATE AND STORE GIT OPERATION INFO)
+             iii. Remove their names from the build list.
+
+           NEW ALGO FOR THIS POINT
+           =======================
+               i. Add the name to a list of the folders to be removed from 
+                  SPECS-EXTENDED, folders_to_rem.
+              ii. Remove the package name if it exists in the build list, 
+                  pkgs_to_build.
+
+        c. For a package that is only in extended, there are two possibilities:
+               i. It could have already been merged.
+              ii. It has not been merged.
+        d. If a package is there only in extended and has been merged, move to 
+           the next package.  We don't need to do anything.  We would be getting 
+           this package from the latest pull.  And we don't want to impose anything
+           (any downloaded code) now over it.
+        e. If a package is there only in extended and has not been merged, but has 
+           been downloaded successfully, then the downloaded code should be used.
+           For this, the delete and then copy operation is good enough for creating 
+           changes for git too. 
+           However, there are two scenarios:
+	       i. The downloaded directory created as a result of the download
+                  has the same name as the package (old name).  In that case 
+                  delete of the folder in SPECS-EXTENDED and the copy 
+                  of the downloaded folder into SPECS-EXTENDED would work.
+
+                  NEW ALGO FOR THIS POINT
+                  =======================
+                  - Add the name to the list of folders to be removed from 
+                    SPECS-EXTENDED, folders_to_rem.
+                  - Add the name to the list of folders to be copied from 
+                    the downloads directory to SPECS-EXTENDED, folders_to_copy.
+                  - No changes to the list of packages to be built, pkgs_to_build.
+
+              ii. The two names are different.  In that case also the delete
+                  of the old folder name and copy of the new folder from the
+                  downloads would work.  However, one must additionally take 
+                  care that 
+                  - in case we wish to raise a PR, then we must note
+                    these changes somewhere.  
+                    (GENERATE AND STORE GIT OPERATION INFO)
+                  - the old name must be removed and the new name be used 
+                    instead in the build list, pkgs_to_build.
+
+                  NEW ALGO FOR THIS POINT
+                  =======================
+                  - Add the name to the list of folders to be removed from 
+                    SPECS-EXTENDED, folders_to_rem.
+                  - Add the new name to the list of folders to be copied 
+                    from the downloads directory to SPECS-EXTENDED, folders_to_copy.
+                  - the old name must be removed and the new name be used 
+                    instead in the build list, pkgs_to_build.
+
+    5. We have information necessary for preparing the directories and then
+       starting the build and even subsequent git operations too.
+        a. Remove the folders from SPECS-EXTENDED as per the folders to be
+           removed list, folders_to_rem. 
+        b. Copy the folders into SPECS-EXTENDED from the downloads folder
+           as per the folders to be copied list, folders_to_copy.
+        c. Build as per the list of packages to be built, pkgs_to_build.
+        d. If there are any changes needed to the build list, carry out that
+           as per the additional lists/requirements.
+        d. FOR THE git OPERATIONS FOR ANY PACKAGE: 
+                i. if the package name exists in the list folders_to_rem, 
+                   we will remove it.
+               ii. if there is a new name of package then the folder with
+                   the new name gets added to SPECS-EXTENDED.
+       
+
+Changes History
+===============
+#v1
+#05 Feb 2025
+# Initial version.
+#
+#v2
+#19 Feb 2025
+# Updated the algo in light of the fact that the list of packages will be
+# traversed in a loop and accordingly in each iteration the build list, 
+# the folders to remove list, the folders to copy list have entries added
+# to them as necessary.
+#v3
+#19 Feb 2025
+# Updated the algo in light of a new approach where in the beginning we 
+# populate the build list with the list of directories (output of of ls 
+# command) in SPECS-EXTENDED.  Then later on in the flow changes are
+# carried out to it as necessary.
+
+
+
+
+
+
+
+
+
+
+
+
+
+

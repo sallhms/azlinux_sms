@@ -1,0 +1,3625 @@
+389-ds-base
+First list result = 0, copy list result = 1
+CharLS
+First list result = 0, copy list result = 1
+GConf2
+First list result = 0, copy list result = 1
+GeoIP
+First list result = 0, copy list result = 1
+GeoIP-GeoLite-data
+First list result = 0, copy list result = 1
+Judy
+First list result = 0, copy list result = 1
+LibRaw
+First list result = 0, copy list result = 1
+ORBit2
+First list result = 0, copy list result = 1
+openexr
+First list result = 1, copy list result = 0
+PEGTL
+PEGTL
+First list result = 0, copy list result = 0
+PyGreSQL
+PyGreSQL
+First list result = 0, copy list result = 0
+sdl12-compat
+First list result = 1, copy list result = 0
+SDL2
+SDL2
+First list result = 0, copy list result = 0
+SDL_sound
+First list result = 0, copy list result = 1
+SuperLU
+SuperLU
+First list result = 0, copy list result = 0
+Xaw3d
+First list result = 0, copy list result = 1
+a52dec
+First list result = 0, copy list result = 1
+accountsservice
+First list result = 0, copy list result = 1
+acpid
+First list result = 0, copy list result = 1
+adcli
+First list result = 0, copy list result = 1
+adobe-mappings-cmap
+First list result = 0, copy list result = 1
+adobe-mappings-pdf
+First list result = 0, copy list result = 1
+advancecomp
+advancecomp
+First list result = 0, copy list result = 0
+alsa-firmware
+First list result = 0, copy list result = 1
+alsa-plugins
+alsa-plugins
+First list result = 0, copy list result = 0
+amtk
+amtk
+First list result = 0, copy list result = 0
+amtterm
+First list result = 0, copy list result = 1
+ansible-freeipa
+ansible-freeipa
+First list result = 0, copy list result = 0
+aopalliance
+First list result = 0, copy list result = 1
+apache-commons-beanutils
+First list result = 0, copy list result = 1
+apache-commons-codec
+apache-commons-codec
+First list result = 0, copy list result = 0
+apache-commons-collections
+First list result = 0, copy list result = 1
+apache-commons-collections4
+apache-commons-collections4
+First list result = 0, copy list result = 0
+apache-commons-compress
+apache-commons-compress
+First list result = 0, copy list result = 0
+apache-commons-daemon
+First list result = 0, copy list result = 1
+apache-commons-dbcp
+First list result = 0, copy list result = 1
+apache-commons-digester
+First list result = 0, copy list result = 1
+apache-commons-httpclient
+First list result = 0, copy list result = 1
+apache-commons-io
+apache-commons-io
+First list result = 0, copy list result = 0
+apache-commons-jexl
+apache-commons-jexl
+First list result = 0, copy list result = 0
+apache-commons-lang
+First list result = 0, copy list result = 1
+apache-commons-net
+apache-commons-net
+First list result = 0, copy list result = 0
+apache-commons-pool
+First list result = 0, copy list result = 1
+apache-commons-pool2
+First list result = 0, copy list result = 1
+apache-commons-validator
+First list result = 0, copy list result = 1
+apache-commons-vfs
+First list result = 1, copy list result = 0
+apache-parent
+First list result = 0, copy list result = 1
+args4j
+First list result = 0, copy list result = 1
+arptables
+First list result = 0, copy list result = 1
+arpwatch
+arpwatch
+First list result = 0, copy list result = 0
+asio
+asio
+First list result = 0, copy list result = 0
+aspell-en
+aspell-en
+First list result = 0, copy list result = 0
+audiofile
+First list result = 0, copy list result = 1
+babeltrace
+babeltrace
+First list result = 0, copy list result = 0
+babl
+babl
+First list result = 0, copy list result = 0
+baekmuk-ttf-fonts
+First list result = 0, copy list result = 1
+base64coder
+First list result = 0, copy list result = 1
+bats
+bats
+First list result = 0, copy list result = 0
+bcache-tools
+First list result = 0, copy list result = 1
+bcel
+bcel
+First list result = 0, copy list result = 0
+bea-stax
+First list result = 0, copy list result = 1
+beust-jcommander
+beust-jcommander
+First list result = 0, copy list result = 0
+biosdevname
+First list result = 0, copy list result = 1
+blosc
+First list result = 0, copy list result = 1
+bolt
+First list result = 0, copy list result = 1
+boom-boot
+boom-boot
+First list result = 0, copy list result = 0
+booth
+booth
+First list result = 0, copy list result = 0
+botan2
+botan2
+First list result = 0, copy list result = 0
+breezy
+breezy
+First list result = 0, copy list result = 0
+bsf
+First list result = 0, copy list result = 1
+buildah
+buildah
+First list result = 0, copy list result = 0
+bwidget
+bwidget
+First list result = 0, copy list result = 0
+cachefilesd
+First list result = 0, copy list result = 1
+cairomm
+cairomm
+First list result = 0, copy list result = 0
+capnproto
+First list result = 0, copy list result = 1
+capstone
+capstone
+First list result = 0, copy list result = 0
+cassandra
+First list result = 0, copy list result = 1
+catatonit
+First list result = 0, copy list result = 1
+catch1
+First list result = 0, copy list result = 1
+cdparanoia
+First list result = 0, copy list result = 1
+cdrdao
+cdrdao
+First list result = 0, copy list result = 0
+celt051
+First list result = 0, copy list result = 1
+certmonger
+certmonger
+First list result = 0, copy list result = 0
+cfitsio
+cfitsio
+First list result = 0, copy list result = 0
+cgdcbxd
+First list result = 0, copy list result = 1
+cglib
+cglib
+First list result = 0, copy list result = 0
+chan
+First list result = 0, copy list result = 1
+cim-schema
+cim-schema
+First list result = 0, copy list result = 0
+cjkuni-uming-fonts
+cjkuni-uming-fonts
+First list result = 0, copy list result = 0
+cjose
+cjose
+First list result = 0, copy list result = 0
+cldr-emoji-annotation
+cldr-emoji-annotation
+First list result = 0, copy list result = 0
+clucene
+First list result = 0, copy list result = 1
+clutter
+First list result = 0, copy list result = 1
+clutter-gst3
+First list result = 0, copy list result = 1
+clutter-gtk
+First list result = 0, copy list result = 1
+cmake-fedora
+First list result = 0, copy list result = 1
+cogl
+First list result = 0, copy list result = 1
+colorize
+First list result = 0, copy list result = 1
+compat-lua
+First list result = 0, copy list result = 1
+console-setup
+console-setup
+First list result = 0, copy list result = 0
+container-exception-logger
+First list result = 0, copy list result = 1
+containernetworking-plugins
+containernetworking-plugins
+First list result = 0, copy list result = 0
+convmv
+First list result = 0, copy list result = 1
+corosync
+corosync
+First list result = 0, copy list result = 0
+corosync-qdevice
+corosync-qdevice
+First list result = 0, copy list result = 0
+cpp-hocon
+First list result = 0, copy list result = 1
+cppcheck
+cppcheck
+First list result = 0, copy list result = 0
+cpptest
+First list result = 0, copy list result = 1
+cpuid
+cpuid
+First list result = 0, copy list result = 0
+crash-ptdump-command
+First list result = 0, copy list result = 1
+cri-o
+First list result = 0, copy list result = 1
+criu
+criu
+First list result = 0, copy list result = 0
+crypto-policies
+crypto-policies
+First list result = 0, copy list result = 0
+cscope
+First list result = 0, copy list result = 1
+custodia
+First list result = 0, copy list result = 1
+dbus-c++
+First list result = 0, copy list result = 1
+fwupd
+First list result = 1, copy list result = 0
+dcraw
+First list result = 0, copy list result = 1
+deltarpm
+First list result = 0, copy list result = 1
+delve
+delve
+First list result = 0, copy list result = 0
+device-mapper-persistent-data
+device-mapper-persistent-data
+First list result = 0, copy list result = 0
+diffstat
+First list result = 0, copy list result = 1
+discount
+discount
+First list result = 0, copy list result = 0
+dleyna
+First list result = 1, copy list result = 0
+dleyna-core
+First list result = 0, copy list result = 1
+dmraid
+dmraid
+First list result = 0, copy list result = 0
+docbook-simple
+First list result = 0, copy list result = 1
+docbook-slides
+First list result = 0, copy list result = 1
+docbook-style-dsssl
+First list result = 0, copy list result = 1
+docbook-utils
+First list result = 0, copy list result = 1
+docbook2X
+First list result = 0, copy list result = 1
+docbook5-style-xsl
+First list result = 0, copy list result = 1
+dogtail
+First list result = 0, copy list result = 1
+dotconf
+dotconf
+First list result = 0, copy list result = 0
+dovecot
+dovecot
+First list result = 0, copy list result = 0
+dpkg
+dpkg
+First list result = 0, copy list result = 0
+driverctl
+First list result = 0, copy list result = 1
+dropwatch
+dropwatch
+First list result = 0, copy list result = 0
+drpm
+drpm
+First list result = 0, copy list result = 0
+dumpet
+First list result = 0, copy list result = 1
+dvd+rw-tools
+First list result = 0, copy list result = 1
+dyninst
+dyninst
+First list result = 0, copy list result = 0
+ecj
+ecj
+First list result = 0, copy list result = 0
+edac-utils
+edac-utils
+First list result = 0, copy list result = 0
+efax
+efax
+First list result = 0, copy list result = 0
+efi-rpm-macros
+efi-rpm-macros
+First list result = 0, copy list result = 0
+elinks
+elinks
+First list result = 0, copy list result = 0
+enca
+First list result = 0, copy list result = 1
+enchant
+First list result = 0, copy list result = 1
+enscript
+First list result = 0, copy list result = 1
+evemu
+First list result = 0, copy list result = 1
+exempi
+First list result = 0, copy list result = 1
+exiv2
+exiv2
+First list result = 0, copy list result = 0
+fabtests
+First list result = 0, copy list result = 1
+facter
+facter
+First list result = 0, copy list result = 0
+fakechroot
+First list result = 0, copy list result = 1
+fence-agents
+First list result = 1, copy list result = 0
+fetchmail
+fetchmail
+First list result = 0, copy list result = 0
+fftw
+First list result = 0, copy list result = 1
+filebench
+First list result = 0, copy list result = 1
+flac
+First list result = 0, copy list result = 1
+flite
+flite
+First list result = 0, copy list result = 0
+fltk
+First list result = 0, copy list result = 1
+fonts-rpm-macros
+First list result = 0, copy list result = 1
+foomatic-db
+foomatic-db
+First list result = 0, copy list result = 0
+freeradius
+freeradius
+First list result = 0, copy list result = 0
+freexl
+freexl
+First list result = 0, copy list result = 0
+fros
+First list result = 0, copy list result = 1
+fstrm
+First list result = 0, copy list result = 1
+fuse-overlayfs
+First list result = 0, copy list result = 1
+fuse-sshfs
+fuse-sshfs
+First list result = 0, copy list result = 0
+fxload
+First list result = 0, copy list result = 1
+gavl
+First list result = 0, copy list result = 1
+gconf-editor
+First list result = 0, copy list result = 1
+gcr
+gcr
+First list result = 0, copy list result = 0
+gdal
+gdal
+First list result = 0, copy list result = 0
+gdisk
+First list result = 0, copy list result = 1
+generic-logos
+First list result = 0, copy list result = 1
+genwqe-tools
+First list result = 0, copy list result = 1
+geoclue2
+First list result = 0, copy list result = 1
+geolite2
+First list result = 0, copy list result = 1
+geronimo-specs
+First list result = 0, copy list result = 1
+ghc-srpm-macros
+ghc-srpm-macros
+First list result = 0, copy list result = 0
+gl-manpages
+First list result = 0, copy list result = 1
+jakarta-annotations
+First list result = 1, copy list result = 0
+glew
+First list result = 0, copy list result = 1
+glm
+First list result = 0, copy list result = 1
+glog
+First list result = 0, copy list result = 1
+gnome-desktop-testing
+First list result = 0, copy list result = 1
+gnome-doc-utils
+First list result = 0, copy list result = 1
+gnome-icon-theme
+First list result = 0, copy list result = 1
+gnome-keyring
+gnome-keyring
+First list result = 0, copy list result = 0
+gnu-getopt
+First list result = 0, copy list result = 1
+gnu-regexp
+First list result = 0, copy list result = 1
+go-rpm-macros
+go-rpm-macros
+First list result = 0, copy list result = 0
+gom
+First list result = 0, copy list result = 1
+google-api-python-client
+First list result = 0, copy list result = 1
+google-crosextra-caladea-fonts
+First list result = 0, copy list result = 1
+google-carlito-fonts could cause problem: found in neither list
+google-noto-sans-cjk-vf-fonts
+First list result = 1, copy list result = 0
+google-noto-emoji-fonts
+google-noto-emoji-fonts
+First list result = 0, copy list result = 0
+gphoto2
+gphoto2
+First list result = 0, copy list result = 0
+gpm
+First list result = 0, copy list result = 1
+gpsbabel
+gpsbabel
+First list result = 0, copy list result = 0
+graphene
+graphene
+First list result = 0, copy list result = 0
+graphite2
+First list result = 0, copy list result = 1
+gsl
+gsl
+First list result = 0, copy list result = 0
+gspell
+gspell
+First list result = 0, copy list result = 0
+gssdp
+gssdp
+First list result = 0, copy list result = 0
+gssntlmssp
+gssntlmssp
+First list result = 0, copy list result = 0
+gstreamer1
+gstreamer1
+First list result = 0, copy list result = 0
+gstreamer1-plugins-base
+gstreamer1-plugins-base
+First list result = 0, copy list result = 0
+gtk-vnc
+gtk-vnc
+First list result = 0, copy list result = 0
+gtkspell
+First list result = 0, copy list result = 1
+gupnp
+gupnp
+First list result = 0, copy list result = 0
+gupnp-av
+gupnp-av
+First list result = 0, copy list result = 0
+gupnp-dlna
+First list result = 0, copy list result = 1
+gupnp-igd
+gupnp-igd
+First list result = 0, copy list result = 0
+hawtjni
+First list result = 1, copy list result = 0
+hdf
+hdf
+First list result = 0, copy list result = 0
+hiera
+First list result = 0, copy list result = 1
+highlight
+highlight
+First list result = 0, copy list result = 0
+hping3
+First list result = 0, copy list result = 1
+hsakmt
+First list result = 0, copy list result = 1
+httpcomponents-core
+httpcomponents-core
+First list result = 0, copy list result = 0
+hunspell-af
+First list result = 0, copy list result = 1
+hunspell-ar
+First list result = 0, copy list result = 1
+hunspell-as
+First list result = 0, copy list result = 1
+hunspell-ast
+First list result = 0, copy list result = 1
+hunspell-az
+hunspell-az
+First list result = 0, copy list result = 0
+hunspell-be
+First list result = 0, copy list result = 1
+hunspell-bg
+First list result = 0, copy list result = 1
+hunspell-bn
+First list result = 0, copy list result = 1
+hunspell-br
+First list result = 0, copy list result = 1
+hunspell-ca
+hunspell-ca
+First list result = 0, copy list result = 0
+hunspell-cop
+First list result = 0, copy list result = 1
+hunspell-csb
+hunspell-csb
+First list result = 0, copy list result = 0
+hunspell-cv
+First list result = 0, copy list result = 1
+hunspell-cy
+First list result = 0, copy list result = 1
+hunspell-da
+First list result = 0, copy list result = 1
+hunspell-de
+hunspell-de
+First list result = 0, copy list result = 0
+hunspell-dsb
+First list result = 0, copy list result = 1
+hunspell-el
+First list result = 0, copy list result = 1
+hunspell-eo
+First list result = 0, copy list result = 1
+hunspell-es
+hunspell-es
+First list result = 0, copy list result = 0
+hunspell-et
+First list result = 0, copy list result = 1
+hunspell-eu
+hunspell-eu
+First list result = 0, copy list result = 0
+hunspell-fa
+First list result = 0, copy list result = 1
+hunspell-fj
+First list result = 0, copy list result = 1
+hunspell-fo
+First list result = 0, copy list result = 1
+hunspell-fr
+First list result = 0, copy list result = 1
+hunspell-fur
+First list result = 0, copy list result = 1
+hunspell-fy
+First list result = 0, copy list result = 1
+hunspell-ga
+hunspell-ga
+First list result = 0, copy list result = 0
+hunspell-gd
+First list result = 0, copy list result = 1
+hunspell-gl
+First list result = 0, copy list result = 1
+hunspell-grc
+First list result = 0, copy list result = 1
+hunspell-gu
+First list result = 0, copy list result = 1
+hunspell-gv
+First list result = 0, copy list result = 1
+hunspell-haw
+First list result = 0, copy list result = 1
+hunspell-hi
+First list result = 0, copy list result = 1
+hunspell-hil
+First list result = 0, copy list result = 1
+hunspell-hr
+First list result = 0, copy list result = 1
+hunspell-hsb
+First list result = 0, copy list result = 1
+hunspell-ht
+First list result = 0, copy list result = 1
+hunspell-hu
+First list result = 0, copy list result = 1
+hunspell-hy
+First list result = 0, copy list result = 1
+hunspell-ia
+First list result = 0, copy list result = 1
+hunspell-id
+First list result = 0, copy list result = 1
+hunspell-is
+First list result = 0, copy list result = 1
+hunspell-it
+hunspell-it
+First list result = 0, copy list result = 0
+hunspell-kk
+First list result = 0, copy list result = 1
+hunspell-km
+First list result = 0, copy list result = 1
+hunspell-kn
+First list result = 0, copy list result = 1
+hunspell-ko
+First list result = 0, copy list result = 1
+hunspell-ku
+First list result = 0, copy list result = 1
+hunspell-ky
+First list result = 0, copy list result = 1
+hunspell-la
+First list result = 0, copy list result = 1
+hunspell-lb
+First list result = 0, copy list result = 1
+hunspell-ln
+First list result = 0, copy list result = 1
+hunspell-mai
+First list result = 0, copy list result = 1
+hunspell-mg
+First list result = 0, copy list result = 1
+hunspell-mi
+First list result = 0, copy list result = 1
+hunspell-mk
+First list result = 0, copy list result = 1
+hunspell-ml
+First list result = 0, copy list result = 1
+hunspell-mn
+First list result = 0, copy list result = 1
+hunspell-mos
+First list result = 0, copy list result = 1
+hunspell-mr
+hunspell-mr
+First list result = 0, copy list result = 0
+hunspell-ms
+First list result = 0, copy list result = 1
+hunspell-mt
+First list result = 0, copy list result = 1
+hunspell-nds
+First list result = 0, copy list result = 1
+hunspell-ne
+First list result = 0, copy list result = 1
+hunspell-nl
+hunspell-nl
+First list result = 0, copy list result = 0
+hunspell-no
+First list result = 0, copy list result = 1
+hunspell-nr
+First list result = 0, copy list result = 1
+hunspell-nso
+First list result = 0, copy list result = 1
+hunspell-ny
+First list result = 0, copy list result = 1
+hunspell-om
+First list result = 0, copy list result = 1
+hunspell-or
+First list result = 0, copy list result = 1
+hunspell-pa
+First list result = 0, copy list result = 1
+hunspell-pl
+hunspell-pl
+First list result = 0, copy list result = 0
+hunspell-pt
+hunspell-pt
+First list result = 0, copy list result = 0
+hunspell-quh
+First list result = 0, copy list result = 1
+hunspell-ro
+hunspell-ro
+First list result = 0, copy list result = 0
+hunspell-ru
+hunspell-ru
+First list result = 0, copy list result = 0
+hunspell-rw
+First list result = 0, copy list result = 1
+hunspell-se
+First list result = 0, copy list result = 1
+hunspell-shs
+First list result = 0, copy list result = 1
+hunspell-si
+First list result = 0, copy list result = 1
+hunspell-sk
+First list result = 0, copy list result = 1
+hunspell-sl
+First list result = 0, copy list result = 1
+hunspell-smj
+First list result = 0, copy list result = 1
+hunspell-so
+First list result = 0, copy list result = 1
+hunspell-sq
+First list result = 0, copy list result = 1
+hunspell-sr
+First list result = 0, copy list result = 1
+hunspell-sv
+First list result = 0, copy list result = 1
+hunspell-sw
+First list result = 0, copy list result = 1
+hunspell-ta
+First list result = 0, copy list result = 1
+hunspell-te
+First list result = 0, copy list result = 1
+hunspell-tet
+First list result = 0, copy list result = 1
+hunspell-th
+First list result = 0, copy list result = 1
+hunspell-tk
+First list result = 0, copy list result = 1
+hunspell-tl
+First list result = 0, copy list result = 1
+hunspell-tn
+First list result = 0, copy list result = 1
+hunspell-tpi
+First list result = 0, copy list result = 1
+hunspell-ts
+First list result = 0, copy list result = 1
+hunspell-uk
+First list result = 0, copy list result = 1
+hunspell-uz
+First list result = 0, copy list result = 1
+hunspell-ve
+First list result = 0, copy list result = 1
+hunspell-vi
+First list result = 0, copy list result = 1
+hunspell-wa
+First list result = 0, copy list result = 1
+hunspell-xh
+First list result = 0, copy list result = 1
+hunspell-yi
+First list result = 0, copy list result = 1
+hyphen
+First list result = 0, copy list result = 1
+hyphen-as
+First list result = 0, copy list result = 1
+hyphen-bg
+First list result = 0, copy list result = 1
+hyphen-bn
+First list result = 0, copy list result = 1
+hyphen-ca
+hyphen-ca
+First list result = 0, copy list result = 0
+hyphen-da
+First list result = 0, copy list result = 1
+hyphen-de
+First list result = 0, copy list result = 1
+hyphen-el
+First list result = 0, copy list result = 1
+hyphen-es
+First list result = 0, copy list result = 1
+hyphen-fa
+First list result = 0, copy list result = 1
+hyphen-fo
+First list result = 0, copy list result = 1
+hyphen-fr
+First list result = 0, copy list result = 1
+hyphen-ga
+First list result = 0, copy list result = 1
+hyphen-gl
+First list result = 0, copy list result = 1
+hyphen-grc
+First list result = 0, copy list result = 1
+hyphen-gu
+First list result = 0, copy list result = 1
+hyphen-hi
+First list result = 0, copy list result = 1
+hyphen-hsb
+First list result = 0, copy list result = 1
+hyphen-hu
+First list result = 0, copy list result = 1
+hyphen-ia
+First list result = 0, copy list result = 1
+hyphen-id
+First list result = 0, copy list result = 1
+hyphen-is
+First list result = 0, copy list result = 1
+hyphen-it
+hyphen-it
+First list result = 0, copy list result = 0
+hyphen-kn
+First list result = 0, copy list result = 1
+hyphen-ku
+First list result = 0, copy list result = 1
+hyphen-lt
+First list result = 0, copy list result = 1
+hyphen-mi
+First list result = 0, copy list result = 1
+hyphen-ml
+First list result = 0, copy list result = 1
+hyphen-mn
+First list result = 0, copy list result = 1
+hyphen-mr
+First list result = 0, copy list result = 1
+hyphen-nl
+First list result = 0, copy list result = 1
+hyphen-or
+First list result = 0, copy list result = 1
+hyphen-pa
+First list result = 0, copy list result = 1
+hyphen-pl
+First list result = 0, copy list result = 1
+hyphen-pt
+hyphen-pt
+First list result = 0, copy list result = 0
+hyphen-ro
+First list result = 0, copy list result = 1
+hyphen-ru
+hyphen-ru
+First list result = 0, copy list result = 0
+hyphen-sa
+First list result = 0, copy list result = 1
+hyphen-sk
+First list result = 0, copy list result = 1
+hyphen-sl
+First list result = 0, copy list result = 1
+hyphen-sv
+First list result = 0, copy list result = 1
+hyphen-ta
+First list result = 0, copy list result = 1
+hyphen-te
+First list result = 0, copy list result = 1
+hyphen-tk
+hyphen-tk
+First list result = 0, copy list result = 0
+hyphen-uk
+First list result = 0, copy list result = 1
+ibus
+ibus
+First list result = 0, copy list result = 0
+ibus-chewing
+ibus-chewing
+First list result = 0, copy list result = 0
+ibus-hangul
+ibus-hangul
+First list result = 0, copy list result = 0
+ibus-kkc
+First list result = 0, copy list result = 1
+ibus-libzhuyin
+ibus-libzhuyin
+First list result = 0, copy list result = 0
+ibus-m17n
+ibus-m17n
+First list result = 0, copy list result = 0
+ibus-rawcode
+First list result = 0, copy list result = 1
+ibus-sayura
+First list result = 0, copy list result = 1
+ibus-table
+ibus-table
+First list result = 0, copy list result = 0
+ibus-table-chinese
+ibus-table-chinese
+First list result = 0, copy list result = 0
+icc-profiles-openicc
+First list result = 0, copy list result = 1
+icon-naming-utils
+First list result = 0, copy list result = 1
+iftop
+First list result = 0, copy list result = 1
+iio-sensor-proxy
+iio-sensor-proxy
+First list result = 0, copy list result = 0
+ilmbase
+First list result = 0, copy list result = 1
+imaptest
+imaptest
+First list result = 0, copy list result = 0
+indent
+indent
+First list result = 0, copy list result = 0
+intel-cmt-cat
+intel-cmt-cat
+First list result = 0, copy list result = 0
+ioping
+First list result = 0, copy list result = 1
+ipa-pgothic-fonts
+First list result = 0, copy list result = 1
+ipcalc
+First list result = 0, copy list result = 1
+iprutils
+First list result = 0, copy list result = 1
+iptstate
+First list result = 0, copy list result = 1
+irssi
+irssi
+First list result = 0, copy list result = 0
+iso-codes
+iso-codes
+First list result = 0, copy list result = 0
+isomd5sum
+isomd5sum
+First list result = 0, copy list result = 0
+iwd
+iwd
+First list result = 0, copy list result = 0
+jabberpy
+First list result = 0, copy list result = 1
+jakarta-taglibs-standard
+First list result = 0, copy list result = 1
+jansi
+jansi
+First list result = 0, copy list result = 0
+jarjar
+First list result = 0, copy list result = 1
+javacc
+javacc
+First list result = 0, copy list result = 0
+jbigkit
+First list result = 0, copy list result = 1
+jboss-interceptors-1.2-api
+First list result = 0, copy list result = 1
+jdepend
+jdepend
+First list result = 0, copy list result = 0
+jdom2
+jdom2
+First list result = 0, copy list result = 0
+jfsutils
+First list result = 0, copy list result = 1
+jimtcl
+jimtcl
+First list result = 0, copy list result = 0
+jlex
+First list result = 0, copy list result = 1
+jline
+jline
+First list result = 0, copy list result = 0
+jose
+jose
+First list result = 0, copy list result = 0
+js-jquery
+js-jquery
+First list result = 0, copy list result = 0
+jsch
+First list result = 0, copy list result = 1
+jsoncpp
+jsoncpp
+First list result = 0, copy list result = 0
+jsoup
+jsoup
+First list result = 0, copy list result = 0
+jtidy
+First list result = 0, copy list result = 1
+junitperf
+First list result = 0, copy list result = 1
+jzlib
+First list result = 0, copy list result = 1
+kde-filesystem
+kde-filesystem
+First list result = 0, copy list result = 0
+kernel-rt
+First list result = 0, copy list result = 1
+keybinder3
+First list result = 0, copy list result = 1
+keycloak-httpd-client-install
+keycloak-httpd-client-install
+First list result = 0, copy list result = 0
+kronosnet
+kronosnet
+First list result = 0, copy list result = 0
+kyotocabinet
+kyotocabinet
+First list result = 0, copy list result = 0
+ladspa
+ladspa
+First list result = 0, copy list result = 0
+lame
+First list result = 0, copy list result = 1
+langtable
+langtable
+First list result = 0, copy list result = 0
+lasso
+lasso
+First list result = 0, copy list result = 0
+latencytop
+First list result = 0, copy list result = 1
+lcov
+lcov
+First list result = 0, copy list result = 0
+leatherman
+First list result = 0, copy list result = 1
+ledmon
+ledmon
+First list result = 0, copy list result = 0
+lensfun
+lensfun
+First list result = 0, copy list result = 0
+lftp
+First list result = 0, copy list result = 1
+libEMF
+First list result = 0, copy list result = 1
+libIDL
+First list result = 0, copy list result = 1
+libXScrnSaver
+libXScrnSaver
+First list result = 0, copy list result = 0
+libabw
+First list result = 0, copy list result = 1
+libao
+First list result = 0, copy list result = 1
+libappstream-glib
+libappstream-glib
+First list result = 0, copy list result = 0
+libart_lgpl
+First list result = 0, copy list result = 1
+libasyncns
+First list result = 0, copy list result = 1
+libavc1394
+First list result = 0, copy list result = 1
+libblockdev
+libblockdev
+First list result = 0, copy list result = 0
+libbsd
+libbsd
+First list result = 0, copy list result = 0
+libbytesize
+First list result = 0, copy list result = 1
+libcanberra
+First list result = 0, copy list result = 1
+libcdio
+libcdio
+First list result = 0, copy list result = 0
+libcdio-paranoia
+libcdio-paranoia
+First list result = 0, copy list result = 0
+libcdr
+libcdr
+First list result = 0, copy list result = 0
+libchewing
+libchewing
+First list result = 0, copy list result = 0
+libcli
+First list result = 0, copy list result = 1
+libcmis
+First list result = 0, copy list result = 1
+libcmpiutil
+First list result = 0, copy list result = 1
+libcroco
+First list result = 0, copy list result = 1
+libdap
+First list result = 0, copy list result = 1
+libdatrie
+First list result = 0, copy list result = 1
+libdazzle
+libdazzle
+First list result = 0, copy list result = 0
+libdbi
+First list result = 0, copy list result = 1
+libdbusmenu
+First list result = 0, copy list result = 1
+libdc1394
+libdc1394
+First list result = 0, copy list result = 0
+libdeflate
+First list result = 0, copy list result = 1
+libdmx
+First list result = 0, copy list result = 1
+libdvdnav
+libdvdnav
+First list result = 0, copy list result = 0
+libdvdread
+libdvdread
+First list result = 0, copy list result = 0
+libeasyfc
+libeasyfc
+First list result = 0, copy list result = 0
+libecap
+First list result = 0, copy list result = 1
+libecb
+First list result = 0, copy list result = 1
+libeot
+First list result = 0, copy list result = 1
+libepubgen
+First list result = 0, copy list result = 1
+libesmtp
+First list result = 0, copy list result = 1
+libetonyek
+libetonyek
+First list result = 0, copy list result = 0
+libexttextcat
+First list result = 0, copy list result = 1
+libfreehand
+First list result = 0, copy list result = 1
+libftdi
+First list result = 0, copy list result = 1
+libgadu
+First list result = 0, copy list result = 1
+libgdither
+First list result = 0, copy list result = 1
+libgee
+First list result = 0, copy list result = 1
+libgee06
+First list result = 0, copy list result = 1
+libgeotiff
+libgeotiff
+First list result = 0, copy list result = 0
+libgexiv2
+libgexiv2
+First list result = 0, copy list result = 0
+libgit2-glib
+libgit2-glib
+First list result = 0, copy list result = 0
+libglade2
+First list result = 0, copy list result = 1
+libgovirt
+First list result = 0, copy list result = 1
+libgphoto2
+libgphoto2
+First list result = 0, copy list result = 0
+libgsf
+libgsf
+First list result = 0, copy list result = 0
+libgta
+First list result = 0, copy list result = 1
+libgxps
+libgxps
+First list result = 0, copy list result = 0
+libhangul
+First list result = 0, copy list result = 1
+libibcommon
+First list result = 0, copy list result = 1
+libicns
+First list result = 0, copy list result = 1
+libid3tag
+libid3tag
+First list result = 0, copy list result = 0
+libiec61883
+First list result = 0, copy list result = 1
+libieee1284
+First list result = 0, copy list result = 1
+libimobiledevice
+libimobiledevice
+First list result = 0, copy list result = 0
+libindicator
+First list result = 0, copy list result = 1
+libiodbc
+libiodbc
+First list result = 0, copy list result = 0
+libipt
+libipt
+First list result = 0, copy list result = 0
+libiptcdata
+First list result = 0, copy list result = 1
+libjcat
+First list result = 0, copy list result = 1
+libkeepalive
+First list result = 0, copy list result = 1
+libkkc
+First list result = 0, copy list result = 1
+libkkc-data
+First list result = 0, copy list result = 1
+libkml
+First list result = 0, copy list result = 1
+liblangtag
+liblangtag
+First list result = 0, copy list result = 0
+libldb
+libldb
+First list result = 0, copy list result = 0
+liblerc
+First list result = 0, copy list result = 1
+liblockfile
+liblockfile
+First list result = 0, copy list result = 0
+liblouis
+First list result = 0, copy list result = 1
+liblqr-1
+First list result = 0, copy list result = 1
+libmad
+First list result = 0, copy list result = 1
+libmediaart
+First list result = 0, copy list result = 1
+libmikmod
+First list result = 0, copy list result = 1
+libmodman
+First list result = 0, copy list result = 1
+libmodplug
+First list result = 0, copy list result = 1
+libmodulemd1
+First list result = 0, copy list result = 1
+libmpcdec
+libmpcdec
+First list result = 0, copy list result = 0
+libmspub
+First list result = 0, copy list result = 1
+libmtp
+libmtp
+First list result = 0, copy list result = 0
+libmusicbrainz5
+First list result = 0, copy list result = 1
+libmwaw
+libmwaw
+First list result = 0, copy list result = 0
+libnet
+libnet
+First list result = 0, copy list result = 0
+libntlm
+First list result = 0, copy list result = 1
+libnumbertext
+libnumbertext
+First list result = 0, copy list result = 0
+liboauth
+First list result = 0, copy list result = 1
+libodfgen
+First list result = 0, copy list result = 1
+libofa
+First list result = 0, copy list result = 1
+libogg
+libogg
+First list result = 0, copy list result = 0
+liboggz
+First list result = 0, copy list result = 1
+liboil
+First list result = 0, copy list result = 1
+libomxil-bellagio
+First list result = 0, copy list result = 1
+libopenraw
+First list result = 0, copy list result = 1
+liboping
+First list result = 0, copy list result = 1
+libosinfo
+libosinfo
+First list result = 0, copy list result = 0
+libotf
+libotf
+First list result = 0, copy list result = 0
+libotr
+libotr
+First list result = 0, copy list result = 0
+libpagemaker
+First list result = 0, copy list result = 1
+libpaper
+libpaper
+First list result = 0, copy list result = 0
+libpeas
+libpeas
+First list result = 0, copy list result = 0
+libpfm
+libpfm
+First list result = 0, copy list result = 0
+libpinyin
+libpinyin
+First list result = 0, copy list result = 0
+libplist
+libplist
+First list result = 0, copy list result = 0
+libpmemobj-cpp
+First list result = 0, copy list result = 1
+libpng12
+First list result = 0, copy list result = 1
+libpng15
+First list result = 0, copy list result = 1
+libproxy
+libproxy
+First list result = 0, copy list result = 0
+libqb
+libqb
+First list result = 0, copy list result = 0
+libqxp
+First list result = 0, copy list result = 1
+librabbitmq
+librabbitmq
+First list result = 0, copy list result = 0
+libraqm
+First list result = 0, copy list result = 1
+libraw1394
+First list result = 0, copy list result = 1
+libreport
+libreport
+First list result = 0, copy list result = 0
+librevenge
+librevenge
+First list result = 0, copy list result = 0
+librx
+First list result = 0, copy list result = 1
+libsamplerate
+First list result = 0, copy list result = 1
+libsass
+libsass
+First list result = 0, copy list result = 0
+libsecret
+libsecret
+First list result = 0, copy list result = 0
+libsigc++20
+libsigc++20
+First list result = 0, copy list result = 0
+libsigsegv
+libsigsegv
+First list result = 0, copy list result = 0
+libsmbios
+libsmbios
+First list result = 0, copy list result = 0
+libspiro
+libspiro
+First list result = 0, copy list result = 0
+libsrtp
+libsrtp
+First list result = 0, copy list result = 0
+libstaroffice
+First list result = 0, copy list result = 1
+snowball
+First list result = 1, copy list result = 0
+libtdb
+libtdb
+First list result = 0, copy list result = 0
+libteam
+libteam
+First list result = 0, copy list result = 0
+libtevent
+libtevent
+First list result = 0, copy list result = 0
+libthai
+libthai
+First list result = 0, copy list result = 0
+libtheora
+First list result = 0, copy list result = 1
+libtnc
+First list result = 0, copy list result = 1
+libtomcrypt
+First list result = 0, copy list result = 1
+libtommath
+First list result = 0, copy list result = 1
+libtranslit
+First list result = 0, copy list result = 1
+libucil
+First list result = 0, copy list result = 1
+libunicap
+First list result = 0, copy list result = 1
+libuninameslist
+First list result = 0, copy list result = 1
+libusbmuxd
+libusbmuxd
+First list result = 0, copy list result = 0
+libutempter
+libutempter
+First list result = 0, copy list result = 0
+libvdpau
+libvdpau
+First list result = 0, copy list result = 0
+libverto
+First list result = 0, copy list result = 1
+libvisio
+First list result = 0, copy list result = 1
+libvisual
+libvisual
+First list result = 0, copy list result = 0
+libvorbis
+First list result = 0, copy list result = 1
+libvpx
+libvpx
+First list result = 0, copy list result = 0
+libwnck3
+libwnck3
+First list result = 0, copy list result = 0
+libwpd
+First list result = 0, copy list result = 1
+libwpe
+First list result = 0, copy list result = 1
+libwpg
+libwpg
+First list result = 0, copy list result = 0
+libwps
+libwps
+First list result = 0, copy list result = 0
+libwvstreams
+First list result = 0, copy list result = 1
+libxklavier
+First list result = 0, copy list result = 1
+libxmlb
+libxmlb
+First list result = 0, copy list result = 0
+libyami
+First list result = 0, copy list result = 1
+libyubikey
+First list result = 0, copy list result = 1
+libzmf
+First list result = 0, copy list result = 1
+lilv
+lilv
+First list result = 0, copy list result = 0
+linuxconsoletools
+First list result = 0, copy list result = 1
+lksctp-tools
+lksctp-tools
+First list result = 0, copy list result = 0
+lockdev
+First list result = 0, copy list result = 1
+logwatch
+logwatch
+First list result = 0, copy list result = 0
+lpsolve
+lpsolve
+First list result = 0, copy list result = 0
+lrzsz
+First list result = 0, copy list result = 1
+lua-expat
+lua-expat
+First list result = 0, copy list result = 0
+lua-filesystem
+lua-filesystem
+First list result = 0, copy list result = 0
+lua-json
+lua-json
+First list result = 0, copy list result = 0
+lua-lpeg
+lua-lpeg
+First list result = 0, copy list result = 0
+lua-lunitx
+First list result = 1, copy list result = 0
+lua-term
+lua-term
+First list result = 0, copy list result = 0
+luksmeta
+First list result = 0, copy list result = 1
+lv2
+First list result = 0, copy list result = 1
+lzip
+lzip
+First list result = 0, copy list result = 0
+m17n-db
+m17n-db
+First list result = 0, copy list result = 0
+m17n-lib
+m17n-lib
+First list result = 0, copy list result = 0
+s-nail
+First list result = 1, copy list result = 0
+mallard-rng
+First list result = 0, copy list result = 1
+man-pages-l10n
+man-pages-l10n
+man-pages-l10n
+man-pages-l10n
+man-pages-l10n
+First list result = 1, copy list result = 0
+man-pages-l10n
+man-pages-l10n
+man-pages-l10n
+man-pages-l10n
+man-pages-l10n
+First list result = 1, copy list result = 0
+man-pages-l10n
+man-pages-l10n
+man-pages-l10n
+man-pages-l10n
+man-pages-l10n
+First list result = 1, copy list result = 0
+man-pages-ja
+man-pages-ja
+First list result = 0, copy list result = 0
+man-pages-l10n
+man-pages-l10n
+man-pages-l10n
+man-pages-l10n
+man-pages-l10n
+First list result = 1, copy list result = 0
+man-pages-l10n
+man-pages-l10n
+man-pages-l10n
+man-pages-l10n
+man-pages-l10n
+First list result = 1, copy list result = 0
+man-pages-l10n
+man-pages-l10n
+man-pages-l10n
+man-pages-l10n
+man-pages-l10n
+First list result = 1, copy list result = 0
+man-pages-zh-CN
+man-pages-zh-CN
+First list result = 0, copy list result = 0
+mariadb-connector-odbc
+mariadb-connector-odbc
+First list result = 0, copy list result = 0
+marisa
+marisa
+First list result = 0, copy list result = 0
+maven-parent
+maven-parent
+First list result = 0, copy list result = 0
+mcelog
+mcelog
+First list result = 0, copy list result = 0
+mdds
+mdds
+First list result = 0, copy list result = 0
+meanwhile
+meanwhile
+First list result = 0, copy list result = 0
+mecab
+First list result = 0, copy list result = 1
+mecab-ipadic
+First list result = 0, copy list result = 1
+media-player-info
+First list result = 0, copy list result = 1
+memkind
+memkind
+First list result = 0, copy list result = 0
+metis
+First list result = 0, copy list result = 1
+microcode_ctl
+First list result = 0, copy list result = 1
+microdnf
+microdnf
+First list result = 0, copy list result = 0
+minicom
+minicom
+First list result = 0, copy list result = 0
+minizip-ng
+First list result = 1, copy list result = 0
+mksh
+mksh
+First list result = 0, copy list result = 0
+mobile-broadband-provider-info
+mobile-broadband-provider-info
+First list result = 0, copy list result = 0
+mod_auth_gssapi
+mod_auth_gssapi
+First list result = 0, copy list result = 0
+mod_auth_mellon
+mod_auth_mellon
+First list result = 0, copy list result = 0
+mod_auth_openidc
+mod_auth_openidc
+First list result = 0, copy list result = 0
+mod_authnz_pam
+mod_authnz_pam
+First list result = 0, copy list result = 0
+mod_fcgid
+First list result = 0, copy list result = 1
+mod_http2
+mod_http2
+First list result = 0, copy list result = 0
+mod_intercept_form_submit
+mod_intercept_form_submit
+First list result = 0, copy list result = 0
+mod_lookup_identity
+First list result = 0, copy list result = 1
+mod_md
+mod_md
+First list result = 0, copy list result = 0
+mod_security
+mod_security
+First list result = 0, copy list result = 0
+mod_security_crs
+mod_security_crs
+First list result = 0, copy list result = 0
+mod_wsgi
+mod_wsgi
+First list result = 0, copy list result = 0
+mosh
+First list result = 0, copy list result = 1
+mpage
+First list result = 0, copy list result = 1
+mrtg
+mrtg
+First list result = 0, copy list result = 0
+mt-st
+mt-st
+First list result = 0, copy list result = 0
+mtx
+First list result = 0, copy list result = 1
+mutt
+mutt
+First list result = 0, copy list result = 0
+mythes
+mythes
+First list result = 0, copy list result = 0
+mythes-bg
+First list result = 0, copy list result = 1
+mythes-ca
+mythes-ca
+First list result = 0, copy list result = 0
+mythes-cs
+First list result = 0, copy list result = 1
+mythes-da
+First list result = 0, copy list result = 1
+mythes-de
+mythes-de
+First list result = 0, copy list result = 0
+mythes-el
+First list result = 0, copy list result = 1
+mythes-en
+First list result = 0, copy list result = 1
+mythes-eo
+First list result = 0, copy list result = 1
+mythes-es
+First list result = 0, copy list result = 1
+mythes-fr
+First list result = 0, copy list result = 1
+mythes-ga
+First list result = 0, copy list result = 1
+mythes-hu
+First list result = 0, copy list result = 1
+mythes-mi
+First list result = 0, copy list result = 1
+mythes-ne
+First list result = 0, copy list result = 1
+mythes-nl
+First list result = 0, copy list result = 1
+mythes-pl
+First list result = 0, copy list result = 1
+mythes-pt
+First list result = 0, copy list result = 1
+mythes-ro
+First list result = 0, copy list result = 1
+mythes-ru
+First list result = 0, copy list result = 1
+mythes-sk
+First list result = 0, copy list result = 1
+mythes-sl
+First list result = 0, copy list result = 1
+mythes-sv
+First list result = 0, copy list result = 1
+mythes-uk
+First list result = 0, copy list result = 1
+neon
+First list result = 0, copy list result = 1
+netcdf
+netcdf
+First list result = 0, copy list result = 0
+netcf
+First list result = 0, copy list result = 1
+netlabel_tools
+First list result = 0, copy list result = 1
+netpbm
+netpbm
+First list result = 0, copy list result = 0
+netsniff-ng
+First list result = 0, copy list result = 1
+nilfs-utils
+First list result = 0, copy list result = 1
+nkf
+First list result = 0, copy list result = 1
+nload
+First list result = 0, copy list result = 1
+nodejs-nodemon
+nodejs-nodemon
+First list result = 0, copy list result = 0
+nodejs-packaging
+nodejs-packaging
+First list result = 0, copy list result = 0
+nss-pam-ldapd
+First list result = 0, copy list result = 1
+numatop
+First list result = 0, copy list result = 1
+nvmetcli
+nvmetcli
+First list result = 0, copy list result = 0
+objectweb-anttask
+First list result = 0, copy list result = 1
+objenesis
+objenesis
+First list result = 0, copy list result = 0
+ocaml-calendar
+First list result = 0, copy list result = 1
+ocaml-camlp5
+ocaml-camlp5
+First list result = 0, copy list result = 0
+ocaml-csv
+First list result = 0, copy list result = 1
+ocaml-curses
+ocaml-curses
+First list result = 0, copy list result = 0
+ocaml-extlib
+ocaml-extlib
+First list result = 0, copy list result = 0
+ocaml-fpath
+First list result = 0, copy list result = 1
+ocaml-libvirt
+First list result = 0, copy list result = 1
+ocaml-markup
+First list result = 0, copy list result = 1
+ocaml-tyxml
+ocaml-tyxml
+First list result = 0, copy list result = 0
+ocaml-xml-light
+ocaml-xml-light
+First list result = 0, copy list result = 0
+ocaml-zarith
+First list result = 0, copy list result = 1
+ocl-icd
+ocl-icd
+First list result = 0, copy list result = 0
+oddjob
+oddjob
+First list result = 0, copy list result = 0
+ogdi
+ogdi
+First list result = 0, copy list result = 0
+omping
+First list result = 0, copy list result = 1
+opal
+First list result = 0, copy list result = 1
+opencc
+opencc
+First list result = 0, copy list result = 0
+opencl-filesystem
+First list result = 0, copy list result = 1
+opencl-headers
+opencl-headers
+First list result = 0, copy list result = 0
+opencryptoki
+opencryptoki
+First list result = 0, copy list result = 0
+opendnssec
+opendnssec
+First list result = 0, copy list result = 0
+openjade
+First list result = 0, copy list result = 1
+openjpeg
+First list result = 1, copy list result = 0
+openobex
+First list result = 0, copy list result = 1
+openoffice-lv
+openoffice-lv
+First list result = 0, copy list result = 0
+openrdate
+First list result = 0, copy list result = 1
+openslp
+First list result = 0, copy list result = 1
+openssl-ibmpkcs11
+First list result = 0, copy list result = 1
+openwsman
+openwsman
+First list result = 0, copy list result = 0
+optipng
+optipng
+First list result = 0, copy list result = 0
+orc
+First list result = 0, copy list result = 1
+oro
+First list result = 0, copy list result = 1
+os-prober
+os-prober
+First list result = 0, copy list result = 0
+osgi-annotation
+osgi-annotation
+First list result = 0, copy list result = 0
+osgi-compendium
+First list result = 0, copy list result = 1
+osgi-core
+osgi-core
+First list result = 0, copy list result = 0
+osinfo-db
+osinfo-db
+First list result = 0, copy list result = 0
+osinfo-db-tools
+osinfo-db-tools
+First list result = 0, copy list result = 0
+overpass-fonts
+First list result = 0, copy list result = 1
+pacemaker
+pacemaker
+First list result = 0, copy list result = 0
+pacrunner
+First list result = 0, copy list result = 1
+pakchois
+First list result = 0, copy list result = 1
+papi
+papi
+First list result = 0, copy list result = 0
+paps
+paps
+First list result = 0, copy list result = 0
+parallel
+First list result = 0, copy list result = 1
+pbzip2
+First list result = 0, copy list result = 1
+pcp
+pcp
+First list result = 0, copy list result = 0
+perl-Algorithm-Diff
+First list result = 0, copy list result = 1
+perl-Alien-Build
+perl-Alien-Build
+First list result = 0, copy list result = 0
+perl-Alien-pkgconf
+perl-Alien-pkgconf
+First list result = 0, copy list result = 0
+perl-AnyEvent
+First list result = 0, copy list result = 1
+perl-AnyEvent-AIO
+First list result = 0, copy list result = 1
+perl-AnyEvent-BDB
+perl-AnyEvent-BDB
+First list result = 0, copy list result = 0
+perl-App-FatPacker
+First list result = 0, copy list result = 1
+perl-AppConfig
+First list result = 0, copy list result = 1
+perl-Archive-Extract
+perl-Archive-Extract
+First list result = 0, copy list result = 0
+perl-Authen-SASL
+perl-Authen-SASL
+First list result = 0, copy list result = 0
+perl-B-Debug
+First list result = 0, copy list result = 1
+perl-B-Hooks-EndOfScope
+perl-B-Hooks-EndOfScope
+First list result = 0, copy list result = 0
+perl-B-Keywords
+First list result = 0, copy list result = 1
+perl-B-Lint
+First list result = 0, copy list result = 1
+perl-BSD-Resource
+First list result = 0, copy list result = 1
+perl-Browser-Open
+First list result = 0, copy list result = 1
+perl-Business-ISBN
+perl-Business-ISBN
+First list result = 0, copy list result = 0
+perl-Business-ISBN-Data
+perl-Business-ISBN-Data
+First list result = 0, copy list result = 0
+perl-CBOR-XS
+perl-CBOR-XS
+First list result = 0, copy list result = 0
+perl-CSS-Tiny
+First list result = 0, copy list result = 1
+perl-Class-Accessor
+First list result = 0, copy list result = 1
+perl-Class-C3
+perl-Class-C3
+First list result = 0, copy list result = 0
+perl-Class-C3-XS
+First list result = 0, copy list result = 1
+perl-Class-Data-Inheritable
+perl-Class-Data-Inheritable
+First list result = 0, copy list result = 0
+perl-Class-Factory-Util
+First list result = 0, copy list result = 1
+perl-Class-Inspector
+First list result = 0, copy list result = 1
+perl-Class-Load
+First list result = 0, copy list result = 1
+perl-Class-Load-XS
+First list result = 0, copy list result = 1
+perl-Class-Method-Modifiers
+First list result = 0, copy list result = 1
+perl-Class-Singleton
+First list result = 0, copy list result = 1
+perl-Class-Tiny
+perl-Class-Tiny
+First list result = 0, copy list result = 0
+perl-Color-ANSI-Util
+perl-Color-ANSI-Util
+First list result = 0, copy list result = 0
+perl-Color-RGB-Util
+perl-Color-RGB-Util
+First list result = 0, copy list result = 0
+perl-ColorThemeBase-Static
+perl-ColorThemeBase-Static
+First list result = 0, copy list result = 0
+perl-ColorThemeRole-ANSI
+First list result = 0, copy list result = 1
+perl-ColorThemeUtil-ANSI
+First list result = 0, copy list result = 1
+perl-ColorThemes-Standard
+First list result = 0, copy list result = 1
+perl-Compress-LZF
+First list result = 0, copy list result = 1
+perl-Compress-Raw-Lzma
+perl-Compress-Raw-Lzma
+First list result = 0, copy list result = 0
+perl-Config-AutoConf
+perl-Config-AutoConf
+First list result = 0, copy list result = 0
+perl-Config-INI
+perl-Config-INI
+First list result = 0, copy list result = 0
+perl-Config-INI-Reader-Multiline
+First list result = 0, copy list result = 1
+perl-Config-IniFiles
+First list result = 0, copy list result = 1
+perl-Config-Simple
+First list result = 0, copy list result = 1
+perl-Config-Tiny
+perl-Config-Tiny
+First list result = 0, copy list result = 0
+perl-Const-Fast
+First list result = 0, copy list result = 1
+perl-Convert-ASN1
+perl-Convert-ASN1
+First list result = 0, copy list result = 0
+perl-Convert-Bencode
+First list result = 0, copy list result = 1
+perl-Coro
+First list result = 0, copy list result = 1
+perl-Coro-Multicore
+First list result = 0, copy list result = 1
+perl-Cpanel-JSON-XS
+perl-Cpanel-JSON-XS
+First list result = 0, copy list result = 0
+perl-Crypt-CBC
+perl-Crypt-CBC
+First list result = 0, copy list result = 0
+perl-Crypt-DES
+First list result = 0, copy list result = 1
+perl-Crypt-IDEA
+First list result = 0, copy list result = 1
+perl-Crypt-OpenSSL-Bignum
+First list result = 0, copy list result = 1
+perl-Crypt-OpenSSL-Guess
+First list result = 0, copy list result = 1
+perl-Crypt-OpenSSL-RSA
+perl-Crypt-OpenSSL-RSA
+First list result = 0, copy list result = 0
+perl-Crypt-OpenSSL-Random
+perl-Crypt-OpenSSL-Random
+First list result = 0, copy list result = 0
+perl-Crypt-PasswdMD5
+perl-Crypt-PasswdMD5
+First list result = 0, copy list result = 0
+perl-DBD-MySQL
+perl-DBD-MySQL
+First list result = 0, copy list result = 0
+perl-Data-Munge
+perl-Data-Munge
+First list result = 0, copy list result = 0
+perl-Data-Peek
+perl-Data-Peek
+First list result = 0, copy list result = 0
+perl-Data-Section
+perl-Data-Section
+First list result = 0, copy list result = 0
+perl-Data-UUID
+First list result = 0, copy list result = 1
+perl-Date-ISO8601
+First list result = 0, copy list result = 1
+perl-Date-Manip
+perl-Date-Manip
+First list result = 0, copy list result = 0
+perl-DateTime
+perl-DateTime
+First list result = 0, copy list result = 0
+perl-DateTime-Format-Builder
+perl-DateTime-Format-Builder
+First list result = 0, copy list result = 0
+perl-DateTime-Format-DateParse
+First list result = 0, copy list result = 1
+perl-DateTime-Format-HTTP
+First list result = 0, copy list result = 1
+perl-DateTime-Format-IBeat
+First list result = 0, copy list result = 1
+perl-DateTime-Format-ISO8601
+perl-DateTime-Format-ISO8601
+First list result = 0, copy list result = 0
+perl-DateTime-Format-Mail
+First list result = 0, copy list result = 1
+perl-DateTime-Format-Strptime
+perl-DateTime-Format-Strptime
+First list result = 0, copy list result = 0
+perl-DateTime-Locale
+perl-DateTime-Locale
+First list result = 0, copy list result = 0
+perl-DateTime-TimeZone
+perl-DateTime-TimeZone
+First list result = 0, copy list result = 0
+perl-DateTime-TimeZone-SystemV
+First list result = 0, copy list result = 1
+perl-DateTime-TimeZone-Tzfile
+First list result = 0, copy list result = 1
+perl-Devel-CallChecker
+perl-Devel-CallChecker
+First list result = 0, copy list result = 0
+perl-Devel-EnforceEncapsulation
+First list result = 0, copy list result = 1
+perl-Devel-Leak
+First list result = 0, copy list result = 1
+perl-Devel-Size
+perl-Devel-Size
+First list result = 0, copy list result = 0
+perl-Digest-BubbleBabble
+First list result = 0, copy list result = 1
+perl-Digest-CRC
+perl-Digest-CRC
+First list result = 0, copy list result = 0
+perl-Dist-CheckConflicts
+First list result = 0, copy list result = 1
+perl-DynaLoader-Functions
+perl-DynaLoader-Functions
+First list result = 0, copy list result = 0
+perl-EV
+perl-EV
+First list result = 0, copy list result = 0
+perl-Email-Address
+perl-Email-Address
+First list result = 0, copy list result = 0
+perl-Email-Date-Format
+perl-Email-Date-Format
+First list result = 0, copy list result = 0
+perl-Encode-Detect
+First list result = 0, copy list result = 1
+perl-Encode-EUCJPASCII
+First list result = 0, copy list result = 1
+perl-Encode-IMAPUTF7
+First list result = 0, copy list result = 1
+perl-Env-ShellWords
+First list result = 0, copy list result = 1
+perl-Error
+First list result = 0, copy list result = 1
+perl-Eval-Closure
+First list result = 0, copy list result = 1
+perl-Event
+perl-Event
+First list result = 0, copy list result = 0
+perl-Exception-Class
+perl-Exception-Class
+First list result = 0, copy list result = 0
+perl-ExtUtils-Config
+perl-ExtUtils-Config
+First list result = 0, copy list result = 0
+perl-ExtUtils-Helpers
+perl-ExtUtils-Helpers
+First list result = 0, copy list result = 0
+perl-ExtUtils-InstallPaths
+perl-ExtUtils-InstallPaths
+First list result = 0, copy list result = 0
+perl-ExtUtils-PkgConfig
+First list result = 0, copy list result = 1
+perl-FCGI
+perl-FCGI
+First list result = 0, copy list result = 0
+perl-FFI-CheckLib
+perl-FFI-CheckLib
+First list result = 0, copy list result = 0
+perl-File-BOM
+perl-File-BOM
+First list result = 0, copy list result = 0
+perl-File-BaseDir
+perl-File-BaseDir
+First list result = 0, copy list result = 0
+perl-File-CheckTree
+First list result = 0, copy list result = 1
+perl-File-Copy-Recursive
+First list result = 0, copy list result = 1
+perl-File-DesktopEntry
+First list result = 0, copy list result = 1
+perl-File-Find-Object
+perl-File-Find-Object
+First list result = 0, copy list result = 0
+perl-File-Find-Object-Rule
+perl-File-Find-Object-Rule
+First list result = 0, copy list result = 0
+perl-File-Find-Rule
+First list result = 0, copy list result = 1
+perl-File-Find-Rule-Perl
+perl-File-Find-Rule-Perl
+First list result = 0, copy list result = 0
+perl-File-Inplace
+First list result = 0, copy list result = 1
+perl-File-MimeInfo
+perl-File-MimeInfo
+First list result = 0, copy list result = 0
+perl-File-ReadBackwards
+perl-File-ReadBackwards
+First list result = 0, copy list result = 0
+perl-File-Remove
+First list result = 0, copy list result = 1
+perl-File-ShareDir
+perl-File-ShareDir
+First list result = 0, copy list result = 0
+perl-File-ShareDir-Install
+First list result = 0, copy list result = 1
+perl-File-Slurp
+perl-File-Slurp
+First list result = 0, copy list result = 0
+perl-File-Slurp-Tiny
+First list result = 0, copy list result = 1
+perl-File-Slurper
+perl-File-Slurper
+First list result = 0, copy list result = 0
+perl-File-Type
+First list result = 0, copy list result = 1
+perl-File-chdir
+First list result = 0, copy list result = 1
+perl-Font-TTF
+First list result = 0, copy list result = 1
+perl-FreezeThaw
+First list result = 0, copy list result = 1
+perl-GD
+perl-GD
+First list result = 0, copy list result = 0
+perl-GD-Barcode
+perl-GD-Barcode
+First list result = 0, copy list result = 0
+perl-GSSAPI
+First list result = 0, copy list result = 1
+perl-Getopt-ArgvFile
+First list result = 0, copy list result = 1
+perl-Graphics-ColorNamesLite-WWW
+First list result = 0, copy list result = 1
+perl-Guard
+First list result = 0, copy list result = 1
+perl-HTML-Tree
+First list result = 0, copy list result = 1
+perl-Hook-LexWrap
+First list result = 0, copy list result = 1
+perl-IO-AIO
+First list result = 0, copy list result = 1
+perl-IO-All
+First list result = 0, copy list result = 1
+perl-IO-CaptureOutput
+First list result = 0, copy list result = 1
+perl-IO-Compress-Lzma
+perl-IO-Compress-Lzma
+First list result = 0, copy list result = 0
+perl-IO-Multiplex
+First list result = 0, copy list result = 1
+perl-IO-SessionData
+First list result = 0, copy list result = 1
+perl-IO-Socket-INET6
+perl-IO-Socket-INET6
+First list result = 0, copy list result = 0
+perl-IPC-Run
+First list result = 0, copy list result = 1
+perl-IPC-Run3
+First list result = 0, copy list result = 1
+perl-IPC-System-Simple
+First list result = 0, copy list result = 1
+perl-Image-Base
+First list result = 0, copy list result = 1
+perl-Image-Info
+perl-Image-Info
+First list result = 0, copy list result = 0
+perl-Image-Xbm
+First list result = 0, copy list result = 1
+perl-Image-Xpm
+First list result = 0, copy list result = 1
+perl-Importer
+perl-Importer
+First list result = 0, copy list result = 0
+perl-Inline-Files
+First list result = 0, copy list result = 1
+perl-JSON-Color
+perl-JSON-Color
+First list result = 0, copy list result = 0
+perl-JSON-MaybeXS
+perl-JSON-MaybeXS
+First list result = 0, copy list result = 0
+perl-LDAP
+perl-LDAP
+First list result = 0, copy list result = 0
+perl-LWP-Protocol-https
+perl-LWP-Protocol-https
+First list result = 0, copy list result = 0
+perl-Lingua-EN-Inflect
+First list result = 0, copy list result = 1
+perl-List-MoreUtils-XS
+perl-List-MoreUtils-XS
+First list result = 0, copy list result = 0
+perl-Locale-Codes
+perl-Locale-Codes
+First list result = 0, copy list result = 0
+perl-Locale-Maketext-Gettext
+perl-Locale-Maketext-Gettext
+First list result = 0, copy list result = 0
+perl-Locale-Msgfmt
+First list result = 0, copy list result = 1
+perl-Locale-PO
+First list result = 0, copy list result = 1
+perl-Log-Message
+First list result = 0, copy list result = 1
+perl-Log-Message-Simple
+First list result = 0, copy list result = 1
+perl-MIME-Charset
+perl-MIME-Charset
+First list result = 0, copy list result = 0
+perl-MIME-Lite
+perl-MIME-Lite
+First list result = 0, copy list result = 0
+perl-MIME-Types
+perl-MIME-Types
+First list result = 0, copy list result = 0
+perl-MLDBM
+First list result = 0, copy list result = 1
+perl-MRO-Compat
+perl-MRO-Compat
+First list result = 0, copy list result = 0
+perl-Mail-AuthenticationResults
+perl-Mail-AuthenticationResults
+First list result = 0, copy list result = 0
+perl-Mail-DKIM
+perl-Mail-DKIM
+First list result = 0, copy list result = 0
+perl-Mail-IMAPTalk
+perl-Mail-IMAPTalk
+First list result = 0, copy list result = 0
+perl-Mail-SPF
+perl-Mail-SPF
+First list result = 0, copy list result = 0
+perl-MailTools
+First list result = 0, copy list result = 1
+perl-Math-Int64
+perl-Math-Int64
+First list result = 0, copy list result = 0
+perl-Mixin-Linewise
+perl-Mixin-Linewise
+First list result = 0, copy list result = 0
+perl-Module-Build-Tiny
+perl-Module-Build-Tiny
+First list result = 0, copy list result = 0
+perl-Module-Install-AuthorRequires
+First list result = 0, copy list result = 1
+perl-Module-Install-AutoLicense
+First list result = 0, copy list result = 1
+perl-Module-Install-GithubMeta
+First list result = 0, copy list result = 1
+perl-Module-Install-ManifestSkip
+First list result = 0, copy list result = 1
+perl-Module-Install-ReadmeFromPod
+First list result = 0, copy list result = 1
+perl-Module-Install-ReadmeMarkdownFromPod
+First list result = 0, copy list result = 1
+perl-Module-Install-TestBase
+First list result = 0, copy list result = 1
+perl-Module-Load-Util
+perl-Module-Load-Util
+First list result = 0, copy list result = 0
+perl-Module-Manifest
+First list result = 0, copy list result = 1
+perl-Module-Manifest-Skip
+First list result = 0, copy list result = 1
+perl-Module-Package
+First list result = 0, copy list result = 1
+perl-Module-Package-Au
+First list result = 0, copy list result = 1
+perl-Module-Pluggable
+First list result = 0, copy list result = 1
+perl-Module-Signature
+perl-Module-Signature
+First list result = 0, copy list result = 0
+perl-Mojolicious
+perl-Mojolicious
+First list result = 0, copy list result = 0
+perl-Moo
+perl-Moo
+First list result = 0, copy list result = 0
+perl-Mozilla-CA
+perl-Mozilla-CA
+First list result = 0, copy list result = 0
+perl-Mozilla-LDAP
+First list result = 0, copy list result = 1
+perl-NNTPClient
+First list result = 0, copy list result = 1
+perl-Net-CIDR-Lite
+First list result = 0, copy list result = 1
+perl-Net-DNS
+perl-Net-DNS
+First list result = 0, copy list result = 0
+perl-Net-DNS-Resolver-Mock
+perl-Net-DNS-Resolver-Mock
+First list result = 0, copy list result = 0
+perl-Net-DNS-Resolver-Programmable
+First list result = 0, copy list result = 1
+perl-Net-Daemon
+perl-Net-Daemon
+First list result = 0, copy list result = 0
+perl-Net-IMAP-Simple
+First list result = 0, copy list result = 1
+perl-Net-IMAP-Simple-SSL
+First list result = 0, copy list result = 1
+perl-Net-IP
+First list result = 0, copy list result = 1
+perl-Net-LibIDN2
+perl-Net-LibIDN2
+First list result = 0, copy list result = 0
+perl-Net-Patricia
+First list result = 0, copy list result = 1
+perl-Net-SMTP-SSL
+First list result = 0, copy list result = 1
+perl-Net-SNMP
+First list result = 0, copy list result = 1
+perl-Net-Telnet
+perl-Net-Telnet
+First list result = 0, copy list result = 0
+perl-Newt
+First list result = 0, copy list result = 1
+perl-Number-Compare
+First list result = 0, copy list result = 1
+perl-Object-Deadly
+First list result = 0, copy list result = 1
+perl-Object-HashBase
+perl-Object-HashBase
+First list result = 0, copy list result = 0
+perl-PAR-Dist
+perl-PAR-Dist
+First list result = 0, copy list result = 0
+perl-PPI
+perl-PPI
+First list result = 0, copy list result = 0
+perl-PPI-HTML
+First list result = 0, copy list result = 1
+perl-PPIx-QuoteLike
+perl-PPIx-QuoteLike
+First list result = 0, copy list result = 0
+perl-PPIx-Regexp
+perl-PPIx-Regexp
+First list result = 0, copy list result = 0
+perl-PPIx-Utilities
+First list result = 0, copy list result = 1
+perl-Package-Anon
+First list result = 0, copy list result = 1
+perl-Package-Constants
+First list result = 0, copy list result = 1
+perl-Package-DeprecationManager
+perl-Package-DeprecationManager
+First list result = 0, copy list result = 0
+perl-Package-Stash
+perl-Package-Stash
+First list result = 0, copy list result = 0
+perl-Package-Stash-XS
+perl-Package-Stash-XS
+First list result = 0, copy list result = 0
+perl-Paper-Specs
+First list result = 0, copy list result = 1
+perl-Parallel-Iterator
+perl-Parallel-Iterator
+First list result = 0, copy list result = 0
+perl-Params-Classify
+First list result = 0, copy list result = 1
+perl-Params-Validate
+perl-Params-Validate
+First list result = 0, copy list result = 0
+perl-Params-ValidationCompiler
+perl-Params-ValidationCompiler
+First list result = 0, copy list result = 0
+perl-Parse-RecDescent
+First list result = 0, copy list result = 1
+perl-Parse-Yapp
+First list result = 0, copy list result = 1
+perl-Path-Tiny
+perl-Path-Tiny
+First list result = 0, copy list result = 0
+perl-Perl-Critic
+perl-Perl-Critic
+First list result = 0, copy list result = 0
+perl-Perl-Critic-More
+First list result = 0, copy list result = 1
+perl-Perl-MinimumVersion
+perl-Perl-MinimumVersion
+First list result = 0, copy list result = 0
+perl-Perl4-CoreLibs
+perl-Perl4-CoreLibs
+First list result = 0, copy list result = 0
+perl-PerlIO-gzip
+First list result = 0, copy list result = 1
+perl-PerlIO-utf8_strict
+perl-PerlIO-utf8_strict
+First list result = 0, copy list result = 0
+perl-PkgConfig-LibPkgConf
+First list result = 0, copy list result = 1
+perl-Pod-Coverage-TrustPod
+perl-Pod-Coverage-TrustPod
+First list result = 0, copy list result = 0
+perl-Pod-Escapes
+First list result = 0, copy list result = 1
+perl-Pod-Eventual
+perl-Pod-Eventual
+First list result = 0, copy list result = 0
+perl-Pod-LaTeX
+First list result = 0, copy list result = 1
+perl-Pod-Markdown
+perl-Pod-Markdown
+First list result = 0, copy list result = 0
+perl-Pod-POM
+First list result = 0, copy list result = 1
+perl-Pod-Plainer
+First list result = 0, copy list result = 1
+perl-Pod-Spell
+perl-Pod-Spell
+First list result = 0, copy list result = 0
+perl-Probe-Perl
+First list result = 0, copy list result = 1
+perl-Razor-Agent
+perl-Razor-Agent
+First list result = 0, copy list result = 0
+perl-Readonly
+First list result = 0, copy list result = 1
+perl-Readonly-XS
+First list result = 0, copy list result = 1
+perl-Ref-Util
+First list result = 0, copy list result = 1
+perl-Ref-Util-XS
+First list result = 0, copy list result = 1
+perl-Regexp-Pattern-Perl
+perl-Regexp-Pattern-Perl
+First list result = 0, copy list result = 0
+perl-Return-MultiLevel
+perl-Return-MultiLevel
+First list result = 0, copy list result = 0
+perl-Role-Tiny
+perl-Role-Tiny
+First list result = 0, copy list result = 0
+perl-SGMLSpm
+perl-SGMLSpm
+First list result = 0, copy list result = 0
+perl-SNMP_Session
+perl-SNMP_Session
+First list result = 0, copy list result = 0
+perl-Scope-Guard
+First list result = 0, copy list result = 1
+perl-Scope-Upper
+perl-Scope-Upper
+First list result = 0, copy list result = 0
+perl-Socket6
+First list result = 0, copy list result = 1
+perl-Software-License
+perl-Software-License
+First list result = 0, copy list result = 0
+perl-Sort-Versions
+First list result = 0, copy list result = 1
+perl-Specio
+perl-Specio
+First list result = 0, copy list result = 0
+perl-Spiffy
+First list result = 0, copy list result = 1
+perl-String-CRC32
+perl-String-CRC32
+First list result = 0, copy list result = 0
+perl-String-Format
+First list result = 0, copy list result = 1
+perl-String-Similarity
+First list result = 0, copy list result = 1
+perl-Sub-Info
+First list result = 0, copy list result = 1
+perl-Sub-Uplevel
+First list result = 0, copy list result = 1
+perl-Switch
+First list result = 0, copy list result = 1
+perl-Syntax-Highlight-Engine-Kate
+First list result = 0, copy list result = 1
+perl-Sys-CPU
+First list result = 0, copy list result = 1
+perl-Sys-MemInfo
+First list result = 0, copy list result = 1
+perl-Taint-Runtime
+First list result = 0, copy list result = 1
+perl-Task-Weaken
+First list result = 0, copy list result = 1
+perl-Term-Size-Any
+First list result = 0, copy list result = 1
+perl-Term-Size-Perl
+First list result = 0, copy list result = 1
+perl-Term-Table
+perl-Term-Table
+First list result = 0, copy list result = 0
+perl-Term-UI
+perl-Term-UI
+First list result = 0, copy list result = 0
+perl-TermReadKey
+First list result = 0, copy list result = 1
+perl-Test-Base
+First list result = 0, copy list result = 1
+perl-Test-CPAN-Meta
+First list result = 0, copy list result = 1
+perl-Test-CPAN-Meta-JSON
+First list result = 0, copy list result = 1
+perl-Test-ClassAPI
+First list result = 0, copy list result = 1
+perl-Test-Differences
+perl-Test-Differences
+First list result = 0, copy list result = 0
+perl-Test-DistManifest
+First list result = 0, copy list result = 1
+perl-Test-Distribution
+First list result = 0, copy list result = 1
+perl-Test-EOL
+First list result = 0, copy list result = 1
+perl-Test-Exception
+First list result = 0, copy list result = 1
+perl-Test-Exit
+First list result = 0, copy list result = 1
+perl-Test-FailWarnings
+First list result = 0, copy list result = 1
+perl-Test-File
+First list result = 0, copy list result = 1
+perl-Test-File-ShareDir
+First list result = 0, copy list result = 1
+perl-Test-Harness
+perl-Test-Harness
+First list result = 0, copy list result = 0
+perl-Test-HasVersion
+First list result = 0, copy list result = 1
+perl-Test-InDistDir
+First list result = 0, copy list result = 1
+perl-Test-Inter
+perl-Test-Inter
+First list result = 0, copy list result = 0
+perl-Test-LongString
+First list result = 0, copy list result = 1
+perl-Test-Manifest
+perl-Test-Manifest
+First list result = 0, copy list result = 0
+perl-Test-MinimumVersion
+perl-Test-MinimumVersion
+First list result = 0, copy list result = 0
+perl-Test-MockObject
+First list result = 0, copy list result = 1
+perl-Test-MockRandom
+First list result = 0, copy list result = 1
+perl-Test-NoTabs
+First list result = 0, copy list result = 1
+perl-Test-Object
+First list result = 0, copy list result = 1
+perl-Test-Portability-Files
+First list result = 0, copy list result = 1
+perl-Test-Script
+perl-Test-Script
+First list result = 0, copy list result = 0
+perl-Test-Simple
+perl-Test-Simple
+First list result = 0, copy list result = 0
+perl-Test-SubCalls
+First list result = 0, copy list result = 1
+perl-Test-Synopsis
+First list result = 0, copy list result = 1
+perl-Test-TrailingSpace
+perl-Test-TrailingSpace
+First list result = 0, copy list result = 0
+perl-Test-Vars
+First list result = 0, copy list result = 1
+perl-Test-Warn
+perl-Test-Warn
+First list result = 0, copy list result = 0
+perl-Test-utf8
+First list result = 0, copy list result = 1
+perl-Test2-Plugin-NoWarnings
+perl-Test2-Plugin-NoWarnings
+First list result = 0, copy list result = 0
+perl-Test2-Suite
+perl-Test2-Suite
+First list result = 0, copy list result = 0
+perl-Test2-Tools-Explain
+First list result = 0, copy list result = 1
+perl-Text-CSV_XS
+perl-Text-CSV_XS
+First list result = 0, copy list result = 0
+perl-Text-CharWidth
+First list result = 0, copy list result = 1
+perl-Text-Diff
+First list result = 0, copy list result = 1
+perl-Text-Glob
+First list result = 0, copy list result = 1
+perl-Text-Iconv
+First list result = 0, copy list result = 1
+perl-Text-Soundex
+First list result = 0, copy list result = 1
+perl-Text-Unidecode
+First list result = 0, copy list result = 1
+perl-Text-WrapI18N
+First list result = 0, copy list result = 1
+perl-Tie-IxHash
+First list result = 0, copy list result = 1
+perl-Tree-DAG_Node
+perl-Tree-DAG_Node
+First list result = 0, copy list result = 0
+perl-UNIVERSAL-can
+First list result = 0, copy list result = 1
+perl-UNIVERSAL-isa
+First list result = 0, copy list result = 1
+perl-Unicode-EastAsianWidth
+First list result = 0, copy list result = 1
+perl-Unicode-LineBreak
+First list result = 0, copy list result = 1
+perl-Unicode-Map8
+First list result = 0, copy list result = 1
+perl-Unicode-String
+First list result = 0, copy list result = 1
+perl-Unicode-UTF8
+First list result = 0, copy list result = 1
+perl-Unix-Syslog
+First list result = 0, copy list result = 1
+perl-Variable-Magic
+perl-Variable-Magic
+First list result = 0, copy list result = 0
+perl-Version-Requirements
+First list result = 0, copy list result = 1
+perl-XML-Catalog
+First list result = 0, copy list result = 1
+perl-XML-DOM
+First list result = 0, copy list result = 1
+perl-XML-Dumper
+First list result = 0, copy list result = 1
+perl-XML-Filter-BufferText
+First list result = 0, copy list result = 1
+perl-XML-Generator
+perl-XML-Generator
+First list result = 0, copy list result = 0
+perl-XML-Grove
+First list result = 0, copy list result = 1
+perl-XML-Handler-YAWriter
+First list result = 0, copy list result = 1
+perl-XML-LibXSLT
+perl-XML-LibXSLT
+First list result = 0, copy list result = 0
+perl-XML-Parser-Lite
+First list result = 0, copy list result = 1
+perl-XML-RegExp
+First list result = 0, copy list result = 1
+perl-XML-SAX-Writer
+First list result = 0, copy list result = 1
+perl-XML-Simple
+First list result = 0, copy list result = 1
+perl-XML-TokeParser
+First list result = 0, copy list result = 1
+perl-XML-TreeBuilder
+First list result = 0, copy list result = 1
+perl-XML-Twig
+First list result = 0, copy list result = 1
+perl-XML-Writer
+perl-XML-Writer
+First list result = 0, copy list result = 0
+perl-XML-XPathEngine
+First list result = 0, copy list result = 1
+perl-XString
+perl-XString
+First list result = 0, copy list result = 0
+perl-YAML-LibYAML
+perl-YAML-LibYAML
+First list result = 0, copy list result = 0
+perl-YAML-PP
+perl-YAML-PP
+First list result = 0, copy list result = 0
+perl-YAML-Syck
+perl-YAML-Syck
+First list result = 0, copy list result = 0
+perl-boolean
+First list result = 0, copy list result = 1
+perl-gettext
+First list result = 0, copy list result = 1
+perl-inc-latest
+First list result = 0, copy list result = 1
+perl-libnet
+perl-libnet
+First list result = 0, copy list result = 0
+perl-libxml-perl
+First list result = 0, copy list result = 1
+perl-namespace-autoclean
+First list result = 0, copy list result = 1
+perl-namespace-clean
+First list result = 0, copy list result = 1
+perl-prefork
+First list result = 0, copy list result = 1
+perltidy
+perltidy
+First list result = 0, copy list result = 0
+phodav
+First list result = 0, copy list result = 1
+physfs
+First list result = 0, copy list result = 1
+pinfo
+pinfo
+First list result = 0, copy list result = 0
+pipewire
+pipewire
+First list result = 0, copy list result = 0
+pkcs11-helper
+pkcs11-helper
+First list result = 0, copy list result = 0
+plexus-pom
+plexus-pom
+First list result = 0, copy list result = 0
+plotutils
+First list result = 0, copy list result = 1
+pmdk-convert
+First list result = 0, copy list result = 1
+pngcrush
+First list result = 0, copy list result = 1
+pngnq
+First list result = 0, copy list result = 1
+po4a
+po4a
+First list result = 0, copy list result = 0
+podman
+podman
+First list result = 0, copy list result = 0
+polkit-pkla-compat
+First list result = 0, copy list result = 1
+portreserve
+First list result = 0, copy list result = 1
+potrace
+First list result = 0, copy list result = 1
+powertop
+powertop
+First list result = 0, copy list result = 0
+ppp
+ppp
+First list result = 0, copy list result = 0
+pps-tools
+pps-tools
+First list result = 0, copy list result = 0
+pptp
+First list result = 0, copy list result = 1
+procmail
+procmail
+First list result = 0, copy list result = 0
+proj
+proj
+First list result = 0, copy list result = 0
+ps_mem
+ps_mem
+First list result = 0, copy list result = 0
+psacct
+First list result = 0, copy list result = 1
+psutils
+psutils
+First list result = 0, copy list result = 0
+ptlib
+First list result = 0, copy list result = 1
+publicsuffix
+First list result = 0, copy list result = 1
+publicsuffix-list
+publicsuffix-list
+First list result = 0, copy list result = 0
+pulseaudio
+pulseaudio
+First list result = 0, copy list result = 0
+puppet
+puppet
+First list result = 0, copy list result = 0
+pyatspi
+First list result = 0, copy list result = 1
+pykickstart
+pykickstart
+First list result = 0, copy list result = 0
+pylint
+pylint
+First list result = 0, copy list result = 0
+pyparted
+pyparted
+First list result = 0, copy list result = 0
+pyserial
+pyserial
+First list result = 0, copy list result = 0
+python-CommonMark
+First list result = 0, copy list result = 1
+python-IPy
+python-IPy
+First list result = 0, copy list result = 0
+python-PyMySQL
+First list result = 0, copy list result = 1
+python-aiodns
+python-aiodns
+First list result = 0, copy list result = 0
+python-aiohttp
+python-aiohttp
+First list result = 0, copy list result = 0
+python-alsa
+python-alsa
+First list result = 0, copy list result = 0
+python-argcomplete
+python-argcomplete
+First list result = 0, copy list result = 0
+python-argparse-manpage
+First list result = 0, copy list result = 1
+python-astroid
+python-astroid
+First list result = 0, copy list result = 0
+python-augeas
+First list result = 0, copy list result = 1
+python-azure-sdk
+First list result = 0, copy list result = 1
+python-beautifulsoup4
+python-beautifulsoup4
+First list result = 0, copy list result = 0
+python-betamax
+python-betamax
+First list result = 0, copy list result = 0
+python-blinker
+python-blinker
+First list result = 0, copy list result = 0
+python-blivet
+python-blivet
+First list result = 0, copy list result = 0
+python-cheetah
+python-cheetah
+First list result = 0, copy list result = 0
+python-cmd2
+python-cmd2
+First list result = 0, copy list result = 0
+python-colorama
+python-colorama
+First list result = 0, copy list result = 0
+python-configshell
+python-configshell
+First list result = 0, copy list result = 0
+python-cups
+python-cups
+First list result = 0, copy list result = 0
+python-curio
+python-curio
+First list result = 0, copy list result = 0
+python-d2to1
+First list result = 0, copy list result = 1
+python-dbus-client-gen
+First list result = 0, copy list result = 1
+python-dbus-python-client-gen
+First list result = 0, copy list result = 1
+python-dbus-signature-pyparsing
+First list result = 0, copy list result = 1
+python-ddt
+python-ddt
+First list result = 0, copy list result = 0
+python-debtcollector
+python-debtcollector
+First list result = 0, copy list result = 0
+python-dmidecode
+python-dmidecode
+First list result = 0, copy list result = 0
+python-dns
+python-dns
+First list result = 0, copy list result = 0
+python-dtopt
+First list result = 0, copy list result = 1
+python-dulwich
+python-dulwich
+First list result = 0, copy list result = 0
+python-enchant
+First list result = 0, copy list result = 1
+python-entrypoints
+python-entrypoints
+First list result = 0, copy list result = 0
+python-extras
+First list result = 0, copy list result = 1
+python-faker
+python-faker
+First list result = 0, copy list result = 0
+python-fasteners
+python-fasteners
+First list result = 0, copy list result = 0
+python-fixtures
+python-fixtures
+First list result = 0, copy list result = 0
+python-flake8
+python-flake8
+First list result = 0, copy list result = 0
+python-flask
+python-flask
+First list result = 0, copy list result = 0
+python-fluidity-sm
+First list result = 0, copy list result = 1
+python-funcsigs
+First list result = 0, copy list result = 1
+python-genshi
+python-genshi
+First list result = 0, copy list result = 0
+python-gssapi
+python-gssapi
+First list result = 0, copy list result = 0
+python-hs-dbus-signature
+First list result = 0, copy list result = 1
+python-httplib2
+python-httplib2
+First list result = 0, copy list result = 0
+python-humanize
+python-humanize
+First list result = 0, copy list result = 0
+python-hwdata
+python-hwdata
+First list result = 0, copy list result = 0
+python-inotify
+First list result = 0, copy list result = 1
+python-into-dbus-python
+First list result = 0, copy list result = 1
+python-iso8601
+python-iso8601
+First list result = 0, copy list result = 0
+python-isodate
+python-isodate
+First list result = 0, copy list result = 0
+python-isort
+python-isort
+First list result = 0, copy list result = 0
+python-itsdangerous
+python-itsdangerous
+First list result = 0, copy list result = 0
+python-justbases
+First list result = 0, copy list result = 1
+python-justbytes
+First list result = 0, copy list result = 1
+python-jwcrypto
+python-jwcrypto
+First list result = 0, copy list result = 0
+python-kdcproxy
+python-kdcproxy
+First list result = 0, copy list result = 0
+python-kerberos
+First list result = 0, copy list result = 1
+python-kmod
+First list result = 0, copy list result = 1
+python-lazy-object-proxy
+python-lazy-object-proxy
+First list result = 0, copy list result = 0
+python-ldap
+First list result = 0, copy list result = 1
+python-mccabe
+python-mccabe
+First list result = 0, copy list result = 0
+python-memcached
+First list result = 0, copy list result = 1
+python-mimeparse
+python-mimeparse
+First list result = 0, copy list result = 0
+python-monotonic
+First list result = 0, copy list result = 1
+python-msal
+python-msal
+First list result = 0, copy list result = 0
+python-msrestazure
+First list result = 0, copy list result = 1
+python-mutagen
+python-mutagen
+First list result = 0, copy list result = 0
+python-ntlm-auth
+First list result = 0, copy list result = 1
+python-oauth2client
+First list result = 0, copy list result = 1
+python-openstackdocstheme
+python-openstackdocstheme
+First list result = 0, copy list result = 0
+python-oslo-i18n
+python-oslo-i18n
+First list result = 0, copy list result = 0
+python-oslo-sphinx
+First list result = 0, copy list result = 1
+python-paramiko
+python-paramiko
+First list result = 0, copy list result = 0
+python-podman-api
+First list result = 0, copy list result = 1
+python-productmd
+python-productmd
+First list result = 0, copy list result = 0
+python-pycares
+python-pycares
+First list result = 0, copy list result = 0
+python-pydbus
+First list result = 0, copy list result = 1
+python-pymongo
+python-pymongo
+First list result = 0, copy list result = 0
+python-pyperclip
+python-pyperclip
+First list result = 0, copy list result = 0
+python-pyrsistent
+python-pyrsistent
+First list result = 0, copy list result = 0
+python-pytest-flake8
+First list result = 0, copy list result = 1
+python-pytest-relaxed
+python-pytest-relaxed
+First list result = 0, copy list result = 0
+python-pytest-runner
+First list result = 0, copy list result = 1
+python-pytest-subtests
+python-pytest-subtests
+First list result = 0, copy list result = 0
+python-pytest-timeout
+python-pytest-timeout
+First list result = 0, copy list result = 0
+python-pytoml
+First list result = 0, copy list result = 1
+python-qrcode
+python-qrcode
+First list result = 0, copy list result = 0
+python-rdflib
+python-rdflib
+First list result = 0, copy list result = 0
+python-recommonmark
+python-recommonmark
+First list result = 0, copy list result = 0
+python-requests-file
+python-requests-file
+First list result = 0, copy list result = 0
+python-requests-ftp
+First list result = 0, copy list result = 1
+python-requests-kerberos
+python-requests-kerberos
+First list result = 0, copy list result = 0
+python-requests-toolbelt
+python-requests-toolbelt
+First list result = 0, copy list result = 0
+python-requests_ntlm
+python-requests_ntlm
+First list result = 0, copy list result = 0
+python-rfc3986
+python-rfc3986
+First list result = 0, copy list result = 0
+python-rpmfluff
+First list result = 0, copy list result = 1
+python-rtslib
+python-rtslib
+First list result = 0, copy list result = 0
+python-s3transfer
+python-s3transfer
+First list result = 0, copy list result = 0
+python-semantic_version
+python-semantic_version
+First list result = 0, copy list result = 0
+python-should_dsl
+First list result = 0, copy list result = 1
+python-simpleline
+python-simpleline
+First list result = 0, copy list result = 0
+python-slip
+First list result = 0, copy list result = 1
+python-sniffio
+python-sniffio
+First list result = 0, copy list result = 0
+python-soupsieve
+python-soupsieve
+First list result = 0, copy list result = 0
+python-sphinx-epytext
+First list result = 0, copy list result = 1
+python-sphinxcontrib-apidoc
+First list result = 0, copy list result = 1
+python-sphinxcontrib-httpdomain
+First list result = 0, copy list result = 1
+python-suds
+python-suds
+First list result = 0, copy list result = 0
+python-systemd
+python-systemd
+First list result = 0, copy list result = 0
+python-tempita
+First list result = 0, copy list result = 1
+python-testpath
+python-testpath
+First list result = 0, copy list result = 0
+python-testresources
+python-testresources
+First list result = 0, copy list result = 0
+python-testscenarios
+First list result = 0, copy list result = 1
+python-testtools
+python-testtools
+First list result = 0, copy list result = 0
+python-toml
+python-toml
+First list result = 0, copy list result = 0
+python-tornado
+python-tornado
+First list result = 0, copy list result = 0
+python-tox
+python-tox
+First list result = 0, copy list result = 0
+python-trio
+python-trio
+First list result = 0, copy list result = 0
+python-uamqp
+First list result = 0, copy list result = 1
+python-unittest2
+First list result = 0, copy list result = 1
+python-uritemplate
+First list result = 0, copy list result = 1
+python-urwid
+python-urwid
+First list result = 0, copy list result = 0
+python-varlink
+python-varlink
+First list result = 0, copy list result = 0
+python-voluptuous
+python-voluptuous
+First list result = 0, copy list result = 0
+python-waitress
+python-waitress
+First list result = 0, copy list result = 0
+python-webencodings
+First list result = 0, copy list result = 1
+python-webtest
+python-webtest
+First list result = 0, copy list result = 0
+python-whoosh
+First list result = 0, copy list result = 1
+python-winrm
+python-winrm
+First list result = 0, copy list result = 0
+python-xmltodict
+First list result = 0, copy list result = 1
+python-yubico
+First list result = 0, copy list result = 1
+python-zmq
+python-zmq
+First list result = 0, copy list result = 0
+python3-mallard-ducktype
+First list result = 0, copy list result = 1
+python3-typed_ast
+First list result = 0, copy list result = 1
+pyusb
+pyusb
+First list result = 0, copy list result = 0
+pywbem
+First list result = 0, copy list result = 1
+pyxattr
+pyxattr
+First list result = 0, copy list result = 0
+qhull
+First list result = 0, copy list result = 1
+qpdf
+qpdf
+First list result = 0, copy list result = 0
+qperf
+First list result = 0, copy list result = 1
+qr-code-generator
+qr-code-generator
+First list result = 0, copy list result = 0
+qt5-qtconnectivity
+qt5-qtconnectivity
+First list result = 0, copy list result = 0
+qt5-qtsensors
+qt5-qtsensors
+First list result = 0, copy list result = 0
+qt5-qtserialport
+qt5-qtserialport
+First list result = 0, copy list result = 0
+quagga
+First list result = 0, copy list result = 1
+raptor2
+First list result = 0, copy list result = 1
+rarian
+rarian
+First list result = 0, copy list result = 0
+rasqal
+First list result = 0, copy list result = 1
+rcs
+First list result = 0, copy list result = 1
+rdist
+First list result = 0, copy list result = 1
+re2c
+First list result = 0, copy list result = 1
+realmd
+First list result = 0, copy list result = 1
+rear
+rear
+First list result = 0, copy list result = 0
+recode
+First list result = 0, copy list result = 1
+regexp
+First list result = 0, copy list result = 1
+relaxngDatatype
+First list result = 0, copy list result = 1
+resource-agents
+resource-agents
+First list result = 0, copy list result = 0
+rhash
+rhash
+First list result = 0, copy list result = 0
+rhino
+rhino
+First list result = 0, copy list result = 0
+rhnlib
+First list result = 0, copy list result = 1
+rust-ripgrep
+First list result = 1, copy list result = 0
+rp-pppoe
+rp-pppoe
+First list result = 0, copy list result = 0
+rpmlint
+rpmlint
+First list result = 0, copy list result = 0
+rr
+First list result = 0, copy list result = 1
+rtkit
+First list result = 0, copy list result = 1
+ruby-augeas
+First list result = 0, copy list result = 1
+rubygem-bson
+First list result = 0, copy list result = 1
+rubygem-coderay
+First list result = 0, copy list result = 1
+rubygem-deep_merge
+First list result = 0, copy list result = 1
+rubygem-diff-lcs
+First list result = 0, copy list result = 1
+rubygem-eventmachine
+First list result = 0, copy list result = 1
+rubygem-hocon
+First list result = 0, copy list result = 1
+rubygem-liquid
+First list result = 0, copy list result = 1
+rubygem-maruku
+First list result = 0, copy list result = 1
+rubygem-mongo
+First list result = 0, copy list result = 1
+rubygem-mysql2
+rubygem-mysql2
+First list result = 0, copy list result = 0
+rubygem-pkg-config
+rubygem-pkg-config
+First list result = 0, copy list result = 0
+rubygem-puppet-resource_api
+First list result = 0, copy list result = 1
+rubygem-rouge
+rubygem-rouge
+First list result = 0, copy list result = 0
+rubygem-rspec-expectations
+rubygem-rspec-expectations
+First list result = 0, copy list result = 0
+rubygem-rspec-support
+rubygem-rspec-support
+First list result = 0, copy list result = 0
+rubygem-thor
+First list result = 0, copy list result = 1
+rubygem-thread_order
+First list result = 0, copy list result = 1
+rusers
+First list result = 0, copy list result = 1
+rust-cbindgen
+rust-cbindgen
+First list result = 0, copy list result = 0
+samba
+samba
+First list result = 0, copy list result = 0
+sassist
+First list result = 0, copy list result = 1
+satyr
+satyr
+First list result = 0, copy list result = 0
+sbc
+First list result = 0, copy list result = 1
+sblim-cim-client2
+First list result = 0, copy list result = 1
+sblim-cmpi-base
+First list result = 0, copy list result = 1
+sblim-cmpi-devel
+First list result = 0, copy list result = 1
+sblim-cmpi-fsvol
+First list result = 0, copy list result = 1
+sblim-cmpi-network
+First list result = 0, copy list result = 1
+sblim-cmpi-nfsv3
+First list result = 0, copy list result = 1
+sblim-cmpi-nfsv4
+First list result = 0, copy list result = 1
+sblim-cmpi-params
+First list result = 0, copy list result = 1
+sblim-cmpi-sysfs
+First list result = 0, copy list result = 1
+sblim-cmpi-syslog
+First list result = 0, copy list result = 1
+sblim-indication_helper
+First list result = 0, copy list result = 1
+sblim-sfcCommon
+First list result = 0, copy list result = 1
+sblim-sfcb
+First list result = 0, copy list result = 1
+sblim-sfcc
+First list result = 0, copy list result = 1
+sblim-testsuite
+First list result = 0, copy list result = 1
+sblim-wbemcli
+First list result = 0, copy list result = 1
+scl-utils
+scl-utils
+First list result = 0, copy list result = 0
+scotch
+scotch
+First list result = 0, copy list result = 0
+screen
+First list result = 0, copy list result = 1
+sdparm
+First list result = 0, copy list result = 1
+serd
+serd
+First list result = 0, copy list result = 0
+servletapi4
+First list result = 0, copy list result = 1
+servletapi5
+First list result = 0, copy list result = 1
+setserial
+First list result = 0, copy list result = 1
+setup
+First list result = 0, copy list result = 1
+setuptool
+First list result = 0, copy list result = 1
+sgpio
+First list result = 0, copy list result = 1
+shapelib
+shapelib
+First list result = 0, copy list result = 0
+sip
+sip
+First list result = 0, copy list result = 0
+skkdic
+skkdic
+First list result = 0, copy list result = 0
+slirp4netns
+slirp4netns
+First list result = 0, copy list result = 0
+smc-tools
+smc-tools
+First list result = 0, copy list result = 0
+sombok
+First list result = 0, copy list result = 1
+sord
+sord
+First list result = 0, copy list result = 0
+sound-theme-freedesktop
+First list result = 0, copy list result = 1
+soundtouch
+First list result = 0, copy list result = 1
+sox
+First list result = 0, copy list result = 1
+soxr
+First list result = 0, copy list result = 1
+sparsehash
+First list result = 0, copy list result = 1
+spausedd
+spausedd
+First list result = 0, copy list result = 0
+speex
+First list result = 0, copy list result = 1
+speexdsp
+speexdsp
+First list result = 0, copy list result = 0
+spice-protocol
+spice-protocol
+First list result = 0, copy list result = 0
+spice-vdagent
+First list result = 0, copy list result = 1
+splix
+First list result = 0, copy list result = 1
+squid
+squid
+First list result = 0, copy list result = 0
+sratom
+sratom
+First list result = 0, copy list result = 0
+star
+First list result = 0, copy list result = 1
+startup-notification
+First list result = 0, copy list result = 1
+stress-ng
+First list result = 0, copy list result = 1
+stunnel
+stunnel
+First list result = 0, copy list result = 0
+subscription-manager
+subscription-manager
+First list result = 0, copy list result = 0
+suitesparse
+suitesparse
+First list result = 0, copy list result = 0
+switcheroo-control
+switcheroo-control
+First list result = 0, copy list result = 0
+systemd-bootchart
+First list result = 0, copy list result = 1
+t1lib
+First list result = 0, copy list result = 1
+t1utils
+First list result = 0, copy list result = 1
+taglib
+First list result = 0, copy list result = 1
+tang
+tang
+First list result = 0, copy list result = 0
+targetcli
+targetcli
+First list result = 0, copy list result = 0
+tbb
+tbb
+First list result = 0, copy list result = 0
+tcl-pgtcl
+First list result = 0, copy list result = 1
+tclx
+First list result = 0, copy list result = 1
+teckit
+teckit
+First list result = 0, copy list result = 0
+telnet
+First list result = 0, copy list result = 1
+tix
+First list result = 0, copy list result = 1
+tk
+tk
+First list result = 0, copy list result = 0
+tlog
+First list result = 0, copy list result = 1
+tmpwatch
+First list result = 0, copy list result = 1
+tn5250
+tn5250
+First list result = 0, copy list result = 0
+tofrodos
+First list result = 0, copy list result = 1
+trilead-ssh2
+trilead-ssh2
+First list result = 0, copy list result = 0
+tss2
+tss2
+First list result = 0, copy list result = 0
+ttmkfdir
+First list result = 0, copy list result = 1
+twolame
+twolame
+First list result = 0, copy list result = 0
+uchardet
+uchardet
+First list result = 0, copy list result = 0
+ucpp
+First list result = 0, copy list result = 1
+ucs-miscfixed-fonts
+First list result = 0, copy list result = 1
+udftools
+udftools
+First list result = 0, copy list result = 0
+udica
+udica
+First list result = 0, copy list result = 0
+udisks2
+udisks2
+First list result = 0, copy list result = 0
+uglify-js
+uglify-js
+First list result = 0, copy list result = 0
+umoci
+First list result = 0, copy list result = 1
+unicode-emoji
+unicode-emoji
+First list result = 0, copy list result = 0
+unicode-ucd
+unicode-ucd
+First list result = 0, copy list result = 0
+unique3
+First list result = 0, copy list result = 1
+units
+units
+First list result = 0, copy list result = 0
+upower
+upower
+First list result = 0, copy list result = 0
+uriparser
+uriparser
+First list result = 0, copy list result = 0
+urlview
+First list result = 0, copy list result = 1
+usb_modeswitch
+usb_modeswitch
+First list result = 0, copy list result = 0
+usb_modeswitch-data
+First list result = 0, copy list result = 1
+usbguard
+usbguard
+First list result = 0, copy list result = 0
+usbmuxd
+usbmuxd
+First list result = 0, copy list result = 0
+ustr
+First list result = 0, copy list result = 1
+uthash
+uthash
+First list result = 0, copy list result = 0
+uw-imap
+First list result = 0, copy list result = 1
+v4l-utils
+v4l-utils
+First list result = 0, copy list result = 0
+vhostmd
+First list result = 0, copy list result = 1
+vino
+First list result = 0, copy list result = 1
+virt-p2v
+virt-p2v
+First list result = 0, copy list result = 0
+virt-top
+virt-top
+First list result = 0, copy list result = 0
+virt-who
+virt-who
+First list result = 0, copy list result = 0
+vmem
+First list result = 0, copy list result = 1
+volume_key
+First list result = 0, copy list result = 1
+vorbis-tools
+First list result = 0, copy list result = 1
+watchdog
+watchdog
+First list result = 0, copy list result = 0
+wavpack
+First list result = 0, copy list result = 1
+web-assets
+First list result = 0, copy list result = 1
+webrtc-audio-processing
+webrtc-audio-processing
+First list result = 0, copy list result = 0
+whois
+whois
+First list result = 0, copy list result = 0
+wireshark
+wireshark
+First list result = 0, copy list result = 0
+woff2
+First list result = 0, copy list result = 1
+wordnet
+First list result = 0, copy list result = 1
+wpebackend-fdo
+First list result = 0, copy list result = 1
+wsmancli
+wsmancli
+First list result = 0, copy list result = 0
+wvdial
+First list result = 0, copy list result = 1
+x3270
+x3270
+First list result = 0, copy list result = 0
+xalan-j2
+xalan-j2
+First list result = 0, copy list result = 0
+xapian-core
+First list result = 0, copy list result = 1
+xbean
+xbean
+First list result = 0, copy list result = 0
+xdelta
+First list result = 0, copy list result = 1
+xdg-dbus-proxy
+xdg-dbus-proxy
+First list result = 0, copy list result = 0
+xdg-utils
+First list result = 0, copy list result = 1
+xerces-j2
+xerces-j2
+First list result = 0, copy list result = 0
+xfconf
+xfconf
+First list result = 0, copy list result = 0
+xfsdump
+xfsdump
+First list result = 0, copy list result = 0
+xhtml1-dtds
+First list result = 0, copy list result = 1
+xmldb-api
+First list result = 0, copy list result = 1
+xmlrpc-c
+xmlrpc-c
+First list result = 0, copy list result = 0
+xmlunit
+xmlunit
+First list result = 0, copy list result = 0
+xorg-x11-drv-libinput
+First list result = 0, copy list result = 1
+xorg-x11-fonts
+First list result = 0, copy list result = 1
+xorg-x11-server
+First list result = 0, copy list result = 1
+xorg-x11-utils
+First list result = 0, copy list result = 1
+xpp2
+First list result = 0, copy list result = 1
+xpp3
+First list result = 0, copy list result = 1
+xrestop
+xrestop
+First list result = 0, copy list result = 0
+xterm
+xterm
+First list result = 0, copy list result = 0
+xz-java
+First list result = 0, copy list result = 1
+yelp-tools
+yelp-tools
+First list result = 0, copy list result = 0
+yelp-xsl
+yelp-xsl
+First list result = 0, copy list result = 0
+ykclient
+First list result = 0, copy list result = 1
+ypserv
+ypserv
+First list result = 0, copy list result = 0
+z3
+z3
+First list result = 0, copy list result = 0
+zenity
+zenity
+First list result = 0, copy list result = 0
+zopfli
+First list result = 0, copy list result = 1
+zziplib
+zziplib
+First list result = 0, copy list result = 0

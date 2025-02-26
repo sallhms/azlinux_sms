@@ -1,0 +1,11 @@
+{
+ "Signatures": {
+  "arp2ethers.8": "cdaf4fe78895494acb54ed3bd0f552529588b2f955508633765e1a0a690cbba8",
+  "arpwatch-3.7.tar.gz": "3eb63ea79fbafc8174653e557e28899873c4c3908c66fc81f6f29ced3a10987e",
+  "arpwatch.service": "5d724755406c9ca832a6fa6bff7ef12421c256c0a4cbd856378b1a29f9215cee",
+  "arpwatch.sysconfig": "e8e4b70b3bbf67d6cc6b20e405ca2e6be876014326de7e7d67d78fa9b7195a94",
+  "arpwatch.sysusers": "1639ac145e7d92dc6181ca551e8f034c298d0582e64751a7bef930ea756af165",
+  "massagevendor.8": "67a4ade35ec310cbc3583469a134686e9b8ea98ae0b53c48cf946acd55441036",
+  "oui.csv": "2337413572f4e87aa32bd0eec494b1eaa82dcf4d539f124e37ccf9b41927805e"
+ }
+}

@@ -1,0 +1,6 @@
+{
+ "Signatures": {
+  "generate-tarball.sh": "c6d47df72dd4301ddf186cad7cd407698addfbabb326376698fa783d38dc2e44",
+  "waitress-3.0.1-nodocs.tar.gz": "fb92d1fdb86e9b53372845e1a05947243ea7a2f8ceb37e1ced56be68e59df25f"
+ }
+}

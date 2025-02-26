@@ -26,7 +26,7 @@ BuildRequires: ant-junit
 %endif
 
 BuildArch:     noarch
-ExclusiveArch: %{java_arches} noarch
+#ExclusiveArch: %{java_arches} noarch
 
 %description
 JDOM is a Java-oriented object model which models XML documents.

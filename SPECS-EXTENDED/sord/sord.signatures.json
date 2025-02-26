@@ -1,0 +1,7 @@
+{
+ "Signatures": {
+  "drobilla.gpg": "29c8ffc9ffee2982ad3c3355736ed043377c1f0f4ea4776df4b98a464692b70e",
+  "sord-0.16.16.tar.xz": "257f876d756143da02ee84c9260af93559d6249dd87f317e70ab5fffcc975fd0",
+  "sord-0.16.16.tar.xz.sig": "a0875a17bc8c81453c422d38808495ed610d8edee4762a3791ada17703a87d79"
+ }
+}

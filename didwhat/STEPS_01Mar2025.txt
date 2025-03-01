@@ -247,6 +247,59 @@ c4f721752 [3.0] fix ptest for `libcap` (#12644)
 54b61a7d7 Upgrade libtdb to version 1.4.12 and move to SPECS (#12633)
 7a1fd34b1 Move libecap from extended to core (#12634)
 neerajs [ /third_disk/bb01Mar/azurelinux ]$ 
+
+<snip>
+<snip>
+
+neerajs [ /third_disk/bb01Mar/azurelinux/didwhat/BULK_BLD_THINGS_01Mar ]$ time ./prep_ext_folder /third_disk/bb01Mar/azurelinux/ /fifth_disk/downloaded_pkgs/import_specs_modify_cgmjson/ou
+tput/fedora/specs/ /third_disk/bb01Mar/azurelinux/didwhat/BULK_BLD_THINGS_01Mar > output_of_prep_ext_folder.log 2>&1 
+
+real    0m6.847s
+user    0m1.117s
+sys     0m3.054s
+neerajs [ /third_disk/bb01Mar/azurelinux/didwhat/BULK_BLD_THINGS_01Mar ]$
 ```
 
 
+The git status after this script run was saved into "gsts_after_prep_ext_folder_scrpt_run"
+```
+neerajs [ /third_disk/bb01Mar/azurelinux ]$ git status > ../gsts_after_prep_ext_folder_scrpt_run
+neerajs [ /third_disk/bb01Mar/azurelinux ]$ 
+```
+
+The changes were then staged and committed:
+```
+neerajs [ /third_disk/bb01Mar/azurelinux ]$ git add SPECS-EXTENDED/
+neerajs [ /third_disk/bb01Mar/azurelinux ]$ git commit -m "Committing the changes caused by the prep_ext_folder script"
+[topic_bb_01Mar 63c58c99f] Committing the changes caused by the prep_ext_folder script
+ 2834 files changed, 274130 insertions(+), 188797 deletions(-)
+ delete mode 100644 SPECS-EXTENDED/OpenEXR/OpenEXR.signatures.json
+ delete mode 100644 SPECS-EXTENDED/OpenEXR/OpenEXR.spec
+ delete mode 100644 SPECS-EXTENDED/OpenEXR/openexr-2.3.0-bigendian.patch
+ delete mode 100644 SPECS-EXTENDED/OpenEXR/openexr-2.3.0-tests.patch
+ delete mode 100644 SPECS-EXTENDED/PyGreSQL/PyGreSQL.signatures.json
+
+
+<snip>
+<snip>
+
+ delete mode 100644 SPECS-EXTENDED/z3/z3-trailing-zeros32.patch
+ delete mode 100644 SPECS-EXTENDED/z3/z3.signatures.json
+ mode change 100644 => 100755 SPECS-EXTENDED/z3/z3.spec
+ delete mode 100644 SPECS-EXTENDED/zenity/zenity.signatures.json
+ mode change 100644 => 100755 SPECS-EXTENDED/zenity/zenity.spec
+ delete mode 100644 SPECS-EXTENDED/zziplib/zziplib.signatures.json
+ mode change 100644 => 100755 SPECS-EXTENDED/zziplib/zziplib.spec
+neerajs [ /third_disk/bb01Mar/azurelinux ]$ git status
+On branch topic_bb_01Mar
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+        modified:   didwhat/.STEPS_01Mar2025.txt.swp
+        modified:   didwhat/STEPS_01Mar2025.txt
+
+no changes added to commit (use "git add" and/or "git commit -a")
+neerajs [ /third_disk/bb01Mar/azurelinux ]$ 
+```
+
+Screen grabbed the output of the above git commit into a file "commit_output1.logtxt"

@@ -9,7 +9,7 @@ URL:           https://github.com/codehaus-plexus/plexus-pom
 Source0:       https://github.com/codehaus-plexus/plexus-pom/archive/plexus-%{version}.tar.gz
 Source1:       https://www.apache.org/licenses/LICENSE-2.0.txt
 BuildArch:     noarch
-ExclusiveArch: %{java_arches} noarch
+#ExclusiveArch: %{java_arches} noarch
 
 %if %{with bootstrap}
 BuildRequires: javapackages-bootstrap

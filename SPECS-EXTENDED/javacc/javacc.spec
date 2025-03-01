@@ -57,7 +57,7 @@ BuildRequires:  javapackages-bootstrap
 %else
 BuildRequires:  javapackages-local
 BuildRequires:  ant
-BuildRequires:  javacc
+#BuildRequires:  javacc
 %endif
 
 # Explicit javapackages-tools requires since scripts use

@@ -641,7 +641,7 @@ metis
 microcode_ctl
 microdnf
 minicom
-minizip
+minizip-ng
 mksh
 mobile-broadband-provider-info
 mod_auth_gssapi

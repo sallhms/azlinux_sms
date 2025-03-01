@@ -1,0 +1,124 @@
+From 1ade3df7eaefad792a2a519c0f3cc3a8f28a5829 Mon Sep 17 00:00:00 2001
+From: Lumir Balhar <lbalhar@redhat.com>
+Date: Tue, 10 Jan 2023 08:34:25 +0100
+Subject: [PATCH] fix tests
+
+---
+ pyproject.toml          |  8 --------
+ src/tox/pytest.py       | 16 +++-------------
+ tests/test_provision.py | 18 ++----------------
+ 3 files changed, 5 insertions(+), 37 deletions(-)
+
+diff --git a/pyproject.toml b/pyproject.toml
+index 74219b1..6cd2da8 100644
+--- a/pyproject.toml
++++ b/pyproject.toml
+@@ -167,9 +167,6 @@ report.omit = [
+   "tests/type_check/*",
+ ]
+ run.parallel = true
+-run.plugins = [
+-  "covdefaults",
+-]
+ 
+ [tool.towncrier]
+ name = "tox"
+@@ -229,17 +226,12 @@ release = [
+ ]
+ test = [
+   "build[virtualenv]>=1.2.2",
+-  "covdefaults>=2.3",
+-  "detect-test-pollution>=1.2",
+-  "devpi-process>=1.0.2",
+-  "diff-cover>=9.2",
+   "distlib>=0.3.8",
+   "flaky>=3.8.1",
+   "hatch-vcs>=0.4",
+   "hatchling>=1.25",
+   "psutil>=6",
+   "pytest>=8.3.3",
+-  "pytest-cov>=5",
+   "pytest-mock>=3.14",
+   "pytest-xdist>=3.6.1",
+   "re-assert>=1.1",
+diff --git a/src/tox/pytest.py b/src/tox/pytest.py
+index ca42a5b..183e2f4 100644
+--- a/src/tox/pytest.py
++++ b/src/tox/pytest.py
+@@ -17,7 +17,6 @@ from typing import TYPE_CHECKING, Any, Callable, Iterator, Protocol, Sequence, c
+ 
+ import pytest
+ from _pytest.fixtures import SubRequest  # noqa: PLC2701
+-from devpi_process import IndexServer
+ from virtualenv.info import fs_supports_symlink
+ 
+ import tox.run
+@@ -280,9 +279,9 @@ class ToxProject:
+                 m.setattr(sys, "argv", [sys.executable, "-m", "tox", *list(args)])
+                 m.setenv("VIRTUALENV_SYMLINK_APP_DATA", "1")
+                 m.setenv("VIRTUALENV_SYMLINKS", "1")
+-                m.setenv("VIRTUALENV_PIP", "embed")
+-                m.setenv("VIRTUALENV_WHEEL", "embed")
+-                m.setenv("VIRTUALENV_SETUPTOOLS", "embed")
++                m.setenv("VIRTUALENV_PIP", "bundle")
++                m.setenv("VIRTUALENV_WHEEL", "bundle")
++                m.setenv("VIRTUALENV_SETUPTOOLS", "bundle")
+                 try:
+                     tox_run(args)
+                 except SystemExit as exception:
+@@ -475,15 +474,6 @@ def enable_pypi_server(monkeypatch: pytest.MonkeyPatch, url: str | None) -> None
+     monkeypatch.setenv("PIP_TIMEOUT", str(2))
+ 
+ 
+-@pytest.fixture(scope="session")
+-def pypi_server(tmp_path_factory: pytest.TempPathFactory) -> Iterator[IndexServer]:
+-    # takes around 2.5s
+-    path = tmp_path_factory.mktemp("pypi")
+-    with IndexServer(path) as server:
+-        server.create_index("empty", "volatile=False")
+-        yield server
+-
+-
+ @pytest.fixture(scope="session")
+ def _invalid_index_fake_port() -> int:
+     with closing(socket.socket(socket.AF_INET, socket.SOCK_STREAM)) as socket_handler:
+diff --git a/tests/test_provision.py b/tests/test_provision.py
+index 5b2b652..7657c2e 100644
+--- a/tests/test_provision.py
++++ b/tests/test_provision.py
+@@ -98,22 +98,9 @@ def tox_wheels(tox_wheel: Path, tmp_path_factory: TempPathFactory) -> list[Path]
+         return result
+ 
+ 
+-@pytest.fixture(scope="session")
+-def pypi_index_self(pypi_server: IndexServer, tox_wheels: list[Path], demo_pkg_inline_wheel: Path) -> Index:
+-    with elapsed("start devpi and create index"):  # takes around 1s
+-        self_index = pypi_server.create_index("self", "volatile=False")
+-    with elapsed("upload tox and its wheels to devpi"):  # takes around 3.2s on build
+-        self_index.upload(*tox_wheels, demo_pkg_inline_wheel)
+-    return self_index
+-
+-
+ @pytest.fixture
+-def _pypi_index_self(pypi_index_self: Index, monkeypatch: MonkeyPatch) -> None:
+-    pypi_index_self.use()
+-    monkeypatch.setenv("PIP_INDEX_URL", pypi_index_self.url)
+-    monkeypatch.setenv("PIP_RETRIES", str(2))
+-    monkeypatch.setenv("PIP_TIMEOUT", str(5))
+-
++def _pypi_index_self():
++    pytest.skip("needs devpi-process")
+ 
+ def test_provision_requires_nok(tox_project: ToxProjectCreator) -> None:
+     ini = "[tox]\nrequires = pkg-does-not-exist\n setuptools==1\nskipsdist=true\n"
+@@ -161,7 +148,6 @@ def test_provision_requires_ok(tox_project: ToxProjectCreator, tmp_path: Path) -
+ 
+ 
+ @pytest.mark.integration
+-@pytest.mark.usefixtures("_pypi_index_self")
+ def test_provision_platform_check(tox_project: ToxProjectCreator) -> None:
+     ini = "[tox]\nrequires=demo-pkg-inline\n[testenv]\npackage=skip\n[testenv:.tox]\nplatform=wrong_platform"
+     proj = tox_project({"tox.ini": ini})
+-- 
+2.47.0
+

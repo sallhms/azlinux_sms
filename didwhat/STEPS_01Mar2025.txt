@@ -1,0 +1,252 @@
+
+ACTION 1
+========
+Lets take care of the error
+
+error obtaining VCS status: exit status 128
+
+in advance.
+
+For that we will add the directory 
+/third_disk/bb01Mar/azurelinux/didwhat
+
+to the safe.directory list of git config.
+
+Since there is an existing safe.directory with very similar name and 
+that directory isn't needed any more we will remove that one first 
+and add our new directory.
+
+There is a learning here.
+Since there are multiple safe.directory entries in my git config
+a warning was given "warning: safe.directory has multiple values",
+and the "git config --global --unset safe.directory" command did not
+do anything.
+
+Therefore, in the command the safe.directory entry to be removed had
+to be specified.
+
+Then the entry got removed.
+
+```
+neerajs [ /third_disk/bb01Mar/azurelinux/didwhat ]$ git config --list
+http.sslcapath=/etc/ssl/certs
+safe.directory=/sec_disk/bulkbld_16Nov/REPOS/NeerajAZL/azlinux_sms
+safe.directory=/four_disk/bb_08Feb/azlinux_sms
+safe.directory=/third_disk/bb_24Feb/azlinux_sms
+user.email=v-nsallh@microsoft.com
+user.name=sallhms
+http.postbuffer=524288000
+credential.https://github.com.helper=
+credential.https://github.com.helper=!/usr/bin/gh auth git-credential
+credential.https://gist.github.com.helper=
+credential.https://gist.github.com.helper=!/usr/bin/gh auth git-credential
+core.editor=vim
+core.repositoryformatversion=0
+core.filemode=true
+core.bare=false
+core.logallrefupdates=true
+remote.origin.url=https://github.com/sallhms/azurelinux.git
+remote.origin.fetch=+refs/heads/*:refs/remotes/origin/*
+branch.3.0.remote=origin
+branch.3.0.merge=refs/heads/3.0
+branch.3.0-dev.remote=origin
+branch.3.0-dev.merge=refs/heads/3.0-dev
+branch.topic_bb_24Feb.remote=origin
+branch.topic_bb_24Feb.merge=refs/heads/topic_bb_24Feb
+neerajs [ /third_disk/bb01Mar/azurelinux/didwhat ]$ cat ~/.gitconfig 
+[safe]
+        directory = /sec_disk/bulkbld_16Nov/REPOS/NeerajAZL/azlinux_sms
+        directory = /four_disk/bb_08Feb/azlinux_sms
+        directory = /third_disk/bb_24Feb/azlinux_sms
+[user]
+        email = v-nsallh@microsoft.com
+        name = sallhms
+[http]
+        postbuffer = 524288000
+[credential "https://github.com"]
+        helper = 
+        helper = !/usr/bin/gh auth git-credential
+[credential "https://gist.github.com"]
+        helper = 
+        helper = !/usr/bin/gh auth git-credential
+[core]
+        editor = vim
+neerajs [ /third_disk/bb01Mar/azurelinux/didwhat ]$ 
+neerajs [ /third_disk/bb01Mar/azurelinux/didwhat ]$ git config --global --unset safe.directory /third_disk/bb_24Feb/azlinux_sms
+neerajs [ /third_disk/bb01Mar/azurelinux/didwhat ]$ cat ~/.gitconfig 
+[safe]
+        directory = /sec_disk/bulkbld_16Nov/REPOS/NeerajAZL/azlinux_sms
+        directory = /four_disk/bb_08Feb/azlinux_sms
+[user]
+        email = v-nsallh@microsoft.com
+        name = sallhms
+[http]
+        postbuffer = 524288000
+[credential "https://github.com"]
+        helper = 
+        helper = !/usr/bin/gh auth git-credential
+[credential "https://gist.github.com"]
+        helper = 
+        helper = !/usr/bin/gh auth git-credential
+[core]
+        editor = vim
+neerajs [ /third_disk/bb01Mar/azurelinux/didwhat ]$ git config --list
+http.sslcapath=/etc/ssl/certs
+safe.directory=/sec_disk/bulkbld_16Nov/REPOS/NeerajAZL/azlinux_sms
+safe.directory=/four_disk/bb_08Feb/azlinux_sms
+user.email=v-nsallh@microsoft.com
+user.name=sallhms
+http.postbuffer=524288000
+credential.https://github.com.helper=
+credential.https://github.com.helper=!/usr/bin/gh auth git-credential
+credential.https://gist.github.com.helper=
+credential.https://gist.github.com.helper=!/usr/bin/gh auth git-credential
+core.editor=vim
+core.repositoryformatversion=0
+core.filemode=true
+core.bare=false
+core.logallrefupdates=true
+remote.origin.url=https://github.com/sallhms/azurelinux.git
+remote.origin.fetch=+refs/heads/*:refs/remotes/origin/*
+branch.3.0.remote=origin
+branch.3.0.merge=refs/heads/3.0
+branch.3.0-dev.remote=origin
+branch.3.0-dev.merge=refs/heads/3.0-dev
+branch.topic_bb_24Feb.remote=origin
+branch.topic_bb_24Feb.merge=refs/heads/topic_bb_24Feb
+neerajs [ /third_disk/bb01Mar/azurelinux/didwhat ]$ 
+```
+
+Then added the required safe.directory entry
+```
+neerajs [ /third_disk/bb01Mar/azurelinux/didwhat ]$ git config --global --add safe.directory /third_disk/bb01Mar/azurelinux
+neerajs [ /third_disk/bb01Mar/azurelinux/didwhat ]$ git config --list
+http.sslcapath=/etc/ssl/certs
+safe.directory=/sec_disk/bulkbld_16Nov/REPOS/NeerajAZL/azlinux_sms
+safe.directory=/four_disk/bb_08Feb/azlinux_sms
+safe.directory=/third_disk/bb01Mar/azurelinux
+user.email=v-nsallh@microsoft.com
+user.name=sallhms
+http.postbuffer=524288000
+credential.https://github.com.helper=
+credential.https://github.com.helper=!/usr/bin/gh auth git-credential
+credential.https://gist.github.com.helper=
+credential.https://gist.github.com.helper=!/usr/bin/gh auth git-credential
+core.editor=vim
+core.repositoryformatversion=0
+core.filemode=true
+core.bare=false
+core.logallrefupdates=true
+remote.origin.url=https://github.com/sallhms/azurelinux.git
+remote.origin.fetch=+refs/heads/*:refs/remotes/origin/*
+branch.3.0.remote=origin
+branch.3.0.merge=refs/heads/3.0
+branch.3.0-dev.remote=origin
+branch.3.0-dev.merge=refs/heads/3.0-dev
+branch.topic_bb_24Feb.remote=origin
+branch.topic_bb_24Feb.merge=refs/heads/topic_bb_24Feb
+neerajs [ /third_disk/bb01Mar/azurelinux/didwhat ]$ 
+```
+
+ACTION 2:
+=========
+
+Generated the various lists:
+```
+neerajs [ /third_disk/bb01Mar/azurelinux/didwhat/BULK_BLD_THINGS_01Mar ]$ python3.12 py_prepare_lists
+neerajs [ /third_disk/bb01Mar/azurelinux/didwhat/BULK_BLD_THINGS_01Mar ]$ 
+```
+
+ACTION 3:
+=========
+
+Prepared a hand made "pkglist_override_build_by_rem" file.
+
+The "pkglist_override_build_by_rem" had the following contents:
+
+```
+neerajs [ /third_disk/bb01Mar/azurelinux/didwhat/BULK_BLD_THINGS_01Mar ]$ cat pkglist_override_build_by_rem 
+rdma-core
+ucx
+perl-Crypt-PasswdMD5
+perl-XML-LibXSLT
+cjkuni-uming-fonts
+delve
+google-noto-sans-cjk-vf-fonts
+resource-agents
+python-tox
+google-noto-emoji-fonts
+lensfun
+freeradius
+perl-Test2-Suite
+setup
+neerajs [ /third_disk/bb01Mar/azurelinux/didwhat/BULK_BLD_THINGS_01Mar ]$ 
+```
+
+The pkglist_override_build_by_rem file has the above contents because
+---------------------------------------------------------------------
+
+1. There are "multiple target patterns" errors in six packages - rdma-core, ucx, libpsl, llvm, perl-Crypt-PasswdMD5 and perl-XML-LibXSLT.  We are not goind to include these in the build list.
+2. There are packages that fail to build because of unsupported spec file macros in Azure Linux.  These packages are:
+cjkuni-uming-fonts
+delve
+google-noto-sans-cjk-vf-fonts
+resource-agents
+python-tox
+google-noto-emoji-fonts
+lensfun
+freeradius
+google-carlito-fonts
+
+We add all these except for google-carlito-fonts, to the pkglist_override_build_by_rem.
+The reason to not add google-carlito-fonts to the remove list is that it does not
+occur in the generated list in first place.  There is not need to remove it.
+3. The reason for having perl-Test2-Suite and setup in the remove list are no
+   more valid now.  But we will just keep these.  Since these are not there in 
+   wkg_pkgs_to_build, their existence in the remove list is meaningles.
+
+
+ACTION 4:
+=========
+
+
+KNOWN ISSUES: TO BE FIXED AFTER SPECS-EXTENDED MANIPULATION
+-----------------------------------------------------------
+From the previous notes, we know that there still are problems to be faced.
+But first we will use this generated lists to manipulate the SPECS-EXTENDED folder 
+and then tackle the build failures.
+These build failures will be:
+1. Parse failure of ibus.spec.  The fix to this will be to use the ibus.spec from the previous build attempt.  It is nothing but 
+   Azure Linux ibus.spec modified for the Version and Release (release is made 1).
+2. There will be failure in addition of minizip-ng reported by grapher.  The fix is to give up on using the new name minizip-ng
+   for the time being.  Therefore, the folder minizip will be restored and the folder minizip-ng will be removed.
+3. Continuing from the above the package name in the build list will be changed to minizip from minizip-ng.  This we may do by 
+   manually editing the wkg_pkgs_to_build or starting to use patched1_wkg_pkgs_to_build. 
+4. There will be a failure to add pcp package too.  Again grapher will be the tool which reports this failure.
+5. As noted in the earlier notes, this time we will do the same.  That, is comment out the BuildRequires on 
+   ibus-table-chinese-* packages and thereby break the circular dependency.
+6. A build will then report that the srpmpacker tool has skipped several packages because those can't be built on current architecture.
+   Fix these by removing the ExclusiveArch tag from their spec files.
+
+All these steps are to be taken after the manipulation of the SPECS-EXTENDED folder.
+
+Therefore, lets carry that out:
+
+```
+neerajs [ /third_disk/bb01Mar/azurelinux ]$ git status 
+On branch topic_bb_01Mar
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+        didwhat/
+
+nothing added to commit but untracked files present (use "git add" to track)
+neerajs [ /third_disk/bb01Mar/azurelinux ]$ git log --oneline -5
+150f5c0a4 (HEAD -> topic_bb_01Mar, origin/3.0-dev, 3.0-dev) patch bind uninitialized memory error (#12588)
+0f2d4d5be Upgrade squid to version 6.13 and Moved to SPECS (#12636)
+c4f721752 [3.0] fix ptest for `libcap` (#12644)
+54b61a7d7 Upgrade libtdb to version 1.4.12 and move to SPECS (#12633)
+7a1fd34b1 Move libecap from extended to core (#12634)
+neerajs [ /third_disk/bb01Mar/azurelinux ]$ 
+```
+
+

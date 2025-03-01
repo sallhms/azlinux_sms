@@ -303,3 +303,364 @@ neerajs [ /third_disk/bb01Mar/azurelinux ]$
 ```
 
 Screen grabbed the output of the above git commit into a file "commit_output1.logtxt"
+
+
+
+KNOWN ISSUES: TO BE FIXED AFTER SPECS-EXTENDED MANIPULATION
+===========================================================
+From the previous notes, we know that there still are problems to be faced.
+But first we will use this generated lists to manipulate the SPECS-EXTENDED folder 
+and then tackle the build failures.
+These build failures will be:
+1. Parse failure of ibus.spec.  The fix to this will be to use the ibus.spec from the previous build attempt.  It is nothing but 
+   Azure Linux ibus.spec modified for the Version and Release (release is made 1).
+2. There will be failure in addition of minizip-ng reported by grapher.  The fix is to give up on using the new name minizip-ng
+   for the time being.  Therefore, the folder minizip will be restored and the folder minizip-ng will be removed.
+3. Continuing from the above the package name in the build list will be changed to minizip from minizip-ng.  This we may do by 
+   manually editing the wkg_pkgs_to_build or starting to use patched1_wkg_pkgs_to_build. 
+4. There will be a failure to add pcp package too.  Again grapher will be the tool which reports this failure.
+5. As noted in the earlier notes, this time we will do the same.  That, is comment out the BuildRequires on 
+   ibus-table-chinese-* packages and thereby break the circular dependency.
+6. Circular dependency in javacc needs to be fixed
+7. A build will then report that the srpmpacker tool has skipped several packages because those can't be built on current architecture.
+   Fix these by removing the ExclusiveArch tag from their spec files.
+
+
+
+1.  The copy of ibus.spec from a previous build was done. 
+And its diff verified against the base to the topic branch to prove that the only 
+changes are the version related
+
+```
+neerajs [ /third_disk/bb01Mar/azurelinux/SPECS-EXTENDED/ibus ]$ cp /four_disk/bb_08Feb/azlinux_sms/SPECS-EXTENDED/ibus/ibus.spec ibus.spec 
+neerajs [ /third_disk/bb01Mar/azurelinux/SPECS-EXTENDED/ibus ]$ git log --oneline -7
+bf275ab80 (HEAD -> topic_bb_01Mar) committing the notes and related logs/screen grabs
+63c58c99f Committing the changes caused by the prep_ext_folder script
+a556a5b6e (origin/topic_bb_01Mar) Adding didwhat which contains the steps taken and various scripts and build list
+150f5c0a4 (origin/3.0-dev, 3.0-dev) patch bind uninitialized memory error (#12588)
+0f2d4d5be Upgrade squid to version 6.13 and Moved to SPECS (#12636)
+c4f721752 [3.0] fix ptest for `libcap` (#12644)
+54b61a7d7 Upgrade libtdb to version 1.4.12 and move to SPECS (#12633)
+neerajs [ /third_disk/bb01Mar/azurelinux/SPECS-EXTENDED/ibus ]$ git diff 150f5c0a4 -- ibus.spec
+diff --git a/SPECS-EXTENDED/ibus/ibus.spec b/SPECS-EXTENDED/ibus/ibus.spec
+old mode 100644
+new mode 100755
+index 611983f14..8bb56beff
+--- a/SPECS-EXTENDED/ibus/ibus.spec
++++ b/SPECS-EXTENDED/ibus/ibus.spec
+@@ -14,8 +14,8 @@ Distribution:   Azure Linux
+ %global dbus_python_version 0.83.0
+ 
+ Name:           ibus
+-Version:        1.5.22
+-Release:        9%{?dist}
++Version:        1.5.31
++Release:        1%{?dist}
+ Summary:        Intelligent Input Bus for Linux OS
+ License:        LGPLv2+
+ URL:            https://github.com/ibus/%name/wiki
+@@ -23,7 +23,7 @@ Source0:        https://github.com/ibus/%name/releases/download/%{version}/%{nam
+ Source1:        %{name}-xinput
+ Source2:        %{name}.conf.5
+ # Patch0:         %%{name}-HEAD.patch
+-Patch0:         %{name}-HEAD.patch
++#Patch0:         %{name}-HEAD.patch
+ # Under testing #1349148 #1385349 #1350291 #1406699 #1432252 #1601577
+ Patch1:         %{name}-1385349-segv-bus-proxy.patch
+ 
+neerajs [ /third_disk/bb01Mar/azurelinux/SPECS-EXTENDED/ibus ]$ 
+```
+
+
+2. There will be failure in addition of minizip-ng reported by grapher.  The fix is to give up on using the new name minizip-ng
+   for the time being.  Therefore, the folder minizip will be restored and the folder minizip-ng will be removed.
+
+
+```
+neerajs [ /third_disk/bb01Mar/azurelinux ]$ git log --oneline -7
+bf275ab80 (HEAD -> topic_bb_01Mar) committing the notes and related logs/screen grabs
+63c58c99f Committing the changes caused by the prep_ext_folder script
+a556a5b6e (origin/topic_bb_01Mar) Adding didwhat which contains the steps taken and various scripts and build list
+150f5c0a4 (origin/3.0-dev, 3.0-dev) patch bind uninitialized memory error (#12588)
+0f2d4d5be Upgrade squid to version 6.13 and Moved to SPECS (#12636)
+c4f721752 [3.0] fix ptest for `libcap` (#12644)
+54b61a7d7 Upgrade libtdb to version 1.4.12 and move to SPECS (#12633)
+neerajs [ /third_disk/bb01Mar/azurelinux ]$ ls -ld SPECS-EXTENDED/minizi*
+drwxr-xr-x. 2 neerajs neerajs 4096 Mar  1 19:43 SPECS-EXTENDED/minizip-ng
+neerajs [ /third_disk/bb01Mar/azurelinux ]$ git restore --source=150f5c0a4 -- SPECS-EXTENDED/minizip
+neerajs [ /third_disk/bb01Mar/azurelinux ]$ ls -ld SPECS-EXTENDED/minizi*
+drwxrwxr-x. 2 neerajs neerajs 4096 Mar  1 20:19 SPECS-EXTENDED/minizip
+drwxr-xr-x. 2 neerajs neerajs 4096 Mar  1 19:43 SPECS-EXTENDED/minizip-ng
+neerajs [ /third_disk/bb01Mar/azurelinux ]$ 
+neerajs [ /third_disk/bb01Mar/azurelinux ]$ rm -rf SPECS-EXTENDED/minizip-ng/
+neerajs [ /third_disk/bb01Mar/azurelinux ]$ ls -ld SPECS-EXTENDED/minizi*
+drwxrwxr-x. 2 neerajs neerajs 4096 Mar  1 20:19 SPECS-EXTENDED/minizip
+neerajs [ /third_disk/bb01Mar/azurelinux ]$ 
+```
+
+3. Continuing from the above the package name in the build list will be changed to minizip from minizip-ng.  This we may do by 
+   manually editing the wkg_pkgs_to_build or starting to use patched1_wkg_pkgs_to_build. 
+```
+neerajs [ /third_disk/bb01Mar/azurelinux/didwhat/BULK_BLD_THINGS_01Mar ]$ cp wkg_pkgs_to_build wkg_pkgs_to_build_orig
+neerajs [ /third_disk/bb01Mar/azurelinux/didwhat/BULK_BLD_THINGS_01Mar ]$ grep -e "minizip" wkg_pkgs_to_build
+minizip-ng
+neerajs [ /third_disk/bb01Mar/azurelinux/didwhat/BULK_BLD_THINGS_01Mar ]$ ~/utils/rep_full_line_a_by_b minizip-ng minizip wkg_pkgs_to_build
+====== Cleaning up ======
+neerajs [ /third_disk/bb01Mar/azurelinux/didwhat/BULK_BLD_THINGS_01Mar ]$ grep -e "minizip" wkg_pkgs_to_build
+minizip
+neerajs [ /third_disk/bb01Mar/azurelinux/didwhat/BULK_BLD_THINGS_01Mar ]$ diff wkg_pkgs_to_build wkg_pkgs_to_build_orig 
+644c644
+< minizip
+---
+> minizip-ng
+neerajs [ /third_disk/bb01Mar/azurelinux/didwhat/BULK_BLD_THINGS_01Mar ]$ 
+```
+
+4. There will be a failure to add pcp package too.  Again grapher will be the tool which reports this failure.
+Restored pcp.spec from the Azure Linux, i.e. from one commit before the HEAD, and modified the Version and 
+
+```
+neerajs [ /third_disk/bb01Mar/azurelinux ]$ git log --oneline -7
+bf275ab80 (HEAD -> topic_bb_01Mar) committing the notes and related logs/screen grabs
+63c58c99f Committing the changes caused by the prep_ext_folder script
+a556a5b6e (origin/topic_bb_01Mar) Adding didwhat which contains the steps taken and various scripts and build list
+150f5c0a4 (origin/3.0-dev, 3.0-dev) patch bind uninitialized memory error (#12588)
+0f2d4d5be Upgrade squid to version 6.13 and Moved to SPECS (#12636)
+c4f721752 [3.0] fix ptest for `libcap` (#12644)
+54b61a7d7 Upgrade libtdb to version 1.4.12 and move to SPECS (#12633)
+neerajs [ /third_disk/bb01Mar/azurelinux ]$ git restore --source=150f5c0a4 -- SPECS-EXTENDED/pcp/pcp.spec
+neerajs [ /third_disk/bb01Mar/azurelinux ]$ vim SPECS-EXTENDED/pcp/pcp.spec 
+neerajs [ /third_disk/bb01Mar/azurelinux ]$ git diff 150f5c0a4 -- SPECS-EXTENDED/pcp/pcp.spec
+diff --git a/SPECS-EXTENDED/pcp/pcp.spec b/SPECS-EXTENDED/pcp/pcp.spec
+index 1c798a2a8..d6602e35a 100644
+--- a/SPECS-EXTENDED/pcp/pcp.spec
++++ b/SPECS-EXTENDED/pcp/pcp.spec
+@@ -1,8 +1,8 @@
+ %global _unpackaged_files_terminate_build 0
+ 
+ Name:    pcp
+-Version: 5.1.1
+-Release: 3%{?dist}
++Version: 6.3.2
++Release: 1%{?dist}
+ Summary: System-level performance monitoring and performance management
+ License: GPLv2+ and LGPLv2+ and CC-BY
+ Vendor:         Microsoft Corporation
+neerajs [ /third_disk/bb01Mar/azurelinux ]$ 
+```
+
+
+5. As noted in the earlier notes, this time we will do the same.  That, is comment out the BuildRequires on 
+   ibus-table-chinese-* packages in the "ibus-table.spec" and thereby break the circular dependency.
+
+```
+neerajs [ /third_disk/bb01Mar/azurelinux ]$ vim SPECS-EXTENDED/ibus-table/ibus-table.spec 
+neerajs [ /third_disk/bb01Mar/azurelinux ]$ git diff SPECS-EXTENDED/ibus-table/ibus-table.spec
+diff --git a/SPECS-EXTENDED/ibus-table/ibus-table.spec b/SPECS-EXTENDED/ibus-table/ibus-table.spec
+index 0618c0c97..415fc59fe 100755
+--- a/SPECS-EXTENDED/ibus-table/ibus-table.spec
++++ b/SPECS-EXTENDED/ibus-table/ibus-table.spec
+@@ -32,9 +32,9 @@ BuildRequires:  desktop-file-utils
+ BuildRequires:  python3-gobject
+ BuildRequires:  python3-gobject-base
+ BuildRequires:  dbus-x11
+-BuildRequires:  ibus-table-chinese-wubi-jidian
+-BuildRequires:  ibus-table-chinese-cangjie
+-BuildRequires:  ibus-table-chinese-stroke5
++#BuildRequires:  ibus-table-chinese-wubi-jidian
++#BuildRequires:  ibus-table-chinese-cangjie
++#BuildRequires:  ibus-table-chinese-stroke5
+ BuildRequires:  ibus-table-code
+ BuildRequires:  ibus-table-latin
+ BuildRequires:  ibus-table-translit
+neerajs [ /third_disk/bb01Mar/azurelinux ]$ 
+```
+
+6. Circulare dependency in javacc needs to be fixed:
+```
+neerajs [ /third_disk/bb01Mar/azurelinux ]$ git diff SPECS-EXTENDED/javacc/javacc.spec
+neerajs [ /third_disk/bb01Mar/azurelinux ]$ vim SPECS-EXTENDED/javacc/javacc.spec
+neerajs [ /third_disk/bb01Mar/azurelinux ]$ git diff SPECS-EXTENDED/javacc/javacc.spec
+diff --git a/SPECS-EXTENDED/javacc/javacc.spec b/SPECS-EXTENDED/javacc/javacc.spec
+index 9ceb77f42..42f91c67a 100755
+--- a/SPECS-EXTENDED/javacc/javacc.spec
++++ b/SPECS-EXTENDED/javacc/javacc.spec
+@@ -57,7 +57,7 @@ BuildRequires:  javapackages-bootstrap
+ %else
+ BuildRequires:  javapackages-local
+ BuildRequires:  ant
+-BuildRequires:  javacc
++#BuildRequires:  javacc
+ %endif
+ 
+ # Explicit javapackages-tools requires since scripts use
+neerajs [ /third_disk/bb01Mar/azurelinux ]$ 
+```
+
+
+7. A build will then report that the srpmpacker tool has skipped several packages because those can't be built on current architecture.
+We will check if the packages found to have this build issue in the previous build
+have the ExclusiveArch line present.
+If yes, we will fix those packages straightaway, instead of discovering those via the 
+build failures.
+
+```
+neerajs [ /third_disk/bb01Mar/azurelinux/didwhat/BULK_BLD_THINGS_01Mar ]$ ./fix_pkgs_w_archissue  /third_disk/bb01Mar/azurelinux/SPECS-EXTENDED/ /third_disk/bb01Mar/azurelinux/didwhat/ListOfFileWithExclusiveArchProblem 
+Do you want to want to modify xalan-j2/xalan-j2.spec?
+y
+xalan-j2/xalan-j2.spec  being modified
+Do you want to want to modify maven-parent/maven-parent.spec?
+y
+maven-parent/maven-parent.spec  being modified
+Do you want to want to modify xmlunit/xmlunit.spec?
+y
+xmlunit/xmlunit.spec  being modified
+Do you want to want to modify xbean/xbean.spec?
+y
+xbean/xbean.spec  being modified
+Do you want to want to modify apache-commons-net/apache-commons-net.spec?
+y
+apache-commons-net/apache-commons-net.spec  being modified
+Do you want to want to modify jakarta-annotations/jakarta-annotations.spec?
+y
+jakarta-annotations/jakarta-annotations.spec  being modified
+Do you want to want to modify jline/jline.spec?
+y
+jline/jline.spec  being modified
+Do you want to want to modify slirp4netns/slirp4netns.spec?
+y
+slirp4netns/slirp4netns.spec  being modified
+Do you want to want to modify jsoup/jsoup.spec?
+y
+jsoup/jsoup.spec  being modified
+Do you want to want to modify apache-commons-io/apache-commons-io.spec?
+y
+apache-commons-io/apache-commons-io.spec  being modified
+Do you want to want to modify cglib/cglib.spec?
+y
+cglib/cglib.spec  being modified
+Do you want to want to modify javacc/javacc.spec?
+y
+javacc/javacc.spec  being modified
+Do you want to want to modify bcel/bcel.spec?
+y
+bcel/bcel.spec  being modified
+Do you want to want to modify apache-commons-codec/apache-commons-codec.spec?
+y
+apache-commons-codec/apache-commons-codec.spec  being modified
+Do you want to want to modify osgi-annotation/osgi-annotation.spec?
+y
+osgi-annotation/osgi-annotation.spec  being modified
+Do you want to want to modify apache-commons-jexl/apache-commons-jexl.spec?
+y
+apache-commons-jexl/apache-commons-jexl.spec  being modified
+Do you want to want to modify objenesis/objenesis.spec?
+y
+objenesis/objenesis.spec  being modified
+Do you want to want to modify apache-commons-vfs/apache-commons-vfs.spec?
+y
+apache-commons-vfs/apache-commons-vfs.spec  being modified
+Do you want to want to modify hawtjni/hawtjni.spec?
+y
+hawtjni/hawtjni.spec  being modified
+Do you want to want to modify jdom2/jdom2.spec?
+y
+jdom2/jdom2.spec  being modified
+Do you want to want to modify trilead-ssh2/trilead-ssh2.spec?
+y
+trilead-ssh2/trilead-ssh2.spec  being modified
+Do you want to want to modify plexus-pom/plexus-pom.spec?
+y
+plexus-pom/plexus-pom.spec  being modified
+Do you want to want to modify xerces-j2/xerces-j2.spec?
+y
+xerces-j2/xerces-j2.spec  being modified
+Do you want to want to modify jdepend/jdepend.spec?
+y
+jdepend/jdepend.spec  being modified
+Do you want to want to modify ecj/ecj.spec?
+y
+ecj/ecj.spec  being modified
+Do you want to want to modify rhino/rhino.spec?
+y
+rhino/rhino.spec  being modified
+Do you want to want to modify apache-commons-compress/apache-commons-compress.spec?
+y
+apache-commons-compress/apache-commons-compress.spec  being modified
+Do you want to want to modify containernetworking-plugins/containernetworking-plugins.spec?
+y
+containernetworking-plugins/containernetworking-plugins.spec  being modified
+Do you want to want to modify apache-commons-collections4/apache-commons-collections4.spec?
+y
+apache-commons-collections4/apache-commons-collections4.spec  being modified
+Do you want to want to modify jansi/jansi.spec?
+y
+jansi/jansi.spec  being modified
+Do you want to want to modify osgi-core/osgi-core.spec?
+y
+osgi-core/osgi-core.spec  being modified
+Do you want to want to modify httpcomponents-core/httpcomponents-core.spec?
+y
+httpcomponents-core/httpcomponents-core.spec  being modified
+Do you want to want to modify crypto-policies/crypto-policies.spec?
+y
+crypto-policies/crypto-policies.spec  being modified
+neerajs [ /third_disk/bb01Mar/azurelinux/didwhat/BULK_BLD_THINGS_01Mar ]$ 
+```
+
+The following git status shows that 33 spec files were modified in SPECS-EXTENDED:
+```
+neerajs [ /third_disk/bb01Mar/azurelinux ]$ git status
+On branch topic_bb_01Mar
+Changes to be committed:
+  (use "git restore --staged <file>..." to unstage)
+        new file:   didwhat/ListOfFileWithExclusiveArchProblem
+
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+        modified:   SPECS-EXTENDED/apache-commons-codec/apache-commons-codec.spec
+        modified:   SPECS-EXTENDED/apache-commons-collections4/apache-commons-collections4.spec
+        modified:   SPECS-EXTENDED/apache-commons-compress/apache-commons-compress.spec
+        modified:   SPECS-EXTENDED/apache-commons-io/apache-commons-io.spec
+        modified:   SPECS-EXTENDED/apache-commons-jexl/apache-commons-jexl.spec
+        modified:   SPECS-EXTENDED/apache-commons-net/apache-commons-net.spec
+        modified:   SPECS-EXTENDED/apache-commons-vfs/apache-commons-vfs.spec
+        modified:   SPECS-EXTENDED/bcel/bcel.spec
+        modified:   SPECS-EXTENDED/cglib/cglib.spec
+        modified:   SPECS-EXTENDED/containernetworking-plugins/containernetworking-plugins.spec
+        modified:   SPECS-EXTENDED/crypto-policies/crypto-policies.spec
+        modified:   SPECS-EXTENDED/ecj/ecj.spec
+        modified:   SPECS-EXTENDED/hawtjni/hawtjni.spec
+        modified:   SPECS-EXTENDED/httpcomponents-core/httpcomponents-core.spec
+        modified:   SPECS-EXTENDED/jakarta-annotations/jakarta-annotations.spec
+        modified:   SPECS-EXTENDED/jansi/jansi.spec
+        modified:   SPECS-EXTENDED/javacc/javacc.spec
+        modified:   SPECS-EXTENDED/jdepend/jdepend.spec
+        modified:   SPECS-EXTENDED/jdom2/jdom2.spec
+        modified:   SPECS-EXTENDED/jline/jline.spec
+        modified:   SPECS-EXTENDED/jsoup/jsoup.spec
+        modified:   SPECS-EXTENDED/maven-parent/maven-parent.spec
+        modified:   SPECS-EXTENDED/objenesis/objenesis.spec
+        modified:   SPECS-EXTENDED/osgi-annotation/osgi-annotation.spec
+        modified:   SPECS-EXTENDED/osgi-core/osgi-core.spec
+        modified:   SPECS-EXTENDED/plexus-pom/plexus-pom.spec
+        modified:   SPECS-EXTENDED/rhino/rhino.spec
+        modified:   SPECS-EXTENDED/slirp4netns/slirp4netns.spec
+        modified:   SPECS-EXTENDED/trilead-ssh2/trilead-ssh2.spec
+        modified:   SPECS-EXTENDED/xalan-j2/xalan-j2.spec
+        modified:   SPECS-EXTENDED/xbean/xbean.spec
+        modified:   SPECS-EXTENDED/xerces-j2/xerces-j2.spec
+        modified:   SPECS-EXTENDED/xmlunit/xmlunit.spec
+        modified:   didwhat/STEPS_01Mar2025.txt
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+        didwhat/.STEPS_01Mar2025.txt.swp
+
+neerajs [ /third_disk/bb01Mar/azurelinux ]$ 
+```
+
+
+
+

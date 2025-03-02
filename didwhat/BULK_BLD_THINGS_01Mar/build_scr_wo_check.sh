@@ -52,6 +52,10 @@ num_pk=$(echo $pk_bld_list | wc --words)
 
 echo "Number of packages in the build list = $num_pk"
 
+pushd $AZLINUX_DIR/toolkit
+PWD=`pwd`
+echo changed to $PWD
+
 export PACKAGE_URL_LIST="https://mariner3dailydevrepo.blob.core.windows.net/daily-repo-3-0-20241206-x86-64/built_rpms_all https://mariner3dailydevrepo.blob.core.windows.net/daily-repo-3-0-20241206-x86-64 https://packages.microsoft.com/azurelinux/3.0/prod/base/x86_64 https://packages.microsoft.com/azurelinux/3.0/prod/base/debuginfo/x86_64 https://packages.microsoft.com/azurelinux/3.0/prod/ms-oss/x86_64";
 
 echo "Setting PACKAGE_URL_LIST from the calling script as follows:"
@@ -68,7 +72,9 @@ echo "Now triggering the actual build:"
 echo "--------------------------------"
 $AZLINUX_DIR/toolkit/pkgbld.sh -s ../SPECS-EXTENDED -p "$pk_bld_list"
 
-
+popd
+PWD=`pwd`
+echo changed back to $PWD
 
 #####################
 #####################

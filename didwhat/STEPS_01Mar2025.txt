@@ -746,5 +746,55 @@ ls: cannot access 'delve': No such file or directory
 neerajs [ /third_disk/bb01Mar/azurelinux/SPECS-EXTENDED ]$ 
 ```
 
+Started another build after the above changes (at 11:23 AM IST on 02 Mar 2025, or Sun Mar  2 05:53:52 UTC 2025):
+```
+neerajs [ /third_disk/bb01Mar/azurelinux/toolkit ]$ /third_disk/bb01Mar/azurelinux/didwhat/BULK_BLD_THINGS_01Mar/build_scr_with_check.sh /third_disk/bb01Mar/azurelinux/didwhat/BULK_BLD_TH
+INGS_01Mar/wkg_pkgs_to_build /third_disk/bb01Mar/azurelinux/ > ../didwhat/bld_bb01Mar_iter02_$(date +%Y%m%d-%H%M).log 2>&1 &
+[1] 202131
+neerajs [ /third_disk/bb01Mar/azurelinux/toolkit ]$ 
+```
 
+The build finished at 08:52 PM IST on 02 Mar 2025, or Sun Mar  2 15:22:12 UTC 2025.
+
+The results were:
+```
+INFO[26180][scheduler] --> snowball-2.2.0-13.azl3.src.rpm , for details see: /third_disk/bb01Mar/azurelinux/build/logs/pkggen/rpmbuilding/snowball-2.2.0-13.azl3.src.rpm.test.log 
+INFO[26180][scheduler] --> tbb-2021.13.0-2.azl3.src.rpm , for details see: /third_disk/bb01Mar/azurelinux/build/logs/pkggen/rpmbuilding/tbb-2021.13.0-2.azl3.src.rpm.test.log 
+INFO[26180][scheduler] --> tclx-8.4.0-37.azl3.src.rpm , for details see: /third_disk/bb01Mar/azurelinux/build/logs/pkggen/rpmbuilding/tclx-8.4.0-37.azl3.src.rpm.test.log 
+INFO[26180][scheduler] --> tix-8.4.3-35.azl3.src.rpm , for details see: /third_disk/bb01Mar/azurelinux/build/logs/pkggen/rpmbuilding/tix-8.4.3-35.azl3.src.rpm.test.log 
+INFO[26180][scheduler] --> uriparser-0.9.8-2.azl3.src.rpm , for details see: /third_disk/bb01Mar/azurelinux/build/logs/pkggen/rpmbuilding/uriparser-0.9.8-2.azl3.src.rpm.test.log 
+INFO[26180][scheduler] --> usbguard-1.1.3-2.azl3.src.rpm , for details see: /third_disk/bb01Mar/azurelinux/build/logs/pkggen/rpmbuilding/usbguard-1.1.3-2.azl3.src.rpm.test.log 
+INFO[26180][scheduler] --> virt-p2v-1.42.4-1.azl3.src.rpm , for details see: /third_disk/bb01Mar/azurelinux/build/logs/pkggen/rpmbuilding/virt-p2v-1.42.4-1.azl3.src.rpm.test.log 
+INFO[26180][scheduler] --> vmem-1.8-2.azl3.src.rpm , for details see: /third_disk/bb01Mar/azurelinux/build/logs/pkggen/rpmbuilding/vmem-1.8-2.azl3.src.rpm.test.log 
+INFO[26180][scheduler] ---------------------------                  
+INFO[26180][scheduler] --------- Summary ---------                  
+INFO[26180][scheduler] ---------------------------                  
+INFO[26180][scheduler] Number of prebuilt SRPMs:              0     
+INFO[26180][scheduler] Number of prebuilt delta SRPMs:        0     
+INFO[26180][scheduler] Number of skipped SRPMs tests:         0     
+INFO[26180][scheduler] Number of built SRPMs:                 1057  
+INFO[26180][scheduler] Number of passed SRPMs tests:          473   
+ERRO[26180][scheduler] Number of unresolved dependencies:     457   
+ERRO[26180][scheduler] Number of blocked SRPMs:               312   
+ERRO[26180][scheduler] Number of blocked SRPMs tests:         181   
+ERRO[26180][scheduler] Number of failed SRPMs:                112   
+ERRO[26180][scheduler] Number of failed SRPMs tests:          91    
+INFO[26180][scheduler] Number of SRPMs with license errors:   0     
+INFO[26180][scheduler] Number of SRPMs with license warnings: 0     
+INFO[26180][scheduler] Number of toolchain RPM conflicts:     0     
+INFO[26180][scheduler] Number of toolchain SRPM conflicts:    0     
+INFO[26180][scheduler] Writing DOT graph to /third_disk/bb01Mar/azurelinux/build/pkg_artifacts/built_graph.dot 
+FATA[26181][scheduler] Unable to build package graph.
+For details see the build summary section above.
+Error: could not build all packages. 
+INFO[26181][scheduler] Waiting for outstanding chroot initialization and cleanup to finish 
+INFO[26181][scheduler] Waiting for outstanding chroot commands to finish 
+INFO[26181][scheduler] Waiting for outstanding processes to be created before blocking all future processes 
+INFO[26181][scheduler] Waiting for outstanding processes to be created before stopping all child processes 
+INFO[26181][scheduler] systemd-detect-virt reports that the tool is running in a container, running as a container build 
+INFO[26181][scheduler] Cleanup finished                             
+make: *** [/third_disk/bb01Mar/azurelinux/toolkit/scripts/pkggen.mk:301: /third_disk/bb01Mar/azurelinux/build/make_status/build-rpms.flag] Error 1
+/third_disk/bb01Mar/azurelinux/toolkit
+changed back to /third_disk/bb01Mar/azurelinux/toolkit
+```
 

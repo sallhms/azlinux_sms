@@ -1,0 +1,47 @@
+
+#MSTR_LIST="/home/neerajs/Downloads/docker_folder/impspc/mlist_extpkg"
+#MSTR_LIST="/home/neerajs/Downloads/docker_folder/impspc/smlist_w_badpkgnm"
+MSTR_LIST="/home/neerajs/Downloads/docker_folder/impspc/fifty_pkglist"
+#MSTR_LIST="/home/neerajs/Downloads/docker_folder/impspc/first_fifty_pkglist"
+MSREPO_2MAIN_WORKDIR="/home/neerajs/work/REPOS/Microsoft_AZL/azurelinux"
+MSREPO_3DEV_WORKDIR="/home/neerajs/work/REPOS/Microsoft_AZL/azurelinux"
+BUILD_ARTFCT_STATUS_FL="/home/neerajs/Downloads/daily_builds/06Nov2024/build_state.csv"
+#BUILD_ARTFCT_STATUS_FL="/home/neerajs/utils/TestIdeas/PKG_ANALYSIS/last_fifty_build_state.csv"
+
+count=0
+for pkg in `cat $MSTR_LIST | head -5`
+#for pkg in `cat $MSTR_LIST`
+do
+	count=$(expr $count + 1)
+	if [ -n $pkg ]
+	then
+		art_sts_line=0
+		IFS=$'\n'
+		for line in `cat $BUILD_ARTFCT_STATUS_FL`
+		do
+			art_sts_line=$(expr $art_sts_line + 1)
+#			echo "$count: Line number $art_sts_line is $line"
+			SRPM_FL=$(echo $line | awk 'BEGIN {FS=","} {print $1}')
+			SRPM_STATUS=$(echo $line | awk 'BEGIN {FS=","} {print $2}')
+			PKG_NM_PART=""
+#			PKG_NM_PART=$(echo $SRPM_FL | ~/utils/remove_ver_rel/chk_n_rem_ver_rel_part)
+
+			PKG_NM_PART=$(echo $SRPM_FL | awk 'BEGIN {FS = "-"} NF >= 3 { for (i = 1; i <= NF - 2; i++) { if (i > 1) {printf "-"} printf $i; } printf "\n"; }') 
+#			PKG_NM_PART=$(echo $SRPM_FL| sed -e "s/\(.*\)-[^-]*-[^-]*\.src\.rpm/\1/")
+#			echo "$count: $SRPM_FL:$SRPM_STATUS:$PKG_NM_PART"
+			if [ "$PKG_NM_PART" = "$pkg" ]
+			then
+				break;
+			fi
+		done
+		unset IFS
+		if [ "$PKG_NM_PART" = "$pkg" ]
+		then
+			echo "Found $pkg"
+		else
+			echo -n "$count: "
+			echo "Missing $pkg"
+		fi
+	fi
+done
+

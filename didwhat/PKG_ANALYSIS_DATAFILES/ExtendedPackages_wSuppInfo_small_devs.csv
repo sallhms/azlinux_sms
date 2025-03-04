@@ -1,0 +1,64 @@
+﻿Package,Developer,Upgrade to be done (Y/N/To be removed),Is some confirmation required (Y/N),Confirmation done  (Y/N),2.0 EXT pkg present in either SPECS or EXT of 3.0-dev (Y/N),2.0 EXT pkg present in EXT of 3.0-dev(Y/N),"Confirm if removal is deliberate (Y/N) (If N in both Column F and Column G, here we put Y.  A Y here means we must check with Microsoft if this is a deliberate removal of the package)","Moved from EXT in 2.0 to Core in 3.0-dev (Y/N) (If Y in Column F and N in Column G, then this is Y)",Remarks,"Priority (P0, P1, P2)",New Name of Package,Package added to Azure Linux 3.0-dev
+CharLS,Jyoti,Override_to_Y,N,N,Y,Y,N,N,,P1,NA,N
+GConf2,Jyoti,,N,N,Y,Y,N,N,,P1,NA,N
+GeoIP,Jyoti,,N,N,Y,Y,N,N,,P1,NA,N
+advancecomp,Jagadeesh,,N,N,Y,Y,N,N,,P1,NA,N
+alsa-firmware,Jagadeesh,,N,N,Y,Y,N,N,,CP_batch1,NA,N
+alsa-plugins,Jagadeesh,,N,N,Y,Y,N,N,,P1,NA,N
+amtk,Jagadeesh,,N,N,Y,Y,N,N,,P1,NA,N
+amtterm,Jagadeesh,,N,N,Y,Y,N,N,,P1,NA,N
+annobin,Jagadeesh,,N,N,Y,N,N,Y,,P1,NA,N
+ansible-freeipa,Jagadeesh,,N,N,Y,Y,N,N,,P1,NA,N
+aopalliance,Jagadeesh,Override_to_Y,N,N,Y,Y,N,N,,P1,NA,N
+argparse-manpage,Kevin,,N,N,N,N,Y,N,has been rename to python-argparse-manpage,P1,NA,N
+args4j,Kevin,,N,N,Y,Y,N,N,,P1,NA,N
+arptables,Kevin,,N,N,Y,Y,N,N,,P1,NA,N
+arpwatch,Kevin,,N,N,Y,Y,N,N,,P1,NA,N
+asio,Kevin,,N,N,Y,Y,N,N,,P1,NA,N
+authselect,Kevin,,N,N,Y,Y,N,N,,P1,NA,N
+babeltrace,Kevin,,N,N,Y,Y,N,N,,P1,NA,N
+babl,Kevin,,N,N,Y,Y,N,N,,P1,NA,N
+bolt,Akarsh,,N,N,Y,Y,N,N,,CP_batch1,NA,N
+boom-boot,Akarsh,,N,N,Y,Y,N,N,,P1,NA,N
+booth,Akarsh,,N,N,Y,Y,N,N,,P1,NA,N
+botan2,Akarsh,,N,N,Y,Y,N,N,,P1,NA,N
+breezy,Akarsh,,N,N,Y,Y,N,N,,P1,NA,N
+chan,Neeraj,,N,N,Y,Y,N,N,,P1,NA,N
+clucene,Sumit,Override_to_Y,N,N,Y,Y,N,N,clucene wasn't building.  Fixed it's build.,P1,NA,N
+cogl,Archana,,N,N,Y,Y,N,N,,P1,NA,N
+colorize,Archana,,N,N,Y,Y,N,N,,P1,NA,N
+compat-lua,Archana,,N,N,Y,Y,N,N,,P1,NA,N
+console-setup,Akarsh,,N,N,Y,Y,N,N,,P0,NA,N
+container-exception-logger,Archana,,N,N,Y,Y,N,N,,P1,NA,N
+containernetworking-plugins,Archana,,N,N,Y,Y,N,N,,P1,NA,N
+convmv,Archana,,N,N,Y,Y,N,N,,P1,NA,N
+corosync,Akhila,,N,N,Y,Y,N,N,,New P0,NA,N
+corosync-qdevice,Akhila,,N,N,Y,Y,N,N,,New P0,NA,N
+crash-ptdump-command,Sreenivasulu,,N,N,Y,Y,N,N,,P1,NA,N
+deltarpm,Sreenivasulu,,N,N,Y,Y,N,N,,P1,NA,N
+delve,Sreenivasulu,,N,N,Y,Y,N,N,,P1,NA,N
+device-mapper-persistent-data,Sreenivasulu,,N,N,Y,Y,N,N,,P1,NA,N
+diffstat,Sreenivasulu,,N,N,Y,Y,N,N,,P1,NA,N
+kde-filesystem,Aninda,,N,N,Y,Y,N,N,,P0,NA,N
+kernel-rt,Aninda,,N,N,Y,Y,N,N,,P1,NA,N
+keybinder3,Aninda,,N,N,Y,Y,N,N,,P1,NA,N
+keycloak-httpd-client-install,Aninda,,N,N,Y,Y,N,N,,CP_batch1,NA,N
+kronosnet,Aninda,,N,N,Y,Y,N,N,,P1,NA,N
+kyotocabinet,Aninda,,N,N,Y,Y,N,N,,P1,NA,N
+DartSass,Sumit,,Y,Y,,,,,,P1,NA,Y
+rubygem-sys-filesystem,Jyoti,Y,,,,,,,New package built and added,P1,NA,Y
+libimobiledevice-glue,Kevin,Y,,,,,,,New package built and added,P1,NA,Y
+rubygem-puppet-resource_api,Sumit,Y,,,,,,,Not there in the original list,P1,NA,Y
+rubygem-hocon,Sumit,Y,,,,,,,Not there in the original list,P1,NA,Y
+rubygem-deep_merge,Sumit,Y,,,,,,,Not there in the original list,P1,NA,Y
+hiera,Sumit,Y,,,,,,,Not there in the original list,P1,NA,Y
+libselinux,Sumit,Y,,,,,,,"Instead of extended, it is a core package, but had to be upgraded to complete the upgrade of puppet.",P1,NA,Y
+rubygem-racc,Sumit,Y,,,,,,,New package built and added,P1,NA,Y
+rubygem-scanf,Sumit,Y,,,,,,,New package built and added,P1,NA,Y
+rubygem-test-unit-ruby-core,Sumit,Y,,,,,,,New package built and added,P1,NA,Y
+perl-Test-RandomResult,Kevin,Y,,,,,,,New package built and added,P1,NA,Y
+python-flaky,Jyoti,,,,,,,,,,NA,Y
+python-pyproject-api,Jyoti,,,,,,,,,,NA,Y
+python-sphinxygen,Jyoti,,,,,,,,,,NA,Y
+zix,Jyoti,,,,,,,,,,NA,Y
+NOVALIDPACKAGE,NO-DEV,,,,,,,,,,,

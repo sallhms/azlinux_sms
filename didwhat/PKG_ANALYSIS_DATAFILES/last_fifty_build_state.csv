@@ -1,0 +1,52 @@
+Package,State,Blocker,IsTest
+python-hwdata-2.3.7-11.azl3.src.rpm,Failed,pylint-2.4.4-4.azl3.src.rpm-UNBUILT ,0
+libunicap-0.9.12-29.azl3.src.rpm,Failed,v4l-utils-1.22.1-1.azl3.src.rpm-UNBUILT ,0
+wireshark-4.0.8-1.azl3.src.rpm,Failed,,0
+ibus-kkc-1.5.22-16.azl3.src.rpm,Failed,ibus-1.5.22-9.azl3.src.rpm-UNBUILT libkkc-0.3.5-21.azl3.src.rpm-UNBUILT ,0
+ocaml-csv-1.7-17.azl3.src.rpm,Failed,ocaml-extlib-1.7.8-1.azl3.src.rpm-FAIL ,0
+pacemaker-2.1.5-5.azl3.src.rpm,Failed,corosync-3.0.4-3.azl3.src.rpm-UNBUILT ,0
+splix-2.0.1-3.azl3.src.rpm,Failed,jbigkit-2.1-19.azl3.src.rpm-FAIL ,0
+python-requests-mock-1.7.0-4.azl3.src.rpm,Failed,python-fixtures-3.0.0-18.azl3.src.rpm-UNBUILT python-testtools-2.4.0-9.azl3.src.rpm-FAIL ,0
+osgi-compendium-7.0.0-2.azl3.src.rpm,Failed,osgi-annotation-7.0.0-2.azl3.src.rpm-FAIL osgi-core-7.0.0-2.azl3.src.rpm-UNBUILT ,0
+ibus-libzhuyin-1.9.1-6.azl3.src.rpm,Failed,ibus-1.5.22-9.azl3.src.rpm-UNBUILT ,0
+dovecot-2.3.20-1.azl3.src.rpm,Failed,clucene-2.3.3.4-39.azl3.src.rpm-FAIL ,0
+gnome-keyring-3.36.0-2.azl3.src.rpm,Failed,,0
+python-oslo-i18n-5.1.0-4.azl3.src.rpm,Failed,python-fixtures-3.0.0-18.azl3.src.rpm-UNBUILT ,0
+mod_security-2.9.4-1.azl3.src.rpm,Failed,,0
+gpsbabel-1.8.0-4.azl3.src.rpm,Failed,qt5-qtserialport-5.15.9-2.azl3.src.rpm-UNBUILT ,0
+apache-commons-dbcp-2.1.1-8.azl3.src.rpm,Failed,apache-commons-pool2-2.4.2-7.azl3.src.rpm-FAIL xerces-j2-2.12.0-5.azl3.src.rpm-UNBUILT ,0
+apache-commons-validator-1.5.0-1.azl3.src.rpm,Failed,apache-commons-digester-2.1-4.azl3.src.rpm-FAIL ,0
+perl-Razor-Agent-2.85-37.azl3.src.rpm,Failed,,0
+virt-top-1.0.9-7.azl3.src.rpm,Failed,ocaml-calendar-2.04-29.azl3.src.rpm-FAIL ocaml-xml-light-2.3-3.azl3.src.rpm-FAIL ocaml-csv-1.7-17.azl3.src.rpm-UNBUILT ocaml-extlib-1.7.8-1.azl3.src.rpm-FAIL ,0
+mod_auth_openidc-2.4.14.2-1.azl3.src.rpm,Failed,cjose-0.6.1-6.azl3.src.rpm-FAIL ,0
+python-rtslib-2.1.fb69-9.azl3.src.rpm,Failed,python-kmod-0.9-28.azl3.src.rpm-FAIL ,0
+perl-IO-All-0.87-11.azl3.src.rpm,Failed,,0
+overpass-fonts-3.0.4-4.azl3.src.rpm,Failed,fonts-rpm-macros-2.0.5-13.azl3.src.rpm-FAIL ,0
+perl-Net-DNS-Resolver-Mock-1.20200215-3.azl3.src.rpm,Failed,,0
+virt-p2v-1.42.0-6.azl3.src.rpm,Failed,,0
+ibus-1.5.22-9.azl3.src.rpm,Failed,,0
+perl-Module-Package-Au-2-18.azl3.src.rpm,Failed,,0
+perl-File-MimeInfo-0.29-7.azl3.src.rpm,Failed,,0
+python-debtcollector-1.22.0-4.azl3.src.rpm,Failed,python-fixtures-3.0.0-18.azl3.src.rpm-UNBUILT python-openstackdocstheme-1.29.0-8.azl3.src.rpm-FAIL ,0
+cassandra-4.0.10-1.azl3.src.rpm,Failed,xerces-j2-2.12.0-5.azl3.src.rpm-UNBUILT ,0
+libappstream-glib-0.8.2-4.azl3.src.rpm,Failed,,0
+perl-Net-DNS-Resolver-Programmable-0.009-10.azl3.src.rpm,Failed,,0
+dyninst-10.1.0-18.azl3.src.rpm,Failed,tbb-2020.2-2.azl3.src.rpm-FAIL tbb-2020.2-2.azl3.src.rpm-FAIL ,0
+bcel-5.2-37.azl3.src.rpm,Failed,regexp-1.5-23.azl3.src.rpm-FAIL ,0
+perl-JSON-MaybeXS-1.004003-5.azl3.src.rpm,Failed,,0
+freeradius-3.2.3-2.azl3.src.rpm,Failed,,0
+rasqal-0.9.33-13.azl3.src.rpm,Failed,raptor2-2.0.15-28.azl3.src.rpm-FAIL ,0
+perl-Digest-BubbleBabble-0.02-29.azl3.src.rpm,Failed,,0
+elinks-0.16.0-3.azl3.src.rpm,Failed,,0
+SDL2-2.24.0-2.azl3.src.rpm,Failed,,0
+libkkc-0.3.5-21.azl3.src.rpm,Failed,marisa-0.2.4-45.azl3.src.rpm-FAIL marisa-0.2.4-45.azl3.src.rpm-FAIL ,0
+perl-AnyEvent-BDB-1.1-38.azl3.src.rpm,Failed,,0
+pcp-5.1.1-3.azl3.src.rpm,Failed,libpfm-4.10.1-11.azl3.src.rpm-FAIL python-rtslib-2.1.fb69-9.azl3.src.rpm-UNBUILT ,0
+linuxconsoletools-1.8.1-3.azl3.src.rpm,Failed,,0
+qt5-qtserialport-5.15.9-2.azl3.src.rpm,Failed,,0
+microdnf-3.5.1-2.azl3.src.rpm,Failed,,0
+google-crosextra-caladea-fonts-1.002-1.azl3.src.rpm,Failed,fonts-rpm-macros-2.0.5-13.azl3.src.rpm-FAIL ,0
+ocaml-tyxml-4.5.0-2.azl3.src.rpm,Failed,ocaml-markup-1.0.0-5.azl3.src.rpm-FAIL ,0
+xmlunit-1.5-10.azl3.src.rpm,Failed,xerces-j2-2.12.0-5.azl3.src.rpm-UNBUILT ,0
+dleyna-connector-dbus-0.3.0-8.azl3.src.rpm,Failed,,0
+

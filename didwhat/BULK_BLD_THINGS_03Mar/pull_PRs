@@ -38,25 +38,31 @@ then
 fi
 
 LIST_TOPIC_BRANCHES="$DATA_PATH_FOR_LISTS/full_topic_brnch_list"
+if [ ! -f $LIST_TOPIC_BRANCHES ]
+then
+	echo The file $LIST_TOPIC_BRANCHES was not found
+	print_usage
+fi
 
 echo "STARTING PULL OF PRs (PR branches)"
 echo "=================================="
 pushd $AZLINUX_ROOT
 for line in `cat $LIST_TOPIC_BRANCHES`
 do
-	tpcorigin=$(echo $line | awk 'BEGIN {FS=","} {print $1}')
-	tpcbrnch=$(echo $line | awk 'BEGIN {FS=","} {print $2}')
+	pkgnm=$(echo $line | awk 'BEGIN {FS=","} {print $1}')
+	tpcorigin=$(echo $line | awk 'BEGIN {FS=","} {print $2}')
+	tpcbrnch=$(echo $line | awk 'BEGIN {FS=","} {print $3}')
 	echo "Pulling from ORIGIN=$tpcorigin BRANCH=$tpcbrnch"
 	
 	git pull --no-edit --quiet --no-rebase --commit $tpcorigin $tpcbrnch
+	#git pull --no-edit --quiet --no-rebase --commit https://github.com/durgajagadeesh/azurelinux_djpalli.git Topic_aopalliance
 	if [ $? -ne 0 ]
 	then
-		echo "Pull Failed, will do git merge --abort for this branch"
+		echo "$pkgnm,$tpcorigin,$tpcbrnch: Pull Failed, will do git merge --abort for this branch"
 		git merge --abort
 	else
-		echo "Pull Success"
+		echo "$pkgnm,$tpcorigin,$tpcbrnch: Pull Success"
 	fi
-	#git pull --no-edit --quiet --no-rebase --commit https://github.com/durgajagadeesh/azurelinux_djpalli.git Topic_aopalliance
 done
 popd
 

@@ -1,6 +1,7 @@
 
 
-MSTR_LIST="/third_disk/bb03Mar/azurelinux/didwhat/PKG_ANALYSIS_DATAFILES/ExtendedPackages_wSuppInfo.csv"
+MSTR_LIST="/third_disk/bb04Mar/azurelinux/didwhat/PKG_ANALYSIS_DATAFILES/ExtendedPackages_wSuppInfo.csv"
+#MSTR_LIST="/third_disk/bb04Mar/azurelinux/didwhat/PKG_ANALYSIS_DATAFILES/ExtendedPackages_wSuppInfo_split2.csv"
 
 #MSTR_LIST="/third_disk/bb03Mar/azurelinux/didwhat/PKG_ANALYSIS_DATAFILES/ExtendedPackages_wSuppInfo_small_devs.csv"
 #MSTR_LIST="/home/neerajs/PKG_ANALYSIS_DATAFILES/ExtendedPackages_wSuppInfo.csv"
@@ -13,13 +14,13 @@ MSREPO_2MAIN_WORKDIR="/home/neerajs/work/REPOS/Microsoft_AZL/azurelinux"
 #MSREPO_3DEV_WORKDIR="/home/neerajs/work/REPOS/Microsoft_AZL/azurelinux"
 MSREPO_3DEV_WORKDIR="/fifth_disk/upgdReferenceBranch/azurelinux"
 #MSREPO_3DEV_WORKDIR="/home/neerajs/Downloads/docker_folder/REPOS/Microsoft_AZL/azurelinux"
-BUILD_ARTFCT_STATUS_FL="/third_disk/bb03Mar/azurelinux/didwhat/PKG_ANALYSIS_DATAFILES/build_state.csv"
+BUILD_ARTFCT_STATUS_FL="/third_disk/bb04Mar/azurelinux/didwhat/PKG_ANALYSIS_DATAFILES/build_state_06Nov2024.csv"
 #BUILD_ARTFCT_STATUS_FL="/home/neerajs/Downloads/daily_builds/06Nov2024/build_state.csv"
 #BUILD_ARTFCT_STATUS_FL="/home/neerajs/utils/TestIdeas/PKG_ANALYSIS_DATAFILES/last_fifty_build_state.csv"
-DNLD_DETAILS_FL="/third_disk/bb03Mar/azurelinux/didwhat/PKG_ANALYSIS_DATAFILES/scr_run_log.txt"
+DNLD_DETAILS_FL="/third_disk/bb04Mar/azurelinux/didwhat/PKG_ANALYSIS_DATAFILES/scr_run_log.txt"
 #DNLD_DETAILS_FL="/home/neerajs/Downloads/docker_folder/impspc/fetchdir/scr_run_log.txt"
 BULK_BUILD_ROOT="/fifth_disk/bb_dec23/code/azurelinux"
-ADD_BULK_BUILD_ARTFCT_STATUS_FL="/third_disk/bb03Mar/azurelinux/didwhat/PKG_ANALYSIS_DATAFILES/build_state.csv"
+ADD_BULK_BUILD_ARTFCT_STATUS_FL="/third_disk/bb04Mar/azurelinux/didwhat/PKG_ANALYSIS_DATAFILES/build_state_additional.csv"
 #ADD_BULK_BUILD_ARTFCT_STATUS_FL="/home/neerajs/utils/PKG_ANALYSIS_27Feb/build_state.csv"
 
 UNDER_REVIEW_PR_FILE="/home/neerajs/PKG_ANALYSIS_DATAFILES/PRTracking.csv"
@@ -47,12 +48,12 @@ import json
 # invoke and use output of shell script in python
 import subprocess
 
-#In case the analysis is being done before the build the bulk build artifact status
+#In case the analysis is being done before the build the additional bulk build artifact status
 #file won't be available.
 #We neither open the corresponding build artifact file ADD_BULK_BUILD_ARTFCT_STATUS_FL
 #in that case nor do we create the additional column "Additional Bulk Build Status"
-#prebuild_analysis=True
-prebuild_analysis=False
+prebuild_analysis=True
+#prebuild_analysis=False
 
 mstr_list_developer = 'Not Assigned'
 mstr_list_pkg_prio = 'Not Assigned'
@@ -698,6 +699,11 @@ def main() -> None:
 		pk_count = pk_count + 1
 		pkname = row[1]
 		#print(f'Package Name {row[1]}')
+		#NOVALIDPACKAGE terminates the for loop
+		#just write the terminal package name and leave the loop
+		if ( pkname == 'NOVALIDPACKAGE'):
+			print (f'{pkname},,,,,,,,,,,,,,,,,,,,,,,,,,,,,,')
+			break
 		mstr_list_developer = row[2]
 		#print(f'Master List Developer {row[2]}')
 		if isNaN(mstr_list_developer):

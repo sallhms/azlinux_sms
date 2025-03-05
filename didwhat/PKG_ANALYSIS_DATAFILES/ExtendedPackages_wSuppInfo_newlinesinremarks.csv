@@ -156,11 +156,14 @@ fabtests,Jyoti,,N,N,Y,Y,N,N,,P1,NA,N
 facter,Jyoti,,N,N,Y,Y,N,N,,P1,NA,N
 fakechroot,Jyoti,,N,N,Y,Y,N,N,,P1,NA,N
 fapolicyd,Jyoti,,N,N,N,N,Y,N,,P1,NA,N
-fdk-aac-free,Jyoti,,Y,N,Y,Y,N,N,Which upstream to use.  There are multiple upstreams.,P1,NA,N
+fdk-aac-free,Jyoti,,Y,N,Y,Y,N,N,"Which upstream to use.  There are multiple upstreams.
+",P1,NA,N
 fence-virt,Jyoti,,N,N,Y,Y,N,N,,P1,fence-agents,N
 fetchmail,Jyoti,,N,N,Y,Y,N,N,,P1,NA,N
 fftw,Jyoti,,N,N,Y,Y,N,N,,P1,NA,N
-filebench,Jyoti,N,Y,Y,Y,Y,N,N,"The confirmation taken was that the alpha version ""1.5-alpha3"" available on the upstream ""https://sourceforge.net/projects/filebench/files/1.5-alpha3/filebench-1.5-alpha3.tar.gz/download"" will not be considered because it is not a GA.  We will stick to the latest GA version available upstream, which being ""1.4.9.1"" is the same as the 3.0-dev version.  Therefore, no upgrade is required.",CP_batch1,NA,N
+filebench,Jyoti,N,Y,Y,Y,Y,N,N,"The confirmation taken was that the alpha version ""1.5-alpha3"" available on the upstream ""https://sourceforge.net/projects/filebench/files/1.5-alpha3/filebench-1.5-alpha3.tar.gz/download"" will not be considered because it is not a GA.  
+
+We will stick to the latest GA version available upstream, which being ""1.4.9.1"" is the same as the 3.0-dev version.  Therefore, no upgrade is required.",CP_batch1,NA,N
 fipscheck,Jyoti,,N,N,Y,Y,N,N,,CP_batch1,libkcapi,N
 flac,Jyoti,,N,N,Y,Y,N,N,,P1,NA,N
 flite,Jyoti,,N,N,Y,Y,N,N,,P1,NA,N

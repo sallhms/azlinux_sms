@@ -86,7 +86,6 @@ cgdcbxd
 cglib
 chan
 cim-schema
-cjkuni-uming-fonts
 cjose
 cldr-emoji-annotation
 clucene
@@ -97,7 +96,6 @@ cmake-fedora
 cogl
 colorize
 compat-lua
-console-setup
 container-exception-logger
 containernetworking-plugins
 convmv
@@ -117,7 +115,6 @@ dbus-c++
 fwupd
 dcraw
 deltarpm
-delve
 device-mapper-persistent-data
 diffstat
 discount
@@ -183,10 +180,8 @@ genwqe-tools
 geoclue2
 geolite2
 geronimo-specs
-ghc-srpm-macros
 gi-docgen
 gl-manpages
-jakarta-annotations
 glew
 glm
 glog
@@ -201,8 +196,6 @@ gom
 google-api-python-client
 google-crosextra-caladea-fonts
 google-crosextra-carlito-fonts
-google-noto-sans-cjk-vf-fonts
-google-noto-emoji-fonts
 gphoto2
 gpm
 gpsbabel
@@ -648,7 +641,6 @@ metis
 microcode_ctl
 microdnf
 minicom
-minizip-ng
 mksh
 mobile-broadband-provider-info
 mod_auth_gssapi
@@ -706,7 +698,6 @@ nodejs-nodemon
 nodejs-packaging
 nss-pam-ldapd
 numatop
-nvmetcli
 objectweb-anttask
 objenesis
 ocaml-calendar
@@ -816,7 +807,6 @@ perl-Crypt-OpenSSL-Bignum
 perl-Crypt-OpenSSL-Guess
 perl-Crypt-OpenSSL-RSA
 perl-Crypt-OpenSSL-Random
-perl-Crypt-PasswdMD5
 perl-DBD-MySQL
 perl-Data-Munge
 perl-Data-Peek
@@ -1099,7 +1089,6 @@ perl-XML-Filter-BufferText
 perl-XML-Generator
 perl-XML-Grove
 perl-XML-Handler-YAWriter
-perl-XML-LibXSLT
 perl-XML-Parser-Lite
 perl-XML-RegExp
 perl-XML-SAX-Writer
@@ -1315,14 +1304,12 @@ rarian
 rasqal
 rcs
 rdist
-rdma-core
 re2c
 realmd
 rear
 recode
 regexp
 relaxngDatatype
-resource-agents
 rhash
 rhino
 rhnlib
@@ -1379,8 +1366,6 @@ serd
 servletapi4
 servletapi5
 setserial
-setup
-setuptool
 sgpio
 shapelib
 sip
@@ -1432,7 +1417,6 @@ twolame
 uchardet
 ucpp
 ucs-miscfixed-fonts
-ucx
 udftools
 udica
 udisks2

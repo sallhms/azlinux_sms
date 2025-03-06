@@ -32,9 +32,9 @@ BuildRequires:  desktop-file-utils
 BuildRequires:  python3-gobject
 BuildRequires:  python3-gobject-base
 BuildRequires:  dbus-x11
-BuildRequires:  ibus-table-chinese-wubi-jidian
-BuildRequires:  ibus-table-chinese-cangjie
-BuildRequires:  ibus-table-chinese-stroke5
+#BuildRequires:  ibus-table-chinese-wubi-jidian
+#BuildRequires:  ibus-table-chinese-cangjie
+#BuildRequires:  ibus-table-chinese-stroke5
 BuildRequires:  ibus-table-code
 BuildRequires:  ibus-table-latin
 BuildRequires:  ibus-table-translit

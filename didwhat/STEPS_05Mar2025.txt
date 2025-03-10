@@ -1,0 +1,2433 @@
+ACTION 1
+========
+Lets take care of the error
+
+error obtaining VCS status: exit status 128
+
+in advance.
+
+For that we will add the directory 
+/third_disk/bb01Mar/azurelinux/didwhat
+
+to the safe.directory list of git config.
+
+Since there is an existing safe.directory with very similar name and 
+that directory isn't needed any more we will remove that one first 
+and add our new directory.
+
+There is a learning here.
+Since there are multiple safe.directory entries in my git config
+a warning was given "warning: safe.directory has multiple values",
+and the "git config --global --unset safe.directory" command did not
+do anything.
+
+Therefore, in the command the safe.directory entry to be removed had
+to be specified.
+
+Then the entry got removed.
+
+```
+neerajs [ /third_disk/bb05Mar/azurelinux ]$ git config --list --global
+safe.directory=/sec_disk/bulkbld_16Nov/REPOS/NeerajAZL/azlinux_sms
+safe.directory=/four_disk/bb_08Feb/azlinux_sms
+safe.directory=/third_disk/bb04Mar/azurelinux/
+user.email=v-nsallh@microsoft.com
+user.name=sallhms
+http.postbuffer=524288000
+credential.https://github.com.helper=
+credential.https://github.com.helper=!/usr/bin/gh auth git-credential
+credential.https://gist.github.com.helper=
+credential.https://gist.github.com.helper=!/usr/bin/gh auth git-credential
+core.editor=vim
+neerajs [ /third_disk/bb05Mar/azurelinux ]$ git config --global --unset safe.directory /thi
+rd_disk/bb04Mar/azurelinux/
+neerajs [ /third_disk/bb05Mar/azurelinux ]$ git config --list --global
+safe.directory=/sec_disk/bulkbld_16Nov/REPOS/NeerajAZL/azlinux_sms
+safe.directory=/four_disk/bb_08Feb/azlinux_sms
+user.email=v-nsallh@microsoft.com
+user.name=sallhms
+http.postbuffer=524288000
+credential.https://github.com.helper=
+credential.https://github.com.helper=!/usr/bin/gh auth git-credential
+credential.https://gist.github.com.helper=
+credential.https://gist.github.com.helper=!/usr/bin/gh auth git-credential
+core.editor=vim
+neerajs [ /third_disk/bb05Mar/azurelinux ]$ 
+```
+
+Then added the required safe.directory entry
+```
+neerajs [ /third_disk/bb05Mar/azurelinux ]$ git config --global --add safe.directory /third_disk/bb05Mar/azurelinux
+neerajs [ /third_disk/bb05Mar/azurelinux ]$ git config --list --global
+safe.directory=/sec_disk/bulkbld_16Nov/REPOS/NeerajAZL/azlinux_sms
+safe.directory=/four_disk/bb_08Feb/azlinux_sms
+safe.directory=/third_disk/bb05Mar/azurelinux
+user.email=v-nsallh@microsoft.com
+user.name=sallhms
+http.postbuffer=524288000
+credential.https://github.com.helper=
+credential.https://github.com.helper=!/usr/bin/gh auth git-credential
+credential.https://gist.github.com.helper=
+credential.https://gist.github.com.helper=!/usr/bin/gh auth git-credential
+core.editor=vim
+neerajs [ /third_disk/bb05Mar/azurelinux ]$ 
+```
+
+
+ACTION 2
+========
+Generated the output_05Mar.txt excel workbook:
+
+```
+neerajs [ /third_disk/bb05Mar/azurelinux/didwhat/PKG_ANALYSIS ]$ time python3.12 pkg_py_analysis_v15 > output_05Mar.txt 2>output_05Mar_errors.txt
+
+real    34m59.740s
+user    4m27.761s
+sys     1m22.932s
+neerajs [ /third_disk/bb05Mar/azurelinux/didwhat/PKG_ANALYSIS ]$ 
+```
+
+Converted output_05Mar.txt to output_05Mar.csv on Windows and brought it into the "BULK_BLD_THINGS" folder, where it 
+serves as input for the "py_prepare_lists" script:
+
+```
+neerajs [ /third_disk/bb05Mar/azurelinux/didwhat/BULK_BLD_THINGS ]$ ls -ls output_05Mar.csv ; date
+412 -rw-rw-r--. 1 neerajs neerajs 418642 Mar  5 16:05 output_05Mar.csv
+Wed Mar  5 16:16:17 UTC 2025
+neerajs [ /third_disk/bb05Mar/azurelinux/didwhat/BULK_BLD_THINGS ]$ 
+```
+
+Generated the various lists by running the "py_prepare_lists" script:
+```
+neerajs [ /third_disk/bb05Mar/azurelinux/didwhat/BULK_BLD_THINGS ]$ time python3.12 py_prepare_lists > output_py_prepare_lists.logtxt 2>&1
+
+real    0m1.487s
+user    0m1.964s
+sys     0m0.352s
+neerajs [ /third_disk/bb05Mar/azurelinux/didwhat/BULK_BLD_THINGS ]$ ls -lrt | tail -10
+-rw-rw-r--. 1 neerajs neerajs    100 Mar  5 14:51 README.txt
+-rw-rw-r--. 1 neerajs neerajs   1003 Mar  5 14:51 ListOfFileWithExclusiveArchProblem
+-rw-rw-r--. 1 neerajs neerajs 418642 Mar  5 16:05 output_05Mar.csv
+-rw-rw-r--. 1 neerajs neerajs  20957 Mar  5 16:13 py_prepare_lists
+-rw-rw-r--. 1 neerajs neerajs  20232 Mar  5 16:17 pkgs_to_build
+-rw-rw-r--. 1 neerajs neerajs  27284 Mar  5 16:17 full_topic_brnch_list
+-rw-rw-r--. 1 neerajs neerajs   4545 Mar  5 16:17 folders_to_rem
+-rw-rw-r--. 1 neerajs neerajs   3408 Mar  5 16:17 folders_to_copy
+-rw-rw-r--. 1 neerajs neerajs  19901 Mar  5 16:17 wkg_pkgs_to_build
+-rw-rw-r--. 1 neerajs neerajs  81354 Mar  5 16:17 output_py_prepare_lists.logtxt
+neerajs [ /third_disk/bb05Mar/azurelinux/didwhat/BULK_BLD_THINGS ]$ date
+Wed Mar  5 16:17:30 UTC 2025
+neerajs [ /third_disk/bb05Mar/azurelinux/didwhat/BULK_BLD_THINGS ]$ 
+```
+
+Verified that all the packages of "pkglist_override_build_by_rem" have been removed from the build list and are therefore missing in "wkg_pkgs_to_build":
+```
+neerajs [ /third_disk/bb05Mar/azurelinux/didwhat/BULK_BLD_THINGS ]$ for pkgnm in `cat pkglist_override_build_by_rem`
+> do 
+> grep -e "$pkgnm" wkg_pkgs_to_build
+> if [ $? -ne 0 ]
+> then
+> echo "$pkgnm missing in wkg_pkgs_to_build"
+> else
+> echo "$pkgnm found in wkg_pkgs_to_build"
+> fi
+> done
+rdma-core missing in wkg_pkgs_to_build
+ucx missing in wkg_pkgs_to_build
+perl-Crypt-PasswdMD5 missing in wkg_pkgs_to_build
+perl-XML-LibXSLT missing in wkg_pkgs_to_build
+cjkuni-uming-fonts missing in wkg_pkgs_to_build
+delve missing in wkg_pkgs_to_build
+google-noto-sans-cjk-vf-fonts missing in wkg_pkgs_to_build
+resource-agents missing in wkg_pkgs_to_build
+google-noto-emoji-fonts missing in wkg_pkgs_to_build
+perl-Test2-Suite missing in wkg_pkgs_to_build
+setup missing in wkg_pkgs_to_build
+neerajs [ /third_disk/bb05Mar/azurelinux/didwhat/BULK_BLD_THINGS ]$ 
+```
+
+
+Before running the script "prep_ext_folder" which will alter the contents of the SPECS-EXTENDED directory
+lets note down the git branch, status and git log.
+
+```
+neerajs [ /third_disk/bb05Mar/azurelinux ]$ git branch
+  3.0
+  3.0-dev
+* topic_bb05Mar
+  topic_bulkbld_tools
+neerajs [ /third_disk/bb05Mar/azurelinux ]$ git status
+On branch topic_bb05Mar
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+        didwhat/
+
+nothing added to commit but untracked files present (use "git add" to track)
+neerajs [ /third_disk/bb05Mar/azurelinux ]$ git log --oneline -5
+bb9e7a6b4 (HEAD -> topic_bb05Mar, origin/3.0-dev, 3.0-dev) Patch curl to fix CVE-2025-0665, CVE-2025-0167, CVE-2025-0725 [High] (#12350)
+d31c91c0b Patch `vitess` for CVE-2025-22868 [High] (#12729)
+904abf980 [AUTO-CHERRYPICK] Fix CVE-2023-44487 for prometheus - branch 3.0-dev (#12819)
+7509b1982 [AUTOPATCHER-kernel] Kernel upgrade to version 6.6.78.1 - branch 3.0-dev (#12743)
+a90267b7c [AUTO-CHERRYPICK] Patch `coredns` for CVE-2025-22868 [High] - branch 3.0-dev (#12816)
+neerajs [ /third_disk/bb05Mar/azurelinux ]$ 
+
+```
+
+Ran the "prep_ext_folder" script:
+```
+neerajs [ /third_disk/bb05Mar/azurelinux/didwhat/BULK_BLD_THINGS ]$ time ./prep_ext_folder /third_disk/bb05Mar/azurelinux/ /fifth_disk/downloaded_pkgs/import_specs_modify_cgmjson/output/f
+edora/specs/ /third_disk/bb05Mar/azurelinux/didwhat/BULK_BLD_THINGS > output_prep_ext_folder.logtxt 2>&1
+
+real    0m7.557s
+user    0m0.554s
+sys     0m3.411s
+neerajs [ /third_disk/bb05Mar/azurelinux/didwhat/BULK_BLD_THINGS ]$ 
+```
+
+Saved the git status in the file "gsts_after_prep_ext_folder", in order to record the impact of the above script "prep_ext_folder":
+```
+neerajs [ /third_disk/bb05Mar/azurelinux ]$ git status > didwhat/BULK_BLD_THINGS/gsts_after_prep_ext_folder 
+neerajs [ /third_disk/bb05Mar/azurelinux ]$ date; ls -ls didwhat/BULK_BLD_THINGS/gsts_after_prep_ext_folder; wc didwhat/BULK_BLD_THINGS/gsts_after_prep_ext_folder
+Wed Mar  5 16:32:55 UTC 2025
+88 -rw-rw-r--. 1 neerajs neerajs 87774 Mar  5 16:31 didwhat/BULK_BLD_THINGS/gsts_after_prep_ext_folder
+ 1380  2486 87774 didwhat/BULK_BLD_THINGS/gsts_after_prep_ext_folder
+neerajs [ /third_disk/bb05Mar/azurelinux ]$ 
+```
+
+Committing the the changes done with the execution of "prep_ext_folder":
+```
+neerajs [ /third_disk/bb05Mar/azurelinux ]$ git log --oneline -5
+bb9e7a6b4 (HEAD -> topic_bb05Mar, origin/3.0-dev, 3.0-dev) Patch curl to fix CVE-2025-0665, CVE-2025-0167, CVE-2025-0725 [High] (#12350)
+d31c91c0b Patch `vitess` for CVE-2025-22868 [High] (#12729)
+904abf980 [AUTO-CHERRYPICK] Fix CVE-2023-44487 for prometheus - branch 3.0-dev (#12819)
+7509b1982 [AUTOPATCHER-kernel] Kernel upgrade to version 6.6.78.1 - branch 3.0-dev (#12743)
+a90267b7c [AUTO-CHERRYPICK] Patch `coredns` for CVE-2025-22868 [High] - branch 3.0-dev (#12816)
+neerajs [ /third_disk/bb05Mar/azurelinux ]$ git add SPECS-EXTENDED/
+neerajs [ /third_disk/bb05Mar/azurelinux ]$ git commit -m "Changes carried out using the script prep_ext_folder"
+[topic_bb05Mar 7bc469c14] Changes carried out using the script prep_ext_folder
+ 1383 files changed, 185641 insertions(+), 123490 deletions(-)
+ delete mode 100644 SPECS-EXTENDED/OpenEXR/OpenEXR.signatures.json
+ delete mode 100644 SPECS-EXTENDED/OpenEXR/OpenEXR.spec
+ delete mode 100644 SPECS-EXTENDED/OpenEXR/openexr-2.3.0-bigendian.patch
+ delete mode 100644 SPECS-EXTENDED/OpenEXR/openexr-2.3.0-tests.patch
+ delete mode 100644 SPECS-EXTENDED/SDL/SDL-1.2.10-GrabNotViewable.patch
+ delete mode 100644 SPECS-EXTENDED/SDL/SDL-1.2.12-multilib.patch
+ delete mode 100644 SPECS-EXTENDED/SDL/SDL-1.2.15-CVE-2019-13616-validate_image_size_when_loading_BMP_files.patch
+ delete mode 100644 SPECS-EXTENDED/SDL/SDL-1.2.15-CVE-2019-7572-Fix-a-buffer-overread-in-IMA_ADPCM_nib.patch
+ delete mode 100644 SPECS-EXTENDED/SDL/SDL-1.2.15-CVE-2019-7572-Fix-a-buffer-overwrite-in-IMA_ADPCM_de.patch
+ delete mode 100644 SPECS-EXTENDED/SDL/SDL-1.2.15-CVE-2019-7573-CVE-2019-7576-Fix-buffer-overreads-in-.patch
+
+<snip>
+<snip>
+<snip>
+
+ mode change 100644 => 100755 SPECS-EXTENDED/ypserv/ypserv-4.0-selinux-context.patch
+ create mode 100755 SPECS-EXTENDED/ypserv/ypserv-4.2-implicit-int.patch
+ mode change 100644 => 100755 SPECS-EXTENDED/ypserv/ypserv.service
+ delete mode 100644 SPECS-EXTENDED/ypserv/ypserv.signatures.json
+ mode change 100644 => 100755 SPECS-EXTENDED/ypserv/ypserv.spec
+ mode change 100644 => 100755 SPECS-EXTENDED/ypserv/ypxfrd.service
+ delete mode 100644 SPECS-EXTENDED/zenity/zenity.signatures.json
+ mode change 100644 => 100755 SPECS-EXTENDED/zenity/zenity.spec
+neerajs [ /third_disk/bb05Mar/azurelinux ]$
+```
+
+The output of the above command was saved in "ouputgitcommit_of_prep_ext_folder"
+```
+neerajs [ /third_disk/bb05Mar/azurelinux ]$ vim ouputgitcommit_of_prep_ext_folder
+```
+
+git log after the above commit:
+```
+neerajs [ /third_disk/bb05Mar/azurelinux ]$ git log --oneline -5
+7bc469c14 (HEAD -> topic_bb05Mar) Changes carried out using the script prep_ext_folder
+bb9e7a6b4 (origin/3.0-dev, 3.0-dev) Patch curl to fix CVE-2025-0665, CVE-2025-0167, CVE-2025-0725 [High] (#12350)
+d31c91c0b Patch `vitess` for CVE-2025-22868 [High] (#12729)
+904abf980 [AUTO-CHERRYPICK] Fix CVE-2023-44487 for prometheus - branch 3.0-dev (#12819)
+7509b1982 [AUTOPATCHER-kernel] Kernel upgrade to version 6.6.78.1 - branch 3.0-dev (#12743)
+neerajs [ /third_disk/bb05Mar/azurelinux ]$ 
+```
+
+Carried out the pull of PRs.  It copies the necessary tarballs from downloads directory after the pull.
+```
+```
+
+On analysing found that there were many tarballs for which the copy from downloaded folder failed.
+```
+neerajs [ /third_disk/bb05Mar/azurelinux/didwhat/BULK_BLD_THINGS ]$ time ./pull_PRs /third_disk/bb05Mar/azurelinux/ /fifth_disk/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ /third_disk/bb05Mar/azurelinux/didwhat/BULK_BLD_THINGS > output_pull_PRs.logtxt
+
+real    13m31.807s
+user    3m53.827s
+sys     3m54.122s
+neerajs [ /third_disk/bb05Mar/azurelinux/didwhat/BULK_BLD_THINGS ]$ 
+```
+
+Analyzing the results of the above Pull and sourcing of the required tarballs, i.e. the results of running the pull_PRs script:
+```
+neerajs [ /third_disk/bb05Mar/azurelinux/didwhat/BULK_BLD_THINGS ]$ grep -e "Pull Failed" -e "need unmet" output_pull_PRs.logtxt 
+boom-boot,https://github.com/AkarshHCL/azurelinux.git,topic_boom-boot: Pull Failed, will do git merge --abort for this branch
+certmonger,https://github.com/AkarshHCL/azurelinux.git,topic_certmonger: Pull Failed, will do git merge --abort for this branch
+dpkg,https://github.com/SumitJenaHCL/azurelinux.git,topic_dpkg: Pull Failed, will do git merge --abort for this branch
+gstreamer1-plugins-base,https://github.com/kevin-b-lockwood/azurelinux.git,kevin-b-lockwood/gstreamer1-plugins-base-1.24.8-1: Pull Failed, will do git merge --abort for this branch
+libotr,https://github.com/SumitJenaHCL/azurelinux.git,topic_libotr: Pull Failed, will do git merge --abort for this branch
+libxmlb,https://github.com/aninda-al/azurelinux-test.git,upgrade-libxmlb: Pull Failed, will do git merge --abort for this branch
+minizip,https://github.com/archana25-ms/azurelinux-archana.git,topic_minizip-ng: Pull Failed, will do git merge --abort for this branch
+os-prober,https://github.com/jykanase/azurelinux.git,topic_os-prober: Pull Failed, will do git merge --abort for this branch
+pcp,https://github.com/microsoft/azurelinux.git,skarambelkar/libpfm-upgrade: Pull Failed, will do git merge --abort for this branch
+perl-Color-RGB-Util,https://github.com/kevin-b-lockwood/azurelinux.git,kevin-b-lockwood/perl-Color-RGB-Util-0.607-1: Pull Failed, will do git merge --abort for this branch
+plexus-pom,https://github.com/archana25-ms/azurelinux-archana.git,topic_plexus-pom: Pull Failed, will do git merge --abort for this branch
+rubygem-sys-filesystem,https://github.com/jykanase/azurelinux.git,topic_rubygem-sys-filesystem: Pull Failed, will do git merge --abort for this branch
+rubygem-racc,https://github.com/SumitJenaHCL/azurelinux.git,topic_rubygem-racc: Pull Failed, will do git merge --abort for this branch
+perl-Test-RandomResult,https://github.com/kevin-b-lockwood/azurelinux.git,kevin-b-lockwood/perl-Test-RandomResult-0.001-14: Pull Failed, will do git merge --abort for this branch
+python-pyproject-api,https://github.com/jykanase/azurelinux.git,topic_python-pyproject_api: Pull Failed, will do git merge --abort for this branch
+zix,https://github.com/jykanase/azurelinux.git,topic_zix: Pull Failed, will do git merge --abort for this branch
+foomatic-db-4.0-20241027.tar.gz need unmet, for package foomatic-db
+libblockdev-3.2.0.tar.gz need unmet, for package libblockdev
+perl-Business-ISBN-3.009.tar.gz need unmet, for package perl-Business-ISBN
+perl-Class-Data-Inheritable-0.09.tar.gz need unmet, for package perl-Class-Data-Inheritable
+perl-File-ReadBackwards-1.06.tar.gz need unmet, for package perl-File-ReadBackwards
+neerajs [ /third_disk/bb05Mar/azurelinux/didwhat/BULK_BLD_THINGS ]$ 
+```
+
+There are 16 failures in pull.  These I will investigate later, because in case of pull fail, we are doing "git merge --abort", thereby
+restoring the corresponding directory to it's state of my topic branch.
+
+However, we will discuss the 5 tarballs for which the error was "need unmet":
+ 1. foomatic-db was picked up before perhaps we defined that we would upgrade only to Fedora 41.  As a result the version 
+    required by the PR is different from the one in the downloaded folders.  Therefore pull_PRs tried to download it.  It 
+    failed in that.  We will have to remove this package from the build list for the time being.
+ 2. libblockdev was picked up before perhaps we defined that we would upgrade only to Fedora 41.  As a result the version 
+    required by the PR is different from the one in the downloaded folders.  Therefore pull_PRs tried to download it.  It 
+    failed in that.  We will have to remove this package from the build list for the time being.
+ 3. perl-Business-ISBN.  The download using the URL in the spec file fails.
+ 4. perl-Class-Data-Inheritable.  The download using the URL in the spec file fails.
+ 5. perl-File-ReadBackwards.  The download using the URL in the spec file fails.
+
+Carried out this change to the working build list file "wkg_pkgs_to_build" and created the new named one "wkg_pkgs_to_build1":
+```
+neerajs [ /third_disk/bb05Mar/azurelinux/didwhat/BULK_BLD_THINGS ]$ cp wkg_pkgs_to_build wkg_pkgs_to_build1
+neerajs [ /third_disk/bb05Mar/azurelinux/didwhat/BULK_BLD_THINGS ]$ vim wkg_pkgs_to_build1
+neerajs [ /third_disk/bb05Mar/azurelinux/didwhat/BULK_BLD_THINGS ]$ diff wkg_pkgs_to_build wkg_pkgs_to_build1
+163d162
+< foomatic-db
+451d449
+< libblockdev
+772d769
+< perl-Business-ISBN
+779d775
+< perl-Class-Data-Inheritable
+869d864
+< perl-File-ReadBackwards
+neerajs [ /third_disk/bb05Mar/azurelinux/didwhat/BULK_BLD_THINGS ]$ 
+```
+
+Lets capture the commits carried out by this run of "pull_Prs".
+We store this in a file named "commits_created_by_pull_PRs.logtxt".
+```
+neerajs [ /third_disk/bb05Mar/azurelinux ]$ git log --oneline -320 > commits_created_by_pull_PRs.logtxt
+neerajs [ /third_disk/bb05Mar/azurelinux ]$ 
+```
+
+A peek into this git log is:
+```
+  1 5ab2bf1c0 Merge branch 'topic_rubygem-test-unit-ruby-core' of https://github.com/SumitJenaHCL/azurelinux into topic_bb05Mar
+  2 d402a0eb1 Merge branch 'topic_rubygem-scanf' of https://github.com/SumitJenaHCL/azurelinux into topic_bb05Mar
+  3 9a8bfba63 Merge branch 'topic_libselinux' of https://github.com/SumitJenaHCL/azurelinux into topic_bb05Mar
+  4 4149f5de1 Merge branch 'topic_rubygem-deep_merge' of https://github.com/SumitJenaHCL/azurelinux into topic_bb05Mar
+  5 16a63b4f3 Merge branch 'topic_rubygem-hocon' of https://github.com/SumitJenaHCL/azurelinux into topic_bb05Mar
+
+
+<snip>
+<snip>
+<snip>
+
+307 b3bcc1819 Merge branch 'kevin-b-lockwood/bats-1.11.0-1' of https://github.com/kevin-b-lockwood/azurelinux into topic_bb05Mar
+308 b5d8ee387 Merge branch 'Topic_apache-commons-daemon' of https://github.com/durgajagadeesh/azurelinux_djpalli into topic_bb05Mar
+309 27499eded Merge branch 'Topic_ansible-freeipa' of https://github.com/durgajagadeesh/azurelinux_djpalli into topic_bb05Mar
+310 61b1a806f Merge branch 'topic_PyGreSQL' of https://github.com/jykanase/azurelinux into topic_bb05Mar
+311 7bc469c14 Changes carried out using the script prep_ext_folder
+312 c27c34dba removed Epoch
+313 e333b4d7a Upgrade: perl-Archive-Extract version to 0.88
+314 8a67df75c Upgrade: mutt to version 2.2.13
+```
+
+
+We see that there were 310 commits created.
+"61b1a806f" is the commit SHA of the first one.  And it was done for "PyGreSQL".
+"7bc469c14" is the commit SHA before that, and it was for the changes carried out by the prep_ext_folder script.
+"c27c34dba" is the commit SHA before that.  This commit SHA we need in order to restore  some files as to their state in the cloned Azure Linux Repo over which we had created our working topic branch.
+
+ACTION 3:
+=========
+
+Earlier we used to remove the following packages from the build list 
+by mentioning those in the file "pkglist_override_build_by_rem":
+
+rdma-core
+ucx
+perl-Crypt-PasswdMD5
+perl-XML-LibXSLT
+cjkuni-uming-fonts
+delve
+google-noto-sans-cjk-vf-fonts
+resource-agents
+python-tox
+google-noto-emoji-fonts
+lensfun
+freeradius
+perl-Test2-Suite
+setup
+
+
+But now PR is available for:
+python-tox
+lensfun
+freeradius
+
+We will be pulling in the branches of these PRs.
+
+Therefore, our hand made "pkglist_override_build_by_rem" file won't have these 
+three packages anymore.
+
+The "pkglist_override_build_by_rem" had the following contents:
+```
+neerajs [ /third_disk/bb05Mar/azurelinux/didwhat/BULK_BLD_THINGS ]$ cat pkglist_override_build_by_rem
+rdma-core
+ucx
+perl-Crypt-PasswdMD5
+perl-XML-LibXSLT
+cjkuni-uming-fonts
+delve
+google-noto-sans-cjk-vf-fonts
+resource-agents
+google-noto-emoji-fonts
+perl-Test2-Suite
+setup
+neerajs [ /third_disk/bb05Mar/azurelinux/didwhat/BULK_BLD_THINGS ]$
+```
+
+The pkglist_override_build_by_rem file has the above contents because
+---------------------------------------------------------------------
+
+1. There are "multiple target patterns" errors in six packages - rdma-core, ucx, libpsl, llvm, perl-Crypt-PasswdMD5 and perl-XML-LibXSLT.  We are not goind to include these in the build list.
+2. There are packages that fail to build because of unsupported spec file macros in Azure Linux.  These packages are:
+cjkuni-uming-fonts
+delve
+google-noto-sans-cjk-vf-fonts
+resource-agents
+google-noto-emoji-fonts
+google-carlito-fonts
+
+We add all these except for google-carlito-fonts, to the pkglist_override_build_by_rem.
+The reason to not add google-carlito-fonts to the remove list is that it does not
+occur in the generated list in first place.  There is not need to remove it.
+3. The reason for having perl-Test2-Suite and setup in the remove list are no
+   more valid now.  But we will just keep these.  Since these are not there in 
+   wkg_pkgs_to_build, their existence in the remove list is meaningles.
+
+
+Below is the verification that our two working build lists don't have these packages,
+whereas the build list prepared as the base i.e. "pkgs_to_build" has these packages too:
+```
+neerajs [ /third_disk/bb05Mar/azurelinux/didwhat/BULK_BLD_THINGS ]$ fltosrch=wkg_pkgs_to_build; for pkgnm in `cat pkglist_override_build_by_rem`; do grep -e "^\<$pkgnm\>" $fltosrch > /dev
+/null; if [ $? -eq 0 ]; then echo "$pkgnm found in $fltosrch"; else echo "$pkgnm missing in $fltosrch"; fi; done
+rdma-core missing in wkg_pkgs_to_build
+ucx missing in wkg_pkgs_to_build
+perl-Crypt-PasswdMD5 missing in wkg_pkgs_to_build
+perl-XML-LibXSLT missing in wkg_pkgs_to_build
+cjkuni-uming-fonts missing in wkg_pkgs_to_build
+delve missing in wkg_pkgs_to_build
+google-noto-sans-cjk-vf-fonts missing in wkg_pkgs_to_build
+resource-agents missing in wkg_pkgs_to_build
+google-noto-emoji-fonts missing in wkg_pkgs_to_build
+perl-Test2-Suite missing in wkg_pkgs_to_build
+setup missing in wkg_pkgs_to_build
+neerajs [ /third_disk/bb05Mar/azurelinux/didwhat/BULK_BLD_THINGS ]$ fltosrch=wkg_pkgs_to_build1; for pkgnm in `cat pkglist_override_build_by_rem`; do grep -e "^\<$pkgnm\>" $fltosrch > /de
+v/null; if [ $? -eq 0 ]; then echo "$pkgnm found in $fltosrch"; else echo "$pkgnm missing in $fltosrch"; fi; done
+rdma-core missing in wkg_pkgs_to_build1
+ucx missing in wkg_pkgs_to_build1
+perl-Crypt-PasswdMD5 missing in wkg_pkgs_to_build1
+perl-XML-LibXSLT missing in wkg_pkgs_to_build1
+cjkuni-uming-fonts missing in wkg_pkgs_to_build1
+delve missing in wkg_pkgs_to_build1
+google-noto-sans-cjk-vf-fonts missing in wkg_pkgs_to_build1
+resource-agents missing in wkg_pkgs_to_build1
+google-noto-emoji-fonts missing in wkg_pkgs_to_build1
+perl-Test2-Suite missing in wkg_pkgs_to_build1
+setup missing in wkg_pkgs_to_build1
+neerajs [ /third_disk/bb05Mar/azurelinux/didwhat/BULK_BLD_THINGS ]$ fltosrch=pkgs_to_build; for pkgnm in `cat pkglist_override_build_by_rem`; do grep -e "^\<$pkgnm\>" $fltosrch > /dev/nul
+l; if [ $? -eq 0 ]; then echo "$pkgnm found in $fltosrch"; else echo "$pkgnm missing in $fltosrch"; fi; done
+rdma-core found in pkgs_to_build
+ucx found in pkgs_to_build
+perl-Crypt-PasswdMD5 found in pkgs_to_build
+perl-XML-LibXSLT found in pkgs_to_build
+cjkuni-uming-fonts found in pkgs_to_build
+delve found in pkgs_to_build
+google-noto-sans-cjk-vf-fonts missing in pkgs_to_build
+resource-agents found in pkgs_to_build
+google-noto-emoji-fonts found in pkgs_to_build
+perl-Test2-Suite found in pkgs_to_build
+setup found in pkgs_to_build
+neerajs [ /third_disk/bb05Mar/azurelinux/didwhat/BULK_BLD_THINGS ]$ 
+```
+
+
+ACTION 4:
+=========
+
+
+KNOWN ISSUES: TO BE FIXED AFTER SPECS-EXTENDED MANIPULATION
+-----------------------------------------------------------
+From the previous notes, we know that there still are problems to be faced.
+But first we will use this generated lists to manipulate the SPECS-EXTENDED folder 
+and then tackle the build failures.
+These build failures will be:
+1. Parse failure of ibus.spec.  The fix to this will be to use the ibus.spec from the previous build attempt.  It is nothing but 
+   Azure Linux ibus.spec modified for the Version and Release (release is made 1).
+2. THIS STEP IS NOT NEEDED ANYMORE, because minzip/minizip-ng has a PR for it.  There will be failure in addition of minizip-ng reported by grapher.  The fix is to give up on using the new name minizip-ng
+   for the time being.  Therefore, the folder minizip will be restored and the folder minizip-ng will be removed.
+3. THIS STEP IS NOT NEEDED ANYMORE, because minzip/minizip-ng has a PR for it.  Continuing from the above the package name in the build list will be changed to minizip from minizip-ng.  This we may do by 
+   manually editing the wkg_pkgs_to_build or starting to use patched1_wkg_pkgs_to_build. 
+4. There will be a failure to add pcp package too.  Again grapher will be the tool which reports this failure.  The action is that we restore the pcp.spec file from Azure Linux and then change Version in it.
+5. As noted in the earlier notes, this time we will do the same.  That, is comment out the BuildRequires on 
+   ibus-table-chinese-* packages and thereby break the circular dependency, in the file
+   ibus-table.spec.
+6. circular dependency in javacc needs to be fixed.
+7. Remove the package folders that give parsing errors.
+8. A build will then report that the srpmpacker tool has skipped several packages because those can't be built on current architecture.
+   Fix these by removing the ExclusiveArch tag from their spec files.
+
+Since we have already done the SPECS-EXTENDED manipulation, we start with these changes.
+
+
+1. Parse failure of ibus.spec.  The fix to this will be to use the ibus.spec from the previous build attempt.  It is nothing but 
+   Azure Linux ibus.spec modified for the Version and Release (release is made 1).
+
+The commit sha for the effects of prep_ext_folder was "7bc469c14".
+The commit sha before that is "c27c34dba".
+
+So, lets restore ibus.spec to "c27c34dba" and then just change it's version.
+
+Things before the ibus.spec fixing:
+```
+27499eded Merge branch 'Topic_ansible-freeipa' of https://github.com/durgajagadeesh/azurelinux_djpalli into topic_bb05Mar
+61b1a806f Merge branch 'topic_PyGreSQL' of https://github.com/jykanase/azurelinux into topic_bb05Mar
+7bc469c14 Changes carried out using the script prep_ext_folder
+c27c34dba removed Epoch
+e333b4d7a Upgrade: perl-Archive-Extract version to 0.88
+8a67df75c Upgrade: mutt to version 2.2.13
+9717063fc modified spec file
+bb9e7a6b4 (origin/3.0-dev, 3.0-dev) Patch curl to fix CVE-2025-0665, CVE-2025-0167, CVE-2025-0725 [High] (#12350)
+1b97b2ba5 Upgrade: python-rdflib version to 7.0.0
+3c41eb310 Fixed: cgmanifest file
+d31c91c0b Patch `vitess` for CVE-2025-22868 [High] (#12729)
+904abf980 [AUTO-CHERRYPICK] Fix CVE-2023-44487 for prometheus - branch 3.0-dev (#12819)
+```
+
+"7bc469c14" is the commit SHA for the first changes we committed over our branch.
+"c27c34dba" is the commit SHA before that.
+
+Things before fixing ibus.spec:
+```
+neerajs [ /third_disk/bb05Mar/azurelinux ]$ git diff 7bc469c14 -- SPECS-EXTENDED/ibus/ibus.spec
+neerajs [ /third_disk/bb05Mar/azurelinux ]$ comid=c27c34dba; git diff $comid -- SPECS-EXTENDED/ibus/ibus.spec | head -10
+diff --git a/SPECS-EXTENDED/ibus/ibus.spec b/SPECS-EXTENDED/ibus/ibus.spec
+old mode 100644
+new mode 100755
+index 611983f14..b183f6c84
+--- a/SPECS-EXTENDED/ibus/ibus.spec
++++ b/SPECS-EXTENDED/ibus/ibus.spec
+@@ -1,57 +1,128 @@
+-Vendor:         Microsoft Corporation
+-Distribution:   Azure Linux
+-# This package depends on automagic byte compilation
+neerajs [ /third_disk/bb05Mar/azurelinux ]$ 
+```
+
+Restoring ibus.spec to "c27c34dba":
+```
+neerajs [ /third_disk/bb05Mar/azurelinux ]$ comid=c27c34dba; git restore --source=$comid -- SPECS-EXTENDED/ibus/ibus.spec 
+neerajs [ /third_disk/bb05Mar/azurelinux ]$ git diff 7bc469c14 -- SPECS-EXTENDED/ibus/ibus.spec | head -10
+diff --git a/SPECS-EXTENDED/ibus/ibus.spec b/SPECS-EXTENDED/ibus/ibus.spec
+old mode 100755
+new mode 100644
+index b183f6c84..611983f14
+--- a/SPECS-EXTENDED/ibus/ibus.spec
++++ b/SPECS-EXTENDED/ibus/ibus.spec
+@@ -1,128 +1,57 @@
+-%global source_version %%(echo "%version" | tr '~' '-')
++Vendor:         Microsoft Corporation
++Distribution:   Azure Linux
+neerajs [ /third_disk/bb05Mar/azurelinux ]$ 
+neerajs [ /third_disk/bb05Mar/azurelinux ]$ comid=c27c34dba; git diff $comid -- SPECS-EXTENDED/ibus/ibus.spec 
+```
+And then editing the Version only:
+```
+neerajs [ /third_disk/bb05Mar/azurelinux ]$ comid=c27c34dba; git diff $comid -- SPECS-EXTENDED/ibus/ibus.spec 
+diff --git a/SPECS-EXTENDED/ibus/ibus.spec b/SPECS-EXTENDED/ibus/ibus.spec
+index 611983f14..8315796c0 100644
+--- a/SPECS-EXTENDED/ibus/ibus.spec
++++ b/SPECS-EXTENDED/ibus/ibus.spec
+@@ -14,8 +14,8 @@ Distribution:   Azure Linux
+ %global dbus_python_version 0.83.0
+ 
+ Name:           ibus
+-Version:        1.5.22
+-Release:        9%{?dist}
++Version:        1.5.31
++Release:        1%{?dist}
+ Summary:        Intelligent Input Bus for Linux OS
+ License:        LGPLv2+
+ URL:            https://github.com/ibus/%name/wiki
+neerajs [ /third_disk/bb05Mar/azurelinux ]$ 
+```
+
+
+2. THIS STEP IS NOT NEEDED ANYMORE, because minzip/minizip-ng has a PR for it.  There will be failure in addition of minizip-ng reported by grapher.  The fix is to give up on using the new name minizip-ng
+   for the time being.  Therefore, the folder minizip will be restored and the folder minizip-ng will be removed.
+
+
+
+3. THIS STEP IS NOT NEEDED ANYMORE, because minzip/minizip-ng has a PR for it.  Continuing from the above the package name in the build list will be changed to minizip from minizip-ng.  This we may do by 
+   manually editing the wkg_pkgs_to_build or starting to use patched1_wkg_pkgs_to_build. 
+
+
+
+4. There will be a failure to add pcp package too.  Again grapher will be the tool which reports this failure.  The action is that we restore the pcp.spec file from Azure Linux and then change Version in it.
+
+The pre change checks, the change and the post change checks are all captured below:
+```
+neerajs [ /third_disk/bb05Mar/azurelinux ]$ comid=7bc469c14; git diff $comid -- SPECS-EXTENDED/pcp/pcp.spec
+neerajs [ /third_disk/bb05Mar/azurelinux ]$ comid=c27c34dba; git diff $comid -- SPECS-EXTENDED/pcp/pcp.spec | head -10
+neerajs [ /third_disk/bb05Mar/azurelinux ]$ comid=c27c34dba; git restore --source=$comid -- SPECS-EXTENDED/pcp/pcp.spec
+neerajs [ /third_disk/bb05Mar/azurelinux ]$ comid=c27c34dba; git diff $comid -- SPECS-EXTENDED/pcp/pcp.spec | head -10
+neerajs [ /third_disk/bb05Mar/azurelinux ]$ vim SPECS-EXTENDED/pcp/pcp.spec
+neerajs [ /third_disk/bb05Mar/azurelinux ]$ comid=c27c34dba; git diff $comid -- SPECS-EXTENDED/pcp/pcp.spec | head -20
+diff --git a/SPECS-EXTENDED/pcp/pcp.spec b/SPECS-EXTENDED/pcp/pcp.spec
+index 1c798a2a8..d6602e35a 100644
+--- a/SPECS-EXTENDED/pcp/pcp.spec
++++ b/SPECS-EXTENDED/pcp/pcp.spec
+@@ -1,8 +1,8 @@
+ %global _unpackaged_files_terminate_build 0
+ 
+ Name:    pcp
+-Version: 5.1.1
+-Release: 3%{?dist}
++Version: 6.3.2
++Release: 1%{?dist}
+ Summary: System-level performance monitoring and performance management
+ License: GPLv2+ and LGPLv2+ and CC-BY
+ Vendor:         Microsoft Corporation
+neerajs [ /third_disk/bb05Mar/azurelinux ]$ 
+```
+
+
+5. As noted in the earlier notes, this time we will do the same.  That, is comment out the BuildRequires on 
+   ibus-table-chinese-* packages and thereby break the circular dependency, in the file
+   ibus-table.spec.
+
+The changes are captured below:
+```
+neerajs [ /third_disk/bb05Mar/azurelinux ]$ vim SPECS-EXTENDED/ibus-table/ibus-table.spec 
+neerajs [ /third_disk/bb05Mar/azurelinux ]$ git diff SPECS-EXTENDED/ibus-table/ibus-table.spec
+diff --git a/SPECS-EXTENDED/ibus-table/ibus-table.spec b/SPECS-EXTENDED/ibus-table/ibus-table.spec
+index 0618c0c97..415fc59fe 100755
+--- a/SPECS-EXTENDED/ibus-table/ibus-table.spec
++++ b/SPECS-EXTENDED/ibus-table/ibus-table.spec
+@@ -32,9 +32,9 @@ BuildRequires:  desktop-file-utils
+ BuildRequires:  python3-gobject
+ BuildRequires:  python3-gobject-base
+ BuildRequires:  dbus-x11
+-BuildRequires:  ibus-table-chinese-wubi-jidian
+-BuildRequires:  ibus-table-chinese-cangjie
+-BuildRequires:  ibus-table-chinese-stroke5
++#BuildRequires:  ibus-table-chinese-wubi-jidian
++#BuildRequires:  ibus-table-chinese-cangjie
++#BuildRequires:  ibus-table-chinese-stroke5
+ BuildRequires:  ibus-table-code
+ BuildRequires:  ibus-table-latin
+ BuildRequires:  ibus-table-translit
+neerajs [ /third_disk/bb05Mar/azurelinux ]$ 
+```
+
+
+6. circular dependency in javacc needs to be fixed.
+
+```
+neerajs [ /third_disk/bb05Mar/azurelinux ]$ vim SPECS-EXTENDED/javacc/javacc.spec 
+neerajs [ /third_disk/bb05Mar/azurelinux ]$ git diff SPECS-EXTENDED/javacc/javacc.spec 
+diff --git a/SPECS-EXTENDED/javacc/javacc.spec b/SPECS-EXTENDED/javacc/javacc.spec
+index 9ceb77f42..42f91c67a 100755
+--- a/SPECS-EXTENDED/javacc/javacc.spec
++++ b/SPECS-EXTENDED/javacc/javacc.spec
+@@ -57,7 +57,7 @@ BuildRequires:  javapackages-bootstrap
+ %else
+ BuildRequires:  javapackages-local
+ BuildRequires:  ant
+-BuildRequires:  javacc
++#BuildRequires:  javacc
+ %endif
+ 
+ # Explicit javapackages-tools requires since scripts use
+neerajs [ /third_disk/bb05Mar/azurelinux ]$ 
+```
+
+7. Remove the package folders that give parsing errors.
+
+Earlier we had removed these folders from SPECS-EXTENDED, in order to get around the 
+parsing errors:
+
+google-noto-emoji-fonts 
+freeradius 
+cjkuni-uming-fonts 
+google-noto-sans-cjk-vf-fonts 
+lensfun 
+python-tox 
+resource-agents
+
+Out of these the following now have a PR, therefore we won't delete these
+freeradius 
+lensfun
+python-tox 
+
+Therefore, this time we will only remove:
+google-noto-emoji-fonts 
+cjkuni-uming-fonts 
+google-noto-sans-cjk-vf-fonts 
+resource-agents
+
+google-noto-emoji-fonts cjkuni-uming-fonts google-noto-sans-cjk-vf-fonts resource-agents
+```
+neerajs [ /third_disk/bb05Mar/azurelinux/SPECS-EXTENDED ]$ ls -d google-noto-emoji-fonts cjkuni-uming-fonts google-noto-sans-cjk-vf-fonts resource-agents
+cjkuni-uming-fonts  google-noto-emoji-fonts  google-noto-sans-cjk-vf-fonts  resource-agents
+neerajs [ /third_disk/bb05Mar/azurelinux/SPECS-EXTENDED ]$ rm -rf google-noto-emoji-fonts cjkuni-uming-fonts google-noto-sans-cjk-vf-fonts resource-agents
+neerajs [ /third_disk/bb05Mar/azurelinux/SPECS-EXTENDED ]$ ls -d google-noto-emoji-fonts cjkuni-uming-fonts google-noto-sans-cjk-vf-fonts resource-agents
+ls: cannot access 'google-noto-emoji-fonts': No such file or directory
+ls: cannot access 'cjkuni-uming-fonts': No such file or directory
+ls: cannot access 'google-noto-sans-cjk-vf-fonts': No such file or directory
+ls: cannot access 'resource-agents': No such file or directory
+neerajs [ /third_disk/bb05Mar/azurelinux/SPECS-EXTENDED ]$ 
+```
+
+
+8. A build will then report that the srpmpacker tool has skipped several packages because those can't be built on current architecture.
+
+This time around we will try to save the build time.
+We already know the list of packages for which this issue showed up in the previous builds.
+We will pick that list and remove from it the packages for which PRs have been raised.
+
+The initial list "ListOfFileWithExclusiveArchProbl|707" has 33 packages.
+```
+neerajs [ /third_disk/bb05Mar/azurelinux/didwhat/BULK_BLD_THINGS ]$ wc ListOfFileWithExclusiveArchProblem 
+  33   33 1003 ListOfFileWithExclusiveArchProblem
+neerajs [ /third_disk/bb05Mar/azurelinux/didwhat/BULK_BLD_THINGS ]$ cat ListOfFileWithExclusiveArchProblem 
+xalan-j2/xalan-j2.spec
+maven-parent/maven-parent.spec
+xmlunit/xmlunit.spec
+xbean/xbean.spec
+apache-commons-net/apache-commons-net.spec
+jakarta-annotations/jakarta-annotations.spec
+jline/jline.spec
+slirp4netns/slirp4netns.spec
+jsoup/jsoup.spec
+apache-commons-io/apache-commons-io.spec
+cglib/cglib.spec
+javacc/javacc.spec
+bcel/bcel.spec
+apache-commons-codec/apache-commons-codec.spec
+osgi-annotation/osgi-annotation.spec
+apache-commons-jexl/apache-commons-jexl.spec
+objenesis/objenesis.spec
+apache-commons-vfs/apache-commons-vfs.spec
+hawtjni/hawtjni.spec
+jdom2/jdom2.spec
+trilead-ssh2/trilead-ssh2.spec
+plexus-pom/plexus-pom.spec
+xerces-j2/xerces-j2.spec
+jdepend/jdepend.spec
+ecj/ecj.spec
+rhino/rhino.spec
+apache-commons-compress/apache-commons-compress.spec
+containernetworking-plugins/containernetworking-plugins.spec
+apache-commons-collections4/apache-commons-collections4.spec
+jansi/jansi.spec
+osgi-core/osgi-core.spec
+httpcomponents-core/httpcomponents-core.spec
+crypto-policies/crypto-policies.spec
+neerajs [ /third_disk/bb05Mar/azurelinux/didwhat/BULK_BLD_THINGS ]$ 
+```
+
+We create a new list "Wkg_ListOfFileWithExclusiveArchProblem" by removing those packages which have PR raised for them.
+The ones for which PR has been raised are:
+maven-parent
+slirp4netns
+jdom2
+plexus-pom
+
+neerajs [ /third_disk/bb05Mar/azurelinux/didwhat/BULK_BLD_THINGS ]$ cp ListOfFileWithExclusiveArchProblem Wkg_ListOfFileWithExclusiveArchProblem 
+neerajs [ /third_disk/bb05Mar/azurelinux/didwhat/BULK_BLD_THINGS ]$ vim Wkg_ListOfFileWithExclusiveArchProblem 
+neerajs [ /third_disk/bb05Mar/azurelinux/didwhat/BULK_BLD_THINGS ]$ diff ListOfFileWithExclusiveArchProblem Wkg_ListOfFileWithExclusiveArchProblem 
+2d1
+< maven-parent/maven-parent.spec
+8d6
+< slirp4netns/slirp4netns.spec
+20d17
+< jdom2/jdom2.spec
+22d18
+< plexus-pom/plexus-pom.spec
+neerajs [ /third_disk/bb05Mar/azurelinux/didwhat/BULK_BLD_THINGS ]$ 
+```
+
+Before fixing these spec files with arch issue, lets commit the existing changes, so that the change caused by the arch issue fix is visible clearly.
+
+First git add 'ed (staged) all the "SPECS-EXTENDED" changes:
+```
+neerajs [ /third_disk/bb05Mar/azurelinux ]$ git status 
+On branch topic_bb05Mar
+Changes not staged for commit:
+  (use "git add/rm <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+        deleted:    SPECS-EXTENDED/cjkuni-uming-fonts/65-cjkuni-uming-fonts.conf
+        deleted:    SPECS-EXTENDED/cjkuni-uming-fonts/90-cjkuni-uming-fonts-embolden.conf
+        deleted:    SPECS-EXTENDED/cjkuni-uming-fonts/cjkuni-uming-fonts.spec
+        deleted:    SPECS-EXTENDED/google-noto-emoji-fonts/Noto_Emoji.zip
+        deleted:    SPECS-EXTENDED/google-noto-emoji-fonts/google-noto-emoji-fonts.spec
+        deleted:    SPECS-EXTENDED/google-noto-emoji-fonts/noto-emoji-build-all-flags.patch
+        deleted:    SPECS-EXTENDED/google-noto-emoji-fonts/noto-emoji-use-gm.patch
+        deleted:    SPECS-EXTENDED/google-noto-emoji-fonts/noto-emoji-use-system-pngquant.patch
+        deleted:    SPECS-EXTENDED/google-noto-sans-cjk-vf-fonts/01_NotoSansCJK-OTF-VF.zip
+        deleted:    SPECS-EXTENDED/google-noto-sans-cjk-vf-fonts/65-google-noto-sans-cjk-vf-fonts.conf
+        deleted:    SPECS-EXTENDED/google-noto-sans-cjk-vf-fonts/65-google-noto-sans-mono-cjk-vf-fonts.conf
+        deleted:    SPECS-EXTENDED/google-noto-sans-cjk-vf-fonts/genfontconf.py
+        deleted:    SPECS-EXTENDED/google-noto-sans-cjk-vf-fonts/google-noto-sans-cjk-vf-fonts.spec
+        modified:   SPECS-EXTENDED/ibus-table/ibus-table.spec
+        modified:   SPECS-EXTENDED/ibus/ibus.spec
+        modified:   SPECS-EXTENDED/javacc/javacc.spec
+        modified:   SPECS-EXTENDED/pcp/pcp.spec
+        deleted:    SPECS-EXTENDED/resource-agents/resource-agents.spec
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+        SPECS-EXTENDED/junitperf/junitperf-1.9.1.zip
+        SPECS-EXTENDED/maven-parent/maven-parent-41.zip
+        commits_created_by_pull_PRs.logtxt
+        didwhat/
+        ouputgitcommit_of_prep_ext_folder
+
+no changes added to commit (use "git add" and/or "git commit -a")
+neerajs [ /third_disk/bb05Mar/azurelinux ]$ git add SPECS-EXTENDED/
+neerajs [ /third_disk/bb05Mar/azurelinux ]$ git status
+On branch topic_bb05Mar
+Changes to be committed:
+  (use "git restore --staged <file>..." to unstage)
+        deleted:    SPECS-EXTENDED/cjkuni-uming-fonts/65-cjkuni-uming-fonts.conf
+        deleted:    SPECS-EXTENDED/cjkuni-uming-fonts/90-cjkuni-uming-fonts-embolden.conf
+        deleted:    SPECS-EXTENDED/cjkuni-uming-fonts/cjkuni-uming-fonts.spec
+        deleted:    SPECS-EXTENDED/google-noto-emoji-fonts/Noto_Emoji.zip
+        deleted:    SPECS-EXTENDED/google-noto-emoji-fonts/google-noto-emoji-fonts.spec
+        deleted:    SPECS-EXTENDED/google-noto-emoji-fonts/noto-emoji-build-all-flags.patch
+        deleted:    SPECS-EXTENDED/google-noto-emoji-fonts/noto-emoji-use-gm.patch
+        deleted:    SPECS-EXTENDED/google-noto-emoji-fonts/noto-emoji-use-system-pngquant.patch
+        deleted:    SPECS-EXTENDED/google-noto-sans-cjk-vf-fonts/01_NotoSansCJK-OTF-VF.zip
+        deleted:    SPECS-EXTENDED/google-noto-sans-cjk-vf-fonts/65-google-noto-sans-cjk-vf-fonts.conf
+        deleted:    SPECS-EXTENDED/google-noto-sans-cjk-vf-fonts/65-google-noto-sans-mono-cjk-vf-fonts.conf
+        deleted:    SPECS-EXTENDED/google-noto-sans-cjk-vf-fonts/genfontconf.py
+        deleted:    SPECS-EXTENDED/google-noto-sans-cjk-vf-fonts/google-noto-sans-cjk-vf-fonts.spec
+        modified:   SPECS-EXTENDED/ibus-table/ibus-table.spec
+        modified:   SPECS-EXTENDED/ibus/ibus.spec
+        modified:   SPECS-EXTENDED/javacc/javacc.spec
+        new file:   SPECS-EXTENDED/junitperf/junitperf-1.9.1.zip
+        new file:   SPECS-EXTENDED/maven-parent/maven-parent-41.zip
+        modified:   SPECS-EXTENDED/pcp/pcp.spec
+        deleted:    SPECS-EXTENDED/resource-agents/resource-agents.spec
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+        commits_created_by_pull_PRs.logtxt
+        didwhat/
+        ouputgitcommit_of_prep_ext_folder
+
+neerajs [ /third_disk/bb05Mar/azurelinux ]$ 
+```
+
+Carried out the commit:
+```
+neerajs [ /third_disk/bb05Mar/azurelinux ]$ git commit -m "Some manipulations to ensure that the bulk build doesn't break because of parse errors"
+[topic_bb05Mar e76544803] Some manipulations to ensure that the bulk build doesn't break because of parse errors
+ 20 files changed, 71 insertions(+), 3003 deletions(-)
+ delete mode 100755 SPECS-EXTENDED/cjkuni-uming-fonts/65-cjkuni-uming-fonts.conf
+ delete mode 100755 SPECS-EXTENDED/cjkuni-uming-fonts/90-cjkuni-uming-fonts-embolden.conf
+ delete mode 100755 SPECS-EXTENDED/cjkuni-uming-fonts/cjkuni-uming-fonts.spec
+ delete mode 100755 SPECS-EXTENDED/google-noto-emoji-fonts/Noto_Emoji.zip
+ delete mode 100755 SPECS-EXTENDED/google-noto-emoji-fonts/google-noto-emoji-fonts.spec
+ delete mode 100755 SPECS-EXTENDED/google-noto-emoji-fonts/noto-emoji-build-all-flags.patch
+ delete mode 100755 SPECS-EXTENDED/google-noto-emoji-fonts/noto-emoji-use-gm.patch
+ delete mode 100755 SPECS-EXTENDED/google-noto-emoji-fonts/noto-emoji-use-system-pngquant.patch
+ delete mode 100755 SPECS-EXTENDED/google-noto-sans-cjk-vf-fonts/01_NotoSansCJK-OTF-VF.zip
+ delete mode 100755 SPECS-EXTENDED/google-noto-sans-cjk-vf-fonts/65-google-noto-sans-cjk-vf-fonts.conf
+ delete mode 100755 SPECS-EXTENDED/google-noto-sans-cjk-vf-fonts/65-google-noto-sans-mono-cjk-vf-fonts.conf
+ delete mode 100755 SPECS-EXTENDED/google-noto-sans-cjk-vf-fonts/genfontconf.py
+ delete mode 100755 SPECS-EXTENDED/google-noto-sans-cjk-vf-fonts/google-noto-sans-cjk-vf-fonts.spec
+ mode change 100755 => 100644 SPECS-EXTENDED/ibus/ibus.spec
+ create mode 100644 SPECS-EXTENDED/junitperf/junitperf-1.9.1.zip
+ create mode 100644 SPECS-EXTENDED/maven-parent/maven-parent-41.zip
+ delete mode 100755 SPECS-EXTENDED/resource-agents/resource-agents.spec
+neerajs [ /third_disk/bb05Mar/azurelinux ]$ git status
+On branch topic_bb05Mar
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+        commits_created_by_pull_PRs.logtxt
+        didwhat/
+        ouputgitcommit_of_prep_ext_folder
+
+nothing added to commit but untracked files present (use "git add" to track)
+neerajs [ /third_disk/bb05Mar/azurelinux ]$ 
+```
+
+neerajs [ /third_disk/bb05Mar/azurelinux/didwhat/BULK_BLD_THINGS ]$ ./fix_pkgs_w_archissue 
+Usage:
+./fix_pkgs_w_archissue <path-to-the-specs-dir> <full-path-of-list-file-for-pkgs_w_archissue>
+neerajs [ /third_disk/bb05Mar/azurelinux/didwhat/BULK_BLD_THINGS ]$ time ./fix_pkgs_w_archissue /third_disk/bb05Mar/azurelinux/SPECS-EXTENDED/ /third_disk/bb05Mar/azurelinux/didwhat/BULK_BLD_THINGS/Wkg_ListOfFileWithExclusiveArchProblem
+Do you want to want to modify xalan-j2/xalan-j2.spec?
+y
+xalan-j2/xalan-j2.spec  being modified
+Do you want to want to modify xmlunit/xmlunit.spec?
+y
+xmlunit/xmlunit.spec  being modified
+Do you want to want to modify xbean/xbean.spec?
+y
+xbean/xbean.spec  being modified
+Do you want to want to modify apache-commons-net/apache-commons-net.spec?
+y
+apache-commons-net/apache-commons-net.spec  being modified
+/third_disk/bb05Mar/azurelinux/SPECS-EXTENDED//jakarta-annotations/jakarta-annotations.spec missing
+Do you want to want to modify jline/jline.spec?
+y
+jline/jline.spec  being modified
+Do you want to want to modify jsoup/jsoup.spec?
+y
+jsoup/jsoup.spec  being modified
+Do you want to want to modify apache-commons-io/apache-commons-io.spec?
+y
+apache-commons-io/apache-commons-io.spec  being modified
+Do you want to want to modify cglib/cglib.spec?
+y
+cglib/cglib.spec  being modified
+Do you want to want to modify javacc/javacc.spec?
+y
+javacc/javacc.spec  being modified
+Do you want to want to modify bcel/bcel.spec?
+y
+bcel/bcel.spec  being modified
+Do you want to want to modify apache-commons-codec/apache-commons-codec.spec?
+y
+apache-commons-codec/apache-commons-codec.spec  being modified
+Do you want to want to modify osgi-annotation/osgi-annotation.spec?
+y
+osgi-annotation/osgi-annotation.spec  being modified
+Do you want to want to modify apache-commons-jexl/apache-commons-jexl.spec?
+y
+apache-commons-jexl/apache-commons-jexl.spec  being modified
+Do you want to want to modify objenesis/objenesis.spec?
+y
+objenesis/objenesis.spec  being modified
+Do you want to want to modify apache-commons-vfs/apache-commons-vfs.spec?
+y
+apache-commons-vfs/apache-commons-vfs.spec  being modified
+Do you want to want to modify hawtjni/hawtjni.spec?
+y
+hawtjni/hawtjni.spec  being modified
+Do you want to want to modify trilead-ssh2/trilead-ssh2.spec?
+y
+trilead-ssh2/trilead-ssh2.spec  being modified
+Do you want to want to modify xerces-j2/xerces-j2.spec?
+y
+xerces-j2/xerces-j2.spec  being modified
+Do you want to want to modify jdepend/jdepend.spec?
+y
+jdepend/jdepend.spec  being modified
+Do you want to want to modify ecj/ecj.spec?
+y
+ecj/ecj.spec  being modified
+Do you want to want to modify rhino/rhino.spec?
+y
+rhino/rhino.spec  being modified
+Do you want to want to modify apache-commons-compress/apache-commons-compress.spec?
+y
+apache-commons-compress/apache-commons-compress.spec  being modified
+Do you want to want to modify containernetworking-plugins/containernetworking-plugins.spec?
+y
+containernetworking-plugins/containernetworking-plugins.spec  being modified
+Do you want to want to modify apache-commons-collections4/apache-commons-collections4.spec?
+y
+apache-commons-collections4/apache-commons-collections4.spec  being modified
+Do you want to want to modify jansi/jansi.spec?
+y
+jansi/jansi.spec  being modified
+Do you want to want to modify osgi-core/osgi-core.spec?
+y
+osgi-core/osgi-core.spec  being modified
+Do you want to want to modify httpcomponents-core/httpcomponents-core.spec?
+y
+httpcomponents-core/httpcomponents-core.spec  being modified
+Do you want to want to modify crypto-policies/crypto-policies.spec?
+y
+crypto-policies/crypto-policies.spec  being modified
+
+real    0m27.878s
+user    0m0.111s
+sys     0m0.101s
+neerajs [ /third_disk/bb05Mar/azurelinux/didwhat/BULK_BLD_THINGS ]$ 
+```
+
+Checked git status and one sample change:
+```
+neerajs [ /third_disk/bb05Mar/azurelinux/didwhat/BULK_BLD_THINGS ]$ git status
+On branch topic_bb05Mar
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+        modified:   ../../SPECS-EXTENDED/apache-commons-codec/apache-commons-codec.spec
+        modified:   ../../SPECS-EXTENDED/apache-commons-collections4/apache-commons-collections4.spec
+        modified:   ../../SPECS-EXTENDED/apache-commons-compress/apache-commons-compress.spec
+        modified:   ../../SPECS-EXTENDED/apache-commons-io/apache-commons-io.spec
+        modified:   ../../SPECS-EXTENDED/apache-commons-jexl/apache-commons-jexl.spec
+        modified:   ../../SPECS-EXTENDED/apache-commons-net/apache-commons-net.spec
+        modified:   ../../SPECS-EXTENDED/apache-commons-vfs/apache-commons-vfs.spec
+        modified:   ../../SPECS-EXTENDED/bcel/bcel.spec
+        modified:   ../../SPECS-EXTENDED/cglib/cglib.spec
+        modified:   ../../SPECS-EXTENDED/containernetworking-plugins/containernetworking-plugins.spec
+        modified:   ../../SPECS-EXTENDED/crypto-policies/crypto-policies.spec
+        modified:   ../../SPECS-EXTENDED/ecj/ecj.spec
+        modified:   ../../SPECS-EXTENDED/hawtjni/hawtjni.spec
+        modified:   ../../SPECS-EXTENDED/httpcomponents-core/httpcomponents-core.spec
+        modified:   ../../SPECS-EXTENDED/jansi/jansi.spec
+        modified:   ../../SPECS-EXTENDED/javacc/javacc.spec
+        modified:   ../../SPECS-EXTENDED/jdepend/jdepend.spec
+        modified:   ../../SPECS-EXTENDED/jline/jline.spec
+        modified:   ../../SPECS-EXTENDED/jsoup/jsoup.spec
+        modified:   ../../SPECS-EXTENDED/objenesis/objenesis.spec
+        modified:   ../../SPECS-EXTENDED/osgi-annotation/osgi-annotation.spec
+        modified:   ../../SPECS-EXTENDED/osgi-core/osgi-core.spec
+        modified:   ../../SPECS-EXTENDED/rhino/rhino.spec
+        modified:   ../../SPECS-EXTENDED/trilead-ssh2/trilead-ssh2.spec
+        modified:   ../../SPECS-EXTENDED/xalan-j2/xalan-j2.spec
+        modified:   ../../SPECS-EXTENDED/xbean/xbean.spec
+        modified:   ../../SPECS-EXTENDED/xerces-j2/xerces-j2.spec
+        modified:   ../../SPECS-EXTENDED/xmlunit/xmlunit.spec
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+        ../../commits_created_by_pull_PRs.logtxt
+        ../
+        ../../ouputgitcommit_of_prep_ext_folder
+
+no changes added to commit (use "git add" and/or "git commit -a")
+neerajs [ /third_disk/bb05Mar/azurelinux/didwhat/BULK_BLD_THINGS ]$ git diff ../../SPECS-EXTENDED/apache-commons-codec/apache-commons-codec.spec
+diff --git a/SPECS-EXTENDED/apache-commons-codec/apache-commons-codec.spec b/SPECS-EXTENDED/apache-commons-codec/apache-commons-codec.spec
+old mode 100755
+new mode 100644
+index 70adc2aad..8090476e2
+--- a/SPECS-EXTENDED/apache-commons-codec/apache-commons-codec.spec
++++ b/SPECS-EXTENDED/apache-commons-codec/apache-commons-codec.spec
+@@ -7,7 +7,7 @@ Summary:        Implementations of common encoders and decoders
+ License:        Apache-2.0
+ URL:            https://commons.apache.org/codec/
+ BuildArch:      noarch
+-ExclusiveArch:  %{java_arches} noarch
++#ExclusiveArch:  %{java_arches} noarch
+ 
+ Source0:        https://archive.apache.org/dist/commons/codec/source/commons-codec-%{version}-src.tar.gz
+ # Data in DoubleMetaphoneTest.java originally has an inadmissible license.
+neerajs [ /third_disk/bb05Mar/azurelinux/didwhat/BULK_BLD_THINGS ]$ 
+```
+
+Did a git add of SPECS-EXTENDED directory:
+```
+neerajs [ /third_disk/bb05Mar/azurelinux ]$ git add SPECS-EXTENDED/
+neerajs [ /third_disk/bb05Mar/azurelinux ]$ git status
+On branch topic_bb05Mar
+Changes to be committed:
+  (use "git restore --staged <file>..." to unstage)
+        modified:   SPECS-EXTENDED/apache-commons-codec/apache-commons-codec.spec
+        modified:   SPECS-EXTENDED/apache-commons-collections4/apache-commons-collections4.spec
+        modified:   SPECS-EXTENDED/apache-commons-compress/apache-commons-compress.spec
+        modified:   SPECS-EXTENDED/apache-commons-io/apache-commons-io.spec
+        modified:   SPECS-EXTENDED/apache-commons-jexl/apache-commons-jexl.spec
+        modified:   SPECS-EXTENDED/apache-commons-net/apache-commons-net.spec
+        modified:   SPECS-EXTENDED/apache-commons-vfs/apache-commons-vfs.spec
+        modified:   SPECS-EXTENDED/bcel/bcel.spec
+        modified:   SPECS-EXTENDED/cglib/cglib.spec
+        modified:   SPECS-EXTENDED/containernetworking-plugins/containernetworking-plugins.spec
+        modified:   SPECS-EXTENDED/crypto-policies/crypto-policies.spec
+        modified:   SPECS-EXTENDED/ecj/ecj.spec
+        modified:   SPECS-EXTENDED/hawtjni/hawtjni.spec
+        modified:   SPECS-EXTENDED/httpcomponents-core/httpcomponents-core.spec
+        modified:   SPECS-EXTENDED/jansi/jansi.spec
+        modified:   SPECS-EXTENDED/javacc/javacc.spec
+        modified:   SPECS-EXTENDED/jdepend/jdepend.spec
+        modified:   SPECS-EXTENDED/jline/jline.spec
+        modified:   SPECS-EXTENDED/jsoup/jsoup.spec
+        modified:   SPECS-EXTENDED/objenesis/objenesis.spec
+        modified:   SPECS-EXTENDED/osgi-annotation/osgi-annotation.spec
+        modified:   SPECS-EXTENDED/osgi-core/osgi-core.spec
+        modified:   SPECS-EXTENDED/rhino/rhino.spec
+        modified:   SPECS-EXTENDED/trilead-ssh2/trilead-ssh2.spec
+        modified:   SPECS-EXTENDED/xalan-j2/xalan-j2.spec
+        modified:   SPECS-EXTENDED/xbean/xbean.spec
+        modified:   SPECS-EXTENDED/xerces-j2/xerces-j2.spec
+        modified:   SPECS-EXTENDED/xmlunit/xmlunit.spec
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+        commits_created_by_pull_PRs.logtxt
+        didwhat/
+        ouputgitcommit_of_prep_ext_folder
+
+neerajs [ /third_disk/bb05Mar/azurelinux ]$ 
+```
+
+Commit and status and log check:
+```
+neerajs [ /third_disk/bb05Mar/azurelinux ]$ git commit -m "Committing the Arch issue fix for known files that cause build issues"
+[topic_bb05Mar 0acde1fda] Committing the Arch issue fix for known files that cause build issues
+ 28 files changed, 28 insertions(+), 28 deletions(-)
+ mode change 100755 => 100644 SPECS-EXTENDED/apache-commons-codec/apache-commons-codec.spec
+ mode change 100755 => 100644 SPECS-EXTENDED/apache-commons-collections4/apache-commons-collections4.spec
+ mode change 100755 => 100644 SPECS-EXTENDED/apache-commons-compress/apache-commons-compress.spec
+ mode change 100755 => 100644 SPECS-EXTENDED/apache-commons-io/apache-commons-io.spec
+ mode change 100755 => 100644 SPECS-EXTENDED/apache-commons-jexl/apache-commons-jexl.spec
+ mode change 100755 => 100644 SPECS-EXTENDED/apache-commons-net/apache-commons-net.spec
+ mode change 100755 => 100644 SPECS-EXTENDED/apache-commons-vfs/apache-commons-vfs.spec
+ mode change 100755 => 100644 SPECS-EXTENDED/bcel/bcel.spec
+ mode change 100755 => 100644 SPECS-EXTENDED/cglib/cglib.spec
+ mode change 100755 => 100644 SPECS-EXTENDED/containernetworking-plugins/containernetworking-plugins.spec
+ mode change 100755 => 100644 SPECS-EXTENDED/crypto-policies/crypto-policies.spec
+ mode change 100755 => 100644 SPECS-EXTENDED/ecj/ecj.spec
+ mode change 100755 => 100644 SPECS-EXTENDED/hawtjni/hawtjni.spec
+ mode change 100755 => 100644 SPECS-EXTENDED/httpcomponents-core/httpcomponents-core.spec
+ mode change 100755 => 100644 SPECS-EXTENDED/jansi/jansi.spec
+ mode change 100755 => 100644 SPECS-EXTENDED/javacc/javacc.spec
+ mode change 100755 => 100644 SPECS-EXTENDED/jdepend/jdepend.spec
+ mode change 100755 => 100644 SPECS-EXTENDED/jline/jline.spec
+ mode change 100755 => 100644 SPECS-EXTENDED/jsoup/jsoup.spec
+ mode change 100755 => 100644 SPECS-EXTENDED/objenesis/objenesis.spec
+ mode change 100755 => 100644 SPECS-EXTENDED/osgi-annotation/osgi-annotation.spec
+ mode change 100755 => 100644 SPECS-EXTENDED/osgi-core/osgi-core.spec
+ mode change 100755 => 100644 SPECS-EXTENDED/rhino/rhino.spec
+ mode change 100755 => 100644 SPECS-EXTENDED/trilead-ssh2/trilead-ssh2.spec
+ mode change 100755 => 100644 SPECS-EXTENDED/xalan-j2/xalan-j2.spec
+ mode change 100755 => 100644 SPECS-EXTENDED/xbean/xbean.spec
+ mode change 100755 => 100644 SPECS-EXTENDED/xerces-j2/xerces-j2.spec
+ mode change 100755 => 100644 SPECS-EXTENDED/xmlunit/xmlunit.spec
+neerajs [ /third_disk/bb05Mar/azurelinux ]$ git status
+On branch topic_bb05Mar
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+        commits_created_by_pull_PRs.logtxt
+        didwhat/
+        ouputgitcommit_of_prep_ext_folder
+
+nothing added to commit but untracked files present (use "git add" to track)
+neerajs [ /third_disk/bb05Mar/azurelinux ]$ git log --oneline -10
+0acde1fda (HEAD -> topic_bb05Mar) Committing the Arch issue fix for known files that cause build issues
+e76544803 Some manipulations to ensure that the bulk build doesn't break because of parse errors
+5ab2bf1c0 Merge branch 'topic_rubygem-test-unit-ruby-core' of https://github.com/SumitJenaHCL/azurelinux into topic_bb05Mar
+d402a0eb1 Merge branch 'topic_rubygem-scanf' of https://github.com/SumitJenaHCL/azurelinux into topic_bb05Mar
+9a8bfba63 Merge branch 'topic_libselinux' of https://github.com/SumitJenaHCL/azurelinux into topic_bb05Mar
+4149f5de1 Merge branch 'topic_rubygem-deep_merge' of https://github.com/SumitJenaHCL/azurelinux into topic_bb05Mar
+16a63b4f3 Merge branch 'topic_rubygem-hocon' of https://github.com/SumitJenaHCL/azurelinux into topic_bb05Mar
+e467440b7 Merge branch 'topic_rubygem-puppet-resource_api' of https://github.com/SumitJenaHCL/azurelinux into topic_bb05Mar
+589bb0a71 Merge branch 'topic_zziplib' of https://github.com/jykanase/azurelinux into topic_bb05Mar
+398f893ba Merge branch 'mayansingh/d3_upgrade' of https://github.com/microsoft/azurelinux into topic_bb05Mar
+neerajs [ /third_disk/bb05Mar/azurelinux ]$ 
+```
+
+ACTION 5:
+=========
+THE PACKAGE FOLDERS THAT GO MISSING AFTER THE ABOVE MANIPULATIONS
+
+Checking the issues found in the previous build, like the following spec files were 
+not found during the build
+ghc-srpm-macros
+jakarta-annotations
+minizip-ng
+nvmetcli
+
+Out of these we see that the following have been removed by their respective PRs:
+ghc-srpm-macros
+nvmetcli
+
+The following are the renamed ones 
+jakarta-annotations
+minizip-ng
+
+Their old names are glassfish-annotation-api and minizip, respectively.
+
+For minizip the pull failed.  The "git merge --abort" might have left minizip removed and not added minizip-ng.
+
+For jakarta-annotations, Jagadeesh has decided not to upgrade the package, but he has
+fixed build problem with this package.
+As a result the new name "jakarta-annotations" can't be seen in SPECS-EXTENDED.
+However, we should have "glassfish-annotation-api" still present in SPECS-EXTENDED.
+Can't explain why this is missing.
+
+Therefore, I have reasoning for the non-occurrence of ghc-srpm-macros minizip-ng and nvmetcli in the SPECS-EXTENDED directory.
+But, I can explain why glass jakarta-annotations 
+
+However, we will remove these from the build list.
+But lets also check if all the packages mentions in the build list are available under SPECS-EXTENDED.
+
+```
+neerajs [ /third_disk/bb05Mar/azurelinux ]$ for pkgnm in `cat didwhat/BULK_BLD_THINGS/wkg_pkgs_to_build1`; do if [ ! -d SPECS-EXTENDED/$pkgnm ]; then echo "$pkgnm missing in SPECS-EXTENDED"; else echo "$pkgnm found in SPECS-EXTENDED";fi; done | grep -e "missing"
+ghc-srpm-macros missing in SPECS-EXTENDED
+jakarta-annotations missing in SPECS-EXTENDED
+minizip-ng missing in SPECS-EXTENDED
+nvmetcli missing in SPECS-EXTENDED
+neerajs [ /third_disk/bb05Mar/azurelinux ]$ 
+```
+
+The above confirms that only these 4 are missing.
+Therefore, removing these from the build list should be sufficient.
+
+Carrying out this modification of the build list:
+```
+neerajs [ /third_disk/bb05Mar/azurelinux/didwhat/BULK_BLD_THINGS ]$ diff wkg_pkgs_to_build wkg_pkgs_to_build1
+163d162
+< foomatic-db
+451d449
+< libblockdev
+772d769
+< perl-Business-ISBN
+779d775
+< perl-Class-Data-Inheritable
+869d864
+< perl-File-ReadBackwards
+neerajs [ /third_disk/bb05Mar/azurelinux/didwhat/BULK_BLD_THINGS ]$ ~/utils/rem_full_line_match ghc-srpm-macros wkg_pkgs_to_build1
+====== Cleaning up ======
+neerajs [ /third_disk/bb05Mar/azurelinux/didwhat/BULK_BLD_THINGS ]$ diff wkg_pkgs_to_build wkg_pkgs_to_build1
+163d162
+< foomatic-db
+183d181
+< ghc-srpm-macros
+451d448
+< libblockdev
+772d768
+< perl-Business-ISBN
+779d774
+< perl-Class-Data-Inheritable
+869d863
+< perl-File-ReadBackwards
+neerajs [ /third_disk/bb05Mar/azurelinux/didwhat/BULK_BLD_THINGS ]$ ~/utils/rem_full_line_match jakarta-annotations wkg_pkgs_to_build1
+====== Cleaning up ======
+neerajs [ /third_disk/bb05Mar/azurelinux/didwhat/BULK_BLD_THINGS ]$ ~/utils/rem_full_line_match minizip-ng wkg_pkgs_to_build1
+====== Cleaning up ======
+neerajs [ /third_disk/bb05Mar/azurelinux/didwhat/BULK_BLD_THINGS ]$ ~/utils/rem_full_line_match nvmetcli wkg_pkgs_to_build1
+====== Cleaning up ======
+neerajs [ /third_disk/bb05Mar/azurelinux/didwhat/BULK_BLD_THINGS ]$ diff wkg_pkgs_to_build wkg_pkgs_to_build1
+163d162
+< foomatic-db
+183d181
+< ghc-srpm-macros
+186d183
+< jakarta-annotations
+451d447
+< libblockdev
+646d641
+< minizip-ng
+704d698
+< nvmetcli
+772d765
+< perl-Business-ISBN
+779d771
+< perl-Class-Data-Inheritable
+869d860
+< perl-File-ReadBackwards
+neerajs [ /third_disk/bb05Mar/azurelinux/didwhat/BULK_BLD_THINGS ]$ 
+```
+
+ACTION 6:
+=========
+
+More failures that we came across in the build last time.
+Basically, 
+  1. the missing patch "ibus-HEAD.patch"
+  2. the ocaml-curses-1.0.11.tar.gz, that did not get hydrated.
+  3. the other files which the build system had failed to download the last time.
+
+1. 
+For ibus-HEAD.patch, we will remove the corresponding line from the ibus.spec file:
+```
+neerajs [ /third_disk/bb05Mar/azurelinux/SPECS-EXTENDED/ibus ]$ git diff ibus.spec
+neerajs [ /third_disk/bb05Mar/azurelinux/SPECS-EXTENDED/ibus ]$ vim ibus.spec
+neerajs [ /third_disk/bb05Mar/azurelinux/SPECS-EXTENDED/ibus ]$ git diff ibus.spec
+diff --git a/SPECS-EXTENDED/ibus/ibus.spec b/SPECS-EXTENDED/ibus/ibus.spec
+index 8315796c0..60e9dc951 100644
+--- a/SPECS-EXTENDED/ibus/ibus.spec
++++ b/SPECS-EXTENDED/ibus/ibus.spec
+@@ -1,3 +1,4 @@
++plexus-pom/plexus-pom.spec
+ Vendor:         Microsoft Corporation
+ Distribution:   Azure Linux
+ # This package depends on automagic byte compilation
+@@ -23,7 +24,7 @@ Source0:        https://github.com/ibus/%name/releases/download/%{version}/%{nam
+ Source1:        %{name}-xinput
+ Source2:        %{name}.conf.5
+ # Patch0:         %%{name}-HEAD.patch
+-Patch0:         %{name}-HEAD.patch
++#Patch0:         %{name}-HEAD.patch
+ # Under testing #1349148 #1385349 #1350291 #1406699 #1432252 #1601577
+ Patch1:         %{name}-1385349-segv-bus-proxy.patch
+ 
+neerajs [ /third_disk/bb05Mar/azurelinux/SPECS-EXTENDED/ibus ]$ 
+```
+
+2. 
+For ocaml-curses-1.0.11.tar.gz, this time around our earlier action in pull_PRs,
+where we sourced the needed tarballs either from the pre-downloaded specs folder
+or downloaded the tarball, that action has taken care of providing this tarball 
+too.
+
+
+3. 
+the other files which the build system had failed to download the last time.
+
+These other files were:
+deep_merge-1.2.2.gem
+azerbaijani_spellchecker-0.2.zip
+dizionario_italiano-5.1.1.tar.gz
+
+For all these files checked our logs "output_pull_PRs.logtxt", which showed that these files had been
+provided by the pull_PRs script.
+
+```
+neerajs [ /third_disk/bb05Mar/azurelinux/didwhat/BULK_BLD_THINGS ]$ grep -e "deep_merge-1.2.2.gem" -e "azerbaijani_spellchecker-0.2.zip" -e "dizionario_italiano-5.1.1.tar.gz" -e "oca
+ml-curses-1.0.11.tar.gz" output_pull_PRs.logtxt | grep -e "need met"
+azerbaijani_spellchecker-0.2.zip need met, for package hunspell-az
+dizionario_italiano-5.1.1.tar.gz need met, for package hunspell-it
+dizionario_italiano-5.1.1.tar.gz need met, for package hyphen-it
+ocaml-curses-1.0.11.tar.gz need met, for package ocaml-curses
+deep_merge-1.2.2.gem need met, for package rubygem-deep_merge
+neerajs [ /third_disk/bb05Mar/azurelinux/didwhat/BULK_BLD_THINGS ]$ 
+```
+
+Verifying in the SPECS-EXTENDED folder:
+```
+neerajs [ /third_disk/bb05Mar/azurelinux/SPECS-EXTENDED ]$ for flnm in deep_merge-1.2.2.gem azerbaijani_spellchecker-0.2.zip dizionario_italiano-5.1.1.tar.gz ocaml-curses-1.0.11.tar.gz
+> do
+> find ./ -name "$flnm"
+> done
+./rubygem-deep_merge/deep_merge-1.2.2.gem
+./hunspell-it/dizionario_italiano-5.1.1.tar.gz
+./hyphen-it/dizionario_italiano-5.1.1.tar.gz
+./ocaml-curses/ocaml-curses-1.0.11.tar.gz
+neerajs [ /third_disk/bb05Mar/azurelinux/SPECS-EXTEN
+```
+
+So, we still have azerbaijani_spellchecker-0.2.zip missing.
+
+There was a mistake in the "pull_PRs" script.
+Because of use of the wrong shell variable, the pull_PRs script was
+declaring the need for a tarball as met, if it found it in the 
+pre-downloaded directory.
+
+Instead it should have declared the need as if it is is found in the
+SPECS-EXTENDED directory.
+
+```
+azerbaijani_spellchecker-0.2.zip already with us in /fifth_disk/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs//hunspell-az, for package hunspell-az
+azerbaijani_spellchecker-0.2.zip need met, for package hunspell-az
+```
+
+Because of this the tarball copying into the SPECS-EXTENDED directory did not 
+happen if it was found in the pre-downloaded specs directory.
+
+We will run the pull_PRs script again after having made this correction.
+We will comment out the pull of topic branches part and only carry out the
+copy/downloaded of source tarballs part.
+
+```
+neerajs [ /third_disk/bb05Mar/azurelinux/didwhat/BULK_BLD_THINGS ]$ time ./pull_PRs /third_disk/bb05Mar/azurelinux/ /fifth_disk/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ /third_disk/bb05Mar/azurelinux/didwhat/BULK_BLD_THINGS > output_pull_PRs_onlytrbl_chk_spcs-ext.logtxt
+
+real    1m50.609s
+user    0m53.455s
+sys     0m6.783s
+neerajs [ /third_disk/bb05Mar/azurelinux/didwhat/BULK_BLD_THINGS ]$ 
+```
+
+After this run the "output_pull_PRs_onlytrbl_chk_spcs-ext.logtxt" shows that these files are now available:
+```
+neerajs [ /third_disk/bb05Mar/azurelinux/didwhat/BULK_BLD_THINGS ]$ grep -e "deep_merge-1.2.2.gem" -e "azerbaijani_spellchecker-0.2.zip" -e "dizionario_italiano-5.1.1.tar.gz" -e "ocaml-curses-1.0.11.tar.gz" output_pull_PRs_onlytrbl_chk_spcs-ext.logtxt | grep -e "need met"
+azerbaijani_spellchecker-0.2.zip need met, for package hunspell-az
+dizionario_italiano-5.1.1.tar.gz need met, for package hunspell-it
+dizionario_italiano-5.1.1.tar.gz need met, for package hyphen-it
+ocaml-curses-1.0.11.tar.gz need met, for package ocaml-curses
+deep_merge-1.2.2.gem need met, for package rubygem-deep_merge
+neerajs [ /third_disk/bb05Mar/azurelinux/didwhat/BULK_BLD_THINGS ]$ 
+```
+
+This time around all of these files are now found in the SPECS-EXTENDED folder:
+```
+neerajs [ /third_disk/bb05Mar/azurelinux/SPECS-EXTENDED ]$ for flnm in deep_merge-1.2.2.gem
+ azerbaijani_spellchecker-0.2.zip dizionario_italiano-5.1.1.tar.gz ocaml-curses-1.0.11.tar.
+gz; do find ./ -name "$flnm"; done
+./rubygem-deep_merge/deep_merge-1.2.2.gem
+./hunspell-az/azerbaijani_spellchecker-0.2.zip
+./hunspell-it/dizionario_italiano-5.1.1.tar.gz
+./hyphen-it/dizionario_italiano-5.1.1.tar.gz
+./ocaml-curses/ocaml-curses-1.0.11.tar.gz
+neerajs [ /third_disk/bb05Mar/azurelinux/SPECS-EXTENDED ]$ 
+```
+
+To further verify this run of corrected "pull_PRs" we check the need unmet ones and see that the set is the same as earlier:
+```
+neerajs [ /third_disk/bb05Mar/azurelinux/didwhat/BULK_BLD_THINGS ]$ grep -e "need unmet" output_pull_PRs_onlytrbl_chk_spcs-ext.logtxt 
+foomatic-db-4.0-20241027.tar.gz need unmet, for package foomatic-db
+libblockdev-3.2.0.tar.gz need unmet, for package libblockdev
+perl-Business-ISBN-3.009.tar.gz need unmet, for package perl-Business-ISBN
+perl-Class-Data-Inheritable-0.09.tar.gz need unmet, for package perl-Class-Data-Inheritable
+perl-File-ReadBackwards-1.06.tar.gz need unmet, for package perl-File-ReadBackwards
+neerajs [ /third_disk/bb05Mar/azurelinux/didwhat/BULK_BLD_THINGS ]$ grep -e "need unmet" output_pull_PRs_onlytrbl_chk_spcs-ext.logtxt | wc
+      5      30     380
+neerajs [ /third_disk/bb05Mar/azurelinux/didwhat/BULK_BLD_THINGS ]$ grep -e "need met" outp
+ut_pull_PRs_onlytrbl_chk_spcs-ext.logtxt | wc
+    451    2706   26383
+neerajs [ /third_disk/bb05Mar/azurelinux/didwhat/BULK_BLD_THINGS ]$ 
+```
+
+
+ACTION 7:
+=========
+
+Now we are ready to build
+
+Build started at 7:58 PM IST or Thu Mar  6 14:28:00 UTC 2025:
+```
+neerajs [ /third_disk/bb05Mar/azurelinux/toolkit ]$ time ../didwhat/BULK_BLD_THINGS/build_scr_with_check.sh /third_disk/bb05Mar/azurelinux/didwhat/BULK_BLD_THINGS/wkg_pkgs_to_build1 /thir
+d_disk/bb05Mar/azurelinux/ > ../didwhat/BULK_BLD_THINGS/bbld_iter1_$(date +%Y%m%d-%H%M).logtxt 2>&1 &
+[1] 566278
+neerajs [ /third_disk/bb05Mar/azurelinux/toolkit ]$ 
+```
+
+This failed after about 20 minutes.
+Following are the relevant logs:
+```
+touch /third_disk/bb05Mar/azurelinux/build/make_status/build_srpms.flag
+WARN[0000][srpmpacker] Will update signature files as needed        
+INFO[0008][rpmssnapshot] Generating RPMs snapshot from specs inside (../SPECS-EXTENDED). 
+INFO[0008][specreader] Parsing SPECs inside a chroot environment    
+INFO[0008][srpmpacker] Packing SRPMs inside a chroot environment    
+INFO[0008][srpmpacker] Finding all SPEC files                       
+WARN[0015][rpmssnapshot] error: line 1: Unknown tag: plexus-pom/plexus-pom.spec
+error: query of specfile /chroot_mnt/ibus/ibus.spec failed, can't parse 
+ERRO[0015][rpmssnapshot] Failed to generate snapshot from specs folder (../SPECS-EXTENDED) into (/third_disk/bb05Mar/azurelinux/build/rpms_snapshots/SPECS-EXTENDED_rpms_snapshot.json). Error: failed to retrieve a list of specs inside (/chroot_mnt):
+failed while querrying spec (/chroot_mnt/ibus/ibus.spec). Error: failed to query SPEC (/chroot_mnt/ibus/ibus.spec):
+exit status 1. 
+WARN[0015][rpmssnapshot] error: line 28: Unknown tag: %gometa
+error: query of specfile /chroot_mnt/delve/delve.spec failed, can't parse 
+cp /third_disk/bb05Mar/azurelinux/build/rpms_snapshots/SPECS-EXTENDED_rpms_snapshot.json /third_disk/bb05Mar/azurelinux/out/rpms_snapshot.json
+cp: cannot stat '/third_disk/bb05Mar/azurelinux/build/rpms_snapshots/SPECS-EXTENDED_rpms_snapshot.json': No such file or directory
+make: *** [/third_disk/bb05Mar/azurelinux/toolkit/scripts/toolkit.mk:94: /third_disk/bb05Mar/azurelinux/out/rpms_snapshot.json] Error 1
+make: *** Waiting for unfinished jobs....
+INFO[0037][srpmpacker] Calculating SPECs to repack                  
+WARN[0053][srpmpacker] error: line 1: Unknown tag: plexus-pom/plexus-pom.spec
+error: query of specfile /specs/ibus/ibus.spec failed, can't parse 
+ERRO[0053][srpmpacker] Failed to check (/specs/ibus/ibus.spec). Error: exit status 1 
+WARN[0054][specreader] Found a boolean condition 'usbguard-selinux if selinux-policy-targeted', make sure the packages on the left is available. Please refer to 'docs/how_it_works/3_package_building.md#rich-dependencies' for explanation of limitations. 
+WARN[0054][specreader] Found a boolean condition 'usbguard-selinux if selinux-policy-targeted', make sure the packages on the left is available. Please refer to 'docs/how_it_works/3_package_building.md#rich-dependencies' for explanation of limitations. 
+PANI[0055][srpmpacker] exit status 1                                
+panic: (*logrus.Entry) 0xc0000fc070
+
+goroutine 1 [running]:
+github.com/sirupsen/logrus.(*Entry).log(0xc0000fc000, 0x0, {0xc0002d6f90, 0xd})
+        /root/go/pkg/mod/github.com/sirupsen/logrus@v1.9.3/entry.go:260 +0x485
+github.com/sirupsen/logrus.(*Entry).Log(0xc0000fc000, 0x0, {0xc0004edb78?, 0x6969d0?, 0xc0000d8ac0?})
+        /root/go/pkg/mod/github.com/sirupsen/logrus@v1.9.3/entry.go:304 +0x48
+github.com/sirupsen/logrus.(*Entry).Logln(0xc0000fc000, 0x0, {0xc0004edc10?, 0x0?, 0x7ffc844841d1?})
+        /root/go/pkg/mod/github.com/sirupsen/logrus@v1.9.3/entry.go:394 +0x7f
+github.com/sirupsen/logrus.(*Logger).Logln(0xc0000d8a80, 0x0, {0xc0004edc10, 0x1, 0x1})
+        /root/go/pkg/mod/github.com/sirupsen/logrus@v1.9.3/logger.go:298 +0x58
+github.com/sirupsen/logrus.(*Logger).Panicln(...)
+        /root/go/pkg/mod/github.com/sirupsen/logrus@v1.9.3/logger.go:339
+github.com/microsoft/azurelinux/toolkit/tools/internal/logger.PanicOnError({0x851a80?, 0xc00088e200?}, {0x0?, 0x10000?, 0xc0001722a0?})
+        /third_disk/bb05Mar/azurelinux/toolkit/tools/internal/logger/log.go:162 +0xb7
+main.main()
+        /third_disk/bb05Mar/azurelinux/toolkit/tools/srpmpacker/srpmpacker.go:191 +0x929
+make: *** [/third_disk/bb05Mar/azurelinux/toolkit/scripts/srpm_pack.mk:81: /third_disk/bb05Mar/azurelinux/build/make_status/build_srpms.flag] Error 2
+WARN[0058][specreader] Found a boolean condition 'libdecor-0.so.064bit if libwayland-client', make sure the packages on the left is available. Please refer to 'docs/how_it_works/3_package_building.md#rich-dependencies' for explanation of limitations. 
+WARN[0058][specreader] Found a boolean condition 'libdecor-0.so.064bit if libwayland-client', make sure the packages on the left is available. Please refer to 'docs/how_it_works/3_package_building.md#rich-dependencies' for explanation of limitations. 
+WARN[0064][specreader] Found a boolean condition 'ruby-default-gems < 3.3 or rubygemracc', make sure both packages are available. Please refer to 'docs/how_it_works/3_package_building.md#rich-dependencies' for explanation of limitations. 
+WARN[0067][specreader] Found a boolean condition 'libsecret = 0.21.4-1.azl3 if libsecret', make sure the packages on the left is available. Please refer to 'docs/how_it_works/3_package_building.md#rich-dependencies' for explanation of limitations. 
+WARN[0067][specreader] Found a boolean condition 'mrtg-selinux if selinux-policy-targeted', make sure the packages on the left is available. Please refer to 'docs/how_it_works/3_package_building.md#rich-dependencies' for explanation of limitations. 
+WARN[0067][specreader] Found a boolean condition 'mrtg-selinux if selinux-policy-targeted', make sure the packages on the left is available. Please refer to 'docs/how_it_works/3_package_building.md#rich-dependencies' for explanation of limitations. 
+WARN[0067][specreader] Found a boolean condition 'python3-setuptools if python3 >= 3.12', make sure the packages on the left is available. Please refer to 'docs/how_it_works/3_package_building.md#rich-dependencies' for explanation of limitations. 
+WARN[0067][specreader] error: line 1: Unknown tag: plexus-pom/plexus-pom.spec
+error: query of specfile /third_disk/bb05Mar/azurelinux/SPECS-EXTENDED/ibus/ibus.spec failed, can't parse 
+WARN[0068][specreader] Found a boolean condition 'python3-setuptools if python3 >= 3.12', make sure the packages on the left is available. Please refer to 'docs/how_it_works/3_package_building.md#rich-dependencies' for explanation of limitations. 
+WARN[0068][specreader] Found a boolean condition 'openwsman-selinux if selinux-policy-targeted', make sure the packages on the left is available. Please refer to 'docs/how_it_works/3_package_building.md#rich-dependencies' for explanation of limitations. 
+WARN[0068][specreader] Found a boolean condition 'openwsman-selinux if selinux-policy-targeted', make sure the packages on the left is available. Please refer to 'docs/how_it_works/3_package_building.md#rich-dependencies' for explanation of limitations. 
+WARN[0069][specreader] Found a boolean condition 'systemd-standalone-tmpfiles or systemd', make sure both packages are available. Please refer to 'docs/how_it_works/3_package_building.md#rich-dependencies' for explanation of limitations. 
+WARN[0069][specreader] Found a boolean condition 'systemd-standalone-tmpfiles or systemd', make sure both packages are available. Please refer to 'docs/how_it_works/3_package_building.md#rich-dependencies' for explanation of limitations. 
+PANI[0070][specreader] failed to parse native specs:
+exit status 1  
+panic: (*logrus.Entry) 0xc0002da070
+
+goroutine 1 [running]:
+github.com/sirupsen/logrus.(*Entry).log(0xc0002da000, 0x0, {0xc0000200c0, 0x2b})
+        /root/go/pkg/mod/github.com/sirupsen/logrus@v1.9.3/entry.go:260 +0x485
+github.com/sirupsen/logrus.(*Entry).Log(0xc0002da000, 0x0, {0xc000523cd0?, 0x54bcd0?, 0xc0003629c0?})
+        /root/go/pkg/mod/github.com/sirupsen/logrus@v1.9.3/entry.go:304 +0x48
+github.com/sirupsen/logrus.(*Entry).Logln(0xc0002da000, 0x0, {0xc000523d68?, 0x5?, 0x89f111?})
+        /root/go/pkg/mod/github.com/sirupsen/logrus@v1.9.3/entry.go:394 +0x7f
+github.com/sirupsen/logrus.(*Logger).Logln(0xc000362980, 0x0, {0xc000523d68, 0x1, 0x1})
+        /root/go/pkg/mod/github.com/sirupsen/logrus@v1.9.3/logger.go:298 +0x58
+github.com/sirupsen/logrus.(*Logger).Panicln(...)
+        /root/go/pkg/mod/github.com/sirupsen/logrus@v1.9.3/logger.go:339
+github.com/microsoft/azurelinux/toolkit/tools/internal/logger.PanicOnError({0x843a80?, 0xc000e5e100?}, {0x0?, 0x5?, 0x7fffa0b7e1b6?})
+        /third_disk/bb05Mar/azurelinux/toolkit/tools/internal/logger/log.go:162 +0xb7
+main.main()
+        /third_disk/bb05Mar/azurelinux/toolkit/tools/specreader/specreader.go:78 +0x5ba
+make: *** [/third_disk/bb05Mar/azurelinux/toolkit/scripts/pkggen.mk:96: /third_disk/bb05Mar/azurelinux/build/pkg_artifacts/specs.json] Error 2
+```
+
+The error in parsing of ibus.spec, as seen in the above logs, is because of an editing 
+error that added "plexus-pom/plexus-pom.spec"
+as the first line in ibus.spec:
+```
+neerajs [ /third_disk/bb05Mar/azurelinux/SPECS-EXTENDED ]$ git diff c27c34dba -- ibus/ibus.spec
+diff --git a/SPECS-EXTENDED/ibus/ibus.spec b/SPECS-EXTENDED/ibus/ibus.spec
+index 611983f14..60e9dc951 100644
+--- a/SPECS-EXTENDED/ibus/ibus.spec
++++ b/SPECS-EXTENDED/ibus/ibus.spec
+@@ -1,3 +1,4 @@
++plexus-pom/plexus-pom.spec
+ Vendor:         Microsoft Corporation
+ Distribution:   Azure Linux
+ # This package depends on automagic byte compilation
+@@ -14,8 +15,8 @@ Distribution:   Azure Linux
+ %global dbus_python_version 0.83.0
+ 
+ Name:           ibus
+-Version:        1.5.22
+-Release:        9%{?dist}
++Version:        1.5.31
++Release:        1%{?dist}
+ Summary:        Intelligent Input Bus for Linux OS
+ License:        LGPLv2+
+ URL:            https://github.com/ibus/%name/wiki
+@@ -23,7 +24,7 @@ Source0:        https://github.com/ibus/%name/releases/download/%{version}/%{nam
+ Source1:        %{name}-xinput
+ Source2:        %{name}.conf.5
+ # Patch0:         %%{name}-HEAD.patch
+-Patch0:         %{name}-HEAD.patch
++#Patch0:         %{name}-HEAD.patch
+ # Under testing #1349148 #1385349 #1350291 #1406699 #1432252 #1601577
+ Patch1:         %{name}-1385349-segv-bus-proxy.patch
+ 
+neerajs [ /third_disk/bb05Mar/azurelinux/SPECS-EXTENDED ]$ 
+```
+
+Fixed ibus.spec by removing this extra line:
+Modified the file with vim and captured the diff before and after the correction.
+After correction tried a grep also, which correctly failed to find "plexus" in the delve.spec file.
+```
+neerajs [ /third_disk/bb05Mar/azurelinux/SPECS-EXTENDED ]$ git diff c27c34dba -- ibus/ibus.spec | head -10
+diff --git a/SPECS-EXTENDED/ibus/ibus.spec b/SPECS-EXTENDED/ibus/ibus.spec
+index 611983f14..60e9dc951 100644
+--- a/SPECS-EXTENDED/ibus/ibus.spec
++++ b/SPECS-EXTENDED/ibus/ibus.spec
+@@ -1,3 +1,4 @@
++plexus-pom/plexus-pom.spec
+ Vendor:         Microsoft Corporation
+ Distribution:   Azure Linux
+ # This package depends on automagic byte compilation
+@@ -14,8 +15,8 @@ Distribution:   Azure Linux
+neerajs [ /third_disk/bb05Mar/azurelinux/SPECS-EXTENDED ]$ vim ibus/ibus.spec 
+neerajs [ /third_disk/bb05Mar/azurelinux/SPECS-EXTENDED ]$ git diff c27c34dba -- ibus/ibus.spec | head -10
+diff --git a/SPECS-EXTENDED/ibus/ibus.spec b/SPECS-EXTENDED/ibus/ibus.spec
+index 611983f14..8bb56beff 100644
+--- a/SPECS-EXTENDED/ibus/ibus.spec
++++ b/SPECS-EXTENDED/ibus/ibus.spec
+@@ -14,8 +14,8 @@ Distribution:   Azure Linux
+ %global dbus_python_version 0.83.0
+ 
+ Name:           ibus
+-Version:        1.5.22
+-Release:        9%{?dist}
+neerajs [ /third_disk/bb05Mar/azurelinux/SPECS-EXTENDED ]$ grep plexus ibus/ibus.spec
+neerajs [ /third_disk/bb05Mar/azurelinux/SPECS-EXTENDED ]$ 
+```
+
+And the other error is the delve.spec couldn't be parsed because of a macro.
+Now we had already removed it from the build list.
+Lets remove it from the SPECS-EXTENDED folder too.
+It seems that the parsing errors or any errors are detected by rpmssnapshot for all the files
+in SPECS-EXTENDED, and not for the build list passed.
+
+We confirm again that the package is not there in any of the build lists:
+```
+neerajs [ /third_disk/bb05Mar/azurelinux/didwhat/BULK_BLD_THINGS ]$ grep delve wkg_pkgs_to_build1
+neerajs [ /third_disk/bb05Mar/azurelinux/didwhat/BULK_BLD_THINGS ]$ grep delve wkg_pkgs_to_build
+neerajs [ /third_disk/bb05Mar/azurelinux/didwhat/BULK_BLD_THINGS ]$ 
+```
+
+Instead of removing delve folder from SPECS-EXTENDED directory, we are going to give a try by 
+using the delve.spec of Azure Linux, and modified only to the desired Version of 1.23.1, as follows:
+And since the Patch file is also different in the delve.spec that we get from Azure Linux, we 
+will change that line to match the patch requirement with the stuff we have kept in the delve
+folder:
+```
+neerajs [ /third_disk/bb05Mar/azurelinux/SPECS-EXTENDED/delve ]$ ls
+0001-Skipping-due-issues-with-the-go-version-in-Fedora.patch  delve-1.23.1.tar.gz  delve.spec
+neerajs [ /third_disk/bb05Mar/azurelinux/SPECS-EXTENDED/delve ]$ git restore --source=c27c34dba -- delve.spec
+neerajs [ /third_disk/bb05Mar/azurelinux/SPECS-EXTENDED/delve ]$ git diff c27c34dba -- delve.spec
+neerajs [ /third_disk/bb05Mar/azurelinux/SPECS-EXTENDED/delve ]$ vim delve.spec
+neerajs [ /third_disk/bb05Mar/azurelinux/SPECS-EXTENDED/delve ]$ git diff c27c34dba -- delve.spec
+diff --git a/SPECS-EXTENDED/delve/delve.spec b/SPECS-EXTENDED/delve/delve.spec
+index bba38e19c..cddaf37d5 100644
+--- a/SPECS-EXTENDED/delve/delve.spec
++++ b/SPECS-EXTENDED/delve/delve.spec
+@@ -1,8 +1,8 @@
+ Vendor:         Microsoft Corporation
+ Distribution:   Azure Linux
+ Name:                   delve
+-Version:                1.5.0
+-Release:                16%{?dist}
++Version:                1.23.1
++Release:                1%{?dist}
+ Summary:                A debugger for the Go programming language
+ 
+ License:                MIT
+@@ -19,7 +19,7 @@ BuildRequires:          lsof
+ Provides:               dlv = %{version}
+ 
+ # https://github.com/go-delve/delve/pull/2223
+-Patch0:                 golang-1.15.4-TestStepIntoWrapperForEmbeddedPointer.patch
++Patch0001:      0001-Skipping-due-issues-with-the-go-version-in-Fedora.patch
+ 
+ 
+ %description
+neerajs [ /third_disk/bb05Mar/azurelinux/SPECS-EXTENDED/delve ]$ 
+```
+
+Trying another build at 9:31 PM IST or Thu Mar  6 16:01:00 UTC 2025 :
+```
+neerajs [ /third_disk/bb05Mar/azurelinux/toolkit ]$ time ../didwhat/BULK_BLD_THINGS/build_scr_with_check.sh /third_disk/bb05Mar/azurelinux/didwhat/BULK_BLD_THINGS/wkg_pkgs_to_build1 /thir
+d_disk/bb05Mar/azurelinux/ > ../didwhat/BULK_BLD_THINGS/bbld_iter2_$(date +%Y%m%d-%H%M).logtxt 2>&1 &
+[1] 687312
+neerajs [ /third_disk/bb05Mar/azurelinux/toolkit ]$ 
+```
+
+It failed in 10 minutes with the following log:
+unable to hydrate files: [driverctl-0.115-2ba60536eb20ca0a6a751bd8b6501dba84ec45d3.tar.gz]
+```
+INFO[0107][srpmpacker] Packed (dcraw.spec) -> (dcraw-9.28.0-10.azl3.src.rpm) 
+INFO[0107][srpmpacker] Packed (jzlib.spec) -> (jzlib-1.1.3-5.azl3.src.rpm) 
+INFO[0107][srpmpacker] Packed (geronimo-specs.spec) -> (geronimo-specs-1.2-40.azl3.src.rpm) 
+WARN[0108][srpmpacker] Attempt 1/8: Failed to download (https://azurelinuxsrcstorage.blob.core.windows.net/sources/core/driverctl-0.115-2ba60536eb20ca0a6a751bd8b6501dba84ec45d3.tar.gz) with error: (invalid response: 404) 
+WARN[0108][srpmpacker] 404 errors are likely unrecoverable, will not retry 
+ERRO[0108][srpmpacker] Failed to download (https://azurelinuxsrcstorage.blob.core.windows.net/sources/core/driverctl-0.115-2ba60536eb20ca0a6a751bd8b6501dba84ec45d3.tar.gz). Error: failed to download (https://azurelinuxsrcstorage.blob.core.windows.net/sources/core/driverctl-0.115-2ba60536eb20ca0a6a751bd8b6501dba84ec45d3.tar.gz) to (/build/driverctl-0.115-1.azl3.src.rpm/SOURCES/driverctl-0.115-2ba60536eb20ca0a6a751bd8b6501dba84ec45d3.tar.gz):
+retry cancelled, last error:
+invalid response: 404. 
+ERRO[0108][srpmpacker] Unable to hydrate file: driverctl-0.115-2ba60536eb20ca0a6a751bd8b6501dba84ec45d3.tar.gz 
+ERRO[0108][srpmpacker] Failed to pack (/specs/driverctl/driverctl.spec). Cancelling outstanding workers. Error: unable to hydrate files: [driverctl-0.115-2ba60536eb20ca0a6a751bd8b6501dba84ec45d3.tar.gz] 
+PANI[0129][srpmpacker] unable to hydrate files: [driverctl-0.115-2ba60536eb20ca0a6a751bd8b6501dba84ec45d3.tar.gz] 
+panic: (*logrus.Entry) 0xc000222a10
+
+goroutine 1 [running]:
+github.com/sirupsen/logrus.(*Entry).log(0xc000170540, 0x0, {0xc0002f1980, 0x5a})
+        /root/go/pkg/mod/github.com/sirupsen/logrus@v1.9.3/entry.go:260 +0x485
+github.com/sirupsen/logrus.(*Entry).Log(0xc000170540, 0x0, {0xc000587b78?, 0x6969a5?, 0xc0001a4a40?})
+        /root/go/pkg/mod/github.com/sirupsen/logrus@v1.9.3/entry.go:304 +0x48
+github.com/sirupsen/logrus.(*Entry).Logln(0xc000170540, 0x0, {0xc000587c10?, 0x0?, 0x7ffcdfce01d1?})
+        /root/go/pkg/mod/github.com/sirupsen/logrus@v1.9.3/entry.go:394 +0x7f
+github.com/sirupsen/logrus.(*Logger).Logln(0xc0001a4a00, 0x0, {0xc000587c10, 0x1, 0x1})
+        /root/go/pkg/mod/github.com/sirupsen/logrus@v1.9.3/logger.go:298 +0x58
+github.com/sirupsen/logrus.(*Logger).Panicln(...)
+        /root/go/pkg/mod/github.com/sirupsen/logrus@v1.9.3/logger.go:339
+github.com/microsoft/azurelinux/toolkit/tools/internal/logger.PanicOnError({0x7fb4e0?, 0xc000d7e360?}, {0x0?, 0x10000?, 0xc0003e8750?})
+        /third_disk/bb05Mar/azurelinux/toolkit/tools/internal/logger/log.go:162 +0xb7
+main.main()
+        /third_disk/bb05Mar/azurelinux/toolkit/tools/srpmpacker/srpmpacker.go:191 +0x929
+make: *** [/third_disk/bb05Mar/azurelinux/toolkit/scripts/srpm_pack.mk:81: /third_disk/bb05Mar/azurelinux/build/make_status/build_srpms.flag] Error 2
+make: *** Waiting for unfinished jobs....
+```
+
+
+The file "driverctl-0.115-2ba60536eb20ca0a6a751bd8b6501dba84ec45d3.tar.gz" is not present in 
+SPECS-EXTENDED/driverctl, but it is shown as a "need met" in the 
+"output_pull_PRs_onlytrbl_chk_spcs-ext.logtxt" file, which is generated by pull_PRs.
+```
+ 120 spcfl_fullpath=/third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/driverctl/driverctl.spec
+ 121         srcpath=https://gitlab.com/driverctl/driverctl/repository/archive.tar.gz?ref=0.115#/driverctl-0.115-2ba60536eb20ca0a6a751bd8b6501dba84ec45d3.tar.gz
+ 122         trbl=driverctl-0.115-2ba60536eb20ca0a6a751bd8b6501dba84ec45d3.tar.gz
+ 123         Missing tarball driverctl-0.115-2ba60536eb20ca0a6a751bd8b6501dba84ec45d3.tar.gz in pre-downloaded /fifth_disk/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/     /driverctl for package driverctl
+ 124         Trying the download now...
+ 125         of https://gitlab.com/driverctl/driverctl/repository/archive.tar.gz?ref=0.115#/driverctl-0.115-2ba60536eb20ca0a6a751bd8b6501dba84ec45d3.tar.gz
+ 126         as /third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/driverctl/driverctl-0.115-2ba60536eb20ca0a6a751bd8b6501dba84ec45d3.tar.gz
+ 127 [0] Downloading 'https://gitlab.com/driverctl/driverctl/repository/archive.tar.gz?ref=0.115#/driverctl-0.115-2ba60536eb20ca0a6a751bd8b6501dba84ec45d3.tar.gz' ...
+ 128 HTTP response 302  [https://gitlab.com/driverctl/driverctl/repository/archive.tar.gz?ref=0.115#/driverctl-0.115-2ba60536eb20ca0a6a751bd8b6501dba84ec45d3.tar.gz]
+ 129 Adding URL: https://gitlab.com/users/sign_in
+ 130 [0] Downloading 'https://gitlab.com/users/sign_in' ...
+ 131 HTTP ERROR response 403  [https://gitlab.com/users/sign_in]
+ 132         download success, tarball /third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/driverctl/driverctl-0.115-2ba60536eb20ca0a6a751bd8b6501dba84ec45d3.tar.gz for package driverctl
+ 133 driverctl-0.115-2ba60536eb20ca0a6a751bd8b6501dba84ec45d3.tar.gz need met, for package driverctl
+```
+
+This file being absent in SPECS-EXTENDED/driverctl means that the build error we
+saw has been correctly reported.
+
+The reason for the misbehavior of the pull_PRs script is that even though the download fails, the "$?" of the wget command indicates success, i.e. $? is 0.
+This means that the test for successful download is not correct as of now.
+We should check for the existence of the desired file.  Only then the wget is a success.
+```
+neerajs [ ~/Downloads/packages_random/junk ]$ wget https://gitlab.com/driverctl/driverctl/repository/archive.tar.gz?ref=0.115#/driverctl-0.115-2ba60536eb20ca0a6a751bd8b6501dba84ec45d3.tar.gz
+0 files              4520% [========================================================================================================================================>]    4.32K    --.-KB/s
+                          [Files: 0  Bytes: 4.32K [9.42KB/s] Redirects: 1  Todo: 0  Errors: 1                                                                       ]
+neerajs [ ~/Downloads/packages_random/junk ]$ echo $?
+0
+neerajs [ ~/Downloads/packages_random/junk ]$ ls
+neerajs [ ~/Downloads/packages_random/junk ]$ 
+```
+
+Changed the pull_PRs script to use the file existence as a confirmation of successful download and not the value of "$?".
+Temporarily commented out the portion that carries out the pull of the topic branches, because we only need the 
+sources to be made available.
+
+Executed the script pull_PRs:
+```
+neerajs [ /third_disk/bb05Mar/azurelinux/didwhat/BULK_BLD_THINGS ]$ time ./pull_PRs /third_disk/bb05Mar/azurelinux/ /fifth_disk/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/s
+pecs/ /third_disk/bb05Mar/azurelinux/didwhat/BULK_BLD_THINGS > output_pull_PRs_onlytrbl_corrdnldchk.logtxt
+
+real    1m16.540s
+user    0m53.643s
+sys     0m7.630s
+neerajs [ /third_disk/bb05Mar/azurelinux/didwhat/BULK_BLD_THINGS ]$ 
+```
+
+The results of this downloads using pull_PRs is that 450 tarball need has been met, 6 is unmet.
+Out of those 6, 5 were seen in previous runs too.  This time the driverctl source tarball is the
+additional unmet need detected because of the corrected check for success of downloads:
+```
+neerajs [ /third_disk/bb05Mar/azurelinux/didwhat/BULK_BLD_THINGS ]$ grep -e "need met" output_pull_PRs_onlytrbl_corrdnldchk.logtxt | wc
+    450    2700   26287
+neerajs [ /third_disk/bb05Mar/azurelinux/didwhat/BULK_BLD_THINGS ]$ grep -e "need unmet" output_pull_PRs_onlytrbl_corrdnldchk.logtxt | wc
+      6      36     478
+neerajs [ /third_disk/bb05Mar/azurelinux/didwhat/BULK_BLD_THINGS ]$ grep -e "need unmet" output_pull_PRs_onlytrbl_corrdnldchk.logtxt 
+driverctl-0.115-2ba60536eb20ca0a6a751bd8b6501dba84ec45d3.tar.gz need unmet, for package driverctl
+foomatic-db-4.0-20241027.tar.gz need unmet, for package foomatic-db
+libblockdev-3.2.0.tar.gz need unmet, for package libblockdev
+perl-Business-ISBN-3.009.tar.gz need unmet, for package perl-Business-ISBN
+perl-Class-Data-Inheritable-0.09.tar.gz need unmet, for package perl-Class-Data-Inheritable
+perl-File-ReadBackwards-1.06.tar.gz need unmet, for package perl-File-ReadBackwards
+neerajs [ /third_disk/bb05Mar/azurelinux/didwhat/BULK_BLD_THINGS ]$ 
+```
+
+Started another build at 10:12 PM IST or Thu Mar  6 16:42:00 UTC 2025:
+```
+neerajs [ /third_disk/bb05Mar/azurelinux/toolkit ]$ time ../didwhat/BULK_BLD_THINGS/build_scr_with_check.sh /third_disk/bb05Mar/azurelinux/didwhat/BULK_BLD_THINGS/wkg_pkgs_to_build1 /thir
+d_disk/bb05Mar/azurelinux/ > ../didwhat/BULK_BLD_THINGS/bbld_iter3_$(date +%Y%m%d-%H%M).logtxt 2>&1 &
+[1] 860830
+neerajs [ /third_disk/bb05Mar/azurelinux/toolkit ]$ 
+```
+
+This time it again failed in 10 minutes.
+```
+WARN[0113][srpmpacker] Updating signature for (puppetlabs-zone_core-1.1.0.tar.gz) from () to (9d8241938e56145ce15827415e5c6b74002407b4548c12b5ef165423adfc725b) 
+INFO[0113][srpmpacker] Updating (/specs/puppet/puppet.signatures.json) 
+INFO[0113][srpmpacker] Packed (puppet.spec) -> (puppet-8.6.0-1.azl3.src.rpm) 
+WARN[0113][srpmpacker] Attempt 1/8: Failed to download (https://azurelinuxsrcstorage.blob.core.windows.net/sources/core/pcp-6.3.2.src.tar.gz) with error: (invalid response: 404) 
+WARN[0113][srpmpacker] 404 errors are likely unrecoverable, will not retry 
+ERRO[0113][srpmpacker] Failed to download (https://azurelinuxsrcstorage.blob.core.windows.net/sources/core/pcp-6.3.2.src.tar.gz). Error: failed to download (https://azurelinuxsrcstorage.blob.core.windows.net/sources/core/pcp-6.3.2.src.tar.gz) to (/build/pcp-6.3.2-1.azl3.src.rpm/SOURCES/pcp-6.3.2.src.tar.gz):
+retry cancelled, last error:
+invalid response: 404. 
+ERRO[0113][srpmpacker] Unable to hydrate file: pcp-6.3.2.src.tar.gz 
+ERRO[0113][srpmpacker] Failed to pack (/specs/pcp/pcp.spec). Cancelling outstanding workers. Error: unable to hydrate files: [pcp-6.3.2.src.tar.gz] 
+```
+
+We see that for pcp the initial pull of the topic branch had failed:
+```
+neerajs [ /third_disk/bb05Mar/azurelinux/didwhat/BULK_BLD_THINGS ]$ grep pcp pull_success_list pull_fail_list full_topic_brnch_list output_pull_PRs.logtxt 
+pull_fail_list:pcp
+full_topic_brnch_list:pcp,https://github.com/microsoft/azurelinux.git,skarambelkar/libpfm-upgrade
+output_pull_PRs.logtxt:pcp,https://github.com/microsoft/azurelinux.git,skarambelkar/libpfm-upgrade: Pull Failed, will do git merge --abort for this branch
+neerajs [ /third_disk/bb05Mar/azurelinux/didwhat/BULK_BLD_THINGS ]$ 
+```
+
+I had assumed that the git merge --abort that is done after fail of a git pull, was enough.
+But it is not.
+The contents of the pcp.spec in SPECS-EXTENDED are at what should be there in the topic branch.
+i.e. pcp.spec is for the Fedora 41 version 6.3.2 instead of the Azure Linux version 5.1.1.
+```
+neerajs [ /third_disk/bb05Mar/azurelinux/didwhat/BULK_BLD_THINGS ]$ cd ../../
+neerajs [ /third_disk/bb05Mar/azurelinux ]$ cd SPECS-EXTENDED/
+neerajs [ /third_disk/bb05Mar/azurelinux/SPECS-EXTENDED ]$ cd pcp
+neerajs [ /third_disk/bb05Mar/azurelinux/SPECS-EXTENDED/pcp ]$ ls
+pcp.signatures.json  pcp.spec
+neerajs [ /third_disk/bb05Mar/azurelinux/SPECS-EXTENDED/pcp ]$ spectool -S pcp.spec 
+Source0: https://bintray.com/artifact/download/pcp/source/pcp-6.3.2.src.tar.gz
+neerajs [ /third_disk/bb05Mar/azurelinux/SPECS-EXTENDED/pcp ]$ vim pcp.spec
+neerajs [ /third_disk/bb05Mar/azurelinux/SPECS-EXTENDED/pcp ]$ 
+```
+
+We also check against the Azure Linux pcp.spec:
+```
+neerajs [ /third_disk/bb05Mar/azurelinux/SPECS-EXTENDED/pcp ]$ git diff c27c34dba -- pcp.spec
+diff --git a/SPECS-EXTENDED/pcp/pcp.spec b/SPECS-EXTENDED/pcp/pcp.spec
+index 1c798a2a8..d6602e35a 100644
+--- a/SPECS-EXTENDED/pcp/pcp.spec
++++ b/SPECS-EXTENDED/pcp/pcp.spec
+@@ -1,8 +1,8 @@
+ %global _unpackaged_files_terminate_build 0
+ 
+ Name:    pcp
+-Version: 5.1.1
+-Release: 3%{?dist}
++Version: 6.3.2
++Release: 1%{?dist}
+ Summary: System-level performance monitoring and performance management
+ License: GPLv2+ and LGPLv2+ and CC-BY
+ Vendor:         Microsoft Corporation
+neerajs [ /third_disk/bb05Mar/azurelinux/SPECS-EXTENDED/pcp ]$ 
+```
+
+Let us then copy the desired tarball from the pre-downloaded specs directory:
+```
+neerajs [ /third_disk/bb05Mar/azurelinux/SPECS-EXTENDED/pcp ]$ ls /fifth_disk/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/pcp
+pcp-6.3.2.src.tar.gz  pcp-xsos-fixes.patch  pcp.spec
+neerajs [ /third_disk/bb05Mar/azurelinux/SPECS-EXTENDED/pcp ]$ ls /fifth_disk/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/pcp/pcp-6.3.2.src.tar.gz
+/fifth_disk/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/pcp/pcp-6.3.2.src.tar.gz
+neerajs [ /third_disk/bb05Mar/azurelinux/SPECS-EXTENDED/pcp ]$ ls
+pcp.signatures.json  pcp.spec
+neerajs [ /third_disk/bb05Mar/azurelinux/SPECS-EXTENDED/pcp ]$ cp /fifth_disk/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/pcp/pcp-6.3.2.src.tar.gz .
+neerajs [ /third_disk/bb05Mar/azurelinux/SPECS-EXTENDED/pcp ]$ ls
+pcp-6.3.2.src.tar.gz  pcp.signatures.json  pcp.spec
+neerajs [ /third_disk/bb05Mar/azurelinux/SPECS-EXTENDED/pcp ]$ 
+```
+
+There are 16 failures that were encountered during the topic branch pulls:
+```
+neerajs [ /third_disk/bb05Mar/azurelinux/didwhat/BULK_BLD_THINGS ]$ wc pull_fail_list 
+ 16  16 202 pull_fail_list
+neerajs [ /third_disk/bb05Mar/azurelinux/didwhat/BULK_BLD_THINGS ]$ cat pull_fail_list 
+boom-boot
+certmonger
+dpkg
+gstreamer1-plugins-base
+libotr
+libxmlb
+minizip
+os-prober
+pcp
+perl-Color-RGB-Util
+plexus-pom
+rubygem-sys-filesystem
+rubygem-racc
+perl-Test-RandomResult
+python-pyproject-api
+zix
+neerajs [ /third_disk/bb05Mar/azurelinux/didwhat/BULK_BLD_THINGS ]$ 
+```
+
+Lets check each of these for the tarball required.
+We will check for tarball of only those packages that exist in SPECS-EXTENDED:
+```
+neerajs [ /third_disk/bb05Mar/azurelinux/didwhat/BULK_BLD_THINGS ]$ for pkgnm in `cat pull_fail_list`; do grep -e "^\<$pkgnm\>" wkg_pkgs_to_build1 > /dev/null; if [ $? -eq 0 ]; then echo "$pkgnm found in wkg_pkgs_to_build1"; else echo "$pkgnm missing from wkg_pkgs_to_build1"; fi; done | grep -e "found in"
+boom-boot found in wkg_pkgs_to_build1
+certmonger found in wkg_pkgs_to_build1
+dpkg found in wkg_pkgs_to_build1
+gstreamer1-plugins-base found in wkg_pkgs_to_build1
+libotr found in wkg_pkgs_to_build1
+libxmlb found in wkg_pkgs_to_build1
+os-prober found in wkg_pkgs_to_build1
+pcp found in wkg_pkgs_to_build1
+perl-Color-RGB-Util found in wkg_pkgs_to_build1
+plexus-pom found in wkg_pkgs_to_build1
+neerajs [ /third_disk/bb05Mar/azurelinux/didwhat/BULK_BLD_THINGS ]$ for pkgnm in `cat pull_fail_list`; do if [ -d /third_disk/bb05Mar/azurelinux/$pkgnm ]; then echo "$pkgnm found in SPECS
+-EXTENDED"; else echo "$pkgnm missing from SPECS-EXTENDED"; fi; done | grep -e "found in"
+neerajs [ /third_disk/bb05Mar/azurelinux/didwhat/BULK_BLD_THINGS ]$ for pkgnm in `cat pull_fail_list`; do if [ -d /third_disk/bb05Mar/azurelinux/SPECS-EXTENDED/$pkgnm ]; then echo "$pkgnm
+ found in SPECS-EXTENDED"; else echo "$pkgnm missing from SPECS-EXTENDED"; fi; done | grep -e "found in"
+boom-boot found in SPECS-EXTENDED
+certmonger found in SPECS-EXTENDED
+dpkg found in SPECS-EXTENDED
+gstreamer1-plugins-base found in SPECS-EXTENDED
+libotr found in SPECS-EXTENDED
+libxmlb found in SPECS-EXTENDED
+minizip found in SPECS-EXTENDED
+os-prober found in SPECS-EXTENDED
+pcp found in SPECS-EXTENDED
+perl-Color-RGB-Util found in SPECS-EXTENDED
+plexus-pom found in SPECS-EXTENDED
+neerajs [ /third_disk/bb05Mar/azurelinux/didwhat/BULK_BLD_THINGS ]$
+```
+
+I think that instead of manually ensuring this correction every time, it is best to correct 
+the pull_PRs script.  It appears that since git merge --abort is not doing what I assumed,
+we must check for the tarball needs of all the packages for which pull was attempted.
+At present pull_PRs is doing that only for the packages for which the pull had succeeded.
+It was already doing that for folders that exist in SPECS-EXTENDED directory.
+
+We just need to extend this to all the Packages for which PRs were pulled.
+That is union of pull_success_list and pull_fail_list.
+OR
+a list of the first field of the full_topic_brnch_list.
+
+Lets do that for the first field of the full_topic_brnch_list.
+
+```
+neerajs [ /third_disk/bb05Mar/azurelinux/didwhat/BULK_BLD_THINGS ]$ time ./pull_PRs /third_disk/bb05Mar/azurelinux/ /fifth_disk/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/s
+pecs/ /third_disk/bb05Mar/azurelinux/didwhat/BULK_BLD_THINGS > output_pull_PRs_onlytrbl_fulltpclist.logtxt
+
+real    1m29.466s
+user    1m0.542s
+sys     0m15.779s
+neerajs [ /third_disk/bb05Mar/azurelinux/didwhat/BULK_BLD_THINGS ]$ 
+```
+
+Analysing the attempt at meeting the tarball requirements through the above run of pull_PRs:
+```
+neerajs [ /third_disk/bb05Mar/azurelinux/didwhat/BULK_BLD_THINGS ]$ grep -e "need met" output_pull_PRs_onlytrbl_fulltpclist.logtxt | wc
+    461    2766   26895
+neerajs [ /third_disk/bb05Mar/azurelinux/didwhat/BULK_BLD_THINGS ]$ grep -e "need unmet" output_pull_PRs_onlytrbl_fulltpclist.logtxt | wc
+      7      42     527
+neerajs [ /third_disk/bb05Mar/azurelinux/didwhat/BULK_BLD_THINGS ]$ grep -e "need unmet" output_pull_PRs_onlytrbl_fulltpclist.logtxt 
+dpkg_1.20.10.tar.xz need unmet, for package dpkg
+driverctl-0.115-2ba60536eb20ca0a6a751bd8b6501dba84ec45d3.tar.gz need unmet, for package driverctl
+foomatic-db-4.0-20241027.tar.gz need unmet, for package foomatic-db
+libblockdev-3.2.0.tar.gz need unmet, for package libblockdev
+perl-Business-ISBN-3.009.tar.gz need unmet, for package perl-Business-ISBN
+perl-Class-Data-Inheritable-0.09.tar.gz need unmet, for package perl-Class-Data-Inheritable
+perl-File-ReadBackwards-1.06.tar.gz need unmet, for package perl-File-ReadBackwards
+neerajs [ /third_disk/bb05Mar/azurelinux/didwhat/BULK_BLD_THINGS ]$ 
+```
+
+One more package got added to the list of unmet need, making the count 7 from 6.
+This package was dpkg.
+
+It appears that since the package pcp for which we had encountered the build failure of "Unable to hydrate file: pcp-6.3.2.src.tar.gz"
+is not in the "need unmet" category, it must be available now.
+Lets check:
+```
+neerajs [ /third_disk/bb05Mar/azurelinux/didwhat/BULK_BLD_THINGS ]$ ls -ls ../../SPECS-EXTENDED/pcp
+total 51464
+51344 -rwxr-xr-x. 1 neerajs neerajs 52573322 Mar  6 17:05 pcp-6.3.2.src.tar.gz
+    4 -rw-rw-r--. 1 neerajs neerajs      117 Mar  6 09:18 pcp.signatures.json
+  116 -rw-rw-r--. 1 neerajs neerajs   115811 Mar  6 13:00 pcp.spec
+neerajs [ /third_disk/bb05Mar/azurelinux/didwhat/BULK_BLD_THINGS ]$ ls -ls ../../SPECS-EXTENDED/pcp/pcp-6.3.2.src.tar.gz
+51344 -rwxr-xr-x. 1 neerajs neerajs 52573322 Mar  6 17:05 ../../SPECS-EXTENDED/pcp/pcp-6.3.2.src.tar.gz
+neerajs [ /third_disk/bb05Mar/azurelinux/didwhat/BULK_BLD_THINGS ]$ 
+```
+
+Lets try another build now.
+Started at 11:20 PM 06 Mar 2025 IST, i.e. Thu Mar  6 17:50 UTC 2025:
+```
+neerajs [ /third_disk/bb05Mar/azurelinux/toolkit ]$ time ../didwhat/BULK_BLD_THINGS/build_scr_with_check.sh /third_disk/bb05Mar/azurelinux/didwhat/BULK_BLD_THINGS/wkg_pkgs_to_build1 /thir
+d_disk/bb05Mar/azurelinux/ > ../didwhat/BULK_BLD_THINGS/bbld_iter4_$(date +%Y%m%d-%H%M).logtxt 2>&1 &
+[1] 1040425
+neerajs [ /third_disk/bb05Mar/azurelinux/toolkit ]$ 
+```
+
+This time again it failed in about 15 minutes:
+```
+INFO[0193][srpmpacker] Packed (spice-vdagent.spec) -> (spice-vdagent-0.22.1-1.azl3.src.rpm) 
+INFO[0193][srpmpacker] Packed (python-pytest-relaxed.spec) -> (python-pytest-relaxed-2.0.2-4.azl3.src.rpm) 
+INFO[0193][srpmpacker] Packed (perl-Config-AutoConf.spec) -> (perl-Config-AutoConf-0.320-1.azl3.src.rpm) 
+INFO[0193][srpmpacker] Packed (xpp3.spec) -> (xpp3-1.1.4c-6.azl3.src.rpm) 
+INFO[0193][srpmpacker] Packed (dvd+rw-tools.spec) -> (dvd+rw-tools-7.1-33.azl3.src.rpm) 
+WARN[0194][srpmpacker] Attempt 1/8: Failed to download (https://azurelinuxsrcstorage.blob.core.windows.net/sources/core/driverctl-0.115-2ba60536eb20ca0a6a751bd8b6501dba84ec45d3.tar.gz) with error: (invalid response: 404) 
+WARN[0194][srpmpacker] 404 errors are likely unrecoverable, will not retry 
+ERRO[0194][srpmpacker] Failed to download (https://azurelinuxsrcstorage.blob.core.windows.net/sources/core/driverctl-0.115-2ba60536eb20ca0a6a751bd8b6501dba84ec45d3.tar.gz). Error: failed to download (https://azurelinuxsrcstorage.blob.core.windows.net/sources/core/driverctl-0.115-2ba60536eb20ca0a6a751bd8b6501dba84ec45d3.tar.gz) to (/build/driverctl-0.115-1.azl3.src.rpm/SOURCES/driverctl-0.115-2ba60536eb20ca0a6a751bd8b6501dba84ec45d3.tar.gz):
+retry cancelled, last error:
+invalid response: 404. 
+ERRO[0194][srpmpacker] Unable to hydrate file: driverctl-0.115-2ba60536eb20ca0a6a751bd8b6501dba84ec45d3.tar.gz 
+ERRO[0194][srpmpacker] Failed to pack (/specs/driverctl/driverctl.spec). Cancelling outstanding workers. Error: unable to hydrate files: [driverctl-0.115-2ba60536eb20ca0a6a751bd8b6501dba84ec45d3.tar.gz] 
+make: *** Deleting file '/third_disk/bb05Mar/azurelinux/build/toolchain_rpms/x86_64/gcc-debuginfo-13.2.0-7.azl3.x86_64.rpm'
+Terminated
+ERRO[0470][srpmpacker] terminated                                   
+INFO[0470][srpmpacker] Waiting for outstanding chroot initialization and cleanup to finish 
+INFO[0470][srpmpacker] Waiting for outstanding chroot commands to finish 
+INFO[0470][srpmpacker] Waiting for outstanding processes to be created before blocking all future processes 
+INFO[0470][srpmpacker] Waiting for outstanding processes to be created before stopping all child processes 
+make: *** [/third_disk/bb05Mar/azurelinux/toolkit/scripts/toolchain.mk:311: /third_disk/bb05Mar/azurelinux/build/toolchain_rpms/x86_64/gcc-debuginfo-13.2.0-7.azl3.x86_64.rpm] Terminated
+make: *** [/third_disk/bb05Mar/azurelinux/toolkit/scripts/srpm_pack.mk:81: /third_disk/bb05Mar/azurelinux/build/make_status/build_srpms.flag] Terminated
+```
+
+This file "https://gitlab.com/driverctl/driverctl/repository/archive.tar.gz?ref=0.115#/driverctl-0.115-2ba60536eb20ca0a6a751bd8b6501dba84ec45d3.tar.gz" 
+has already been reported as "need unmet" by the pull_PRs.
+I should have removed "driverctl" from the list of build packages.
+
+When we say that pull_PRs tries everything, it means that:
+first it checks if the required tarball is present in the pre-downloaded specs directory.
+if not there then it tries to do an explicit download for that tarball using wget.
+
+After this only it reports something as "unmet" need.
+So, the only thing left for us is to either correct the spec file after ascertaining a 
+downloadable tarball URL
+OR we remove the package from the build list.
+
+We have done the same for the other packages which had "need met".
+We will do the same for driverctl too.
+```
+neerajs [ /third_disk/bb05Mar/azurelinux/didwhat/BULK_BLD_THINGS ]$ diff wkg_pkgs_to_build wkg_pkgs_to_build1
+163d162
+< foomatic-db
+183d181
+< ghc-srpm-macros
+186d183
+< jakarta-annotations
+451d447
+< libblockdev
+646d641
+< minizip-ng
+704d698
+< nvmetcli
+772d765
+< perl-Business-ISBN
+779d771
+< perl-Class-Data-Inheritable
+869d860
+< perl-File-ReadBackwards
+neerajs [ /third_disk/bb05Mar/azurelinux/didwhat/BULK_BLD_THINGS ]$ ~/utils/rem_full_line_match driverctl wkg_pkgs_to_build1
+====== Cleaning up ======
+neerajs [ /third_disk/bb05Mar/azurelinux/didwhat/BULK_BLD_THINGS ]$ diff wkg_pkgs_to_build wkg_pkgs_to_build1
+134d133
+< driverctl
+163d161
+< foomatic-db
+183d180
+< ghc-srpm-macros
+186d182
+< jakarta-annotations
+451d446
+< libblockdev
+646d640
+< minizip-ng
+704d697
+< nvmetcli
+772d764
+< perl-Business-ISBN
+779d770
+< perl-Class-Data-Inheritable
+869d859
+< perl-File-ReadBackwards
+neerajs [ /third_disk/bb05Mar/azurelinux/didwhat/BULK_BLD_THINGS ]$ 
+```
+
+Starting another bild at 11:54 PM 06 Mar 2025 or Thu Mar  6 18:08:07 UTC 2025:
+It failed after 72 minutes.
+```
+neerajs [ /third_disk/bb05Mar/azurelinux/toolkit ]$ time ../didwhat/BULK_BLD_THINGS/build_scr_with_check.sh /third_disk/bb05Mar/azurelinux/didwhat/BULK_BLD_THINGS/wkg_pkgs_to_build1 /thir
+d_disk/bb05Mar/azurelinux/ > ../didwhat/BULK_BLD_THINGS/bbld_iter5_$(date +%Y%m%d-%H%M).logtxt 2>&1 &
+[1] 1227975
+neerajs [ /third_disk/bb05Mar/azurelinux/toolkit ]$ 
+real    72m4.567s
+user    0m0.027s
+sys     0m0.008s
+```
+
+
+The reason of failure was circular dependency 
+```
+INFO[0001][grapher] Adding unresolved node (mkfontscale--REMOTE<Unresolved>) 
+INFO[0001][grapher] Adding unresolved node (perl(Email::Date::Format)--REMOTE<Unresolved>) 
+INFO[0001][grapher] Adding unresolved node (perl(MIME::Types)--REMOTE<Unresolved>) 
+INFO[0001][grapher]     Added 135736 dependencies                   
+INFO[0001][grapher] Running cycle resolution to fix any cycles in the dependency graph 
+INFO[0002][grapher] Trying to fix circular dependency found:    {python3-testtools-2.7.1-8.azl3-RUN<Meta>} --> {python3-fixtures-4.0.1-1.azl3-BUILD<Build>} --> {python3-fixtures-4.0.1-1.azl3-RUN<Meta>} --> {python3-testtools-2.7.1-8.azl3-BUILD<Build>} 
+WARN[0002][grapher] ╔═══════════════════════════════════════════════════════════════════════════════════════════════╗ 
+WARN[0002][grapher] ║  'copy-toolchain-rpms' should no longer be required to resolve cycles even when using online  ║ 
+WARN[0002][grapher] ║ toolchain rpms. If you see this message, there is likely a legitimate cycle in the dependency ║ 
+WARN[0002][grapher] ║                                            graph.                                             ║ 
+WARN[0002][grapher] ╚═══════════════════════════════════════════════════════════════════════════════════════════════╝ 
+PANI[0002][grapher] unfixable circular dependency in dependency graph ({python3-testtools-2.7.1-8.azl3-BUILD<Build>} --> {python3-testtools-2.7.1-8.azl3-RUN<Meta>} --> {python3-fixtures-4.0.1-1.azl3-BUILD<Build>} --> {python3-fixtures-4.0.1-1.azl3-RUN<Meta>} --> {python3-testtools-2.7.1-8.azl3-BUILD<Build>}):
+cycle can't be resolved with prebuilt/PMC RPMs. Unresolvable 
+panic: (*logrus.Entry) 0xc000299f10
+
+goroutine 1 [running]:
+github.com/sirupsen/logrus.(*Entry).log(0xc000299650, 0x0, {0xc0000e51e0, 0x15f})
+        /root/go/pkg/mod/github.com/sirupsen/logrus@v1.9.3/entry.go:260 +0x485
+github.com/sirupsen/logrus.(*Entry).Log(0xc000299650, 0x0, {0xc0019f3f00?, 0xc003e9b420?, 0xc001b95800?})
+        /root/go/pkg/mod/github.com/sirupsen/logrus@v1.9.3/entry.go:304 +0x48
+github.com/sirupsen/logrus.(*Logger).Log(0xc000314500, 0x0, {0xc0019f3f00, 0x1, 0x1})
+        /root/go/pkg/mod/github.com/sirupsen/logrus@v1.9.3/logger.go:204 +0x58
+github.com/sirupsen/logrus.(*Logger).Panic(...)
+        /root/go/pkg/mod/github.com/sirupsen/logrus@v1.9.3/logger.go:253
+main.main()
+        /third_disk/bb05Mar/azurelinux/toolkit/tools/grapher/grapher.go:104 +0x745
+make: *** [/third_disk/bb05Mar/azurelinux/toolkit/scripts/pkggen.mk:127: /third_disk/bb05Mar/azurelinux/build/pkg_artifacts/graph.dot] Error 2
+/third_disk/bb05Mar/azurelinux/toolkit
+changed back to /third_disk/bb05Mar/azurelinux/toolkit
+```
+
+One method known to me for breaking the circular dependencies is to copy a prebuilt rpm into the out/RPMS or build/rpm_cache folders.
+First I did download of these packages:
+NOTE that these were not available in azurelinux i.e. 3.0, but were available in cbl-mariner i.e. 2.0.
+I think the absence in 3.0 is the cause of this failure.  Otherwise, we would have got these as downloads from the blobstore and
+then the circular dependency wouldn't have bothered us.
+```
+neerajs [ ~/Downloads/packages_random/python3-fixtures ]$ wget https://packages.microsoft.com/cbl-mariner/2.0/prod/extended/x86_64/Packages/p/python3-fixtures-3.0.0-18.cm2.noarch.rpm
+python3-fixtures-3.0 100% [========================================================================================================================================>]  119.18K    --.-KB/s
+                          [Files: 1  Bytes: 119.18K [10.64KB/s] Redirects: 0  Todo: 0  Errors: 0                                                                    ]
+neerajs [ ~/Downloads/packages_random/python3-fixtures ]$ ls
+python3-fixtures-3.0.0-18.cm2.noarch.rpm
+neerajs [ ~/Downloads/packages_random/python3-fixtures ]$ ls -ls
+total 120
+120 -rw-r--r--. 1 neerajs neerajs 122042 Oct 21  2022 python3-fixtures-3.0.0-18.cm2.noarch.rpm
+neerajs [ ~/Downloads/packages_random/python3-fixtures ]$ cd ../
+neerajs [ ~/Downloads/packages_random ]$ mkdir python3-testtools
+neerajs [ ~/Downloads/packages_random ]$ cd python3-testtools/
+neerajs [ ~/Downloads/packages_random/python3-testtools ]$ wget https://packages.microsoft.com/cbl-mariner/2.0/prod/extended/x86_64/Packages/p/python3-testtools-2.4.0-8.cm2.noarch.rpm
+python3-testtools-2. 100% [========================================================================================================================================>]  553.35K    1.74MB/s
+                          [Files: 1  Bytes: 553.35K [308.27KB/s] Redirects: 0  Todo: 0  Errors: 0                                                                   ]
+neerajs [ ~/Downloads/packages_random/python3-testtools ]$ ls -ls
+total 556
+556 -rw-r--r--. 1 neerajs neerajs 566635 Oct 21  2022 python3-testtools-2.4.0-8.cm2.noarch.rpm
+neerajs [ ~/Downloads/packages_random/python3-testtools ]$
+```
+
+Then these were copied into the "out/RPMS" directory:
+Copying only one of these should be sufficient.  But I copied both.
+```
+neerajs [ /third_disk/bb05Mar/azurelinux/out/RPMS/noarch ]$ sudo cp ~/Downloads/packages_random/python3-fixtures/python3-fixtures-3.0.0-18.cm2.noarch.rpm .
+[sudo] password for neerajs: 
+neerajs [ /third_disk/bb05Mar/azurelinux/out/RPMS/noarch ]$ sudo cp ~/Downloads/packages_random/python3-testtools/python3-testtools-2.4.0-8.cm2.noarch.rpm .
+neerajs [ /third_disk/bb05Mar/azurelinux/out/RPMS/noarch ]$ ls
+python3-fixtures-3.0.0-18.cm2.noarch.rpm  python3-testtools-2.4.0-8.cm2.noarch.rpm
+neerajs [ /third_disk/bb05Mar/azurelinux/out/RPMS/noarch ]$ 
+```
+
+Lets start the build and check if this
+Didn't do a make clean because till now no packages have been built
+Started at 1:55 AM 07 Mar 2025 i.e. Thu Mar  6 20:25:00 UTC 2025
+```
+neerajs [ /third_disk/bb05Mar/azurelinux/toolkit ]$ time ../didwhat/BULK_BLD_THINGS/build_scr_with_check.sh /third_disk/bb05Mar/azurelinux/didwhat/BULK_BLD_THINGS/wkg_pkgs_to_build1 /third_disk/bb05Mar/azurelinux/ > ../didwhat/BULK_BLD_THINGS/bbld_iter6_$(date +%Y%m%d-%H%M).logtxt 2>&1 &
+[1] 1459816
+neerajs [ /third_disk/bb05Mar/azurelinux/toolkit ]$ 
+```
+
+Then arose another circular dependency.
+Presence of python3-testtools in the out/RPMS did not resolve this.
+It should have.
+```
+INFO[0001][grapher] Adding unresolved node (perl(Test::Base)--REMOTE<Unresolved>) 
+INFO[0001][grapher] Adding unresolved node (perl(Test::Base::Filter)--REMOTE<Unresolved>) 
+INFO[0001][grapher]     Added 135738 dependencies                   
+INFO[0001][grapher] Running cycle resolution to fix any cycles in the dependency graph 
+INFO[0001][grapher] Trying to fix circular dependency found:    {python3-testscenarios-0.5.0-24.azl3-BUILD<Build>} --> {python3-testscenarios-0.5.0-24.azl3-RUN<Meta>} --> {python3-testtools-2.7.1-8.azl3-BUILD<Build>} --> {python3-testtools-2.7.1-8.azl3-RUN<Meta>} 
+WARN[0001][grapher] ╔═══════════════════════════════════════════════════════════════════════════════════════════════╗ 
+WARN[0001][grapher] ║  'copy-toolchain-rpms' should no longer be required to resolve cycles even when using online  ║ 
+WARN[0001][grapher] ║ toolchain rpms. If you see this message, there is likely a legitimate cycle in the dependency ║ 
+WARN[0001][grapher] ║                                            graph.                                             ║ 
+WARN[0001][grapher] ╚═══════════════════════════════════════════════════════════════════════════════════════════════╝ 
+PANI[0001][grapher] unfixable circular dependency in dependency graph ({python3-testtools-2.7.1-8.azl3-RUN<Meta>} --> {python3-testscenarios-0.5.0-24.azl3-BUILD<Build>} --> {python3-testscenarios-0.5.0-24.azl3-RUN<Meta>} --> {python3-testtools-2.7.1-8.azl3-BUILD<Build>} --> {python3-testtools-2.7.1-8.azl3-RUN<Meta>}):
+cycle can't be resolved with prebuilt/PMC RPMs. Unresolvable 
+panic: (*logrus.Entry) 0xc0001d43f0
+
+goroutine 1 [running]:
+github.com/sirupsen/logrus.(*Entry).log(0xc0002ff9d0, 0x0, {0xc0010d4180, 0x168})
+        /root/go/pkg/mod/github.com/sirupsen/logrus@v1.9.3/entry.go:260 +0x485
+github.com/sirupsen/logrus.(*Entry).Log(0xc0002ff9d0, 0x0, {0xc002985f00?, 0xc003670b60?, 0xc000ff5080?})
+        /root/go/pkg/mod/github.com/sirupsen/logrus@v1.9.3/entry.go:304 +0x48
+github.com/sirupsen/logrus.(*Logger).Log(0xc0003a2500, 0x0, {0xc002985f00, 0x1, 0x1})
+        /root/go/pkg/mod/github.com/sirupsen/logrus@v1.9.3/logger.go:204 +0x58
+github.com/sirupsen/logrus.(*Logger).Panic(...)
+        /root/go/pkg/mod/github.com/sirupsen/logrus@v1.9.3/logger.go:253
+main.main()
+        /third_disk/bb05Mar/azurelinux/toolkit/tools/grapher/grapher.go:104 +0x745
+make: *** [/third_disk/bb05Mar/azurelinux/toolkit/scripts/pkggen.mk:127: /third_disk/bb05Mar/azurelinux/build/pkg_artifacts/graph.dot] Error 2
+make: *** Waiting for unfinished job
+```
+
+Lets download and keep python3-testscenarios too into the out/RPMS directory.
+```
+neerajs [ /third_disk/bb05Mar/azurelinux/out/RPMS/noarch ]$ sudo wget https://packages.microsoft.com/cbl-mariner/2.0/prod/extended/x86_64/Packages/p/python3-testscenarios-0.5.0-22.cm2.noa
+rch.rpm
+[sudo] password for neerajs: 
+python3-testscenario 100% [========================================================================================================================================>]   44.70K    --.-KB/s
+                          [Files: 1  Bytes: 44.70K [451.59KB/s] Redirects: 0  Todo: 0  Errors: 0                                                                    ]
+neerajs [ /third_disk/bb05Mar/azurelinux/out/RPMS/noarch ]$ ls
+python3-fixtures-3.0.0-18.cm2.noarch.rpm  python3-testscenarios-0.5.0-22.cm2.noarch.rpm  python3-testtools-2.4.0-8.cm2.noarch.rpm
+neerajs [ /third_disk/bb05Mar/azurelinux/out/RPMS/noarch ]$ 
+```
+
+Started another build at 02:06 AM 07 Mar 2025 or Thu Mar  6 20:36:00 UTC 2025 : 
+```
+neerajs [ /third_disk/bb05Mar/azurelinux/toolkit ]$ time ../didwhat/BULK_BLD_THINGS/build_scr_with_check.sh /third_disk/bb05Mar/azurelinux/didwhat/BULK_BLD_THINGS/wkg_pkgs_to_build1 /third_disk/bb05Mar/azurelinux/ > ../didwhat/BULK_BLD_THINGS/bbld_iter7_$(date +%Y%m%d-%H%M).logtxt 2>&1 &
+[1] 1592886
+neerajs [ /third_disk/bb05Mar/azurelinux/toolkit ]$ 
+real    3m37.122s
+user    0m0.016s
+sys     0m0.017s
+```
+
+That too did not solve anything.  It failed in 3 minutes.
+Got the same circular dependency error:
+```
+INFO[0001][grapher] Adding unresolved node (perl(XML::Handler::YAWriter)--REMOTE<Unresolved>) 
+INFO[0001][grapher] Adding unresolved node (perl(XML::XPathEngine)--REMOTE<Unresolved>) 
+INFO[0001][grapher]     Added 135740 dependencies                   
+INFO[0001][grapher] Running cycle resolution to fix any cycles in the dependency graph 
+INFO[0002][grapher] Trying to fix circular dependency found:    {python3-testscenarios-0.5.0-24.azl3-BUILD<Build>} --> {python3-testscenarios-0.5.0-24.azl3-RUN<Meta>} --> {python3-testtools-2.7.1-8.azl3-BUILD<Build>} --> {python3-testtools-2.7.1-8.azl3-RUN<Meta>} 
+WARN[0002][grapher] ╔═══════════════════════════════════════════════════════════════════════════════════════════════╗ 
+WARN[0002][grapher] ║  'copy-toolchain-rpms' should no longer be required to resolve cycles even when using online  ║ 
+WARN[0002][grapher] ║ toolchain rpms. If you see this message, there is likely a legitimate cycle in the dependency ║ 
+WARN[0002][grapher] ║                                            graph.                                             ║ 
+WARN[0002][grapher] ╚═══════════════════════════════════════════════════════════════════════════════════════════════╝ 
+PANI[0002][grapher] unfixable circular dependency in dependency graph ({python3-testtools-2.7.1-8.azl3-RUN<Meta>} --> {python3-testscenarios-0.5.0-24.azl3-BUILD<Build>} --> {python3-testscenarios-0.5.0-24.azl3-RUN<Meta>} --> {python3-testtools-2.7.1-8.azl3-BUILD<Build>} --> {python3-testtools-2.7.1-8.azl3-RUN<Meta>}):
+cycle can't be resolved with prebuilt/PMC RPMs. Unresolvable 
+panic: (*logrus.Entry) 0xc0025936c0
+
+goroutine 1 [running]:
+github.com/sirupsen/logrus.(*Entry).log(0xc0000f7d50, 0x0, {0xc0040ea300, 0x168})
+        /root/go/pkg/mod/github.com/sirupsen/logrus@v1.9.3/entry.go:260 +0x485
+github.com/sirupsen/logrus.(*Entry).Log(0xc0000f7d50, 0x0, {0xc002911f00?, 0xc00276bd20?, 0xc0024d3000?})
+        /root/go/pkg/mod/github.com/sirupsen/logrus@v1.9.3/entry.go:304 +0x48
+github.com/sirupsen/logrus.(*Logger).Log(0xc00035c580, 0x0, {0xc002911f00, 0x1, 0x1})
+        /root/go/pkg/mod/github.com/sirupsen/logrus@v1.9.3/logger.go:204 +0x58
+github.com/sirupsen/logrus.(*Logger).Panic(...)
+        /root/go/pkg/mod/github.com/sirupsen/logrus@v1.9.3/logger.go:253
+main.main()
+        /third_disk/bb05Mar/azurelinux/toolkit/tools/grapher/grapher.go:104 +0x745
+make: *** [/third_disk/bb05Mar/azurelinux/toolkit/scripts/pkggen.mk:127: /third_disk/bb05Mar/azurelinux/build/pkg_artifacts/graph.dot] Error 2
+make: *** Waiting for unfinished jobs....
+INFO[0087][precacher] Getting package data from https://packages.microsoft.com/azurelinux//prod/ms-oss/x86_64 
+INFO[0091][precacher] Will query package data from /third_disk/bb05Mar/azurelinux/build/daily_build_id/daily_build.repo 
+INFO[0091][precacher] Getting package data from repo files         
+```
+
+One last attempt.
+Lets try and place these three rpms in the build/rpms_cache
+```
+neerajs [ /third_disk/bb05Mar/azurelinux/out/RPMS/noarch ]$ ls ../../../build/rpm_cache/cache/
+neerajs [ /third_disk/bb05Mar/azurelinux/out/RPMS/noarch ]$ sudo cp * ../../../build/rpm_cache/cache/
+[sudo] password for neerajs: 
+neerajs [ /third_disk/bb05Mar/azurelinux/out/RPMS/noarch ]$ ls ../../../build/rpm_cache/cache/
+python3-fixtures-3.0.0-18.cm2.noarch.rpm  python3-testscenarios-0.5.0-22.cm2.noarch.rpm  python3-testtools-2.4.0-8.cm2.noarch.rpm
+neerajs [ /third_disk/bb05Mar/azurelinux/out/RPMS/noarch ]$ 
+```
+
+Started another build at 02:14 AM 07 Mar 2025 or Thu Mar  6 20:44:00 UTC 2025:
+```
+neerajs [ /third_disk/bb05Mar/azurelinux/toolkit ]$ time ../didwhat/BULK_BLD_THINGS/build_scr_with_check.sh /third_disk/bb05Mar/azurelinux/didwhat/BULK_BLD_THINGS/wkg_pkgs_to_build1 /third_disk/bb05Mar/azurelinux/ > ../didwhat/BULK_BLD_THINGS/bbld_iter8_$(date +%Y%m%d-%H%M).logtxt 2>&1 &
+[1] 1693927
+neerajs [ /third_disk/bb05Mar/azurelinux/toolkit ]$
+real    3m21.112s
+user    0m0.023s
+sys     0m0.012s
+```
+
+Again it failed within 3 minutes:
+```
+INFO[0001][grapher] Adding unresolved node (perl(Encode::MIME::Header)--REMOTE<Unresolved>) 
+INFO[0001][grapher]     Added 135743 dependencies                   
+INFO[0001][grapher] Running cycle resolution to fix any cycles in the dependency graph 
+INFO[0001][grapher] Trying to fix circular dependency found:    {python3-fixtures-4.0.1-1.azl3-BUILD<Build>} --> {python3-fixtures-4.0.1-1.azl3-RUN<Meta>} --> {python3-testtools-2.7.1-8.azl3-BUILD<Build>} --> {python3-testtools-2.7.1-8.azl3-RUN<Meta>} 
+WARN[0001][grapher] ╔═══════════════════════════════════════════════════════════════════════════════════════════════╗ 
+WARN[0001][grapher] ║  'copy-toolchain-rpms' should no longer be required to resolve cycles even when using online  ║ 
+WARN[0001][grapher] ║ toolchain rpms. If you see this message, there is likely a legitimate cycle in the dependency ║ 
+WARN[0001][grapher] ║                                            graph.                                             ║ 
+WARN[0001][grapher] ╚═══════════════════════════════════════════════════════════════════════════════════════════════╝ 
+PANI[0001][grapher] unfixable circular dependency in dependency graph ({python3-testtools-2.7.1-8.azl3-RUN<Meta>} --> {python3-fixtures-4.0.1-1.azl3-BUILD<Build>} --> {python3-fixtures-4.0.1-1.azl3-RUN<Meta>} --> {python3-testtools-2.7.1-8.azl3-BUILD<Build>} --> {python3-testtools-2.7.1-8.azl3-RUN<Meta>}):
+cycle can't be resolved with prebuilt/PMC RPMs. Unresolvable 
+panic: (*logrus.Entry) 0xc000208230
+
+goroutine 1 [running]:
+github.com/sirupsen/logrus.(*Entry).log(0xc00025d420, 0x0, {0xc0001351e0, 0x15c})
+        /root/go/pkg/mod/github.com/sirupsen/logrus@v1.9.3/entry.go:260 +0x485
+github.com/sirupsen/logrus.(*Entry).Log(0xc00025d420, 0x0, {0xc0000b9f00?, 0xc00359a220?, 0xc0008fa8c0?})
+        /root/go/pkg/mod/github.com/sirupsen/logrus@v1.9.3/entry.go:304 +0x48
+github.com/sirupsen/logrus.(*Logger).Log(0xc00034e580, 0x0, {0xc0000b9f00, 0x1, 0x1})
+        /root/go/pkg/mod/github.com/sirupsen/logrus@v1.9.3/logger.go:204 +0x58
+github.com/sirupsen/logrus.(*Logger).Panic(...)
+        /root/go/pkg/mod/github.com/sirupsen/logrus@v1.9.3/logger.go:253
+main.main()
+        /third_disk/bb05Mar/azurelinux/toolkit/tools/grapher/grapher.go:104 +0x745
+make: *** [/third_disk/bb05Mar/azurelinux/toolkit/scripts/pkggen.mk:127: /third_disk/bb05Mar/azurelinux/build/pkg_artifacts/graph.dot] Error 2
+```
+
+
+Now we are forced to remove the mention of python3-testtools from  python3-fixtures and python3-testscenarios
+for breaking this circular dependency.
+We are doing this instead of removing BuildRequires from python3-testtools, because python3-testtools says
+that these three need to be build in certain order - python-fixtures, python-testscenarios and python-testtools.
+```
+neerajs [ /third_disk/bb05Mar/azurelinux/SPECS-EXTENDED/python-fixtures ]$ git diff python-fixtures.spec 
+neerajs [ /third_disk/bb05Mar/azurelinux/SPECS-EXTENDED/python-fixtures ]$ vim python-fixtures.spec 
+neerajs [ /third_disk/bb05Mar/azurelinux/SPECS-EXTENDED/python-fixtures ]$ git diff python-fixtures.spec 
+diff --git a/SPECS-EXTENDED/python-fixtures/python-fixtures.spec b/SPECS-EXTENDED/python-fixtures/python-fixtures.spec
+index 055c60353..0ab0e2698 100644
+--- a/SPECS-EXTENDED/python-fixtures/python-fixtures.spec
++++ b/SPECS-EXTENDED/python-fixtures/python-fixtures.spec
+@@ -21,7 +21,7 @@ BuildRequires:  python3-py
+ BuildRequires:  python3-filelock
+ BuildRequires:  python3-six
+ BuildRequires:  python3-toml
+-BuildRequires:  python3-testtools
++#BuildRequires:  python3-testtools
+ BuildRequires:  python3-extras
+  
+ BuildArch:      noarch
+neerajs [ /third_disk/bb05Mar/azurelinux/SPECS-EXTENDED/python-fixtures ]$ 
+
+
+
+neerajs [ /third_disk/bb05Mar/azurelinux/SPECS-EXTENDED/python-testscenarios ]$ git diff python-testscenarios.spec
+neerajs [ /third_disk/bb05Mar/azurelinux/SPECS-EXTENDED/python-testscenarios ]$ vim python-testscenarios.spec 
+neerajs [ /third_disk/bb05Mar/azurelinux/SPECS-EXTENDED/python-testscenarios ]$ git diff python-testscenarios.spec
+diff --git a/SPECS-EXTENDED/python-testscenarios/python-testscenarios.spec b/SPECS-EXTENDED/python-testscenarios/python-testscenarios.spec
+index d5d5ba028..b8fc07065 100644
+--- a/SPECS-EXTENDED/python-testscenarios/python-testscenarios.spec
++++ b/SPECS-EXTENDED/python-testscenarios/python-testscenarios.spec
+@@ -14,7 +14,7 @@ BuildArch:      noarch
+ BuildRequires:  python3-devel
+ BuildRequires:  python3-setuptools
+ BuildRequires:  python3-pbr
+-BuildRequires:  python3-testtools
++#BuildRequires:  python3-testtools
+ BuildRequires:  python3-xml
+ BuildRequires:  python3-pip
+ BuildRequires:  python3dist(wheel)
+neerajs [ /third_disk/bb05Mar/azurelinux/SPECS-EXTENDED/python-testscenarios ]$ 
+```
+
+Lets try the build again:
+Started at 02:27 AM 07 Mar 2025 or Thu Mar  6 20:57:00 UTC 2025:
+```
+neerajs [ /third_disk/bb05Mar/azurelinux/toolkit ]$ time ../didwhat/BULK_BLD_THINGS/build_scr_with_check.sh /third_disk/bb05Mar/azurelinux/didwhat/BULK_BLD_THINGS/wkg_pkgs_to_build1 /third_disk/bb05Mar/azurelinux/ > ../didwhat/BULK_BLD_THINGS/bbld_iter9_$(date +%Y%m%d-%H%M).logtxt 2>&1 &
+[1] 1801508
+neerajs [ /third_disk/bb05Mar/azurelinux/toolkit ]$ 
+```
+
+Then the circular dependency arose between python3-fixtures and 
+```
+INFO[0001][grapher] Adding unresolved node (perl(Encode::MIME::Header)--REMOTE<Unresolved>) 
+INFO[0001][grapher]     Added 135743 dependencies                   
+INFO[0001][grapher] Running cycle resolution to fix any cycles in the dependency graph 
+INFO[0001][grapher] Trying to fix circular dependency found:    {python3-fixtures-4.0.1-1.azl3-BUILD<Build>} --> {python3-fixtures-4.0.1-1.azl3-RUN<Meta>} --> {python3-testtools-2.7.1-8.azl3-BUILD<Build>} --> {python3-testtools-2.7.1-8.azl3-RUN<Meta>} 
+WARN[0001][grapher] ╔═══════════════════════════════════════════════════════════════════════════════════════════════╗ 
+WARN[0001][grapher] ║  'copy-toolchain-rpms' should no longer be required to resolve cycles even when using online  ║ 
+WARN[0001][grapher] ║ toolchain rpms. If you see this message, there is likely a legitimate cycle in the dependency ║ 
+WARN[0001][grapher] ║                                            graph.                                             ║ 
+WARN[0001][grapher] ╚═══════════════════════════════════════════════════════════════════════════════════════════════╝ 
+PANI[0001][grapher] unfixable circular dependency in dependency graph ({python3-testtools-2.7.1-8.azl3-RUN<Meta>} --> {python3-fixtures-4.0.1-1.azl3-BUILD<Build>} --> {python3-fixtures-4.0.1-1.azl3-RUN<Meta>} --> {python3-testtools-2.7.1-8.azl3-BUILD<Build>} --> {python3-testtools-2.7.1-8.azl3-RUN<Meta>}):
+cycle can't be resolved with prebuilt/PMC RPMs. Unresolvable 
+panic: (*logrus.Entry) 0xc000208230
+
+goroutine 1 [running]:
+github.com/sirupsen/logrus.(*Entry).log(0xc00025d420, 0x0, {0xc0001351e0, 0x15c})
+        /root/go/pkg/mod/github.com/sirupsen/logrus@v1.9.3/entry.go:260 +0x485
+github.com/sirupsen/logrus.(*Entry).Log(0xc00025d420, 0x0, {0xc0000b9f00?, 0xc00359a220?, 0xc0008fa8c0?})
+        /root/go/pkg/mod/github.com/sirupsen/logrus@v1.9.3/entry.go:304 +0x48
+github.com/sirupsen/logrus.(*Logger).Log(0xc00034e580, 0x0, {0xc0000b9f00, 0x1, 0x1})
+```
+
+Now removed entries of other two from python-testtools too:
+```
+neerajs [ /third_disk/bb05Mar/azurelinux/SPECS-EXTENDED/python-testtools ]$ git diff python-testtools.spec
+diff --git a/SPECS-EXTENDED/python-testtools/python-testtools.spec b/SPECS-EXTENDED/python-testtools/python-testtools.spec
+index 6f647ee44..a6f115c2b 100644
+--- a/SPECS-EXTENDED/python-testtools/python-testtools.spec
++++ b/SPECS-EXTENDED/python-testtools/python-testtools.spec
+@@ -43,8 +43,8 @@ BuildRequires:  python3-hatch-vcs
+ BuildRequires:  python3-setuptools_scm
+ BuildRequires:  python3-wheel
+ BuildRequires:  python3-trove-classifiers
+-BuildRequires:  python3-testscenarios
+-BuildRequires:  python3-fixtures
++#BuildRequires:  python3-testscenarios
++#BuildRequires:  python3-fixtures
+ BuildRequires:   python3-typing-extensions
+ 
+ %description %{common_description}
+neerajs [ /third_disk/bb05Mar/azurelinux/SPECS-EXTENDED/python-testtools ]$ 
+```
+
+Try the build again 02:36 AM 07 Mar 2025 or Thu Mar  6 21:06:00 UTC 2025 :
+```
+neerajs [ /third_disk/bb05Mar/azurelinux/toolkit ]$ time ../didwhat/BULK_BLD_THINGS/build_scr_with_check.sh /third_disk/bb05Mar/azurelinux/didwhat/BULK_BLD_THINGS/wkg_pkgs_to_build1 /third_disk/bb05Mar/azurelinux/ > ../didwhat/BULK_BLD_THINGS/bbld_iter10_$(date +%Y%m%d-%H%M).logtxt 2>&1 &
+[1] 1938336
+neerajs [ /third_disk/bb05Mar/azurelinux/toolkit ]$ 
+```
+
+Intermediate noting:
+```
+INFO[0001][grapher] Adding unresolved node (perl(MLDBM)--REMOTE<Unresolved>) 
+INFO[0001][grapher] Adding unresolved node (perl(ExtUtils::Installed)--REMOTE<Unresolved>) 
+INFO[0001][grapher] Adding unresolved node (perl(File::Find::Object)--REMOTE<Unresolved>) 
+INFO[0001][grapher] Adding unresolved node (perl(IPC::Run)--REMOTE<Unresolved>) 
+INFO[0001][grapher] Adding unresolved node (perl(Module::Install::External)--REMOTE<Unresolved>) 
+INFO[0001][grapher] Adding unresolved node (perl(Module::Install::Scripts)--REMOTE<Unresolved>) 
+INFO[0001][grapher]     Added 135723 dependencies                   
+INFO[0001][grapher] Running cycle resolution to fix any cycles in the dependency graph 
+INFO[0002][grapher] Writing DOT graph to /third_disk/bb05Mar/azurelinux/build/pkg_artifacts/graph.dot 
+INFO[0003][grapher] Finished generating graph.                   
+INFO[0107][precacher] Getting package data from https://packages.microsoft.com/azurelinux//prod/base/x86_64 
+INFO[0110][precacher] Getting package data from https://packages.microsoft.com/azurelinux//prod/base/debuginfo/x86_64 
+INFO[0114][precacher] Getting package data from https://packages.microsoft.com/azurelinux//prod/ms-oss/x86_64 
+INFO[0116][precacher] Will query package data from /third_disk/bb05Mar/azurelinux/build/daily_build_id/daily_build.repo 
+INFO[0116][precacher] Getting package data from repo files    
+```
+
+IT seems now we are free of circular dependency errors.
+
+Then the machine hangup happened.  
+The build got interrupted.
+
+Starting again.
+At 08:09 AM 07 Mar 2025 or Fri Mar  7 02:39:00 UTC 2025:
+```
+neerajs [ /third_disk/bb05Mar/azurelinux/toolkit ]$ time ../didwhat/BULK_BLD_THINGS/build_scr_with_check.sh /third_disk/bb05Mar/azurelinux/didwhat/BULK_BLD_THINGS/wkg_pkgs_to_build1 /third_disk/bb05Mar/azure
+linux/ > ../didwhat/BULK_BLD_THINGS/bbld_iter11_$(date +%Y%d%m-%H%M).log 2>&1 &
+[1] 3148
+neerajs [ /third_disk/bb05Mar/azurelinux/toolkit ]$ 
+real    482m26.555s
+user    0m0.020s
+sys     0m0.020s
+
+```
+
+This build finished after 482 minutes, i.e. 8 hours and 2 minutes at 4:11 PM 07 Mar 2025, and the following are the results:
+```
+INFO[21574][scheduler] --> suitesparse-7.7.0-2.azl3.src.rpm , for details see: /third_disk/bb05Mar/azurelinux/build/logs/pkggen/rpmbuilding/suitesparse-7.7.0-2.azl3.src.rpm.test.log 
+INFO[21574][scheduler] --> tclx-8.4.0-37.azl3.src.rpm , for details see: /third_disk/bb05Mar/azurelinux/build/logs/pkggen/rpmbuilding/tclx-8.4.0-37.azl3.src.rpm.test.log 
+INFO[21574][scheduler] --> tix-8.4.3-35.azl3.src.rpm , for details see: /third_disk/bb05Mar/azurelinux/build/logs/pkggen/rpmbuilding/tix-8.4.3-35.azl3.src.rpm.test.log 
+INFO[21574][scheduler] --> usbguard-1.1.3-2.azl3.src.rpm , for details see: /third_disk/bb05Mar/azurelinux/build/logs/pkggen/rpmbuilding/usbguard-1.1.3-2.azl3.src.rpm.test.log 
+INFO[21574][scheduler] --> vmem-1.8-2.azl3.src.rpm , for details see: /third_disk/bb05Mar/azurelinux/build/logs/pkggen/rpmbuilding/vmem-1.8-2.azl3.src.rpm.test.log 
+INFO[21574][scheduler] ---------------------------                  
+INFO[21574][scheduler] --------- Summary ---------                  
+INFO[21574][scheduler] ---------------------------                  
+INFO[21574][scheduler] Number of prebuilt SRPMs:              0     
+INFO[21574][scheduler] Number of prebuilt delta SRPMs:        0     
+INFO[21574][scheduler] Number of skipped SRPMs tests:         0     
+INFO[21574][scheduler] Number of built SRPMs:                 1154  
+INFO[21574][scheduler] Number of passed SRPMs tests:          533   
+ERRO[21574][scheduler] Number of unresolved dependencies:     414   
+ERRO[21574][scheduler] Number of blocked SRPMs:               263   
+ERRO[21574][scheduler] Number of blocked SRPMs tests:         151   
+ERRO[21574][scheduler] Number of failed SRPMs:                60    
+ERRO[21574][scheduler] Number of failed SRPMs tests:          62    
+INFO[21574][scheduler] Number of SRPMs with license errors:   0     
+INFO[21574][scheduler] Number of SRPMs with license warnings: 0     
+INFO[21574][scheduler] Number of toolchain RPM conflicts:     0     
+INFO[21574][scheduler] Number of toolchain SRPM conflicts:    0     
+INFO[21574][scheduler] Writing DOT graph to /third_disk/bb05Mar/azurelinux/build/pkg_artifacts/built_graph.dot 
+FATA[21576][scheduler] Unable to build package graph.
+For details see the build summary section above.
+Error: could not build all packages. 
+INFO[21576][scheduler] Waiting for outstanding chroot initialization and cleanup to finish 
+INFO[21576][scheduler] Waiting for outstanding chroot commands to finish 
+INFO[21576][scheduler] Waiting for outstanding processes to be created before blocking all future processes 
+INFO[21576][scheduler] Waiting for outstanding processes to be created before stopping all child processes 
+INFO[21576][scheduler] systemd-detect-virt reports that the tool is running in a container, running as a container build 
+INFO[21576][scheduler] Cleanup finished                             
+make: *** [/third_disk/bb05Mar/azurelinux/toolkit/scripts/pkggen.mk:301: /third_disk/bb05Mar/azurelinux/build/make_status/build-rpms.flag] Error 1
+/third_disk/bb05Mar/azurelinux/toolkit
+```
+
+
+
+
+
+
+
+

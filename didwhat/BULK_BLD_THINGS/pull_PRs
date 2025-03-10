@@ -1,0 +1,180 @@
+#! /usr/bin/bash
+
+PROG_NAME=$0
+print_usage()
+{
+	echo "Usage:"
+	echo "${PROG_NAME##*/} <source_root> <downloaded specs path> <dir for lists> ......."
+	echo "Example:"
+	echo "./prep_ext_folder /four_disk/bb_08Feb/azlinux_sms/ /fifth_disk/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ /home/neerajs/utils/BULK_BLD_THINGS/"
+	exit
+}
+
+if [ $# -ne 3 ]
+then
+	print_usage
+fi
+
+#set -e 
+#set -x
+
+AZLINUX_ROOT=$1
+SPEC_EXT_DIR="$AZLINUX_ROOT/SPECS-EXTENDED"
+echo "AZLINUX_ROOT=$AZLINUX_ROOT"
+
+DOWNLOADED_SPECS_PATH=$2
+echo "DOWNLOADED_SPECS_PATH=$DOWNLOADED_SPECS_PATH"
+
+DATA_PATH_FOR_LISTS=$3
+echo "DATA_PATH_FOR_LISTS=$DATA_PATH_FOR_LISTS"
+
+if [ ! -d $AZLINUX_ROOT ]
+then
+	echo The directory $AZLINUX_ROOT was not found
+	print_usage
+fi
+
+if [ ! -d $DOWNLOADED_SPECS_PATH ]
+then
+	echo The directory $DOWNLOADED_SPECS_PATH was not found
+	print_usage
+fi
+
+if [ ! -d $DATA_PATH_FOR_LISTS ]
+then
+	echo The directory $DATA_PATH_FOR_LISTS was not found
+	print_usage
+fi
+
+LIST_TOPIC_BRANCHES="$DATA_PATH_FOR_LISTS/full_topic_brnch_list"
+if [ ! -f $LIST_TOPIC_BRANCHES ]
+then
+	echo The file $LIST_TOPIC_BRANCHES was not found
+	print_usage
+fi
+
+LIST_PULL_SUCCESS="$DATA_PATH_FOR_LISTS/pull_success_list"
+LIST_PULL_FAIL="$DATA_PATH_FOR_LISTS/pull_fail_list"
+
+> $LIST_PULL_SUCCESS
+> $LIST_PULL_FAIL
+
+echo "STARTING PULL OF PRs (PR branches)"
+echo "=================================="
+pushd $AZLINUX_ROOT
+for line in `cat $LIST_TOPIC_BRANCHES`
+do
+	pkgnm=$(echo $line | awk 'BEGIN {FS=","} {print $1}')
+	tpcorigin=$(echo $line | awk 'BEGIN {FS=","} {print $2}')
+	tpcbrnch=$(echo $line | awk 'BEGIN {FS=","} {print $3}')
+	echo "Pulling from ORIGIN=$tpcorigin BRANCH=$tpcbrnch"
+	
+	git pull --no-edit --quiet --no-rebase --commit $tpcorigin $tpcbrnch
+	#Below line is a example of what the above would become on expansion of variables tpcorigin and tpcbrnch
+	#git pull --no-edit --quiet --no-rebase --commit https://github.com/durgajagadeesh/azurelinux_djpalli.git Topic_aopalliance
+
+	if [ $? -ne 0 ]
+	then
+		echo "$pkgnm,$tpcorigin,$tpcbrnch: Pull Failed, will do git merge --abort for this branch"
+		echo "$pkgnm" >> $LIST_PULL_FAIL
+		git merge --abort
+	else
+		echo "$pkgnm,$tpcorigin,$tpcbrnch: Pull Success"
+		echo "$pkgnm" >> $LIST_PULL_SUCCESS
+	fi
+done
+
+popd
+
+echo "STARTING THE COPY OF TARBALLS TO THE SPECS-EXTENDED FOLDER"
+echo "=========================================================="
+for pkgnm in `cat $LIST_TOPIC_BRANCHES  | awk 'BEGIN {FS=","} {print $1}'`
+do
+	spcfl_fullpath=$SPEC_EXT_DIR/$pkgnm/$pkgnm.spec
+	echo "spcfl_fullpath=$spcfl_fullpath"
+
+	if [ ! -f $spcfl_fullpath ]
+	then
+		echo "	Missing spec $spcfl_fullpath for package $pkgnm"
+		continue
+	fi
+
+	#If the required Source file is not already present in the package spec 
+	#directory try to copy it from the downloaded specs directory first.
+	#If not even found in the downloads specs directory, try to download it
+	#using the URL provided for the Source.  Note that the script tries to
+	#download only the files that have URL provided and that URL begins with
+	#either http or https
+	spectool -S $spcfl_fullpath 2>/dev/null | while read -r srcdropword srcpath
+	do
+		echo "	srcpath=$srcpath"; 
+		#the below line extracts the last component after the "/" character
+		#that covers both kinds of Source0 specifications
+		#1. FullPath/tarball.tar.gz
+		#2. FullPath/oldnametarball.tar.gz#/newnametarball.tar.gz
+		trbl=${srcpath##*/}
+		trblneedmet=1
+
+		#if the source tarball is not already present in the specs directory
+		#then
+		#	for the package, only then try to get it using other means
+		#	These other means are 1) copy from the pre-downloaded specs directory 2) download using the URL 
+		#else we don't need to get it.
+		if [ ! -f $SPEC_EXT_DIR/$pkgnm/$trbl ]
+		then
+			echo "	trbl=$trbl"
+			#check for tarball existence in the pre-downloaded specs
+			if [ ! -f $DOWNLOADED_SPECS_PATH/$pkgnm/$trbl ]
+			then
+				echo "	Missing tarball $trbl in pre-downloaded $DOWNLOADED_SPECS_PATH/$pkgnm for package $pkgnm"
+				#if the path for the source tarball doesn't begin with http, don't attempt download
+				#It seems to hang then
+				echo $srcpath | grep -e "^http" > /dev/null
+				if [ $? -ne 0 ]
+				then
+					echo "	non-http path!  Skipping download."
+					continue
+				fi
+				echo "	Trying the download now..."
+				echo "	of $srcpath"
+				echo "	as $SPEC_EXT_DIR/$pkgnm/$trbl"
+				wget $srcpath -O $SPEC_EXT_DIR/$pkgnm/$trbl
+				if [ -f $SPEC_EXT_DIR/$pkgnm/$trbl ]
+				then
+					trblneedmet=1
+					echo "	download success, tarball $SPEC_EXT_DIR/$pkgnm/$trbl for package $pkgnm"
+				else
+					trblneedmet=0
+					echo "	download fail, tarball $SPEC_EXT_DIR/$pkgnm/$trbl for package $pkgnm"
+				fi
+			else
+				echo "	Will copy the pre-downloaded $trbl to SPECS-EXTENDED folder $SPEC_EXT_DIR/$pkgnm"
+				cp $DOWNLOADED_SPECS_PATH/$pkgnm/$trbl $SPEC_EXT_DIR/$pkgnm
+				if [ $? -eq 0 ]
+				then
+					trblneedmet=1
+					echo "	copy success, tarball $SPEC_EXT_DIR/$pkgnm/$trbl for package $pkgnm"
+				else
+					trblneedmet=0
+					echo "	copy fail, tarball $SPEC_EXT_DIR/$pkgnm/$trbl for package $pkgnm"
+				fi
+			fi
+		else
+			trblneedmet=1
+			echo "$trbl already with us in $SPEC_EXT_DIR/$pkgnm, for package $pkgnm"
+		fi
+
+		if [ $trblneedmet -eq 1 ]
+		then
+			echo "$trbl need met, for package $pkgnm"
+		else
+			echo "$trbl need unmet, for package $pkgnm"
+		fi
+	done
+done
+
+#set +x 
+#set +e
+
+
+

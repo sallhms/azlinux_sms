@@ -1,0 +1,73 @@
+#! /usr/bin/bash
+
+PROG_NAME=$0
+print_usage()
+{
+	echo "Usage:"
+	echo "${PROG_NAME##*/} <source_root> <dir for lists> ......."
+	echo "Example:"
+	echo "./prep_ext_folder /four_disk/bb_08Feb/azlinux_sms/ /home/neerajs/utils/BULK_BLD_THINGS/"
+	exit
+}
+
+if [ $# -ne 2 ]
+then
+	print_usage
+fi
+
+#set -e 
+#set -x
+
+AZLINUX_ROOT=$1
+SPEC_EXT_DIR="$AZLINUX_ROOT/SPECS-EXTENDED"
+echo "AZLINUX_ROOT=$AZLINUX_ROOT"
+
+DATA_PATH_FOR_LISTS=$2
+echo "DATA_PATH_FOR_LISTS=$DATA_PATH_FOR_LISTS"
+
+if [ ! -d $AZLINUX_ROOT ]
+then
+	echo The directory $AZLINUX_ROOT was not found
+	print_usage
+fi
+
+if [ ! -d $DATA_PATH_FOR_LISTS ]
+then
+	echo The directory $DATA_PATH_FOR_LISTS was not found
+	print_usage
+fi
+
+LIST_TOPIC_BRANCHES="$DATA_PATH_FOR_LISTS/full_topic_brnch_list"
+if [ ! -f $LIST_TOPIC_BRANCHES ]
+then
+	echo The file $LIST_TOPIC_BRANCHES was not found
+	print_usage
+fi
+
+echo "STARTING PULL OF PRs (PR branches)"
+echo "=================================="
+pushd $AZLINUX_ROOT
+for line in `cat $LIST_TOPIC_BRANCHES`
+do
+	pkgnm=$(echo $line | awk 'BEGIN {FS=","} {print $1}')
+	tpcorigin=$(echo $line | awk 'BEGIN {FS=","} {print $2}')
+	tpcbrnch=$(echo $line | awk 'BEGIN {FS=","} {print $3}')
+	echo "Pulling from ORIGIN=$tpcorigin BRANCH=$tpcbrnch"
+	
+	git pull --no-edit --quiet --no-rebase --commit $tpcorigin $tpcbrnch
+	#git pull --no-edit --quiet --no-rebase --commit https://github.com/durgajagadeesh/azurelinux_djpalli.git Topic_aopalliance
+	if [ $? -ne 0 ]
+	then
+		echo "$pkgnm,$tpcorigin,$tpcbrnch: Pull Failed, will do git merge --abort for this branch"
+		git merge --abort
+	else
+		echo "$pkgnm,$tpcorigin,$tpcbrnch: Pull Success"
+	fi
+done
+popd
+
+#set +x 
+#set +e
+
+
+

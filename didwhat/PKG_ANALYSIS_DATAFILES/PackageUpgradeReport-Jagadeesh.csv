@@ -1,0 +1,381 @@
+﻿S.No.,Package Name,Need Upgrade (Y/N/Revisit/Remove),Upgrade to version (Version/Revisit/NA),"Priority (P0, P1, P3)",Evaluator,"Status (Not Started, Ongoing, PR Raised, PR in Review, Done-Upgrade, Done-FixBuild, Done-OtherChanges, NA-Uptodate)",Obsoleted and Frozen PR Link,Start Date,End Date,Last activity date,3.0-dev Daily Build status   (Y/N),Build status date,Version in 2.0,Version in 3.0,Latest Version  (Fedora Sources),Fedora Sources Link,Latest Upstream Version,Upstream Sources Link,Remark / Plan for the package,PR Link
+1,advancecomp,Y,2.6,,Jagadeesh,PR in Review,https://github.com/microsoft/azurelinux/pull/10697,2024-10-03 0:00:00,2024-10-11 0:00:00,2024-10-10 0:00:00,N,2024-09-30 0:00:00,2.5,2.5.1,2.6,"https://src.fedoraproject.org/rpms/advancecomp
+Fedora 42 Release
+https://koji.fedoraproject.org/koji/buildinfo?buildID=2488694",2.6,"https://www.advancemame.it/
+https://github.com/amadvance/advancecomp/releases/tag/v2.6","This package having one error as shown below Before making changes in 3.0Branch.
+i)Number of unresolved dependencies: 10.
+ii)Number of blocked SRPMs: 1
+So, i started this same build in 2.0 Branch.
+iii) Extended Build pieline showing as Success on 02-Oct-2024 Date as package name advancecomp-2.5-1.
+[11-Oct-2024]:
+iv) This package having Dependencies(3) like
+ a.libdeflate:C:'>='V:'1.19'
+ b.pkgconfig(libdeflate):C:'>='V:'1.19'
+ c.zopfli-devel:C:''V:''
+ So, after resolving this we can able to upgrade this package.
+v) Status: Done",
+2,alsa-firmware,N,NA,,Jagadeesh,NA-Uptodate,,2024-10-07 0:00:00,2024-10-07 0:00:00,2024-10-07 0:00:00,Y,2024-10-06 0:00:00,1.2.4,1.2.4,1.2.4,"https://src.fedoraproject.org/rpms/alsa-firmware
+Fedora 42 Release
+https://koji.fedoraproject.org/koji/buildinfo?buildID=2488763",1.2.4,http://www.alsa-project.org/ ftp://ftp.alsa-project.org/pub/firmware/%{name}-%{version}.tar.bz2,"Both Fedora and the upstream sources lack a direct URL for downloading the tar.gz source file.
+[08-Oct-2024]
+This package ""alsa-firmware-1.2.4-8.azl3.noarch.rpm"" has been built. And we can see output in output/RPMS/noarch/.
+NA-Uptodate.",
+3,alsa-plugins,Y,1.2.12,,Jagadeesh,Ongoing,,2024-10-07 0:00:00,,2024-12-09 0:00:00,N,2024-10-06 0:00:00,1.2.7.1,1.2.7.1,1.2.12,"https://src.fedoraproject.org/rpms/alsa-plugins
+Fedora 42 Release
+https://koji.fedoraproject.org/koji/buildinfo?buildID=2488768",1.2.12,"http://www.alsa-project.org/
+ftp://ftp.alsa-project.org/pub/plugins/%{name}-%{version}.tar.bz2","[05-Dec-2024]: alsa-plugins package have dependency on multiple dependent package depedencies to build the mariner version only.
+However, this package has been built with default mariner version with some dependencies.
+The latest version is having dependencies on the following packegs, which are not available in mariner.
+ffmpeg-free-devel, jack-audio-connection-kit-devel, libavtp-devel.",
+4,amtk,Y,5.6.1,,Jagadeesh,Ongoing,,2024-10-07 0:00:00,,,N,2024-10-02 0:00:00,5.0.2,5.0.2,5.6.1,"https://src.fedoraproject.org/rpms/amtk
+Fedora 42 Release
+https://koji.fedoraproject.org/koji/buildinfo?buildID=2488797",5.6.1,"https://wiki.gnome.org/Projects/Amtk
+https://download.gnome.org/sources/amtk/5.6/amtk-%{version}.tar.xz",,
+5,amtterm,N,NA,,Jagadeesh,NA-Uptodate,,03-0ct-24,2024-10-04 0:00:00,2024-10-04 0:00:00,Y,2024-10-02 0:00:00,1.6,1.6,1.6,"https://src.fedoraproject.org/rpms/amtterm
+Fedora 42 Release
+https://koji.fedoraproject.org/koji/buildinfo?buildID=2488795",1.6,http://www.kraxel.org/blog/linux/amtterm/,"all versions are same in 2.0,3.0,fedora and upstream.
+And daily pipline version also same.
+I built this package ""amtterm-1.6-10.azl3.x86_64.rpm"" Manually, during this build this package having dependancy with package name ""/noarch/xdg-utils-1.1.3-7.azl3.src.rpm.log"".
+[08-Oct-2024]
+After xdg-utils package only amtterm working.
+So, i gave script as -p ""xdg-utils amtterm"".
+Then build is working without errors.
+[08-Oct-2024]:
+NA-Uptodate",
+6,annobin,N,NA,,Jagadeesh,NA-Uptodate,,2024-10-01 0:00:00,2024-10-03 0:00:00,2024-10-03 0:00:00,N,2024-10-02 0:00:00,9.27,12.49,12.7,"https://src.fedoraproject.org/rpms/annobin
+Fedora 42 Release
+https://koji.fedoraproject.org/koji/buildinfo?buildID=2526150",12.7,https://sourceware.org/annobin/,"It is a core package existing in SPEC of 3.0-dev branch.
+No entries availabel in SPEC-EXTENDED/annobin/ directory.
+NA-Uptodate.",
+7,ansible-freeipa,Y,1.13.2,,Jagadeesh,PR Raised,https://github.com/microsoft/azurelinux/pull/11028,2024-10-04 0:00:00,2024-11-12 0:00:00,2024-10-06 0:00:00,Y,2024-10-06 0:00:00,0.3.4,0.3.4,1.13.2,"https://src.fedoraproject.org/rpms/ansible-freeipa
+Fedora 42 Release
+https://koji.fedoraproject.org/koji/buildinfo?buildID=2488885",1.13.2,https://github.com/freeipa/ansible-freeipa https://github.com/freeipa/ansible-freeipa/archive/v%{version}.tar.gz,"[12-Nov-2024]: Hi,
+I updated ""python"" to ""python3"" in the ""utils/build-galaxy-release.sh"" file.
+And commented out the ""BuildRequires: ansible-core"" package in spec file.
+Note: ansible-core package not available in mariner currently.
+So, This is the reason, i commented this dependency line.",
+8,aopalliance,N,NA,,Jagadeesh,PR in Review,https://github.com/microsoft/azurelinux/pull/10671,2024-10-07 0:00:00,2024-10-08 0:00:00,2024-10-09 0:00:00,N,2024-10-06 0:00:00,1,1,1,"https://src.fedoraproject.org/rpms/aopalliance
+Fedora 42 Release
+https://koji.fedoraproject.org/koji/buildinfo?buildID=2488890",1,http://aopalliance.sourceforge.net/,"[07-10-2024]
+After try to built this package Manually shows a java error as shown below.
+""[javac] error: Target option 6 is no longer supported. Use 7 or later.""""
+[07-10-2024]
+So, i did change in from 1.6 to 1.7 in spec file, then it is working.
+[08-10-2024]
+1.8 has been kept in spec file.
+Due to latest one.
+[09-Oct-2024]:
+This is package dont have any Issues after git pull on 9th-Oct.
+So, no need of PR.
+Done.
+[30-Dec-2024]:The PR is a leaf PR which builds alone successfully.",https://github.com/microsoft/azurelinux/pull/10671
+9,apache-commons-beanutils,N,NA,,Jagadeesh,NA-Uptodate,,2024-10-07 0:00:00,2024-10-08 0:00:00,2024-10-08 0:00:00,Y,2024-10-06 0:00:00,1.9.4,1.9.4,1.9.4,"https://src.fedoraproject.org/rpms/apache-commons-beanutils
+Fedora 42 Release
+https://koji.fedoraproject.org/koji/buildinfo?buildID=2516657",1.9.4,"http://commons.apache.org/beanutils
+https://www.apache.org/dist/commons/%{base_name}/source/%{short_name}-%{version}-src.tar.gz","[07-Oct-2024]
+Build success in Daily Build on 06-Oct-2024.
+NA-Uptodate",
+10,apache-commons-codec,Y,1.17.1,,Jagadeesh,Ongoing,,2024-11-11 0:00:00,,,Y,2024-10-06 0:00:00,1.15,1.15,1.17.1,"https://src.fedoraproject.org/rpms/apache-commons-codec
+Fedora 42 Release
+https://koji.fedoraproject.org/koji/buildinfo?buildID=2488895",1.17.1,"https://commons.apache.org/codec/
+https://commons.apache.org/codec/download_codec.cgi",,
+11,apache-commons-collections,N,NA,,Jagadeesh,NA-Uptodate,,2024-10-07 0:00:00,2024-10-07 0:00:00,2024-10-07 0:00:00,Y,2024-10-06 0:00:00,3.2.2,3.2.2,3.2.2,"https://src.fedoraproject.org/rpms/apache-commons-collections
+Fedora 42 Release
+https://koji.fedoraproject.org/koji/buildinfo?buildID=2488894",3.2.2,http://commons.apache.org/collections/,"[08-Oct-2024]: This package not showing in pipline build logs of 06-Oct-2024.
+So, i tested manully, then it is building.
+Status:
+NA-Uptodate",
+12,apache-commons-collections4,Y,4.4,,Jagadeesh,Ongoing,,2024-10-08 0:00:00,,2024-10-09 0:00:00,N,2024-10-06 0:00:00,4.1,4.1,4.4,https://koji.fedoraproject.org/koji/buildinfo?buildID=2488897,4.4,http://commons.apache.org/proper/commons-collections/,"[09-Oct-2024]
+JVM error without making changes in existing spec file.",
+13,apache-commons-compress,Y,1.27.1,,Jagadeesh,Ongoing,,2024-11-13 0:00:00,,2024-11-20 0:00:00,N,,1.19,1.19,1.27.1,"https://src.fedoraproject.org/rpms/apache-commons-compress
+Fedora 42 Release
+https://koji.fedoraproject.org/koji/buildinfo?buildID=2534140",1.27.1,"https://commons.apache.org/proper/commons-compress/
+https://commons.apache.org/compress/download_compress.cgi",,
+14,apache-commons-daemon,N,NA,,Jagadeesh,NA-Uptodate,,2024-10-10 0:00:00,2024-10-10 0:00:00,2024-10-10 0:00:00,N,,1.19,1.19,Not found,,1.2.1,"https://commons.apache.org/daemon/
+https://archive.apache.org/dist/commons/daemon/source/%{short_name}-%{version}-src.tar.gz",No Source Available from src Fedora,
+15,apache-commons-dbcp,N,NA,,Jagadeesh,NA-Uptodate,,2024-10-10 0:00:00,2024-10-10 0:00:00,2024-10-10 0:00:00,N,,2.1.1,2.1.1,Not found,"Empty URLS
+https://src.fedoraproject.org/rpms/apache-commons-dbcp https://archive.apache.org/dist/commons/%{base_name}/source/%{short_name}-%{version}-src.tar.gz",2.9.0,"http://commons.apache.org/dbcp/
+https://commons.apache.org/proper/commons-dbcp/
+https://archive.apache.org/dist/commons/dbcp/source/
+https://archive.apache.org/dist/commons/%{base_name}/source/%{short_name}-%{version}-src.tar.gz
+https://archive.apache.org/dist/commons/dbcp/source/commons-dbcp2-2.9.0-src.tar.gz","[10-Oct-2024]
+https://archive.apache.org/dist/commons/dbcp/source/
+[15-Oct-2024]:
+https://archive.apache.org/dist/commons/dbcp/source/commons-dbcp2-2.9.0-src.tar.gz",
+16,apache-commons-digester,N,NA,,Jagadeesh,NA-Uptodate,,2024-10-09 0:00:00,2024-10-11 0:00:00,2024-10-11 0:00:00,N,2024-10-06 0:00:00,2.1,2.1,2.1,https://src.fedoraproject.org/rpms/apache-commons-digester,2.1,"https://commons.apache.org/proper/commons-digester
+https://commons.apache.org/proper/commons-digester/download_digester.cgi","[09-Oct-2024]:
+This package build failed in pipeline.
+So, i tried buiiling manually.
+This package having two unresolved dependencies are apcahe-commons-collections and apcahe-commons-beanutils.
+These dependency packages issue has been resolved but this digester package having some issues during manual build.
+[11-Oct-2024]: Error:
+JVM error without making changes in existing spec file.",
+17,apache-commons-httpclient,N,NA,,Jagadeesh,NA-Uptodate,,2024-10-11 0:00:00,2024-10-11 0:00:00,2024-10-11 0:00:00,Y,2024-10-06 0:00:00,3.1,3.1,Not found,,3.1,https://downloads.apache.org/httpcomponents/commons-httpclient/source/,"No Source Available from src Fedora.
+[14-Oct-2024].
+All version sare same.
+This Package built in Pipeline .
+NA-Uptodate",
+18,apache-commons-io,Y,2.16.1,,Jagadeesh,Ongoing,,2024-10-11 0:00:00,,,Y,2024-10-21 0:00:00,2.8.0,2.14.0,2.16.1,"https://src.fedoraproject.org/rpms/apache-commons-io
+Fedora 42 Release
+https://koji.fedoraproject.org/koji/buildinfo?buildID=2488900",2.17.0,"https://archive.apache.org/dist/commons/io/source/
+https://archive.apache.org/dist/commons/io/source/commons-io-2.17.0-src.tar.gz",,
+19,apache-commons-jexl,Y,3.4.0,,Jagadeesh,Ongoing,,2024-10-11 0:00:00,,,N,,2.1.1,2.1.1,3.4.0,"https://src.fedoraproject.org/rpms/apache-commons-jexl
+Fedora 42 Release
+https://koji.fedoraproject.org/koji/buildinfo?buildID=2488902",3.4.0,https://downloads.apache.org/commons/jexl/source/,,
+20,apache-commons-lang,N,NA,,Jagadeesh,Ongoing,,2024-10-17 0:00:00,,,N,2024-10-06 0:00:00,2.6,2.6,2.6,https://packages.fedoraproject.org/pkgs/apache-commons-lang/apache-commons-lang/,2.6,"https://commons.apache.org/proper/commons-lang/
+https://commons.apache.org/lang
+https://commons.apache.org/proper/commons-lang/download_lang.cgi
+https://archive.apache.org/dist/commons/lang/binaries/
+http://archive.apache.org/dist/commons/%{base_name}/source/%{short_name}-%{version}-src.tar.gz","[14-Oct-2024]:
+Releases in src fedoraproject.
+Fedora 34: Available.
+Fedora 42: Not Available.",
+21,apache-commons-net,Y,3.11.1,,Jagadeesh,Ongoing,,2024-10-11 0:00:00,,,N,2024-10-06 0:00:00,3.6,3.6,3.11.1,"https://src.fedoraproject.org/rpms/apache-commons-net
+Fedora 42 Source
+https://koji.fedoraproject.org/koji/buildinfo?buildID=2533962",3.11.1,"https://commons.apache.org/net/
+https://commons.apache.org/proper/commons-net/
+https://commons.apache.org/proper/commons-net/download_net.cgi",,
+22,apache-commons-pool,N,NA,,Jagadeesh,NA-Uptodate,,2024-10-11 0:00:00,2024-10-11 0:00:00,2024-10-11 0:00:00,Y,2024-10-06 0:00:00,1.6,1.6,1.6,"https://src.fedoraproject.org/rpms/apache-commons-pool
+Fedora 42 Release
+https://koji.fedoraproject.org/koji/buildinfo?buildID=2488910",1.6,https://packages.fedoraproject.org/pkgs/apache-commons-pool/apache-commons-pool/,[14-10-2024]: package Built in pipeline.,
+23,apache-commons-pool2,N,NA,,Jagadeesh,NA-Uptodate,,2024-10-11 0:00:00,2024-10-11 0:00:00,2024-10-11 0:00:00,N,2024-10-06 0:00:00,2.4.2,2.4.2,Not found,https://src.fedoraproject.org/rpms/apache-commons-pool2,2.12.0,"https://commons.apache.org/proper/commons-pool/
+https://commons.apache.org/pool/download_pool.cgi
+https://dlcdn.apache.org//commons/pool/binaries/commons-pool2-2.12.0-bin.tar.gz",This package is showing rpm-UNBUILT in pipeline.,
+24,apache-commons-validator,N,NA,,Jagadeesh,NA-Uptodate,,2024-10-11 0:00:00,2024-10-11 0:00:00,2024-10-11 0:00:00,N,2024-10-06 0:00:00,1.5.0,1.5.0,Not found,https://src.fedoraproject.org/rpms/apache-commons-validator,1.9,https://commons.apache.org/proper/commons-validator/,No Source Available from src Fedora,
+25,apache-commons-vfs2,N,NA,,Jagadeesh,Ongoing,,2024-10-11 0:00:00,,,N,2024-10-06 0:00:00,2.2,2.2,2.2,"No latest version availabe at src fedora .
+Relocating to below upstream.
+https://archive.apache.org/dist/commons/vfs/source/",2.2,"https://archive.apache.org/dist/commons/vfs/binaries/
+https://commons.apache.org/vfs/","[15-Oct-2024]: Upstream version is same as the 3.0-development branch.
+But pipeline shows Failed, need to run manually.",
+26,apache-parent,Y,33,,Jagadeesh,PR Raised,https://github.com/microsoft/azurelinux/pull/11281,2024-10-11 0:00:00,2024-12-03 0:00:00,2024-11-29 0:00:00,Y,2024-10-06 0:00:00,21,21,33,"https://src.fedoraproject.org/rpms/apache-parent
+Fedora 42 Release
+https://koji.fedoraproject.org/koji/buildinfo?buildID=2534104",33,"http://apache.org/
+https://repo1.maven.org/maven2/org/apache/apache/","[14-10-2024]: upstream and 3.0-dev source is common with version variation.
+[30-dec-2024]:The PR is a leaf PR which builds alone successfully.",https://github.com/microsoft/azurelinux/pull/11281
+27,fxload,N,NA,,Jagadeesh,NA-Uptodate,,2024-10-14 0:00:00,2024-10-14 0:00:00,2024-10-14 0:00:00,Y,,2008_10_13,2008_10_13,2008_10_13,https://src.fedoraproject.org/rpms/fxload,2008_10_13,"http://linux-hotplug.sourceforge.net/
+https://koji.fedoraproject.org/koji/packageinfo?packageID=5291",[14-Oct-2024]: Analysis completed,
+28,gavl,N,NA,,Jagadeesh,NA-Uptodate,,2024-10-14 0:00:00,2024-10-14 0:00:00,2024-10-14 0:00:00,Y,2024-10-06 0:00:00,1.4.0,1.4.0,1.4.0,https://src.fedoraproject.org/rpms/gavl,1.4.0,"http://gmerlin.sourceforge.net/
+https://downloads.sourceforge.net/gmerlin/%{name}-%{version}.tar.gz",[14-Oct-2024]: Analysis completed,
+29,gconf-editor,N,NA,,Jagadeesh,NA-Uptodate,,2024-10-14 0:00:00,2024-10-14 0:00:00,2024-10-14 0:00:00,Y,2024-10-06 0:00:00,3.0.1,3.0.1,3.0.1,https://src.fedoraproject.org/rpms/gconf-editor,3.0.1,"http://www.gnome.org
+https://download.gnome.org/sources/gconf-editor/
+https://download.gnome.org/sources/gconf-editor/3.0/gconf-editor-3.0.1.tar.xz",,
+30,gcr,Y,4.3.0,,Jagadeesh,Ongoing,,2024-11-13 0:00:00,,2024-11-11 0:00:00,N,2024-10-06 0:00:00,3.36,3.36,4.3.0,https://src.fedoraproject.org/rpms/gcr,4.3.0,https://download.gnome.org/sources/gcr/,"[14-Nov-2024]: This package having dependency of libsecret-1.
+Libsecret package has been allocated to sumit.
+Note: I found libsecret only in srcfedora but not libsecret-1.
+So, i am waiting for help on this external package.",
+31,gdal,Y,3.9.2,,Jagadeesh,Ongoing,,2024-11-13 0:00:00,,2024-11-15 0:00:00,Y,2024-10-06 0:00:00,3.6.3,3.6.3,3.9.2,https://src.fedoraproject.org/rpms/gdal,3.9.3,"http://www.gdal.org
+https://github.com/OSGeo/gdal/releases/download/v3.9.3/gdal-3.9.3.tar.gz",,
+32,gdisk,[,1.0.10,,Jagadeesh,PR in Review,https://github.com/microsoft/azurelinux/pull/10950,2024-10-14 0:00:00,2024-11-06 0:00:00,2024-10-14 0:00:00,Y,2024-10-06 0:00:00,1.0.9,1.0.9,1.0.10,"https://src.fedoraproject.org/rpms/gdisk
+https://koji.fedoraproject.org/koji/buildinfo?buildID=2491492",1.0.10,"https://www.rodsbooks.com/gdisk/
+https://sourceforge.net/projects/gptfdisk/files/","[30-Dec-2024]: The PR is a leaf PR which builds alone successfully.
+[03-Jan-2024]: approved by Suresh.",https://github.com/microsoft/azurelinux/pull/10950
+33,generic-logos,N,NA,,Jagadeesh,NA-Uptodate,,2024-10-14 0:00:00,2024-10-14 0:00:00,2024-10-14 0:00:00,Y,2024-10-06 0:00:00,18.0.0,18.0.0,18.0.0,https://src.fedoraproject.org/rpms/generic-logos,18.0.0,"https://pagure.io/generic-logos
+https://releases.pagure.org/generic-logos/",[14-Oct-2024]: Analysis completed,
+34,genwqe-tools,N,NA,,Jagadeesh,NA-Uptodate,,2024-10-14 0:00:00,2024-10-14 0:00:00,2024-10-14 0:00:00,Y,2024-10-06 0:00:00,4.0.20,4.0.20,4.0.20,https://src.fedoraproject.org/rpms/genwqe-tools,4.0.20,https://github.com/ibm-genwqe/genwqe-user/,[14-Oct-2024]: Analysis completed,
+35,geoclue2,N,NA,,Jagadeesh,NA-Uptodate,,2024-10-14 0:00:00,2024-10-14 0:00:00,2024-10-14 0:00:00,Y,2024-10-06 0:00:00,2.7.0,2.7.0,2.7.0,"https://src.fedoraproject.org/rpms/geoclue2 https://www.freedesktop.org/wiki/Software/GeoClue/
+https://gitlab.freedesktop.org/geoclue/geoclue/-/archive/%{version}/geoclue-%{version}.tar.bz2#/%{name}",2.7.2,https://gitlab.freedesktop.org/geoclue/geoclue/-/releases,"[14-Oct-2024]: fedora Latest verson is 2.7.0.
+And upstream latest is 2.7.2
+here, i observed 2.7.0 version in change log is on Mar 2023.
+And we saw minor version latest package as 2.7.2 from upstream.
+So, we choose to picup the 2.7.2 version.",
+36,geolite2,N,NA,,Jagadeesh,NA-Uptodate,,2024-10-14 0:00:00,2024-10-14 0:00:00,2024-10-14 0:00:00,Y,2024-10-06 0:00:00,20191217,20191217,20191217,"https://src.fedoraproject.org/rpms/geolite2
+https://koji.fedoraproject.org/koji/buildinfo?buildID=2491548
+https://koji.fedoraproject.org/koji/buildinfo?buildID=2491548",,https://dev.maxmind.com/geoip/geoip2/geolite2/,[14-Oct-2024]: Upstream Not available,
+37,geronimo-specs,N,NA,,Jagadeesh,NA-Uptodate,,2024-10-15 0:00:00,2024-10-23 0:00:00,2024-10-23 0:00:00,Y,2024-10-06 0:00:00,1.2,1.2,Not found,No,1.2,https://build-opensuse-org.translate.goog/package/show/openSUSE:Factory/geronimo-specs?_x_tr_sl=hi&_x_tr_tl=en&_x_tr_hl=en&_x_tr_pto=sc,"geronimo-specs is not there on Fedora sources.
+Finding it's upstream source from ""http://geronimo.apache.org"" is also not straightforward.
+It appears to be a package defined by Microsoft itself.
+The tar.gz is supposed to be created using the SVN tags mentioned in the spec file itself.
+https://svn.apache.org/repos/asf/geronimo/specs/tags/
+That is why update may not be required.
+However, we did find a source repo for this on github:
+https://github.com/apache/geronimo-specs.git
+From there we can see that newer versions of some sub-packages are available.
+But we are not sure whether and how those should be used and whether old ones should also continue to be a part of the source tar.gz.
+[23-Oct-2024]: upstream found from the opensuse url as shownin upstream column.",
+38,ghc-srpm-macros,Y,1.9.2,,Jagadeesh,PR Raised,https://github.com/microsoft/azurelinux/pull/10788,2024-10-15 0:00:00,2024-10-22 0:00:00,2024-10-22 0:00:00,Y,2024-10-06 0:00:00,1.5.0,1.5.0,1.9.2,https://src.fedoraproject.org/rpms/ghc-srpm-macros https://src.fedoraproject.org/rpms/ghc-srpm-macros,1.9.2,14,"[15-10-2024]: URL from src.fedoaproject and upstream are same.
+[27-12-2024] : pkg dont have entry cgmanifest.json And License file not available. However package built successfully.",https://github.com/microsoft/azurelinux/pull/10788
+39,gl-manpages,N,NA,,Jagadeesh,NA-Uptodate,,2024-10-15 0:00:00,,,N,2024-10-06 0:00:00,1.1,1.1,1.1,"https://src.fedoraproject.org/rpms/gl-manpages
+https://github.com/KhronosGroup/OpenGL-Refpages",,,,
+40,glassfish-annotation-api,N,ReVisit,,Jagadeesh,Re-Visit,,2024-10-15 0:00:00,,,N,2024-10-06 0:00:00,1.3.2,1.3.2,Not found,No,1.3.2,"https://github.com/javaee/javax.annotation/
+https://github.com/javaee/javax.annotation/tags",[17-Oct-2025}: 1.3.2 version is the last updated package version on 21-Feb-2018,
+41,glew,Y,2.2.0,,Jagadeesh,PR Raised,https://github.com/microsoft/azurelinux/pull/10871,2024-10-15 0:00:00,2024-10-29 0:00:00,2024-10-28 0:00:00,Y,2024-10-06 0:00:00,2.1.0,2.1.0,2.2.0,https://src.fedoraproject.org/rpms/glew,2.2.0,"http://glew.sourceforge.net
+https://sourceforge.net/projects/glew/files/glew/","Updated to latest version 2.2.0
+[30-Dec-2024]: License file did not mentioned clearly about license(MIT and BSD)  in LICENSE file.
+The PR is a leaf PR which builds alone successfully.",https://github.com/microsoft/azurelinux/pull/10871
+42,glm,Y,1.0.1,,Jagadeesh,PR in Review,https://github.com/microsoft/azurelinux/pull/11755,2024-10-15 0:00:00,2024-10-25 0:00:00,2024-10-24 0:00:00,Y,2024-10-06 0:00:00,0.9.9.6,0.9.9.6,1.0.1,https://src.fedoraproject.org/rpms/glm,1.0.2,"http://glm.g-truc.net/
+https://github.com/g-truc/glm/releases/
+https://github.com/g-truc/glm/releases/download/%{version}/%{name}-%{version}.zip","[31-Dec-2024]:  The PR is a leaf PR which builds alone successfully.
+[3-Dec-2024]: review by Bala.",https://github.com/microsoft/azurelinux/pull/11755
+43,gnome-desktop-testing,Y,2021.1,,Jagadeesh,NA-Uptodate,,2024-10-15 0:00:00,,,N,2024-10-06 0:00:00,2018.1,2018.1,2018.1,https://src.fedoraproject.org/rpms/gnome-desktop-testing,2021.1,"https://gitlab.gnome.org/GNOME/gnome-desktop-testing/-/tree/v2021.1?ref_type=tags
+https://live.gnome.org/Initiatives/GnomeGoals/InstalledTests
+https://gitlab.gnome.org/GNOME/gnome-desktop-testing",,
+44,gnome-doc-utils,N,NA,,Jagadeesh,NA-Uptodate,,2024-10-15 0:00:00,,,Y,2024-10-06 0:00:00,0.20.10,0.20.10,0.20.10,"https://src.fedoraproject.org/rpms/gnome-doc-utils
+https://download.gnome.org/sources/gnome-doc-utils/0.20/gnome-doc-utils-0.20.9.tar.xz
+https://koji.fedoraproject.org/koji/buildinfo?buildID=2492505",0.9.2,"https://download.gnome.org/sources/gnome-doc-utils/0.20/
+https://download.gnome.org/sources/gnome-doc-utils/0.9/
+https://download.gnome.org/sources/gnome-doc-utils/0.9/gnome-doc-utils-0.9.2.tar.gz","[15-10-2024]: I have doubt about choosing upstream of this package due to large varitions available in upstream.
+one is V0.20.9 and another one is V0.9.2.",
+45,gnome-icon-theme,N,NA,,Jagadeesh,NA-Uptodate,,2024-10-15 0:00:00,2024-10-15 0:00:00,2024-10-15 0:00:00,Y,2024-10-06 0:00:00,3.12.0,3.12.0,3.12.0,https://src.fedoraproject.org/rpms/gnome-icon-theme,3.12.0,https://download.gnome.org/sources/gnome-icon-theme/,[14-Oct-2024]: Analysis completed,
+46,gnome-keyring,Y,46.2,,Jagadeesh,Ongoing,,2024-10-15 0:00:00,,,N,2024-10-06 0:00:00,3.36,3.36,46.2,https://src.fedoraproject.org/rpms/gnome-keyring,46.2,"https://download.gnome.org/sources/gnome-keyring/
+https://download.gnome.org/sources/gnome-keyring/46/gnome-keyring-46.2.tar.xz",,
+47,gnu-getopt,N,NA,,Jagadeesh,NA-Uptodate,,2024-10-15 0:00:00,2024-10-15 0:00:00,2024-10-15 0:00:00,Y,2024-10-06 0:00:00,1.0.14,1.0.14,1.0.14,"https://src.fedoraproject.org/rpms/gnu-getopt
+Locating to upstream
+https://www.urbanophile.com/arenn/hacking/download.html",1.0.14,"https://www.urbanophile.com/arenn/hacking/getopt/
+https://www.urbanophile.com/arenn/hacking/getopt/java-getopt-1.0.14.tar.gz",[14-Oct-2024]: Analysis completed,
+48,gnu-regexp,N,NA,,Jagadeesh,NA-Uptodate,,2024-10-15 0:00:00,2024-10-15 0:00:00,2024-10-15 0:00:00,Y,2024-10-06 0:00:00,1.1.4,1.1.4,Not found,https://src.fedoraproject.org/rpms/gnu-regexp,1.1.4,https://ftp.frugalware.org/pub/other/sources/gnu.regexp/gnu.regexp-1.1.4.tar.gz,"[15-Oct-2024]: Upstream version is same as core version.
+NA-Uptodate.",
+49,go-rpm-macros,Y,3.6.0,,Jagadeesh,PR Raised,https://github.com/microsoft/azurelinux/pull/11160,2024-10-15 0:00:00,2024-11-20 0:00:00,2024-11-20 0:00:00,Y,2024-10-06 0:00:00,3.0.9,3.0.9,3.6.0,https://src.fedoraproject.org/rpms/go-rpm-macros,3.6.0,"https://pagure.io/go-rpm-macros
+https://pagure.io/go-rpm-macros/",[30-Dec-2024]:  The PR is a leaf PR which builds alone successfully.,https://github.com/microsoft/azurelinux/pull/11160
+50,gom,Y,0.5.3,,Jagadeesh,PR Raised,https://github.com/microsoft/azurelinux/pull/11155,2024-10-15 0:00:00,2024-11-20 0:00:00,2024-11-20 0:00:00,Y,2024-10-06 0:00:00,0.4,0.4,0.5.3,https://src.fedoraproject.org/rpms/gom,0.5.3,"https://wiki.gnome.org/Projects/Gom
+https://download.gnome.org/sources/gom/0.5/gom-0.5.3.tar.xz",[30-Dec-2024]: The PR is a leaf PR which builds alone successfully.,https://github.com/microsoft/azurelinux/pull/11155
+51,google-api-python-client,Y,2.149.0,,Jagadeesh,PR Raised,https://github.com/microsoft/azurelinux/pull/11175,2024-10-15 0:00:00,2024-11-21 0:00:00,2024-11-21 0:00:00,Y,2024-10-06 0:00:00,2.73.0,2.73.0,2.149.0,https://src.fedoraproject.org/rpms/google-api-python-client,2.149.0,"https://github.com/googleapis/google-api-python-client
+",,https://github.com/microsoft/azurelinux/pull/11175
+52,google-crosextra-caladea-fonts,N,NA,,Jagadeesh,NA-Uptodate,,2024-10-15 0:00:00,2024-10-15 0:00:00,2024-10-15 0:00:00,N,2024-10-06 0:00:00,1.002,1.002,1.002,https://src.fedoraproject.org/rpms/google-crosextra-caladea-fonts,,"http://code.google.com/p/chromium/issues/detail?id=168879
+https://issues.chromium.org/issues/40959238
+http://gsdview.appspot.com/chromeos-localmirror/distfiles/%{archivename}.tar.gz","[16-Oct-2024]: We have taken upstream from ""src-fedora"".",
+53,google-crosextra-carlito-fonts,N,NA,,Jagadeesh,NA-Uptodate,,2024-10-15 0:00:00,2024-10-15 0:00:00,2024-10-15 0:00:00,N,2024-10-06 0:00:00,1.103,1.103,1.103,No,,,"[16-Oct-2024]: We have taken upstream from ""src-fedora"".",
+54,google-noto-cjk-fonts,N,NA,,Jagadeesh,NA-Uptodate,,2024-10-15 0:00:00,2024-10-15 0:00:00,2024-10-15 0:00:00,N,2024-10-06 0:00:00,20190416,20190416,Not found,No,2.003,"https://github.com/googlei18n/noto-cjk
+https://github.com/notofonts/noto-cjk/releases/
+https://github.com/notofonts/noto-cjk/releases/tag/Serif2.003",,
+55,google-noto-emoji-fonts,Y,2024108,,Jagadeesh,Ongoing,,2024-11-18 0:00:00,,2024-11-22 0:00:00,N,2024-10-06 0:00:00,20200723,20200723,20241008,https://src.fedoraproject.org/rpms/google-noto-emoji-fonts,2.047,"https://github.com/googlefonts/noto-emoji
+]
+https://github.com/googlefonts/noto-emoji/releases/tag/v2.047","[25-Nov-2024]: this package is having gui related dependencies given in zip from src fedora. and throwing one error as ""source0 is not available.
+I found one more issue is signature.json file is getting empty after each build.",
+56,libecap,N,NA,,Jagadeesh,NA-Uptodate,,2024-10-22 0:00:00,2024-10-22 0:00:00,2024-10-22 0:00:00,Y,2024-10-21 0:00:00,1.0.1,1.0.1,1.0.1,"Fedora 42 Release:
+https://src.fedoraproject.org/rpms/libecap",1.0.1,http://www.e-cap.org/ http://www.measurement-factory.com/tmp/ecap/%{name}-%{version}.tar.gz,,
+57,libecb,Y,0.20230911,,Jagadeesh,NA-Uptodate,,2024-11-25 0:00:00,2024-12-12 0:00:00,2024-11-25 0:00:00,Y,2024-10-21 0:00:00,9.3,9.3,9.3,"https://src.fedoraproject.org/rpms/libecb
+Fedora 42 Release.",9.3,http://software.schmorp.de/pkg/libecb.html,"[25-Nov-2024]: 
+Update completed. But,
+Source0 is not given directly in the src fedora spec file yo update the signature.json file.
+[12-Dec-2024]: The latest version from the upstream is 9.3. So, We are picking this version as a latest version as suggested by pawel.",
+58,libeot,N,NA,,Jagadeesh,NA-Uptodate,,2024-10-22 0:00:00,2024-10-22 0:00:00,2024-10-22 0:00:00,Y,2024-10-21 0:00:00,0.01,0.01,0.01,https://src.fedoraproject.org/rpms/libeot,0.01,"https://github.com/umanwizard/libeot
+https://github.com/umanwizard/libeot/archive/refs/tags/v0.01.tar.gz",,
+59,libepubgen,N,NA,,Jagadeesh,NA-Uptodate,,2024-10-22 0:00:00,2024-10-22 0:00:00,2024-10-22 0:00:00,Y,2024-10-21 0:00:00,0.1.1,0.1.1,0.1.1,https://src.fedoraproject.org/rpms/libepubgen,0.1.1,https://sourceforge.net/projects/libepubgen/,,
+60,libesmtp,N,NA,,Jagadeesh,NA-Uptodate,,2024-10-22 0:00:00,,2024-11-04 0:00:00,Y,2024-10-21 0:00:00,1.0.6,1.0.6,1.0.6,"Fedora 42 Release
+https://src.fedoraproject.org/rpms/libesmtp",1.1.0,"https://github.com/libesmtp
+https://github.com/libesmtp/libESMTP
+https://github.com/libesmtp/libESMTP/archive/refs/tags/v1.1.0.tar.gz",,
+61,libetonyek,Y,0.1.11,,Jagadeesh,Ongoing,,2024-12-25 0:00:00,,2024-10-22 0:00:00,N,2024-10-21 0:00:00,0.1.9,0.1.9,0.1.11,https://src.fedoraproject.org/rpms/libetonyek,0.1.9,"https://wiki.documentfoundation.org/DLP/Libraries/libetonyek
+https://dev-www.libreoffice.org/src/libetonyek/
+https://dev-www.libreoffice.org/src/libetonyek/libetonyek-0.1.9.tar.xz",[26-Nov-2024]: %build section having error  like Make[4]:[Makefile:404: all-recursive] Error 1,
+62,libexttextcat,Y,3.4.6,,Jagadeesh,PR Raised,https://github.com/microsoft/azurelinux/pull/10918,2024-10-22 0:00:00,2024-11-04 0:00:00,2024-11-04 0:00:00,Y,2024-10-21 0:00:00,3.4.5,3.4.5,3.4.6,https://src.fedoraproject.org/rpms/libexttextcat,3.4.6,"https://wiki.documentfoundation.org/Libexttextcat
+https://dev-www.libreoffice.org/src/libexttextcat/",[30-Dec-2024]: The PR is a leaf PR which builds alone successfully.,https://github.com/microsoft/azurelinux/pull/10918
+63,libfreehand,N,NA,,Jagadeesh,NA-Uptodate,,2024-10-22 0:00:00,2024-10-22 0:00:00,2024-10-22 0:00:00,Y,2024-10-21 0:00:00,0.1.2,0.1.2,0.1.2,https://src.fedoraproject.org/rpms/libfreehand,0.1.2,"https://wiki.documentfoundation.org/DLP/Libraries/libfreehand
+https://dev-www.libreoffice.org/src/libfreehand/libfreehand-0.1.2.tar.xz",,
+64,libftdi,N,NA,,Jagadeesh,NA-Uptodate,,2024-10-22 0:00:00,2024-10-23 0:00:00,2024-10-23 0:00:00,Y,2024-10-21 0:00:00,1.5,1.5,1.5,https://src.fedoraproject.org/rpms/libftdi,1.5,"https://www.intra2net.com/en/developer/libftdi/
+https://www.intra2net.com/en/developer/libftdi/",,
+65,libgadu,N,NA,,Jagadeesh,NA-Uptodate,,2024-10-22 0:00:00,2024-10-23 0:00:00,2024-10-23 0:00:00,Y,2024-10-21 0:00:00,1.12.2,1.12.2,1.12.2,https://src.fedoraproject.org/rpms/libgadu,1.12.2,"https://github.com/wojtekka/libgadu/
+https://github.com/wojtekka/libgadu/releases/download/1.12.2/libgadu-1.12.2.tar.gz",,
+66,libgdither,N,NA,,Jagadeesh,NA-Uptodate,,2024-10-22 0:00:00,2024-10-23 0:00:00,2024-10-23 0:00:00,Y,2024-10-21 0:00:00,0.6,0.6,0.6,https://src.fedoraproject.org/rpms/libgdither,Not found,http://plugin.org.uk/libgdither/README,"[23-Oct-2024]: Upstream from spec file not working.
+Error: error 106, socket timed out, during download.",
+67,libgee,Y,0.20.6,,Jagadeesh,PR Raised,https://github.com/microsoft/azurelinux/pull/11227,2024-10-22 0:00:00,2024-10-22 0:00:00,2024-11-26 0:00:00,Y,2024-10-21 0:00:00,0.20.3,0.20.3,0.20.6,https://src.fedoraproject.org/rpms/libgee,0.20.6,https://gitlab.gnome.org/GNOME/libgee/-/tags/0.20.6,[30-Dec-2024]: The PR is a leaf PR which builds alone successfully.,https://github.com/microsoft/azurelinux/pull/11227
+68,libgee06,N,NA,,Jagadeesh,NA-Uptodate,,2024-10-22 0:00:00,2024-11-26 0:00:00,2024-11-26 0:00:00,Y,2024-10-21 0:00:00,0.6.8,0.6.8,0.6.8,https://src.fedoraproject.org/rpms/libgee06,0.6.8,"https://wiki.gnome.org/Projects/Libgee
+https://packages.fedoraproject.org/pkgs/libgee06/libgee06/
+https://packages.fedoraproject.org/pkgs/libgee06/libgee06/fedora-40.html",,
+69,libgeotiff,Y,1.7.3,,Jagadeesh,Ongoing,,2024-10-22 0:00:00,,2024-11-27 0:00:00,Y,2024-10-21 0:00:00,1.7.1,1.7.1,1.7.3,https://src.fedoraproject.org/rpms/libgeotiff,1.7.3,"https://trac.osgeo.org/geotiff/
+https://download.osgeo.org/geotiff/libgeotiff/
+https://download.osgeo.org/geotiff/libgeotiff/libgeotiff-1.7.3.tar.gz",,
+70,libgexiv2,Y,0.14.3,,Jagadeesh,PR Raised,https://github.com/microsoft/azurelinux/pull/11737,2024-10-22 0:00:00,2024-10-29 0:00:00,2024-10-23 0:00:00,Y,2024-10-21 0:00:00,0.14.2,0.14.2,0.14.3,https://src.fedoraproject.org/rpms/libgexiv2,0.14.3,"https://download.gnome.org/sources/gexiv2/0.14/
+https://download.gnome.org/sources/gexiv2/0.14/gexiv2-0.14.3.tar.xz","Updated to latest version 0.14.3
+[31-Dec-2023]: Built successfully with runtime dependency of ""exiv2-0.28.0"" pkg.",
+71,libgit2-glib,Y,1.2.0,,Jagadeesh,Ongoing,,2024-10-22 0:00:00,,2024-11-14 0:00:00,Y,2024-10-21 0:00:00,0.99.0.1,0.99.0.1,1.2.0,https://src.fedoraproject.org/rpms/libgit2-glib,1.2.0,"https://wiki.gnome.org/Projects/Libgit2-glib
+https://download.gnome.org/sources/libgit2-glib/1.2/libgit2-glib-1.2.0.tar.xz","[14-Nov-2024]: libgit2-glib having dependency on libgit2.
+And libgit2 having dependency on llhttp.
+And again llhttp having dependency on askalono-cli and licensecheck
+Note: libgit2, llhttp, askalono-cli packages are not available in mariner.
+[15-Nov-2024]: askaloni-cli package dont have entry in src-fedora.
+Here, I have found 15 unresolved dependencies while building licensecheck.",
+72,libglade2,N,NA,,Jagadeesh,NA-Uptodate,,2024-10-22 0:00:00,2024-10-23 0:00:00,2024-10-23 0:00:00,Y,2024-10-21 0:00:00,2.6.4,2.6.4,Not found,https://src.fedoraproject.org/rpms/libglade,2.6.4,"https://download.gnome.org/sources/libglade/2.6/
+https://download.gnome.org/sources/libglade/2.6/libglade-2.6.4.tar.bz2",,
+73,libgovirt,N,NA,,Jagadeesh,NA-Uptodate,,2024-10-22 0:00:00,2024-10-23 0:00:00,2024-10-23 0:00:00,Y,2024-10-21 0:00:00,0.3.9,0.3.9,0.3.9,https://src.fedoraproject.org/rpms/libgovirt,0.3.9,"https://gitlab.gnome.org/GNOME/libgovirt
+https://gitlab.gnome.org/GNOME/libgovirt
+https://download.gnome.org/sources/libgovirt/0.3/libgovirt-0.3.9.tar.xz",,
+74,libgsf,Y,0.14.53,,Jagadeesh,PR Raised,https://github.com/microsoft/azurelinux/pull/11244,2024-10-22 0:00:00,2024-11-27 0:00:00,2024-11-27 0:00:00,Y,2024-10-21 0:00:00,1.14.47,1.14.47,1.14.53,https://src.fedoraproject.org/rpms/libgsf,Not found,,"[23-10-2024]: upstream in spec file is not working.
+[27-Nov-2024]: And Fedora Release41 is working fine",
+75,libgta,N,NA,,Jagadeesh,NA-Uptodate,,2024-10-22 0:00:00,2024-10-22 0:00:00,2024-10-22 0:00:00,Y,2024-10-21 0:00:00,1.2.1,1.2.1,1.2.1,https://src.fedoraproject.org/rpms/libgta,Not found,https://marlam.de/gta/,[23-10-2024]: upstream in spec file is not working.,
+76,libgxps,Y,0.3.2,,Jagadeesh,PR Raised,https://github.com/microsoft/azurelinux/pull/11264,2024-10-22 0:00:00,2024-11-28 0:00:00,2024-11-28 0:00:00,Y,2024-10-21 0:00:00,0.3.1,0.3.1,0.3.2,https://src.fedoraproject.org/rpms/libgxps,0.3.2,https://download.gnome.org/sources/libgxps/0.3/libgxps-0.3.2.tar.xz,,
+77,libhangul,N,NA,,Jagadeesh,NA-Uptodate,,2024-10-22 0:00:00,2024-10-23 0:00:00,2024-10-23 0:00:00,Y,2024-10-21 0:00:00,0.1.0,0.1.0,0.1.0,https://src.fedoraproject.org/rpms/libhangul,0.1.0,"https://github.com/libhangul/libhangul
+https://github.com/libhangul/libhangul/archive/refs/tags/libhangul-0.1.0.tar.gz",,
+78,libibcommon,N,NA,,Jagadeesh,NA-Uptodate,,2024-10-22 0:00:00,2024-10-23 0:00:00,2024-10-23 0:00:00,Y,2024-10-21 0:00:00,1.2.0,1.2.0,1.2.0,https://src.fedoraproject.org/rpms/libibcommon,1.2.0,https://www.openfabrics.org/downloads/management/libibcommon-1.2.0.tar.gz,,
+79,libicns,N,NA,,Jagadeesh,NA-Uptodate,,2024-10-22 0:00:00,2024-10-23 0:00:00,2024-10-23 0:00:00,Y,2024-10-21 0:00:00,0.8.1,0.8.1,0.8.1,https://src.fedoraproject.org/rpms/libicns,0.8.1,"https://sourceforge.net/projects/icns/files/libicns-0.8.1.tar.gz/download
+https://icns.sourceforge.io/",,
+80,libid3tag,Y,0.16.3,,Jagadeesh,PR Raised,https://github.com/microsoft/azurelinux/pull/10843,2024-10-22 0:00:00,2024-10-23 0:00:00,2024-10-23 0:00:00,Y,2024-10-21 0:00:00,0.15.1b,0.15.1b,0.16.3,https://src.fedoraproject.org/rpms/libid3tag,0.15.1b,"https://sourceforge.net/projects/mad/files/libid3tag/0.15.1b/libid3tag-0.15.1b.tar.gz/download
+https://www.underbit.com/products/mad/","Updated to latest version 0.16.3
+[06-Dec-2024]: License verified.",https://github.com/microsoft/azurelinux/pull/10843
+81,ogdi,Y,4.1.1,,Jagadeesh,PR Raised,https://github.com/microsoft/azurelinux/pull/11411,2024-12-09 0:00:00,2025-01-06 0:00:00,2024-12-11 0:00:00,Y,2024-12-09 0:00:00,4.1.0,4.1.0,4.1.1,https://src.fedoraproject.org/rpms/ogdi,,,"[11-Dec-2024]: package build completed.
+[06-Dec-2024]: Standalone package build alone successfully.",https://github.com/microsoft/azurelinux/pull/11411
+82,opal,N,NA,,Jagadeesh,NA-Uptodate,,2024-12-09 0:00:00,2024-12-09 0:00:00,2024-12-09 0:00:00,N,2024-12-09 0:00:00,3.10.11,3.10.11,3.10.11,https://src.fedoraproject.org/rpms/opal,,,,
+83,opencc,Y,1.1.7,,Jagadeesh,Ongoing,,2024-12-09 0:00:00,,2024-12-11 0:00:00,Y,2024-12-09 0:00:00,1.1.1,1.1.1,1.1.7,https://src.fedoraproject.org/rpms/opencc,,,"[12-Dec-2024]: This package having dependency on marisa in 1st level.
+And ruby in 2ns level dependency. Howerver this package is not available in Extended.
+",
+84,opendnssec,Y,2.1.14,,Jagadeesh,Ongoing,,2024-12-12 0:00:00,,2024-12-13 0:00:00,Y,2024-12-09 0:00:00,2.1.7,2.1.7,2.1.14,https://src.fedoraproject.org/rpms/opendnssec,,,"14-Dec-2024]: fixed the build issue with the below commad.
+-p ""opencryptoki opendnssec""",
+85,openwsman,Y,2.7.2,,Jagadeesh,Ongoing,,2024-12-16 0:00:00,,,Y,2024-12-09 0:00:00,2.6.8,2.6.8,2.7.2,https://src.fedoraproject.org/rpms/openwsman,,,"[16-Dec-2024]: fixed the build isue with below command.
+-p ""sblim-sfcc openwsman""",
+86,oro,Revisit,,,Jagadeesh,,,,,,N,2024-12-09 0:00:00,2.0.8,2.0.8,Not found,,,,[11-Dec-2024]: packagenot available in fedora.,
+87,osgi-annotation,Y,8.1.0,,Jagadeesh,,,,,,N,2024-12-09 0:00:00,7.0.0,7.0.0,8.1.0,https://src.fedoraproject.org/rpms/osgi-annotation,,,,
+88,osgi-compendium,N,NA,,Jagadeesh,NA-Uptodate,,2024-12-09 0:00:00,2024-12-09 0:00:00,2024-12-09 0:00:00,N,2024-12-09 0:00:00,7.0.0,7.0.0,7.0.0,https://src.fedoraproject.org/rpms/osgi-compendium,,,,
+89,osgi-core,Y,8.0.0,,Jagadeesh,,,,,,N,2024-12-09 0:00:00,7.0.0,7.0.0,8.0.0,https://src.fedoraproject.org/rpms/osgi-core,,,,
+90,overpass-fonts,N,NA,,Jagadeesh,NA-Uptodate,,2024-12-09 0:00:00,2024-12-09 0:00:00,2024-12-09 0:00:00,N,2024-12-09 0:00:00,3.0.4,3.0.4,3.0.4,https://src.fedoraproject.org/rpms/overpass-fonts,,,,
+91,perl-Import-Into,Revisit,,,Jagadeesh,,,,,,Y,2024-12-09 0:00:00,1.002005,Not found,1.002005,https://src.fedoraproject.org/rpms/perl-Import-Into,,,[11-Dec-2024]: package name is not available in 3.0-dev branch,
+92,perl-JSON-Color,Y,0.134,,Jagadeesh,,,,,,Y,2024-12-09 0:00:00,0.133,0.133,0.134,https://src.fedoraproject.org/rpms/perl-JSON-Color,,,,
+93,perl-JSON-MaybeXS,Y,1.004008,,Jagadeesh,,,,,,N,2024-12-09 0:00:00,1.004003,1.004003,1.004008,https://src.fedoraproject.org/rpms/perl-JSON-MaybeXS,,,,
+94,perl-LDAP,Y,0.68,,Jagadeesh,,,,,,Y,2024-12-09 0:00:00,0.66,0.66,0.68,https://src.fedoraproject.org/rpms/perl-LDAP,,,,
+95,perl-Locale-Msgfmt,N,NA,,Jagadeesh,NA-Uptodate,,2024-12-09 0:00:00,2024-12-09 0:00:00,2024-12-09 0:00:00,N,2024-12-09 0:00:00,0.15,0.15,0.15,https://src.fedoraproject.org/rpms/perl-Locale-Msgfmt,,,,
+96,perl-MIME-Charset,Y,1.013,,Jagadeesh,,,,,,Y,2024-12-09 0:00:00,1.012.2,1.012.2,1.013,https://src.fedoraproject.org/rpms/perl-MIME-Charset,,,,
+97,perl-MIME-Lite,Y,3.033,,Jagadeesh,,,,,,Y,2024-12-09 0:00:00,3.031,3.031,3.033,https://src.fedoraproject.org/rpms/perl-MIME-Lite,,,,
+98,perl-MIME-Types,Y,2.26,,Jagadeesh,,,,,,Y,2024-12-09 0:00:00,2.17,2.17,2.26,https://src.fedoraproject.org/rpms/perl-MIME-Types,,,,
+99,perl-MLDBM,N,NA,,Jagadeesh,NA-Uptodate,,2024-12-09 0:00:00,2024-12-09 0:00:00,2024-12-09 0:00:00,Y,2024-12-09 0:00:00,2.05,2.05,2.05,https://src.fedoraproject.org/rpms/perl-MLDBM,,,,
+100,perl-Mail-DKIM,Y,1.20240619,,Jagadeesh,,,,,,N,2024-12-09 0:00:00,0.58,0.58,1.20240619,https://src.fedoraproject.org/rpms/perl-Mail-DKIM,,,,
+101,neon,Y,0.33.0,,Jagadeesh,PR in Review,https://github.com/microsoft/azurelinux/pull/11484,2024-12-17 0:00:00,2025-01-06 0:00:00,2024-12-17 0:00:00,,,0.31.2,0.31.2,0.33.0,https://src.fedoraproject.org/rpms/neon,,,"Done,
+[25-Dec-2024]: This is a standalone pkg, built successsfully",https://github.com/microsoft/azurelinux/pull/11484
+102,nilfs-utils,Y,2.2.11,,Jagadeesh,PR in Review,https://github.com/microsoft/azurelinux/pull/11487,2024-12-17 0:00:00,2024-12-17 0:00:00,2024-12-17 0:00:00,,,2.2.8,2.2.8,2.2.11,https://src.fedoraproject.org/rpms/nilfs-utils,,,"Done,
+This is a standalone pkg, built successsfully.
+[3-Dec-2024]: This Source is came with up http insteead of https, commnets by Suresh. This casuing the build fail.",https://github.com/microsoft/azurelinux/pull/11487
+103,nodejs-nodemon,Y,3.1.4,,Jagadeesh,Ongoing,,2024-12-18 0:00:00,2024-12-19 0:00:00,,,,2.0.3,2.0.3,3.1.4,https://src.fedoraproject.org/rpms/nodejs-nodemon,,,"Source0: is not provided in Spec file,
+And one more unresolved dependency is nodeja-22  , Mariner is dont not have updated the version.
+However, this nodejs package is renamed to another nodejsXX in Fedora41.",
+104,nodejs-packaging,Y,2023.1,,Jagadeesh,Ongoing,,2024-12-18 0:00:00,2024-12-19 0:00:00,,,,25,25,2023.1,https://src.fedoraproject.org/rpms/nodejs-packaging,,,"""Source0-URL: is not provided in Spec file
+Mariner Upstream source is available upto v25.
+Hovewer, Fedora41 is the latest with v2023.10 
+So, i have not able to see the latest Source0-URL.""",
+105,numatop,Y,2.4,,Jagadeesh,PR in Review,https://github.com/microsoft/azurelinux/pull/11596,2024-12-20 0:00:00,2024-12-20 0:00:00,2024-12-20 0:00:00,,,2.1,2.1,2.4,https://src.fedoraproject.org/rpms/numatop,,,"Done,
+This is a standalone pkg, built successsfully. 
+[09-Jan-2025]:  Approved by bala",https://github.com/microsoft/azurelinux/pull/11596
+106,nvmetcli,Y,0.7,,Jagadeesh,PR Raised,https://github.com/microsoft/azurelinux/pull/11550,2024-12-20 0:00:00,2024-12-20 0:00:00,2024-12-20 0:00:00,,,0.4,0.4,0.7,https://src.fedoraproject.org/rpms/nvmetcli,,,"Done,
+This package built successsfully.But having 2 Requires i. python2-configshell, python3-kmod.
+[02-Jan-2024]: This package has been remarked as ftp: Source0 in spec file by bala in review checks.
+And the source URL should be https instead of ftp..
+So, this is the reason we are putting the this package in Draft instead ready to review.
+Packages with ftp sources have been kept in hold or remove state. these packages are not allowed in blobstore.",
+107,ocaml-calendar,Y,3.0.0,,Jagadeesh,PR in Review,https://github.com/microsoft/azurelinux/pull/11562,2024-12-20 0:00:00,2024-12-20 0:00:00,2024-12-20 0:00:00,,,2.04,2.04,3.0.0,https://src.fedoraproject.org/rpms/ocaml-calendar,,,"Done,
+This is a standalone pkg, built successsfully",https://github.com/microsoft/azurelinux/pull/11562
+108,ocaml-csv,Y,2.4,,Jagadeesh,PR in Review,https://github.com/microsoft/azurelinux/pull/11531,2024-12-20 0:00:00,2024-12-20 0:00:00,2024-12-20 0:00:00,,,1.7,1.7,2.4,https://src.fedoraproject.org/rpms/ocaml-csv,,,"Done,
+This is a standalone pkg, built successsfully",https://github.com/microsoft/azurelinux/pull/11531
+109,ocaml-curses,Y,1.0.11,,Jagadeesh,PR in Review,https://github.com/microsoft/azurelinux/pull/11566,2024-12-20 0:00:00,2024-12-20 0:00:00,2024-12-20 0:00:00,,,1.0.4,1.0.4,1.0.11,https://src.fedoraproject.org/rpms/ocaml-curses,,,"Done,
+This is a standalone pkg, built successsfully",https://github.com/microsoft/azurelinux/pull/11566
+110,ocaml-extlib,Y,1.7.9,,Jagadeesh,PR Raised,https://github.com/microsoft/azurelinux/pull/11567,2024-12-20 0:00:00,2024-12-20 0:00:00,2024-12-20 0:00:00,,,1.7.8,1.7.8,1.7.9,https://src.fedoraproject.org/rpms/ocaml-extlib,,,"Done,
+This is a standalone pkg, built successsfully",https://github.com/microsoft/azurelinux/pull/11567
+111,ocaml-libvirt,Y,0.6.1.7,,Jagadeesh,PR Raised,https://github.com/microsoft/azurelinux/pull/11599,2024-12-20 0:00:00,2024-12-20 0:00:00,2024-12-20 0:00:00,,,0.6.1.5,0.6.1.5,0.6.1.7,https://src.fedoraproject.org/rpms/ocaml-libvirt,,,"Done,
+This is a standalone package, built successfully.
+[09-Jan-2025]:  Approved by bala",https://github.com/microsoft/azurelinux/pull/11599
+112,ocaml-markup,Y,1.0.3,,Jagadeesh,PR in Review,https://github.com/microsoft/azurelinux/pull/11723,2024-12-23 0:00:00,2024-12-24 0:00:00,2024-12-23 0:00:00,,,1.0.0,1.0.0,1.0.3,https://src.fedoraproject.org/rpms/ocaml-markup,,,"Done,
+This is a standalone package, built successfully without run time dependencies error.
+[03-Jan-2024]: approved by bala",https://github.com/microsoft/azurelinux/pull/11723
+113,ocaml-tyxml,Y,4.6.0,,Jagadeesh,PR Raised,https://github.com/microsoft/azurelinux/pull/11682,2024-12-23 0:00:00,2024-12-23 0:00:00,2024-12-23 0:00:00,,,4.5.0,4.5.0,4.6.0,https://src.fedoraproject.org/rpms/ocaml-tyxml,,,"[23-Dec-2024]: The ocaml-tyxml package has been built successfully after adding  build dependent package ocaml-markup(1.0.3, Fedora41), Mentioned in PR",
+114,ocaml-xml-light,Y,2.6,,Jagadeesh,,,2024-12-23 0:00:00,,2024-12-23 0:00:00,,,2.3,2.3,2.5,https://src.fedoraproject.org/rpms/ocaml-xml-light,,,"[24-Dec-2024]: this is a standalone pkg, built successsfully",
+115,ocaml-zarith,Y,1.14,,Jagadeesh,PR in Review,https://github.com/microsoft/azurelinux/pull/11680,2024-12-23 0:00:00,2024-12-23 0:00:00,2024-12-23 0:00:00,,,1.9.1,1.9.1,1.14,https://src.fedoraproject.org/rpms/ocaml-zarith,,,"[24-Dec-2024]: This is a standalone pkg, built successsfully, 
+[03-Jan-2024]: approved by bala",https://github.com/microsoft/azurelinux/pull/11680
+116,ocl-icd,Y,2.3.2,,Jagadeesh,PR Raised,https://github.com/microsoft/azurelinux/pull/11706,2024-12-24 0:00:00,2024-12-24 0:00:00,2024-12-24 0:00:00,,,2.2.13,2.2.13,2.3.2,https://src.fedoraproject.org/rpms/ocl-icd,,,"[23-Dec-2024]: This package has been built successfully after adding runtime dependent package  opencl-headers,
+Mentioned in PR",
+117,oddjob,Y,0.34.7,,Jagadeesh,,,,,,,,0.34.6,0.34.6,0.34.7,https://src.fedoraproject.org/rpms/oddjob,,,,
+118,opencl-headers,Y,3,,Jagadeesh,PR Raised,https://github.com/microsoft/azurelinux/pull/11709,2024-12-24 0:00:00,2024-12-24 0:00:00,2024-12-24 0:00:00,,,2.2,2.2,3,https://src.fedoraproject.org/rpms/opencl-headers,,,"[24-Dec-2024]: this is a standalone pkg, built successsfully. HYPHEN,",https://github.com/microsoft/azurelinux/pull/11709
+119,opencryptoki,Y,3.24.0,,Jagadeesh,,,2025-01-13 0:00:00,,2025-01-13 0:00:00,,,3.17.0,3.17.0,3.24.0,https://src.fedoraproject.org/rpms/opencryptoki,,,[13-Jan-2024]: This package built successfully alone,
+120,openoffice-lv,Y,1.4.0,,Jagadeesh,,https://github.com/microsoft/azurelinux/pull/11884,2025-01-13 0:00:00,,2025-01-13 0:00:00,,,1.0.0,1.0.0,1.4.0,https://src.fedoraproject.org/rpms/openoffice-lv,,,"[13-Jan-2025]: 2 unresolved dependecies (hyphen,mythes(#11600), Requires. But package built.",
+121,optipng,Y,0.7.8,,Jagadeesh,,,,,,,,0.7.7,0.7.7,0.7.8,https://src.fedoraproject.org/rpms/optipng,,,"[11-Jan-2024]: Bilt successfully. However, openoffice having 2 unresolved dependencies .",
+122,unicode-emoji,Y,16,,Jagadeesh,,,,,,,,13,13,16,https://src.fedoraproject.org/rpms/unicode-emoji,,,,
+123,unicode-ucd,Y,16.0.0,,Jagadeesh,,,,,,,,13.0.0,13.0.0,16.0.0,https://src.fedoraproject.org/rpms/unicode-ucd,,,,
+124,units,Y,2.23,,Jagadeesh,,,,,,,,2.19,2.19,2.24,https://src.fedoraproject.org/rpms/units,,,,
+125,usb_modeswitch,Y,2.6.1,,Jagadeesh,,,,,,,,2.6.0,2.6.0,2.6.1,https://src.fedoraproject.org/rpms/usb_modeswitch,,,,
+126,uthash,Y,2.3.0,,Jagadeesh,,,,,,,,2.0.2,2.0.2,2.3.0,https://src.fedoraproject.org/rpms/uthash,,,,
+127,virt-top,Y,1.1.1,,Jagadeesh,,,,,,,,1.0.9,1.0.9,1.1.1,https://src.fedoraproject.org/rpms/virt-top,,,,

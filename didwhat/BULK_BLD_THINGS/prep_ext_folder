@@ -1,0 +1,99 @@
+#! /usr/bin/bash
+
+PROG_NAME=$0
+print_usage()
+{
+	echo "Usage:"
+	echo "${PROG_NAME##*/} <source_root> <downloads root dir> <dir for lists> ......."
+	echo "Example:"
+	echo "./prep_ext_folder /four_disk/bb_08Feb/azlinux_sms/ /SecDsk_plHolder/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ /home/neerajs/utils/BULK_BLD_THINGS/"
+	exit
+}
+
+if [ $# -ne 3 ]
+then
+	print_usage
+fi
+
+#set -e 
+#set -x
+
+AZLINUX_ROOT=$1
+SPEC_EXT_DIR="$AZLINUX_ROOT/SPECS-EXTENDED"
+echo "AZLINUX_ROOT=$AZLINUX_ROOT"
+
+DNLDS_ROOT=$2
+echo "DNLDS_ROOT=$DNLDS_ROOT"
+
+DATA_PATH_FOR_LISTS=$3
+echo "DATA_PATH_FOR_LISTS=$DATA_PATH_FOR_LISTS"
+
+if [ ! -d $AZLINUX_ROOT ]
+then
+	echo The directory $AZLINUX_ROOT was not found
+	print_usage
+fi
+
+if [ ! -d $DNLDS_ROOT ]
+then
+	echo The directory $DNLDS_ROOT was not found
+	print_usage
+fi
+
+if [ ! -d $DATA_PATH_FOR_LISTS ]
+then
+	echo The directory $DATA_PATH_FOR_LISTS was not found
+	print_usage
+fi
+
+LIST_OF_REM_FOLDERS="$DATA_PATH_FOR_LISTS/folders_to_rem"
+LIST_OF_COPY_FOLDERS="$DATA_PATH_FOR_LISTS/folders_to_copy"
+#LIST_OF_REM_FOLDERS="$DATA_PATH_FOR_LISTS/test_folders_to_rem"
+#LIST_OF_COPY_FOLDERS="$DATA_PATH_FOR_LISTS/test_folders_to_copy"
+
+
+#echo "SPEC_EXT_DIR=$SPEC_EXT_DIR"
+#echo "LIST_OF_REM_FOLDERS=$LIST_OF_REM_FOLDERS"
+#echo "LIST_OF_COPY_FOLDERS=$LIST_OF_COPY_FOLDERS"
+
+echo ""
+echo "STARTING REMOVAL of folders FROM:"
+echo "$SPEC_EXT_DIR"
+for pkgname in `cat $LIST_OF_REM_FOLDERS`
+do
+	if [ -d $SPEC_EXT_DIR/$pkgname ]
+	then
+		echo "$pkgname"
+		rm -rf $SPEC_EXT_DIR/$pkgname
+	else
+		echo "$SPEC_EXT_DIR/$pkgname not found"
+	fi
+
+done
+
+echo ""
+echo "STARTING COPY of folders FROM:" 
+echo "$DNLDS_ROOT"
+echo "TO:"
+echo "$SPEC_EXT_DIR"
+for pkgname in `cat $LIST_OF_COPY_FOLDERS`
+do
+	if [ -d $DNLDS_ROOT/$pkgname ]
+	then
+		echo "$pkgname"
+		cp -r $DNLDS_ROOT/$pkgname $SPEC_EXT_DIR/
+		if [ $? -ne 0 ]
+		then
+			echo "Failed to copy $pkgname from $DNLDS_ROOT to $SPEC_EXT_DIR"
+		fi
+	else
+		echo "$DNLDS_ROOT/$pkgname not found"
+	fi
+
+done
+
+#set +x 
+#set +e
+
+
+

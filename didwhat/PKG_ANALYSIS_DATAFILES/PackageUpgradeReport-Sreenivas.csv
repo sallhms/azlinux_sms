@@ -1,0 +1,1124 @@
+﻿S.No.,Package Name,Need Upgrade (Y/N/Revisit/Remove),Upgrade to version (Version/Revisit/NA),"Priority (P0, P1, P3)",Evaluator,"Status (Not Started, Ongoing, PR Raised, PR in Review, Done-Upgrade, Done-FixBuild, Done-OtherChanges, NA-Uptodate)",Obsoleted and Frozen PR Link,Start Date,End Date,Last activity date,3.0-dev Daily Build status   (Y/N),Build status date,Version in 2.0,Version in 3.0,Latest Version  (Fedora Sources),Fedora Sources Link,Latest Upstream Version,Upstream Sources Link,Remark / Plan for the package,PR Link
+001,crash-ptdump-command,N,NA,,Sreenivasulu,NA-Uptodate,NA,2024-10-04 0:00:00,2024-10-04 0:00:00,2024-10-04 0:00:00,"Y
+",2024-10-06 0:00:00,1.0.7,1.0.7,---,No Fedora Source found,1.0.7,"github source:
+
+https://github.com/crash-utility/crash-extensions/blob/master
+
+https://github.com/crash-utility/crash-extensions/blob/master/ptdump-1.0.7.tar.gz
+","No Upgrade is required.
+
+No Fedora sources were found",
+002,criu,Y,4.0,,Sreenivasulu,Ongoing,,2024-11-25 0:00:00,,,"N
+",2024-10-06 0:00:00,3.15,3.15,4,"Fedora 41 Source:
+
+https://koji.fedoraproject.org/koji/buildinfo?buildID=2570205
+
+https://kojipkgs.fedoraproject.org//packages/criu/4.0/2.fc41/src/criu-4.0-2.fc41.src.rpm",4,"github Source:
+
+http://github.com/checkpoint-restore/criu
+
+http://github.com/checkpoint-restore/criu/archive/v4.0/criu-4.0.tar.gz",3.0-dev Daily Build status  is 'No',
+003,crypto-policies,Y,20240927,,Sreenivasulu,Ongoing,,2024-10-07 0:00:00,,2024-11-25 0:00:00,"N
+",2024-10-06 0:00:00,20200619,20200619,20240927,"Fedora 41 Source:
+
+https://koji.fedoraproject.org/koji/buildinfo?buildID=2576095
+
+https://kojipkgs.fedoraproject.org//packages/crypto-policies/20241029/1.git8baf557.fc41/src/crypto-policies-20241029-1.git8baf557.fc41.src.rpm",---,"github Source:
+
+https://gitlab.com/redhat-crypto/fedora-crypto-policies
+
+https://gitlab.com/redhat-crypto/fedora-crypto-policies/-/archive/f32-updates/fedora-crypto-policies-f32-updates.tar.gz",3.0-dev Daily Build status  is 'No',
+004,cscope,N,NA,,Sreenivasulu,NA-Uptodate,NA,2024-10-07 0:00:00,2024-10-07 0:00:00,2024-10-07 0:00:00,"Y
+",2024-10-06 0:00:00,15.9,15.9,15.9,"Fedora 42 Source:
+
+https://koji.fedoraproject.org/koji/buildinfo?buildID=2521502
+
+https://kojipkgs.fedoraproject.org//packages/cscope/15.9/26.fc41/src/cscope-15.9-26.fc41.src.rpm",15.9,"URL:
+
+https://sourceforge.net/projects/cscope/
+
+https://sourceforge.net/projects/cscope/files/cscope/v15.9/cscope-15.9.tar.gz
+",No Upgrade is required.,
+005,custodia,N,NA,,Sreenivasulu,NA-Uptodate,NA,2024-10-07 0:00:00,2024-10-07 0:00:00,2024-10-07 0:00:00,"Y
+",2024-10-06 0:00:00,0.6.0,0.6.0,0.6.0,"https://src.fedoraproject.org/rpms/custodia
+
+Fedora 42 Source:
+
+https://koji.fedoraproject.org/koji/rpminfo?rpmID=26428717
+",0.6.0,"github source:
+
+https://github.com/latchset/custodia
+
+https://github.com/latchset/custodia/releases/download/v0.6.0/custodia-0.6.0.tar.gz
+",No Upgrade is required.,
+006,dbus-c++,N,NA,,Sreenivasulu,NA-Uptodate,NA,2024-11-25 0:00:00,2024-11-25 0:00:00,2024-11-25 0:00:00,"N
+",2024-10-06 0:00:00,0.9.0,0.9.0,0.9.0,"Fedora Overview:
+
+https://src.fedoraproject.org/rpms/dbus-c++
+",0.9.0,"URL:
+
+https://sourceforge.net/projects/dbus-cplusplus/
+
+https://master.dl.sourceforge.net/project/dbus-cplusplus/dbus-c%2B%2B/0.9.0/libdbus-c---0.9.0-doc.tar.bz2","3.0-dev Daily Build status  is 'No'
+No Upgrade is required.
+
+",
+007,dbxtool,N,NA,,Sreenivasulu,NA-Uptodate,NA,2024-11-25 0:00:00,2024-11-25 0:00:00,2024-11-25 0:00:00,"N
+",2024-10-06 0:00:00,8,8,---,"Fedpra Overview:
+
+https://src.fedoraproject.org/rpms/dbxtool
+",8,"github Source:
+
+https://github.com/rhboot/dbxtool
+
+https://github.com/rhboot/dbxtool/releases/download/dbxtool-8/dbxtool-8.tar.bz2
+","3.0-dev Daily Build status  is 'No'
+No Upgrade is required.
+dead.package (Fedora 41)",
+008,dcraw,N,NA,,Sreenivasulu,NA-Uptodate,NA,2024-10-08 0:00:00,2024-10-08 0:00:00,2024-10-08 0:00:00,"Y
+",2024-10-06 0:00:00,9.28.0,9.28.0,9.28.0,"Fedora 42 Source:
+
+https://koji.fedoraproject.org/koji/buildinfo?buildID=2490142
+
+https://kojipkgs.fedoraproject.org//packages/dcraw/9.28.0/24.fc41/src/dcraw-9.28.0-24.fc41.src.rpm
+",9.28.0,"URL:
+
+https://www.dechifro.org/dcraw
+
+https://www.dechifro.org/dcraw/archive/dcraw-9.28.0.tar.gz
+
+",No Upgrade is required.,
+009,deltarpm,Y,3.6.5,,Sreenivasulu,PR Raised,https://github.com/microsoft/azurelinux/pull/10922,2024-10-11 0:00:00,2024-10-14 0:00:00,2024-10-16 0:00:00,"Y
+",2024-10-06 0:00:00,3.6.2,3.6.2,3.6.5,"Fedora 42 Source:
+
+https://koji.fedoraproject.org/koji/buildinfo?buildID=2546467
+
+https://kojipkgs.fedoraproject.org//packages/deltarpm/3.6.5/1.fc42/src/deltarpm-3.6.5-1.fc42.src.rpm
+",3.6.5,"github source:
+
+https://github.com/rpm-software-management/deltarpm
+
+https://github.com/rpm-software-management/deltarpm/archive/3.6.5/delrarpm-3.6.5.tar.gz
+",Upgraded to new version 3.6.5,https://github.com/microsoft/azurelinux/pull/10922
+010,delve,Y,1.23.0,,Sreenivasulu,PR Raised,https://github.com/microsoft/azurelinux/pull/10923,2024-10-21 0:00:00,2024-11-04 0:00:00,2024-11-04 0:00:00,"Y
+",2024-10-06 0:00:00,1.5.0,1.5.0,1.23.0,"Fedora 42 Source:
+
+https://koji.fedoraproject.org/koji/buildinfo?buildID=2524230
+
+https://kojipkgs.fedoraproject.org//packages/delve/1.23.0/2.fc41/src/delve-1.23.0-2.fc41.src.rpm
+",1.23.0,"github Source:
+
+https://github.com/go-delve/delve
+
+https://github.com/go-delve/delve/archive/v1.23.0.tar.gz#/delve-1.23.0.tar.gz
+",,
+011,device-mapper-persistent-data,Y,1.0.12,,Sreenivasulu,Ongoing, ,2024-10-28 0:00:00,,2024-11-25 0:00:00,"Y
+",2024-10-06 0:00:00,0.8.5,0.8.5,1.0.12,"Fedora 41 Source:
+
+https://koji.fedoraproject.org/koji/buildinfo?buildID=2490227
+
+https://kojipkgs.fedoraproject.org//packages/device-mapper-persistent-data/1.0.12/3.fc41/src/device-mapper-persistent-data-1.0.12-3.fc41.src.rpm",1.1.0,"github Source:
+
+https://github.com/jthornber/thin-provisioning-tools/
+
+https://github.com/jthornber/thin-provisioning-tools/archive/v1.1.0.tar.gz
+
+",,
+012,diffstat,Y,1.66,,Sreenivasulu,PR Approved,https://github.com/microsoft/azurelinux/pull/10920,2024-10-14 0:00:00,2024-10-14 0:00:00,2024-10-14 0:00:00,"Y
+",2024-10-06 0:00:00,1.63,1.63,1.66,"Fedora 42 Source:
+
+https://koji.fedoraproject.org/koji/buildinfo?buildID=2490275
+
+https://kojipkgs.fedoraproject.org//packages/diffstat/1.66/2.fc41/src/diffstat-1.66-2.fc41.src.rpm
+",1.66,"URL:
+
+https://invisible-island.net/diffstat/
+
+https://invisible-island.net/archives/diffstat/diffstat-1.66.tgz",Upgraded to new version 1.66,https://github.com/microsoft/azurelinux/pull/10920
+013,discount,Y,2.2.7,,Sreenivasulu,PR Raised,https://github.com/microsoft/azurelinux/pull/10844,2024-10-23 0:00:00,2024-10-25 0:00:00,2024-10-25 0:00:00,"Y
+",2024-10-06 0:00:00,2.2.4,2.2.4,2.2.7,"Fedora 42 Source:
+
+https://koji.fedoraproject.org/koji/buildinfo?buildID=2490292
+
+https://kojipkgs.fedoraproject.org//packages/discount/2.2.7/9.fc41/src/discount-2.2.7-9.fc41.src.rpm
+",2.2.7,"URL:
+
+https://www.pell.portland.or.us/~orc/Code/discount/
+
+https://www.pell.portland.or.us/~orc/Code/discount/discount-2.2.7d.tar.bz2",,https://github.com/microsoft/azurelinux/pull/10844
+014,dleyna-connector-dbus,N,NA,,Sreenivasulu,NA-Uptodate,NA,2024-11-25 0:00:00,2024-11-25 0:00:00,2024-11-25 0:00:00,"N
+",2024-10-06 0:00:00,0.3.0,0.3.0,---,"Fedora Overview:
+
+https://src.fedoraproject.org/rpms/dleyna-connector-dbus
+",0.3.0,"github Source:
+
+https://github.com/intel/dleyna-connector-dbus
+
+https://github.com/intel/dleyna-connector-dbus/archive/refs/tags/0.3.0.tar.gz
+","3.0-dev Daily Build status  is 'No'
+No Upgrade is required.
+dead.package (Fedora 41)",
+015,dleyna-core,N,NA,,Sreenivasulu,NA-Uptodate,NA,2024-11-25 0:00:00,2024-11-25 0:00:00,2024-11-25 0:00:00,"N
+",2024-10-06 0:00:00,0.6.0,0.6.0,---,"Fedora Overview:
+
+https://src.fedoraproject.org/rpms/dleyna-core
+",0.6.0,"github Source:
+
+https://github.com/intel/dleyna-core4
+
+https://github.com/intel/dleyna-core/archive/refs/tags/v0.6.0.tar.gz
+","3.0-dev Daily Build status  is 'No'
+No Upgrade is required.
+dead.package (Fedora 41)",
+016,dmraid,N,NA,,Sreenivasulu,NA-Uptodate,NA,2024-10-09 0:00:00,2024-10-09 0:00:00,2024-10-09 0:00:00,"Y
+",2024-10-06 0:00:00,1.0.0.rc16,1.0.0.rc16,1.0.0.rc16,"Fedora 42 Source:
+
+https://koji.fedoraproject.org/koji/buildinfo?buildID=2490328
+
+https://kojipkgs.fedoraproject.org//packages/dmraid/1.0.0.rc16/60.fc41/src/dmraid-1.0.0.rc16-60.fc41.src.rpm
+",1.0.0.rc16,https://people.redhat.com/heinzm/sw/dmraid/src/old/dmraid-1.0.0.rc16.tar.bz2,No Upgrade is required.,
+017,docbook-simple,N,NA,,Sreenivasulu,NA-Uptodate,NA,2024-10-09 0:00:00,2024-10-09 0:00:00,2024-10-09 0:00:00,"Y
+",2024-10-06 0:00:00,1.1,1.1,1.1,"Fedora 42 Source:
+
+https://koji.fedoraproject.org/koji/buildinfo?buildID=2490353
+
+https://kojipkgs.fedoraproject.org//packages/docbook-simple/1.1/33.fc41/src/docbook-simple-1.1-33.fc41.src.rpm
+",1.1,"URL:
+ http://www.oasis-open.org/docbook/xml/simple/
+
+https://www.oasis-open.org/docbook/xml/simple/1.1/docbook-simple-1.1.zip
+
+https://docbook.org/xml/simple/1.1/docbook-simple-1.1.zip
+
+",No Upgrade is required.,
+018,docbook-slides,N,NA,,Sreenivasulu,NA-Uptodate,NA,2024-10-09 0:00:00,2024-10-09 0:00:00,2024-10-09 0:00:00,"Y
+",2024-10-06 0:00:00,3.4.0,3.4.0,3.4.0,"Fedora 42 Source:
+
+https://koji.fedoraproject.org/koji/buildinfo?buildID=2490362
+
+https://kojipkgs.fedoraproject.org//packages/docbook-slides/3.4.0/34.fc41/src/docbook-slides-3.4.0-34.fc41.src.rpm
+",3.4.0,"URL:
+
+https://sourceforge.net/projects/docbook/
+
+http://downloads.sourceforge.net/docbook/docbook-slides-3.4.0.tar.gz
+",No Upgrade is required.,
+019,docbook-utils,N,NA,,Sreenivasulu,NA-Uptodate,NA,2024-10-09 0:00:00,2024-10-09 0:00:00,2024-10-09 0:00:00,"Y
+","10/02/2024
+10/06/2024",0.6.14,0.6.14,0.6.14,"Fedora 42 Source:
+
+https://koji.fedoraproject.org/koji/buildinfo?buildID=2490363
+
+https://kojipkgs.fedoraproject.org//packages/docbook-utils/0.6.14/62.fc41/src/docbook-utils-0.6.14-62.fc41.src.rpm
+",0.6.14,"URL:
+
+https://www.sourceware.org/docbook-tools/
+
+https://www.linuxfromscratch.org/blfs/view/6.3/pst/docbook-utils.html
+
+",No Upgrade is required.,
+020,docbook5-style-xsl,N,NA,,Sreenivasulu,NA-Uptodate,NA,2024-10-09 0:00:00,2024-10-09 0:00:00,2024-10-09 0:00:00,"Y
+",2024-10-06 0:00:00,1.79.2,1.79.2,1.79.2,"Fedora 42 Source:
+
+https://koji.fedoraproject.org/koji/buildinfo?buildID=2518640
+
+https://kojipkgs.fedoraproject.org//packages/docbook5-style-xsl/1.79.2/21.fc41/src/docbook5-style-xsl-1.79.2-21.fc41.src.rpm
+",1.79.2,"github Source:
+
+https://github.com/docbook/xslt10-stylesheets/
+
+https://github.com/docbook/xslt10-stylesheets/releases/download/release%2F1.79.2/docbook-xsl-1.79.2.tar.bz2
+",No Upgrade is required.,
+021,hyphen,N,NA,,Sreenivasulu,NA-Uptodate,NA,2024-10-15 0:00:00,2024-10-15 0:00:00,2024-10-15 0:00:00,"Y
+",2024-10-15 0:00:00,2.8.8,2.8.8,2.8.8,"Fedora 42 Source:
+
+https://koji.fedoraproject.org/koji/buildinfo?buildID=2495107
+
+https://kojipkgs.fedoraproject.org//packages/hyphen/2.8.8/25.fc41/src/hyphen-2.8.8-25.fc41.src.rpm
+",2.8.8,"URL:
+
+https://mirror.sjtu.edu.cn/ubuntu-ports/pool/main/h/hyphen/
+
+https://mirror.sjtu.edu.cn/ubuntu-ports/pool/main/h/hyphen/hyphen_2.8.8.orig.tar.gz
+
+",No Upgrade is required.,
+022,hyphen-as,N,NA,,Sreenivasulu,NA-Uptodate,NA,2024-10-15 0:00:00,2024-10-15 0:00:00,2024-10-15 0:00:00,"Y
+",2024-10-15 0:00:00,0.7.0,0.7.0,0.7.0,"Fedora 42 Source:
+
+https://koji.fedoraproject.org/koji/buildinfo?buildID=2495087
+
+https://kojipkgs.fedoraproject.org//packages/hyphen-as/0.7.0/26.fc41/src/hyphen-as-0.7.0-26.fc41.src.rpm
+",0.7.0,"URL:
+
+https://mirror.sjtu.edu.cn/ubuntu-ports/pool/main/h/hyphen-as
+
+https://mirror.sjtu.edu.cn/ubuntu-ports/pool/main/h/hyphen-as/hyphen-as_0.7.0.orig.tar.bz2
+",No Upgrade is required.,
+023,hyphen-bg,N,NA,,Sreenivasulu,NA-Uptodate,NA,2024-10-15 0:00:00,2024-10-15 0:00:00,2024-10-15 0:00:00,"Y
+",2024-10-15 0:00:00,4.3,4.3,4.3,"Fedora 42 Source:
+
+https://koji.fedoraproject.org/koji/buildinfo?buildID=2495096
+
+https://kojipkgs.fedoraproject.org//packages/hyphen-bg/4.3/247.fc41/src/hyphen-bg-4.3-247.fc41.src.rpm
+",4.3,"github Source:
+
+https://github.com/gooselinux/hyphen-bg
+
+http://downloads.sourceforge.net/bgoffice/OOo-hyph-bg-4.3.zip",No Upgrade is required.,
+024,hyphen-bn,N,NA,,Sreenivasulu,NA-Uptodate,NA,2024-10-15 0:00:00,2024-10-15 0:00:00,2024-10-15 0:00:00,"Y
+",2024-10-15 0:00:00,0.7.0,0.7.0,0.7.0,"Fedora 42 Source:
+
+https://koji.fedoraproject.org/koji/buildinfo?buildID=2495110
+
+https://kojipkgs.fedoraproject.org//packages/hyphen-bn/0.7.0/26.fc41/src/hyphen-bn-0.7.0-26.fc41.src.rpm
+",0.7.0,"URL:
+
+https://mirror.sjtu.edu.cn/ubuntu-ports/pool/main/h/hyphen-bn/
+
+https://mirror.sjtu.edu.cn/ubuntu-ports/pool/main/h/hyphen-bn/hyphen-bn_0.7.0.orig.tar.gz
+",No Upgrade is required.,
+025,hyphen-ca,Y,1.5,,Sreenivasulu,PR Raised,https://github.com/microsoft/azurelinux/pull/10875/,2024-10-28 0:00:00,2024-10-29 0:00:00,2024-10-29 0:00:00,"Y
+",2024-10-15 0:00:00,0.9.3,0.9.3,1.5,"Fedora 42 Source:
+
+https://koji.fedoraproject.org/koji/buildinfo?buildID=2495092
+
+https://kojipkgs.fedoraproject.org//packages/hyphen-ca/1.5/4.fc41/src/hyphen-ca-1.5-4.fc41.src.rpm
+",1.5,"github Source:
+
+https://github.com/jaumeortola/hyphen-ca
+
+https://github.com/jaumeortola/hyphen-ca/archive/refs/tags/v1.5.tar.gz",,
+026,hyphen-da,N,NA,,Sreenivasulu,NA-Uptodate,NA,2024-10-18 0:00:00,2024-10-18 0:00:00,2024-10-18 0:00:00,"Y
+",2024-10-15 0:00:00,0.20070903,0.20070903,0.20070903,"Fedora 42 Source:
+
+https://koji.fedoraproject.org/koji/buildinfo?buildID=2495104
+
+https://kojipkgs.fedoraproject.org//packages/hyphen-da/0.20070903/32.fc41/src/hyphen-da-0.20070903-32.fc41.src.rpm",---,"github Source:
+
+https://github.com/gooselinux/hyphen-da/
+
+https://github.com/gooselinux/hyphen-da/archive/refs/heads/master.zip",No Upgrade is required.,
+027,hyphen-de,N,NA,,Sreenivasulu,NA-Uptodate,NA,2024-10-18 0:00:00,2024-10-18 0:00:00,2024-10-18 0:00:00,"Y
+",2024-10-15 0:00:00,0.20060120,0.20060120,0.20060120,"Fedora 42 Source:
+
+https://koji.fedoraproject.org/koji/buildinfo?buildID=2495118
+
+https://kojipkgs.fedoraproject.org//packages/hyphen-de/0.20060120/34.fc41/src/hyphen-de-0.20060120-34.fc41.src.rpm
+",---,"github Source:
+
+https://github.com/gooselinux/hyphen-de/
+
+https://github.com/gooselinux/hyphen-de/archive/refs/heads/master.zip",No Upgrade is required.,
+028,hyphen-el,N,NA,,Sreenivasulu,NA-Uptodate,NA,2024-10-18 0:00:00,2024-10-18 0:00:00,2024-10-18 0:00:00,"Y
+",2024-10-15 0:00:00,0.20051018,0.20051018,0.20051018,"Fedora 42 Source:
+
+https://koji.fedoraproject.org/koji/buildinfo?buildID=2495112
+
+https://kojipkgs.fedoraproject.org//packages/hyphen-el/0.20051018/32.fc41/src/hyphen-el-0.20051018-32.fc41.src.rpm",---,"github Source:
+
+https://github.com/gooselinux/hyphen-el
+
+https://github.com/gooselinux/hyphen-el/archive/refs/heads/master.zip",No Upgrade is required.,
+029,hyphen-es,Y,2.8,,Sreenivasulu,PR Raised,https://github.com/microsoft/azurelinux/pull/10900,2024-10-30 0:00:00,2024-10-31 0:00:00,2024-10-31 0:00:00,"Y
+",2024-10-15 0:00:00,2.3,2.3,2.3,"Fedora 42 Source:
+
+https://koji.fedoraproject.org/koji/buildinfo?buildID=2495101
+
+https://kojipkgs.fedoraproject.org//packages/hyphen-es/2.3/18.fc41/src/hyphen-es-2.3-18.fc41.src.rpm
+",2.8,"github Source:
+
+https://github.com/sbosio/rla-es/
+
+https://github.com/sbosio/rla-es/releases/download/v2.8/es.oxt
+
+https://github.com/sbosio/rla-es/archive/refs/tags/v2.8.tar.gz",,
+030,hyphen-fa,N,NA,,Sreenivasulu,NA-Uptodate,NA,2024-10-18 0:00:00,2024-10-18 0:00:00,2024-10-18 0:00:00,"Y
+",2024-10-15 0:00:00,0.20130404,0.20130404,0.20130404,"Fedora 42 Source:
+
+https://koji.fedoraproject.org/koji/buildinfo?buildID=2495123
+
+https://kojipkgs.fedoraproject.org//packages/hyphen-fa/0.20130404/24.fc41/src/hyphen-fa-0.20130404-24.fc41.src.rpm",---,"URL:
+
+https://in.mirrors.cicku.me/ctan/language/hyphenation/
+
+https://in.mirrors.cicku.me/ctan/language/hyphenation/fahyph.zip",No Upgrade is required.,
+031,hyphen-fo,N,NA,,Sreenivasulu,NA-Uptodate,NA,2024-10-22 0:00:00,2024-10-22 0:00:00,2024-10-22 0:00:00,"Y
+",2024-10-15 0:00:00,0.20040420,0.20040420,0.20040420,"Fedora 42 Source:
+
+https://koji.fedoraproject.org/koji/buildinfo?buildID=2495115
+
+https://kojipkgs.fedoraproject.org//packages/hyphen-fo/0.20040420/28.fc41/src/hyphen-fo-0.20040420-28.fc41.src.rpm",0.20040420,"URL:
+
+http://fo.speling.org/
+
+http://fo.speling.org/filer/hyph_fo_FO-20040420a.zip
+",No Upgrade is required.,
+032,hyphen-fr,N,NA,,Sreenivasulu,NA-Uptodate,NA,2024-10-16 0:00:00,2024-10-16 0:00:00,2024-10-16 0:00:00,"Y
+",2024-10-15 0:00:00,3.0,3.0,3.0,"Fedora 42 Source:
+
+https://koji.fedoraproject.org/koji/buildinfo?buildID=2495094
+
+https://kojipkgs.fedoraproject.org//packages/hyphen-fr/3.0/17.fc41/src/hyphen-fr-3.0-17.fc41.src.rpm
+",3.0,"URL:
+
+https://topspahotel.com/fr/dicollecte/
+
+http://www.dicollecte.org/download/fr/hyph-fr-v3.0.zip
+",No Upgrade is required.,
+033,hyphen-ga,N,NA,,Sreenivasulu,NA-Uptodate,NA,2024-10-18 0:00:00,2024-10-18 0:00:00,2024-10-18 0:00:00,"Y
+",2024-10-15 0:00:00,0.20040220,0.20040220,"	0.20040220","Fedora 42 Source:
+
+https://koji.fedoraproject.org/koji/buildinfo?buildID=2495095
+
+https://kojipkgs.fedoraproject.org//packages/hyphen-ga/0.20040220/31.fc41/src/hyphen-ga-0.20040220-31.fc41.src.rpm
+",---,"github Source:
+
+https://github.com/gooselinux/hyphen-ga
+
+https://github.com/gooselinux/hyphen-ga/archive/refs/heads/master.zip",No Upgrade is required.,
+034,hyphen-gl,N,NA,,Sreenivasulu,NA-Uptodate,NA,2024-10-18 0:00:00,2024-10-18 0:00:00,2024-10-18 0:00:00,"Y
+",2024-10-15 0:00:00,0.99,0.99,"	0.99","Fedora 42 Source:
+
+https://koji.fedoraproject.org/koji/buildinfo?buildID=2495114
+
+https://kojipkgs.fedoraproject.org//packages/hyphen-gl/0.99/31.fc41/src/hyphen-gl-0.99-31.fc41.src.rpm
+",---,"github Source:
+
+https://github.com/gooselinux/hyphen-gl
+
+https://github.com/gooselinux/hyphen-gl/archive/refs/heads/master.zip",No Upgrade is required.,
+035,hyphen-grc,N,NA,,Sreenivasulu,NA-Uptodate,NA,2024-10-22 0:00:00,2024-10-22 0:00:00,2024-10-22 0:00:00,"Y
+",2024-10-15 0:00:00,0.20110913,0.20110913,"	0.20110913","Fedora 42 Source:
+
+https://koji.fedoraproject.org/koji/buildinfo?buildID=2495129
+
+https://kojipkgs.fedoraproject.org//packages/hyphen-grc/0.20110913/28.fc41/src/hyphen-grc-0.20110913-28.fc41.src.rpm
+","	0.20110913","URL:
+
+http://tug.org/tex-hyphen
+
+http://tug.org/svn/texhyphen/trunk/hyph-utf8/tex/generic/hyph-utf8/patterns/tex/hyph-grc.tex
+
+https://downloads.sourceforge.net/project/aoo-extensions/2313/1/grc.oxt",No Upgrade is required.,
+036,hyphen-gu,N,NA,,Sreenivasulu,NA-Uptodate,NA,2024-10-15 0:00:00,2024-10-15 0:00:00,2024-10-15 0:00:00,"Y
+",2024-10-15 0:00:00,0.7.0,0.7.0,0.7.0,"Fedora 42 Source:
+
+https://koji.fedoraproject.org/koji/buildinfo?buildID=2495084
+
+https://kojipkgs.fedoraproject.org//packages/hyphen-gu/0.7.0/26.fc41/src/hyphen-gu-0.7.0-26.fc41.src.rpm",0.7.0,"URL:
+
+http://download.savannah.gnu.org/releases/smc/hyphenation/patterns/
+
+https://mirror.sjtu.edu.cn/ubuntu-ports/pool/main/h/hyphen-gu/
+
+https://mirror.sjtu.edu.cn/ubuntu-ports/pool/main/h/hyphen-gu/hyphen-gu_0.7.0.orig.tar.gz
+",No Upgrade is required.,
+037,hyphen-hi,N,NA,,Sreenivasulu,NA-Uptodate,NA,2024-10-15 0:00:00,2024-10-15 0:00:00,2024-10-15 0:00:00,"Y
+",2024-10-15 0:00:00,0.7.0,0.7.0,0.7.0,"Fedora 42 Source:
+
+https://koji.fedoraproject.org/koji/buildinfo?buildID=2495113
+
+https://kojipkgs.fedoraproject.org//packages/hyphen-hi/0.7.0/26.fc41/src/hyphen-hi-0.7.0-26.fc41.src.rpm",0.7.0,"URL:
+
+https://mirror.sjtu.edu.cn/ubuntu-ports/pool/main/h/hyphen-hi/
+
+https://mirror.sjtu.edu.cn/ubuntu-ports/pool/main/h/hyphen-hi/hyphen-hi_0.7.0.orig.tar.gz
+",No Upgrade is required.,
+038,hyphen-hsb,N,NA,,Sreenivasulu,NA-Uptodate,NA,2024-10-18 0:00:00,2024-10-18 0:00:00,2024-10-18 0:00:00,"Y
+",2024-10-15 0:00:00,0.20110620,0.20110620,0.2011062,"Fedora 42 Source:
+
+https://koji.fedoraproject.org/koji/buildinfo?buildID=2495097
+
+https://kojipkgs.fedoraproject.org//packages/hyphen-hsb/0.20110620/27.fc41/src/hyphen-hsb-0.20110620-27.fc41.src.rpm
+",---,"URL:
+
+https://github.com/gooselinux/hyphen-hsb
+
+https://github.com/gooselinux/hyphen-hsb/archive/refs/heads/master.zip
+",No Upgrade is required.,
+039,hyphen-hu,N,NA,,Sreenivasulu,NA-Uptodate,NA,2024-10-18 0:00:00,2024-10-18 0:00:00,2024-10-18 0:00:00,"Y
+",2024-10-15 0:00:00,0.20090612,0.20090612,0.20090612,"Fedora 42 Source:
+
+https://koji.fedoraproject.org/koji/buildinfo?buildID=2495099
+
+https://kojipkgs.fedoraproject.org//packages/hyphen-hu/0.20090612/34.fc41/src/hyphen-hu-0.20090612-34.fc41.src.rpm
+",---,"github Source:
+
+https://github.com/gooselinux/hyphen-hu
+
+https://github.com/gooselinux/hyphen-hu/archive/refs/heads/master.zip",No Upgrade is required.,
+040,hyphen-ia,N,NA,,Sreenivasulu,NA-Uptodate,NA,2024-10-18 0:00:00,2024-10-18 0:00:00,2024-10-18 0:00:00,"Y
+",2024-10-15 0:00:00,0.20050628,0.20050628,0.20050628,"Fedora 42 Source:
+
+https://koji.fedoraproject.org/koji/buildinfo?buildID=2495098
+
+https://kojipkgs.fedoraproject.org//packages/hyphen-ia/0.20050628/29.fc41/src/hyphen-ia-0.20050628-29.fc41.src.rpm
+",---,"github Source:
+
+https://github.com/gooselinux/hyphen-ia
+
+https://github.com/gooselinux/hyphen-ia/archive/refs/heads/master.zip
+",No Upgrade is required.,
+041,hyphen-id,N,NA,,Sreenivasulu,NA-Uptodate,NA,2024-10-18 0:00:00,2024-10-18 0:00:00,2024-10-18 0:00:00,"Y
+",2024-10-15 0:00:00,0.20040812,0.20040812,0.20040812,"Fedora 42 Source:
+
+https://koji.fedoraproject.org/koji/buildinfo?buildID=2495116
+
+https://kojipkgs.fedoraproject.org//packages/hyphen-id/0.20040812/31.fc41/src/hyphen-id-0.20040812-31.fc41.src.rpm
+",---,"github Source:
+
+https://github.com/gooselinux/hyphen-id
+
+https://github.com/gooselinux/hyphen-id/archive/refs/heads/master.zip",No Upgrade is required.,
+042,hyphen-is,N,NA,,Sreenivasulu,NA-Uptodate,NA,2024-10-18 0:00:00,2024-10-18 0:00:00,2024-10-18 0:00:00,"Y
+",2024-10-15 0:00:00,0.20030920,0.20030920,0.20030920,"Fedora 42 Source:
+
+https://koji.fedoraproject.org/koji/buildinfo?buildID=2495238
+
+https://kojipkgs.fedoraproject.org//packages/hyphen-is/0.20030920/34.fc41/src/hyphen-is-0.20030920-34.fc41.src.rpm
+",---,"github Source:
+
+https://github.com/gooselinux/hyphen-is
+
+https://github.com/gooselinux/hyphen-is/archive/refs/heads/master.zip",No Upgrade is required.,
+043,hyphen-it,Y,5.1.1,,Sreenivasulu,PR Raised,https://github.com/microsoft/azurelinux/pull/10957,2024-11-05 0:00:00,2024-11-06 0:00:00,2024-11-06 0:00:00,"Y
+",2024-10-15 0:00:00,0.20071127,0.20071127,"	5.1.1","Fedora 42 Source:
+
+https://koji.fedoraproject.org/koji/buildinfo?buildID=2495131
+
+https://kojipkgs.fedoraproject.org//packages/hyphen-it/5.1.1/6.fc41/src/hyphen-it-5.1.1-6.fc41.src.rpm
+",---,"github Source:
+
+https://github.com/gooselinux/hyphen-it
+
+https://github.com/gooselinux/hyphen-it/archive/refs/heads/master.zip
+",No Upgrade is required.,
+044,hyphen-kn,N,NA,,Sreenivasulu,NA-Uptodate,NA,2024-10-16 0:00:00,2024-10-16 0:00:00,2024-10-16 0:00:00,"Y
+",2024-10-15 0:00:00,0.7.0,0.7.0,0.7.0,"Fedora 42 Source:
+
+https://koji.fedoraproject.org/koji/buildinfo?buildID=2495106
+
+https://kojipkgs.fedoraproject.org//packages/hyphen-kn/0.7.0/26.fc41/src/hyphen-kn-0.7.0-26.fc41.src.rpm",0.7,"URL:
+
+https://mirror.sjtu.edu.cn/ubuntu-ports/pool/main/h/hyphen-kn/
+
+https://mirror.sjtu.edu.cn/ubuntu-ports/pool/main/h/hyphen-kn/hyphen-kn_0.7.0.orig.tar.gz
+",No Upgrade is required.,
+045,hyphen-ku,N,NA,,Sreenivasulu,NA-Uptodate,NA,2024-10-22 0:00:00,2024-10-22 0:00:00,2024-10-22 0:00:00,"Y
+",2024-10-15 0:00:00,1.71.2,1.71.2,1.71.2,"Fedora 42 Source:
+
+https://koji.fedoraproject.org/koji/buildinfo?buildID=2495133
+
+https://kojipkgs.fedoraproject.org//packages/hyphen-ku/1.71.2/30.fc41/src/hyphen-ku-1.71.2-30.fc41.src.rpm
+",1.71.2,"URL:
+
+http://extensions.services.openoffice.org/project/kitandin
+
+https://downloads.sourceforge.net/project/aoo-extensions/2445/12/kitandin.oxt",No Upgrade is required.,
+046,hyphen-lt,N,NA,,Sreenivasulu,NA-Uptodate,NA,2024-10-18 0:00:00,2024-10-18 0:00:00,2024-10-18 0:00:00,"Y
+",2024-10-15 0:00:00,0.20100531,0.20100531,0.20100531,"Fedora 42 Source:
+
+https://koji.fedoraproject.org/koji/buildinfo?buildID=2495210
+
+https://kojipkgs.fedoraproject.org//packages/hyphen-lt/0.20100531/28.fc41/src/hyphen-lt-0.20100531-28.fc41.src.rpm
+",---,"github Source:
+
+https://github.com/gooselinux/hyphen-lt
+
+https://github.com/gooselinux/hyphen-lt/archive/refs/heads/master.zip",No Upgrade is required.,
+047,hyphen-mi,N,NA,,Sreenivasulu,NA-Uptodate,NA,2024-10-18 0:00:00,2024-10-18 0:00:00,2024-10-18 0:00:00,"Y
+",2024-10-15 0:00:00,0.20080630,0.20080630,0.20080630,"Fedora 42 Source:
+
+https://koji.fedoraproject.org/koji/buildinfo?buildID=2495223
+
+https://kojipkgs.fedoraproject.org//packages/hyphen-mi/0.20080630/31.fc41/src/hyphen-mi-0.20080630-31.fc41.src.rpm
+",---,"github Source:
+
+https://github.com/gooselinux/hyphen-mi
+
+https://github.com/gooselinux/hyphen-mi/archive/refs/heads/master.zip",No Upgrade is required.,
+048,hyphen-ml,N,NA,,Sreenivasulu,NA-Uptodate,NA,2024-10-16 0:00:00,2024-10-16 0:00:00,2024-10-16 0:00:00,"Y
+",2024-10-15 0:00:00,0.7.0,0.7.0,0.7.0,"Fedora 42 Source:
+
+https://koji.fedoraproject.org/koji/buildinfo?buildID=2495081
+
+https://kojipkgs.fedoraproject.org//packages/hyphen-ml/0.7.0/26.fc41/src/hyphen-ml-0.7.0-26.fc41.src.rpm
+",0.7.0,"URL:
+
+http://download.savannah.gnu.org/releases/smc/hyphenation/patterns/
+
+http://download.savannah.gnu.org/releases/smc/hyphenation/patterns/hyphen-ml-0.7.0.tar.bz2
+",No Upgrade is required.,
+049,hyphen-mn,N,NA,,Sreenivasulu,NA-Uptodate,NA,2024-10-18 0:00:00,2024-10-18 0:00:00,2024-10-18 0:00:00,"Y
+",2024-10-15 0:00:00,0.20100531,0.20100531,0.20100531,"Fedora 42 Source:
+
+https://koji.fedoraproject.org/koji/buildinfo?buildID=2495083
+
+https://kojipkgs.fedoraproject.org//packages/hyphen-mn/0.20100531/28.fc41/src/hyphen-mn-0.20100531-28.fc41.src.rpm
+",---,"github Source:
+
+https://github.com/gooselinux/hyphen-mn
+
+https://github.com/gooselinux/hyphen-mn/archive/refs/heads/master.zip",No Upgrade is required.,
+050,hyphen-mr,N,NA,,Sreenivasulu,NA-Uptodate,NA,2024-10-16 0:00:00,2024-10-16 0:00:00,2024-10-16 0:00:00,"Y
+",2024-10-15 0:00:00,0.7.0,0.7.0,0.7.0,"Fedora 42 Source:
+
+https://koji.fedoraproject.org/koji/buildinfo?buildID=2495093
+
+https://kojipkgs.fedoraproject.org//packages/hyphen-mr/0.7.0/26.fc41/src/hyphen-mr-0.7.0-26.fc41.src.rpm
+",0.7.0,"URL:
+
+https://mirror.sjtu.edu.cn/ubuntu-ports/pool/main/h/hyphen-mr/
+
+https://mirror.sjtu.edu.cn/ubuntu-ports/pool/main/h/hyphen-mr/hyphen-mr_0.7.0.orig.tar.bz2
+",No Upgrade is required.,
+051,hyphen-nl,N,NA,,Sreenivasulu,NA-Uptodate,NA,2024-10-18 0:00:00,2024-10-18 0:00:00,2024-10-18 0:00:00,"Y
+",2024-10-15 0:00:00,0.20050617,0.20050617,0.20050617,"Fedora 42 Source:
+
+https://koji.fedoraproject.org/koji/buildinfo?buildID=2495109
+
+https://kojipkgs.fedoraproject.org//packages/hyphen-nl/0.20050617/33.fc41/src/hyphen-nl-0.20050617-33.fc41.src.rpm
+",---,"github Source:
+
+https://github.com/gooselinux/hyphen-nl
+
+https://github.com/gooselinux/hyphen-nl/archive/refs/heads/master.zip
+",No Upgrade is required.,
+052,hyphen-or,N,NA,,Sreenivasulu,NA-Uptodate,NA,2024-10-16 0:00:00,2024-10-16 0:00:00,2024-10-16 0:00:00,"Y
+",2024-10-15 0:00:00,0.7.0,0.7.0,0.7.0,"Fedora 42 Source:
+
+https://koji.fedoraproject.org/koji/buildinfo?buildID=2495205
+
+https://kojipkgs.fedoraproject.org//packages/hyphen-or/0.7.0/27.fc41/src/hyphen-or-0.7.0-27.fc41.src.rpm",0.7.0,"URL:
+
+http://download.savannah.gnu.org/releases/smc/hyphenation/patterns/
+
+http://download.savannah.gnu.org/releases/smc/hyphenation/patterns/hyphen-or-0.7.0.tar.bz2
+",No Upgrade is required.,
+053,hyphen-pa,N,NA,,Sreenivasulu,NA-Uptodate,NA,2024-10-16 0:00:00,2024-10-16 0:00:00,2024-10-16 0:00:00,"Y
+",2024-10-15 0:00:00,0.7.0,0.7.0,0.7.0,"Fedora 42 Source:
+
+https://koji.fedoraproject.org/koji/buildinfo?buildID=2495208
+
+https://kojipkgs.fedoraproject.org//packages/hyphen-pa/0.7.0/26.fc41/src/hyphen-pa-0.7.0-26.fc41.src.rpm",0.7.0,"URL:
+
+https://mirror.sjtu.edu.cn/ubuntu-ports/pool/main/h/hyphen-pa/
+
+https://mirror.sjtu.edu.cn/ubuntu-ports/pool/main/h/hyphen-pa/hyphen-pa_0.7.0.orig.tar.gz
+",No Upgrade is required.,
+054,hyphen-pl,N,NA,,Sreenivasulu,NA-Uptodate,NA,2024-10-18 0:00:00,2024-10-18 0:00:00,2024-10-18 0:00:00,"Y
+",2024-10-15 0:00:00,0.20060726,0.20060726,"	0.20060726","Fedora 42 Source:
+
+https://koji.fedoraproject.org/koji/buildinfo?buildID=2495127
+
+https://kojipkgs.fedoraproject.org//packages/hyphen-pl/0.20060726/32.fc41/src/hyphen-pl-0.20060726-32.fc41.src.rpm
+",---,"github Source:
+
+https://github.com/gooselinux/hyphen-pl
+
+https://github.com/gooselinux/hyphen-pl/archive/refs/heads/master.zip
+",No Upgrade is required.,
+055,hyphen-pt,Y,0.20140727,,Sreenivasulu,PR Raised,https://github.com/microsoft/azurelinux/pull/10907,2024-10-31 0:00:00,2024-11-01 0:00:00,2024-11-01 0:00:00,"Y
+",2024-10-15 0:00:00,0.20021021,0.20021021,"	0.20140727","Fedora 42 Source:
+
+https://koji.fedoraproject.org/koji/buildinfo?buildID=2515963
+
+https://kojipkgs.fedoraproject.org//packages/hyphen-pt/0.20140727/10.fc41/src/hyphen-pt-0.20140727-10.fc41.src.rpm
+",---,"github Source:
+
+https://github.com/gooselinux/hyphen-pt
+
+https://github.com/gooselinux/hyphen-pt/archive/refs/heads/master.zip",,
+056,hyphen-ro,N,NA,,Sreenivasulu,NA-Uptodate,NA,2024-10-18 0:00:00,2024-10-18 0:00:00,2024-10-18 0:00:00,"Y
+",2024-10-15 0:00:00,3.3.6,3.3.6,3.3.6,"Fedora 42 Source:
+
+https://koji.fedoraproject.org/koji/buildinfo?buildID=2495086
+
+https://kojipkgs.fedoraproject.org//packages/hyphen-ro/3.3.6/28.fc41/src/hyphen-ro-3.3.6-28.fc41.src.rpm
+",---,"github Source:
+
+https://github.com/gooselinux/hyphen-ro
+
+https://github.com/gooselinux/hyphen-ro/archive/refs/heads/master.zip",No Upgrade is required.,
+057,hyphen-ru,Y,0.20200325,,Sreenivasulu,PR Raised,https://github.com/microsoft/azurelinux/pull/11219,2024-11-22 0:00:00,2024-11-25 0:00:00,2024-11-25 0:00:00,"Y
+",2024-10-15 0:00:00,0.20020727,0.20020727,0.20200325,"Fedora 42 Source:
+
+https://koji.fedoraproject.org/koji/buildinfo?buildID=2495126
+
+https://kojipkgs.fedoraproject.org//packages/hyphen-ru/0.20200325/12.fc41/src/hyphen-ru-0.20200325-12.fc41.src.rpm
+",0.20030310,"URL:
+
+https://mirror.sjtu.edu.cn/ubuntu-ports/pool/main/h/hyphen-ru/
+
+https://mirror.sjtu.edu.cn/ubuntu-ports/pool/main/h/hyphen-ru/hyphen-ru_20030310.orig.tar.gz
+
+https://github.com/gooselinux/hyphen-ru/archive/refs/heads/master.zip
+",,
+058,hyphen-sa,N,NA,,Sreenivasulu,NA-Uptodate,NA,2024-10-18 0:00:00,2024-10-18 0:00:00,2024-10-18 0:00:00,"Y
+",2024-10-15 0:00:00,0.20110915,0.20110915,0.20110915,"Fedora 42 Source:
+
+https://koji.fedoraproject.org/koji/buildinfo?buildID=2495125
+
+https://kojipkgs.fedoraproject.org//packages/hyphen-sa/0.20110915/28.fc41/src/hyphen-sa-0.20110915-28.fc41.src.rpm",---,"github Source:
+https://github.com/gooselinux/hyphen-sa
+
+https://github.com/hyphenation/tex-hyphen/
+
+https://github.com/gooselinux/hyphen-sa/archive/refs/heads/master.zip
+
+https://github.com/hyphenation/tex-hyphen/blob/cec10c6cad4804d391df31d0be8e429e2231feb5/hyph-utf8/tex/generic/hyph-utf8/patterns/tex/hyph-sa.tex
+",No Upgrade is required.,
+059,hyphen-sk,N,NA,,Sreenivasulu,NA-Uptodate,NA,2024-10-18 0:00:00,2024-10-18 0:00:00,2024-10-18 0:00:00,"Y
+",2024-10-15 0:00:00,0.20031227,0.20031227,"	0.20031227","Fedora 42 Source:
+
+https://koji.fedoraproject.org/koji/buildinfo?buildID=2495224
+
+https://kojipkgs.fedoraproject.org//packages/hyphen-sk/0.20031227/33.fc41/src/hyphen-sk-0.20031227-33.fc41.src.rpm
+",---,"github Source:
+
+https://github.com/gooselinux/hyphen-sk
+
+https://github.com/gooselinux/hyphen-sk/archive/refs/heads/master.zip
+",No Upgrade is required.,
+060,hyphen-sl,N,NA,,Sreenivasulu,NA-Uptodate,NA,2024-10-18 0:00:00,2024-10-18 0:00:00,2024-10-18 0:00:00,"Y
+",2024-10-15 0:00:00,0.20070127,0.20070127,0.20070127,"Fedora 42 Source:
+
+https://koji.fedoraproject.org/koji/buildinfo?buildID=2495103
+
+https://kojipkgs.fedoraproject.org//packages/hyphen-sl/0.20070127/31.fc41/src/hyphen-sl-0.20070127-31.fc41.src.rpm
+",---,"github Source:
+
+https://github.com/gooselinux/hyphen-sl
+
+https://github.com/gooselinux/hyphen-sl/archive/refs/heads/master.zip
+",No Upgrade is required.,
+061,hyphen-sv,N,NA,,Sreenivasulu,NA-Uptodate,NA,2024-10-18 0:00:00,2024-10-18 0:00:00,2024-10-18 0:00:00,"Y
+",2024-10-24 0:00:00,1.00.1,1.00.1,1.00.1,"Fedora 42 Source:
+
+https://koji.fedoraproject.org/koji/buildinfo?buildID=2495124
+
+https://kojipkgs.fedoraproject.org//packages/hyphen-sv/1.00.1/35.fc41/src/hyphen-sv-1.00.1-35.fc41.src.rpm
+",---,"github Source:
+
+https://github.com/gooselinux/hyphen-sv
+
+https://github.com/gooselinux/hyphen-sv/archive/refs/heads/master.zip
+",No Upgrade is required.,
+062,hyphen-ta,N,NA,,Sreenivasulu,NA-Uptodate,NA,2024-10-16 0:00:00,2024-10-16 0:00:00,2024-10-16 0:00:00,"Y
+",2024-10-15 0:00:00,0.7.0,0.7.0,0.7.0,"Fedora 42 Source:
+
+https://koji.fedoraproject.org/koji/buildinfo?buildID=2495089
+
+https://kojipkgs.fedoraproject.org//packages/hyphen-ta/0.7.0/26.fc41/src/hyphen-ta-0.7.0-26.fc41.src.rpm",0.7.0,"URL:
+
+https://mirror.sjtu.edu.cn/ubuntu-ports/pool/main/h/hyphen-ta/
+
+https://mirror.sjtu.edu.cn/ubuntu-ports/pool/main/h/hyphen-ta/hyphen-ta_0.7.0.orig.tar.bz2
+",No Upgrade is required.,
+063,hyphen-te,N,NA,,Sreenivasulu,NA-Uptodate,NA,2024-10-16 0:00:00,2024-10-16 0:00:00,2024-10-16 0:00:00,"Y
+",2024-10-15 0:00:00,0.7.0,0.7.0,0.7.0,"Fedora 42 Source:
+
+https://koji.fedoraproject.org/koji/buildinfo?buildID=2495134
+
+https://kojipkgs.fedoraproject.org//packages/hyphen-te/0.7.0/26.fc41/src/hyphen-te-0.7.0-26.fc41.src.rpm",0.7.0,"URL:
+
+https://mirror.sjtu.edu.cn/ubuntu-ports/pool/main/h/hyphen-te/
+
+https://mirror.sjtu.edu.cn/ubuntu-ports/pool/main/h/hyphen-te/hyphen-te_0.7.0.orig.tar.bz2
+",No Upgrade is required.,
+064,hyphen-tk,Y,0.20210322,,Sreenivasulu,PR Raised,https://github.com/microsoft/azurelinux/pull/10981,2024-11-07 0:00:00,2024-11-08 0:00:00,2024-11-08 0:00:00,"Y
+",2024-10-15 0:00:00,0.2011062,0.2011062,0.20210322,"Fedora 42 Source:
+
+https://koji.fedoraproject.org/koji/buildinfo?buildID=2495111
+
+https://kojipkgs.fedoraproject.org//packages/hyphen-tk/0.20210322/5.fc41/src/hyphen-tk-0.20210322-5.fc41.src.rpm
+",---,"github Source:
+
+https://github.com/hyphenation/tex-hyphen/
+
+https://github.com/hyphenation/tex-hyphen/blob/ee22323218150388abdeb36184ad5861e3669b65/hyph-utf8/tex/generic/hyph-utf8/patterns/tex/hyph-tk.tex
+",,
+065,hyphen-uk,N,NA,,Sreenivasulu,NA-Uptodate,NA,2024-10-18 0:00:00,2024-10-18 0:00:00,2024-10-18 0:00:00,"Y
+",2024-10-15 0:00:00,0.20030903,0.20030903,0.20030903,"Fedora 42 Source:
+
+https://koji.fedoraproject.org/koji/buildinfo?buildID=2495245
+
+https://kojipkgs.fedoraproject.org//packages/hyphen-uk/0.20030903/31.fc41/src/hyphen-uk-0.20030903-31.fc41.src.rpm
+",---,"github Source:
+
+https://github.com/gooselinux/hyphen-uk
+
+https://github.com/gooselinux/hyphen-uk/archive/refs/heads/master.zip
+",No Upgrade is required.,
+066,libteam,Y,1.32,,Sreenivasulu,PR Raised,https://github.com/microsoft/azurelinux/pull/10907,2024-11-11 0:00:00,2024-11-12 0:00:00,2024-11-12 0:00:00,Y,2024-10-23 0:00:00,1.3,1.3,1.32,https://kojipkgs.fedoraproject.org//packages/libteam/1.32/9.fc41/src/libteam-1.32-9.fc41.src.rpm,---,http://www.libteam.org,,
+067,libtevent,Y,0.16.1,,Sreenivasulu,PR Raised,https://github.com/microsoft/azurelinux/pull/11180,2024-11-18 0:00:00,2024-11-21 0:00:00,2024-11-21 0:00:00,Y,2024-10-23 0:00:00,0.10.2,0.14.1,0.16.1,https://kojipkgs.fedoraproject.org//packages/libtevent/0.16.1/4.fc41/src/libtevent-0.16.1-4.fc41.src.rpm,---,http://tevent.samba.org/,,
+068,libthai,Y,0.1.29,,Sreenivasulu,PR Raised,https://github.com/microsoft/azurelinux/pull/11064,2024-11-12 0:00:00,2024-11-13 0:00:00,2024-11-13 0:00:00,Y,2024-10-23 0:00:00,0.1.28,0.1.28,0.1.29,https://kojipkgs.fedoraproject.org//packages/libthai/0.1.29/9.fc41/src/libthai-0.1.29-9.fc41.src.rpm,---,http://linux.thai.net,,
+069,libtheora,N,NA,,Sreenivasulu,NA-Uptodate,NA,2024-11-19 0:00:00,2024-11-19 0:00:00,2024-11-19 0:00:00,Y,2024-10-23 0:00:00,1.1.1,1.1.1,1.1.1,https://kojipkgs.fedoraproject.org//packages/libtheora/1.1.1/38.fc41/src/libtheora-1.1.1-38.fc41.src.rpm,---,http://www.theora.org,,
+070,libtnc,N,NA,,Sreenivasulu,NA-Uptodate,NA,2024-11-19 0:00:00,2024-11-19 0:00:00,2024-11-19 0:00:00,Y,2024-10-23 0:00:00,1.25,1.25,1.25,https://kojipkgs.fedoraproject.org//packages/libtnc/1.25/44.fc41/src/libtnc-1.25-44.fc41.src.rpm,---,http://libtnc.sourceforge.net/,,
+071,libtomcrypt,N,NA,,Sreenivasulu,NA-Uptodate,NA,2024-11-19 0:00:00,2024-11-19 0:00:00,2024-11-19 0:00:00,Y,2024-10-23 0:00:00,1.18.2,1.18.2,1.18.2,https://kojipkgs.fedoraproject.org//packages/libtomcrypt/1.18.2/20.fc41/src/libtomcrypt-1.18.2-20.fc41.src.rpm,---,http://www.libtom.net/,,
+072,libtommath,Y,1.3.1~rc1,,Sreenivasulu,PR Raised,https://github.com/microsoft/azurelinux/pull/11088,2024-11-13 0:00:00,2024-11-14 0:00:00,2024-11-14 0:00:00,Y,2024-10-23 0:00:00,1.1.0,1.1.0,1.3.1~rc1,https://kojipkgs.fedoraproject.org//packages/libtommath/1.3.1~rc1/2.fc41/src/libtommath-1.3.1~rc1-2.fc41.src.rpm,---,http://www.libtom.net/,,https://github.com/microsoft/azurelinux/pull/11088
+073,libtranslit,N,NA,,Sreenivasulu,NA-Uptodate,NA,2024-11-20 0:00:00,2024-11-20 0:00:00,2024-11-20 0:00:00,Y,2024-10-23 0:00:00,0.0.3,0.0.3,0.0.3,https://kojipkgs.fedoraproject.org//packages/libtranslit/0.0.3/44.fc41/src/libtranslit-0.0.3-44.fc41.src.rpm,---,http://github.com/ueno/libtranslit,,
+074,libucil,N,NA,,Sreenivasulu,NA-Uptodate,NA,2024-11-21 0:00:00,2024-11-21 0:00:00,2024-11-21 0:00:00,N,2024-10-23 0:00:00,0.9.10,0.9.10,0.9.10,https://kojipkgs.fedoraproject.org//packages/libucil/0.9.10/29.fc40/src/libucil-0.9.10-29.fc40.src.rpm,---,"https://github.com/openela-main/libucil
+
+https://www.unicap-imaging.org/
+","No Upgrade is required.
+dead.package (Fedora 41)",
+075,libunicap,N,NA,,Sreenivasulu,NA-Uptodate,NA,2024-11-21 0:00:00,2024-11-21 0:00:00,2024-11-21 0:00:00,N,2024-10-23 0:00:00,0.9.12,0.9.12,0.9.12,https://kojipkgs.fedoraproject.org//packages/libunicap/0.9.12/32.fc38/src/libunicap-0.9.12-32.fc38.src.rpm,---,"https://github.com/openela-main/libunicap
+
+https://www.unicap-imaging.org/","No Upgrade is required.
+dead.package (Fedora 41)",
+076,libuninameslist,Y,20230916,,Sreenivasulu,PR Raised,https://github.com/microsoft/azurelinux/pull/11101,2024-11-14 0:00:00,2024-11-15 0:00:00,2024-11-15 0:00:00,Y,2024-10-23 0:00:00,20200313,20200313,20230916,https://kojipkgs.fedoraproject.org//packages/libuninameslist/20230916/4.fc41/src/libuninameslist-20230916-4.fc41.src.rpm,---,openela-main/libunicap,,https://github.com/microsoft/azurelinux/pull/11101
+077,libuser,N,NA,,Sreenivasulu,NA-Uptodate,See Remarks,2024-11-25 0:00:00,2024-12-10 0:00:00,2024-12-10 0:00:00,Not_Found,NA,0.63,Not_Found,0.64,https://kojipkgs.fedoraproject.org//packages/libuser/0.64/11.fc41/src/libuser-0.64-11.fc41.src.rpm,0.64,"https://pagure.io/libuser
+
+https://github.com/sailfishos-mirror/libuser
+
+https://github.com/sailfishos-mirror/libuser/tree/libuser-0.64","Moved this package to 'SPECS' directory.
+Here, %changelog message.
+==================================
+* Wed Aug 28 2024 Reuben Olinsky <reubeno@microsoft.com> - 0.64-1
+==================================",
+078,libutempter,Y,1.2.1,,Sreenivasulu,PR Raised,https://github.com/microsoft/azurelinux/pull/11116,2024-11-15 0:00:00,2024-11-18 0:00:00,2024-11-18 0:00:00,Y,2024-10-23 0:00:00,1.1.6,1.1.6,1.2.1,https://kojipkgs.fedoraproject.org//packages/libutempter/1.2.1/15.fc41/src/libutempter-1.2.1-15.fc41.src.rpm,---,ftp://ftp.altlinux.org/pub/people/ldv/utempter,,
+079,libva,Y,2.22.0,,Sreenivasulu,See Remarks,See Remarks,2024-11-25 0:00:00,2024-12-10 0:00:00,2024-12-10 0:00:00,Not_Found,NA,2.11.0,2.20.0,2.22.0,https://kojipkgs.fedoraproject.org//packages/libva/2.22.0/3.fc41/src/libva-2.22.0-3.fc41.src.rpm,2.22.0,"https://github.com/intel/libva
+
+https://intel.github.io/libva/
+
+https://github.com/intel/libva/releases","Moved this package to 'SPECS' directory.
+Here, %changelog message.
+==================================
+* Tue Sep 03 2024 Neha Agarwal <nehaagarwal@microsoft.com> - 2.20.0-2
+==================================
+",
+080,libvarlink,Y,23,,Sreenivasulu,PR Raised,https://github.com/microsoft/azurelinux/pull/11148,2024-11-18 0:00:00,2024-11-19 0:00:00,2024-11-19 0:00:00,Y,2024-10-23 0:00:00,18,18,23,https://kojipkgs.fedoraproject.org//packages/libvarlink/23/9.fc41/src/libvarlink-23-9.fc41.src.rpm,---,https://github.com/varlink/libvarlink,,
+081,libvdpau,Y,1.5,,Sreenivasulu,PR Raised,https://github.com/microsoft/azurelinux/pull/11161,2024-11-19 0:00:00,2024-11-20 0:00:00,2024-11-20 0:00:00,Y,2024-10-23 0:00:00,1.4,1.4,1.5,https://kojipkgs.fedoraproject.org//packages/libvdpau/1.5/7.fc41/src/libvdpau-1.5-7.fc41.src.rpm,---,https://freedesktop.org/wiki/Software/VDPAU/,,https://github.com/microsoft/azurelinux/pull/11161
+082,libverto,Y,0.3.2,,Sreenivasulu,PR Raised,https://github.com/microsoft/azurelinux/pull/11089,2024-11-14 0:00:00,2024-11-14 0:00:00,2024-11-14 0:00:00,Y,2024-10-23 0:00:00,0.3.0,0.3.0,0.3.2,https://kojipkgs.fedoraproject.org//packages/libverto/0.3.2/9.fc41/src/libverto-0.3.2-9.fc41.src.rpm,---,https://github.com/latchset/libverto,,https://github.com/microsoft/azurelinux/pull/11089
+083,libvisio,N,NA,,Sreenivasulu,NA-Uptodate,NA,2024-11-20 0:00:00,2024-11-20 0:00:00,2024-11-20 0:00:00,Y,2024-10-23 0:00:00,0.1.7,0.1.7,0.1.7,https://kojipkgs.fedoraproject.org//packages/libvisio/0.1.7/24.fc41/src/libvisio-0.1.7-24.fc41.src.rpm,---,http://wiki.documentfoundation.org/DLP/Libraries/libvisio,,
+084,libvisual,Y,0.4.1,,Sreenivasulu,Ongoing,,2024-11-20 0:00:00,,,Y,2024-10-23 0:00:00,0.4.0,0.4.0,0.4.1,https://kojipkgs.fedoraproject.org//packages/libvisual/0.4.1/5.fc41/src/libvisual-0.4.1-5.fc41.src.rpm,---,https://libvisual.sf.net,,
+085,libvorbis,N,NA,,Sreenivasulu,NA-Uptodate,NA,2024-11-21 0:00:00,2024-11-21 0:00:00,2024-11-21 0:00:00,Y,2024-10-23 0:00:00,1.3.7,1.3.7,1.3.7,https://kojipkgs.fedoraproject.org//packages/libvorbis/1.3.7/11.fc41/src/libvorbis-1.3.7-11.fc41.src.rpm,---,https://www.xiph.org/,,
+086,libvpx,Y,1.14.1,,Sreenivasulu,Ongoing,,,,,Y,2024-10-23 0:00:00,1.13.1,1.13.1,1.14.1,https://kojipkgs.fedoraproject.org//packages/libvpx/1.14.1/2.fc41/src/libvpx-1.14.1-2.fc41.src.rpm,---,http://www.webmproject.org/code/,,
+087,libwnck3,Y,43.1,,Sreenivasulu,PR Raised,https://github.com/microsoft/azurelinux/pull/11134,2024-11-15 0:00:00,2024-11-18 0:00:00,2024-11-18 0:00:00,Y,2024-10-23 0:00:00,3.36.0,3.36.0,43.1,https://kojipkgs.fedoraproject.org//packages/libwnck3/43.1/1.fc41/src/libwnck3-43.1-1.fc41.src.rpm,---,http://download.gnome.org/sources/libwnck/,,
+088,libwpd,N,NA,,Sreenivasulu,NA-Uptodate,NA,2024-11-21 0:00:00,2024-11-21 0:00:00,2024-11-21 0:00:00,Y,2024-10-23 0:00:00,0.10.3,0.10.3,0.10.3,https://kojipkgs.fedoraproject.org//packages/libwpd/0.10.3/20.fc41/src/libwpd-0.10.3-20.fc41.src.rpm,---,http://libwpd.sf.net/,,
+089,libwpe,Y,"	1.15.2",,Sreenivasulu,PR Raised,https://github.com/microsoft/azurelinux/pull/11197,2024-11-21 0:00:00,2024-11-22 0:00:00,2024-11-22 0:00:00,Y,2024-10-23 0:00:00,1.12.0,1.12.0,"	1.15.2",https://kojipkgs.fedoraproject.org//packages/libwpe/1.15.2/1.fc40/src/libwpe-1.15.2-1.fc40.src.rpm,1.16.0,"https://github.com/WebPlatformForEmbedded/libwpe
+
+https://github.com/WebPlatformForEmbedded/libwpe/releases/download/1.16.0/libwpe-1.16.0.tar.xz",,https://github.com/microsoft/azurelinux/pull/11197
+090,perl-Compress-LZF,N,NA,,Sreenivasulu,NA-Uptodate,NA,2024-12-06 0:00:00,2024-12-06 0:00:00,2024-12-06 0:00:00,N,2024-11-06 0:00:00,3.8,3.8,3.8,"Fedora 41 Source:
+
+https://koji.fedoraproject.org/koji/buildinfo?buildID=2500013
+
+https://kojipkgs.fedoraproject.org//packages/perl-Compress-LZF/3.8/32.fc41/src/perl-Compress-LZF-3.8-32.fc41.src.rpm",,,,
+091,perl-Const-Fast,N,NA,,Sreenivasulu,NA-Uptodate,NA,2024-12-06 0:00:00,2024-12-06 0:00:00,2024-12-06 0:00:00,"Y
+",2024-11-06 0:00:00,0.014,0.014,0.014,"Fedora 41 Source:
+
+https://koji.fedoraproject.org/koji/buildinfo?buildID=2500049
+
+https://kojipkgs.fedoraproject.org//packages/perl-Const-Fast/0.014/33.fc41/src/perl-Const-Fast-0.014-33.fc41.src.rpm",,,,
+092,perl-Coro-Multicore,N,NA,,Sreenivasulu,NA-Uptodate,NA,2024-12-06 0:00:00,2024-12-06 0:00:00,2024-12-06 0:00:00,N,2024-11-06 0:00:00,1.07,1.07,1.07,"Fedora 41 Source:
+
+https://koji.fedoraproject.org/koji/buildinfo?buildID=2500074
+
+https://kojipkgs.fedoraproject.org//packages/perl-Coro-Multicore/1.07/13.fc41/src/perl-Coro-Multicore-1.07-13.fc41.src.rpm",,,,
+093,perl-Cpanel-JSON-XS,Y,4.38,,Sreenivasulu,Not Started,,,,,N,2024-11-06 0:00:00,4.27,4.27,4.38,"Fedora 41 Source:
+
+https://koji.fedoraproject.org/koji/buildinfo?buildID=2500081
+
+https://kojipkgs.fedoraproject.org//packages/perl-Cpanel-JSON-XS/4.38/4.fc41/src/perl-Cpanel-JSON-XS-4.38-4.fc41.src.rpm",,,,
+094,perl-Crypt-CBC,Y,3.04,,Sreenivasulu,Not Started,,,,,Y,2024-11-06 0:00:00,2.33,2.33,3.04,"Fedora 41 Source:
+
+https://koji.fedoraproject.org/koji/buildinfo?buildID=2500088
+
+https://kojipkgs.fedoraproject.org//packages/perl-Crypt-CBC/3.04/16.fc41/src/perl-Crypt-CBC-3.04-16.fc41.src.rpm",,,,
+095,perl-Crypt-DES,N,NA,,Sreenivasulu,NA-Uptodate,NA,2024-12-06 0:00:00,2024-12-06 0:00:00,2024-12-06 0:00:00,Y,2024-11-06 0:00:00,2.07,2.07,2.07,"Fedora 41 Source:
+
+https://koji.fedoraproject.org/koji/buildinfo?buildID=2500082
+
+https://kojipkgs.fedoraproject.org//packages/perl-Crypt-DES/2.07/39.fc41/src/perl-Crypt-DES-2.07-39.fc41.src.rpm",,,,
+096,perl-Crypt-PasswdMD5,Y,1.4.2,,Sreenivasulu,PR Raised,https://github.com/microsoft/azurelinux/pull/11401,2024-12-06 0:00:00,2024-12-10 0:00:00,2024-12-10 0:00:00,Y,2024-11-06 0:00:00,1.4.0,1.4.0,1.4.2,"Fedora 41 Source:
+
+https://koji.fedoraproject.org/koji/buildinfo?buildID=2500129
+
+https://kojipkgs.fedoraproject.org//packages/perl-Crypt-PasswdMD5/1.4.2/8.fc41/src/perl-Crypt-PasswdMD5-1.4.2-8.fc41.src.rpm",,,,
+097,perl-DBD-MySQL,Y,,,Sreenivasulu,,,,,,,,,,,"Fedora 41 Source:
+
+https://koji.fedoraproject.org/koji/buildinfo?buildID=2583795
+
+https://kojipkgs.fedoraproject.org//packages/perl-DBD-MySQL/5.010/1.fc41/src/perl-DBD-MySQL-5.010-1.fc41.src.rpm",,,,
+098,perl-Data-Munge,Y,,,Sreenivasulu,,,,,,,,,,,"Fedora 41 Source:
+
+https://koji.fedoraproject.org/koji/buildinfo?buildID=2500237
+
+https://kojipkgs.fedoraproject.org//packages/perl-Data-Munge/0.111/2.fc41/src/perl-Data-Munge-0.111-2.fc41.src.rpm",,,,
+099,perl-Data-OptList,Y,0.114,,Sreenivasulu,See Remarks,See Remarks,2024-12-10 0:00:00,2024-12-10 0:00:00,2024-12-10 0:00:00,Not_Found,NA,0.110,0.110,0.114,"Fedora 41 Source:
+
+https://koji.fedoraproject.org/koji/buildinfo?buildID=2500248
+
+https://kojipkgs.fedoraproject.org//packages/perl-Data-OptList/0.114/5.fc41/src/perl-Data-OptList-0.114-5.fc41.src.rpm",0.114,"https://github.com/sysfce2/perl-data-optlist
+
+https://github.com/sysfce2/perl-data-optlist/releases/tag/0.114","Moved this package to 'SPECS' directory.
+Here, %changelog message
+==================================
+* Thu Aug 22 2024 Neha Agarwal <nehaagrwal@microsoft.com> - 0.110-14
+- Promote package to Core repository.
+==================================",
+100,perl-Path-Tiny,Y,0.146,,Sreenivasulu,,https://github.com/microsoft/azurelinux/pull/11457,2024-12-11 0:00:00,2024-12-13 0:00:00,2024-12-13 0:00:00,"Y
+",2024-11-06 0:00:00,0.112,0.112,0.146,"Fedora 41 Source:
+
+https://koji.fedoraproject.org/koji/buildinfo?buildID=2501794
+
+https://kojipkgs.fedoraproject.org//packages/perl-Path-Tiny/0.146/2.fc41/src/perl-Path-Tiny-0.146-2.fc41.src.rpm",,,,
+101,perl-Perl-Critic,Y,,,Sreenivasulu,,,,,,,,,,,"Fedora 41 Source:
+
+https://koji.fedoraproject.org/koji/buildinfo?buildID=2572204
+
+https://kojipkgs.fedoraproject.org//packages/perl-Perl-Critic/1.152/5.fc41/src/perl-Perl-Critic-1.152-5.fc41.src.rpm",,,,
+102,perl-Perl-Critic-More,N,NA,,Sreenivasulu,NA-Uptodate,NA,2024-12-12 0:00:00,2024-12-12 0:00:00,2024-12-12 0:00:00,"Y
+",2024-11-06 0:00:00,1.003,1.003,1.003,"Fedora 41 Source:
+
+https://koji.fedoraproject.org/koji/buildinfo?buildID=2501806
+
+https://kojipkgs.fedoraproject.org//packages/perl-Perl-Critic-More/1.003/31.fc41/src/perl-Perl-Critic-More-1.003-31.fc41.src.rpm",,,,
+103,perl-Perl-Destruct-Level,N,NA,,Sreenivasulu,NA-Uptodate,See Remarks,2024-12-10 0:00:00,2024-12-10 0:00:00,2024-12-10 0:00:00,Not_Found,NA,0.02,0.02,0.02,"Fedora 41 Source:
+
+https://koji.fedoraproject.org/koji/buildinfo?buildID=2501810
+
+https://kojipkgs.fedoraproject.org//packages/perl-Perl-Destruct-Level/0.02/41.fc41/src/perl-Perl-Destruct-Level-0.02-41.fc41.src.rpm",0.02,"https://github.com/openela-main/perl-Perl-Destruct-Level
+
+https://github.com/openela-main/perl-Perl-Destruct-Level/releases/tag/imports%2Fel9%2Fperl-Perl-Destruct-Level-0.02-31.el9","Moved this package to 'SPECS' directory.
+Here, %changelog message
+===============================
+* Wed Sep 04 2024 Neha Agarwal <nehaagarwal@microsoft.com> - 0.02-28
+- Promote package to Core repository.
+================================",
+104,perl-Perl-MinimumVersion,Y,,,Sreenivasulu,,,,,,,,,,,"Fedora 41 Source:
+
+https://koji.fedoraproject.org/koji/buildinfo?buildID=2501824
+
+https://kojipkgs.fedoraproject.org//packages/perl-Perl-MinimumVersion/1.40/13.fc41/src/perl-Perl-MinimumVersion-1.40-13.fc41.src.rpm",,,,
+105,perl-Perl4-CoreLibs,Y,0.005,,Sreenivasulu,Ongoing,,2024-12-11 0:00:00,,,"Y
+",2024-11-06 0:00:00,0.004,0.004,0.005,"Fedora 41 Source:
+
+https://koji.fedoraproject.org/koji/buildinfo?buildID=2501812
+
+https://kojipkgs.fedoraproject.org//packages/perl-Perl4-CoreLibs/0.005/5.fc41/src/perl-Perl4-CoreLibs-0.005-5.fc41.src.rpm",,,,
+106,perl-Readonly,N,NA,,Sreenivasulu,NA-Uptodate,NA,2024-12-12 0:00:00,2024-12-12 0:00:00,2024-12-12 0:00:00,"Y
+",2024-11-06 0:00:00,2.05,2.05,2.05,"Fedora 41 Source:
+
+https://koji.fedoraproject.org/koji/buildinfo?buildID=2501940
+
+https://kojipkgs.fedoraproject.org//packages/perl-Readonly/2.05/27.fc41/src/perl-Readonly-2.05-27.fc41.src.rpm
+",,,,
+107,perl-Ref-Util,N,NA,,Sreenivasulu,NA-Uptodate,NA,2024-12-12 0:00:00,2024-12-12 0:00:00,2024-12-12 0:00:00,Y,2024-11-06 0:00:00,0.204,0.204,0.204,"Fedora 41 Source:
+
+https://koji.fedoraproject.org/koji/buildinfo?buildID=2501945
+
+https://kojipkgs.fedoraproject.org//packages/perl-Ref-Util/0.204/21.fc41/src/perl-Ref-Util-0.204-21.fc41.src.rpm
+",,,,
+108,perl-Ref-Util-XS,N,NA,,Sreenivasulu,NA-Uptodate,NA,2024-12-12 0:00:00,2024-12-13 0:00:00,2024-12-12 0:00:00,Y,2024-11-06 0:00:00,0.117,0.117,0.117,"Fedora 41 Source:
+
+https://koji.fedoraproject.org/koji/buildinfo?buildID=2501937
+
+https://kojipkgs.fedoraproject.org//packages/perl-Ref-Util-XS/0.117/24.fc41/src/perl-Ref-Util-XS-0.117-24.fc41.src.rpm
+",,,,
+109,perl-SUPER,N,NA,,Sreenivasulu,NA-Uptodate,See Remarks,2024-12-10 0:00:00,2024-12-10 0:00:00,2024-12-10 0:00:00,Not_Found,NA,1.20190531,1.20190531,1.20190531,"Fedora 41 Source:
+
+https://koji.fedoraproject.org/koji/buildinfo?buildID=2501994
+
+https://kojipkgs.fedoraproject.org//packages/perl-SUPER/1.20190531/18.fc41/src/perl-SUPER-1.20190531-18.fc41.src.rpm
+",1.20190531-r3,"https://metacpan.org/dist/SUPER
+
+https://github.com/OpenMandrivaAssociation/perl-SUPER/blob/master/perl-SUPER.spec
+
+https://github.com/OpenMandrivaAssociation/perl-SUPER
+","Moved this package to 'SPECS' directory.
+Here, %changelog message
+===============================
+* Tue Aug 27 2024 Neha Agarwal <nehaagarwal@microsoft.com> - 1.20190531-6
+- Promote package to Core repository.
+================================",
+110,perl-MRO-Compat,Y,0.15,P0,Sreenivasulu,PR Raised,https://github.com/microsoft/azurelinux/pull/11476,2024-12-16 0:00:00,2024-12-16 0:00:00,2024-12-16 0:00:00,Y,2024-11-06 0:00:00,0.13,0.13,0.15,"Fedora 41 Source:
+
+https://koji.fedoraproject.org/koji/buildinfo?buildID=2501239
+
+https://kojipkgs.fedoraproject.org//packages/perl-MRO-Compat/0.15/10.fc41/src/perl-MRO-Compat-0.15-10.fc41.src.rpm
+",,,,https://github.com/microsoft/azurelinux/pull/11476
+111,perl-Mail-IMAPTalk,Y,4.06,P0,Sreenivasulu,PR Raised,https://github.com/microsoft/azurelinux/pull/11552,2024-12-19 0:00:00,2024-12-19 0:00:00,2024-12-19 0:00:00,Y,2024-11-06 0:00:00,4.04,4.04,4.06,"Fedora 41 Source:
+
+https://koji.fedoraproject.org/koji/buildinfo?buildID=2501255
+
+https://kojipkgs.fedoraproject.org//packages/perl-Mail-IMAPTalk/4.06/4.fc41/src/perl-Mail-IMAPTalk-4.06-4.fc41.src.rpm
+",,,,
+112,perl-Math-Int64,Y,0.57,P0,Sreenivasulu,PR Raised,https://github.com/microsoft/azurelinux/pull/11477,2024-12-16 0:00:00,2024-12-16 0:00:00,2024-12-16 0:00:00,Y,2024-11-06 0:00:00,0.54,0.54,0.57,"Fedora 41 Source:
+
+https://koji.fedoraproject.org/koji/buildinfo?buildID=2501269
+
+https://kojipkgs.fedoraproject.org//packages/perl-Math-Int64/0.57/3.fc41/src/perl-Math-Int64-0.57-3.fc41.src.rpm
+",,,,https://github.com/microsoft/azurelinux/pull/11477
+113,perl-Mojolicious,Y,9.37,P0,Sreenivasulu,PR Raised ,https://github.com/microsoft/azurelinux/pull/11527,2024-12-18 0:00:00,2024-12-18 0:00:00,2024-12-18 0:00:00,Y,2024-11-06 0:00:00,8.57,8.57,9.37,"Fedora 41 Source:
+
+https://koji.fedoraproject.org/koji/buildinfo?buildID=2501416
+
+https://kojipkgs.fedoraproject.org//packages/perl-Mojolicious/9.37/2.fc41/src/perl-Mojolicious-9.37-2.fc41.src.rpm
+",,,,
+114,perl-Moo,Y,2.005005,P0,Sreenivasulu,PR Raised,https://github.com/microsoft/azurelinux/pull/11690,2024-12-23 0:00:00,2024-12-23 0:00:00,2024-12-23 0:00:00,Y,2024-11-06 0:00:00,2.003006,2.003006,2.005005,"Fedora 41 Source:
+
+https://koji.fedoraproject.org/koji/buildinfo?buildID=2501449
+
+https://kojipkgs.fedoraproject.org//packages/perl-Moo/2.005005/7.fc41/src/perl-Moo-2.005005-7.fc41.src.rpm
+",,,,
+115,perl-Mozilla-CA,Y,20240730,P0,Sreenivasulu,PR Raised,https://github.com/microsoft/azurelinux/pull/11481,2024-12-16 0:00:00,2024-12-16 0:00:00,2024-12-16 0:00:00,Y,2024-11-06 0:00:00,20200520,20200520,20240730,"Fedora 41 Source:
+
+https://koji.fedoraproject.org/koji/buildinfo?buildID=2520318
+
+https://kojipkgs.fedoraproject.org//packages/perl-Mozilla-CA/20240730/1.fc41/src/perl-Mozilla-CA-20240730-1.fc41.src.rpm
+",,,,https://github.com/microsoft/azurelinux/pull/11481
+116,perl-Net-Daemon,Y,0.49,P0,Sreenivasulu,PR Raised,https://github.com/microsoft/azurelinux/pull/11478,2024-12-16 0:00:00,2024-12-16 0:00:00,2024-12-16 0:00:00,Y,2024-11-06 0:00:00,0.48,0.48,0.49,"Fedora 41 Source:
+
+https://koji.fedoraproject.org/koji/buildinfo?buildID=2501560
+
+https://kojipkgs.fedoraproject.org//packages/perl-Net-Daemon/0.49/13.fc41/src/perl-Net-Daemon-0.49-13.fc41.src.rpm
+",,,,https://github.com/microsoft/azurelinux/pull/11478
+117,perl-Net-Telnet,Y,3.05,P0,Sreenivasulu,PR Raised,https://github.com/microsoft/azurelinux/pull/11480,2024-12-16 0:00:00,2024-12-16 0:00:00,2024-12-16 0:00:00,Y,2024-11-06 0:00:00,3.04,3.04,3.05,"Fedora 41 Source:
+
+https://koji.fedoraproject.org/koji/buildinfo?buildID=2501635
+
+https://kojipkgs.fedoraproject.org//packages/perl-Net-Telnet/3.05/11.fc41/src/perl-Net-Telnet-3.05-11.fc41.src.rpm
+",,,,https://github.com/microsoft/azurelinux/pull/11480
+118,perl-Object-HashBase,Y,0.013,P0,Sreenivasulu,PR Raised,https://github.com/microsoft/azurelinux/pull/11524,2024-12-18 0:00:00,2024-12-18 0:00:00,2024-12-18 0:00:00,Y,2024-11-06 0:00:00,0.009,0.009,0.013,"Fedora 41 Source:
+
+https://koji.fedoraproject.org/koji/buildinfo?buildID=2501673
+
+https://kojipkgs.fedoraproject.org//packages/perl-Object-HashBase/0.013/2.fc41/src/perl-Object-HashBase-0.013-2.fc41.src.rpm
+",,,,https://github.com/microsoft/azurelinux/pull/11524
+119,perl-PAR-Dist,Y,0.53,P0,Sreenivasulu,PR Raised,https://github.com/microsoft/azurelinux/pull/11585,2024-12-19 0:00:00,2024-12-19 0:00:00,2024-12-19 0:00:00,Y,2024-11-06 0:00:00,0.51,0.51,0.53,"Fedora 41 Source:
+
+https://koji.fedoraproject.org/koji/buildinfo?buildID=2501652
+
+https://kojipkgs.fedoraproject.org//packages/perl-PAR-Dist/0.53/2.fc41/src/perl-PAR-Dist-0.53-2.fc41.src.rpm
+",,,,https://github.com/microsoft/azurelinux/pull/11585
+120,perl-Parallel-Iterator,Y,1.002,P0,Sreenivasulu,PR Raised ,https://github.com/microsoft/azurelinux/pull/11483,2024-12-16 0:00:00,2024-12-16 0:00:00,2024-12-16 0:00:00,Y,2024-11-06 0:00:00,1.00,1.00,1.002,"Fedora 41 Source:
+
+https://koji.fedoraproject.org/koji/buildinfo?buildID=2501770
+
+https://kojipkgs.fedoraproject.org//packages/perl-Parallel-Iterator/1.002/6.fc41/src/perl-Parallel-Iterator-1.002-6.fc41.src.rpm
+",,,,https://github.com/microsoft/azurelinux/pull/11483
+121,perl-Razor-Agent,Y,2.86,P0,Sreenivasulu,PR Raised,https://github.com/microsoft/azurelinux/pull/11603,2024-12-20 0:00:00,2024-12-20 0:00:00,2024-12-20 0:00:00,N,2024-11-06 0:00:00,2.85,2.85,2.86,"Fedora 41 Source:
+
+https://koji.fedoraproject.org/koji/buildinfo?buildID=2501947
+
+https://kojipkgs.fedoraproject.org//packages/perl-Razor-Agent/2.86/12.fc41/src/perl-Razor-Agent-2.86-12.fc41.src.rpm
+",,,,https://github.com/microsoft/azurelinux/pull/11603
+122,perl-Regexp-Pattern-Perl,Y,0.007,P0,Sreenivasulu,PR Raised ,https://github.com/microsoft/azurelinux/pull/11482,2024-12-16 0:00:00,2024-12-16 0:00:00,2024-12-16 0:00:00,Y,2024-11-06 0:00:00,0.006,0.006,0.007,"Fedora 41 Source:
+
+https://koji.fedoraproject.org/koji/buildinfo?buildID=2501960
+
+https://kojipkgs.fedoraproject.org//packages/perl-Regexp-Pattern-Perl/0.007/6.fc41/src/perl-Regexp-Pattern-Perl-0.007-6.fc41.src.rpm
+",,,,https://github.com/microsoft/azurelinux/pull/11482
+123,perl-Return-MultiLevel,Y,0.08,P0,Sreenivasulu,PR Raised,https://github.com/microsoft/azurelinux/pull/11496,2024-12-17 0:00:00,2024-12-17 0:00:00,2024-12-17 0:00:00,Y,2024-11-06 0:00:00,0.05,0.05,0.08,"Fedora 41 Source:
+
+https://koji.fedoraproject.org/koji/buildinfo?buildID=2501963
+
+https://kojipkgs.fedoraproject.org//packages/perl-Return-MultiLevel/0.08/9.fc41/src/perl-Return-MultiLevel-0.08-9.fc41.src.rpm
+",,,,
+124,perl-Role-Tiny,Y,2.002004,P0,Sreenivasulu,PR Raised,https://github.com/microsoft/azurelinux/pull/11499,2024-12-17 0:00:00,2024-12-17 0:00:00,2024-12-17 0:00:00,Y,2024-11-06 0:00:00,2.001004,2.001004,2.002004,"Fedora 41 Source:
+
+https://koji.fedoraproject.org/koji/buildinfo?buildID=2501977
+
+https://kojipkgs.fedoraproject.org//packages/perl-Role-Tiny/2.002004/12.fc41/src/perl-Role-Tiny-2.002004-12.fc41.src.rpm
+",,,,
+125,perl-SNMP_Session,Y,1.16,P0,Sreenivasulu,PR Raised,https://github.com/microsoft/azurelinux/pull/11616,2024-12-20 0:00:00,2024-12-20 0:00:00,2024-12-20 0:00:00,Y,2024-11-06 0:00:00,1.13,1.13,1.16,"Fedora 41 Source:
+
+https://koji.fedoraproject.org/koji/buildinfo?buildID=2501976
+
+https://kojipkgs.fedoraproject.org//packages/perl-SNMP_Session/1.16/5.fc41/src/perl-SNMP_Session-1.16-5.fc41.src.rpm
+",,,,https://github.com/microsoft/azurelinux/pull/11616
+126,perl-Scope-Upper,Y,0.34,P0,Sreenivasulu,PR Raised,https://github.com/microsoft/azurelinux/pull/11502,2024-12-17 0:00:00,2024-12-17 0:00:00,2024-12-17 0:00:00,Y,2024-11-06 0:00:00,0.32,0.32,0.34,"Fedora 41 Source:
+
+https://koji.fedoraproject.org/koji/buildinfo?buildID=2502020
+
+https://kojipkgs.fedoraproject.org//packages/perl-Scope-Upper/0.34/7.fc41/src/perl-Scope-Upper-0.34-7.fc41.src.rpm
+",,,,https://github.com/microsoft/azurelinux/pull/11502
+127,perl-String-CRC32,Y,2.100,P0,Sreenivasulu,PR Raised,https://github.com/microsoft/azurelinux/pull/11503,2024-12-17 0:00:00,2024-12-17 0:00:00,2024-12-17 0:00:00,Y,2024-11-06 0:00:00,1.8,1.8,2.100,"Fedora 41 Source:
+
+https://koji.fedoraproject.org/koji/buildinfo?buildID=2502084
+
+https://kojipkgs.fedoraproject.org//packages/perl-String-CRC32/2.100/13.fc41/src/perl-String-CRC32-2.100-13.fc41.src.rpm
+",,,,
+128,perl-Test-EOL,Y,2.02,P0,Sreenivasulu,PR Raised,https://github.com/microsoft/azurelinux/pull/11525,2024-12-18 0:00:00,2024-12-18 0:00:00,2024-12-18 0:00:00,Y,2024-11-06 0:00:00,2.00,2.00,2.02,"Fedora 41 Source:
+
+https://koji.fedoraproject.org/koji/buildinfo?buildID=2502261
+
+https://kojipkgs.fedoraproject.org//packages/perl-Test-EOL/2.02/12.fc41/src/perl-Test-EOL-2.02-12.fc41.src.rpm
+",,,,https://github.com/microsoft/azurelinux/pull/11525
+129,perl-Test-File,Y,1.99.3,P0,Sreenivasulu,PR Raised,https://github.com/microsoft/azurelinux/pull/11530,2024-12-19 0:00:00,2024-12-18 0:00:00,2024-12-18 0:00:00,Y,2024-11-06 0:00:00,1.44.3,1.44.3,1.99.3,"Fedora 41 Source:
+
+https://koji.fedoraproject.org/koji/buildinfo?buildID=2502271
+
+https://kojipkgs.fedoraproject.org//packages/perl-Test-File/1.99.3/7.fc41/src/perl-Test-File-1.99.3-7.fc41.src.rpm
+",,,,https://github.com/microsoft/azurelinux/pull/11530
+130,perl-Test-Harness,Y,3.50,P0,Sreenivasulu,PR Raised,https://github.com/microsoft/azurelinux/pull/11558,2024-12-19 0:00:00,2024-12-19 0:00:00,2024-12-19 0:00:00,Y,2024-11-06 0:00:00,3.42,3.42,3.50,"Fedora 41 Source:
+
+https://koji.fedoraproject.org/koji/buildinfo?buildID=2530327
+
+",,,,https://github.com/microsoft/azurelinux/pull/11558
+131,perl-Test-Inter,Y,1.11,P0,Sreenivasulu,PR Raised,https://github.com/microsoft/azurelinux/pull/11580,2024-12-19 0:00:00,2024-12-19 0:00:00,2024-12-19 0:00:00,Y,2024-11-06 0:00:00,1.09,1.09,1.11,"Fedora 41 Source:
+
+https://koji.fedoraproject.org/koji/buildinfo?buildID=2502294
+
+https://kojipkgs.fedoraproject.org//packages/perl-Test-Inter/1.11/2.fc41/src/perl-Test-Inter-1.11-2.fc41.src.rpm
+",,,,https://github.com/microsoft/azurelinux/pull/11580
+132,perl-Test-Manifest,Y,2.024,P0,Sreenivasulu,PR Raised,https://github.com/microsoft/azurelinux/pull/11627,2024-12-20 0:00:00,2024-12-20 0:00:00,2024-12-20 0:00:00,Y,2024-11-06 0:00:00,2.021,2.021,2.024,"Fedora 41 Source:
+
+https://koji.fedoraproject.org/koji/buildinfo?buildID=2502314
+
+https://kojipkgs.fedoraproject.org//packages/perl-Test-Manifest/2.024/4.fc41/src/perl-Test-Manifest-2.024-4.fc41.src.rpm
+",,,,https://github.com/microsoft/azurelinux/pull/11627
+133,perl-Test-Synopsis,Y,0.17,P0,Sreenivasulu,PR Raised,https://github.com/microsoft/azurelinux/pull/11634,2024-12-20 0:00:00,2024-12-20 0:00:00,2024-12-20 0:00:00,Y,2024-11-06 0:00:00,0.16,0.16,0.17,"Fedora 41 Source:
+
+https://koji.fedoraproject.org/koji/buildinfo?buildID=2502365
+
+https://kojipkgs.fedoraproject.org//packages/perl-Test-Synopsis/0.17/11.fc41/src/perl-Test-Synopsis-0.17-11.fc41.src.rpm
+",,,,https://github.com/microsoft/azurelinux/pull/11690
+134,python-isort,Y,5.13.2,New P0,Sreenivasulu,,,,,,Y,2025-01-13 0:00:00,4.3.21,4.3.21,"	5.13.2","Fedora 41 Source:
+
+https://koji.fedoraproject.org/koji/buildinfo?buildID=2504873
+
+https://kojipkgs.fedoraproject.org//packages/python-isort/5.13.2/5.fc41/src/python-isort-5.13.2-5.fc41.src.rpm
+",,,,
+135,python-lazy-object-proxy,Y,1.10.0,New P0,Sreenivasulu,,,,,,Y,2025-01-13 0:00:00,1.4.3,1.4.3,1.10.0,"Fedora 41 Source:
+
+https://koji.fedoraproject.org/koji/buildinfo?buildID=2505092
+
+https://kojipkgs.fedoraproject.org//packages/python-lazy-object-proxy/1.10.0/5.fc41/src/python-lazy-object-proxy-1.10.0-5.fc41.src.rpm
+",,,,
+136,python-recommonmark,Y,0.7.1,New P0,Sreenivasulu,,,,,,Y,2025-01-13 0:00:00,0.6.0,0.6.0,0.7.1,"Fedora 41 Source:
+
+https://koji.fedoraproject.org/koji/buildinfo?buildID=2505945
+
+https://kojipkgs.fedoraproject.org//packages/python-recommonmark/0.7.1/10.git.fc41/src/python-recommonmark-0.7.1-10.git.fc41.src.rpm
+",,,,
+137,python-requests-toolbelt,Y,1.0.0,New P0,Sreenivasulu,,,,,,Y,2025-01-13 0:00:00,0.9.1,0.9.1,1.0.0,"Fedora 41 Source:
+
+https://koji.fedoraproject.org/koji/buildinfo?buildID=2505943
+
+https://kojipkgs.fedoraproject.org//packages/python-requests-toolbelt/1.0.0/7.fc41/src/python-requests-toolbelt-1.0.0-7.fc41.src.rpm
+",,,,
+138,pyusb,Y,1.2.1,New P0,Sreenivasulu,,,,,,Y,2025-01-13 0:00:00,1.0.2,1.0.2,1.2.1,"Fedora 41 Source:
+
+https://koji.fedoraproject.org/koji/buildinfo?buildID=2506766
+
+https://kojipkgs.fedoraproject.org//packages/pyusb/1.2.1/11.fc41/src/pyusb-1.2.1-11.fc41.src.rpm
+",,,,
+139,pyaxtr,Y,,New P0,Sreenivasulu,,,,,,,2025-01-13 0:00:00,,,,"Fedora 41 Source:
+
+https://koji.fedoraproject.org/koji/buildinfo?buildID=2504460
+
+https://kojipkgs.fedoraproject.org//packages/python-extras/1.0.0/34.fc41/src/python-extras-1.0.0-34.fc41.src.rpm
+",,,,
+140,,,,,,,,,,,,,,,,,,,,
+141,,,,,,,,,,,,,,,,,,,,
+142,,,,,,,,,,,,,,,,,,,,
+143,,,,,,,,,,,,,,,,,,,,
+145,,,,,,,,,,,,,,,,,,,,
+146,,,,,,,,,,,,,,,,,,,,
+147,,,,,,,,,,,,,,,,,,,,
+148,,,,,,,,,,,,,,,,,,,,
+149,,,,,,,,,,,,,,,,,,,,
+150,,,,,,,,,,,,,,,,,,,,

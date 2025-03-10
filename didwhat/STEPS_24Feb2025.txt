@@ -1,0 +1,1773 @@
+
+PREPARING THE WORKSPACE (REMOVE/COPY SPECS-EXTENDED FOLDERS BASED ON UPGRADE,DOWNLOAD, NEW PACKAGE NAME)
+========================================================================================================
+
+git log of the workspace before starting manipulation/preparation of the SPECS-EXTENDED folder:
+
+```
+neerajs [ /third_disk/bb_24Feb/azlinux_sms ]$ git log --oneline -5
+fa8648db7 (HEAD -> topic_bb_24Feb, origin/3.0-dev, 3.0-dev) PEGTL : Update version to 3.2.8 (#10695)
+0c444c0de Upgrade asio to 1.31.0-1 (#10678)
+cba2a2e3d Update beust-jcommander to version 2.0 (#10630)
+063095b47 Update babeltrace to 1.5.11-1 (#10590)
+f007c3568 Upgrade: teckit version to 2.5.12 (#11880)
+neerajs [ /third_disk/bb_24Feb/azlinux_sms ]$ git log -5
+commit fa8648db7d507c075b259358f3f107ee9b77e512 (HEAD -> topic_bb_24Feb, origin/3.0-dev, 3.0-dev)
+Author: jykanase <v-jykanase@microsoft.com>
+Date:   Sat Feb 22 19:02:06 2025 +0530
+
+    PEGTL : Update version to 3.2.8 (#10695)
+
+commit 0c444c0de0f742f289172141abfba178cabd4452
+Author: Kevin Lockwood <57274670+kevin-b-lockwood@users.noreply.github.com>
+Date:   Sat Feb 22 05:21:52 2025 -0800
+
+    Upgrade asio to 1.31.0-1 (#10678)
+
+commit cba2a2e3d37a8b0ebe3a9c84aa729d6ed3125fd1
+Author: Kevin Lockwood <57274670+kevin-b-lockwood@users.noreply.github.com>
+Date:   Sat Feb 22 05:21:01 2025 -0800
+
+    Update beust-jcommander to version 2.0 (#10630)
+
+commit 063095b47537f749755eff18c08fab559360ad0e
+Author: Kevin Lockwood <57274670+kevin-b-lockwood@users.noreply.github.com>
+Date:   Sat Feb 22 05:20:18 2025 -0800
+
+    Update babeltrace to 1.5.11-1 (#10590)
+
+commit f007c3568a4c52da72d4e2994c7039bd05d3d0a8
+Author: Archana Shettigar <v-shettigara@microsoft.com>
+Date:   Sat Feb 22 18:44:51 2025 +0530
+
+    Upgrade: teckit version to 2.5.12 (#11880)
+neerajs [ /third_disk/bb_24Feb/azlinux_sms ]$ 
+```
+
+git status:
+```
+neerajs [ /third_disk/bb_24Feb/azlinux_sms ]$ date; git status
+Mon Feb 24 18:28:43 UTC 2025
+On branch topic_bb_24Feb
+nothing to commit, working tree clean
+neerajs [ /third_disk/bb_24Feb/azlinux_sms ]$ 
+```
+
+
+The output34.csv that will be used as input to the SPECS-EXTENDED folder manipulation/preparation script was
+in turn generated from output34.txt.  And output34.txt was generated as:
+```
+neerajs [ ~/utils/PKG_ANALYSIS_24Feb ]$ time python3.12 pkg_py_analysis_v12 > output34.txt 2>output34_errors.txt
+
+real    29m26.922s
+user    3m51.323s
+sys     1m6.073s
+neerajs [ ~/utils/PKG_ANALYSIS_24Feb ]$
+```
+
+
+Preparing the override list for the working list of build
+---------------------------------------------------------
+Towards that we note that the first error encountered in the previous builds was "multiple target patterns".
+Earlier for overcoming this error we had done two things:
+1. Removed libpsl and llvm from the SPECS-EXTENDED folder
+2. Removed rdma-core, ucx, libpsl and llvm from the build list.  rdma-core and ucx had been removed
+   by adding them to the override list "pkglist_override_build_by_rem".  And libpsl and llvm had 
+   been removed by modifying the patched file.  pkgs_to_build to wkg_pkgs_to_build had taken out
+   rdma-core and ucx from the build list.  This wkg_pkgs_to_build was copied to create the patched
+   file.  And then from the patched file we had removed libpsl and llvm.
+3. Removed two packages - perl-Crypt-PasswdMD5 and perl-XML-LibXSLT, from the build list.  That
+   is the patched build list had these removed from it.F
+
+Today I think that the removal of folders from the SPECS-EXTENDED is not necessary.  That is point 1
+above is not necessary.  And therefore we can only carry out the changes to the build list as per the
+points 2 and 3 above.
+
+That is we will only removing the six packages - rdma-core, ucx, libpsl, llvm, perl-Crypt-PasswdMD5 and perl-XML-LibXSLT 
+from the build list.
+Therefore I will do just that.
+
+Change 1 to build list 
+----------------------
+For that we will use the list "pkglist_override_build_by_rem".
+We will add these two packages to this override list.
+
+Change 2 to build list 
+----------------------
+Further, for getting around the error of parse failure because of unsupported macros in spec file,
+we need to ensure that the following packages don't build:
+cjkuni-uming-fonts
+delve
+google-noto-sans-cjk-vf-fonts
+resource-agents
+python-tox
+google-noto-emoji-fonts
+lensfun
+freeradius
+google-carlito-fonts
+
+Because of the improvements to the script for generation of these lists the current
+state is that out of these, the "google-carlito-fonts" is not there in the generated list of packages to be
+built:
+```
+neerajs [ ~/utils/BULK_BLD_THINGS_24Feb ]$ grep google-carlito-fonts wkg_pkgs_to_build 
+neerajs [ ~/utils/BULK_BLD_THINGS_24Feb ]$
+neerajs [ ~/utils/BULK_BLD_THINGS_24Feb ]$ grep carlito pkgs_to_build 
+google-crosextra-carlito-fonts
+```
+
+Therefore we will force the removal of the rest of the packages from the build list, 
+by adding those to the override file "pkglist_override_build_by_rem":
+After both the above changes our override file looks like:
+```
+neerajs [ ~/utils/BULK_BLD_THINGS_24Feb ]$ cat pkglist_override_build_by_rem
+rdma-core
+ucx
+perl-Crypt-PasswdMD5
+perl-XML-LibXSLT
+cjkuni-uming-fonts
+delve
+google-noto-sans-cjk-vf-fonts
+resource-agents
+python-tox
+google-noto-emoji-fonts
+lensfun
+freeradius
+neerajs [ ~/utils/BULK_BLD_THINGS_24Feb ]$ 
+```
+
+
+In oder to overcome the error
+
+error obtaining VCS status: exit status 128
+
+in advance, based upon previous experience, added the Azure Linux source root to
+the git safe.directory configuration: 
+```
+neerajs [ /third_disk/bb_24Feb/azlinux_sms ]$ git config --list
+http.sslcapath=/etc/ssl/certs
+safe.directory=/sec_disk/bulkbld_16Nov/REPOS/NeerajAZL/azlinux_sms
+safe.directory=/four_disk/bb_08Feb/azlinux_sms
+user.email=v-nsallh@microsoft.com
+user.name=sallhms
+http.postbuffer=157286400
+credential.https://github.com.helper=
+credential.https://github.com.helper=!/usr/bin/gh auth git-credential
+credential.https://gist.github.com.helper=
+credential.https://gist.github.com.helper=!/usr/bin/gh auth git-credential
+core.repositoryformatversion=0
+core.filemode=true
+core.bare=false
+core.logallrefupdates=true
+remote.origin.url=https://github.com/sallhms/azlinux_sms.git
+remote.origin.fetch=+refs/heads/*:refs/remotes/origin/*
+branch.3.0.remote=origin
+branch.3.0.merge=refs/heads/3.0
+branch.3.0-dev.remote=origin
+branch.3.0-dev.merge=refs/heads/3.0-dev
+neerajs [ /third_disk/bb_24Feb/azlinux_sms ]$ git config --global --add safe.directory /third_disk/bb_24Feb/azlinux_sms
+neerajs [ /third_disk/bb_24Feb/azlinux_sms ]$ git config --list
+http.sslcapath=/etc/ssl/certs
+safe.directory=/sec_disk/bulkbld_16Nov/REPOS/NeerajAZL/azlinux_sms
+safe.directory=/four_disk/bb_08Feb/azlinux_sms
+safe.directory=/third_disk/bb_24Feb/azlinux_sms
+user.email=v-nsallh@microsoft.com
+user.name=sallhms
+http.postbuffer=157286400
+credential.https://github.com.helper=
+credential.https://github.com.helper=!/usr/bin/gh auth git-credential
+credential.https://gist.github.com.helper=
+credential.https://gist.github.com.helper=!/usr/bin/gh auth git-credential
+core.repositoryformatversion=0
+core.filemode=true
+core.bare=false
+core.logallrefupdates=true
+remote.origin.url=https://github.com/sallhms/azlinux_sms.git
+remote.origin.fetch=+refs/heads/*:refs/remotes/origin/*
+branch.3.0.remote=origin
+branch.3.0.merge=refs/heads/3.0
+branch.3.0-dev.remote=origin
+branch.3.0-dev.merge=refs/heads/3.0-dev
+neerajs [ /third_disk/bb_24Feb/azlinux_sms ]$ 
+```
+
+There were two errors earlier that spec file was not found for:
+perl-Test2-Suite
+setup
+
+About perl-Test2-Suite this was caused because it has a new package name of "perl-Test-Simple".
+We had missed mentioning this in the "ExtendedPackages_wSuppInfo.xlsx" file.
+As a result the package name included in the build list was "perl-Test2-Suite" and for that
+there was no folder or even the spec file after the replacement of the folder by the new name
+"perl-Test-Simple".  This should not be a problem the next time when we have a correct
+"ExtendedPackages_wSuppInfo.xlsx" file w.r.t. this package.
+
+The cause for "setup" spec file not found is that it exists in SPECS-EXTENDED.
+But this folder does not have any spec file.
+
+
+```
+neerajs [ ~/utils/BULK_BLD_THINGS_24Feb ]$ vim pkglist_override_build_by_rem 
+neerajs [ ~/utils/BULK_BLD_THINGS_24Feb ]$ cat pkglist_override_build_by_rem 
+rdma-core
+ucx
+perl-Crypt-PasswdMD5
+perl-XML-LibXSLT
+cjkuni-uming-fonts
+delve
+google-noto-sans-cjk-vf-fonts
+resource-agents
+python-tox
+google-noto-emoji-fonts
+lensfun
+freeradius
+perl-Test2-Suite
+setup
+neerajs [ ~/utils/BULK_BLD_THINGS_24Feb ]$ 
+```
+
+Lets generate the build list and other files for manipulation/preparation of SPECS-EXTENDED:
+```
+neerajs [ ~/utils/BULK_BLD_THINGS_24Feb ]$ date; time python3.12 py_prepare_lists
+Mon Feb 24 22:30:15 UTC 2025
+
+real    0m0.966s
+user    0m1.636s
+sys     0m0.159s
+neerajs [ ~/utils/BULK_BLD_THINGS_24Feb ]$ ls -lrt | tail -10
+-rw-rw-r--. 1 neerajs neerajs  20007 Feb 24 19:06 patched1_wkg_pkgs_to_build
+-rw-rw-r--. 1 neerajs neerajs    200 Feb 24 20:30 pkglist_override_build_by_rem
+-rw-rw-r--. 1 neerajs neerajs  20213 Feb 24 21:05 test2_list
+-rw-rw-r--. 1 neerajs neerajs  20241 Feb 24 21:48 testout
+-rw-rw-r--. 1 neerajs neerajs  20213 Feb 24 21:59 test_list
+-rw-rw-r--. 1 neerajs neerajs  18933 Feb 24 22:28 py_prepare_lists
+-rw-rw-r--. 1 neerajs neerajs  20213 Feb 24 22:30 pkgs_to_build
+-rw-rw-r--. 1 neerajs neerajs   9567 Feb 24 22:30 folders_to_rem
+-rw-rw-r--. 1 neerajs neerajs   8428 Feb 24 22:30 folders_to_copy
+-rw-rw-r--. 1 neerajs neerajs  19835 Feb 24 22:30 wkg_pkgs_to_build
+neerajs [ ~/utils/BULK_BLD_THINGS_24Feb ]$ 
+```
+
+KNOWN ISSUES: TO BE FIXED AFTER SPECS-EXTENDED MANIPULATION
+===========================================================
+From the previous notes, we know that there still are problems to be faced.
+But first we will use this generated lists to manipulate the SPECS-EXTENDED folder 
+and then tackle the build failures.
+These build failures will be:
+1. Parse failure of ibus.spec.  The fix to this will be to use the ibus.spec from the previous build attempt.  It is nothing but 
+   Azure Linux ibus.spec modified for the Version and Release (release is made 1).
+2. There will be failure in addition of minizip-ng reported by grapher.  The fix is to give up on using the new name minizip-ng
+   for the time being.  Therefore, the folder minizip will be restored and the folder minizip-ng will be removed.
+3. Continuing from the above the package name in the build list will be changed to minizip from minizip-ng.  This we may do by 
+   manually editing the wkg_pkgs_to_build or starting to use patched1_wkg_pkgs_to_build. 
+4. There will be a failure to add pcp package too.  Again grapher will be the tool which reports this failure.
+5. As noted in the earlier notes, this time we will do the same.  That, is comment out the BuildRequires on 
+   ibus-table-chinese-* packages and thereby break the circular dependency.
+6. A build will then report that the srpmpacker tool has skipped several packages because those can't be built on current architecture.
+   Fix these by removing the ExclusiveArch tag from their spec files.
+
+All these steps are to be taken after the manipulation of the SPECS-EXTENDED folder.
+
+Therefore, lets carry that out:
+
+```
+neerajs [ /third_disk/bb_24Feb/azlinux_sms ]$ git status
+On branch topic_bb_24Feb
+nothing to commit, working tree clean
+neerajs [ /third_disk/bb_24Feb/azlinux_sms ]$ git log --oneline -5
+fa8648db7 (HEAD -> topic_bb_24Feb, origin/3.0-dev, 3.0-dev) PEGTL : Update version to 3.2.8 (#10695)
+0c444c0de Upgrade asio to 1.31.0-1 (#10678)
+cba2a2e3d Update beust-jcommander to version 2.0 (#10630)
+063095b47 Update babeltrace to 1.5.11-1 (#10590)
+neerajs [ /third_disk/bb_24Feb/azlinux_sms ]$ 
+
+<snip>
+<snip>
+
+neerajs [ ~/utils/BULK_BLD_THINGS_24Feb ]$ time ./prep_ext_folder /third_disk/bb_24Feb/azlinux_sms /fifth_disk/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/ /home/neerajs/utils/BULK_BLD_THINGS_24Feb
+```
+
+The output was screengrabbed into "output_of_prep_ext_folder.log".
+
+The git status after this script run was saved into "gsts_after_prep_ext_folder_scrpt_run"
+```
+neerajs [ /third_disk/bb_24Feb/azlinux_sms ]$ git status > ../gsts_after_prep_ext_folder_scrpt_run
+```
+
+The changes were staged and then committed:
+```
+neerajs [ /third_disk/bb_24Feb/azlinux_sms ]$ git add SPECS-EXTENDED/
+neerajs [ /third_disk/bb_24Feb/azlinux_sms ]$ git commit -m "Committing the changes caused by the prep_ext_folder script"
+[topic_bb_24Feb e20809189] Committing the changes caused by the prep_ext_folder script
+ 2865 files changed, 277305 insertions(+), 189825 deletions(-)
+ delete mode 100644 SPECS-EXTENDED/OpenEXR/OpenEXR.signatures.json
+ delete mode 100644 SPECS-EXTENDED/OpenEXR/OpenEXR.spec
+ delete mode 100644 SPECS-EXTENDED/OpenEXR/openexr-2.3.0-bigendian.patch
+ delete mode 100644 SPECS-EXTENDED/OpenEXR/openexr-2.3.0-tests.patch
+ delete mode 100644 SPECS-EXTENDED/PyGreSQL/PyGreSQL.signatures.json
+ mode change 100644 => 100755 SPECS-EXTENDED/PyGreSQL/PyGreSQL.spec
+```
+
+The commit output was saved into ../commit_output1.log
+
+git status and log after this commit:
+```
+neerajs [ /third_disk/bb_24Feb/azlinux_sms ]$ git status
+On branch topic_bb_24Feb
+nothing to commit, working tree clean
+neerajs [ /third_disk/bb_24Feb/azlinux_sms ]$ git log -5
+commit e208091896a025acdab130ddcd9d1cf19a63202e (HEAD -> topic_bb_24Feb)
+Author: sallhms <v-nsallh@microsoft.com>
+Date:   Mon Feb 24 23:05:00 2025 +0000
+
+    Committing the changes caused by the prep_ext_folder script
+
+commit fa8648db7d507c075b259358f3f107ee9b77e512 (origin/3.0-dev, 3.0-dev)
+Author: jykanase <v-jykanase@microsoft.com>
+Date:   Sat Feb 22 19:02:06 2025 +0530
+
+    PEGTL : Update version to 3.2.8 (#10695)
+
+commit 0c444c0de0f742f289172141abfba178cabd4452
+Author: Kevin Lockwood <57274670+kevin-b-lockwood@users.noreply.github.com>
+Date:   Sat Feb 22 05:21:52 2025 -0800
+
+    Upgrade asio to 1.31.0-1 (#10678)
+
+commit cba2a2e3d37a8b0ebe3a9c84aa729d6ed3125fd1
+Author: Kevin Lockwood <57274670+kevin-b-lockwood@users.noreply.github.com>
+Date:   Sat Feb 22 05:21:01 2025 -0800
+
+    Update beust-jcommander to version 2.0 (#10630)
+
+commit 063095b47537f749755eff18c08fab559360ad0e
+Author: Kevin Lockwood <57274670+kevin-b-lockwood@users.noreply.github.com>
+Date:   Sat Feb 22 05:20:18 2025 -0800
+
+    Update babeltrace to 1.5.11-1 (#10590)
+neerajs [ /third_disk/bb_24Feb/azlinux_sms ]$ git log --oneline -5
+e20809189 (HEAD -> topic_bb_24Feb) Committing the changes caused by the prep_ext_folder script
+fa8648db7 (origin/3.0-dev, 3.0-dev) PEGTL : Update version to 3.2.8 (#10695)
+0c444c0de Upgrade asio to 1.31.0-1 (#10678)
+cba2a2e3d Update beust-jcommander to version 2.0 (#10630)
+063095b47 Update babeltrace to 1.5.11-1 (#10590)
+neerajs [ /third_disk/bb_24Feb/azlinux_sms ]$ 
+```
+
+
+Now we carry out the actions we had noted in the section "KNOWN ISSUES: TO BE FIXED AFTER SPECS-EXTENDED MANIPULATION"
+
+
+1. Parse failure of ibus.spec.  The fix to this will be to use the ibus.spec from the previous build attempt.  It is nothing but 
+   Azure Linux ibus.spec modified for the Version and Release (release is made 1).
+
+Copied ibus.spec from ""
+```
+neerajs [ /third_disk/bb_24Feb/azlinux_sms ]$ diff -q /four_disk/bb_08Feb/azlinux_sms/SPECS-EXTENDED/ibus/ibus.spec SPECS-EXTENDED/ibus/ibus.spec
+Files /four_disk/bb_08Feb/azlinux_sms/SPECS-EXTENDED/ibus/ibus.spec and SPECS-EXTENDED/ibus/ibus.spec differ
+neerajs [ /third_disk/bb_24Feb/azlinux_sms ]$ cp /four_disk/bb_08Feb/azlinux_sms/SPECS-EXTENDED/ibus/ibus.spec SPECS-EXTENDED/ibus/ibus.spec
+neerajs [ /third_disk/bb_24Feb/azlinux_sms ]$ diff -q /four_disk/bb_08Feb/azlinux_sms/SPECS-EXTENDED/ibus/ibus.spec SPECS-EXTENDED/ibus/ibus.spec
+neerajs [ /third_disk/bb_24Feb/azlinux_sms ]$ git status
+On branch topic_bb_24Feb
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+        modified:   SPECS-EXTENDED/ibus/ibus.spec
+
+no changes added to commit (use "git add" and/or "git commit -a")
+neerajs [ /third_disk/bb_24Feb/azlinux_sms ]$ 
+```
+
+We verify against the commit one before the head that the difference is only in version and release.  That is, this ibus.spec
+is no more based on the Fedora 41 spec file.  Instead it is based on the Azure Linux ibus.spec, with only the Version and Release changed.
+```
+neerajs [ /third_disk/bb_24Feb/azlinux_sms ]$ git log --oneline -5
+e20809189 (HEAD -> topic_bb_24Feb) Committing the changes caused by the prep_ext_folder script
+fa8648db7 (origin/3.0-dev, 3.0-dev) PEGTL : Update version to 3.2.8 (#10695)
+0c444c0de Upgrade asio to 1.31.0-1 (#10678)
+cba2a2e3d Update beust-jcommander to version 2.0 (#10630)
+063095b47 Update babeltrace to 1.5.11-1 (#10590)
+neerajs [ /third_disk/bb_24Feb/azlinux_sms ]$ git diff fa8648db7 -- SPECS-EXTENDED/ibus/ibus.spec
+diff --git a/SPECS-EXTENDED/ibus/ibus.spec b/SPECS-EXTENDED/ibus/ibus.spec
+old mode 100644
+new mode 100755
+index 611983f14..8bb56beff
+--- a/SPECS-EXTENDED/ibus/ibus.spec
++++ b/SPECS-EXTENDED/ibus/ibus.spec
+@@ -14,8 +14,8 @@ Distribution:   Azure Linux
+ %global dbus_python_version 0.83.0
+ 
+ Name:           ibus
+-Version:        1.5.22
+-Release:        9%{?dist}
++Version:        1.5.31
++Release:        1%{?dist}
+ Summary:        Intelligent Input Bus for Linux OS
+ License:        LGPLv2+
+ URL:            https://github.com/ibus/%name/wiki
+@@ -23,7 +23,7 @@ Source0:        https://github.com/ibus/%name/releases/download/%{version}/%{nam
+ Source1:        %{name}-xinput
+ Source2:        %{name}.conf.5
+ # Patch0:         %%{name}-HEAD.patch
+-Patch0:         %{name}-HEAD.patch
++#Patch0:         %{name}-HEAD.patch
+ # Under testing #1349148 #1385349 #1350291 #1406699 #1432252 #1601577
+ Patch1:         %{name}-1385349-segv-bus-proxy.patch
+ 
+neerajs [ /third_disk/bb_24Feb/azlinux_sms ]$ 
+```
+
+2. There will be failure in addition of minizip-ng reported by grapher.  The fix is to give up on using the new name minizip-ng
+   for the time being.  Therefore, the folder minizip will be restored and the folder minizip-ng will be removed.
+
+```
+neerajs [ /third_disk/bb_24Feb/azlinux_sms ]$ git log --oneline -5
+e20809189 (HEAD -> topic_bb_24Feb) Committing the changes caused by the prep_ext_folder script
+fa8648db7 (origin/3.0-dev, 3.0-dev) PEGTL : Update version to 3.2.8 (#10695)
+0c444c0de Upgrade asio to 1.31.0-1 (#10678)
+cba2a2e3d Update beust-jcommander to version 2.0 (#10630)
+063095b47 Update babeltrace to 1.5.11-1 (#10590)
+neerajs [ /third_disk/bb_24Feb/azlinux_sms ]$ git restore --source=fa8648db7 -- SPECS-EXTENDED/minizip
+neerajs [ /third_disk/bb_24Feb/azlinux_sms ]$ ls -d minizip*
+ls: cannot access 'minizip*': No such file or directory
+neerajs [ /third_disk/bb_24Feb/azlinux_sms ]$ ls -d SPECS-EXTENDED/minizip*
+SPECS-EXTENDED/minizip  SPECS-EXTENDED/minizip-ng
+neerajs [ /third_disk/bb_24Feb/azlinux_sms ]$ rm -rf SPECS-EXTENDED/minizip-ng/
+neerajs [ /third_disk/bb_24Feb/azlinux_sms ]$ ls -d SPECS-EXTENDED/minizip*
+SPECS-EXTENDED/minizip
+neerajs [ /third_disk/bb_24Feb/azlinux_sms ]$ 
+```
+
+
+3. Continuing from the above the package name in the build list will be changed to minizip from minizip-ng.  This we may do by 
+   manually editing the wkg_pkgs_to_build or starting to use patched1_wkg_pkgs_to_build. 
+```
+neerajs [ ~/utils/BULK_BLD_THINGS_24Feb ]$ grep minizip wkg_pkgs_to_build 
+minizip-ng
+neerajs [ ~/utils/BULK_BLD_THINGS_24Feb ]$ ~/utils/rep_full_line_a_by_b minizip-ng minizip wkg_pkgs_to_build 
+====== Cleaning up ======
+neerajs [ ~/utils/BULK_BLD_THINGS_24Feb ]$ grep minizip wkg_pkgs_to_build 
+minizip
+neerajs [ ~/utils/BULK_BLD_THINGS_24Feb ]$ 
+```
+
+4. There will be a failure to add pcp package too.  Again grapher will be the tool which reports this failure.
+Restored pcp.spec from the Azure Linux, i.e. from one commit before the HEAD, and modified the Version and 
+Release to 6.3.2. and 1 respectively.
+```
+neerajs [ /third_disk/bb_24Feb/azlinux_sms ]$ git log --oneline -5
+e20809189 (HEAD -> topic_bb_24Feb) Committing the changes caused by the prep_ext_folder script
+fa8648db7 (origin/3.0-dev, 3.0-dev) PEGTL : Update version to 3.2.8 (#10695)
+0c444c0de Upgrade asio to 1.31.0-1 (#10678)
+cba2a2e3d Update beust-jcommander to version 2.0 (#10630)
+063095b47 Update babeltrace to 1.5.11-1 (#10590)
+neerajs [ /third_disk/bb_24Feb/azlinux_sms ]$ git restore --source=fa8648db7 -- SPECS-EXTENDED/pcp/pcp.spec
+eerajs [ /third_disk/bb_24Feb/azlinux_sms ]$ git diff fa8648db7 -- SPECS-EXTENDED/pcp/pcp.spec
+neerajs [ /third_disk/bb_24Feb/azlinux_sms ]$ vim SPECS-EXTENDED/pcp/pcp.spec
+neerajs [ /third_disk/bb_24Feb/azlinux_sms ]$ git diff fa8648db7 -- SPECS-EXTENDED/pcp/pcp.spec
+diff --git a/SPECS-EXTENDED/pcp/pcp.spec b/SPECS-EXTENDED/pcp/pcp.spec
+index 1c798a2a8..d6602e35a 100644
+--- a/SPECS-EXTENDED/pcp/pcp.spec
++++ b/SPECS-EXTENDED/pcp/pcp.spec
+@@ -1,8 +1,8 @@
+ %global _unpackaged_files_terminate_build 0
+ 
+ Name:    pcp
+-Version: 5.1.1
+-Release: 3%{?dist}
++Version: 6.3.2
++Release: 1%{?dist}
+ Summary: System-level performance monitoring and performance management
+ License: GPLv2+ and LGPLv2+ and CC-BY
+ Vendor:         Microsoft Corporation
+neerajs [ /third_disk/bb_24Feb/azlinux_sms ]$ 
+```
+
+
+5. As noted in the earlier notes, this time we will do the same.  That, is comment out the BuildRequires on 
+   ibus-table-chinese-* packages in the "ibus-table.spec" and thereby break the circular dependency.
+```
+neerajs [ /third_disk/bb_24Feb/azlinux_sms ]$ git diff SPECS-EXTENDED/ibus-table/ibus-table.spec
+neerajs [ /third_disk/bb_24Feb/azlinux_sms ]$ vim SPECS-EXTENDED/ibus-table/ibus-table.spec
+neerajs [ /third_disk/bb_24Feb/azlinux_sms ]$ git diff SPECS-EXTENDED/ibus-table/ibus-table.spec
+diff --git a/SPECS-EXTENDED/ibus-table/ibus-table.spec b/SPECS-EXTENDED/ibus-table/ibus-table.spec
+index 0618c0c97..415fc59fe 100755
+--- a/SPECS-EXTENDED/ibus-table/ibus-table.spec
++++ b/SPECS-EXTENDED/ibus-table/ibus-table.spec
+@@ -32,9 +32,9 @@ BuildRequires:  desktop-file-utils
+ BuildRequires:  python3-gobject
+ BuildRequires:  python3-gobject-base
+ BuildRequires:  dbus-x11
+-BuildRequires:  ibus-table-chinese-wubi-jidian
+-BuildRequires:  ibus-table-chinese-cangjie
+-BuildRequires:  ibus-table-chinese-stroke5
++#BuildRequires:  ibus-table-chinese-wubi-jidian
++#BuildRequires:  ibus-table-chinese-cangjie
++#BuildRequires:  ibus-table-chinese-stroke5
+ BuildRequires:  ibus-table-code
+ BuildRequires:  ibus-table-latin
+ BuildRequires:  ibus-table-translit
+neerajs [ /third_disk/bb_24Feb/azlinux_sms ]$ 
+```
+
+
+
+6. A build will then report that the srpmpacker tool has skipped several packages because those can't be built on current architecture.
+   Fix these by removing the ExclusiveArch tag from their spec files.
+   But we will first see which all packages throw the above problem.
+   Only those will be fixed.
+
+Started a build:
+```
+neerajs [ /third_disk/bb_24Feb/azlinux_sms/toolkit ]$ time /home/neerajs/utils/BULK_BLD_THINGS_24Feb/build_scr_wo_check.sh  /home/neerajs/utils/BULK_BLD_THINGS_24Feb/wkg_pkgs_to_build /third_disk/bb_24Feb/azlinux_sms/ > ../bld_bb> ../bld_bb25Feb_iter1_1_$(date +%Y%m%d-%H%M).log 2>&1 &
+real    19m3.807s
+user    0m0.024s
+sys     0m0.005s
+^C
+[1]+  Exit 2                  time /home/neerajs/utils/BULK_BLD_THINGS_24Feb/build_scr_wo_check.sh /home/neerajs/utils/BULK_BLD_THINGS_24Feb/wkg_pkgs_to_build /third_disk/bb_24Feb/azlinux_sms/ > ../bld_bb25Feb_iter1_1_$(date +%Y%m%d-%H%M).log 2>&1
+neerajs [ /third_disk/bb_24Feb/azlinux_sms/toolkit ]$ 
+```
+The build logs show error for parsing of several files
+
+```
+1183 touch /third_disk/bb_24Feb/azlinux_sms/build/make_status/build_srpms.flag
+1184 ^[[33mWARN^[[0m[0000][srpmpacker] Will update signature files as needed
+1185 ^[[36mINFO^[[0m[0007][rpmssnapshot] Generating RPMs snapshot from specs inside (../SPECS-EXTENDED). 
+1186 ^[[36mINFO^[[0m[0007][specreader] Parsing SPECs inside a chroot environment    
+1187 ^[[36mINFO^[[0m[0007][srpmpacker] Packing SRPMs inside a chroot environment    
+1188 ^[[36mINFO^[[0m[0007][srpmpacker] Finding all SPEC files                       
+1189 ^[[33mWARN^[[0m[0014][rpmssnapshot] pyproject_buildrequires: invalid option -- 'g'
+1190 error: /chroot_mnt/python-tox/python-tox.spec: line 120: Unknown option g in pyproject_buildrequires(rRxtNwe:C:)
+1191 error: query of specfile /chroot_mnt/python-tox/python-tox.spec failed, can't parse 
+1192 ^[[33mWARN^[[0m[0014][rpmssnapshot] error: line 65: Versioned file name not permitted: Requires: /usr/bin/python3-lensfun = 0.3.4-2.azl3
+1193 error: query of specfile /chroot_mnt/lensfun/lensfun.spec failed, can't parse 
+1194 ^[[33mWARN^[[0m[0014][rpmssnapshot] error: Unable to determine the distribution/version. This is generally caused by missing /etc/rpm/macros.dist. Please install the correct build packages or define the      required macros manually.
+1195 error: query of specfile /chroot_mnt/resource-agents/resource-agents.spec failed, can't parse 
+1196 ^[[33mWARN^[[0m[0014][rpmssnapshot] error: line 30: Unknown tag: %fontpkg
+1197 error: query of specfile /chroot_mnt/cjkuni-uming-fonts/cjkuni-uming-fonts.spec failed, can't parse 
+1198 ^[[33mWARN^[[0m[0014][rpmssnapshot] error: line 71: Unknown tag: %fontpkg -a
+1199 error: query of specfile /chroot_mnt/google-noto-sans-cjk-vf-fonts/google-noto-sans-cjk-vf-fonts.spec failed, can't parse 
+1200 ^[[33mWARN^[[0m[0014][rpmssnapshot] error: line 61: Illegal char ')' (0x29) in: Requires: openssl >= (none):3.3.2
+1201 error: query of specfile /chroot_mnt/freeradius/freeradius.spec failed, can't parse 
+1202 ^[[33mWARN^[[0m[0014][rpmssnapshot] error: line 71: Unknown tag: %fontpkg -a
+1203 error: query of specfile /chroot_mnt/google-noto-emoji-fonts/google-noto-emoji-fonts.spec failed, can't parse  
+1204 ^[[31mERRO^[[0m[0014][rpmssnapshot] Failed to generate snapshot from specs folder (../SPECS-EXTENDED) into (/third_disk/bb_24Feb/azlinux_sms/build/rpms_snapshots/SPECS-EXTENDED_rpms_snapshot.json). Erro     r: failed to retrieve a list of specs inside (/chroot_mnt):
+1205 failed while querrying spec (/chroot_mnt/resource-agents/resource-agents.spec). Error: failed to query SPEC (/chroot_mnt/resource-agents/resource-agents.spec):
+1206 exit status 1. 
+1207 ^[[33mWARN^[[0m[0014][rpmssnapshot] error: line 28: Unknown tag: %gometa
+1208 error: query of specfile /chroot_mnt/delve/delve.spec failed, can't parse 
+1209 cp /third_disk/bb_24Feb/azlinux_sms/build/rpms_snapshots/SPECS-EXTENDED_rpms_snapshot.json /third_disk/bb_24Feb/azlinux_sms/out/rpms_snapshot.json1210 cp: cannot stat '/third_disk/bb_24Feb/azlinux_sms/build/rpms_snapshots/SPECS-EXTENDED_rpms_snapshot.json': No such file or directory
+```
+
+The files for which parsing errors happened above were:
+python-tox.spec
+lensfun.spec
+resource-agents.spec
+cjkuni-uming-fonts.spec
+google-noto-sans-cjk-vf-fonts.spec
+freeradius.spec
+google-noto-emoji-fonts.spec
+
+These packages do not occur in the build list.
+```
+neerajs [ ~/utils/BULK_BLD_THINGS_24Feb ]$ for pknm in python-tox lensfun resource-agents cjkuni-uming-fonts google-noto-sans-cjk-vf-fonts freeradius google-noto-emoji-fonts; do grep $pknm wkg_pkgs_to_build ; if [ $? -eq 0 ]; then echo "$pknm found in wkg_pkgs_to_build"; else echo "$pknm missing in wkg_pkgs_to_build"; fi; done
+python-tox missing in wkg_pkgs_to_build
+lensfun missing in wkg_pkgs_to_build
+resource-agents missing in wkg_pkgs_to_build
+cjkuni-uming-fonts missing in wkg_pkgs_to_build
+google-noto-sans-cjk-vf-fonts missing in wkg_pkgs_to_build
+freeradius missing in wkg_pkgs_to_build
+google-noto-emoji-fonts missing in wkg_pkgs_to_build
+```
+
+We will therefore, remove their folders from the SPECS-EXTENDED directory in order to get around the above problem:
+```
+neerajs [ /third_disk/bb_24Feb/azlinux_sms/SPECS-EXTENDED ]$ for pknm in python-tox lensfun resource-agents cjkuni-uming-fonts google-noto-sans-cjk-vf-fonts freeradius google-noto-emoji-fonts; do if [ -d $pk
+nm ]; then echo "$pknm found in SPECS-EXTENDED"; else echo "$pknm missing in SPECS-EXTENDED"; fi; done
+python-tox found in SPECS-EXTENDED
+lensfun found in SPECS-EXTENDED
+resource-agents found in SPECS-EXTENDED
+cjkuni-uming-fonts found in SPECS-EXTENDED
+google-noto-sans-cjk-vf-fonts found in SPECS-EXTENDED
+freeradius found in SPECS-EXTENDED
+google-noto-emoji-fonts found in SPECS-EXTENDED
+neerajs [ /third_disk/bb_24Feb/azlinux_sms/SPECS-EXTENDED ]$ for pknm in python-tox lensfun resource-agents cjkuni-uming-fonts google-noto-sans-cjk-vf-fonts freeradius google-noto-emoji-fonts; do if [ -d $pk
+nm ]; then echo "Removing $pknm from SPECS-EXTENDED"; rm -rf $pknm; else echo "$pknm missing in SPECS-EXTENDED"; fi; done
+Removing python-tox from SPECS-EXTENDED
+Removing lensfun from SPECS-EXTENDED
+Removing resource-agents from SPECS-EXTENDED
+Removing cjkuni-uming-fonts from SPECS-EXTENDED
+Removing google-noto-sans-cjk-vf-fonts from SPECS-EXTENDED
+Removing freeradius from SPECS-EXTENDED
+Removing google-noto-emoji-fonts from SPECS-EXTENDED
+neerajs [ /third_disk/bb_24Feb/azlinux_sms/SPECS-EXTENDED ]$ for pknm in python-tox lensfun resource-agents cjkuni-uming-fonts google-noto-sans-cjk-vf-fonts freeradius google-noto-emoji-fonts; do if [ -d $pknm ]; then echo "$pknm found in SPECS-EXTENDED"; else echo "$pknm missing in SPECS-EXTENDED"; fi; done
+python-tox missing in SPECS-EXTENDED
+lensfun missing in SPECS-EXTENDED
+resource-agents missing in SPECS-EXTENDED
+cjkuni-uming-fonts missing in SPECS-EXTENDED
+google-noto-sans-cjk-vf-fonts missing in SPECS-EXTENDED
+freeradius missing in SPECS-EXTENDED
+google-noto-emoji-fonts missing in SPECS-EXTENDED
+neerajs [ /third_disk/bb_24Feb/azlinux_sms/SPECS-EXTENDED ]$ 
+```
+
+Started another build after a make clean:
+It finished in 14 minutes.
+```
+neerajs [ /third_disk/bb_24Feb/azlinux_sms/toolkit ]$ time /home/neerajs/utils/BULK_BLD_THINGS_24Feb/build_scr_wo_check.sh  /home/neerajs/utils/BULK_BLD_THINGS_24Feb/wkg_pkgs_to_build /third_disk/bb_24Feb/azlinux_sms/ > ../bld_bb> ../bld_bb25Feb_iter1_2_$(date +%Y%m%d-%H%M).log 2>&1 &
+[1] 460397
+real    14m43.544s
+user    0m0.015s
+sys     0m0.019s
+```
+
+This had failure for parse error in delve:
+
+```
+1181          \
+1182         --timestamp-file=/third_disk/bb_24Feb/azlinux_sms/build/timestamp/srpm_packer.jsonl && \
+1183 touch /third_disk/bb_24Feb/azlinux_sms/build/make_status/build_srpms.flag
+1184 ^[[33mWARN^[[0m[0000][srpmpacker] Will update signature files as needed        
+1185 ^[[36mINFO^[[0m[0006][rpmssnapshot] Generating RPMs snapshot from specs inside (../SPECS-EXTENDED). 
+1186 ^[[36mINFO^[[0m[0006][specreader] Parsing SPECs inside a chroot environment    
+1187 ^[[36mINFO^[[0m[0006][srpmpacker] Packing SRPMs inside a chroot environment    
+1188 ^[[36mINFO^[[0m[0006][srpmpacker] Finding all SPEC files                       
+1189 ^[[33mWARN^[[0m[0014][rpmssnapshot] error: line 28: Unknown tag: %gometa
+1190 error: query of specfile /chroot_mnt/delve/delve.spec failed, can't parse 
+1191 ^[[31mERRO^[[0m[0014][rpmssnapshot] Failed to generate snapshot from specs folder (../SPECS-EXTENDED) into (/third_disk/bb_24Feb/azlinux_sms/build/rpms_snapshots/SPECS-EXTENDED_rpms_snapshot.json). Erro     r: failed to retrieve a list of specs inside (/chroot_mnt):
+1192 failed while querrying spec (/chroot_mnt/delve/delve.spec). Error: failed to query SPEC (/chroot_mnt/delve/delve.spec):
+1193 exit status 1. 
+1194 cp /third_disk/bb_24Feb/azlinux_sms/build/rpms_snapshots/SPECS-EXTENDED_rpms_snapshot.json /third_disk/bb_24Feb/azlinux_sms/out/rpms_snapshot.json
+1195 cp: cannot stat '/third_disk/bb_24Feb/azlinux_sms/build/rpms_snapshots/SPECS-EXTENDED_rpms_snapshot.json': No such file or directory
+1196 make: *** [/third_disk/bb_24Feb/azlinux_sms/toolkit/scripts/toolkit.mk:94: /third_disk/bb_24Feb/azlinux_sms/out/rpms_snapshot.json] Error 1
+1197 make: *** Waiting for unfinished jobs....
+1198 ^[[36mINFO^[[0m[0035][srpmpacker] Calculating SPECs to repack                  
+1199 ^[[36mINFO^[[0m[0037][srpmpacker] Skipping (/specs/javacc/javacc.spec) since it cannot be built on current architecture. 
+1200 ^[[36mINFO^[[0m[0037][srpmpacker] Skipping (/specs/ecj/ecj.spec) since it cannot be built on current architecture. 
+1201 ^[[36mINFO^[[0m[0038][srpmpacker] Skipping (/specs/maven-parent/maven-parent.spec) since it cannot be built on current architecture. 
+1202 ^[[36mINFO^[[0m[0039][srpmpacker] Skipping (/specs/jakarta-annotations/jakarta-annotations.spec) since it cannot be built on current architecture. 
+1203 ^[[36mINFO^[[0m[0040][srpmpacker] Skipping (/specs/osgi-core/osgi-core.spec) since it cannot be built on current architecture. ```
+```
+
+I had missed removing delve the previous time. 
+Will remove it now.
+```
+neerajs [ /third_disk/bb_24Feb/azlinux_sms/SPECS-EXTENDED ]$ ls -d delv*
+delve
+neerajs [ /third_disk/bb_24Feb/azlinux_sms/SPECS-EXTENDED ]$ rm -rf delve
+neerajs [ /third_disk/bb_24Feb/azlinux_sms/SPECS-EXTENDED ]$ ls -d delv*
+ls: cannot access 'delv*': No such file or directory
+neerajs [ /third_disk/bb_24Feb/azlinux_sms/SPECS-EXTENDED ]$ 
+```
+
+Started another build after a sudo make clean:
+This time it failed after 77 minutes.
+```
+neerajs [ /third_disk/bb_24Feb/azlinux_sms/toolkit ]$ time /home/neerajs/utils/BULK_BLD_THINGS_24Feb/build_scr_wo_check.sh /home/neerajs/utils/BULK_BLD_THINGS_24Feb/wkg_pkgs_to_build /third_disk/bb_24Feb/azlinux_sms/ > ../bld_bb25Feb_iter1_3_$(date +%Y%m%d-%H%M).log 2>&1 &
+[2] 638899
+neerajs [ /third_disk/bb_24Feb/azlinux_sms/toolkit ]$ 
+real    77m21.404s
+user    0m0.026s
+sys     0m0.013s
+```
+
+The error was that the package "apache-commons-codec" could not be found in the dependency graph.:
+```
+INFO[3934][graphpkgfetcher] (Cache progress 99%): choosing (systemd-devel-255-20.azl3.x86_64.rpm) to provide (systemd-devel) 
+INFO[3949][graphpkgfetcher] (Cache progress 99%): choosing (libva-devel-2.20.0-2.azl3.x86_64.rpm) to provide (libva-devel) 
+WARN[3949][graphpkgfetcher] (Cache progress 99%): failed to resolve graph node (perl(Mail::AuthenticationResults::Header::AuthServID)(,):<ID:15952 Type:Remote State:Unresolved Rpm:<NO_RPM_PATH>> from '<NO_SRPM_PATH>' in '<NO_SOURCE_REPO>'):
+(could not resolve perl(Mail::AuthenticationResults::Header::AuthServID)) 
+INFO[3951][graphpkgfetcher] (Cache progress 99%): choosing (rubygem-mocha-2.1.0-1.azl3.noarch.rpm) to provide (rubygem(mocha)) 
+INFO[3952][graphpkgfetcher] (Cache progress 99%): choosing (bluez-libs-devel-5.63-6.azl3.x86_64.rpm) to provide (bluez-libs-devel) 
+WARN[3952][graphpkgfetcher] (Cache progress 99%): failed to resolve graph node (perl(BSD::Resource)(,):<ID:15390 Type:Remote State:Unresolved Rpm:<NO_RPM_PATH>> from '<NO_SRPM_PATH>' in '<NO_SOURCE_REPO>'):
+(could not resolve perl(BSD::Resource)) 
+INFO[3952][graphpkgfetcher] Attempting to download delta RPMs for build nodes 
+FATA[3953][graphpkgfetcher] Failed to fetch packages:
+failed to download delta RPMs:
+failed to generate package build list to calculate delta downloads:
+failed to find nodes for the packages from the re-built list:
+failed to find package (apache-commons-codec) in the dependency graph 
+INFO[3953][graphpkgfetcher] Waiting for outstanding chroot initialization and cleanup to finish 
+INFO[3953][graphpkgfetcher] Waiting for outstanding chroot commands to finish 
+INFO[3953][graphpkgfetcher] Waiting for outstanding processes to be created before blocking all future processes 
+INFO[3953][graphpkgfetcher] Waiting for outstanding processes to be created before stopping all child processes 
+INFO[3953][graphpkgfetcher] Cleaning up all active chroots               
+INFO[3953][graphpkgfetcher] Cleanup finished                             
+make: *** [/third_disk/bb_24Feb/azlinux_sms/toolkit/scripts/pkggen.mk:222: /third_disk/bb_24Feb/azlinux_sms/build/pkg_artifacts/cached_graph.dot] Error 1
+```
+
+Looking more carefully found that the package "apache-commons-codec" had been skipped by srpmpacker because it cannot be built on the current architecture.
+```
+ 1228 ^[[36mINFO^[[0m[0045][srpmpacker] Skipping (/specs/javacc/javacc.spec) since it cannot be built on current architecture.
+ 1229 ^[[36mINFO^[[0m[0046][srpmpacker] Skipping (/specs/bcel/bcel.spec) since it cannot be built on current architecture.
+ 1230 ^[[36mINFO^[[0m[0049][srpmpacker] Skipping (/specs/apache-commons-codec/apache-commons-codec.spec) since it cannot be built on current architecture.
+ 1231 ^[[36mINFO^[[0m[0049][srpmpacker] Skipping (/specs/osgi-annotation/osgi-annotation.spec) since it cannot be built on current architecture.
+ 1232 ^[[36mINFO^[[0m[0050][srpmpacker] Skipping (/specs/apache-commons-jexl/apache-commons-jexl.spec) since it cannot be built on current architecture.
+ 1233 ^[[36mINFO^[[0m[0050][srpmpacker] Skipping (/specs/objenesis/objenesis.spec) since it cannot be built on current architecture.
+```
+
+This indicates that this file has "ExclusiveArch" tag.
+We will remove this tag in order to overcome the problem where packages are not built and thus lead to getting skipped.
+
+However, apache-commons-codec is not the only package to suffer from this problem.
+There are many other that were skipped.
+We will fix all of these by removing the tag "ExclusiveArch".
+
+We see that there are 33 such packages:
+```
+neerajs [ /third_disk/bb_24Feb/azlinux_sms ]$ grep -ne "Skipping.*since it cannot be built on current architecture" bld_bb25Feb_iter1_3_20250225-0116.log 
+1217:INFO[0038][srpmpacker] Skipping (/specs/xalan-j2/xalan-j2.spec) since it cannot be built on current architecture. 
+1218:INFO[0039][srpmpacker] Skipping (/specs/maven-parent/maven-parent.spec) since it cannot be built on current architecture. 
+1219:INFO[0039][srpmpacker] Skipping (/specs/xmlunit/xmlunit.spec) since it cannot be built on current architecture. 
+1220:INFO[0039][srpmpacker] Skipping (/specs/xbean/xbean.spec) since it cannot be built on current architecture. 
+1221:INFO[0040][srpmpacker] Skipping (/specs/apache-commons-net/apache-commons-net.spec) since it cannot be built on current architecture. 
+1222:INFO[0041][srpmpacker] Skipping (/specs/jakarta-annotations/jakarta-annotations.spec) since it cannot be built on current architecture. 
+1223:INFO[0041][srpmpacker] Skipping (/specs/jline/jline.spec) since it cannot be built on current architecture. 
+1224:INFO[0042][srpmpacker] Skipping (/specs/slirp4netns/slirp4netns.spec) since it cannot be built on current architecture. 
+1225:INFO[0042][srpmpacker] Skipping (/specs/jsoup/jsoup.spec) since it cannot be built on current architecture. 
+1226:INFO[0043][srpmpacker] Skipping (/specs/apache-commons-io/apache-commons-io.spec) since it cannot be built on current architecture. 
+1227:INFO[0044][srpmpacker] Skipping (/specs/cglib/cglib.spec) since it cannot be built on current architecture. 
+1228:INFO[0045][srpmpacker] Skipping (/specs/javacc/javacc.spec) since it cannot be built on current architecture. 
+1229:INFO[0046][srpmpacker] Skipping (/specs/bcel/bcel.spec) since it cannot be built on current architecture. 
+1230:INFO[0049][srpmpacker] Skipping (/specs/apache-commons-codec/apache-commons-codec.spec) since it cannot be built on current architecture. 
+1231:INFO[0049][srpmpacker] Skipping (/specs/osgi-annotation/osgi-annotation.spec) since it cannot be built on current architecture. 
+1232:INFO[0050][srpmpacker] Skipping (/specs/apache-commons-jexl/apache-commons-jexl.spec) since it cannot be built on current architecture. 
+1233:INFO[0050][srpmpacker] Skipping (/specs/objenesis/objenesis.spec) since it cannot be built on current architecture. 
+1234:INFO[0050][srpmpacker] Skipping (/specs/apache-commons-vfs/apache-commons-vfs.spec) since it cannot be built on current architecture. 
+1237:INFO[0053][srpmpacker] Skipping (/specs/hawtjni/hawtjni.spec) since it cannot be built on current architecture. 
+1238:INFO[0054][srpmpacker] Skipping (/specs/jdom2/jdom2.spec) since it cannot be built on current architecture. 
+1239:INFO[0055][srpmpacker] Skipping (/specs/trilead-ssh2/trilead-ssh2.spec) since it cannot be built on current architecture. 
+1240:INFO[0055][srpmpacker] Skipping (/specs/plexus-pom/plexus-pom.spec) since it cannot be built on current architecture. 
+1241:INFO[0057][srpmpacker] Skipping (/specs/xerces-j2/xerces-j2.spec) since it cannot be built on current architecture. 
+1242:INFO[0057][srpmpacker] Skipping (/specs/jdepend/jdepend.spec) since it cannot be built on current architecture. 
+1247:INFO[0058][srpmpacker] Skipping (/specs/ecj/ecj.spec) since it cannot be built on current architecture. 
+1248:INFO[0058][srpmpacker] Skipping (/specs/rhino/rhino.spec) since it cannot be built on current architecture. 
+1250:INFO[0059][srpmpacker] Skipping (/specs/apache-commons-compress/apache-commons-compress.spec) since it cannot be built on current architecture. 
+1258:INFO[0061][srpmpacker] Skipping (/specs/containernetworking-plugins/containernetworking-plugins.spec) since it cannot be built on current architecture. 
+1259:INFO[0061][srpmpacker] Skipping (/specs/apache-commons-collections4/apache-commons-collections4.spec) since it cannot be built on current architecture. 
+1263:INFO[0063][srpmpacker] Skipping (/specs/jansi/jansi.spec) since it cannot be built on current architecture. 
+1264:INFO[0063][srpmpacker] Skipping (/specs/osgi-core/osgi-core.spec) since it cannot be built on current architecture. 
+1265:INFO[0065][srpmpacker] Skipping (/specs/httpcomponents-core/httpcomponents-core.spec) since it cannot be built on current architecture. 
+1266:INFO[0066][srpmpacker] Skipping (/specs/crypto-policies/crypto-policies.spec) since it cannot be built on current architecture. 
+neerajs [ /third_disk/bb_24Feb/azlinux_sms ]$ grep -ne "Skipping.*since it cannot be built on current architecture" bld_bb25Feb_iter1_3_20250225-0116.log | wc
+     33     363    4501
+neerajs [ /third_disk/bb_24Feb/azlinux_sms ]$ 
+```
+
+Prepared a list file "ListOfFileWithExclusiveArchProblem" for these packages:
+```
+neerajs [ /third_disk/bb_24Feb/azlinux_sms ]$ grep -ne "Skipping.*since it cannot be built on current architecture" bld_bb25Feb_iter1_3_20250225-0116.log | sed -e "s/.*\/specs\/\(.*\)\.spec.*/\1.spec/" | wc
+     33      33    1003
+neerajs [ /third_disk/bb_24Feb/azlinux_sms ]$ grep -ne "Skipping.*since it cannot be built on current architecture" bld_bb25Feb_iter1_3_20250225-0116.log | sed -e "s/.*\/specs\/\(.*\)\.spec.*/\1.spec/" > ../ListOfFileWithExclusiveArchProblem
+neerajs [ /third_disk/bb_24Feb/azlinux_sms ]$ wc ../ListOfFileWithExclusiveArchProblem 
+  33   33 1003 ../ListOfFileWithExclusiveArchProblem
+neerajs [ /third_disk/bb_24Feb/azlinux_sms ]$ 
+```
+
+Carrying out the fix.
+First verify using git diff that these files are at the latest commit versions.
+
+```
+neerajs [ /third_disk/bb_24Feb/azlinux_sms/SPECS-EXTENDED ]$ for pkspec in `cat ../../ListOfFileWithExclusiveArchProblem`; do echo $pkspec; git diff $pkspec ; done
+xalan-j2/xalan-j2.spec
+maven-parent/maven-parent.spec
+xmlunit/xmlunit.spec
+xbean/xbean.spec
+apache-commons-net/apache-commons-net.spec
+jakarta-annotations/jakarta-annotations.spec
+jline/jline.spec
+slirp4netns/slirp4netns.spec
+jsoup/jsoup.spec
+apache-commons-io/apache-commons-io.spec
+cglib/cglib.spec
+javacc/javacc.spec
+bcel/bcel.spec
+apache-commons-codec/apache-commons-codec.spec
+osgi-annotation/osgi-annotation.spec
+apache-commons-jexl/apache-commons-jexl.spec
+objenesis/objenesis.spec
+apache-commons-vfs/apache-commons-vfs.spec
+hawtjni/hawtjni.spec
+jdom2/jdom2.spec
+trilead-ssh2/trilead-ssh2.spec
+plexus-pom/plexus-pom.spec
+xerces-j2/xerces-j2.spec
+jdepend/jdepend.spec
+ecj/ecj.spec
+rhino/rhino.spec
+apache-commons-compress/apache-commons-compress.spec
+containernetworking-plugins/containernetworking-plugins.spec
+apache-commons-collections4/apache-commons-collections4.spec
+jansi/jansi.spec
+osgi-core/osgi-core.spec
+httpcomponents-core/httpcomponents-core.spec
+crypto-policies/crypto-policies.spec
+neerajs [ /third_disk/bb_24Feb/azlinux_sms/SPECS-EXTENDED ]$ ~/utils/BULK_BLD_THINGS_24Feb/fix_pkgs_w_archissue 
+Usage:
+/home/neerajs/utils/BULK_BLD_THINGS_24Feb/fix_pkgs_w_archissue <path-to-the-specs-dir> <full-path-of-list-file-for-pkgs_w_archissue>
+neerajs [ /third_disk/bb_24Feb/azlinux_sms/SPECS-EXTENDED ]$ ~/utils/BULK_BLD_THINGS_24Feb/fix_pkgs_w_archissue  /third_disk/bb_24Feb/azlinux_sms/SPECS-EXTENDED /third_disk/bb_24Feb/ListOfFileWithExclusiveArchProblem
+/home/neerajs/utils/BULK_BLD_THINGS_24Feb/fix_pkgs_w_archissue <path-to-the-specs-dir> <full-path-of-list-file-for-pkgs_w_archissue>
+neerajs [ /third_disk/bb_24Feb/azlinux_sms/SPECS-EXTENDED ]$ ~/utils/BULK_BLD_THINGS_24Feb/fix_pkgs_w_archissue  /third_disk/bb_24Feb/azlinux_sms/SPECS-EXTENDED /third_disk/bb_24Feb/ListOfFileWithExclusiveArchProblem 
+Do you want to want to modify xalan-j2/xalan-j2.spec?
+y
+xalan-j2/xalan-j2.spec  being modified
+Do you want to want to modify maven-parent/maven-parent.spec?
+y
+maven-parent/maven-parent.spec  being modified
+Do you want to want to modify xmlunit/xmlunit.spec?
+y
+xmlunit/xmlunit.spec  being modified
+Do you want to want to modify xbean/xbean.spec?
+y
+xbean/xbean.spec  being modified
+Do you want to want to modify apache-commons-net/apache-commons-net.spec?
+y
+apache-commons-net/apache-commons-net.spec  being modified
+Do you want to want to modify jakarta-annotations/jakarta-annotations.spec?
+y
+jakarta-annotations/jakarta-annotations.spec  being modified
+Do you want to want to modify jline/jline.spec?
+y
+jline/jline.spec  being modified
+Do you want to want to modify slirp4netns/slirp4netns.spec?
+y
+slirp4netns/slirp4netns.spec  being modified
+Do you want to want to modify jsoup/jsoup.spec?
+y
+jsoup/jsoup.spec  being modified
+Do you want to want to modify apache-commons-io/apache-commons-io.spec?
+y
+apache-commons-io/apache-commons-io.spec  being modified
+Do you want to want to modify cglib/cglib.spec?
+y
+cglib/cglib.spec  being modified
+Do you want to want to modify javacc/javacc.spec?
+y
+javacc/javacc.spec  being modified
+Do you want to want to modify bcel/bcel.spec?
+y
+bcel/bcel.spec  being modified
+Do you want to want to modify apache-commons-codec/apache-commons-codec.spec?
+y
+apache-commons-codec/apache-commons-codec.spec  being modified
+Do you want to want to modify osgi-annotation/osgi-annotation.spec?
+y
+osgi-annotation/osgi-annotation.spec  being modified
+Do you want to want to modify apache-commons-jexl/apache-commons-jexl.spec?
+y
+apache-commons-jexl/apache-commons-jexl.spec  being modified
+Do you want to want to modify objenesis/objenesis.spec?
+y
+objenesis/objenesis.spec  being modified
+Do you want to want to modify apache-commons-vfs/apache-commons-vfs.spec?
+y
+apache-commons-vfs/apache-commons-vfs.spec  being modified
+Do you want to want to modify hawtjni/hawtjni.spec?
+y
+hawtjni/hawtjni.spec  being modified
+Do you want to want to modify jdom2/jdom2.spec?
+y
+jdom2/jdom2.spec  being modified
+Do you want to want to modify trilead-ssh2/trilead-ssh2.spec?
+y
+trilead-ssh2/trilead-ssh2.spec  being modified
+Do you want to want to modify plexus-pom/plexus-pom.spec?
+y
+plexus-pom/plexus-pom.spec  being modified
+Do you want to want to modify xerces-j2/xerces-j2.spec?
+y
+xerces-j2/xerces-j2.spec  being modified
+Do you want to want to modify jdepend/jdepend.spec?
+y
+jdepend/jdepend.spec  being modified
+Do you want to want to modify ecj/ecj.spec?
+y
+ecj/ecj.spec  being modified
+Do you want to want to modify rhino/rhino.spec?
+y
+rhino/rhino.spec  being modified
+Do you want to want to modify apache-commons-compress/apache-commons-compress.spec?
+y
+apache-commons-compress/apache-commons-compress.spec  being modified
+Do you want to want to modify containernetworking-plugins/containernetworking-plugins.spec?
+y
+containernetworking-plugins/containernetworking-plugins.spec  being modified
+Do you want to want to modify apache-commons-collections4/apache-commons-collections4.spec?
+y
+apache-commons-collections4/apache-commons-collections4.spec  being modified
+Do you want to want to modify jansi/jansi.spec?
+y
+jansi/jansi.spec  being modified
+Do you want to want to modify osgi-core/osgi-core.spec?
+y
+osgi-core/osgi-core.spec  being modified
+Do you want to want to modify httpcomponents-core/httpcomponents-core.spec?
+y
+httpcomponents-core/httpcomponents-core.spec  being modified
+Do you want to want to modify crypto-policies/crypto-policies.spec?
+y
+crypto-policies/crypto-policies.spec  being modified
+neerajs [ /third_disk/bb_24Feb/azlinux_sms/SPECS-EXTENDED ]$ 
+neerajs [ /third_disk/bb_24Feb/azlinux_sms/SPECS-EXTENDED ]$ for pkspec in `cat ../../ListOfFileWithExclusiveArchProblem`; do echo $pkspec; git diff $pkspec ; done
+xalan-j2/xalan-j2.spec
+diff --git a/SPECS-EXTENDED/xalan-j2/xalan-j2.spec b/SPECS-EXTENDED/xalan-j2/xalan-j2.spec
+old mode 100755
+new mode 100644
+index 646e60382..98f1c0faf
+--- a/SPECS-EXTENDED/xalan-j2/xalan-j2.spec
++++ b/SPECS-EXTENDED/xalan-j2/xalan-j2.spec
+@@ -19,7 +19,7 @@ Source6:        generate-tarball.sh
+ Patch0:         xalan-j2-noxsltcdeps.patch
+ 
+ BuildArch:      noarch
+-ExclusiveArch:  %{java_arches} noarch
++#ExclusiveArch:  %{java_arches} noarch
+ 
+ BuildRequires:  javapackages-local
+ BuildRequires:  ant
+maven-parent/maven-parent.spec
+diff --git a/SPECS-EXTENDED/maven-parent/maven-parent.spec b/SPECS-EXTENDED/maven-parent/maven-parent.spec
+old mode 100755
+new mode 100644
+index cbe5cf7b6..a05ec03f0
+--- a/SPECS-EXTENDED/maven-parent/maven-parent.spec
++++ b/SPECS-EXTENDED/maven-parent/maven-parent.spec
+@@ -8,7 +8,7 @@ License:        Apache-2.0
+ URL:            https://maven.apache.org
+ Source0:        https://repo1.maven.org/maven2/org/apache/maven/%{name}/%{version}/%{name}-%{version}-source-release.zip
+ BuildArch:      noarch
+-ExclusiveArch:  %{java_arches} noarch
++#ExclusiveArch:  %{java_arches} noarch
+ 
+ %if %{with bootstrap}
+ BuildRequires:  javapackages-bootstrap
+xmlunit/xmlunit.spec
+diff --git a/SPECS-EXTENDED/xmlunit/xmlunit.spec b/SPECS-EXTENDED/xmlunit/xmlunit.spec
+old mode 100755
+new mode 100644
+index 03af97087..0eb6a9a20
+--- a/SPECS-EXTENDED/xmlunit/xmlunit.spec
++++ b/SPECS-EXTENDED/xmlunit/xmlunit.spec
+@@ -8,7 +8,7 @@ Summary:        Provides classes to do asserts on xml
+ License:        Apache-2.0
+ URL:            https://www.xmlunit.org/
+ BuildArch:      noarch
+-ExclusiveArch:  %{java_arches} noarch
++#ExclusiveArch:  %{java_arches} noarch
+ 
+ # ./generate-tarball.sh
+ Source0:        %{name}-%{version}.tar.gz
+xbean/xbean.spec
+diff --git a/SPECS-EXTENDED/xbean/xbean.spec b/SPECS-EXTENDED/xbean/xbean.spec
+old mode 100755
+new mode 100644
+index 3232dec90..349c6c8ab
+--- a/SPECS-EXTENDED/xbean/xbean.spec
++++ b/SPECS-EXTENDED/xbean/xbean.spec
+@@ -7,7 +7,7 @@ Summary:        Java plugin based web server
+ License:        Apache-2.0
+ URL:            https://geronimo.apache.org/xbean/
+ BuildArch:      noarch
+-ExclusiveArch:  %{java_arches} noarch
++#ExclusiveArch:  %{java_arches} noarch
+ 
+ Source0:        https://repo1.maven.org/maven2/org/apache/%{name}/%{name}/%{version}/%{name}-%{version}-source-release.zip
+ 
+apache-commons-net/apache-commons-net.spec
+diff --git a/SPECS-EXTENDED/apache-commons-net/apache-commons-net.spec b/SPECS-EXTENDED/apache-commons-net/apache-commons-net.spec
+old mode 100755
+new mode 100644
+index e9fcd07b6..4a51afb75
+--- a/SPECS-EXTENDED/apache-commons-net/apache-commons-net.spec
++++ b/SPECS-EXTENDED/apache-commons-net/apache-commons-net.spec
+@@ -8,7 +8,7 @@ Source0:        https://archive.apache.org/dist/commons/net/source/commons-net-%
+ Source1:        https://downloads.apache.org/commons/net/source/commons-net-%{version}-src.tar.gz.asc
+ Source2:        https://downloads.apache.org/commons/KEYS
+ BuildArch:      noarch
+-ExclusiveArch:  %{java_arches} noarch
++#ExclusiveArch:  %{java_arches} noarch
+ 
+ BuildRequires:  maven-local
+ BuildRequires:  mvn(org.apache.commons:commons-parent:pom:)
+jakarta-annotations/jakarta-annotations.spec
+diff --git a/SPECS-EXTENDED/jakarta-annotations/jakarta-annotations.spec b/SPECS-EXTENDED/jakarta-annotations/jakarta-annotations.spec
+old mode 100755
+new mode 100644
+index 4eef0f190..0c78e0e1e
+--- a/SPECS-EXTENDED/jakarta-annotations/jakarta-annotations.spec
++++ b/SPECS-EXTENDED/jakarta-annotations/jakarta-annotations.spec
+@@ -7,7 +7,7 @@ Summary:        Jakarta Annotations
+ License:        EPL-2.0 OR GPL-2.0-only WITH Classpath-exception-2.0
+ URL:            https://github.com/eclipse-ee4j/common-annotations-api
+ BuildArch:      noarch
+-ExclusiveArch:  %{java_arches} noarch
++#ExclusiveArch:  %{java_arches} noarch
+ 
+ Source0:        https://github.com/eclipse-ee4j/common-annotations-api/archive/%{version}/common-annotations-api-%{version}.tar.gz
+ 
+jline/jline.spec
+diff --git a/SPECS-EXTENDED/jline/jline.spec b/SPECS-EXTENDED/jline/jline.spec
+old mode 100755
+new mode 100644
+index a9f33193f..b225d6146
+--- a/SPECS-EXTENDED/jline/jline.spec
++++ b/SPECS-EXTENDED/jline/jline.spec
+@@ -22,7 +22,7 @@ Release:        4%{?dist}
+ Summary:        Java library for handling console input
+ License:        BSD-3-Clause
+ URL:            https://github.com/jline/jline3
+-ExclusiveArch:  %{java_arches}
++#ExclusiveArch:  %{java_arches}
+ 
+ Source0:        %{url}/archive/jline-parent-%{version}.tar.gz
+ 
+slirp4netns/slirp4netns.spec
+diff --git a/SPECS-EXTENDED/slirp4netns/slirp4netns.spec b/SPECS-EXTENDED/slirp4netns/slirp4netns.spec
+old mode 100755
+new mode 100644
+index 3ca577957..efc141fac
+--- a/SPECS-EXTENDED/slirp4netns/slirp4netns.spec
++++ b/SPECS-EXTENDED/slirp4netns/slirp4netns.spec
+@@ -16,7 +16,7 @@ Summary: slirp for network namespaces
+ URL: https://github.com/rootless-containers/%{name}
+ # Tarball fetched from upstream
+ Source0: %{url}/archive/v%{version}.tar.gz
+-ExclusiveArch: %{golang_arches_future}
++#ExclusiveArch: %{golang_arches_future}
+ BuildRequires: autoconf
+ BuildRequires: automake
+ BuildRequires: go-md2man
+jsoup/jsoup.spec
+diff --git a/SPECS-EXTENDED/jsoup/jsoup.spec b/SPECS-EXTENDED/jsoup/jsoup.spec
+old mode 100755
+new mode 100644
+index 2127565ed..d37a273ba
+--- a/SPECS-EXTENDED/jsoup/jsoup.spec
++++ b/SPECS-EXTENDED/jsoup/jsoup.spec
+@@ -7,7 +7,7 @@ Summary:        Java library for working with real-world HTML
+ License:        MIT
+ URL:            https://jsoup.org/
+ BuildArch:      noarch
+-ExclusiveArch:  %{java_arches} noarch
++#ExclusiveArch:  %{java_arches} noarch
+ 
+ # ./generate-tarball.sh
+ Source0:        %{name}-%{version}.tar.gz
+apache-commons-io/apache-commons-io.spec
+diff --git a/SPECS-EXTENDED/apache-commons-io/apache-commons-io.spec b/SPECS-EXTENDED/apache-commons-io/apache-commons-io.spec
+old mode 100755
+new mode 100644
+index 00514a2f6..5da7f3f3f
+--- a/SPECS-EXTENDED/apache-commons-io/apache-commons-io.spec
++++ b/SPECS-EXTENDED/apache-commons-io/apache-commons-io.spec
+@@ -8,7 +8,7 @@ Summary:        Utilities to assist with developing IO functionality
+ License:        Apache-2.0
+ URL:            https://commons.apache.org/io
+ BuildArch:      noarch
+-ExclusiveArch:  %{java_arches} noarch
++#ExclusiveArch:  %{java_arches} noarch
+ 
+ Source0:        https://archive.apache.org/dist/commons/io/source/commons-io-%{version}-src.tar.gz
+ 
+cglib/cglib.spec
+diff --git a/SPECS-EXTENDED/cglib/cglib.spec b/SPECS-EXTENDED/cglib/cglib.spec
+old mode 100755
+new mode 100644
+index 935fb922f..51aed707d
+--- a/SPECS-EXTENDED/cglib/cglib.spec
++++ b/SPECS-EXTENDED/cglib/cglib.spec
+@@ -11,7 +11,7 @@ Summary:        Code Generation Library for Java
+ License:        Apache-2.0 AND BSD-3-Clause
+ URL:            https://github.com/cglib/cglib
+ BuildArch:      noarch
+-ExclusiveArch:  %{java_arches} noarch
++#ExclusiveArch:  %{java_arches} noarch
+ 
+ Source0:        https://github.com/cglib/cglib/archive/%{tarball_name}.tar.gz
+ 
+javacc/javacc.spec
+diff --git a/SPECS-EXTENDED/javacc/javacc.spec b/SPECS-EXTENDED/javacc/javacc.spec
+old mode 100755
+new mode 100644
+index 9ceb77f42..750ac802f
+--- a/SPECS-EXTENDED/javacc/javacc.spec
++++ b/SPECS-EXTENDED/javacc/javacc.spec
+@@ -65,7 +65,7 @@ BuildRequires:  javacc
+ Requires:       javapackages-tools
+ 
+ BuildArch:      noarch
+-ExclusiveArch:  %{java_arches} noarch
++#ExclusiveArch:  %{java_arches} noarch
+ 
+ %description
+ Java Compiler Compiler (JavaCC) is the most popular parser generator for use
+bcel/bcel.spec
+diff --git a/SPECS-EXTENDED/bcel/bcel.spec b/SPECS-EXTENDED/bcel/bcel.spec
+old mode 100755
+new mode 100644
+index d4ffc53ec..6e48c21df
+--- a/SPECS-EXTENDED/bcel/bcel.spec
++++ b/SPECS-EXTENDED/bcel/bcel.spec
+@@ -5,7 +5,7 @@ Summary:        Byte Code Engineering Library
+ License:        Apache-2.0
+ URL:            http://commons.apache.org/proper/commons-bcel/
+ BuildArch:      noarch
+-ExclusiveArch:  %{java_arches} noarch
++#ExclusiveArch:  %{java_arches} noarch
+ 
+ Source0:        http://archive.apache.org/dist/commons/bcel/source/bcel-%{version}-src.tar.gz
+ 
+apache-commons-codec/apache-commons-codec.spec
+diff --git a/SPECS-EXTENDED/apache-commons-codec/apache-commons-codec.spec b/SPECS-EXTENDED/apache-commons-codec/apache-commons-codec.spec
+old mode 100755
+new mode 100644
+index 70adc2aad..8090476e2
+--- a/SPECS-EXTENDED/apache-commons-codec/apache-commons-codec.spec
++++ b/SPECS-EXTENDED/apache-commons-codec/apache-commons-codec.spec
+@@ -7,7 +7,7 @@ Summary:        Implementations of common encoders and decoders
+ License:        Apache-2.0
+ URL:            https://commons.apache.org/codec/
+ BuildArch:      noarch
+-ExclusiveArch:  %{java_arches} noarch
++#ExclusiveArch:  %{java_arches} noarch
+ 
+ Source0:        https://archive.apache.org/dist/commons/codec/source/commons-codec-%{version}-src.tar.gz
+ # Data in DoubleMetaphoneTest.java originally has an inadmissible license.
+osgi-annotation/osgi-annotation.spec
+diff --git a/SPECS-EXTENDED/osgi-annotation/osgi-annotation.spec b/SPECS-EXTENDED/osgi-annotation/osgi-annotation.spec
+old mode 100755
+new mode 100644
+index 8be692a4c..f272a72fa
+--- a/SPECS-EXTENDED/osgi-annotation/osgi-annotation.spec
++++ b/SPECS-EXTENDED/osgi-annotation/osgi-annotation.spec
+@@ -7,7 +7,7 @@ Summary:        Annotations for use in compiling OSGi bundles
+ License:        Apache-2.0
+ URL:            https://www.osgi.org
+ BuildArch:      noarch
+-ExclusiveArch:  %{java_arches} noarch
++#ExclusiveArch:  %{java_arches} noarch
+ 
+ # Upstream project is behind an account registration system with no anonymous
+ # read access, so we download the source from maven central instead
+apache-commons-jexl/apache-commons-jexl.spec
+diff --git a/SPECS-EXTENDED/apache-commons-jexl/apache-commons-jexl.spec b/SPECS-EXTENDED/apache-commons-jexl/apache-commons-jexl.spec
+old mode 100755
+new mode 100644
+index c875115cc..423e1200f
+--- a/SPECS-EXTENDED/apache-commons-jexl/apache-commons-jexl.spec
++++ b/SPECS-EXTENDED/apache-commons-jexl/apache-commons-jexl.spec
+@@ -19,7 +19,7 @@ Summary:        Java Expression Language
+ 
+ License:        Apache-2.0
+ BuildArch:      noarch
+-ExclusiveArch:  %{java_arches} noarch
++#ExclusiveArch:  %{java_arches} noarch
+ URL:            https://commons.apache.org/proper/commons-jexl/
+ VCS:            git:https://github.com/apache/commons-jexl.git
+ Source0:        https://archive.apache.org/dist/commons/jexl/source/commons-jexl-%{version}-src.tar.gz
+objenesis/objenesis.spec
+diff --git a/SPECS-EXTENDED/objenesis/objenesis.spec b/SPECS-EXTENDED/objenesis/objenesis.spec
+old mode 100755
+new mode 100644
+index 64ffd0f33..d8a37c6ca
+--- a/SPECS-EXTENDED/objenesis/objenesis.spec
++++ b/SPECS-EXTENDED/objenesis/objenesis.spec
+@@ -37,7 +37,7 @@ Release:        4%{?dist}
+ License:        Apache-2.0
+ URL:            http://objenesis.org/
+ BuildArch:      noarch
+-ExclusiveArch:  %{java_arches} noarch
++#ExclusiveArch:  %{java_arches} noarch
+ 
+ Source0:        https://github.com/easymock/%{name}/archive/%{version}.tar.gz
+ 
+apache-commons-vfs/apache-commons-vfs.spec
+diff --git a/SPECS-EXTENDED/apache-commons-vfs/apache-commons-vfs.spec b/SPECS-EXTENDED/apache-commons-vfs/apache-commons-vfs.spec
+old mode 100755
+new mode 100644
+index 44bcc9bdb..1206937bd
+--- a/SPECS-EXTENDED/apache-commons-vfs/apache-commons-vfs.spec
++++ b/SPECS-EXTENDED/apache-commons-vfs/apache-commons-vfs.spec
+@@ -19,7 +19,7 @@ Release:        %autorelease
+ Summary:        Commons Virtual File System
+ License:        Apache-2.0
+ BuildArch:      noarch
+-ExclusiveArch:  %{java_arches} noarch
++#ExclusiveArch:  %{java_arches} noarch
+ 
+ URL:            https://commons.apache.org/proper/commons-vfs/
+ VCS:            git:https://github.com/apache/commons-vfs.git
+hawtjni/hawtjni.spec
+diff --git a/SPECS-EXTENDED/hawtjni/hawtjni.spec b/SPECS-EXTENDED/hawtjni/hawtjni.spec
+old mode 100755
+new mode 100644
+index 12c537a34..e7a4f73c7
+--- a/SPECS-EXTENDED/hawtjni/hawtjni.spec
++++ b/SPECS-EXTENDED/hawtjni/hawtjni.spec
+@@ -14,7 +14,7 @@ Source0:          https://github.com/fusesource/hawtjni/archive/%{name}-project-
+ Patch0:           00-hawtjni-port-to-commons-lang3.patch
+ 
+ BuildArch:        noarch
+-ExclusiveArch:  %{java_arches} noarch
++#ExclusiveArch:  %{java_arches} noarch
+ 
+ BuildRequires:    maven-local
+ BuildRequires:    mvn(commons-cli:commons-cli)
+jdom2/jdom2.spec
+diff --git a/SPECS-EXTENDED/jdom2/jdom2.spec b/SPECS-EXTENDED/jdom2/jdom2.spec
+old mode 100755
+new mode 100644
+index 10f7f575b..cc6ca48c4
+--- a/SPECS-EXTENDED/jdom2/jdom2.spec
++++ b/SPECS-EXTENDED/jdom2/jdom2.spec
+@@ -26,7 +26,7 @@ BuildRequires: ant-junit
+ %endif
+ 
+ BuildArch:     noarch
+-ExclusiveArch: %{java_arches} noarch
++#ExclusiveArch: %{java_arches} noarch
+ 
+ %description
+ JDOM is a Java-oriented object model which models XML documents.
+trilead-ssh2/trilead-ssh2.spec
+diff --git a/SPECS-EXTENDED/trilead-ssh2/trilead-ssh2.spec b/SPECS-EXTENDED/trilead-ssh2/trilead-ssh2.spec
+old mode 100755
+new mode 100644
+index d5c308618..216ec7d56
+--- a/SPECS-EXTENDED/trilead-ssh2/trilead-ssh2.spec
++++ b/SPECS-EXTENDED/trilead-ssh2/trilead-ssh2.spec
+@@ -29,7 +29,7 @@ BuildRequires:  mvn(commons-io:commons-io)
+ BuildRequires:  mvn(net.i2p.crypto:eddsa)
+ 
+ BuildArch:      noarch
+-ExclusiveArch:  %{java_arches} noarch
++#ExclusiveArch:  %{java_arches} noarch
+ 
+ %description
+ Trilead SSH-2 for Java is a library which implements the SSH-2 protocol in pure
+plexus-pom/plexus-pom.spec
+diff --git a/SPECS-EXTENDED/plexus-pom/plexus-pom.spec b/SPECS-EXTENDED/plexus-pom/plexus-pom.spec
+old mode 100755
+new mode 100644
+index bff91eff9..cba7c6e5c
+--- a/SPECS-EXTENDED/plexus-pom/plexus-pom.spec
++++ b/SPECS-EXTENDED/plexus-pom/plexus-pom.spec
+@@ -9,7 +9,7 @@ URL:           https://github.com/codehaus-plexus/plexus-pom
+ Source0:       https://github.com/codehaus-plexus/plexus-pom/archive/plexus-%{version}.tar.gz
+ Source1:       https://www.apache.org/licenses/LICENSE-2.0.txt
+ BuildArch:     noarch
+-ExclusiveArch: %{java_arches} noarch
++#ExclusiveArch: %{java_arches} noarch
+ 
+ %if %{with bootstrap}
+ BuildRequires: javapackages-bootstrap
+xerces-j2/xerces-j2.spec
+diff --git a/SPECS-EXTENDED/xerces-j2/xerces-j2.spec b/SPECS-EXTENDED/xerces-j2/xerces-j2.spec
+old mode 100755
+new mode 100644
+index 7c1e38893..cd411c5f4
+--- a/SPECS-EXTENDED/xerces-j2/xerces-j2.spec
++++ b/SPECS-EXTENDED/xerces-j2/xerces-j2.spec
+@@ -33,7 +33,7 @@ Patch0:        %{name}-build.patch
+ Patch1:        %{name}-manifest.patch
+ 
+ BuildArch:     noarch
+-ExclusiveArch: %{java_arches} noarch
++#ExclusiveArch: %{java_arches} noarch
+ 
+ BuildRequires: javapackages-local
+ BuildRequires: ant
+jdepend/jdepend.spec
+diff --git a/SPECS-EXTENDED/jdepend/jdepend.spec b/SPECS-EXTENDED/jdepend/jdepend.spec
+old mode 100755
+new mode 100644
+index 6e311734b..671d558ab
+--- a/SPECS-EXTENDED/jdepend/jdepend.spec
++++ b/SPECS-EXTENDED/jdepend/jdepend.spec
+@@ -5,7 +5,7 @@ Summary:        Java Design Quality Metrics
+ License:        MIT
+ URL:            https://github.com/clarkware/jdepend
+ BuildArch:      noarch
+-ExclusiveArch:  %{java_arches} noarch
++#ExclusiveArch:  %{java_arches} noarch
+ 
+ Source0:        https://github.com/clarkware/jdepend/archive/refs/tags/2.10.tar.gz#/jdepend-2.10.tar.gz
+ 
+ecj/ecj.spec
+diff --git a/SPECS-EXTENDED/ecj/ecj.spec b/SPECS-EXTENDED/ecj/ecj.spec
+old mode 100755
+new mode 100644
+index 61bc9d750..0998fe65e
+--- a/SPECS-EXTENDED/ecj/ecj.spec
++++ b/SPECS-EXTENDED/ecj/ecj.spec
+@@ -22,7 +22,7 @@ Source2: MANIFEST.MF
+ Patch0: 0001-Always-generate-bytecode-debuginfo.patch
+ 
+ BuildArch: noarch
+-ExclusiveArch:  %{java_arches} noarch
++#ExclusiveArch:  %{java_arches} noarch
+ 
+ BuildRequires: ant
+ BuildRequires: javapackages-local
+rhino/rhino.spec
+diff --git a/SPECS-EXTENDED/rhino/rhino.spec b/SPECS-EXTENDED/rhino/rhino.spec
+old mode 100755
+new mode 100644
+index bd0978d0a..cd5963148
+--- a/SPECS-EXTENDED/rhino/rhino.spec
++++ b/SPECS-EXTENDED/rhino/rhino.spec
+@@ -14,7 +14,7 @@ Summary:        Rhino
+ License:        MPL-2.0 AND LicenseRef-Callaway-BSD
+ URL:            https://mozilla.github.io/rhino
+ BuildArch:      noarch
+-ExclusiveArch:  %{java_arches} noarch
++#ExclusiveArch:  %{java_arches} noarch
+ ExcludeArch:    %{ix86}
+ 
+ Source0:        %{url}/archive/%{scm_release}/%{name}-%{version}.tar.gz
+apache-commons-compress/apache-commons-compress.spec
+diff --git a/SPECS-EXTENDED/apache-commons-compress/apache-commons-compress.spec b/SPECS-EXTENDED/apache-commons-compress/apache-commons-compress.spec
+old mode 100755
+new mode 100644
+index cffee5dc4..ef706c7e0
+--- a/SPECS-EXTENDED/apache-commons-compress/apache-commons-compress.spec
++++ b/SPECS-EXTENDED/apache-commons-compress/apache-commons-compress.spec
+@@ -7,7 +7,7 @@ Summary:        Java API for working with compressed files and archivers
+ License:        Apache-2.0
+ URL:            https://commons.apache.org/proper/commons-compress/
+ BuildArch:      noarch
+-ExclusiveArch:  %{java_arches} noarch
++#ExclusiveArch:  %{java_arches} noarch
+ 
+ Source0:        https://archive.apache.org/dist/commons/compress/source/commons-compress-%{version}-src.tar.gz
+ 
+containernetworking-plugins/containernetworking-plugins.spec
+diff --git a/SPECS-EXTENDED/containernetworking-plugins/containernetworking-plugins.spec b/SPECS-EXTENDED/containernetworking-plugins/containernetworking-plugins.spec
+old mode 100755
+new mode 100644
+index 271ff59a5..ef6518bf4
+--- a/SPECS-EXTENDED/containernetworking-plugins/containernetworking-plugins.spec
++++ b/SPECS-EXTENDED/containernetworking-plugins/containernetworking-plugins.spec
+@@ -36,7 +36,7 @@ Summary: Libraries for writing CNI plugin
+ URL: %{git0}
+ # Tarball fetched from upstream
+ Source0: %{url}/archive/%{built_tag}.tar.gz
+-ExclusiveArch: %{golang_arches}
++#ExclusiveArch: %{golang_arches}
+ BuildRequires: golang >= 1.23
+ BuildRequires: systemd-devel
+ BuildRequires: go-rpm-macros
+apache-commons-collections4/apache-commons-collections4.spec
+diff --git a/SPECS-EXTENDED/apache-commons-collections4/apache-commons-collections4.spec b/SPECS-EXTENDED/apache-commons-collections4/apache-commons-collections4.spec
+old mode 100755
+new mode 100644
+index 53c35f6ca..1dc6ed075
+--- a/SPECS-EXTENDED/apache-commons-collections4/apache-commons-collections4.spec
++++ b/SPECS-EXTENDED/apache-commons-collections4/apache-commons-collections4.spec
+@@ -8,7 +8,7 @@ URL:            http://commons.apache.org/proper/commons-collections/
+ Source0:        http://archive.apache.org/dist/commons/collections/source/commons-collections4-%{version}-src.tar.gz
+ 
+ BuildArch:      noarch
+-ExclusiveArch:  %{java_arches} noarch
++#ExclusiveArch:  %{java_arches} noarch
+ 
+ BuildRequires:  maven-local
+ BuildRequires:  mvn(junit:junit)
+jansi/jansi.spec
+diff --git a/SPECS-EXTENDED/jansi/jansi.spec b/SPECS-EXTENDED/jansi/jansi.spec
+old mode 100755
+new mode 100644
+index cae3bbe52..af5edfd0d
+--- a/SPECS-EXTENDED/jansi/jansi.spec
++++ b/SPECS-EXTENDED/jansi/jansi.spec
+@@ -6,7 +6,7 @@ Release:          4%{?dist}
+ Summary:          Generate and interpret ANSI escape sequences in Java
+ License:          Apache-2.0
+ URL:              http://fusesource.github.io/jansi/
+-ExclusiveArch:    %{java_arches}
++#ExclusiveArch:    %{java_arches}
+ 
+ # ./generate-tarball.sh
+ Source0:          %{name}-%{version}.tar.gz
+osgi-core/osgi-core.spec
+diff --git a/SPECS-EXTENDED/osgi-core/osgi-core.spec b/SPECS-EXTENDED/osgi-core/osgi-core.spec
+old mode 100755
+new mode 100644
+index df09849fd..1dc65a891
+--- a/SPECS-EXTENDED/osgi-core/osgi-core.spec
++++ b/SPECS-EXTENDED/osgi-core/osgi-core.spec
+@@ -11,7 +11,7 @@ URL:            https://www.osgi.org
+ Source0:        https://docs.osgi.org/download/r8/osgi.core-%{version}.jar
+ 
+ BuildArch:      noarch
+-ExclusiveArch:  %{java_arches} noarch
++#ExclusiveArch:  %{java_arches} noarch
+ 
+ %if %{with bootstrap}
+ BuildRequires:  javapackages-bootstrap
+httpcomponents-core/httpcomponents-core.spec
+diff --git a/SPECS-EXTENDED/httpcomponents-core/httpcomponents-core.spec b/SPECS-EXTENDED/httpcomponents-core/httpcomponents-core.spec
+old mode 100755
+new mode 100644
+index 53b9a96a8..5d966e700
+--- a/SPECS-EXTENDED/httpcomponents-core/httpcomponents-core.spec
++++ b/SPECS-EXTENDED/httpcomponents-core/httpcomponents-core.spec
+@@ -11,7 +11,7 @@ Patch1:         0001-Port-to-mockito-2.patch
+ Patch2:         0002-Port-to-Mockito-5.patch
+ 
+ BuildArch:      noarch
+-ExclusiveArch:  %{java_arches} noarch
++#ExclusiveArch:  %{java_arches} noarch
+ 
+ %if %{with bootstrap}
+ BuildRequires:  javapackages-bootstrap
+crypto-policies/crypto-policies.spec
+diff --git a/SPECS-EXTENDED/crypto-policies/crypto-policies.spec b/SPECS-EXTENDED/crypto-policies/crypto-policies.spec
+old mode 100755
+new mode 100644
+index 6a05a4598..d78a5d543
+--- a/SPECS-EXTENDED/crypto-policies/crypto-policies.spec
++++ b/SPECS-EXTENDED/crypto-policies/crypto-policies.spec
+@@ -19,7 +19,7 @@ URL:            https://gitlab.com/redhat-crypto/fedora-crypto-policies
+ Source0:        https://gitlab.com/redhat-crypto/fedora-crypto-policies/-/archive/%{git_commit_hash}/%{name}-git%{git_commit_hash}.tar.gz
+ 
+ BuildArch: noarch
+-ExclusiveArch:  %{java_arches} noarch
++#ExclusiveArch:  %{java_arches} noarch
+ BuildRequires: asciidoc
+ BuildRequires: libxslt
+ BuildRequires: openssl
+neerajs [ /third_disk/bb_24Feb/azlinux_sms/SPECS-EXTENDED ]$ 
+neerajs [ /third_disk/bb_24Feb/azlinux_sms/SPECS-EXTENDED ]$ for pkspec in `cat ../../ListOfFileWithExclusiveArchProblem`; do echo $pkspec; git diff $pkspec ; done | grep -e "^-ExclusiveArch" 
+-ExclusiveArch:  %{java_arches} noarch
+-ExclusiveArch:  %{java_arches} noarch
+-ExclusiveArch:  %{java_arches} noarch
+-ExclusiveArch:  %{java_arches} noarch
+-ExclusiveArch:  %{java_arches} noarch
+-ExclusiveArch:  %{java_arches} noarch
+-ExclusiveArch:  %{java_arches}
+-ExclusiveArch: %{golang_arches_future}
+-ExclusiveArch:  %{java_arches} noarch
+-ExclusiveArch:  %{java_arches} noarch
+-ExclusiveArch:  %{java_arches} noarch
+-ExclusiveArch:  %{java_arches} noarch
+-ExclusiveArch:  %{java_arches} noarch
+-ExclusiveArch:  %{java_arches} noarch
+-ExclusiveArch:  %{java_arches} noarch
+-ExclusiveArch:  %{java_arches} noarch
+-ExclusiveArch:  %{java_arches} noarch
+-ExclusiveArch:  %{java_arches} noarch
+-ExclusiveArch:  %{java_arches} noarch
+-ExclusiveArch: %{java_arches} noarch
+-ExclusiveArch:  %{java_arches} noarch
+-ExclusiveArch: %{java_arches} noarch
+-ExclusiveArch: %{java_arches} noarch
+-ExclusiveArch:  %{java_arches} noarch
+-ExclusiveArch:  %{java_arches} noarch
+-ExclusiveArch:  %{java_arches} noarch
+-ExclusiveArch:  %{java_arches} noarch
+-ExclusiveArch: %{golang_arches}
+-ExclusiveArch:  %{java_arches} noarch
+-ExclusiveArch:    %{java_arches}
+-ExclusiveArch:  %{java_arches} noarch
+-ExclusiveArch:  %{java_arches} noarch
+-ExclusiveArch:  %{java_arches} noarch
+neerajs [ /third_disk/bb_24Feb/azlinux_sms/SPECS-EXTENDED ]$ for pkspec in `cat ../../ListOfFileWithExclusiveArchProblem`; do echo $pkspec; git diff $pkspec ; done | grep -e "^-ExclusiveArch"  | wc
+     33      95    1267
+neerajs [ /third_disk/bb_24Feb/azlinux_sms/SPECS-EXTENDED ]$ 
+```
+
+Starting another build after a sudo make clean:
+This time it failed after 11 minutes.
+```
+neerajs [ /third_disk/bb_24Feb/azlinux_sms/toolkit ]$ time /home/neerajs/utils/BULK_BLD_THINGS_24Feb/build_scr_wo_check.sh /home/neerajs/utils/BULK_BLD_THINGS_24Feb/wkg_pkgs_to_build /third_disk/bb_24Feb/azlinux_sms/ > ../bld_bb25Feb_iter1_4_$(date +%Y%m%d-%H%M).log 
+2>&1 &
+[2] 875009
+neerajs [ /third_disk/bb_24Feb/azlinux_sms/toolkit ]$ 
+real    11m51.958s
+user    0m0.032s
+sys     0m0.004s
+```
+
+The failure was due to circular dependency inside javacc.spec:
+```
+INFO[0001][grapher] Adding unresolved node (perl(Return::MultiLevel)--REMOTE<Unresolved>) 
+INFO[0001][grapher]     Added 95473 dependencies                    
+INFO[0001][grapher] Running cycle resolution to fix any cycles in the dependency graph 
+INFO[0001][grapher] Trying to fix circular dependency found:    {javacc-0:7.0.13-7.azl3-BUILD<Build>} --> {javacc-0:7.0.13-7.azl3-RUN<Meta>} 
+WARN[0001][grapher] ╔═══════════════════════════════════════════════════════════════════════════════════════════════╗ 
+WARN[0001][grapher] ║  'copy-toolchain-rpms' should no longer be required to resolve cycles even when using online  ║ 
+WARN[0001][grapher] ║ toolchain rpms. If you see this message, there is likely a legitimate cycle in the dependency ║ 
+WARN[0001][grapher] ║                                            graph.                                             ║ 
+WARN[0001][grapher] ╚═══════════════════════════════════════════════════════════════════════════════════════════════╝ 
+PANI[0001][grapher] unfixable circular dependency in dependency graph ({javacc-0:7.0.13-7.azl3-RUN<Meta>} --> {javacc-0:7.0.13-7.azl3-BUILD<Build>} --> {javacc-0:7.0.13-7.azl3-RUN<Meta>}):
+cycle can't be resolved with prebuilt/PMC RPMs. Unresolvable 
+panic: (*logrus.Entry) 0xc000f2cd90
+
+goroutine 1 [running]:
+github.com/sirupsen/logrus.(*Entry).log(0xc00031b7a0, 0x0, {0xc000f522d0, 0xe5})
+        /root/go/pkg/mod/github.com/sirupsen/logrus@v1.9.3/entry.go:260 +0x485
+```
+
+The fix is to comment out the "BuildRequires" on javacc in javacc.spec.
+The git diff before and after editing of the spec file shows that this BuildRequires has been commented out:
+```
+neerajs [ /third_disk/bb_24Feb/azlinux_sms/SPECS-EXTENDED ]$ git diff javacc/javacc.spec
+diff --git a/SPECS-EXTENDED/javacc/javacc.spec b/SPECS-EXTENDED/javacc/javacc.spec
+old mode 100755
+new mode 100644
+index 9ceb77f42..750ac802f
+--- a/SPECS-EXTENDED/javacc/javacc.spec
++++ b/SPECS-EXTENDED/javacc/javacc.spec
+@@ -65,7 +65,7 @@ BuildRequires:  javacc
+ Requires:       javapackages-tools
+ 
+ BuildArch:      noarch
+-ExclusiveArch:  %{java_arches} noarch
++#ExclusiveArch:  %{java_arches} noarch
+ 
+ %description
+ Java Compiler Compiler (JavaCC) is the most popular parser generator for use
+neerajs [ /third_disk/bb_24Feb/azlinux_sms/SPECS-EXTENDED ]$ vim javacc/javacc.spec
+neerajs [ /third_disk/bb_24Feb/azlinux_sms/SPECS-EXTENDED ]$ git diff javacc/javacc.spec
+diff --git a/SPECS-EXTENDED/javacc/javacc.spec b/SPECS-EXTENDED/javacc/javacc.spec
+old mode 100755
+new mode 100644
+index 9ceb77f42..2d6071936
+--- a/SPECS-EXTENDED/javacc/javacc.spec
++++ b/SPECS-EXTENDED/javacc/javacc.spec
+@@ -57,7 +57,7 @@ BuildRequires:  javapackages-bootstrap
+ %else
+ BuildRequires:  javapackages-local
+ BuildRequires:  ant
+-BuildRequires:  javacc
++#BuildRequires:  javacc
+ %endif
+ 
+ # Explicit javapackages-tools requires since scripts use
+@@ -65,7 +65,7 @@ BuildRequires:  javacc
+ Requires:       javapackages-tools
+ 
+ BuildArch:      noarch
+-ExclusiveArch:  %{java_arches} noarch
++#ExclusiveArch:  %{java_arches} noarch
+ 
+ %description
+ Java Compiler Compiler (JavaCC) is the most popular parser generator for use
+neerajs [ /third_disk/bb_24Feb/azlinux_sms/SPECS-EXTENDED ]$ 
+```
+
+Started another build after sudo make clean:
+The session terminated after some 4 hours.
+```
+neerajs [ /third_disk/bb_24Feb/azlinux_sms/toolkit ]$ time /home/neerajs/utils/BULK_BLD_THINGS_24Feb/build_scr_wo_check.sh /home/neerajs/utils/BULK_BLD_THINGS_24Feb/wkg_pkgs_to_build /third_disk/bb_24Feb/azlinux_sms/ > ../bld_bb25Feb_iter1_5_$(date +%Y%m%d-%H%M).log 
+2>&1 &
+[2] 1064715
+neerajs [ /third_disk/bb_24Feb/azlinux_sms/toolkit ]$ 
+neerajs [ /third_disk/bb_24Feb/azlinux_sms/toolkit ]$ 
+ SSH  192.168.225.3: session closed
+Press any key to reconnect
+```
+
+The build logs were at:
+```
+INFO[8077][scheduler] Building: libavc1394-0.5.4-13.azl3.src.rpm   
+INFO[8077][scheduler] Built: perl-MLDBM-2.05-22.azl3.src.rpm -> [/third_disk/bb_24Feb/azlinux_sms/out/RPMS/noarch/perl-MLDBM-2.05-22.azl3.noarch.rpm] 
+INFO[8078][scheduler] Satisfying unresolved dynamic dependency (perl(MLDBM)--REMOTE<Unresolved>) with (perl(MLDBM):C:'='V:'2.05',C2:''V2:'') 
+WARN[8078][scheduler] Found 716 unsolved implicit nodes, cannot optimize subgraph yet...
+        Unsolvable node: pkgconfig(x11)(>=1.3,):<ID:14606 Type:Remote State:Cached Rpm:/third_disk/bb_24Feb/azlinux_sms/build/rpm_cache/cache/libX11-devel-1.8.7-1.azl3.x86_64.rpm> from '<NO_SRPM_PATH>' in '<NO_SOURCE_REPO>'
+        Unsolvable node: pkgconfig(gl)(,):<ID:14842 Type:Remote State:Cached Rpm:/third_disk/bb_24Feb/azlinux_sms/build/rpm_cache/cache/libglvnd-devel-1.7.0-2.azl3.x86_64.rpm> from '<NO_SRPM_PATH>' in '<NO_SOURCE_REPO>'
+        Unsolvable node: pkgconfig(glu)(,):<ID:14843 Type:Remote State:Cached Rpm:/third_disk/bb_24Feb/azlinux_sms/build/rpm_cache/cache/mesa-libGLU-devel-9.0.3-1.azl3.x86_64.rpm> from '<NO_SRPM_PATH>' in '<NO_SOURCE_REPO>'
+        Unsolvable node: pkgconfig(xproto)(,):<ID:15157 Type:Remote State:Cached Rpm:/third_disk/bb_24Feb/azlinux_sms/build/rpm_cache/cache/xorg-x11-proto-devel-2024.1-1.azl3.noarch.rpm> from '<NO_SRPM_PATH>' in '<NO_SOURCE_REPO>'
+        Unsolvable node: perl(LWP::UserAgent)(,):<ID:14274 Type:Remote State:Cached Rpm:/third_disk/bb_24Feb/azlinux_sms/build/rpm_cache/cache/perl-libwww-perl-6.72-1.azl3.noarch.rpm> from '<NO_SRPM_PATH>' in '<NO_SOURCE_REPO>'
+        ...and 711 more 
+INFO[8078][scheduler] 40 currently active build(s): [speex-1.2.0-6.azl3.src.rpm perl-Role-Tiny-2.002004-12.azl3.src.rpm libofa-0.9.3-42.azl3.src.rpm lasso-2.8.2-14.azl3.src.rpm foomatic-db-4.0-80.20230810.azl3.src.rpm rr-5.8.0-2.azl3.src.rpm libpinyin-2.9.91-1.azl3.src.rpm ORBit2-2.14.19-30.azl3.src.rpm python-enchant-3.2.2-7.azl3.src.rpm mecab-ipadic-2.7.0.20070801-21.azl3.src.rpm advancecomp-2.6-8.azl3.src.rpm virt-top-1.1.1-21.azl3.src.rpm perl-Text-WrapI18N-0.06-37.azl3.src.rpm libavc1394-0.5.4-13.azl3.src.rpm libiec61883-1.2.0-24.azl3.src.rpm perl-Log-Message-Simple-0.10-309.azl3.src.rpm perl-Test-Warn-0.37-6.azl3.src.rpm gtkspell-2.0.16-23.azl3.src.rpm fwupd-efi-1.6-2.azl3.src.rpm libdbi-0.9.0-16.azl3.src.rpm wvdial-1.61-25.azl3.src.rpm openwsman-2.7.2-11.azl3.src.rpm mod_auth_openidc-2.4.15.7-2.azl3.src.rpm libcdio-paranoia-10.2+2.0.1-13.azl3.src.rpm gconf-editor-3.0.1-20.azl3.src.rpm libthai-0.1.29-9.azl3.src.rpm libsamplerate-0.2.2-4.azl3.src.rpm perl-Test-Exception-0.43-14.azl3.src.rpm perl-Locale-Codes-3.79-2.azl3.src.rpm stress-ng-0.18.02-2.azl3.src.rpm perl-Locale-PO-0.27-16.azl3.src.rpm wpebackend-fdo-1.12.0-1.azl3.src.rpm perl-XML-Grove-0.46-2.azl3.src.rpm perl-Date-Manip-6.96-1.azl3.src.rpm mythes-ne-1.1-20.azl3.src.rpm perl-ExtUtils-InstallPaths-0.014-1.azl3.src.rpm mythes-uk-1.6.5-19.azl3.src.rpm docbook-utils-0.6.14-50.azl3.src.rpm libgdither-0.6-27.azl3.src.rpm libvorbis-1.3.7-1.azl3.src.rpm]. 
+INFO[8078][scheduler] SRPM (perl-MLDBM:C:'='V:'2.05-22.azl3',C2:''V2:'') will be rebuilt due to user request. 
+
+ SSH  192.168.225.3: session closed
+Press any key to reconnect
+```
+
+The .rpm and .srpm created till that point of time were:
+```
+Tue Feb 25 07:47:07 UTC 2025
+--------------------
+62M     build/toolchain_rpms/noarch
+2.2G    build/toolchain_rpms/x86_64
+321M    out/RPMS/noarch
+1.2G    out/RPMS/x86_64
+1.1G    out/SRPMS/
+-rw-r--r--. 1 root root   6734082 Feb 25 03:57 zstd-debuginfo-1.5.5-2.azl3.x86_64.rpm
+-rw-r--r--. 1 root root   7702557 Feb 25 03:57 systemd-bootstrap-250.3-17.azl3.x86_64.rpm
+-rw-r--r--. 1 root root  28948219 Feb 25 03:57 systemd-bootstrap-debuginfo-250.3-17.azl3.x86_64.rpm
+-rw-r--r--. 1 root root 547503011 Feb 25 04:00 cmake-debuginfo-3.30.3-4.azl3.x86_64.rpm
+-rw-r--r--. 1 root root 819303958 Feb 25 04:03 gcc-debuginfo-13.2.0-7.azl3.x86_64.rpm
+Files in out RPMS noarch     555     555   23198
+Files in RPMS x86_64    1107    1107   43889
+Files in out SRPMS     758     758   25968
+-rw-r--r--. 1 root root     56143 Feb 25 07:44 lua-filesystem-1.8.0-12.azl3.src.rpm
+-rw-r--r--. 1 root root    103494 Feb 25 07:44 lua-lpeg-1.1.0-2.azl3.src.rpm
+-rw-r--r--. 1 root root    406427 Feb 25 07:45 libdvdnav-6.1.1-9.azl3.src.rpm
+-rw-r--r--. 1 root root     36429 Feb 25 07:45 perl-File-Find-Rule-0.34-15.azl3.src.rpm
+-rw-r--r--. 1 root root     24327 Feb 25 07:45 perl-Sub-Info-0.002-12.azl3.src.rpm
+-rw-r--r--. 1 root root    125564 Feb 25 07:45 perl-Unicode-Map8-0.13-35.azl3.src.rpm
+-rw-r--r--. 1 root root     51836 Feb 25 07:46 perl-Text-Diff-1.45-9.azl3.src.rpm
+-rw-r--r--. 1 root root     31736 Feb 25 07:46 perl-Image-Xpm-1.13-12.azl3.src.rpm
+-rw-r--r--. 1 root root     29175 Feb 25 07:46 perl-Image-Xbm-1.10-13.azl3.src.rpm
+-rw-r--r--. 1 root root     45449 Feb 25 07:46 perl-XML-Handler-YAWriter-0.23-37.azl3.src.rpm
+
+ SSH  192.168.225.3: session closed
+Press any key to reconnect
+```
+
+Starting the build, continuing from here:
+Forgot to redirect 2 to &1 and also to start in background
+It ran for 224 minutes (3 hours 44 minutes)
+```
+neerajs [ /third_disk/bb_24Feb/azlinux_sms ]$ cd toolkit/
+neerajs [ /third_disk/bb_24Feb/azlinux_sms/toolkit ]$ time /home/neerajs/utils/BULK_BLD_THINGS_24Feb/build_scr_wo_check.sh /home/neerajs/utils/BULK_BLD_THINGS_24Feb/wkg_pkgs_to_build /third_disk/bb_24Feb/azlinux_sms/ > ../bld_bb25Feb_iter1_6_$(date +%Y%m%d-%H%M).log
+/h
+/home/neerajs/utils/BULK_BLD_THINGS_24Feb/build_scr_wo_check.sh: line 66: Actual: command not found
+/third_disk/bb_24Feb/azlinux_sms/toolkit/scripts/daily_build.mk:48: Using Daily Build 3-0-20250224
+Running update_manifest.sh as neerajs
+/third_disk/bb_24Feb 100% [======================================================================================================================================================================================>]     332     --.-KB/s
+                          [Files: 1  Bytes: 332  [368 B/s] Redirects: 0  Todo: 0  Errors: 0                                                                                                                       ]
+Checking for updates to toolchain_x86_64.txt manifest from https://raw.githubusercontent.com/microsoft/CBL-Mariner/fa8648db7d507c075b259358f3f107ee9b77e512/toolkit/resources/manifests/package/toolchain_x86_64.txt
+/third_disk/bb_24Feb 100% [======================================================================================================================================================================================>]    4.59K    --.-KB/s
+                          [Files: 1  Bytes: 4.59K [7.39KB/s] Redirects: 0  Todo: 0  Errors: 0                                                                                                                     ]
+Manifests are the same, not updating toolchain_x86_64.txt
+Running update_manifest.sh as neerajs
+/third_disk/bb_24Feb 100% [======================================================================================================================================================================================>]     332     --.-KB/s
+                          [Files: 1  Bytes: 332  [368 B/s] Redirects: 0  Todo: 0  Errors: 0                                                                                                                       ]
+Checking for updates to pkggen_core_x86_64.txt manifest from https://raw.githubusercontent.com/microsoft/CBL-Mariner/fa8648db7d507c075b259358f3f107ee9b77e512/toolkit/resources/manifests/package/pkggen_core_x86_64.txt
+/third_disk/bb_24Feb 100% [======================================================================================================================================================================================>]    2.16K    --.-KB/s
+                          [Files: 1  Bytes: 2.16K [6.14KB/s] Redirects: 0  Todo: 0  Errors: 0                                                                                                                     ]
+Manifests are the same, not updating pkggen_core_x86_64.txt
+WARN[0000][srpmpacker] Will update signature files as needed        
+INFO[0000][precacher] Creating chroot for repoquery                
+INFO[0006][specreader] Parsing SPECs inside a chroot environment    
+INFO[0006][precacher] Installing 'dnf-utils' package to get 'repoquery' command 
+INFO[0006][srpmpacker] Packing SRPMs inside a chroot environment    
+INFO[0006][srpmpacker] Finding all SPEC files                       
+INFO[0024][srpmpacker] Calculating SPECs to repack                  
+WARN[0030][specreader] Found a boolean condition 'libdecor-0.so.064bit if libwayland-client', make sure the packages on the left is available. Please refer to 'docs/how_it_works/3_package_building.md#rich-dependencies' for explanation of limitations. 
+<snip>
+<snip>
+<snip>
+<snip>
+<snip>
+<snip>
+<snip>
+<snip>
+INFO[12079][scheduler] --> subscription-manager-1.30.2-1.azl3.src.rpm , error: exit status 1, for details see: /third_disk/bb_24Feb/azlinux_sms/build/logs/pkggen/rpmbuilding/subscription-manager-1.30.2-1.azl3.src.rpm.log 
+INFO[12079][scheduler] --> tbb-2021.13.0-2.azl3.src.rpm , error: exit status 1, for details see: /third_disk/bb_24Feb/azlinux_sms/build/logs/pkggen/rpmbuilding/tbb-2021.13.0-2.azl3.src.rpm.log 
+INFO[12079][scheduler] --> uriparser-0.9.8-2.azl3.src.rpm , error: exit status 1, for details see: /third_disk/bb_24Feb/azlinux_sms/build/logs/pkggen/rpmbuilding/uriparser-0.9.8-2.azl3.src.rpm.log 
+INFO[12079][scheduler] --> usbguard-1.1.3-2.azl3.src.rpm , error: exit status 1, for details see: /third_disk/bb_24Feb/azlinux_sms/build/logs/pkggen/rpmbuilding/usbguard-1.1.3-2.azl3.src.rpm.log 
+INFO[12079][scheduler] --> uw-imap-2007f-26.azl3.src.rpm , error: exit status 1, for details see: /third_disk/bb_24Feb/azlinux_sms/build/logs/pkggen/rpmbuilding/uw-imap-2007f-26.azl3.src.rpm.log 
+INFO[12079][scheduler] --> virt-p2v-1.42.4-1.azl3.src.rpm , error: exit status 1, for details see: /third_disk/bb_24Feb/azlinux_sms/build/logs/pkggen/rpmbuilding/virt-p2v-1.42.4-1.azl3.src.rpm.log 
+INFO[12079][scheduler] --> xpp3-1.1.4c-6.azl3.src.rpm , error: exit status 1, for details see: /third_disk/bb_24Feb/azlinux_sms/build/logs/pkggen/rpmbuilding/xpp3-1.1.4c-6.azl3.src.rpm.log 
+INFO[12079][scheduler] --> z3-4.13.3-1.azl3.src.rpm , error: exit status 1, for details see: /third_disk/bb_24Feb/azlinux_sms/build/logs/pkggen/rpmbuilding/z3-4.13.3-1.azl3.src.rpm.log 
+INFO[12079][scheduler] ---------------------------                  
+INFO[12079][scheduler] --------- Summary ---------                  
+INFO[12079][scheduler] ---------------------------                  
+INFO[12079][scheduler] Number of prebuilt SRPMs:              0     
+INFO[12079][scheduler] Number of prebuilt delta SRPMs:        0     
+INFO[12079][scheduler] Number of skipped SRPMs tests:         0     
+INFO[12079][scheduler] Number of built SRPMs:                 1057  
+INFO[12079][scheduler] Number of passed SRPMs tests:          0     
+ERRO[12079][scheduler] Number of unresolved dependencies:     459   
+ERRO[12079][scheduler] Number of blocked SRPMs:               315   
+INFO[12079][scheduler] Number of blocked SRPMs tests:         0     
+ERRO[12079][scheduler] Number of failed SRPMs:                112   
+INFO[12079][scheduler] Number of failed SRPMs tests:          0     
+INFO[12079][scheduler] Number of SRPMs with license errors:   0     
+INFO[12079][scheduler] Number of SRPMs with license warnings: 0     
+INFO[12079][scheduler] Number of toolchain RPM conflicts:     0     
+INFO[12079][scheduler] Number of toolchain SRPM conflicts:    0     
+INFO[12079][scheduler] Writing DOT graph to /third_disk/bb_24Feb/azlinux_sms/build/pkg_artifacts/built_graph.dot 
+FATA[12080][scheduler] Unable to build package graph.
+For details see the build summary section above.
+Error: could not build all packages. 
+INFO[12080][scheduler] Waiting for outstanding chroot initialization and cleanup to finish 
+INFO[12080][scheduler] Waiting for outstanding chroot commands to finish 
+INFO[12080][scheduler] Waiting for outstanding processes to be created before blocking all future processes 
+INFO[12080][scheduler] Waiting for outstanding processes to be created before stopping all child processes 
+INFO[12080][scheduler] systemd-detect-virt reports that the tool is running in a container, running as a container build 
+INFO[12080][scheduler] Cleanup finished                             
+make: *** [/third_disk/bb_24Feb/azlinux_sms/toolkit/scripts/pkggen.mk:301: /third_disk/bb_24Feb/azlinux_sms/build/make_status/build-rpms.flag] Error 1
+
+real    224m26.282s
+user    0m0.464s
+sys     0m2.182s
+neerajs [ /third_disk/bb_24Feb/azlinux_sms/toolkit ]$ 
+```
+
+Other related watch prints:
+
+```
+2245 running
+Filesystem     1K-blocks     Used Available Use% Mounted on
+/dev/sdc1       87147552 71609912  11064860  87% /third_disk
+2245
+Tue Feb 25 12:26:08 UTC 2025
+2245 running
+Filesystem     1K-blocks     Used Available Use% Mounted on
+/dev/sdc1       87147552 71623176  11051596  87% /third_disk
+2245
+Tue Feb 25 12:26:18 UTC 2025
+2245 running
+Filesystem     1K-blocks     Used Available Use% Mounted on
+/dev/sdc1       87147552 67182092  15492680  82% /third_disk
+2245 finished
+Tue Feb 25 12:26:28 UTC 2025
+neerajs [ /third_disk/bb_24Feb/azlinux_sms ]$ 
+
+
+<snip>
+<snip>
+<snip>
+<snip>
+
+
+
+Tue Feb 25 13:02:57 UTC 2025
+--------------------
+62M     build/toolchain_rpms/noarch
+2.2G    build/toolchain_rpms/x86_64
+462M    out/RPMS/noarch
+1.6G    out/RPMS/x86_64
+1.5G    out/SRPMS/
+-rw-r--r--. 1 root root   6734082 Feb 25 03:57 zstd-debuginfo-1.5.5-2.azl3.x86_64.rpm
+-rw-r--r--. 1 root root   7702557 Feb 25 03:57 systemd-bootstrap-250.3-17.azl3.x86_64.rpm
+-rw-r--r--. 1 root root  28948219 Feb 25 03:57 systemd-bootstrap-debuginfo-250.3-17.azl3.x86_64.rpm
+-rw-r--r--. 1 root root 547503011 Feb 25 04:00 cmake-debuginfo-3.30.3-4.azl3.x86_64.rpm
+-rw-r--r--. 1 root root 819303958 Feb 25 04:03 gcc-debuginfo-13.2.0-7.azl3.x86_64.rpm
+Files in out RPMS noarch     799     799   33901
+Files in RPMS x86_64    1557    1557   62624
+Files in out SRPMS    1057    1057   37076
+-rw-r--r--. 1 root root    365447 Feb 25 12:24 clutter-gtk-1.8.4-15.azl3.src.rpm
+-rw-r--r--. 1 root root    368342 Feb 25 12:24 libwpg-0.3.4-4.azl3.src.rpm
+-rw-r--r--. 1 root root     81738 Feb 25 12:24 perl-Test-File-ShareDir-1.001002-11.azl3.src.rpm
+-rw-r--r--. 1 root root    146022 Feb 25 12:24 perl-IO-Compress-Lzma-2.212-2.azl3.src.rpm
+-rw-r--r--. 1 root root     35515 Feb 25 12:24 perl-DateTime-TimeZone-SystemV-0.010-10.azl3.src.rpm
+-rw-r--r--. 1 root root    200353 Feb 25 12:25 perl-Package-Stash-XS-0.30-9.azl3.src.rpm
+-rw-r--r--. 1 root root     42402 Feb 25 12:25 perl-DateTime-TimeZone-Tzfile-0.011-10.azl3.src.rpm
+-rw-r--r--. 1 root root    667707 Feb 25 12:25 perl-Test-Simple-1.302204-1.azl3.src.rpm
+-rw-r--r--. 1 root root     27119 Feb 25 12:26 perl-Env-ShellWords-0.02-9.azl3.src.rpm
+-rw-r--r--. 1 root root     29154 Feb 25 12:26 perl-Data-Munge-0.111-2.azl3.src.rpm
+^Cneerajs [ /third_disk/bb_24Feb/azlinux_sms ]$ 
+
+```
+
+
+The following are the lists created based upon the above results.
+
+```
+        new file:   didwhat/blkd_srpms_bld_bb25Feb_iter1_6_20250225-0841_thepartonscreen
+        new file:   didwhat/built_srpms_bld_bb25Feb_iter1_6_20250225-0841_thepartonscreen
+        new file:   didwhat/fail_srpms_bld_bb25Feb_iter1_6_20250225-0841_thepartonscreen
+        new file:   didwhat/gsts_after_prep_ext_folder_scrpt_run
+        new file:   didwhat/unres_srpms_bld_bb25Feb_iter1_6_20250225-0841_thepartonscreen
+```
+
+

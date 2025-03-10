@@ -1,0 +1,2783 @@
+time="2025-03-07T08:05:27Z" level=info msg="* Creating a ccache manager instance *"
+time="2025-03-07T08:05:27Z" level=info msg="  ccache root folder         : (/third_disk/bb05Mar/azurelinux/ccache)"
+time="2025-03-07T08:05:27Z" level=info msg="  ccache remote configuration: (/third_disk/bb05Mar/azurelinux/toolkit/resources/manifests/package/ccache-configuration.json)"
+time="2025-03-07T08:05:27Z" level=info msg="  loading ccache configuration file: /third_disk/bb05Mar/azurelinux/toolkit/resources/manifests/package/ccache-configuration.json"
+time="2025-03-07T08:05:27Z" level=info msg="    Type           : azure-blob-storage"
+time="2025-03-07T08:05:27Z" level=info msg="    TenantId       : "
+time="2025-03-07T08:05:27Z" level=info msg="    UserName       : "
+time="2025-03-07T08:05:27Z" level=info msg="    StorageAccount : marinerccache"
+time="2025-03-07T08:05:27Z" level=info msg="    ContainerName  : 30-stable"
+time="2025-03-07T08:05:27Z" level=info msg="    Tagsfolder     : tags"
+time="2025-03-07T08:05:27Z" level=info msg="    DownloadEnabled: true"
+time="2025-03-07T08:05:27Z" level=info msg="    DownloadLatest : true"
+time="2025-03-07T08:05:27Z" level=info msg="    DownloadFolder : "
+time="2025-03-07T08:05:27Z" level=info msg="    UploadEnabled  : false"
+time="2025-03-07T08:05:27Z" level=info msg="    UploadFolder   : "
+time="2025-03-07T08:05:27Z" level=info msg="    UpdateLatest   : false"
+time="2025-03-07T08:05:27Z" level=info msg="    KeepLatestOnly : false"
+time="2025-03-07T08:05:27Z" level=info msg="  creating blob storage client..."
+time="2025-03-07T08:05:27Z" level=info msg="  ccache pkg folder : (/third_disk/bb05Mar/azurelinux/ccache/work/x86_64/hyphen-ia)"
+time="2025-03-07T08:05:27Z" level=info msg="  tag local source  : (/third_disk/bb05Mar/azurelinux/ccache/downloads/hyphen-ia-latest-build.txt)"
+time="2025-03-07T08:05:27Z" level=info msg="  tag remote source : (x86_64/tags/hyphen-ia-latest-build.txt)"
+time="2025-03-07T08:05:27Z" level=info msg="  tag local target  : (/third_disk/bb05Mar/azurelinux/ccache/uploads/hyphen-ia-latest-build.txt)"
+time="2025-03-07T08:05:27Z" level=info msg="  tag remote target : (x86_64/tags/hyphen-ia-latest-build.txt)"
+time="2025-03-07T08:05:27Z" level=info msg="  ccache is configured to use the latest from the remote store..."
+time="2025-03-07T08:05:27Z" level=info msg="  checking if (/third_disk/bb05Mar/azurelinux/ccache/downloads/hyphen-ia-latest-build.txt) already exists..."
+time="2025-03-07T08:05:27Z" level=info msg="  downloading (x86_64/tags/hyphen-ia-latest-build.txt) to (/third_disk/bb05Mar/azurelinux/ccache/downloads/hyphen-ia-latest-build.txt)..."
+time="2025-03-07T08:05:28Z" level=info msg="  download time: 1.339064396s"
+time="2025-03-07T08:05:28Z" level=info msg="  updating () to (3.0.20250206-3.0-729715)..."
+time="2025-03-07T08:05:28Z" level=info msg="  tar local source  : (/third_disk/bb05Mar/azurelinux/ccache/downloads/hyphen-ia-ccache.tar.gz)"
+time="2025-03-07T08:05:28Z" level=info msg="  tar remote source : (x86_64/3.0.20250206-3.0-729715/hyphen-ia-ccache.tar.gz)"
+time="2025-03-07T08:05:28Z" level=info msg="  tar local target  : (/third_disk/bb05Mar/azurelinux/ccache/uploads/hyphen-ia-ccache.tar.gz)"
+time="2025-03-07T08:05:28Z" level=info msg="  tar remote target : (x86_64//hyphen-ia-ccache.tar.gz)"
+time="2025-03-07T08:05:28Z" level=info msg="* processing download of ccache artifacts..."
+time="2025-03-07T08:05:28Z" level=info msg="  downloading (x86_64/3.0.20250206-3.0-729715/hyphen-ia-ccache.tar.gz) to (/third_disk/bb05Mar/azurelinux/ccache/downloads/hyphen-ia-ccache.tar.gz)..."
+time="2025-03-07T08:05:28Z" level=info msg="Building (hyphen-ia-0.20050628-20.azl3.src.rpm)."
+time="2025-03-07T08:05:29Z" level=info msg="  download time: 1.52911732s"
+time="2025-03-07T08:05:29Z" level=info msg="  uncompressing (/third_disk/bb05Mar/azurelinux/ccache/downloads/hyphen-ia-ccache.tar.gz) into (/third_disk/bb05Mar/azurelinux/ccache/work/x86_64/hyphen-ia)."
+time="2025-03-07T08:05:29Z" level=debug msg="Executing: [tar xf /third_disk/bb05Mar/azurelinux/ccache/downloads/hyphen-ia-ccache.tar.gz -C /third_disk/bb05Mar/azurelinux/ccache/work/x86_64/hyphen-ia .]"
+time="2025-03-07T08:05:29Z" level=info msg="  uncompress time: 10.204006ms"
+time="2025-03-07T08:05:29Z" level=debug msg="Executing: [systemd-detect-virt -c]"
+time="2025-03-07T08:05:29Z" level=debug msg="Tool is not running in a container, systemd-detect-virt reports: 'none'"
+time="2025-03-07T08:05:29Z" level=debug msg="Using (/usr/bin/pigz) to extract tar"
+time="2025-03-07T08:05:29Z" level=debug msg="Executing: [tar -I /usr/bin/pigz -xf /third_disk/bb05Mar/azurelinux/build/worker/worker_chroot.tar.gz -C /third_disk/bb05Mar/azurelinux/build/worker/chroot/hyphen-ia-0.20050628-20.azl3]"
+time="2025-03-07T08:05:50Z" level=debug msg="Mounting: source: (), target: (/third_disk/bb05Mar/azurelinux/build/worker/chroot/hyphen-ia-0.20050628-20.azl3/dev), fstype: (devtmpfs), flags: (0x0), data: ()"
+time="2025-03-07T08:05:50Z" level=debug msg="Mounting: source: (), target: (/third_disk/bb05Mar/azurelinux/build/worker/chroot/hyphen-ia-0.20050628-20.azl3/proc), fstype: (proc), flags: (0x0), data: ()"
+time="2025-03-07T08:05:50Z" level=debug msg="Mounting: source: (), target: (/third_disk/bb05Mar/azurelinux/build/worker/chroot/hyphen-ia-0.20050628-20.azl3/sys), fstype: (sysfs), flags: (0x0), data: ()"
+time="2025-03-07T08:05:50Z" level=debug msg="Mounting: source: (), target: (/third_disk/bb05Mar/azurelinux/build/worker/chroot/hyphen-ia-0.20050628-20.azl3/run), fstype: (tmpfs), flags: (0x0), data: ()"
+time="2025-03-07T08:05:50Z" level=debug msg="Mounting: source: (), target: (/third_disk/bb05Mar/azurelinux/build/worker/chroot/hyphen-ia-0.20050628-20.azl3/dev/pts), fstype: (devpts), flags: (0x0), data: (gid=5,mode=620)"
+time="2025-03-07T08:05:50Z" level=debug msg="Mounting: source: (), target: (/third_disk/bb05Mar/azurelinux/build/worker/chroot/hyphen-ia-0.20050628-20.azl3/localrpms), fstype: (overlay), flags: (0x0), data: (lowerdir=/third_disk/bb05Mar/azurelinux/out/RPMS,upperdir=/third_disk/bb05Mar/azurelinux/build/worker/chroot/hyphen-ia-0.20050628-20.azl3/localrpms,workdir=/third_disk/bb05Mar/azurelinux/build/worker/chroot/hyphen-ia-0.20050628-20.azl3/overlaywork_rpms)"
+time="2025-03-07T08:05:50Z" level=debug msg="Mounting: source: (), target: (/third_disk/bb05Mar/azurelinux/build/worker/chroot/hyphen-ia-0.20050628-20.azl3/toolchainrpms), fstype: (overlay), flags: (0x0), data: (lowerdir=/third_disk/bb05Mar/azurelinux/build/toolchain_rpms,upperdir=/third_disk/bb05Mar/azurelinux/build/worker/chroot/hyphen-ia-0.20050628-20.azl3/toolchainrpms,workdir=/third_disk/bb05Mar/azurelinux/build/worker/chroot/hyphen-ia-0.20050628-20.azl3/overlaywork_toolchain)"
+time="2025-03-07T08:05:50Z" level=debug msg="Mounting: source: (/third_disk/bb05Mar/azurelinux/build/rpm_cache/cache), target: (/third_disk/bb05Mar/azurelinux/build/worker/chroot/hyphen-ia-0.20050628-20.azl3/upstream-cached-rpms), fstype: (), flags: (0xc0ed1000), data: ()"
+time="2025-03-07T08:05:50Z" level=debug msg="Mounting: source: (/third_disk/bb05Mar/azurelinux/ccache/work/x86_64/hyphen-ia), target: (/third_disk/bb05Mar/azurelinux/build/worker/chroot/hyphen-ia-0.20050628-20.azl3/ccache-dir), fstype: (), flags: (0xc0ed1000), data: ()"
+time="2025-03-07T08:05:50Z" level=debug msg="Copying (/third_disk/bb05Mar/azurelinux/toolkit/resources/manifests/package/local.repo) to (/third_disk/bb05Mar/azurelinux/build/worker/chroot/hyphen-ia-0.20050628-20.azl3/etc/yum.repos.d/local.repo)"
+time="2025-03-07T08:05:50Z" level=debug msg="Executing: [cp --preserve=mode /third_disk/bb05Mar/azurelinux/toolkit/resources/manifests/package/local.repo /third_disk/bb05Mar/azurelinux/build/worker/chroot/hyphen-ia-0.20050628-20.azl3/etc/yum.repos.d/local.repo]"
+time="2025-03-07T08:05:50Z" level=debug msg="Copying (/third_disk/bb05Mar/azurelinux/build/INTERMEDIATE_SRPMS/hyphen-ia-0.20050628-20.azl3.src.rpm) to (/third_disk/bb05Mar/azurelinux/build/worker/chroot/hyphen-ia-0.20050628-20.azl3/root/SRPMS/hyphen-ia-0.20050628-20.azl3.src.rpm)"
+time="2025-03-07T08:05:51Z" level=debug msg="Executing: [cp --preserve=mode /third_disk/bb05Mar/azurelinux/build/INTERMEDIATE_SRPMS/hyphen-ia-0.20050628-20.azl3.src.rpm /third_disk/bb05Mar/azurelinux/build/worker/chroot/hyphen-ia-0.20050628-20.azl3/root/SRPMS/hyphen-ia-0.20050628-20.azl3.src.rpm]"
+time="2025-03-07T08:05:51Z" level=debug msg="Copying (/third_disk/bb05Mar/azurelinux/toolkit/resources/manifests/package/macros.override) to (/third_disk/bb05Mar/azurelinux/build/worker/chroot/hyphen-ia-0.20050628-20.azl3/usr/lib/rpm/macros.d/macros.override)"
+time="2025-03-07T08:05:51Z" level=debug msg="Executing: [cp --preserve=mode /third_disk/bb05Mar/azurelinux/toolkit/resources/manifests/package/macros.override /third_disk/bb05Mar/azurelinux/build/worker/chroot/hyphen-ia-0.20050628-20.azl3/usr/lib/rpm/macros.d/macros.override]"
+time="2025-03-07T08:05:51Z" level=debug msg="Entering Chroot: '/third_disk/bb05Mar/azurelinux/build/worker/chroot/hyphen-ia-0.20050628-20.azl3'"
+time="2025-03-07T08:05:51Z" level=debug msg="Creating RPM repository in (/localrpms)"
+time="2025-03-07T08:05:51Z" level=debug msg="Executing: [createrepo_c --compatibility /localrpms]"
+time="2025-03-07T08:05:55Z" level=debug msg="Creating RPM repository in (/toolchainrpms)"
+time="2025-03-07T08:05:55Z" level=debug msg="Executing: [createrepo_c --compatibility /toolchainrpms]"
+time="2025-03-07T08:06:01Z" level=debug msg="Executing: [tdnf install -y --releasever=3.0 hyphen-devel-2.8.8-14.azl3.x86_64 hyphen-2.8.8-14.azl3.x86_64]"
+time="2025-03-07T08:06:03Z" level=debug msg="Error(1207) : Could not resolve hostname"
+time="2025-03-07T08:06:03Z" level=debug msg="Error: Failed to synchronize cache for repo 'Azure Linux Official Base 3.0 x86_64'"
+time="2025-03-07T08:06:11Z" level=info msg="USE_CCACHE: installing package: ccache"
+time="2025-03-07T08:06:11Z" level=debug msg="Executing: [tdnf install -y --releasever=3.0 ccache]"
+time="2025-03-07T08:06:12Z" level=debug msg="Error(1207) : Could not resolve hostname"
+time="2025-03-07T08:06:12Z" level=debug msg="Error: Failed to synchronize cache for repo 'Azure Linux Official Base 3.0 x86_64'"
+time="2025-03-07T08:06:17Z" level=debug msg="Executing: [rpmbuild --nocheck --rebuild --nodeps -D with_check 0 -D dist .azl3 -D azl 3 -D distro_release_version 3.0.20250307.0239 -D mariner_build_number 0acde1fda -D distro_module_ldflags  -Wl,-dT,%{_topdir}/BUILD/module_info.ld -D ccache_enabled true /root/SRPMS/hyphen-ia-0.20050628-20.azl3.src.rpm]"
+time="2025-03-07T08:06:17Z" level=debug msg="warning: Could not canonicalize hostname: azuli-m1"
+time="2025-03-07T08:06:17Z" level=debug msg="Installing /root/SRPMS/hyphen-ia-0.20050628-20.azl3.src.rpm"
+time="2025-03-07T08:06:17Z" level=debug msg="Executing(%prep): /bin/sh -e /var/tmp/rpm-tmp.fo9fRl"
+time="2025-03-07T08:06:17Z" level=debug msg="+ umask 022"
+time="2025-03-07T08:06:17Z" level=debug msg="+ cd /usr/src/azl/BUILD"
+time="2025-03-07T08:06:17Z" level=debug msg="+ /usr/lib/rpm/azl/gen-ld-script.sh hyphen-ia 0.20050628-20.azl3 /usr/src/azl 3.0.20250307.0239"
+time="2025-03-07T08:06:17Z" level=debug msg="gen-ld-script.sh name(hyphen-ia) version(0.20050628-20.azl3) _topdir(/usr/src/azl) osversion(3.0.20250307.0239)"
+time="2025-03-07T08:06:18Z" level=debug msg="==== ELF note generator v2.1.2 ===="
+time="2025-03-07T08:06:18Z" level=debug msg="outdir is: /usr/src/azl/BUILD/"
+time="2025-03-07T08:06:18Z" level=debug msg="Stamp method: LinkerOnly"
+time="2025-03-07T08:06:18Z" level=debug
+time="2025-03-07T08:06:18Z" level=debug msg="#ifndef _AUTO_MODULE_INFO_H_"
+time="2025-03-07T08:06:18Z" level=debug msg="#define _AUTO_MODULE_INFO_H_"
+time="2025-03-07T08:06:18Z" level=debug
+time="2025-03-07T08:06:18Z" level=debug msg="#define MODULE_VERSION      \"0.20050628.0.0\""
+time="2025-03-07T08:06:18Z" level=debug msg="#define PACKAGE_VERSION     \"0.20050628-20.azl3\""
+time="2025-03-07T08:06:18Z" level=debug msg="#define PACKAGE_NAME        \"hyphen-ia\""
+time="2025-03-07T08:06:18Z" level=debug msg="#define TARGET_OS           \"mariner\""
+time="2025-03-07T08:06:18Z" level=debug msg="#define TARGET_OS_VERSION   \"3.0\""
+time="2025-03-07T08:06:18Z" level=debug
+time="2025-03-07T08:06:18Z" level=debug msg="#endif //_AUTO_MODULE_INFO_H_"
+time="2025-03-07T08:06:18Z" level=debug msg="Generated /usr/src/azl/BUILD/auto_module_info.h file..."
+time="2025-03-07T08:06:18Z" level=debug
+time="2025-03-07T08:06:18Z" level=debug msg="Successfully generated module_info.ld and .note.package files..."
+time="2025-03-07T08:06:18Z" level=debug msg="+ cd /usr/src/azl/BUILD"
+time="2025-03-07T08:06:18Z" level=debug msg="+ rm -rf hyphen-ia"
+time="2025-03-07T08:06:18Z" level=debug msg="+ /bin/mkdir -p hyphen-ia"
+time="2025-03-07T08:06:18Z" level=debug msg="+ cd hyphen-ia"
+time="2025-03-07T08:06:18Z" level=debug msg="+ /bin/chmod -Rf a+rX,u+w,g-w,o-w ."
+time="2025-03-07T08:06:18Z" level=debug msg="+ cp -p /usr/src/azl/SOURCES/iahyphen.tex ."
+time="2025-03-07T08:06:18Z" level=debug msg="+ echo 'Patch #0 (hyphen-ia-cleantex.patch):'"
+time="2025-03-07T08:06:18Z" level=debug msg="+ /bin/patch --no-backup-if-mismatch -f -p0 -b --suffix .clean --fuzz=0"
+time="2025-03-07T08:06:18Z" level=debug msg="Patch #0 (hyphen-ia-cleantex.patch):"
+time="2025-03-07T08:06:18Z" level=debug msg="patching file iahyphen.tex"
+time="2025-03-07T08:06:18Z" level=debug msg="+ cp /usr/src/azl/SOURCES/hyphen-ia-LICENSE.txt ./LICENSE.txt"
+time="2025-03-07T08:06:18Z" level=debug msg="+ RPM_EC=0"
+time="2025-03-07T08:06:18Z" level=debug msg="++ jobs -p"
+time="2025-03-07T08:06:18Z" level=debug msg="+ exit 0"
+time="2025-03-07T08:06:18Z" level=debug msg="Executing(%build): /bin/sh -e /var/tmp/rpm-tmp.Be6d7S"
+time="2025-03-07T08:06:18Z" level=debug msg="+ umask 022"
+time="2025-03-07T08:06:18Z" level=debug msg="+ cd /usr/src/azl/BUILD"
+time="2025-03-07T08:06:18Z" level=debug msg="+ CFLAGS='-O2 -g -pipe -Wall -Werror=format-security -Wp,-D_FORTIFY_SOURCE=2 -Wp,-D_GLIBCXX_ASSERTIONS -fexceptions -fstack-protector-strong -grecord-gcc-switches -specs=/usr/lib/rpm/azl/default-hardened-cc1    -fcommon -m64 -mtune=generic -fasynchronous-unwind-tables -fstack-clash-protection -fcf-protection'"
+time="2025-03-07T08:06:18Z" level=debug msg="+ export CFLAGS"
+time="2025-03-07T08:06:18Z" level=debug msg="+ CXXFLAGS='-O2 -g -pipe -Wall -Werror=format-security -Wp,-D_FORTIFY_SOURCE=2 -Wp,-D_GLIBCXX_ASSERTIONS -fexceptions -fstack-protector-strong -grecord-gcc-switches -specs=/usr/lib/rpm/azl/default-hardened-cc1    -fcommon -m64 -mtune=generic -fasynchronous-unwind-tables -fstack-clash-protection -fcf-protection'"
+time="2025-03-07T08:06:18Z" level=debug msg="+ export CXXFLAGS"
+time="2025-03-07T08:06:18Z" level=debug msg="+ FFLAGS='-O2 -g -pipe -Wall -Werror=format-security -Wp,-D_FORTIFY_SOURCE=2 -Wp,-D_GLIBCXX_ASSERTIONS -fexceptions -fstack-protector-strong -grecord-gcc-switches -specs=/usr/lib/rpm/azl/default-hardened-cc1    -fcommon -m64 -mtune=generic -fasynchronous-unwind-tables -fstack-clash-protection -fcf-protection -I/usr/lib/gfortran/modules'"
+time="2025-03-07T08:06:18Z" level=debug msg="+ export FFLAGS"
+time="2025-03-07T08:06:18Z" level=debug msg="+ FCFLAGS='-O2 -g -pipe -Wall -Werror=format-security -Wp,-D_FORTIFY_SOURCE=2 -Wp,-D_GLIBCXX_ASSERTIONS -fexceptions -fstack-protector-strong -grecord-gcc-switches -specs=/usr/lib/rpm/azl/default-hardened-cc1    -fcommon -m64 -mtune=generic -fasynchronous-unwind-tables -fstack-clash-protection -fcf-protection -I/usr/lib/gfortran/modules'"
+time="2025-03-07T08:06:18Z" level=debug msg="+ export FCFLAGS"
+time="2025-03-07T08:06:18Z" level=debug msg="+ LDFLAGS='-Wl,-z,relro -Wl,--as-needed  -Wl,-z,now -specs=/usr/lib/rpm/azl/default-hardened-ld -Wl,-dT,/usr/src/azl/BUILD/module_info.ld'"
+time="2025-03-07T08:06:18Z" level=debug msg="+ export LDFLAGS"
+time="2025-03-07T08:06:18Z" level=debug msg="+ LT_SYS_LIBRARY_PATH=/usr/lib:"
+time="2025-03-07T08:06:18Z" level=debug msg="+ export LT_SYS_LIBRARY_PATH"
+time="2025-03-07T08:06:18Z" level=debug msg="+ PATH=/usr/lib/ccache:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
+time="2025-03-07T08:06:18Z" level=debug msg="+ export PATH"
+time="2025-03-07T08:06:18Z" level=debug msg="+ CCACHE_DIR=/ccache-dir"
+time="2025-03-07T08:06:18Z" level=debug msg="+ export CCACHE_DIR"
+time="2025-03-07T08:06:18Z" level=debug msg="+ CCACHE_COMPILERCHECK=content"
+time="2025-03-07T08:06:18Z" level=debug msg="+ export CCACHE_COMPILERCHECK"
+time="2025-03-07T08:06:18Z" level=debug msg="+ ccache --zero-stats"
+time="2025-03-07T08:06:18Z" level=debug msg="Statistics zeroed"
+time="2025-03-07T08:06:18Z" level=debug msg="+ cd hyphen-ia"
+time="2025-03-07T08:06:18Z" level=debug msg="+ substrings.pl iahyphen.tex hyph_ia.dic ISO8859-1"
+time="2025-03-07T08:06:18Z" level=debug msg=".ch2 is embedded in .ch2"
+time="2025-03-07T08:06:18Z" level=debug msg=+.ch2
+time="2025-03-07T08:06:18Z" level=debug msg=".de4s is embedded in .de4s"
+time="2025-03-07T08:06:18Z" level=debug msg=+.de4s
+time="2025-03-07T08:06:18Z" level=debug msg="1de is embedded in .de4s"
+time="2025-03-07T08:06:18Z" level=debug msg=.+1de
+time="2025-03-07T08:06:18Z" level=debug msg=".in1 is embedded in .in1"
+time="2025-03-07T08:06:18Z" level=debug msg=+.in1
+time="2025-03-07T08:06:18Z" level=debug msg=".se4i is embedded in .se4i"
+time="2025-03-07T08:06:18Z" level=debug msg=+.se4i
+time="2025-03-07T08:06:18Z" level=debug msg="1se is embedded in .se4i"
+time="2025-03-07T08:06:18Z" level=debug msg=.+1se
+time="2025-03-07T08:06:18Z" level=debug msg="e1i is embedded in .se4i"
+time="2025-03-07T08:06:18Z" level=debug msg=".sei includes ei at pos 2"
+time="2025-03-07T08:06:18Z" level=debug msg=".se4i + e1i -> .se4i"
+time="2025-03-07T08:06:18Z" level=debug msg="a1a is embedded in a1a"
+time="2025-03-07T08:06:18Z" level=debug msg=+a1a
+time="2025-03-07T08:06:18Z" level=debug msg="a1b is embedded in a1b"
+time="2025-03-07T08:06:18Z" level=debug msg=+a1b
+time="2025-03-07T08:06:18Z" level=debug msg="a1b is embedded in a2b1l"
+time="2025-03-07T08:06:18Z" level=debug msg="ab includes ab at pos 0"
+time="2025-03-07T08:06:18Z" level=debug msg="a1b + a1b -> a1b"
+time="2025-03-07T08:06:18Z" level=debug msg="a2b1l is embedded in a2b1l"
+time="2025-03-07T08:06:18Z" level=debug msg=+a2b1l
+time="2025-03-07T08:06:18Z" level=debug msg="a1b is embedded in a3b4lo"
+time="2025-03-07T08:06:18Z" level=debug msg="ab includes ab at pos 0"
+time="2025-03-07T08:06:18Z" level=debug msg="a1b + a1b -> a1b"
+time="2025-03-07T08:06:18Z" level=debug msg="a2b1l is embedded in a3b4lo"
+time="2025-03-07T08:06:18Z" level=debug msg="abl includes abl at pos 0"
+time="2025-03-07T08:06:18Z" level=debug msg="a2b1l + a2b1l -> a2b1l"
+time="2025-03-07T08:06:18Z" level=debug msg="a3b4lo is embedded in a3b4lo"
+time="2025-03-07T08:06:18Z" level=debug msg=+a3b4lo
+time="2025-03-07T08:06:18Z" level=debug msg="a1ca is embedded in a1ca"
+time="2025-03-07T08:06:18Z" level=debug msg=+a1ca
+time="2025-03-07T08:06:18Z" level=debug msg="a1ce is embedded in a1ce"
+time="2025-03-07T08:06:18Z" level=debug msg=+a1ce
+time="2025-03-07T08:06:18Z" level=debug msg="a1ch is embedded in a1ch"
+time="2025-03-07T08:06:18Z" level=debug msg=+a1ch
+time="2025-03-07T08:06:18Z" level=debug msg="a1ch is embedded in a4chr"
+time="2025-03-07T08:06:18Z" level=debug msg="ach includes ach at pos 0"
+time="2025-03-07T08:06:18Z" level=debug msg="a1ch + a1ch -> a1ch"
+time="2025-03-07T08:06:18Z" level=debug msg="a4chr is embedded in a4chr"
+time="2025-03-07T08:06:18Z" level=debug msg=+a4chr
+time="2025-03-07T08:06:18Z" level=debug msg="1chr is embedded in a4chr"
+time="2025-03-07T08:06:18Z" level=debug msg="achr includes chr at pos 1"
+time="2025-03-07T08:06:18Z" level=debug msg="a4chr + 1chr -> a4chr"
+time="2025-03-07T08:06:18Z" level=debug msg="h2r is embedded in a4chr"
+time="2025-03-07T08:06:18Z" level=debug msg="achr includes hr at pos 2"
+time="2025-03-07T08:06:18Z" level=debug msg="a4chr + h2r -> a4ch2r"
+time="2025-03-07T08:06:18Z" level=debug msg="a1co is embedded in a1co"
+time="2025-03-07T08:06:18Z" level=debug msg=+a1co
+time="2025-03-07T08:06:18Z" level=debug msg="a1cr is embedded in a1cr"
+time="2025-03-07T08:06:18Z" level=debug msg=+a1cr
+time="2025-03-07T08:06:18Z" level=debug msg="c2r is embedded in a1cr"
+time="2025-03-07T08:06:18Z" level=debug msg="acr includes cr at pos 1"
+time="2025-03-07T08:06:18Z" level=debug msg="a1cr + c2r -> a1c2r"
+time="2025-03-07T08:06:18Z" level=debug msg="a1cu is embedded in a1cu"
+time="2025-03-07T08:06:18Z" level=debug msg=+a1cu
+time="2025-03-07T08:06:18Z" level=debug msg="a1d is embedded in a1d"
+time="2025-03-07T08:06:18Z" level=debug msg=+a1d
+time="2025-03-07T08:06:18Z" level=debug msg="a1d is embedded in 1adm"
+time="2025-03-07T08:06:18Z" level=debug msg="ad includes ad at pos 0"
+time="2025-03-07T08:06:18Z" level=debug msg="a1d + a1d -> a1d"
+time="2025-03-07T08:06:18Z" level=debug msg="1adm is embedded in 1adm"
+time="2025-03-07T08:06:18Z" level=debug msg=+1adm
+time="2025-03-07T08:06:18Z" level=debug msg="2d1m is embedded in 1adm"
+time="2025-03-07T08:06:18Z" level=debug msg="adm includes dm at pos 1"
+time="2025-03-07T08:06:18Z" level=debug msg="1adm + 2d1m -> 1a2d1m"
+time="2025-03-07T08:06:18Z" level=debug msg="a1d is embedded in 1adv"
+time="2025-03-07T08:06:18Z" level=debug msg="ad includes ad at pos 0"
+time="2025-03-07T08:06:18Z" level=debug msg="a1d + a1d -> a1d"
+time="2025-03-07T08:06:18Z" level=debug msg="1adv is embedded in 1adv"
+time="2025-03-07T08:06:18Z" level=debug msg=+1adv
+time="2025-03-07T08:06:18Z" level=debug msg="2d1v is embedded in 1adv"
+time="2025-03-07T08:06:18Z" level=debug msg="adv includes dv at pos 1"
+time="2025-03-07T08:06:18Z" level=debug msg="1adv + 2d1v -> 1a2d1v"
+time="2025-03-07T08:06:18Z" level=debug msg="ae1 is embedded in ae1"
+time="2025-03-07T08:06:18Z" level=debug msg=+ae1
+time="2025-03-07T08:06:18Z" level=debug msg="ae1 is embedded in a1el"
+time="2025-03-07T08:06:18Z" level=debug msg="ae includes ae at pos 0"
+time="2025-03-07T08:06:18Z" level=debug msg="ae1 + ae1 -> ae1"
+time="2025-03-07T08:06:18Z" level=debug msg="a1el is embedded in a1el"
+time="2025-03-07T08:06:18Z" level=debug msg=+a1el
+time="2025-03-07T08:06:18Z" level=debug msg="ae1 is embedded in aero3"
+time="2025-03-07T08:06:18Z" level=debug msg="ae includes ae at pos 0"
+time="2025-03-07T08:06:18Z" level=debug msg="ae1 + ae1 -> ae1"
+time="2025-03-07T08:06:18Z" level=debug msg="aero3 is embedded in aero3"
+time="2025-03-07T08:06:18Z" level=debug msg=+aero3
+time="2025-03-07T08:06:18Z" level=debug msg="e1ro is embedded in aero3"
+time="2025-03-07T08:06:18Z" level=debug msg="aero includes ero at pos 1"
+time="2025-03-07T08:06:18Z" level=debug msg="aero3 + e1ro -> ae1ro3"
+time="2025-03-07T08:06:18Z" level=debug msg="a1g is embedded in a1g"
+time="2025-03-07T08:06:18Z" level=debug msg=+a1g
+time="2025-03-07T08:06:18Z" level=debug msg="a1g is embedded in a4g3ed"
+time="2025-03-07T08:06:18Z" level=debug msg="ag includes ag at pos 0"
+time="2025-03-07T08:06:18Z" level=debug msg="a1g + a1g -> a1g"
+time="2025-03-07T08:06:18Z" level=debug msg="a4g3ed is embedded in a4g3ed"
+time="2025-03-07T08:06:18Z" level=debug msg=+a4g3ed
+time="2025-03-07T08:06:18Z" level=debug msg="1ge is embedded in a4g3ed"
+time="2025-03-07T08:06:18Z" level=debug msg=a+1ge
+time="2025-03-07T08:06:18Z" level=debug msg="e1d is embedded in a4g3ed"
+time="2025-03-07T08:06:18Z" level=debug msg="aged includes ed at pos 2"
+time="2025-03-07T08:06:18Z" level=debug msg="a4g3ed + e1d -> a4g3e1d"
+time="2025-03-07T08:06:18Z" level=debug msg="a1g is embedded in 1agg"
+time="2025-03-07T08:06:18Z" level=debug msg="ag includes ag at pos 0"
+time="2025-03-07T08:06:18Z" level=debug msg="a1g + a1g -> a1g"
+time="2025-03-07T08:06:18Z" level=debug msg="1agg is embedded in 1agg"
+time="2025-03-07T08:06:18Z" level=debug msg=+1agg
+time="2025-03-07T08:06:18Z" level=debug msg="2g1g is embedded in 1agg"
+time="2025-03-07T08:06:18Z" level=debug msg="agg includes gg at pos 1"
+time="2025-03-07T08:06:18Z" level=debug msg="1agg + 2g1g -> 1a2g1g"
+time="2025-03-07T08:06:18Z" level=debug msg="a1h is embedded in a1h"
+time="2025-03-07T08:06:18Z" level=debug msg=+a1h
+time="2025-03-07T08:06:18Z" level=debug msg="a1ic is embedded in a1ic"
+time="2025-03-07T08:06:18Z" level=debug msg=+a1ic
+time="2025-03-07T08:06:18Z" level=debug msg="i1c is embedded in a1ic"
+time="2025-03-07T08:06:18Z" level=debug msg="aic includes ic at pos 1"
+time="2025-03-07T08:06:18Z" level=debug msg="a1ic + i1c -> a1i1c"
+time="2025-03-07T08:06:18Z" level=debug msg="a1is is embedded in a1is"
+time="2025-03-07T08:06:18Z" level=debug msg=+a1is
+time="2025-03-07T08:06:18Z" level=debug msg="a1iv is embedded in a1iv"
+time="2025-03-07T08:06:18Z" level=debug msg=+a1iv
+time="2025-03-07T08:06:18Z" level=debug msg="i1v is embedded in a1iv"
+time="2025-03-07T08:06:18Z" level=debug msg="aiv includes iv at pos 1"
+time="2025-03-07T08:06:18Z" level=debug msg="a1iv + i1v -> a1i1v"
+time="2025-03-07T08:06:18Z" level=debug msg="a1j is embedded in a1j"
+time="2025-03-07T08:06:18Z" level=debug msg=+a1j
+time="2025-03-07T08:06:18Z" level=debug msg="a1k is embedded in a1k"
+time="2025-03-07T08:06:18Z" level=debug msg=+a1k
+time="2025-03-07T08:06:18Z" level=debug msg="a1la is embedded in a1la"
+time="2025-03-07T08:06:18Z" level=debug msg=+a1la
+time="2025-03-07T08:06:18Z" level=debug msg="a1le is embedded in a1le"
+time="2025-03-07T08:06:18Z" level=debug msg=+a1le
+time="2025-03-07T08:06:18Z" level=debug msg="a1le is embedded in al3ei"
+time="2025-03-07T08:06:18Z" level=debug msg="ale includes ale at pos 0"
+time="2025-03-07T08:06:18Z" level=debug msg="a1le + a1le -> a1le"
+time="2025-03-07T08:06:18Z" level=debug msg="al3ei is embedded in al3ei"
+time="2025-03-07T08:06:18Z" level=debug msg=+al3ei
+time="2025-03-07T08:06:18Z" level=debug msg="e1i is embedded in al3ei"
+time="2025-03-07T08:06:18Z" level=debug msg="alei includes ei at pos 2"
+time="2025-03-07T08:06:18Z" level=debug msg="al3ei + e1i -> al3e1i"
+time="2025-03-07T08:06:18Z" level=debug msg="a1lo is embedded in a1lo"
+time="2025-03-07T08:06:18Z" level=debug msg=+a1lo
+time="2025-03-07T08:06:18Z" level=debug msg="a1lu is embedded in a1lu"
+time="2025-03-07T08:06:18Z" level=debug msg=+a1lu
+time="2025-03-07T08:06:18Z" level=debug msg="a1m is embedded in a1m"
+time="2025-03-07T08:06:18Z" level=debug msg=+a1m
+time="2025-03-07T08:06:18Z" level=debug msg="3anim is embedded in 3anim"
+time="2025-03-07T08:06:18Z" level=debug msg=+3anim
+time="2025-03-07T08:06:18Z" level=debug msg="1ni is embedded in 3anim"
+time="2025-03-07T08:06:18Z" level=debug msg=a+1ni
+time="2025-03-07T08:06:18Z" level=debug msg="i1m is embedded in 3anim"
+time="2025-03-07T08:06:18Z" level=debug msg="anim includes im at pos 2"
+time="2025-03-07T08:06:18Z" level=debug msg="3anim + i1m -> 3ani1m"
+time="2025-03-07T08:06:18Z" level=debug msg="an4sp is embedded in an4sp"
+time="2025-03-07T08:06:18Z" level=debug msg=+an4sp
+time="2025-03-07T08:06:18Z" level=debug msg="n1s is embedded in an4sp"
+time="2025-03-07T08:06:18Z" level=debug msg=a+n1s
+time="2025-03-07T08:06:18Z" level=debug msg="s1p is embedded in an4sp"
+time="2025-03-07T08:06:18Z" level=debug msg="ansp includes sp at pos 2"
+time="2025-03-07T08:06:18Z" level=debug msg="an4sp + s1p -> an4s1p"
+time="2025-03-07T08:06:18Z" level=debug msg="a1o is embedded in a1o"
+time="2025-03-07T08:06:18Z" level=debug msg=+a1o
+time="2025-03-07T08:06:18Z" level=debug msg="a1p is embedded in a1p"
+time="2025-03-07T08:06:18Z" level=debug msg=+a1p
+time="2025-03-07T08:06:18Z" level=debug msg="a1q is embedded in a1q"
+time="2025-03-07T08:06:18Z" level=debug msg=+a1q
+time="2025-03-07T08:06:18Z" level=debug msg="a1ra is embedded in a1ra"
+time="2025-03-07T08:06:18Z" level=debug msg=+a1ra
+time="2025-03-07T08:06:18Z" level=debug msg="a1ri is embedded in a1ri"
+time="2025-03-07T08:06:18Z" level=debug msg=+a1ri
+time="2025-03-07T08:06:18Z" level=debug msg="a1ro is embedded in a1ro"
+time="2025-03-07T08:06:18Z" level=debug msg=+a1ro
+time="2025-03-07T08:06:18Z" level=debug msg="a1ru is embedded in a1ru"
+time="2025-03-07T08:06:18Z" level=debug msg=+a1ru
+time="2025-03-07T08:06:18Z" level=debug msg="a1ry is embedded in a1ry"
+time="2025-03-07T08:06:18Z" level=debug msg=+a1ry
+time="2025-03-07T08:06:18Z" level=debug msg="a1s2h is embedded in a1s2h"
+time="2025-03-07T08:06:18Z" level=debug msg=+a1s2h
+time="2025-03-07T08:06:18Z" level=debug msg="s1h is embedded in a1s2h"
+time="2025-03-07T08:06:18Z" level=debug msg="ash includes sh at pos 1"
+time="2025-03-07T08:06:18Z" level=debug msg="a1s2h + s1h -> a1s2h"
+time="2025-03-07T08:06:18Z" level=debug msg="3asth is embedded in 3asth"
+time="2025-03-07T08:06:18Z" level=debug msg=+3asth
+time="2025-03-07T08:06:18Z" level=debug msg="s1t is embedded in 3asth"
+time="2025-03-07T08:06:18Z" level=debug msg=a+s1t
+time="2025-03-07T08:06:18Z" level=debug msg="a1t is embedded in a1t"
+time="2025-03-07T08:06:18Z" level=debug msg=+a1t
+time="2025-03-07T08:06:18Z" level=debug msg="a1t is embedded in atyr4"
+time="2025-03-07T08:06:18Z" level=debug msg="at includes at at pos 0"
+time="2025-03-07T08:06:18Z" level=debug msg="a1t + a1t -> a1t"
+time="2025-03-07T08:06:18Z" level=debug msg="atyr4 is embedded in atyr4"
+time="2025-03-07T08:06:18Z" level=debug msg=+atyr4
+time="2025-03-07T08:06:18Z" level=debug msg="ty1 is embedded in atyr4"
+time="2025-03-07T08:06:18Z" level=debug msg=a+ty1
+time="2025-03-07T08:06:18Z" level=debug msg="y1r is embedded in atyr4"
+time="2025-03-07T08:06:18Z" level=debug msg="atyr includes yr at pos 2"
+time="2025-03-07T08:06:18Z" level=debug msg="atyr4 + y1r -> aty1r4"
+time="2025-03-07T08:06:18Z" level=debug msg="a1v is embedded in a1v"
+time="2025-03-07T08:06:18Z" level=debug msg=+a1v
+time="2025-03-07T08:06:18Z" level=debug msg="a1w is embedded in a1w"
+time="2025-03-07T08:06:18Z" level=debug msg=+a1w
+time="2025-03-07T08:06:18Z" level=debug msg="a1z is embedded in a1z"
+time="2025-03-07T08:06:18Z" level=debug msg=+a1z
+time="2025-03-07T08:06:18Z" level=debug msg="1ba is embedded in 1ba"
+time="2025-03-07T08:06:18Z" level=debug msg=+1ba
+time="2025-03-07T08:06:18Z" level=debug msg="2b1b is embedded in 2b1b"
+time="2025-03-07T08:06:18Z" level=debug msg=+2b1b
+time="2025-03-07T08:06:18Z" level=debug msg="2b1b is embedded in b3bo"
+time="2025-03-07T08:06:18Z" level=debug msg="bb includes bb at pos 0"
+time="2025-03-07T08:06:18Z" level=debug msg="2b1b + 2b1b -> 2b1b"
+time="2025-03-07T08:06:18Z" level=debug msg="b3bo is embedded in b3bo"
+time="2025-03-07T08:06:18Z" level=debug msg=+b3bo
+time="2025-03-07T08:06:18Z" level=debug msg="1bo is embedded in b3bo"
+time="2025-03-07T08:06:18Z" level=debug msg="bbo includes bo at pos 1"
+time="2025-03-07T08:06:18Z" level=debug msg="b3bo + 1bo -> b3bo"
+time="2025-03-07T08:06:18Z" level=debug msg="b1c is embedded in b1c"
+time="2025-03-07T08:06:18Z" level=debug msg=+b1c
+time="2025-03-07T08:06:18Z" level=debug msg="2b1d is embedded in 2b1d"
+time="2025-03-07T08:06:18Z" level=debug msg=+2b1d
+time="2025-03-07T08:06:18Z" level=debug msg="1be is embedded in 1be"
+time="2025-03-07T08:06:18Z" level=debug msg=+1be
+time="2025-03-07T08:06:18Z" level=debug msg="b1h is embedded in b1h"
+time="2025-03-07T08:06:18Z" level=debug msg=+b1h
+time="2025-03-07T08:06:18Z" level=debug msg="1bi is embedded in 1bi"
+time="2025-03-07T08:06:18Z" level=debug msg=+1bi
+time="2025-03-07T08:06:18Z" level=debug msg="1bi is embedded in bi4s3a"
+time="2025-03-07T08:06:18Z" level=debug msg="bi includes bi at pos 0"
+time="2025-03-07T08:06:18Z" level=debug msg="1bi + 1bi -> 1bi"
+time="2025-03-07T08:06:18Z" level=debug msg="bi4s3a is embedded in bi4s3a"
+time="2025-03-07T08:06:18Z" level=debug msg=+bi4s3a
+time="2025-03-07T08:06:18Z" level=debug msg="1sa is embedded in bi4s3a"
+time="2025-03-07T08:06:18Z" level=debug msg="bisa includes sa at pos 2"
+time="2025-03-07T08:06:18Z" level=debug msg="bi4s3a + 1sa -> bi4s3a"
+time="2025-03-07T08:06:18Z" level=debug msg="b1j is embedded in b1j"
+time="2025-03-07T08:06:18Z" level=debug msg=+b1j
+time="2025-03-07T08:06:18Z" level=debug msg="b1lu is embedded in b1lu"
+time="2025-03-07T08:06:18Z" level=debug msg=+b1lu
+time="2025-03-07T08:06:18Z" level=debug msg="b2ly is embedded in b2ly"
+time="2025-03-07T08:06:18Z" level=debug msg=+b2ly
+time="2025-03-07T08:06:18Z" level=debug msg="1ly is embedded in b2ly"
+time="2025-03-07T08:06:18Z" level=debug msg="bly includes ly at pos 1"
+time="2025-03-07T08:06:18Z" level=debug msg="b2ly + 1ly -> b2ly"
+time="2025-03-07T08:06:18Z" level=debug msg="b1m is embedded in b1m"
+time="2025-03-07T08:06:18Z" level=debug msg=+b1m
+time="2025-03-07T08:06:18Z" level=debug msg="b1n is embedded in b1n"
+time="2025-03-07T08:06:18Z" level=debug msg=+b1n
+time="2025-03-07T08:06:18Z" level=debug msg="1bo is embedded in 1bo"
+time="2025-03-07T08:06:18Z" level=debug msg=+1bo
+time="2025-03-07T08:06:18Z" level=debug msg="b1p is embedded in b1p"
+time="2025-03-07T08:06:18Z" level=debug msg=+b1p
+time="2025-03-07T08:06:18Z" level=debug msg="1b2r is embedded in 1b2r"
+time="2025-03-07T08:06:18Z" level=debug msg=+1b2r
+time="2025-03-07T08:06:18Z" level=debug msg="2b1s2 is embedded in 2b1s2"
+time="2025-03-07T08:06:18Z" level=debug msg=+2b1s2
+time="2025-03-07T08:06:18Z" level=debug msg="b1t is embedded in b1t"
+time="2025-03-07T08:06:18Z" level=debug msg=+b1t
+time="2025-03-07T08:06:18Z" level=debug msg="1bu is embedded in 1bu"
+time="2025-03-07T08:06:18Z" level=debug msg=+1bu
+time="2025-03-07T08:06:18Z" level=debug msg="1bu is embedded in bu1e"
+time="2025-03-07T08:06:18Z" level=debug msg="bu includes bu at pos 0"
+time="2025-03-07T08:06:18Z" level=debug msg="1bu + 1bu -> 1bu"
+time="2025-03-07T08:06:18Z" level=debug msg="bu1e is embedded in bu1e"
+time="2025-03-07T08:06:18Z" level=debug msg=+bu1e
+time="2025-03-07T08:06:18Z" level=debug msg="1bu is embedded in bu1i"
+time="2025-03-07T08:06:18Z" level=debug msg="bu includes bu at pos 0"
+time="2025-03-07T08:06:18Z" level=debug msg="1bu + 1bu -> 1bu"
+time="2025-03-07T08:06:18Z" level=debug msg="bu1i is embedded in bu1i"
+time="2025-03-07T08:06:18Z" level=debug msg=+bu1i
+time="2025-03-07T08:06:18Z" level=debug msg="b1v is embedded in b1v"
+time="2025-03-07T08:06:18Z" level=debug msg=+b1v
+time="2025-03-07T08:06:18Z" level=debug msg="ca1i is embedded in ca1i"
+time="2025-03-07T08:06:18Z" level=debug msg=+ca1i
+time="2025-03-07T08:06:18Z" level=debug msg="2c1c is embedded in 2c1c"
+time="2025-03-07T08:06:18Z" level=debug msg=+2c1c
+time="2025-03-07T08:06:18Z" level=debug msg="c1d is embedded in c1d"
+time="2025-03-07T08:06:18Z" level=debug msg=+c1d
+time="2025-03-07T08:06:18Z" level=debug msg="4c3enn is embedded in 4c3enn"
+time="2025-03-07T08:06:18Z" level=debug msg=+4c3enn
+time="2025-03-07T08:06:18Z" level=debug msg="n1n2 is embedded in 4c3enn"
+time="2025-03-07T08:06:18Z" level=debug msg="cenn includes nn at pos 2"
+time="2025-03-07T08:06:18Z" level=debug msg="4c3enn + n1n2 -> 4c3en1n2"
+time="2025-03-07T08:06:18Z" level=debug msg="1chr is embedded in 1chr"
+time="2025-03-07T08:06:18Z" level=debug msg=+1chr
+time="2025-03-07T08:06:18Z" level=debug msg="h2r is embedded in 1chr"
+time="2025-03-07T08:06:18Z" level=debug msg="chr includes hr at pos 1"
+time="2025-03-07T08:06:18Z" level=debug msg="1chr + h2r -> 1ch2r"
+time="2025-03-07T08:06:18Z" level=debug msg="2chs is embedded in 2chs"
+time="2025-03-07T08:06:18Z" level=debug msg=+2chs
+time="2025-03-07T08:06:18Z" level=debug msg="h1s is embedded in 2chs"
+time="2025-03-07T08:06:18Z" level=debug msg="chs includes hs at pos 1"
+time="2025-03-07T08:06:18Z" level=debug msg="2chs + h1s -> 2ch1s"
+time="2025-03-07T08:06:18Z" level=debug msg="2cht is embedded in 2cht"
+time="2025-03-07T08:06:18Z" level=debug msg=+2cht
+time="2025-03-07T08:06:18Z" level=debug msg="h1t is embedded in 2cht"
+time="2025-03-07T08:06:18Z" level=debug msg="cht includes ht at pos 1"
+time="2025-03-07T08:06:18Z" level=debug msg="2cht + h1t -> 2ch1t"
+time="2025-03-07T08:06:18Z" level=debug msg="1chu is embedded in 1chu"
+time="2025-03-07T08:06:18Z" level=debug msg=+1chu
+time="2025-03-07T08:06:18Z" level=debug msg="1ci is embedded in 1ci"
+time="2025-03-07T08:06:18Z" level=debug msg=+1ci
+time="2025-03-07T08:06:18Z" level=debug msg="2c1k is embedded in 2c1k"
+time="2025-03-07T08:06:18Z" level=debug msg=+2c1k
+time="2025-03-07T08:06:18Z" level=debug msg="1c2l is embedded in 1c2l"
+time="2025-03-07T08:06:18Z" level=debug msg=+1c2l
+time="2025-03-07T08:06:18Z" level=debug msg="2c1m is embedded in 2c1m"
+time="2025-03-07T08:06:18Z" level=debug msg=+2c1m
+time="2025-03-07T08:06:18Z" level=debug msg="co4cl is embedded in co4cl"
+time="2025-03-07T08:06:18Z" level=debug msg=+co4cl
+time="2025-03-07T08:06:18Z" level=debug msg="o1c is embedded in co4cl"
+time="2025-03-07T08:06:18Z" level=debug msg=c+o1c
+time="2025-03-07T08:06:18Z" level=debug msg="1c2l is embedded in co4cl"
+time="2025-03-07T08:06:18Z" level=debug msg="cocl includes cl at pos 2"
+time="2025-03-07T08:06:18Z" level=debug msg="co4cl + 1c2l -> co4c2l"
+time="2025-03-07T08:06:18Z" level=debug msg="co3p2 is embedded in co3p2"
+time="2025-03-07T08:06:18Z" level=debug msg=+co3p2
+time="2025-03-07T08:06:18Z" level=debug msg="o1p is embedded in co3p2"
+time="2025-03-07T08:06:18Z" level=debug msg="cop includes op at pos 1"
+time="2025-03-07T08:06:18Z" level=debug msg="co3p2 + o1p -> co3p2"
+time="2025-03-07T08:06:18Z" level=debug msg="c1q is embedded in c1q"
+time="2025-03-07T08:06:18Z" level=debug msg=+c1q
+time="2025-03-07T08:06:18Z" level=debug msg="c2r is embedded in c2r"
+time="2025-03-07T08:06:18Z" level=debug msg=+c2r
+time="2025-03-07T08:06:18Z" level=debug msg="c1s2 is embedded in c1s2"
+time="2025-03-07T08:06:18Z" level=debug msg=+c1s2
+time="2025-03-07T08:06:18Z" level=debug msg="2c1t is embedded in 2c1t"
+time="2025-03-07T08:06:18Z" level=debug msg=+2c1t
+time="2025-03-07T08:06:18Z" level=debug msg="2c1t is embedded in ctro3"
+time="2025-03-07T08:06:18Z" level=debug msg="ct includes ct at pos 0"
+time="2025-03-07T08:06:18Z" level=debug msg="2c1t + 2c1t -> 2c1t"
+time="2025-03-07T08:06:18Z" level=debug msg="ctro3 is embedded in ctro3"
+time="2025-03-07T08:06:18Z" level=debug msg=+ctro3
+time="2025-03-07T08:06:18Z" level=debug msg="t2r is embedded in ctro3"
+time="2025-03-07T08:06:18Z" level=debug msg=c+t2r
+time="2025-03-07T08:06:18Z" level=debug msg="cu1a is embedded in cu1a"
+time="2025-03-07T08:06:18Z" level=debug msg=+cu1a
+time="2025-03-07T08:06:18Z" level=debug msg="cu1e is embedded in cu1e"
+time="2025-03-07T08:06:18Z" level=debug msg=+cu1e
+time="2025-03-07T08:06:18Z" level=debug msg="cu1i is embedded in cu1i"
+time="2025-03-07T08:06:18Z" level=debug msg=+cu1i
+time="2025-03-07T08:06:18Z" level=debug msg="1cy is embedded in 1cy"
+time="2025-03-07T08:06:18Z" level=debug msg=+1cy
+time="2025-03-07T08:06:18Z" level=debug msg="1cy is embedded in cy4ne"
+time="2025-03-07T08:06:18Z" level=debug msg="cy includes cy at pos 0"
+time="2025-03-07T08:06:18Z" level=debug msg="1cy + 1cy -> 1cy"
+time="2025-03-07T08:06:18Z" level=debug msg="cy4ne is embedded in cy4ne"
+time="2025-03-07T08:06:18Z" level=debug msg=+cy4ne
+time="2025-03-07T08:06:18Z" level=debug msg="1ne is embedded in cy4ne"
+time="2025-03-07T08:06:18Z" level=debug msg="cyne includes ne at pos 2"
+time="2025-03-07T08:06:18Z" level=debug msg="cy4ne + 1ne -> cy4ne"
+time="2025-03-07T08:06:18Z" level=debug msg="1cy is embedded in cyr2"
+time="2025-03-07T08:06:18Z" level=debug msg="+ echo 'Created with substring.pl by substrings.pl iahyphen.tex hyph_ia.dic ISO8859-1'"
+time="2025-03-07T08:06:18Z" level=debug msg="cy includes cy at pos 0"
+time="2025-03-07T08:06:18Z" level=debug msg="1cy + 1cy -> 1cy"
+time="2025-03-07T08:06:18Z" level=debug msg="+ echo ---"
+time="2025-03-07T08:06:18Z" level=debug msg="cyr2 is embedded in cyr2"
+time="2025-03-07T08:06:18Z" level=debug msg="+ head -n 25 iahyphen.tex"
+time="2025-03-07T08:06:18Z" level=debug msg=+cyr2
+time="2025-03-07T08:06:18Z" level=debug msg="y1r is embedded in cyr2"
+time="2025-03-07T08:06:18Z" level=debug msg="cyr includes yr at pos 1"
+time="2025-03-07T08:06:18Z" level=debug msg="cyr2 + y1r -> cy1r2"
+time="2025-03-07T08:06:18Z" level=debug msg="c1z is embedded in c1z"
+time="2025-03-07T08:06:18Z" level=debug msg=+c1z
+time="2025-03-07T08:06:18Z" level=debug msg="1da is embedded in 1da"
+time="2025-03-07T08:06:18Z" level=debug msg=+1da
+time="2025-03-07T08:06:18Z" level=debug msg="2d1d is embedded in 2d1d"
+time="2025-03-07T08:06:18Z" level=debug msg=+2d1d
+time="2025-03-07T08:06:18Z" level=debug msg="1de is embedded in 1de"
+time="2025-03-07T08:06:18Z" level=debug msg=+1de
+time="2025-03-07T08:06:18Z" level=debug msg="1de is embedded in de4ru"
+time="2025-03-07T08:06:18Z" level=debug msg="de includes de at pos 0"
+time="2025-03-07T08:06:18Z" level=debug msg="1de + 1de -> 1de"
+time="2025-03-07T08:06:18Z" level=debug msg="de4ru is embedded in de4ru"
+time="2025-03-07T08:06:18Z" level=debug msg=+de4ru
+time="2025-03-07T08:06:18Z" level=debug msg="e1ru is embedded in de4ru"
+time="2025-03-07T08:06:18Z" level=debug msg="deru includes eru at pos 1"
+time="2025-03-07T08:06:18Z" level=debug msg="de4ru + e1ru -> de4ru"
+time="2025-03-07T08:06:18Z" level=debug msg="1de is embedded in des3e"
+time="2025-03-07T08:06:18Z" level=debug msg="de includes de at pos 0"
+time="2025-03-07T08:06:18Z" level=debug msg="1de + 1de -> 1de"
+time="2025-03-07T08:06:18Z" level=debug msg="des3e is embedded in des3e"
+time="2025-03-07T08:06:18Z" level=debug msg=+des3e
+time="2025-03-07T08:06:18Z" level=debug msg="1se is embedded in des3e"
+time="2025-03-07T08:06:18Z" level=debug msg="dese includes se at pos 2"
+time="2025-03-07T08:06:18Z" level=debug msg="des3e + 1se -> de1s3e"
+time="2025-03-07T08:06:18Z" level=debug msg="1de is embedded in de4s3o"
+time="2025-03-07T08:06:18Z" level=debug msg="de includes de at pos 0"
+time="2025-03-07T08:06:18Z" level=debug msg="1de + 1de -> 1de"
+time="2025-03-07T08:06:18Z" level=debug msg="de4s3o is embedded in de4s3o"
+time="2025-03-07T08:06:18Z" level=debug msg=+de4s3o
+time="2025-03-07T08:06:18Z" level=debug msg="1so is embedded in de4s3o"
+time="2025-03-07T08:06:18Z" level=debug msg="deso includes so at pos 2"
+time="2025-03-07T08:06:18Z" level=debug msg="de4s3o + 1so -> de4s3o"
+time="2025-03-07T08:06:18Z" level=debug msg="1de is embedded in de4su"
+time="2025-03-07T08:06:18Z" level=debug msg="de includes de at pos 0"
+time="2025-03-07T08:06:18Z" level=debug msg="1de + 1de -> 1de"
+time="2025-03-07T08:06:18Z" level=debug msg="de4su is embedded in de4su"
+time="2025-03-07T08:06:18Z" level=debug msg=+de4su
+time="2025-03-07T08:06:18Z" level=debug msg="1su is embedded in de4su"
+time="2025-03-07T08:06:18Z" level=debug msg="desu includes su at pos 2"
+time="2025-03-07T08:06:18Z" level=debug msg="de4su + 1su -> de4su"
+time="2025-03-07T08:06:18Z" level=debug msg="2d1g is embedded in 2d1g"
+time="2025-03-07T08:06:18Z" level=debug msg=+2d1g
+time="2025-03-07T08:06:18Z" level=debug msg="d1he is embedded in d1he"
+time="2025-03-07T08:06:18Z" level=debug msg=+d1he
+time="2025-03-07T08:06:18Z" level=debug msg="h2e is embedded in d1he"
+time="2025-03-07T08:06:18Z" level=debug msg="dhe includes he at pos 1"
+time="2025-03-07T08:06:18Z" level=debug msg="d1he + h2e -> d1h2e"
+time="2025-03-07T08:06:18Z" level=debug msg="dia3s4 is embedded in dia3s4"
+time="2025-03-07T08:06:18Z" level=debug msg=+dia3s4
+time="2025-03-07T08:06:18Z" level=debug msg="i1a is embedded in dia3s4"
+time="2025-03-07T08:06:18Z" level=debug msg=d+i1a
+time="2025-03-07T08:06:18Z" level=debug msg="di3p4t is embedded in di3p4t"
+time="2025-03-07T08:06:18Z" level=debug msg=+di3p4t
+time="2025-03-07T08:06:18Z" level=debug msg="i1p is embedded in di3p4t"
+time="2025-03-07T08:06:18Z" level=debug msg=d+i1p
+time="2025-03-07T08:06:18Z" level=debug msg="2p1t is embedded in di3p4t"
+time="2025-03-07T08:06:18Z" level=debug msg="dipt includes pt at pos 2"
+time="2025-03-07T08:06:18Z" level=debug msg="di3p4t + 2p1t -> di3p4t"
+time="2025-03-07T08:06:18Z" level=debug msg="di4sa is embedded in di4sa"
+time="2025-03-07T08:06:18Z" level=debug msg=+di4sa
+time="2025-03-07T08:06:18Z" level=debug msg="1sa is embedded in di4sa"
+time="2025-03-07T08:06:18Z" level=debug msg="disa includes sa at pos 2"
+time="2025-03-07T08:06:18Z" level=debug msg="di4sa + 1sa -> di4sa"
+time="2025-03-07T08:06:18Z" level=debug msg="di4s3e is embedded in di4s3e"
+time="2025-03-07T08:06:18Z" level=debug msg=+di4s3e
+time="2025-03-07T08:06:18Z" level=debug msg="1se is embedded in di4s3e"
+time="2025-03-07T08:06:18Z" level=debug msg="dise includes se at pos 2"
+time="2025-03-07T08:06:18Z" level=debug msg="di4s3e + 1se -> di4s3e"
+time="2025-03-07T08:06:18Z" level=debug msg="di4si is embedded in di4si"
+time="2025-03-07T08:06:18Z" level=debug msg=+di4si
+time="2025-03-07T08:06:18Z" level=debug msg="1si is embedded in di4si"
+time="2025-03-07T08:06:18Z" level=debug msg="disi includes si at pos 2"
+time="2025-03-07T08:06:18Z" level=debug msg="di4si + 1si -> di4si"
+time="2025-03-07T08:06:18Z" level=debug msg="di4so is embedded in di4so"
+time="2025-03-07T08:06:18Z" level=debug msg=+di4so
+time="2025-03-07T08:06:18Z" level=debug msg="1so is embedded in di4so"
+time="2025-03-07T08:06:18Z" level=debug msg="diso includes so at pos 2"
+time="2025-03-07T08:06:18Z" level=debug msg="di4so + 1so -> di4so"
+time="2025-03-07T08:06:18Z" level=debug msg="di4s3u is embedded in di4s3u"
+time="2025-03-07T08:06:18Z" level=debug msg=+di4s3u
+time="2025-03-07T08:06:18Z" level=debug msg="1su is embedded in di4s3u"
+time="2025-03-07T08:06:18Z" level=debug msg="disu includes su at pos 2"
+time="2025-03-07T08:06:18Z" level=debug msg="di4s3u + 1su -> di4s3u"
+time="2025-03-07T08:06:18Z" level=debug msg="2d1j is embedded in 2d1j"
+time="2025-03-07T08:06:18Z" level=debug msg=+2d1j
+time="2025-03-07T08:06:18Z" level=debug msg="2d1m is embedded in 2d1m"
+time="2025-03-07T08:06:18Z" level=debug msg=+2d1m
+time="2025-03-07T08:06:18Z" level=debug msg="1do is embedded in 1do"
+time="2025-03-07T08:06:18Z" level=debug msg=+1do
+time="2025-03-07T08:06:18Z" level=debug msg="1do is embedded in do4l3a"
+time="2025-03-07T08:06:18Z" level=debug msg="do includes do at pos 0"
+time="2025-03-07T08:06:18Z" level=debug msg="1do + 1do -> 1do"
+time="2025-03-07T08:06:18Z" level=debug msg="do4l3a is embedded in do4l3a"
+time="2025-03-07T08:06:18Z" level=debug msg=+do4l3a
+time="2025-03-07T08:06:18Z" level=debug msg="o1l is embedded in do4l3a"
+time="2025-03-07T08:06:18Z" level=debug msg=d+o1l
+time="2025-03-07T08:06:18Z" level=debug msg="1do is embedded in 4d3osm"
+time="2025-03-07T08:06:18Z" level=debug msg="do includes do at pos 0"
+time="2025-03-07T08:06:18Z" level=debug msg="1do + 1do -> 1do"
+time="2025-03-07T08:06:18Z" level=debug msg="4d3osm is embedded in 4d3osm"
+time="2025-03-07T08:06:18Z" level=debug msg=+4d3osm
+time="2025-03-07T08:06:18Z" level=debug msg="2s1m is embedded in 4d3osm"
+time="2025-03-07T08:06:18Z" level=debug msg="dosm includes sm at pos 2"
+time="2025-03-07T08:06:18Z" level=debug msg="4d3osm + 2s1m -> 4d3o2s1m"
+time="2025-03-07T08:06:18Z" level=debug msg="d2r is embedded in d2r"
+time="2025-03-07T08:06:18Z" level=debug msg=+d2r
+time="2025-03-07T08:06:18Z" level=debug msg="d2r is embedded in dro3s4"
+time="2025-03-07T08:06:18Z" level=debug msg="dr includes dr at pos 0"
+time="2025-03-07T08:06:18Z" level=debug msg="d2r + d2r -> d2r"
+time="2025-03-07T08:06:18Z" level=debug msg="dro3s4 is embedded in dro3s4"
+time="2025-03-07T08:06:18Z" level=debug msg=+dro3s4
+time="2025-03-07T08:06:18Z" level=debug msg="du1a is embedded in du1a"
+time="2025-03-07T08:06:18Z" level=debug msg=+du1a
+time="2025-03-07T08:06:18Z" level=debug msg="du1e is embedded in du1e"
+time="2025-03-07T08:06:18Z" level=debug msg=+du1e
+time="2025-03-07T08:06:18Z" level=debug msg="du1i is embedded in du1i"
+time="2025-03-07T08:06:18Z" level=debug msg=+du1i
+time="2025-03-07T08:06:18Z" level=debug msg="2d1v is embedded in 2d1v"
+time="2025-03-07T08:06:18Z" level=debug msg=+2d1v
+time="2025-03-07T08:06:18Z" level=debug msg="dy2s is embedded in dy2s"
+time="2025-03-07T08:06:18Z" level=debug msg=+dy2s
+time="2025-03-07T08:06:18Z" level=debug msg="e1a is embedded in e1a"
+time="2025-03-07T08:06:18Z" level=debug msg=+e1a
+time="2025-03-07T08:06:18Z" level=debug msg="e1a is embedded in e2au"
+time="2025-03-07T08:06:18Z" level=debug msg="ea includes ea at pos 0"
+time="2025-03-07T08:06:18Z" level=debug msg="e1a + e1a -> e1a"
+time="2025-03-07T08:06:18Z" level=debug msg="e2au is embedded in e2au"
+time="2025-03-07T08:06:18Z" level=debug msg=+e2au
+time="2025-03-07T08:06:18Z" level=debug msg="e1b is embedded in e1b"
+time="2025-03-07T08:06:18Z" level=debug msg=+e1b
+time="2025-03-07T08:06:18Z" level=debug msg="e1ca is embedded in e1ca"
+time="2025-03-07T08:06:18Z" level=debug msg=+e1ca
+time="2025-03-07T08:06:18Z" level=debug msg="e1ce is embedded in e1ce"
+time="2025-03-07T08:06:18Z" level=debug msg=+e1ce
+time="2025-03-07T08:06:18Z" level=debug msg="e3che is embedded in e3che"
+time="2025-03-07T08:06:18Z" level=debug msg=+e3che
+time="2025-03-07T08:06:18Z" level=debug msg="h2e is embedded in e3che"
+time="2025-03-07T08:06:18Z" level=debug msg="eche includes he at pos 2"
+time="2025-03-07T08:06:18Z" level=debug msg="e3che + h2e -> e3ch2e"
+time="2025-03-07T08:06:18Z" level=debug msg="e3chi is embedded in e3chi"
+time="2025-03-07T08:06:18Z" level=debug msg=+e3chi
+time="2025-03-07T08:06:18Z" level=debug msg="e1co is embedded in e1co"
+time="2025-03-07T08:06:18Z" level=debug msg=+e1co
+time="2025-03-07T08:06:18Z" level=debug msg="e1cr is embedded in e1cr"
+time="2025-03-07T08:06:18Z" level=debug msg=+e1cr
+time="2025-03-07T08:06:18Z" level=debug msg="c2r is embedded in e1cr"
+time="2025-03-07T08:06:18Z" level=debug msg="ecr includes cr at pos 1"
+time="2025-03-07T08:06:18Z" level=debug msg="e1cr + c2r -> e1c2r"
+time="2025-03-07T08:06:18Z" level=debug msg="e1cu is embedded in e1cu"
+time="2025-03-07T08:06:18Z" level=debug msg=+e1cu
+time="2025-03-07T08:06:18Z" level=debug msg="e1d is embedded in e1d"
+time="2025-03-07T08:06:18Z" level=debug msg=+e1d
+time="2025-03-07T08:06:18Z" level=debug msg="e1e is embedded in e1e"
+time="2025-03-07T08:06:18Z" level=debug msg=+e1e
+time="2025-03-07T08:06:18Z" level=debug msg="e1f is embedded in e1f"
+time="2025-03-07T08:06:18Z" level=debug msg=+e1f
+time="2025-03-07T08:06:18Z" level=debug msg="e1f is embedded in 1eff"
+time="2025-03-07T08:06:18Z" level=debug msg="ef includes ef at pos 0"
+time="2025-03-07T08:06:18Z" level=debug msg="e1f + e1f -> e1f"
+time="2025-03-07T08:06:18Z" level=debug msg="1eff is embedded in 1eff"
+time="2025-03-07T08:06:18Z" level=debug msg=+1eff
+time="2025-03-07T08:06:18Z" level=debug msg="2f1f is embedded in 1eff"
+time="2025-03-07T08:06:18Z" level=debug msg="eff includes ff at pos 1"
+time="2025-03-07T08:06:18Z" level=debug msg="1eff + 2f1f -> 1e2f1f"
+time="2025-03-07T08:06:18Z" level=debug msg="e1g is embedded in e1g"
+time="2025-03-07T08:06:18Z" level=debug msg=+e1g
+time="2025-03-07T08:06:18Z" level=debug msg="e1h is embedded in e1h"
+time="2025-03-07T08:06:18Z" level=debug msg=+e1h
+time="2025-03-07T08:06:18Z" level=debug msg="e1i is embedded in e1i"
+time="2025-03-07T08:06:18Z" level=debug msg=+e1i
+time="2025-03-07T08:06:18Z" level=debug msg="e1j is embedded in e1j"
+time="2025-03-07T08:06:18Z" level=debug msg=+e1j
+time="2025-03-07T08:06:18Z" level=debug msg="e1k is embedded in e1k"
+time="2025-03-07T08:06:18Z" level=debug msg=+e1k
+time="2025-03-07T08:06:18Z" level=debug msg="e1la is embedded in e1la"
+time="2025-03-07T08:06:18Z" level=debug msg=+e1la
+time="2025-03-07T08:06:18Z" level=debug msg="e1le is embedded in e1le"
+time="2025-03-07T08:06:18Z" level=debug msg=+e1le
+time="2025-03-07T08:06:18Z" level=debug msg="e1lo is embedded in e1lo"
+time="2025-03-07T08:06:18Z" level=debug msg=+e1lo
+time="2025-03-07T08:06:18Z" level=debug msg="e1lo is embedded in el3od"
+time="2025-03-07T08:06:18Z" level=debug msg="elo includes elo at pos 0"
+time="2025-03-07T08:06:18Z" level=debug msg="e1lo + e1lo -> e1lo"
+time="2025-03-07T08:06:18Z" level=debug msg="el3od is embedded in el3od"
+time="2025-03-07T08:06:18Z" level=debug msg=+el3od
+time="2025-03-07T08:06:18Z" level=debug msg="2lod is embedded in el3od"
+time="2025-03-07T08:06:18Z" level=debug msg="elod includes lod at pos 1"
+time="2025-03-07T08:06:18Z" level=debug msg="el3od + 2lod -> e2l3od"
+time="2025-03-07T08:06:18Z" level=debug msg="o1d is embedded in el3od"
+time="2025-03-07T08:06:18Z" level=debug msg="elod includes od at pos 2"
+time="2025-03-07T08:06:18Z" level=debug msg="e2l3od + o1d -> e2l3o1d"
+time="2025-03-07T08:06:18Z" level=debug msg="e1lo is embedded in e4l3om"
+time="2025-03-07T08:06:18Z" level=debug msg="elo includes elo at pos 0"
+time="2025-03-07T08:06:18Z" level=debug msg="e1lo + e1lo -> e1lo"
+time="2025-03-07T08:06:18Z" level=debug msg="e4l3om is embedded in e4l3om"
+time="2025-03-07T08:06:18Z" level=debug msg=+e4l3om
+time="2025-03-07T08:06:18Z" level=debug msg="e1lu is embedded in e1lu"
+time="2025-03-07T08:06:18Z" level=debug msg=+e1lu
+time="2025-03-07T08:06:18Z" level=debug msg="e1m is embedded in e1m"
+time="2025-03-07T08:06:18Z" level=debug msg=+e1m
+time="2025-03-07T08:06:18Z" level=debug msg="e1m is embedded in e4m3ag"
+time="2025-03-07T08:06:18Z" level=debug msg="em includes em at pos 0"
+time="2025-03-07T08:06:18Z" level=debug msg="e1m + e1m -> e1m"
+time="2025-03-07T08:06:18Z" level=debug msg="e4m3ag is embedded in e4m3ag"
+time="2025-03-07T08:06:18Z" level=debug msg=+e4m3ag
+time="2025-03-07T08:06:18Z" level=debug msg="1ma is embedded in e4m3ag"
+time="2025-03-07T08:06:18Z" level=debug msg=e+1ma
+time="2025-03-07T08:06:18Z" level=debug msg="a1g is embedded in e4m3ag"
+time="2025-03-07T08:06:18Z" level=debug msg="emag includes ag at pos 2"
+time="2025-03-07T08:06:18Z" level=debug msg="e4m3ag + a1g -> e4m3a1g"
+time="2025-03-07T08:06:18Z" level=debug msg="2enl is embedded in 2enl"
+time="2025-03-07T08:06:18Z" level=debug msg=+2enl
+time="2025-03-07T08:06:18Z" level=debug msg="n1l is embedded in 2enl"
+time="2025-03-07T08:06:18Z" level=debug msg="enl includes nl at pos 1"
+time="2025-03-07T08:06:18Z" level=debug msg="2enl + n1l -> 2en1l"
+time="2025-03-07T08:06:18Z" level=debug msg="eno3p4 is embedded in eno3p4"
+time="2025-03-07T08:06:18Z" level=debug msg=+eno3p4
+time="2025-03-07T08:06:18Z" level=debug msg="1no is embedded in eno3p4"
+time="2025-03-07T08:06:18Z" level=debug msg=e+1no
+time="2025-03-07T08:06:18Z" level=debug msg="o1p is embedded in eno3p4"
+time="2025-03-07T08:06:18Z" level=debug msg="enop includes op at pos 2"
+time="2025-03-07T08:06:18Z" level=debug msg="eno3p4 + o1p -> eno3p4"
+time="2025-03-07T08:06:18Z" level=debug msg="e1o is embedded in e1o"
+time="2025-03-07T08:06:18Z" level=debug msg=+e1o
+time="2025-03-07T08:06:18Z" level=debug msg="e1o is embedded in eo3g2"
+time="2025-03-07T08:06:18Z" level=debug msg="eo includes eo at pos 0"
+time="2025-03-07T08:06:18Z" level=debug msg="e1o + e1o -> e1o"
+time="2025-03-07T08:06:18Z" level=debug msg="eo3g2 is embedded in eo3g2"
+time="2025-03-07T08:06:18Z" level=debug msg=+eo3g2
+time="2025-03-07T08:06:18Z" level=debug msg="o1g is embedded in eo3g2"
+time="2025-03-07T08:06:18Z" level=debug msg="eog includes og at pos 1"
+time="2025-03-07T08:06:18Z" level=debug msg="eo3g2 + o1g -> eo3g2"
+time="2025-03-07T08:06:18Z" level=debug msg="e1o is embedded in eo3p2"
+time="2025-03-07T08:06:18Z" level=debug msg="eo includes eo at pos 0"
+time="2025-03-07T08:06:18Z" level=debug msg="e1o + e1o -> e1o"
+time="2025-03-07T08:06:18Z" level=debug msg="eo3p2 is embedded in eo3p2"
+time="2025-03-07T08:06:18Z" level=debug msg=+eo3p2
+time="2025-03-07T08:06:18Z" level=debug msg="o1p is embedded in eo3p2"
+time="2025-03-07T08:06:18Z" level=debug msg="eop includes op at pos 1"
+time="2025-03-07T08:06:18Z" level=debug msg="eo3p2 + o1p -> eo3p2"
+time="2025-03-07T08:06:18Z" level=debug msg="e1q is embedded in e1q"
+time="2025-03-07T08:06:18Z" level=debug msg=+e1q
+time="2025-03-07T08:06:18Z" level=debug msg="e1ra is embedded in e1ra"
+time="2025-03-07T08:06:18Z" level=debug msg=+e1ra
+time="2025-03-07T08:06:18Z" level=debug msg="e1ri is embedded in e1ri"
+time="2025-03-07T08:06:18Z" level=debug msg=+e1ri
+time="2025-03-07T08:06:18Z" level=debug msg="e1ro is embedded in e1ro"
+time="2025-03-07T08:06:18Z" level=debug msg=+e1ro
+time="2025-03-07T08:06:18Z" level=debug msg="e1ro is embedded in 4erog"
+time="2025-03-07T08:06:18Z" level=debug msg="ero includes ero at pos 0"
+time="2025-03-07T08:06:18Z" level=debug msg="e1ro + e1ro -> e1ro"
+time="2025-03-07T08:06:18Z" level=debug msg="4erog is embedded in 4erog"
+time="2025-03-07T08:06:18Z" level=debug msg=+4erog
+time="2025-03-07T08:06:18Z" level=debug msg="o1g is embedded in 4erog"
+time="2025-03-07T08:06:18Z" level=debug msg="erog includes og at pos 2"
+time="2025-03-07T08:06:18Z" level=debug msg="4erog + o1g -> 4ero1g"
+time="2025-03-07T08:06:18Z" level=debug msg="e1ro is embedded in ero3p4"
+time="2025-03-07T08:06:18Z" level=debug msg="ero includes ero at pos 0"
+time="2025-03-07T08:06:18Z" level=debug msg="e1ro + e1ro -> e1ro"
+time="2025-03-07T08:06:18Z" level=debug msg="ero3p4 is embedded in ero3p4"
+time="2025-03-07T08:06:18Z" level=debug msg=+ero3p4
+time="2025-03-07T08:06:18Z" level=debug msg="o1p is embedded in ero3p4"
+time="2025-03-07T08:06:18Z" level=debug msg="erop includes op at pos 2"
+time="2025-03-07T08:06:18Z" level=debug msg="ero3p4 + o1p -> ero3p4"
+time="2025-03-07T08:06:18Z" level=debug msg="e1ru is embedded in e1ru"
+time="2025-03-07T08:06:18Z" level=debug msg=+e1ru
+time="2025-03-07T08:06:18Z" level=debug msg="e1ru is embedded in er3ur"
+time="2025-03-07T08:06:18Z" level=debug msg="eru includes eru at pos 0"
+time="2025-03-07T08:06:18Z" level=debug msg="e1ru + e1ru -> e1ru"
+time="2025-03-07T08:06:18Z" level=debug msg="er3ur is embedded in er3ur"
+time="2025-03-07T08:06:18Z" level=debug msg=+er3ur
+time="2025-03-07T08:06:18Z" level=debug msg="e1ry is embedded in e1ry"
+time="2025-03-07T08:06:18Z" level=debug msg=+e1ry
+time="2025-03-07T08:06:18Z" level=debug msg="es4em is embedded in es4em"
+time="2025-03-07T08:06:18Z" level=debug msg=+es4em
+time="2025-03-07T08:06:18Z" level=debug msg="1se is embedded in es4em"
+time="2025-03-07T08:06:18Z" level=debug msg=e+1se
+time="2025-03-07T08:06:18Z" level=debug msg="e1m is embedded in es4em"
+time="2025-03-07T08:06:18Z" level=debug msg="esem includes em at pos 2"
+time="2025-03-07T08:06:18Z" level=debug msg="es4em + e1m -> es4e1m"
+time="2025-03-07T08:06:18Z" level=debug msg="e2st is embedded in e2st"
+time="2025-03-07T08:06:18Z" level=debug msg=+e2st
+time="2025-03-07T08:06:18Z" level=debug msg="s1t is embedded in e2st"
+time="2025-03-07T08:06:18Z" level=debug msg="est includes st at pos 1"
+time="2025-03-07T08:06:18Z" level=debug msg="e2st + s1t -> e2s1t"
+time="2025-03-07T08:06:18Z" level=debug msg="es3ue is embedded in es3ue"
+time="2025-03-07T08:06:18Z" level=debug msg=+es3ue
+time="2025-03-07T08:06:18Z" level=debug msg="1su is embedded in es3ue"
+time="2025-03-07T08:06:18Z" level=debug msg=e+1su
+time="2025-03-07T08:06:18Z" level=debug msg="su1e is embedded in es3ue"
+time="2025-03-07T08:06:18Z" level=debug msg="esue includes sue at pos 1"
+time="2025-03-07T08:06:18Z" level=debug msg="es3ue + su1e -> es3u1e"
+time="2025-03-07T08:06:18Z" level=debug msg="e1t is embedded in e1t"
+time="2025-03-07T08:06:18Z" level=debug msg=+e1t
+time="2025-03-07T08:06:18Z" level=debug msg="eu1 is embedded in eu1"
+time="2025-03-07T08:06:18Z" level=debug msg=+eu1
+time="2025-03-07T08:06:18Z" level=debug msg="eu1 is embedded in eu4ce"
+time="2025-03-07T08:06:18Z" level=debug msg="eu includes eu at pos 0"
+time="2025-03-07T08:06:18Z" level=debug msg="eu1 + eu1 -> eu1"
+time="2025-03-07T08:06:18Z" level=debug msg="eu4ce is embedded in eu4ce"
+time="2025-03-07T08:06:18Z" level=debug msg=+eu4ce
+time="2025-03-07T08:06:18Z" level=debug msg="+ RPM_EC=0"
+time="2025-03-07T08:06:18Z" level=debug msg="u1ce is embedded in eu4ce"
+time="2025-03-07T08:06:18Z" level=debug msg="euce includes uce at pos 1"
+time="2025-03-07T08:06:18Z" level=debug msg="eu4ce + u1ce -> eu4ce"
+time="2025-03-07T08:06:18Z" level=debug msg="eu1 is embedded in e1un"
+time="2025-03-07T08:06:18Z" level=debug msg="eu includes eu at pos 0"
+time="2025-03-07T08:06:18Z" level=debug msg="eu1 + eu1 -> eu1"
+time="2025-03-07T08:06:18Z" level=debug msg="e1un is embedded in e1un"
+time="2025-03-07T08:06:18Z" level=debug msg=+e1un
+time="2025-03-07T08:06:18Z" level=debug msg="e1v is embedded in e1v"
+time="2025-03-07T08:06:18Z" level=debug msg=+e1v
+time="2025-03-07T08:06:18Z" level=debug msg="e1w is embedded in e1w"
+time="2025-03-07T08:06:18Z" level=debug msg=+e1w
+time="2025-03-07T08:06:18Z" level=debug msg="1fa is embedded in 1fa"
+time="2025-03-07T08:06:18Z" level=debug msg=+1fa
+time="2025-03-07T08:06:18Z" level=debug msg="2f1f is embedded in 2f1f"
+time="2025-03-07T08:06:18Z" level=debug msg=+2f1f
+time="2025-03-07T08:06:18Z" level=debug msg="2f1h is embedded in 2f1h"
+time="2025-03-07T08:06:18Z" level=debug msg=+2f1h
+time="2025-03-07T08:06:18Z" level=debug msg="1fi is embedded in 1fi"
+time="2025-03-07T08:06:18Z" level=debug msg=+1fi
+time="2025-03-07T08:06:18Z" level=debug msg="1f2l is embedded in 1f2l"
+time="2025-03-07T08:06:18Z" level=debug msg=+1f2l
+time="2025-03-07T08:06:18Z" level=debug msg="1fo is embedded in 1fo"
+time="2025-03-07T08:06:18Z" level=debug msg=+1fo
+time="2025-03-07T08:06:18Z" level=debug msg="1f2r is embedded in 1f2r"
+time="2025-03-07T08:06:18Z" level=debug msg=+1f2r
+time="2025-03-07T08:06:18Z" level=debug msg="f1t is embedded in f1t"
+time="2025-03-07T08:06:18Z" level=debug msg=+f1t
+time="2025-03-07T08:06:18Z" level=debug msg="1fu is embedded in 1fu"
+time="2025-03-07T08:06:18Z" level=debug msg=+1fu
+time="2025-03-07T08:06:18Z" level=debug msg="1ga is embedded in 1ga"
+time="2025-03-07T08:06:18Z" level=debug msg="++ jobs -p"
+time="2025-03-07T08:06:18Z" level=debug msg=+1ga
+time="2025-03-07T08:06:18Z" level=debug msg="2g1d is embedded in 2g1d"
+time="2025-03-07T08:06:18Z" level=debug msg=+2g1d
+time="2025-03-07T08:06:18Z" level=debug msg="1ge is embedded in 1ge"
+time="2025-03-07T08:06:18Z" level=debug msg=+1ge
+time="2025-03-07T08:06:18Z" level=debug msg="1ge is embedded in 4g3evi"
+time="2025-03-07T08:06:18Z" level=debug msg="ge includes ge at pos 0"
+time="2025-03-07T08:06:18Z" level=debug msg="1ge + 1ge -> 1ge"
+time="2025-03-07T08:06:18Z" level=debug msg="4g3evi is embedded in 4g3evi"
+time="2025-03-07T08:06:18Z" level=debug msg=+4g3evi
+time="2025-03-07T08:06:18Z" level=debug msg="e1v is embedded in 4g3evi"
+time="2025-03-07T08:06:18Z" level=debug msg=g+e1v
+time="2025-03-07T08:06:18Z" level=debug msg="2g1g is embedded in 2g1g"
+time="2025-03-07T08:06:18Z" level=debug msg=+2g1g
+time="2025-03-07T08:06:18Z" level=debug msg="1gi is embedded in 1gi"
+time="2025-03-07T08:06:18Z" level=debug msg=+1gi
+time="2025-03-07T08:06:18Z" level=debug msg="1gi is embedded in 4g3ima"
+time="2025-03-07T08:06:18Z" level=debug msg="gi includes gi at pos 0"
+time="2025-03-07T08:06:18Z" level=debug msg="1gi + 1gi -> 1gi"
+time="2025-03-07T08:06:18Z" level=debug msg="4g3ima is embedded in 4g3ima"
+time="2025-03-07T08:06:18Z" level=debug msg=+4g3ima
+time="2025-03-07T08:06:18Z" level=debug msg="i1m is embedded in 4g3ima"
+time="2025-03-07T08:06:18Z" level=debug msg=g+i1m
+time="2025-03-07T08:06:18Z" level=debug msg="1ma is embedded in 4g3ima"
+time="2025-03-07T08:06:18Z" level=debug msg="gima includes ma at pos 2"
+time="2025-03-07T08:06:18Z" level=debug msg="4g3ima + 1ma -> 4g3i1ma"
+time="2025-03-07T08:06:18Z" level=debug msg="g2l is embedded in g2l"
+time="2025-03-07T08:06:18Z" level=debug msg=+g2l
+time="2025-03-07T08:06:18Z" level=debug msg="2g1m is embedded in 2g1m"
+time="2025-03-07T08:06:18Z" level=debug msg=+2g1m
+time="2025-03-07T08:06:18Z" level=debug msg="2g1n is embedded in 2g1n"
+time="2025-03-07T08:06:18Z" level=debug msg=+2g1n
+time="2025-03-07T08:06:18Z" level=debug msg="1go is embedded in 1go"
+time="2025-03-07T08:06:18Z" level=debug msg=+1go
+time="2025-03-07T08:06:18Z" level=debug msg="1g2r is embedded in 1g2r"
+time="2025-03-07T08:06:18Z" level=debug msg=+1g2r
+time="2025-03-07T08:06:18Z" level=debug msg="2g1s2 is embedded in 2g1s2"
+time="2025-03-07T08:06:18Z" level=debug msg=+2g1s2
+time="2025-03-07T08:06:18Z" level=debug msg="1gu1 is embedded in 1gu1"
+time="2025-03-07T08:06:18Z" level=debug msg=+1gu1
+time="2025-03-07T08:06:18Z" level=debug msg="gym2 is embedded in gym2"
+time="2025-03-07T08:06:18Z" level=debug msg=+gym2
+time="2025-03-07T08:06:18Z" level=debug msg="gym2 is embedded in gymn3"
+time="2025-03-07T08:06:18Z" level=debug msg="gym includes gym at pos 0"
+time="2025-03-07T08:06:18Z" level=debug msg="gym2 + gym2 -> gym2"
+time="2025-03-07T08:06:18Z" level=debug msg="gymn3 is embedded in gymn3"
+time="2025-03-07T08:06:18Z" level=debug msg=+gymn3
+time="2025-03-07T08:06:18Z" level=debug msg="2m1n is embedded in gymn3"
+time="2025-03-07T08:06:18Z" level=debug msg="gymn includes mn at pos 2"
+time="2025-03-07T08:06:18Z" level=debug msg="gymn3 + 2m1n -> gy2m1n3"
+time="2025-03-07T08:06:18Z" level=debug msg="gy4na is embedded in gy4na"
+time="2025-03-07T08:06:18Z" level=debug msg=+gy4na
+time="2025-03-07T08:06:18Z" level=debug msg="1na is embedded in gy4na"
+time="2025-03-07T08:06:18Z" level=debug msg="gyna includes na at pos 2"
+time="2025-03-07T08:06:18Z" level=debug msg="gy4na + 1na -> gy4na"
+time="2025-03-07T08:06:18Z" level=debug msg="gy4r3a is embedded in gy4r3a"
+time="2025-03-07T08:06:18Z" level=debug msg="+ exit 0"
+time="2025-03-07T08:06:18Z" level=debug msg=+gy4r3a
+time="2025-03-07T08:06:18Z" level=debug msg="y1r is embedded in gy4r3a"
+time="2025-03-07T08:06:18Z" level=debug msg=g+y1r
+time="2025-03-07T08:06:18Z" level=debug msg="2g1z is embedded in 2g1z"
+time="2025-03-07T08:06:18Z" level=debug msg=+2g1z
+time="2025-03-07T08:06:18Z" level=debug msg="h2e is embedded in h2e"
+time="2025-03-07T08:06:18Z" level=debug msg=+h2e
+time="2025-03-07T08:06:18Z" level=debug msg="h2e is embedded in hec2"
+time="2025-03-07T08:06:18Z" level=debug msg="he includes he at pos 0"
+time="2025-03-07T08:06:18Z" level=debug msg="h2e + h2e -> h2e"
+time="2025-03-07T08:06:18Z" level=debug msg="hec2 is embedded in hec2"
+time="2025-03-07T08:06:18Z" level=debug msg=+hec2
+time="2025-03-07T08:06:18Z" level=debug msg="h2e is embedded in hect3"
+time="2025-03-07T08:06:18Z" level=debug msg="he includes he at pos 0"
+time="2025-03-07T08:06:18Z" level=debug msg="h2e + h2e -> h2e"
+time="2025-03-07T08:06:18Z" level=debug msg="hec2 is embedded in hect3"
+time="2025-03-07T08:06:18Z" level=debug msg="hec includes hec at pos 0"
+time="2025-03-07T08:06:18Z" level=debug msg="hec2 + hec2 -> hec2"
+time="2025-03-07T08:06:18Z" level=debug msg="hect3 is embedded in hect3"
+time="2025-03-07T08:06:18Z" level=debug msg=+hect3
+time="2025-03-07T08:06:18Z" level=debug msg="2c1t is embedded in hect3"
+time="2025-03-07T08:06:18Z" level=debug msg="hect includes ct at pos 2"
+time="2025-03-07T08:06:18Z" level=debug msg="hect3 + 2c1t -> he2c1t3"
+time="2025-03-07T08:06:18Z" level=debug msg="h2e is embedded in he3ur"
+time="2025-03-07T08:06:18Z" level=debug msg="he includes he at pos 0"
+time="2025-03-07T08:06:18Z" level=debug msg="h2e + h2e -> h2e"
+time="2025-03-07T08:06:18Z" level=debug msg="he3ur is embedded in he3ur"
+time="2025-03-07T08:06:18Z" level=debug msg=+he3ur
+time="2025-03-07T08:06:18Z" level=debug msg="eu1 is embedded in he3ur"
+time="2025-03-07T08:06:18Z" level=debug msg=h+eu1
+time="2025-03-07T08:06:18Z" level=debug msg="h3loc is embedded in h3loc"
+time="2025-03-07T08:06:18Z" level=debug msg=+h3loc
+time="2025-03-07T08:06:18Z" level=debug msg="o1c is embedded in h3loc"
+time="2025-03-07T08:06:18Z" level=debug msg="hloc includes oc at pos 2"
+time="2025-03-07T08:06:18Z" level=debug msg="h3loc + o1c -> h3lo1c"
+time="2025-03-07T08:06:18Z" level=debug msg="2h1m is embedded in 2h1m"
+time="2025-03-07T08:06:18Z" level=debug msg=+2h1m
+time="2025-03-07T08:06:18Z" level=debug msg="h1n is embedded in h1n"
+time="2025-03-07T08:06:18Z" level=debug msg=+h1n
+time="2025-03-07T08:06:18Z" level=debug msg="ho3g2 is embedded in ho3g2"
+time="2025-03-07T08:06:18Z" level=debug msg=+ho3g2
+time="2025-03-07T08:06:18Z" level=debug msg="o1g is embedded in ho3g2"
+time="2025-03-07T08:06:18Z" level=debug msg="hog includes og at pos 1"
+time="2025-03-07T08:06:18Z" level=debug msg="ho3g2 + o1g -> ho3g2"
+time="2025-03-07T08:06:18Z" level=debug msg="ho3p2 is embedded in ho3p2"
+time="2025-03-07T08:06:18Z" level=debug msg=+ho3p2
+time="2025-03-07T08:06:18Z" level=debug msg="o1p is embedded in ho3p2"
+time="2025-03-07T08:06:18Z" level=debug msg="hop includes op at pos 1"
+time="2025-03-07T08:06:18Z" level=debug msg="ho3p2 + o1p -> ho3p2"
+time="2025-03-07T08:06:18Z" level=debug msg="ho3rh is embedded in ho3rh"
+time="2025-03-07T08:06:18Z" level=debug msg=+ho3rh
+time="2025-03-07T08:06:18Z" level=debug msg="h2r is embedded in h2r"
+time="2025-03-07T08:06:18Z" level=debug msg=+h2r
+time="2025-03-07T08:06:18Z" level=debug msg="h1s is embedded in h1s"
+time="2025-03-07T08:06:18Z" level=debug msg=+h1s
+time="2025-03-07T08:06:18Z" level=debug msg="h1t is embedded in h1t"
+time="2025-03-07T08:06:18Z" level=debug msg=+h1t
+time="2025-03-07T08:06:18Z" level=debug msg="i1a is embedded in i1a"
+time="2025-03-07T08:06:18Z" level=debug msg=+i1a
+time="2025-03-07T08:06:18Z" level=debug msg="i1a is embedded in ia4l3a"
+time="2025-03-07T08:06:18Z" level=debug msg="ia includes ia at pos 0"
+time="2025-03-07T08:06:18Z" level=debug msg="i1a + i1a -> i1a"
+time="2025-03-07T08:06:18Z" level=debug msg="ia4l3a is embedded in ia4l3a"
+time="2025-03-07T08:06:18Z" level=debug msg=+ia4l3a
+time="2025-03-07T08:06:18Z" level=debug msg="a1la is embedded in ia4l3a"
+time="2025-03-07T08:06:18Z" level=debug msg="iala includes ala at pos 1"
+time="2025-03-07T08:06:18Z" level=debug msg="ia4l3a + a1la -> ia4l3a"
+time="2025-03-07T08:06:18Z" level=debug msg="i1b2 is embedded in i1b2"
+time="2025-03-07T08:06:18Z" level=debug msg=+i1b2
+time="2025-03-07T08:06:18Z" level=debug msg="i1c is embedded in i1c"
+time="2025-03-07T08:06:18Z" level=debug msg=+i1c
+time="2025-03-07T08:06:18Z" level=debug msg="i1d is embedded in i1d"
+time="2025-03-07T08:06:18Z" level=debug msg=+i1d
+time="2025-03-07T08:06:18Z" level=debug msg="i1d is embedded in ido3"
+time="2025-03-07T08:06:18Z" level=debug msg="id includes id at pos 0"
+time="2025-03-07T08:06:18Z" level=debug msg="i1d + i1d -> i1d"
+time="2025-03-07T08:06:18Z" level=debug msg="ido3 is embedded in ido3"
+time="2025-03-07T08:06:18Z" level=debug msg=+ido3
+time="2025-03-07T08:06:18Z" level=debug msg="1do is embedded in ido3"
+time="2025-03-07T08:06:18Z" level=debug msg="ido includes do at pos 1"
+time="2025-03-07T08:06:18Z" level=debug msg="ido3 + 1do -> i1do3"
+time="2025-03-07T08:06:18Z" level=debug msg="i1d is embedded in idop4"
+time="2025-03-07T08:06:18Z" level=debug msg="id includes id at pos 0"
+time="2025-03-07T08:06:18Z" level=debug msg="i1d + i1d -> i1d"
+time="2025-03-07T08:06:18Z" level=debug msg="ido3 is embedded in idop4"
+time="2025-03-07T08:06:18Z" level=debug msg="ido includes ido at pos 0"
+time="2025-03-07T08:06:18Z" level=debug msg="i1do3 + ido3 -> i1do3"
+time="2025-03-07T08:06:18Z" level=debug msg="idop4 is embedded in idop4"
+time="2025-03-07T08:06:18Z" level=debug msg=+idop4
+time="2025-03-07T08:06:18Z" level=debug msg="1do is embedded in idop4"
+time="2025-03-07T08:06:18Z" level=debug msg="ido includes do at pos 1"
+time="2025-03-07T08:06:18Z" level=debug msg="i1do3 + 1do -> i1do3"
+time="2025-03-07T08:06:18Z" level=debug msg="o1p is embedded in idop4"
+time="2025-03-07T08:06:18Z" level=debug msg="idop includes op at pos 2"
+time="2025-03-07T08:06:18Z" level=debug msg="idop4 + o1p -> ido1p4"
+time="2025-03-07T08:06:18Z" level=debug msg="i1e is embedded in i1e"
+time="2025-03-07T08:06:18Z" level=debug msg=+i1e
+time="2025-03-07T08:06:18Z" level=debug msg="i1f is embedded in i1f"
+time="2025-03-07T08:06:18Z" level=debug msg=+i1f
+time="2025-03-07T08:06:18Z" level=debug msg="i1g is embedded in i1g"
+time="2025-03-07T08:06:18Z" level=debug msg=+i1g
+time="2025-03-07T08:06:18Z" level=debug msg="i1h is embedded in i1h"
+time="2025-03-07T08:06:18Z" level=debug msg=+i1h
+time="2025-03-07T08:06:18Z" level=debug msg="i1i is embedded in i1i"
+time="2025-03-07T08:06:18Z" level=debug msg=+i1i
+time="2025-03-07T08:06:18Z" level=debug msg="i1k is embedded in i1k"
+time="2025-03-07T08:06:18Z" level=debug msg=+i1k
+time="2025-03-07T08:06:18Z" level=debug msg="i1l is embedded in i1l"
+time="2025-03-07T08:06:18Z" level=debug msg=+i1l
+time="2025-03-07T08:06:18Z" level=debug msg="i1m is embedded in i1m"
+time="2025-03-07T08:06:18Z" level=debug msg=+i1m
+time="2025-03-07T08:06:18Z" level=debug msg="i1m is embedded in i4mad"
+time="2025-03-07T08:06:18Z" level=debug msg="im includes im at pos 0"
+time="2025-03-07T08:06:18Z" level=debug msg="i1m + i1m -> i1m"
+time="2025-03-07T08:06:18Z" level=debug msg="i4mad is embedded in i4mad"
+time="2025-03-07T08:06:18Z" level=debug msg=+i4mad
+time="2025-03-07T08:06:18Z" level=debug msg="1ma is embedded in i4mad"
+time="2025-03-07T08:06:18Z" level=debug msg=i+1ma
+time="2025-03-07T08:06:18Z" level=debug msg="a1d is embedded in i4mad"
+time="2025-03-07T08:06:18Z" level=debug msg="imad includes ad at pos 2"
+time="2025-03-07T08:06:18Z" level=debug msg="i4mad + a1d -> i4ma1d"
+time="2025-03-07T08:06:18Z" level=debug msg="i1m is embedded in 1imb"
+time="2025-03-07T08:06:18Z" level=debug msg="im includes im at pos 0"
+time="2025-03-07T08:06:18Z" level=debug msg="i1m + i1m -> i1m"
+time="2025-03-07T08:06:18Z" level=debug msg="1imb is embedded in 1imb"
+time="2025-03-07T08:06:18Z" level=debug msg=+1imb
+time="2025-03-07T08:06:18Z" level=debug msg="2m1b is embedded in 1imb"
+time="2025-03-07T08:06:18Z" level=debug msg="imb includes mb at pos 1"
+time="2025-03-07T08:06:18Z" level=debug msg="1imb + 2m1b -> 1i2m1b"
+time="2025-03-07T08:06:18Z" level=debug msg="1inf is embedded in 1inf"
+time="2025-03-07T08:06:18Z" level=debug msg=+1inf
+time="2025-03-07T08:06:18Z" level=debug msg="n1f is embedded in 1inf"
+time="2025-03-07T08:06:18Z" level=debug msg="inf includes nf at pos 1"
+time="2025-03-07T08:06:18Z" level=debug msg="1inf + n1f -> 1in1f"
+time="2025-03-07T08:06:18Z" level=debug msg="1inr is embedded in 1inr"
+time="2025-03-07T08:06:18Z" level=debug msg=+1inr
+time="2025-03-07T08:06:18Z" level=debug msg="n1r is embedded in 1inr"
+time="2025-03-07T08:06:18Z" level=debug msg="inr includes nr at pos 1"
+time="2025-03-07T08:06:18Z" level=debug msg="1inr + n1r -> 1in1r"
+time="2025-03-07T08:06:18Z" level=debug msg="ins2 is embedded in ins2"
+time="2025-03-07T08:06:18Z" level=debug msg=+ins2
+time="2025-03-07T08:06:18Z" level=debug msg="n1s is embedded in ins2"
+time="2025-03-07T08:06:18Z" level=debug msg="ins includes ns at pos 1"
+time="2025-03-07T08:06:18Z" level=debug msg="ins2 + n1s -> in1s2"
+time="2025-03-07T08:06:18Z" level=debug msg="1inv is embedded in 1inv"
+time="2025-03-07T08:06:18Z" level=debug msg=+1inv
+time="2025-03-07T08:06:18Z" level=debug msg="n1v is embedded in 1inv"
+time="2025-03-07T08:06:18Z" level=debug msg="inv includes nv at pos 1"
+time="2025-03-07T08:06:18Z" level=debug msg="1inv + n1v -> 1in1v"
+time="2025-03-07T08:06:18Z" level=debug msg="i1o1 is embedded in i1o1"
+time="2025-03-07T08:06:18Z" level=debug msg=+i1o1
+time="2025-03-07T08:06:18Z" level=debug msg="i1o1 is embedded in io3g2"
+time="2025-03-07T08:06:18Z" level=debug msg="io includes io at pos 0"
+time="2025-03-07T08:06:18Z" level=debug msg="i1o1 + i1o1 -> i1o1"
+time="2025-03-07T08:06:18Z" level=debug msg="io3g2 is embedded in io3g2"
+time="2025-03-07T08:06:18Z" level=debug msg=+io3g2
+time="2025-03-07T08:06:18Z" level=debug msg="o1g is embedded in io3g2"
+time="2025-03-07T08:06:18Z" level=debug msg="iog includes og at pos 1"
+time="2025-03-07T08:06:18Z" level=debug msg="io3g2 + o1g -> io3g2"
+time="2025-03-07T08:06:18Z" level=debug msg="i1o1 is embedded in ios2"
+time="2025-03-07T08:06:18Z" level=debug msg="io includes io at pos 0"
+time="2025-03-07T08:06:18Z" level=debug msg="i1o1 + i1o1 -> i1o1"
+time="2025-03-07T08:06:18Z" level=debug msg="ios2 is embedded in ios2"
+time="2025-03-07T08:06:18Z" level=debug msg=+ios2
+time="2025-03-07T08:06:18Z" level=debug msg="i1o1 is embedded in io2x"
+time="2025-03-07T08:06:18Z" level=debug msg="io includes io at pos 0"
+time="2025-03-07T08:06:18Z" level=debug msg="i1o1 + i1o1 -> i1o1"
+time="2025-03-07T08:06:18Z" level=debug msg="io2x is embedded in io2x"
+time="2025-03-07T08:06:18Z" level=debug msg=+io2x
+time="2025-03-07T08:06:18Z" level=debug msg="i1p is embedded in i1p"
+time="2025-03-07T08:06:18Z" level=debug msg=+i1p
+time="2025-03-07T08:06:18Z" level=debug msg="i1q is embedded in i1q"
+time="2025-03-07T08:06:18Z" level=debug msg=+i1q
+time="2025-03-07T08:06:18Z" level=debug msg="i1ra is embedded in i1ra"
+time="2025-03-07T08:06:18Z" level=debug msg=+i1ra
+time="2025-03-07T08:06:18Z" level=debug msg="i1ri is embedded in i1ri"
+time="2025-03-07T08:06:18Z" level=debug msg=+i1ri
+time="2025-03-07T08:06:18Z" level=debug msg="i1ro is embedded in i1ro"
+time="2025-03-07T08:06:18Z" level=debug msg=+i1ro
+time="2025-03-07T08:06:18Z" level=debug msg="i1ro is embedded in iro3p4"
+time="2025-03-07T08:06:18Z" level=debug msg="iro includes iro at pos 0"
+time="2025-03-07T08:06:18Z" level=debug msg="i1ro + i1ro -> i1ro"
+time="2025-03-07T08:06:18Z" level=debug msg="iro3p4 is embedded in iro3p4"
+time="2025-03-07T08:06:18Z" level=debug msg=+iro3p4
+time="2025-03-07T08:06:18Z" level=debug msg="o1p is embedded in iro3p4"
+time="2025-03-07T08:06:18Z" level=debug msg="irop includes op at pos 2"
+time="2025-03-07T08:06:18Z" level=debug msg="iro3p4 + o1p -> iro3p4"
+time="2025-03-07T08:06:18Z" level=debug msg="ir3ur is embedded in ir3ur"
+time="2025-03-07T08:06:18Z" level=debug msg=+ir3ur
+time="2025-03-07T08:06:18Z" level=debug msg="is3ac is embedded in is3ac"
+time="2025-03-07T08:06:18Z" level=debug msg=+is3ac
+time="2025-03-07T08:06:18Z" level=debug msg="1sa is embedded in is3ac"
+time="2025-03-07T08:06:18Z" level=debug msg=i+1sa
+time="2025-03-07T08:06:18Z" level=debug msg="is3as is embedded in is3as"
+time="2025-03-07T08:06:18Z" level=debug msg=+is3as
+time="2025-03-07T08:06:18Z" level=debug msg="1sa is embedded in is3as"
+time="2025-03-07T08:06:18Z" level=debug msg="isa includes sa at pos 1"
+time="2025-03-07T08:06:18Z" level=debug msg="i1sa + 1sa -> i1sa"
+time="2025-03-07T08:06:18Z" level=debug msg="is3au is embedded in is3au"
+time="2025-03-07T08:06:18Z" level=debug msg=+is3au
+time="2025-03-07T08:06:18Z" level=debug msg="1sa is embedded in is3au"
+time="2025-03-07T08:06:18Z" level=debug msg="isa includes sa at pos 1"
+time="2025-03-07T08:06:18Z" level=debug msg="i1sa + 1sa -> i1sa"
+time="2025-03-07T08:06:18Z" level=debug msg="is3eq is embedded in is3eq"
+time="2025-03-07T08:06:18Z" level=debug msg=+is3eq
+time="2025-03-07T08:06:18Z" level=debug msg="1se is embedded in is3eq"
+time="2025-03-07T08:06:18Z" level=debug msg=i+1se
+time="2025-03-07T08:06:18Z" level=debug msg="e1q is embedded in is3eq"
+time="2025-03-07T08:06:18Z" level=debug msg="iseq includes eq at pos 2"
+time="2025-03-07T08:06:18Z" level=debug msg="is3eq + e1q -> is3e1q"
+time="2025-03-07T08:06:18Z" level=debug msg="is3es is embedded in is3es"
+time="2025-03-07T08:06:18Z" level=debug msg=+is3es
+time="2025-03-07T08:06:18Z" level=debug msg="1se is embedded in is3es"
+time="2025-03-07T08:06:18Z" level=debug msg="ise includes se at pos 1"
+time="2025-03-07T08:06:18Z" level=debug msg="i1se + 1se -> i1se"
+time="2025-03-07T08:06:18Z" level=debug msg="is3il is embedded in is3il"
+time="2025-03-07T08:06:18Z" level=debug msg=+is3il
+time="2025-03-07T08:06:18Z" level=debug msg="1si is embedded in is3il"
+time="2025-03-07T08:06:18Z" level=debug msg=i+1si
+time="2025-03-07T08:06:18Z" level=debug msg="i1l is embedded in is3il"
+time="2025-03-07T08:06:18Z" level=debug msg="isil includes il at pos 2"
+time="2025-03-07T08:06:18Z" level=debug msg="is3il + i1l -> is3i1l"
+time="2025-03-07T08:06:18Z" level=debug msg="is3in is embedded in is3in"
+time="2025-03-07T08:06:18Z" level=debug msg=+is3in
+time="2025-03-07T08:06:18Z" level=debug msg="1si is embedded in is3in"
+time="2025-03-07T08:06:18Z" level=debug msg="isi includes si at pos 1"
+time="2025-03-07T08:06:18Z" level=debug msg="i1si + 1si -> i1si"
+time="2025-03-07T08:06:18Z" level=debug msg="i3s4ph is embedded in i3s4ph"
+time="2025-03-07T08:06:18Z" level=debug msg=+i3s4ph
+time="2025-03-07T08:06:18Z" level=debug msg="s1p is embedded in i3s4ph"
+time="2025-03-07T08:06:18Z" level=debug msg=i+s1p
+time="2025-03-07T08:06:18Z" level=debug msg="1ph is embedded in i3s4ph"
+time="2025-03-07T08:06:18Z" level=debug msg="isph includes ph at pos 2"
+time="2025-03-07T08:06:18Z" level=debug msg="i3s4ph + 1ph -> i3s4ph"
+time="2025-03-07T08:06:18Z" level=debug msg="i1t is embedded in i1t"
+time="2025-03-07T08:06:18Z" level=debug msg=+i1t
+time="2025-03-07T08:06:18Z" level=debug msg="i1u is embedded in i1u"
+time="2025-03-07T08:06:18Z" level=debug msg=+i1u
+time="2025-03-07T08:06:18Z" level=debug msg="i1v is embedded in i1v"
+time="2025-03-07T08:06:18Z" level=debug msg=+i1v
+time="2025-03-07T08:06:18Z" level=debug msg="i1z is embedded in i1z"
+time="2025-03-07T08:06:18Z" level=debug msg=+i1z
+time="2025-03-07T08:06:18Z" level=debug msg="ka4le is embedded in ka4le"
+time="2025-03-07T08:06:18Z" level=debug msg=+ka4le
+time="2025-03-07T08:06:18Z" level=debug msg="a1le is embedded in ka4le"
+time="2025-03-07T08:06:18Z" level=debug msg="kale includes ale at pos 1"
+time="2025-03-07T08:06:18Z" level=debug msg="ka4le + a1le -> ka4le"
+time="2025-03-07T08:06:18Z" level=debug msg="ke1 is embedded in ke1"
+time="2025-03-07T08:06:18Z" level=debug msg=+ke1
+time="2025-03-07T08:06:18Z" level=debug msg="kra1 is embedded in kra1"
+time="2025-03-07T08:06:18Z" level=debug msg=+kra1
+time="2025-03-07T08:06:18Z" level=debug msg="4l3alg is embedded in 4l3alg"
+time="2025-03-07T08:06:18Z" level=debug msg=+4l3alg
+time="2025-03-07T08:06:18Z" level=debug msg="l1g is embedded in 4l3alg"
+time="2025-03-07T08:06:18Z" level=debug msg="lalg includes lg at pos 2"
+time="2025-03-07T08:06:18Z" level=debug msg="4l3alg + l1g -> 4l3al1g"
+time="2025-03-07T08:06:18Z" level=debug msg="4l3arc is embedded in 4l3arc"
+time="2025-03-07T08:06:18Z" level=debug msg=+4l3arc
+time="2025-03-07T08:06:18Z" level=debug msg="r1c is embedded in 4l3arc"
+time="2025-03-07T08:06:18Z" level=debug msg="larc includes rc at pos 2"
+time="2025-03-07T08:06:18Z" level=debug msg="4l3arc + r1c -> 4l3ar1c"
+time="2025-03-07T08:06:18Z" level=debug msg="l1b is embedded in l1b"
+time="2025-03-07T08:06:18Z" level=debug msg=+l1b
+time="2025-03-07T08:06:18Z" level=debug msg="2l1c is embedded in 2l1c"
+time="2025-03-07T08:06:18Z" level=debug msg=+2l1c
+time="2025-03-07T08:06:18Z" level=debug msg="2l1d is embedded in 2l1d"
+time="2025-03-07T08:06:18Z" level=debug msg=+2l1d
+time="2025-03-07T08:06:18Z" level=debug msg="le3ch is embedded in le3ch"
+time="2025-03-07T08:06:18Z" level=debug msg=+le3ch
+time="2025-03-07T08:06:18Z" level=debug msg="le4id is embedded in le4id"
+time="2025-03-07T08:06:18Z" level=debug msg=+le4id
+time="2025-03-07T08:06:18Z" level=debug msg="e1i is embedded in le4id"
+time="2025-03-07T08:06:18Z" level=debug msg=l+e1i
+time="2025-03-07T08:06:18Z" level=debug msg="i1d is embedded in le4id"
+time="2025-03-07T08:06:18Z" level=debug msg="leid includes id at pos 2"
+time="2025-03-07T08:06:18Z" level=debug msg="le4id + i1d -> le4i1d"
+time="2025-03-07T08:06:18Z" level=debug msg="2l1f is embedded in 2l1f"
+time="2025-03-07T08:06:18Z" level=debug msg=+2l1f
+time="2025-03-07T08:06:18Z" level=debug msg="l1g is embedded in l1g"
+time="2025-03-07T08:06:18Z" level=debug msg=+l1g
+time="2025-03-07T08:06:18Z" level=debug msg="2l1h is embedded in 2l1h"
+time="2025-03-07T08:06:18Z" level=debug msg=+2l1h
+time="2025-03-07T08:06:18Z" level=debug msg="1li is embedded in 1li"
+time="2025-03-07T08:06:18Z" level=debug msg=+1li
+time="2025-03-07T08:06:18Z" level=debug msg="2l1k is embedded in 2l1k"
+time="2025-03-07T08:06:18Z" level=debug msg=+2l1k
+time="2025-03-07T08:06:18Z" level=debug msg="2l1l is embedded in 2l1l"
+time="2025-03-07T08:06:18Z" level=debug msg=+2l1l
+time="2025-03-07T08:06:18Z" level=debug msg="2l1l is embedded in ll3ur"
+time="2025-03-07T08:06:18Z" level=debug msg="ll includes ll at pos 0"
+time="2025-03-07T08:06:18Z" level=debug msg="2l1l + 2l1l -> 2l1l"
+time="2025-03-07T08:06:18Z" level=debug msg="ll3ur is embedded in ll3ur"
+time="2025-03-07T08:06:18Z" level=debug msg=+ll3ur
+time="2025-03-07T08:06:18Z" level=debug msg="2lur is embedded in ll3ur"
+time="2025-03-07T08:06:18Z" level=debug msg="llur includes lur at pos 1"
+time="2025-03-07T08:06:18Z" level=debug msg="ll3ur + 2lur -> l2l3ur"
+time="2025-03-07T08:06:18Z" level=debug msg="2l1m is embedded in 2l1m"
+time="2025-03-07T08:06:18Z" level=debug msg=+2l1m
+time="2025-03-07T08:06:18Z" level=debug msg="2l1m is embedded in l4m3od"
+time="2025-03-07T08:06:18Z" level=debug msg="lm includes lm at pos 0"
+time="2025-03-07T08:06:18Z" level=debug msg="2l1m + 2l1m -> 2l1m"
+time="2025-03-07T08:06:18Z" level=debug msg="l4m3od is embedded in l4m3od"
+time="2025-03-07T08:06:18Z" level=debug msg=+l4m3od
+time="2025-03-07T08:06:18Z" level=debug msg="1mo is embedded in l4m3od"
+time="2025-03-07T08:06:18Z" level=debug msg=l+1mo
+time="2025-03-07T08:06:18Z" level=debug msg="o1d is embedded in l4m3od"
+time="2025-03-07T08:06:18Z" level=debug msg="lmod includes od at pos 2"
+time="2025-03-07T08:06:18Z" level=debug msg="l4m3od + o1d -> l4m3o1d"
+time="2025-03-07T08:06:18Z" level=debug msg="l1n is embedded in l1n"
+time="2025-03-07T08:06:18Z" level=debug msg=+l1n
+time="2025-03-07T08:06:18Z" level=debug msg="2lod is embedded in 2lod"
+time="2025-03-07T08:06:18Z" level=debug msg=+2lod
+time="2025-03-07T08:06:18Z" level=debug msg="o1d is embedded in 2lod"
+time="2025-03-07T08:06:18Z" level=debug msg="lod includes od at pos 1"
+time="2025-03-07T08:06:18Z" level=debug msg="2lod + o1d -> 2lo1d"
+time="2025-03-07T08:06:18Z" level=debug msg="2lod is embedded in l3odo"
+time="2025-03-07T08:06:18Z" level=debug msg="lod includes lod at pos 0"
+time="2025-03-07T08:06:18Z" level=debug msg="2lo1d + 2lod -> 2lo1d"
+time="2025-03-07T08:06:18Z" level=debug msg="l3odo is embedded in l3odo"
+time="2025-03-07T08:06:18Z" level=debug msg=+l3odo
+time="2025-03-07T08:06:18Z" level=debug msg="o1d is embedded in l3odo"
+time="2025-03-07T08:06:18Z" level=debug msg="lod includes od at pos 1"
+time="2025-03-07T08:06:18Z" level=debug msg="2lo1d + o1d -> 2lo1d"
+time="2025-03-07T08:06:18Z" level=debug msg="1do is embedded in l3odo"
+time="2025-03-07T08:06:18Z" level=debug msg="lodo includes do at pos 2"
+time="2025-03-07T08:06:18Z" level=debug msg="l3odo + 1do -> l3o1do"
+time="2025-03-07T08:06:18Z" level=debug msg="4lopi is embedded in 4lopi"
+time="2025-03-07T08:06:18Z" level=debug msg=+4lopi
+time="2025-03-07T08:06:18Z" level=debug msg="o1p is embedded in 4lopi"
+time="2025-03-07T08:06:18Z" level=debug msg=l+o1p
+time="2025-03-07T08:06:18Z" level=debug msg="1pi is embedded in 4lopi"
+time="2025-03-07T08:06:18Z" level=debug msg="lopi includes pi at pos 2"
+time="2025-03-07T08:06:18Z" level=debug msg="4lopi + 1pi -> 4lo1pi"
+time="2025-03-07T08:06:18Z" level=debug msg="2l1p is embedded in 2l1p"
+time="2025-03-07T08:06:18Z" level=debug msg=+2l1p
+time="2025-03-07T08:06:18Z" level=debug msg="l1q is embedded in l1q"
+time="2025-03-07T08:06:18Z" level=debug msg=+l1q
+time="2025-03-07T08:06:18Z" level=debug msg="2l1s2 is embedded in 2l1s2"
+time="2025-03-07T08:06:18Z" level=debug msg=+2l1s2
+time="2025-03-07T08:06:18Z" level=debug msg="2l1t is embedded in 2l1t"
+time="2025-03-07T08:06:18Z" level=debug msg=+2l1t
+time="2025-03-07T08:06:18Z" level=debug msg="2l1t is embedded in l4t3un"
+time="2025-03-07T08:06:18Z" level=debug msg="lt includes lt at pos 0"
+time="2025-03-07T08:06:18Z" level=debug msg="2l1t + 2l1t -> 2l1t"
+time="2025-03-07T08:06:18Z" level=debug msg="l4t3un is embedded in l4t3un"
+time="2025-03-07T08:06:18Z" level=debug msg=+l4t3un
+time="2025-03-07T08:06:18Z" level=debug msg="lu1e is embedded in lu1e"
+time="2025-03-07T08:06:18Z" level=debug msg=+lu1e
+time="2025-03-07T08:06:18Z" level=debug msg="lu1i is embedded in lu1i"
+time="2025-03-07T08:06:18Z" level=debug msg=+lu1i
+time="2025-03-07T08:06:18Z" level=debug msg="2lur is embedded in 2lur"
+time="2025-03-07T08:06:18Z" level=debug msg=+2lur
+time="2025-03-07T08:06:18Z" level=debug msg="2l1v is embedded in 2l1v"
+time="2025-03-07T08:06:18Z" level=debug msg=+2l1v
+time="2025-03-07T08:06:18Z" level=debug msg="1ly is embedded in 1ly"
+time="2025-03-07T08:06:18Z" level=debug msg=+1ly
+time="2025-03-07T08:06:18Z" level=debug msg="1ly is embedded in ly3ch"
+time="2025-03-07T08:06:18Z" level=debug msg="ly includes ly at pos 0"
+time="2025-03-07T08:06:18Z" level=debug msg="1ly + 1ly -> 1ly"
+time="2025-03-07T08:06:18Z" level=debug msg="ly3ch is embedded in ly3ch"
+time="2025-03-07T08:06:18Z" level=debug msg=+ly3ch
+time="2025-03-07T08:06:18Z" level=debug msg="ych1 is embedded in ly3ch"
+time="2025-03-07T08:06:18Z" level=debug msg="lych includes ych at pos 1"
+time="2025-03-07T08:06:18Z" level=debug msg="ly3ch + ych1 -> ly3ch1"
+time="2025-03-07T08:06:18Z" level=debug msg="1ma is embedded in 1ma"
+time="2025-03-07T08:06:18Z" level=debug msg=+1ma
+time="2025-03-07T08:06:18Z" level=debug msg="2m1b is embedded in 2m1b"
+time="2025-03-07T08:06:18Z" level=debug msg=+2m1b
+time="2025-03-07T08:06:18Z" level=debug msg="m1c is embedded in m1c"
+time="2025-03-07T08:06:18Z" level=debug msg=+m1c
+time="2025-03-07T08:06:18Z" level=debug msg="1me is embedded in 1me"
+time="2025-03-07T08:06:18Z" level=debug msg=+1me
+time="2025-03-07T08:06:18Z" level=debug msg="1me is embedded in me3ch"
+time="2025-03-07T08:06:18Z" level=debug msg="me includes me at pos 0"
+time="2025-03-07T08:06:18Z" level=debug msg="1me + 1me -> 1me"
+time="2025-03-07T08:06:18Z" level=debug msg="me3ch is embedded in me3ch"
+time="2025-03-07T08:06:18Z" level=debug msg=+me3ch
+time="2025-03-07T08:06:18Z" level=debug msg="1me is embedded in me4s3e"
+time="2025-03-07T08:06:18Z" level=debug msg="me includes me at pos 0"
+time="2025-03-07T08:06:18Z" level=debug msg="1me + 1me -> 1me"
+time="2025-03-07T08:06:18Z" level=debug msg="me4s3e is embedded in me4s3e"
+time="2025-03-07T08:06:18Z" level=debug msg=+me4s3e
+time="2025-03-07T08:06:18Z" level=debug msg="1se is embedded in me4s3e"
+time="2025-03-07T08:06:18Z" level=debug msg="mese includes se at pos 2"
+time="2025-03-07T08:06:18Z" level=debug msg="me4s3e + 1se -> me4s3e"
+time="2025-03-07T08:06:18Z" level=debug msg="m1f is embedded in m1f"
+time="2025-03-07T08:06:18Z" level=debug msg=+m1f
+time="2025-03-07T08:06:18Z" level=debug msg="1mi is embedded in 1mi"
+time="2025-03-07T08:06:18Z" level=debug msg=+1mi
+time="2025-03-07T08:06:18Z" level=debug msg="1mi is embedded in mi3p2"
+time="2025-03-07T08:06:18Z" level=debug msg="mi includes mi at pos 0"
+time="2025-03-07T08:06:18Z" level=debug msg="1mi + 1mi -> 1mi"
+time="2025-03-07T08:06:18Z" level=debug msg="mi3p2 is embedded in mi3p2"
+time="2025-03-07T08:06:18Z" level=debug msg=+mi3p2
+time="2025-03-07T08:06:18Z" level=debug msg="i1p is embedded in mi3p2"
+time="2025-03-07T08:06:18Z" level=debug msg="mip includes ip at pos 1"
+time="2025-03-07T08:06:18Z" level=debug msg="mi3p2 + i1p -> mi3p2"
+time="2025-03-07T08:06:18Z" level=debug msg="1mi is embedded in mis4i"
+time="2025-03-07T08:06:18Z" level=debug msg="mi includes mi at pos 0"
+time="2025-03-07T08:06:18Z" level=debug msg="1mi + 1mi -> 1mi"
+time="2025-03-07T08:06:18Z" level=debug msg="mis4i is embedded in mis4i"
+time="2025-03-07T08:06:18Z" level=debug msg=+mis4i
+time="2025-03-07T08:06:18Z" level=debug msg="1si is embedded in mis4i"
+time="2025-03-07T08:06:18Z" level=debug msg="misi includes si at pos 2"
+time="2025-03-07T08:06:18Z" level=debug msg="mis4i + 1si -> mi1s4i"
+time="2025-03-07T08:06:18Z" level=debug msg="m1j is embedded in m1j"
+time="2025-03-07T08:06:18Z" level=debug msg=+m1j
+time="2025-03-07T08:06:18Z" level=debug msg="m1l is embedded in m1l"
+time="2025-03-07T08:06:18Z" level=debug msg=+m1l
+time="2025-03-07T08:06:18Z" level=debug msg="2m1m is embedded in 2m1m"
+time="2025-03-07T08:06:18Z" level=debug msg=+2m1m
+time="2025-03-07T08:06:18Z" level=debug msg="2m1m is embedded in mme4n3"
+time="2025-03-07T08:06:18Z" level=debug msg="mm includes mm at pos 0"
+time="2025-03-07T08:06:18Z" level=debug msg="2m1m + 2m1m -> 2m1m"
+time="2025-03-07T08:06:18Z" level=debug msg="mme4n3 is embedded in mme4n3"
+time="2025-03-07T08:06:18Z" level=debug msg=+mme4n3
+time="2025-03-07T08:06:18Z" level=debug msg="1me is embedded in mme4n3"
+time="2025-03-07T08:06:18Z" level=debug msg=m+1me
+time="2025-03-07T08:06:18Z" level=debug msg="2m1n is embedded in 2m1n"
+time="2025-03-07T08:06:18Z" level=debug msg=+2m1n
+time="2025-03-07T08:06:18Z" level=debug msg="2m1n is embedded in mn3am"
+time="2025-03-07T08:06:18Z" level=debug msg="mn includes mn at pos 0"
+time="2025-03-07T08:06:18Z" level=debug msg="2m1n + 2m1n -> 2m1n"
+time="2025-03-07T08:06:18Z" level=debug msg="mn3am is embedded in mn3am"
+time="2025-03-07T08:06:18Z" level=debug msg=+mn3am
+time="2025-03-07T08:06:18Z" level=debug msg="1na is embedded in mn3am"
+time="2025-03-07T08:06:18Z" level=debug msg=m+1na
+time="2025-03-07T08:06:18Z" level=debug msg="a1m is embedded in mn3am"
+time="2025-03-07T08:06:18Z" level=debug msg="mnam includes am at pos 2"
+time="2025-03-07T08:06:18Z" level=debug msg="mn3am + a1m -> mn3a1m"
+time="2025-03-07T08:06:18Z" level=debug msg="2m1n is embedded in mn3as"
+time="2025-03-07T08:06:18Z" level=debug msg="mn includes mn at pos 0"
+time="2025-03-07T08:06:18Z" level=debug msg="2m1n + 2m1n -> 2m1n"
+time="2025-03-07T08:06:18Z" level=debug msg="mn3as is embedded in mn3as"
+time="2025-03-07T08:06:18Z" level=debug msg=+mn3as
+time="2025-03-07T08:06:18Z" level=debug msg="1na is embedded in mn3as"
+time="2025-03-07T08:06:18Z" level=debug msg="mna includes na at pos 1"
+time="2025-03-07T08:06:18Z" level=debug msg="m1na + 1na -> m1na"
+time="2025-03-07T08:06:18Z" level=debug msg="2m1n is embedded in mno1"
+time="2025-03-07T08:06:18Z" level=debug msg="mn includes mn at pos 0"
+time="2025-03-07T08:06:18Z" level=debug msg="2m1n + 2m1n -> 2m1n"
+time="2025-03-07T08:06:18Z" level=debug msg="mno1 is embedded in mno1"
+time="2025-03-07T08:06:18Z" level=debug msg=+mno1
+time="2025-03-07T08:06:18Z" level=debug msg="1no is embedded in mno1"
+time="2025-03-07T08:06:18Z" level=debug msg="mno includes no at pos 1"
+time="2025-03-07T08:06:18Z" level=debug msg="mno1 + 1no -> m1no1"
+time="2025-03-07T08:06:18Z" level=debug msg="2m1n is embedded in mn3ob"
+time="2025-03-07T08:06:18Z" level=debug msg="mn includes mn at pos 0"
+time="2025-03-07T08:06:18Z" level=debug msg="2m1n + 2m1n -> 2m1n"
+time="2025-03-07T08:06:18Z" level=debug msg="mno1 is embedded in mn3ob"
+time="2025-03-07T08:06:18Z" level=debug msg="mno includes mno at pos 0"
+time="2025-03-07T08:06:18Z" level=debug msg="m1no1 + mno1 -> m1no1"
+time="2025-03-07T08:06:18Z" level=debug msg="mn3ob is embedded in mn3ob"
+time="2025-03-07T08:06:18Z" level=debug msg=+mn3ob
+time="2025-03-07T08:06:18Z" level=debug msg="1no is embedded in mn3ob"
+time="2025-03-07T08:06:18Z" level=debug msg="mno includes no at pos 1"
+time="2025-03-07T08:06:18Z" level=debug msg="m1no1 + 1no -> m1no1"
+time="2025-03-07T08:06:18Z" level=debug msg="o1b is embedded in mn3ob"
+time="2025-03-07T08:06:18Z" level=debug msg="mnob includes ob at pos 2"
+time="2025-03-07T08:06:18Z" level=debug msg="mn3ob + o1b -> mn3o1b"
+time="2025-03-07T08:06:18Z" level=debug msg="2m1n is embedded in mn3op"
+time="2025-03-07T08:06:18Z" level=debug msg="mn includes mn at pos 0"
+time="2025-03-07T08:06:18Z" level=debug msg="2m1n + 2m1n -> 2m1n"
+time="2025-03-07T08:06:18Z" level=debug msg="mno1 is embedded in mn3op"
+time="2025-03-07T08:06:18Z" level=debug msg="mno includes mno at pos 0"
+time="2025-03-07T08:06:18Z" level=debug msg="m1no1 + mno1 -> m1no1"
+time="2025-03-07T08:06:18Z" level=debug msg="mn3op is embedded in mn3op"
+time="2025-03-07T08:06:18Z" level=debug msg=+mn3op
+time="2025-03-07T08:06:18Z" level=debug msg="1no is embedded in mn3op"
+time="2025-03-07T08:06:18Z" level=debug msg="mno includes no at pos 1"
+time="2025-03-07T08:06:18Z" level=debug msg="m1no1 + 1no -> m1no1"
+time="2025-03-07T08:06:18Z" level=debug msg="o1p is embedded in mn3op"
+time="2025-03-07T08:06:18Z" level=debug msg="mnop includes op at pos 2"
+time="2025-03-07T08:06:18Z" level=debug msg="mn3op + o1p -> mn3o1p"
+time="2025-03-07T08:06:18Z" level=debug msg="1mo is embedded in 1mo"
+time="2025-03-07T08:06:18Z" level=debug msg=+1mo
+time="2025-03-07T08:06:18Z" level=debug msg="1mo is embedded in 4m3ony"
+time="2025-03-07T08:06:18Z" level=debug msg="mo includes mo at pos 0"
+time="2025-03-07T08:06:18Z" level=debug msg="1mo + 1mo -> 1mo"
+time="2025-03-07T08:06:18Z" level=debug msg="4m3ony is embedded in 4m3ony"
+time="2025-03-07T08:06:18Z" level=debug msg=+4m3ony
+time="2025-03-07T08:06:18Z" level=debug msg="1ny is embedded in 4m3ony"
+time="2025-03-07T08:06:18Z" level=debug msg="mony includes ny at pos 2"
+time="2025-03-07T08:06:18Z" level=debug msg="4m3ony + 1ny -> 4m3o1ny"
+time="2025-03-07T08:06:18Z" level=debug msg="1mo is embedded in mo3p2"
+time="2025-03-07T08:06:18Z" level=debug msg="mo includes mo at pos 0"
+time="2025-03-07T08:06:18Z" level=debug msg="1mo + 1mo -> 1mo"
+time="2025-03-07T08:06:18Z" level=debug msg="mo3p2 is embedded in mo3p2"
+time="2025-03-07T08:06:18Z" level=debug msg=+mo3p2
+time="2025-03-07T08:06:18Z" level=debug msg="o1p is embedded in mo3p2"
+time="2025-03-07T08:06:18Z" level=debug msg="mop includes op at pos 1"
+time="2025-03-07T08:06:18Z" level=debug msg="mo3p2 + o1p -> mo3p2"
+time="2025-03-07T08:06:18Z" level=debug msg="1mo is embedded in mo3rr"
+time="2025-03-07T08:06:18Z" level=debug msg="mo includes mo at pos 0"
+time="2025-03-07T08:06:18Z" level=debug msg="1mo + 1mo -> 1mo"
+time="2025-03-07T08:06:18Z" level=debug msg="mo3rr is embedded in mo3rr"
+time="2025-03-07T08:06:18Z" level=debug msg=+mo3rr
+time="2025-03-07T08:06:18Z" level=debug msg="r1r is embedded in mo3rr"
+time="2025-03-07T08:06:18Z" level=debug msg="morr includes rr at pos 2"
+time="2025-03-07T08:06:18Z" level=debug msg="mo3rr + r1r -> mo3r1r"
+time="2025-03-07T08:06:18Z" level=debug msg="1mo is embedded in mos4p"
+time="2025-03-07T08:06:18Z" level=debug msg="mo includes mo at pos 0"
+time="2025-03-07T08:06:18Z" level=debug msg="1mo + 1mo -> 1mo"
+time="2025-03-07T08:06:18Z" level=debug msg="mos4p is embedded in mos4p"
+time="2025-03-07T08:06:18Z" level=debug msg=+mos4p
+time="2025-03-07T08:06:18Z" level=debug msg="s1p is embedded in mos4p"
+time="2025-03-07T08:06:18Z" level=debug msg="mosp includes sp at pos 2"
+time="2025-03-07T08:06:18Z" level=debug msg="mos4p + s1p -> mos4p"
+time="2025-03-07T08:06:18Z" level=debug msg="1mo is embedded in mo3s4t"
+time="2025-03-07T08:06:18Z" level=debug msg="mo includes mo at pos 0"
+time="2025-03-07T08:06:18Z" level=debug msg="1mo + 1mo -> 1mo"
+time="2025-03-07T08:06:18Z" level=debug msg="mo3s4t is embedded in mo3s4t"
+time="2025-03-07T08:06:18Z" level=debug msg=+mo3s4t
+time="2025-03-07T08:06:18Z" level=debug msg="s1t is embedded in mo3s4t"
+time="2025-03-07T08:06:18Z" level=debug msg="most includes st at pos 2"
+time="2025-03-07T08:06:18Z" level=debug msg="mo3s4t + s1t -> mo3s4t"
+time="2025-03-07T08:06:18Z" level=debug msg="2m1p is embedded in 2m1p"
+time="2025-03-07T08:06:18Z" level=debug msg=+2m1p
+time="2025-03-07T08:06:18Z" level=debug msg="2m1p is embedded in m3ps"
+time="2025-03-07T08:06:18Z" level=debug msg="mp includes mp at pos 0"
+time="2025-03-07T08:06:18Z" level=debug msg="2m1p + 2m1p -> 2m1p"
+time="2025-03-07T08:06:18Z" level=debug msg="m3ps is embedded in m3ps"
+time="2025-03-07T08:06:18Z" level=debug msg=+m3ps
+time="2025-03-07T08:06:18Z" level=debug msg="2p1s is embedded in m3ps"
+time="2025-03-07T08:06:18Z" level=debug msg="mps includes ps at pos 1"
+time="2025-03-07T08:06:18Z" level=debug msg="m3ps + 2p1s -> m3p1s"
+time="2025-03-07T08:06:18Z" level=debug msg="m1s2 is embedded in m1s2"
+time="2025-03-07T08:06:18Z" level=debug msg=+m1s2
+time="2025-03-07T08:06:18Z" level=debug msg="1mu is embedded in 1mu"
+time="2025-03-07T08:06:18Z" level=debug msg=+1mu
+time="2025-03-07T08:06:18Z" level=debug msg="2m1v is embedded in 2m1v"
+time="2025-03-07T08:06:18Z" level=debug msg=+2m1v
+time="2025-03-07T08:06:18Z" level=debug msg="1my is embedded in 1my"
+time="2025-03-07T08:06:18Z" level=debug msg=+1my
+time="2025-03-07T08:06:18Z" level=debug msg="1my is embedded in my4rr"
+time="2025-03-07T08:06:18Z" level=debug msg="my includes my at pos 0"
+time="2025-03-07T08:06:18Z" level=debug msg="1my + 1my -> 1my"
+time="2025-03-07T08:06:18Z" level=debug msg="my4rr is embedded in my4rr"
+time="2025-03-07T08:06:18Z" level=debug msg=+my4rr
+time="2025-03-07T08:06:18Z" level=debug msg="y1r is embedded in my4rr"
+time="2025-03-07T08:06:18Z" level=debug msg=m+y1r
+time="2025-03-07T08:06:18Z" level=debug msg="r1r is embedded in my4rr"
+time="2025-03-07T08:06:18Z" level=debug msg="myrr includes rr at pos 2"
+time="2025-03-07T08:06:18Z" level=debug msg="my4rr + r1r -> my4r1r"
+time="2025-03-07T08:06:18Z" level=debug msg="1na is embedded in 1na"
+time="2025-03-07T08:06:18Z" level=debug msg=+1na
+time="2025-03-07T08:06:18Z" level=debug msg="1na is embedded in n1ae"
+time="2025-03-07T08:06:18Z" level=debug msg="na includes na at pos 0"
+time="2025-03-07T08:06:18Z" level=debug msg="1na + 1na -> 1na"
+time="2025-03-07T08:06:18Z" level=debug msg="n1ae is embedded in n1ae"
+time="2025-03-07T08:06:18Z" level=debug msg=+n1ae
+time="2025-03-07T08:06:18Z" level=debug msg="ae1 is embedded in n1ae"
+time="2025-03-07T08:06:18Z" level=debug msg="nae includes ae at pos 1"
+time="2025-03-07T08:06:18Z" level=debug msg="n1ae + ae1 -> n1ae1"
+time="2025-03-07T08:06:18Z" level=debug msg="1na is embedded in n3alg"
+time="2025-03-07T08:06:18Z" level=debug msg="na includes na at pos 0"
+time="2025-03-07T08:06:18Z" level=debug msg="1na + 1na -> 1na"
+time="2025-03-07T08:06:18Z" level=debug msg="n3alg is embedded in n3alg"
+time="2025-03-07T08:06:18Z" level=debug msg=+n3alg
+time="2025-03-07T08:06:18Z" level=debug msg="l1g is embedded in n3alg"
+time="2025-03-07T08:06:18Z" level=debug msg="nalg includes lg at pos 2"
+time="2025-03-07T08:06:18Z" level=debug msg="n3alg + l1g -> n3al1g"
+time="2025-03-07T08:06:18Z" level=debug msg="1na is embedded in n3ani"
+time="2025-03-07T08:06:18Z" level=debug msg="na includes na at pos 0"
+time="2025-03-07T08:06:18Z" level=debug msg="1na + 1na -> 1na"
+time="2025-03-07T08:06:18Z" level=debug msg="n3ani is embedded in n3ani"
+time="2025-03-07T08:06:18Z" level=debug msg=+n3ani
+time="2025-03-07T08:06:18Z" level=debug msg="1ni is embedded in n3ani"
+time="2025-03-07T08:06:18Z" level=debug msg="nani includes ni at pos 2"
+time="2025-03-07T08:06:18Z" level=debug msg="n3ani + 1ni -> n3a1ni"
+time="2025-03-07T08:06:18Z" level=debug msg="1na is embedded in n1a2p"
+time="2025-03-07T08:06:18Z" level=debug msg="na includes na at pos 0"
+time="2025-03-07T08:06:18Z" level=debug msg="1na + 1na -> 1na"
+time="2025-03-07T08:06:18Z" level=debug msg="n1a2p is embedded in n1a2p"
+time="2025-03-07T08:06:18Z" level=debug msg=+n1a2p
+time="2025-03-07T08:06:18Z" level=debug msg="a1p is embedded in n1a2p"
+time="2025-03-07T08:06:18Z" level=debug msg="nap includes ap at pos 1"
+time="2025-03-07T08:06:18Z" level=debug msg="n1a2p + a1p -> n1a2p"
+time="2025-03-07T08:06:18Z" level=debug msg="1na is embedded in n1au"
+time="2025-03-07T08:06:18Z" level=debug msg="na includes na at pos 0"
+time="2025-03-07T08:06:18Z" level=debug msg="1na + 1na -> 1na"
+time="2025-03-07T08:06:18Z" level=debug msg="n1au is embedded in n1au"
+time="2025-03-07T08:06:18Z" level=debug msg=+n1au
+time="2025-03-07T08:06:18Z" level=debug msg="n1b is embedded in n1b"
+time="2025-03-07T08:06:18Z" level=debug msg=+n1b
+time="2025-03-07T08:06:18Z" level=debug msg="n1c is embedded in n1c"
+time="2025-03-07T08:06:18Z" level=debug msg=+n1c
+time="2025-03-07T08:06:18Z" level=debug msg="2n1d is embedded in 2n1d"
+time="2025-03-07T08:06:18Z" level=debug msg=+2n1d
+time="2025-03-07T08:06:18Z" level=debug msg="1ne is embedded in 1ne"
+time="2025-03-07T08:06:18Z" level=debug msg=+1ne
+time="2025-03-07T08:06:18Z" level=debug msg="1ne is embedded in n1eq"
+time="2025-03-07T08:06:18Z" level=debug msg="ne includes ne at pos 0"
+time="2025-03-07T08:06:18Z" level=debug msg="1ne + 1ne -> 1ne"
+time="2025-03-07T08:06:18Z" level=debug msg="n1eq is embedded in n1eq"
+time="2025-03-07T08:06:18Z" level=debug msg=+n1eq
+time="2025-03-07T08:06:18Z" level=debug msg="e1q is embedded in n1eq"
+time="2025-03-07T08:06:18Z" level=debug msg="neq includes eq at pos 1"
+time="2025-03-07T08:06:18Z" level=debug msg="n1eq + e1q -> n1e1q"
+time="2025-03-07T08:06:18Z" level=debug msg="1ne is embedded in n1ex"
+time="2025-03-07T08:06:18Z" level=debug msg="ne includes ne at pos 0"
+time="2025-03-07T08:06:18Z" level=debug msg="1ne + 1ne -> 1ne"
+time="2025-03-07T08:06:18Z" level=debug msg="n1ex is embedded in n1ex"
+time="2025-03-07T08:06:18Z" level=debug msg=+n1ex
+time="2025-03-07T08:06:18Z" level=debug msg="n1f is embedded in n1f"
+time="2025-03-07T08:06:18Z" level=debug msg=+n1f
+time="2025-03-07T08:06:18Z" level=debug msg="n1g is embedded in n1g"
+time="2025-03-07T08:06:18Z" level=debug msg=+n1g
+time="2025-03-07T08:06:18Z" level=debug msg="n1h is embedded in n1h"
+time="2025-03-07T08:06:18Z" level=debug msg=+n1h
+time="2025-03-07T08:06:18Z" level=debug msg="1ni is embedded in 1ni"
+time="2025-03-07T08:06:18Z" level=debug msg=+1ni
+time="2025-03-07T08:06:18Z" level=debug msg="1ni is embedded in n1iq"
+time="2025-03-07T08:06:18Z" level=debug msg="ni includes ni at pos 0"
+time="2025-03-07T08:06:18Z" level=debug msg="1ni + 1ni -> 1ni"
+time="2025-03-07T08:06:18Z" level=debug msg="n1iq is embedded in n1iq"
+time="2025-03-07T08:06:18Z" level=debug msg=+n1iq
+time="2025-03-07T08:06:18Z" level=debug msg="i1q is embedded in n1iq"
+time="2025-03-07T08:06:18Z" level=debug msg="niq includes iq at pos 1"
+time="2025-03-07T08:06:18Z" level=debug msg="n1iq + i1q -> n1i1q"
+time="2025-03-07T08:06:18Z" level=debug msg="1ni is embedded in ni3sp"
+time="2025-03-07T08:06:18Z" level=debug msg="ni includes ni at pos 0"
+time="2025-03-07T08:06:18Z" level=debug msg="1ni + 1ni -> 1ni"
+time="2025-03-07T08:06:18Z" level=debug msg="ni3sp is embedded in ni3sp"
+time="2025-03-07T08:06:18Z" level=debug msg=+ni3sp
+time="2025-03-07T08:06:18Z" level=debug msg="s1p is embedded in ni3sp"
+time="2025-03-07T08:06:18Z" level=debug msg="nisp includes sp at pos 2"
+time="2025-03-07T08:06:18Z" level=debug msg="ni3sp + s1p -> ni3s1p"
+time="2025-03-07T08:06:18Z" level=debug msg="1ni is embedded in n2it"
+time="2025-03-07T08:06:18Z" level=debug msg="ni includes ni at pos 0"
+time="2025-03-07T08:06:18Z" level=debug msg="1ni + 1ni -> 1ni"
+time="2025-03-07T08:06:18Z" level=debug msg="n2it is embedded in n2it"
+time="2025-03-07T08:06:18Z" level=debug msg=+n2it
+time="2025-03-07T08:06:18Z" level=debug msg="i1t is embedded in n2it"
+time="2025-03-07T08:06:18Z" level=debug msg="nit includes it at pos 1"
+time="2025-03-07T08:06:18Z" level=debug msg="n2it + i1t -> n2i1t"
+time="2025-03-07T08:06:18Z" level=debug msg="n1j is embedded in n1j"
+time="2025-03-07T08:06:18Z" level=debug msg=+n1j
+time="2025-03-07T08:06:18Z" level=debug msg="n1l is embedded in n1l"
+time="2025-03-07T08:06:18Z" level=debug msg=+n1l
+time="2025-03-07T08:06:18Z" level=debug msg="n1m is embedded in n1m"
+time="2025-03-07T08:06:18Z" level=debug msg=+n1m
+time="2025-03-07T08:06:18Z" level=debug msg="n1n2 is embedded in n1n2"
+time="2025-03-07T08:06:18Z" level=debug msg=+n1n2
+time="2025-03-07T08:06:18Z" level=debug msg="1no is embedded in 1no"
+time="2025-03-07T08:06:18Z" level=debug msg=+1no
+time="2025-03-07T08:06:18Z" level=debug msg="1no is embedded in nob4l"
+time="2025-03-07T08:06:18Z" level=debug msg="no includes no at pos 0"
+time="2025-03-07T08:06:18Z" level=debug msg="1no + 1no -> 1no"
+time="2025-03-07T08:06:18Z" level=debug msg="nob4l is embedded in nob4l"
+time="2025-03-07T08:06:18Z" level=debug msg=+nob4l
+time="2025-03-07T08:06:18Z" level=debug msg="o1b is embedded in nob4l"
+time="2025-03-07T08:06:18Z" level=debug msg=n+o1b
+time="2025-03-07T08:06:18Z" level=debug msg="1no is embedded in n3o3s4p"
+time="2025-03-07T08:06:18Z" level=debug msg="no includes no at pos 0"
+time="2025-03-07T08:06:18Z" level=debug msg="1no + 1no -> 1no"
+time="2025-03-07T08:06:18Z" level=debug msg="n3o3s4p is embedded in n3o3s4p"
+time="2025-03-07T08:06:18Z" level=debug msg=+n3o3s4p
+time="2025-03-07T08:06:18Z" level=debug msg="s1p is embedded in n3o3s4p"
+time="2025-03-07T08:06:18Z" level=debug msg="nosp includes sp at pos 2"
+time="2025-03-07T08:06:18Z" level=debug msg="n3o3s4p + s1p -> n3o3s4p"
+time="2025-03-07T08:06:18Z" level=debug msg="1no is embedded in n1ox"
+time="2025-03-07T08:06:18Z" level=debug msg="no includes no at pos 0"
+time="2025-03-07T08:06:18Z" level=debug msg="1no + 1no -> 1no"
+time="2025-03-07T08:06:18Z" level=debug msg="n1ox is embedded in n1ox"
+time="2025-03-07T08:06:18Z" level=debug msg=+n1ox
+time="2025-03-07T08:06:18Z" level=debug msg="n1q is embedded in n1q"
+time="2025-03-07T08:06:18Z" level=debug msg=+n1q
+time="2025-03-07T08:06:18Z" level=debug msg="n1r is embedded in n1r"
+time="2025-03-07T08:06:18Z" level=debug msg=+n1r
+time="2025-03-07T08:06:18Z" level=debug msg="n1s is embedded in n1s"
+time="2025-03-07T08:06:18Z" level=debug msg=+n1s
+time="2025-03-07T08:06:18Z" level=debug msg="n1s is embedded in n4s3ie"
+time="2025-03-07T08:06:18Z" level=debug msg="ns includes ns at pos 0"
+time="2025-03-07T08:06:18Z" level=debug msg="n1s + n1s -> n1s"
+time="2025-03-07T08:06:18Z" level=debug msg="n4s3ie is embedded in n4s3ie"
+time="2025-03-07T08:06:18Z" level=debug msg=+n4s3ie
+time="2025-03-07T08:06:18Z" level=debug msg="1si is embedded in n4s3ie"
+time="2025-03-07T08:06:18Z" level=debug msg=n+1si
+time="2025-03-07T08:06:18Z" level=debug msg="i1e is embedded in n4s3ie"
+time="2025-03-07T08:06:18Z" level=debug msg="nsie includes ie at pos 2"
+time="2025-03-07T08:06:18Z" level=debug msg="n4s3ie + i1e -> n4s3i1e"
+time="2025-03-07T08:06:18Z" level=debug msg="n1s is embedded in n4sir"
+time="2025-03-07T08:06:18Z" level=debug msg="ns includes ns at pos 0"
+time="2025-03-07T08:06:18Z" level=debug msg="n1s + n1s -> n1s"
+time="2025-03-07T08:06:18Z" level=debug msg="n4sir is embedded in n4sir"
+time="2025-03-07T08:06:18Z" level=debug msg=+n4sir
+time="2025-03-07T08:06:18Z" level=debug msg="1si is embedded in n4sir"
+time="2025-03-07T08:06:18Z" level=debug msg="nsi includes si at pos 1"
+time="2025-03-07T08:06:18Z" level=debug msg="n1si + 1si -> n1si"
+time="2025-03-07T08:06:18Z" level=debug msg="n1s is embedded in n2sl"
+time="2025-03-07T08:06:18Z" level=debug msg="ns includes ns at pos 0"
+time="2025-03-07T08:06:18Z" level=debug msg="n1s + n1s -> n1s"
+time="2025-03-07T08:06:18Z" level=debug msg="n2sl is embedded in n2sl"
+time="2025-03-07T08:06:18Z" level=debug msg=+n2sl
+time="2025-03-07T08:06:18Z" level=debug msg="s1l is embedded in n2sl"
+time="2025-03-07T08:06:18Z" level=debug msg="nsl includes sl at pos 1"
+time="2025-03-07T08:06:18Z" level=debug msg="n2sl + s1l -> n2s1l"
+time="2025-03-07T08:06:18Z" level=debug msg="n1s is embedded in ns2t"
+time="2025-03-07T08:06:18Z" level=debug msg="+ umask 022"
+time="2025-03-07T08:06:18Z" level=debug msg="ns includes ns at pos 0"
+time="2025-03-07T08:06:18Z" level=debug msg="n1s + n1s -> n1s"
+time="2025-03-07T08:06:18Z" level=debug msg="ns2t is embedded in ns2t"
+time="2025-03-07T08:06:18Z" level=debug msg=+ns2t
+time="2025-03-07T08:06:18Z" level=debug msg="s1t is embedded in ns2t"
+time="2025-03-07T08:06:18Z" level=debug msg="nst includes st at pos 1"
+time="2025-03-07T08:06:18Z" level=debug msg="ns2t + s1t -> ns2t"
+time="2025-03-07T08:06:18Z" level=debug msg="n1t is embedded in n1t"
+time="2025-03-07T08:06:18Z" level=debug msg=+n1t
+time="2025-03-07T08:06:18Z" level=debug msg="n1t is embedded in n4t3ah"
+time="2025-03-07T08:06:18Z" level=debug msg="nt includes nt at pos 0"
+time="2025-03-07T08:06:18Z" level=debug msg="n1t + n1t -> n1t"
+time="2025-03-07T08:06:18Z" level=debug msg="n4t3ah is embedded in n4t3ah"
+time="2025-03-07T08:06:18Z" level=debug msg=+n4t3ah
+time="2025-03-07T08:06:18Z" level=debug msg="a1h is embedded in n4t3ah"
+time="2025-03-07T08:06:18Z" level=debug msg="ntah includes ah at pos 2"
+time="2025-03-07T08:06:18Z" level=debug msg="n4t3ah + a1h -> n4t3a1h"
+time="2025-03-07T08:06:18Z" level=debug msg="n1t is embedded in n4t3ap"
+time="2025-03-07T08:06:18Z" level=debug msg="nt includes nt at pos 0"
+time="2025-03-07T08:06:18Z" level=debug msg="n1t + n1t -> n1t"
+time="2025-03-07T08:06:18Z" level=debug msg="n4t3ap is embedded in n4t3ap"
+time="2025-03-07T08:06:18Z" level=debug msg=+n4t3ap
+time="2025-03-07T08:06:18Z" level=debug msg="a1p is embedded in n4t3ap"
+time="2025-03-07T08:06:18Z" level=debug msg="ntap includes ap at pos 2"
+time="2025-03-07T08:06:18Z" level=debug msg="n4t3ap + a1p -> n4t3a1p"
+time="2025-03-07T08:06:18Z" level=debug msg="1nu is embedded in 1nu"
+time="2025-03-07T08:06:18Z" level=debug msg=+1nu
+time="2025-03-07T08:06:18Z" level=debug msg="1nu is embedded in nu1a"
+time="2025-03-07T08:06:18Z" level=debug msg="nu includes nu at pos 0"
+time="2025-03-07T08:06:18Z" level=debug msg="1nu + 1nu -> 1nu"
+time="2025-03-07T08:06:18Z" level=debug msg="nu1a is embedded in nu1a"
+time="2025-03-07T08:06:18Z" level=debug msg=+nu1a
+time="2025-03-07T08:06:18Z" level=debug msg="1nu is embedded in nu1e"
+time="2025-03-07T08:06:18Z" level=debug msg="nu includes nu at pos 0"
+time="2025-03-07T08:06:18Z" level=debug msg="1nu + 1nu -> 1nu"
+time="2025-03-07T08:06:18Z" level=debug msg="nu1e is embedded in nu1e"
+time="2025-03-07T08:06:18Z" level=debug msg=+nu1e
+time="2025-03-07T08:06:18Z" level=debug msg="1nu is embedded in nu1i"
+time="2025-03-07T08:06:18Z" level=debug msg="nu includes nu at pos 0"
+time="2025-03-07T08:06:18Z" level=debug msg="1nu + 1nu -> 1nu"
+time="2025-03-07T08:06:18Z" level=debug msg="nu1i is embedded in nu1i"
+time="2025-03-07T08:06:18Z" level=debug msg=+nu1i
+time="2025-03-07T08:06:18Z" level=debug msg="n1v is embedded in n1v"
+time="2025-03-07T08:06:18Z" level=debug msg=+n1v
+time="2025-03-07T08:06:18Z" level=debug msg="1ny is embedded in 1ny"
+time="2025-03-07T08:06:18Z" level=debug msg=+1ny
+time="2025-03-07T08:06:18Z" level=debug msg="n1z is embedded in n1z"
+time="2025-03-07T08:06:18Z" level=debug msg=+n1z
+time="2025-03-07T08:06:18Z" level=debug msg="o1a is embedded in o1a"
+time="2025-03-07T08:06:18Z" level=debug msg=+o1a
+time="2025-03-07T08:06:18Z" level=debug msg="o1b is embedded in o1b"
+time="2025-03-07T08:06:18Z" level=debug msg=+o1b
+time="2025-03-07T08:06:18Z" level=debug msg="o1b is embedded in ob3lo"
+time="2025-03-07T08:06:18Z" level=debug msg="ob includes ob at pos 0"
+time="2025-03-07T08:06:18Z" level=debug msg="o1b + o1b -> o1b"
+time="2025-03-07T08:06:18Z" level=debug msg="ob3lo is embedded in ob3lo"
+time="2025-03-07T08:06:18Z" level=debug msg=+ob3lo
+time="2025-03-07T08:06:18Z" level=debug msg="o1b is embedded in 1obs"
+time="2025-03-07T08:06:18Z" level=debug msg="ob includes ob at pos 0"
+time="2025-03-07T08:06:18Z" level=debug msg="o1b + o1b -> o1b"
+time="2025-03-07T08:06:18Z" level=debug msg="1obs is embedded in 1obs"
+time="2025-03-07T08:06:18Z" level=debug msg=+1obs
+time="2025-03-07T08:06:18Z" level=debug msg="2b1s2 is embedded in 1obs"
+time="2025-03-07T08:06:18Z" level=debug msg="obs includes bs at pos 1"
+time="2025-03-07T08:06:18Z" level=debug msg="1obs + 2b1s2 -> 1o2b1s2"
+time="2025-03-07T08:06:18Z" level=debug msg="o1c is embedded in o1c"
+time="2025-03-07T08:06:18Z" level=debug msg=+o1c
+time="2025-03-07T08:06:18Z" level=debug msg="o1c is embedded in oc3le"
+time="2025-03-07T08:06:18Z" level=debug msg="oc includes oc at pos 0"
+time="2025-03-07T08:06:18Z" level=debug msg="o1c + o1c -> o1c"
+time="2025-03-07T08:06:18Z" level=debug msg="oc3le is embedded in oc3le"
+time="2025-03-07T08:06:18Z" level=debug msg=+oc3le
+time="2025-03-07T08:06:18Z" level=debug msg="1c2l is embedded in oc3le"
+time="2025-03-07T08:06:18Z" level=debug msg=o+1c2l
+time="2025-03-07T08:06:18Z" level=debug msg="o1d is embedded in o1d"
+time="2025-03-07T08:06:18Z" level=debug msg=+o1d
+time="2025-03-07T08:06:18Z" level=debug msg="o1e is embedded in o1e"
+time="2025-03-07T08:06:18Z" level=debug msg=+o1e
+time="2025-03-07T08:06:18Z" level=debug msg="o1f is embedded in o1f"
+time="2025-03-07T08:06:18Z" level=debug msg=+o1f
+time="2025-03-07T08:06:18Z" level=debug msg="o1g is embedded in o1g"
+time="2025-03-07T08:06:18Z" level=debug msg=+o1g
+time="2025-03-07T08:06:18Z" level=debug msg="o1h is embedded in o1h"
+time="2025-03-07T08:06:18Z" level=debug msg=+o1h
+time="2025-03-07T08:06:18Z" level=debug msg="o1i is embedded in o1i"
+time="2025-03-07T08:06:18Z" level=debug msg=+o1i
+time="2025-03-07T08:06:18Z" level=debug msg="o1j is embedded in o1j"
+time="2025-03-07T08:06:18Z" level=debug msg=+o1j
+time="2025-03-07T08:06:18Z" level=debug msg="o1l is embedded in o1l"
+time="2025-03-07T08:06:18Z" level=debug msg=+o1l
+time="2025-03-07T08:06:18Z" level=debug msg="om4na is embedded in om4na"
+time="2025-03-07T08:06:18Z" level=debug msg=+om4na
+time="2025-03-07T08:06:18Z" level=debug msg="2m1n is embedded in om4na"
+time="2025-03-07T08:06:18Z" level=debug msg=o+2m1n
+time="2025-03-07T08:06:18Z" level=debug msg="1na is embedded in om4na"
+time="2025-03-07T08:06:18Z" level=debug msg="omna includes na at pos 2"
+time="2025-03-07T08:06:18Z" level=debug msg="om4na + 1na -> om4na"
+time="2025-03-07T08:06:18Z" level=debug msg="on2a is embedded in on2a"
+time="2025-03-07T08:06:18Z" level=debug msg=+on2a
+time="2025-03-07T08:06:18Z" level=debug msg="1na is embedded in on2a"
+time="2025-03-07T08:06:18Z" level=debug msg="ona includes na at pos 1"
+time="2025-03-07T08:06:18Z" level=debug msg="on2a + 1na -> o1n2a"
+time="2025-03-07T08:06:18Z" level=debug msg="ono1 is embedded in ono1"
+time="2025-03-07T08:06:18Z" level=debug msg=+ono1
+time="2025-03-07T08:06:18Z" level=debug msg="1no is embedded in ono1"
+time="2025-03-07T08:06:18Z" level=debug msg="ono includes no at pos 1"
+time="2025-03-07T08:06:18Z" level=debug msg="ono1 + 1no -> o1no1"
+time="2025-03-07T08:06:18Z" level=debug msg="ono1 is embedded in onos4"
+time="2025-03-07T08:06:18Z" level=debug msg="ono includes ono at pos 0"
+time="2025-03-07T08:06:18Z" level=debug msg="o1no1 + ono1 -> o1no1"
+time="2025-03-07T08:06:18Z" level=debug msg="onos4 is embedded in onos4"
+time="2025-03-07T08:06:18Z" level=debug msg=+onos4
+time="2025-03-07T08:06:18Z" level=debug msg="1no is embedded in onos4"
+time="2025-03-07T08:06:18Z" level=debug msg="ono includes no at pos 1"
+time="2025-03-07T08:06:18Z" level=debug msg="o1no1 + 1no -> o1no1"
+time="2025-03-07T08:06:18Z" level=debug msg="ons2 is embedded in ons2"
+time="2025-03-07T08:06:18Z" level=debug msg=+ons2
+time="2025-03-07T08:06:18Z" level=debug msg="n1s is embedded in ons2"
+time="2025-03-07T08:06:18Z" level=debug msg="ons includes ns at pos 1"
+time="2025-03-07T08:06:18Z" level=debug msg="ons2 + n1s -> on1s2"
+time="2025-03-07T08:06:18Z" level=debug msg="o1o is embedded in o1o"
+time="2025-03-07T08:06:18Z" level=debug msg=+o1o
+time="2025-03-07T08:06:18Z" level=debug msg="o1p is embedded in o1p"
+time="2025-03-07T08:06:18Z" level=debug msg=+o1p
+time="2025-03-07T08:06:18Z" level=debug msg="o1q is embedded in o1q"
+time="2025-03-07T08:06:18Z" level=debug msg=+o1q
+time="2025-03-07T08:06:18Z" level=debug msg="o1ra is embedded in o1ra"
+time="2025-03-07T08:06:18Z" level=debug msg=+o1ra
+time="2025-03-07T08:06:18Z" level=debug msg="o1ri is embedded in o1ri"
+time="2025-03-07T08:06:18Z" level=debug msg=+o1ri
+time="2025-03-07T08:06:18Z" level=debug msg="o1ro is embedded in o1ro"
+time="2025-03-07T08:06:18Z" level=debug msg=+o1ro
+time="2025-03-07T08:06:18Z" level=debug msg="or4rh is embedded in or4rh"
+time="2025-03-07T08:06:18Z" level=debug msg=+or4rh
+time="2025-03-07T08:06:18Z" level=debug msg="r1r is embedded in or4rh"
+time="2025-03-07T08:06:18Z" level=debug msg=o+r1r
+time="2025-03-07T08:06:18Z" level=debug msg="o1ru is embedded in o1ru"
+time="2025-03-07T08:06:18Z" level=debug msg=+o1ru
+time="2025-03-07T08:06:18Z" level=debug msg="o1s2l is embedded in o1s2l"
+time="2025-03-07T08:06:18Z" level=debug msg=+o1s2l
+time="2025-03-07T08:06:18Z" level=debug msg="s1l is embedded in o1s2l"
+time="2025-03-07T08:06:18Z" level=debug msg="osl includes sl at pos 1"
+time="2025-03-07T08:06:18Z" level=debug msg="o1s2l + s1l -> o1s2l"
+time="2025-03-07T08:06:18Z" level=debug msg="os4po is embedded in os4po"
+time="2025-03-07T08:06:18Z" level=debug msg=+os4po
+time="2025-03-07T08:06:18Z" level=debug msg="s1p is embedded in os4po"
+time="2025-03-07T08:06:18Z" level=debug msg=o+s1p
+time="2025-03-07T08:06:18Z" level=debug msg="2spo is embedded in os4po"
+time="2025-03-07T08:06:18Z" level=debug msg="ospo includes spo at pos 1"
+time="2025-03-07T08:06:18Z" level=debug msg="os4po + 2spo -> o2s4po"
+time="2025-03-07T08:06:18Z" level=debug msg="1po is embedded in os4po"
+time="2025-03-07T08:06:18Z" level=debug msg="ospo includes po at pos 2"
+time="2025-03-07T08:06:18Z" level=debug msg="o2s4po + 1po -> o2s4po"
+time="2025-03-07T08:06:18Z" level=debug msg="o1t is embedded in o1t"
+time="2025-03-07T08:06:18Z" level=debug msg=+o1t
+time="2025-03-07T08:06:18Z" level=debug msg="o1t is embedded in o4t3ac"
+time="2025-03-07T08:06:18Z" level=debug msg="ot includes ot at pos 0"
+time="2025-03-07T08:06:18Z" level=debug msg="o1t + o1t -> o1t"
+time="2025-03-07T08:06:18Z" level=debug msg="o4t3ac is embedded in o4t3ac"
+time="2025-03-07T08:06:18Z" level=debug msg=+o4t3ac
+time="2025-03-07T08:06:18Z" level=debug msg="o1t is embedded in oto3s4"
+time="2025-03-07T08:06:18Z" level=debug msg="ot includes ot at pos 0"
+time="2025-03-07T08:06:18Z" level=debug msg="o1t + o1t -> o1t"
+time="2025-03-07T08:06:18Z" level=debug msg="oto3s4 is embedded in oto3s4"
+time="2025-03-07T08:06:18Z" level=debug msg=+oto3s4
+time="2025-03-07T08:06:18Z" level=debug msg="ou1 is embedded in ou1"
+time="2025-03-07T08:06:18Z" level=debug msg=+ou1
+time="2025-03-07T08:06:18Z" level=debug msg="ou1 is embedded in o1ug"
+time="2025-03-07T08:06:18Z" level=debug msg="ou includes ou at pos 0"
+time="2025-03-07T08:06:18Z" level=debug msg="ou1 + ou1 -> ou1"
+time="2025-03-07T08:06:18Z" level=debug msg="o1ug is embedded in o1ug"
+time="2025-03-07T08:06:18Z" level=debug msg=+o1ug
+time="2025-03-07T08:06:18Z" level=debug msg="o1v is embedded in o1v"
+time="2025-03-07T08:06:18Z" level=debug msg=+o1v
+time="2025-03-07T08:06:18Z" level=debug msg="oy1 is embedded in oy1"
+time="2025-03-07T08:06:18Z" level=debug msg=+oy1
+time="2025-03-07T08:06:18Z" level=debug msg="o1z is embedded in o1z"
+time="2025-03-07T08:06:18Z" level=debug msg=+o1z
+time="2025-03-07T08:06:18Z" level=debug msg="1pa is embedded in 1pa"
+time="2025-03-07T08:06:18Z" level=debug msg=+1pa
+time="2025-03-07T08:06:18Z" level=debug msg="1pa is embedded in pan3s"
+time="2025-03-07T08:06:18Z" level=debug msg="pa includes pa at pos 0"
+time="2025-03-07T08:06:18Z" level=debug msg="1pa + 1pa -> 1pa"
+time="2025-03-07T08:06:18Z" level=debug msg="pan3s is embedded in pan3s"
+time="2025-03-07T08:06:18Z" level=debug msg=+pan3s
+time="2025-03-07T08:06:18Z" level=debug msg="n1s is embedded in pan3s"
+time="2025-03-07T08:06:18Z" level=debug msg="pans includes ns at pos 2"
+time="2025-03-07T08:06:18Z" level=debug msg="pan3s + n1s -> pan3s"
+time="2025-03-07T08:06:18Z" level=debug msg="1pe is embedded in 1pe"
+time="2025-03-07T08:06:18Z" level=debug msg=+1pe
+time="2025-03-07T08:06:18Z" level=debug msg="1ph is embedded in 1ph"
+time="2025-03-07T08:06:18Z" level=debug msg=+1ph
+time="2025-03-07T08:06:18Z" level=debug msg="1pi is embedded in 1pi"
+time="2025-03-07T08:06:18Z" level=debug msg=+1pi
+time="2025-03-07T08:06:18Z" level=debug msg="1p2l is embedded in 1p2l"
+time="2025-03-07T08:06:18Z" level=debug msg=+1p2l
+time="2025-03-07T08:06:18Z" level=debug msg="1p2l is embedded in pl4a"
+time="2025-03-07T08:06:18Z" level=debug msg="pl includes pl at pos 0"
+time="2025-03-07T08:06:18Z" level=debug msg="1p2l + 1p2l -> 1p2l"
+time="2025-03-07T08:06:18Z" level=debug msg="pl4a is embedded in pl4a"
+time="2025-03-07T08:06:18Z" level=debug msg=+pl4a
+time="2025-03-07T08:06:18Z" level=debug msg="1p2l is embedded in 4pl3op"
+time="2025-03-07T08:06:18Z" level=debug msg="pl includes pl at pos 0"
+time="2025-03-07T08:06:18Z" level=debug msg="1p2l + 1p2l -> 1p2l"
+time="2025-03-07T08:06:18Z" level=debug msg="4pl3op is embedded in 4pl3op"
+time="2025-03-07T08:06:18Z" level=debug msg=+4pl3op
+time="2025-03-07T08:06:18Z" level=debug msg="o1p is embedded in 4pl3op"
+time="2025-03-07T08:06:18Z" level=debug msg="plop includes op at pos 2"
+time="2025-03-07T08:06:18Z" level=debug msg="4pl3op + o1p -> 4pl3o1p"
+time="2025-03-07T08:06:18Z" level=debug msg="p1n is embedded in p1n"
+time="2025-03-07T08:06:18Z" level=debug msg=+p1n
+time="2025-03-07T08:06:18Z" level=debug msg="p1n is embedded in p2n1a"
+time="2025-03-07T08:06:18Z" level=debug msg="pn includes pn at pos 0"
+time="2025-03-07T08:06:18Z" level=debug msg="p1n + p1n -> p1n"
+time="2025-03-07T08:06:18Z" level=debug msg="p2n1a is embedded in p2n1a"
+time="2025-03-07T08:06:18Z" level=debug msg=+p2n1a
+time="2025-03-07T08:06:18Z" level=debug msg="1na is embedded in p2n1a"
+time="2025-03-07T08:06:18Z" level=debug msg="pna includes na at pos 1"
+time="2025-03-07T08:06:18Z" level=debug msg="p2n1a + 1na -> p2n1a"
+time="2025-03-07T08:06:18Z" level=debug msg="p1n is embedded in p2ne"
+time="2025-03-07T08:06:18Z" level=debug msg="pn includes pn at pos 0"
+time="2025-03-07T08:06:18Z" level=debug msg="p1n + p1n -> p1n"
+time="2025-03-07T08:06:18Z" level=debug msg="p2ne is embedded in p2ne"
+time="2025-03-07T08:06:18Z" level=debug msg=+p2ne
+time="2025-03-07T08:06:18Z" level=debug msg="1ne is embedded in p2ne"
+time="2025-03-07T08:06:18Z" level=debug msg="pne includes ne at pos 1"
+time="2025-03-07T08:06:18Z" level=debug msg="p2ne + 1ne -> p2ne"
+time="2025-03-07T08:06:18Z" level=debug msg="1po is embedded in 1po"
+time="2025-03-07T08:06:18Z" level=debug msg=+1po
+time="2025-03-07T08:06:18Z" level=debug msg="2p1p is embedded in 2p1p"
+time="2025-03-07T08:06:18Z" level=debug msg=+2p1p
+time="2025-03-07T08:06:18Z" level=debug msg="2p1p is embedded in p4p3ia"
+time="2025-03-07T08:06:18Z" level=debug msg="pp includes pp at pos 0"
+time="2025-03-07T08:06:18Z" level=debug msg="2p1p + 2p1p -> 2p1p"
+time="2025-03-07T08:06:18Z" level=debug msg="p4p3ia is embedded in p4p3ia"
+time="2025-03-07T08:06:18Z" level=debug msg=+p4p3ia
+time="2025-03-07T08:06:18Z" level=debug msg="1pi is embedded in p4p3ia"
+time="2025-03-07T08:06:18Z" level=debug msg=p+1pi
+time="2025-03-07T08:06:18Z" level=debug msg="i1a is embedded in p4p3ia"
+time="2025-03-07T08:06:18Z" level=debug msg="ppia includes ia at pos 2"
+time="2025-03-07T08:06:18Z" level=debug msg="p4p3ia + i1a -> p4p3i1a"
+time="2025-03-07T08:06:18Z" level=debug msg="1p2r is embedded in 1p2r"
+time="2025-03-07T08:06:18Z" level=debug msg=+1p2r
+time="2025-03-07T08:06:18Z" level=debug msg="2p1s is embedded in 2p1s"
+time="2025-03-07T08:06:18Z" level=debug msg=+2p1s
+time="2025-03-07T08:06:18Z" level=debug msg="2p1s is embedded in p4s3od"
+time="2025-03-07T08:06:18Z" level=debug msg="ps includes ps at pos 0"
+time="2025-03-07T08:06:18Z" level=debug msg="2p1s + 2p1s -> 2p1s"
+time="2025-03-07T08:06:18Z" level=debug msg="p4s3od is embedded in p4s3od"
+time="2025-03-07T08:06:18Z" level=debug msg=+p4s3od
+time="2025-03-07T08:06:18Z" level=debug msg="1so is embedded in p4s3od"
+time="2025-03-07T08:06:18Z" level=debug msg=p+1so
+time="2025-03-07T08:06:18Z" level=debug msg="o1d is embedded in p4s3od"
+time="2025-03-07T08:06:18Z" level=debug msg="psod includes od at pos 2"
+time="2025-03-07T08:06:18Z" level=debug msg="p4s3od + o1d -> p4s3o1d"
+time="2025-03-07T08:06:18Z" level=debug msg="2p1s is embedded in 3p2sy"
+time="2025-03-07T08:06:18Z" level=debug msg="ps includes ps at pos 0"
+time="2025-03-07T08:06:18Z" level=debug msg="2p1s + 2p1s -> 2p1s"
+time="2025-03-07T08:06:18Z" level=debug msg="3p2sy is embedded in 3p2sy"
+time="2025-03-07T08:06:18Z" level=debug msg=+3p2sy
+time="2025-03-07T08:06:18Z" level=debug msg="1sy is embedded in 3p2sy"
+time="2025-03-07T08:06:18Z" level=debug msg="psy includes sy at pos 1"
+time="2025-03-07T08:06:18Z" level=debug msg="3p2sy + 1sy -> 3p2sy"
+time="2025-03-07T08:06:18Z" level=debug msg="2p1t is embedded in 2p1t"
+time="2025-03-07T08:06:18Z" level=debug msg=+2p1t
+time="2025-03-07T08:06:18Z" level=debug msg="1pu is embedded in 1pu"
+time="2025-03-07T08:06:18Z" level=debug msg=+1pu
+time="2025-03-07T08:06:18Z" level=debug msg="1pu is embedded in pu1b2"
+time="2025-03-07T08:06:18Z" level=debug msg="pu includes pu at pos 0"
+time="2025-03-07T08:06:18Z" level=debug msg="1pu + 1pu -> 1pu"
+time="2025-03-07T08:06:18Z" level=debug msg="pu1b2 is embedded in pu1b2"
+time="2025-03-07T08:06:18Z" level=debug msg=+pu1b2
+time="2025-03-07T08:06:18Z" level=debug msg="1pu is embedded in 2pu1e"
+time="2025-03-07T08:06:18Z" level=debug msg="pu includes pu at pos 0"
+time="2025-03-07T08:06:18Z" level=debug msg="1pu + 1pu -> 1pu"
+time="2025-03-07T08:06:18Z" level=debug msg="2pu1e is embedded in 2pu1e"
+time="2025-03-07T08:06:18Z" level=debug msg=+2pu1e
+time="2025-03-07T08:06:18Z" level=debug msg="1pu is embedded in pu1i"
+time="2025-03-07T08:06:18Z" level=debug msg="pu includes pu at pos 0"
+time="2025-03-07T08:06:18Z" level=debug msg="1pu + 1pu -> 1pu"
+time="2025-03-07T08:06:18Z" level=debug msg="pu1i is embedded in pu1i"
+time="2025-03-07T08:06:18Z" level=debug msg=+pu1i
+time="2025-03-07T08:06:18Z" level=debug msg="pyl1 is embedded in pyl1"
+time="2025-03-07T08:06:18Z" level=debug msg=+pyl1
+time="2025-03-07T08:06:18Z" level=debug msg="2yl is embedded in pyl1"
+time="2025-03-07T08:06:18Z" level=debug msg="pyl includes yl at pos 1"
+time="2025-03-07T08:06:18Z" level=debug msg="pyl1 + 2yl -> p2yl1"
+time="2025-03-07T08:06:18Z" level=debug msg="pyl1 is embedded in py4lo"
+time="2025-03-07T08:06:18Z" level=debug msg="pyl includes pyl at pos 0"
+time="2025-03-07T08:06:18Z" level=debug msg="p2yl1 + pyl1 -> p2yl1"
+time="2025-03-07T08:06:18Z" level=debug msg="py4lo is embedded in py4lo"
+time="2025-03-07T08:06:18Z" level=debug msg=+py4lo
+time="2025-03-07T08:06:18Z" level=debug msg="2yl is embedded in py4lo"
+time="2025-03-07T08:06:18Z" level=debug msg="pyl includes yl at pos 1"
+time="2025-03-07T08:06:18Z" level=debug msg="p2yl1 + 2yl -> p2yl1"
+time="2025-03-07T08:06:18Z" level=debug msg="y1lo is embedded in py4lo"
+time="2025-03-07T08:06:18Z" level=debug msg="pylo includes ylo at pos 1"
+time="2025-03-07T08:06:18Z" level=debug msg="py4lo + y1lo -> py4lo"
+time="2025-03-07T08:06:18Z" level=debug msg="qu2 is embedded in qu2"
+time="2025-03-07T08:06:18Z" level=debug msg=+qu2
+time="2025-03-07T08:06:18Z" level=debug msg="qu2 is embedded in qua4n"
+time="2025-03-07T08:06:18Z" level=debug msg="qu includes qu at pos 0"
+time="2025-03-07T08:06:18Z" level=debug msg="qu2 + qu2 -> qu2"
+time="2025-03-07T08:06:18Z" level=debug msg="qua4n is embedded in qua4n"
+time="2025-03-07T08:06:18Z" level=debug msg=+qua4n
+time="2025-03-07T08:06:18Z" level=debug msg="4r3alg is embedded in 4r3alg"
+time="2025-03-07T08:06:18Z" level=debug msg=+4r3alg
+time="2025-03-07T08:06:18Z" level=debug msg="l1g is embedded in 4r3alg"
+time="2025-03-07T08:06:18Z" level=debug msg="ralg includes lg at pos 2"
+time="2025-03-07T08:06:18Z" level=debug msg="4r3alg + l1g -> 4r3al1g"
+time="2025-03-07T08:06:18Z" level=debug msg="2raq is embedded in 2raq"
+time="2025-03-07T08:06:18Z" level=debug msg=+2raq
+time="2025-03-07T08:06:18Z" level=debug msg="a1q is embedded in 2raq"
+time="2025-03-07T08:06:18Z" level=debug msg="raq includes aq at pos 1"
+time="2025-03-07T08:06:18Z" level=debug msg="2raq + a1q -> 2ra1q"
+time="2025-03-07T08:06:18Z" level=debug msg="4r3arc is embedded in 4r3arc"
+time="2025-03-07T08:06:18Z" level=debug msg=+4r3arc
+time="2025-03-07T08:06:18Z" level=debug msg="r1c is embedded in 4r3arc"
+time="2025-03-07T08:06:18Z" level=debug msg="rarc includes rc at pos 2"
+time="2025-03-07T08:06:18Z" level=debug msg="4r3arc + r1c -> 4r3ar1c"
+time="2025-03-07T08:06:18Z" level=debug msg="r1b is embedded in r1b"
+time="2025-03-07T08:06:18Z" level=debug msg=+r1b
+time="2025-03-07T08:06:18Z" level=debug msg="r1c is embedded in r1c"
+time="2025-03-07T08:06:18Z" level=debug msg=+r1c
+time="2025-03-07T08:06:18Z" level=debug msg="2r1d is embedded in 2r1d"
+time="2025-03-07T08:06:18Z" level=debug msg=+2r1d
+time="2025-03-07T08:06:18Z" level=debug msg="1re is embedded in 1re"
+time="2025-03-07T08:06:18Z" level=debug msg=+1re
+time="2025-03-07T08:06:18Z" level=debug msg="1re is embedded in re3ch"
+time="2025-03-07T08:06:18Z" level=debug msg="re includes re at pos 0"
+time="2025-03-07T08:06:18Z" level=debug msg="1re + 1re -> 1re"
+time="2025-03-07T08:06:18Z" level=debug msg="re3ch is embedded in re3ch"
+time="2025-03-07T08:06:18Z" level=debug msg=+re3ch
+time="2025-03-07T08:06:18Z" level=debug msg="1re is embedded in regi3"
+time="2025-03-07T08:06:18Z" level=debug msg="re includes re at pos 0"
+time="2025-03-07T08:06:18Z" level=debug msg="1re + 1re -> 1re"
+time="2025-03-07T08:06:18Z" level=debug msg="regi3 is embedded in regi3"
+time="2025-03-07T08:06:18Z" level=debug msg=+regi3
+time="2025-03-07T08:06:18Z" level=debug msg="e1g is embedded in regi3"
+time="2025-03-07T08:06:18Z" level=debug msg=r+e1g
+time="2025-03-07T08:06:18Z" level=debug msg="1gi is embedded in regi3"
+time="2025-03-07T08:06:18Z" level=debug msg="regi includes gi at pos 2"
+time="2025-03-07T08:06:18Z" level=debug msg="regi3 + 1gi -> re1gi3"
+time="2025-03-07T08:06:18Z" level=debug msg="1re is embedded in 4r3enn"
+time="2025-03-07T08:06:18Z" level=debug msg="re includes re at pos 0"
+time="2025-03-07T08:06:18Z" level=debug msg="1re + 1re -> 1re"
+time="2025-03-07T08:06:18Z" level=debug msg="4r3enn is embedded in 4r3enn"
+time="2025-03-07T08:06:18Z" level=debug msg=+4r3enn
+time="2025-03-07T08:06:18Z" level=debug msg="n1n2 is embedded in 4r3enn"
+time="2025-03-07T08:06:18Z" level=debug msg="renn includes nn at pos 2"
+time="2025-03-07T08:06:18Z" level=debug msg="4r3enn + n1n2 -> 4r3en1n2"
+time="2025-03-07T08:06:18Z" level=debug msg="1re is embedded in re3ut"
+time="2025-03-07T08:06:18Z" level=debug msg="re includes re at pos 0"
+time="2025-03-07T08:06:18Z" level=debug msg="1re + 1re -> 1re"
+time="2025-03-07T08:06:18Z" level=debug msg="re3ut is embedded in re3ut"
+time="2025-03-07T08:06:18Z" level=debug msg=+re3ut
+time="2025-03-07T08:06:18Z" level=debug msg="eu1 is embedded in re3ut"
+time="2025-03-07T08:06:18Z" level=debug msg=r+eu1
+time="2025-03-07T08:06:18Z" level=debug msg="u1t is embedded in re3ut"
+time="2025-03-07T08:06:18Z" level=debug msg="reut includes ut at pos 2"
+time="2025-03-07T08:06:18Z" level=debug msg="re3ut + u1t -> re3u1t"
+time="2025-03-07T08:06:18Z" level=debug msg="r1f is embedded in r1f"
+time="2025-03-07T08:06:18Z" level=debug msg=+r1f
+time="2025-03-07T08:06:18Z" level=debug msg="2r1g is embedded in 2r1g"
+time="2025-03-07T08:06:18Z" level=debug msg=+2r1g
+time="2025-03-07T08:06:18Z" level=debug msg="1rhi is embedded in 1rhi"
+time="2025-03-07T08:06:18Z" level=debug msg=+1rhi
+time="2025-03-07T08:06:18Z" level=debug msg="r1hu is embedded in r1hu"
+time="2025-03-07T08:06:18Z" level=debug msg=+r1hu
+time="2025-03-07T08:06:18Z" level=debug msg="r3hyd is embedded in r3hyd"
+time="2025-03-07T08:06:18Z" level=debug msg=+r3hyd
+time="2025-03-07T08:06:18Z" level=debug msg="r1j is embedded in r1j"
+time="2025-03-07T08:06:18Z" level=debug msg=+r1j
+time="2025-03-07T08:06:18Z" level=debug msg="r1l is embedded in r1l"
+time="2025-03-07T08:06:18Z" level=debug msg=+r1l
+time="2025-03-07T08:06:18Z" level=debug msg="2r1m is embedded in 2r1m"
+time="2025-03-07T08:06:18Z" level=debug msg=+2r1m
+time="2025-03-07T08:06:18Z" level=debug msg="r1n is embedded in r1n"
+time="2025-03-07T08:06:18Z" level=debug msg=+r1n
+time="2025-03-07T08:06:18Z" level=debug msg="r1p is embedded in r1p"
+time="2025-03-07T08:06:18Z" level=debug msg=+r1p
+time="2025-03-07T08:06:18Z" level=debug msg="r1q is embedded in r1q"
+time="2025-03-07T08:06:18Z" level=debug msg=+r1q
+time="2025-03-07T08:06:18Z" level=debug msg="r1r is embedded in r1r"
+time="2025-03-07T08:06:18Z" level=debug msg=+r1r
+time="2025-03-07T08:06:18Z" level=debug msg="r1r is embedded in rr3aq"
+time="2025-03-07T08:06:18Z" level=debug msg="rr includes rr at pos 0"
+time="2025-03-07T08:06:18Z" level=debug msg="r1r + r1r -> r1r"
+time="2025-03-07T08:06:18Z" level=debug msg="rr3aq is embedded in rr3aq"
+time="2025-03-07T08:06:18Z" level=debug msg=+rr3aq
+time="2025-03-07T08:06:18Z" level=debug msg="2raq is embedded in rr3aq"
+time="2025-03-07T08:06:18Z" level=debug msg="rraq includes raq at pos 1"
+time="2025-03-07T08:06:18Z" level=debug msg="rr3aq + 2raq -> r2r3aq"
+time="2025-03-07T08:06:18Z" level=debug msg="a1q is embedded in rr3aq"
+time="2025-03-07T08:06:18Z" level=debug msg="rraq includes aq at pos 2"
+time="2025-03-07T08:06:18Z" level=debug msg="r2r3aq + a1q -> r2r3a1q"
+time="2025-03-07T08:06:18Z" level=debug msg="r1s2 is embedded in r1s2"
+time="2025-03-07T08:06:18Z" level=debug msg=+r1s2
+time="2025-03-07T08:06:18Z" level=debug msg="2r1t is embedded in 2r1t"
+time="2025-03-07T08:06:18Z" level=debug msg=+2r1t
+time="2025-03-07T08:06:18Z" level=debug msg="ru1a is embedded in ru1a"
+time="2025-03-07T08:06:18Z" level=debug msg=+ru1a
+time="2025-03-07T08:06:18Z" level=debug msg="ru1e is embedded in ru1e"
+time="2025-03-07T08:06:18Z" level=debug msg=+ru1e
+time="2025-03-07T08:06:18Z" level=debug msg="ru1i is embedded in ru1i"
+time="2025-03-07T08:06:18Z" level=debug msg=+ru1i
+time="2025-03-07T08:06:18Z" level=debug msg="r1v is embedded in r1v"
+time="2025-03-07T08:06:18Z" level=debug msg=+r1v
+time="2025-03-07T08:06:18Z" level=debug msg="r1w is embedded in r1w"
+time="2025-03-07T08:06:18Z" level=debug msg=+r1w
+time="2025-03-07T08:06:18Z" level=debug msg="ry4se is embedded in ry4se"
+time="2025-03-07T08:06:18Z" level=debug msg=+ry4se
+time="2025-03-07T08:06:18Z" level=debug msg="ys1e is embedded in ry4se"
+time="2025-03-07T08:06:18Z" level=debug msg="ryse includes yse at pos 1"
+time="2025-03-07T08:06:18Z" level=debug msg="ry4se + ys1e -> ry4s1e"
+time="2025-03-07T08:06:18Z" level=debug msg="1se is embedded in ry4se"
+time="2025-03-07T08:06:18Z" level=debug msg="ryse includes se at pos 2"
+time="2025-03-07T08:06:18Z" level=debug msg="ry4s1e + 1se -> ry4s1e"
+time="2025-03-07T08:06:18Z" level=debug msg="r1z is embedded in r1z"
+time="2025-03-07T08:06:18Z" level=debug msg=+r1z
+time="2025-03-07T08:06:18Z" level=debug msg="1sa is embedded in 1sa"
+time="2025-03-07T08:06:18Z" level=debug msg=+1sa
+time="2025-03-07T08:06:18Z" level=debug msg="1sa is embedded in s3abu"
+time="2025-03-07T08:06:18Z" level=debug msg="sa includes sa at pos 0"
+time="2025-03-07T08:06:18Z" level=debug msg="1sa + 1sa -> 1sa"
+time="2025-03-07T08:06:18Z" level=debug msg="s3abu is embedded in s3abu"
+time="2025-03-07T08:06:18Z" level=debug msg=+s3abu
+time="2025-03-07T08:06:18Z" level=debug msg="a1b is embedded in s3abu"
+time="2025-03-07T08:06:18Z" level=debug msg=s+a1b
+time="2025-03-07T08:06:18Z" level=debug msg="1bu is embedded in s3abu"
+time="2025-03-07T08:06:18Z" level=debug msg="sabu includes bu at pos 2"
+time="2025-03-07T08:06:18Z" level=debug msg="s3abu + 1bu -> s3a1bu"
+time="2025-03-07T08:06:18Z" level=debug msg="1sa is embedded in 4s3act"
+time="2025-03-07T08:06:18Z" level=debug msg="sa includes sa at pos 0"
+time="2025-03-07T08:06:18Z" level=debug msg="1sa + 1sa -> 1sa"
+time="2025-03-07T08:06:18Z" level=debug msg="4s3act is embedded in 4s3act"
+time="2025-03-07T08:06:18Z" level=debug msg=+4s3act
+time="2025-03-07T08:06:18Z" level=debug msg="2c1t is embedded in 4s3act"
+time="2025-03-07T08:06:18Z" level=debug msg="sact includes ct at pos 2"
+time="2025-03-07T08:06:18Z" level=debug msg="4s3act + 2c1t -> 4s3a2c1t"
+time="2025-03-07T08:06:18Z" level=debug msg="1sa is embedded in 2s1af"
+time="2025-03-07T08:06:18Z" level=debug msg="sa includes sa at pos 0"
+time="2025-03-07T08:06:18Z" level=debug msg="1sa + 1sa -> 1sa"
+time="2025-03-07T08:06:18Z" level=debug msg="2s1af is embedded in 2s1af"
+time="2025-03-07T08:06:18Z" level=debug msg=+2s1af
+time="2025-03-07T08:06:18Z" level=debug msg="1sa is embedded in s3agr"
+time="2025-03-07T08:06:18Z" level=debug msg="sa includes sa at pos 0"
+time="2025-03-07T08:06:18Z" level=debug msg="1sa + 1sa -> 1sa"
+time="2025-03-07T08:06:18Z" level=debug msg="s3agr is embedded in s3agr"
+time="2025-03-07T08:06:18Z" level=debug msg=+s3agr
+time="2025-03-07T08:06:18Z" level=debug msg="a1g is embedded in s3agr"
+time="2025-03-07T08:06:18Z" level=debug msg=s+a1g
+time="2025-03-07T08:06:18Z" level=debug msg="1g2r is embedded in s3agr"
+time="2025-03-07T08:06:18Z" level=debug msg="sagr includes gr at pos 2"
+time="2025-03-07T08:06:18Z" level=debug msg="s3agr + 1g2r -> s3a1g2r"
+time="2025-03-07T08:06:18Z" level=debug msg="1sa is embedded in s3ann"
+time="2025-03-07T08:06:18Z" level=debug msg="sa includes sa at pos 0"
+time="2025-03-07T08:06:18Z" level=debug msg="1sa + 1sa -> 1sa"
+time="2025-03-07T08:06:18Z" level=debug msg="s3ann is embedded in s3ann"
+time="2025-03-07T08:06:18Z" level=debug msg=+s3ann
+time="2025-03-07T08:06:18Z" level=debug msg="n1n2 is embedded in s3ann"
+time="2025-03-07T08:06:18Z" level=debug msg="sann includes nn at pos 2"
+time="2025-03-07T08:06:18Z" level=debug msg="s3ann + n1n2 -> s3an1n2"
+time="2025-03-07T08:06:18Z" level=debug msg="1sa is embedded in 2s1ap"
+time="2025-03-07T08:06:18Z" level=debug msg="sa includes sa at pos 0"
+time="2025-03-07T08:06:18Z" level=debug msg="1sa + 1sa -> 1sa"
+time="2025-03-07T08:06:18Z" level=debug msg="2s1ap is embedded in 2s1ap"
+time="2025-03-07T08:06:18Z" level=debug msg=+2s1ap
+time="2025-03-07T08:06:18Z" level=debug msg="a1p is embedded in 2s1ap"
+time="2025-03-07T08:06:18Z" level=debug msg="sap includes ap at pos 1"
+time="2025-03-07T08:06:18Z" level=debug msg="2s1ap + a1p -> 2s1a1p"
+time="2025-03-07T08:06:18Z" level=debug msg="1sa is embedded in 2s1aq"
+time="2025-03-07T08:06:18Z" level=debug msg="sa includes sa at pos 0"
+time="2025-03-07T08:06:18Z" level=debug msg="1sa + 1sa -> 1sa"
+time="2025-03-07T08:06:18Z" level=debug msg="2s1aq is embedded in 2s1aq"
+time="2025-03-07T08:06:18Z" level=debug msg=+2s1aq
+time="2025-03-07T08:06:18Z" level=debug msg="a1q is embedded in 2s1aq"
+time="2025-03-07T08:06:18Z" level=debug msg="saq includes aq at pos 1"
+time="2025-03-07T08:06:18Z" level=debug msg="2s1aq + a1q -> 2s1a1q"
+time="2025-03-07T08:06:18Z" level=debug msg="1sa is embedded in s3arg"
+time="2025-03-07T08:06:18Z" level=debug msg="sa includes sa at pos 0"
+time="2025-03-07T08:06:18Z" level=debug msg="1sa + 1sa -> 1sa"
+time="2025-03-07T08:06:18Z" level=debug msg="s3arg is embedded in s3arg"
+time="2025-03-07T08:06:18Z" level=debug msg=+s3arg
+time="2025-03-07T08:06:18Z" level=debug msg="2r1g is embedded in s3arg"
+time="2025-03-07T08:06:18Z" level=debug msg="sarg includes rg at pos 2"
+time="2025-03-07T08:06:18Z" level=debug msg="s3arg + 2r1g -> s3a2r1g"
+time="2025-03-07T08:06:18Z" level=debug msg="1sa is embedded in s3arm"
+time="2025-03-07T08:06:18Z" level=debug msg="sa includes sa at pos 0"
+time="2025-03-07T08:06:18Z" level=debug msg="1sa + 1sa -> 1sa"
+time="2025-03-07T08:06:18Z" level=debug msg="s3arm is embedded in s3arm"
+time="2025-03-07T08:06:18Z" level=debug msg=+s3arm
+time="2025-03-07T08:06:18Z" level=debug msg="2r1m is embedded in s3arm"
+time="2025-03-07T08:06:18Z" level=debug msg="sarm includes rm at pos 2"
+time="2025-03-07T08:06:18Z" level=debug msg="s3arm + 2r1m -> s3a2r1m"
+time="2025-03-07T08:06:18Z" level=debug msg="1sa is embedded in s3art"
+time="2025-03-07T08:06:18Z" level=debug msg="sa includes sa at pos 0"
+time="2025-03-07T08:06:18Z" level=debug msg="1sa + 1sa -> 1sa"
+time="2025-03-07T08:06:18Z" level=debug msg="s3art is embedded in s3art"
+time="2025-03-07T08:06:18Z" level=debug msg=+s3art
+time="2025-03-07T08:06:18Z" level=debug msg="2r1t is embedded in s3art"
+time="2025-03-07T08:06:18Z" level=debug msg="sart includes rt at pos 2"
+time="2025-03-07T08:06:18Z" level=debug msg="s3art + 2r1t -> s3a2r1t"
+time="2025-03-07T08:06:18Z" level=debug msg="2s1b is embedded in 2s1b"
+time="2025-03-07T08:06:18Z" level=debug msg=+2s1b
+time="2025-03-07T08:06:18Z" level=debug msg="1s2c is embedded in 1s2c"
+time="2025-03-07T08:06:18Z" level=debug msg=+1s2c
+time="2025-03-07T08:06:18Z" level=debug msg="1s2c is embedded in scle4"
+time="2025-03-07T08:06:18Z" level=debug msg="sc includes sc at pos 0"
+time="2025-03-07T08:06:18Z" level=debug msg="1s2c + 1s2c -> 1s2c"
+time="2025-03-07T08:06:18Z" level=debug msg="scle4 is embedded in scle4"
+time="2025-03-07T08:06:18Z" level=debug msg=+scle4
+time="2025-03-07T08:06:18Z" level=debug msg="1c2l is embedded in scle4"
+time="2025-03-07T08:06:18Z" level=debug msg=s+1c2l
+time="2025-03-07T08:06:18Z" level=debug msg="s1d is embedded in s1d"
+time="2025-03-07T08:06:18Z" level=debug msg=+s1d
+time="2025-03-07T08:06:18Z" level=debug msg="1se is embedded in 1se"
+time="2025-03-07T08:06:18Z" level=debug msg=+1se
+time="2025-03-07T08:06:18Z" level=debug msg="2s1f is embedded in 2s1f"
+time="2025-03-07T08:06:18Z" level=debug msg=+2s1f
+time="2025-03-07T08:06:18Z" level=debug msg="2s1g is embedded in 2s1g"
+time="2025-03-07T08:06:18Z" level=debug msg=+2s1g
+time="2025-03-07T08:06:18Z" level=debug msg="s1h is embedded in s1h"
+time="2025-03-07T08:06:18Z" level=debug msg=+s1h
+time="2025-03-07T08:06:18Z" level=debug msg="1si is embedded in 1si"
+time="2025-03-07T08:06:18Z" level=debug msg=+1si
+time="2025-03-07T08:06:18Z" level=debug msg="1si is embedded in 4s3ige"
+time="2025-03-07T08:06:18Z" level=debug msg="si includes si at pos 0"
+time="2025-03-07T08:06:18Z" level=debug msg="1si + 1si -> 1si"
+time="2025-03-07T08:06:18Z" level=debug msg="4s3ige is embedded in 4s3ige"
+time="2025-03-07T08:06:18Z" level=debug msg=+4s3ige
+time="2025-03-07T08:06:18Z" level=debug msg="i1g is embedded in 4s3ige"
+time="2025-03-07T08:06:18Z" level=debug msg=s+i1g
+time="2025-03-07T08:06:18Z" level=debug msg="1ge is embedded in 4s3ige"
+time="2025-03-07T08:06:18Z" level=debug msg="sige includes ge at pos 2"
+time="2025-03-07T08:06:18Z" level=debug msg="4s3ige + 1ge -> 4s3i1ge"
+time="2025-03-07T08:06:18Z" level=debug msg="1si is embedded in s3iro"
+time="2025-03-07T08:06:18Z" level=debug msg="si includes si at pos 0"
+time="2025-03-07T08:06:18Z" level=debug msg="1si + 1si -> 1si"
+time="2025-03-07T08:06:18Z" level=debug msg="s3iro is embedded in s3iro"
+time="2025-03-07T08:06:18Z" level=debug msg=+s3iro
+time="2025-03-07T08:06:18Z" level=debug msg="i1ro is embedded in s3iro"
+time="2025-03-07T08:06:18Z" level=debug msg="siro includes iro at pos 1"
+time="2025-03-07T08:06:18Z" level=debug msg="s3iro + i1ro -> s3i1ro"
+time="2025-03-07T08:06:18Z" level=debug msg="s1j is embedded in s1j"
+time="2025-03-07T08:06:18Z" level=debug msg=+s1j
+time="2025-03-07T08:06:18Z" level=debug msg="1sk is embedded in 1sk"
+time="2025-03-07T08:06:18Z" level=debug msg=+1sk
+time="2025-03-07T08:06:18Z" level=debug msg="s1l is embedded in s1l"
+time="2025-03-07T08:06:18Z" level=debug msg=+s1l
+time="2025-03-07T08:06:18Z" level=debug msg="s1l is embedded in s4lav"
+time="2025-03-07T08:06:18Z" level=debug msg="sl includes sl at pos 0"
+time="2025-03-07T08:06:18Z" level=debug msg="s1l + s1l -> s1l"
+time="2025-03-07T08:06:18Z" level=debug msg="s4lav is embedded in s4lav"
+time="2025-03-07T08:06:18Z" level=debug msg=+s4lav
+time="2025-03-07T08:06:18Z" level=debug msg="a1v is embedded in s4lav"
+time="2025-03-07T08:06:18Z" level=debug msg="slav includes av at pos 2"
+time="2025-03-07T08:06:18Z" level=debug msg="s4lav + a1v -> s4la1v"
+time="2025-03-07T08:06:18Z" level=debug msg="2s1m is embedded in 2s1m"
+time="2025-03-07T08:06:18Z" level=debug msg=+2s1m
+time="2025-03-07T08:06:18Z" level=debug msg="s1n is embedded in s1n"
+time="2025-03-07T08:06:18Z" level=debug msg=+s1n
+time="2025-03-07T08:06:18Z" level=debug msg="1so is embedded in 1so"
+time="2025-03-07T08:06:18Z" level=debug msg=+1so
+time="2025-03-07T08:06:18Z" level=debug msg="1so is embedded in sob2"
+time="2025-03-07T08:06:18Z" level=debug msg="so includes so at pos 0"
+time="2025-03-07T08:06:18Z" level=debug msg="1so + 1so -> 1so"
+time="2025-03-07T08:06:18Z" level=debug msg="sob2 is embedded in sob2"
+time="2025-03-07T08:06:18Z" level=debug msg=+sob2
+time="2025-03-07T08:06:18Z" level=debug msg="o1b is embedded in sob2"
+time="2025-03-07T08:06:18Z" level=debug msg="sob includes ob at pos 1"
+time="2025-03-07T08:06:18Z" level=debug msg="sob2 + o1b -> so1b2"
+time="2025-03-07T08:06:18Z" level=debug msg="1so is embedded in s3obe"
+time="2025-03-07T08:06:18Z" level=debug msg="so includes so at pos 0"
+time="2025-03-07T08:06:18Z" level=debug msg="1so + 1so -> 1so"
+time="2025-03-07T08:06:18Z" level=debug msg="sob2 is embedded in s3obe"
+time="2025-03-07T08:06:18Z" level=debug msg="sob includes sob at pos 0"
+time="2025-03-07T08:06:18Z" level=debug msg="so1b2 + sob2 -> so1b2"
+time="2025-03-07T08:06:18Z" level=debug msg="s3obe is embedded in s3obe"
+time="2025-03-07T08:06:18Z" level=debug msg=+s3obe
+time="2025-03-07T08:06:18Z" level=debug msg="o1b is embedded in s3obe"
+time="2025-03-07T08:06:18Z" level=debug msg="sob includes ob at pos 1"
+time="2025-03-07T08:06:18Z" level=debug msg="so1b2 + o1b -> so1b2"
+time="2025-03-07T08:06:18Z" level=debug msg="1be is embedded in s3obe"
+time="2025-03-07T08:06:18Z" level=debug msg="sobe includes be at pos 2"
+time="2025-03-07T08:06:18Z" level=debug msg="s3obe + 1be -> s3o1be"
+time="2025-03-07T08:06:18Z" level=debug msg="1so is embedded in s3obl"
+time="2025-03-07T08:06:18Z" level=debug msg="so includes so at pos 0"
+time="2025-03-07T08:06:18Z" level=debug msg="1so + 1so -> 1so"
+time="2025-03-07T08:06:18Z" level=debug msg="sob2 is embedded in s3obl"
+time="2025-03-07T08:06:18Z" level=debug msg="sob includes sob at pos 0"
+time="2025-03-07T08:06:18Z" level=debug msg="so1b2 + sob2 -> so1b2"
+time="2025-03-07T08:06:18Z" level=debug msg="s3obl is embedded in s3obl"
+time="2025-03-07T08:06:18Z" level=debug msg=+s3obl
+time="2025-03-07T08:06:18Z" level=debug msg="o1b is embedded in s3obl"
+time="2025-03-07T08:06:18Z" level=debug msg="sob includes ob at pos 1"
+time="2025-03-07T08:06:18Z" level=debug msg="so1b2 + o1b -> so1b2"
+time="2025-03-07T08:06:18Z" level=debug msg="1so is embedded in s3occ"
+time="2025-03-07T08:06:18Z" level=debug msg="so includes so at pos 0"
+time="2025-03-07T08:06:18Z" level=debug msg="1so + 1so -> 1so"
+time="2025-03-07T08:06:18Z" level=debug msg="s3occ is embedded in s3occ"
+time="2025-03-07T08:06:18Z" level=debug msg=+s3occ
+time="2025-03-07T08:06:18Z" level=debug msg="o1c is embedded in s3occ"
+time="2025-03-07T08:06:18Z" level=debug msg=s+o1c
+time="2025-03-07T08:06:18Z" level=debug msg="2c1c is embedded in s3occ"
+time="2025-03-07T08:06:18Z" level=debug msg="socc includes cc at pos 2"
+time="2025-03-07T08:06:18Z" level=debug msg="s3occ + 2c1c -> s3o2c1c"
+time="2025-03-07T08:06:18Z" level=debug msg="1so is embedded in s3odo"
+time="2025-03-07T08:06:18Z" level=debug msg="so includes so at pos 0"
+time="2025-03-07T08:06:18Z" level=debug msg="1so + 1so -> 1so"
+time="2025-03-07T08:06:18Z" level=debug msg="s3odo is embedded in s3odo"
+time="2025-03-07T08:06:18Z" level=debug msg=+s3odo
+time="2025-03-07T08:06:18Z" level=debug msg="o1d is embedded in s3odo"
+time="2025-03-07T08:06:18Z" level=debug msg=s+o1d
+time="2025-03-07T08:06:18Z" level=debug msg="1do is embedded in s3odo"
+time="2025-03-07T08:06:18Z" level=debug msg="sodo includes do at pos 2"
+time="2025-03-07T08:06:18Z" level=debug msg="s3odo + 1do -> s3o1do"
+time="2025-03-07T08:06:18Z" level=debug msg="1so is embedded in s3ord"
+time="2025-03-07T08:06:18Z" level=debug msg="so includes so at pos 0"
+time="2025-03-07T08:06:18Z" level=debug msg="1so + 1so -> 1so"
+time="2025-03-07T08:06:18Z" level=debug msg="s3ord is embedded in s3ord"
+time="2025-03-07T08:06:18Z" level=debug msg=+s3ord
+time="2025-03-07T08:06:18Z" level=debug msg="2r1d is embedded in s3ord"
+time="2025-03-07T08:06:18Z" level=debug msg="sord includes rd at pos 2"
+time="2025-03-07T08:06:18Z" level=debug msg="s3ord + 2r1d -> s3o2r1d"
+time="2025-03-07T08:06:18Z" level=debug msg="1so is embedded in s3org"
+time="2025-03-07T08:06:18Z" level=debug msg="so includes so at pos 0"
+time="2025-03-07T08:06:18Z" level=debug msg="1so + 1so -> 1so"
+time="2025-03-07T08:06:18Z" level=debug msg="s3org is embedded in s3org"
+time="2025-03-07T08:06:18Z" level=debug msg=+s3org
+time="2025-03-07T08:06:18Z" level=debug msg="2r1g is embedded in s3org"
+time="2025-03-07T08:06:18Z" level=debug msg="sorg includes rg at pos 2"
+time="2025-03-07T08:06:18Z" level=debug msg="s3org + 2r1g -> s3o2r1g"
+time="2025-03-07T08:06:18Z" level=debug msg="1so is embedded in s3oss"
+time="2025-03-07T08:06:18Z" level=debug msg="so includes so at pos 0"
+time="2025-03-07T08:06:18Z" level=debug msg="1so + 1so -> 1so"
+time="2025-03-07T08:06:18Z" level=debug msg="s3oss is embedded in s3oss"
+time="2025-03-07T08:06:18Z" level=debug msg=+s3oss
+time="2025-03-07T08:06:18Z" level=debug msg="2s1s2 is embedded in s3oss"
+time="2025-03-07T08:06:18Z" level=debug msg="soss includes ss at pos 2"
+time="2025-03-07T08:06:18Z" level=debug msg="s3oss + 2s1s2 -> s3o2s1s2"
+time="2025-03-07T08:06:18Z" level=debug msg="1so is embedded in 2s1ox"
+time="2025-03-07T08:06:18Z" level=debug msg="so includes so at pos 0"
+time="2025-03-07T08:06:18Z" level=debug msg="+ cd /usr/src/azl/BUILD"
+time="2025-03-07T08:06:18Z" level=debug msg="1so + 1so -> 1so"
+time="2025-03-07T08:06:18Z" level=debug msg="2s1ox is embedded in 2s1ox"
+time="2025-03-07T08:06:18Z" level=debug msg="+ /bin/rm -rf /usr/src/azl/BUILDROOT/hyphen-ia-0.20050628-20.azl3.x86_64"
+time="2025-03-07T08:06:18Z" level=debug msg=+2s1ox
+time="2025-03-07T08:06:18Z" level=debug msg="+ /bin/mkdir -p /usr/src/azl/BUILDROOT"
+time="2025-03-07T08:06:18Z" level=debug msg="s1p is embedded in s1p"
+time="2025-03-07T08:06:18Z" level=debug msg="+ /bin/mkdir /usr/src/azl/BUILDROOT/hyphen-ia-0.20050628-20.azl3.x86_64"
+time="2025-03-07T08:06:18Z" level=debug msg=+s1p
+time="2025-03-07T08:06:18Z" level=debug msg="+ cd hyphen-ia"
+time="2025-03-07T08:06:18Z" level=debug msg="s1p is embedded in 2spa"
+time="2025-03-07T08:06:18Z" level=debug msg="+ mkdir -p /usr/src/azl/BUILDROOT/hyphen-ia-0.20050628-20.azl3.x86_64//usr/share/hyphen"
+time="2025-03-07T08:06:18Z" level=debug msg="sp includes sp at pos 0"
+time="2025-03-07T08:06:18Z" level=debug msg="+ cp -p hyph_ia.dic /usr/src/azl/BUILDROOT/hyphen-ia-0.20050628-20.azl3.x86_64//usr/share/hyphen"
+time="2025-03-07T08:06:18Z" level=debug msg="s1p + s1p -> s1p"
+time="2025-03-07T08:06:18Z" level=debug msg="+ /bin/find-debuginfo -j8 -m --build-id-seed 0.20050628-20.azl3 --unique-debug-suffix -0.20050628-20.azl3.x86_64 --unique-debug-src-base hyphen-ia-0.20050628-20.azl3.x86_64 /usr/src/azl/BUILD/hyphen-ia"
+time="2025-03-07T08:06:18Z" level=debug msg="2spa is embedded in 2spa"
+time="2025-03-07T08:06:18Z" level=debug msg=+2spa
+time="2025-03-07T08:06:18Z" level=debug msg="1pa is embedded in 2spa"
+time="2025-03-07T08:06:18Z" level=debug msg="spa includes pa at pos 1"
+time="2025-03-07T08:06:18Z" level=debug msg="2spa + 1pa -> 2s1pa"
+time="2025-03-07T08:06:18Z" level=debug msg="s1p is embedded in spa4i"
+time="2025-03-07T08:06:18Z" level=debug msg="sp includes sp at pos 0"
+time="2025-03-07T08:06:18Z" level=debug msg="s1p + s1p -> s1p"
+time="2025-03-07T08:06:18Z" level=debug msg="2spa is embedded in spa4i"
+time="2025-03-07T08:06:18Z" level=debug msg="spa includes spa at pos 0"
+time="2025-03-07T08:06:18Z" level=debug msg="2s1pa + 2spa -> 2s1pa"
+time="2025-03-07T08:06:18Z" level=debug msg="spa4i is embedded in spa4i"
+time="2025-03-07T08:06:18Z" level=debug msg=+spa4i
+time="2025-03-07T08:06:18Z" level=debug msg="1pa is embedded in spa4i"
+time="2025-03-07T08:06:18Z" level=debug msg="spa includes pa at pos 1"
+time="2025-03-07T08:06:18Z" level=debug msg="2s1pa + 1pa -> 2s1pa"
+time="2025-03-07T08:06:18Z" level=debug msg="s1p is embedded in 2spl"
+time="2025-03-07T08:06:18Z" level=debug msg="sp includes sp at pos 0"
+time="2025-03-07T08:06:18Z" level=debug msg="s1p + s1p -> s1p"
+time="2025-03-07T08:06:18Z" level=debug msg="2spl is embedded in 2spl"
+time="2025-03-07T08:06:18Z" level=debug msg=+2spl
+time="2025-03-07T08:06:18Z" level=debug msg="1p2l is embedded in 2spl"
+time="2025-03-07T08:06:18Z" level=debug msg="spl includes pl at pos 1"
+time="2025-03-07T08:06:18Z" level=debug msg="2spl + 1p2l -> 2s1p2l"
+time="2025-03-07T08:06:18Z" level=debug msg="s1p is embedded in 2spo"
+time="2025-03-07T08:06:18Z" level=debug msg="sp includes sp at pos 0"
+time="2025-03-07T08:06:18Z" level=debug msg="s1p + s1p -> s1p"
+time="2025-03-07T08:06:18Z" level=debug msg="2spo is embedded in 2spo"
+time="2025-03-07T08:06:18Z" level=debug msg=+2spo
+time="2025-03-07T08:06:18Z" level=debug msg="1po is embedded in 2spo"
+time="2025-03-07T08:06:18Z" level=debug msg="spo includes po at pos 1"
+time="2025-03-07T08:06:18Z" level=debug msg="2spo + 1po -> 2s1po"
+time="2025-03-07T08:06:18Z" level=debug msg="s1q is embedded in s1q"
+time="2025-03-07T08:06:18Z" level=debug msg=+s1q
+time="2025-03-07T08:06:18Z" level=debug msg="s1r is embedded in s1r"
+time="2025-03-07T08:06:18Z" level=debug msg=+s1r
+time="2025-03-07T08:06:18Z" level=debug msg="2s1s2 is embedded in 2s1s2"
+time="2025-03-07T08:06:18Z" level=debug msg=+2s1s2
+time="2025-03-07T08:06:18Z" level=debug msg="2s1s2 is embedded in s3sa"
+time="2025-03-07T08:06:18Z" level=debug msg="ss includes ss at pos 0"
+time="2025-03-07T08:06:18Z" level=debug msg="2s1s2 + 2s1s2 -> 2s1s2"
+time="2025-03-07T08:06:18Z" level=debug msg="s3sa is embedded in s3sa"
+time="2025-03-07T08:06:18Z" level=debug msg=+s3sa
+time="2025-03-07T08:06:18Z" level=debug msg="1sa is embedded in s3sa"
+time="2025-03-07T08:06:18Z" level=debug msg="ssa includes sa at pos 1"
+time="2025-03-07T08:06:18Z" level=debug msg="s3sa + 1sa -> s3sa"
+time="2025-03-07T08:06:18Z" level=debug msg="s1t is embedded in s1t"
+time="2025-03-07T08:06:18Z" level=debug msg=+s1t
+time="2025-03-07T08:06:18Z" level=debug msg="1su is embedded in 1su"
+time="2025-03-07T08:06:18Z" level=debug msg=+1su
+time="2025-03-07T08:06:18Z" level=debug msg="1su is embedded in su1a"
+time="2025-03-07T08:06:18Z" level=debug msg="su includes su at pos 0"
+time="2025-03-07T08:06:18Z" level=debug msg="1su + 1su -> 1su"
+time="2025-03-07T08:06:18Z" level=debug msg="su1a is embedded in su1a"
+time="2025-03-07T08:06:18Z" level=debug msg=+su1a
+time="2025-03-07T08:06:18Z" level=debug msg="1su is embedded in su4ba"
+time="2025-03-07T08:06:18Z" level=debug msg="su includes su at pos 0"
+time="2025-03-07T08:06:18Z" level=debug msg="1su + 1su -> 1su"
+time="2025-03-07T08:06:18Z" level=debug msg="su4ba is embedded in su4ba"
+time="2025-03-07T08:06:18Z" level=debug msg=+su4ba
+time="2025-03-07T08:06:18Z" level=debug msg="1ba is embedded in su4ba"
+time="2025-03-07T08:06:18Z" level=debug msg="suba includes ba at pos 2"
+time="2025-03-07T08:06:18Z" level=debug msg="su4ba + 1ba -> su4ba"
+time="2025-03-07T08:06:18Z" level=debug msg="1su is embedded in su4br"
+time="2025-03-07T08:06:18Z" level=debug msg="su includes su at pos 0"
+time="2025-03-07T08:06:18Z" level=debug msg="1su + 1su -> 1su"
+time="2025-03-07T08:06:18Z" level=debug msg="su4br is embedded in su4br"
+time="2025-03-07T08:06:18Z" level=debug msg=+su4br
+time="2025-03-07T08:06:18Z" level=debug msg="1b2r is embedded in su4br"
+time="2025-03-07T08:06:18Z" level=debug msg="subr includes br at pos 2"
+time="2025-03-07T08:06:18Z" level=debug msg="su4br + 1b2r -> su4b2r"
+time="2025-03-07T08:06:18Z" level=debug msg="1su is embedded in su1e"
+time="2025-03-07T08:06:18Z" level=debug msg="su includes su at pos 0"
+time="2025-03-07T08:06:18Z" level=debug msg="1su + 1su -> 1su"
+time="2025-03-07T08:06:18Z" level=debug msg="su1e is embedded in su1e"
+time="2025-03-07T08:06:18Z" level=debug msg=+su1e
+time="2025-03-07T08:06:18Z" level=debug msg="1su is embedded in su1i"
+time="2025-03-07T08:06:18Z" level=debug msg="su includes su at pos 0"
+time="2025-03-07T08:06:18Z" level=debug msg="1su + 1su -> 1su"
+time="2025-03-07T08:06:18Z" level=debug msg="su1i is embedded in su1i"
+time="2025-03-07T08:06:18Z" level=debug msg=+su1i
+time="2025-03-07T08:06:18Z" level=debug msg="1su is embedded in 2s1un"
+time="2025-03-07T08:06:18Z" level=debug msg="su includes su at pos 0"
+time="2025-03-07T08:06:18Z" level=debug msg="1su + 1su -> 1su"
+time="2025-03-07T08:06:18Z" level=debug msg="2s1un is embedded in 2s1un"
+time="2025-03-07T08:06:18Z" level=debug msg=+2s1un
+time="2025-03-07T08:06:18Z" level=debug msg="2s1v is embedded in 2s1v"
+time="2025-03-07T08:06:18Z" level=debug msg=+2s1v
+time="2025-03-07T08:06:18Z" level=debug msg="1sy is embedded in 1sy"
+time="2025-03-07T08:06:18Z" level=debug msg=+1sy
+time="2025-03-07T08:06:18Z" level=debug msg="4t3alg is embedded in 4t3alg"
+time="2025-03-07T08:06:18Z" level=debug msg=+4t3alg
+time="2025-03-07T08:06:18Z" level=debug msg="l1g is embedded in 4t3alg"
+time="2025-03-07T08:06:18Z" level=debug msg="talg includes lg at pos 2"
+time="2025-03-07T08:06:18Z" level=debug msg="4t3alg + l1g -> 4t3al1g"
+time="2025-03-07T08:06:18Z" level=debug msg="4t3amb is embedded in 4t3amb"
+time="2025-03-07T08:06:18Z" level=debug msg=+4t3amb
+time="2025-03-07T08:06:18Z" level=debug msg="a1m is embedded in 4t3amb"
+time="2025-03-07T08:06:18Z" level=debug msg=t+a1m
+time="2025-03-07T08:06:18Z" level=debug msg="2m1b is embedded in 4t3amb"
+time="2025-03-07T08:06:18Z" level=debug msg="tamb includes mb at pos 2"
+time="2025-03-07T08:06:18Z" level=debug msg="4t3amb + 2m1b -> 4t3a2m1b"
+time="2025-03-07T08:06:18Z" level=debug msg="4t3art is embedded in 4t3art"
+time="2025-03-07T08:06:18Z" level=debug msg=+4t3art
+time="2025-03-07T08:06:18Z" level=debug msg="2r1t is embedded in 4t3art"
+time="2025-03-07T08:06:18Z" level=debug msg="tart includes rt at pos 2"
+time="2025-03-07T08:06:18Z" level=debug msg="4t3art + 2r1t -> 4t3a2r1t"
+time="2025-03-07T08:06:18Z" level=debug msg="2t1d is embedded in 2t1d"
+time="2025-03-07T08:06:18Z" level=debug msg=+2t1d
+time="2025-03-07T08:06:18Z" level=debug msg="4t3eco is embedded in 4t3eco"
+time="2025-03-07T08:06:18Z" level=debug msg=+4t3eco
+time="2025-03-07T08:06:18Z" level=debug msg="e1co is embedded in 4t3eco"
+time="2025-03-07T08:06:18Z" level=debug msg="teco includes eco at pos 1"
+time="2025-03-07T08:06:18Z" level=debug msg="4t3eco + e1co -> 4t3e1co"
+time="2025-03-07T08:06:18Z" level=debug msg="2t1f is embedded in 2t1f"
+time="2025-03-07T08:06:18Z" level=debug msg=+2t1f
+time="2025-03-07T08:06:18Z" level=debug msg="2t1g is embedded in 2t1g"
+time="2025-03-07T08:06:18Z" level=debug msg=+2t1g
+time="2025-03-07T08:06:18Z" level=debug msg="th1l is embedded in th1l"
+time="2025-03-07T08:06:18Z" level=debug msg=+th1l
+time="2025-03-07T08:06:18Z" level=debug msg="2thm is embedded in 2thm"
+time="2025-03-07T08:06:18Z" level=debug msg=+2thm
+time="2025-03-07T08:06:18Z" level=debug msg="2h1m is embedded in 2thm"
+time="2025-03-07T08:06:18Z" level=debug msg="thm includes hm at pos 1"
+time="2025-03-07T08:06:18Z" level=debug msg="2thm + 2h1m -> 2t2h1m"
+time="2025-03-07T08:06:18Z" level=debug msg="ti3s4p is embedded in ti3s4p"
+time="2025-03-07T08:06:18Z" level=debug msg=+ti3s4p
+time="2025-03-07T08:06:18Z" level=debug msg="s1p is embedded in ti3s4p"
+time="2025-03-07T08:06:18Z" level=debug msg="tisp includes sp at pos 2"
+time="2025-03-07T08:06:18Z" level=debug msg="ti3s4p + s1p -> ti3s4p"
+time="2025-03-07T08:06:18Z" level=debug msg="t1l is embedded in t1l"
+time="2025-03-07T08:06:18Z" level=debug msg=+t1l
+time="2025-03-07T08:06:18Z" level=debug msg="2t1m is embedded in 2t1m"
+time="2025-03-07T08:06:18Z" level=debug msg=+2t1m
+time="2025-03-07T08:06:18Z" level=debug msg="2t1m is embedded in tmo1"
+time="2025-03-07T08:06:18Z" level=debug msg="tm includes tm at pos 0"
+time="2025-03-07T08:06:18Z" level=debug msg="2t1m + 2t1m -> 2t1m"
+time="2025-03-07T08:06:18Z" level=debug msg="tmo1 is embedded in tmo1"
+time="2025-03-07T08:06:18Z" level=debug msg=+tmo1
+time="2025-03-07T08:06:18Z" level=debug msg="1mo is embedded in tmo1"
+time="2025-03-07T08:06:18Z" level=debug msg="tmo includes mo at pos 1"
+time="2025-03-07T08:06:18Z" level=debug msg="tmo1 + 1mo -> t1mo1"
+time="2025-03-07T08:06:18Z" level=debug msg="to3s4p is embedded in to3s4p"
+time="2025-03-07T08:06:18Z" level=debug msg=+to3s4p
+time="2025-03-07T08:06:18Z" level=debug msg="s1p is embedded in to3s4p"
+time="2025-03-07T08:06:18Z" level=debug msg="tosp includes sp at pos 2"
+time="2025-03-07T08:06:18Z" level=debug msg="to3s4p + s1p -> to3s4p"
+time="2025-03-07T08:06:18Z" level=debug msg="4t3oxy is embedded in 4t3oxy"
+time="2025-03-07T08:06:18Z" level=debug msg=+4t3oxy
+time="2025-03-07T08:06:18Z" level=debug msg="x1y1 is embedded in 4t3oxy"
+time="2025-03-07T08:06:18Z" level=debug msg="toxy includes xy at pos 2"
+time="2025-03-07T08:06:18Z" level=debug msg="4t3oxy + x1y1 -> 4t3ox1y1"
+time="2025-03-07T08:06:18Z" level=debug msg="2t1p is embedded in 2t1p"
+time="2025-03-07T08:06:18Z" level=debug msg=+2t1p
+time="2025-03-07T08:06:18Z" level=debug msg="t2r is embedded in t2r"
+time="2025-03-07T08:06:18Z" level=debug msg=+t2r
+time="2025-03-07T08:06:18Z" level=debug msg="t2r is embedded in 4tr3or"
+time="2025-03-07T08:06:18Z" level=debug msg="tr includes tr at pos 0"
+time="2025-03-07T08:06:18Z" level=debug msg="t2r + t2r -> t2r"
+time="2025-03-07T08:06:18Z" level=debug msg="4tr3or is embedded in 4tr3or"
+time="2025-03-07T08:06:18Z" level=debug msg=+4tr3or
+time="2025-03-07T08:06:18Z" level=debug msg="2t1s is embedded in 2t1s"
+time="2025-03-07T08:06:18Z" level=debug msg=+2t1s
+time="2025-03-07T08:06:18Z" level=debug msg="2t1t is embedded in 2t1t"
+time="2025-03-07T08:06:18Z" level=debug msg=+2t1t
+time="2025-03-07T08:06:18Z" level=debug msg="tu1a is embedded in tu1a"
+time="2025-03-07T08:06:18Z" level=debug msg=+tu1a
+time="2025-03-07T08:06:18Z" level=debug msg="tu1e is embedded in tu1e"
+time="2025-03-07T08:06:18Z" level=debug msg=+tu1e
+time="2025-03-07T08:06:18Z" level=debug msg="tu1i is embedded in tu1i"
+time="2025-03-07T08:06:18Z" level=debug msg=+tu1i
+time="2025-03-07T08:06:18Z" level=debug msg="tu4s3a is embedded in tu4s3a"
+time="2025-03-07T08:06:18Z" level=debug msg=+tu4s3a
+time="2025-03-07T08:06:18Z" level=debug msg="1sa is embedded in tu4s3a"
+time="2025-03-07T08:06:18Z" level=debug msg="tusa includes sa at pos 2"
+time="2025-03-07T08:06:18Z" level=debug msg="tu4s3a + 1sa -> tu4s3a"
+time="2025-03-07T08:06:18Z" level=debug msg="ty1 is embedded in ty1"
+time="2025-03-07T08:06:18Z" level=debug msg=+ty1
+time="2025-03-07T08:06:18Z" level=debug msg="2t1z is embedded in 2t1z"
+time="2025-03-07T08:06:18Z" level=debug msg=+2t1z
+time="2025-03-07T08:06:18Z" level=debug msg="u3ani is embedded in u3ani"
+time="2025-03-07T08:06:18Z" level=debug msg=+u3ani
+time="2025-03-07T08:06:18Z" level=debug msg="1ni is embedded in u3ani"
+time="2025-03-07T08:06:18Z" level=debug msg="uani includes ni at pos 2"
+time="2025-03-07T08:06:18Z" level=debug msg="u3ani + 1ni -> u3a1ni"
+time="2025-03-07T08:06:18Z" level=debug msg="u1as is embedded in u1as"
+time="2025-03-07T08:06:18Z" level=debug msg=+u1as
+time="2025-03-07T08:06:18Z" level=debug msg="u1av is embedded in u1av"
+time="2025-03-07T08:06:18Z" level=debug msg=+u1av
+time="2025-03-07T08:06:18Z" level=debug msg="a1v is embedded in u1av"
+time="2025-03-07T08:06:18Z" level=debug msg="uav includes av at pos 1"
+time="2025-03-07T08:06:18Z" level=debug msg="u1av + a1v -> u1a1v"
+time="2025-03-07T08:06:18Z" level=debug msg="ub3al is embedded in ub3al"
+time="2025-03-07T08:06:18Z" level=debug msg=+ub3al
+time="2025-03-07T08:06:18Z" level=debug msg="1ba is embedded in ub3al"
+time="2025-03-07T08:06:18Z" level=debug msg=u+1ba
+time="2025-03-07T08:06:18Z" level=debug msg="ub1l is embedded in ub1l"
+time="2025-03-07T08:06:18Z" level=debug msg=+ub1l
+time="2025-03-07T08:06:18Z" level=debug msg="ub3ro is embedded in ub3ro"
+time="2025-03-07T08:06:18Z" level=debug msg=+ub3ro
+time="2025-03-07T08:06:18Z" level=debug msg="1b2r is embedded in ub3ro"
+time="2025-03-07T08:06:18Z" level=debug msg=u+1b2r
+time="2025-03-07T08:06:18Z" level=debug msg="u1ca is embedded in u1ca"
+time="2025-03-07T08:06:18Z" level=debug msg=+u1ca
+time="2025-03-07T08:06:18Z" level=debug msg="u1ce is embedded in u1ce"
+time="2025-03-07T08:06:18Z" level=debug msg=+u1ce
+time="2025-03-07T08:06:18Z" level=debug msg="u1ce is embedded in uc3em"
+time="2025-03-07T08:06:18Z" level=debug msg="uce includes uce at pos 0"
+time="2025-03-07T08:06:18Z" level=debug msg="u1ce + u1ce -> u1ce"
+time="2025-03-07T08:06:18Z" level=debug msg="uc3em is embedded in uc3em"
+time="2025-03-07T08:06:18Z" level=debug msg=+uc3em
+time="2025-03-07T08:06:18Z" level=debug msg="e1m is embedded in uc3em"
+time="2025-03-07T08:06:18Z" level=debug msg="ucem includes em at pos 2"
+time="2025-03-07T08:06:18Z" level=debug msg="uc3em + e1m -> uc3e1m"
+time="2025-03-07T08:06:18Z" level=debug msg="u1ch is embedded in u1ch"
+time="2025-03-07T08:06:18Z" level=debug msg=+u1ch
+time="2025-03-07T08:06:18Z" level=debug msg="u1co is embedded in u1co"
+time="2025-03-07T08:06:18Z" level=debug msg=+u1co
+time="2025-03-07T08:06:18Z" level=debug msg="u1cr is embedded in u1cr"
+time="2025-03-07T08:06:18Z" level=debug msg=+u1cr
+time="2025-03-07T08:06:18Z" level=debug msg="c2r is embedded in u1cr"
+time="2025-03-07T08:06:18Z" level=debug msg="ucr includes cr at pos 1"
+time="2025-03-07T08:06:18Z" level=debug msg="u1cr + c2r -> u1c2r"
+time="2025-03-07T08:06:18Z" level=debug msg="u1cu is embedded in u1cu"
+time="2025-03-07T08:06:18Z" level=debug msg=+u1cu
+time="2025-03-07T08:06:18Z" level=debug msg="u1d is embedded in u1d"
+time="2025-03-07T08:06:18Z" level=debug msg=+u1d
+time="2025-03-07T08:06:18Z" level=debug msg="u1el is embedded in u1el"
+time="2025-03-07T08:06:18Z" level=debug msg=+u1el
+time="2025-03-07T08:06:18Z" level=debug msg="u1ib is embedded in u1ib"
+time="2025-03-07T08:06:18Z" level=debug msg=+u1ib
+time="2025-03-07T08:06:18Z" level=debug msg="i1b2 is embedded in u1ib"
+time="2025-03-07T08:06:18Z" level=debug msg="uib includes ib at pos 1"
+time="2025-03-07T08:06:18Z" level=debug msg="u1ib + i1b2 -> u1i1b2"
+time="2025-03-07T08:06:18Z" level=debug msg="u1ic is embedded in u1ic"
+time="2025-03-07T08:06:18Z" level=debug msg=+u1ic
+time="2025-03-07T08:06:18Z" level=debug msg="i1c is embedded in u1ic"
+time="2025-03-07T08:06:18Z" level=debug msg="uic includes ic at pos 1"
+time="2025-03-07T08:06:18Z" level=debug msg="u1ic + i1c -> u1i1c"
+time="2025-03-07T08:06:18Z" level=debug msg="u1la is embedded in u1la"
+time="2025-03-07T08:06:18Z" level=debug msg=+u1la
+time="2025-03-07T08:06:18Z" level=debug msg="u1le is embedded in u1le"
+time="2025-03-07T08:06:18Z" level=debug msg=+u1le
+time="2025-03-07T08:06:18Z" level=debug msg="u1lo is embedded in u1lo"
+time="2025-03-07T08:06:18Z" level=debug msg=+u1lo
+time="2025-03-07T08:06:18Z" level=debug msg="u1o1 is embedded in u1o1"
+time="2025-03-07T08:06:18Z" level=debug msg=+u1o1
+time="2025-03-07T08:06:18Z" level=debug msg="u1ra is embedded in u1ra"
+time="2025-03-07T08:06:18Z" level=debug msg=+u1ra
+time="2025-03-07T08:06:18Z" level=debug msg="3urgo is embedded in 3urgo"
+time="2025-03-07T08:06:18Z" level=debug msg=+3urgo
+time="2025-03-07T08:06:18Z" level=debug msg="2r1g is embedded in 3urgo"
+time="2025-03-07T08:06:18Z" level=debug msg=u+2r1g
+time="2025-03-07T08:06:18Z" level=debug msg="1go is embedded in 3urgo"
+time="2025-03-07T08:06:18Z" level=debug msg="urgo includes go at pos 2"
+time="2025-03-07T08:06:18Z" level=debug msg="3urgo + 1go -> 3ur1go"
+time="2025-03-07T08:06:18Z" level=debug msg="u1ri is embedded in u1ri"
+time="2025-03-07T08:06:18Z" level=debug msg=+u1ri
+time="2025-03-07T08:06:18Z" level=debug msg="u1ro is embedded in u1ro"
+time="2025-03-07T08:06:18Z" level=debug msg=+u1ro
+time="2025-03-07T08:06:18Z" level=debug msg="u1ru is embedded in u1ru"
+time="2025-03-07T08:06:18Z" level=debug msg=+u1ru
+time="2025-03-07T08:06:18Z" level=debug msg="u2st is embedded in u2st"
+time="2025-03-07T08:06:18Z" level=debug msg=+u2st
+time="2025-03-07T08:06:18Z" level=debug msg="s1t is embedded in u2st"
+time="2025-03-07T08:06:18Z" level=debug msg="ust includes st at pos 1"
+time="2025-03-07T08:06:18Z" level=debug msg="u2st + s1t -> u2s1t"
+time="2025-03-07T08:06:18Z" level=debug msg="u1t is embedded in u1t"
+time="2025-03-07T08:06:18Z" level=debug msg=+u1t
+time="2025-03-07T08:06:18Z" level=debug msg="u1u is embedded in u1u"
+time="2025-03-07T08:06:18Z" level=debug msg=+u1u
+time="2025-03-07T08:06:18Z" level=debug msg="u1v is embedded in u1v"
+time="2025-03-07T08:06:18Z" level=debug msg=+u1v
+time="2025-03-07T08:06:18Z" level=debug msg="va1i is embedded in va1i"
+time="2025-03-07T08:06:18Z" level=debug msg=+va1i
+time="2025-03-07T08:06:18Z" level=debug msg="vi3ru is embedded in vi3ru"
+time="2025-03-07T08:06:18Z" level=debug msg=+vi3ru
+time="2025-03-07T08:06:18Z" level=debug msg="2vn is embedded in 2vn"
+time="2025-03-07T08:06:18Z" level=debug msg=+2vn
+time="2025-03-07T08:06:18Z" level=debug msg="v2r is embedded in v2r"
+time="2025-03-07T08:06:18Z" level=debug msg=+v2r
+time="2025-03-07T08:06:18Z" level=debug msg="w2n1 is embedded in w2n1"
+time="2025-03-07T08:06:18Z" level=debug msg=+w2n1
+time="2025-03-07T08:06:18Z" level=debug msg="x1a is embedded in x1a"
+time="2025-03-07T08:06:18Z" level=debug msg=+x1a
+time="2025-03-07T08:06:18Z" level=debug msg="x1c is embedded in x1c"
+time="2025-03-07T08:06:18Z" level=debug msg=+x1c
+time="2025-03-07T08:06:18Z" level=debug msg="x1e is embedded in x1e"
+time="2025-03-07T08:06:18Z" level=debug msg=+x1e
+time="2025-03-07T08:06:18Z" level=debug msg="x1h is embedded in x1h"
+time="2025-03-07T08:06:18Z" level=debug msg=+x1h
+time="2025-03-07T08:06:18Z" level=debug msg="x1i is embedded in x1i"
+time="2025-03-07T08:06:18Z" level=debug msg=+x1i
+time="2025-03-07T08:06:18Z" level=debug msg="x1o is embedded in x1o"
+time="2025-03-07T08:06:18Z" level=debug msg=+x1o
+time="2025-03-07T08:06:18Z" level=debug msg="x1p is embedded in x1p"
+time="2025-03-07T08:06:18Z" level=debug msg=+x1p
+time="2025-03-07T08:06:18Z" level=debug msg="x1q is embedded in x1q"
+time="2025-03-07T08:06:18Z" level=debug msg=+x1q
+time="2025-03-07T08:06:18Z" level=debug msg="x1s2 is embedded in x1s2"
+time="2025-03-07T08:06:18Z" level=debug msg=+x1s2
+time="2025-03-07T08:06:18Z" level=debug msg="x1t is embedded in x1t"
+time="2025-03-07T08:06:18Z" level=debug msg=+x1t
+time="2025-03-07T08:06:18Z" level=debug msg="x1u is embedded in x1u"
+time="2025-03-07T08:06:18Z" level=debug msg=+x1u
+time="2025-03-07T08:06:18Z" level=debug msg="x1u is embedded in xu1a"
+time="2025-03-07T08:06:18Z" level=debug msg="xu includes xu at pos 0"
+time="2025-03-07T08:06:18Z" level=debug msg="x1u + x1u -> x1u"
+time="2025-03-07T08:06:18Z" level=debug msg="xu1a is embedded in xu1a"
+time="2025-03-07T08:06:18Z" level=debug msg=+xu1a
+time="2025-03-07T08:06:18Z" level=debug msg="x1y1 is embedded in x1y1"
+time="2025-03-07T08:06:18Z" level=debug msg=+x1y1
+time="2025-03-07T08:06:18Z" level=debug msg="x1y1 is embedded in 1xyl"
+time="2025-03-07T08:06:18Z" level=debug msg="xy includes xy at pos 0"
+time="2025-03-07T08:06:18Z" level=debug msg="x1y1 + x1y1 -> x1y1"
+time="2025-03-07T08:06:18Z" level=debug msg="1xyl is embedded in 1xyl"
+time="2025-03-07T08:06:18Z" level=debug msg=+1xyl
+time="2025-03-07T08:06:18Z" level=debug msg="2yl is embedded in 1xyl"
+time="2025-03-07T08:06:18Z" level=debug msg="xyl includes yl at pos 1"
+time="2025-03-07T08:06:18Z" level=debug msg="1xyl + 2yl -> 1x2yl"
+time="2025-03-07T08:06:18Z" level=debug msg="y1a is embedded in y1a"
+time="2025-03-07T08:06:18Z" level=debug msg=+y1a
+time="2025-03-07T08:06:18Z" level=debug msg="y1b is embedded in y1b"
+time="2025-03-07T08:06:18Z" level=debug msg=+y1b
+time="2025-03-07T08:06:18Z" level=debug msg="yc1a is embedded in yc1a"
+time="2025-03-07T08:06:18Z" level=debug msg=+yc1a
+time="2025-03-07T08:06:18Z" level=debug msg="y1ce is embedded in y1ce"
+time="2025-03-07T08:06:18Z" level=debug msg=+y1ce
+time="2025-03-07T08:06:18Z" level=debug msg="ych1 is embedded in ych1"
+time="2025-03-07T08:06:18Z" level=debug msg=+ych1
+time="2025-03-07T08:06:18Z" level=debug msg="y1co is embedded in y1co"
+time="2025-03-07T08:06:18Z" level=debug msg=+y1co
+time="2025-03-07T08:06:18Z" level=debug msg="yc4t3a is embedded in yc4t3a"
+time="2025-03-07T08:06:18Z" level=debug msg=+yc4t3a
+time="2025-03-07T08:06:18Z" level=debug msg="2c1t is embedded in yc4t3a"
+time="2025-03-07T08:06:18Z" level=debug msg=y+2c1t
+time="2025-03-07T08:06:18Z" level=debug msg="ydr1 is embedded in ydr1"
+time="2025-03-07T08:06:18Z" level=debug msg=+ydr1
+time="2025-03-07T08:06:18Z" level=debug msg="d2r is embedded in ydr1"
+time="2025-03-07T08:06:18Z" level=debug msg="ydr includes dr at pos 1"
+time="2025-03-07T08:06:18Z" level=debug msg="ydr1 + d2r -> yd2r1"
+time="2025-03-07T08:06:18Z" level=debug msg="y1e is embedded in y1e"
+time="2025-03-07T08:06:18Z" level=debug msg=+y1e
+time="2025-03-07T08:06:18Z" level=debug msg="y1g is embedded in y1g"
+time="2025-03-07T08:06:18Z" level=debug msg=+y1g
+time="2025-03-07T08:06:18Z" level=debug msg="y1h is embedded in y1h"
+time="2025-03-07T08:06:18Z" level=debug msg=+y1h
+time="2025-03-07T08:06:18Z" level=debug msg="y1i is embedded in y1i"
+time="2025-03-07T08:06:18Z" level=debug msg=+y1i
+time="2025-03-07T08:06:18Z" level=debug msg="2yl is embedded in 2yl"
+time="2025-03-07T08:06:18Z" level=debug msg=+2yl
+time="2025-03-07T08:06:18Z" level=debug msg="2yl is embedded in y3lac"
+time="2025-03-07T08:06:18Z" level=debug msg="yl includes yl at pos 0"
+time="2025-03-07T08:06:18Z" level=debug msg="2yl + 2yl -> 2yl"
+time="2025-03-07T08:06:18Z" level=debug msg="y3lac is embedded in y3lac"
+time="2025-03-07T08:06:18Z" level=debug msg=+y3lac
+time="2025-03-07T08:06:18Z" level=debug msg="2yl is embedded in yl3am"
+time="2025-03-07T08:06:18Z" level=debug msg="yl includes yl at pos 0"
+time="2025-03-07T08:06:18Z" level=debug msg="2yl + 2yl -> 2yl"
+time="2025-03-07T08:06:18Z" level=debug msg="yl3am is embedded in yl3am"
+time="2025-03-07T08:06:18Z" level=debug msg=+yl3am
+time="2025-03-07T08:06:18Z" level=debug msg="a1m is embedded in yl3am"
+time="2025-03-07T08:06:18Z" level=debug msg="ylam includes am at pos 2"
+time="2025-03-07T08:06:18Z" level=debug msg="yl3am + a1m -> yl3a1m"
+time="2025-03-07T08:06:18Z" level=debug msg="2yl is embedded in y1le"
+time="2025-03-07T08:06:18Z" level=debug msg="yl includes yl at pos 0"
+time="2025-03-07T08:06:18Z" level=debug msg="2yl + 2yl -> 2yl"
+time="2025-03-07T08:06:18Z" level=debug msg="y1le is embedded in y1le"
+time="2025-03-07T08:06:18Z" level=debug msg=+y1le
+time="2025-03-07T08:06:18Z" level=debug msg="2yl is embedded in y1lo"
+time="2025-03-07T08:06:18Z" level=debug msg="yl includes yl at pos 0"
+time="2025-03-07T08:06:18Z" level=debug msg="2yl + 2yl -> 2yl"
+time="2025-03-07T08:06:18Z" level=debug msg="y1lo is embedded in y1lo"
+time="2025-03-07T08:06:18Z" level=debug msg=+y1lo
+time="2025-03-07T08:06:18Z" level=debug msg="yn3an is embedded in yn3an"
+time="2025-03-07T08:06:18Z" level=debug msg=+yn3an
+time="2025-03-07T08:06:18Z" level=debug msg="1na is embedded in yn3an"
+time="2025-03-07T08:06:18Z" level=debug msg=y+1na
+time="2025-03-07T08:06:18Z" level=debug msg="yn3eg is embedded in yn3eg"
+time="2025-03-07T08:06:18Z" level=debug msg=+yn3eg
+time="2025-03-07T08:06:18Z" level=debug msg="1ne is embedded in yn3eg"
+time="2025-03-07T08:06:18Z" level=debug msg=y+1ne
+time="2025-03-07T08:06:18Z" level=debug msg="e1g is embedded in yn3eg"
+time="2025-03-07T08:06:18Z" level=debug msg="yneg includes eg at pos 2"
+time="2025-03-07T08:06:18Z" level=debug msg="yn3eg + e1g -> yn3e1g"
+time="2025-03-07T08:06:18Z" level=debug msg="y1o is embedded in y1o"
+time="2025-03-07T08:06:18Z" level=debug msg=+y1o
+time="2025-03-07T08:06:18Z" level=debug msg="ypo1 is embedded in ypo1"
+time="2025-03-07T08:06:18Z" level=debug msg=+ypo1
+time="2025-03-07T08:06:18Z" level=debug msg="1po is embedded in ypo1"
+time="2025-03-07T08:06:18Z" level=debug msg="ypo includes po at pos 1"
+time="2025-03-07T08:06:18Z" level=debug msg="ypo1 + 1po -> y1po1"
+time="2025-03-07T08:06:18Z" level=debug msg="ypo1 is embedded in ypos4"
+time="2025-03-07T08:06:18Z" level=debug msg="ypo includes ypo at pos 0"
+time="2025-03-07T08:06:18Z" level=debug msg="y1po1 + ypo1 -> y1po1"
+time="2025-03-07T08:06:18Z" level=debug msg="ypos4 is embedded in ypos4"
+time="2025-03-07T08:06:18Z" level=debug msg=+ypos4
+time="2025-03-07T08:06:18Z" level=debug msg="1po is embedded in ypos4"
+time="2025-03-07T08:06:18Z" level=debug msg="ypo includes po at pos 1"
+time="2025-03-07T08:06:18Z" level=debug msg="y1po1 + 1po -> y1po1"
+time="2025-03-07T08:06:18Z" level=debug msg="y1r is embedded in y1r"
+time="2025-03-07T08:06:18Z" level=debug msg=+y1r
+time="2025-03-07T08:06:18Z" level=debug msg="y1r is embedded in yro1"
+time="2025-03-07T08:06:18Z" level=debug msg="yr includes yr at pos 0"
+time="2025-03-07T08:06:18Z" level=debug msg="y1r + y1r -> y1r"
+time="2025-03-07T08:06:18Z" level=debug msg="yro1 is embedded in yro1"
+time="2025-03-07T08:06:18Z" level=debug msg=+yro1
+time="2025-03-07T08:06:18Z" level=debug msg="y1r is embedded in yros4"
+time="2025-03-07T08:06:18Z" level=debug msg="yr includes yr at pos 0"
+time="2025-03-07T08:06:18Z" level=debug msg="y1r + y1r -> y1r"
+time="2025-03-07T08:06:18Z" level=debug msg="yro1 is embedded in yros4"
+time="2025-03-07T08:06:18Z" level=debug msg="yro includes yro at pos 0"
+time="2025-03-07T08:06:18Z" level=debug msg="yro1 + yro1 -> yro1"
+time="2025-03-07T08:06:18Z" level=debug msg="yros4 is embedded in yros4"
+time="2025-03-07T08:06:18Z" level=debug msg=+yros4
+time="2025-03-07T08:06:18Z" level=debug msg="ys1e is embedded in ys1e"
+time="2025-03-07T08:06:18Z" level=debug msg=+ys1e
+time="2025-03-07T08:06:18Z" level=debug msg="1se is embedded in ys1e"
+time="2025-03-07T08:06:18Z" level=debug msg="yse includes se at pos 1"
+time="2025-03-07T08:06:18Z" level=debug msg="ys1e + 1se -> y1s1e"
+time="2025-03-07T08:06:18Z" level=debug msg="y1t is embedded in y1t"
+time="2025-03-07T08:06:18Z" level=debug msg=+y1t
+time="2025-03-07T08:06:18Z" level=debug msg="y1u is embedded in y1u"
+time="2025-03-07T08:06:18Z" level=debug msg=+y1u
+time="2025-03-07T08:06:18Z" level=debug msg="y1z is embedded in y1z"
+time="2025-03-07T08:06:18Z" level=debug msg=+y1z
+time="2025-03-07T08:06:18Z" level=debug msg="ze1 is embedded in ze1"
+time="2025-03-07T08:06:18Z" level=debug msg=+ze1
+time="2025-03-07T08:06:18Z" level=debug msg="1zi is embedded in 1zi"
+time="2025-03-07T08:06:18Z" level=debug msg=+1zi
+time="2025-03-07T08:06:18Z" level=debug msg="1zu1 is embedded in 1zu1"
+time="2025-03-07T08:06:18Z" level=debug msg=+1zu1
+time="2025-03-07T08:06:18Z" level=debug msg="2z1z is embedded in 2z1z"
+time="2025-03-07T08:06:18Z" level=debug msg=+2z1z
+time="2025-03-07T08:06:18Z" level=debug msg="Executing(%install): /bin/sh -e /var/tmp/rpm-tmp.H90r36"
+time="2025-03-07T08:06:18Z" level=debug msg="+ /usr/lib/rpm/brp-compress /usr"
+time="2025-03-07T08:06:18Z" level=debug msg="+ /usr/lib/rpm/brp-strip-comment-note /bin/strip /bin/objdump"
+time="2025-03-07T08:06:18Z" level=debug msg="+ /usr/lib/rpm/brp-strip-static-archive /bin/strip"
+time="2025-03-07T08:06:18Z" level=debug msg="+ /usr/lib/rpm/azl/brp-python-bytecompile /usr/bin/python3 1 0"
+time="2025-03-07T08:06:18Z" level=debug msg="+ find /usr/src/azl/BUILDROOT/hyphen-ia-0.20050628-20.azl3.x86_64 -name '*.pc'"
+time="2025-03-07T08:06:18Z" level=debug msg="+ xargs '-I{}' sed -i -e 's@-Wl,-dT,/usr/src/azl/BUILD/module_info.ld@ @' '{}'"
+time="2025-03-07T08:06:18Z" level=debug msg="+ /usr/lib/rpm/brp-strip /bin/strip"
+time="2025-03-07T08:06:18Z" level=debug msg="+ CCACHE_DIR=/ccache-dir"
+time="2025-03-07T08:06:18Z" level=debug msg="+ export CCACHE_DIR"
+time="2025-03-07T08:06:18Z" level=debug msg="+ ccache --show-stats"
+time="2025-03-07T08:06:18Z" level=debug msg="Local storage:"
+time="2025-03-07T08:06:18Z" level=debug msg="  Cache size (GiB): 0.0 / 5.0 ( 0.00%)"
+time="2025-03-07T08:06:18Z" level=debug msg="Processing files: hyphen-ia-0.20050628-20.azl3.noarch"
+time="2025-03-07T08:06:18Z" level=debug msg="Executing(%doc): /bin/sh -e /var/tmp/rpm-tmp.5b0QbO"
+time="2025-03-07T08:06:18Z" level=debug msg="+ umask 022"
+time="2025-03-07T08:06:18Z" level=debug msg="+ cd /usr/src/azl/BUILD"
+time="2025-03-07T08:06:18Z" level=debug msg="+ cd hyphen-ia"
+time="2025-03-07T08:06:18Z" level=debug msg="+ DOCDIR=/usr/src/azl/BUILDROOT/hyphen-ia-0.20050628-20.azl3.x86_64/usr/share/doc/hyphen-ia"
+time="2025-03-07T08:06:18Z" level=debug msg="+ export LC_ALL=C"
+time="2025-03-07T08:06:18Z" level=debug msg="+ LC_ALL=C"
+time="2025-03-07T08:06:18Z" level=debug msg="+ export DOCDIR"
+time="2025-03-07T08:06:18Z" level=debug msg="+ /bin/mkdir -p /usr/src/azl/BUILDROOT/hyphen-ia-0.20050628-20.azl3.x86_64/usr/share/doc/hyphen-ia"
+time="2025-03-07T08:06:18Z" level=debug msg="+ cp -pr README /usr/src/azl/BUILDROOT/hyphen-ia-0.20050628-20.azl3.x86_64/usr/share/doc/hyphen-ia"
+time="2025-03-07T08:06:18Z" level=debug msg="+ RPM_EC=0"
+time="2025-03-07T08:06:18Z" level=debug msg="++ jobs -p"
+time="2025-03-07T08:06:18Z" level=debug msg="+ exit 0"
+time="2025-03-07T08:06:18Z" level=debug msg="Executing(%license): /bin/sh -e /var/tmp/rpm-tmp.mHQPtt"
+time="2025-03-07T08:06:18Z" level=debug msg="+ umask 022"
+time="2025-03-07T08:06:18Z" level=debug msg="+ cd /usr/src/azl/BUILD"
+time="2025-03-07T08:06:18Z" level=debug msg="+ cd hyphen-ia"
+time="2025-03-07T08:06:18Z" level=debug msg="+ LICENSEDIR=/usr/src/azl/BUILDROOT/hyphen-ia-0.20050628-20.azl3.x86_64/usr/share/licenses/hyphen-ia"
+time="2025-03-07T08:06:18Z" level=debug msg="+ export LC_ALL=C"
+time="2025-03-07T08:06:18Z" level=debug msg="+ LC_ALL=C"
+time="2025-03-07T08:06:18Z" level=debug msg="+ export LICENSEDIR"
+time="2025-03-07T08:06:18Z" level=debug msg="+ /bin/mkdir -p /usr/src/azl/BUILDROOT/hyphen-ia-0.20050628-20.azl3.x86_64/usr/share/licenses/hyphen-ia"
+time="2025-03-07T08:06:18Z" level=debug msg="+ cp -pr LICENSE.txt /usr/src/azl/BUILDROOT/hyphen-ia-0.20050628-20.azl3.x86_64/usr/share/licenses/hyphen-ia"
+time="2025-03-07T08:06:18Z" level=debug msg="+ RPM_EC=0"
+time="2025-03-07T08:06:18Z" level=debug msg="++ jobs -p"
+time="2025-03-07T08:06:18Z" level=debug msg="+ exit 0"
+time="2025-03-07T08:06:18Z" level=debug msg="Provides: hyphen-ia = 0.20050628-20.azl3"
+time="2025-03-07T08:06:18Z" level=debug msg="Requires(rpmlib): rpmlib(CompressedFileNames) <= 3.0.4-1 rpmlib(FileDigests) <= 4.6.0-1 rpmlib(PayloadFilesHavePrefix) <= 4.0-1"
+time="2025-03-07T08:06:18Z" level=debug msg="Supplements: (hyphen and langpacks-ia)"
+time="2025-03-07T08:06:18Z" level=debug msg="Checking for unpackaged file(s): /usr/lib/rpm/check-files /usr/src/azl/BUILDROOT/hyphen-ia-0.20050628-20.azl3.x86_64"
+time="2025-03-07T08:06:18Z" level=debug msg="Wrote: /usr/src/azl/RPMS/noarch/hyphen-ia-0.20050628-20.azl3.noarch.rpm"
+time="2025-03-07T08:06:18Z" level=debug msg="Executing(%clean): /bin/sh -e /var/tmp/rpm-tmp.5P5rPP"
+time="2025-03-07T08:06:18Z" level=debug msg="+ umask 022"
+time="2025-03-07T08:06:18Z" level=debug msg="+ cd /usr/src/azl/BUILD"
+time="2025-03-07T08:06:18Z" level=debug msg="+ cd hyphen-ia"
+time="2025-03-07T08:06:18Z" level=debug msg="+ /bin/rm -rf /usr/src/azl/BUILDROOT/hyphen-ia-0.20050628-20.azl3.x86_64"
+time="2025-03-07T08:06:18Z" level=debug msg="+ RPM_EC=0"
+time="2025-03-07T08:06:18Z" level=debug msg="++ jobs -p"
+time="2025-03-07T08:06:18Z" level=debug msg="+ exit 0"
+time="2025-03-07T08:06:18Z" level=debug msg="Executing(rmbuild): /bin/sh -e /var/tmp/rpm-tmp.1YJZef"
+time="2025-03-07T08:06:18Z" level=debug msg="+ umask 022"
+time="2025-03-07T08:06:18Z" level=debug msg="+ cd /usr/src/azl/BUILD"
+time="2025-03-07T08:06:18Z" level=debug msg="+ rm -rf hyphen-ia hyphen-ia.gemspec"
+time="2025-03-07T08:06:18Z" level=debug msg="+ RPM_EC=0"
+time="2025-03-07T08:06:18Z" level=debug msg="++ jobs -p"
+time="2025-03-07T08:06:18Z" level=debug msg="+ exit 0"
+time="2025-03-07T08:06:18Z" level=debug msg="    Could not canonicalize hostname: azuli-m1"
+time="2025-03-07T08:06:18Z" level=debug
+time="2025-03-07T08:06:18Z" level=debug msg="RPM build warnings:"
+time="2025-03-07T08:06:18Z" level=debug msg="Build thread in chroot finished."
+time="2025-03-07T08:06:18Z" level=debug msg="Exiting Chroot: '/third_disk/bb05Mar/azurelinux/build/worker/chroot/hyphen-ia-0.20050628-20.azl3'"
+time="2025-03-07T08:06:18Z" level=debug msg="Moving (/third_disk/bb05Mar/azurelinux/build/worker/chroot/hyphen-ia-0.20050628-20.azl3/usr/src/azl/RPMS/noarch/hyphen-ia-0.20050628-20.azl3.noarch.rpm) -> (/third_disk/bb05Mar/azurelinux/out/RPMS/noarch/hyphen-ia-0.20050628-20.azl3.noarch.rpm)"
+time="2025-03-07T08:06:18Z" level=debug msg="Executing: [mv /third_disk/bb05Mar/azurelinux/build/worker/chroot/hyphen-ia-0.20050628-20.azl3/usr/src/azl/RPMS/noarch/hyphen-ia-0.20050628-20.azl3.noarch.rpm /third_disk/bb05Mar/azurelinux/out/RPMS/noarch/hyphen-ia-0.20050628-20.azl3.noarch.rpm]"
+time="2025-03-07T08:06:18Z" level=info msg="* processing upload of ccache artifacts..."
+time="2025-03-07T08:06:18Z" level=info msg="  ccache update is disabled for this build."
+time="2025-03-07T08:06:18Z" level=debug msg="Entering Chroot: '/third_disk/bb05Mar/azurelinux/build/worker/chroot/hyphen-ia-0.20050628-20.azl3'"
+time="2025-03-07T08:06:18Z" level=debug msg="Executing: [gpgconf --list-components]"
+time="2025-03-07T08:06:18Z" level=debug msg="gpg:OpenPGP:/usr/bin/gpg2"
+time="2025-03-07T08:06:18Z" level=debug msg="gpgsm:S/MIME:/usr/bin/gpgsm"
+time="2025-03-07T08:06:18Z" level=debug msg="keyboxd:Public Keys:/usr/libexec/keyboxd"
+time="2025-03-07T08:06:18Z" level=debug msg="gpg-agent:Private Keys:/usr/bin/gpg-agent"
+time="2025-03-07T08:06:18Z" level=debug msg="scdaemon:Smartcards:/usr/libexec/scdaemon"
+time="2025-03-07T08:06:18Z" level=debug msg="dirmngr:Network:/usr/bin/dirmngr"
+time="2025-03-07T08:06:18Z" level=debug msg="pinentry:Passphrase Entry:/usr/bin/pinentry"
+time="2025-03-07T08:06:18Z" level=debug msg="Found gpg-agent running inside chroot. Stopping it."
+time="2025-03-07T08:06:18Z" level=debug msg="Executing: [gpgconf --kill gpg-agent]"
+time="2025-03-07T08:06:18Z" level=debug msg="Found keyboxd running inside chroot. Stopping it."
+time="2025-03-07T08:06:18Z" level=debug msg="Executing: [gpgconf --kill keyboxd]"
+time="2025-03-07T08:06:18Z" level=debug msg="Exiting Chroot: '/third_disk/bb05Mar/azurelinux/build/worker/chroot/hyphen-ia-0.20050628-20.azl3'"
+time="2025-03-07T08:06:18Z" level=debug msg="Unmounting (/third_disk/bb05Mar/azurelinux/build/worker/chroot/hyphen-ia-0.20050628-20.azl3/ccache-dir)"
+time="2025-03-07T08:06:18Z" level=debug msg="Calling unmount on path(/third_disk/bb05Mar/azurelinux/build/worker/chroot/hyphen-ia-0.20050628-20.azl3/ccache-dir) with flags (0)"
+time="2025-03-07T08:06:18Z" level=debug msg="Unmounting (/third_disk/bb05Mar/azurelinux/build/worker/chroot/hyphen-ia-0.20050628-20.azl3/upstream-cached-rpms)"
+time="2025-03-07T08:06:18Z" level=debug msg="Calling unmount on path(/third_disk/bb05Mar/azurelinux/build/worker/chroot/hyphen-ia-0.20050628-20.azl3/upstream-cached-rpms) with flags (0)"
+time="2025-03-07T08:06:18Z" level=debug msg="Unmounting (/third_disk/bb05Mar/azurelinux/build/worker/chroot/hyphen-ia-0.20050628-20.azl3/toolchainrpms)"
+time="2025-03-07T08:06:18Z" level=debug msg="Calling unmount on path(/third_disk/bb05Mar/azurelinux/build/worker/chroot/hyphen-ia-0.20050628-20.azl3/toolchainrpms) with flags (0)"
+time="2025-03-07T08:06:18Z" level=debug msg="Unmounting (/third_disk/bb05Mar/azurelinux/build/worker/chroot/hyphen-ia-0.20050628-20.azl3/localrpms)"
+time="2025-03-07T08:06:18Z" level=debug msg="Calling unmount on path(/third_disk/bb05Mar/azurelinux/build/worker/chroot/hyphen-ia-0.20050628-20.azl3/localrpms) with flags (0)"
+time="2025-03-07T08:06:19Z" level=debug msg="Unmounting (/third_disk/bb05Mar/azurelinux/build/worker/chroot/hyphen-ia-0.20050628-20.azl3/dev/pts)"
+time="2025-03-07T08:06:19Z" level=debug msg="Calling unmount on path(/third_disk/bb05Mar/azurelinux/build/worker/chroot/hyphen-ia-0.20050628-20.azl3/dev/pts) with flags (0)"
+time="2025-03-07T08:06:19Z" level=debug msg="Unmounting (/third_disk/bb05Mar/azurelinux/build/worker/chroot/hyphen-ia-0.20050628-20.azl3/run)"
+time="2025-03-07T08:06:19Z" level=debug msg="Calling unmount on path(/third_disk/bb05Mar/azurelinux/build/worker/chroot/hyphen-ia-0.20050628-20.azl3/run) with flags (0)"
+time="2025-03-07T08:06:19Z" level=debug msg="Unmounting (/third_disk/bb05Mar/azurelinux/build/worker/chroot/hyphen-ia-0.20050628-20.azl3/sys)"
+time="2025-03-07T08:06:19Z" level=debug msg="Calling unmount on path(/third_disk/bb05Mar/azurelinux/build/worker/chroot/hyphen-ia-0.20050628-20.azl3/sys) with flags (0)"
+time="2025-03-07T08:06:19Z" level=debug msg="Unmounting (/third_disk/bb05Mar/azurelinux/build/worker/chroot/hyphen-ia-0.20050628-20.azl3/proc)"
+time="2025-03-07T08:06:19Z" level=debug msg="Calling unmount on path(/third_disk/bb05Mar/azurelinux/build/worker/chroot/hyphen-ia-0.20050628-20.azl3/proc) with flags (0)"
+time="2025-03-07T08:06:19Z" level=debug msg="Unmounting (/third_disk/bb05Mar/azurelinux/build/worker/chroot/hyphen-ia-0.20050628-20.azl3/dev)"
+time="2025-03-07T08:06:19Z" level=debug msg="Calling unmount on path(/third_disk/bb05Mar/azurelinux/build/worker/chroot/hyphen-ia-0.20050628-20.azl3/dev) with flags (0)"
+time="2025-03-07T08:06:20Z" level=info msg="Built (hyphen-ia-0.20050628-20.azl3.src.rpm) -> [/third_disk/bb05Mar/azurelinux/out/RPMS/noarch/hyphen-ia-0.20050628-20.azl3.noarch.rpm]."
+time="2025-03-07T08:06:20Z" level=debug msg="Copying (/third_disk/bb05Mar/azurelinux/build/INTERMEDIATE_SRPMS/hyphen-ia-0.20050628-20.azl3.src.rpm) to (/third_disk/bb05Mar/azurelinux/out/SRPMS/hyphen-ia-0.20050628-20.azl3.src.rpm)"
+time="2025-03-07T08:06:20Z" level=debug msg="Executing: [cp --preserve=mode /third_disk/bb05Mar/azurelinux/build/INTERMEDIATE_SRPMS/hyphen-ia-0.20050628-20.azl3.src.rpm /third_disk/bb05Mar/azurelinux/out/SRPMS/hyphen-ia-0.20050628-20.azl3.src.rpm]"

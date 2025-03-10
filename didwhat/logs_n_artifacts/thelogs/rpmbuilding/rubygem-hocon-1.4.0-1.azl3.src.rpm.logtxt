@@ -1,0 +1,440 @@
+time="2025-03-07T08:45:13Z" level=info msg="* Creating a ccache manager instance *"
+time="2025-03-07T08:45:13Z" level=info msg="  ccache root folder         : (/third_disk/bb05Mar/azurelinux/ccache)"
+time="2025-03-07T08:45:13Z" level=info msg="  ccache remote configuration: (/third_disk/bb05Mar/azurelinux/toolkit/resources/manifests/package/ccache-configuration.json)"
+time="2025-03-07T08:45:13Z" level=info msg="  loading ccache configuration file: /third_disk/bb05Mar/azurelinux/toolkit/resources/manifests/package/ccache-configuration.json"
+time="2025-03-07T08:45:13Z" level=info msg="    Type           : azure-blob-storage"
+time="2025-03-07T08:45:13Z" level=info msg="    TenantId       : "
+time="2025-03-07T08:45:13Z" level=info msg="    UserName       : "
+time="2025-03-07T08:45:13Z" level=info msg="    StorageAccount : marinerccache"
+time="2025-03-07T08:45:13Z" level=info msg="    ContainerName  : 30-stable"
+time="2025-03-07T08:45:13Z" level=info msg="    Tagsfolder     : tags"
+time="2025-03-07T08:45:13Z" level=info msg="    DownloadEnabled: true"
+time="2025-03-07T08:45:13Z" level=info msg="    DownloadLatest : true"
+time="2025-03-07T08:45:13Z" level=info msg="    DownloadFolder : "
+time="2025-03-07T08:45:13Z" level=info msg="    UploadEnabled  : false"
+time="2025-03-07T08:45:13Z" level=info msg="    UploadFolder   : "
+time="2025-03-07T08:45:13Z" level=info msg="    UpdateLatest   : false"
+time="2025-03-07T08:45:13Z" level=info msg="    KeepLatestOnly : false"
+time="2025-03-07T08:45:13Z" level=info msg="  creating blob storage client..."
+time="2025-03-07T08:45:13Z" level=info msg="  ccache pkg folder : (/third_disk/bb05Mar/azurelinux/ccache/work/x86_64/rubygem-hocon)"
+time="2025-03-07T08:45:13Z" level=info msg="  tag local source  : (/third_disk/bb05Mar/azurelinux/ccache/downloads/rubygem-hocon-latest-build.txt)"
+time="2025-03-07T08:45:13Z" level=info msg="  tag remote source : (x86_64/tags/rubygem-hocon-latest-build.txt)"
+time="2025-03-07T08:45:13Z" level=info msg="  tag local target  : (/third_disk/bb05Mar/azurelinux/ccache/uploads/rubygem-hocon-latest-build.txt)"
+time="2025-03-07T08:45:13Z" level=info msg="  tag remote target : (x86_64/tags/rubygem-hocon-latest-build.txt)"
+time="2025-03-07T08:45:13Z" level=info msg="  ccache is configured to use the latest from the remote store..."
+time="2025-03-07T08:45:13Z" level=info msg="  checking if (/third_disk/bb05Mar/azurelinux/ccache/downloads/rubygem-hocon-latest-build.txt) already exists..."
+time="2025-03-07T08:45:13Z" level=info msg="  downloading (x86_64/tags/rubygem-hocon-latest-build.txt) to (/third_disk/bb05Mar/azurelinux/ccache/downloads/rubygem-hocon-latest-build.txt)..."
+time="2025-03-07T08:45:14Z" level=info msg="  download time: 1.366082142s"
+time="2025-03-07T08:45:14Z" level=info msg="  updating () to (3.0.20250206-3.0-729715)..."
+time="2025-03-07T08:45:14Z" level=info msg="  tar local source  : (/third_disk/bb05Mar/azurelinux/ccache/downloads/rubygem-hocon-ccache.tar.gz)"
+time="2025-03-07T08:45:14Z" level=info msg="  tar remote source : (x86_64/3.0.20250206-3.0-729715/rubygem-hocon-ccache.tar.gz)"
+time="2025-03-07T08:45:14Z" level=info msg="  tar local target  : (/third_disk/bb05Mar/azurelinux/ccache/uploads/rubygem-hocon-ccache.tar.gz)"
+time="2025-03-07T08:45:14Z" level=info msg="  tar remote target : (x86_64//rubygem-hocon-ccache.tar.gz)"
+time="2025-03-07T08:45:14Z" level=info msg="* processing download of ccache artifacts..."
+time="2025-03-07T08:45:14Z" level=info msg="  downloading (x86_64/3.0.20250206-3.0-729715/rubygem-hocon-ccache.tar.gz) to (/third_disk/bb05Mar/azurelinux/ccache/downloads/rubygem-hocon-ccache.tar.gz)..."
+time="2025-03-07T08:45:14Z" level=info msg="Building (rubygem-hocon-1.4.0-1.azl3.src.rpm)."
+time="2025-03-07T08:45:17Z" level=info msg="  download time: 2.457812701s"
+time="2025-03-07T08:45:17Z" level=info msg="  uncompressing (/third_disk/bb05Mar/azurelinux/ccache/downloads/rubygem-hocon-ccache.tar.gz) into (/third_disk/bb05Mar/azurelinux/ccache/work/x86_64/rubygem-hocon)."
+time="2025-03-07T08:45:17Z" level=debug msg="Executing: [tar xf /third_disk/bb05Mar/azurelinux/ccache/downloads/rubygem-hocon-ccache.tar.gz -C /third_disk/bb05Mar/azurelinux/ccache/work/x86_64/rubygem-hocon .]"
+time="2025-03-07T08:45:17Z" level=info msg="  uncompress time: 62.806131ms"
+time="2025-03-07T08:45:17Z" level=debug msg="Executing: [systemd-detect-virt -c]"
+time="2025-03-07T08:45:17Z" level=debug msg="Tool is not running in a container, systemd-detect-virt reports: 'none'"
+time="2025-03-07T08:45:17Z" level=debug msg="Using (/usr/bin/pigz) to extract tar"
+time="2025-03-07T08:45:17Z" level=debug msg="Executing: [tar -I /usr/bin/pigz -xf /third_disk/bb05Mar/azurelinux/build/worker/worker_chroot.tar.gz -C /third_disk/bb05Mar/azurelinux/build/worker/chroot/rubygem-hocon-1.4.0-1.azl3]"
+time="2025-03-07T08:45:49Z" level=debug msg="Mounting: source: (), target: (/third_disk/bb05Mar/azurelinux/build/worker/chroot/rubygem-hocon-1.4.0-1.azl3/dev), fstype: (devtmpfs), flags: (0x0), data: ()"
+time="2025-03-07T08:45:49Z" level=debug msg="Mounting: source: (), target: (/third_disk/bb05Mar/azurelinux/build/worker/chroot/rubygem-hocon-1.4.0-1.azl3/proc), fstype: (proc), flags: (0x0), data: ()"
+time="2025-03-07T08:45:49Z" level=debug msg="Mounting: source: (), target: (/third_disk/bb05Mar/azurelinux/build/worker/chroot/rubygem-hocon-1.4.0-1.azl3/sys), fstype: (sysfs), flags: (0x0), data: ()"
+time="2025-03-07T08:45:49Z" level=debug msg="Mounting: source: (), target: (/third_disk/bb05Mar/azurelinux/build/worker/chroot/rubygem-hocon-1.4.0-1.azl3/run), fstype: (tmpfs), flags: (0x0), data: ()"
+time="2025-03-07T08:45:49Z" level=debug msg="Mounting: source: (), target: (/third_disk/bb05Mar/azurelinux/build/worker/chroot/rubygem-hocon-1.4.0-1.azl3/dev/pts), fstype: (devpts), flags: (0x0), data: (gid=5,mode=620)"
+time="2025-03-07T08:45:49Z" level=debug msg="Mounting: source: (), target: (/third_disk/bb05Mar/azurelinux/build/worker/chroot/rubygem-hocon-1.4.0-1.azl3/localrpms), fstype: (overlay), flags: (0x0), data: (lowerdir=/third_disk/bb05Mar/azurelinux/out/RPMS,upperdir=/third_disk/bb05Mar/azurelinux/build/worker/chroot/rubygem-hocon-1.4.0-1.azl3/localrpms,workdir=/third_disk/bb05Mar/azurelinux/build/worker/chroot/rubygem-hocon-1.4.0-1.azl3/overlaywork_rpms)"
+time="2025-03-07T08:45:49Z" level=debug msg="Mounting: source: (), target: (/third_disk/bb05Mar/azurelinux/build/worker/chroot/rubygem-hocon-1.4.0-1.azl3/toolchainrpms), fstype: (overlay), flags: (0x0), data: (lowerdir=/third_disk/bb05Mar/azurelinux/build/toolchain_rpms,upperdir=/third_disk/bb05Mar/azurelinux/build/worker/chroot/rubygem-hocon-1.4.0-1.azl3/toolchainrpms,workdir=/third_disk/bb05Mar/azurelinux/build/worker/chroot/rubygem-hocon-1.4.0-1.azl3/overlaywork_toolchain)"
+time="2025-03-07T08:45:49Z" level=debug msg="Mounting: source: (/third_disk/bb05Mar/azurelinux/build/rpm_cache/cache), target: (/third_disk/bb05Mar/azurelinux/build/worker/chroot/rubygem-hocon-1.4.0-1.azl3/upstream-cached-rpms), fstype: (), flags: (0xc0ed1000), data: ()"
+time="2025-03-07T08:45:49Z" level=debug msg="Mounting: source: (/third_disk/bb05Mar/azurelinux/ccache/work/x86_64/rubygem-hocon), target: (/third_disk/bb05Mar/azurelinux/build/worker/chroot/rubygem-hocon-1.4.0-1.azl3/ccache-dir), fstype: (), flags: (0xc0ed1000), data: ()"
+time="2025-03-07T08:45:49Z" level=debug msg="Copying (/third_disk/bb05Mar/azurelinux/toolkit/resources/manifests/package/local.repo) to (/third_disk/bb05Mar/azurelinux/build/worker/chroot/rubygem-hocon-1.4.0-1.azl3/etc/yum.repos.d/local.repo)"
+time="2025-03-07T08:45:49Z" level=debug msg="Executing: [cp --preserve=mode /third_disk/bb05Mar/azurelinux/toolkit/resources/manifests/package/local.repo /third_disk/bb05Mar/azurelinux/build/worker/chroot/rubygem-hocon-1.4.0-1.azl3/etc/yum.repos.d/local.repo]"
+time="2025-03-07T08:45:49Z" level=debug msg="Copying (/third_disk/bb05Mar/azurelinux/build/INTERMEDIATE_SRPMS/rubygem-hocon-1.4.0-1.azl3.src.rpm) to (/third_disk/bb05Mar/azurelinux/build/worker/chroot/rubygem-hocon-1.4.0-1.azl3/root/SRPMS/rubygem-hocon-1.4.0-1.azl3.src.rpm)"
+time="2025-03-07T08:45:49Z" level=debug msg="Executing: [cp --preserve=mode /third_disk/bb05Mar/azurelinux/build/INTERMEDIATE_SRPMS/rubygem-hocon-1.4.0-1.azl3.src.rpm /third_disk/bb05Mar/azurelinux/build/worker/chroot/rubygem-hocon-1.4.0-1.azl3/root/SRPMS/rubygem-hocon-1.4.0-1.azl3.src.rpm]"
+time="2025-03-07T08:45:49Z" level=debug msg="Copying (/third_disk/bb05Mar/azurelinux/toolkit/resources/manifests/package/macros.override) to (/third_disk/bb05Mar/azurelinux/build/worker/chroot/rubygem-hocon-1.4.0-1.azl3/usr/lib/rpm/macros.d/macros.override)"
+time="2025-03-07T08:45:49Z" level=debug msg="Executing: [cp --preserve=mode /third_disk/bb05Mar/azurelinux/toolkit/resources/manifests/package/macros.override /third_disk/bb05Mar/azurelinux/build/worker/chroot/rubygem-hocon-1.4.0-1.azl3/usr/lib/rpm/macros.d/macros.override]"
+time="2025-03-07T08:45:49Z" level=debug msg="Entering Chroot: '/third_disk/bb05Mar/azurelinux/build/worker/chroot/rubygem-hocon-1.4.0-1.azl3'"
+time="2025-03-07T08:45:49Z" level=debug msg="Creating RPM repository in (/localrpms)"
+time="2025-03-07T08:45:49Z" level=debug msg="Executing: [createrepo_c --compatibility /localrpms]"
+time="2025-03-07T08:46:00Z" level=debug msg="Creating RPM repository in (/toolchainrpms)"
+time="2025-03-07T08:46:00Z" level=debug msg="Executing: [createrepo_c --compatibility /toolchainrpms]"
+time="2025-03-07T08:46:12Z" level=debug msg="Executing: [tdnf install -y --releasever=3.0 ruby-3.3.5-1.azl3.x86_64 rubygems-devel-3.5.22-1.azl3.noarch]"
+time="2025-03-07T08:46:13Z" level=debug msg="Error(1207) : Could not resolve hostname"
+time="2025-03-07T08:46:13Z" level=debug msg="Error: Failed to synchronize cache for repo 'Azure Linux Official Base 3.0 x86_64'"
+time="2025-03-07T08:46:21Z" level=info msg="USE_CCACHE: installing package: ccache"
+time="2025-03-07T08:46:21Z" level=debug msg="Executing: [tdnf install -y --releasever=3.0 ccache]"
+time="2025-03-07T08:46:22Z" level=debug msg="Error(1207) : Could not resolve hostname"
+time="2025-03-07T08:46:22Z" level=debug msg="Error: Failed to synchronize cache for repo 'Azure Linux Official Base 3.0 x86_64'"
+time="2025-03-07T08:46:31Z" level=debug msg="Executing: [rpmbuild --nocheck --rebuild --nodeps -D distro_module_ldflags  -Wl,-dT,%{_topdir}/BUILD/module_info.ld -D ccache_enabled true -D with_check 0 -D dist .azl3 -D azl 3 -D distro_release_version 3.0.20250307.0239 -D mariner_build_number 0acde1fda /root/SRPMS/rubygem-hocon-1.4.0-1.azl3.src.rpm]"
+time="2025-03-07T08:46:33Z" level=debug msg="warning: Could not canonicalize hostname: azuli-m1"
+time="2025-03-07T08:46:33Z" level=debug msg="Installing /root/SRPMS/rubygem-hocon-1.4.0-1.azl3.src.rpm"
+time="2025-03-07T08:46:33Z" level=debug msg="Executing(%prep): /bin/sh -e /var/tmp/rpm-tmp.5JMDGG"
+time="2025-03-07T08:46:33Z" level=debug msg="+ umask 022"
+time="2025-03-07T08:46:33Z" level=debug msg="+ cd /usr/src/azl/BUILD"
+time="2025-03-07T08:46:33Z" level=debug msg="+ /usr/lib/rpm/azl/gen-ld-script.sh rubygem-hocon 1.4.0-1.azl3 /usr/src/azl 3.0.20250307.0239"
+time="2025-03-07T08:46:33Z" level=debug msg="gen-ld-script.sh name(rubygem-hocon) version(1.4.0-1.azl3) _topdir(/usr/src/azl) osversion(3.0.20250307.0239)"
+time="2025-03-07T08:46:33Z" level=debug msg="==== ELF note generator v2.1.2 ===="
+time="2025-03-07T08:46:33Z" level=debug msg="outdir is: /usr/src/azl/BUILD/"
+time="2025-03-07T08:46:33Z" level=debug msg="Stamp method: LinkerOnly"
+time="2025-03-07T08:46:33Z" level=debug
+time="2025-03-07T08:46:33Z" level=debug msg="#ifndef _AUTO_MODULE_INFO_H_"
+time="2025-03-07T08:46:33Z" level=debug msg="#define _AUTO_MODULE_INFO_H_"
+time="2025-03-07T08:46:33Z" level=debug
+time="2025-03-07T08:46:33Z" level=debug msg="#define MODULE_VERSION      \"1.4.0.0\""
+time="2025-03-07T08:46:33Z" level=debug msg="#define PACKAGE_VERSION     \"1.4.0-1.azl3\""
+time="2025-03-07T08:46:33Z" level=debug msg="#define PACKAGE_NAME        \"rubygem-hocon\""
+time="2025-03-07T08:46:33Z" level=debug msg="#define TARGET_OS           \"mariner\""
+time="2025-03-07T08:46:33Z" level=debug msg="#define TARGET_OS_VERSION   \"3.0\""
+time="2025-03-07T08:46:33Z" level=debug
+time="2025-03-07T08:46:33Z" level=debug msg="#endif //_AUTO_MODULE_INFO_H_"
+time="2025-03-07T08:46:33Z" level=debug msg="Generated /usr/src/azl/BUILD/auto_module_info.h file..."
+time="2025-03-07T08:46:33Z" level=debug
+time="2025-03-07T08:46:33Z" level=debug msg="Successfully generated module_info.ld and .note.package files..."
+time="2025-03-07T08:46:33Z" level=debug msg="+ gem unpack /usr/src/azl/SOURCES/hocon-1.4.0.gem"
+time="2025-03-07T08:46:34Z" level=debug msg="Unpacked gem: '/usr/src/azl/BUILD/hocon-1.4.0'"
+time="2025-03-07T08:46:34Z" level=debug msg="+ cd /usr/src/azl/BUILD"
+time="2025-03-07T08:46:34Z" level=debug msg="+ cd hocon-1.4.0"
+time="2025-03-07T08:46:34Z" level=debug msg="+ /bin/chmod -Rf a+rX,u+w,g-w,o-w ."
+time="2025-03-07T08:46:34Z" level=debug msg="+ gem spec /usr/src/azl/SOURCES/hocon-1.4.0.gem -l --ruby"
+time="2025-03-07T08:46:34Z" level=debug msg="+ sed -i 's/\\/usr\\/bin\\/env ruby/\\/usr\\/bin\\/ruby/' bin/hocon"
+time="2025-03-07T08:46:34Z" level=debug msg="+ tar zxf /usr/src/azl/SOURCES/ruby-hocon-1.4.0.tar.gz ruby-hocon-1.4.0/spec --strip-components 1"
+time="2025-03-07T08:46:34Z" level=debug msg="+ RPM_EC=0"
+time="2025-03-07T08:46:34Z" level=debug msg="++ jobs -p"
+time="2025-03-07T08:46:34Z" level=debug msg="+ exit 0"
+time="2025-03-07T08:46:34Z" level=debug msg="Executing(%build): /bin/sh -e /var/tmp/rpm-tmp.PBQxP4"
+time="2025-03-07T08:46:34Z" level=debug msg="+ umask 022"
+time="2025-03-07T08:46:34Z" level=debug msg="+ cd /usr/src/azl/BUILD"
+time="2025-03-07T08:46:34Z" level=debug msg="+ CFLAGS='-O2 -g -pipe -Wall -Werror=format-security -Wp,-D_FORTIFY_SOURCE=2 -Wp,-D_GLIBCXX_ASSERTIONS -fexceptions -fstack-protector-strong -grecord-gcc-switches -specs=/usr/lib/rpm/azl/default-hardened-cc1    -fcommon -m64 -mtune=generic -fasynchronous-unwind-tables -fstack-clash-protection -fcf-protection'"
+time="2025-03-07T08:46:34Z" level=debug msg="+ export CFLAGS"
+time="2025-03-07T08:46:34Z" level=debug msg="+ CXXFLAGS='-O2 -g -pipe -Wall -Werror=format-security -Wp,-D_FORTIFY_SOURCE=2 -Wp,-D_GLIBCXX_ASSERTIONS -fexceptions -fstack-protector-strong -grecord-gcc-switches -specs=/usr/lib/rpm/azl/default-hardened-cc1    -fcommon -m64 -mtune=generic -fasynchronous-unwind-tables -fstack-clash-protection -fcf-protection'"
+time="2025-03-07T08:46:34Z" level=debug msg="+ export CXXFLAGS"
+time="2025-03-07T08:46:34Z" level=debug msg="+ FFLAGS='-O2 -g -pipe -Wall -Werror=format-security -Wp,-D_FORTIFY_SOURCE=2 -Wp,-D_GLIBCXX_ASSERTIONS -fexceptions -fstack-protector-strong -grecord-gcc-switches -specs=/usr/lib/rpm/azl/default-hardened-cc1    -fcommon -m64 -mtune=generic -fasynchronous-unwind-tables -fstack-clash-protection -fcf-protection -I/usr/lib/gfortran/modules'"
+time="2025-03-07T08:46:34Z" level=debug msg="+ export FFLAGS"
+time="2025-03-07T08:46:34Z" level=debug msg="+ FCFLAGS='-O2 -g -pipe -Wall -Werror=format-security -Wp,-D_FORTIFY_SOURCE=2 -Wp,-D_GLIBCXX_ASSERTIONS -fexceptions -fstack-protector-strong -grecord-gcc-switches -specs=/usr/lib/rpm/azl/default-hardened-cc1    -fcommon -m64 -mtune=generic -fasynchronous-unwind-tables -fstack-clash-protection -fcf-protection -I/usr/lib/gfortran/modules'"
+time="2025-03-07T08:46:34Z" level=debug msg="+ export FCFLAGS"
+time="2025-03-07T08:46:34Z" level=debug msg="+ LDFLAGS='-Wl,-z,relro -Wl,--as-needed  -Wl,-z,now -specs=/usr/lib/rpm/azl/default-hardened-ld -Wl,-dT,/usr/src/azl/BUILD/module_info.ld'"
+time="2025-03-07T08:46:34Z" level=debug msg="+ export LDFLAGS"
+time="2025-03-07T08:46:34Z" level=debug msg="+ LT_SYS_LIBRARY_PATH=/usr/lib:"
+time="2025-03-07T08:46:34Z" level=debug msg="+ export LT_SYS_LIBRARY_PATH"
+time="2025-03-07T08:46:34Z" level=debug msg="+ PATH=/usr/lib/ccache:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
+time="2025-03-07T08:46:34Z" level=debug msg="+ export PATH"
+time="2025-03-07T08:46:34Z" level=debug msg="+ CCACHE_DIR=/ccache-dir"
+time="2025-03-07T08:46:34Z" level=debug msg="+ export CCACHE_DIR"
+time="2025-03-07T08:46:34Z" level=debug msg="+ CCACHE_COMPILERCHECK=content"
+time="2025-03-07T08:46:34Z" level=debug msg="+ export CCACHE_COMPILERCHECK"
+time="2025-03-07T08:46:34Z" level=debug msg="+ ccache --zero-stats"
+time="2025-03-07T08:46:35Z" level=debug msg="Statistics zeroed"
+time="2025-03-07T08:46:35Z" level=debug msg="+ cd hocon-1.4.0"
+time="2025-03-07T08:46:35Z" level=debug msg="+ gem build hocon.gemspec"
+time="2025-03-07T08:46:35Z" level=debug msg="WARNING:  expected RubyGems version 3.5.16, was 3.0.9"
+time="2025-03-07T08:46:35Z" level=debug msg="WARNING:  License identifier 'Apache License, v2' is invalid. Use an identifier from"
+time="2025-03-07T08:46:35Z" level=debug msg="https://spdx.org/licenses or 'Nonstandard' for a nonstandard license,"
+time="2025-03-07T08:46:35Z" level=debug msg="or set it to nil if you don't want to specify a license."
+time="2025-03-07T08:46:35Z" level=debug msg="Did you mean 'Apache-1.0', 'Apache-1.1', 'Apache-2.0', 'Unlicense'?"
+time="2025-03-07T08:46:35Z" level=debug msg="WARNING:  See https://guides.rubygems.org/specification-reference/ for help"
+time="2025-03-07T08:46:35Z" level=debug msg="  Successfully built RubyGem"
+time="2025-03-07T08:46:35Z" level=debug msg="  Name: hocon"
+time="2025-03-07T08:46:35Z" level=debug msg="  Version: 1.4.0"
+time="2025-03-07T08:46:35Z" level=debug msg="  File: hocon-1.4.0.gem"
+time="2025-03-07T08:46:35Z" level=debug msg="+ mkdir -p ./usr/lib/ruby/gems/3.3.0"
+time="2025-03-07T08:46:35Z" level=debug msg="+ CONFIGURE_ARGS='--with-cflags='\\''-O2 -g -pipe -Wall -Werror=format-security -Wp,-D_FORTIFY_SOURCE=2 -Wp,-D_GLIBCXX_ASSERTIONS -fexceptions -fstack-protector-strong -grecord-gcc-switches -specs=/usr/lib/rpm/azl/default-hardened-cc1    -fcommon -m64 -mtune=generic -fasynchronous-unwind-tables -fstack-clash-protection -fcf-protection'\\'' --with-cxxflags='\\''-O2 -g -pipe -Wall -Werror=format-security -Wp,-D_FORTIFY_SOURCE=2 -Wp,-D_GLIBCXX_ASSERTIONS -fexceptions -fstack-protector-strong -grecord-gcc-switches -specs=/usr/lib/rpm/azl/default-hardened-cc1    -fcommon -m64 -mtune=generic -fasynchronous-unwind-tables -fstack-clash-protection -fcf-protection'\\'' '"
+time="2025-03-07T08:46:35Z" level=debug msg="+ gem install -V --local --bindir /usr/bin --build-root . --force --document=ri,rdoc hocon-1.4.0.gem"
+time="2025-03-07T08:46:35Z" level=debug msg="WARNING:  You build with buildroot."
+time="2025-03-07T08:46:35Z" level=debug msg="  Build root: /usr/src/azl/BUILD/hocon-1.4.0"
+time="2025-03-07T08:46:35Z" level=debug msg="  Bin dir: /usr/src/azl/BUILD/hocon-1.4.0/usr/bin"
+time="2025-03-07T08:46:35Z" level=debug msg="  Gem home: /usr/src/azl/BUILD/hocon-1.4.0/usr/lib/ruby/gems/3.3.0"
+time="2025-03-07T08:46:35Z" level=debug msg="  Plugins dir: /usr/src/azl/BUILD/hocon-1.4.0/usr/lib/ruby/gems/3.3.0/plugins"
+time="2025-03-07T08:46:35Z" level=debug msg=/usr/src/azl/BUILD/hocon-1.4.0/usr/lib/ruby/gems/3.3.0/gems/hocon-1.4.0/CHANGELOG.md
+time="2025-03-07T08:46:35Z" level=debug msg=/usr/src/azl/BUILD/hocon-1.4.0/usr/lib/ruby/gems/3.3.0/gems/hocon-1.4.0/HISTORY.md
+time="2025-03-07T08:46:35Z" level=debug msg=/usr/src/azl/BUILD/hocon-1.4.0/usr/lib/ruby/gems/3.3.0/gems/hocon-1.4.0/LICENSE
+time="2025-03-07T08:46:35Z" level=debug msg=/usr/src/azl/BUILD/hocon-1.4.0/usr/lib/ruby/gems/3.3.0/gems/hocon-1.4.0/README.md
+time="2025-03-07T08:46:35Z" level=debug msg=/usr/src/azl/BUILD/hocon-1.4.0/usr/lib/ruby/gems/3.3.0/gems/hocon-1.4.0/bin/hocon
+time="2025-03-07T08:46:35Z" level=debug msg=/usr/src/azl/BUILD/hocon-1.4.0/usr/lib/ruby/gems/3.3.0/gems/hocon-1.4.0/lib/hocon.rb
+time="2025-03-07T08:46:35Z" level=debug msg=/usr/src/azl/BUILD/hocon-1.4.0/usr/lib/ruby/gems/3.3.0/gems/hocon-1.4.0/lib/hocon/cli.rb
+time="2025-03-07T08:46:35Z" level=debug msg=/usr/src/azl/BUILD/hocon-1.4.0/usr/lib/ruby/gems/3.3.0/gems/hocon-1.4.0/lib/hocon/config.rb
+time="2025-03-07T08:46:35Z" level=debug msg=/usr/src/azl/BUILD/hocon-1.4.0/usr/lib/ruby/gems/3.3.0/gems/hocon-1.4.0/lib/hocon/config_error.rb
+time="2025-03-07T08:46:35Z" level=debug msg=/usr/src/azl/BUILD/hocon-1.4.0/usr/lib/ruby/gems/3.3.0/gems/hocon-1.4.0/lib/hocon/config_factory.rb
+time="2025-03-07T08:46:35Z" level=debug msg=/usr/src/azl/BUILD/hocon-1.4.0/usr/lib/ruby/gems/3.3.0/gems/hocon-1.4.0/lib/hocon/config_include_context.rb
+time="2025-03-07T08:46:35Z" level=debug msg=/usr/src/azl/BUILD/hocon-1.4.0/usr/lib/ruby/gems/3.3.0/gems/hocon-1.4.0/lib/hocon/config_includer_file.rb
+time="2025-03-07T08:46:35Z" level=debug msg=/usr/src/azl/BUILD/hocon-1.4.0/usr/lib/ruby/gems/3.3.0/gems/hocon-1.4.0/lib/hocon/config_list.rb
+time="2025-03-07T08:46:35Z" level=debug msg=/usr/src/azl/BUILD/hocon-1.4.0/usr/lib/ruby/gems/3.3.0/gems/hocon-1.4.0/lib/hocon/config_mergeable.rb
+time="2025-03-07T08:46:35Z" level=debug msg=/usr/src/azl/BUILD/hocon-1.4.0/usr/lib/ruby/gems/3.3.0/gems/hocon-1.4.0/lib/hocon/config_object.rb
+time="2025-03-07T08:46:35Z" level=debug msg=/usr/src/azl/BUILD/hocon-1.4.0/usr/lib/ruby/gems/3.3.0/gems/hocon-1.4.0/lib/hocon/config_parse_options.rb
+time="2025-03-07T08:46:35Z" level=debug msg=/usr/src/azl/BUILD/hocon-1.4.0/usr/lib/ruby/gems/3.3.0/gems/hocon-1.4.0/lib/hocon/config_parseable.rb
+time="2025-03-07T08:46:35Z" level=debug msg=/usr/src/azl/BUILD/hocon-1.4.0/usr/lib/ruby/gems/3.3.0/gems/hocon-1.4.0/lib/hocon/config_render_options.rb
+time="2025-03-07T08:46:35Z" level=debug msg=/usr/src/azl/BUILD/hocon-1.4.0/usr/lib/ruby/gems/3.3.0/gems/hocon-1.4.0/lib/hocon/config_resolve_options.rb
+time="2025-03-07T08:46:35Z" level=debug msg=/usr/src/azl/BUILD/hocon-1.4.0/usr/lib/ruby/gems/3.3.0/gems/hocon-1.4.0/lib/hocon/config_syntax.rb
+time="2025-03-07T08:46:35Z" level=debug msg=/usr/src/azl/BUILD/hocon-1.4.0/usr/lib/ruby/gems/3.3.0/gems/hocon-1.4.0/lib/hocon/config_util.rb
+time="2025-03-07T08:46:35Z" level=debug msg=/usr/src/azl/BUILD/hocon-1.4.0/usr/lib/ruby/gems/3.3.0/gems/hocon-1.4.0/lib/hocon/config_value.rb
+time="2025-03-07T08:46:35Z" level=debug msg=/usr/src/azl/BUILD/hocon-1.4.0/usr/lib/ruby/gems/3.3.0/gems/hocon-1.4.0/lib/hocon/config_value_factory.rb
+time="2025-03-07T08:46:35Z" level=debug msg=/usr/src/azl/BUILD/hocon-1.4.0/usr/lib/ruby/gems/3.3.0/gems/hocon-1.4.0/lib/hocon/config_value_type.rb
+time="2025-03-07T08:46:35Z" level=debug msg=/usr/src/azl/BUILD/hocon-1.4.0/usr/lib/ruby/gems/3.3.0/gems/hocon-1.4.0/lib/hocon/impl.rb
+time="2025-03-07T08:46:35Z" level=debug msg=/usr/src/azl/BUILD/hocon-1.4.0/usr/lib/ruby/gems/3.3.0/gems/hocon-1.4.0/lib/hocon/impl/abstract_config_node.rb
+time="2025-03-07T08:46:35Z" level=debug msg=/usr/src/azl/BUILD/hocon-1.4.0/usr/lib/ruby/gems/3.3.0/gems/hocon-1.4.0/lib/hocon/impl/abstract_config_node_value.rb
+time="2025-03-07T08:46:35Z" level=debug msg=/usr/src/azl/BUILD/hocon-1.4.0/usr/lib/ruby/gems/3.3.0/gems/hocon-1.4.0/lib/hocon/impl/abstract_config_object.rb
+time="2025-03-07T08:46:35Z" level=debug msg=/usr/src/azl/BUILD/hocon-1.4.0/usr/lib/ruby/gems/3.3.0/gems/hocon-1.4.0/lib/hocon/impl/abstract_config_value.rb
+time="2025-03-07T08:46:35Z" level=debug msg=/usr/src/azl/BUILD/hocon-1.4.0/usr/lib/ruby/gems/3.3.0/gems/hocon-1.4.0/lib/hocon/impl/array_iterator.rb
+time="2025-03-07T08:46:35Z" level=debug msg=/usr/src/azl/BUILD/hocon-1.4.0/usr/lib/ruby/gems/3.3.0/gems/hocon-1.4.0/lib/hocon/impl/config_boolean.rb
+time="2025-03-07T08:46:35Z" level=debug msg=/usr/src/azl/BUILD/hocon-1.4.0/usr/lib/ruby/gems/3.3.0/gems/hocon-1.4.0/lib/hocon/impl/config_concatenation.rb
+time="2025-03-07T08:46:35Z" level=debug msg=/usr/src/azl/BUILD/hocon-1.4.0/usr/lib/ruby/gems/3.3.0/gems/hocon-1.4.0/lib/hocon/impl/config_delayed_merge.rb
+time="2025-03-07T08:46:35Z" level=debug msg=/usr/src/azl/BUILD/hocon-1.4.0/usr/lib/ruby/gems/3.3.0/gems/hocon-1.4.0/lib/hocon/impl/config_delayed_merge_object.rb
+time="2025-03-07T08:46:35Z" level=debug msg=/usr/src/azl/BUILD/hocon-1.4.0/usr/lib/ruby/gems/3.3.0/gems/hocon-1.4.0/lib/hocon/impl/config_document_parser.rb
+time="2025-03-07T08:46:35Z" level=debug msg=/usr/src/azl/BUILD/hocon-1.4.0/usr/lib/ruby/gems/3.3.0/gems/hocon-1.4.0/lib/hocon/impl/config_double.rb
+time="2025-03-07T08:46:35Z" level=debug msg=/usr/src/azl/BUILD/hocon-1.4.0/usr/lib/ruby/gems/3.3.0/gems/hocon-1.4.0/lib/hocon/impl/config_impl.rb
+time="2025-03-07T08:46:35Z" level=debug msg=/usr/src/azl/BUILD/hocon-1.4.0/usr/lib/ruby/gems/3.3.0/gems/hocon-1.4.0/lib/hocon/impl/config_impl_util.rb
+time="2025-03-07T08:46:35Z" level=debug msg=/usr/src/azl/BUILD/hocon-1.4.0/usr/lib/ruby/gems/3.3.0/gems/hocon-1.4.0/lib/hocon/impl/config_include_kind.rb
+time="2025-03-07T08:46:35Z" level=debug msg=/usr/src/azl/BUILD/hocon-1.4.0/usr/lib/ruby/gems/3.3.0/gems/hocon-1.4.0/lib/hocon/impl/config_int.rb
+time="2025-03-07T08:46:35Z" level=debug msg=/usr/src/azl/BUILD/hocon-1.4.0/usr/lib/ruby/gems/3.3.0/gems/hocon-1.4.0/lib/hocon/impl/config_node_array.rb
+time="2025-03-07T08:46:35Z" level=debug msg=/usr/src/azl/BUILD/hocon-1.4.0/usr/lib/ruby/gems/3.3.0/gems/hocon-1.4.0/lib/hocon/impl/config_node_comment.rb
+time="2025-03-07T08:46:35Z" level=debug msg=/usr/src/azl/BUILD/hocon-1.4.0/usr/lib/ruby/gems/3.3.0/gems/hocon-1.4.0/lib/hocon/impl/config_node_complex_value.rb
+time="2025-03-07T08:46:35Z" level=debug msg=/usr/src/azl/BUILD/hocon-1.4.0/usr/lib/ruby/gems/3.3.0/gems/hocon-1.4.0/lib/hocon/impl/config_node_concatenation.rb
+time="2025-03-07T08:46:35Z" level=debug msg=/usr/src/azl/BUILD/hocon-1.4.0/usr/lib/ruby/gems/3.3.0/gems/hocon-1.4.0/lib/hocon/impl/config_node_field.rb
+time="2025-03-07T08:46:35Z" level=debug msg=/usr/src/azl/BUILD/hocon-1.4.0/usr/lib/ruby/gems/3.3.0/gems/hocon-1.4.0/lib/hocon/impl/config_node_include.rb
+time="2025-03-07T08:46:35Z" level=debug msg=/usr/src/azl/BUILD/hocon-1.4.0/usr/lib/ruby/gems/3.3.0/gems/hocon-1.4.0/lib/hocon/impl/config_node_object.rb
+time="2025-03-07T08:46:35Z" level=debug msg=/usr/src/azl/BUILD/hocon-1.4.0/usr/lib/ruby/gems/3.3.0/gems/hocon-1.4.0/lib/hocon/impl/config_node_path.rb
+time="2025-03-07T08:46:35Z" level=debug msg=/usr/src/azl/BUILD/hocon-1.4.0/usr/lib/ruby/gems/3.3.0/gems/hocon-1.4.0/lib/hocon/impl/config_node_root.rb
+time="2025-03-07T08:46:35Z" level=debug msg=/usr/src/azl/BUILD/hocon-1.4.0/usr/lib/ruby/gems/3.3.0/gems/hocon-1.4.0/lib/hocon/impl/config_node_simple_value.rb
+time="2025-03-07T08:46:35Z" level=debug msg=/usr/src/azl/BUILD/hocon-1.4.0/usr/lib/ruby/gems/3.3.0/gems/hocon-1.4.0/lib/hocon/impl/config_node_single_token.rb
+time="2025-03-07T08:46:35Z" level=debug msg=/usr/src/azl/BUILD/hocon-1.4.0/usr/lib/ruby/gems/3.3.0/gems/hocon-1.4.0/lib/hocon/impl/config_null.rb
+time="2025-03-07T08:46:35Z" level=debug msg=/usr/src/azl/BUILD/hocon-1.4.0/usr/lib/ruby/gems/3.3.0/gems/hocon-1.4.0/lib/hocon/impl/config_number.rb
+time="2025-03-07T08:46:35Z" level=debug msg=/usr/src/azl/BUILD/hocon-1.4.0/usr/lib/ruby/gems/3.3.0/gems/hocon-1.4.0/lib/hocon/impl/config_parser.rb
+time="2025-03-07T08:46:35Z" level=debug msg=/usr/src/azl/BUILD/hocon-1.4.0/usr/lib/ruby/gems/3.3.0/gems/hocon-1.4.0/lib/hocon/impl/config_reference.rb
+time="2025-03-07T08:46:35Z" level=debug msg=/usr/src/azl/BUILD/hocon-1.4.0/usr/lib/ruby/gems/3.3.0/gems/hocon-1.4.0/lib/hocon/impl/config_string.rb
+time="2025-03-07T08:46:35Z" level=debug msg=/usr/src/azl/BUILD/hocon-1.4.0/usr/lib/ruby/gems/3.3.0/gems/hocon-1.4.0/lib/hocon/impl/container.rb
+time="2025-03-07T08:46:35Z" level=debug msg=/usr/src/azl/BUILD/hocon-1.4.0/usr/lib/ruby/gems/3.3.0/gems/hocon-1.4.0/lib/hocon/impl/default_transformer.rb
+time="2025-03-07T08:46:35Z" level=debug msg=/usr/src/azl/BUILD/hocon-1.4.0/usr/lib/ruby/gems/3.3.0/gems/hocon-1.4.0/lib/hocon/impl/from_map_mode.rb
+time="2025-03-07T08:46:35Z" level=debug msg=/usr/src/azl/BUILD/hocon-1.4.0/usr/lib/ruby/gems/3.3.0/gems/hocon-1.4.0/lib/hocon/impl/full_includer.rb
+time="2025-03-07T08:46:35Z" level=debug msg=/usr/src/azl/BUILD/hocon-1.4.0/usr/lib/ruby/gems/3.3.0/gems/hocon-1.4.0/lib/hocon/impl/memo_key.rb
+time="2025-03-07T08:46:35Z" level=debug msg=/usr/src/azl/BUILD/hocon-1.4.0/usr/lib/ruby/gems/3.3.0/gems/hocon-1.4.0/lib/hocon/impl/mergeable_value.rb
+time="2025-03-07T08:46:35Z" level=debug msg=/usr/src/azl/BUILD/hocon-1.4.0/usr/lib/ruby/gems/3.3.0/gems/hocon-1.4.0/lib/hocon/impl/origin_type.rb
+time="2025-03-07T08:46:35Z" level=debug msg=/usr/src/azl/BUILD/hocon-1.4.0/usr/lib/ruby/gems/3.3.0/gems/hocon-1.4.0/lib/hocon/impl/parseable.rb
+time="2025-03-07T08:46:35Z" level=debug msg=/usr/src/azl/BUILD/hocon-1.4.0/usr/lib/ruby/gems/3.3.0/gems/hocon-1.4.0/lib/hocon/impl/path.rb
+time="2025-03-07T08:46:35Z" level=debug msg=/usr/src/azl/BUILD/hocon-1.4.0/usr/lib/ruby/gems/3.3.0/gems/hocon-1.4.0/lib/hocon/impl/path_builder.rb
+time="2025-03-07T08:46:35Z" level=debug msg=/usr/src/azl/BUILD/hocon-1.4.0/usr/lib/ruby/gems/3.3.0/gems/hocon-1.4.0/lib/hocon/impl/path_parser.rb
+time="2025-03-07T08:46:35Z" level=debug msg=/usr/src/azl/BUILD/hocon-1.4.0/usr/lib/ruby/gems/3.3.0/gems/hocon-1.4.0/lib/hocon/impl/replaceable_merge_stack.rb
+time="2025-03-07T08:46:35Z" level=debug msg=/usr/src/azl/BUILD/hocon-1.4.0/usr/lib/ruby/gems/3.3.0/gems/hocon-1.4.0/lib/hocon/impl/resolve_context.rb
+time="2025-03-07T08:46:35Z" level=debug msg=/usr/src/azl/BUILD/hocon-1.4.0/usr/lib/ruby/gems/3.3.0/gems/hocon-1.4.0/lib/hocon/impl/resolve_memos.rb
+time="2025-03-07T08:46:35Z" level=debug msg=/usr/src/azl/BUILD/hocon-1.4.0/usr/lib/ruby/gems/3.3.0/gems/hocon-1.4.0/lib/hocon/impl/resolve_result.rb
+time="2025-03-07T08:46:35Z" level=debug msg=/usr/src/azl/BUILD/hocon-1.4.0/usr/lib/ruby/gems/3.3.0/gems/hocon-1.4.0/lib/hocon/impl/resolve_source.rb
+time="2025-03-07T08:46:35Z" level=debug msg=/usr/src/azl/BUILD/hocon-1.4.0/usr/lib/ruby/gems/3.3.0/gems/hocon-1.4.0/lib/hocon/impl/resolve_status.rb
+time="2025-03-07T08:46:35Z" level=debug msg=/usr/src/azl/BUILD/hocon-1.4.0/usr/lib/ruby/gems/3.3.0/gems/hocon-1.4.0/lib/hocon/impl/simple_config.rb
+time="2025-03-07T08:46:35Z" level=debug msg=/usr/src/azl/BUILD/hocon-1.4.0/usr/lib/ruby/gems/3.3.0/gems/hocon-1.4.0/lib/hocon/impl/simple_config_document.rb
+time="2025-03-07T08:46:35Z" level=debug msg=/usr/src/azl/BUILD/hocon-1.4.0/usr/lib/ruby/gems/3.3.0/gems/hocon-1.4.0/lib/hocon/impl/simple_config_list.rb
+time="2025-03-07T08:46:35Z" level=debug msg=/usr/src/azl/BUILD/hocon-1.4.0/usr/lib/ruby/gems/3.3.0/gems/hocon-1.4.0/lib/hocon/impl/simple_config_object.rb
+time="2025-03-07T08:46:35Z" level=debug msg=/usr/src/azl/BUILD/hocon-1.4.0/usr/lib/ruby/gems/3.3.0/gems/hocon-1.4.0/lib/hocon/impl/simple_config_origin.rb
+time="2025-03-07T08:46:35Z" level=debug msg=/usr/src/azl/BUILD/hocon-1.4.0/usr/lib/ruby/gems/3.3.0/gems/hocon-1.4.0/lib/hocon/impl/simple_include_context.rb
+time="2025-03-07T08:46:35Z" level=debug msg=/usr/src/azl/BUILD/hocon-1.4.0/usr/lib/ruby/gems/3.3.0/gems/hocon-1.4.0/lib/hocon/impl/simple_includer.rb
+time="2025-03-07T08:46:35Z" level=debug msg=/usr/src/azl/BUILD/hocon-1.4.0/usr/lib/ruby/gems/3.3.0/gems/hocon-1.4.0/lib/hocon/impl/substitution_expression.rb
+time="2025-03-07T08:46:35Z" level=debug msg=/usr/src/azl/BUILD/hocon-1.4.0/usr/lib/ruby/gems/3.3.0/gems/hocon-1.4.0/lib/hocon/impl/token.rb
+time="2025-03-07T08:46:35Z" level=debug msg=/usr/src/azl/BUILD/hocon-1.4.0/usr/lib/ruby/gems/3.3.0/gems/hocon-1.4.0/lib/hocon/impl/token_type.rb
+time="2025-03-07T08:46:35Z" level=debug msg=/usr/src/azl/BUILD/hocon-1.4.0/usr/lib/ruby/gems/3.3.0/gems/hocon-1.4.0/lib/hocon/impl/tokenizer.rb
+time="2025-03-07T08:46:35Z" level=debug msg=/usr/src/azl/BUILD/hocon-1.4.0/usr/lib/ruby/gems/3.3.0/gems/hocon-1.4.0/lib/hocon/impl/tokens.rb
+time="2025-03-07T08:46:35Z" level=debug msg=/usr/src/azl/BUILD/hocon-1.4.0/usr/lib/ruby/gems/3.3.0/gems/hocon-1.4.0/lib/hocon/impl/unmergeable.rb
+time="2025-03-07T08:46:35Z" level=debug msg=/usr/src/azl/BUILD/hocon-1.4.0/usr/lib/ruby/gems/3.3.0/gems/hocon-1.4.0/lib/hocon/impl/unsupported_operation_error.rb
+time="2025-03-07T08:46:35Z" level=debug msg=/usr/src/azl/BUILD/hocon-1.4.0/usr/lib/ruby/gems/3.3.0/gems/hocon-1.4.0/lib/hocon/impl/url.rb
+time="2025-03-07T08:46:35Z" level=debug msg=/usr/src/azl/BUILD/hocon-1.4.0/usr/lib/ruby/gems/3.3.0/gems/hocon-1.4.0/lib/hocon/parser.rb
+time="2025-03-07T08:46:35Z" level=debug msg=/usr/src/azl/BUILD/hocon-1.4.0/usr/lib/ruby/gems/3.3.0/gems/hocon-1.4.0/lib/hocon/parser/config_document.rb
+time="2025-03-07T08:46:35Z" level=debug msg=/usr/src/azl/BUILD/hocon-1.4.0/usr/lib/ruby/gems/3.3.0/gems/hocon-1.4.0/lib/hocon/parser/config_document_factory.rb
+time="2025-03-07T08:46:35Z" level=debug msg=/usr/src/azl/BUILD/hocon-1.4.0/usr/lib/ruby/gems/3.3.0/gems/hocon-1.4.0/lib/hocon/parser/config_node.rb
+time="2025-03-07T08:46:35Z" level=debug msg=/usr/src/azl/BUILD/hocon-1.4.0/usr/lib/ruby/gems/3.3.0/gems/hocon-1.4.0/lib/hocon/version.rb
+time="2025-03-07T08:46:35Z" level=debug msg=/usr/src/azl/BUILD/hocon-1.4.0/usr/bin/hocon
+time="2025-03-07T08:46:35Z" level=debug msg="Successfully installed hocon-1.4.0"
+time="2025-03-07T08:46:35Z" level=debug msg="Parsing documentation for hocon-1.4.0"
+time="2025-03-07T08:46:35Z" level=debug msg="Parsing sources..."
+time="2025-03-07T08:46:35Z" level=debug msg="  1% [ 1/88]  lib/hocon.rb"
+time="2025-03-07T08:46:35Z" level=debug msg="  2% [ 2/88]  lib/hocon/cli.rb"
+time="2025-03-07T08:46:36Z" level=debug msg="  3% [ 3/88]  lib/hocon/config.rb"
+time="2025-03-07T08:46:36Z" level=debug msg="  4% [ 4/88]  lib/hocon/config_error.rb"
+time="2025-03-07T08:46:36Z" level=debug msg="  5% [ 5/88]  lib/hocon/config_factory.rb"
+time="2025-03-07T08:46:36Z" level=debug msg="  6% [ 6/88]  lib/hocon/config_include_context.rb"
+time="2025-03-07T08:46:36Z" level=debug msg="  7% [ 7/88]  lib/hocon/config_includer_file.rb"
+time="2025-03-07T08:46:36Z" level=debug msg="  9% [ 8/88]  lib/hocon/config_list.rb"
+time="2025-03-07T08:46:36Z" level=debug msg=" 10% [ 9/88]  lib/hocon/config_mergeable.rb"
+time="2025-03-07T08:46:36Z" level=debug msg=" 11% [10/88]  lib/hocon/config_object.rb"
+time="2025-03-07T08:46:36Z" level=debug msg=" 12% [11/88]  lib/hocon/config_parse_options.rb"
+time="2025-03-07T08:46:36Z" level=debug msg=" 13% [12/88]  lib/hocon/config_parseable.rb"
+time="2025-03-07T08:46:36Z" level=debug msg=" 14% [13/88]  lib/hocon/config_render_options.rb"
+time="2025-03-07T08:46:36Z" level=debug msg=" 15% [14/88]  lib/hocon/config_resolve_options.rb"
+time="2025-03-07T08:46:36Z" level=debug msg=" 17% [15/88]  lib/hocon/config_syntax.rb"
+time="2025-03-07T08:46:36Z" level=debug msg=" 18% [16/88]  lib/hocon/config_util.rb"
+time="2025-03-07T08:46:36Z" level=debug msg=" 19% [17/88]  lib/hocon/config_value.rb"
+time="2025-03-07T08:46:36Z" level=debug msg=" 20% [18/88]  lib/hocon/config_value_factory.rb"
+time="2025-03-07T08:46:36Z" level=debug msg=" 21% [19/88]  lib/hocon/config_value_type.rb"
+time="2025-03-07T08:46:36Z" level=debug msg=" 22% [20/88]  lib/hocon/impl.rb"
+time="2025-03-07T08:46:36Z" level=debug msg=" 23% [21/88]  lib/hocon/impl/abstract_config_node.rb"
+time="2025-03-07T08:46:36Z" level=debug msg=" 25% [22/88]  lib/hocon/impl/abstract_config_node_value.rb"
+time="2025-03-07T08:46:36Z" level=debug msg=" 26% [23/88]  lib/hocon/impl/abstract_config_object.rb"
+time="2025-03-07T08:46:36Z" level=debug msg=" 27% [24/88]  lib/hocon/impl/abstract_config_value.rb"
+time="2025-03-07T08:46:36Z" level=debug msg=" 28% [25/88]  lib/hocon/impl/array_iterator.rb"
+time="2025-03-07T08:46:36Z" level=debug msg=" 29% [26/88]  lib/hocon/impl/config_boolean.rb"
+time="2025-03-07T08:46:36Z" level=debug msg=" 30% [27/88]  lib/hocon/impl/config_concatenation.rb"
+time="2025-03-07T08:46:36Z" level=debug msg=" 31% [28/88]  lib/hocon/impl/config_delayed_merge.rb"
+time="2025-03-07T08:46:36Z" level=debug msg=" 32% [29/88]  lib/hocon/impl/config_delayed_merge_object.rb"
+time="2025-03-07T08:46:36Z" level=debug msg=" 34% [30/88]  lib/hocon/impl/config_document_parser.rb"
+time="2025-03-07T08:46:36Z" level=debug msg=" 35% [31/88]  lib/hocon/impl/config_double.rb"
+time="2025-03-07T08:46:36Z" level=debug msg=" 36% [32/88]  lib/hocon/impl/config_impl.rb"
+time="2025-03-07T08:46:36Z" level=debug msg=" 37% [33/88]  lib/hocon/impl/config_impl_util.rb"
+time="2025-03-07T08:46:36Z" level=debug msg=" 38% [34/88]  lib/hocon/impl/config_include_kind.rb"
+time="2025-03-07T08:46:36Z" level=debug msg=" 39% [35/88]  lib/hocon/impl/config_int.rb"
+time="2025-03-07T08:46:36Z" level=debug msg=" 40% [36/88]  lib/hocon/impl/config_node_array.rb"
+time="2025-03-07T08:46:36Z" level=debug msg=" 42% [37/88]  lib/hocon/impl/config_node_comment.rb"
+time="2025-03-07T08:46:36Z" level=debug msg=" 43% [38/88]  lib/hocon/impl/config_node_complex_value.rb"
+time="2025-03-07T08:46:36Z" level=debug msg=" 44% [39/88]  lib/hocon/impl/config_node_concatenation.rb"
+time="2025-03-07T08:46:36Z" level=debug msg=" 45% [40/88]  lib/hocon/impl/config_node_field.rb"
+time="2025-03-07T08:46:36Z" level=debug msg=" 46% [41/88]  lib/hocon/impl/config_node_include.rb"
+time="2025-03-07T08:46:36Z" level=debug msg=" 47% [42/88]  lib/hocon/impl/config_node_object.rb"
+time="2025-03-07T08:46:36Z" level=debug msg=" 48% [43/88]  lib/hocon/impl/config_node_path.rb"
+time="2025-03-07T08:46:36Z" level=debug msg=" 50% [44/88]  lib/hocon/impl/config_node_root.rb"
+time="2025-03-07T08:46:36Z" level=debug msg=" 51% [45/88]  lib/hocon/impl/config_node_simple_value.rb"
+time="2025-03-07T08:46:36Z" level=debug msg=" 52% [46/88]  lib/hocon/impl/config_node_single_token.rb"
+time="2025-03-07T08:46:36Z" level=debug msg=" 53% [47/88]  lib/hocon/impl/config_null.rb"
+time="2025-03-07T08:46:36Z" level=debug msg=" 54% [48/88]  lib/hocon/impl/config_number.rb"
+time="2025-03-07T08:46:36Z" level=debug msg=" 55% [49/88]  lib/hocon/impl/config_parser.rb"
+time="2025-03-07T08:46:36Z" level=debug msg=" 56% [50/88]  lib/hocon/impl/config_reference.rb"
+time="2025-03-07T08:46:36Z" level=debug msg=" 57% [51/88]  lib/hocon/impl/config_string.rb"
+time="2025-03-07T08:46:36Z" level=debug msg=" 59% [52/88]  lib/hocon/impl/container.rb"
+time="2025-03-07T08:46:36Z" level=debug msg=" 60% [53/88]  lib/hocon/impl/default_transformer.rb"
+time="2025-03-07T08:46:36Z" level=debug msg=" 61% [54/88]  lib/hocon/impl/from_map_mode.rb"
+time="2025-03-07T08:46:36Z" level=debug msg=" 62% [55/88]  lib/hocon/impl/full_includer.rb"
+time="2025-03-07T08:46:36Z" level=debug msg=" 63% [56/88]  lib/hocon/impl/memo_key.rb"
+time="2025-03-07T08:46:36Z" level=debug msg=" 64% [57/88]  lib/hocon/impl/mergeable_value.rb"
+time="2025-03-07T08:46:36Z" level=debug msg=" 65% [58/88]  lib/hocon/impl/origin_type.rb"
+time="2025-03-07T08:46:36Z" level=debug msg=" 67% [59/88]  lib/hocon/impl/parseable.rb"
+time="2025-03-07T08:46:36Z" level=debug msg=" 68% [60/88]  lib/hocon/impl/path.rb"
+time="2025-03-07T08:46:36Z" level=debug msg=" 69% [61/88]  lib/hocon/impl/path_builder.rb"
+time="2025-03-07T08:46:36Z" level=debug msg=" 70% [62/88]  lib/hocon/impl/path_parser.rb"
+time="2025-03-07T08:46:36Z" level=debug msg=" 71% [63/88]  lib/hocon/impl/replaceable_merge_stack.rb"
+time="2025-03-07T08:46:36Z" level=debug msg=" 72% [64/88]  lib/hocon/impl/resolve_context.rb"
+time="2025-03-07T08:46:36Z" level=debug msg=" 73% [65/88]  lib/hocon/impl/resolve_memos.rb"
+time="2025-03-07T08:46:36Z" level=debug msg=" 75% [66/88]  lib/hocon/impl/resolve_result.rb"
+time="2025-03-07T08:46:36Z" level=debug msg=" 76% [67/88]  lib/hocon/impl/resolve_source.rb"
+time="2025-03-07T08:46:36Z" level=debug msg=" 77% [68/88]  lib/hocon/impl/resolve_status.rb"
+time="2025-03-07T08:46:36Z" level=debug msg=" 78% [69/88]  lib/hocon/impl/simple_config.rb"
+time="2025-03-07T08:46:36Z" level=debug msg=" 79% [70/88]  lib/hocon/impl/simple_config_document.rb"
+time="2025-03-07T08:46:36Z" level=debug msg=" 80% [71/88]  lib/hocon/impl/simple_config_list.rb"
+time="2025-03-07T08:46:36Z" level=debug msg=" 81% [72/88]  lib/hocon/impl/simple_config_object.rb"
+time="2025-03-07T08:46:36Z" level=debug msg=" 82% [73/88]  lib/hocon/impl/simple_config_origin.rb"
+time="2025-03-07T08:46:36Z" level=debug msg=" 84% [74/88]  lib/hocon/impl/simple_include_context.rb"
+time="2025-03-07T08:46:36Z" level=debug msg=" 85% [75/88]  lib/hocon/impl/simple_includer.rb"
+time="2025-03-07T08:46:36Z" level=debug msg=" 86% [76/88]  lib/hocon/impl/substitution_expression.rb"
+time="2025-03-07T08:46:36Z" level=debug msg=" 87% [77/88]  lib/hocon/impl/token.rb"
+time="2025-03-07T08:46:36Z" level=debug msg=" 88% [78/88]  lib/hocon/impl/token_type.rb"
+time="2025-03-07T08:46:36Z" level=debug msg=" 89% [79/88]  lib/hocon/impl/tokenizer.rb"
+time="2025-03-07T08:46:36Z" level=debug msg=" 90% [80/88]  lib/hocon/impl/tokens.rb"
+time="2025-03-07T08:46:36Z" level=debug msg=" 92% [81/88]  lib/hocon/impl/unmergeable.rb"
+time="2025-03-07T08:46:36Z" level=debug msg=" 93% [82/88]  lib/hocon/impl/unsupported_operation_error.rb"
+time="2025-03-07T08:46:36Z" level=debug msg=" 94% [83/88]  lib/hocon/impl/url.rb"
+time="2025-03-07T08:46:36Z" level=debug msg=" 95% [84/88]  lib/hocon/parser.rb"
+time="2025-03-07T08:46:36Z" level=debug msg=" 96% [85/88]  lib/hocon/parser/config_document.rb"
+time="2025-03-07T08:46:36Z" level=debug msg=" 97% [86/88]  lib/hocon/parser/config_document_factory.rb"
+time="2025-03-07T08:46:36Z" level=debug msg=" 98% [87/88]  lib/hocon/parser/config_node.rb"
+time="2025-03-07T08:46:36Z" level=debug msg="100% [88/88]  lib/hocon/version.rb"
+time="2025-03-07T08:46:37Z" level=debug
+time="2025-03-07T08:46:37Z" level=debug msg="Installing ri documentation for hocon-1.4.0"
+time="2025-03-07T08:46:37Z" level=debug msg="Installing darkfish documentation for hocon-1.4.0"
+time="2025-03-07T08:46:38Z" level=debug msg="Done installing documentation for hocon after 2 seconds"
+time="2025-03-07T08:46:38Z" level=debug msg="1 gem installed"
+time="2025-03-07T08:46:38Z" level=debug msg="+ RPM_EC=0"
+time="2025-03-07T08:46:38Z" level=debug msg="++ jobs -p"
+time="2025-03-07T08:46:38Z" level=debug msg="+ exit 0"
+time="2025-03-07T08:46:38Z" level=debug msg="Executing(%install): /bin/sh -e /var/tmp/rpm-tmp.oTH9ib"
+time="2025-03-07T08:46:38Z" level=debug msg="+ umask 022"
+time="2025-03-07T08:46:38Z" level=debug msg="+ cd /usr/src/azl/BUILD"
+time="2025-03-07T08:46:38Z" level=debug msg="+ /bin/rm -rf /usr/src/azl/BUILDROOT/rubygem-hocon-1.4.0-1.azl3.x86_64"
+time="2025-03-07T08:46:38Z" level=debug msg="+ /bin/mkdir -p /usr/src/azl/BUILDROOT"
+time="2025-03-07T08:46:38Z" level=debug msg="+ /bin/mkdir /usr/src/azl/BUILDROOT/rubygem-hocon-1.4.0-1.azl3.x86_64"
+time="2025-03-07T08:46:38Z" level=debug msg="+ cd hocon-1.4.0"
+time="2025-03-07T08:46:38Z" level=debug msg="+ mkdir -p /usr/src/azl/BUILDROOT/rubygem-hocon-1.4.0-1.azl3.x86_64/usr/lib/ruby/gems/3.3.0"
+time="2025-03-07T08:46:38Z" level=debug msg="+ cp -a ./usr/lib/ruby/gems/3.3.0/build_info ./usr/lib/ruby/gems/3.3.0/cache ./usr/lib/ruby/gems/3.3.0/doc ./usr/lib/ruby/gems/3.3.0/extensions ./usr/lib/ruby/gems/3.3.0/gems ./usr/lib/ruby/gems/3.3.0/plugins ./usr/lib/ruby/gems/3.3.0/specifications /usr/src/azl/BUILDROOT/rubygem-hocon-1.4.0-1.azl3.x86_64/usr/lib/ruby/gems/3.3.0/"
+time="2025-03-07T08:46:38Z" level=debug msg="+ mkdir -p /usr/src/azl/BUILDROOT/rubygem-hocon-1.4.0-1.azl3.x86_64/usr/bin"
+time="2025-03-07T08:46:38Z" level=debug msg="+ mv /usr/src/azl/BUILDROOT/rubygem-hocon-1.4.0-1.azl3.x86_64/usr/lib/ruby/gems/3.3.0/gems/hocon-1.4.0/bin/hocon /usr/src/azl/BUILDROOT/rubygem-hocon-1.4.0-1.azl3.x86_64//usr/bin/hocon"
+time="2025-03-07T08:46:38Z" level=debug msg="+ /bin/find-debuginfo -j8 -m --build-id-seed 1.4.0-1.azl3 --unique-debug-suffix -1.4.0-1.azl3.x86_64 --unique-debug-src-base rubygem-hocon-1.4.0-1.azl3.x86_64 /usr/src/azl/BUILD/hocon-1.4.0"
+time="2025-03-07T08:46:38Z" level=debug msg="find: 'debug': No such file or directory"
+time="2025-03-07T08:46:38Z" level=debug msg="+ /usr/lib/rpm/brp-compress /usr"
+time="2025-03-07T08:46:38Z" level=debug msg="+ /usr/lib/rpm/brp-strip-comment-note /bin/strip /bin/objdump"
+time="2025-03-07T08:46:38Z" level=debug msg="+ /usr/lib/rpm/brp-strip-static-archive /bin/strip"
+time="2025-03-07T08:46:38Z" level=debug msg="+ /usr/lib/rpm/azl/brp-python-bytecompile /usr/bin/python3 1 0"
+time="2025-03-07T08:46:38Z" level=debug msg="+ find /usr/src/azl/BUILDROOT/rubygem-hocon-1.4.0-1.azl3.x86_64 -name '*.pc'"
+time="2025-03-07T08:46:38Z" level=debug msg="+ xargs '-I{}' sed -i -e 's@-Wl,-dT,/usr/src/azl/BUILD/module_info.ld@ @' '{}'"
+time="2025-03-07T08:46:38Z" level=debug msg="+ /usr/lib/rpm/brp-strip /bin/strip"
+time="2025-03-07T08:46:39Z" level=debug msg="+ CCACHE_DIR=/ccache-dir"
+time="2025-03-07T08:46:39Z" level=debug msg="+ export CCACHE_DIR"
+time="2025-03-07T08:46:39Z" level=debug msg="+ ccache --show-stats"
+time="2025-03-07T08:46:39Z" level=debug msg="Local storage:"
+time="2025-03-07T08:46:39Z" level=debug msg="  Cache size (GiB): 0.0 / 5.0 ( 0.00%)"
+time="2025-03-07T08:46:39Z" level=debug msg="Processing files: rubygem-hocon-1.4.0-1.azl3.noarch"
+time="2025-03-07T08:46:39Z" level=debug msg="warning: File not found: /usr/src/azl/BUILDROOT/rubygem-hocon-1.4.0-1.azl3.x86_64/usr/lib/ruby/gems/3.3.0/gems/hocon-1.4.0/spec"
+time="2025-03-07T08:46:39Z" level=debug msg="Provides: rubygem(hocon) = 1.4.0 rubygem-hocon = 1.4.0-1.azl3"
+time="2025-03-07T08:46:39Z" level=debug msg="Requires(rpmlib): rpmlib(CompressedFileNames) <= 3.0.4-1 rpmlib(FileDigests) <= 4.6.0-1 rpmlib(PayloadFilesHavePrefix) <= 4.0-1"
+time="2025-03-07T08:46:39Z" level=debug msg="Requires: /usr/bin/ruby ruby(rubygems)"
+time="2025-03-07T08:46:39Z" level=debug msg="Processing files: rubygem-hocon-doc-1.4.0-1.azl3.noarch"
+time="2025-03-07T08:46:40Z" level=debug msg="Provides: rubygem-hocon-doc = 1.4.0-1.azl3"
+time="2025-03-07T08:46:40Z" level=debug msg="Requires(rpmlib): rpmlib(CompressedFileNames) <= 3.0.4-1 rpmlib(FileDigests) <= 4.6.0-1 rpmlib(PayloadFilesHavePrefix) <= 4.0-1"
+time="2025-03-07T08:46:40Z" level=debug msg="Checking for unpackaged file(s): /usr/lib/rpm/check-files /usr/src/azl/BUILDROOT/rubygem-hocon-1.4.0-1.azl3.x86_64"
+time="2025-03-07T08:46:40Z" level=debug msg="Wrote: /usr/src/azl/RPMS/noarch/rubygem-hocon-1.4.0-1.azl3.noarch.rpm"
+time="2025-03-07T08:46:40Z" level=debug msg="Wrote: /usr/src/azl/RPMS/noarch/rubygem-hocon-doc-1.4.0-1.azl3.noarch.rpm"
+time="2025-03-07T08:46:40Z" level=debug msg="+ umask 022"
+time="2025-03-07T08:46:40Z" level=debug msg="+ cd /usr/src/azl/BUILD"
+time="2025-03-07T08:46:40Z" level=debug msg="+ cd hocon-1.4.0"
+time="2025-03-07T08:46:40Z" level=debug msg="+ /bin/rm -rf /usr/src/azl/BUILDROOT/rubygem-hocon-1.4.0-1.azl3.x86_64"
+time="2025-03-07T08:46:40Z" level=debug msg="Executing(%clean): /bin/sh -e /var/tmp/rpm-tmp.bx4qHN"
+time="2025-03-07T08:46:40Z" level=debug msg="+ RPM_EC=0"
+time="2025-03-07T08:46:40Z" level=debug msg="++ jobs -p"
+time="2025-03-07T08:46:40Z" level=debug msg="+ exit 0"
+time="2025-03-07T08:46:40Z" level=debug msg="Executing(rmbuild): /bin/sh -e /var/tmp/rpm-tmp.952k0q"
+time="2025-03-07T08:46:40Z" level=debug msg="+ umask 022"
+time="2025-03-07T08:46:40Z" level=debug msg="+ cd /usr/src/azl/BUILD"
+time="2025-03-07T08:46:40Z" level=debug msg="+ rm -rf hocon-1.4.0 hocon-1.4.0.gemspec"
+time="2025-03-07T08:46:40Z" level=debug msg="+ RPM_EC=0"
+time="2025-03-07T08:46:40Z" level=debug msg="++ jobs -p"
+time="2025-03-07T08:46:40Z" level=debug msg="+ exit 0"
+time="2025-03-07T08:46:40Z" level=debug msg="    Could not canonicalize hostname: azuli-m1"
+time="2025-03-07T08:46:40Z" level=debug msg="    File not found: /usr/src/azl/BUILDROOT/rubygem-hocon-1.4.0-1.azl3.x86_64/usr/lib/ruby/gems/3.3.0/gems/hocon-1.4.0/spec"
+time="2025-03-07T08:46:40Z" level=debug
+time="2025-03-07T08:46:40Z" level=debug msg="RPM build warnings:"
+time="2025-03-07T08:46:40Z" level=debug msg="Build thread in chroot finished."
+time="2025-03-07T08:46:40Z" level=debug msg="Exiting Chroot: '/third_disk/bb05Mar/azurelinux/build/worker/chroot/rubygem-hocon-1.4.0-1.azl3'"
+time="2025-03-07T08:46:40Z" level=debug msg="Moving (/third_disk/bb05Mar/azurelinux/build/worker/chroot/rubygem-hocon-1.4.0-1.azl3/usr/src/azl/RPMS/noarch/rubygem-hocon-1.4.0-1.azl3.noarch.rpm) -> (/third_disk/bb05Mar/azurelinux/out/RPMS/noarch/rubygem-hocon-1.4.0-1.azl3.noarch.rpm)"
+time="2025-03-07T08:46:40Z" level=debug msg="Executing: [mv /third_disk/bb05Mar/azurelinux/build/worker/chroot/rubygem-hocon-1.4.0-1.azl3/usr/src/azl/RPMS/noarch/rubygem-hocon-1.4.0-1.azl3.noarch.rpm /third_disk/bb05Mar/azurelinux/out/RPMS/noarch/rubygem-hocon-1.4.0-1.azl3.noarch.rpm]"
+time="2025-03-07T08:46:40Z" level=debug msg="Moving (/third_disk/bb05Mar/azurelinux/build/worker/chroot/rubygem-hocon-1.4.0-1.azl3/usr/src/azl/RPMS/noarch/rubygem-hocon-doc-1.4.0-1.azl3.noarch.rpm) -> (/third_disk/bb05Mar/azurelinux/out/RPMS/noarch/rubygem-hocon-doc-1.4.0-1.azl3.noarch.rpm)"
+time="2025-03-07T08:46:40Z" level=debug msg="Executing: [mv /third_disk/bb05Mar/azurelinux/build/worker/chroot/rubygem-hocon-1.4.0-1.azl3/usr/src/azl/RPMS/noarch/rubygem-hocon-doc-1.4.0-1.azl3.noarch.rpm /third_disk/bb05Mar/azurelinux/out/RPMS/noarch/rubygem-hocon-doc-1.4.0-1.azl3.noarch.rpm]"
+time="2025-03-07T08:46:40Z" level=info msg="* processing upload of ccache artifacts..."
+time="2025-03-07T08:46:40Z" level=info msg="  ccache update is disabled for this build."
+time="2025-03-07T08:46:40Z" level=debug msg="Entering Chroot: '/third_disk/bb05Mar/azurelinux/build/worker/chroot/rubygem-hocon-1.4.0-1.azl3'"
+time="2025-03-07T08:46:40Z" level=debug msg="Executing: [gpgconf --list-components]"
+time="2025-03-07T08:46:40Z" level=debug msg="gpg:OpenPGP:/usr/bin/gpg2"
+time="2025-03-07T08:46:40Z" level=debug msg="gpgsm:S/MIME:/usr/bin/gpgsm"
+time="2025-03-07T08:46:40Z" level=debug msg="keyboxd:Public Keys:/usr/libexec/keyboxd"
+time="2025-03-07T08:46:40Z" level=debug msg="gpg-agent:Private Keys:/usr/bin/gpg-agent"
+time="2025-03-07T08:46:40Z" level=debug msg="scdaemon:Smartcards:/usr/libexec/scdaemon"
+time="2025-03-07T08:46:40Z" level=debug msg="dirmngr:Network:/usr/bin/dirmngr"
+time="2025-03-07T08:46:40Z" level=debug msg="pinentry:Passphrase Entry:/usr/bin/pinentry"
+time="2025-03-07T08:46:40Z" level=debug msg="Found gpg-agent running inside chroot. Stopping it."
+time="2025-03-07T08:46:40Z" level=debug msg="Executing: [gpgconf --kill gpg-agent]"
+time="2025-03-07T08:46:40Z" level=debug msg="Found keyboxd running inside chroot. Stopping it."
+time="2025-03-07T08:46:40Z" level=debug msg="Executing: [gpgconf --kill keyboxd]"
+time="2025-03-07T08:46:40Z" level=debug msg="Exiting Chroot: '/third_disk/bb05Mar/azurelinux/build/worker/chroot/rubygem-hocon-1.4.0-1.azl3'"
+time="2025-03-07T08:46:40Z" level=debug msg="Unmounting (/third_disk/bb05Mar/azurelinux/build/worker/chroot/rubygem-hocon-1.4.0-1.azl3/ccache-dir)"
+time="2025-03-07T08:46:40Z" level=debug msg="Calling unmount on path(/third_disk/bb05Mar/azurelinux/build/worker/chroot/rubygem-hocon-1.4.0-1.azl3/ccache-dir) with flags (0)"
+time="2025-03-07T08:46:40Z" level=debug msg="Unmounting (/third_disk/bb05Mar/azurelinux/build/worker/chroot/rubygem-hocon-1.4.0-1.azl3/upstream-cached-rpms)"
+time="2025-03-07T08:46:40Z" level=debug msg="Calling unmount on path(/third_disk/bb05Mar/azurelinux/build/worker/chroot/rubygem-hocon-1.4.0-1.azl3/upstream-cached-rpms) with flags (0)"
+time="2025-03-07T08:46:40Z" level=debug msg="Unmounting (/third_disk/bb05Mar/azurelinux/build/worker/chroot/rubygem-hocon-1.4.0-1.azl3/toolchainrpms)"
+time="2025-03-07T08:46:40Z" level=debug msg="Calling unmount on path(/third_disk/bb05Mar/azurelinux/build/worker/chroot/rubygem-hocon-1.4.0-1.azl3/toolchainrpms) with flags (0)"
+time="2025-03-07T08:46:40Z" level=debug msg="Unmounting (/third_disk/bb05Mar/azurelinux/build/worker/chroot/rubygem-hocon-1.4.0-1.azl3/localrpms)"
+time="2025-03-07T08:46:40Z" level=debug msg="Calling unmount on path(/third_disk/bb05Mar/azurelinux/build/worker/chroot/rubygem-hocon-1.4.0-1.azl3/localrpms) with flags (0)"
+time="2025-03-07T08:46:40Z" level=debug msg="Unmounting (/third_disk/bb05Mar/azurelinux/build/worker/chroot/rubygem-hocon-1.4.0-1.azl3/dev/pts)"
+time="2025-03-07T08:46:40Z" level=debug msg="Calling unmount on path(/third_disk/bb05Mar/azurelinux/build/worker/chroot/rubygem-hocon-1.4.0-1.azl3/dev/pts) with flags (0)"
+time="2025-03-07T08:46:40Z" level=debug msg="Unmounting (/third_disk/bb05Mar/azurelinux/build/worker/chroot/rubygem-hocon-1.4.0-1.azl3/run)"
+time="2025-03-07T08:46:40Z" level=debug msg="Calling unmount on path(/third_disk/bb05Mar/azurelinux/build/worker/chroot/rubygem-hocon-1.4.0-1.azl3/run) with flags (0)"
+time="2025-03-07T08:46:40Z" level=debug msg="Unmounting (/third_disk/bb05Mar/azurelinux/build/worker/chroot/rubygem-hocon-1.4.0-1.azl3/sys)"
+time="2025-03-07T08:46:40Z" level=debug msg="Calling unmount on path(/third_disk/bb05Mar/azurelinux/build/worker/chroot/rubygem-hocon-1.4.0-1.azl3/sys) with flags (0)"
+time="2025-03-07T08:46:40Z" level=debug msg="Unmounting (/third_disk/bb05Mar/azurelinux/build/worker/chroot/rubygem-hocon-1.4.0-1.azl3/proc)"
+time="2025-03-07T08:46:40Z" level=debug msg="Calling unmount on path(/third_disk/bb05Mar/azurelinux/build/worker/chroot/rubygem-hocon-1.4.0-1.azl3/proc) with flags (0)"
+time="2025-03-07T08:46:40Z" level=debug msg="Unmounting (/third_disk/bb05Mar/azurelinux/build/worker/chroot/rubygem-hocon-1.4.0-1.azl3/dev)"
+time="2025-03-07T08:46:40Z" level=debug msg="Calling unmount on path(/third_disk/bb05Mar/azurelinux/build/worker/chroot/rubygem-hocon-1.4.0-1.azl3/dev) with flags (0)"
+time="2025-03-07T08:46:42Z" level=debug msg="Copying (/third_disk/bb05Mar/azurelinux/build/INTERMEDIATE_SRPMS/rubygem-hocon-1.4.0-1.azl3.src.rpm) to (/third_disk/bb05Mar/azurelinux/out/SRPMS/rubygem-hocon-1.4.0-1.azl3.src.rpm)"
+time="2025-03-07T08:46:42Z" level=info msg="Built (rubygem-hocon-1.4.0-1.azl3.src.rpm) -> [/third_disk/bb05Mar/azurelinux/out/RPMS/noarch/rubygem-hocon-1.4.0-1.azl3.noarch.rpm /third_disk/bb05Mar/azurelinux/out/RPMS/noarch/rubygem-hocon-doc-1.4.0-1.azl3.noarch.rpm]."
+time="2025-03-07T08:46:42Z" level=debug msg="Executing: [cp --preserve=mode /third_disk/bb05Mar/azurelinux/build/INTERMEDIATE_SRPMS/rubygem-hocon-1.4.0-1.azl3.src.rpm /third_disk/bb05Mar/azurelinux/out/SRPMS/rubygem-hocon-1.4.0-1.azl3.src.rpm]"

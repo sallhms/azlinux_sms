@@ -20,7 +20,8 @@ BUILD_ARTFCT_STATUS_FL="/third_disk/bb05Mar/azurelinux/didwhat/PKG_ANALYSIS_DATA
 DNLD_DETAILS_FL="/third_disk/bb05Mar/azurelinux/didwhat/PKG_ANALYSIS_DATAFILES/scr_run_log.txt"
 #DNLD_DETAILS_FL="/home/neerajs/Downloads/docker_folder/impspc/fetchdir/scr_run_log.txt"
 BULK_BUILD_ROOT="/fifth_disk/bb_dec23/code/azurelinux"
-ADD_BULK_BUILD_ARTFCT_STATUS_FL="/third_disk/bb05Mar/azurelinux/didwhat/PKG_ANALYSIS_DATAFILES/build_state_additional.csv"
+ADD_BULK_BUILD_ARTFCT_STATUS_FL="/third_disk/bb05Mar/azurelinux/didwhat/PKG_ANALYSIS_DATAFILES/build_state_05Mar.csv"
+#ADD_BULK_BUILD_ARTFCT_STATUS_FL="/third_disk/bb05Mar/azurelinux/didwhat/PKG_ANALYSIS_DATAFILES/build_state_additional.csv"
 #ADD_BULK_BUILD_ARTFCT_STATUS_FL="/home/neerajs/utils/PKG_ANALYSIS_27Feb/build_state.csv"
 
 UNDER_REVIEW_PR_FILE="/home/neerajs/PKG_ANALYSIS_DATAFILES/PRTracking.csv"

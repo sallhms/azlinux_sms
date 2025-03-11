@@ -1,142 +1,180 @@
-Summary:        Firmware update daemon
-Name:           fwupd
-Version:        2.0.1
-Release:        2%{?dist}
-License:        LGPL-2.1-or-later
-Vendor:         Microsoft Corporation
-Distribution:   Azure Linux
-URL:            https://github.com/fwupd/fwupd
-Source0:        https://github.com/fwupd/fwupd/releases/download/%{version}/%{name}-%{version}.tar.xz
+## START: Set by rpmautospec
+## (rpmautospec version 0.7.3)
+## RPMAUTOSPEC: autorelease, autochangelog
+%define autorelease(e:s:pb:n) %{?-p:0.}%{lua:
+    release_number = 1;
+    base_release_number = tonumber(rpm.expand("%{?-b*}%{!?-b:1}"));
+    print(release_number + base_release_number - 1);
+}%{?-e:.%{-e*}}%{?-s:.%{-s*}}%{!?-n:%{?dist}}
+## END: Set by rpmautospec
 
 %global glib2_version 2.45.8
 %global libxmlb_version 0.1.3
-%global libusb_version 1.0.9
+%global libgusb_version 0.3.5
 %global libcurl_version 7.62.0
 %global libjcat_version 0.1.0
-%global systemd_version 249
+%global systemd_version 231
 %global json_glib_version 1.1.1
-%global bash_completionsdir %(pkg-config --variable=completionsdir bash-completion 2>/dev/null || echo '%{_sysconfdir}/bash_completion.d')
 
 # although we ship a few tiny python files these are utilities that 99.99%
 # of users do not need -- use this to avoid dragging python onto CoreOS
 %global __requires_exclude ^%{python3}$
-%global enable_tests 0
-%global enable_docs 0
+
+# PPC64 is too slow to complete the tests under 3 minutes...
+%ifnarch ppc64le
+%global enable_tests 1
+%endif
 
 %global enable_dummy 1
+
 # fwupd.efi is only available on these arches
 %ifarch x86_64 aarch64 riscv64
 %global have_uefi 1
 %endif
+
 # gpio.h is only available on these arches
 %ifarch x86_64 aarch64
 %global have_gpio 1
 %endif
+
 # flashrom is only available on these arches
 %ifarch i686 x86_64 armv7hl aarch64 ppc64le riscv64
 %global have_flashrom 1
 %endif
+
 %ifarch i686 x86_64
 %global have_msr 1
 %endif
+
 # Until we actually have seen it outside x86
 %ifarch i686 x86_64
 %global have_thunderbolt 1
 %endif
+
 # only available recently
+%if 0%{?fedora} >= 30
 %global have_modem_manager 1
+%endif
+
+%if 0%{?fedora}
 %global have_passim 1
-BuildRequires:  freefont
-BuildRequires:  gettext
-%if 0%{?enable_docs}
-BuildRequires:  gi-docgen
 %endif
-BuildRequires:  git-core
-BuildRequires:  glib2-devel
-BuildRequires:  gnutls-devel
-BuildRequires:  gnutls-utils
-BuildRequires:  gobject-introspection-devel
-BuildRequires:  json-glib-devel
-BuildRequires:  libarchive-devel
-BuildRequires:  libcbor-devel
-BuildRequires:  libcurl-devel
-BuildRequires:  libdrm-devel
-BuildRequires:  libjcat
-BuildRequires:  libjcat-devel
-# JocelynB - reducing libusb1-devel to libusb-devel. This is required to avoid a conflict when bringing the usbutils dependency.
-BuildRequires:  libusb-devel
-BuildRequires:  libxmlb
-BuildRequires:  libxmlb-devel
-BuildRequires:  meson
-BuildRequires:  pkg-config
-BuildRequires:  polkit-devel
-BuildRequires:  protobuf-c-devel
-BuildRequires:  python3-jinja2
-BuildRequires:  python3-packaging
-BuildRequires:  sqlite-devel
-BuildRequires:  systemd
-BuildRequires:  systemd-devel
-# JocelynB - usbutils provides usb.ids that is required by the fwupd meson build system (without this, an error is produced on ARM)
-BuildRequires:  usbutils
-BuildRequires:  vala
-BuildRequires:  pkgconfig(bash-completion)
-Requires:       glib2%{?_isa}
-Requires:       libusb%{?_isa}
-Requires:       libxmlb%{?_isa}
-Requires:       shared-mime-info
-Requires(post): systemd
-Requires(postun): systemd
-Requires(preun): systemd
-Provides:       dbxtool
+
+Summary:   Firmware update daemon
+Name:      fwupd
+Version:   1.9.27
+Release:   %autorelease
+License:   LGPL-2.1-or-later
+URL:       https://github.com/fwupd/fwupd
+Source0:   http://people.freedesktop.org/~hughsient/releases/%{name}-%{version}.tar.xz
+
+BuildRequires: gettext
+BuildRequires: glib2-devel >= %{glib2_version}
+BuildRequires: libxmlb-devel >= %{libxmlb_version}
+BuildRequires: libgudev1-devel
+BuildRequires: libgusb-devel >= %{libgusb_version}
+BuildRequires: libcurl-devel >= %{libcurl_version}
+BuildRequires: libjcat-devel >= %{libjcat_version}
+BuildRequires: polkit-devel >= 0.103
+BuildRequires: protobuf-c-devel
+BuildRequires: python3-packaging
+BuildRequires: python3-jinja2
+BuildRequires: sqlite-devel
+BuildRequires: systemd >= %{systemd_version}
+BuildRequires: systemd-devel
+BuildRequires: libarchive-devel
+BuildRequires: libcbor-devel
 %if 0%{?have_passim}
-BuildRequires:  passim-devel
+BuildRequires: passim-devel
 %endif
+BuildRequires: gobject-introspection-devel
 %ifarch %{valgrind_arches}
-BuildRequires:  valgrind
-BuildRequires:  valgrind-devel
+BuildRequires: valgrind
+BuildRequires: valgrind-devel
+%endif
+BuildRequires: gi-docgen
+BuildRequires: gnutls-devel
+BuildRequires: gnutls-utils
+BuildRequires: meson
+BuildRequires: json-glib-devel >= %{json_glib_version}
+BuildRequires: vala
+BuildRequires: pkgconfig(bash-completion)
+BuildRequires: git-core
+%if 0%{?have_flashrom}
+BuildRequires: flashrom-devel >= 1.2-2
+%endif
+BuildRequires: libdrm-devel
+
+%if 0%{?have_modem_manager}
+BuildRequires: ModemManager-glib-devel >= 1.10.0
+BuildRequires: libqmi-devel >= 1.22.0
+BuildRequires: libmbim-devel
+%endif
+
+%if 0%{?have_uefi}
+BuildRequires: python3 python3-cairo python3-gobject
+BuildRequires: pango-devel
+BuildRequires: cairo-devel cairo-gobject-devel
+BuildRequires: freetype
+BuildRequires: fontconfig
+BuildRequires: google-noto-sans-cjk-ttc-fonts
+BuildRequires: tpm2-tss-devel >= 2.2.3
+%endif
+
+Requires(post): systemd
+Requires(preun): systemd
+Requires(postun): systemd
+
+Requires: glib2%{?_isa} >= %{glib2_version}
+Requires: libxmlb%{?_isa} >= %{libxmlb_version}
+Requires: libgusb%{?_isa} >= %{libgusb_version}
+Requires: shared-mime-info
+
+Obsoletes: dbxtool < 9
+Provides: dbxtool
+
+# optional, but a really good idea
+Recommends: udisks2
+Recommends: bluez
+Recommends: jq
+%if 0%{?have_passim}
+Recommends: passim
+%endif
+
+%if 0%{?have_modem_manager}
+Recommends: %{name}-plugin-modem-manager
 %endif
 %if 0%{?have_flashrom}
-BuildRequires:  flashrom-devel
-%endif
-%if 0%{?have_modem_manager}
-BuildRequires:  ModemManager-glib-devel
-BuildRequires:  libmbim-devel
-BuildRequires:  libqmi-devel
+Recommends: %{name}-plugin-flashrom
 %endif
 %if 0%{?have_uefi}
-BuildRequires:  cairo-devel
-BuildRequires:  cairo-gobject-devel
-BuildRequires:  fontconfig
-BuildRequires:  freetype
-#BuildRequires:  google-noto-sans-cjk-ttc-fonts
-BuildRequires:  pango-devel
-BuildRequires:  python3
-BuildRequires:  python3-cairo
-BuildRequires:  python3-gobject
-BuildRequires:  tpm2-tss-devel
+Recommends: %{name}-efi
+Recommends: %{name}-plugin-uefi-capsule-data
 %endif
 
 %description
 fwupd is a daemon to allow session software to update device firmware.
 
 %package devel
-Summary:        Development package for %{name}
-Requires:       %{name}%{?_isa} = %{version}-%{release}
+Summary: Development package for %{name}
+Requires: %{name}%{?_isa} = %{version}-%{release}
+Obsoletes: libebitdo-devel < 0.7.5-3
+Obsoletes: libdfu-devel < 1.0.0
 
 %description devel
 Files for development with %{name}.
 
 %package tests
-Summary:        Data files for installed tests
-Requires:       %{name}%{?_isa} = %{version}-%{release}
+Summary: Data files for installed tests
+Requires: %{name}%{?_isa} = %{version}-%{release}
 
 %description tests
 Data files for installed tests.
 
 %if 0%{?have_modem_manager}
 %package plugin-modem-manager
-Summary:        fwupd plugin using ModemManger
-Requires:       %{name}%{?_isa} = %{version}-%{release}
+Summary: fwupd plugin using ModemManger
+Requires: %{name}%{?_isa} = %{version}-%{release}
 
 %description plugin-modem-manager
 This provides the optional package which is only required on hardware that
@@ -145,8 +183,8 @@ might have mobile broadband hardware. It is probably not required on servers.
 
 %if 0%{?have_flashrom}
 %package plugin-flashrom
-Summary:        fwupd plugin using flashrom
-Requires:       %{name}%{?_isa} = %{version}-%{release}
+Summary: fwupd plugin using flashrom
+Requires: %{name}%{?_isa} = %{version}-%{release}
 
 %description plugin-flashrom
 This provides the optional package which is only required on hardware that
@@ -155,8 +193,8 @@ can be flashed using flashrom. It is probably not required on servers.
 
 %if 0%{?have_uefi}
 %package plugin-uefi-capsule-data
-Summary:        Localized data for the UEFI UX capsule
-Requires:       %{name}%{?_isa} = %{version}-%{release}
+Summary: Localized data for the UEFI UX capsule
+Requires: %{name}%{?_isa} = %{version}-%{release}
 
 %description plugin-uefi-capsule-data
 This provides the pregenerated BMP artwork for the UX capsule, which allows the
@@ -171,13 +209,7 @@ or server machines.
 %build
 
 %meson \
-    -Dumockdev_tests=disabled \
-%if 0%{?enable_docs}
     -Ddocs=enabled \
-%else
-    -Ddocs=disabled \
-%endif
-    -Dlvfs=disabled \
 %if 0%{?enable_tests}
     -Dtests=true \
 %else
@@ -235,21 +267,32 @@ or server machines.
 %install
 %meson_install
 
-mkdir -p --mode=0700 %{buildroot}%{_localstatedir}/lib/fwupd/gnupg
+mkdir -p --mode=0700 $RPM_BUILD_ROOT%{_localstatedir}/lib/fwupd/gnupg
 
 # workaround for https://bugzilla.redhat.com/show_bug.cgi?id=1757948
-mkdir -p %{buildroot}%{_localstatedir}/cache/fwupd
+mkdir -p $RPM_BUILD_ROOT%{_localstatedir}/cache/fwupd
 
 %find_lang %{name}
 
 %post
 %systemd_post fwupd.service fwupd-refresh.timer
 
+# change vendor-installed remotes to use the default keyring type
+for fn in /etc/fwupd/remotes.d/*.conf; do
+    if grep -q "Keyring=gpg" "$fn"; then
+        sed -i 's/Keyring=gpg/#Keyring=pkcs/g' "$fn";
+    fi
+done
+
 %preun
 %systemd_preun fwupd.service fwupd-refresh.timer
 
 %postun
 %systemd_postun_with_restart fwupd.service fwupd-refresh.timer
+
+%triggerun -- fedora-release-common < 39-0.28
+# For upgrades from versions before fwupd-refresh.timer was enabled by default
+systemctl --no-reload preset fwupd-refresh.timer &>/dev/null || :
 
 %files -f %{name}.lang
 %doc README.md
@@ -260,6 +303,7 @@ mkdir -p %{buildroot}%{_localstatedir}/cache/fwupd
 %ifarch x86_64
 %{_libexecdir}/fwupd/fwupd-detect-cet
 %endif
+%{_libexecdir}/fwupd/fwupdoffline
 %{_bindir}/dbxtool
 %{_bindir}/fwupdmgr
 %{_bindir}/fwupdtool
@@ -273,11 +317,11 @@ mkdir -p %{buildroot}%{_localstatedir}/cache/fwupd
 %config(noreplace)%{_sysconfdir}/pki/fwupd
 %{_sysconfdir}/pki/fwupd-metadata
 %if 0%{?have_msr}
-%{_libdir}/modules-load.d/fwupd-msr.conf
+/usr/lib/modules-load.d/fwupd-msr.conf
 %endif
 %{_datadir}/dbus-1/system.d/org.freedesktop.fwupd.conf
-%{bash_completionsdir}/fwupdmgr
-%{bash_completionsdir}/fwupdtool
+%{_datadir}/bash-completion/completions/fwupdmgr
+%{_datadir}/bash-completion/completions/fwupdtool
 %{_datadir}/fish/vendor_completions.d/fwupdmgr.fish
 %dir %{_datadir}/fwupd
 %dir %{_datadir}/fwupd/metainfo
@@ -296,27 +340,28 @@ mkdir -p %{buildroot}%{_localstatedir}/cache/fwupd
 %{_mandir}/man5/*
 %{_mandir}/man8/*
 %{_datadir}/metainfo/org.freedesktop.fwupd.metainfo.xml
-%{_datadir}/icons/hicolor/*/apps/org.freedesktop.fwupd.*
+%{_datadir}/icons/hicolor/scalable/apps/org.freedesktop.fwupd.svg
 %{_datadir}/fwupd/firmware_packager.py
 %{_datadir}/fwupd/simple_client.py
 %{_datadir}/fwupd/add_capsule_header.py
 %{_datadir}/fwupd/install_dell_bios_exe.py
+%{_unitdir}/fwupd-offline-update.service
 %{_unitdir}/fwupd.service
 %{_unitdir}/fwupd-refresh.service
 %{_unitdir}/fwupd-refresh.timer
+%{_unitdir}/system-update.target.wants/
 %dir %{_localstatedir}/lib/fwupd
 %dir %{_localstatedir}/cache/fwupd
 %dir %{_datadir}/fwupd/quirks.d
 %{_datadir}/fwupd/quirks.d/builtin.quirk.gz
-%if 0%{?enable_docs}
-%{_docdir}/fwupd/*.html
-%endif
+%{_datadir}/doc/fwupd/*.html
 %if 0%{?have_uefi}
 %config(noreplace)%{_sysconfdir}/grub.d/35_fwupd
 %endif
-%{_libdir}/libfwupd.so.3*
+%{_libdir}/libfwupd.so.2*
 %{_libdir}/girepository-1.0/Fwupd-2.0.typelib
-%{_libdir}/systemd/system-shutdown/fwupd.shutdown
+/usr/lib/udev/rules.d/*.rules
+/usr/lib/systemd/system-shutdown/fwupd.shutdown
 %dir %{_libdir}/fwupd-%{version}
 %{_libdir}/fwupd-%{version}/libfwupd*.so
 %ghost %{_localstatedir}/lib/fwupd/gnupg
@@ -325,12 +370,10 @@ mkdir -p %{buildroot}%{_localstatedir}/cache/fwupd
 %files plugin-modem-manager
 %{_libdir}/fwupd-%{version}/libfu_plugin_modem_manager.so
 %endif
-
 %if 0%{?have_flashrom}
 %files plugin-flashrom
 %{_libdir}/fwupd-%{version}/libfu_plugin_flashrom.so
 %endif
-
 %if 0%{?have_uefi}
 %files plugin-uefi-capsule-data
 %{_datadir}/fwupd/uefi-capsule-ux.tar.xz
@@ -338,43 +381,47 @@ mkdir -p %{buildroot}%{_localstatedir}/cache/fwupd
 
 %files devel
 %{_datadir}/gir-1.0/Fwupd-2.0.gir
-%if 0%{?enable_docs}
-%{_docdir}/fwupd/libfwupdplugin
-%{_docdir}/fwupd/libfwupd
-%{_docdir}/libfwupdplugin
-%{_docdir}/libfwupd
-%endif
+%{_datadir}/doc/fwupd/libfwupdplugin
+%{_datadir}/doc/fwupd/libfwupd
+%{_datadir}/doc/libfwupdplugin
+%{_datadir}/doc/libfwupd
 %{_datadir}/vala/vapi
-%{_includedir}/fwupd-3
+%{_includedir}/fwupd-1
 %{_libdir}/libfwupd*.so
 %{_libdir}/pkgconfig/fwupd.pc
 
 %files tests
 %if 0%{?enable_tests}
 %{_datadir}/fwupd/host-emulate.d/*.json.gz
-%{_datadir}/installed-tests/fwupd
+%dir %{_datadir}/installed-tests/fwupd
+%{_datadir}/installed-tests/fwupd/tests/*
+%{_datadir}/installed-tests/fwupd/fwupd-tests.xml
+%{_datadir}/installed-tests/fwupd/*.test
+%{_datadir}/installed-tests/fwupd/*.cab
+%{_datadir}/installed-tests/fwupd/fakedevice124.jcat
+%{_datadir}/installed-tests/fwupd/fakedevice124.bin
+%{_datadir}/installed-tests/fwupd/fakedevice124.metainfo.xml
+%{_datadir}/installed-tests/fwupd/*.sh
+%{_datadir}/installed-tests/fwupd/*.zip
+%if 0%{?have_uefi}
+%{_datadir}/installed-tests/fwupd/efi
+%endif
+%{_datadir}/installed-tests/fwupd/chassis_type
+%{_datadir}/installed-tests/fwupd/sys_vendor
 # libgusb >= 0.4.5
+%if 0%{?fedora} >= 37 || 0%{?rhel} >= 10
 %{_datadir}/fwupd/device-tests/*.json
-%{_libexecdir}/installed-tests/fwupd
+%endif
+%{_libexecdir}/installed-tests/fwupd/*
 %{_datadir}/fwupd/remotes.d/fwupd-tests.conf
 %endif
 
 %changelog
-* Fri Oct 18 2024 Jocelyn Berrendonner <jocelynb@microsoft.com> - 2.0.1-2
-- Integrating the spec into Azure Linux
-- Initial CBL-Mariner import from Fedora 42 (license: MIT).
-- License verified.
-
-* Tue Oct 15 2024 Richard Hughes <richard@hughsie.com> - 2.0.1-1
+## START: Generated by rpmautospec
+* Thu Dec 05 2024 Richard Hughes <richard@hughsie.com> - 1.9.27-1
 - New upstream release
 
-* Fri Oct 04 2024 Richard Hughes <richard@hughsie.com> - 2.0.0-3
-- Fix build on s390x
-
-* Fri Oct 04 2024 Richard Hughes <richard@hughsie.com> - 2.0.0-2
-- No CET on i686
-
-* Fri Oct 04 2024 Richard Hughes <richard@hughsie.com> - 2.0.0-1
+* Mon Oct 14 2024 Richard Hughes <richard@hughsie.com> - 1.9.26-1
 - New upstream release
 
 * Wed Sep 25 2024 Richard Hughes <richard@hughsie.com> - 1.9.25-1
@@ -654,7 +701,8 @@ mkdir -p %{buildroot}%{_localstatedir}/cache/fwupd
 - New upstream release
 
 * Thu Apr 15 2021 Andrew Thurman <ajtbecool@gmail.com> - 1.5.9-2
-- Backport https://github.com/fwupd/fwupd/pull/3144 to fix https://bugzilla.redhat.com/show_bug.cgi?id=1949491
+- Backport https://github.com/fwupd/fwupd/pull/3144 to fix
+  https://bugzilla.redhat.com/show_bug.cgi?id=1949491
 
 * Tue Apr 13 2021 Richard Hughes <richard@hughsie.com> - 1.5.9-1
 - New upstream release
@@ -717,7 +765,8 @@ mkdir -p %{buildroot}%{_localstatedir}/cache/fwupd
 - Make dual signing happen.
 
 * Sat Aug 01 2020 Fedora Release Engineering <releng@fedoraproject.org> - 1.4.5-2
-- Second attempt - Rebuilt for https://fedoraproject.org/wiki/Fedora_33_Mass_Rebuild
+- Second attempt - Rebuilt for
+  https://fedoraproject.org/wiki/Fedora_33_Mass_Rebuild
 
 * Thu Jul 30 2020 Richard Hughes <richard@hughsie.com> - 1.4.5-1
 - New upstream release
@@ -921,7 +970,8 @@ mkdir -p %{buildroot}%{_localstatedir}/cache/fwupd
 - Wl,-z,defs is broken
 
 * Thu Jan 25 2018 Richard Hughes <richard@hughsie.com> - 1.0.4-3
-- trivial: Fix -Wl,-z,defs build failure by backporting a patch from upstream
+- trivial: Fix -Wl,-z,defs build failure by backporting a patch from
+  upstream
 
 * Thu Jan 25 2018 Richard Hughes <richard@hughsie.com> - 1.0.4-2
 - trivial: Add the correct json_glib_version version
@@ -930,7 +980,8 @@ mkdir -p %{buildroot}%{_localstatedir}/cache/fwupd
 - New upstream release
 
 * Fri Jan 12 2018 Richard Hughes <richard@hughsie.com> - 1.0.3-2
-- Backport a patch that fixes applying firmware updates using gnome software
+- Backport a patch that fixes applying firmware updates using gnome-
+  software
 
 * Tue Jan 09 2018 Richard Hughes <richard@hughsie.com> - 1.0.3-1
 - New upstream release
@@ -966,7 +1017,8 @@ mkdir -p %{buildroot}%{_localstatedir}/cache/fwupd
 - New upstream release
 
 * Wed Aug 02 2017 Fedora Release Engineering <releng@fedoraproject.org> - 0.9.5-4
-- Rebuilt for https://fedoraproject.org/wiki/Fedora_27_Binutils_Mass_Rebuild
+- Rebuilt for
+  https://fedoraproject.org/wiki/Fedora_27_Binutils_Mass_Rebuild
 
 * Wed Jul 26 2017 Fedora Release Engineering <releng@fedoraproject.org> - 0.9.5-3
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_27_Mass_Rebuild
@@ -1005,7 +1057,8 @@ mkdir -p %{buildroot}%{_localstatedir}/cache/fwupd
 - New upstream release
 
 * Thu Mar 23 2017 Bastien Nocera <hadess@hadess.net> - 0.8.1-3
-- + fwupd-0.8.1-2 Release claimed devices on error, fixes unusable input devices
+- + fwupd-0.8.1-2 Release claimed devices on error, fixes unusable input
+  devices
 
 * Mon Feb 27 2017 Richard Hughes <richard@hughsie.com> - 0.8.1-2
 - trivial: Update BRs
@@ -1059,7 +1112,8 @@ mkdir -p %{buildroot}%{_localstatedir}/cache/fwupd
 - Tighten subpackage dependencies
 
 * Tue Jul 12 2016 Kalev Lember <klember@redhat.com> - 0.7.2-2
-- Set minimum required versions of various libraries so that we can be sure they get updated in lockstep with fwupd.
+- Set minimum required versions of various libraries so that we can be sure
+  they get updated in lockstep with fwupd.
 
 * Mon Jun 13 2016 Richard Hughes <richard@hughsie.com> - 0.7.2-1
 - New upstream release

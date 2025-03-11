@@ -1,0 +1,383 @@
+#!/usr/bin/python3.12
+
+GENERAL_UTILS_DIR='/home/neerajs/utils'
+
+#input.  This is the directory where the root of the Azure Linux source code has been cloned.
+#The SPECS-EXTENDED directory in this folder will be updated by the script.
+CODE_DIR='/third_disk/bb11Mar/azurelinux'
+#CODE_DIR='/third_disk/bb01Mar/azurelinux'
+#CODE_DIR='/third_disk/bb_24Feb/azlinux_sms'
+#CODE_DIR='/four_disk/bb_08Feb/azlinux_sms'
+
+SPECS_DIR=f'{CODE_DIR}/SPECS-EXTENDED'
+
+#The directory from where the input csv file and the two other input files will be picked, and where the output files will be generated
+DATA_DIR='/third_disk/bb11Mar/azurelinux/didwhat/BULK_BLD_THINGS'
+#DATA_DIR='/third_disk/bb01Mar/azurelinux/didwhat/BULK_BLD_THINGS_01Mar'
+#DATA_DIR='/home/neerajs/utils/BULK_BLD_THINGS_24Feb'
+#DATA_DIR='/home/neerajs/utils/BULK_BLD_THINGS'
+
+#input file.  The csv file used for generating the build list and for manipulating the SPECS-EXTENDED folder.
+#this csv file has information like whether the package needs to be upgraded, whether a PR for it has been raised and merged already, whether the package name has changed, whether the package has to be removed from SPECS-EXTENDED because it is there in core (i.e. SPECS) now.
+PKG_DETAILS_CSV_FNAME='output_11Mar.csv'
+#PKG_DETAILS_CSV_FNAME='test_03Mar.csv'
+#PKG_DETAILS_CSV_FNAME='output_03Mar.csv'
+#PKG_DETAILS_CSV_FNAME='output_01Mar.csv'
+#PKG_DETAILS_CSV_FNAME='output34.csv'
+#PKG_DETAILS_CSV_FNAME='data_for_build_saved.csv'
+PKG_DETAILS_CSV_FL=f'{DATA_DIR}/{PKG_DETAILS_CSV_FNAME}'
+
+#output file.  Intermediate file.  Used to decide the final state of the SPECS-EXTENDED folder.
+REMOVE_LIST_FNAME='folders_to_rem'
+REMOVE_LIST_FL=f'{DATA_DIR}/{REMOVE_LIST_FNAME}'
+
+#output file.  Intermediate file.  Used to decide the final state of the SPECS-EXTENDED folder.
+COPY_LIST_FNAME='folders_to_copy'
+COPY_LIST_FL=f'{DATA_DIR}/{COPY_LIST_FNAME}'
+
+#output file.  Rather it is an intermediate file.  The usable file is WORKING_BUILD_LIST_FNAME.
+STARTING_BUILD_LIST_FNAME='pkgs_to_build'
+STARTING_BUILD_LIST_FL=f'{DATA_DIR}/{STARTING_BUILD_LIST_FNAME}'
+
+#output file.  This is used by the next stage as the build list.
+WORKING_BUILD_LIST_FNAME=f'wkg_{STARTING_BUILD_LIST_FNAME}'
+WORKING_BUILD_LIST_FL=f'{DATA_DIR}/{WORKING_BUILD_LIST_FNAME}'
+
+#output file.  This is used by the next stage as the list of topic branches to be pulled.
+FULL_TOPICBRNCH_FNAME=f'full_topic_brnch_list'
+FULL_TOPICBRNCH_FL=f'{DATA_DIR}/{FULL_TOPICBRNCH_FNAME}'
+
+#input file.  Gives the list of packages that will be added to the build list, even if earlier
+#these had been removed from the list.
+LIST_OVERRIDE_BY_ADD_FNAME=f'pkglist_override_build_by_add'
+LIST_OVERRIDE_BY_ADD_FL=f'{DATA_DIR}/pkglist_override_build_by_add'
+
+#input file.  Gives the list of packages that will be removed from the build list, even if earlier
+#these had been added to the list.
+LIST_OVERRIDE_BY_REM_FNAME=f'pkglist_override_build_by_rem'
+LIST_OVERRIDE_BY_REM_FL=f'{DATA_DIR}/pkglist_override_build_by_rem'
+
+import pandas as pd
+import re
+from pathlib import Path
+from pyrpm.spec import Spec, replace_macros
+# Import the glob module, which allows you to search for files using wildcard patterns
+import glob     
+#inspecting the program frames 
+import inspect  
+# invoke and use output of shell script in python
+import subprocess
+
+
+pkgnm=''
+pkgnewnm=''
+pkgprio=''
+pkgauthor=''
+pkgPRstatus=''
+pkgupgddecisionfinal=''
+pkgdnldsuccess=''
+pkglocinfo=''
+
+rem_list_fl=''
+copy_list_fl=''
+starting_build_list_fl=''
+wkg_build_list_fl=''
+full_topicbrnch_fl=''
+pkgtpcbrnchorgn=''
+pkgtpcbrnch=''
+
+# function to detect that an empty field has been read, which is presented as a nan by pd.read_csv()
+def isNaN(num):
+    return num != num
+
+# function useful for logging statements.  Generates the name of the function from where it is called. 
+def func_nm_shrthnd():
+    # get the frame object of the function
+    prev_frame = inspect.currentframe().f_back
+    return prev_frame.f_code.co_name
+
+def extract_pkgdets_update_lists():
+    global ver_bld_status
+    global rel_bld_status
+    global bld_status
+
+    global pkgnm
+    global pkgnewnm
+    global pkgprio
+    global pkgauthor
+    global pkgPRstatus
+    global pkgupgddecisionfinal
+    global pkgdnldsuccess
+    global pkglocinfo
+    global pkgtpcbrnchorgn
+    global pkgtpcbrnch
+
+    cols = [ 'Package','New Name of Package','Package Priority','Developer in Master List','PR Number','Link of PR Raised','PR Status','PR Creation Date','Upgrade Required','Final Upgrade Decision (Y/N)','Build Status','Version in Build Status','Release in Build Status','Download Success','Number SRPMs downloaded','Dowloaded SRPM 1','Dowloaded SRPM 2','Dowloaded SRPM 3','Version Downloaded SRPM','Release Downloaded SRPM','Package location info','Package Version in 3.0-dev','Bulk Build Success','Bulk Build Number of SRPMs','Developer from under review sheet','Under Review PR Link','Reviewer','Review Status','PR Origin','TopicBranch']
+#Package,New Name of Package, Package Priority,Developer in Master List,PR Number, Link of PR Raised, PR Status, PR Creation Date, Upgrade Required, Final Upgrade Decision (Y/N), Build Status,Version in Build Status,Release in Build Status,Download Success,Number SRPMs downloaded, Dowloaded SRPM 1,Dowloaded SRPM 2,Dowloaded SRPM 3,Version Downloaded SRPM,Release Downloaded SRPM,Package location info,Package Version in 3.0-dev,Bulk Build Success, Bulk Build Number of SRPMs, Developer from under review sheet, Under Review PR Link, Reviewer, Review Status
+
+    #print (f'File name {PKG_DETAILS_CSV_FL}')
+    table = pd.read_csv(PKG_DETAILS_CSV_FL, usecols=cols)
+    line_num = 0
+    for row in table.itertuples():
+        line_num = line_num + 1
+        #print (func_nm_shrthnd() + f'line {line_num}={row}')
+        pkgnm=row[1]
+        print (func_nm_shrthnd() + f'Package = {pkgnm}')
+        if ( pkgnm == 'NOVALIDPACKAGE'):
+            pkgnewnm='NA'
+            pkgprio='NA'
+            pkgauthor='NA'
+            pkgPRstatus='NA'
+            pkgupgddecisionfinal='NA'
+            pkgdnldsuccess='NA'
+            pkglocinfo='NA'
+            pkgtpcbrnchorgn='NA'
+            pkgtpcbrnch='NA'
+            break
+
+        pkgnewnm=row[2]
+        if (isNaN(pkgnewnm)):
+            pkgnewnm='NA'
+        pkgprio=row[3]
+        if (isNaN(pkgprio)):
+            pkgprio='NA'
+        pkgauthor=row[4]
+        if (isNaN(pkgauthor)):
+            pkgauthor='NA'
+        pkgPRstatus=row[7]
+        if (isNaN(pkgPRstatus)):
+            pkgPRstatus='NA'
+        pkgupgddecisionfinal=row[10]
+        if (isNaN(pkgupgddecisionfinal)):
+            pkgupgddecisionfinal='NA'
+        pkgdnldsuccess=int(row[14])
+        if (isNaN(pkgdnldsuccess)):
+            pkgdnldsuccess='NA'
+        pkglocinfo=row[21]
+        if (isNaN(pkglocinfo)):
+            pkglocinfo='NA'
+        pkgtpcbrnchorgn=row[29]
+        if (isNaN(pkgtpcbrnchorgn)):
+            pkgtpcbrnchorgn='NA'
+        pkgtpcbrnch=row[30]
+        if (isNaN(pkgtpcbrnch)):
+            pkgtpcbrnch='NA'
+        #print (func_nm_shrthnd() + f'Package = {pkgnm}, new name = {pkgnewnm}, prio={pkgprio}, author={pkgauthor}, PR Status={pkgPRstatus}, Final upgd decision = {pkgupgddecisionfinal}, downloadsuccess(0/1)={pkgdnldsuccess}, package location={pkglocinfo}, package repo origin={pkgtpcbrnchorgn}, package PR branch={pkgtpcbrnch}')
+        upd_lst_of_rem_folders()
+        upd_lst_of_copy_folders()
+        upd_lst_of_topicbrnch_for_PRs()
+        upd_lst_of_build_pkgs()
+
+        # Uncomment the below two line to limit the update of the lists
+        # to first 50 packages in the input data file
+        # Useful for speeding up debugging by reducing the total number 
+        # of records
+        #if ( line_num >= 50 ):
+        #    break
+
+def upd_lst_of_rem_folders():
+    global rem_list_fl
+    global pkglocinfo
+    
+    #print(func_nm_shrthnd() + f': Entered for package name {pkgnm}, PR status = {pkgPRstatus}, Final upgd decision = {pkgupgddecisionfinal}, package location {pkglocinfo}, download success = {pkgdnldsuccess}\n')
+
+    # If a package has been moved to the core and no PR has yet been 
+    # merged for it then it must be removed from the extended folder.
+    # Therefore add it to the remove list of folders
+    if ( (pkgPRstatus != 'MERGED') and (pkglocinfo == 'MOVED_TO_CORE') ):
+        #print(func_nm_shrthnd() + f': Going to add {pkgnm}, PR status = {pkgPRstatus}, package location {pkglocinfo}\n')
+        rem_list_fl.write(f'{pkgnm}\n');
+
+    # If a package exists in both core and ext and no PR has yet been
+    # merged for it then it must be removed from the extended folder.
+    # Therefore add it to the remove list of folders
+    if ( (pkgPRstatus != 'MERGED') and (pkglocinfo == 'EXISTS_IN_BOTH') ):
+        #print(func_nm_shrthnd() + f': Going to add {pkgnm}, PR status = {pkgPRstatus}, package location {pkglocinfo}\n')
+        rem_list_fl.write(f'{pkgnm}\n');
+
+    # If a package exists only in ext and needs an upgrade and has not been merged and has 
+    # been downloaded successfully then its code needs to be replaced
+    # by the new downloaded one.  Therefore, it gets mentioned in the
+    # remove list
+    # Using pkddnldsuccess != 0 as a test for download success, in order to accomodate for this value to be 1 or more
+    if ( (pkglocinfo == 'EXISTS_IN_EXT') and (pkgPRstatus != 'MERGED') and (pkgPRstatus != 'OPEN') and (pkgPRstatus != 'DRAFT') and (pkgdnldsuccess !=0) ):
+        if ( (pkgupgddecisionfinal == 'Y') or (pkgupgddecisionfinal == 'Revisit No Dnld Ver') or (pkgupgddecisionfinal == 'Revisit No Bld Ver') or (pkgupgddecisionfinal == 'Revisit Ver Compare')):
+            #print(func_nm_shrthnd() + f': Going to add {pkgnm}, PR status = {pkgPRstatus}, Final upgd decision = {pkgupgddecisionfinal}, package location {pkglocinfo}, download success = {pkgdnldsuccess}')
+            rem_list_fl.write(f'{pkgnm}\n');
+
+    # General Note: a package that is a "NEW_ADDITION" will not go into either the remove list or copy list.
+    # If the PR of this package has been merged then the corresponding directory will be there in SPECS-EXTENDED
+    # In that case we will just build this package
+    return 0
+
+def  upd_lst_of_copy_folders():
+    global copy_list_fl
+
+    #print(func_nm_shrthnd() + f': Entered for package name {pkgnm}, PR status = {pkgPRstatus}, Final upgd decision = {pkgupgddecisionfinal}, package location {pkglocinfo}, download success = {pkgdnldsuccess}\n')
+
+    # if a package exists only in ext and needs an upgrade and has not been merged and has 
+    # been downloaded successfully then its code needs to be replaced
+    # by the new downloaded one.  Therefore, it gets mentioned in the
+    # copy list
+    # Using pkddnldsuccess != 0 as a test for download success, in order to accomodate for this value to be 1 or more
+    if ( (pkglocinfo == 'EXISTS_IN_EXT') and (pkgPRstatus != 'MERGED') and (pkgPRstatus != 'OPEN') and (pkgPRstatus != 'DRAFT') and (pkgdnldsuccess !=0) ):
+        if ( (pkgupgddecisionfinal == 'Y') or (pkgupgddecisionfinal == 'Revisit No Dnld Ver') or (pkgupgddecisionfinal == 'Revisit No Bld Ver') or (pkgupgddecisionfinal == 'Revisit Ver Compare')):
+            # if the package name has not changed we mention the original
+            # name to the copy list
+            # Note that pkgnewnm as 'NA' means that the name has not changed
+            if (pkgnewnm == 'NA'):
+    #            print(func_nm_shrthnd() + f': Going to add {pkgnm}, PR status = {pkgPRstatus}, package location {pkglocinfo}, download success = {pkgdnldsuccess}\n')
+                copy_list_fl.write(f'{pkgnm}\n');
+            # if the package name has changed we need to mention the new
+            # name in the copy list
+            else:
+    #            print(func_nm_shrthnd() + f': Going to add {pkgnm}, PR status = {pkgPRstatus}, package location {pkglocinfo}, download success = {pkgdnldsuccess}\n')
+                copy_list_fl.write(f'{pkgnewnm}\n');
+
+    # General Note: a package that is a "NEW_ADDITION" will not go into either the remove list or copy list.
+    # If the PR of this package has been merged then the corresponding directory will be there in SPECS-EXTENDED
+    # In that case we will just build this package
+
+    return 0
+
+def upd_lst_of_topicbrnch_for_PRs():
+    global full_topicbrnch_fl
+    global pkgtpcbrnchorgn
+    global pkgtpcbrnch
+    global pkgnm
+
+    #print(func_nm_shrthnd() + f': Entered with pkgPRstatus = {pkgPRstatus}')
+    if ( (pkgPRstatus != 'MERGED') and (pkgPRstatus != 'NA')):
+        #write the repo origin and the topic branch of the PR to the topic branch file
+        full_topicbrnch_fl.write(f'{pkgnm},{pkgtpcbrnchorgn},{pkgtpcbrnch}\n');
+
+
+def upd_lst_of_build_pkgs():
+    global wkg_build_list_fl
+    global pkglocinfo
+
+    #print(func_nm_shrthnd() + f': Entered for package name {pkgnm}, new package name {pkgnewnm}, PR status = {pkgPRstatus}, package location {pkglocinfo}, download success = {pkgdnldsuccess}, working build list file = {WORKING_BUILD_LIST_FL}\n')
+
+    #if ( pkgnm == 'OpenEXR' ):
+        #print(func_nm_shrthnd() + f': Removing {pkgnm} from build list. Where package name {pkgnm}, new package name {pkgnewnm}, PR status = {pkgPRstatus}, package location {pkglocinfo}, download success = {pkgdnldsuccess}\n')
+        #sh_scr_result=subprocess.run([f'{GENERAL_UTILS_DIR}/rem_full_line_match', f'{pkgnm}', f'{WORKING_BUILD_LIST_FL}'], stdout=subprocess.PIPE)
+        #print(func_nm_shrthnd() + f': Replacing in build list. Where package name {pkgnm}, new package name {pkgnewnm}, PR status = {pkgPRstatus}, package location {pkglocinfo}, download success = {pkgdnldsuccess}\n')
+        #sh_scr_result=subprocess.run([f'{GENERAL_UTILS_DIR}/rep_full_line_a_by_b', f'{pkgnm}', f'{pkgnewnm}', f'{WORKING_BUILD_LIST_FL}'], stdout=subprocess.PIPE)
+    #return 0
+
+    # if a package has been moved to the core and no PR has yet been 
+    # merged for it then it must be removed from the build list
+    if ( (pkglocinfo == 'MOVED_TO_CORE') and (pkgPRstatus != 'MERGED') ):
+        #print(func_nm_shrthnd() + f': Removing from build list. Where package name {pkgnm}, new package name {pkgnewnm}, PR status = {pkgPRstatus}, package location {pkglocinfo}, download success = {pkgdnldsuccess}\n')
+        sh_scr_result=subprocess.run([f'{GENERAL_UTILS_DIR}/rem_full_line_match', f'{pkgnm}', f'{WORKING_BUILD_LIST_FL}'], stdout=subprocess.PIPE)
+    # if a package exists in both core and ext and no PR has yet been
+    # merged for it then it must be removed from the build list
+    elif ( (pkglocinfo == 'EXISTS_IN_BOTH') and (pkgPRstatus != 'MERGED') ):
+        #print(func_nm_shrthnd() + f': Removing from build list. Where package name {pkgnm}, new package name {pkgnewnm}, PR status = {pkgPRstatus}, package location {pkglocinfo}, download success = {pkgdnldsuccess}\n')
+        sh_scr_result=subprocess.run([f'{GENERAL_UTILS_DIR}/rem_full_line_match', f'{pkgnm}', f'{WORKING_BUILD_LIST_FL}'], stdout=subprocess.PIPE)
+    # if package exists only in ext and has not been merged and the
+    # there is a possibility of update to the build list.  Check for that.
+    elif ( (pkglocinfo == 'EXISTS_IN_EXT') and (pkgPRstatus != 'MERGED') ):
+        # if the package has been downloaded successfully and the name
+        # has changed then the old name would be present in the build list.
+        # There are three things possible with this old name in the build list:
+        # 1. It is removed from the build list
+        # 2. It is replaced by the new package name
+        # 3. It is left as is in the build list
+        # Note that 
+        #       pkgnewnm as 'NA' means that the name has not changed
+        #       Using pkddnldsuccess != 0 as a test for download success, because
+        #       this value could be 1 or more than 1.  0 indicates no srpms downloaded.  
+        #       non-zero would mean at least one srpm download was successful.
+        if ( (pkgdnldsuccess != 0) and (pkgnewnm != 'NA') ):
+            #print (func_nm_shrthnd() + f': The package {pkgnm} has a new name {pkgnewnm}')
+            p = Path(f'{CODE_DIR}/SPECS')
+            q = p/f'{pkgnewnm}'
+            #
+            # Scenario for the removal from the build list:
+            # =============================================
+            # If the package exists in the core (i.e. SPECS folder), with it's new name
+            # it means that the package has been moved to the core.  This therefore
+            # is the same as "MOVED_TO_CORE" case. Just that it was difficult to 
+            # detect as its new name had been moved to the core
+            # Therefore, we remove the package from build list.  It is present in 
+            # the build list with its old name.  Remove that.
+            # Note that this removal happens even when the package is not marked 
+            # for upgrade.
+            if (q.exists()):
+                #print (func_nm_shrthnd() + f'{pkgnewnm} found in core')
+                #print(func_nm_shrthnd() + f': Removing from build list. Where package name {pkgnm}, new package name {pkgnewnm}, PR status = {pkgPRstatus}, package location {pkglocinfo}, download success = {pkgdnldsuccess}')
+                sh_scr_result=subprocess.run([f'{GENERAL_UTILS_DIR}/rem_full_line_match', f'{pkgnm}', f'{WORKING_BUILD_LIST_FL}'], stdout=subprocess.PIPE)
+            #
+            # Scenario for replacing the old name by the new:
+            # ===============================================
+            # The new name of the package is not there in the core.  It means that 
+            # if the package needs to be upgraded then it is its new name and not
+            # the old name that will be built.
+            # In that case replace the old name by the new name in the build list.
+            else:
+                #print (func_nm_shrthnd() + f': {pkgnewnm} missing in core')
+                if ( (pkgupgddecisionfinal == 'Y') or (pkgupgddecisionfinal == 'Revisit No Dnld Ver') or (pkgupgddecisionfinal == 'Revisit No Bld Ver') or (pkgupgddecisionfinal == 'Revisit Ver Compare')):
+                    #print (func_nm_shrthnd() + f': {pkgnm}/{pkgnewnm} needs to be upgraded')
+                    #print(func_nm_shrthnd() + f': Replacing in build list. Where package name {pkgnm}, new package name {pkgnewnm}, PR status = {pkgPRstatus}, package location {pkglocinfo}, download success = {pkgdnldsuccess}')
+                    sh_scr_result=subprocess.run([f'{GENERAL_UTILS_DIR}/rep_full_line_a_by_b', f'{pkgnm}', f'{pkgnewnm}', f'{WORKING_BUILD_LIST_FL}'], stdout=subprocess.PIPE)
+                    strres = sh_scr_result.stdout.decode('utf-8')
+                    #print (func_nm_shrthnd() + f': result of {GENERAL_UTILS_DIR}/rep_full_line_a_by_b is \n{strres}')
+
+    # General Note: a package that is a "NEW_ADDITION" will not go into either the remove list or copy list.
+    # If the PR of this package has been merged then the corresponding directory will be there in SPECS-EXTENDED
+    # In that case we will just build this package
+
+
+    #SOME TESTING WHILE DEVELOPING THIS FUNCTION
+    #sh_scr_result=subprocess.run([f'{GENERAL_UTILS_DIR}/rep_full_line_a_by_b', 'GeoIP-GeoLite-data', 'GEOIIIOOOIP-GEOLITE-DATA', f'{WORKING_BUILD_LIST_FL}'], stdout=subprocess.PIPE)
+    #sh_scr_result=subprocess.run(['ls', '-ls', f'{GENERAL_UTILS_DIR}/rep_full_line_a_by_b', 'GeoIP-GeoLite-data', 'GEOIIIOOOIP-GEOLITE-DATA', f'{WORKING_BUILD_LIST_FL}'], stdout=subprocess.PIPE)
+    #strres = sh_scr_result.stdout.decode('utf-8')
+    #print (f'result of ls is \n{strres}')
+    
+    return 0
+
+def create_bld_list():
+    global starting_build_list_fl
+    global wkg_build_list_fl
+    #print (f'SPECS DIR is {SPECS_DIR}')
+    starting_build_list_fl = open(STARTING_BUILD_LIST_FL, 'w')
+    wkg_build_list_fl = open(WORKING_BUILD_LIST_FL, 'w')
+
+    sh_scr_result=subprocess.run(['ls', f'{SPECS_DIR}'], stdout=subprocess.PIPE)
+    #strres = (sh_scr_result.stdout.decode('utf-8')).rstrip()
+    strres = sh_scr_result.stdout.decode('utf-8')
+    #print (f'result of ls is {strres}')
+    starting_build_list_fl.write(f'{strres}\n');
+    wkg_build_list_fl.write(f'{strres}\n');
+    starting_build_list_fl.close()
+    wkg_build_list_fl.close()
+
+
+def main ():
+    global rem_list_fl
+    global copy_list_fl
+    global starting_build_list_fl
+    global wkg_build_list_fl
+    global full_topicbrnch_fl
+
+    rem_list_fl = open(REMOVE_LIST_FL, 'w')
+    copy_list_fl = open(COPY_LIST_FL, 'w')
+    full_topicbrnch_fl = open(FULL_TOPICBRNCH_FL, 'w')
+
+    create_bld_list()
+    extract_pkgdets_update_lists()
+
+
+    rem_list_fl.close()
+    copy_list_fl.close()
+    starting_build_list_fl.close()
+    wkg_build_list_fl.close()
+    full_topicbrnch_fl.close()
+
+    # post prepare application of overrides to the build list
+    sh_scr_result=subprocess.run([f'./build_list_override.sh', f'{WORKING_BUILD_LIST_FL}', f'{LIST_OVERRIDE_BY_ADD_FL}', f'{LIST_OVERRIDE_BY_REM_FL}'], stdout=subprocess.PIPE)
+
+
+if __name__ == '__main__':
+    main() 

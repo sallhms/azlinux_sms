@@ -1,0 +1,1322 @@
+On branch topic_bb11Mar
+Changes to be committed:
+  (use "git restore --staged <file>..." to unstage)
+	deleted:    SPECS-EXTENDED/OpenEXR/OpenEXR.signatures.json
+	deleted:    SPECS-EXTENDED/OpenEXR/OpenEXR.spec
+	deleted:    SPECS-EXTENDED/OpenEXR/openexr-2.3.0-bigendian.patch
+	deleted:    SPECS-EXTENDED/OpenEXR/openexr-2.3.0-tests.patch
+	deleted:    SPECS-EXTENDED/SDL/SDL-1.2.10-GrabNotViewable.patch
+	deleted:    SPECS-EXTENDED/SDL/SDL-1.2.12-multilib.patch
+	deleted:    SPECS-EXTENDED/SDL/SDL-1.2.15-CVE-2019-13616-validate_image_size_when_loading_BMP_files.patch
+	deleted:    SPECS-EXTENDED/SDL/SDL-1.2.15-CVE-2019-7572-Fix-a-buffer-overread-in-IMA_ADPCM_nib.patch
+	deleted:    SPECS-EXTENDED/SDL/SDL-1.2.15-CVE-2019-7572-Fix-a-buffer-overwrite-in-IMA_ADPCM_de.patch
+	deleted:    SPECS-EXTENDED/SDL/SDL-1.2.15-CVE-2019-7573-CVE-2019-7576-Fix-buffer-overreads-in-.patch
+	deleted:    SPECS-EXTENDED/SDL/SDL-1.2.15-CVE-2019-7574-Fix-a-buffer-overread-in-IMA_ADPCM_dec.patch
+	deleted:    SPECS-EXTENDED/SDL/SDL-1.2.15-CVE-2019-7575-Fix-a-buffer-overwrite-in-MS_ADPCM_dec.patch
+	deleted:    SPECS-EXTENDED/SDL/SDL-1.2.15-CVE-2019-7577-Fix-a-buffer-overread-in-MS_ADPCM_deco.patch
+	deleted:    SPECS-EXTENDED/SDL/SDL-1.2.15-CVE-2019-7577-Fix-a-buffer-overread-in-MS_ADPCM_nibb.patch
+	deleted:    SPECS-EXTENDED/SDL/SDL-1.2.15-CVE-2019-7578-Fix-a-buffer-overread-in-InitIMA_ADPCM.patch
+	deleted:    SPECS-EXTENDED/SDL/SDL-1.2.15-CVE-2019-7635-Reject-BMP-images-with-pixel-colors-ou.patch
+	deleted:    SPECS-EXTENDED/SDL/SDL-1.2.15-CVE-2019-7637-Fix-in-integer-overflow-in-SDL_Calcula.patch
+	deleted:    SPECS-EXTENDED/SDL/SDL-1.2.15-CVE-2019-7638-CVE-2019-7636-Refuse-loading-BMP-image.patch
+	deleted:    SPECS-EXTENDED/SDL/SDL-1.2.15-Fixed-bug-4108-Missing-break-statements-in-SDL_CDRes.patch
+	deleted:    SPECS-EXTENDED/SDL/SDL-1.2.15-Reject-2-3-5-6-7-bpp-BMP-images.patch
+	deleted:    SPECS-EXTENDED/SDL/SDL-1.2.15-SDL_EnableUNICODE_drops_keyboard_events.patch
+	deleted:    SPECS-EXTENDED/SDL/SDL-1.2.15-Use-system-glext.h.patch
+	deleted:    SPECS-EXTENDED/SDL/SDL-1.2.15-add_sdl_config_man.patch
+	deleted:    SPECS-EXTENDED/SDL/SDL-1.2.15-const_XData32.patch
+	deleted:    SPECS-EXTENDED/SDL/SDL-1.2.15-fix-small-errors-detected-by-coverity.patch
+	deleted:    SPECS-EXTENDED/SDL/SDL-1.2.15-fix_copy_paste_mistakes_in_commit_9b0e5c555c0f.patch
+	deleted:    SPECS-EXTENDED/SDL/SDL-1.2.15-ignore_insane_joystick_axis.patch
+	deleted:    SPECS-EXTENDED/SDL/SDL-1.2.15-no-default-backing-store.patch
+	deleted:    SPECS-EXTENDED/SDL/SDL-1.2.15-vec_perm-ppc64le.patch
+	deleted:    SPECS-EXTENDED/SDL/SDL.signatures.json
+	deleted:    SPECS-EXTENDED/SDL/SDL.spec
+	deleted:    SPECS-EXTENDED/SDL2/SDL2-2.0.22-prefer-wayland.patch
+	deleted:    SPECS-EXTENDED/SDL2/SDL2-2.0.9-khrplatform.patch
+	new file:   SPECS-EXTENDED/SDL2/SDL2-2.30.1-prefer-wayland.patch
+	deleted:    SPECS-EXTENDED/SDL2/SDL2.signatures.json
+	modified:   SPECS-EXTENDED/SDL2/SDL2.spec
+	modified:   SPECS-EXTENDED/SDL2/SDL_config.h
+	modified:   SPECS-EXTENDED/SDL2/SDL_revision.h
+	modified:   SPECS-EXTENDED/SDL2/multilib.patch
+	new file:   SPECS-EXTENDED/alsa-plugins/alsa-git.patch
+	deleted:    SPECS-EXTENDED/alsa-plugins/alsa-plugins.signatures.json
+	modified:   SPECS-EXTENDED/alsa-plugins/alsa-plugins.spec
+	deleted:    SPECS-EXTENDED/amtk/amtk.signatures.json
+	modified:   SPECS-EXTENDED/amtk/amtk.spec
+	deleted:    SPECS-EXTENDED/apache-commons-codec/apache-commons-codec-build.xml
+	deleted:    SPECS-EXTENDED/apache-commons-codec/apache-commons-codec.signatures.json
+	modified:   SPECS-EXTENDED/apache-commons-codec/apache-commons-codec.spec
+	modified:   SPECS-EXTENDED/apache-commons-codec/aspell-mail.txt
+	deleted:    SPECS-EXTENDED/apache-commons-codec/commons-codec-1.15-src.tar.gz.asc
+	deleted:    SPECS-EXTENDED/apache-commons-collections4/apache-commons-collections4.signatures.json
+	modified:   SPECS-EXTENDED/apache-commons-collections4/apache-commons-collections4.spec
+	deleted:    SPECS-EXTENDED/apache-commons-collections4/commons-collections4-4.1-bundle.patch
+	deleted:    SPECS-EXTENDED/apache-commons-collections4/commons-collections4-4.1-javadoc.patch
+	deleted:    SPECS-EXTENDED/apache-commons-collections4/commons-collections4-4.1-jdk11.patch
+	modified:   SPECS-EXTENDED/apache-commons-compress/0001-Remove-Brotli-compressor.patch
+	modified:   SPECS-EXTENDED/apache-commons-compress/0002-Remove-ZSTD-compressor.patch
+	new file:   SPECS-EXTENDED/apache-commons-compress/0003-Remove-Pack200-compressor.patch
+	deleted:    SPECS-EXTENDED/apache-commons-compress/apache-commons-compress-build.xml
+	deleted:    SPECS-EXTENDED/apache-commons-compress/apache-commons-compress.signatures.json
+	modified:   SPECS-EXTENDED/apache-commons-compress/apache-commons-compress.spec
+	deleted:    SPECS-EXTENDED/apache-commons-compress/commons-compress-1.19-src.tar.gz.asc
+	deleted:    SPECS-EXTENDED/apache-commons-compress/fix_java_8_compatibility.patch
+	deleted:    SPECS-EXTENDED/apache-commons-io/apache-commons-io-build.xml
+	deleted:    SPECS-EXTENDED/apache-commons-io/apache-commons-io.signatures.json
+	modified:   SPECS-EXTENDED/apache-commons-io/apache-commons-io.spec
+	deleted:    SPECS-EXTENDED/apache-commons-io/commons-io-2.14.0-src.tar.gz.asc
+	deleted:    SPECS-EXTENDED/apache-commons-jexl/0001-Port-to-current-javacc.patch
+	deleted:    SPECS-EXTENDED/apache-commons-jexl/001-Fix-tests.patch
+	new file:   SPECS-EXTENDED/apache-commons-jexl/KEYS
+	new file:   SPECS-EXTENDED/apache-commons-jexl/apache-commons-jexl-javacc.patch
+	modified:   SPECS-EXTENDED/apache-commons-jexl/apache-commons-jexl-javadoc.patch
+	deleted:    SPECS-EXTENDED/apache-commons-jexl/apache-commons-jexl.signatures.json
+	modified:   SPECS-EXTENDED/apache-commons-jexl/apache-commons-jexl.spec
+	deleted:    SPECS-EXTENDED/apache-commons-jexl/build.xml
+	deleted:    SPECS-EXTENDED/apache-commons-jexl/common.xml
+	new file:   SPECS-EXTENDED/apache-commons-jexl/commons-jexl-3.4.0-src.tar.gz.asc
+	deleted:    SPECS-EXTENDED/apache-commons-jexl/jexl2-compat-build.xml
+	new file:   SPECS-EXTENDED/apache-commons-net/KEYS
+	deleted:    SPECS-EXTENDED/apache-commons-net/apache-commons-net-build.xml
+	deleted:    SPECS-EXTENDED/apache-commons-net/apache-commons-net.signatures.json
+	modified:   SPECS-EXTENDED/apache-commons-net/apache-commons-net.spec
+	new file:   SPECS-EXTENDED/apache-commons-net/commons-net-3.11.0-src.tar.gz.asc
+	new file:   SPECS-EXTENDED/apache-commons-vfs/KEYS
+	new file:   SPECS-EXTENDED/apache-commons-vfs/apache-commons-vfs-httpclient.patch
+	new file:   SPECS-EXTENDED/apache-commons-vfs/apache-commons-vfs.spec
+	new file:   SPECS-EXTENDED/apache-commons-vfs/commons-vfs-2.9.0-src.tar.gz.asc
+	deleted:    SPECS-EXTENDED/apache-commons-vfs2/0001_exlcude_abstractclass_from_test.patch
+	deleted:    SPECS-EXTENDED/apache-commons-vfs2/0002_remove_ftpFile_providers.patch
+	deleted:    SPECS-EXTENDED/apache-commons-vfs2/apache-commons-vfs2.signatures.json
+	deleted:    SPECS-EXTENDED/apache-commons-vfs2/apache-commons-vfs2.spec
+	deleted:    SPECS-EXTENDED/apache-commons-vfs2/build.xml
+	deleted:    SPECS-EXTENDED/apache-commons-vfs2/common.xml
+	deleted:    SPECS-EXTENDED/apache-commons-vfs2/commons-vfs2-build.xml
+	deleted:    SPECS-EXTENDED/apache-commons-vfs2/commons-vfs2-examples-build.xml
+	new file:   SPECS-EXTENDED/arpwatch/arp2ethers.8
+	deleted:    SPECS-EXTENDED/arpwatch/arpwatch-2.1a10-man.patch
+	deleted:    SPECS-EXTENDED/arpwatch/arpwatch-2.1a15-bogon.patch
+	deleted:    SPECS-EXTENDED/arpwatch/arpwatch-2.1a15-buffer-overflow-bz1563939.patch
+	deleted:    SPECS-EXTENDED/arpwatch/arpwatch-2.1a15-devlookup.patch
+	deleted:    SPECS-EXTENDED/arpwatch/arpwatch-2.1a15-dropgroup.patch
+	deleted:    SPECS-EXTENDED/arpwatch/arpwatch-2.1a15-extraman.patch
+	deleted:    SPECS-EXTENDED/arpwatch/arpwatch-2.1a15-lookupiselect.patch
+	deleted:    SPECS-EXTENDED/arpwatch/arpwatch-2.1a15-nolocalpcap.patch
+	deleted:    SPECS-EXTENDED/arpwatch/arpwatch-2.1a4-fhs.patch
+	deleted:    SPECS-EXTENDED/arpwatch/arpwatch-201301-ethcodes.patch
+	new file:   SPECS-EXTENDED/arpwatch/arpwatch-3.1-all-zero-bogon.patch
+	new file:   SPECS-EXTENDED/arpwatch/arpwatch-3.1-arp2ethers-sort-invocation.patch
+	new file:   SPECS-EXTENDED/arpwatch/arpwatch-3.1-arpfetch-stray-rm.patch
+	new file:   SPECS-EXTENDED/arpwatch/arpwatch-3.1-configure-no-local-pcap.patch
+	new file:   SPECS-EXTENDED/arpwatch/arpwatch-3.1-man-references.patch
+	new file:   SPECS-EXTENDED/arpwatch/arpwatch-3.2-change-user.patch
+	new file:   SPECS-EXTENDED/arpwatch/arpwatch-3.2-no-usr-local-path.patch
+	new file:   SPECS-EXTENDED/arpwatch/arpwatch-3.3-c99.patch
+	new file:   SPECS-EXTENDED/arpwatch/arpwatch-3.5-devlookup.patch
+	new file:   SPECS-EXTENDED/arpwatch/arpwatch-3.5-exitcode.patch
+	deleted:    SPECS-EXTENDED/arpwatch/arpwatch-LICENSE.txt
+	deleted:    SPECS-EXTENDED/arpwatch/arpwatch-aarch64.patch
+	deleted:    SPECS-EXTENDED/arpwatch/arpwatch-addr.patch
+	deleted:    SPECS-EXTENDED/arpwatch/arpwatch-dir-man.patch
+	deleted:    SPECS-EXTENDED/arpwatch/arpwatch-drop-man.patch
+	deleted:    SPECS-EXTENDED/arpwatch/arpwatch-drop.patch
+	deleted:    SPECS-EXTENDED/arpwatch/arpwatch-exitcode.patch
+	deleted:    SPECS-EXTENDED/arpwatch/arpwatch-pie.patch
+	deleted:    SPECS-EXTENDED/arpwatch/arpwatch-promisc.patch
+	deleted:    SPECS-EXTENDED/arpwatch/arpwatch-scripts.patch
+	modified:   SPECS-EXTENDED/arpwatch/arpwatch.service
+	deleted:    SPECS-EXTENDED/arpwatch/arpwatch.signatures.json
+	modified:   SPECS-EXTENDED/arpwatch/arpwatch.spec
+	new file:   SPECS-EXTENDED/arpwatch/arpwatch.sysconfig
+	new file:   SPECS-EXTENDED/arpwatch/arpwatch.sysusers
+	new file:   SPECS-EXTENDED/arpwatch/massagevendor.8
+	new file:   SPECS-EXTENDED/arpwatch/oui.csv
+	deleted:    SPECS-EXTENDED/aspell-en/aspell-en.signatures.json
+	modified:   SPECS-EXTENDED/aspell-en/aspell-en.spec
+	deleted:    SPECS-EXTENDED/bcel/bcel-5.2-encoding.patch
+	deleted:    SPECS-EXTENDED/bcel/bcel-5.2-src.tar.gz.asc
+	deleted:    SPECS-EXTENDED/bcel/bcel-5.2.pom
+	deleted:    SPECS-EXTENDED/bcel/bcel.keyring
+	deleted:    SPECS-EXTENDED/bcel/bcel.signatures.json
+	modified:   SPECS-EXTENDED/bcel/bcel.spec
+	deleted:    SPECS-EXTENDED/booth/CVE-2022-2553.patch
+	deleted:    SPECS-EXTENDED/booth/booth.signatures.json
+	modified:   SPECS-EXTENDED/booth/booth.spec
+	deleted:    SPECS-EXTENDED/breezy/breezy-3.0.2.tar.gz.asc
+	new file:   SPECS-EXTENDED/breezy/breezy-3.3.8.tar.gz.asc
+	deleted:    SPECS-EXTENDED/breezy/breezy.signatures.json
+	modified:   SPECS-EXTENDED/breezy/breezy.spec
+	modified:   SPECS-EXTENDED/breezy/brz-icon-64.png
+	deleted:    SPECS-EXTENDED/buildah/CVE-2022-2990.patch
+	deleted:    SPECS-EXTENDED/buildah/buildah.signatures.json
+	modified:   SPECS-EXTENDED/buildah/buildah.spec
+	new file:   SPECS-EXTENDED/cdrdao/21.patch
+	deleted:    SPECS-EXTENDED/cdrdao/cdrdao-1.2.4-ax_pthread.patch
+	deleted:    SPECS-EXTENDED/cdrdao/cdrdao-1.2.4-wformat-security.patch
+	new file:   SPECS-EXTENDED/cdrdao/cdrdao-1.2.5-Fix-version-command.patch
+	deleted:    SPECS-EXTENDED/cdrdao/cdrdao.signatures.json
+	modified:   SPECS-EXTENDED/cdrdao/cdrdao.spec
+	new file:   SPECS-EXTENDED/cglib/0001-Remove-unused-import.patch
+	deleted:    SPECS-EXTENDED/cglib/cglib.signatures.json
+	modified:   SPECS-EXTENDED/cglib/cglib.spec
+	renamed:    SPECS-EXTENDED/cjkuni-uming-fonts/cjkuni-uming-fonts-fontconfig.conf -> SPECS-EXTENDED/cjkuni-uming-fonts/65-cjkuni-uming-fonts.conf
+	renamed:    SPECS-EXTENDED/cjkuni-uming-fonts/90-ttf-arphic-uming-embolden.conf -> SPECS-EXTENDED/cjkuni-uming-fonts/90-cjkuni-uming-fonts-embolden.conf
+	deleted:    SPECS-EXTENDED/cjkuni-uming-fonts/cjkuni-uming-fonts.signatures.json
+	modified:   SPECS-EXTENDED/cjkuni-uming-fonts/cjkuni-uming-fonts.spec
+	deleted:    SPECS-EXTENDED/containernetworking-plugins/containernetworking-plugins.signatures.json
+	modified:   SPECS-EXTENDED/containernetworking-plugins/containernetworking-plugins.spec
+	deleted:    SPECS-EXTENDED/corosync-qdevice/corosync-qdevice.signatures.json
+	modified:   SPECS-EXTENDED/corosync-qdevice/corosync-qdevice.spec
+	deleted:    SPECS-EXTENDED/cppcheck/cppcheck-1.88-htmlreport-python3.patch
+	renamed:    SPECS-EXTENDED/cppcheck/cppcheck-2.2-translations.patch -> SPECS-EXTENDED/cppcheck/cppcheck-2.11-translations.patch
+	deleted:    SPECS-EXTENDED/cppcheck/cppcheck-2.7-disable-test-testmathlib-tostring.patch
+	deleted:    SPECS-EXTENDED/cppcheck/cppcheck-2.7-tinyxml2.patch
+	deleted:    SPECS-EXTENDED/cppcheck/cppcheck.signatures.json
+	modified:   SPECS-EXTENDED/cppcheck/cppcheck.spec
+	new file:   SPECS-EXTENDED/criu/Makefile.config-set-CR_PLUGIN_DEFAULT-variable.patch
+	modified:   SPECS-EXTENDED/criu/criu-tmpfiles.conf
+	new file:   SPECS-EXTENDED/criu/criu.pc.patch
+	deleted:    SPECS-EXTENDED/criu/criu.signatures.json
+	modified:   SPECS-EXTENDED/criu/criu.spec
+	deleted:    SPECS-EXTENDED/criu/unifying_struct_names.patch
+	deleted:    SPECS-EXTENDED/crypto-policies/crypto-policies.signatures.json
+	modified:   SPECS-EXTENDED/crypto-policies/crypto-policies.spec
+	deleted:    SPECS-EXTENDED/dbxtool/0001-don-t-use-f-in-dbxtool.service.patch
+	deleted:    SPECS-EXTENDED/dbxtool/0002-Make-quiet-exit-on-missing-PK-KEK-not-return-error-s.patch
+	deleted:    SPECS-EXTENDED/dbxtool/0003-fix-relop-in-esl_iter_next.patch
+	deleted:    SPECS-EXTENDED/dbxtool/0004-Make-dbxtool.service-not-run-on-live-images.patch
+	deleted:    SPECS-EXTENDED/dbxtool/dbxtool-8-ccldflags.patch
+	deleted:    SPECS-EXTENDED/dbxtool/dbxtool.signatures.json
+	deleted:    SPECS-EXTENDED/dbxtool/dbxtool.spec
+	new file:   SPECS-EXTENDED/device-mapper-persistent-data/0001-Tweak-cargo.toml-to-work-with-vendor-directory.patch
+	new file:   SPECS-EXTENDED/device-mapper-persistent-data/0002-tests-Explicitly-set-the-pipe-size-for-triggering-EP.patch
+	new file:   SPECS-EXTENDED/device-mapper-persistent-data/0003-tests-Fix-closing-the-pipe-fd-twice.patch
+	deleted:    SPECS-EXTENDED/device-mapper-persistent-data/device-mapper-persistent-data-avoid-strip.patch
+	deleted:    SPECS-EXTENDED/device-mapper-persistent-data/device-mapper-persistent-data.signatures.json
+	modified:   SPECS-EXTENDED/device-mapper-persistent-data/device-mapper-persistent-data.spec
+	deleted:    SPECS-EXTENDED/dleyna-connector-dbus/dleyna-connector-dbus.signatures.json
+	deleted:    SPECS-EXTENDED/dleyna-connector-dbus/dleyna-connector-dbus.spec
+	new file:   SPECS-EXTENDED/dleyna/dleyna.spec
+	modified:   SPECS-EXTENDED/dmraid/avoid_register.patch
+	modified:   SPECS-EXTENDED/dmraid/bz626417_19-enabling_registration_degraded_volume.patch
+	modified:   SPECS-EXTENDED/dmraid/bz626417_20-cleanup_some_compilation_warning.patch
+	modified:   SPECS-EXTENDED/dmraid/bz626417_21-add_option_that_postpones_any_metadata_updates.patch
+	modified:   SPECS-EXTENDED/dmraid/bz635995-data_corruption_during_activation_volume_marked_for_rebuild.patch
+	modified:   SPECS-EXTENDED/dmraid/ddf1_lsi_persistent_name.patch
+	deleted:    SPECS-EXTENDED/dmraid/dmraid-1.0.0.rc16-test_devices.patch
+	modified:   SPECS-EXTENDED/dmraid/dmraid-activation.service
+	new file:   SPECS-EXTENDED/dmraid/dmraid-c99.patch
+	modified:   SPECS-EXTENDED/dmraid/dmraid-fix-build-to-honour-cflags-var.patch
+	modified:   SPECS-EXTENDED/dmraid/dmraid-fix-destdir.patch
+	modified:   SPECS-EXTENDED/dmraid/dmraid-fix-errors-and-warnings-triggered-by-CFLAGS.patch
+	modified:   SPECS-EXTENDED/dmraid/dmraid-fix-missing-destdir.patch
+	modified:   SPECS-EXTENDED/dmraid/dmraid-fix-so-flags.patch
+	new file:   SPECS-EXTENDED/dmraid/dmraid-use-modern-run-lock-dir.patch
+	deleted:    SPECS-EXTENDED/dmraid/dmraid.signatures.json
+	modified:   SPECS-EXTENDED/dmraid/dmraid.spec
+	modified:   SPECS-EXTENDED/dmraid/fedora-dmraid-activation
+	modified:   SPECS-EXTENDED/dmraid/fix_sil_jbod.patch
+	modified:   SPECS-EXTENDED/dmraid/libversion-display.patch
+	modified:   SPECS-EXTENDED/dmraid/libversion.patch
+	modified:   SPECS-EXTENDED/dmraid/move_pattern_file_to_var.patch
+	modified:   SPECS-EXTENDED/dmraid/pdc_raid10_failure.patch
+	modified:   SPECS-EXTENDED/dmraid/return_error_wo_disks.patch
+	new file:   SPECS-EXTENDED/dyninst/dwarf-error.patch
+	deleted:    SPECS-EXTENDED/dyninst/dyninst-10.1.0-aarch-regs.patch
+	deleted:    SPECS-EXTENDED/dyninst/dyninst-10.1.0-result.patch
+	new file:   SPECS-EXTENDED/dyninst/dyninst-cmake3.27.patch
+	deleted:    SPECS-EXTENDED/dyninst/dyninst.signatures.json
+	modified:   SPECS-EXTENDED/dyninst/dyninst.spec
+	deleted:    SPECS-EXTENDED/dyninst/gcc-11-fix.patch
+	new file:   SPECS-EXTENDED/dyninst/onetbb.patch
+	deleted:    SPECS-EXTENDED/dyninst/testsuite-10.1.0-386.patch
+	deleted:    SPECS-EXTENDED/dyninst/testsuite-10.1.0-gettid.patch
+	renamed:    SPECS-EXTENDED/ecj/ecj-rpmdebuginfo.patch -> SPECS-EXTENDED/ecj/0001-Always-generate-bytecode-debuginfo.patch
+	modified:   SPECS-EXTENDED/ecj/MANIFEST.MF
+	renamed:    SPECS-EXTENDED/ecj/ecj-3.18.0.pom -> SPECS-EXTENDED/ecj/ecj-3.29.0.pom
+	deleted:    SPECS-EXTENDED/ecj/ecj-encoding.patch
+	deleted:    SPECS-EXTENDED/ecj/ecj.signatures.json
+	modified:   SPECS-EXTENDED/ecj/ecj.spec
+	deleted:    SPECS-EXTENDED/ecj/java10api.pom
+	deleted:    SPECS-EXTENDED/ecj/jdk10u-jdk8compat.patch
+	modified:   SPECS-EXTENDED/efax/efax-0.9-config.patch
+	modified:   SPECS-EXTENDED/efax/efax-0.9-manpage.patch
+	modified:   SPECS-EXTENDED/efax/efax-0.9-misc.patch
+	modified:   SPECS-EXTENDED/efax/efax-0.9-msg-va_list.patch
+	modified:   SPECS-EXTENDED/efax/efax-0.9-nullptr.patch
+	modified:   SPECS-EXTENDED/efax/efax-0.9-numlines.patch
+	modified:   SPECS-EXTENDED/efax/efax-0.9-pdf.patch
+	modified:   SPECS-EXTENDED/efax/efax-0.9-quote.patch
+	modified:   SPECS-EXTENDED/efax/efax-0.9-viewcmd.patch
+	modified:   SPECS-EXTENDED/efax/efax-0.9a-001114-crash.patch
+	modified:   SPECS-EXTENDED/efax/efax-0.9a-001114-format-security.patch
+	modified:   SPECS-EXTENDED/efax/efax-0.9a-001114-multiple-definition.patch
+	deleted:    SPECS-EXTENDED/efax/efax.signatures.json
+	modified:   SPECS-EXTENDED/efax/efax.spec
+	modified:   SPECS-EXTENDED/efax/efax08a-time.patch
+	modified:   SPECS-EXTENDED/efax/logrotate-efax
+	modified:   SPECS-EXTENDED/elinks/0000-elinks-0.15.0-ssl-noegd.patch
+	modified:   SPECS-EXTENDED/elinks/0001-elinks-0.15.1-utf_8_io-default.patch
+	modified:   SPECS-EXTENDED/elinks/0004-elinks-0.15.0-sysname.patch
+	modified:   SPECS-EXTENDED/elinks/0005-elinks-0.15.0-xterm.patch
+	deleted:    SPECS-EXTENDED/elinks/0006-elinks-0.16.0-libidn2.patch
+	modified:   SPECS-EXTENDED/elinks/elinks-0.11.0-getaddrinfo.patch
+	modified:   SPECS-EXTENDED/elinks/elinks-0.12pre6-list_is_singleton.patch
+	modified:   SPECS-EXTENDED/elinks/elinks.conf
+	deleted:    SPECS-EXTENDED/elinks/elinks.signatures.json
+	modified:   SPECS-EXTENDED/elinks/elinks.spec
+	new file:   SPECS-EXTENDED/fence-agents/fence-agents.spec
+	deleted:    SPECS-EXTENDED/fence-virt/fence-virt.signatures.json
+	deleted:    SPECS-EXTENDED/fence-virt/fence-virt.spec
+	modified:   SPECS-EXTENDED/fwupd/fwupd.spec
+	deleted:    SPECS-EXTENDED/gcr/gcr.signatures.json
+	modified:   SPECS-EXTENDED/gcr/gcr.spec
+	new file:   SPECS-EXTENDED/gdal/PROVENANCE.TXT-fedora
+	modified:   SPECS-EXTENDED/gdal/cpl-config.h
+	new file:   SPECS-EXTENDED/gdal/gdal-cleaner.sh
+	modified:   SPECS-EXTENDED/gdal/gdal-config
+	deleted:    SPECS-EXTENDED/gdal/gdal.signatures.json
+	modified:   SPECS-EXTENDED/gdal/gdal.spec
+	new file:   SPECS-EXTENDED/gdal/gdal_incompatible-pointer-types.patch
+	modified:   SPECS-EXTENDED/gdal/gdal_utils.patch
+	deleted:    SPECS-EXTENDED/gnome-keyring/gnome-keyring.signatures.json
+	modified:   SPECS-EXTENDED/gnome-keyring/gnome-keyring.spec
+	deleted:    SPECS-EXTENDED/google-noto-cjk-fonts/genfontconf.sh
+	deleted:    SPECS-EXTENDED/google-noto-cjk-fonts/google-noto-cjk-fonts.signatures.json
+	deleted:    SPECS-EXTENDED/google-noto-cjk-fonts/google-noto-cjk-fonts.spec
+	deleted:    SPECS-EXTENDED/google-noto-emoji-fonts/google-noto-emoji-color.metainfo.xml
+	deleted:    SPECS-EXTENDED/google-noto-emoji-fonts/google-noto-emoji-fonts.signatures.json
+	modified:   SPECS-EXTENDED/google-noto-emoji-fonts/google-noto-emoji-fonts.spec
+	deleted:    SPECS-EXTENDED/google-noto-emoji-fonts/google-noto-emoji.metainfo.xml
+	modified:   SPECS-EXTENDED/google-noto-emoji-fonts/noto-emoji-build-all-flags.patch
+	deleted:    SPECS-EXTENDED/google-noto-emoji-fonts/noto-emoji-check-sequence.patch
+	modified:   SPECS-EXTENDED/google-noto-emoji-fonts/noto-emoji-use-gm.patch
+	modified:   SPECS-EXTENDED/google-noto-emoji-fonts/noto-emoji-use-system-pngquant.patch
+	renamed:    SPECS-EXTENDED/google-noto-cjk-fonts/65-google-noto-cjk-fonts.conf -> SPECS-EXTENDED/google-noto-sans-cjk-vf-fonts/65-google-noto-sans-cjk-vf-fonts.conf
+	new file:   SPECS-EXTENDED/google-noto-sans-cjk-vf-fonts/65-google-noto-sans-mono-cjk-vf-fonts.conf
+	renamed:    SPECS-EXTENDED/google-noto-cjk-fonts/genfontconf.py -> SPECS-EXTENDED/google-noto-sans-cjk-vf-fonts/genfontconf.py
+	new file:   SPECS-EXTENDED/google-noto-sans-cjk-vf-fonts/google-noto-sans-cjk-vf-fonts.spec
+	modified:   SPECS-EXTENDED/gpsbabel/0002-No-solicitation.patch
+	modified:   SPECS-EXTENDED/gpsbabel/gpsbabel.png
+	deleted:    SPECS-EXTENDED/gpsbabel/gpsbabel.signatures.json
+	modified:   SPECS-EXTENDED/gpsbabel/gpsbabel.spec
+	deleted:    SPECS-EXTENDED/hawtjni-runtime/hawtjni-runtime.signatures.json
+	deleted:    SPECS-EXTENDED/hawtjni-runtime/hawtjni-runtime.spec
+	new file:   SPECS-EXTENDED/hawtjni/00-hawtjni-port-to-commons-lang3.patch
+	new file:   SPECS-EXTENDED/hawtjni/hawtjni.spec
+	new file:   SPECS-EXTENDED/httpcomponents-core/0001-Port-to-mockito-2.patch
+	new file:   SPECS-EXTENDED/httpcomponents-core/0002-Port-to-Mockito-5.patch
+	deleted:    SPECS-EXTENDED/httpcomponents-core/httpcomponents-core-java8compat.patch
+	deleted:    SPECS-EXTENDED/httpcomponents-core/httpcomponents-core.signatures.json
+	modified:   SPECS-EXTENDED/httpcomponents-core/httpcomponents-core.spec
+	deleted:    SPECS-EXTENDED/hunspell-ca/hunspell-ca.signatures.json
+	modified:   SPECS-EXTENDED/hunspell-ca/hunspell-ca.spec
+	deleted:    SPECS-EXTENDED/hunspell-de/hunspell-de.signatures.json
+	modified:   SPECS-EXTENDED/hunspell-de/hunspell-de.spec
+	new file:   SPECS-EXTENDED/hunspell-es/es_AR.oxt
+	new file:   SPECS-EXTENDED/hunspell-es/es_BO.oxt
+	new file:   SPECS-EXTENDED/hunspell-es/es_CL.oxt
+	new file:   SPECS-EXTENDED/hunspell-es/es_CO.oxt
+	new file:   SPECS-EXTENDED/hunspell-es/es_CR.oxt
+	new file:   SPECS-EXTENDED/hunspell-es/es_CU.oxt
+	new file:   SPECS-EXTENDED/hunspell-es/es_DO.oxt
+	new file:   SPECS-EXTENDED/hunspell-es/es_EC.oxt
+	new file:   SPECS-EXTENDED/hunspell-es/es_ES.oxt
+	new file:   SPECS-EXTENDED/hunspell-es/es_GQ.oxt
+	new file:   SPECS-EXTENDED/hunspell-es/es_GT.oxt
+	new file:   SPECS-EXTENDED/hunspell-es/es_HN.oxt
+	new file:   SPECS-EXTENDED/hunspell-es/es_MX.oxt
+	new file:   SPECS-EXTENDED/hunspell-es/es_NI.oxt
+	new file:   SPECS-EXTENDED/hunspell-es/es_PA.oxt
+	new file:   SPECS-EXTENDED/hunspell-es/es_PE.oxt
+	new file:   SPECS-EXTENDED/hunspell-es/es_PR.oxt
+	new file:   SPECS-EXTENDED/hunspell-es/es_PY.oxt
+	new file:   SPECS-EXTENDED/hunspell-es/es_SV.oxt
+	new file:   SPECS-EXTENDED/hunspell-es/es_US.oxt
+	new file:   SPECS-EXTENDED/hunspell-es/es_UY.oxt
+	new file:   SPECS-EXTENDED/hunspell-es/es_VE.oxt
+	deleted:    SPECS-EXTENDED/hunspell-es/hunspell-es.signatures.json
+	modified:   SPECS-EXTENDED/hunspell-es/hunspell-es.spec
+	deleted:    SPECS-EXTENDED/hunspell-ru/hunspell-ru.signatures.json
+	modified:   SPECS-EXTENDED/hunspell-ru/hunspell-ru.spec
+	deleted:    SPECS-EXTENDED/ibus-chewing/ibus-chewing-1799517-no-gob2.patch
+	new file:   SPECS-EXTENDED/ibus-chewing/ibus-chewing-2.1.2-Source.tar.xz.minisig
+	deleted:    SPECS-EXTENDED/ibus-chewing/ibus-chewing.signatures.json
+	modified:   SPECS-EXTENDED/ibus-chewing/ibus-chewing.spec
+	modified:   SPECS-EXTENDED/ibus-hangul/ibus-hangul-setup-abspath.patch
+	deleted:    SPECS-EXTENDED/ibus-hangul/ibus-hangul.signatures.json
+	modified:   SPECS-EXTENDED/ibus-hangul/ibus-hangul.spec
+	deleted:    SPECS-EXTENDED/ibus-libzhuyin/ibus-libzhuyin.signatures.json
+	modified:   SPECS-EXTENDED/ibus-libzhuyin/ibus-libzhuyin.spec
+	deleted:    SPECS-EXTENDED/ibus-m17n/ibus-m17n.signatures.json
+	modified:   SPECS-EXTENDED/ibus-m17n/ibus-m17n.spec
+	deleted:    SPECS-EXTENDED/ibus-table-chinese/ibus-table-chinese.signatures.json
+	modified:   SPECS-EXTENDED/ibus-table-chinese/ibus-table-chinese.spec
+	deleted:    SPECS-EXTENDED/ibus-table/ibus-table.signatures.json
+	modified:   SPECS-EXTENDED/ibus-table/ibus-table.spec
+	modified:   SPECS-EXTENDED/ibus/ibus-1385349-segv-bus-proxy.patch
+	deleted:    SPECS-EXTENDED/ibus/ibus-HEAD.patch
+	modified:   SPECS-EXTENDED/ibus/ibus-xinput
+	modified:   SPECS-EXTENDED/ibus/ibus.conf.5
+	deleted:    SPECS-EXTENDED/ibus/ibus.signatures.json
+	modified:   SPECS-EXTENDED/ibus/ibus.spec
+	new file:   SPECS-EXTENDED/ibus/ibus.tar.gz.sum
+	deleted:    SPECS-EXTENDED/iio-sensor-proxy/iio-sensor-proxy.signatures.json
+	modified:   SPECS-EXTENDED/iio-sensor-proxy/iio-sensor-proxy.spec
+	deleted:    SPECS-EXTENDED/imaptest/imaptest.signatures.json
+	modified:   SPECS-EXTENDED/imaptest/imaptest.spec
+	new file:   SPECS-EXTENDED/jansi/generate-tarball.sh
+	deleted:    SPECS-EXTENDED/jansi/jansi-build.xml
+	modified:   SPECS-EXTENDED/jansi/jansi-jni.patch
+	deleted:    SPECS-EXTENDED/jansi/jansi.signatures.json
+	modified:   SPECS-EXTENDED/jansi/jansi.spec
+	new file:   SPECS-EXTENDED/javacc/0001-Fix-javadoc-errors-in-JavaCharStream.template.patch
+	deleted:    SPECS-EXTENDED/javacc/javacc-bootstrap.signatures.json
+	deleted:    SPECS-EXTENDED/javacc/javacc-bootstrap.spec
+	deleted:    SPECS-EXTENDED/javacc/javacc.signatures.json
+	modified:   SPECS-EXTENDED/javacc/javacc.spec
+	deleted:    SPECS-EXTENDED/jdepend/jdepend-2.9.1.pom
+	deleted:    SPECS-EXTENDED/jdepend/jdepend-target16.patch
+	deleted:    SPECS-EXTENDED/jdepend/jdepend.signatures.json
+	modified:   SPECS-EXTENDED/jdepend/jdepend.spec
+	deleted:    SPECS-EXTENDED/jimtcl/jimtcl-fix_doc_paths.patch
+	deleted:    SPECS-EXTENDED/jimtcl/jimtcl.signatures.json
+	modified:   SPECS-EXTENDED/jimtcl/jimtcl.spec
+	deleted:    SPECS-EXTENDED/jline/jline-build.xml
+	deleted:    SPECS-EXTENDED/jline/jline-jansi2.patch
+	deleted:    SPECS-EXTENDED/jline/jline-java8compat.patch
+	new file:   SPECS-EXTENDED/jline/jline-native-arches.patch
+	deleted:    SPECS-EXTENDED/jline/jline.signatures.json
+	modified:   SPECS-EXTENDED/jline/jline.spec
+	deleted:    SPECS-EXTENDED/jose/jose.signatures.json
+	modified:   SPECS-EXTENDED/jose/jose.spec
+	modified:   SPECS-EXTENDED/jsoup/generate-tarball.sh
+	deleted:    SPECS-EXTENDED/jsoup/jsoup-build.xml
+	deleted:    SPECS-EXTENDED/jsoup/jsoup.signatures.json
+	modified:   SPECS-EXTENDED/jsoup/jsoup.spec
+	deleted:    SPECS-EXTENDED/kronosnet/kronosnet.signatures.json
+	modified:   SPECS-EXTENDED/kronosnet/kronosnet.spec
+	deleted:    SPECS-EXTENDED/libappstream-glib/libappstream-glib.signatures.json
+	modified:   SPECS-EXTENDED/libappstream-glib/libappstream-glib.spec
+	new file:   SPECS-EXTENDED/libchewing/0001-Delete-unused-optional-dependencies.patch
+	deleted:    SPECS-EXTENDED/libchewing/0001-chewing.py-supports-platforms-with-64bit-pointer.patch
+	new file:   SPECS-EXTENDED/libchewing/libchewing-0.9.1.tar.zst
+	new file:   SPECS-EXTENDED/libchewing/libchewing-0.9.1.tar.zst.asc
+	new file:   SPECS-EXTENDED/libchewing/libchewing.pgp
+	deleted:    SPECS-EXTENDED/libchewing/libchewing.signatures.json
+	modified:   SPECS-EXTENDED/libchewing/libchewing.spec
+	deleted:    SPECS-EXTENDED/libetonyek/0001-glm-force-dmat3-initialization-needed-from-v0.9.9.0.patch
+	deleted:    SPECS-EXTENDED/libetonyek/libetonyek.signatures.json
+	modified:   SPECS-EXTENDED/libetonyek/libetonyek.spec
+	deleted:    SPECS-EXTENDED/libgeotiff/libgeotiff.signatures.json
+	modified:   SPECS-EXTENDED/libgeotiff/libgeotiff.spec
+	modified:   SPECS-EXTENDED/libgeotiff/libgeotiff_cmake.patch
+	deleted:    SPECS-EXTENDED/libgit2-glib/20.patch
+	deleted:    SPECS-EXTENDED/libgit2-glib/22.patch
+	new file:   SPECS-EXTENDED/libgit2-glib/libgit2-1.8.x.patch
+	deleted:    SPECS-EXTENDED/libgit2-glib/libgit2-glib.signatures.json
+	modified:   SPECS-EXTENDED/libgit2-glib/libgit2-glib.spec
+	deleted:    SPECS-EXTENDED/libimobiledevice/a7568f456d10f1aff61534e3216201a857865247...9b857fc42cdc4921e1e3f190c5ea907774e04758.patch
+	deleted:    SPECS-EXTENDED/libimobiledevice/libimobiledevice.signatures.json
+	modified:   SPECS-EXTENDED/libimobiledevice/libimobiledevice.spec
+	deleted:    SPECS-EXTENDED/libldb/0001-PATCH-wafsamba-Fix-few-SyntaxWarnings-caused-by-regu.patch
+	deleted:    SPECS-EXTENDED/libldb/ldb-2.1.4.tar.asc
+	new file:   SPECS-EXTENDED/libldb/ldb-2.9.1.tar.asc
+	new file:   SPECS-EXTENDED/libldb/ldb.keyring
+	deleted:    SPECS-EXTENDED/libldb/libldb-LICENSE.txt
+	new file:   SPECS-EXTENDED/libldb/libldb-fix-indexes-performance.patch
+	deleted:    SPECS-EXTENDED/libldb/libldb.signatures.json
+	modified:   SPECS-EXTENDED/libldb/libldb.spec
+	new file:   SPECS-EXTENDED/libmpcdec/0001-changes-a-seeking-behavior-that-confused-some-people.patch
+	new file:   SPECS-EXTENDED/libmpcdec/0002-removed-some-gcc-warnings-and-compilation-issues.patch
+	new file:   SPECS-EXTENDED/libmpcdec/0003-prevent-endless-loops.patch
+	new file:   SPECS-EXTENDED/libmpcdec/0004-add-extern-keyword-to-global-variable-declaration-do.patch
+	new file:   SPECS-EXTENDED/libmpcdec/0005-add-raw-output-to-mpcdec-not-really-tested.patch
+	new file:   SPECS-EXTENDED/libmpcdec/0008-FSF-address-change.patch
+	new file:   SPECS-EXTENDED/libmpcdec/0011-removed-some-new-gcc-warnings.patch
+	new file:   SPECS-EXTENDED/libmpcdec/0012-mpcenc-remove-compilation-error-and-a-warning.patch
+	new file:   SPECS-EXTENDED/libmpcdec/0013-mpc2sv8-fix-a-segfault-caused-by-commit-r476.patch
+	deleted:    SPECS-EXTENDED/libmpcdec/libmpcdec.signatures.json
+	modified:   SPECS-EXTENDED/libmpcdec/libmpcdec.spec
+	new file:   SPECS-EXTENDED/libmpcdec/r475-cmake.patch
+	deleted:    SPECS-EXTENDED/libpaper/libpaper-file-leak.patch
+	deleted:    SPECS-EXTENDED/libpaper/libpaper-useglibcfallback.patch
+	deleted:    SPECS-EXTENDED/libpaper/libpaper.signatures.json
+	modified:   SPECS-EXTENDED/libpaper/libpaper.spec
+	new file:   SPECS-EXTENDED/libpaper/localepaper.c
+	new file:   SPECS-EXTENDED/libpaper/paperconf.1
+	deleted:    SPECS-EXTENDED/libpeas/libpeas.signatures.json
+	modified:   SPECS-EXTENDED/libpeas/libpeas.spec
+	new file:   SPECS-EXTENDED/libpsl/libpsl.spec
+	deleted:    SPECS-EXTENDED/libstemmer/BSD.txt
+	deleted:    SPECS-EXTENDED/libstemmer/Notice.txt
+	deleted:    SPECS-EXTENDED/libstemmer/libstemmer.signatures.json
+	deleted:    SPECS-EXTENDED/libstemmer/libstemmer.spec
+	modified:   SPECS-EXTENDED/libvisual/libvisual-0.4.0-better-altivec-detection.patch
+	deleted:    SPECS-EXTENDED/libvisual/libvisual-0.4.0-format-security.patch
+	deleted:    SPECS-EXTENDED/libvisual/libvisual-0.4.0-inlinedefineconflict.patch
+	new file:   SPECS-EXTENDED/libvisual/libvisual-0.4.0-respect-environment-ldflags.patch
+	new file:   SPECS-EXTENDED/libvisual/libvisual-c99.patch
+	deleted:    SPECS-EXTENDED/libvisual/libvisual.signatures.json
+	modified:   SPECS-EXTENDED/libvisual/libvisual.spec
+	new file:   SPECS-EXTENDED/llvm/0001-18-Always-build-shared-libs-for-LLD.patch
+	new file:   SPECS-EXTENDED/llvm/0001-19-Always-build-shared-libs-for-LLD.patch
+	new file:   SPECS-EXTENDED/llvm/0001-Driver-Give-devtoolset-path-precedence-over-Installe.patch
+	new file:   SPECS-EXTENDED/llvm/0001-Fix-page-size-constant-on-aarch64-and-ppc64le.patch
+	new file:   SPECS-EXTENDED/llvm/0001-PATCH-clang-Make-funwind-tables-the-default-on-all-a.patch
+	new file:   SPECS-EXTENDED/llvm/0001-Workaround-a-bug-in-ORC-on-ppc64le.patch
+	new file:   SPECS-EXTENDED/llvm/0001-openmp-Add-option-to-disable-tsan-tests-111548.patch
+	new file:   SPECS-EXTENDED/llvm/0001-openmp-Use-core_siblings_list-if-physical_package_id.patch
+	new file:   SPECS-EXTENDED/llvm/0001-profile-Use-base-vaddr-for-__llvm_write_binary_ids-n.patch
+	new file:   SPECS-EXTENDED/llvm/0003-PATCH-clang-Don-t-install-static-libraries.patch
+	new file:   SPECS-EXTENDED/llvm/18-99273.patch
+	new file:   SPECS-EXTENDED/llvm/llvm-project-19.1.5.src.tar.xz.sig
+	new file:   SPECS-EXTENDED/llvm/llvm.spec
+	new file:   SPECS-EXTENDED/llvm/macros.clang
+	new file:   SPECS-EXTENDED/llvm/release-keys.asc
+	new file:   SPECS-EXTENDED/lpsolve/lp_solve-5.5.2.11-Link-a-tool-to-a-shared-library.patch
+	new file:   SPECS-EXTENDED/lpsolve/lp_solve-5.5.2.11-Port-lp_MDO-to-colamd-3.0.4.patch
+	new file:   SPECS-EXTENDED/lpsolve/lp_solve-5.5.2.11-Port-to-C99.patch
+	new file:   SPECS-EXTENDED/lpsolve/lp_solve-5.5.2.11-Rebase-COLAMD-to-3.0.4.patch
+	new file:   SPECS-EXTENDED/lpsolve/lp_solve-5.5.2.11-Respect-CC-CFLAGS-and-LDFLAGS.patch
+	deleted:    SPECS-EXTENDED/lpsolve/lpsolve-5.5.0.11.cflags.patch
+	deleted:    SPECS-EXTENDED/lpsolve/lpsolve-5.5.2.0.defines.patch
+	deleted:    SPECS-EXTENDED/lpsolve/lpsolve.signatures.json
+	modified:   SPECS-EXTENDED/lpsolve/lpsolve.spec
+	deleted:    SPECS-EXTENDED/lua-lunit/lua-lunit.signatures.json
+	deleted:    SPECS-EXTENDED/lua-lunit/lua-lunit.spec
+	new file:   SPECS-EXTENDED/lua-lunitx/lua-lunitx.spec
+	deleted:    SPECS-EXTENDED/mailx/get-upstream-tarball.sh
+	deleted:    SPECS-EXTENDED/mailx/mailx-12.3-pager.patch
+	deleted:    SPECS-EXTENDED/mailx/mailx-12.5-collect.patch
+	deleted:    SPECS-EXTENDED/mailx/mailx-12.5-empty-from.patch
+	deleted:    SPECS-EXTENDED/mailx/mailx-12.5-encsplit.patch
+	deleted:    SPECS-EXTENDED/mailx/mailx-12.5-fio.c-Unconditionally-require-wordexp-support.patch
+	deleted:    SPECS-EXTENDED/mailx/mailx-12.5-fname-null.patch
+	deleted:    SPECS-EXTENDED/mailx/mailx-12.5-globname-Invoke-wordexp-with-WRDE_NOCMD-CVE-2004-277.patch
+	deleted:    SPECS-EXTENDED/mailx/mailx-12.5-lzw.patch
+	deleted:    SPECS-EXTENDED/mailx/mailx-12.5-man-page-fixes.patch
+	deleted:    SPECS-EXTENDED/mailx/mailx-12.5-nss-hostname-matching.patch
+	deleted:    SPECS-EXTENDED/mailx/mailx-12.5-openssl.patch
+	deleted:    SPECS-EXTENDED/mailx/mailx-12.5-outof-Introduce-expandaddr-flag.patch
+	deleted:    SPECS-EXTENDED/mailx/mailx-12.5-unpack-Disable-option-processing-for-email-addresses.patch
+	deleted:    SPECS-EXTENDED/mailx/mailx-12.5-usage.patch
+	deleted:    SPECS-EXTENDED/mailx/mailx.signatures.json
+	deleted:    SPECS-EXTENDED/mailx/mailx.spec
+	deleted:    SPECS-EXTENDED/mailx/nail-11.25-config.patch
+	deleted:    SPECS-EXTENDED/man-pages-cs/man-pages-cs-0.18.20090209-socket.patch
+	deleted:    SPECS-EXTENDED/man-pages-cs/man-pages-cs-0.18.20090209-test.patch
+	deleted:    SPECS-EXTENDED/man-pages-cs/man-pages-cs-01.patch
+	deleted:    SPECS-EXTENDED/man-pages-cs/man-pages-cs-02.patch
+	deleted:    SPECS-EXTENDED/man-pages-cs/man-pages-cs-03.patch
+	deleted:    SPECS-EXTENDED/man-pages-cs/man-pages-cs-04.patch
+	deleted:    SPECS-EXTENDED/man-pages-cs/man-pages-cs-05.patch
+	deleted:    SPECS-EXTENDED/man-pages-cs/man-pages-cs-06.patch
+	deleted:    SPECS-EXTENDED/man-pages-cs/man-pages-cs-07.patch
+	deleted:    SPECS-EXTENDED/man-pages-cs/man-pages-cs-08.patch
+	deleted:    SPECS-EXTENDED/man-pages-cs/man-pages-cs-09.patch
+	deleted:    SPECS-EXTENDED/man-pages-cs/man-pages-cs-10.patch
+	deleted:    SPECS-EXTENDED/man-pages-cs/man-pages-cs-11.patch
+	deleted:    SPECS-EXTENDED/man-pages-cs/man-pages-cs.signatures.json
+	deleted:    SPECS-EXTENDED/man-pages-cs/man-pages-cs.spec
+	deleted:    SPECS-EXTENDED/man-pages-es/man-pages-es.signatures.json
+	deleted:    SPECS-EXTENDED/man-pages-es/man-pages-es.spec
+	deleted:    SPECS-EXTENDED/man-pages-it/man-pages-it.signatures.json
+	deleted:    SPECS-EXTENDED/man-pages-it/man-pages-it.spec
+	deleted:    SPECS-EXTENDED/man-pages-ko/Man_Page_Copyright
+	deleted:    SPECS-EXTENDED/man-pages-ko/man-pages-ko-20050219.patch
+	deleted:    SPECS-EXTENDED/man-pages-ko/man-pages-ko.signatures.json
+	deleted:    SPECS-EXTENDED/man-pages-ko/man-pages-ko.spec
+	new file:   SPECS-EXTENDED/man-pages-l10n/man-pages-l10n.spec
+	deleted:    SPECS-EXTENDED/man-pages-pl/man-pages-pl.signatures.json
+	deleted:    SPECS-EXTENDED/man-pages-pl/man-pages-pl.spec
+	deleted:    SPECS-EXTENDED/man-pages-zh-CN/man-pages-zh-CN.signatures.json
+	modified:   SPECS-EXTENDED/man-pages-zh-CN/man-pages-zh-CN.spec
+	deleted:    SPECS-EXTENDED/marisa/marisa.signatures.json
+	modified:   SPECS-EXTENDED/marisa/marisa.spec
+	deleted:    SPECS-EXTENDED/microdnf/microdnf.signatures.json
+	modified:   SPECS-EXTENDED/microdnf/microdnf.spec
+	modified:   SPECS-EXTENDED/mksh/dot-mkshrc
+	deleted:    SPECS-EXTENDED/mksh/mksh.signatures.json
+	modified:   SPECS-EXTENDED/mksh/mksh.spec
+	modified:   SPECS-EXTENDED/mksh/rtchecks.expected
+	deleted:    SPECS-EXTENDED/mod_auth_gssapi/Fix-integer-sizes-used-with-ap_set_flag_slot.patch
+	deleted:    SPECS-EXTENDED/mod_auth_gssapi/Fix-tests-to-work-with-python3.patch
+	deleted:    SPECS-EXTENDED/mod_auth_gssapi/In-tests-show-the-exception-on-failure.patch
+	deleted:    SPECS-EXTENDED/mod_auth_gssapi/mod_auth_gssapi.signatures.json
+	modified:   SPECS-EXTENDED/mod_auth_gssapi/mod_auth_gssapi.spec
+	deleted:    SPECS-EXTENDED/mod_auth_gssapi/tests-Test-suite-fixes-for-virtualenv-and-clang.patch
+	new file:   SPECS-EXTENDED/mod_auth_mellon/0000-configure.patch
+	modified:   SPECS-EXTENDED/mod_auth_mellon/10-auth_mellon.conf
+	deleted:    SPECS-EXTENDED/mod_auth_mellon/CVE-2021-3639.patch
+	modified:   SPECS-EXTENDED/mod_auth_mellon/README.redhat.rst
+	modified:   SPECS-EXTENDED/mod_auth_mellon/auth_mellon.conf
+	modified:   SPECS-EXTENDED/mod_auth_mellon/mellon_create_metadata.sh
+	modified:   SPECS-EXTENDED/mod_auth_mellon/mod_auth_mellon.conf
+	deleted:    SPECS-EXTENDED/mod_auth_mellon/mod_auth_mellon.signatures.json
+	modified:   SPECS-EXTENDED/mod_auth_mellon/mod_auth_mellon.spec
+	deleted:    SPECS-EXTENDED/mod_http2/mod_http2-1.14.1-buildfix.patch
+	deleted:    SPECS-EXTENDED/mod_http2/mod_http2.signatures.json
+	modified:   SPECS-EXTENDED/mod_http2/mod_http2.spec
+	modified:   SPECS-EXTENDED/mod_wsgi/mod_wsgi-4.5.20-exports.patch
+	deleted:    SPECS-EXTENDED/mod_wsgi/mod_wsgi.signatures.json
+	modified:   SPECS-EXTENDED/mod_wsgi/mod_wsgi.spec
+	modified:   SPECS-EXTENDED/mod_wsgi/wsgi-python3.conf
+	modified:   SPECS-EXTENDED/mod_wsgi/wsgi.conf
+	modified:   SPECS-EXTENDED/mrtg/mrtg-2.15.0-lib64.patch
+	new file:   SPECS-EXTENDED/mrtg/mrtg-2.17.10.tar.gz.md5
+	modified:   SPECS-EXTENDED/mrtg/mrtg-2.17.2-socket6-fix.patch
+	modified:   SPECS-EXTENDED/mrtg/mrtg-2.17.4-cfgmaker-ifhighspeed.patch
+	deleted:    SPECS-EXTENDED/mrtg/mrtg-2.17.7-traffic-sum-man-option.patch
+	deleted:    SPECS-EXTENDED/mrtg/mrtg-2.17.7.tar.gz.md5
+	new file:   SPECS-EXTENDED/mrtg/mrtg-configure-c99.patch
+	modified:   SPECS-EXTENDED/mrtg/mrtg-httpd.conf
+	modified:   SPECS-EXTENDED/mrtg/mrtg.cfg
+	new file:   SPECS-EXTENDED/mrtg/mrtg.fc
+	new file:   SPECS-EXTENDED/mrtg/mrtg.if
+	modified:   SPECS-EXTENDED/mrtg/mrtg.service
+	deleted:    SPECS-EXTENDED/mrtg/mrtg.signatures.json
+	modified:   SPECS-EXTENDED/mrtg/mrtg.spec
+	new file:   SPECS-EXTENDED/mrtg/mrtg.te
+	modified:   SPECS-EXTENDED/mrtg/mrtg.timer
+	modified:   SPECS-EXTENDED/mrtg/mrtg.tmpfiles
+	new file:   SPECS-EXTENDED/netcdf/2431.patch
+	new file:   SPECS-EXTENDED/netcdf/2827.patch
+	new file:   SPECS-EXTENDED/netcdf/2850.patch
+	deleted:    SPECS-EXTENDED/netcdf/netcdf-plugin.patch
+	new file:   SPECS-EXTENDED/netcdf/netcdf-tst-blosc.patch
+	deleted:    SPECS-EXTENDED/netcdf/netcdf.signatures.json
+	modified:   SPECS-EXTENDED/netcdf/netcdf.spec
+	deleted:    SPECS-EXTENDED/netpbm/disable-pamx-build.patch
+	modified:   SPECS-EXTENDED/netpbm/netpbm-CAN-2005-2471.patch
+	modified:   SPECS-EXTENDED/netpbm/netpbm-CVE-2017-2587.patch
+	modified:   SPECS-EXTENDED/netpbm/netpbm-bmptopnm.patch
+	new file:   SPECS-EXTENDED/netpbm/netpbm-c99-2.patch
+	new file:   SPECS-EXTENDED/netpbm/netpbm-c99.patch
+	deleted:    SPECS-EXTENDED/netpbm/netpbm-cmuwtopbm.patch
+	modified:   SPECS-EXTENDED/netpbm/netpbm-docfix.patch
+	deleted:    SPECS-EXTENDED/netpbm/netpbm-fiasco-overflow.patch
+	modified:   SPECS-EXTENDED/netpbm/netpbm-gcc4.patch
+	modified:   SPECS-EXTENDED/netpbm/netpbm-glibc.patch
+	modified:   SPECS-EXTENDED/netpbm/netpbm-jasper.patch
+	modified:   SPECS-EXTENDED/netpbm/netpbm-libdir-so.patch
+	modified:   SPECS-EXTENDED/netpbm/netpbm-manfix.patch
+	deleted:    SPECS-EXTENDED/netpbm/netpbm-manual-pages.patch
+	modified:   SPECS-EXTENDED/netpbm/netpbm-multilib.patch
+	modified:   SPECS-EXTENDED/netpbm/netpbm-pamtojpeg2k.patch
+	modified:   SPECS-EXTENDED/netpbm/netpbm-ppmfadeusage.patch
+	modified:   SPECS-EXTENDED/netpbm/netpbm-python3.patch
+	modified:   SPECS-EXTENDED/netpbm/netpbm-security-code.patch
+	modified:   SPECS-EXTENDED/netpbm/netpbm-security-scripts.patch
+	modified:   SPECS-EXTENDED/netpbm/netpbm-time.patch
+	deleted:    SPECS-EXTENDED/netpbm/netpbm-userguide.patch
+	modified:   SPECS-EXTENDED/netpbm/netpbm-xwdfix.patch
+	deleted:    SPECS-EXTENDED/netpbm/netpbm.signatures.json
+	modified:   SPECS-EXTENDED/netpbm/netpbm.spec
+	deleted:    SPECS-EXTENDED/nodejs-nodemon/nodejs-nodemon.signatures.json
+	modified:   SPECS-EXTENDED/nodejs-nodemon/nodejs-nodemon.spec
+	new file:   SPECS-EXTENDED/nodejs-packaging/LICENSE
+	new file:   SPECS-EXTENDED/nodejs-packaging/README.md
+	new file:   SPECS-EXTENDED/nodejs-packaging/macros.nodejs
+	new file:   SPECS-EXTENDED/nodejs-packaging/multiver_modules
+	new file:   SPECS-EXTENDED/nodejs-packaging/nodejs-fixdep
+	new file:   SPECS-EXTENDED/nodejs-packaging/nodejs-packaging-bundler
+	deleted:    SPECS-EXTENDED/nodejs-packaging/nodejs-packaging.signatures.json
+	modified:   SPECS-EXTENDED/nodejs-packaging/nodejs-packaging.spec
+	new file:   SPECS-EXTENDED/nodejs-packaging/nodejs-setversion
+	new file:   SPECS-EXTENDED/nodejs-packaging/nodejs-symlink-deps
+	new file:   SPECS-EXTENDED/nodejs-packaging/nodejs.attr
+	new file:   SPECS-EXTENDED/nodejs-packaging/nodejs.prov
+	new file:   SPECS-EXTENDED/nodejs-packaging/nodejs.req
+	new file:   SPECS-EXTENDED/nodejs-packaging/nodejs_abi.attr
+	new file:   SPECS-EXTENDED/nodejs-packaging/nodejs_abi.req
+	deleted:    SPECS-EXTENDED/objenesis/objenesis.signatures.json
+	modified:   SPECS-EXTENDED/objenesis/objenesis.spec
+	deleted:    SPECS-EXTENDED/ocaml-camlp5/camlp5-6.11-kill-warn-error.patch
+	new file:   SPECS-EXTENDED/ocaml-camlp5/camlp5-8.00-kill-warn-error.patch
+	deleted:    SPECS-EXTENDED/ocaml-camlp5/ocaml-camlp5.signatures.json
+	modified:   SPECS-EXTENDED/ocaml-camlp5/ocaml-camlp5.spec
+	deleted:    SPECS-EXTENDED/ocaml-xml-light/LICENSE.PTR
+	deleted:    SPECS-EXTENDED/ocaml-xml-light/ocaml-xml-light.signatures.json
+	modified:   SPECS-EXTENDED/ocaml-xml-light/ocaml-xml-light.spec
+	new file:   SPECS-EXTENDED/oddjob/oddjob-0.34.7.tar.gz.asc
+	new file:   SPECS-EXTENDED/oddjob/oddjob-libxml2.patch
+	new file:   SPECS-EXTENDED/oddjob/oddjob-override-mask-fix.patch
+	deleted:    SPECS-EXTENDED/oddjob/oddjob.signatures.json
+	modified:   SPECS-EXTENDED/oddjob/oddjob.spec
+	new file:   SPECS-EXTENDED/opencc/opencc-fixes-std-initializer-list.patch
+	deleted:    SPECS-EXTENDED/opencc/opencc.signatures.json
+	modified:   SPECS-EXTENDED/opencc/opencc.spec
+	deleted:    SPECS-EXTENDED/opencc/parallel-build-fix.patch
+	new file:   SPECS-EXTENDED/openexr/march-x86-64-v3.patch
+	new file:   SPECS-EXTENDED/openexr/openexr.spec
+	renamed:    SPECS-EXTENDED/openjpeg2/openjpeg2.spec -> SPECS-EXTENDED/openjpeg/openjpeg.spec
+	deleted:    SPECS-EXTENDED/openjpeg2/openjpeg2.signatures.json
+	deleted:    SPECS-EXTENDED/openjpeg2/openjpeg2_CVE-2020-27814.patch
+	deleted:    SPECS-EXTENDED/openjpeg2/openjpeg2_CVE-2020-27823.patch
+	deleted:    SPECS-EXTENDED/openjpeg2/openjpeg2_CVE-2020-27824.patch
+	deleted:    SPECS-EXTENDED/openjpeg2/openjpeg2_CVE-2020-27841.patch
+	deleted:    SPECS-EXTENDED/openjpeg2/openjpeg2_CVE-2020-27842.patch
+	deleted:    SPECS-EXTENDED/openjpeg2/openjpeg2_CVE-2020-27843.patch
+	deleted:    SPECS-EXTENDED/openjpeg2/openjpeg2_CVE-2020-27845.patch
+	deleted:    SPECS-EXTENDED/openjpeg2/openjpeg2_CVE-2020-6851.patch
+	deleted:    SPECS-EXTENDED/openjpeg2/openjpeg2_CVE-2020-8112.patch
+	deleted:    SPECS-EXTENDED/openjpeg2/openjpeg2_opj2.patch
+	modified:   SPECS-EXTENDED/openwsman/openwsman-2.4.0-pamsetup.patch
+	modified:   SPECS-EXTENDED/openwsman/openwsman-2.4.12-ruby-binding-build.patch
+	modified:   SPECS-EXTENDED/openwsman/openwsman-2.6.2-openssl-1.1-fix.patch
+	modified:   SPECS-EXTENDED/openwsman/openwsman-2.6.5-http-status-line.patch
+	deleted:    SPECS-EXTENDED/openwsman/openwsman-2.6.5-libcurl-error-codes-update.patch
+	deleted:    SPECS-EXTENDED/openwsman/openwsman-2.6.8-CVE-2019-3816.patch
+	deleted:    SPECS-EXTENDED/openwsman/openwsman-2.6.8-CVE-2019-3833.patch
+	new file:   SPECS-EXTENDED/openwsman/openwsman-2.6.8-update-ssleay-conf.patch
+	new file:   SPECS-EXTENDED/openwsman/openwsman-2.7.2-fix-ftbfs.patch
+	new file:   SPECS-EXTENDED/openwsman/openwsman.fc
+	new file:   SPECS-EXTENDED/openwsman/openwsman.if
+	deleted:    SPECS-EXTENDED/openwsman/openwsman.signatures.json
+	modified:   SPECS-EXTENDED/openwsman/openwsman.spec
+	new file:   SPECS-EXTENDED/openwsman/openwsman.te
+	modified:   SPECS-EXTENDED/openwsman/openwsmand.service
+	modified:   SPECS-EXTENDED/openwsman/owsmantestcert.sh
+	new file:   SPECS-EXTENDED/opus/opus.spec
+	new file:   SPECS-EXTENDED/opus/rfc6716.txt
+	new file:   SPECS-EXTENDED/opus/rfc8251.txt
+	deleted:    SPECS-EXTENDED/osgi-annotation/osgi-annotation-build.xml
+	deleted:    SPECS-EXTENDED/osgi-annotation/osgi-annotation.signatures.json
+	modified:   SPECS-EXTENDED/osgi-annotation/osgi-annotation.spec
+	renamed:    SPECS-EXTENDED/osgi-annotation/osgi.annotation-7.0.0.pom -> SPECS-EXTENDED/osgi-annotation/osgi.annotation-8.1.0.pom
+	deleted:    SPECS-EXTENDED/osgi-core/LICENSE-2.0
+	deleted:    SPECS-EXTENDED/osgi-core/osgi-core-build.xml
+	deleted:    SPECS-EXTENDED/osgi-core/osgi-core.signatures.json
+	modified:   SPECS-EXTENDED/osgi-core/osgi-core.spec
+	deleted:    SPECS-EXTENDED/osgi-core/osgi.core-7.0.0.pom
+	deleted:    SPECS-EXTENDED/pacemaker/pacemaker.signatures.json
+	modified:   SPECS-EXTENDED/pacemaker/pacemaker.spec
+	new file:   SPECS-EXTENDED/pacemaker/pacemaker.sysusers
+	new file:   SPECS-EXTENDED/papi/papi-libsde.patch
+	new file:   SPECS-EXTENDED/papi/papi-nostatic.patch
+	new file:   SPECS-EXTENDED/papi/papi-python3.patch
+	deleted:    SPECS-EXTENDED/papi/papi.signatures.json
+	modified:   SPECS-EXTENDED/papi/papi.spec
+	new file:   SPECS-EXTENDED/perl-Alien-Build/Alien-Build-2.65-Remove-redundant-SHA-implementations.patch
+	renamed:    SPECS-EXTENDED/perl-Alien-Build/Alien-Build-1.96-Remove-redundant-pkgconfig-implementations.patch -> SPECS-EXTENDED/perl-Alien-Build/Alien-Build-2.83-Remove-redundant-pkgconfig-implementations.patch
+	deleted:    SPECS-EXTENDED/perl-Alien-Build/perl-Alien-Build.signatures.json
+	modified:   SPECS-EXTENDED/perl-Alien-Build/perl-Alien-Build.spec
+	new file:   SPECS-EXTENDED/perl-Alien-pkgconf/Alien-pkgconf-0.19-Accept-pkgconf-1.9.patch
+	deleted:    SPECS-EXTENDED/perl-Alien-pkgconf/perl-Alien-pkgconf.signatures.json
+	modified:   SPECS-EXTENDED/perl-Alien-pkgconf/perl-Alien-pkgconf.spec
+	deleted:    SPECS-EXTENDED/perl-Class-Tiny/perl-Class-Tiny.signatures.json
+	modified:   SPECS-EXTENDED/perl-Class-Tiny/perl-Class-Tiny.spec
+	modified:   SPECS-EXTENDED/perl-Cpanel-JSON-XS/Cpanel-JSON-XS-4.20-signature.patch
+	deleted:    SPECS-EXTENDED/perl-Cpanel-JSON-XS/perl-Cpanel-JSON-XS.signatures.json
+	modified:   SPECS-EXTENDED/perl-Cpanel-JSON-XS/perl-Cpanel-JSON-XS.spec
+	new file:   SPECS-EXTENDED/perl-Crypt-CBC/Crypt-CBC-3.04-3.05.patch
+	new file:   SPECS-EXTENDED/perl-Crypt-CBC/Crypt-CBC-GH6.pl
+	new file:   SPECS-EXTENDED/perl-Crypt-CBC/cbctest1.pl
+	deleted:    SPECS-EXTENDED/perl-Crypt-CBC/perl-Crypt-CBC.signatures.json
+	modified:   SPECS-EXTENDED/perl-Crypt-CBC/perl-Crypt-CBC.spec
+	new file:   SPECS-EXTENDED/perl-Crypt-CBC/randomiv.patch
+	deleted:    SPECS-EXTENDED/perl-DBD-MySQL/perl-DBD-MySQL.signatures.json
+	modified:   SPECS-EXTENDED/perl-DBD-MySQL/perl-DBD-MySQL.spec
+	new file:   SPECS-EXTENDED/perl-DBD-MySQL/test-clean.t
+	new file:   SPECS-EXTENDED/perl-DBD-MySQL/test-env.sh
+	new file:   SPECS-EXTENDED/perl-DBD-MySQL/test-setup.t
+	new file:   SPECS-EXTENDED/perl-DBD-MySQL/testrules.yml
+	deleted:    SPECS-EXTENDED/perl-Data-Munge/perl-Data-Munge.signatures.json
+	modified:   SPECS-EXTENDED/perl-Data-Munge/perl-Data-Munge.spec
+	deleted:    SPECS-EXTENDED/perl-DateTime-Format-Builder/perl-DateTime-Format-Builder.signatures.json
+	modified:   SPECS-EXTENDED/perl-DateTime-Format-Builder/perl-DateTime-Format-Builder.spec
+	deleted:    SPECS-EXTENDED/perl-DateTime-Format-ISO8601/perl-DateTime-Format-ISO8601.signatures.json
+	modified:   SPECS-EXTENDED/perl-DateTime-Format-ISO8601/perl-DateTime-Format-ISO8601.spec
+	deleted:    SPECS-EXTENDED/perl-DateTime-Format-Strptime/perl-DateTime-Format-Strptime.signatures.json
+	modified:   SPECS-EXTENDED/perl-DateTime-Format-Strptime/perl-DateTime-Format-Strptime.spec
+	deleted:    SPECS-EXTENDED/perl-DateTime-Locale/perl-DateTime-Locale.signatures.json
+	modified:   SPECS-EXTENDED/perl-DateTime-Locale/perl-DateTime-Locale.spec
+	modified:   SPECS-EXTENDED/perl-DateTime-TimeZone/DateTime-TimeZone-2.04-Parse-etc-localtime-by-DateTime-TimeZone-Tzfile.patch
+	deleted:    SPECS-EXTENDED/perl-DateTime-TimeZone/perl-DateTime-TimeZone.signatures.json
+	modified:   SPECS-EXTENDED/perl-DateTime-TimeZone/perl-DateTime-TimeZone.spec
+	deleted:    SPECS-EXTENDED/perl-DateTime/perl-DateTime.signatures.json
+	modified:   SPECS-EXTENDED/perl-DateTime/perl-DateTime.spec
+	modified:   SPECS-EXTENDED/perl-FCGI/FCGI-0.78-CVE-2012-6687.patch
+	deleted:    SPECS-EXTENDED/perl-FCGI/perl-FCGI.signatures.json
+	modified:   SPECS-EXTENDED/perl-FCGI/perl-FCGI.spec
+	deleted:    SPECS-EXTENDED/perl-FFI-CheckLib/perl-FFI-CheckLib.signatures.json
+	modified:   SPECS-EXTENDED/perl-FFI-CheckLib/perl-FFI-CheckLib.spec
+	modified:   SPECS-EXTENDED/perl-File-Find-Object-Rule/File-Find-Object-Rule-0.0310-shellbang.patch
+	deleted:    SPECS-EXTENDED/perl-File-Find-Object-Rule/perl-File-Find-Object-Rule.signatures.json
+	modified:   SPECS-EXTENDED/perl-File-Find-Object-Rule/perl-File-Find-Object-Rule.spec
+	deleted:    SPECS-EXTENDED/perl-File-MimeInfo/perl-File-MimeInfo.signatures.json
+	modified:   SPECS-EXTENDED/perl-File-MimeInfo/perl-File-MimeInfo.spec
+	deleted:    SPECS-EXTENDED/perl-GD-Barcode/perl-GD-Barcode.signatures.json
+	modified:   SPECS-EXTENDED/perl-GD-Barcode/perl-GD-Barcode.spec
+	new file:   SPECS-EXTENDED/perl-IO-Socket-INET6/IO-Socket-INET6-2.72-bz1207174-fix_random_test_error.patch
+	new file:   SPECS-EXTENDED/perl-IO-Socket-INET6/IO-Socket-INET6-2.72-fix_die_in_test.patch
+	deleted:    SPECS-EXTENDED/perl-IO-Socket-INET6/perl-IO-Socket-INET6.signatures.json
+	modified:   SPECS-EXTENDED/perl-IO-Socket-INET6/perl-IO-Socket-INET6.spec
+	deleted:    SPECS-EXTENDED/perl-JSON-Color/perl-JSON-Color.signatures.json
+	modified:   SPECS-EXTENDED/perl-JSON-Color/perl-JSON-Color.spec
+	deleted:    SPECS-EXTENDED/perl-JSON-MaybeXS/perl-JSON-MaybeXS.signatures.json
+	modified:   SPECS-EXTENDED/perl-JSON-MaybeXS/perl-JSON-MaybeXS.spec
+	deleted:    SPECS-EXTENDED/perl-LDAP/LICENSE.PTR
+	deleted:    SPECS-EXTENDED/perl-LDAP/perl-LDAP.signatures.json
+	modified:   SPECS-EXTENDED/perl-LDAP/perl-LDAP.spec
+	modified:   SPECS-EXTENDED/perl-LDAP/perl-ldap-0.65-Configure-usr-sbin-slapd-for-tests.patch
+	deleted:    SPECS-EXTENDED/perl-LDAP/perl-ldap-0.66-Correct-a-shell-bang-in-data-regenerate_cert.sh.patch
+	modified:   SPECS-EXTENDED/perl-LDAP/perl-ldap-0.66-test-Remove-a-test-for-cancelling-asynchronous-calls.patch
+	new file:   SPECS-EXTENDED/perl-LDAP/perl-ldap-0.68-Do-not-default-IO-Socket-IP-to-AI_ADDRCONFIG-flag.patch
+	modified:   SPECS-EXTENDED/perl-Locale-Maketext-Gettext/gettexttomakettext.patch
+	deleted:    SPECS-EXTENDED/perl-Locale-Maketext-Gettext/perl-Locale-Maketext-Gettext.signatures.json
+	modified:   SPECS-EXTENDED/perl-Locale-Maketext-Gettext/perl-Locale-Maketext-Gettext.spec
+	deleted:    SPECS-EXTENDED/perl-MIME-Lite/perl-MIME-Lite.signatures.json
+	modified:   SPECS-EXTENDED/perl-MIME-Lite/perl-MIME-Lite.spec
+	deleted:    SPECS-EXTENDED/perl-MIME-Types/perl-MIME-Types.signatures.json
+	modified:   SPECS-EXTENDED/perl-MIME-Types/perl-MIME-Types.spec
+	deleted:    SPECS-EXTENDED/perl-Mail-DKIM/perl-Mail-DKIM.signatures.json
+	modified:   SPECS-EXTENDED/perl-Mail-DKIM/perl-Mail-DKIM.spec
+	deleted:    SPECS-EXTENDED/perl-Mail-SPF/Mail-SPF-v2.8.0-POD.patch
+	deleted:    SPECS-EXTENDED/perl-Mail-SPF/Mail-SPF-v2.8.0-testsuite.patch
+	deleted:    SPECS-EXTENDED/perl-Mail-SPF/perl-Mail-SPF.signatures.json
+	modified:   SPECS-EXTENDED/perl-Mail-SPF/perl-Mail-SPF.spec
+	deleted:    SPECS-EXTENDED/perl-Net-DNS-Resolver-Mock/perl-Net-DNS-Resolver-Mock.signatures.json
+	modified:   SPECS-EXTENDED/perl-Net-DNS-Resolver-Mock/perl-Net-DNS-Resolver-Mock.spec
+	new file:   SPECS-EXTENDED/perl-Net-DNS/Net-DNS-1.47.tar.gz.sig
+	deleted:    SPECS-EXTENDED/perl-Net-DNS/perl-Net-DNS.signatures.json
+	modified:   SPECS-EXTENDED/perl-Net-DNS/perl-Net-DNS.spec
+	new file:   SPECS-EXTENDED/perl-Net-DNS/willem.nlnetlabs.nl
+	deleted:    SPECS-EXTENDED/perl-Package-Stash/perl-Package-Stash.signatures.json
+	modified:   SPECS-EXTENDED/perl-Package-Stash/perl-Package-Stash.spec
+	deleted:    SPECS-EXTENDED/perl-Params-Validate/perl-Params-Validate.signatures.json
+	modified:   SPECS-EXTENDED/perl-Params-Validate/perl-Params-Validate.spec
+	deleted:    SPECS-EXTENDED/perl-Params-ValidationCompiler/perl-Params-ValidationCompiler.signatures.json
+	modified:   SPECS-EXTENDED/perl-Params-ValidationCompiler/perl-Params-ValidationCompiler.spec
+	modified:   SPECS-EXTENDED/perl-Perl-Critic/0001-Change-default-spell-check-tool-from-aspell-to-hunsp.patch
+	modified:   SPECS-EXTENDED/perl-Perl-Critic/Perl-Critic-1.136-ppidump-shellbang.patch
+	deleted:    SPECS-EXTENDED/perl-Perl-Critic/perl-Perl-Critic.signatures.json
+	modified:   SPECS-EXTENDED/perl-Perl-Critic/perl-Perl-Critic.spec
+	deleted:    SPECS-EXTENDED/perl-Perl-MinimumVersion/perl-Perl-MinimumVersion.signatures.json
+	modified:   SPECS-EXTENDED/perl-Perl-MinimumVersion/perl-Perl-MinimumVersion.spec
+	deleted:    SPECS-EXTENDED/perl-Perl4-CoreLibs/Perl4-CoreLibs-0.004-y2k20.patch
+	deleted:    SPECS-EXTENDED/perl-Perl4-CoreLibs/perl-Perl4-CoreLibs.signatures.json
+	modified:   SPECS-EXTENDED/perl-Perl4-CoreLibs/perl-Perl4-CoreLibs.spec
+	deleted:    SPECS-EXTENDED/perl-SGMLSpm/perl-SGMLSpm.signatures.json
+	modified:   SPECS-EXTENDED/perl-SGMLSpm/perl-SGMLSpm.spec
+	deleted:    SPECS-EXTENDED/perl-Specio/perl-Specio.signatures.json
+	modified:   SPECS-EXTENDED/perl-Specio/perl-Specio.spec
+	renamed:    SPECS-EXTENDED/perl-Term-Table/Term-Table-0.015-Use-system-Object-HashBase.patch -> SPECS-EXTENDED/perl-Term-Table/Term-Table-0.022-Use-system-Object-HashBase.patch
+	deleted:    SPECS-EXTENDED/perl-Term-Table/perl-Term-Table.signatures.json
+	modified:   SPECS-EXTENDED/perl-Term-Table/perl-Term-Table.spec
+	deleted:    SPECS-EXTENDED/perl-Test-MinimumVersion/perl-Test-MinimumVersion.signatures.json
+	modified:   SPECS-EXTENDED/perl-Test-MinimumVersion/perl-Test-MinimumVersion.spec
+	deleted:    SPECS-EXTENDED/perl-Test-Script/perl-Test-Script.signatures.json
+	modified:   SPECS-EXTENDED/perl-Test-Script/perl-Test-Script.spec
+	new file:   SPECS-EXTENDED/perl-Test-Simple/Test-Simple-1.302200-add_perl.patch
+	deleted:    SPECS-EXTENDED/perl-Test-Simple/perl-Test-Simple.signatures.json
+	modified:   SPECS-EXTENDED/perl-Test-Simple/perl-Test-Simple.spec
+	deleted:    SPECS-EXTENDED/perl-Test-TrailingSpace/perl-Test-TrailingSpace.signatures.json
+	modified:   SPECS-EXTENDED/perl-Test-TrailingSpace/perl-Test-TrailingSpace.spec
+	deleted:    SPECS-EXTENDED/perl-Test2-Plugin-NoWarnings/perl-Test2-Plugin-NoWarnings.signatures.json
+	modified:   SPECS-EXTENDED/perl-Test2-Plugin-NoWarnings/perl-Test2-Plugin-NoWarnings.spec
+	deleted:    SPECS-EXTENDED/perl-Test2-Suite/perl-Test2-Suite.signatures.json
+	deleted:    SPECS-EXTENDED/perl-Test2-Suite/perl-Test2-Suite.spec
+	deleted:    SPECS-EXTENDED/perl-XML-LibXSLT/perl-XML-LibXSLT.signatures.json
+	modified:   SPECS-EXTENDED/perl-XML-LibXSLT/perl-XML-LibXSLT.spec
+	deleted:    SPECS-EXTENDED/perl-YAML-PP/perl-YAML-PP.signatures.json
+	modified:   SPECS-EXTENDED/perl-YAML-PP/perl-YAML-PP.spec
+	deleted:    SPECS-EXTENDED/pipewire/0001-Build-media-session-from-local-tarbal.patch
+	deleted:    SPECS-EXTENDED/pipewire/pipewire.signatures.json
+	modified:   SPECS-EXTENDED/pipewire/pipewire.spec
+	new file:   SPECS-EXTENDED/pipewire/pipewire.sysusers
+	deleted:    SPECS-EXTENDED/po4a/po4a.signatures.json
+	modified:   SPECS-EXTENDED/po4a/po4a.spec
+	deleted:    SPECS-EXTENDED/podman/CVE-2022-2989.patch
+	deleted:    SPECS-EXTENDED/podman/podman.signatures.json
+	modified:   SPECS-EXTENDED/podman/podman.spec
+	deleted:    SPECS-EXTENDED/proj/proj.signatures.json
+	modified:   SPECS-EXTENDED/proj/proj.spec
+	deleted:    SPECS-EXTENDED/psl-make-dafsa/psl-make-dafsa.signatures.json
+	deleted:    SPECS-EXTENDED/psl-make-dafsa/psl-make-dafsa.spec
+	deleted:    SPECS-EXTENDED/psutils/psutils-paperconf.patch
+	deleted:    SPECS-EXTENDED/psutils/psutils.signatures.json
+	modified:   SPECS-EXTENDED/psutils/psutils.spec
+	modified:   SPECS-EXTENDED/publicsuffix-list/index.txt
+	modified:   SPECS-EXTENDED/publicsuffix-list/public_suffix_list.dat
+	deleted:    SPECS-EXTENDED/publicsuffix-list/publicsuffix-list.signatures.json
+	modified:   SPECS-EXTENDED/publicsuffix-list/publicsuffix-list.spec
+	modified:   SPECS-EXTENDED/publicsuffix-list/test_psl.txt
+	new file:   SPECS-EXTENDED/pulseaudio/0001-tests-Don-t-run-volume-tests-with-impossible-alignme.patch
+	new file:   SPECS-EXTENDED/pulseaudio/default.pa-for-gdm
+	modified:   SPECS-EXTENDED/pulseaudio/pulseaudio-11.1-autospawn_disable.patch
+	new file:   SPECS-EXTENDED/pulseaudio/pulseaudio-17.0.tar.xz.sha256sum
+	modified:   SPECS-EXTENDED/pulseaudio/pulseaudio-autostart.patch
+	deleted:    SPECS-EXTENDED/pulseaudio/pulseaudio.signatures.json
+	modified:   SPECS-EXTENDED/pulseaudio/pulseaudio.spec
+	deleted:    SPECS-EXTENDED/pylint/pylint.signatures.json
+	modified:   SPECS-EXTENDED/pylint/pylint.spec
+	new file:   SPECS-EXTENDED/python-aiohttp/0001-Fix-incorrect-parsing-of-chunk-extensions-with-the-p.patch
+	new file:   SPECS-EXTENDED/python-aiohttp/0001-Unbundle-llhttp.patch
+	deleted:    SPECS-EXTENDED/python-aiohttp/python-aiohttp.signatures.json
+	modified:   SPECS-EXTENDED/python-aiohttp/python-aiohttp.spec
+	deleted:    SPECS-EXTENDED/python-aiohttp/unbundle-http-parser.patch
+	deleted:    SPECS-EXTENDED/python-argcomplete/python-argcomplete.signatures.json
+	modified:   SPECS-EXTENDED/python-argcomplete/python-argcomplete.spec
+	deleted:    SPECS-EXTENDED/python-beautifulsoup4/python-beautifulsoup4.signatures.json
+	modified:   SPECS-EXTENDED/python-beautifulsoup4/python-beautifulsoup4.spec
+	new file:   SPECS-EXTENDED/python-beautifulsoup4/soupsieve26.patch
+	deleted:    SPECS-EXTENDED/python-curio/python-curio.signatures.json
+	modified:   SPECS-EXTENDED/python-curio/python-curio.spec
+	deleted:    SPECS-EXTENDED/python-dbusmock/python-dbusmock.signatures.json
+	modified:   SPECS-EXTENDED/python-dbusmock/python-dbusmock.spec
+	deleted:    SPECS-EXTENDED/python-ddt/python-ddt.signatures.json
+	modified:   SPECS-EXTENDED/python-ddt/python-ddt.spec
+	new file:   SPECS-EXTENDED/python-debtcollector/0x2ef3fe0ec2b075ab7458b5f8b702b20b13df2318.txt
+	new file:   SPECS-EXTENDED/python-debtcollector/debtcollector-3.0.0.tar.gz.asc
+	deleted:    SPECS-EXTENDED/python-debtcollector/python-debtcollector.signatures.json
+	modified:   SPECS-EXTENDED/python-debtcollector/python-debtcollector.spec
+	new file:   SPECS-EXTENDED/python-dmidecode/python-dmidecode-rhbz2154949.patch
+	deleted:    SPECS-EXTENDED/python-dmidecode/python-dmidecode.signatures.json
+	modified:   SPECS-EXTENDED/python-dmidecode/python-dmidecode.spec
+	deleted:    SPECS-EXTENDED/python-faker/python-faker.signatures.json
+	modified:   SPECS-EXTENDED/python-faker/python-faker.spec
+	deleted:    SPECS-EXTENDED/python-fasteners/80a3eaed75276faf21034e7e6c626fd19485ea39.patch
+	deleted:    SPECS-EXTENDED/python-fasteners/python-fasteners.signatures.json
+	modified:   SPECS-EXTENDED/python-fasteners/python-fasteners.spec
+	deleted:    SPECS-EXTENDED/python-flake8/python-flake8.signatures.json
+	modified:   SPECS-EXTENDED/python-flake8/python-flake8.spec
+	deleted:    SPECS-EXTENDED/python-flask/python-flask.signatures.json
+	modified:   SPECS-EXTENDED/python-flask/python-flask.spec
+	deleted:    SPECS-EXTENDED/python-genshi/python-genshi.signatures.json
+	modified:   SPECS-EXTENDED/python-genshi/python-genshi.spec
+	modified:   SPECS-EXTENDED/python-httplib2/python-httplib2.certfile.patch
+	deleted:    SPECS-EXTENDED/python-httplib2/python-httplib2.signatures.json
+	modified:   SPECS-EXTENDED/python-httplib2/python-httplib2.spec
+	deleted:    SPECS-EXTENDED/python-hwdata/python-hwdata.signatures.json
+	modified:   SPECS-EXTENDED/python-hwdata/python-hwdata.spec
+	new file:   SPECS-EXTENDED/python-iso8601/0001-Add-docs-and-test-extras.patch
+	deleted:    SPECS-EXTENDED/python-iso8601/python-iso8601.signatures.json
+	modified:   SPECS-EXTENDED/python-iso8601/python-iso8601.spec
+	deleted:    SPECS-EXTENDED/python-isodate/python-isodate-LICENSE.txt
+	deleted:    SPECS-EXTENDED/python-isodate/python-isodate.signatures.json
+	modified:   SPECS-EXTENDED/python-isodate/python-isodate.spec
+	deleted:    SPECS-EXTENDED/python-itsdangerous/python-itsdangerous.signatures.json
+	modified:   SPECS-EXTENDED/python-itsdangerous/python-itsdangerous.spec
+	deleted:    SPECS-EXTENDED/python-jwcrypto/python-jwcrypto.signatures.json
+	modified:   SPECS-EXTENDED/python-jwcrypto/python-jwcrypto.spec
+	new file:   SPECS-EXTENDED/python-kdcproxy/Drop-coverage-from-tests.patch
+	deleted:    SPECS-EXTENDED/python-kdcproxy/python-kdcproxy.signatures.json
+	modified:   SPECS-EXTENDED/python-kdcproxy/python-kdcproxy.spec
+	deleted:    SPECS-EXTENDED/python-lazy-object-proxy/python-lazy-object-proxy.signatures.json
+	modified:   SPECS-EXTENDED/python-lazy-object-proxy/python-lazy-object-proxy.spec
+	deleted:    SPECS-EXTENDED/python-lazy-object-proxy/scm-deversion.patch
+	deleted:    SPECS-EXTENDED/python-lit/python-lit-LICENSE.txt
+	deleted:    SPECS-EXTENDED/python-lit/python-lit.signatures.json
+	deleted:    SPECS-EXTENDED/python-lit/python-lit.spec
+	deleted:    SPECS-EXTENDED/python-mccabe/python-mccabe.signatures.json
+	modified:   SPECS-EXTENDED/python-mccabe/python-mccabe.spec
+	deleted:    SPECS-EXTENDED/python-mimeparse/python-mimeparse.signatures.json
+	modified:   SPECS-EXTENDED/python-mimeparse/python-mimeparse.spec
+	deleted:    SPECS-EXTENDED/python-msal/python-msal.signatures.json
+	modified:   SPECS-EXTENDED/python-msal/python-msal.spec
+	modified:   SPECS-EXTENDED/python-paramiko/0003-remove-pytest-relaxed-dep.patch
+	new file:   SPECS-EXTENDED/python-paramiko/0004-remove-icecream-dep.patch
+	deleted:    SPECS-EXTENDED/python-paramiko/0004-remove-mock-dep.patch
+	new file:   SPECS-EXTENDED/python-paramiko/0005-remove-invoke-dep.patch
+	deleted:    SPECS-EXTENDED/python-paramiko/python-paramiko.signatures.json
+	modified:   SPECS-EXTENDED/python-paramiko/python-paramiko.spec
+	new file:   SPECS-EXTENDED/python-productmd/0001-images-add-type-and-formats-for-erofs-and-squashfs-t.patch
+	deleted:    SPECS-EXTENDED/python-productmd/python-productmd.signatures.json
+	modified:   SPECS-EXTENDED/python-productmd/python-productmd.spec
+	deleted:    SPECS-EXTENDED/python-pyperclip/0001-Skip-tests-irrelevant-in-the-context-of-Fedora-packa.patch
+	deleted:    SPECS-EXTENDED/python-pyperclip/python-pyperclip-LICENSE.txt
+	deleted:    SPECS-EXTENDED/python-pyperclip/python-pyperclip.signatures.json
+	modified:   SPECS-EXTENDED/python-pyperclip/python-pyperclip.spec
+	new file:   SPECS-EXTENDED/python-pyrsistent/284.patch
+	deleted:    SPECS-EXTENDED/python-pyrsistent/SOURCES/00-relax-dependencies.patch
+	deleted:    SPECS-EXTENDED/python-pyrsistent/python-pyrsistent.signatures.json
+	modified:   SPECS-EXTENDED/python-pyrsistent/python-pyrsistent.spec
+	deleted:    SPECS-EXTENDED/python-pytest-timeout/python-pytest-timeout.signatures.json
+	modified:   SPECS-EXTENDED/python-pytest-timeout/python-pytest-timeout.spec
+	deleted:    SPECS-EXTENDED/python-requests-mock/0001-tox-add-py39-environment.patch
+	deleted:    SPECS-EXTENDED/python-requests-mock/0002-Use-system-urllib3-package.patch
+	modified:   SPECS-EXTENDED/python-requests-mock/0003-Allow-skipping-purl-tests-if-it-is-not-present.patch
+	deleted:    SPECS-EXTENDED/python-requests-mock/python-requests-mock.signatures.json
+	modified:   SPECS-EXTENDED/python-requests-mock/python-requests-mock.spec
+	deleted:    SPECS-EXTENDED/python-requests-toolbelt/SOURCES/python-requests-toolbelt-fix-unhandled-exception-from-tests.patch
+	deleted:    SPECS-EXTENDED/python-requests-toolbelt/SOURCES/python-requests-toolbelt-pass-session-into-tests.patch
+	deleted:    SPECS-EXTENDED/python-requests-toolbelt/python-requests-toolbelt.signatures.json
+	modified:   SPECS-EXTENDED/python-requests-toolbelt/python-requests-toolbelt.spec
+	deleted:    SPECS-EXTENDED/python-requests_ntlm/python-requests_ntlm.signatures.json
+	modified:   SPECS-EXTENDED/python-requests_ntlm/python-requests_ntlm.spec
+	deleted:    SPECS-EXTENDED/python-s3transfer/python-s3transfer.signatures.json
+	modified:   SPECS-EXTENDED/python-s3transfer/python-s3transfer.spec
+	deleted:    SPECS-EXTENDED/python-systemd/python-systemd.signatures.json
+	modified:   SPECS-EXTENDED/python-systemd/python-systemd.spec
+	deleted:    SPECS-EXTENDED/python-testresources/python-testresources.signatures.json
+	modified:   SPECS-EXTENDED/python-testresources/python-testresources.spec
+	deleted:    SPECS-EXTENDED/python-toml/python-toml.signatures.json
+	modified:   SPECS-EXTENDED/python-toml/python-toml.spec
+	deleted:    SPECS-EXTENDED/python-trio/python-trio.signatures.json
+	modified:   SPECS-EXTENDED/python-trio/python-trio.spec
+	new file:   SPECS-EXTENDED/python-trio/python3.13-PR-2959.patch
+	new file:   SPECS-EXTENDED/python-trio/python3.13-PR-3005.patch
+	deleted:    SPECS-EXTENDED/python-webtest/python-webtest.signatures.json
+	modified:   SPECS-EXTENDED/python-webtest/python-webtest.spec
+	new file:   SPECS-EXTENDED/python-winrm/python-winrm-mock.patch
+	deleted:    SPECS-EXTENDED/python-winrm/python-winrm.signatures.json
+	modified:   SPECS-EXTENDED/python-winrm/python-winrm.spec
+	new file:   SPECS-EXTENDED/python-zmq/1961.patch
+	renamed:    SPECS-EXTENDED/osgi-annotation/LICENSE-2.0 -> SPECS-EXTENDED/python-zmq/LICENSE.Apache-2.0
+	deleted:    SPECS-EXTENDED/python-zmq/python-zmq.signatures.json
+	modified:   SPECS-EXTENDED/python-zmq/python-zmq.spec
+	deleted:    SPECS-EXTENDED/pyusb/pyusb.signatures.json
+	modified:   SPECS-EXTENDED/pyusb/pyusb.spec
+	new file:   SPECS-EXTENDED/qt5-qtconnectivity/qt5-qtconnectivity-gcc11.patch
+	deleted:    SPECS-EXTENDED/qt5-qtconnectivity/qt5-qtconnectivity.signatures.json
+	modified:   SPECS-EXTENDED/qt5-qtconnectivity/qt5-qtconnectivity.spec
+	deleted:    SPECS-EXTENDED/qt5-qtsensors/qt5-qtsensors.signatures.json
+	modified:   SPECS-EXTENDED/qt5-qtsensors/qt5-qtsensors.spec
+	deleted:    SPECS-EXTENDED/qt5-qtserialport/qt5-qtserialport.signatures.json
+	modified:   SPECS-EXTENDED/qt5-qtserialport/qt5-qtserialport.spec
+	deleted:    SPECS-EXTENDED/rarian/rarian-0.8.1-categories.patch
+	deleted:    SPECS-EXTENDED/rarian/rarian.signatures.json
+	modified:   SPECS-EXTENDED/rarian/rarian.spec
+	modified:   SPECS-EXTENDED/rarian/scrollkeeper-omf.dtd
+	new file:   SPECS-EXTENDED/rear/Makefile
+	new file:   SPECS-EXTENDED/rear/rear-CVE-2024-23301.patch
+	new file:   SPECS-EXTENDED/rear/rear-bz1492177-warning.patch
+	new file:   SPECS-EXTENDED/rear/rear-bz1747468.patch
+	new file:   SPECS-EXTENDED/rear/rear-bz2091163.patch
+	new file:   SPECS-EXTENDED/rear/rear-bz2104005.patch
+	new file:   SPECS-EXTENDED/rear/rear-bz2119501.patch
+	new file:   SPECS-EXTENDED/rear/rear-bz2120736.patch
+	new file:   SPECS-EXTENDED/rear/rear-bz2130945.patch
+	new file:   SPECS-EXTENDED/rear/rear-bz2188593-nbu-systemd.patch
+	new file:   SPECS-EXTENDED/rear/rear-copy-console-kernel-cmdline-from-host.patch
+	new file:   SPECS-EXTENDED/rear/rear-device-shrinking-bz2223895.patch
+	new file:   SPECS-EXTENDED/rear/rear-fix-backup-of-btrfs-subvolumes.patch
+	new file:   SPECS-EXTENDED/rear/rear-fix-compatibility-with-newer-systemd-bz2254871.patch
+	new file:   SPECS-EXTENDED/rear/rear-fix-ipv6.patch
+	new file:   SPECS-EXTENDED/rear/rear-fix-libsystemd-ldd-warning.patch
+	new file:   SPECS-EXTENDED/rear/rear-nbu-RHEL-17390-RHEL-17393.patch
+	new file:   SPECS-EXTENDED/rear/rear-remove-lvmdevices-bz2145014.patch
+	new file:   SPECS-EXTENDED/rear/rear-resolve-libraries-for-symlinks-in-COPY_AS_IS-RHEL-15108.patch
+	new file:   SPECS-EXTENDED/rear/rear-restore-hybrid-bootloader-RHEL-16864.patch
+	new file:   SPECS-EXTENDED/rear/rear-save-lvm-poolmetadatasize-RHEL-6984.patch
+	new file:   SPECS-EXTENDED/rear/rear-skip-btrfs-subvolumes-when-detecting-ESP-partitions.patch
+	new file:   SPECS-EXTENDED/rear/rear-skip-invalid-drives-RHEL-22863.patch
+	new file:   SPECS-EXTENDED/rear/rear-skip-useless-xfs-mount-options-RHEL-10478.patch
+	new file:   SPECS-EXTENDED/rear/rear-uefi-booting-with-multiple-cdrom-devices.patch
+	new file:   SPECS-EXTENDED/rear/rear-uefi-usb-secureboot-bz2196445.patch
+	new file:   SPECS-EXTENDED/rear/rear.cron
+	new file:   SPECS-EXTENDED/rear/rear.service
+	deleted:    SPECS-EXTENDED/rear/rear.signatures.json
+	modified:   SPECS-EXTENDED/rear/rear.spec
+	new file:   SPECS-EXTENDED/rear/rear.timer
+	new file:   SPECS-EXTENDED/rear/s390-no-clobber-disks.patch
+	deleted:    SPECS-EXTENDED/resource-agents/resource-agents.signatures.json
+	modified:   SPECS-EXTENDED/resource-agents/resource-agents.spec
+	renamed:    SPECS-EXTENDED/rhino/rhino-1.7.7.1.pom -> SPECS-EXTENDED/rhino/rhino-1.7.14.pom
+	deleted:    SPECS-EXTENDED/rhino/rhino-addOrbitManifest.patch
+	deleted:    SPECS-EXTENDED/rhino/rhino-build.patch
+	deleted:    SPECS-EXTENDED/rhino/rhino-debugger.script
+	new file:   SPECS-EXTENDED/rhino/rhino-engine-1.7.14.pom
+	deleted:    SPECS-EXTENDED/rhino/rhino-idswitch.script
+	deleted:    SPECS-EXTENDED/rhino/rhino-jsc.script
+	new file:   SPECS-EXTENDED/rhino/rhino-runtime-1.7.14.pom
+	deleted:    SPECS-EXTENDED/rhino/rhino.script
+	deleted:    SPECS-EXTENDED/rhino/rhino.signatures.json
+	modified:   SPECS-EXTENDED/rhino/rhino.spec
+	deleted:    SPECS-EXTENDED/ripgrep/cargo_config
+	deleted:    SPECS-EXTENDED/ripgrep/ripgrep.signatures.json
+	deleted:    SPECS-EXTENDED/ripgrep/ripgrep.spec
+	deleted:    SPECS-EXTENDED/rp-pppoe/pppoe-connect
+	deleted:    SPECS-EXTENDED/rp-pppoe/pppoe-server.service
+	deleted:    SPECS-EXTENDED/rp-pppoe/pppoe-setup
+	deleted:    SPECS-EXTENDED/rp-pppoe/pppoe-start
+	deleted:    SPECS-EXTENDED/rp-pppoe/pppoe-status
+	deleted:    SPECS-EXTENDED/rp-pppoe/pppoe-stop
+	deleted:    SPECS-EXTENDED/rp-pppoe/rp-pppoe-3.12-bz#1469960-new-kernel-header.patch
+	deleted:    SPECS-EXTENDED/rp-pppoe/rp-pppoe-3.12-doc.patch
+	deleted:    SPECS-EXTENDED/rp-pppoe/rp-pppoe-3.12-ip-allocation.patch
+	deleted:    SPECS-EXTENDED/rp-pppoe/rp-pppoe-3.12-man.patch
+	deleted:    SPECS-EXTENDED/rp-pppoe/rp-pppoe-3.12-plugin.patch
+	deleted:    SPECS-EXTENDED/rp-pppoe/rp-pppoe-3.12-pluginpath.patch
+	deleted:    SPECS-EXTENDED/rp-pppoe/rp-pppoe-manpages.patch
+	deleted:    SPECS-EXTENDED/rp-pppoe/rp-pppoe.signatures.json
+	modified:   SPECS-EXTENDED/rp-pppoe/rp-pppoe.spec
+	new file:   SPECS-EXTENDED/rpmlint/1163.patch
+	new file:   SPECS-EXTENDED/rpmlint/fedora.toml
+	deleted:    SPECS-EXTENDED/rpmlint/rpmlint-1.10-suppress-locale-error.patch
+	deleted:    SPECS-EXTENDED/rpmlint/rpmlint-1.11-rpm4.15.patch
+	deleted:    SPECS-EXTENDED/rpmlint/rpmlint-etc.config
+	deleted:    SPECS-EXTENDED/rpmlint/rpmlint.config
+	deleted:    SPECS-EXTENDED/rpmlint/rpmlint.signatures.json
+	modified:   SPECS-EXTENDED/rpmlint/rpmlint.spec
+	new file:   SPECS-EXTENDED/rpmlint/scoring.toml
+	new file:   SPECS-EXTENDED/rpmlint/users-groups.toml
+	new file:   SPECS-EXTENDED/rpmlint/warn-on-functions.toml
+	new file:   SPECS-EXTENDED/rubygem-mysql2/rubygem-mysql2-0.5.4-use-ssl-pem-files-in-repo.patch
+	new file:   SPECS-EXTENDED/rubygem-mysql2/rubygem-mysql2-0.5.5-openssl-CA-TRUE.patch
+	deleted:    SPECS-EXTENDED/rubygem-mysql2/rubygem-mysql2.signatures.json
+	modified:   SPECS-EXTENDED/rubygem-mysql2/rubygem-mysql2.spec
+	modified:   SPECS-EXTENDED/rubygem-rspec-expectations/rspec-related-create-full-tarball.sh
+	deleted:    SPECS-EXTENDED/rubygem-rspec-expectations/rubygem-rspec-expectations.signatures.json
+	modified:   SPECS-EXTENDED/rubygem-rspec-expectations/rubygem-rspec-expectations.spec
+	modified:   SPECS-EXTENDED/rubygem-rspec-mocks/rspec-related-create-full-tarball.sh
+	deleted:    SPECS-EXTENDED/rubygem-rspec-mocks/rubygem-rspec-mocks.signatures.json
+	modified:   SPECS-EXTENDED/rubygem-rspec-mocks/rubygem-rspec-mocks.spec
+	deleted:    SPECS-EXTENDED/rust-cbindgen/cargo_config
+	new file:   SPECS-EXTENDED/rust-cbindgen/cbindgen-0.27.0.crate
+	new file:   SPECS-EXTENDED/rust-cbindgen/cbindgen-fix-metadata.diff
+	deleted:    SPECS-EXTENDED/rust-cbindgen/disable-static-library.patch
+	deleted:    SPECS-EXTENDED/rust-cbindgen/rust-cbindgen.signatures.json
+	modified:   SPECS-EXTENDED/rust-cbindgen/rust-cbindgen.spec
+	new file:   SPECS-EXTENDED/rust-ripgrep/ripgrep-14.1.1.crate
+	new file:   SPECS-EXTENDED/rust-ripgrep/ripgrep-fix-metadata-auto.diff
+	new file:   SPECS-EXTENDED/rust-ripgrep/rust-ripgrep.spec
+	new file:   SPECS-EXTENDED/s-nail/s-nail-14.9.25-test-sha256.patch
+	new file:   SPECS-EXTENDED/s-nail/s-nail-14.9.25.tar.xz.asc
+	new file:   SPECS-EXTENDED/s-nail/s-nail-makeflags.patch
+	new file:   SPECS-EXTENDED/s-nail/s-nail.spec
+	new file:   SPECS-EXTENDED/s-nail/steffen.asc
+	deleted:    SPECS-EXTENDED/samba/0001-Disable-building-smb.conf.5-in-docs-xml-wscript.patch
+	modified:   SPECS-EXTENDED/samba/README.downgrade
+	modified:   SPECS-EXTENDED/samba/pam_winbind.conf
+	new file:   SPECS-EXTENDED/samba/samba-4.21.0-s3-notifyd.patch
+	new file:   SPECS-EXTENDED/samba/samba-4.21.2.tar.asc
+	new file:   SPECS-EXTENDED/samba/samba-pubkey_AA99442FB680B620.gpg
+	new file:   SPECS-EXTENDED/samba/samba-systemd-sysusers.conf
+	new file:   SPECS-EXTENDED/samba/samba-usershares-systemd-sysusers.conf
+	new file:   SPECS-EXTENDED/samba/samba-winbind-systemd-sysusers.conf
+	new file:   SPECS-EXTENDED/samba/samba.abignore
+	modified:   SPECS-EXTENDED/samba/samba.logrotate
+	modified:   SPECS-EXTENDED/samba/samba.pamd
+	deleted:    SPECS-EXTENDED/samba/samba.signatures.json
+	modified:   SPECS-EXTENDED/samba/samba.spec
+	modified:   SPECS-EXTENDED/samba/smb.conf.example
+	modified:   SPECS-EXTENDED/samba/smb.conf.vendor
+	new file:   SPECS-EXTENDED/samba/usershares.conf.vendor
+	deleted:    SPECS-EXTENDED/scotch/scotch-Makefile.shared.inc.in
+	deleted:    SPECS-EXTENDED/scotch/scotch-gfortran.patch
+	deleted:    SPECS-EXTENDED/scotch/scotch-ldflags.patch
+	deleted:    SPECS-EXTENDED/scotch/scotch.signatures.json
+	modified:   SPECS-EXTENDED/scotch/scotch.spec
+	new file:   SPECS-EXTENDED/scotch/scotch_installdirs.patch
+	renamed:    SPECS-EXTENDED/SDL/SDL_config.h -> SPECS-EXTENDED/sdl12-compat/SDL_config.h
+	new file:   SPECS-EXTENDED/sdl12-compat/sdl12-compat-sdlconfig-multilib.patch
+	new file:   SPECS-EXTENDED/sdl12-compat/sdl12-compat.spec
+	deleted:    SPECS-EXTENDED/shapelib/CVE-2022-0699.patch
+	deleted:    SPECS-EXTENDED/shapelib/c75b9281a5b9452d92e1682bdfe6019a13ed819f.diff
+	deleted:    SPECS-EXTENDED/shapelib/rpmlint-errors.patch
+	deleted:    SPECS-EXTENDED/shapelib/shapelib.signatures.json
+	modified:   SPECS-EXTENDED/shapelib/shapelib.spec
+	new file:   SPECS-EXTENDED/snowball/snowball-sharedlib.patch
+	new file:   SPECS-EXTENDED/snowball/snowball.spec
+	modified:   SPECS-EXTENDED/stunnel/Certificate-Creation
+	new file:   SPECS-EXTENDED/stunnel/pgp.asc
+	modified:   SPECS-EXTENDED/stunnel/pop3-redirect.xinetd
+	modified:   SPECS-EXTENDED/stunnel/sfinger.xinetd
+	modified:   SPECS-EXTENDED/stunnel/stunnel-5.50-authpriv.patch
+	deleted:    SPECS-EXTENDED/stunnel/stunnel-5.56-coverity.patch
+	modified:   SPECS-EXTENDED/stunnel/stunnel-5.56-curves-doc-update.patch
+	deleted:    SPECS-EXTENDED/stunnel/stunnel-5.56.tar.gz.asc
+	modified:   SPECS-EXTENDED/stunnel/stunnel-5.61-systemd-service.patch
+	deleted:    SPECS-EXTENDED/stunnel/stunnel-5.62-disabled-curves.patch
+	modified:   SPECS-EXTENDED/stunnel/stunnel-5.69-system-ciphers.patch
+	renamed:    SPECS-EXTENDED/stunnel/stunnel-5.69-default-tls-version.patch -> SPECS-EXTENDED/stunnel/stunnel-5.72-default-tls-version.patch
+	new file:   SPECS-EXTENDED/stunnel/stunnel-5.73.tar.gz.asc
+	modified:   SPECS-EXTENDED/stunnel/stunnel-pop3s-client.conf
+	modified:   SPECS-EXTENDED/stunnel/stunnel-sfinger.conf
+	deleted:    SPECS-EXTENDED/stunnel/stunnel.signatures.json
+	modified:   SPECS-EXTENDED/stunnel/stunnel.spec
+	modified:   SPECS-EXTENDED/stunnel/stunnel@.service
+	deleted:    SPECS-EXTENDED/subscription-manager/subscription-manager.signatures.json
+	modified:   SPECS-EXTENDED/subscription-manager/subscription-manager.spec
+	deleted:    SPECS-EXTENDED/suitesparse/suitesparse.signatures.json
+	modified:   SPECS-EXTENDED/suitesparse/suitesparse.spec
+	deleted:    SPECS-EXTENDED/switcheroo-control/switcheroo-control.signatures.json
+	modified:   SPECS-EXTENDED/switcheroo-control/switcheroo-control.spec
+	deleted:    SPECS-EXTENDED/tang/tang.signatures.json
+	modified:   SPECS-EXTENDED/tang/tang.spec
+	modified:   SPECS-EXTENDED/tang/tang.sysusers
+	modified:   SPECS-EXTENDED/tk/tk-8.6.10-font-sizes-fix.patch
+	renamed:    SPECS-EXTENDED/tk/tk-8.6.10-conf.patch -> SPECS-EXTENDED/tk/tk-8.6.12-conf.patch
+	renamed:    SPECS-EXTENDED/tk/tk-8.6.10-make.patch -> SPECS-EXTENDED/tk/tk-8.6.12-make.patch
+	deleted:    SPECS-EXTENDED/tk/tk-8.6.7-no-fonts-fix.patch
+	deleted:    SPECS-EXTENDED/tk/tk.signatures.json
+	modified:   SPECS-EXTENDED/tk/tk.spec
+	new file:   SPECS-EXTENDED/trilead-ssh2/BCrypt.java
+	deleted:    SPECS-EXTENDED/trilead-ssh2/trilead-ssh2.signatures.json
+	modified:   SPECS-EXTENDED/trilead-ssh2/trilead-ssh2.spec
+	deleted:    SPECS-EXTENDED/udisks2/ignore-apple-boot-part.patch
+	deleted:    SPECS-EXTENDED/udisks2/udisks-2.10.0-doc_annotations.patch
+	new file:   SPECS-EXTENDED/udisks2/udisks-2.11.0-BLKRRPART_harder.patch
+	new file:   SPECS-EXTENDED/udisks2/udisks-2.11.0-targetcli_config.json_netif_timeout.patch
+	new file:   SPECS-EXTENDED/udisks2/udisks-2.11.0-udiskslinuxblock_survive_missing_fstab.patch
+	new file:   SPECS-EXTENDED/udisks2/udisks-2.11.0-udiskslinuxmanager_use_after_free.patch
+	deleted:    SPECS-EXTENDED/udisks2/udisks2.signatures.json
+	modified:   SPECS-EXTENDED/udisks2/udisks2.spec
+	deleted:    SPECS-EXTENDED/uglify-js/uglify-js-esfuzz.patch
+	deleted:    SPECS-EXTENDED/uglify-js/uglify-js.signatures.json
+	modified:   SPECS-EXTENDED/uglify-js/uglify-js.spec
+	new file:   SPECS-EXTENDED/upower/0001-Fix-race-condition-in-test_sibling_priority_no_overwrite.patch
+	new file:   SPECS-EXTENDED/upower/0002-linux-up-enumerator-udev-Find-the.patch
+	deleted:    SPECS-EXTENDED/upower/upower.signatures.json
+	modified:   SPECS-EXTENDED/upower/upower.spec
+	deleted:    SPECS-EXTENDED/usb_modeswitch/0001-usb_modeswitch-count-the-target-devices-from-zero.patch
+	modified:   SPECS-EXTENDED/usb_modeswitch/device_reference-utf8.patch
+	modified:   SPECS-EXTENDED/usb_modeswitch/device_reference.txt
+	deleted:    SPECS-EXTENDED/usb_modeswitch/usb_modeswitch.signatures.json
+	modified:   SPECS-EXTENDED/usb_modeswitch/usb_modeswitch.spec
+	deleted:    SPECS-EXTENDED/usbguard/usbguard-0.7.6-libqb.patch
+	modified:   SPECS-EXTENDED/usbguard/usbguard-daemon.conf
+	new file:   SPECS-EXTENDED/usbguard/usbguard-revert-catch.patch
+	deleted:    SPECS-EXTENDED/usbguard/usbguard.signatures.json
+	modified:   SPECS-EXTENDED/usbguard/usbguard.spec
+	deleted:    SPECS-EXTENDED/usbmuxd/68bdf4be88b128c56eea5117361c4e7b51eb27b1...9af2b12552693a47601347e1eafc1e94132d727e.patch
+	deleted:    SPECS-EXTENDED/usbmuxd/usbmuxd.signatures.json
+	modified:   SPECS-EXTENDED/usbmuxd/usbmuxd.spec
+	deleted:    SPECS-EXTENDED/virt-top/0001-libvirt-Handle-VIR_DOMAIN_PMSUSPENDED-state.patch
+	new file:   SPECS-EXTENDED/virt-top/0001-virt-top-fix-to-explicitly-disconnect-from-libvirtd.patch
+	new file:   SPECS-EXTENDED/virt-top/0002-virt-top-fix-to-parse-init-file-correctly.patch
+	new file:   SPECS-EXTENDED/virt-top/0003-src-Include-libxml-parser.h.patch
+	new file:   SPECS-EXTENDED/virt-top/libguestfs.keyring
+	modified:   SPECS-EXTENDED/virt-top/processcsv.py.pod
+	renamed:    SPECS-EXTENDED/virt-top/virt-top-1.0.4-processcsv-documentation.patch -> SPECS-EXTENDED/virt-top/virt-top-1.0.9-processcsv-documentation.patch
+	new file:   SPECS-EXTENDED/virt-top/virt-top-1.1.1-ocaml-bytecode.patch
+	new file:   SPECS-EXTENDED/virt-top/virt-top-1.1.1.tar.gz.sig
+	deleted:    SPECS-EXTENDED/virt-top/virt-top.signatures.json
+	modified:   SPECS-EXTENDED/virt-top/virt-top.spec
+	deleted:    SPECS-EXTENDED/virt-who/virt-who.signatures.json
+	modified:   SPECS-EXTENDED/virt-who/virt-who.spec
+	new file:   SPECS-EXTENDED/watchdog/0001-Choose-libtirpc-or-another-RPC-library-for-XDR-heade.patch
+	deleted:    SPECS-EXTENDED/watchdog/0001-Include-linux-param.h-for-EXEC_PAGESIZE-definition.patch
+	deleted:    SPECS-EXTENDED/watchdog/0002-Generalize-and-make-watchdog-refresh-settimeout-work.patch
+	new file:   SPECS-EXTENDED/watchdog/0002-mem-leak-verbose.patch
+	deleted:    SPECS-EXTENDED/watchdog/0003-Ignore-build-products-in-GIT.patch
+	deleted:    SPECS-EXTENDED/watchdog/0004-Compile-with-musl-when-nfs-is-disabled.patch
+	deleted:    SPECS-EXTENDED/watchdog/0005-Rename-READ_ENUM-to-READ_YESNO.patch
+	deleted:    SPECS-EXTENDED/watchdog/0006-Make-IT87-fix-up-automatic-by-default.patch
+	deleted:    SPECS-EXTENDED/watchdog/0007-Synced-Debian-files-with-5.15-2.patch
+	deleted:    SPECS-EXTENDED/watchdog/0008-Fix-automated-CentOS-7-build.patch
+	deleted:    SPECS-EXTENDED/watchdog/0009-Bugfix-against-watchdog-configuration-file-corruptio.patch
+	deleted:    SPECS-EXTENDED/watchdog/0010-Choose-libtirpc-or-another-RPC-library-for-XDR-heade.patch
+	renamed:    SPECS-EXTENDED/watchdog/0004-watchdog-5.13-rhseldoc.patch -> SPECS-EXTENDED/watchdog/0099-watchdog-5.16-rhseldoc.patch
+	modified:   SPECS-EXTENDED/watchdog/README.Fedora
+	modified:   SPECS-EXTENDED/watchdog/README.watchdog.ipmi
+	modified:   SPECS-EXTENDED/watchdog/watchdog-ping.service
+	modified:   SPECS-EXTENDED/watchdog/watchdog.service
+	deleted:    SPECS-EXTENDED/watchdog/watchdog.signatures.json
+	modified:   SPECS-EXTENDED/watchdog/watchdog.spec
+	new file:   SPECS-EXTENDED/whois/md-pgp.asc
+	deleted:    SPECS-EXTENDED/whois/whois.signatures.json
+	modified:   SPECS-EXTENDED/whois/whois.spec
+	new file:   SPECS-EXTENDED/whois/whois_5.5.20.dsc
+	modified:   SPECS-EXTENDED/wireshark/90-wireshark-usbmon.rules
+	new file:   SPECS-EXTENDED/wireshark/SIGNATURES-4.4.2.txt
+	modified:   SPECS-EXTENDED/wireshark/wireshark-0002-Customize-permission-denied-error.patch
+	modified:   SPECS-EXTENDED/wireshark/wireshark-0003-fix-string-overrun-in-plugins-profinet.patch
+	modified:   SPECS-EXTENDED/wireshark/wireshark-0004-Restore-Fedora-specific-groups.patch
+	modified:   SPECS-EXTENDED/wireshark/wireshark-0005-Fix-paths-in-a-wireshark.desktop-file.patch
+	modified:   SPECS-EXTENDED/wireshark/wireshark-0006-Move-tmp-to-var-tmp.patch
+	modified:   SPECS-EXTENDED/wireshark/wireshark-0007-cmakelists.patch
+	deleted:    SPECS-EXTENDED/wireshark/wireshark-0008-glib2-g_strdup-build.patch
+	new file:   SPECS-EXTENDED/wireshark/wireshark-0008-pkgconfig.patch
+	deleted:    SPECS-EXTENDED/wireshark/wireshark-0009-fix-asn2wrs-cmake.patch
+	deleted:    SPECS-EXTENDED/wireshark/wireshark-0010-ripemd-fips-core-dump.patch
+	deleted:    SPECS-EXTENDED/wireshark/wireshark-0011-manage-interfaces-crash.patch
+	deleted:    SPECS-EXTENDED/wireshark/wireshark.signatures.json
+	modified:   SPECS-EXTENDED/wireshark/wireshark.spec
+	new file:   SPECS-EXTENDED/wireshark/wireshark.sysusers
+	modified:   SPECS-EXTENDED/wsmancli/AUTHORS
+	modified:   SPECS-EXTENDED/wsmancli/COPYING
+	modified:   SPECS-EXTENDED/wsmancli/README
+	modified:   SPECS-EXTENDED/wsmancli/missing-pthread-symbols.patch
+	deleted:    SPECS-EXTENDED/wsmancli/wsmancli.signatures.json
+	modified:   SPECS-EXTENDED/wsmancli/wsmancli.spec
+	deleted:    SPECS-EXTENDED/x3270/x3270-3.5-ibmhostpath.patch
+	modified:   SPECS-EXTENDED/x3270/x3270-3.5-paths.patch
+	modified:   SPECS-EXTENDED/x3270/x3270.desktop
+	modified:   SPECS-EXTENDED/x3270/x3270.png
+	deleted:    SPECS-EXTENDED/x3270/x3270.signatures.json
+	modified:   SPECS-EXTENDED/x3270/x3270.spec
+	new file:   SPECS-EXTENDED/xalan-j2/generate-tarball.sh
+	deleted:    SPECS-EXTENDED/xalan-j2/openjdk-build.patch
+	deleted:    SPECS-EXTENDED/xalan-j2/optional-xerces-req.patch
+	deleted:    SPECS-EXTENDED/xalan-j2/serializer-2.7.2.pom
+	new file:   SPECS-EXTENDED/xalan-j2/serializer-2.7.3.pom
+	deleted:    SPECS-EXTENDED/xalan-j2/xalan-2.7.2.pom
+	new file:   SPECS-EXTENDED/xalan-j2/xalan-2.7.3.pom
+	modified:   SPECS-EXTENDED/xalan-j2/xalan-j2-MANIFEST.MF
+	deleted:    SPECS-EXTENDED/xalan-j2/xalan-j2-crosslink.patch
+	deleted:    SPECS-EXTENDED/xalan-j2/xalan-j2-manifest.patch
+	modified:   SPECS-EXTENDED/xalan-j2/xalan-j2-noxsltcdeps.patch
+	modified:   SPECS-EXTENDED/xalan-j2/xalan-j2-serializer-MANIFEST.MF
+	deleted:    SPECS-EXTENDED/xalan-j2/xalan-j2.signatures.json
+	modified:   SPECS-EXTENDED/xalan-j2/xalan-j2.spec
+	renamed:    SPECS-EXTENDED/xalan-j2/xsltc-2.7.2.pom -> SPECS-EXTENDED/xalan-j2/xsltc-2.7.3.pom
+	deleted:    SPECS-EXTENDED/xbean/0001-Remove-unused-import.patch
+	renamed:    SPECS-EXTENDED/xbean/0002-Unbundle-ASM.patch -> SPECS-EXTENDED/xbean/0001-Unbundle-ASM.patch
+	renamed:    SPECS-EXTENDED/xbean/0003-Remove-dependency-on-log4j-and-commons-logging.patch -> SPECS-EXTENDED/xbean/0002-Remove-dependency-on-log4j-and-commons-logging.patch
+	deleted:    SPECS-EXTENDED/xbean/downgrading-asm-version.patch
+	deleted:    SPECS-EXTENDED/xbean/jdk-11-fix.patch
+	deleted:    SPECS-EXTENDED/xbean/xbean.signatures.json
+	modified:   SPECS-EXTENDED/xbean/xbean.spec
+	new file:   SPECS-EXTENDED/xerces-j2/ExperimentalTaglet.java
+	new file:   SPECS-EXTENDED/xerces-j2/InternalTaglet.java
+	new file:   SPECS-EXTENDED/xerces-j2/XJavac.java
+	deleted:    SPECS-EXTENDED/xerces-j2/ant-build-fix.patch
+	deleted:    SPECS-EXTENDED/xerces-j2/xerces-2_11_0-jdk7.patch
+	modified:   SPECS-EXTENDED/xerces-j2/xerces-j2-build.patch
+	modified:   SPECS-EXTENDED/xerces-j2/xerces-j2-constants.1
+	deleted:    SPECS-EXTENDED/xerces-j2/xerces-j2-constants.sh
+	modified:   SPECS-EXTENDED/xerces-j2/xerces-j2-manifest.patch
+	new file:   SPECS-EXTENDED/xerces-j2/xerces-j2-pom.xml
+	modified:   SPECS-EXTENDED/xerces-j2/xerces-j2-version.1
+	deleted:    SPECS-EXTENDED/xerces-j2/xerces-j2-version.sh
+	deleted:    SPECS-EXTENDED/xerces-j2/xerces-j2.signatures.json
+	modified:   SPECS-EXTENDED/xerces-j2/xerces-j2.spec
+	deleted:    SPECS-EXTENDED/xerces-j2/xercesImpl-2.12.0.pom
+	deleted:    SPECS-EXTENDED/xfconf/xfconf.signatures.json
+	modified:   SPECS-EXTENDED/xfconf/xfconf.spec
+	new file:   SPECS-EXTENDED/xfsdump/13F703E6C11CF6F0.asc
+	new file:   SPECS-EXTENDED/xfsdump/xfsdump-3.1.12.tar.sign
+	deleted:    SPECS-EXTENDED/xfsdump/xfsdump.signatures.json
+	modified:   SPECS-EXTENDED/xfsdump/xfsdump.spec
+	new file:   SPECS-EXTENDED/xmlunit/0001-Disable-tests-requiring-network-access.patch
+	new file:   SPECS-EXTENDED/xmlunit/0002-Use-local-schema.patch
+	new file:   SPECS-EXTENDED/xmlunit/0003-Drop-support-for-JAXB.patch
+	new file:   SPECS-EXTENDED/xmlunit/0004-Port-to-assertj-core-3.patch
+	new file:   SPECS-EXTENDED/xmlunit/generate-tarball.sh
+	deleted:    SPECS-EXTENDED/xmlunit/xmlunit-1.5.pom
+	deleted:    SPECS-EXTENDED/xmlunit/xmlunit.signatures.json
+	modified:   SPECS-EXTENDED/xmlunit/xmlunit.spec
+	deleted:    SPECS-EXTENDED/xrestop/xrestop.signatures.json
+	modified:   SPECS-EXTENDED/xrestop/xrestop.spec
+	modified:   SPECS-EXTENDED/ypserv/rpc.yppasswdd.env
+	modified:   SPECS-EXTENDED/ypserv/yppasswdd-pre-setdomain
+	modified:   SPECS-EXTENDED/ypserv/yppasswdd.service
+	modified:   SPECS-EXTENDED/ypserv/ypserv-2.13-nonedomain.patch
+	modified:   SPECS-EXTENDED/ypserv/ypserv-2.13-ypxfr-zeroresp.patch
+	modified:   SPECS-EXTENDED/ypserv/ypserv-2.19-slp-warning.patch
+	modified:   SPECS-EXTENDED/ypserv/ypserv-2.24-aliases.patch
+	modified:   SPECS-EXTENDED/ypserv/ypserv-2.27-confpost.patch
+	modified:   SPECS-EXTENDED/ypserv/ypserv-2.31-netgrprecur.patch
+	modified:   SPECS-EXTENDED/ypserv/ypserv-2.5-nfsnobody2.patch
+	modified:   SPECS-EXTENDED/ypserv/ypserv-2.5-redhat.patch
+	modified:   SPECS-EXTENDED/ypserv/ypserv-4.0-headers.patch
+	modified:   SPECS-EXTENDED/ypserv/ypserv-4.0-manfix.patch
+	modified:   SPECS-EXTENDED/ypserv/ypserv-4.0-selinux-context.patch
+	new file:   SPECS-EXTENDED/ypserv/ypserv-4.2-implicit-int.patch
+	modified:   SPECS-EXTENDED/ypserv/ypserv.service
+	deleted:    SPECS-EXTENDED/ypserv/ypserv.signatures.json
+	modified:   SPECS-EXTENDED/ypserv/ypserv.spec
+	modified:   SPECS-EXTENDED/ypserv/ypxfrd.service
+	deleted:    SPECS-EXTENDED/zenity/zenity.signatures.json
+	modified:   SPECS-EXTENDED/zenity/zenity.spec
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+	didwhat/
+

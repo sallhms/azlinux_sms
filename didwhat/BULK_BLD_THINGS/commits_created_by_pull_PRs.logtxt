@@ -1,0 +1,370 @@
+eb23fdfc9 Merge branch 'topic_rubygem-test-unit-ruby-core' of https://github.com/SumitJenaHCL/azurelinux into topic_bb11Mar
+debc93cb1 Merge branch 'topic_rubygem-scanf' of https://github.com/SumitJenaHCL/azurelinux into topic_bb11Mar
+da697b49c Merge branch 'topic_libselinux' of https://github.com/SumitJenaHCL/azurelinux into topic_bb11Mar
+0e9dcb75a Merge branch 'topic_rubygem-deep_merge' of https://github.com/SumitJenaHCL/azurelinux into topic_bb11Mar
+f7956eb5c Merge branch 'topic_rubygem-hocon' of https://github.com/SumitJenaHCL/azurelinux into topic_bb11Mar
+acef35866 Merge branch 'topic_rubygem-puppet-resource_api' of https://github.com/SumitJenaHCL/azurelinux into topic_bb11Mar
+f4cae420f Merge branch 'topic_zziplib' of https://github.com/jykanase/azurelinux into topic_bb11Mar
+fe800c5e7 Merge branch 'mayansingh/d3_upgrade' of https://github.com/microsoft/azurelinux into topic_bb11Mar
+f63491da1 Merge branch 'topic_yelp-tools' of https://github.com/archana25-ms/azurelinux-archana into topic_bb11Mar
+5c1ffe257 Merge branch 'topic_xmlrpc-c' of https://github.com/SumitJenaHCL/azurelinux into topic_bb11Mar
+a6a112660 Merge branch 'upgrade-xdg-dbus-proxy' of https://github.com/aninda-al/azurelinux-test into topic_bb11Mar
+3ca50b5e7 Merge branch 'upgrade-xcb-util-wm' of https://github.com/aninda-al/azurelinux-test into topic_bb11Mar
+4bb5ecb77 Merge branch 'topic_webrtc-audio-processing' of https://github.com/AkarshHCL/azurelinux into topic_bb11Mar
+2c23e6759 Merge branch 'topic_virt-p2v' of https://github.com/archana25-ms/azurelinux-archana into topic_bb11Mar
+61cc6a79f Merge branch 'topic_v4l-utils' of https://github.com/jykanase/azurelinux into topic_bb11Mar
+22ab7fa0d Merge branch 'Topic_units' of https://github.com/durgajagadeesh/azurelinux_djpalli into topic_bb11Mar
+c9daf934a Merge branch 'Topic_unicode-ucd' of https://github.com/durgajagadeesh/azurelinux_djpalli into topic_bb11Mar
+0a04aee85 Merge branch 'Topic_unicode-emoji' of https://github.com/durgajagadeesh/azurelinux_djpalli into topic_bb11Mar
+7c4e0b3fb Merge branch 'topic_udica' of https://github.com/jykanase/azurelinux into topic_bb11Mar
+2ea692f85 Merge branch 'mayansingh/tbb_upgrade' of https://github.com/microsoft/azurelinux into topic_bb11Mar
+9bf6c828f Merge branch 'topic_taglib' of https://github.com/archana25-ms/azurelinux-archana into topic_bb11Mar
+6e756ff74 Merge branch 'topic_sratom' of https://github.com/jykanase/azurelinux into topic_bb11Mar
+846f2c99d Merge branch 'topic_spice-protocol' of https://github.com/archana25-ms/azurelinux-archana into topic_bb11Mar
+3cac66491 Merge branch 'topic_sord' of https://github.com/jykanase/azurelinux into topic_bb11Mar
+e1f124e4e Merge branch 'topic_serd' of https://github.com/jykanase/azurelinux into topic_bb11Mar
+38a4c6302 Merge branch 'topic_satyr' of https://github.com/SumitJenaHCL/azurelinux into topic_bb11Mar
+eda655a91 Merge branch 'topic_rubygem-rspec-support' of https://github.com/archana25-ms/azurelinux-archana into topic_bb11Mar
+fca2e01ba Merge branch 'topic_rubygem-rouge' of https://github.com/akhila-guruju/azurelinux-test into topic_bb11Mar
+fe23a14e2 Merge branch 'topic_rubygem-pkg-config' of https://github.com/akhila-guruju/azurelinux-test into topic_bb11Mar
+2f0853e28 Merge branch 'topic_rubygem-flexmock' of https://github.com/akhila-guruju/azurelinux-test into topic_bb11Mar
+9336a2f1c Merge branch 'topic_rhash' of https://github.com/akhila-guruju/azurelinux-test into topic_bb11Mar
+0ed1f37e5 Merge branch 'Topic_relaxngDatatype' of https://github.com/durgajagadeesh/azurelinux_djpalli into topic_bb11Mar
+876c628a6 Merge branch 'topic_rasqal' of https://github.com/jykanase/azurelinux into topic_bb11Mar
+a39671314 Merge branch 'topic_qr-code-generator' of https://github.com/akhila-guruju/azurelinux-test into topic_bb11Mar
+9da48edea Merge branch 'topic_qpdf' of https://github.com/akhila-guruju/azurelinux-test into topic_bb11Mar
+1f77e1a5f Merge branch 'topic_python3-typed_ast' of https://github.com/jykanase/azurelinux into topic_bb11Mar
+9539ed43c Merge branch 'topic_python-voluptuous' of https://github.com/archana25-ms/azurelinux-archana into topic_bb11Mar
+082f51caa Merge branch 'topic_python-varlink' of https://github.com/akhila-guruju/azurelinux-test into topic_bb11Mar
+4b6b01050 Merge branch 'topic_python-urwid' of https://github.com/jykanase/azurelinux into topic_bb11Mar
+62f617cc1 Merge branch 'topic_python-tox' of https://github.com/jykanase/azurelinux into topic_bb11Mar
+b2e43d228 Merge branch 'topic_python-testtools' of https://github.com/jykanase/azurelinux into topic_bb11Mar
+39361e698 Merge branch 'topic_python-simpleline' of https://github.com/akhila-guruju/azurelinux-test into topic_bb11Mar
+4c8847b66 Merge branch 'topic_python-rtslib' of https://github.com/akhila-guruju/azurelinux-test into topic_bb11Mar
+4bf2cef87 Merge branch 'topic_python-requests-kerberos' of https://github.com/SumitJenaHCL/azurelinux into topic_bb11Mar
+9fc935146 Merge branch 'topic_python-requests-file' of https://github.com/akhila-guruju/azurelinux-test into topic_bb11Mar
+4de471d9b Merge branch 'topic_python-recommonmark' of https://github.com/v-smalavathu/azurelinux1 into topic_bb11Mar
+71c76ee38 Merge branch 'topic_python-rdflib' of https://github.com/akhila-guruju/azurelinux-test into topic_bb11Mar
+41413fa71 Merge branch 'topic_python-qrcode' of https://github.com/akhila-guruju/azurelinux-test into topic_bb11Mar
+7881537c7 Merge branch 'topic_python-pymongo' of https://github.com/akhila-guruju/azurelinux-test into topic_bb11Mar
+950095883 Merge branch 'topic_python-pycares' of https://github.com/akhila-guruju/azurelinux-test into topic_bb11Mar
+7e3b980d9 Merge branch 'topic_python-oslo-i18n' of https://github.com/archana25-ms/azurelinux-archana into topic_bb11Mar
+ea9731c8e Merge branch 'topic_python-mutagen' of https://github.com/archana25-ms/azurelinux-archana into topic_bb11Mar
+e7af2403f Merge branch 'topic_python-gssapi' of https://github.com/AkarshHCL/azurelinux into topic_bb11Mar
+2348e00d9 Merge branch 'topic_fixtures' of https://github.com/AkarshHCL/azurelinux into topic_bb11Mar
+59b1aa6d6 Merge branch 'topic_python-entrypoint' of https://github.com/AkarshHCL/azurelinux into topic_bb11Mar
+f0d4e9ce4 Merge branch 'topic_python-dulwich' of https://github.com/akhila-guruju/azurelinux-test into topic_bb11Mar
+7af71926f Merge branch 'topic_python-dns' of https://github.com/archana25-ms/azurelinux-archana into topic_bb11Mar
+7a6d330b7 Merge branch 'topic_python-cups' of https://github.com/SumitJenaHCL/azurelinux into topic_bb11Mar
+a1e1195fe Merge branch 'topic_python-colorama' of https://github.com/akhila-guruju/azurelinux-test into topic_bb11Mar
+9dda14aae Merge branch 'topic_python-cmd2' of https://github.com/SumitJenaHCL/azurelinux into topic_bb11Mar
+5fd587b2e Merge branch 'upgrade-python-cheetah' of https://github.com/aninda-al/azurelinux-test into topic_bb11Mar
+0ec005ec3 Merge branch 'topic_python-blivet' of https://github.com/SumitJenaHCL/azurelinux into topic_bb11Mar
+045d9cbc2 Merge branch 'upgrade-python-blinker' of https://github.com/aninda-al/azurelinux-test into topic_bb11Mar
+d7e1448ea Merge branch 'topic_python-betamax' of https://github.com/SumitJenaHCL/azurelinux into topic_bb11Mar
+c7797c547 Merge branch 'topic_python-alsa' of https://github.com/SumitJenaHCL/azurelinux into topic_bb11Mar
+4a88b2e15 Merge branch 'topic_python-aiodns' of https://github.com/akhila-guruju/azurelinux-test into topic_bb11Mar
+e7de8199d Merge branch 'topic_python-IPy' of https://github.com/SumitJenaHCL/azurelinux into topic_bb11Mar
+8eb3cd3d1 Merge branch 'topic_pyparted' of https://github.com/SumitJenaHCL/azurelinux into topic_bb11Mar
+efa2fe437 Merge branch 'topic_pykickstart' of https://github.com/SumitJenaHCL/azurelinux into topic_bb11Mar
+d714c2e6e Merge branch 'topic_puppet' of https://github.com/SumitJenaHCL/azurelinux into topic_bb11Mar
+211ae2d57 Merge branch 'topic_pps-tools' of https://github.com/SumitJenaHCL/azurelinux into topic_bb11Mar
+f37c07cad Merge branch 'topic_ppp' of https://github.com/jykanase/azurelinux into topic_bb11Mar
+baa88321b Merge branch 'topic_powertop' of https://github.com/SumitJenaHCL/azurelinux into topic_bb11Mar
+a5aa97c6d Merge branch 'topic_pkcs11-helper' of https://github.com/SumitJenaHCL/azurelinux into topic_bb11Mar
+ed8fe00b3 Merge branch 'topic_pinfo' of https://github.com/SumitJenaHCL/azurelinux into topic_bb11Mar
+276d280c6 Merge branch 'topic_perl-libnet' of https://github.com/SumitJenaHCL/azurelinux into topic_bb11Mar
+46dcf0e3c Merge branch 'topic_perl-YAML-LibYAML' of https://github.com/SumitJenaHCL/azurelinux into topic_bb11Mar
+f97990957 Merge branch 'topic_perl-XString' of https://github.com/SumitJenaHCL/azurelinux into topic_bb11Mar
+bc8c78420 Merge branch 'topic_perl-XML-Writer' of https://github.com/SumitJenaHCL/azurelinux into topic_bb11Mar
+c6dc09520 Merge branch 'topic_perl-XML-Generator' of https://github.com/SumitJenaHCL/azurelinux into topic_bb11Mar
+0257fd21b Merge branch 'topic_perl-Variable-Magic' of https://github.com/SumitJenaHCL/azurelinux into topic_bb11Mar
+da8d74dc1 Merge branch 'topic_perl-Test-Inter' of https://github.com/v-smalavathu/azurelinux1 into topic_bb11Mar
+3db44d07b Merge branch 'topic_perl-Test-Harness' of https://github.com/v-smalavathu/azurelinux1 into topic_bb11Mar
+04e1c055e Merge branch 'topic_perl-Test-Differences' of https://github.com/SumitJenaHCL/azurelinux into topic_bb11Mar
+9b48dad99 Merge branch 'topic_perl-Software-License' of https://github.com/SumitJenaHCL/azurelinux into topic_bb11Mar
+b696f2f3c Merge branch 'topic_perl-Return-MultiLevel' of https://github.com/v-smalavathu/azurelinux1 into topic_bb11Mar
+ea9b96092 Merge branch 'topic_perl-Pod-Spell' of https://github.com/SumitJenaHCL/azurelinux into topic_bb11Mar
+b0706e2f4 Merge branch 'topic_perl-Pod-Eventual' of https://github.com/SumitJenaHCL/azurelinux into topic_bb11Mar
+c564436c3 Merge branch 'topic_perl-Pod-Coverage-TrustPod' of https://github.com/SumitJenaHCL/azurelinux into topic_bb11Mar
+7ca60c001 Merge branch 'topic_perl-Path-Tiny' of https://github.com/v-smalavathu/azurelinux1 into topic_bb11Mar
+6df040e18 Merge branch 'topic_perl-Package-Stash-XS' of https://github.com/SumitJenaHCL/azurelinux into topic_bb11Mar
+fb1f97257 Merge branch 'kevin-b-lockwood/perl-Package-DeprecationManager-0.18-1' of https://github.com/kevin-b-lockwood/azurelinux into topic_bb11Mar
+d2ef368ce Merge branch 'topic_perl-PPIx-Regexp' of https://github.com/SumitJenaHCL/azurelinux into topic_bb11Mar
+ef4f894dd Merge branch 'kevin-b-lockwood/perl-PPIx-QuoteLike-0.023-1' of https://github.com/kevin-b-lockwood/azurelinux into topic_bb11Mar
+f9b08df0a Merge branch 'topic_perl-PPI' of https://github.com/SumitJenaHCL/azurelinux into topic_bb11Mar
+2e21ca335 Merge branch 'topic_perl-Net-Telnet' of https://github.com/v-smalavathu/azurelinux1 into topic_bb11Mar
+078ab937d Merge branch 'topic_perl-Moo' of https://github.com/v-smalavathu/azurelinux1 into topic_bb11Mar
+1f84d02a1 Merge branch 'topic_perl-Mojolicious' of https://github.com/v-smalavathu/azurelinux1 into topic_bb11Mar
+94f5b7bfa Merge branch 'topic_perl-Module-Load-Util' of https://github.com/SumitJenaHCL/azurelinux into topic_bb11Mar
+f001e2990 Merge branch 'topic_perl-Module-Build-Tiny' of https://github.com/jykanase/azurelinux into topic_bb11Mar
+d2bae5301 Merge branch 'topic_perl-Mixin-Linewise' of https://github.com/SumitJenaHCL/azurelinux into topic_bb11Mar
+1274117c2 Merge branch 'topic_perl-Mail-AuthenticationResults' of https://github.com/SumitJenaHCL/azurelinux into topic_bb11Mar
+7e5c805ef Merge branch 'topic_perl-Locale-Msgfmt' of https://github.com/SumitJenaHCL/azurelinux into topic_bb11Mar
+460accfd4 Merge branch 'kevin-b-lockwood/perl-Locale-Codes-3.81-1' of https://github.com/kevin-b-lockwood/azurelinux into topic_bb11Mar
+efc487172 Merge branch 'topic_perl-List-MoreUtils-XS' of https://github.com/SumitJenaHCL/azurelinux into topic_bb11Mar
+5b273859b Merge branch 'kevin-b-lockwood/perl-LWP-Protocol-https-6.14-1' of https://github.com/kevin-b-lockwood/azurelinux into topic_bb11Mar
+119ae340e Merge branch 'kevin-b-lockwood/perl-Importer-0.026-1' of https://github.com/kevin-b-lockwood/azurelinux into topic_bb11Mar
+ceb9c6229 Merge branch 'topic_perl-Image-Info' of https://github.com/SumitJenaHCL/azurelinux into topic_bb11Mar
+8a0409a41 Merge branch 'topic_perl-IO-Compress-Lzma' of https://github.com/SumitJenaHCL/azurelinux into topic_bb11Mar
+5041102c4 Merge branch 'topic_perl-GD' of https://github.com/SumitJenaHCL/azurelinux into topic_bb11Mar
+77e8d0657 Merge branch 'kevin-b-lockwood/perl-File-Slurp-9999.32-1' of https://github.com/kevin-b-lockwood/azurelinux into topic_bb11Mar
+0383b355c Merge branch 'topic_perl-File-ShareDir' of https://github.com/SumitJenaHCL/azurelinux into topic_bb11Mar
+9602a04d5 Merge branch 'kevin-b-lockwood/perl-File-ReadBackwards-1.06-1' of https://github.com/kevin-b-lockwood/azurelinux into topic_bb11Mar
+e40bfb2c1 Merge branch 'upgrade-perl-File-Find-Object' of https://github.com/aninda-al/azurelinux-test into topic_bb11Mar
+fc0a72cdc Merge branch 'upgrade-perl-File-BaseDir' of https://github.com/aninda-al/azurelinux-test into topic_bb11Mar
+5d9678448 Merge branch 'upgrade-perl-File-BOM' of https://github.com/aninda-al/azurelinux-test into topic_bb11Mar
+7480bb85d Merge branch 'kevin-b-lockwood/perl-ExtUtils-InstallPaths-0.014-1' of https://github.com/kevin-b-lockwood/azurelinux into topic_bb11Mar
+59c1b26f7 Merge branch 'kevin-b-lockwood/perl-ExtUtils-Helpers-0.028-1' of https://github.com/kevin-b-lockwood/azurelinux into topic_bb11Mar
+8a9c3ccf3 Merge branch 'kevin-b-lockwood/perl-ExtUtils-Config-0.010-1' of https://github.com/kevin-b-lockwood/azurelinux into topic_bb11Mar
+6df8d6dce Merge branch 'kevin-b-lockwood/perl-Exception-Class-1.45-1' of https://github.com/kevin-b-lockwood/azurelinux into topic_bb11Mar
+715f9552c Merge branch 'kevin-b-lockwood/perl-Event-1.28-1' of https://github.com/kevin-b-lockwood/azurelinux into topic_bb11Mar
+46d14963a Merge branch 'kevin-b-lockwood/perl-Email-Date-Format-1.008-1' of https://github.com/kevin-b-lockwood/azurelinux into topic_bb11Mar
+179f22eeb Merge branch 'kevin-b-lockwood/perl-Email-Address-1.913-1' of https://github.com/kevin-b-lockwood/azurelinux into topic_bb11Mar
+7cad4ba82 Merge branch 'topic_perl-EV' of https://github.com/SumitJenaHCL/azurelinux into topic_bb11Mar
+d458a0577 Merge branch 'kevin-b-lockwood/perl-DynaLoader-Functions-0.004-1' of https://github.com/kevin-b-lockwood/azurelinux into topic_bb11Mar
+606dc12f9 Merge branch 'kevin-b-lockwood/perl-Digest-CRC-0.24-1' of https://github.com/kevin-b-lockwood/azurelinux into topic_bb11Mar
+00fe28b9e Merge branch 'kevin-b-lockwood/perl-Devel-CallChecker-0.009-1' of https://github.com/kevin-b-lockwood/azurelinux into topic_bb11Mar
+078f4799d Merge branch 'topic_perl-Date-Manip' of https://github.com/jykanase/azurelinux into topic_bb11Mar
+35a4f4d32 Merge branch 'topic_perl-Data-Section' of https://github.com/SumitJenaHCL/azurelinux into topic_bb11Mar
+b6a44b9e8 Merge branch 'topic_perl-Data-Peek' of https://github.com/jykanase/azurelinux into topic_bb11Mar
+ca0921dd9 Merge branch 'topic_perl-Crypt-PasswdMD5' of https://github.com/v-smalavathu/azurelinux1 into topic_bb11Mar
+bc10222f3 Merge branch 'topic_perl-Crypt-OpenSSL-Random' of https://github.com/jykanase/azurelinux into topic_bb11Mar
+a44426b61 Merge branch 'topic_perl-Crypt-OpenSSL-RSA' of https://github.com/SumitJenaHCL/azurelinux into topic_bb11Mar
+d3ccb0518 Merge branch 'topic_perl-Config-Tiny' of https://github.com/SumitJenaHCL/azurelinux into topic_bb11Mar
+233f254a5 Merge branch 'topic_perl-Config-INI' of https://github.com/SumitJenaHCL/azurelinux into topic_bb11Mar
+d10671ee6 Merge branch 'topic_perl-Config-AutoConf' of https://github.com/SumitJenaHCL/azurelinux into topic_bb11Mar
+f2063f03e Merge branch 'topic_perl-Compress-Raw-Lzma' of https://github.com/SumitJenaHCL/azurelinux into topic_bb11Mar
+61c142c21 Merge branch 'topic_perl-Class-Data-Inheritable' of https://github.com/jykanase/azurelinux into topic_bb11Mar
+af17f8fac Merge branch 'topic_perl-Class-C3' of https://github.com/SumitJenaHCL/azurelinux into topic_bb11Mar
+2710c1a2e Merge branch 'topic_perl-CBOR-XS' of https://github.com/SumitJenaHCL/azurelinux into topic_bb11Mar
+99eb2735a Merge branch 'topic_perl-Business-ISBN-Data' of https://github.com/jykanase/azurelinux into topic_bb11Mar
+3f7a7c43a Merge branch 'topic_perl-Business-ISBN' of https://github.com/jykanase/azurelinux into topic_bb11Mar
+1a6109490 Merge branch 'topic_perl-B-Hooks-EndOfScope' of https://github.com/jykanase/azurelinux into topic_bb11Mar
+93fe6f989 Merge branch 'topic_perl-Authen-SASL' of https://github.com/SumitJenaHCL/azurelinux into topic_bb11Mar
+cb99b711e Merge branch 'topic_perl-Archive-Extract' of https://github.com/jykanase/azurelinux into topic_bb11Mar
+1d514a713 Merge branch 'topic_perl-AnyEvent-BDB' of https://github.com/jykanase/azurelinux into topic_bb11Mar
+4d9a8e3d6 Merge branch 'topic_paps' of https://github.com/jykanase/azurelinux into topic_bb11Mar
+e9d2d48fe Merge branch 'topic_osinfo-db-tools' of https://github.com/jykanase/azurelinux into topic_bb11Mar
+bf4de0982 Merge branch 'topic_osinfo-db' of https://github.com/jykanase/azurelinux into topic_bb11Mar
+93c88c9a0 Merge branch 'topic_os-prober' of https://github.com/jykanase/azurelinux into topic_bb11Mar
+72528c679 Merge branch 'Topic_oro' of https://github.com/durgajagadeesh/azurelinux_djpalli into topic_bb11Mar
+f81275db4 Merge branch 'Topic_optipng' of https://github.com/durgajagadeesh/azurelinux_djpalli into topic_bb11Mar
+064c3744e Merge branch 'Topic_opendnssec' of https://github.com/durgajagadeesh/azurelinux_djpalli into topic_bb11Mar
+3ae1ecf68 Merge branch 'Topic_opencryptoki' of https://github.com/durgajagadeesh/azurelinux_djpalli into topic_bb11Mar
+4464f2af0 Merge branch 'Topic_opencl-headers' of https://github.com/durgajagadeesh/azurelinux_djpalli into topic_bb11Mar
+718438746 Merge branch 'Topic_ogdi' of https://github.com/durgajagadeesh/azurelinux_djpalli into topic_bb11Mar
+392e64db7 Merge branch 'Topic_ocl-icd' of https://github.com/durgajagadeesh/azurelinux_djpalli into topic_bb11Mar
+cb29608d1 Merge branch 'Topic_ocaml-extlib' of https://github.com/durgajagadeesh/azurelinux_djpalli into topic_bb11Mar
+b6e233e53 Merge branch 'Topic_ocaml-curses' of https://github.com/durgajagadeesh/azurelinux_djpalli into topic_bb11Mar
+6f3339ace Merge branch 'Topic_nvmetcli' of https://github.com/durgajagadeesh/azurelinux_djpalli into topic_bb11Mar
+1d6add5bd Merge branch 'upgrade-mythes-de' of https://github.com/aninda-al/azurelinux-test into topic_bb11Mar
+ecbfe02c5 Merge branch 'upgrade-mythes-ca' of https://github.com/aninda-al/azurelinux-test into topic_bb11Mar
+ae90c0a17 Merge branch 'upgrade-mythes' of https://github.com/aninda-al/azurelinux-test into topic_bb11Mar
+49b16cb5f Merge branch 'topic_mutt' of https://github.com/AkarshHCL/azurelinux into topic_bb11Mar
+309353010 Merge branch 'upgrade-mod_modsecurity_crs' of https://github.com/aninda-al/azurelinux-test into topic_bb11Mar
+2c057032d Merge branch 'upgrade-mod_security' of https://github.com/aninda-al/azurelinux-test into topic_bb11Mar
+715c4db05 Merge branch 'upgrade-mod_md' of https://github.com/aninda-al/azurelinux-test into topic_bb11Mar
+771be05e3 Merge branch 'upgrade-mod_intercept_form_submit' of https://github.com/aninda-al/azurelinux-test into topic_bb11Mar
+65fa1b339 Merge branch 'upgrade-mod_authnz_pam' of https://github.com/aninda-al/azurelinux-test into topic_bb11Mar
+aaaf98b18 Merge branch 'upgrade-mod_auth_openidc' of https://github.com/aninda-al/azurelinux-test into topic_bb11Mar
+0abf8d49e Merge branch 'topic_minizip-ng' of https://github.com/archana25-ms/azurelinux-archana into topic_bb11Mar
+2eba86717 Merge branch 'topic_memkind' of https://github.com/akhila-guruju/azurelinux-test into topic_bb11Mar
+41ff44da5 Merge branch 'upgrade-mdds' of https://github.com/aninda-al/azurelinux-test into topic_bb11Mar
+0f7039a53 Merge branch 'upgrade-mariadb-connector-odbc' of https://github.com/aninda-al/azurelinux-test into topic_bb11Mar
+26df7ea29 Merge branch 'upgrage-man-pages-ja' of https://github.com/aninda-al/azurelinux-test into topic_bb11Mar
+4f71565db Merge branch 'upgrade-m17n-lib' of https://github.com/aninda-al/azurelinux-test into topic_bb11Mar
+bbc1b5b02 Merge branch 'upgrade_m17n-db' of https://github.com/aninda-al/azurelinux-test into topic_bb11Mar
+54277dab0 Merge branch 'upgrade-lzip' of https://github.com/aninda-al/azurelinux-test into topic_bb11Mar
+e6d4f8fb0 Merge branch 'upgrade-lua-term' of https://github.com/aninda-al/azurelinux-test into topic_bb11Mar
+ebcbf7b9d Merge branch 'upgrade-lua-lpeg' of https://github.com/aninda-al/azurelinux-test into topic_bb11Mar
+4c5b0584f Merge branch 'upgrade-lua-json' of https://github.com/aninda-al/azurelinux-test into topic_bb11Mar
+c12914d35 Merge branch 'upgrade-lua-filesystem' of https://github.com/aninda-al/azurelinux-test into topic_bb11Mar
+4fb9a7927 Merge branch 'upgrade-lua-expat' of https://github.com/aninda-al/azurelinux-test into topic_bb11Mar
+7325ea8cc Merge branch 'upgrade-logwatch' of https://github.com/aninda-al/azurelinux-test into topic_bb11Mar
+041264625 Merge branch 'upgrade-lksctp-tools' of https://github.com/aninda-al/azurelinux-test into topic_bb11Mar
+225fee15c Merge branch 'topic_lilv' of https://github.com/jykanase/azurelinux into topic_bb11Mar
+c6887e724 Merge branch 'upgrade-libwps' of https://github.com/aninda-al/azurelinux-test into topic_bb11Mar
+0810fc923 Merge branch 'upgrade-libwpg' of https://github.com/aninda-al/azurelinux-test into topic_bb11Mar
+485825958 Merge branch 'topic_libvpx' of https://github.com/v-smalavathu/azurelinux1 into topic_bb11Mar
+1c5316601 Merge branch 'topic_libvdpau' of https://github.com/v-smalavathu/azurelinux1 into topic_bb11Mar
+ef174b1b6 Merge branch 'topic_libutempter' of https://github.com/v-smalavathu/azurelinux1 into topic_bb11Mar
+1cd11e18f Merge branch 'kevin-b-lockwood/libusbmuxd-2.1.0-1' of https://github.com/kevin-b-lockwood/azurelinux into topic_bb11Mar
+af93672f5 Merge branch 'topic_libtevent' of https://github.com/v-smalavathu/azurelinux1 into topic_bb11Mar
+05b89373d Merge branch 'topic_libsrtp' of https://github.com/SumitJenaHCL/azurelinux into topic_bb11Mar
+f6607da23 Merge branch 'topic_libspiro' of https://github.com/SumitJenaHCL/azurelinux into topic_bb11Mar
+f7b98adc6 Merge branch 'topic_libsecret' of https://github.com/SumitJenaHCL/azurelinux into topic_bb11Mar
+c08c48e1c Merge branch 'topic_librevenge' of https://github.com/SumitJenaHCL/azurelinux into topic_bb11Mar
+4a0aaf345 Merge branch 'topic_libreport' of https://github.com/SumitJenaHCL/azurelinux into topic_bb11Mar
+b4e050139 Merge branch 'topic_libproxy' of https://github.com/SumitJenaHCL/azurelinux into topic_bb11Mar
+9e49e2fe5 Merge branch 'topic_libotf' of https://github.com/AkarshHCL/azurelinux into topic_bb11Mar
+21f0f339c Merge branch 'topic_libosinfo' of https://github.com/AkarshHCL/azurelinux into topic_bb11Mar
+aaa4b51ca Merge branch 'topic_libogg' of https://github.com/AkarshHCL/azurelinux into topic_bb11Mar
+20a993da2 Merge branch 'topic_libnumbertext' of https://github.com/AkarshHCL/azurelinux into topic_bb11Mar
+b2fb40b6a Merge branch 'topic_libnet' of https://github.com/AkarshHCL/azurelinux into topic_bb11Mar
+fe02210a9 Merge branch 'topic_libmwaw' of https://github.com/AkarshHCL/azurelinux into topic_bb11Mar
+1101b3f76 Merge branch 'topic_libmtp' of https://github.com/AkarshHCL/azurelinux into topic_bb11Mar
+bad6413e1 Merge branch 'kevin-b-lockwood/liblqr-1-0.4.3-1' of https://github.com/kevin-b-lockwood/azurelinux into topic_bb11Mar
+256e7c503 Merge branch 'kevin-b-lockwood/liblockfile-1.17-1' of https://github.com/kevin-b-lockwood/azurelinux into topic_bb11Mar
+775341071 Merge branch 'kevin-b-lockwood/liblangtag-0.6.7-1' of https://github.com/kevin-b-lockwood/azurelinux into topic_bb11Mar
+596f0ec6a Merge branch 'libiodbc-3.52.16-1' of https://github.com/kevin-b-lockwood/azurelinux into topic_bb11Mar
+b2c5ad350 Merge branch 'Topic_libgxps' of https://github.com/durgajagadeesh/azurelinux_djpalli into topic_bb11Mar
+4cfbbee80 Merge branch 'Topic_libgsf' of https://github.com/durgajagadeesh/azurelinux_djpalli into topic_bb11Mar
+d33034d76 Merge branch 'Topic_Libgexiv2' of https://github.com/durgajagadeesh/azurelinux_djpalli into topic_bb11Mar
+c997bb42b Merge branch 'topic_libeasyfc' of https://github.com/jykanase/azurelinux into topic_bb11Mar
+a2380b627 Merge branch 'topic_libdvdnav' of https://github.com/jykanase/azurelinux into topic_bb11Mar
+92be6c6ca Merge branch 'topic_libdc1394' of https://github.com/jykanase/azurelinux into topic_bb11Mar
+e95d0fa1b Merge branch 'topic_libdazzle' of https://github.com/jykanase/azurelinux into topic_bb11Mar
+aaa92a589 Merge branch 'topic_libcdr' of https://github.com/jykanase/azurelinux into topic_bb11Mar
+976da7a16 Merge branch 'topic_libcdio-paranoia' of https://github.com/jykanase/azurelinux into topic_bb11Mar
+8f4c82a4d Merge branch 'topic_libcdio' of https://github.com/jykanase/azurelinux into topic_bb11Mar
+b2c82e85e Merge branch 'topic_libblockdev' of https://github.com/jykanase/azurelinux into topic_bb11Mar
+ecde684fd Merge branch 'upgrade-libXScrnSaver' of https://github.com/aninda-al/azurelinux-test into topic_bb11Mar
+76742af7a Merge branch 'upgrade-lensfun' of https://github.com/aninda-al/azurelinux-test into topic_bb11Mar
+add9ca08b Merge branch 'upgrade-ledmon' of https://github.com/aninda-al/azurelinux-test into topic_bb11Mar
+910eeeeb3 Merge branch 'upgrade-lcov' of https://github.com/aninda-al/azurelinux-test into topic_bb11Mar
+5bae88126 Merge branch 'upgrade-lasso' of https://github.com/aninda-al/azurelinux-test into topic_bb11Mar
+7e54d3d17 Merge branch 'upgrade-langtable' of https://github.com/aninda-al/azurelinux-test into topic_bb11Mar
+81795a7a7 Merge branch 'upgrade-ladspa' of https://github.com/aninda-al/azurelinux-test into topic_bb11Mar
+aa2350dec Merge branch 'upgrade-kyotocabinet' of https://github.com/aninda-al/azurelinux-test into topic_bb11Mar
+e0dc7b034 Merge branch 'upgrade-keycloak-httpd-client-install' of https://github.com/aninda-al/azurelinux-test into topic_bb11Mar
+35f0bccbd Merge branch 'upgrade-kde-filesystem' of https://github.com/aninda-al/azurelinux-test into topic_bb11Mar
+449535791 Merge branch 'topic_juniterperf' of https://github.com/AkarshHCL/azurelinux into topic_bb11Mar
+4fe6b2718 Merge branch 'topic_jsoncpp' of https://github.com/AkarshHCL/azurelinux into topic_bb11Mar
+2ce7bfb41 Merge branch 'topic_js-jquery' of https://github.com/AkarshHCL/azurelinux into topic_bb11Mar
+7b9e08919 Merge branch 'topic_jdom2' of https://github.com/AkarshHCL/azurelinux into topic_bb11Mar
+d1369fcc0 Merge branch 'topic_iwd' of https://github.com/SumitJenaHCL/azurelinux into topic_bb11Mar
+283b0b184 Merge branch 'topic_isomd5sum' of https://github.com/AkarshHCL/azurelinux into topic_bb11Mar
+39ba5e9c5 Merge branch 'topic_iso-codes' of https://github.com/AkarshHCL/azurelinux into topic_bb11Mar
+7944d4e29 Merge branch 'topic_hyphen-tk' of https://github.com/v-smalavathu/azurelinux1 into topic_bb11Mar
+608f1c645 Merge branch 'topic_hyphen-ru' of https://github.com/v-smalavathu/azurelinux1 into topic_bb11Mar
+0e26207bc Merge branch 'topic_hyphen-pt' of https://github.com/v-smalavathu/azurelinux1 into topic_bb11Mar
+22295798c Merge branch 'topic_hyphen-it' of https://github.com/v-smalavathu/azurelinux1 into topic_bb11Mar
+357da9bea Merge branch 'topic_hyphen-es' of https://github.com/v-smalavathu/azurelinux1 into topic_bb11Mar
+7f7563f43 Merge branch 'topic_hyphen-ca' of https://github.com/v-smalavathu/azurelinux1 into topic_bb11Mar
+11f3f0163 Merge branch 'topic_hunspell-ro' of https://github.com/AkarshHCL/azurelinux into topic_bb11Mar
+b94e4c0e0 Merge branch 'topic_hunspell-pt' of https://github.com/AkarshHCL/azurelinux into topic_bb11Mar
+87e640b7d Merge branch 'topic_huspell-pl' of https://github.com/AkarshHCL/azurelinux into topic_bb11Mar
+53a453fab Merge branch 'topic_hunspell-mr' of https://github.com/AkarshHCL/azurelinux into topic_bb11Mar
+e45121a99 Merge branch 'topic_hunspell-it' of https://github.com/AkarshHCL/azurelinux into topic_bb11Mar
+92612d06e Merge branch 'topic_hunspell-ga' of https://github.com/AkarshHCL/azurelinux into topic_bb11Mar
+2776c4f22 Merge branch 'topic_hunspell-eu' of https://github.com/AkarshHCL/azurelinux into topic_bb11Mar
+e90e217ed Merge branch 'topic_hunspell-csb' of https://github.com/AkarshHCL/azurelinux into topic_bb11Mar
+83e87f602 Merge branch 'topic_hunspell-az' of https://github.com/AkarshHCL/azurelinux into topic_bb11Mar
+f38e01b16 Merge branch 'kevin-b-lockwood/highlight-4.15-1' of https://github.com/kevin-b-lockwood/azurelinux into topic_bb11Mar
+69575b101 Merge branch 'kevin-b-lockwood/gupnp-igd-1.6.0-1' of https://github.com/kevin-b-lockwood/azurelinux into topic_bb11Mar
+6b5a9c275 Merge branch 'kevin-b-lockwood/gupnp-av-0.14.1-1' of https://github.com/kevin-b-lockwood/azurelinux into topic_bb11Mar
+56f0b2d08 Merge branch 'kevin-b-lockwood/gupnp-1.6.7-1' of https://github.com/kevin-b-lockwood/azurelinux into topic_bb11Mar
+3732bc631 Merge branch 'kevin-b-lockwood/gtk-vnc-1.3.1-1' of https://github.com/kevin-b-lockwood/azurelinux into topic_bb11Mar
+d62bd9ef5 Merge branch 'kevin-b-lockwood/gstreamer1-1.24.8-1' of https://github.com/kevin-b-lockwood/azurelinux into topic_bb11Mar
+54cb834e8 Merge branch 'kevin-b-lockwood/gspell-1.14.0-1' of https://github.com/kevin-b-lockwood/azurelinux into topic_bb11Mar
+778e41e65 Merge branch 'kevin-b-lockwood/gphoto2-2.5.28-1' of https://github.com/kevin-b-lockwood/azurelinux into topic_bb11Mar
+3d7854a55 Merge branch 'Topic_glassfish-annotation-api' of https://github.com/durgajagadeesh/azurelinux_djpalli into topic_bb11Mar
+37ad4a5fa Merge branch 'Topic_apache-commons-lang' of https://github.com/durgajagadeesh/azurelinux_djpalli into topic_bb11Mar
+381fa00a9 Merge branch 'topic_freexl' of https://github.com/jykanase/azurelinux into topic_bb11Mar
+63ed24cc6 Merge branch 'topic_freeradius' of https://github.com/jykanase/azurelinux into topic_bb11Mar
+2b392e9eb Merge branch 'topic_foomatic-db' of https://github.com/jykanase/azurelinux into topic_bb11Mar
+0619c7a98 Merge branch 'topic_flite' of https://github.com/jykanase/azurelinux into topic_bb11Mar
+b013eb0ac Merge branch 'topic_facter' of https://github.com/jykanase/azurelinux into topic_bb11Mar
+fb19383df Merge branch 'topic_driverctl' of https://github.com/SumitJenaHCL/azurelinux into topic_bb11Mar
+bf696030a Merge branch 'topic_dovecot' of https://github.com/SumitJenaHCL/azurelinux into topic_bb11Mar
+3d5deca1b Merge branch 'topic_delve' of https://github.com/v-smalavathu/azurelinux1 into topic_bb11Mar
+18bb6cc07 Merge branch 'topic_cpuid' of https://github.com/AkarshHCL/azurelinux into topic_bb11Mar
+269d6a22a Merge branch 'topic_corosync' of https://github.com/akhila-guruju/azurelinux-test into topic_bb11Mar
+50feacb86 Merge branch 'topic_console-setup' of https://github.com/AkarshHCL/azurelinux into topic_bb11Mar
+8b25e7c5f Merge branch 'topic_cldr-emoji-annotation' of https://github.com/AkarshHCL/azurelinux into topic_bb11Mar
+c8e393655 Merge branch 'topic_cjose' of https://github.com/AkarshHCL/azurelinux into topic_bb11Mar
+013a9c897 Merge branch 'topic_cfitsio' of https://github.com/AkarshHCL/azurelinux into topic_bb11Mar
+7cb1b911d Merge branch 'topic_capstone' of https://github.com/AkarshHCL/azurelinux into topic_bb11Mar
+7e5132891 Merge branch 'topic_cairomm' of https://github.com/AkarshHCL/azurelinux into topic_bb11Mar
+4d1c1ed5b Merge branch 'topic_bwidget' of https://github.com/AkarshHCL/azurelinux into topic_bb11Mar
+68fea0833 Merge branch 'topic2_botan2' of https://github.com/AkarshHCL/azurelinux into topic_bb11Mar
+a06b389fd Merge branch 'Topic_ansible-freeipa' of https://github.com/durgajagadeesh/azurelinux_djpalli into topic_bb11Mar
+f4b152704 Merge branch 'topic_PyGreSQL' of https://github.com/jykanase/azurelinux into topic_bb11Mar
+857304265 Committing the changes resulting from the run of the script prep_ext_folder
+20e6253ec Updated for dependency
+c11b84cb7 rasqal: fixed build
+0776a8f9d Fixed: Added new line to file 'hyphen-it.signatures.json'
+5507327ae Fixed: Added new line to file 'hyphen-ru.signatures.json'`
+be4aae377 - Added new line to file 'perl-Net-Telnet.signatures.json'`
+f0739c1d4 Updated for dependency
+0e01e4b8b  Upgrade: serd version to 0.32.4
+f399dda66 Updated patch
+71e058dfd Upgrade: libcdio-paranoia version to 10.2+2.0.1
+1de7cef59 Updated ledmon to version 1.1.0
+9c7fbde0f Upgraded keycloak-httpd-client-install from version 1.1 to 1.3
+d877b2a78 Updating license files
+9528f5e9e Updating cgmanifest.json file
+9376b2142 Upgrade: virt-p2v version to 1.42.4
+0f7bd8451 libgxps: reset the release number
+c75c98a14 libgxps: License verified
+784067d06 libgxps: update to 0.3.2
+73fe68dfd opendnssec: Fix the source download error
+04b7d815a Upgrade: opendnssec version to 2.1.14.1
+1fb507f1c Updated License
+1b1afe097 Updated Source0
+1fa1b52af libblockdev: Version update to 3.2.0
+ca28e15e9 unicode-ucd: Fix the source file error
+40a83713e Updated license
+b0541288f Updated license & signature.json
+34e14612f unicode-ucd: update to 16.0.0
+96df3c948  Upgrade ppp to 2.5.0
+2ce9f9aa1 updated udica.signatures.json
+f37a75d6e Upgrade udica version to 0.2.8
+0ec2cb679 Updating license files
+71aa1a3b4 relaxngDatatype: fix the build error (#12650)
+f4e95aa3d glassfish-annotation-api: Build error fix (#12674)
+8bbdebd32 v4l-utils: fixed build (#12746)
+e902abbb0 Updated License
+77364ef0b Updated cgmanifest
+598e5b6f3 freexl : Update to version 2.0.0
+b99e42b63  license & spec
+68150991d License
+c876fe8fb Updated cgmanifest
+0c9c006b0 Updated cgmanifest
+372a3bbfb Upgrade: perl-Business-ISBN-Data version to 20240930.001
+de287b8fc Upgrade: python-oslo-i18n version to 6.3.0
+ba84ff635 Updating license files
+766720187 Rename and Upgrade: minizip 2.10.1 to minizip-ng 4.0.7
+8fedc13c9 Updating license files
+bbb5ba7cd Upgrade: python-voluptuous version to 0.15.2
+1798d7976 Removed keyring and signature file from checkin
+e2e964acb Upgrade: spice-protocol version to 0.14.4
+022cb6e6a Upgrade: perl-Module-Build-Tiny version to 0.051
+b96bbbaac rebase
+2101ce80d Updated signatures.json
+8d9f2e5f6 Updated License
+4d41d9e37 Upgrade libcdio to version to 2.1.0
+1be9d66cf Update contributing guide to use 3.0 branches (#12829)
+1e63b8e2d opencryptoki: fix the new line error
+cbe7b346c [3.0] rsyslog - add patch for issue #5158 (#12223)
+0de902e24 Upgrade golang to 1.24.1. (#12873)
+82729b751 Merge branch '3.0-dev' into joslobo/update-golang
+6392f5afe [AUTO-CHERRYPICK] [AUTOPATCHER-CORE] Upgrade `vim` to 9.1.1164 for CVE-2025-27423 [High] - branch 3.0-dev (#12877)
+bb6d437a7 [AUTO-CHERRYPICK] [AUTOPATCHER-CORE] Upgrade xorg-x11-server-Xwayland to 24.1.6 to fix CVE-2025-26594, CVE-2025-26595, CVE-2025-26596, CVE-2025-26597, CVE-2025-26598, CVE-2025-26599, CVE-2025-26600, CVE-2025-26601[High] - branch 3.0-dev (#12876)
+70fcf1f67 [AUTO-CHERRYPICK] Patch `packer` for CVE-2025-22869, CVE-2025-22868 [High] & CVE-2024-28180 CVE-2025-27144 [Medium] - branch 3.0-dev (#12875)
+36b2761bc Dracut: Update Dracut overlay module to correctly locate 'chcon' (#11986)
+811561628 opencryptoki: change the changelog
+139d75f85 opencryptoki: update to 3.24.0
+1ffb9e487 Update golang build requirements for libnvidia-container
+d0a0f82cd raptor2: fixed build (#12845)
+4da58dff9 ocaml-curses: add the changelog
+59eb95e86 removed new line
+8ec3c915e ocaml-curses: add the new line at end of file
+41ee61381 ocaml-curses: update the release tag
+a5e5c5812 ocaml-curses: remove the unused fedora macro
+f48ce314c ocaml-curses: update to 1.0.11
+53762d509 modified spec file
+a8dde0227 Upgrade: python-rdflib version to 7.0.0
+57ec8e757 removed extra line
+c35773ba8 Updated perl-B-Hooks-EndOfScope.signatures.json
+6d1a5f4bd Upgrade: perl-B-Hooks-EndOfScope version to 0.28
+e0e1c8441 Updated perl-Crypt-OpenSSL-Random.signatures.json
+472584193 Upgrade:perl-Crypt-OpenSSL-Random version to 0.17
+bb9b27b6f Updated perl-Data-Peek.signatures.json
+7c1f57e5f Upgrade:perl-Data-Peek version to 0.52
+be1ccb866 Updated python3-typed_ast.signatures.json
+95651f812 Updated spec : license
+6f0f963b9 relaxngDatatype: bump up the release number.
+294a7bdb1 relaxngDatatype: upgrade java source version to 1.8
+860f60c92 relaxngDatatype: fix the build error

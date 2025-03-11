@@ -1,0 +1,41 @@
+
+
+print_usage()
+{
+	echo "Usage:"
+	echo "$0 <path-to-the-specs-dir>"
+	exit
+}
+
+#set -x
+#set -v
+
+if [ $# -lt 1 ]
+then
+	print_usage
+fi
+
+specsdir=$1
+if [ ! -d $specsdir ]
+then
+	echo "The directory $specsdir was not found"
+	print_usage
+fi
+
+#listingfile=$2
+#if [ ! -f $listingfile ]
+#then
+#	echo "The file $listingfile was not found"
+#	print_usage
+#fi
+
+#for fil in `cat list_pkgs_w_archissue`
+#for fil in `cat test_list_pkgs_w_archissue`
+#for fil in `cat $listingfile`
+#do
+grep -rl -e "^ExclusiveArch:" $specsdir | awk 'BEGIN {FS="/"} {print $(NF-1)"/"$(NF)}' | awk 'BEGIN {FS=":"} {print $1}'
+#	if [ $? -ne 0 ]
+#	then
+#		echo "$fil"
+#	fi
+#done

@@ -21,7 +21,7 @@ BuildRequires:  python3-py
 BuildRequires:  python3-filelock
 BuildRequires:  python3-six
 BuildRequires:  python3-toml
-BuildRequires:  python3-testtools
+#BuildRequires:  python3-testtools
 BuildRequires:  python3-extras
  
 BuildArch:      noarch

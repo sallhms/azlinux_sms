@@ -43,8 +43,8 @@ BuildRequires:  python3-hatch-vcs
 BuildRequires:  python3-setuptools_scm
 BuildRequires:  python3-wheel
 BuildRequires:  python3-trove-classifiers
-BuildRequires:  python3-testscenarios
-BuildRequires:  python3-fixtures
+#BuildRequires:  python3-testscenarios
+#BuildRequires:  python3-fixtures
 BuildRequires:   python3-typing-extensions
 
 %description %{common_description}

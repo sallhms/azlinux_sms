@@ -1,0 +1,536 @@
+time="2025-03-12T07:44:19Z" level=info msg="* Creating a ccache manager instance *"
+time="2025-03-12T07:44:19Z" level=info msg="  ccache root folder         : (/third_disk/bb11Mar/azurelinux/ccache)"
+time="2025-03-12T07:44:19Z" level=info msg="  ccache remote configuration: (/third_disk/bb11Mar/azurelinux/toolkit/resources/manifests/package/ccache-configuration.json)"
+time="2025-03-12T07:44:19Z" level=info msg="  loading ccache configuration file: /third_disk/bb11Mar/azurelinux/toolkit/resources/manifests/package/ccache-configuration.json"
+time="2025-03-12T07:44:19Z" level=info msg="    Type           : azure-blob-storage"
+time="2025-03-12T07:44:19Z" level=info msg="    TenantId       : "
+time="2025-03-12T07:44:19Z" level=info msg="    UserName       : "
+time="2025-03-12T07:44:19Z" level=info msg="    StorageAccount : marinerccache"
+time="2025-03-12T07:44:19Z" level=info msg="    ContainerName  : 30-stable"
+time="2025-03-12T07:44:19Z" level=info msg="    Tagsfolder     : tags"
+time="2025-03-12T07:44:19Z" level=info msg="    DownloadEnabled: true"
+time="2025-03-12T07:44:19Z" level=info msg="    DownloadLatest : true"
+time="2025-03-12T07:44:19Z" level=info msg="    DownloadFolder : "
+time="2025-03-12T07:44:19Z" level=info msg="    UploadEnabled  : false"
+time="2025-03-12T07:44:19Z" level=info msg="    UploadFolder   : "
+time="2025-03-12T07:44:19Z" level=info msg="    UpdateLatest   : false"
+time="2025-03-12T07:44:19Z" level=info msg="    KeepLatestOnly : false"
+time="2025-03-12T07:44:19Z" level=info msg="  creating blob storage client..."
+time="2025-03-12T07:44:19Z" level=info msg="  ccache pkg folder : (/third_disk/bb11Mar/azurelinux/ccache/work/x86_64/rubygem-bson)"
+time="2025-03-12T07:44:19Z" level=info msg="  tag local source  : (/third_disk/bb11Mar/azurelinux/ccache/downloads/rubygem-bson-latest-build.txt)"
+time="2025-03-12T07:44:19Z" level=info msg="  tag remote source : (x86_64/tags/rubygem-bson-latest-build.txt)"
+time="2025-03-12T07:44:19Z" level=info msg="  tag local target  : (/third_disk/bb11Mar/azurelinux/ccache/uploads/rubygem-bson-latest-build.txt)"
+time="2025-03-12T07:44:19Z" level=info msg="  tag remote target : (x86_64/tags/rubygem-bson-latest-build.txt)"
+time="2025-03-12T07:44:19Z" level=info msg="  ccache is configured to use the latest from the remote store..."
+time="2025-03-12T07:44:19Z" level=info msg="  checking if (/third_disk/bb11Mar/azurelinux/ccache/downloads/rubygem-bson-latest-build.txt) already exists..."
+time="2025-03-12T07:44:19Z" level=info msg="  downloading (x86_64/tags/rubygem-bson-latest-build.txt) to (/third_disk/bb11Mar/azurelinux/ccache/downloads/rubygem-bson-latest-build.txt)..."
+time="2025-03-12T07:44:20Z" level=info msg="  download time: 1.456196627s"
+time="2025-03-12T07:44:20Z" level=info msg="  updating () to (3.0.20250206-3.0-729715)..."
+time="2025-03-12T07:44:20Z" level=info msg="  tar local source  : (/third_disk/bb11Mar/azurelinux/ccache/downloads/rubygem-bson-ccache.tar.gz)"
+time="2025-03-12T07:44:20Z" level=info msg="  tar remote source : (x86_64/3.0.20250206-3.0-729715/rubygem-bson-ccache.tar.gz)"
+time="2025-03-12T07:44:20Z" level=info msg="  tar local target  : (/third_disk/bb11Mar/azurelinux/ccache/uploads/rubygem-bson-ccache.tar.gz)"
+time="2025-03-12T07:44:20Z" level=info msg="  tar remote target : (x86_64//rubygem-bson-ccache.tar.gz)"
+time="2025-03-12T07:44:20Z" level=info msg="* processing download of ccache artifacts..."
+time="2025-03-12T07:44:20Z" level=info msg="  downloading (x86_64/3.0.20250206-3.0-729715/rubygem-bson-ccache.tar.gz) to (/third_disk/bb11Mar/azurelinux/ccache/downloads/rubygem-bson-ccache.tar.gz)..."
+time="2025-03-12T07:44:20Z" level=info msg="Building (rubygem-bson-4.15.0-1.azl3.src.rpm)."
+time="2025-03-12T07:44:25Z" level=info msg="  download time: 4.304435874s"
+time="2025-03-12T07:44:25Z" level=info msg="  uncompressing (/third_disk/bb11Mar/azurelinux/ccache/downloads/rubygem-bson-ccache.tar.gz) into (/third_disk/bb11Mar/azurelinux/ccache/work/x86_64/rubygem-bson)."
+time="2025-03-12T07:44:25Z" level=debug msg="Executing: [tar xf /third_disk/bb11Mar/azurelinux/ccache/downloads/rubygem-bson-ccache.tar.gz -C /third_disk/bb11Mar/azurelinux/ccache/work/x86_64/rubygem-bson .]"
+time="2025-03-12T07:44:25Z" level=info msg="  uncompress time: 62.964581ms"
+time="2025-03-12T07:44:25Z" level=debug msg="Executing: [systemd-detect-virt -c]"
+time="2025-03-12T07:44:25Z" level=debug msg="Tool is not running in a container, systemd-detect-virt reports: 'none'"
+time="2025-03-12T07:44:25Z" level=debug msg="Using (/usr/bin/pigz) to extract tar"
+time="2025-03-12T07:44:25Z" level=debug msg="Executing: [tar -I /usr/bin/pigz -xf /third_disk/bb11Mar/azurelinux/build/worker/worker_chroot.tar.gz -C /third_disk/bb11Mar/azurelinux/build/worker/chroot/rubygem-bson-4.15.0-1.azl3]"
+time="2025-03-12T07:44:50Z" level=debug msg="Mounting: source: (), target: (/third_disk/bb11Mar/azurelinux/build/worker/chroot/rubygem-bson-4.15.0-1.azl3/dev), fstype: (devtmpfs), flags: (0x0), data: ()"
+time="2025-03-12T07:44:50Z" level=debug msg="Mounting: source: (), target: (/third_disk/bb11Mar/azurelinux/build/worker/chroot/rubygem-bson-4.15.0-1.azl3/proc), fstype: (proc), flags: (0x0), data: ()"
+time="2025-03-12T07:44:50Z" level=debug msg="Mounting: source: (), target: (/third_disk/bb11Mar/azurelinux/build/worker/chroot/rubygem-bson-4.15.0-1.azl3/sys), fstype: (sysfs), flags: (0x0), data: ()"
+time="2025-03-12T07:44:50Z" level=debug msg="Mounting: source: (), target: (/third_disk/bb11Mar/azurelinux/build/worker/chroot/rubygem-bson-4.15.0-1.azl3/run), fstype: (tmpfs), flags: (0x0), data: ()"
+time="2025-03-12T07:44:50Z" level=debug msg="Mounting: source: (), target: (/third_disk/bb11Mar/azurelinux/build/worker/chroot/rubygem-bson-4.15.0-1.azl3/dev/pts), fstype: (devpts), flags: (0x0), data: (gid=5,mode=620)"
+time="2025-03-12T07:44:50Z" level=debug msg="Mounting: source: (), target: (/third_disk/bb11Mar/azurelinux/build/worker/chroot/rubygem-bson-4.15.0-1.azl3/localrpms), fstype: (overlay), flags: (0x0), data: (lowerdir=/third_disk/bb11Mar/azurelinux/out/RPMS,upperdir=/third_disk/bb11Mar/azurelinux/build/worker/chroot/rubygem-bson-4.15.0-1.azl3/localrpms,workdir=/third_disk/bb11Mar/azurelinux/build/worker/chroot/rubygem-bson-4.15.0-1.azl3/overlaywork_rpms)"
+time="2025-03-12T07:44:50Z" level=debug msg="Mounting: source: (), target: (/third_disk/bb11Mar/azurelinux/build/worker/chroot/rubygem-bson-4.15.0-1.azl3/toolchainrpms), fstype: (overlay), flags: (0x0), data: (lowerdir=/third_disk/bb11Mar/azurelinux/build/toolchain_rpms,upperdir=/third_disk/bb11Mar/azurelinux/build/worker/chroot/rubygem-bson-4.15.0-1.azl3/toolchainrpms,workdir=/third_disk/bb11Mar/azurelinux/build/worker/chroot/rubygem-bson-4.15.0-1.azl3/overlaywork_toolchain)"
+time="2025-03-12T07:44:50Z" level=debug msg="Mounting: source: (/third_disk/bb11Mar/azurelinux/build/rpm_cache/cache), target: (/third_disk/bb11Mar/azurelinux/build/worker/chroot/rubygem-bson-4.15.0-1.azl3/upstream-cached-rpms), fstype: (), flags: (0xc0ed1000), data: ()"
+time="2025-03-12T07:44:50Z" level=debug msg="Mounting: source: (/third_disk/bb11Mar/azurelinux/ccache/work/x86_64/rubygem-bson), target: (/third_disk/bb11Mar/azurelinux/build/worker/chroot/rubygem-bson-4.15.0-1.azl3/ccache-dir), fstype: (), flags: (0xc0ed1000), data: ()"
+time="2025-03-12T07:44:50Z" level=debug msg="Copying (/third_disk/bb11Mar/azurelinux/toolkit/resources/manifests/package/local.repo) to (/third_disk/bb11Mar/azurelinux/build/worker/chroot/rubygem-bson-4.15.0-1.azl3/etc/yum.repos.d/local.repo)"
+time="2025-03-12T07:44:50Z" level=debug msg="Executing: [cp --preserve=mode /third_disk/bb11Mar/azurelinux/toolkit/resources/manifests/package/local.repo /third_disk/bb11Mar/azurelinux/build/worker/chroot/rubygem-bson-4.15.0-1.azl3/etc/yum.repos.d/local.repo]"
+time="2025-03-12T07:44:50Z" level=debug msg="Copying (/third_disk/bb11Mar/azurelinux/build/INTERMEDIATE_SRPMS/rubygem-bson-4.15.0-1.azl3.src.rpm) to (/third_disk/bb11Mar/azurelinux/build/worker/chroot/rubygem-bson-4.15.0-1.azl3/root/SRPMS/rubygem-bson-4.15.0-1.azl3.src.rpm)"
+time="2025-03-12T07:44:51Z" level=debug msg="Executing: [cp --preserve=mode /third_disk/bb11Mar/azurelinux/build/INTERMEDIATE_SRPMS/rubygem-bson-4.15.0-1.azl3.src.rpm /third_disk/bb11Mar/azurelinux/build/worker/chroot/rubygem-bson-4.15.0-1.azl3/root/SRPMS/rubygem-bson-4.15.0-1.azl3.src.rpm]"
+time="2025-03-12T07:44:51Z" level=debug msg="Copying (/third_disk/bb11Mar/azurelinux/toolkit/resources/manifests/package/macros.override) to (/third_disk/bb11Mar/azurelinux/build/worker/chroot/rubygem-bson-4.15.0-1.azl3/usr/lib/rpm/macros.d/macros.override)"
+time="2025-03-12T07:44:51Z" level=debug msg="Executing: [cp --preserve=mode /third_disk/bb11Mar/azurelinux/toolkit/resources/manifests/package/macros.override /third_disk/bb11Mar/azurelinux/build/worker/chroot/rubygem-bson-4.15.0-1.azl3/usr/lib/rpm/macros.d/macros.override]"
+time="2025-03-12T07:44:51Z" level=debug msg="Entering Chroot: '/third_disk/bb11Mar/azurelinux/build/worker/chroot/rubygem-bson-4.15.0-1.azl3'"
+time="2025-03-12T07:44:51Z" level=debug msg="Creating RPM repository in (/localrpms)"
+time="2025-03-12T07:44:51Z" level=debug msg="Executing: [createrepo_c --compatibility /localrpms]"
+time="2025-03-12T07:45:09Z" level=debug msg="Creating RPM repository in (/toolchainrpms)"
+time="2025-03-12T07:45:09Z" level=debug msg="Executing: [createrepo_c --compatibility /toolchainrpms]"
+time="2025-03-12T07:45:18Z" level=debug msg="Executing: [tdnf install -y --releasever=3.0 rubygems-devel-3.5.22-1.azl3.noarch gcc-13.2.0-7.azl3.x86_64 ruby-3.3.5-1.azl3.x86_64 rubygem-rspec-3.12.0-1.azl3.noarch]"
+time="2025-03-12T07:45:21Z" level=debug msg="Error(1207) : Could not resolve hostname"
+time="2025-03-12T07:45:21Z" level=debug msg="Error: Failed to synchronize cache for repo 'Azure Linux Official Base 3.0 x86_64'"
+time="2025-03-12T07:45:21Z" level=debug msg="Package gcc-13.2.0-7.azl3.x86_64 is already installed."
+time="2025-03-12T07:45:33Z" level=info msg="USE_CCACHE: installing package: ccache"
+time="2025-03-12T07:45:33Z" level=debug msg="Executing: [tdnf install -y --releasever=3.0 ccache]"
+time="2025-03-12T07:45:33Z" level=debug msg="Error(1207) : Could not resolve hostname"
+time="2025-03-12T07:45:33Z" level=debug msg="Error: Failed to synchronize cache for repo 'Azure Linux Official Base 3.0 x86_64'"
+time="2025-03-12T07:45:41Z" level=debug msg="Executing: [rpmbuild --nocheck --rebuild --nodeps -D distro_release_version 3.0.20250312.0228 -D mariner_build_number 65a0fd33a -D distro_module_ldflags  -Wl,-dT,%{_topdir}/BUILD/module_info.ld -D ccache_enabled true -D with_check 0 -D dist .azl3 -D azl 3 /root/SRPMS/rubygem-bson-4.15.0-1.azl3.src.rpm]"
+time="2025-03-12T07:45:45Z" level=debug msg="warning: Could not canonicalize hostname: azuli-m1"
+time="2025-03-12T07:45:45Z" level=debug msg="Installing /root/SRPMS/rubygem-bson-4.15.0-1.azl3.src.rpm"
+time="2025-03-12T07:45:45Z" level=debug msg="Executing(%prep): /bin/sh -e /var/tmp/rpm-tmp.2GWfAj"
+time="2025-03-12T07:45:45Z" level=debug msg="+ umask 022"
+time="2025-03-12T07:45:45Z" level=debug msg="+ cd /usr/src/azl/BUILD"
+time="2025-03-12T07:45:45Z" level=debug msg="+ /usr/lib/rpm/azl/gen-ld-script.sh rubygem-bson 4.15.0-1.azl3 /usr/src/azl 3.0.20250312.0228"
+time="2025-03-12T07:45:45Z" level=debug msg="gen-ld-script.sh name(rubygem-bson) version(4.15.0-1.azl3) _topdir(/usr/src/azl) osversion(3.0.20250312.0228)"
+time="2025-03-12T07:45:46Z" level=debug msg="==== ELF note generator v2.1.2 ===="
+time="2025-03-12T07:45:46Z" level=debug msg="outdir is: /usr/src/azl/BUILD/"
+time="2025-03-12T07:45:46Z" level=debug msg="Stamp method: LinkerOnly"
+time="2025-03-12T07:45:46Z" level=debug
+time="2025-03-12T07:45:46Z" level=debug msg="#ifndef _AUTO_MODULE_INFO_H_"
+time="2025-03-12T07:45:46Z" level=debug msg="#define _AUTO_MODULE_INFO_H_"
+time="2025-03-12T07:45:46Z" level=debug
+time="2025-03-12T07:45:46Z" level=debug msg="#define MODULE_VERSION      \"4.15.0.0\""
+time="2025-03-12T07:45:46Z" level=debug msg="#define PACKAGE_VERSION     \"4.15.0-1.azl3\""
+time="2025-03-12T07:45:46Z" level=debug msg="#define PACKAGE_NAME        \"rubygem-bson\""
+time="2025-03-12T07:45:46Z" level=debug msg="#define TARGET_OS           \"mariner\""
+time="2025-03-12T07:45:46Z" level=debug msg="#define TARGET_OS_VERSION   \"3.0\""
+time="2025-03-12T07:45:46Z" level=debug
+time="2025-03-12T07:45:46Z" level=debug msg="#endif //_AUTO_MODULE_INFO_H_"
+time="2025-03-12T07:45:46Z" level=debug msg="Generated /usr/src/azl/BUILD/auto_module_info.h file..."
+time="2025-03-12T07:45:46Z" level=debug
+time="2025-03-12T07:45:46Z" level=debug msg="Successfully generated module_info.ld and .note.package files..."
+time="2025-03-12T07:45:46Z" level=debug msg="+ cd /usr/src/azl/BUILD"
+time="2025-03-12T07:45:46Z" level=debug msg="+ rm -rf bson-ruby-4.15.0"
+time="2025-03-12T07:45:46Z" level=debug msg="+ /usr/lib/rpm/rpmuncompress -x /usr/src/azl/SOURCES/rubygem-bson-4.15.0.tar.gz"
+time="2025-03-12T07:45:46Z" level=debug msg="+ STATUS=0"
+time="2025-03-12T07:45:46Z" level=debug msg="+ '[' 0 -ne 0 ']'"
+time="2025-03-12T07:45:46Z" level=debug msg="+ cd bson-ruby-4.15.0"
+time="2025-03-12T07:45:46Z" level=debug msg="+ /bin/chmod -Rf a+rX,u+w,g-w,o-w ."
+time="2025-03-12T07:45:46Z" level=debug msg="+ RPM_EC=0"
+time="2025-03-12T07:45:46Z" level=debug msg="++ jobs -p"
+time="2025-03-12T07:45:46Z" level=debug msg="+ exit 0"
+time="2025-03-12T07:45:46Z" level=debug msg="Executing(%build): /bin/sh -e /var/tmp/rpm-tmp.ITpVlV"
+time="2025-03-12T07:45:46Z" level=debug msg="+ umask 022"
+time="2025-03-12T07:45:46Z" level=debug msg="+ cd /usr/src/azl/BUILD"
+time="2025-03-12T07:45:46Z" level=debug msg="+ CFLAGS='-O2 -g -pipe -Wall -Werror=format-security -Wp,-D_FORTIFY_SOURCE=2 -Wp,-D_GLIBCXX_ASSERTIONS -fexceptions -fstack-protector-strong -grecord-gcc-switches -specs=/usr/lib/rpm/azl/default-hardened-cc1    -fcommon -m64 -mtune=generic -fasynchronous-unwind-tables -fstack-clash-protection -fcf-protection'"
+time="2025-03-12T07:45:46Z" level=debug msg="+ export CFLAGS"
+time="2025-03-12T07:45:46Z" level=debug msg="+ CXXFLAGS='-O2 -g -pipe -Wall -Werror=format-security -Wp,-D_FORTIFY_SOURCE=2 -Wp,-D_GLIBCXX_ASSERTIONS -fexceptions -fstack-protector-strong -grecord-gcc-switches -specs=/usr/lib/rpm/azl/default-hardened-cc1    -fcommon -m64 -mtune=generic -fasynchronous-unwind-tables -fstack-clash-protection -fcf-protection'"
+time="2025-03-12T07:45:46Z" level=debug msg="+ export CXXFLAGS"
+time="2025-03-12T07:45:46Z" level=debug msg="+ FFLAGS='-O2 -g -pipe -Wall -Werror=format-security -Wp,-D_FORTIFY_SOURCE=2 -Wp,-D_GLIBCXX_ASSERTIONS -fexceptions -fstack-protector-strong -grecord-gcc-switches -specs=/usr/lib/rpm/azl/default-hardened-cc1    -fcommon -m64 -mtune=generic -fasynchronous-unwind-tables -fstack-clash-protection -fcf-protection -I/usr/lib/gfortran/modules'"
+time="2025-03-12T07:45:46Z" level=debug msg="+ export FFLAGS"
+time="2025-03-12T07:45:46Z" level=debug msg="+ FCFLAGS='-O2 -g -pipe -Wall -Werror=format-security -Wp,-D_FORTIFY_SOURCE=2 -Wp,-D_GLIBCXX_ASSERTIONS -fexceptions -fstack-protector-strong -grecord-gcc-switches -specs=/usr/lib/rpm/azl/default-hardened-cc1    -fcommon -m64 -mtune=generic -fasynchronous-unwind-tables -fstack-clash-protection -fcf-protection -I/usr/lib/gfortran/modules'"
+time="2025-03-12T07:45:46Z" level=debug msg="+ export FCFLAGS"
+time="2025-03-12T07:45:46Z" level=debug msg="+ LDFLAGS='-Wl,-z,relro -Wl,--as-needed  -Wl,-z,now -specs=/usr/lib/rpm/azl/default-hardened-ld -Wl,-dT,/usr/src/azl/BUILD/module_info.ld'"
+time="2025-03-12T07:45:46Z" level=debug msg="+ export LDFLAGS"
+time="2025-03-12T07:45:46Z" level=debug msg="+ LT_SYS_LIBRARY_PATH=/usr/lib:"
+time="2025-03-12T07:45:46Z" level=debug msg="+ export LT_SYS_LIBRARY_PATH"
+time="2025-03-12T07:45:46Z" level=debug msg="+ PATH=/usr/lib/ccache:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
+time="2025-03-12T07:45:46Z" level=debug msg="+ export PATH"
+time="2025-03-12T07:45:46Z" level=debug msg="+ CCACHE_DIR=/ccache-dir"
+time="2025-03-12T07:45:46Z" level=debug msg="+ export CCACHE_DIR"
+time="2025-03-12T07:45:46Z" level=debug msg="+ CCACHE_COMPILERCHECK=content"
+time="2025-03-12T07:45:46Z" level=debug msg="+ export CCACHE_COMPILERCHECK"
+time="2025-03-12T07:45:46Z" level=debug msg="+ ccache --zero-stats"
+time="2025-03-12T07:45:46Z" level=debug msg="Statistics zeroed"
+time="2025-03-12T07:45:46Z" level=debug msg="+ cd bson-ruby-4.15.0"
+time="2025-03-12T07:45:46Z" level=debug msg="+ gem build bson"
+time="2025-03-12T07:45:47Z" level=debug msg="[bson] Warning: No private key present, creating unsigned gem."
+time="2025-03-12T07:45:47Z" level=debug msg="WARNING:  You have specified the uri:"
+time="2025-03-12T07:45:47Z" level=debug msg="  https://docs.mongodb.com/ruby-driver/current/tutorials/bson-v4/"
+time="2025-03-12T07:45:47Z" level=debug msg="for all of the following keys:"
+time="2025-03-12T07:45:47Z" level=debug msg="  homepage_uri"
+time="2025-03-12T07:45:47Z" level=debug msg="  documentation_uri"
+time="2025-03-12T07:45:47Z" level=debug msg="Only the first one will be shown on rubygems.org"
+time="2025-03-12T07:45:47Z" level=debug msg="WARNING:  See https://guides.rubygems.org/specification-reference/ for help"
+time="2025-03-12T07:45:47Z" level=debug msg="  Successfully built RubyGem"
+time="2025-03-12T07:45:47Z" level=debug msg="  Name: bson"
+time="2025-03-12T07:45:47Z" level=debug msg="  Version: 4.15.0"
+time="2025-03-12T07:45:47Z" level=debug msg="  File: bson-4.15.0.gem"
+time="2025-03-12T07:45:47Z" level=debug msg="+ mkdir -p ./usr/lib/ruby/gems/3.3.0"
+time="2025-03-12T07:45:47Z" level=debug msg="+ CONFIGURE_ARGS='--with-cflags='\\''-O2 -g -pipe -Wall -Werror=format-security -Wp,-D_FORTIFY_SOURCE=2 -Wp,-D_GLIBCXX_ASSERTIONS -fexceptions -fstack-protector-strong -grecord-gcc-switches -specs=/usr/lib/rpm/azl/default-hardened-cc1    -fcommon -m64 -mtune=generic -fasynchronous-unwind-tables -fstack-clash-protection -fcf-protection'\\'' --with-cxxflags='\\''-O2 -g -pipe -Wall -Werror=format-security -Wp,-D_FORTIFY_SOURCE=2 -Wp,-D_GLIBCXX_ASSERTIONS -fexceptions -fstack-protector-strong -grecord-gcc-switches -specs=/usr/lib/rpm/azl/default-hardened-cc1    -fcommon -m64 -mtune=generic -fasynchronous-unwind-tables -fstack-clash-protection -fcf-protection'\\'' '"
+time="2025-03-12T07:45:47Z" level=debug msg="+ gem install -V --local --bindir /usr/bin --build-root . --force --document=ri,rdoc bson-4.15.0.gem"
+time="2025-03-12T07:45:48Z" level=debug msg="WARNING:  You build with buildroot."
+time="2025-03-12T07:45:48Z" level=debug msg="  Build root: /usr/src/azl/BUILD/bson-ruby-4.15.0"
+time="2025-03-12T07:45:48Z" level=debug msg="  Bin dir: /usr/src/azl/BUILD/bson-ruby-4.15.0/usr/bin"
+time="2025-03-12T07:45:48Z" level=debug msg="  Gem home: /usr/src/azl/BUILD/bson-ruby-4.15.0/usr/lib/ruby/gems/3.3.0"
+time="2025-03-12T07:45:48Z" level=debug msg="  Plugins dir: /usr/src/azl/BUILD/bson-ruby-4.15.0/usr/lib/ruby/gems/3.3.0/plugins"
+time="2025-03-12T07:45:48Z" level=debug msg=/usr/src/azl/BUILD/bson-ruby-4.15.0/usr/lib/ruby/gems/3.3.0/gems/bson-4.15.0/CHANGELOG.md
+time="2025-03-12T07:45:48Z" level=debug msg=/usr/src/azl/BUILD/bson-ruby-4.15.0/usr/lib/ruby/gems/3.3.0/gems/bson-4.15.0/CONTRIBUTING.md
+time="2025-03-12T07:45:48Z" level=debug msg=/usr/src/azl/BUILD/bson-ruby-4.15.0/usr/lib/ruby/gems/3.3.0/gems/bson-4.15.0/LICENSE
+time="2025-03-12T07:45:48Z" level=debug msg=/usr/src/azl/BUILD/bson-ruby-4.15.0/usr/lib/ruby/gems/3.3.0/gems/bson-4.15.0/NOTICE
+time="2025-03-12T07:45:48Z" level=debug msg=/usr/src/azl/BUILD/bson-ruby-4.15.0/usr/lib/ruby/gems/3.3.0/gems/bson-4.15.0/README.md
+time="2025-03-12T07:45:48Z" level=debug msg=/usr/src/azl/BUILD/bson-ruby-4.15.0/usr/lib/ruby/gems/3.3.0/gems/bson-4.15.0/Rakefile
+time="2025-03-12T07:45:48Z" level=debug msg=/usr/src/azl/BUILD/bson-ruby-4.15.0/usr/lib/ruby/gems/3.3.0/gems/bson-4.15.0/ext/bson/bson-endian.h
+time="2025-03-12T07:45:48Z" level=debug msg=/usr/src/azl/BUILD/bson-ruby-4.15.0/usr/lib/ruby/gems/3.3.0/gems/bson-4.15.0/ext/bson/bson-native.h
+time="2025-03-12T07:45:48Z" level=debug msg=/usr/src/azl/BUILD/bson-ruby-4.15.0/usr/lib/ruby/gems/3.3.0/gems/bson-4.15.0/ext/bson/bytebuf.c
+time="2025-03-12T07:45:48Z" level=debug msg=/usr/src/azl/BUILD/bson-ruby-4.15.0/usr/lib/ruby/gems/3.3.0/gems/bson-4.15.0/ext/bson/endian.c
+time="2025-03-12T07:45:48Z" level=debug msg=/usr/src/azl/BUILD/bson-ruby-4.15.0/usr/lib/ruby/gems/3.3.0/gems/bson-4.15.0/ext/bson/extconf.rb
+time="2025-03-12T07:45:48Z" level=debug msg=/usr/src/azl/BUILD/bson-ruby-4.15.0/usr/lib/ruby/gems/3.3.0/gems/bson-4.15.0/ext/bson/init.c
+time="2025-03-12T07:45:48Z" level=debug msg=/usr/src/azl/BUILD/bson-ruby-4.15.0/usr/lib/ruby/gems/3.3.0/gems/bson-4.15.0/ext/bson/libbson-utf8.c
+time="2025-03-12T07:45:48Z" level=debug msg=/usr/src/azl/BUILD/bson-ruby-4.15.0/usr/lib/ruby/gems/3.3.0/gems/bson-4.15.0/ext/bson/read.c
+time="2025-03-12T07:45:48Z" level=debug msg=/usr/src/azl/BUILD/bson-ruby-4.15.0/usr/lib/ruby/gems/3.3.0/gems/bson-4.15.0/ext/bson/util.c
+time="2025-03-12T07:45:48Z" level=debug msg=/usr/src/azl/BUILD/bson-ruby-4.15.0/usr/lib/ruby/gems/3.3.0/gems/bson-4.15.0/ext/bson/write.c
+time="2025-03-12T07:45:48Z" level=debug msg=/usr/src/azl/BUILD/bson-ruby-4.15.0/usr/lib/ruby/gems/3.3.0/gems/bson-4.15.0/lib/bson.rb
+time="2025-03-12T07:45:48Z" level=debug msg=/usr/src/azl/BUILD/bson-ruby-4.15.0/usr/lib/ruby/gems/3.3.0/gems/bson-4.15.0/lib/bson/active_support.rb
+time="2025-03-12T07:45:48Z" level=debug msg=/usr/src/azl/BUILD/bson-ruby-4.15.0/usr/lib/ruby/gems/3.3.0/gems/bson-4.15.0/lib/bson/array.rb
+time="2025-03-12T07:45:48Z" level=debug msg=/usr/src/azl/BUILD/bson-ruby-4.15.0/usr/lib/ruby/gems/3.3.0/gems/bson-4.15.0/lib/bson/big_decimal.rb
+time="2025-03-12T07:45:48Z" level=debug msg=/usr/src/azl/BUILD/bson-ruby-4.15.0/usr/lib/ruby/gems/3.3.0/gems/bson-4.15.0/lib/bson/binary.rb
+time="2025-03-12T07:45:48Z" level=debug msg=/usr/src/azl/BUILD/bson-ruby-4.15.0/usr/lib/ruby/gems/3.3.0/gems/bson-4.15.0/lib/bson/boolean.rb
+time="2025-03-12T07:45:48Z" level=debug msg=/usr/src/azl/BUILD/bson-ruby-4.15.0/usr/lib/ruby/gems/3.3.0/gems/bson-4.15.0/lib/bson/code.rb
+time="2025-03-12T07:45:48Z" level=debug msg=/usr/src/azl/BUILD/bson-ruby-4.15.0/usr/lib/ruby/gems/3.3.0/gems/bson-4.15.0/lib/bson/code_with_scope.rb
+time="2025-03-12T07:45:48Z" level=debug msg=/usr/src/azl/BUILD/bson-ruby-4.15.0/usr/lib/ruby/gems/3.3.0/gems/bson-4.15.0/lib/bson/config.rb
+time="2025-03-12T07:45:48Z" level=debug msg=/usr/src/azl/BUILD/bson-ruby-4.15.0/usr/lib/ruby/gems/3.3.0/gems/bson-4.15.0/lib/bson/date.rb
+time="2025-03-12T07:45:48Z" level=debug msg=/usr/src/azl/BUILD/bson-ruby-4.15.0/usr/lib/ruby/gems/3.3.0/gems/bson-4.15.0/lib/bson/date_time.rb
+time="2025-03-12T07:45:48Z" level=debug msg=/usr/src/azl/BUILD/bson-ruby-4.15.0/usr/lib/ruby/gems/3.3.0/gems/bson-4.15.0/lib/bson/db_pointer.rb
+time="2025-03-12T07:45:48Z" level=debug msg=/usr/src/azl/BUILD/bson-ruby-4.15.0/usr/lib/ruby/gems/3.3.0/gems/bson-4.15.0/lib/bson/dbref.rb
+time="2025-03-12T07:45:48Z" level=debug msg=/usr/src/azl/BUILD/bson-ruby-4.15.0/usr/lib/ruby/gems/3.3.0/gems/bson-4.15.0/lib/bson/decimal128.rb
+time="2025-03-12T07:45:48Z" level=debug msg=/usr/src/azl/BUILD/bson-ruby-4.15.0/usr/lib/ruby/gems/3.3.0/gems/bson-4.15.0/lib/bson/decimal128/builder.rb
+time="2025-03-12T07:45:48Z" level=debug msg=/usr/src/azl/BUILD/bson-ruby-4.15.0/usr/lib/ruby/gems/3.3.0/gems/bson-4.15.0/lib/bson/document.rb
+time="2025-03-12T07:45:48Z" level=debug msg=/usr/src/azl/BUILD/bson-ruby-4.15.0/usr/lib/ruby/gems/3.3.0/gems/bson-4.15.0/lib/bson/environment.rb
+time="2025-03-12T07:45:48Z" level=debug msg=/usr/src/azl/BUILD/bson-ruby-4.15.0/usr/lib/ruby/gems/3.3.0/gems/bson-4.15.0/lib/bson/error.rb
+time="2025-03-12T07:45:48Z" level=debug msg=/usr/src/azl/BUILD/bson-ruby-4.15.0/usr/lib/ruby/gems/3.3.0/gems/bson-4.15.0/lib/bson/ext_json.rb
+time="2025-03-12T07:45:48Z" level=debug msg=/usr/src/azl/BUILD/bson-ruby-4.15.0/usr/lib/ruby/gems/3.3.0/gems/bson-4.15.0/lib/bson/false_class.rb
+time="2025-03-12T07:45:48Z" level=debug msg=/usr/src/azl/BUILD/bson-ruby-4.15.0/usr/lib/ruby/gems/3.3.0/gems/bson-4.15.0/lib/bson/float.rb
+time="2025-03-12T07:45:48Z" level=debug msg=/usr/src/azl/BUILD/bson-ruby-4.15.0/usr/lib/ruby/gems/3.3.0/gems/bson-4.15.0/lib/bson/hash.rb
+time="2025-03-12T07:45:48Z" level=debug msg=/usr/src/azl/BUILD/bson-ruby-4.15.0/usr/lib/ruby/gems/3.3.0/gems/bson-4.15.0/lib/bson/int32.rb
+time="2025-03-12T07:45:48Z" level=debug msg=/usr/src/azl/BUILD/bson-ruby-4.15.0/usr/lib/ruby/gems/3.3.0/gems/bson-4.15.0/lib/bson/int64.rb
+time="2025-03-12T07:45:48Z" level=debug msg=/usr/src/azl/BUILD/bson-ruby-4.15.0/usr/lib/ruby/gems/3.3.0/gems/bson-4.15.0/lib/bson/integer.rb
+time="2025-03-12T07:45:48Z" level=debug msg=/usr/src/azl/BUILD/bson-ruby-4.15.0/usr/lib/ruby/gems/3.3.0/gems/bson-4.15.0/lib/bson/json.rb
+time="2025-03-12T07:45:48Z" level=debug msg=/usr/src/azl/BUILD/bson-ruby-4.15.0/usr/lib/ruby/gems/3.3.0/gems/bson-4.15.0/lib/bson/max_key.rb
+time="2025-03-12T07:45:48Z" level=debug msg=/usr/src/azl/BUILD/bson-ruby-4.15.0/usr/lib/ruby/gems/3.3.0/gems/bson-4.15.0/lib/bson/min_key.rb
+time="2025-03-12T07:45:48Z" level=debug msg=/usr/src/azl/BUILD/bson-ruby-4.15.0/usr/lib/ruby/gems/3.3.0/gems/bson-4.15.0/lib/bson/nil_class.rb
+time="2025-03-12T07:45:48Z" level=debug msg=/usr/src/azl/BUILD/bson-ruby-4.15.0/usr/lib/ruby/gems/3.3.0/gems/bson-4.15.0/lib/bson/object.rb
+time="2025-03-12T07:45:48Z" level=debug msg=/usr/src/azl/BUILD/bson-ruby-4.15.0/usr/lib/ruby/gems/3.3.0/gems/bson-4.15.0/lib/bson/object_id.rb
+time="2025-03-12T07:45:48Z" level=debug msg=/usr/src/azl/BUILD/bson-ruby-4.15.0/usr/lib/ruby/gems/3.3.0/gems/bson-4.15.0/lib/bson/open_struct.rb
+time="2025-03-12T07:45:48Z" level=debug msg=/usr/src/azl/BUILD/bson-ruby-4.15.0/usr/lib/ruby/gems/3.3.0/gems/bson-4.15.0/lib/bson/regexp.rb
+time="2025-03-12T07:45:48Z" level=debug msg=/usr/src/azl/BUILD/bson-ruby-4.15.0/usr/lib/ruby/gems/3.3.0/gems/bson-4.15.0/lib/bson/registry.rb
+time="2025-03-12T07:45:48Z" level=debug msg=/usr/src/azl/BUILD/bson-ruby-4.15.0/usr/lib/ruby/gems/3.3.0/gems/bson-4.15.0/lib/bson/specialized.rb
+time="2025-03-12T07:45:48Z" level=debug msg=/usr/src/azl/BUILD/bson-ruby-4.15.0/usr/lib/ruby/gems/3.3.0/gems/bson-4.15.0/lib/bson/string.rb
+time="2025-03-12T07:45:48Z" level=debug msg=/usr/src/azl/BUILD/bson-ruby-4.15.0/usr/lib/ruby/gems/3.3.0/gems/bson-4.15.0/lib/bson/symbol.rb
+time="2025-03-12T07:45:48Z" level=debug msg=/usr/src/azl/BUILD/bson-ruby-4.15.0/usr/lib/ruby/gems/3.3.0/gems/bson-4.15.0/lib/bson/time.rb
+time="2025-03-12T07:45:48Z" level=debug msg=/usr/src/azl/BUILD/bson-ruby-4.15.0/usr/lib/ruby/gems/3.3.0/gems/bson-4.15.0/lib/bson/time_with_zone.rb
+time="2025-03-12T07:45:48Z" level=debug msg=/usr/src/azl/BUILD/bson-ruby-4.15.0/usr/lib/ruby/gems/3.3.0/gems/bson-4.15.0/lib/bson/timestamp.rb
+time="2025-03-12T07:45:48Z" level=debug msg=/usr/src/azl/BUILD/bson-ruby-4.15.0/usr/lib/ruby/gems/3.3.0/gems/bson-4.15.0/lib/bson/true_class.rb
+time="2025-03-12T07:45:48Z" level=debug msg=/usr/src/azl/BUILD/bson-ruby-4.15.0/usr/lib/ruby/gems/3.3.0/gems/bson-4.15.0/lib/bson/undefined.rb
+time="2025-03-12T07:45:48Z" level=debug msg=/usr/src/azl/BUILD/bson-ruby-4.15.0/usr/lib/ruby/gems/3.3.0/gems/bson-4.15.0/lib/bson/version.rb
+time="2025-03-12T07:45:48Z" level=debug msg=/usr/src/azl/BUILD/bson-ruby-4.15.0/usr/lib/ruby/gems/3.3.0/gems/bson-4.15.0/spec/README.md
+time="2025-03-12T07:45:48Z" level=debug msg=/usr/src/azl/BUILD/bson-ruby-4.15.0/usr/lib/ruby/gems/3.3.0/gems/bson-4.15.0/spec/bson/array_spec.rb
+time="2025-03-12T07:45:48Z" level=debug msg=/usr/src/azl/BUILD/bson-ruby-4.15.0/usr/lib/ruby/gems/3.3.0/gems/bson-4.15.0/spec/bson/big_decimal_spec.rb
+time="2025-03-12T07:45:48Z" level=debug msg=/usr/src/azl/BUILD/bson-ruby-4.15.0/usr/lib/ruby/gems/3.3.0/gems/bson-4.15.0/spec/bson/binary_spec.rb
+time="2025-03-12T07:45:48Z" level=debug msg=/usr/src/azl/BUILD/bson-ruby-4.15.0/usr/lib/ruby/gems/3.3.0/gems/bson-4.15.0/spec/bson/binary_uuid_spec.rb
+time="2025-03-12T07:45:48Z" level=debug msg=/usr/src/azl/BUILD/bson-ruby-4.15.0/usr/lib/ruby/gems/3.3.0/gems/bson-4.15.0/spec/bson/boolean_spec.rb
+time="2025-03-12T07:45:48Z" level=debug msg=/usr/src/azl/BUILD/bson-ruby-4.15.0/usr/lib/ruby/gems/3.3.0/gems/bson-4.15.0/spec/bson/byte_buffer_read_spec.rb
+time="2025-03-12T07:45:48Z" level=debug msg=/usr/src/azl/BUILD/bson-ruby-4.15.0/usr/lib/ruby/gems/3.3.0/gems/bson-4.15.0/spec/bson/byte_buffer_spec.rb
+time="2025-03-12T07:45:48Z" level=debug msg=/usr/src/azl/BUILD/bson-ruby-4.15.0/usr/lib/ruby/gems/3.3.0/gems/bson-4.15.0/spec/bson/byte_buffer_write_spec.rb
+time="2025-03-12T07:45:48Z" level=debug msg=/usr/src/azl/BUILD/bson-ruby-4.15.0/usr/lib/ruby/gems/3.3.0/gems/bson-4.15.0/spec/bson/code_spec.rb
+time="2025-03-12T07:45:48Z" level=debug msg=/usr/src/azl/BUILD/bson-ruby-4.15.0/usr/lib/ruby/gems/3.3.0/gems/bson-4.15.0/spec/bson/code_with_scope_spec.rb
+time="2025-03-12T07:45:48Z" level=debug msg=/usr/src/azl/BUILD/bson-ruby-4.15.0/usr/lib/ruby/gems/3.3.0/gems/bson-4.15.0/spec/bson/config_spec.rb
+time="2025-03-12T07:45:48Z" level=debug msg=/usr/src/azl/BUILD/bson-ruby-4.15.0/usr/lib/ruby/gems/3.3.0/gems/bson-4.15.0/spec/bson/date_spec.rb
+time="2025-03-12T07:45:48Z" level=debug msg=/usr/src/azl/BUILD/bson-ruby-4.15.0/usr/lib/ruby/gems/3.3.0/gems/bson-4.15.0/spec/bson/date_time_spec.rb
+time="2025-03-12T07:45:48Z" level=debug msg=/usr/src/azl/BUILD/bson-ruby-4.15.0/usr/lib/ruby/gems/3.3.0/gems/bson-4.15.0/spec/bson/dbref_legacy_spec.rb
+time="2025-03-12T07:45:48Z" level=debug msg=/usr/src/azl/BUILD/bson-ruby-4.15.0/usr/lib/ruby/gems/3.3.0/gems/bson-4.15.0/spec/bson/dbref_spec.rb
+time="2025-03-12T07:45:48Z" level=debug msg=/usr/src/azl/BUILD/bson-ruby-4.15.0/usr/lib/ruby/gems/3.3.0/gems/bson-4.15.0/spec/bson/decimal128_spec.rb
+time="2025-03-12T07:45:48Z" level=debug msg=/usr/src/azl/BUILD/bson-ruby-4.15.0/usr/lib/ruby/gems/3.3.0/gems/bson-4.15.0/spec/bson/document_as_spec.rb
+time="2025-03-12T07:45:48Z" level=debug msg=/usr/src/azl/BUILD/bson-ruby-4.15.0/usr/lib/ruby/gems/3.3.0/gems/bson-4.15.0/spec/bson/document_spec.rb
+time="2025-03-12T07:45:48Z" level=debug msg=/usr/src/azl/BUILD/bson-ruby-4.15.0/usr/lib/ruby/gems/3.3.0/gems/bson-4.15.0/spec/bson/ext_json_parse_spec.rb
+time="2025-03-12T07:45:48Z" level=debug msg=/usr/src/azl/BUILD/bson-ruby-4.15.0/usr/lib/ruby/gems/3.3.0/gems/bson-4.15.0/spec/bson/false_class_spec.rb
+time="2025-03-12T07:45:48Z" level=debug msg=/usr/src/azl/BUILD/bson-ruby-4.15.0/usr/lib/ruby/gems/3.3.0/gems/bson-4.15.0/spec/bson/float_spec.rb
+time="2025-03-12T07:45:48Z" level=debug msg=/usr/src/azl/BUILD/bson-ruby-4.15.0/usr/lib/ruby/gems/3.3.0/gems/bson-4.15.0/spec/bson/hash_as_spec.rb
+time="2025-03-12T07:45:48Z" level=debug msg=/usr/src/azl/BUILD/bson-ruby-4.15.0/usr/lib/ruby/gems/3.3.0/gems/bson-4.15.0/spec/bson/hash_spec.rb
+time="2025-03-12T07:45:48Z" level=debug msg=/usr/src/azl/BUILD/bson-ruby-4.15.0/usr/lib/ruby/gems/3.3.0/gems/bson-4.15.0/spec/bson/int32_spec.rb
+time="2025-03-12T07:45:48Z" level=debug msg=/usr/src/azl/BUILD/bson-ruby-4.15.0/usr/lib/ruby/gems/3.3.0/gems/bson-4.15.0/spec/bson/int64_spec.rb
+time="2025-03-12T07:45:48Z" level=debug msg=/usr/src/azl/BUILD/bson-ruby-4.15.0/usr/lib/ruby/gems/3.3.0/gems/bson-4.15.0/spec/bson/integer_spec.rb
+time="2025-03-12T07:45:48Z" level=debug msg=/usr/src/azl/BUILD/bson-ruby-4.15.0/usr/lib/ruby/gems/3.3.0/gems/bson-4.15.0/spec/bson/json_spec.rb
+time="2025-03-12T07:45:48Z" level=debug msg=/usr/src/azl/BUILD/bson-ruby-4.15.0/usr/lib/ruby/gems/3.3.0/gems/bson-4.15.0/spec/bson/max_key_spec.rb
+time="2025-03-12T07:45:48Z" level=debug msg=/usr/src/azl/BUILD/bson-ruby-4.15.0/usr/lib/ruby/gems/3.3.0/gems/bson-4.15.0/spec/bson/min_key_spec.rb
+time="2025-03-12T07:45:48Z" level=debug msg=/usr/src/azl/BUILD/bson-ruby-4.15.0/usr/lib/ruby/gems/3.3.0/gems/bson-4.15.0/spec/bson/nil_class_spec.rb
+time="2025-03-12T07:45:48Z" level=debug msg=/usr/src/azl/BUILD/bson-ruby-4.15.0/usr/lib/ruby/gems/3.3.0/gems/bson-4.15.0/spec/bson/object_id_spec.rb
+time="2025-03-12T07:45:48Z" level=debug msg=/usr/src/azl/BUILD/bson-ruby-4.15.0/usr/lib/ruby/gems/3.3.0/gems/bson-4.15.0/spec/bson/object_spec.rb
+time="2025-03-12T07:45:48Z" level=debug msg=/usr/src/azl/BUILD/bson-ruby-4.15.0/usr/lib/ruby/gems/3.3.0/gems/bson-4.15.0/spec/bson/open_struct_spec.rb
+time="2025-03-12T07:45:48Z" level=debug msg=/usr/src/azl/BUILD/bson-ruby-4.15.0/usr/lib/ruby/gems/3.3.0/gems/bson-4.15.0/spec/bson/raw_spec.rb
+time="2025-03-12T07:45:48Z" level=debug msg=/usr/src/azl/BUILD/bson-ruby-4.15.0/usr/lib/ruby/gems/3.3.0/gems/bson-4.15.0/spec/bson/regexp_spec.rb
+time="2025-03-12T07:45:48Z" level=debug msg=/usr/src/azl/BUILD/bson-ruby-4.15.0/usr/lib/ruby/gems/3.3.0/gems/bson-4.15.0/spec/bson/registry_spec.rb
+time="2025-03-12T07:45:48Z" level=debug msg=/usr/src/azl/BUILD/bson-ruby-4.15.0/usr/lib/ruby/gems/3.3.0/gems/bson-4.15.0/spec/bson/string_spec.rb
+time="2025-03-12T07:45:48Z" level=debug msg=/usr/src/azl/BUILD/bson-ruby-4.15.0/usr/lib/ruby/gems/3.3.0/gems/bson-4.15.0/spec/bson/symbol_raw_spec.rb
+time="2025-03-12T07:45:48Z" level=debug msg=/usr/src/azl/BUILD/bson-ruby-4.15.0/usr/lib/ruby/gems/3.3.0/gems/bson-4.15.0/spec/bson/symbol_spec.rb
+time="2025-03-12T07:45:48Z" level=debug msg=/usr/src/azl/BUILD/bson-ruby-4.15.0/usr/lib/ruby/gems/3.3.0/gems/bson-4.15.0/spec/bson/time_spec.rb
+time="2025-03-12T07:45:48Z" level=debug msg=/usr/src/azl/BUILD/bson-ruby-4.15.0/usr/lib/ruby/gems/3.3.0/gems/bson-4.15.0/spec/bson/time_with_zone_spec.rb
+time="2025-03-12T07:45:48Z" level=debug msg=/usr/src/azl/BUILD/bson-ruby-4.15.0/usr/lib/ruby/gems/3.3.0/gems/bson-4.15.0/spec/bson/timestamp_spec.rb
+time="2025-03-12T07:45:48Z" level=debug msg=/usr/src/azl/BUILD/bson-ruby-4.15.0/usr/lib/ruby/gems/3.3.0/gems/bson-4.15.0/spec/bson/true_class_spec.rb
+time="2025-03-12T07:45:48Z" level=debug msg=/usr/src/azl/BUILD/bson-ruby-4.15.0/usr/lib/ruby/gems/3.3.0/gems/bson-4.15.0/spec/bson/undefined_spec.rb
+time="2025-03-12T07:45:48Z" level=debug msg=/usr/src/azl/BUILD/bson-ruby-4.15.0/usr/lib/ruby/gems/3.3.0/gems/bson-4.15.0/spec/bson_spec.rb
+time="2025-03-12T07:45:48Z" level=debug msg=/usr/src/azl/BUILD/bson-ruby-4.15.0/usr/lib/ruby/gems/3.3.0/gems/bson-4.15.0/spec/runners/common_driver.rb
+time="2025-03-12T07:45:48Z" level=debug msg=/usr/src/azl/BUILD/bson-ruby-4.15.0/usr/lib/ruby/gems/3.3.0/gems/bson-4.15.0/spec/runners/corpus.rb
+time="2025-03-12T07:45:48Z" level=debug msg=/usr/src/azl/BUILD/bson-ruby-4.15.0/usr/lib/ruby/gems/3.3.0/gems/bson-4.15.0/spec/runners/corpus_legacy.rb
+time="2025-03-12T07:45:48Z" level=debug msg=/usr/src/azl/BUILD/bson-ruby-4.15.0/usr/lib/ruby/gems/3.3.0/gems/bson-4.15.0/spec/spec_helper.rb
+time="2025-03-12T07:45:48Z" level=debug msg=/usr/src/azl/BUILD/bson-ruby-4.15.0/usr/lib/ruby/gems/3.3.0/gems/bson-4.15.0/spec/spec_tests/common_driver_spec.rb
+time="2025-03-12T07:45:48Z" level=debug msg=/usr/src/azl/BUILD/bson-ruby-4.15.0/usr/lib/ruby/gems/3.3.0/gems/bson-4.15.0/spec/spec_tests/corpus_legacy_spec.rb
+time="2025-03-12T07:45:48Z" level=debug msg=/usr/src/azl/BUILD/bson-ruby-4.15.0/usr/lib/ruby/gems/3.3.0/gems/bson-4.15.0/spec/spec_tests/corpus_spec.rb
+time="2025-03-12T07:45:48Z" level=debug msg=/usr/src/azl/BUILD/bson-ruby-4.15.0/usr/lib/ruby/gems/3.3.0/gems/bson-4.15.0/spec/spec_tests/data/corpus/README.md
+time="2025-03-12T07:45:48Z" level=debug msg=/usr/src/azl/BUILD/bson-ruby-4.15.0/usr/lib/ruby/gems/3.3.0/gems/bson-4.15.0/spec/spec_tests/data/corpus/array.json
+time="2025-03-12T07:45:48Z" level=debug msg=/usr/src/azl/BUILD/bson-ruby-4.15.0/usr/lib/ruby/gems/3.3.0/gems/bson-4.15.0/spec/spec_tests/data/corpus/binary.json
+time="2025-03-12T07:45:48Z" level=debug msg=/usr/src/azl/BUILD/bson-ruby-4.15.0/usr/lib/ruby/gems/3.3.0/gems/bson-4.15.0/spec/spec_tests/data/corpus/boolean.json
+time="2025-03-12T07:45:48Z" level=debug msg=/usr/src/azl/BUILD/bson-ruby-4.15.0/usr/lib/ruby/gems/3.3.0/gems/bson-4.15.0/spec/spec_tests/data/corpus/code.json
+time="2025-03-12T07:45:48Z" level=debug msg=/usr/src/azl/BUILD/bson-ruby-4.15.0/usr/lib/ruby/gems/3.3.0/gems/bson-4.15.0/spec/spec_tests/data/corpus/code_w_scope.json
+time="2025-03-12T07:45:48Z" level=debug msg=/usr/src/azl/BUILD/bson-ruby-4.15.0/usr/lib/ruby/gems/3.3.0/gems/bson-4.15.0/spec/spec_tests/data/corpus/datetime.json
+time="2025-03-12T07:45:48Z" level=debug msg=/usr/src/azl/BUILD/bson-ruby-4.15.0/usr/lib/ruby/gems/3.3.0/gems/bson-4.15.0/spec/spec_tests/data/corpus/dbpointer.json
+time="2025-03-12T07:45:48Z" level=debug msg=/usr/src/azl/BUILD/bson-ruby-4.15.0/usr/lib/ruby/gems/3.3.0/gems/bson-4.15.0/spec/spec_tests/data/corpus/dbref.json
+time="2025-03-12T07:45:48Z" level=debug msg=/usr/src/azl/BUILD/bson-ruby-4.15.0/usr/lib/ruby/gems/3.3.0/gems/bson-4.15.0/spec/spec_tests/data/corpus/decimal128-1.json
+time="2025-03-12T07:45:48Z" level=debug msg=/usr/src/azl/BUILD/bson-ruby-4.15.0/usr/lib/ruby/gems/3.3.0/gems/bson-4.15.0/spec/spec_tests/data/corpus/decimal128-2.json
+time="2025-03-12T07:45:48Z" level=debug msg=/usr/src/azl/BUILD/bson-ruby-4.15.0/usr/lib/ruby/gems/3.3.0/gems/bson-4.15.0/spec/spec_tests/data/corpus/decimal128-3.json
+time="2025-03-12T07:45:48Z" level=debug msg=/usr/src/azl/BUILD/bson-ruby-4.15.0/usr/lib/ruby/gems/3.3.0/gems/bson-4.15.0/spec/spec_tests/data/corpus/decimal128-4.json
+time="2025-03-12T07:45:48Z" level=debug msg=/usr/src/azl/BUILD/bson-ruby-4.15.0/usr/lib/ruby/gems/3.3.0/gems/bson-4.15.0/spec/spec_tests/data/corpus/decimal128-5.json
+time="2025-03-12T07:45:48Z" level=debug msg=/usr/src/azl/BUILD/bson-ruby-4.15.0/usr/lib/ruby/gems/3.3.0/gems/bson-4.15.0/spec/spec_tests/data/corpus/decimal128-6.json
+time="2025-03-12T07:45:48Z" level=debug msg=/usr/src/azl/BUILD/bson-ruby-4.15.0/usr/lib/ruby/gems/3.3.0/gems/bson-4.15.0/spec/spec_tests/data/corpus/decimal128-7.json
+time="2025-03-12T07:45:48Z" level=debug msg=/usr/src/azl/BUILD/bson-ruby-4.15.0/usr/lib/ruby/gems/3.3.0/gems/bson-4.15.0/spec/spec_tests/data/corpus/document.json
+time="2025-03-12T07:45:48Z" level=debug msg=/usr/src/azl/BUILD/bson-ruby-4.15.0/usr/lib/ruby/gems/3.3.0/gems/bson-4.15.0/spec/spec_tests/data/corpus/double.json
+time="2025-03-12T07:45:48Z" level=debug msg=/usr/src/azl/BUILD/bson-ruby-4.15.0/usr/lib/ruby/gems/3.3.0/gems/bson-4.15.0/spec/spec_tests/data/corpus/int32.json
+time="2025-03-12T07:45:48Z" level=debug msg=/usr/src/azl/BUILD/bson-ruby-4.15.0/usr/lib/ruby/gems/3.3.0/gems/bson-4.15.0/spec/spec_tests/data/corpus/int64.json
+time="2025-03-12T07:45:48Z" level=debug msg=/usr/src/azl/BUILD/bson-ruby-4.15.0/usr/lib/ruby/gems/3.3.0/gems/bson-4.15.0/spec/spec_tests/data/corpus/maxkey.json
+time="2025-03-12T07:45:48Z" level=debug msg=/usr/src/azl/BUILD/bson-ruby-4.15.0/usr/lib/ruby/gems/3.3.0/gems/bson-4.15.0/spec/spec_tests/data/corpus/minkey.json
+time="2025-03-12T07:45:48Z" level=debug msg=/usr/src/azl/BUILD/bson-ruby-4.15.0/usr/lib/ruby/gems/3.3.0/gems/bson-4.15.0/spec/spec_tests/data/corpus/multi-type-deprecated.json
+time="2025-03-12T07:45:48Z" level=debug msg=/usr/src/azl/BUILD/bson-ruby-4.15.0/usr/lib/ruby/gems/3.3.0/gems/bson-4.15.0/spec/spec_tests/data/corpus/multi-type.json
+time="2025-03-12T07:45:48Z" level=debug msg=/usr/src/azl/BUILD/bson-ruby-4.15.0/usr/lib/ruby/gems/3.3.0/gems/bson-4.15.0/spec/spec_tests/data/corpus/null.json
+time="2025-03-12T07:45:48Z" level=debug msg=/usr/src/azl/BUILD/bson-ruby-4.15.0/usr/lib/ruby/gems/3.3.0/gems/bson-4.15.0/spec/spec_tests/data/corpus/oid.json
+time="2025-03-12T07:45:48Z" level=debug msg=/usr/src/azl/BUILD/bson-ruby-4.15.0/usr/lib/ruby/gems/3.3.0/gems/bson-4.15.0/spec/spec_tests/data/corpus/regex.json
+time="2025-03-12T07:45:48Z" level=debug msg=/usr/src/azl/BUILD/bson-ruby-4.15.0/usr/lib/ruby/gems/3.3.0/gems/bson-4.15.0/spec/spec_tests/data/corpus/string.json
+time="2025-03-12T07:45:48Z" level=debug msg=/usr/src/azl/BUILD/bson-ruby-4.15.0/usr/lib/ruby/gems/3.3.0/gems/bson-4.15.0/spec/spec_tests/data/corpus/symbol.json
+time="2025-03-12T07:45:48Z" level=debug msg=/usr/src/azl/BUILD/bson-ruby-4.15.0/usr/lib/ruby/gems/3.3.0/gems/bson-4.15.0/spec/spec_tests/data/corpus/timestamp.json
+time="2025-03-12T07:45:48Z" level=debug msg=/usr/src/azl/BUILD/bson-ruby-4.15.0/usr/lib/ruby/gems/3.3.0/gems/bson-4.15.0/spec/spec_tests/data/corpus/top.json
+time="2025-03-12T07:45:48Z" level=debug msg=/usr/src/azl/BUILD/bson-ruby-4.15.0/usr/lib/ruby/gems/3.3.0/gems/bson-4.15.0/spec/spec_tests/data/corpus/undefined.json
+time="2025-03-12T07:45:48Z" level=debug msg=/usr/src/azl/BUILD/bson-ruby-4.15.0/usr/lib/ruby/gems/3.3.0/gems/bson-4.15.0/spec/spec_tests/data/corpus_legacy/array.json
+time="2025-03-12T07:45:48Z" level=debug msg=/usr/src/azl/BUILD/bson-ruby-4.15.0/usr/lib/ruby/gems/3.3.0/gems/bson-4.15.0/spec/spec_tests/data/corpus_legacy/binary.json
+time="2025-03-12T07:45:48Z" level=debug msg=/usr/src/azl/BUILD/bson-ruby-4.15.0/usr/lib/ruby/gems/3.3.0/gems/bson-4.15.0/spec/spec_tests/data/corpus_legacy/boolean.json
+time="2025-03-12T07:45:48Z" level=debug msg=/usr/src/azl/BUILD/bson-ruby-4.15.0/usr/lib/ruby/gems/3.3.0/gems/bson-4.15.0/spec/spec_tests/data/corpus_legacy/code.json
+time="2025-03-12T07:45:48Z" level=debug msg=/usr/src/azl/BUILD/bson-ruby-4.15.0/usr/lib/ruby/gems/3.3.0/gems/bson-4.15.0/spec/spec_tests/data/corpus_legacy/code_w_scope.json
+time="2025-03-12T07:45:48Z" level=debug msg=/usr/src/azl/BUILD/bson-ruby-4.15.0/usr/lib/ruby/gems/3.3.0/gems/bson-4.15.0/spec/spec_tests/data/corpus_legacy/document.json
+time="2025-03-12T07:45:48Z" level=debug msg=/usr/src/azl/BUILD/bson-ruby-4.15.0/usr/lib/ruby/gems/3.3.0/gems/bson-4.15.0/spec/spec_tests/data/corpus_legacy/double.json
+time="2025-03-12T07:45:48Z" level=debug msg=/usr/src/azl/BUILD/bson-ruby-4.15.0/usr/lib/ruby/gems/3.3.0/gems/bson-4.15.0/spec/spec_tests/data/corpus_legacy/failures/datetime.json
+time="2025-03-12T07:45:48Z" level=debug msg=/usr/src/azl/BUILD/bson-ruby-4.15.0/usr/lib/ruby/gems/3.3.0/gems/bson-4.15.0/spec/spec_tests/data/corpus_legacy/failures/dbpointer.json
+time="2025-03-12T07:45:48Z" level=debug msg=/usr/src/azl/BUILD/bson-ruby-4.15.0/usr/lib/ruby/gems/3.3.0/gems/bson-4.15.0/spec/spec_tests/data/corpus_legacy/failures/int64.json
+time="2025-03-12T07:45:48Z" level=debug msg=/usr/src/azl/BUILD/bson-ruby-4.15.0/usr/lib/ruby/gems/3.3.0/gems/bson-4.15.0/spec/spec_tests/data/corpus_legacy/failures/symbol.json
+time="2025-03-12T07:45:48Z" level=debug msg=/usr/src/azl/BUILD/bson-ruby-4.15.0/usr/lib/ruby/gems/3.3.0/gems/bson-4.15.0/spec/spec_tests/data/corpus_legacy/int32.json
+time="2025-03-12T07:45:48Z" level=debug msg=/usr/src/azl/BUILD/bson-ruby-4.15.0/usr/lib/ruby/gems/3.3.0/gems/bson-4.15.0/spec/spec_tests/data/corpus_legacy/maxkey.json
+time="2025-03-12T07:45:48Z" level=debug msg=/usr/src/azl/BUILD/bson-ruby-4.15.0/usr/lib/ruby/gems/3.3.0/gems/bson-4.15.0/spec/spec_tests/data/corpus_legacy/minkey.json
+time="2025-03-12T07:45:48Z" level=debug msg=/usr/src/azl/BUILD/bson-ruby-4.15.0/usr/lib/ruby/gems/3.3.0/gems/bson-4.15.0/spec/spec_tests/data/corpus_legacy/null.json
+time="2025-03-12T07:45:48Z" level=debug msg=/usr/src/azl/BUILD/bson-ruby-4.15.0/usr/lib/ruby/gems/3.3.0/gems/bson-4.15.0/spec/spec_tests/data/corpus_legacy/oid.json
+time="2025-03-12T07:45:48Z" level=debug msg=/usr/src/azl/BUILD/bson-ruby-4.15.0/usr/lib/ruby/gems/3.3.0/gems/bson-4.15.0/spec/spec_tests/data/corpus_legacy/regex.json
+time="2025-03-12T07:45:48Z" level=debug msg=/usr/src/azl/BUILD/bson-ruby-4.15.0/usr/lib/ruby/gems/3.3.0/gems/bson-4.15.0/spec/spec_tests/data/corpus_legacy/string.json
+time="2025-03-12T07:45:48Z" level=debug msg=/usr/src/azl/BUILD/bson-ruby-4.15.0/usr/lib/ruby/gems/3.3.0/gems/bson-4.15.0/spec/spec_tests/data/corpus_legacy/timestamp.json
+time="2025-03-12T07:45:48Z" level=debug msg=/usr/src/azl/BUILD/bson-ruby-4.15.0/usr/lib/ruby/gems/3.3.0/gems/bson-4.15.0/spec/spec_tests/data/corpus_legacy/top.json
+time="2025-03-12T07:45:48Z" level=debug msg=/usr/src/azl/BUILD/bson-ruby-4.15.0/usr/lib/ruby/gems/3.3.0/gems/bson-4.15.0/spec/spec_tests/data/corpus_legacy/undefined.json
+time="2025-03-12T07:45:48Z" level=debug msg=/usr/src/azl/BUILD/bson-ruby-4.15.0/usr/lib/ruby/gems/3.3.0/gems/bson-4.15.0/spec/spec_tests/data/decimal128/decimal128-1.json
+time="2025-03-12T07:45:48Z" level=debug msg=/usr/src/azl/BUILD/bson-ruby-4.15.0/usr/lib/ruby/gems/3.3.0/gems/bson-4.15.0/spec/spec_tests/data/decimal128/decimal128-2.json
+time="2025-03-12T07:45:48Z" level=debug msg=/usr/src/azl/BUILD/bson-ruby-4.15.0/usr/lib/ruby/gems/3.3.0/gems/bson-4.15.0/spec/spec_tests/data/decimal128/decimal128-3.json
+time="2025-03-12T07:45:48Z" level=debug msg=/usr/src/azl/BUILD/bson-ruby-4.15.0/usr/lib/ruby/gems/3.3.0/gems/bson-4.15.0/spec/spec_tests/data/decimal128/decimal128-4.json
+time="2025-03-12T07:45:48Z" level=debug msg=/usr/src/azl/BUILD/bson-ruby-4.15.0/usr/lib/ruby/gems/3.3.0/gems/bson-4.15.0/spec/spec_tests/data/decimal128/decimal128-5.json
+time="2025-03-12T07:45:48Z" level=debug msg=/usr/src/azl/BUILD/bson-ruby-4.15.0/usr/lib/ruby/gems/3.3.0/gems/bson-4.15.0/spec/spec_tests/data/decimal128/decimal128-6.json
+time="2025-03-12T07:45:48Z" level=debug msg=/usr/src/azl/BUILD/bson-ruby-4.15.0/usr/lib/ruby/gems/3.3.0/gems/bson-4.15.0/spec/spec_tests/data/decimal128/decimal128-7.json
+time="2025-03-12T07:45:48Z" level=debug msg=/usr/src/azl/BUILD/bson-ruby-4.15.0/usr/lib/ruby/gems/3.3.0/gems/bson-4.15.0/spec/support/shared_examples.rb
+time="2025-03-12T07:45:48Z" level=debug msg=/usr/src/azl/BUILD/bson-ruby-4.15.0/usr/lib/ruby/gems/3.3.0/gems/bson-4.15.0/spec/support/spec_config.rb
+time="2025-03-12T07:45:48Z" level=debug msg=/usr/src/azl/BUILD/bson-ruby-4.15.0/usr/lib/ruby/gems/3.3.0/gems/bson-4.15.0/spec/support/utils.rb
+time="2025-03-12T07:45:48Z" level=debug msg="Building native extensions. This could take a while..."
+time="2025-03-12T07:45:48Z" level=debug msg="current directory: /usr/src/azl/BUILD/bson-ruby-4.15.0/usr/lib/ruby/gems/3.3.0/gems/bson-4.15.0/ext/bson"
+time="2025-03-12T07:45:48Z" level=debug msg="[\"/usr/bin/ruby\", \"extconf.rb\"]"
+time="2025-03-12T07:45:48Z" level=debug msg="creating Makefile"
+time="2025-03-12T07:45:48Z" level=debug msg="current directory: /usr/src/azl/BUILD/bson-ruby-4.15.0/usr/lib/ruby/gems/3.3.0/gems/bson-4.15.0/ext/bson"
+time="2025-03-12T07:45:48Z" level=debug msg="[\"make\", \"DESTDIR=\", \"sitearchdir=./.gem.20250312-2580354-aznyrg\", \"sitelibdir=./.gem.20250312-2580354-aznyrg\", \"clean\"]"
+time="2025-03-12T07:45:48Z" level=debug msg="current directory: /usr/src/azl/BUILD/bson-ruby-4.15.0/usr/lib/ruby/gems/3.3.0/gems/bson-4.15.0/ext/bson"
+time="2025-03-12T07:45:48Z" level=debug msg="[\"make\", \"DESTDIR=\", \"sitearchdir=./.gem.20250312-2580354-aznyrg\", \"sitelibdir=./.gem.20250312-2580354-aznyrg\"]"
+time="2025-03-12T07:45:50Z" level=debug msg="compiling bytebuf.c"
+time="2025-03-12T07:45:50Z" level=debug msg="compiling endian.c"
+time="2025-03-12T07:45:50Z" level=debug msg="compiling init.c"
+time="2025-03-12T07:45:50Z" level=debug msg="compiling libbson-utf8.c"
+time="2025-03-12T07:45:50Z" level=debug msg="compiling read.c"
+time="2025-03-12T07:45:50Z" level=debug msg="compiling util.c"
+time="2025-03-12T07:45:50Z" level=debug msg="compiling write.c"
+time="2025-03-12T07:45:50Z" level=debug msg="linking shared-object bson_native.so"
+time="2025-03-12T07:45:50Z" level=debug msg="current directory: /usr/src/azl/BUILD/bson-ruby-4.15.0/usr/lib/ruby/gems/3.3.0/gems/bson-4.15.0/ext/bson"
+time="2025-03-12T07:45:50Z" level=debug msg="[\"make\", \"DESTDIR=\", \"sitearchdir=./.gem.20250312-2580354-aznyrg\", \"sitelibdir=./.gem.20250312-2580354-aznyrg\", \"install\"]"
+time="2025-03-12T07:45:50Z" level=debug msg="/usr/bin/install -c -m 0755 bson_native.so ./.gem.20250312-2580354-aznyrg"
+time="2025-03-12T07:45:50Z" level=debug msg="current directory: /usr/src/azl/BUILD/bson-ruby-4.15.0/usr/lib/ruby/gems/3.3.0/gems/bson-4.15.0/ext/bson"
+time="2025-03-12T07:45:50Z" level=debug msg="[\"make\", \"DESTDIR=\", \"sitearchdir=./.gem.20250312-2580354-aznyrg\", \"sitelibdir=./.gem.20250312-2580354-aznyrg\", \"clean\"]"
+time="2025-03-12T07:45:51Z" level=debug msg="current directory: /usr/src/azl/BUILD/bson-ruby-4.15.0/usr/lib/ruby/gems/3.3.0/gems/bson-4.15.0/ext/bson"
+time="2025-03-12T07:45:51Z" level=debug msg="/usr/bin/ruby extconf.rb"
+time="2025-03-12T07:45:51Z" level=debug msg="current directory: /usr/src/azl/BUILD/bson-ruby-4.15.0/usr/lib/ruby/gems/3.3.0/gems/bson-4.15.0/ext/bson"
+time="2025-03-12T07:45:51Z" level=debug msg="make DESTDIR\\= sitearchdir\\=./.gem.20250312-2580354-aznyrg sitelibdir\\=./.gem.20250312-2580354-aznyrg clean"
+time="2025-03-12T07:45:51Z" level=debug msg="current directory: /usr/src/azl/BUILD/bson-ruby-4.15.0/usr/lib/ruby/gems/3.3.0/gems/bson-4.15.0/ext/bson"
+time="2025-03-12T07:45:51Z" level=debug msg="make DESTDIR\\= sitearchdir\\=./.gem.20250312-2580354-aznyrg sitelibdir\\=./.gem.20250312-2580354-aznyrg"
+time="2025-03-12T07:45:51Z" level=debug msg="current directory: /usr/src/azl/BUILD/bson-ruby-4.15.0/usr/lib/ruby/gems/3.3.0/gems/bson-4.15.0/ext/bson"
+time="2025-03-12T07:45:51Z" level=debug msg="make DESTDIR\\= sitearchdir\\=./.gem.20250312-2580354-aznyrg sitelibdir\\=./.gem.20250312-2580354-aznyrg install"
+time="2025-03-12T07:45:51Z" level=debug msg="current directory: /usr/src/azl/BUILD/bson-ruby-4.15.0/usr/lib/ruby/gems/3.3.0/gems/bson-4.15.0/ext/bson"
+time="2025-03-12T07:45:51Z" level=debug msg="make DESTDIR\\= sitearchdir\\=./.gem.20250312-2580354-aznyrg sitelibdir\\=./.gem.20250312-2580354-aznyrg clean"
+time="2025-03-12T07:45:51Z" level=debug msg="Successfully installed bson-4.15.0"
+time="2025-03-12T07:45:51Z" level=debug msg="Parsing documentation for bson-4.15.0"
+time="2025-03-12T07:45:51Z" level=debug msg="Parsing sources..."
+time="2025-03-12T07:45:51Z" level=debug msg="  1% [ 1/55]  ext/bson/Makefile"
+time="2025-03-12T07:45:51Z" level=debug msg="  3% [ 2/55]  ext/bson/bson-endian.h"
+time="2025-03-12T07:45:51Z" level=debug msg="  5% [ 3/55]  ext/bson/bson-native.h"
+time="2025-03-12T07:45:51Z" level=debug msg="  7% [ 4/55]  ext/bson/bytebuf.c"
+time="2025-03-12T07:45:51Z" level=debug msg="  9% [ 5/55]  ext/bson/endian.c"
+time="2025-03-12T07:45:51Z" level=debug msg=" 10% [ 6/55]  ext/bson/extconf.rb"
+time="2025-03-12T07:45:51Z" level=debug msg=" 12% [ 7/55]  ext/bson/init.c"
+time="2025-03-12T07:45:51Z" level=debug msg=" 14% [ 8/55]  ext/bson/libbson-utf8.c"
+time="2025-03-12T07:45:51Z" level=debug msg=" 16% [ 9/55]  ext/bson/read.c"
+time="2025-03-12T07:45:51Z" level=debug msg=" 18% [10/55]  ext/bson/util.c"
+time="2025-03-12T07:45:51Z" level=debug msg=" 20% [11/55]  ext/bson/write.c"
+time="2025-03-12T07:45:51Z" level=debug msg=" 21% [12/55]  lib/bson.rb"
+time="2025-03-12T07:45:51Z" level=debug msg=" 23% [13/55]  lib/bson/active_support.rb"
+time="2025-03-12T07:45:51Z" level=debug msg=" 25% [14/55]  lib/bson/array.rb"
+time="2025-03-12T07:45:51Z" level=debug msg=" 27% [15/55]  lib/bson/big_decimal.rb"
+time="2025-03-12T07:45:51Z" level=debug msg=" 29% [16/55]  lib/bson/binary.rb"
+time="2025-03-12T07:45:51Z" level=debug msg=" 30% [17/55]  lib/bson/boolean.rb"
+time="2025-03-12T07:45:51Z" level=debug msg=" 32% [18/55]  lib/bson/code.rb"
+time="2025-03-12T07:45:51Z" level=debug msg=" 34% [19/55]  lib/bson/code_with_scope.rb"
+time="2025-03-12T07:45:51Z" level=debug msg=" 36% [20/55]  lib/bson/config.rb"
+time="2025-03-12T07:45:51Z" level=debug msg=" 38% [21/55]  lib/bson/date.rb"
+time="2025-03-12T07:45:51Z" level=debug msg=" 40% [22/55]  lib/bson/date_time.rb"
+time="2025-03-12T07:45:51Z" level=debug msg=" 41% [23/55]  lib/bson/db_pointer.rb"
+time="2025-03-12T07:45:51Z" level=debug msg=" 43% [24/55]  lib/bson/dbref.rb"
+time="2025-03-12T07:45:51Z" level=debug msg=" 45% [25/55]  lib/bson/decimal128.rb"
+time="2025-03-12T07:45:51Z" level=debug msg=" 47% [26/55]  lib/bson/decimal128/builder.rb"
+time="2025-03-12T07:45:51Z" level=debug msg=" 49% [27/55]  lib/bson/document.rb"
+time="2025-03-12T07:45:51Z" level=debug msg=" 50% [28/55]  lib/bson/environment.rb"
+time="2025-03-12T07:45:51Z" level=debug msg=" 52% [29/55]  lib/bson/error.rb"
+time="2025-03-12T07:45:51Z" level=debug msg=" 54% [30/55]  lib/bson/ext_json.rb"
+time="2025-03-12T07:45:52Z" level=debug msg=" 56% [31/55]  lib/bson/false_class.rb"
+time="2025-03-12T07:45:52Z" level=debug msg=" 58% [32/55]  lib/bson/float.rb"
+time="2025-03-12T07:45:52Z" level=debug msg=" 60% [33/55]  lib/bson/hash.rb"
+time="2025-03-12T07:45:52Z" level=debug msg=" 61% [34/55]  lib/bson/int32.rb"
+time="2025-03-12T07:45:52Z" level=debug msg=" 63% [35/55]  lib/bson/int64.rb"
+time="2025-03-12T07:45:52Z" level=debug msg=" 65% [36/55]  lib/bson/integer.rb"
+time="2025-03-12T07:45:52Z" level=debug msg=" 67% [37/55]  lib/bson/json.rb"
+time="2025-03-12T07:45:52Z" level=debug msg=" 69% [38/55]  lib/bson/max_key.rb"
+time="2025-03-12T07:45:52Z" level=debug msg=" 70% [39/55]  lib/bson/min_key.rb"
+time="2025-03-12T07:45:52Z" level=debug msg=" 72% [40/55]  lib/bson/nil_class.rb"
+time="2025-03-12T07:45:52Z" level=debug msg=" 74% [41/55]  lib/bson/object.rb"
+time="2025-03-12T07:45:52Z" level=debug msg=" 76% [42/55]  lib/bson/object_id.rb"
+time="2025-03-12T07:45:52Z" level=debug msg=" 78% [43/55]  lib/bson/open_struct.rb"
+time="2025-03-12T07:45:52Z" level=debug msg=" 80% [44/55]  lib/bson/regexp.rb"
+time="2025-03-12T07:45:52Z" level=debug msg=" 81% [45/55]  lib/bson/registry.rb"
+time="2025-03-12T07:45:52Z" level=debug msg=" 83% [46/55]  lib/bson/specialized.rb"
+time="2025-03-12T07:45:52Z" level=debug msg=" 85% [47/55]  lib/bson/string.rb"
+time="2025-03-12T07:45:52Z" level=debug msg=" 87% [48/55]  lib/bson/symbol.rb"
+time="2025-03-12T07:45:52Z" level=debug msg=" 89% [49/55]  lib/bson/time.rb"
+time="2025-03-12T07:45:52Z" level=debug msg=" 90% [50/55]  lib/bson/time_with_zone.rb"
+time="2025-03-12T07:45:52Z" level=debug msg=" 92% [51/55]  lib/bson/timestamp.rb"
+time="2025-03-12T07:45:52Z" level=debug msg=" 94% [52/55]  lib/bson/true_class.rb"
+time="2025-03-12T07:45:52Z" level=debug msg=" 96% [53/55]  lib/bson/undefined.rb"
+time="2025-03-12T07:45:52Z" level=debug msg=" 98% [54/55]  lib/bson/version.rb"
+time="2025-03-12T07:45:52Z" level=debug msg="100% [55/55]  lib/bson_native.so"
+time="2025-03-12T07:45:53Z" level=debug
+time="2025-03-12T07:45:53Z" level=debug msg="Installing ri documentation for bson-4.15.0"
+time="2025-03-12T07:45:53Z" level=debug msg="Installing darkfish documentation for bson-4.15.0"
+time="2025-03-12T07:45:55Z" level=debug msg="Done installing documentation for bson after 4 seconds"
+time="2025-03-12T07:45:55Z" level=debug msg="1 gem installed"
+time="2025-03-12T07:45:55Z" level=debug msg="+ RPM_EC=0"
+time="2025-03-12T07:45:55Z" level=debug msg="++ jobs -p"
+time="2025-03-12T07:45:55Z" level=debug msg="+ exit 0"
+time="2025-03-12T07:45:55Z" level=debug msg="Executing(%install): /bin/sh -e /var/tmp/rpm-tmp.ErncRE"
+time="2025-03-12T07:45:55Z" level=debug msg="+ umask 022"
+time="2025-03-12T07:45:55Z" level=debug msg="+ cd /usr/src/azl/BUILD"
+time="2025-03-12T07:45:55Z" level=debug msg="+ /bin/rm -rf /usr/src/azl/BUILDROOT/rubygem-bson-4.15.0-1.azl3.x86_64"
+time="2025-03-12T07:45:55Z" level=debug msg="+ /bin/mkdir -p /usr/src/azl/BUILDROOT"
+time="2025-03-12T07:45:55Z" level=debug msg="+ /bin/mkdir /usr/src/azl/BUILDROOT/rubygem-bson-4.15.0-1.azl3.x86_64"
+time="2025-03-12T07:45:55Z" level=debug msg="+ cd bson-ruby-4.15.0"
+time="2025-03-12T07:45:55Z" level=debug msg="+ mkdir -p /usr/src/azl/BUILDROOT/rubygem-bson-4.15.0-1.azl3.x86_64/usr/lib/ruby/gems/3.3.0"
+time="2025-03-12T07:45:55Z" level=debug msg="+ cp -a ./usr/lib/ruby/gems/3.3.0/build_info ./usr/lib/ruby/gems/3.3.0/cache ./usr/lib/ruby/gems/3.3.0/doc ./usr/lib/ruby/gems/3.3.0/extensions ./usr/lib/ruby/gems/3.3.0/gems ./usr/lib/ruby/gems/3.3.0/plugins ./usr/lib/ruby/gems/3.3.0/specifications /usr/src/azl/BUILDROOT/rubygem-bson-4.15.0-1.azl3.x86_64/usr/lib/ruby/gems/3.3.0/"
+time="2025-03-12T07:45:55Z" level=debug msg="+ mkdir -p /usr/src/azl/BUILDROOT/rubygem-bson-4.15.0-1.azl3.x86_64/usr/lib/gems/ruby/bson-4.15.0"
+time="2025-03-12T07:45:55Z" level=debug msg="+ rm -rf /usr/src/azl/BUILDROOT/rubygem-bson-4.15.0-1.azl3.x86_64/usr/lib/ruby/gems/3.3.0/gems/bson-4.15.0/ext/"
+time="2025-03-12T07:45:55Z" level=debug msg="+ rm -rf /usr/src/azl/BUILDROOT/rubygem-bson-4.15.0-1.azl3.x86_64/usr/lib/ruby/gems/3.3.0/extensions/"
+time="2025-03-12T07:45:55Z" level=debug msg="+ /bin/find-debuginfo -j8 -m --build-id-seed 4.15.0-1.azl3 --unique-debug-suffix -4.15.0-1.azl3.x86_64 --unique-debug-src-base rubygem-bson-4.15.0-1.azl3.x86_64 /usr/src/azl/BUILD/bson-ruby-4.15.0"
+time="2025-03-12T07:45:55Z" level=debug msg="extracting debug info from /usr/src/azl/BUILDROOT/rubygem-bson-4.15.0-1.azl3.x86_64/usr/lib/ruby/gems/3.3.0/gems/bson-4.15.0/lib/bson_native.so"
+time="2025-03-12T07:45:55Z" level=debug msg="143 blocks"
+time="2025-03-12T07:45:55Z" level=debug msg="+ /usr/lib/rpm/brp-compress /usr"
+time="2025-03-12T07:45:55Z" level=debug msg="+ /usr/lib/rpm/brp-strip-comment-note /bin/strip /bin/objdump"
+time="2025-03-12T07:45:55Z" level=debug msg="+ /usr/lib/rpm/brp-strip-static-archive /bin/strip"
+time="2025-03-12T07:45:56Z" level=debug msg="+ /usr/lib/rpm/azl/brp-python-bytecompile /usr/bin/python3 1 0"
+time="2025-03-12T07:45:56Z" level=debug msg="+ xargs '-I{}' sed -i -e 's@-Wl,-dT,/usr/src/azl/BUILD/module_info.ld@ @' '{}'"
+time="2025-03-12T07:45:56Z" level=debug msg="+ find /usr/src/azl/BUILDROOT/rubygem-bson-4.15.0-1.azl3.x86_64 -name '*.pc'"
+time="2025-03-12T07:45:56Z" level=debug msg="+ /usr/lib/rpm/brp-strip /bin/strip"
+time="2025-03-12T07:45:56Z" level=debug msg="+ CCACHE_DIR=/ccache-dir"
+time="2025-03-12T07:45:56Z" level=debug msg="+ export CCACHE_DIR"
+time="2025-03-12T07:45:56Z" level=debug msg="+ ccache --show-stats"
+time="2025-03-12T07:45:56Z" level=debug msg="Cacheable calls:      7 /   8 (87.50%)"
+time="2025-03-12T07:45:56Z" level=debug msg="  Hits:               7 /   7 (100.0%)"
+time="2025-03-12T07:45:56Z" level=debug msg="    Direct:           1 /   7 (14.29%)"
+time="2025-03-12T07:45:56Z" level=debug msg="    Preprocessed:     6 /   7 (85.71%)"
+time="2025-03-12T07:45:56Z" level=debug msg="  Misses:             0 /   7 ( 0.00%)"
+time="2025-03-12T07:45:56Z" level=debug msg="Uncacheable calls:    1 /   8 (12.50%)"
+time="2025-03-12T07:45:56Z" level=debug msg="Local storage:"
+time="2025-03-12T07:45:56Z" level=debug msg="  Cache size (GiB): 0.0 / 5.0 ( 0.03%)"
+time="2025-03-12T07:45:56Z" level=debug msg="  Hits:               7 /   7 (100.0%)"
+time="2025-03-12T07:45:56Z" level=debug msg="  Misses:             0 /   7 ( 0.00%)"
+time="2025-03-12T07:45:56Z" level=debug msg="Processing files: rubygem-bson-4.15.0-1.azl3.x86_64"
+time="2025-03-12T07:45:57Z" level=debug msg="Provides: rubygem(bson) = 4.15.0 rubygem(bson_ext) = 4.15.0-1.azl3 rubygem-bson = 4.15.0-1.azl3 rubygem-bson(x86-64) = 4.15.0-1.azl3 rubygem-bson_ext = 4.15.0-1.azl3 rubygem-bson_ext(x86-64) = 4.15.0-1.azl3"
+time="2025-03-12T07:45:57Z" level=debug msg="Requires(rpmlib): rpmlib(CompressedFileNames) <= 3.0.4-1 rpmlib(FileDigests) <= 4.6.0-1 rpmlib(PayloadFilesHavePrefix) <= 4.0-1"
+time="2025-03-12T07:45:57Z" level=debug msg="Requires: libc.so.6()(64bit) libc.so.6(GLIBC_2.14)(64bit) libc.so.6(GLIBC_2.2.5)(64bit) libc.so.6(GLIBC_2.3.4)(64bit) libc.so.6(GLIBC_2.4)(64bit) libruby.so.3.3()(64bit) ruby(rubygems) >= 1.3.6"
+time="2025-03-12T07:45:57Z" level=debug msg="Obsoletes: rubygem-bson_ext < 4.1.1-1"
+time="2025-03-12T07:45:57Z" level=debug msg="Processing files: rubygem-bson-doc-4.15.0-1.azl3.noarch"
+time="2025-03-12T07:45:59Z" level=debug msg="Provides: rubygem-bson-doc = 4.15.0-1.azl3"
+time="2025-03-12T07:45:59Z" level=debug msg="Requires(rpmlib): rpmlib(CompressedFileNames) <= 3.0.4-1 rpmlib(FileDigests) <= 4.6.0-1 rpmlib(PayloadFilesHavePrefix) <= 4.0-1"
+time="2025-03-12T07:45:59Z" level=debug msg="Processing files: rubygem-bson-debuginfo-4.15.0-1.azl3.x86_64"
+time="2025-03-12T07:45:59Z" level=debug msg="Provides: debuginfo(build-id) = 7d4aafee5c42cd63688bd19e97c0d0392fef890f rubygem-bson-debuginfo = 4.15.0-1.azl3 rubygem-bson-debuginfo(x86-64) = 4.15.0-1.azl3"
+time="2025-03-12T07:45:59Z" level=debug msg="Requires(rpmlib): rpmlib(CompressedFileNames) <= 3.0.4-1 rpmlib(FileDigests) <= 4.6.0-1 rpmlib(PayloadFilesHavePrefix) <= 4.0-1"
+time="2025-03-12T07:45:59Z" level=debug msg="Checking for unpackaged file(s): /usr/lib/rpm/check-files /usr/src/azl/BUILDROOT/rubygem-bson-4.15.0-1.azl3.x86_64"
+time="2025-03-12T07:45:59Z" level=debug msg="Wrote: /usr/src/azl/RPMS/x86_64/rubygem-bson-4.15.0-1.azl3.x86_64.rpm"
+time="2025-03-12T07:45:59Z" level=debug msg="Wrote: /usr/src/azl/RPMS/x86_64/rubygem-bson-debuginfo-4.15.0-1.azl3.x86_64.rpm"
+time="2025-03-12T07:45:59Z" level=debug msg="Wrote: /usr/src/azl/RPMS/noarch/rubygem-bson-doc-4.15.0-1.azl3.noarch.rpm"
+time="2025-03-12T07:45:59Z" level=debug msg="Executing(%clean): /bin/sh -e /var/tmp/rpm-tmp.YLn8pd"
+time="2025-03-12T07:45:59Z" level=debug msg="+ umask 022"
+time="2025-03-12T07:45:59Z" level=debug msg="+ cd /usr/src/azl/BUILD"
+time="2025-03-12T07:45:59Z" level=debug msg="+ cd bson-ruby-4.15.0"
+time="2025-03-12T07:45:59Z" level=debug msg="+ /bin/rm -rf /usr/src/azl/BUILDROOT/rubygem-bson-4.15.0-1.azl3.x86_64"
+time="2025-03-12T07:45:59Z" level=debug msg="+ RPM_EC=0"
+time="2025-03-12T07:45:59Z" level=debug msg="++ jobs -p"
+time="2025-03-12T07:45:59Z" level=debug msg="+ exit 0"
+time="2025-03-12T07:45:59Z" level=debug msg="Executing(rmbuild): /bin/sh -e /var/tmp/rpm-tmp.X9efT5"
+time="2025-03-12T07:45:59Z" level=debug msg="+ umask 022"
+time="2025-03-12T07:45:59Z" level=debug msg="+ cd /usr/src/azl/BUILD"
+time="2025-03-12T07:45:59Z" level=debug msg="+ rm -rf bson-ruby-4.15.0 bson-ruby-4.15.0.gemspec"
+time="2025-03-12T07:45:59Z" level=debug msg="+ RPM_EC=0"
+time="2025-03-12T07:45:59Z" level=debug msg="++ jobs -p"
+time="2025-03-12T07:45:59Z" level=debug msg="+ exit 0"
+time="2025-03-12T07:45:59Z" level=debug
+time="2025-03-12T07:45:59Z" level=debug msg="RPM build warnings:"
+time="2025-03-12T07:45:59Z" level=debug msg="    Could not canonicalize hostname: azuli-m1"
+time="2025-03-12T07:45:59Z" level=debug msg="Build thread in chroot finished."
+time="2025-03-12T07:45:59Z" level=debug msg="Exiting Chroot: '/third_disk/bb11Mar/azurelinux/build/worker/chroot/rubygem-bson-4.15.0-1.azl3'"
+time="2025-03-12T07:45:59Z" level=debug msg="Moving (/third_disk/bb11Mar/azurelinux/build/worker/chroot/rubygem-bson-4.15.0-1.azl3/usr/src/azl/RPMS/noarch/rubygem-bson-doc-4.15.0-1.azl3.noarch.rpm) -> (/third_disk/bb11Mar/azurelinux/out/RPMS/noarch/rubygem-bson-doc-4.15.0-1.azl3.noarch.rpm)"
+time="2025-03-12T07:45:59Z" level=debug msg="Executing: [mv /third_disk/bb11Mar/azurelinux/build/worker/chroot/rubygem-bson-4.15.0-1.azl3/usr/src/azl/RPMS/noarch/rubygem-bson-doc-4.15.0-1.azl3.noarch.rpm /third_disk/bb11Mar/azurelinux/out/RPMS/noarch/rubygem-bson-doc-4.15.0-1.azl3.noarch.rpm]"
+time="2025-03-12T07:45:59Z" level=debug msg="Moving (/third_disk/bb11Mar/azurelinux/build/worker/chroot/rubygem-bson-4.15.0-1.azl3/usr/src/azl/RPMS/x86_64/rubygem-bson-4.15.0-1.azl3.x86_64.rpm) -> (/third_disk/bb11Mar/azurelinux/out/RPMS/x86_64/rubygem-bson-4.15.0-1.azl3.x86_64.rpm)"
+time="2025-03-12T07:45:59Z" level=debug msg="Executing: [mv /third_disk/bb11Mar/azurelinux/build/worker/chroot/rubygem-bson-4.15.0-1.azl3/usr/src/azl/RPMS/x86_64/rubygem-bson-4.15.0-1.azl3.x86_64.rpm /third_disk/bb11Mar/azurelinux/out/RPMS/x86_64/rubygem-bson-4.15.0-1.azl3.x86_64.rpm]"
+time="2025-03-12T07:45:59Z" level=debug msg="Moving (/third_disk/bb11Mar/azurelinux/build/worker/chroot/rubygem-bson-4.15.0-1.azl3/usr/src/azl/RPMS/x86_64/rubygem-bson-debuginfo-4.15.0-1.azl3.x86_64.rpm) -> (/third_disk/bb11Mar/azurelinux/out/RPMS/x86_64/rubygem-bson-debuginfo-4.15.0-1.azl3.x86_64.rpm)"
+time="2025-03-12T07:45:59Z" level=debug msg="Executing: [mv /third_disk/bb11Mar/azurelinux/build/worker/chroot/rubygem-bson-4.15.0-1.azl3/usr/src/azl/RPMS/x86_64/rubygem-bson-debuginfo-4.15.0-1.azl3.x86_64.rpm /third_disk/bb11Mar/azurelinux/out/RPMS/x86_64/rubygem-bson-debuginfo-4.15.0-1.azl3.x86_64.rpm]"
+time="2025-03-12T07:46:00Z" level=info msg="* processing upload of ccache artifacts..."
+time="2025-03-12T07:46:00Z" level=info msg="  ccache update is disabled for this build."
+time="2025-03-12T07:46:00Z" level=debug msg="Entering Chroot: '/third_disk/bb11Mar/azurelinux/build/worker/chroot/rubygem-bson-4.15.0-1.azl3'"
+time="2025-03-12T07:46:00Z" level=debug msg="Executing: [gpgconf --list-components]"
+time="2025-03-12T07:46:00Z" level=debug msg="gpg:OpenPGP:/usr/bin/gpg2"
+time="2025-03-12T07:46:00Z" level=debug msg="gpgsm:S/MIME:/usr/bin/gpgsm"
+time="2025-03-12T07:46:00Z" level=debug msg="keyboxd:Public Keys:/usr/libexec/keyboxd"
+time="2025-03-12T07:46:00Z" level=debug msg="gpg-agent:Private Keys:/usr/bin/gpg-agent"
+time="2025-03-12T07:46:00Z" level=debug msg="scdaemon:Smartcards:/usr/libexec/scdaemon"
+time="2025-03-12T07:46:00Z" level=debug msg="dirmngr:Network:/usr/bin/dirmngr"
+time="2025-03-12T07:46:00Z" level=debug msg="pinentry:Passphrase Entry:/usr/bin/pinentry"
+time="2025-03-12T07:46:00Z" level=debug msg="Found gpg-agent running inside chroot. Stopping it."
+time="2025-03-12T07:46:00Z" level=debug msg="Executing: [gpgconf --kill gpg-agent]"
+time="2025-03-12T07:46:00Z" level=debug msg="Found keyboxd running inside chroot. Stopping it."
+time="2025-03-12T07:46:00Z" level=debug msg="Executing: [gpgconf --kill keyboxd]"
+time="2025-03-12T07:46:00Z" level=debug msg="Exiting Chroot: '/third_disk/bb11Mar/azurelinux/build/worker/chroot/rubygem-bson-4.15.0-1.azl3'"
+time="2025-03-12T07:46:00Z" level=debug msg="Unmounting (/third_disk/bb11Mar/azurelinux/build/worker/chroot/rubygem-bson-4.15.0-1.azl3/ccache-dir)"
+time="2025-03-12T07:46:00Z" level=debug msg="Calling unmount on path(/third_disk/bb11Mar/azurelinux/build/worker/chroot/rubygem-bson-4.15.0-1.azl3/ccache-dir) with flags (0)"
+time="2025-03-12T07:46:00Z" level=debug msg="Unmounting (/third_disk/bb11Mar/azurelinux/build/worker/chroot/rubygem-bson-4.15.0-1.azl3/upstream-cached-rpms)"
+time="2025-03-12T07:46:00Z" level=debug msg="Calling unmount on path(/third_disk/bb11Mar/azurelinux/build/worker/chroot/rubygem-bson-4.15.0-1.azl3/upstream-cached-rpms) with flags (0)"
+time="2025-03-12T07:46:00Z" level=debug msg="Unmounting (/third_disk/bb11Mar/azurelinux/build/worker/chroot/rubygem-bson-4.15.0-1.azl3/toolchainrpms)"
+time="2025-03-12T07:46:00Z" level=debug msg="Calling unmount on path(/third_disk/bb11Mar/azurelinux/build/worker/chroot/rubygem-bson-4.15.0-1.azl3/toolchainrpms) with flags (0)"
+time="2025-03-12T07:46:00Z" level=debug msg="Unmounting (/third_disk/bb11Mar/azurelinux/build/worker/chroot/rubygem-bson-4.15.0-1.azl3/localrpms)"
+time="2025-03-12T07:46:00Z" level=debug msg="Calling unmount on path(/third_disk/bb11Mar/azurelinux/build/worker/chroot/rubygem-bson-4.15.0-1.azl3/localrpms) with flags (0)"
+time="2025-03-12T07:46:00Z" level=debug msg="Unmounting (/third_disk/bb11Mar/azurelinux/build/worker/chroot/rubygem-bson-4.15.0-1.azl3/dev/pts)"
+time="2025-03-12T07:46:00Z" level=debug msg="Calling unmount on path(/third_disk/bb11Mar/azurelinux/build/worker/chroot/rubygem-bson-4.15.0-1.azl3/dev/pts) with flags (0)"
+time="2025-03-12T07:46:00Z" level=debug msg="Unmounting (/third_disk/bb11Mar/azurelinux/build/worker/chroot/rubygem-bson-4.15.0-1.azl3/run)"
+time="2025-03-12T07:46:00Z" level=debug msg="Calling unmount on path(/third_disk/bb11Mar/azurelinux/build/worker/chroot/rubygem-bson-4.15.0-1.azl3/run) with flags (0)"
+time="2025-03-12T07:46:00Z" level=debug msg="Unmounting (/third_disk/bb11Mar/azurelinux/build/worker/chroot/rubygem-bson-4.15.0-1.azl3/sys)"
+time="2025-03-12T07:46:00Z" level=debug msg="Calling unmount on path(/third_disk/bb11Mar/azurelinux/build/worker/chroot/rubygem-bson-4.15.0-1.azl3/sys) with flags (0)"
+time="2025-03-12T07:46:00Z" level=debug msg="Unmounting (/third_disk/bb11Mar/azurelinux/build/worker/chroot/rubygem-bson-4.15.0-1.azl3/proc)"
+time="2025-03-12T07:46:00Z" level=debug msg="Calling unmount on path(/third_disk/bb11Mar/azurelinux/build/worker/chroot/rubygem-bson-4.15.0-1.azl3/proc) with flags (0)"
+time="2025-03-12T07:46:00Z" level=debug msg="Unmounting (/third_disk/bb11Mar/azurelinux/build/worker/chroot/rubygem-bson-4.15.0-1.azl3/dev)"
+time="2025-03-12T07:46:00Z" level=debug msg="Calling unmount on path(/third_disk/bb11Mar/azurelinux/build/worker/chroot/rubygem-bson-4.15.0-1.azl3/dev) with flags (0)"
+time="2025-03-12T07:46:02Z" level=debug msg="Copying (/third_disk/bb11Mar/azurelinux/build/INTERMEDIATE_SRPMS/rubygem-bson-4.15.0-1.azl3.src.rpm) to (/third_disk/bb11Mar/azurelinux/out/SRPMS/rubygem-bson-4.15.0-1.azl3.src.rpm)"
+time="2025-03-12T07:46:02Z" level=debug msg="Executing: [cp --preserve=mode /third_disk/bb11Mar/azurelinux/build/INTERMEDIATE_SRPMS/rubygem-bson-4.15.0-1.azl3.src.rpm /third_disk/bb11Mar/azurelinux/out/SRPMS/rubygem-bson-4.15.0-1.azl3.src.rpm]"
+time="2025-03-12T07:46:02Z" level=info msg="Built (rubygem-bson-4.15.0-1.azl3.src.rpm) -> [/third_disk/bb11Mar/azurelinux/out/RPMS/noarch/rubygem-bson-doc-4.15.0-1.azl3.noarch.rpm /third_disk/bb11Mar/azurelinux/out/RPMS/x86_64/rubygem-bson-4.15.0-1.azl3.x86_64.rpm /third_disk/bb11Mar/azurelinux/out/RPMS/x86_64/rubygem-bson-debuginfo-4.15.0-1.azl3.x86_64.rpm]."

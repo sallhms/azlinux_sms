@@ -4,7 +4,7 @@ GENERAL_UTILS_DIR='/home/neerajs/utils'
 
 #input.  This is the directory where the root of the Azure Linux source code has been cloned.
 #The SPECS-EXTENDED directory in this folder will be updated by the script.
-CODE_DIR='/third_disk/bb05Mar/azurelinux'
+CODE_DIR='/third_disk/bb11Mar/azurelinux'
 #CODE_DIR='/third_disk/bb01Mar/azurelinux'
 #CODE_DIR='/third_disk/bb_24Feb/azlinux_sms'
 #CODE_DIR='/four_disk/bb_08Feb/azlinux_sms'
@@ -12,14 +12,14 @@ CODE_DIR='/third_disk/bb05Mar/azurelinux'
 SPECS_DIR=f'{CODE_DIR}/SPECS-EXTENDED'
 
 #The directory from where the input csv file and the two other input files will be picked, and where the output files will be generated
-DATA_DIR='/third_disk/bb05Mar/azurelinux/didwhat/BULK_BLD_THINGS'
+DATA_DIR='/third_disk/bb11Mar/azurelinux/didwhat/BULK_BLD_THINGS'
 #DATA_DIR='/third_disk/bb01Mar/azurelinux/didwhat/BULK_BLD_THINGS_01Mar'
 #DATA_DIR='/home/neerajs/utils/BULK_BLD_THINGS_24Feb'
 #DATA_DIR='/home/neerajs/utils/BULK_BLD_THINGS'
 
 #input file.  The csv file used for generating the build list and for manipulating the SPECS-EXTENDED folder.
 #this csv file has information like whether the package needs to be upgraded, whether a PR for it has been raised and merged already, whether the package name has changed, whether the package has to be removed from SPECS-EXTENDED because it is there in core (i.e. SPECS) now.
-PKG_DETAILS_CSV_FNAME='output_05Mar.csv'
+PKG_DETAILS_CSV_FNAME='output_11Mar.csv'
 #PKG_DETAILS_CSV_FNAME='test_03Mar.csv'
 #PKG_DETAILS_CSV_FNAME='output_03Mar.csv'
 #PKG_DETAILS_CSV_FNAME='output_01Mar.csv'

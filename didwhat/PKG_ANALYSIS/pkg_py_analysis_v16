@@ -10,15 +10,34 @@ MSTR_LIST="/third_disk/bb11Mar/azurelinux/didwhat/PKG_ANALYSIS_DATAFILES/Extende
 #MSTR_LIST="/home/neerajs/Downloads/docker_folder/impspc/fifty_pkglist"
 #MSTR_LIST="/home/neerajs/Downloads/docker_folder/impspc/first_fifty_pkglist"
 #MSTR_LIST="/home/neerajs/Downloads/docker_folder/impspc/somelist_pkgs"
-MSREPO_2MAIN_WORKDIR="/home/neerajs/work/REPOS/Microsoft_AZL/azurelinux"
-#MSREPO_3DEV_WORKDIR="/home/neerajs/work/REPOS/Microsoft_AZL/azurelinux"
+
+#MSREPO_2MAIN_WORKDIR="/home/neerajs/work/REPOS/Microsoft_AZL/azurelinux"
+
+#Here we provide path to a branch that has been created over the commit SHA "ccf7dd5e8", because
+#this commit SHA is the parent of the commit SHA "c6803dffe" in which the merge of upgraded 
+#CharLS happened.  So, when we check the branch created over "ccf7dd5e8" for checkes like EXISTS_IN_EXT 
+#or MOVED_TO_CORE, we will get results correct even for CharLS, which we believe was the first upgrade
+#PR merged.
 MSREPO_3DEV_WORKDIR="/fifth_disk/upgdReferenceBranch/azurelinux"
+#MSREPO_3DEV_WORKDIR="/home/neerajs/work/REPOS/Microsoft_AZL/azurelinux"
 #MSREPO_3DEV_WORKDIR="/home/neerajs/Downloads/docker_folder/REPOS/Microsoft_AZL/azurelinux"
+
+#This is a constant now.  Although I am not very sure if we do need these build results of
+#06 Nov 2024 for the SPECS-EXTENDED pipeline.  We don't need these because we are using a 
+#more accurate code in this python program for detection of the version of a Package at that
+#time.
+#In addition to detection of package version, this would be required for knowing if a package
+#builds in the pipeline or not.  But for that we are now carrying out daily build.
 BUILD_ARTFCT_STATUS_FL="/third_disk/bb11Mar/azurelinux/didwhat/PKG_ANALYSIS_DATAFILES/build_state_06Nov2024.csv"
 #BUILD_ARTFCT_STATUS_FL="/home/neerajs/Downloads/daily_builds/06Nov2024/build_state.csv"
 #BUILD_ARTFCT_STATUS_FL="/home/neerajs/utils/TestIdeas/PKG_ANALYSIS_DATAFILES/last_fifty_build_state.csv"
+
+#This is a constant now.  It is the results of the download of spec files from Fedora 41
 DNLD_DETAILS_FL="/third_disk/bb11Mar/azurelinux/didwhat/PKG_ANALYSIS_DATAFILES/scr_run_log.txt"
 #DNLD_DETAILS_FL="/home/neerajs/Downloads/docker_folder/impspc/fetchdir/scr_run_log.txt"
+
+REPO_FOR_PR_SEARCH="https://github.com/microsoft/azurelinux.git"
+
 BULK_BUILD_ROOT="/fifth_disk/bb_dec23/code/azurelinux"
 ADD_BULK_BUILD_ARTFCT_STATUS_FL="/third_disk/bb11Mar/azurelinux/didwhat/PKG_ANALYSIS_DATAFILES/build_state_11Mar.csv"
 #ADD_BULK_BUILD_ARTFCT_STATUS_FL="/third_disk/bb05Mar/azurelinux/didwhat/PKG_ANALYSIS_DATAFILES/build_state_additional.csv"
@@ -539,7 +558,7 @@ def check_PR(pkname, author_github_nm):
 	#sh_scr_result=subprocess.run(['/home/neerajs/utils/PR_queries/find_PR_given_pkg_author', '/home/neerajs/Downloads/docker_folder/REPOS/Microsoft_AZL/azurelinux', 'kevin-b-lockwood', 'perl-Lingua-EN-Inflect'], stdout=subprocess.PIPE)
 	#author_github_nm='kevin-b-lockwood'
 	#pkname='perl-Lingua-EN-Inflect'
-	sh_scr_result=subprocess.run(['/home/neerajs/utils/PR_queries/find_PR_given_pkg_author', f'{MSREPO_3DEV_WORKDIR}', f'{author_github_nm}', f'{pkname}'], stdout=subprocess.PIPE)
+	sh_scr_result=subprocess.run(['/home/neerajs/utils/PR_queries/find_PR_given_pkg_author', f'{REPO_FOR_PR_SEARCH}', f'{author_github_nm}', f'{pkname}'], stdout=subprocess.PIPE)
 	strres = (sh_scr_result.stdout.decode('utf-8')).rstrip()
 	#print (func_nm_shrthnd() + f': PR search results: {strres}')
 	res_parts = re.split(r" ", strres)
@@ -857,3 +876,6 @@ if __name__ == '__main__':
 #         based branch.
 #v15:
 #    1.   Carried out detection of origin and topic branch for a PR.  This will be useful to pull changes from these PRs if required.
+#v16:
+#    1.   The script "find_PR_given_pkg_author" now takes as input the repo path instead of the Source code directory.
+#    2.   The variable "MSREPO_2MAIN_WORKDIR" is not used anymore.

@@ -30,6 +30,12 @@ then
 	print_usage
 fi
 
+if [ ! -d $AZLINUX_DIR/toolkit ]
+then
+	echo "toolkit directory not found in $AZLINUX_DIR.  $AZLINUX_DIR must be the root of Azure Linux Source." 
+	print_usage
+fi
+
 pk_bld_list=`awk '
 	BEGIN {
 		FS="/"

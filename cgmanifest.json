@@ -6569,8 +6569,8 @@
         "type": "other",
         "other": {
           "name": "hyperv-daemons",
-          "version": "6.6.79.1",
-          "downloadUrl": "https://github.com/microsoft/CBL-Mariner-Linux-Kernel/archive/rolling-lts/mariner-3/6.6.79.1.tar.gz"
+          "version": "6.6.82.1",
+          "downloadUrl": "https://github.com/microsoft/CBL-Mariner-Linux-Kernel/archive/rolling-lts/mariner-3/6.6.82.1.tar.gz"
         }
       }
     },
@@ -8210,8 +8210,8 @@
         "type": "other",
         "other": {
           "name": "kernel",
-          "version": "6.6.79.1",
-          "downloadUrl": "https://github.com/microsoft/CBL-Mariner-Linux-Kernel/archive/rolling-lts/mariner-3/6.6.79.1.tar.gz"
+          "version": "6.6.82.1",
+          "downloadUrl": "https://github.com/microsoft/CBL-Mariner-Linux-Kernel/archive/rolling-lts/mariner-3/6.6.82.1.tar.gz"
         }
       }
     },
@@ -8220,8 +8220,8 @@
         "type": "other",
         "other": {
           "name": "kernel-64k",
-          "version": "6.6.79.1",
-          "downloadUrl": "https://github.com/microsoft/CBL-Mariner-Linux-Kernel/archive/rolling-lts/mariner-3/6.6.79.1.tar.gz"
+          "version": "6.6.82.1",
+          "downloadUrl": "https://github.com/microsoft/CBL-Mariner-Linux-Kernel/archive/rolling-lts/mariner-3/6.6.82.1.tar.gz"
         }
       }
     },
@@ -8230,8 +8230,8 @@
         "type": "other",
         "other": {
           "name": "kernel-headers",
-          "version": "6.6.79.1",
-          "downloadUrl": "https://github.com/microsoft/CBL-Mariner-Linux-Kernel/archive/rolling-lts/mariner-3/6.6.79.1.tar.gz"
+          "version": "6.6.82.1",
+          "downloadUrl": "https://github.com/microsoft/CBL-Mariner-Linux-Kernel/archive/rolling-lts/mariner-3/6.6.82.1.tar.gz"
         }
       }
     },
@@ -28295,8 +28295,8 @@
         "type": "other",
         "other": {
           "name": "spice-protocol",
-          "version": "0.14.3",
-          "downloadUrl": "https://www.spice-space.org/download/releases/spice-protocol-0.14.3.tar.xz"
+          "version": "0.14.4",
+          "downloadUrl": "https://www.spice-space.org/download/releases/spice-protocol-0.14.4.tar.xz"
         }
       }
     },

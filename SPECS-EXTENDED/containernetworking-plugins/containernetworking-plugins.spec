@@ -36,7 +36,7 @@ Summary: Libraries for writing CNI plugin
 URL: %{git0}
 # Tarball fetched from upstream
 Source0: %{url}/archive/%{built_tag}.tar.gz
-ExclusiveArch: %{golang_arches}
+#ExclusiveArch: %{golang_arches}
 BuildRequires: golang >= 1.23
 BuildRequires: systemd-devel
 BuildRequires: go-rpm-macros

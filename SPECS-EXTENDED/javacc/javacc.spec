@@ -65,7 +65,7 @@ BuildRequires:  ant
 Requires:       javapackages-tools
 
 BuildArch:      noarch
-ExclusiveArch:  %{java_arches} noarch
+#ExclusiveArch:  %{java_arches} noarch
 
 %description
 Java Compiler Compiler (JavaCC) is the most popular parser generator for use

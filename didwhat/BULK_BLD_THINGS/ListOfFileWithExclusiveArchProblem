@@ -1,11 +1,8 @@
 xalan-j2/xalan-j2.spec
-maven-parent/maven-parent.spec
 xmlunit/xmlunit.spec
 xbean/xbean.spec
 apache-commons-net/apache-commons-net.spec
-jakarta-annotations/jakarta-annotations.spec
 jline/jline.spec
-slirp4netns/slirp4netns.spec
 jsoup/jsoup.spec
 apache-commons-io/apache-commons-io.spec
 cglib/cglib.spec
@@ -17,7 +14,6 @@ apache-commons-jexl/apache-commons-jexl.spec
 objenesis/objenesis.spec
 apache-commons-vfs/apache-commons-vfs.spec
 hawtjni/hawtjni.spec
-jdom2/jdom2.spec
 trilead-ssh2/trilead-ssh2.spec
 plexus-pom/plexus-pom.spec
 xerces-j2/xerces-j2.spec

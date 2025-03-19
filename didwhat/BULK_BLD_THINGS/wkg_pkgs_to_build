@@ -183,7 +183,7 @@ geronimo-specs
 ghc-srpm-macros
 gi-docgen
 gl-manpages
-jakarta-annotations
+glassfish-annotation-api
 glew
 glm
 glog
@@ -1176,6 +1176,7 @@ python-d2to1
 python-dbus-client-gen
 python-dbus-python-client-gen
 python-dbus-signature-pyparsing
+python-dbusmock
 python-ddt
 python-debtcollector
 python-dmidecode
@@ -1232,6 +1233,7 @@ python-pycares
 python-pydbus
 python-pymongo
 python-pyperclip
+python-pyproject-api
 python-pyrsistent
 python-pytest-flake8
 python-pytest-relaxed
@@ -1245,6 +1247,7 @@ python-recommonmark
 python-requests-file
 python-requests-ftp
 python-requests-kerberos
+python-requests-mock
 python-requests-toolbelt
 python-requests_ntlm
 python-rfc3986
@@ -1328,6 +1331,7 @@ rubygem-coderay
 rubygem-deep_merge
 rubygem-diff-lcs
 rubygem-eventmachine
+rubygem-flexmock
 rubygem-hocon
 rubygem-liquid
 rubygem-maruku
@@ -1337,6 +1341,7 @@ rubygem-pkg-config
 rubygem-puppet-resource_api
 rubygem-rouge
 rubygem-rspec-expectations
+rubygem-rspec-mocks
 rubygem-rspec-support
 rubygem-thor
 rubygem-thread_order
@@ -1426,6 +1431,7 @@ udica
 udisks2
 uglify-js
 umoci
+umockdev
 unicode-emoji
 unicode-ucd
 unique3

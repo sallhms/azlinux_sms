@@ -73,7 +73,7 @@ import subprocess
 #We neither open the corresponding build artifact file ADD_BULK_BUILD_ARTFCT_STATUS_FL
 #in that case nor do we create the additional column "Additional Bulk Build Status"
 #prebuild_analysis=True
-prebuild_analysis=False
+#prebuild_analysis=False
 
 mstr_list_developer = 'Not Assigned'
 mstr_list_pkg_prio = 'Not Assigned'
@@ -711,10 +711,7 @@ def main() -> None:
 	cols = ['Package','Developer','Upgrade to be done (Y/N/To be removed)','Is some confirmation required (Y/N)','Confirmation done  (Y/N)','2.0 EXT pkg present in either SPECS or EXT of 3.0-dev (Y/N)','2.0 EXT pkg present in EXT of 3.0-dev(Y/N)','Confirm if removal is deliberate (Y/N) (If N in both Column F and Column G, here we put Y.  A Y here means we must check with Microsoft if this is a deliberate removal of the package)','Moved from EXT in 2.0 to Core in 3.0-dev (Y/N) (If Y in Column F and N in Column G, then this is Y)','Remarks','Priority (P0, P1, P2)','New Name of Package','Package added to Azure Linux 3.0-dev']
 	table = pd.read_csv(MSTR_LIST, usecols=cols)
 
-	if ( prebuild_analysis == True ):
-		print (f'Package,New Name of Package,Package Priority,Developer in Master List,PR Number,Link of PR Raised,PR Status,PR Creation Date,Upgrade Required,Final Upgrade Decision (Y/N),Build Status,Version in Build Status,Release in Build Status,Download Success,Number SRPMs downloaded,Dowloaded SRPM 1,Dowloaded SRPM 2,Dowloaded SRPM 3,Version Downloaded SRPM,Release Downloaded SRPM,Package location info,Package Version in 3.0-dev,Bulk Build Success,Bulk Build Number of SRPMs,Developer from under review sheet,Under Review PR Link,Reviewer,Review Status,PR Origin,TopicBranch')
-	else:
-		print (f'Package,New Name of Package,Package Priority,Developer in Master List,PR Number,Link of PR Raised,PR Status,PR Creation Date,Upgrade Required,Final Upgrade Decision (Y/N),Build Status,Version in Build Status,Release in Build Status,Download Success,Number SRPMs downloaded,Dowloaded SRPM 1,Dowloaded SRPM 2,Dowloaded SRPM 3,Version Downloaded SRPM,Release Downloaded SRPM,Package location info,Package Version in 3.0-dev,Bulk Build Success,Bulk Build Number of SRPMs,Developer from under review sheet,Under Review PR Link,Reviewer,Review Status,PR Origin,TopicBranch,Additional Bulk Build Status')
+	print (f'Package,New Name of Package,Additional Bulk Build Status')
 	for row in table.itertuples():
 		pk_count = pk_count + 1
 		pkname = row[1]
@@ -745,36 +742,9 @@ def main() -> None:
 		if isNaN(mstr_list_addedpkg):
 			mstr_list_addedpkg = 'NA'
 
-		check_build_status(pkname)
-		#print (f' Package:{pkname}, Version:{ver_bld_status}, Release:{rel_bld_status}, Build Status:{bld_status}')
-		check_dnld_status(pkname)
-		#check pkg existence in Azure Linux Repository
-		check_pkg_azl_existence(pkname)
-		set_upgrade_reqd(pkname)
-		check_bulk_build(pkname)
-		if ( prebuild_analysis == False ):
-			check_additional_bulkbuild_status(pkname)
-		check_under_rev_PRs(pkname)
-		#check_manual_upgrade(pkname, mstr_list_developer)
-		check_PR(pkname, mstr_list_developer)
-		if ( mstr_list_upgd_decision == 'Override_to_Y'):
-			final_upgd_decision = 'Y'
-		else:
-			final_upgd_decision = upgd_reqd 
-		#mstr_list_developer="kevin-b-lockwood"
-		#pkname="perl-Lingua-EN-Inflect"
-		#check_PR(pkname, mstr_list_developer)
-		#mstr_list_developer="kevin-b-lockwood"
-		#pkname="libipt"
-		#check_PR(pkname, mstr_list_developer)
-		#mstr_list_developer="kevin-b-lockwood"
-		#pkname="perl-Lingua-EN-Inflecte"
-		#check_PR(pkname, mstr_list_developer)
+		check_additional_bulkbuild_status(pkname)
 
-		if ( prebuild_analysis == True ):
-			print (f'{pkname},{mstr_list_pkgnewname},{mstr_list_pkg_prio},{mstr_list_developer},{PRnum},{link_raised_PR},{PRstatus},{PRcreationdate},{upgd_reqd},{final_upgd_decision},{bld_status},{ver_bld_status},{rel_bld_status},{dnld_det_success},{dl_srpm_count},{dl_srpm1},{dl_srpm2},{dl_srpm3},{dnld_ver},{dnld_rel},{pkg_existence},{ver_in_3_dev},{bulk_build_success},{bulk_build_success_count},{rev_pr_fl_developer},{rev_pr_fl_prlink},{rev_pr_fl_reviewer},{rev_pr_fl_status},{PRorigin},{PRtopicbranch}')
-		else:
-			print (f'{pkname},{mstr_list_pkgnewname},{mstr_list_pkg_prio},{mstr_list_developer},{PRnum},{link_raised_PR},{PRstatus},{PRcreationdate},{upgd_reqd},{final_upgd_decision},{bld_status},{ver_bld_status},{rel_bld_status},{dnld_det_success},{dl_srpm_count},{dl_srpm1},{dl_srpm2},{dl_srpm3},{dnld_ver},{dnld_rel},{pkg_existence},{ver_in_3_dev},{bulk_build_success},{bulk_build_success_count},{rev_pr_fl_developer},{rev_pr_fl_prlink},{rev_pr_fl_reviewer},{rev_pr_fl_status},{PRorigin},{PRtopicbranch},{ab_bld_status}')
+		print (f'{pkname},{mstr_list_pkgnewname},{ab_bld_status}')
 
 		#For quick testing we uncomment the below two lines.  The effect is same as a small 
 		#master list of packages (20 entries only)
@@ -784,98 +754,3 @@ def main() -> None:
 if __name__ == '__main__':
 	main()
 
-#Change History
-#-------------
-#v1:
-#Initial version.  Takes as input :
-#    1.   The Master List of packages, 
-#    2.   Path for 2.0 main branch of Mariner Sources, 
-#    3.   3.0-dev branch of Mariner Sources (Azure Linux Sources), 
-#    4.   Build status csv file from 3.0 main Build Artifacts, 
-#    5.   Downloads details generated by the download script 
-#And generates information :
-#    1.   About the presence of the package in 3.0-dev branch SPECS and SPECS-EXTENDED folders, 
-#    2.   Build status of package in the csv file, 
-#    3.   Its version and release in that build, 
-#    4.   The download information like if download was successful or not, 
-#    5.   Which srpms were downloaded for a given package, 
-#    6.   And the version and release of the first srpm downloaded
-#NOTE 1:  About existence in Mariner sources, only the information about existence in 3.0-dev SPECS and SPECS-EXTENDED folders is generated.
-#         The input of the 2.0 Mariner Sources paths is ignored as of now.
-#
-#v2:
-#    1.   The srpm file downloaded information is not printed into the output csv as a list, which used to generate variable number
-#         of columns.  Instead 3 has been assumed as an upper limit on the downloaded srpms whose information we will capture.  
-#         This way there is a fixed number of columns for the downloaded srpms per package, which is 3.
-#         In practical run only two columns got used and that too for only one package "libldb".  For rest all packages if the download is 
-#         successful, this count has been 1 only.  For "libldb" two srpm files "samba" and "libldb" were downloaded.
-#v3:
-#    1.   Since there is only one package with more than one downloads of srpms, we will hard code the version number derived from the
-#         downloaded srpm that corresponds to the package.  The package is "libldb".  There are two srpms downloaded for it libldb and 
-#         samba.  We will hard code the version number of libldb srpm as the new version for this package.
-#    2.   The tool extracts the version number from the spec file too.
-#NOTE 1:  There was no need to do this, i.e. extract the version number from spec file.  The reason is that the
-#         we get version from the pkg_artifacts build_status.csv file even for packages for which the build had
-#         failed.  Whereas, parsing of spec file sometimes doesn't yield version number, instead it gives more
-#         macros.  In effect, the version number derived from the build_status.csv is better and available in 
-#         more cases.
-#    3.   Added the field (column) "upgd_reqd", based upon the comparison between "ver_bld_status" and "dnld_ver".
-#v4:
-#    1.   Added capability to include bulk build results.
-#v5:
-#    1.   Added the capability to include the Under Review PR information.
-#    2.   Added the capability to include the Total Raised PR information, that is it uses information from csv files of individual developers.
-#v6:
-#    1.   Improved the comparison of the package versions in 3.0-dev and the downloaded SRPM, in order to arrive at a more accurate
-#         decision in the column "Upgrade Required".  Earlier we would declare upgrade required just on mismatch of the two strings (of 
-#         version).  Now we first check that the number of parts are equal in each version and that all of their parts are numbers.  
-#         In case they are we compare and give the result.  Otherwise, we return "Revisit Ver Compare".  Therefore, if the number of parts
-#         in the two versions is unequal or the parts are not numbers we return "Revisit Ver Compare".
-#v7:
-#    1.   It is now a script that can be run from ~/utils and can pick files from any directory and generate results in any directory
-#v8:
-#    1.   The most important changes are the fixes to the package version comparison logic added in v6.  The result are now more accurate.
-#         Actually, in v6 the logic for version comparison and therefore the decision about whether to upgrade or not, was buggy.
-#v9:
-#    1.   The PR number, PR status and PR Creation Date are now populated by querying from 
-#         github.
-#    2.   Even the PR link is prepared from this query.
-#    3.   Earlier PR information was extracted from the individual excel sheets of 
-#         Devs.  That used to be a lengthy process and could not be fully automated
-#         because the excel sheets had to be kept at one place and even needed to be 
-#         converted into csv.
-#    4.   Now everything will be smooth.
-#v10:
-#    1.   Use the "Upgrade to be done (Y/N/To be removed)" column i.e. Column C, of "ExtendedPackages_wSuppInfo.xlsx" for overiding
-#         the decision made on the basis of comparison of package version between the 3.0-dev pipeline build status and the downloaded
-#         versions from Fedora 41. 
-#    2.   A new value "Override_to_Y" in this column will override the decision based upon the comparison of versions.  
-#    3.   There will be a new column "Final Upgrade Decision (Y/N)" in the output csv of this script, for the final value
-#         decided.
-#v11:
-#    1.   Added the capability to handle new package name.  Now the input file "ExtendedPackages_wSuppInfo.xlsx" will have an additional
-#         column I (New Name of Package).  This column will be used by this script to generate the additional 
-#         column B (New Name of Package) in the output.
-#    2.   Added Sandeep (github user name "cyberbandya007") and Mayank (github user name "mayankfz") as authors to the code.  This will
-#         be useful in searching for their PRs for a given package.
-#    3.   In the function "check_under_rev_PRs" when package is not found in the file "UNDER_REVIEW_PR_FILE", then instead of failing  
-#         we return 'NA' values.  Slowly, this function will be removed as we don't need to parse the file "UNDER_REVIEW_PR_FILE" any
-#         more.
-#v12:
-#    1.   Added handling of the case when a new package is added to Azure Linux.
-#    2.   Now the header of the csv output generated by this script does not have any blank space following the comma.  Earlier the 
-#         space after the comma needed unnecessary handling in the scripts that read this csv output. 
-#v13:
-#    1.   Added handling of one extra build results data as input and corresponding column 
-#         to the output.
-#v14:
-#    1.   The various input files will now be part of the didwhat folder under the 
-#    	  source tree of the branch being built.
-#    2.   The source code to be used as the reference against which the decisions like
-#         EXISTS_IN_BOTH, MOVED_TO_CORE will be taken is now a specific commit id
-#         based branch.
-#v15:
-#    1.   Carried out detection of origin and topic branch for a PR.  This will be useful to pull changes from these PRs if required.
-#v16:
-#    1.   The script "find_PR_given_pkg_author" now takes as input the repo path instead of the Source code directory.
-#    2.   The variable "MSREPO_2MAIN_WORKDIR" is not used anymore.

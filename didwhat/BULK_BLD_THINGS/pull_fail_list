@@ -3,14 +3,12 @@ certmonger
 dpkg
 gstreamer1-plugins-base
 libotr
+libpfm
 libxmlb
-minizip
-os-prober
-pcp
 perl-Color-RGB-Util
+perl-Test-Simple
 plexus-pom
 rubygem-sys-filesystem
 rubygem-racc
 perl-Test-RandomResult
-python-pyproject-api
 zix

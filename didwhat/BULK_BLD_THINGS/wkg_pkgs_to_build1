@@ -130,7 +130,6 @@ docbook5-style-xsl
 dogtail
 dotconf
 dovecot
-dpkg
 dropwatch
 drpm
 dumpet
@@ -178,8 +177,10 @@ genwqe-tools
 geoclue2
 geolite2
 geronimo-specs
+ghc-srpm-macros
 gi-docgen
 gl-manpages
+glassfish-annotation-api
 glew
 glm
 glog
@@ -203,8 +204,6 @@ gsl
 gspell
 gssdp
 gssntlmssp
-gstreamer1
-gstreamer1-plugins-base
 gtk-vnc
 gtkspell
 gupnp
@@ -444,6 +443,7 @@ libappstream-glib
 libart_lgpl
 libasyncns
 libavc1394
+libblockdev
 libbsd
 libbytesize
 libcanberra
@@ -638,6 +638,7 @@ metis
 microcode_ctl
 microdnf
 minicom
+minizip-ng
 mksh
 mobile-broadband-provider-info
 mod_auth_gssapi
@@ -695,6 +696,7 @@ nodejs-nodemon
 nodejs-packaging
 nss-pam-ldapd
 numatop
+nvmetcli
 objectweb-anttask
 objenesis
 ocaml-calendar
@@ -762,12 +764,14 @@ perl-B-Lint
 perl-BDB
 perl-BSD-Resource
 perl-Browser-Open
+perl-Business-ISBN
 perl-Business-ISBN-Data
 perl-CBOR-XS
 perl-CSS-Tiny
 perl-Class-Accessor
 perl-Class-C3
 perl-Class-C3-XS
+perl-Class-Data-Inheritable
 perl-Class-Factory-Util
 perl-Class-Inspector
 perl-Class-Load
@@ -1166,6 +1170,7 @@ python-d2to1
 python-dbus-client-gen
 python-dbus-python-client-gen
 python-dbus-signature-pyparsing
+python-dbusmock
 python-ddt
 python-debtcollector
 python-dmidecode
@@ -1222,6 +1227,7 @@ python-pycares
 python-pydbus
 python-pymongo
 python-pyperclip
+python-pyproject-api
 python-pyrsistent
 python-pytest-flake8
 python-pytest-relaxed
@@ -1235,6 +1241,7 @@ python-recommonmark
 python-requests-file
 python-requests-ftp
 python-requests-kerberos
+python-requests-mock
 python-requests-toolbelt
 python-requests_ntlm
 python-rfc3986
@@ -1318,6 +1325,7 @@ rubygem-coderay
 rubygem-deep_merge
 rubygem-diff-lcs
 rubygem-eventmachine
+rubygem-flexmock
 rubygem-hocon
 rubygem-liquid
 rubygem-maruku
@@ -1327,6 +1335,7 @@ rubygem-pkg-config
 rubygem-puppet-resource_api
 rubygem-rouge
 rubygem-rspec-expectations
+rubygem-rspec-mocks
 rubygem-rspec-support
 rubygem-thor
 rubygem-thread_order
@@ -1416,6 +1425,7 @@ udica
 udisks2
 uglify-js
 umoci
+umockdev
 unicode-emoji
 unicode-ucd
 unique3

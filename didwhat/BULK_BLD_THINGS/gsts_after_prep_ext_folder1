@@ -904,13 +904,10 @@ Untracked files:
 	SPECS-EXTENDED/gdal/PROVENANCE.TXT-fedora
 	SPECS-EXTENDED/gdal/gdal-cleaner.sh
 	SPECS-EXTENDED/gdal/gdal_incompatible-pointer-types.patch
-	SPECS-EXTENDED/google-noto-emoji-fonts/Noto_Emoji.zip
 	SPECS-EXTENDED/google-noto-sans-cjk-vf-fonts/
 	SPECS-EXTENDED/hawtjni/
 	SPECS-EXTENDED/httpcomponents-core/0001-Port-to-mockito-2.patch
 	SPECS-EXTENDED/httpcomponents-core/0002-Port-to-Mockito-5.patch
-	SPECS-EXTENDED/httpcomponents-core/httpcomponents-core-4.4.16-source-release.zip
-	SPECS-EXTENDED/hunspell-ca/ca.3.0.8-hunspell.zip
 	SPECS-EXTENDED/hunspell-es/es_AR.oxt
 	SPECS-EXTENDED/hunspell-es/es_BO.oxt
 	SPECS-EXTENDED/hunspell-es/es_CL.oxt
@@ -1140,7 +1137,6 @@ Untracked files:
 	SPECS-EXTENDED/xalan-j2/xsltc-2.7.3.pom
 	SPECS-EXTENDED/xbean/0001-Unbundle-ASM.patch
 	SPECS-EXTENDED/xbean/0002-Remove-dependency-on-log4j-and-commons-logging.patch
-	SPECS-EXTENDED/xbean/xbean-4.24-source-release.zip
 	SPECS-EXTENDED/xerces-j2/ExperimentalTaglet.java
 	SPECS-EXTENDED/xerces-j2/InternalTaglet.java
 	SPECS-EXTENDED/xerces-j2/XJavac.java
@@ -1152,5 +1148,6 @@ Untracked files:
 	SPECS-EXTENDED/xmlunit/generate-tarball.sh
 	didwhat/
 	gsts_after_prep_ext_folder
+	gsts_after_prep_ext_folder1
 
 no changes added to commit (use "git add" and/or "git commit -a")

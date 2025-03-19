@@ -1,8 +1,5 @@
 OpenEXR
-SDL
-SDL2
 alsa-plugins
-amtk
 annobin
 apache-commons-codec
 apache-commons-collections4
@@ -11,8 +8,6 @@ apache-commons-io
 apache-commons-jexl
 apache-commons-net
 apache-commons-vfs2
-arpwatch
-aspell-en
 bcel
 booth
 breezy
@@ -21,12 +16,10 @@ cdrdao
 cglib
 cjkuni-uming-fonts
 containernetworking-plugins
-corosync-qdevice
 cppcheck
 criu
 crypto-policies
 dbxtool
-delve
 device-mapper-persistent-data
 distribution-gpg-keys
 dleyna-connector-dbus
@@ -51,7 +44,6 @@ hunspell-ca
 hunspell-de
 hunspell-es
 hunspell-ru
-ibus
 ibus-chewing
 ibus-hangul
 ibus-libzhuyin
@@ -68,7 +60,6 @@ jimtcl
 jline
 jose
 jsoup
-kronosnet
 libXres
 libXv
 libappstream-glib
@@ -103,7 +94,6 @@ mock
 mock-core-configs
 mod_auth_gssapi
 mod_auth_mellon
-mod_http2
 mod_wsgi
 mrtg
 mtr
@@ -116,8 +106,6 @@ objenesis
 ocaml-camlp5
 ocaml-parsexp
 ocaml-sexplib
-ocaml-xml-light
-oddjob
 opencc
 openjpeg2
 openwsman
@@ -128,15 +116,12 @@ pacemaker
 papi
 perl-Algorithm-C3
 perl-Alien-Build
-perl-Alien-pkgconf
 perl-B-Hooks-OP-Check
 perl-Class-ISA
-perl-Class-Tiny
 perl-Class-XSAccessor
 perl-Clone
 perl-Cpanel-JSON-XS
 perl-Crypt-CBC
-perl-Crypt-PasswdMD5
 perl-DBD-MySQL
 perl-Data-Munge
 perl-Data-OptList
@@ -196,7 +181,6 @@ perl-Test-MinimumVersion
 perl-Test-Output
 perl-Test-Requires
 perl-Test-Script
-perl-Test-Simple
 perl-Test-Taint
 perl-Test-TrailingSpace
 perl-Test-Without-Module
@@ -213,11 +197,9 @@ pipewire
 po4a
 podman
 poetry
-ppp
 proj
 psl-make-dafsa
 psutils
-publicsuffix-list
 pulseaudio
 pybind11
 pyflakes
@@ -242,8 +224,6 @@ python-iso8601
 python-isodate
 python-itsdangerous
 python-jwcrypto
-python-kdcproxy
-python-lazy-object-proxy
 python-lit
 python-mccabe
 python-mimeparse
@@ -256,16 +236,13 @@ python-pyroute2
 python-pyrsistent
 python-pytest-timeout
 python-requests-mock
-python-requests-toolbelt
 python-requests_ntlm
 python-rpm-generators
 python-s3transfer
-python-systemd
 python-templated-dictionary
 python-testresources
 python-toml
 python-trio
-python-urwid
 python-webtest
 python-winrm
 python-zmq
@@ -279,7 +256,6 @@ rear
 resource-agents
 rhino
 ripgrep
-rp-pppoe
 rpmlint
 rubygem-mysql2
 rubygem-rspec-expectations
@@ -298,9 +274,7 @@ sysfsutils
 tang
 tk
 trilead-ssh2
-udica
 udisks2
-uglify-js
 upower
 usb_modeswitch
 usbguard
@@ -320,9 +294,5 @@ xcb-util-image
 xcb-util-keysyms
 xcb-util-renderutil
 xerces-j2
-xfconf
-xfsdump
 xmlunit
-xrestop
-ypserv
 zenity

@@ -1,0 +1,81 @@
+
+
+
+#MSTR_LIST="/home/neerajs/Downloads/docker_folder/impspc/mlist_extpkg"
+MSTR_LIST="/home/neerajs/Downloads/docker_folder/impspc/smlist_w_badpkgnm"
+#MSTR_LIST="/home/neerajs/Downloads/docker_folder/impspc/fifty_pkglist"
+#MSTR_LIST="/home/neerajs/Downloads/docker_folder/impspc/first_fifty_pkglist"
+#MSTR_LIST="/home/neerajs/Downloads/docker_folder/impspc/somelist_pkgs"
+MSREPO_2MAIN_WORKDIR="/home/neerajs/work/REPOS/Microsoft_AZL/azurelinux"
+MSREPO_3DEV_WORKDIR="/home/neerajs/work/REPOS/Microsoft_AZL/azurelinux"
+BUILD_ARTFCT_STATUS_FL="/home/neerajs/Downloads/daily_builds/06Nov2024/build_state.csv"
+#BUILD_ARTFCT_STATUS_FL="/home/neerajs/utils/TestIdeas/PKG_ANALYSIS/last_fifty_build_state.csv"
+DNLD_DETAILS_FL="/home/neerajs/Downloads/docker_folder/impspc/fetchdir/scr_run_log.txt"
+
+import pandas as pd
+import re
+from pathlib import Path
+
+ver_bld_status = ''
+rel_bld_status = ''
+bld_status = ''
+dnld_status = ''
+dnld_ver = ''
+dnld_rel = ''
+dnld_det_fl_object = ''
+dnld_det_fl_lines = ''
+dnld_det_srpmlist = []
+dnld_det_success = 0
+
+		
+def main() -> None:
+	global ver_bld_status
+	global rel_bld_status
+	global dnld_det_fl_object
+	global dnld_det_fl_lines
+
+	global bld_status
+
+	print ("Hello\n")
+
+	dnld_det_fl_object = open(DNLD_DETAILS_FL, 'r')
+	dnld_det_fl_lines = dnld_det_fl_object.readlines()
+	
+	pk_count = 0
+	table = pd.read_csv(MSTR_LIST, header=None)
+	for row in table.itertuples():
+		pk_count = pk_count + 1
+		print(f'Package Name {row[1]}')
+		pkname = row[1]
+
+		pathstr=MSREPO_3DEV_WORKDIR + "/SPECS/" + pkname
+		print (f'pathstr is {pathstr}')
+		file=Path(pathstr)
+		if ( file.is_dir() ):
+			pkg_in_3_core = 1
+		else:
+			pkg_in_3_core = 0
+			
+		pathstr=MSREPO_3DEV_WORKDIR + "/SPECS-EXTENDED/" + pkname
+		print (f'pathstr is {pathstr}')
+		file=Path(pathstr)
+		if ( file.is_dir() ):
+			pkg_in_3_ext = 1
+		else:
+			pkg_in_3_ext = 0
+
+		if ( pkg_in_3_core == 1 and pkg_in_3_ext == 1):
+			pkg_existence = 'EXISTS_IN_BOTH'
+		elif ( pkg_in_3_core == 1 and pkg_in_3_ext == 0):
+			pkg_existence = 'MOVED_TO_CORE'
+		elif ( pkg_in_3_core == 0 and pkg_in_3_ext == 0):
+			pkg_existence = 'REMOVED_FROM_BOTH'
+		else:
+			pkg_existence = 'EXISTS_IN_EXT'
+
+		print (f'{pkname} {pkg_existence}')
+		if ( pk_count > 7 ):
+			break
+		
+if __name__ == '__main__':
+	main()

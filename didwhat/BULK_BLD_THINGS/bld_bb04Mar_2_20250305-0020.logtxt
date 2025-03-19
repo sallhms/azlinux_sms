@@ -1,0 +1,1241 @@
+Number of packages in the build list = 1493
+/third_disk/bb04Mar/azurelinux/toolkit /third_disk/bb04Mar/azurelinux/toolkit
+changed to /third_disk/bb04Mar/azurelinux/toolkit
+Setting PACKAGE_URL_LIST from the calling script as follows:
+------------------------------------------------------------
+PACKAGE_URL_LIST=https://mariner3dailydevrepo.blob.core.windows.net/daily-repo-3-0-20241206-x86-64/built_rpms_all https://mariner3dailydevrepo.blob.core.windows.net/daily-repo-3-0-20241206-x86-64 https://packages.microsoft.com/azurelinux/3.0/prod/base/x86_64 https://packages.microsoft.com/azurelinux/3.0/prod/base/debuginfo/x86_64 https://packages.microsoft.com/azurelinux/3.0/prod/ms-oss/x86_64
+Dry run preceded actual run so as to capture the values passed:
+---------------------------------------------------------------
+sudo make build-packages \ 
+     REBUILD_TOOLS=y \ 
+     QUICK_REBUILD_PACKAGES=y \ 
+     USE_CCACHE=y \ 
+     PACKAGE_REBUILD_LIST=389-ds-base CharLS GConf2 GeoIP GeoIP-GeoLite-data Judy LibRaw ORBit2 openexr PEGTL PyGreSQL sdl12-compat SDL2 SDL_sound SuperLU Xaw3d a52dec accountsservice acpid adcli adobe-mappings-cmap adobe-mappings-pdf advancecomp alsa-firmware alsa-plugins amtk amtterm ansible-freeipa aopalliance apache-commons-beanutils apache-commons-codec apache-commons-collections apache-commons-collections4 apache-commons-compress apache-commons-daemon apache-commons-dbcp apache-commons-digester apache-commons-httpclient apache-commons-io apache-commons-jexl apache-commons-lang apache-commons-net apache-commons-pool apache-commons-pool2 apache-commons-validator apache-commons-vfs apache-parent args4j arptables arpwatch asio aspell-en audiofile babeltrace babl baekmuk-ttf-fonts base64coder bats bcache-tools bcel bea-stax beust-jcommander biosdevname blosc bolt boom-boot booth botan2 breezy bsf buildah bwidget cachefilesd cairomm capnproto capstone cassandra catatonit catch1 cdparanoia cdrdao celt051 certmonger cfitsio cgdcbxd cglib chan cim-schema cjose cldr-emoji-annotation clucene clutter clutter-gst3 clutter-gtk cmake-fedora cogl colorize compat-lua container-exception-logger containernetworking-plugins convmv corosync corosync-qdevice cpp-hocon cppcheck cpptest cpuid crash-ptdump-command cri-o criu crypto-policies cscope custodia dbus-c++ fwupd dcraw deltarpm device-mapper-persistent-data diffstat discount dleyna dleyna-core dmraid docbook-simple docbook-slides docbook-style-dsssl docbook-utils docbook2X docbook5-style-xsl dogtail dotconf dovecot dpkg driverctl dropwatch drpm dumpet dvd+rw-tools dyninst ecj edac-utils efax efi-rpm-macros elinks enca enchant enscript evemu exempi exiv2 fabtests facter fakechroot fence-agents fetchmail fftw filebench flac flashrom flite fltk fonts-rpm-macros foomatic-db freeradius freexl fros fstrm fuse-overlayfs fuse-sshfs fwupd fwupd-efi fxload gavl gconf-editor gcr gdal gdisk generic-logos genwqe-tools geoclue2 geolite2 geronimo-specs ghc-srpm-macros gi-docgen gl-manpages jakarta-annotations glew glm glog gnome-desktop-testing gnome-doc-utils gnome-icon-theme gnome-keyring gnu-getopt gnu-regexp go-rpm-macros gom google-api-python-client google-crosextra-caladea-fonts google-crosextra-carlito-fonts gphoto2 gpm gpsbabel graphene graphite2 gsl gspell gssdp gssntlmssp gstreamer1 gstreamer1-plugins-base gtk-vnc gtkspell gupnp gupnp-av gupnp-dlna gupnp-igd hawtjni hdf hiera highlight hping3 hsakmt httpcomponents-core hunspell-af hunspell-ar hunspell-as hunspell-ast hunspell-az hunspell-be hunspell-bg hunspell-bn hunspell-br hunspell-ca hunspell-cop hunspell-csb hunspell-cv hunspell-cy hunspell-da hunspell-de hunspell-dsb hunspell-el hunspell-eo hunspell-es hunspell-et hunspell-eu hunspell-fa hunspell-fj hunspell-fo hunspell-fr hunspell-fur hunspell-fy hunspell-ga hunspell-gd hunspell-gl hunspell-grc hunspell-gu hunspell-gv hunspell-haw hunspell-hi hunspell-hil hunspell-hr hunspell-hsb hunspell-ht hunspell-hu hunspell-hy hunspell-ia hunspell-id hunspell-is hunspell-it hunspell-kk hunspell-km hunspell-kn hunspell-ko hunspell-ku hunspell-ky hunspell-la hunspell-lb hunspell-ln hunspell-mai hunspell-mg hunspell-mi hunspell-mk hunspell-ml hunspell-mn hunspell-mos hunspell-mr hunspell-ms hunspell-mt hunspell-nds hunspell-ne hunspell-nl hunspell-no hunspell-nr hunspell-nso hunspell-ny hunspell-om hunspell-or hunspell-pa hunspell-pl hunspell-pt hunspell-quh hunspell-ro hunspell-ru hunspell-rw hunspell-se hunspell-shs hunspell-si hunspell-sk hunspell-sl hunspell-smj hunspell-so hunspell-sq hunspell-sr hunspell-sv hunspell-sw hunspell-ta hunspell-te hunspell-tet hunspell-th hunspell-tk hunspell-tl hunspell-tn hunspell-tpi hunspell-ts hunspell-uk hunspell-uz hunspell-ve hunspell-vi hunspell-wa hunspell-xh hunspell-yi hyphen hyphen-as hyphen-bg hyphen-bn hyphen-ca hyphen-da hyphen-de hyphen-el hyphen-es hyphen-fa hyphen-fo hyphen-fr hyphen-ga hyphen-gl hyphen-grc hyphen-gu hyphen-hi hyphen-hsb hyphen-hu hyphen-ia hyphen-id hyphen-is hyphen-it hyphen-kn hyphen-ku hyphen-lt hyphen-mi hyphen-ml hyphen-mn hyphen-mr hyphen-nl hyphen-or hyphen-pa hyphen-pl hyphen-pt hyphen-ro hyphen-ru hyphen-sa hyphen-sk hyphen-sl hyphen-sv hyphen-ta hyphen-te hyphen-tk hyphen-uk ibus ibus-chewing ibus-hangul ibus-kkc ibus-libzhuyin ibus-m17n ibus-rawcode ibus-sayura ibus-table ibus-table-chinese icc-profiles-openicc icon-naming-utils iftop iio-sensor-proxy ilmbase imaptest indent intel-cmt-cat ioping ipa-pgothic-fonts ipcalc iprutils iptstate irssi iso-codes isomd5sum iwd jabberpy jakarta-taglibs-standard jansi jarjar javacc jbigkit jboss-interceptors-1.2-api jdepend jdom2 jfsutils jimtcl jlex jline jose js-jquery jsch jsoncpp jsoup jtidy junitperf jzlib kde-filesystem kernel-rt keybinder3 keycloak-httpd-client-install kronosnet kyotocabinet ladspa lame langtable lasso latencytop lcov leatherman ledmon lensfun lftp libEMF libIDL libXScrnSaver libabw libao libappstream-glib libart_lgpl libasyncns libavc1394 libblockdev libbsd libbytesize libcanberra libcbor libcdio libcdio-paranoia libcdr libchewing libcli libcmis libcmpiutil libcroco libdap libdatrie libdazzle libdbi libdbusmenu libdc1394 libdeflate libdmx libdvdnav libdvdread libeasyfc libecb libeot libepubgen libesmtp libetonyek libexttextcat libfreehand libftdi libgadu libgdither libgee libgee06 libgeotiff libgexiv2 libgit2-glib libglade2 libgovirt libgphoto2 libgsf libgta libgxps libhangul libibcommon libicns libid3tag libiec61883 libieee1284 libimobiledevice libindicator libiodbc libipt libiptcdata libjaylink libjcat libkeepalive libkkc libkkc-data libkml liblangtag libldb liblerc liblockfile liblouis liblqr-1 libmad libmediaart libmikmod libmodman libmodplug libmodulemd1 libmpcdec libmspub libmtp libmusicbrainz5 libmwaw libnet libntlm libnumbertext liboauth libodfgen libofa libogg liboggz liboil libomxil-bellagio libopenraw liboping libosinfo libotf libotr libpagemaker libpaper libpeas libpfm libpinyin libplist libpmemobj-cpp libpng12 libpng15 libproxy libqb libqxp librabbitmq libraqm libraw1394 libreport librevenge librx libsamplerate libsass libsecret libsigc++20 libsigsegv libsmbios libspiro libsrtp libstaroffice snowball libteam libtevent libthai libtheora libtnc libtomcrypt libtommath libtranslit libucil libunicap libuninameslist libusb1 libusbmuxd libutempter libvdpau libverto libvisio libvisual libvorbis libvpx libwnck3 libwpd libwpe libwpg libwps libwvstreams libxklavier libxmlb libyami libyubikey libzmf lilv linuxconsoletools lksctp-tools lockdev logwatch lpsolve lrzsz lua-expat lua-filesystem lua-json lua-lpeg lua-lunitx lua-term luksmeta lv2 lzip m17n-db m17n-lib s-nail mallard-rng man-pages-l10n man-pages-l10n man-pages-l10n man-pages-ja man-pages-l10n man-pages-l10n man-pages-ru man-pages-zh-CN mariadb-connector-odbc marisa maven-parent mcelog mdds meanwhile mecab mecab-ipadic media-player-info memkind metis microcode_ctl microdnf minicom minizip-ng mksh mobile-broadband-provider-info mod_auth_gssapi mod_auth_mellon mod_auth_openidc mod_authnz_pam mod_fcgid mod_http2 mod_intercept_form_submit mod_lookup_identity mod_md mod_security mod_security_crs mod_wsgi mosh mpage mrtg mt-st mtx mutt mythes mythes-bg mythes-ca mythes-cs mythes-da mythes-de mythes-el mythes-en mythes-eo mythes-es mythes-fr mythes-ga mythes-hu mythes-mi mythes-ne mythes-nl mythes-pl mythes-pt mythes-ro mythes-ru mythes-sk mythes-sl mythes-sv mythes-uk neon netcdf netcf netlabel_tools netpbm netsniff-ng nilfs-utils nkf nload nodejs-nodemon nodejs-packaging nss-pam-ldapd numatop nvmetcli objectweb-anttask objenesis ocaml-calendar ocaml-camlp5 ocaml-csv ocaml-curses ocaml-extlib ocaml-fpath ocaml-libvirt ocaml-markup ocaml-tyxml ocaml-xml-light ocaml-zarith ocl-icd oddjob ogdi omping opal opencc opencl-filesystem opencl-headers opencryptoki opendnssec openjade openjpeg openobex openoffice-lv openrdate openslp openssl-ibmpkcs11 openwsman optipng orc oro os-prober osgi-annotation osgi-compendium osgi-core osinfo-db osinfo-db-tools overpass-fonts pacemaker pacrunner pakchois papi paps parallel passim pbzip2 pcp perl-Algorithm-Diff perl-Alien-Build perl-Alien-pkgconf perl-AnyEvent perl-AnyEvent-AIO perl-AnyEvent-BDB perl-App-FatPacker perl-AppConfig perl-Archive-Extract perl-Authen-SASL perl-B-Debug perl-B-Hooks-EndOfScope perl-B-Keywords perl-B-Lint perl-BDB perl-BSD-Resource perl-Browser-Open perl-Business-ISBN perl-Business-ISBN-Data perl-CBOR-XS perl-CSS-Tiny perl-Class-Accessor perl-Class-C3 perl-Class-C3-XS perl-Class-Data-Inheritable perl-Class-Factory-Util perl-Class-Inspector perl-Class-Load perl-Class-Load-XS perl-Class-Method-Modifiers perl-Class-Singleton perl-Class-Tiny perl-Color-ANSI-Util perl-Color-RGB-Util perl-ColorThemeBase-Static perl-ColorThemeRole-ANSI perl-ColorThemeUtil-ANSI perl-ColorThemes-Standard perl-Compress-LZF perl-Compress-Raw-Lzma perl-Config-AutoConf perl-Config-INI perl-Config-INI-Reader-Multiline perl-Config-IniFiles perl-Config-Simple perl-Config-Tiny perl-Const-Fast perl-Convert-ASN1 perl-Convert-Bencode perl-Coro perl-Coro-Multicore perl-Cpanel-JSON-XS perl-Crypt-CBC perl-Crypt-DES perl-Crypt-IDEA perl-Crypt-OpenSSL-Bignum perl-Crypt-OpenSSL-Guess perl-Crypt-OpenSSL-RSA perl-Crypt-OpenSSL-Random perl-DBD-MySQL perl-Data-Munge perl-Data-Peek perl-Data-Section perl-Data-UUID perl-Date-ISO8601 perl-Date-Manip perl-DateTime perl-DateTime-Format-Builder perl-DateTime-Format-DateParse perl-DateTime-Format-HTTP perl-DateTime-Format-IBeat perl-DateTime-Format-ISO8601 perl-DateTime-Format-Mail perl-DateTime-Format-Strptime perl-DateTime-Locale perl-DateTime-TimeZone perl-DateTime-TimeZone-SystemV perl-DateTime-TimeZone-Tzfile perl-Devel-CallChecker perl-Devel-EnforceEncapsulation perl-Devel-Leak perl-Devel-Size perl-Digest-BubbleBabble perl-Digest-CRC perl-Dist-CheckConflicts perl-DynaLoader-Functions perl-EV perl-Email-Address perl-Email-Date-Format perl-Encode-Detect perl-Encode-EUCJPASCII perl-Encode-IMAPUTF7 perl-Env-ShellWords perl-Error perl-Eval-Closure perl-Event perl-Exception-Class perl-ExtUtils-Config perl-ExtUtils-Helpers perl-ExtUtils-InstallPaths perl-ExtUtils-PkgConfig perl-FCGI perl-FFI-CheckLib perl-File-BOM perl-File-BaseDir perl-File-CheckTree perl-File-Copy-Recursive perl-File-DesktopEntry perl-File-Find-Object perl-File-Find-Object-Rule perl-File-Find-Rule perl-File-Find-Rule-Perl perl-File-Inplace perl-File-MimeInfo perl-File-ReadBackwards perl-File-Remove perl-File-ShareDir perl-File-ShareDir-Install perl-File-Slurp perl-File-Slurp-Tiny perl-File-Slurper perl-File-Type perl-File-chdir perl-Font-TTF perl-FreezeThaw perl-GD perl-GD-Barcode perl-GSSAPI perl-Getopt-ArgvFile perl-Graphics-ColorNamesLite-WWW perl-Guard perl-HTML-Tree perl-Hook-LexWrap perl-IO-AIO perl-IO-All perl-IO-CaptureOutput perl-IO-Compress-Lzma perl-IO-Multiplex perl-IO-SessionData perl-IO-Socket-INET6 perl-IPC-Run perl-IPC-Run3 perl-IPC-System-Simple perl-Image-Base perl-Image-Info perl-Image-Xbm perl-Image-Xpm perl-Importer perl-Inline-Files perl-JSON-Color perl-JSON-MaybeXS perl-LDAP perl-LWP-Protocol-https perl-Lingua-EN-Inflect perl-List-MoreUtils-XS perl-Locale-Codes perl-Locale-Maketext-Gettext perl-Locale-Msgfmt perl-Locale-PO perl-Log-Message perl-Log-Message-Simple perl-MIME-Charset perl-MIME-Lite perl-MIME-Types perl-MLDBM perl-MRO-Compat perl-Mail-AuthenticationResults perl-Mail-DKIM perl-Mail-IMAPTalk perl-Mail-SPF perl-MailTools perl-Math-Int64 perl-Mixin-Linewise perl-Module-Build-Tiny perl-Module-Install-AuthorRequires perl-Module-Install-AutoLicense perl-Module-Install-GithubMeta perl-Module-Install-ManifestSkip perl-Module-Install-ReadmeFromPod perl-Module-Install-ReadmeMarkdownFromPod perl-Module-Install-TestBase perl-Module-Load-Util perl-Module-Manifest perl-Module-Manifest-Skip perl-Module-Package perl-Module-Package-Au perl-Module-Pluggable perl-Module-Signature perl-Mojolicious perl-Moo perl-Mozilla-CA perl-Mozilla-LDAP perl-NNTPClient perl-Net-CIDR-Lite perl-Net-DNS perl-Net-DNS-Resolver-Mock perl-Net-DNS-Resolver-Programmable perl-Net-Daemon perl-Net-IMAP-Simple perl-Net-IMAP-Simple-SSL perl-Net-IP perl-Net-LibIDN2 perl-Net-Patricia perl-Net-SMTP-SSL perl-Net-SNMP perl-Net-Telnet perl-Newt perl-Number-Compare perl-Object-Deadly perl-Object-HashBase perl-PAR-Dist perl-PPI perl-PPI-HTML perl-PPIx-QuoteLike perl-PPIx-Regexp perl-PPIx-Utilities perl-Package-Anon perl-Package-Constants perl-Package-DeprecationManager perl-Package-Stash perl-Package-Stash-XS perl-Paper-Specs perl-Parallel-Iterator perl-Params-Classify perl-Params-Validate perl-Params-ValidationCompiler perl-Parse-RecDescent perl-Parse-Yapp perl-Path-Tiny perl-Perl-Critic perl-Perl-Critic-More perl-Perl-MinimumVersion perl-Perl4-CoreLibs perl-PerlIO-gzip perl-PerlIO-utf8_strict perl-PkgConfig-LibPkgConf perl-Pod-Coverage-TrustPod perl-Pod-Escapes perl-Pod-Eventual perl-Pod-LaTeX perl-Pod-Markdown perl-Pod-POM perl-Pod-Plainer perl-Pod-Spell perl-Probe-Perl perl-Razor-Agent perl-Readonly perl-Readonly-XS perl-Ref-Util perl-Ref-Util-XS perl-Regexp-Pattern-Perl perl-Return-MultiLevel perl-Role-Tiny perl-SGMLSpm perl-SNMP_Session perl-Scope-Guard perl-Scope-Upper perl-Socket6 perl-Software-License perl-Sort-Versions perl-Specio perl-Spiffy perl-String-CRC32 perl-String-Format perl-String-Similarity perl-Sub-Info perl-Sub-Uplevel perl-Switch perl-Syntax-Highlight-Engine-Kate perl-Sys-CPU perl-Sys-MemInfo perl-Taint-Runtime perl-Task-Weaken perl-Term-Size-Any perl-Term-Size-Perl perl-Term-Table perl-Term-UI perl-TermReadKey perl-Test-Base perl-Test-CPAN-Meta perl-Test-CPAN-Meta-JSON perl-Test-ClassAPI perl-Test-Differences perl-Test-DistManifest perl-Test-Distribution perl-Test-EOL perl-Test-Exception perl-Test-Exit perl-Test-FailWarnings perl-Test-File perl-Test-File-ShareDir perl-Test-Harness perl-Test-HasVersion perl-Test-InDistDir perl-Test-Inter perl-Test-LongString perl-Test-Manifest perl-Test-MinimumVersion perl-Test-MockObject perl-Test-MockRandom perl-Test-NoTabs perl-Test-Object perl-Test-Portability-Files perl-Test-Script perl-Test-Simple perl-Test-SubCalls perl-Test-Synopsis perl-Test-TrailingSpace perl-Test-Vars perl-Test-Warn perl-Test-utf8 perl-Test2-Plugin-NoWarnings perl-Test-Simple perl-Test2-Tools-Explain perl-Text-CSV_XS perl-Text-CharWidth perl-Text-Diff perl-Text-Glob perl-Text-Iconv perl-Text-Soundex perl-Text-Unidecode perl-Text-WrapI18N perl-Tie-IxHash perl-Tree-DAG_Node perl-UNIVERSAL-can perl-UNIVERSAL-isa perl-Unicode-EastAsianWidth perl-Unicode-LineBreak perl-Unicode-Map8 perl-Unicode-String perl-Unicode-UTF8 perl-Unix-Syslog perl-Variable-Magic perl-Version-Requirements perl-XML-Catalog perl-XML-DOM perl-XML-Dumper perl-XML-Filter-BufferText perl-XML-Generator perl-XML-Grove perl-XML-Handler-YAWriter perl-XML-Parser-Lite perl-XML-RegExp perl-XML-SAX-Writer perl-XML-Simple perl-XML-TokeParser perl-XML-TreeBuilder perl-XML-Twig perl-XML-Writer perl-XML-XPathEngine perl-XString perl-YAML-LibYAML perl-YAML-PP perl-YAML-Syck perl-boolean perl-gettext perl-inc-latest perl-libnet perl-libxml-perl perl-namespace-autoclean perl-namespace-clean perl-prefork perltidy phodav physfs pinfo pipewire pkcs11-helper plexus-pom plotutils pmdk-convert pngcrush pngnq po4a podman polkit-pkla-compat portreserve potrace powertop ppp pps-tools pptp procmail proj ps_mem psacct psutils ptlib publicsuffix publicsuffix-list pulseaudio puppet pyatspi pykickstart pylint pyparted pyserial python-CommonMark python-IPy python-PyMySQL python-aiodns python-aiohttp python-alsa python-argcomplete python-argparse-manpage python-astroid python-augeas python-azure-sdk python-beautifulsoup4 python-betamax python-blinker python-blivet python-breathe python-cbor2 python-cheetah python-cmd2 python-colorama python-configshell python-cups python-curio python-d2to1 python-dbus-client-gen python-dbus-python-client-gen python-dbus-signature-pyparsing python-ddt python-debtcollector python-dmidecode python-dns python-dtopt python-dulwich python-enchant python-entrypoints python-extras python-faker python-fasteners python-fixtures python-flake8 python-flaky python-flask python-fluidity-sm python-funcsigs python-genshi python-gssapi python-hs-dbus-signature python-httplib2 python-humanize python-hwdata python-inotify python-into-dbus-python python-iso8601 python-isodate python-isort python-itsdangerous python-justbases python-justbytes python-jwcrypto python-kdcproxy python-kerberos python-kmod python-lazy-object-proxy python-ldap python-mccabe python-memcached python-mimeparse python-monotonic python-msal python-msrestazure python-mutagen python-ntlm-auth python-oauth2client python-openstackdocstheme python-oslo-i18n python-oslo-sphinx python-paramiko python-podman-api python-productmd python-pycares python-pydbus python-pymongo python-pyperclip python-pyrsistent python-pytest-flake8 python-pytest-relaxed python-pytest-runner python-pytest-subtests python-pytest-timeout python-pytoml python-qrcode python-rdflib python-recommonmark python-requests-file python-requests-ftp python-requests-kerberos python-requests-toolbelt python-requests_ntlm python-rfc3986 python-rpmfluff python-rtslib python-s3transfer python-semantic_version python-should_dsl python-simpleline python-slip python-smartypants python-sniffio python-soupsieve python-sphinx-epytext python-sphinxcontrib-apidoc python-sphinxcontrib-httpdomain python-sphinxcontrib-jquery python-sphinxygen python-suds python-systemd python-tempita python-testpath python-testresources python-testscenarios python-testtools python-toml python-tornado python-tox python-trio python-typogrify python-uamqp python-unittest2 python-uritemplate python-urwid python-uswid python-varlink python-voluptuous python-waitress python-webencodings python-webtest python-whoosh python-winrm python-xmltodict python-yubico python-zmq python3-mallard-ducktype python3-typed_ast pyusb pywbem pyxattr qhull qpdf qperf qr-code-generator qt5-qtconnectivity qt5-qtsensors qt5-qtserialport quagga raptor2 rarian rasqal rcs rdist re2c realmd rear recode regexp relaxngDatatype rhash rhino rhnlib rust-ripgrep rp-pppoe rpmlint rr rtkit ruby-augeas rubygem-bson rubygem-coderay rubygem-deep_merge rubygem-diff-lcs rubygem-eventmachine rubygem-hocon rubygem-liquid rubygem-maruku rubygem-mongo rubygem-mysql2 rubygem-pkg-config rubygem-puppet-resource_api rubygem-rouge rubygem-rspec-expectations rubygem-rspec-support rubygem-thor rubygem-thread_order rusers rust-cbindgen samba sassist satyr sbc sblim-cim-client2 sblim-cmpi-base sblim-cmpi-devel sblim-cmpi-fsvol sblim-cmpi-network sblim-cmpi-nfsv3 sblim-cmpi-nfsv4 sblim-cmpi-params sblim-cmpi-sysfs sblim-cmpi-syslog sblim-indication_helper sblim-sfcCommon sblim-sfcb sblim-sfcc sblim-testsuite sblim-wbemcli scl-utils scotch screen sdparm serd servletapi4 servletapi5 setserial sgpio shapelib sip skkdic slirp4netns smc-tools sombok sord sound-theme-freedesktop soundtouch sox soxr sparsehash spausedd speex speexdsp spice-protocol spice-vdagent splix sratom star startup-notification stress-ng stunnel subscription-manager suitesparse switcheroo-control systemd-bootchart t1lib t1utils taglib tang targetcli tbb tcl-pgtcl tclx teckit telnet tix tk tlog tmpwatch tn5250 tofrodos trilead-ssh2 tss2 ttmkfdir twolame uchardet ucpp ucs-miscfixed-fonts udftools udica udisks2 uglify-js umoci unicode-emoji unicode-ucd unique3 units upower uriparser urlview usb_modeswitch usb_modeswitch-data usbguard usbmuxd ustr uthash uw-imap v4l-utils vhostmd vino virt-p2v virt-top virt-who vmem volume_key vorbis-tools watchdog wavpack web-assets webrtc-audio-processing whois wireshark woff2 wordnet wpebackend-fdo wsmancli wvdial x3270 xalan-j2 xapian-core xbean xdelta xdg-dbus-proxy xdg-utils xerces-j2 xfconf xfsdump xhtml1-dtds xmldb-api xmlrpc-c xmlunit xorg-x11-drv-libinput xorg-x11-fonts xorg-x11-server xorg-x11-utils xpp2 xpp3 xrestop xterm xz-java yelp-tools yelp-xsl ykclient ypserv z3 zenity zopfli zziplib  \ 
+     SRPM_PACK_LIST=389-ds-base CharLS GConf2 GeoIP GeoIP-GeoLite-data Judy LibRaw ORBit2 openexr PEGTL PyGreSQL sdl12-compat SDL2 SDL_sound SuperLU Xaw3d a52dec accountsservice acpid adcli adobe-mappings-cmap adobe-mappings-pdf advancecomp alsa-firmware alsa-plugins amtk amtterm ansible-freeipa aopalliance apache-commons-beanutils apache-commons-codec apache-commons-collections apache-commons-collections4 apache-commons-compress apache-commons-daemon apache-commons-dbcp apache-commons-digester apache-commons-httpclient apache-commons-io apache-commons-jexl apache-commons-lang apache-commons-net apache-commons-pool apache-commons-pool2 apache-commons-validator apache-commons-vfs apache-parent args4j arptables arpwatch asio aspell-en audiofile babeltrace babl baekmuk-ttf-fonts base64coder bats bcache-tools bcel bea-stax beust-jcommander biosdevname blosc bolt boom-boot booth botan2 breezy bsf buildah bwidget cachefilesd cairomm capnproto capstone cassandra catatonit catch1 cdparanoia cdrdao celt051 certmonger cfitsio cgdcbxd cglib chan cim-schema cjose cldr-emoji-annotation clucene clutter clutter-gst3 clutter-gtk cmake-fedora cogl colorize compat-lua container-exception-logger containernetworking-plugins convmv corosync corosync-qdevice cpp-hocon cppcheck cpptest cpuid crash-ptdump-command cri-o criu crypto-policies cscope custodia dbus-c++ fwupd dcraw deltarpm device-mapper-persistent-data diffstat discount dleyna dleyna-core dmraid docbook-simple docbook-slides docbook-style-dsssl docbook-utils docbook2X docbook5-style-xsl dogtail dotconf dovecot dpkg driverctl dropwatch drpm dumpet dvd+rw-tools dyninst ecj edac-utils efax efi-rpm-macros elinks enca enchant enscript evemu exempi exiv2 fabtests facter fakechroot fence-agents fetchmail fftw filebench flac flashrom flite fltk fonts-rpm-macros foomatic-db freeradius freexl fros fstrm fuse-overlayfs fuse-sshfs fwupd fwupd-efi fxload gavl gconf-editor gcr gdal gdisk generic-logos genwqe-tools geoclue2 geolite2 geronimo-specs ghc-srpm-macros gi-docgen gl-manpages jakarta-annotations glew glm glog gnome-desktop-testing gnome-doc-utils gnome-icon-theme gnome-keyring gnu-getopt gnu-regexp go-rpm-macros gom google-api-python-client google-crosextra-caladea-fonts google-crosextra-carlito-fonts gphoto2 gpm gpsbabel graphene graphite2 gsl gspell gssdp gssntlmssp gstreamer1 gstreamer1-plugins-base gtk-vnc gtkspell gupnp gupnp-av gupnp-dlna gupnp-igd hawtjni hdf hiera highlight hping3 hsakmt httpcomponents-core hunspell-af hunspell-ar hunspell-as hunspell-ast hunspell-az hunspell-be hunspell-bg hunspell-bn hunspell-br hunspell-ca hunspell-cop hunspell-csb hunspell-cv hunspell-cy hunspell-da hunspell-de hunspell-dsb hunspell-el hunspell-eo hunspell-es hunspell-et hunspell-eu hunspell-fa hunspell-fj hunspell-fo hunspell-fr hunspell-fur hunspell-fy hunspell-ga hunspell-gd hunspell-gl hunspell-grc hunspell-gu hunspell-gv hunspell-haw hunspell-hi hunspell-hil hunspell-hr hunspell-hsb hunspell-ht hunspell-hu hunspell-hy hunspell-ia hunspell-id hunspell-is hunspell-it hunspell-kk hunspell-km hunspell-kn hunspell-ko hunspell-ku hunspell-ky hunspell-la hunspell-lb hunspell-ln hunspell-mai hunspell-mg hunspell-mi hunspell-mk hunspell-ml hunspell-mn hunspell-mos hunspell-mr hunspell-ms hunspell-mt hunspell-nds hunspell-ne hunspell-nl hunspell-no hunspell-nr hunspell-nso hunspell-ny hunspell-om hunspell-or hunspell-pa hunspell-pl hunspell-pt hunspell-quh hunspell-ro hunspell-ru hunspell-rw hunspell-se hunspell-shs hunspell-si hunspell-sk hunspell-sl hunspell-smj hunspell-so hunspell-sq hunspell-sr hunspell-sv hunspell-sw hunspell-ta hunspell-te hunspell-tet hunspell-th hunspell-tk hunspell-tl hunspell-tn hunspell-tpi hunspell-ts hunspell-uk hunspell-uz hunspell-ve hunspell-vi hunspell-wa hunspell-xh hunspell-yi hyphen hyphen-as hyphen-bg hyphen-bn hyphen-ca hyphen-da hyphen-de hyphen-el hyphen-es hyphen-fa hyphen-fo hyphen-fr hyphen-ga hyphen-gl hyphen-grc hyphen-gu hyphen-hi hyphen-hsb hyphen-hu hyphen-ia hyphen-id hyphen-is hyphen-it hyphen-kn hyphen-ku hyphen-lt hyphen-mi hyphen-ml hyphen-mn hyphen-mr hyphen-nl hyphen-or hyphen-pa hyphen-pl hyphen-pt hyphen-ro hyphen-ru hyphen-sa hyphen-sk hyphen-sl hyphen-sv hyphen-ta hyphen-te hyphen-tk hyphen-uk ibus ibus-chewing ibus-hangul ibus-kkc ibus-libzhuyin ibus-m17n ibus-rawcode ibus-sayura ibus-table ibus-table-chinese icc-profiles-openicc icon-naming-utils iftop iio-sensor-proxy ilmbase imaptest indent intel-cmt-cat ioping ipa-pgothic-fonts ipcalc iprutils iptstate irssi iso-codes isomd5sum iwd jabberpy jakarta-taglibs-standard jansi jarjar javacc jbigkit jboss-interceptors-1.2-api jdepend jdom2 jfsutils jimtcl jlex jline jose js-jquery jsch jsoncpp jsoup jtidy junitperf jzlib kde-filesystem kernel-rt keybinder3 keycloak-httpd-client-install kronosnet kyotocabinet ladspa lame langtable lasso latencytop lcov leatherman ledmon lensfun lftp libEMF libIDL libXScrnSaver libabw libao libappstream-glib libart_lgpl libasyncns libavc1394 libblockdev libbsd libbytesize libcanberra libcbor libcdio libcdio-paranoia libcdr libchewing libcli libcmis libcmpiutil libcroco libdap libdatrie libdazzle libdbi libdbusmenu libdc1394 libdeflate libdmx libdvdnav libdvdread libeasyfc libecb libeot libepubgen libesmtp libetonyek libexttextcat libfreehand libftdi libgadu libgdither libgee libgee06 libgeotiff libgexiv2 libgit2-glib libglade2 libgovirt libgphoto2 libgsf libgta libgxps libhangul libibcommon libicns libid3tag libiec61883 libieee1284 libimobiledevice libindicator libiodbc libipt libiptcdata libjaylink libjcat libkeepalive libkkc libkkc-data libkml liblangtag libldb liblerc liblockfile liblouis liblqr-1 libmad libmediaart libmikmod libmodman libmodplug libmodulemd1 libmpcdec libmspub libmtp libmusicbrainz5 libmwaw libnet libntlm libnumbertext liboauth libodfgen libofa libogg liboggz liboil libomxil-bellagio libopenraw liboping libosinfo libotf libotr libpagemaker libpaper libpeas libpfm libpinyin libplist libpmemobj-cpp libpng12 libpng15 libproxy libqb libqxp librabbitmq libraqm libraw1394 libreport librevenge librx libsamplerate libsass libsecret libsigc++20 libsigsegv libsmbios libspiro libsrtp libstaroffice snowball libteam libtevent libthai libtheora libtnc libtomcrypt libtommath libtranslit libucil libunicap libuninameslist libusb1 libusbmuxd libutempter libvdpau libverto libvisio libvisual libvorbis libvpx libwnck3 libwpd libwpe libwpg libwps libwvstreams libxklavier libxmlb libyami libyubikey libzmf lilv linuxconsoletools lksctp-tools lockdev logwatch lpsolve lrzsz lua-expat lua-filesystem lua-json lua-lpeg lua-lunitx lua-term luksmeta lv2 lzip m17n-db m17n-lib s-nail mallard-rng man-pages-l10n man-pages-l10n man-pages-l10n man-pages-ja man-pages-l10n man-pages-l10n man-pages-ru man-pages-zh-CN mariadb-connector-odbc marisa maven-parent mcelog mdds meanwhile mecab mecab-ipadic media-player-info memkind metis microcode_ctl microdnf minicom minizip-ng mksh mobile-broadband-provider-info mod_auth_gssapi mod_auth_mellon mod_auth_openidc mod_authnz_pam mod_fcgid mod_http2 mod_intercept_form_submit mod_lookup_identity mod_md mod_security mod_security_crs mod_wsgi mosh mpage mrtg mt-st mtx mutt mythes mythes-bg mythes-ca mythes-cs mythes-da mythes-de mythes-el mythes-en mythes-eo mythes-es mythes-fr mythes-ga mythes-hu mythes-mi mythes-ne mythes-nl mythes-pl mythes-pt mythes-ro mythes-ru mythes-sk mythes-sl mythes-sv mythes-uk neon netcdf netcf netlabel_tools netpbm netsniff-ng nilfs-utils nkf nload nodejs-nodemon nodejs-packaging nss-pam-ldapd numatop nvmetcli objectweb-anttask objenesis ocaml-calendar ocaml-camlp5 ocaml-csv ocaml-curses ocaml-extlib ocaml-fpath ocaml-libvirt ocaml-markup ocaml-tyxml ocaml-xml-light ocaml-zarith ocl-icd oddjob ogdi omping opal opencc opencl-filesystem opencl-headers opencryptoki opendnssec openjade openjpeg openobex openoffice-lv openrdate openslp openssl-ibmpkcs11 openwsman optipng orc oro os-prober osgi-annotation osgi-compendium osgi-core osinfo-db osinfo-db-tools overpass-fonts pacemaker pacrunner pakchois papi paps parallel passim pbzip2 pcp perl-Algorithm-Diff perl-Alien-Build perl-Alien-pkgconf perl-AnyEvent perl-AnyEvent-AIO perl-AnyEvent-BDB perl-App-FatPacker perl-AppConfig perl-Archive-Extract perl-Authen-SASL perl-B-Debug perl-B-Hooks-EndOfScope perl-B-Keywords perl-B-Lint perl-BDB perl-BSD-Resource perl-Browser-Open perl-Business-ISBN perl-Business-ISBN-Data perl-CBOR-XS perl-CSS-Tiny perl-Class-Accessor perl-Class-C3 perl-Class-C3-XS perl-Class-Data-Inheritable perl-Class-Factory-Util perl-Class-Inspector perl-Class-Load perl-Class-Load-XS perl-Class-Method-Modifiers perl-Class-Singleton perl-Class-Tiny perl-Color-ANSI-Util perl-Color-RGB-Util perl-ColorThemeBase-Static perl-ColorThemeRole-ANSI perl-ColorThemeUtil-ANSI perl-ColorThemes-Standard perl-Compress-LZF perl-Compress-Raw-Lzma perl-Config-AutoConf perl-Config-INI perl-Config-INI-Reader-Multiline perl-Config-IniFiles perl-Config-Simple perl-Config-Tiny perl-Const-Fast perl-Convert-ASN1 perl-Convert-Bencode perl-Coro perl-Coro-Multicore perl-Cpanel-JSON-XS perl-Crypt-CBC perl-Crypt-DES perl-Crypt-IDEA perl-Crypt-OpenSSL-Bignum perl-Crypt-OpenSSL-Guess perl-Crypt-OpenSSL-RSA perl-Crypt-OpenSSL-Random perl-DBD-MySQL perl-Data-Munge perl-Data-Peek perl-Data-Section perl-Data-UUID perl-Date-ISO8601 perl-Date-Manip perl-DateTime perl-DateTime-Format-Builder perl-DateTime-Format-DateParse perl-DateTime-Format-HTTP perl-DateTime-Format-IBeat perl-DateTime-Format-ISO8601 perl-DateTime-Format-Mail perl-DateTime-Format-Strptime perl-DateTime-Locale perl-DateTime-TimeZone perl-DateTime-TimeZone-SystemV perl-DateTime-TimeZone-Tzfile perl-Devel-CallChecker perl-Devel-EnforceEncapsulation perl-Devel-Leak perl-Devel-Size perl-Digest-BubbleBabble perl-Digest-CRC perl-Dist-CheckConflicts perl-DynaLoader-Functions perl-EV perl-Email-Address perl-Email-Date-Format perl-Encode-Detect perl-Encode-EUCJPASCII perl-Encode-IMAPUTF7 perl-Env-ShellWords perl-Error perl-Eval-Closure perl-Event perl-Exception-Class perl-ExtUtils-Config perl-ExtUtils-Helpers perl-ExtUtils-InstallPaths perl-ExtUtils-PkgConfig perl-FCGI perl-FFI-CheckLib perl-File-BOM perl-File-BaseDir perl-File-CheckTree perl-File-Copy-Recursive perl-File-DesktopEntry perl-File-Find-Object perl-File-Find-Object-Rule perl-File-Find-Rule perl-File-Find-Rule-Perl perl-File-Inplace perl-File-MimeInfo perl-File-ReadBackwards perl-File-Remove perl-File-ShareDir perl-File-ShareDir-Install perl-File-Slurp perl-File-Slurp-Tiny perl-File-Slurper perl-File-Type perl-File-chdir perl-Font-TTF perl-FreezeThaw perl-GD perl-GD-Barcode perl-GSSAPI perl-Getopt-ArgvFile perl-Graphics-ColorNamesLite-WWW perl-Guard perl-HTML-Tree perl-Hook-LexWrap perl-IO-AIO perl-IO-All perl-IO-CaptureOutput perl-IO-Compress-Lzma perl-IO-Multiplex perl-IO-SessionData perl-IO-Socket-INET6 perl-IPC-Run perl-IPC-Run3 perl-IPC-System-Simple perl-Image-Base perl-Image-Info perl-Image-Xbm perl-Image-Xpm perl-Importer perl-Inline-Files perl-JSON-Color perl-JSON-MaybeXS perl-LDAP perl-LWP-Protocol-https perl-Lingua-EN-Inflect perl-List-MoreUtils-XS perl-Locale-Codes perl-Locale-Maketext-Gettext perl-Locale-Msgfmt perl-Locale-PO perl-Log-Message perl-Log-Message-Simple perl-MIME-Charset perl-MIME-Lite perl-MIME-Types perl-MLDBM perl-MRO-Compat perl-Mail-AuthenticationResults perl-Mail-DKIM perl-Mail-IMAPTalk perl-Mail-SPF perl-MailTools perl-Math-Int64 perl-Mixin-Linewise perl-Module-Build-Tiny perl-Module-Install-AuthorRequires perl-Module-Install-AutoLicense perl-Module-Install-GithubMeta perl-Module-Install-ManifestSkip perl-Module-Install-ReadmeFromPod perl-Module-Install-ReadmeMarkdownFromPod perl-Module-Install-TestBase perl-Module-Load-Util perl-Module-Manifest perl-Module-Manifest-Skip perl-Module-Package perl-Module-Package-Au perl-Module-Pluggable perl-Module-Signature perl-Mojolicious perl-Moo perl-Mozilla-CA perl-Mozilla-LDAP perl-NNTPClient perl-Net-CIDR-Lite perl-Net-DNS perl-Net-DNS-Resolver-Mock perl-Net-DNS-Resolver-Programmable perl-Net-Daemon perl-Net-IMAP-Simple perl-Net-IMAP-Simple-SSL perl-Net-IP perl-Net-LibIDN2 perl-Net-Patricia perl-Net-SMTP-SSL perl-Net-SNMP perl-Net-Telnet perl-Newt perl-Number-Compare perl-Object-Deadly perl-Object-HashBase perl-PAR-Dist perl-PPI perl-PPI-HTML perl-PPIx-QuoteLike perl-PPIx-Regexp perl-PPIx-Utilities perl-Package-Anon perl-Package-Constants perl-Package-DeprecationManager perl-Package-Stash perl-Package-Stash-XS perl-Paper-Specs perl-Parallel-Iterator perl-Params-Classify perl-Params-Validate perl-Params-ValidationCompiler perl-Parse-RecDescent perl-Parse-Yapp perl-Path-Tiny perl-Perl-Critic perl-Perl-Critic-More perl-Perl-MinimumVersion perl-Perl4-CoreLibs perl-PerlIO-gzip perl-PerlIO-utf8_strict perl-PkgConfig-LibPkgConf perl-Pod-Coverage-TrustPod perl-Pod-Escapes perl-Pod-Eventual perl-Pod-LaTeX perl-Pod-Markdown perl-Pod-POM perl-Pod-Plainer perl-Pod-Spell perl-Probe-Perl perl-Razor-Agent perl-Readonly perl-Readonly-XS perl-Ref-Util perl-Ref-Util-XS perl-Regexp-Pattern-Perl perl-Return-MultiLevel perl-Role-Tiny perl-SGMLSpm perl-SNMP_Session perl-Scope-Guard perl-Scope-Upper perl-Socket6 perl-Software-License perl-Sort-Versions perl-Specio perl-Spiffy perl-String-CRC32 perl-String-Format perl-String-Similarity perl-Sub-Info perl-Sub-Uplevel perl-Switch perl-Syntax-Highlight-Engine-Kate perl-Sys-CPU perl-Sys-MemInfo perl-Taint-Runtime perl-Task-Weaken perl-Term-Size-Any perl-Term-Size-Perl perl-Term-Table perl-Term-UI perl-TermReadKey perl-Test-Base perl-Test-CPAN-Meta perl-Test-CPAN-Meta-JSON perl-Test-ClassAPI perl-Test-Differences perl-Test-DistManifest perl-Test-Distribution perl-Test-EOL perl-Test-Exception perl-Test-Exit perl-Test-FailWarnings perl-Test-File perl-Test-File-ShareDir perl-Test-Harness perl-Test-HasVersion perl-Test-InDistDir perl-Test-Inter perl-Test-LongString perl-Test-Manifest perl-Test-MinimumVersion perl-Test-MockObject perl-Test-MockRandom perl-Test-NoTabs perl-Test-Object perl-Test-Portability-Files perl-Test-Script perl-Test-Simple perl-Test-SubCalls perl-Test-Synopsis perl-Test-TrailingSpace perl-Test-Vars perl-Test-Warn perl-Test-utf8 perl-Test2-Plugin-NoWarnings perl-Test-Simple perl-Test2-Tools-Explain perl-Text-CSV_XS perl-Text-CharWidth perl-Text-Diff perl-Text-Glob perl-Text-Iconv perl-Text-Soundex perl-Text-Unidecode perl-Text-WrapI18N perl-Tie-IxHash perl-Tree-DAG_Node perl-UNIVERSAL-can perl-UNIVERSAL-isa perl-Unicode-EastAsianWidth perl-Unicode-LineBreak perl-Unicode-Map8 perl-Unicode-String perl-Unicode-UTF8 perl-Unix-Syslog perl-Variable-Magic perl-Version-Requirements perl-XML-Catalog perl-XML-DOM perl-XML-Dumper perl-XML-Filter-BufferText perl-XML-Generator perl-XML-Grove perl-XML-Handler-YAWriter perl-XML-Parser-Lite perl-XML-RegExp perl-XML-SAX-Writer perl-XML-Simple perl-XML-TokeParser perl-XML-TreeBuilder perl-XML-Twig perl-XML-Writer perl-XML-XPathEngine perl-XString perl-YAML-LibYAML perl-YAML-PP perl-YAML-Syck perl-boolean perl-gettext perl-inc-latest perl-libnet perl-libxml-perl perl-namespace-autoclean perl-namespace-clean perl-prefork perltidy phodav physfs pinfo pipewire pkcs11-helper plexus-pom plotutils pmdk-convert pngcrush pngnq po4a podman polkit-pkla-compat portreserve potrace powertop ppp pps-tools pptp procmail proj ps_mem psacct psutils ptlib publicsuffix publicsuffix-list pulseaudio puppet pyatspi pykickstart pylint pyparted pyserial python-CommonMark python-IPy python-PyMySQL python-aiodns python-aiohttp python-alsa python-argcomplete python-argparse-manpage python-astroid python-augeas python-azure-sdk python-beautifulsoup4 python-betamax python-blinker python-blivet python-breathe python-cbor2 python-cheetah python-cmd2 python-colorama python-configshell python-cups python-curio python-d2to1 python-dbus-client-gen python-dbus-python-client-gen python-dbus-signature-pyparsing python-ddt python-debtcollector python-dmidecode python-dns python-dtopt python-dulwich python-enchant python-entrypoints python-extras python-faker python-fasteners python-fixtures python-flake8 python-flaky python-flask python-fluidity-sm python-funcsigs python-genshi python-gssapi python-hs-dbus-signature python-httplib2 python-humanize python-hwdata python-inotify python-into-dbus-python python-iso8601 python-isodate python-isort python-itsdangerous python-justbases python-justbytes python-jwcrypto python-kdcproxy python-kerberos python-kmod python-lazy-object-proxy python-ldap python-mccabe python-memcached python-mimeparse python-monotonic python-msal python-msrestazure python-mutagen python-ntlm-auth python-oauth2client python-openstackdocstheme python-oslo-i18n python-oslo-sphinx python-paramiko python-podman-api python-productmd python-pycares python-pydbus python-pymongo python-pyperclip python-pyrsistent python-pytest-flake8 python-pytest-relaxed python-pytest-runner python-pytest-subtests python-pytest-timeout python-pytoml python-qrcode python-rdflib python-recommonmark python-requests-file python-requests-ftp python-requests-kerberos python-requests-toolbelt python-requests_ntlm python-rfc3986 python-rpmfluff python-rtslib python-s3transfer python-semantic_version python-should_dsl python-simpleline python-slip python-smartypants python-sniffio python-soupsieve python-sphinx-epytext python-sphinxcontrib-apidoc python-sphinxcontrib-httpdomain python-sphinxcontrib-jquery python-sphinxygen python-suds python-systemd python-tempita python-testpath python-testresources python-testscenarios python-testtools python-toml python-tornado python-tox python-trio python-typogrify python-uamqp python-unittest2 python-uritemplate python-urwid python-uswid python-varlink python-voluptuous python-waitress python-webencodings python-webtest python-whoosh python-winrm python-xmltodict python-yubico python-zmq python3-mallard-ducktype python3-typed_ast pyusb pywbem pyxattr qhull qpdf qperf qr-code-generator qt5-qtconnectivity qt5-qtsensors qt5-qtserialport quagga raptor2 rarian rasqal rcs rdist re2c realmd rear recode regexp relaxngDatatype rhash rhino rhnlib rust-ripgrep rp-pppoe rpmlint rr rtkit ruby-augeas rubygem-bson rubygem-coderay rubygem-deep_merge rubygem-diff-lcs rubygem-eventmachine rubygem-hocon rubygem-liquid rubygem-maruku rubygem-mongo rubygem-mysql2 rubygem-pkg-config rubygem-puppet-resource_api rubygem-rouge rubygem-rspec-expectations rubygem-rspec-support rubygem-thor rubygem-thread_order rusers rust-cbindgen samba sassist satyr sbc sblim-cim-client2 sblim-cmpi-base sblim-cmpi-devel sblim-cmpi-fsvol sblim-cmpi-network sblim-cmpi-nfsv3 sblim-cmpi-nfsv4 sblim-cmpi-params sblim-cmpi-sysfs sblim-cmpi-syslog sblim-indication_helper sblim-sfcCommon sblim-sfcb sblim-sfcc sblim-testsuite sblim-wbemcli scl-utils scotch screen sdparm serd servletapi4 servletapi5 setserial sgpio shapelib sip skkdic slirp4netns smc-tools sombok sord sound-theme-freedesktop soundtouch sox soxr sparsehash spausedd speex speexdsp spice-protocol spice-vdagent splix sratom star startup-notification stress-ng stunnel subscription-manager suitesparse switcheroo-control systemd-bootchart t1lib t1utils taglib tang targetcli tbb tcl-pgtcl tclx teckit telnet tix tk tlog tmpwatch tn5250 tofrodos trilead-ssh2 tss2 ttmkfdir twolame uchardet ucpp ucs-miscfixed-fonts udftools udica udisks2 uglify-js umoci unicode-emoji unicode-ucd unique3 units upower uriparser urlview usb_modeswitch usb_modeswitch-data usbguard usbmuxd ustr uthash uw-imap v4l-utils vhostmd vino virt-p2v virt-top virt-who vmem volume_key vorbis-tools watchdog wavpack web-assets webrtc-audio-processing whois wireshark woff2 wordnet wpebackend-fdo wsmancli wvdial x3270 xalan-j2 xapian-core xbean xdelta xdg-dbus-proxy xdg-utils xerces-j2 xfconf xfsdump xhtml1-dtds xmldb-api xmlrpc-c xmlunit xorg-x11-drv-libinput xorg-x11-fonts xorg-x11-server xorg-x11-utils xpp2 xpp3 xrestop xterm xz-java yelp-tools yelp-xsl ykclient ypserv z3 zenity zopfli zziplib  \ 
+     RUN_CHECK=y \ 
+     SRPM_FILE_SIGNATURE_HANDLING=update \ 
+     DAILY_BUILD_ID=lkg \ 
+     REFRESH_WORKER_CHROOT=y \ 
+     USE_PACKAGE_BUILD_CACHE=y \ 
+     SPECS_DIR=../SPECS-EXTENDED \ 
+     -j 8 \ 
+      
+Now triggering the actual build:
+--------------------------------
+/third_disk/bb04Mar/azurelinux/toolkit/scripts/daily_build.mk:48: Using Daily Build 3-0-20250304
+Running update_manifest.sh as neerajs
+Checking for updates to toolchain_x86_64.txt manifest from https://raw.githubusercontent.com/microsoft/CBL-Mariner/9690c79b8321fa6ded815fb81a014eaa49576fdb/toolkit/resources/manifests/package/toolchain_x86_64.txt
+Manifests are the same, not updating toolchain_x86_64.txt
+Running update_manifest.sh as neerajs
+Checking for updates to pkggen_core_x86_64.txt manifest from https://raw.githubusercontent.com/microsoft/CBL-Mariner/9690c79b8321fa6ded815fb81a014eaa49576fdb/toolkit/resources/manifests/package/pkggen_core_x86_64.txt
+Manifests are the same, not updating pkggen_core_x86_64.txt
+Initializing daily build ID sanitization
+#### Daily build ID changed ('' -> '3-0-20250304') ####
+SUDO_USER is set, running 'go get' as user 'neerajs'
+go: -d flag is deprecated. -d=true is a no-op
+Regenerating daily build repo file from '/third_disk/bb04Mar/azurelinux/toolkit/resources/manifests/package/daily_build_repo.repo.template' to '/third_disk/bb04Mar/azurelinux/build/daily_build_id/daily_build.repo'
+mkdir -p /third_disk/bb04Mar/azurelinux/build/daily_build_id/
+sed 's|{{.DAILY_REPO_NAME}}|daily-repo-3-0-20250304-x86-64|g' /third_disk/bb04Mar/azurelinux/toolkit/resources/manifests/package/daily_build_repo.repo.template > /third_disk/bb04Mar/azurelinux/build/daily_build_id/daily_build.repo
+touch /third_disk/bb04Mar/azurelinux/build/make_status/toolchain_auto_cleanup.flag
+cd /third_disk/bb04Mar/azurelinux/toolkit/tools/ && \
+	go test -ldflags="-X github.com/microsoft/azurelinux/toolkit/tools/internal/exe.ToolkitVersion=3.0.20250305.0020 -X github.com/microsoft/azurelinux/toolkit/tools/pkg/imagecustomizerlib.ToolVersion=0.8.0-dev.20250305.0020+957f80ee6 -X github.com/microsoft/azurelinux/toolkit/tools/internal/exe.DistroNameAbbreviation=azl -X github.com/microsoft/azurelinux/toolkit/tools/internal/exe.DistroMajorVersion=3" -test.short -covermode=atomic -coverprofile=/third_disk/bb04Mar/azurelinux/build/tools/internal.test_coverage ./...
+	github.com/microsoft/azurelinux/toolkit/tools/boilerplate		coverage: 0.0% of statements
+	github.com/microsoft/azurelinux/toolkit/tools/bldtracker		coverage: 0.0% of statements
+	github.com/microsoft/azurelinux/toolkit/tools/containercheck		coverage: 0.0% of statements
+ok  	github.com/microsoft/azurelinux/toolkit/tools/boilerplate/hello	0.014s	coverage: 100.0% of statements
+	github.com/microsoft/azurelinux/toolkit/tools/downloader		coverage: 0.0% of statements
+	github.com/microsoft/azurelinux/toolkit/tools/depsearch		coverage: 0.0% of statements
+	github.com/microsoft/azurelinux/toolkit/tools/graphanalytics		coverage: 0.0% of statements
+	github.com/microsoft/azurelinux/toolkit/tools/grapher		coverage: 0.0% of statements
+	github.com/microsoft/azurelinux/toolkit/tools/graphPreprocessor		coverage: 0.0% of statements
+	github.com/microsoft/azurelinux/toolkit/tools/graphpkgfetcher		coverage: 0.0% of statements
+ok  	github.com/microsoft/azurelinux/toolkit/tools/imageconfigvalidator	0.043s	coverage: 63.6% of statements
+	github.com/microsoft/azurelinux/toolkit/tools/imagecustomizer		coverage: 0.0% of statements
+?   	github.com/microsoft/azurelinux/toolkit/tools/imagegen/attendedinstaller/uitext	[no test files]
+	github.com/microsoft/azurelinux/toolkit/tools/imagegen/attendedinstaller/primitives/navigationbar		coverage: 0.0% of statements
+	github.com/microsoft/azurelinux/toolkit/tools/imagegen/attendedinstaller/primitives/enumfield		coverage: 0.0% of statements
+	github.com/microsoft/azurelinux/toolkit/tools/imagegen/attendedinstaller		coverage: 0.0% of statements
+	github.com/microsoft/azurelinux/toolkit/tools/imagegen/attendedinstaller/uiutils		coverage: 0.0% of statements
+	github.com/microsoft/azurelinux/toolkit/tools/imagegen/attendedinstaller/speakuputils		coverage: 0.0% of statements
+	github.com/microsoft/azurelinux/toolkit/tools/imagegen/attendedinstaller/primitives/customshortcutlist		coverage: 0.0% of statements
+	github.com/microsoft/azurelinux/toolkit/tools/imagegen/attendedinstaller/primitives/progressbar		coverage: 0.0% of statements
+?   	github.com/microsoft/azurelinux/toolkit/tools/imagegen/attendedinstaller/views	[no test files]
+	github.com/microsoft/azurelinux/toolkit/tools/imagegen/attendedinstaller/views/diskview		coverage: 0.0% of statements
+	github.com/microsoft/azurelinux/toolkit/tools/imagegen/attendedinstaller/views/diskview/autopartitionwidget		coverage: 0.0% of statements
+	github.com/microsoft/azurelinux/toolkit/tools/imagegen/attendedinstaller/views/confirmview		coverage: 0.0% of statements
+	github.com/microsoft/azurelinux/toolkit/tools/imagegen/attendedinstaller/views/diskview/manualpartitionwidget		coverage: 0.0% of statements
+	github.com/microsoft/azurelinux/toolkit/tools/imagegen/attendedinstaller/views/eulaview		coverage: 0.0% of statements
+	github.com/microsoft/azurelinux/toolkit/tools/imagegen/attendedinstaller/views/encryptview		coverage: 0.0% of statements
+	github.com/microsoft/azurelinux/toolkit/tools/imagegen/attendedinstaller/views/finishview		coverage: 0.0% of statements
+ok  	github.com/microsoft/azurelinux/toolkit/tools/imagecustomizerapi	0.012s	coverage: 89.5% of statements
+	github.com/microsoft/azurelinux/toolkit/tools/imagegen/attendedinstaller/views/installerview		coverage: 0.0% of statements
+	github.com/microsoft/azurelinux/toolkit/tools/imagegen/attendedinstaller/views/userview		coverage: 0.0% of statements
+	github.com/microsoft/azurelinux/toolkit/tools/imagegen/attendedinstaller/views/progressview		coverage: 0.0% of statements
+	github.com/microsoft/azurelinux/toolkit/tools/imagegen/attendedinstaller/views/installationview		coverage: 0.0% of statements
+ok  	github.com/microsoft/azurelinux/toolkit/tools/imagegen/attendedinstaller/views/hostnameview	0.007s	coverage: 43.8% of statements
+ok  	github.com/microsoft/azurelinux/toolkit/tools/imagegen/configuration	0.029s	coverage: 75.2% of statements
+ok  	github.com/microsoft/azurelinux/toolkit/tools/imagegen/diskutils	0.007s	coverage: 0.0% of statements
+	github.com/microsoft/azurelinux/toolkit/tools/imagepkgfetcher		coverage: 0.0% of statements
+	github.com/microsoft/azurelinux/toolkit/tools/imager		coverage: 0.0% of statements
+	github.com/microsoft/azurelinux/toolkit/tools/internal/buildpipeline		coverage: 0.0% of statements
+	github.com/microsoft/azurelinux/toolkit/tools/internal/azureblobstorage		coverage: 0.0% of statements
+ok  	github.com/microsoft/azurelinux/toolkit/tools/imagegen/installutils	0.061s	coverage: 3.4% of statements
+	github.com/microsoft/azurelinux/toolkit/tools/internal/ccachemanager		coverage: 0.0% of statements
+	github.com/microsoft/azurelinux/toolkit/tools/internal/debugutils		coverage: 0.0% of statements
+	github.com/microsoft/azurelinux/toolkit/tools/internal/directory		coverage: 0.0% of statements
+ok  	github.com/microsoft/azurelinux/toolkit/tools/internal/customizationmacros	0.057s	coverage: 87.5% of statements
+	github.com/microsoft/azurelinux/toolkit/tools/internal/filescanner		coverage: 0.0% of statements
+ok  	github.com/microsoft/azurelinux/toolkit/tools/internal/exe	0.003s	coverage: 5.0% of statements
+ok  	github.com/microsoft/azurelinux/toolkit/tools/internal/file	0.019s	coverage: 35.3% of statements
+	github.com/microsoft/azurelinux/toolkit/tools/internal/jsonutils		coverage: 0.0% of statements
+ok  	github.com/microsoft/azurelinux/toolkit/tools/internal/grub	0.014s	coverage: 89.4% of statements
+ok  	github.com/microsoft/azurelinux/toolkit/tools/internal/logger	0.004s	coverage: 16.8% of statements
+?   	github.com/microsoft/azurelinux/toolkit/tools/internal/packagerepo/repomanager	[no test files]
+	github.com/microsoft/azurelinux/toolkit/tools/internal/packagerepo/repomanager/rpmrepomanager		coverage: 0.0% of statements
+	github.com/microsoft/azurelinux/toolkit/tools/internal/packagerepo/repocloner/rpmrepocloner		coverage: 0.0% of statements
+	github.com/microsoft/azurelinux/toolkit/tools/internal/packagerepo/repocloner		coverage: 0.0% of statements
+	github.com/microsoft/azurelinux/toolkit/tools/internal/packagerepo/repoutils		coverage: 0.0% of statements
+	github.com/microsoft/azurelinux/toolkit/tools/internal/packlist		coverage: 0.0% of statements
+?   	github.com/microsoft/azurelinux/toolkit/tools/internal/resources	[no test files]
+	github.com/microsoft/azurelinux/toolkit/tools/internal/ptrutils		coverage: 0.0% of statements
+	github.com/microsoft/azurelinux/toolkit/tools/internal/shell		coverage: 0.0% of statements
+	github.com/microsoft/azurelinux/toolkit/tools/internal/systemd		coverage: 0.0% of statements
+	github.com/microsoft/azurelinux/toolkit/tools/internal/systemdependency		coverage: 0.0% of statements
+	github.com/microsoft/azurelinux/toolkit/tools/isomaker		coverage: 0.0% of statements
+	github.com/microsoft/azurelinux/toolkit/tools/licensecheck		coverage: 0.0% of statements
+	github.com/microsoft/azurelinux/toolkit/tools/liveinstaller		coverage: 0.0% of statements
+	github.com/microsoft/azurelinux/toolkit/tools/pkg/depsearch		coverage: 0.0% of statements
+	github.com/microsoft/azurelinux/toolkit/tools/osmodifier		coverage: 0.0% of statements
+	github.com/microsoft/azurelinux/toolkit/tools/osmodifierapi		coverage: 0.0% of statements
+	github.com/microsoft/azurelinux/toolkit/tools/pkg/graphanalytics		coverage: 0.0% of statements
+ok  	github.com/microsoft/azurelinux/toolkit/tools/internal/network	2.008s	coverage: 65.8% of statements
+ok  	github.com/microsoft/azurelinux/toolkit/tools/internal/pkggraph	0.040s	coverage: 64.5% of statements
+ok  	github.com/microsoft/azurelinux/toolkit/tools/internal/pkgjson	0.006s	coverage: 92.9% of statements
+ok  	github.com/microsoft/azurelinux/toolkit/tools/internal/randomization	0.262s	coverage: 93.3% of statements
+ok  	github.com/microsoft/azurelinux/toolkit/tools/internal/retry	1.108s	coverage: 100.0% of statements
+ok  	github.com/microsoft/azurelinux/toolkit/tools/internal/rpm	0.242s	coverage: 44.5% of statements
+ok  	github.com/microsoft/azurelinux/toolkit/tools/internal/safechroot	0.044s	coverage: 52.0% of statements
+ok  	github.com/microsoft/azurelinux/toolkit/tools/internal/safeloopback	0.007s	coverage: 0.0% of statements
+ok  	github.com/microsoft/azurelinux/toolkit/tools/internal/safemount	0.006s	coverage: 0.0% of statements
+ok  	github.com/microsoft/azurelinux/toolkit/tools/internal/sliceutils	0.004s	coverage: 48.9% of statements
+ok  	github.com/microsoft/azurelinux/toolkit/tools/internal/storage	0.006s	coverage: 87.5% of statements
+ok  	github.com/microsoft/azurelinux/toolkit/tools/internal/tdnf	0.011s	coverage: 71.9% of statements
+ok  	github.com/microsoft/azurelinux/toolkit/tools/internal/timestamp	0.006s	coverage: 77.4% of statements
+ok  	github.com/microsoft/azurelinux/toolkit/tools/internal/userutils	0.029s	coverage: 35.7% of statements
+ok  	github.com/microsoft/azurelinux/toolkit/tools/internal/versioncompare	0.004s	coverage: 98.3% of statements
+	github.com/microsoft/azurelinux/toolkit/tools/pkg/isomakerlib		coverage: 0.0% of statements
+	github.com/microsoft/azurelinux/toolkit/tools/pkg/profile		coverage: 0.0% of statements
+	github.com/microsoft/azurelinux/toolkit/tools/pkg/osmodifierlib		coverage: 0.0% of statements
+	github.com/microsoft/azurelinux/toolkit/tools/pkg/simpletoolchroot		coverage: 0.0% of statements
+	github.com/microsoft/azurelinux/toolkit/tools/pkg/specarchchecker		coverage: 0.0% of statements
+ok  	github.com/microsoft/azurelinux/toolkit/tools/pkg/imagecustomizerlib	0.137s	coverage: 15.3% of statements
+	github.com/microsoft/azurelinux/toolkit/tools/pkg/specreaderutils		coverage: 0.0% of statements
+	github.com/microsoft/azurelinux/toolkit/tools/repoquerywrapper		coverage: 0.0% of statements
+	github.com/microsoft/azurelinux/toolkit/tools/precacher		coverage: 0.0% of statements
+	github.com/microsoft/azurelinux/toolkit/tools/pkgworker		coverage: 0.0% of statements
+	github.com/microsoft/azurelinux/toolkit/tools/roast		coverage: 0.0% of statements
+	github.com/microsoft/azurelinux/toolkit/tools/rpmssnapshot		coverage: 0.0% of statements
+	github.com/microsoft/azurelinux/toolkit/tools/roast/formats		coverage: 0.0% of statements
+	github.com/microsoft/azurelinux/toolkit/tools/scheduler/buildagents		coverage: 0.0% of statements
+	github.com/microsoft/azurelinux/toolkit/tools/scheduler		coverage: 0.0% of statements
+	github.com/microsoft/azurelinux/toolkit/tools/specarchchecker		coverage: 0.0% of statements
+	github.com/microsoft/azurelinux/toolkit/tools/scheduler/schedulerutils		coverage: 0.0% of statements
+	github.com/microsoft/azurelinux/toolkit/tools/specreader		coverage: 0.0% of statements
+	github.com/microsoft/azurelinux/toolkit/tools/validatechroot		coverage: 0.0% of statements
+	github.com/microsoft/azurelinux/toolkit/tools/srpmpacker		coverage: 0.0% of statements
+ok  	github.com/microsoft/azurelinux/toolkit/tools/pkg/licensecheck	3.191s	coverage: 51.5% of statements
+ok  	github.com/microsoft/azurelinux/toolkit/tools/pkg/licensecheck/licensecheckformat	0.005s	coverage: 100.0% of statements
+ok  	github.com/microsoft/azurelinux/toolkit/tools/pkg/rpmssnapshot	0.005s	coverage: 11.3% of statements
+cd /third_disk/bb04Mar/azurelinux/toolkit/tools/downloader && \
+	go test -ldflags="-X github.com/microsoft/azurelinux/toolkit/tools/internal/exe.ToolkitVersion=3.0.20250305.0020 -X github.com/microsoft/azurelinux/toolkit/tools/pkg/imagecustomizerlib.ToolVersion=0.8.0-dev.20250305.0020+957f80ee6 -X github.com/microsoft/azurelinux/toolkit/tools/internal/exe.DistroNameAbbreviation=azl -X github.com/microsoft/azurelinux/toolkit/tools/internal/exe.DistroMajorVersion=3" -test.short -covermode=atomic -coverprofile=/third_disk/bb04Mar/azurelinux/build/tools/downloader.test_coverage ./... && \
+	CGO_ENABLED=0 go build \
+		-ldflags="-X github.com/microsoft/azurelinux/toolkit/tools/internal/exe.ToolkitVersion=3.0.20250305.0020 -X github.com/microsoft/azurelinux/toolkit/tools/pkg/imagecustomizerlib.ToolVersion=0.8.0-dev.20250305.0020+957f80ee6 -X github.com/microsoft/azurelinux/toolkit/tools/internal/exe.DistroNameAbbreviation=azl -X github.com/microsoft/azurelinux/toolkit/tools/internal/exe.DistroMajorVersion=3" \
+		-tags prod \
+		-o /third_disk/bb04Mar/azurelinux/toolkit/out/tools
+cd /third_disk/bb04Mar/azurelinux/toolkit/tools/containercheck && \
+	go test -ldflags="-X github.com/microsoft/azurelinux/toolkit/tools/internal/exe.ToolkitVersion=3.0.20250305.0020 -X github.com/microsoft/azurelinux/toolkit/tools/pkg/imagecustomizerlib.ToolVersion=0.8.0-dev.20250305.0020+957f80ee6 -X github.com/microsoft/azurelinux/toolkit/tools/internal/exe.DistroNameAbbreviation=azl -X github.com/microsoft/azurelinux/toolkit/tools/internal/exe.DistroMajorVersion=3" -test.short -covermode=atomic -coverprofile=/third_disk/bb04Mar/azurelinux/build/tools/containercheck.test_coverage ./... && \
+	CGO_ENABLED=0 go build \
+		-ldflags="-X github.com/microsoft/azurelinux/toolkit/tools/internal/exe.ToolkitVersion=3.0.20250305.0020 -X github.com/microsoft/azurelinux/toolkit/tools/pkg/imagecustomizerlib.ToolVersion=0.8.0-dev.20250305.0020+957f80ee6 -X github.com/microsoft/azurelinux/toolkit/tools/internal/exe.DistroNameAbbreviation=azl -X github.com/microsoft/azurelinux/toolkit/tools/internal/exe.DistroMajorVersion=3" \
+		-tags prod \
+		-o /third_disk/bb04Mar/azurelinux/toolkit/out/tools
+cd /third_disk/bb04Mar/azurelinux/toolkit/tools/specreader && \
+	go test -ldflags="-X github.com/microsoft/azurelinux/toolkit/tools/internal/exe.ToolkitVersion=3.0.20250305.0020 -X github.com/microsoft/azurelinux/toolkit/tools/pkg/imagecustomizerlib.ToolVersion=0.8.0-dev.20250305.0020+957f80ee6 -X github.com/microsoft/azurelinux/toolkit/tools/internal/exe.DistroNameAbbreviation=azl -X github.com/microsoft/azurelinux/toolkit/tools/internal/exe.DistroMajorVersion=3" -test.short -covermode=atomic -coverprofile=/third_disk/bb04Mar/azurelinux/build/tools/specreader.test_coverage ./... && \
+	CGO_ENABLED=0 go build \
+		-ldflags="-X github.com/microsoft/azurelinux/toolkit/tools/internal/exe.ToolkitVersion=3.0.20250305.0020 -X github.com/microsoft/azurelinux/toolkit/tools/pkg/imagecustomizerlib.ToolVersion=0.8.0-dev.20250305.0020+957f80ee6 -X github.com/microsoft/azurelinux/toolkit/tools/internal/exe.DistroNameAbbreviation=azl -X github.com/microsoft/azurelinux/toolkit/tools/internal/exe.DistroMajorVersion=3" \
+		-tags prod \
+		-o /third_disk/bb04Mar/azurelinux/toolkit/out/tools
+cd /third_disk/bb04Mar/azurelinux/toolkit/tools/grapher && \
+	go test -ldflags="-X github.com/microsoft/azurelinux/toolkit/tools/internal/exe.ToolkitVersion=3.0.20250305.0020 -X github.com/microsoft/azurelinux/toolkit/tools/pkg/imagecustomizerlib.ToolVersion=0.8.0-dev.20250305.0020+957f80ee6 -X github.com/microsoft/azurelinux/toolkit/tools/internal/exe.DistroNameAbbreviation=azl -X github.com/microsoft/azurelinux/toolkit/tools/internal/exe.DistroMajorVersion=3" -test.short -covermode=atomic -coverprofile=/third_disk/bb04Mar/azurelinux/build/tools/grapher.test_coverage ./... && \
+	CGO_ENABLED=0 go build \
+		-ldflags="-X github.com/microsoft/azurelinux/toolkit/tools/internal/exe.ToolkitVersion=3.0.20250305.0020 -X github.com/microsoft/azurelinux/toolkit/tools/pkg/imagecustomizerlib.ToolVersion=0.8.0-dev.20250305.0020+957f80ee6 -X github.com/microsoft/azurelinux/toolkit/tools/internal/exe.DistroNameAbbreviation=azl -X github.com/microsoft/azurelinux/toolkit/tools/internal/exe.DistroMajorVersion=3" \
+		-tags prod \
+		-o /third_disk/bb04Mar/azurelinux/toolkit/out/tools
+cd /third_disk/bb04Mar/azurelinux/toolkit/tools/graphpkgfetcher && \
+	go test -ldflags="-X github.com/microsoft/azurelinux/toolkit/tools/internal/exe.ToolkitVersion=3.0.20250305.0020 -X github.com/microsoft/azurelinux/toolkit/tools/pkg/imagecustomizerlib.ToolVersion=0.8.0-dev.20250305.0020+957f80ee6 -X github.com/microsoft/azurelinux/toolkit/tools/internal/exe.DistroNameAbbreviation=azl -X github.com/microsoft/azurelinux/toolkit/tools/internal/exe.DistroMajorVersion=3" -test.short -covermode=atomic -coverprofile=/third_disk/bb04Mar/azurelinux/build/tools/graphpkgfetcher.test_coverage ./... && \
+	CGO_ENABLED=0 go build \
+		-ldflags="-X github.com/microsoft/azurelinux/toolkit/tools/internal/exe.ToolkitVersion=3.0.20250305.0020 -X github.com/microsoft/azurelinux/toolkit/tools/pkg/imagecustomizerlib.ToolVersion=0.8.0-dev.20250305.0020+957f80ee6 -X github.com/microsoft/azurelinux/toolkit/tools/internal/exe.DistroNameAbbreviation=azl -X github.com/microsoft/azurelinux/toolkit/tools/internal/exe.DistroMajorVersion=3" \
+		-tags prod \
+		-o /third_disk/bb04Mar/azurelinux/toolkit/out/tools
+cd /third_disk/bb04Mar/azurelinux/toolkit/tools/precacher && \
+	go test -ldflags="-X github.com/microsoft/azurelinux/toolkit/tools/internal/exe.ToolkitVersion=3.0.20250305.0020 -X github.com/microsoft/azurelinux/toolkit/tools/pkg/imagecustomizerlib.ToolVersion=0.8.0-dev.20250305.0020+957f80ee6 -X github.com/microsoft/azurelinux/toolkit/tools/internal/exe.DistroNameAbbreviation=azl -X github.com/microsoft/azurelinux/toolkit/tools/internal/exe.DistroMajorVersion=3" -test.short -covermode=atomic -coverprofile=/third_disk/bb04Mar/azurelinux/build/tools/precacher.test_coverage ./... && \
+	CGO_ENABLED=0 go build \
+		-ldflags="-X github.com/microsoft/azurelinux/toolkit/tools/internal/exe.ToolkitVersion=3.0.20250305.0020 -X github.com/microsoft/azurelinux/toolkit/tools/pkg/imagecustomizerlib.ToolVersion=0.8.0-dev.20250305.0020+957f80ee6 -X github.com/microsoft/azurelinux/toolkit/tools/internal/exe.DistroNameAbbreviation=azl -X github.com/microsoft/azurelinux/toolkit/tools/internal/exe.DistroMajorVersion=3" \
+		-tags prod \
+		-o /third_disk/bb04Mar/azurelinux/toolkit/out/tools
+cd /third_disk/bb04Mar/azurelinux/toolkit/tools/rpmssnapshot && \
+	go test -ldflags="-X github.com/microsoft/azurelinux/toolkit/tools/internal/exe.ToolkitVersion=3.0.20250305.0020 -X github.com/microsoft/azurelinux/toolkit/tools/pkg/imagecustomizerlib.ToolVersion=0.8.0-dev.20250305.0020+957f80ee6 -X github.com/microsoft/azurelinux/toolkit/tools/internal/exe.DistroNameAbbreviation=azl -X github.com/microsoft/azurelinux/toolkit/tools/internal/exe.DistroMajorVersion=3" -test.short -covermode=atomic -coverprofile=/third_disk/bb04Mar/azurelinux/build/tools/rpmssnapshot.test_coverage ./... && \
+	CGO_ENABLED=0 go build \
+		-ldflags="-X github.com/microsoft/azurelinux/toolkit/tools/internal/exe.ToolkitVersion=3.0.20250305.0020 -X github.com/microsoft/azurelinux/toolkit/tools/pkg/imagecustomizerlib.ToolVersion=0.8.0-dev.20250305.0020+957f80ee6 -X github.com/microsoft/azurelinux/toolkit/tools/internal/exe.DistroNameAbbreviation=azl -X github.com/microsoft/azurelinux/toolkit/tools/internal/exe.DistroMajorVersion=3" \
+		-tags prod \
+		-o /third_disk/bb04Mar/azurelinux/toolkit/out/tools
+cd /third_disk/bb04Mar/azurelinux/toolkit/tools/graphPreprocessor && \
+	go test -ldflags="-X github.com/microsoft/azurelinux/toolkit/tools/internal/exe.ToolkitVersion=3.0.20250305.0020 -X github.com/microsoft/azurelinux/toolkit/tools/pkg/imagecustomizerlib.ToolVersion=0.8.0-dev.20250305.0020+957f80ee6 -X github.com/microsoft/azurelinux/toolkit/tools/internal/exe.DistroNameAbbreviation=azl -X github.com/microsoft/azurelinux/toolkit/tools/internal/exe.DistroMajorVersion=3" -test.short -covermode=atomic -coverprofile=/third_disk/bb04Mar/azurelinux/build/tools/graphPreprocessor.test_coverage ./... && \
+	CGO_ENABLED=0 go build \
+		-ldflags="-X github.com/microsoft/azurelinux/toolkit/tools/internal/exe.ToolkitVersion=3.0.20250305.0020 -X github.com/microsoft/azurelinux/toolkit/tools/pkg/imagecustomizerlib.ToolVersion=0.8.0-dev.20250305.0020+957f80ee6 -X github.com/microsoft/azurelinux/toolkit/tools/internal/exe.DistroNameAbbreviation=azl -X github.com/microsoft/azurelinux/toolkit/tools/internal/exe.DistroMajorVersion=3" \
+		-tags prod \
+		-o /third_disk/bb04Mar/azurelinux/toolkit/out/tools
+	github.com/microsoft/azurelinux/toolkit/tools/containercheck		coverage: 0.0% of statements
+	github.com/microsoft/azurelinux/toolkit/tools/downloader		coverage: 0.0% of statements
+	github.com/microsoft/azurelinux/toolkit/tools/rpmssnapshot		coverage: 0.0% of statements
+	github.com/microsoft/azurelinux/toolkit/tools/precacher		coverage: 0.0% of statements
+	github.com/microsoft/azurelinux/toolkit/tools/graphPreprocessor		coverage: 0.0% of statements
+	github.com/microsoft/azurelinux/toolkit/tools/grapher		coverage: 0.0% of statements
+cd /third_disk/bb04Mar/azurelinux/toolkit/tools/scheduler && \
+	go test -ldflags="-X github.com/microsoft/azurelinux/toolkit/tools/internal/exe.ToolkitVersion=3.0.20250305.0020 -X github.com/microsoft/azurelinux/toolkit/tools/pkg/imagecustomizerlib.ToolVersion=0.8.0-dev.20250305.0020+957f80ee6 -X github.com/microsoft/azurelinux/toolkit/tools/internal/exe.DistroNameAbbreviation=azl -X github.com/microsoft/azurelinux/toolkit/tools/internal/exe.DistroMajorVersion=3" -test.short -covermode=atomic -coverprofile=/third_disk/bb04Mar/azurelinux/build/tools/scheduler.test_coverage ./... && \
+	CGO_ENABLED=0 go build \
+		-ldflags="-X github.com/microsoft/azurelinux/toolkit/tools/internal/exe.ToolkitVersion=3.0.20250305.0020 -X github.com/microsoft/azurelinux/toolkit/tools/pkg/imagecustomizerlib.ToolVersion=0.8.0-dev.20250305.0020+957f80ee6 -X github.com/microsoft/azurelinux/toolkit/tools/internal/exe.DistroNameAbbreviation=azl -X github.com/microsoft/azurelinux/toolkit/tools/internal/exe.DistroMajorVersion=3" \
+		-tags prod \
+		-o /third_disk/bb04Mar/azurelinux/toolkit/out/tools
+cd /third_disk/bb04Mar/azurelinux/toolkit/tools/pkgworker && \
+	go test -ldflags="-X github.com/microsoft/azurelinux/toolkit/tools/internal/exe.ToolkitVersion=3.0.20250305.0020 -X github.com/microsoft/azurelinux/toolkit/tools/pkg/imagecustomizerlib.ToolVersion=0.8.0-dev.20250305.0020+957f80ee6 -X github.com/microsoft/azurelinux/toolkit/tools/internal/exe.DistroNameAbbreviation=azl -X github.com/microsoft/azurelinux/toolkit/tools/internal/exe.DistroMajorVersion=3" -test.short -covermode=atomic -coverprofile=/third_disk/bb04Mar/azurelinux/build/tools/pkgworker.test_coverage ./... && \
+	CGO_ENABLED=0 go build \
+		-ldflags="-X github.com/microsoft/azurelinux/toolkit/tools/internal/exe.ToolkitVersion=3.0.20250305.0020 -X github.com/microsoft/azurelinux/toolkit/tools/pkg/imagecustomizerlib.ToolVersion=0.8.0-dev.20250305.0020+957f80ee6 -X github.com/microsoft/azurelinux/toolkit/tools/internal/exe.DistroNameAbbreviation=azl -X github.com/microsoft/azurelinux/toolkit/tools/internal/exe.DistroMajorVersion=3" \
+		-tags prod \
+		-o /third_disk/bb04Mar/azurelinux/toolkit/out/tools
+	github.com/microsoft/azurelinux/toolkit/tools/graphpkgfetcher		coverage: 0.0% of statements
+	github.com/microsoft/azurelinux/toolkit/tools/specreader		coverage: 0.0% of statements
+cd /third_disk/bb04Mar/azurelinux/toolkit/tools/srpmpacker && \
+	go test -ldflags="-X github.com/microsoft/azurelinux/toolkit/tools/internal/exe.ToolkitVersion=3.0.20250305.0020 -X github.com/microsoft/azurelinux/toolkit/tools/pkg/imagecustomizerlib.ToolVersion=0.8.0-dev.20250305.0020+957f80ee6 -X github.com/microsoft/azurelinux/toolkit/tools/internal/exe.DistroNameAbbreviation=azl -X github.com/microsoft/azurelinux/toolkit/tools/internal/exe.DistroMajorVersion=3" -test.short -covermode=atomic -coverprofile=/third_disk/bb04Mar/azurelinux/build/tools/srpmpacker.test_coverage ./... && \
+	CGO_ENABLED=0 go build \
+		-ldflags="-X github.com/microsoft/azurelinux/toolkit/tools/internal/exe.ToolkitVersion=3.0.20250305.0020 -X github.com/microsoft/azurelinux/toolkit/tools/pkg/imagecustomizerlib.ToolVersion=0.8.0-dev.20250305.0020+957f80ee6 -X github.com/microsoft/azurelinux/toolkit/tools/internal/exe.DistroNameAbbreviation=azl -X github.com/microsoft/azurelinux/toolkit/tools/internal/exe.DistroMajorVersion=3" \
+		-tags prod \
+		-o /third_disk/bb04Mar/azurelinux/toolkit/out/tools
+	github.com/microsoft/azurelinux/toolkit/tools/srpmpacker		coverage: 0.0% of statements
+	github.com/microsoft/azurelinux/toolkit/tools/pkgworker		coverage: 0.0% of statements
+	github.com/microsoft/azurelinux/toolkit/tools/scheduler		coverage: 0.0% of statements
+	github.com/microsoft/azurelinux/toolkit/tools/scheduler/buildagents		coverage: 0.0% of statements
+	github.com/microsoft/azurelinux/toolkit/tools/scheduler/schedulerutils		coverage: 0.0% of statements
+Downloading toolchain RPM: filesystem-1.1-21.azl3.x86_64.rpm
+Downloading toolchain RPM: kernel-headers-6.6.76.1-2.azl3.noarch.rpm
+Downloading toolchain RPM: glibc-2.38-9.azl3.x86_64.rpm
+Downloading toolchain RPM: glibc-devel-2.38-9.azl3.x86_64.rpm
+Downloading toolchain RPM: glibc-i18n-2.38-9.azl3.x86_64.rpm
+Downloading toolchain RPM: glibc-iconv-2.38-9.azl3.x86_64.rpm
+Downloading toolchain RPM: glibc-lang-2.38-9.azl3.x86_64.rpm
+Downloading toolchain RPM: glibc-locales-all-2.38-9.azl3.x86_64.rpm
+Downloading toolchain RPM: glibc-nscd-2.38-9.azl3.x86_64.rpm
+Downloading toolchain RPM: glibc-tools-2.38-9.azl3.x86_64.rpm
+Downloading toolchain RPM: zlib-1.3.1-1.azl3.x86_64.rpm
+Downloading toolchain RPM: zlib-devel-1.3.1-1.azl3.x86_64.rpm
+Downloading toolchain RPM: file-devel-5.45-1.azl3.x86_64.rpm
+Downloading toolchain RPM: file-5.45-1.azl3.x86_64.rpm
+Downloading toolchain RPM: file-libs-5.45-1.azl3.x86_64.rpm
+Downloading toolchain RPM: binutils-2.41-4.azl3.x86_64.rpm
+Downloading toolchain RPM: binutils-devel-2.41-4.azl3.x86_64.rpm
+Downloading toolchain RPM: gmp-6.3.0-1.azl3.x86_64.rpm
+Downloading toolchain RPM: gmp-devel-6.3.0-1.azl3.x86_64.rpm
+Downloading toolchain RPM: mpfr-4.2.1-1.azl3.x86_64.rpm
+Downloading toolchain RPM: mpfr-devel-4.2.1-1.azl3.x86_64.rpm
+Downloading toolchain RPM: libmetalink-0.1.3-1.azl3.x86_64.rpm
+Downloading toolchain RPM: libmpc-1.3.1-1.azl3.x86_64.rpm
+Downloading toolchain RPM: libgcc-13.2.0-7.azl3.x86_64.rpm
+Downloading toolchain RPM: libgcc-atomic-13.2.0-7.azl3.x86_64.rpm
+Downloading toolchain RPM: libgcc-devel-13.2.0-7.azl3.x86_64.rpm
+Downloading toolchain RPM: libstdc++-13.2.0-7.azl3.x86_64.rpm
+Downloading toolchain RPM: libstdc++-devel-13.2.0-7.azl3.x86_64.rpm
+Downloading toolchain RPM: libgomp-13.2.0-7.azl3.x86_64.rpm
+Downloading toolchain RPM: libgomp-devel-13.2.0-7.azl3.x86_64.rpm
+Downloading toolchain RPM: gcc-13.2.0-7.azl3.x86_64.rpm
+Downloading toolchain RPM: gcc-c++-13.2.0-7.azl3.x86_64.rpm
+Downloading toolchain RPM: libpkgconf-2.0.2-1.azl3.x86_64.rpm
+Downloading toolchain RPM: pkgconf-2.0.2-1.azl3.x86_64.rpm
+Downloading toolchain RPM: pkgconf-m4-2.0.2-1.azl3.noarch.rpm
+Downloading toolchain RPM: pkgconf-pkg-config-2.0.2-1.azl3.x86_64.rpm
+Downloading toolchain RPM: ncurses-6.4-2.azl3.x86_64.rpm
+Downloading toolchain RPM: ncurses-compat-6.4-2.azl3.x86_64.rpm
+Downloading toolchain RPM: ncurses-devel-6.4-2.azl3.x86_64.rpm
+Downloading toolchain RPM: ncurses-libs-6.4-2.azl3.x86_64.rpm
+Downloading toolchain RPM: ncurses-term-6.4-2.azl3.x86_64.rpm
+Downloading toolchain RPM: readline-8.2-1.azl3.x86_64.rpm
+Downloading toolchain RPM: readline-devel-8.2-1.azl3.x86_64.rpm
+Downloading toolchain RPM: libattr-2.5.2-1.azl3.x86_64.rpm
+Downloading toolchain RPM: attr-2.5.2-1.azl3.x86_64.rpm
+Downloading toolchain RPM: libacl-2.3.1-2.azl3.x86_64.rpm
+Downloading toolchain RPM: coreutils-9.4-6.azl3.x86_64.rpm
+Downloading toolchain RPM: coreutils-lang-9.4-6.azl3.x86_64.rpm
+Downloading toolchain RPM: bash-5.2.15-3.azl3.x86_64.rpm
+Downloading toolchain RPM: bash-devel-5.2.15-3.azl3.x86_64.rpm
+Downloading toolchain RPM: bash-lang-5.2.15-3.azl3.x86_64.rpm
+Downloading toolchain RPM: bzip2-1.0.8-1.azl3.x86_64.rpm
+Downloading toolchain RPM: bzip2-devel-1.0.8-1.azl3.x86_64.rpm
+Downloading toolchain RPM: bzip2-libs-1.0.8-1.azl3.x86_64.rpm
+Downloading toolchain RPM: sed-4.9-1.azl3.x86_64.rpm
+Downloading toolchain RPM: sed-lang-4.9-1.azl3.x86_64.rpm
+Downloading toolchain RPM: procps-ng-4.0.4-1.azl3.x86_64.rpm
+Downloading toolchain RPM: procps-ng-devel-4.0.4-1.azl3.x86_64.rpm
+Downloading toolchain RPM: procps-ng-lang-4.0.4-1.azl3.x86_64.rpm
+Downloading toolchain RPM: m4-1.4.19-2.azl3.x86_64.rpm
+Downloading toolchain RPM: grep-3.11-2.azl3.x86_64.rpm
+Downloading toolchain RPM: grep-lang-3.11-2.azl3.x86_64.rpm
+Downloading toolchain RPM: diffutils-3.10-1.azl3.x86_64.rpm
+Downloading toolchain RPM: gawk-5.2.2-1.azl3.x86_64.rpm
+Downloading toolchain RPM: findutils-4.9.0-1.azl3.x86_64.rpm
+Downloading toolchain RPM: findutils-lang-4.9.0-1.azl3.x86_64.rpm
+Downloading toolchain RPM: gettext-0.22-1.azl3.x86_64.rpm
+Downloading toolchain RPM: gzip-1.13-1.azl3.x86_64.rpm
+Downloading toolchain RPM: make-4.4.1-2.azl3.x86_64.rpm
+Downloading toolchain RPM: patch-2.7.6-9.azl3.x86_64.rpm
+Downloading toolchain RPM: libcap-ng-0.8.4-1.azl3.x86_64.rpm
+Downloading toolchain RPM: libcap-ng-devel-0.8.4-1.azl3.x86_64.rpm
+Downloading toolchain RPM: util-linux-2.40.2-1.azl3.x86_64.rpm
+Downloading toolchain RPM: util-linux-devel-2.40.2-1.azl3.x86_64.rpm
+Downloading toolchain RPM: util-linux-libs-2.40.2-1.azl3.x86_64.rpm
+Downloading toolchain RPM: tar-1.35-1.azl3.x86_64.rpm
+Downloading toolchain RPM: xz-5.4.4-1.azl3.x86_64.rpm
+Downloading toolchain RPM: xz-devel-5.4.4-1.azl3.x86_64.rpm
+Downloading toolchain RPM: xz-lang-5.4.4-1.azl3.x86_64.rpm
+Downloading toolchain RPM: xz-libs-5.4.4-1.azl3.x86_64.rpm
+Downloading toolchain RPM: zstd-1.5.5-2.azl3.x86_64.rpm
+Downloading toolchain RPM: zstd-devel-1.5.5-2.azl3.x86_64.rpm
+Downloading toolchain RPM: zstd-libs-1.5.5-2.azl3.x86_64.rpm
+Downloading toolchain RPM: libtool-2.4.7-1.azl3.x86_64.rpm
+Downloading toolchain RPM: flex-2.6.4-7.azl3.x86_64.rpm
+Downloading toolchain RPM: flex-devel-2.6.4-7.azl3.x86_64.rpm
+Downloading toolchain RPM: bison-3.8.2-1.azl3.x86_64.rpm
+Downloading toolchain RPM: popt-1.19-1.azl3.x86_64.rpm
+Downloading toolchain RPM: popt-devel-1.19-1.azl3.x86_64.rpm
+Downloading toolchain RPM: popt-lang-1.19-1.azl3.x86_64.rpm
+Downloading toolchain RPM: sqlite-3.44.0-1.azl3.x86_64.rpm
+Downloading toolchain RPM: sqlite-devel-3.44.0-1.azl3.x86_64.rpm
+Downloading toolchain RPM: sqlite-libs-3.44.0-1.azl3.x86_64.rpm
+Downloading toolchain RPM: elfutils-0.189-3.azl3.x86_64.rpm
+Downloading toolchain RPM: elfutils-default-yama-scope-0.189-3.azl3.noarch.rpm
+Downloading toolchain RPM: elfutils-devel-0.189-3.azl3.x86_64.rpm
+Downloading toolchain RPM: elfutils-devel-static-0.189-3.azl3.x86_64.rpm
+Downloading toolchain RPM: elfutils-libelf-0.189-3.azl3.x86_64.rpm
+Downloading toolchain RPM: elfutils-libelf-devel-0.189-3.azl3.x86_64.rpm
+Downloading toolchain RPM: elfutils-libelf-devel-static-0.189-3.azl3.x86_64.rpm
+Downloading toolchain RPM: elfutils-libelf-lang-0.189-3.azl3.x86_64.rpm
+Downloading toolchain RPM: expat-2.6.3-2.azl3.x86_64.rpm
+Downloading toolchain RPM: expat-devel-2.6.3-2.azl3.x86_64.rpm
+Downloading toolchain RPM: expat-libs-2.6.3-2.azl3.x86_64.rpm
+Downloading toolchain RPM: libpipeline-1.5.7-1.azl3.x86_64.rpm
+Downloading toolchain RPM: libpipeline-devel-1.5.7-1.azl3.x86_64.rpm
+Downloading toolchain RPM: gdbm-1.23-1.azl3.x86_64.rpm
+Downloading toolchain RPM: gdbm-devel-1.23-1.azl3.x86_64.rpm
+Downloading toolchain RPM: gdbm-lang-1.23-1.azl3.x86_64.rpm
+Downloading toolchain RPM: perl-B-1.88-506.azl3.x86_64.rpm
+Downloading toolchain RPM: perl-Carp-1.54-506.azl3.noarch.rpm
+Downloading toolchain RPM: perl-Class-Struct-0.68-506.azl3.noarch.rpm
+Downloading toolchain RPM: perl-Data-Dumper-2.188-506.azl3.x86_64.rpm
+Downloading toolchain RPM: perl-DynaLoader-1.54-506.azl3.x86_64.rpm
+Downloading toolchain RPM: perl-Encode-3.19-506.azl3.x86_64.rpm
+Downloading toolchain RPM: perl-Errno-1.37-506.azl3.x86_64.rpm
+Downloading toolchain RPM: perl-Exporter-5.77-506.azl3.noarch.rpm
+Downloading toolchain RPM: perl-Fcntl-1.15-506.azl3.x86_64.rpm
+Downloading toolchain RPM: perl-File-Basename-2.86-506.azl3.noarch.rpm
+Downloading toolchain RPM: perl-File-Compare-1.100.700-506.azl3.noarch.rpm
+Downloading toolchain RPM: perl-File-Copy-2.41-506.azl3.noarch.rpm
+Downloading toolchain RPM: perl-File-Path-2.18-506.azl3.noarch.rpm
+Downloading toolchain RPM: perl-File-Temp-0.231.100-506.azl3.noarch.rpm
+Downloading toolchain RPM: perl-File-stat-1.13-506.azl3.noarch.rpm
+Downloading toolchain RPM: perl-FileHandle-2.05-506.azl3.noarch.rpm
+Downloading toolchain RPM: perl-Getopt-Long-2.54-506.azl3.noarch.rpm
+Downloading toolchain RPM: perl-Getopt-Std-1.13-506.azl3.noarch.rpm
+Downloading toolchain RPM: perl-HTTP-Tiny-0.086-506.azl3.noarch.rpm
+Downloading toolchain RPM: perl-I18N-Langinfo-0.22-506.azl3.x86_64.rpm
+Downloading toolchain RPM: perl-IO-1.52-506.azl3.x86_64.rpm
+Downloading toolchain RPM: perl-IPC-Open3-1.22-506.azl3.noarch.rpm
+Downloading toolchain RPM: perl-MIME-Base64-3.16-506.azl3.x86_64.rpm
+Downloading toolchain RPM: perl-POSIX-2.13-506.azl3.x86_64.rpm
+Downloading toolchain RPM: perl-PathTools-3.89-506.azl3.x86_64.rpm
+Downloading toolchain RPM: perl-Pod-Escapes-1.07-506.azl3.noarch.rpm
+Downloading toolchain RPM: perl-Pod-Perldoc-3.28.01-506.azl3.noarch.rpm
+Downloading toolchain RPM: perl-Pod-Simple-3.43-506.azl3.noarch.rpm
+Downloading toolchain RPM: perl-Pod-Usage-2.03-506.azl3.noarch.rpm
+Downloading toolchain RPM: perl-Scalar-List-Utils-1.63-506.azl3.x86_64.rpm
+Downloading toolchain RPM: perl-SelectSaver-1.02-506.azl3.noarch.rpm
+Downloading toolchain RPM: perl-Socket-2.036-506.azl3.x86_64.rpm
+Downloading toolchain RPM: perl-Storable-3.32-506.azl3.x86_64.rpm
+Downloading toolchain RPM: perl-Symbol-1.09-506.azl3.noarch.rpm
+Downloading toolchain RPM: perl-Term-ANSIColor-5.01-506.azl3.noarch.rpm
+Downloading toolchain RPM: perl-Term-Cap-1.18-506.azl3.noarch.rpm
+Downloading toolchain RPM: perl-Text-ParseWords-3.31-506.azl3.noarch.rpm
+Downloading toolchain RPM: perl-Text-Tabs+Wrap-2021.0814-506.azl3.noarch.rpm
+Downloading toolchain RPM: perl-Thread-Queue-3.14-506.azl3.noarch.rpm
+Downloading toolchain RPM: perl-Time-Local-1.300-506.azl3.noarch.rpm
+Downloading toolchain RPM: perl-Unicode-Normalize-1.32-506.azl3.x86_64.rpm
+Downloading toolchain RPM: perl-base-2.27-506.azl3.noarch.rpm
+Downloading toolchain RPM: perl-constant-1.33-506.azl3.noarch.rpm
+Downloading toolchain RPM: perl-if-0.61.000-506.azl3.noarch.rpm
+Downloading toolchain RPM: perl-interpreter-5.38.2-506.azl3.x86_64.rpm
+Downloading toolchain RPM: perl-libs-5.38.2-506.azl3.x86_64.rpm
+Downloading toolchain RPM: perl-locale-1.10-506.azl3.noarch.rpm
+Downloading toolchain RPM: perl-macros-5.38.2-506.azl3.noarch.rpm
+Downloading toolchain RPM: perl-mro-1.28-506.azl3.x86_64.rpm
+Downloading toolchain RPM: perl-overload-1.37-506.azl3.noarch.rpm
+Downloading toolchain RPM: perl-overloading-0.02-506.azl3.noarch.rpm
+Downloading toolchain RPM: perl-parent-0.241-506.azl3.noarch.rpm
+Downloading toolchain RPM: perl-podlators-5.01-506.azl3.noarch.rpm
+Downloading toolchain RPM: perl-subs-1.04-506.azl3.noarch.rpm
+Downloading toolchain RPM: perl-threads-2.36-506.azl3.x86_64.rpm
+Downloading toolchain RPM: perl-threads-shared-1.68-506.azl3.x86_64.rpm
+Downloading toolchain RPM: perl-vars-1.05-506.azl3.noarch.rpm
+Downloading toolchain RPM: perl-5.38.2-506.azl3.x86_64.rpm
+Downloading toolchain RPM: texinfo-7.0.3-1.azl3.x86_64.rpm
+Downloading toolchain RPM: gtk-doc-1.33.2-1.azl3.noarch.rpm
+Downloading toolchain RPM: autoconf-2.72-2.azl3.noarch.rpm
+Downloading toolchain RPM: automake-1.16.5-2.azl3.noarch.rpm
+Downloading toolchain RPM: ocaml-srpm-macros-9-4.azl3.noarch.rpm
+Downloading toolchain RPM: openssl-3.3.3-1.azl3.x86_64.rpm
+Downloading toolchain RPM: openssl-devel-3.3.3-1.azl3.x86_64.rpm
+Downloading toolchain RPM: openssl-libs-3.3.3-1.azl3.x86_64.rpm
+Downloading toolchain RPM: openssl-perl-3.3.3-1.azl3.x86_64.rpm
+Downloading toolchain RPM: openssl-static-3.3.3-1.azl3.x86_64.rpm
+Downloading toolchain RPM: libcap-2.69-3.azl3.x86_64.rpm
+Downloading toolchain RPM: libcap-devel-2.69-3.azl3.x86_64.rpm
+Downloading toolchain RPM: debugedit-5.0-2.azl3.x86_64.rpm
+Downloading toolchain RPM: libarchive-3.7.7-1.azl3.x86_64.rpm
+Downloading toolchain RPM: libarchive-devel-3.7.7-1.azl3.x86_64.rpm
+Downloading toolchain RPM: rpm-4.18.2-1.azl3.x86_64.rpm
+Downloading toolchain RPM: rpm-build-4.18.2-1.azl3.x86_64.rpm
+Downloading toolchain RPM: rpm-build-libs-4.18.2-1.azl3.x86_64.rpm
+Downloading toolchain RPM: rpm-devel-4.18.2-1.azl3.x86_64.rpm
+Downloading toolchain RPM: rpm-lang-4.18.2-1.azl3.x86_64.rpm
+Downloading toolchain RPM: rpm-libs-4.18.2-1.azl3.x86_64.rpm
+Downloading toolchain RPM: cpio-2.14-1.azl3.x86_64.rpm
+Downloading toolchain RPM: cpio-lang-2.14-1.azl3.x86_64.rpm
+Downloading toolchain RPM: e2fsprogs-libs-1.47.0-2.azl3.x86_64.rpm
+Downloading toolchain RPM: e2fsprogs-1.47.0-2.azl3.x86_64.rpm
+Downloading toolchain RPM: e2fsprogs-devel-1.47.0-2.azl3.x86_64.rpm
+Downloading toolchain RPM: libsolv-0.7.28-2.azl3.x86_64.rpm
+Downloading toolchain RPM: libsolv-devel-0.7.28-2.azl3.x86_64.rpm
+Downloading toolchain RPM: libssh2-1.11.0-1.azl3.x86_64.rpm
+Downloading toolchain RPM: libssh2-devel-1.11.0-1.azl3.x86_64.rpm
+Downloading toolchain RPM: krb5-1.21.3-2.azl3.x86_64.rpm
+Downloading toolchain RPM: krb5-devel-1.21.3-2.azl3.x86_64.rpm
+Downloading toolchain RPM: nghttp2-1.61.0-2.azl3.x86_64.rpm
+Downloading toolchain RPM: nghttp2-devel-1.61.0-2.azl3.x86_64.rpm
+Downloading toolchain RPM: curl-8.11.1-2.azl3.x86_64.rpm
+Downloading toolchain RPM: curl-devel-8.11.1-2.azl3.x86_64.rpm
+Downloading toolchain RPM: curl-libs-8.11.1-2.azl3.x86_64.rpm
+Downloading toolchain RPM: createrepo_c-1.0.3-1.azl3.x86_64.rpm
+Downloading toolchain RPM: libxml2-2.11.5-4.azl3.x86_64.rpm
+Downloading toolchain RPM: libxml2-devel-2.11.5-4.azl3.x86_64.rpm
+Downloading toolchain RPM: docbook-dtd-xml-4.5-11.azl3.noarch.rpm
+Downloading toolchain RPM: docbook-style-xsl-1.79.1-14.azl3.noarch.rpm
+Downloading toolchain RPM: libsepol-3.6-1.azl3.x86_64.rpm
+Downloading toolchain RPM: glib-2.78.1-5.azl3.x86_64.rpm
+Downloading toolchain RPM: libltdl-2.4.7-1.azl3.x86_64.rpm
+Downloading toolchain RPM: libltdl-devel-2.4.7-1.azl3.x86_64.rpm
+Downloading toolchain RPM: lua-5.4.6-1.azl3.x86_64.rpm
+Downloading toolchain RPM: lua-libs-5.4.6-1.azl3.x86_64.rpm
+Downloading toolchain RPM: azurelinux-rpm-macros-3.0-7.azl3.noarch.rpm
+Downloading toolchain RPM: azurelinux-check-macros-3.0-7.azl3.noarch.rpm
+Downloading toolchain RPM: tdnf-3.5.8-7.azl3.x86_64.rpm
+Downloading toolchain RPM: tdnf-cli-libs-3.5.8-7.azl3.x86_64.rpm
+Downloading toolchain RPM: tdnf-devel-3.5.8-7.azl3.x86_64.rpm
+Downloading toolchain RPM: tdnf-plugin-repogpgcheck-3.5.8-7.azl3.x86_64.rpm
+Downloading toolchain RPM: libassuan-2.5.6-1.azl3.x86_64.rpm
+Downloading toolchain RPM: libassuan-devel-2.5.6-1.azl3.x86_64.rpm
+Downloading toolchain RPM: libgpg-error-1.47-1.azl3.x86_64.rpm
+Downloading toolchain RPM: libgcrypt-1.10.2-1.azl3.x86_64.rpm
+Downloading toolchain RPM: libksba-1.6.4-1.azl3.x86_64.rpm
+Downloading toolchain RPM: libksba-devel-1.6.4-1.azl3.x86_64.rpm
+Downloading toolchain RPM: libxslt-1.1.39-1.azl3.x86_64.rpm
+Downloading toolchain RPM: npth-1.6-4.azl3.x86_64.rpm
+Downloading toolchain RPM: pinentry-1.2.1-1.azl3.x86_64.rpm
+Downloading toolchain RPM: gnupg2-2.4.4-2.azl3.x86_64.rpm
+Downloading toolchain RPM: gnupg2-lang-2.4.4-2.azl3.x86_64.rpm
+Downloading toolchain RPM: gpgme-1.23.2-2.azl3.x86_64.rpm
+Downloading toolchain RPM: azurelinux-repos-shared-3.0-4.azl3.noarch.rpm
+Downloading toolchain RPM: azurelinux-repos-3.0-4.azl3.noarch.rpm
+Downloading toolchain RPM: libffi-3.4.4-1.azl3.x86_64.rpm
+Downloading toolchain RPM: libffi-devel-3.4.4-1.azl3.x86_64.rpm
+Downloading toolchain RPM: libtasn1-4.19.0-1.azl3.x86_64.rpm
+Downloading toolchain RPM: p11-kit-0.25.0-1.azl3.x86_64.rpm
+Downloading toolchain RPM: p11-kit-trust-0.25.0-1.azl3.x86_64.rpm
+Downloading toolchain RPM: ca-certificates-shared-3.0.0-8.azl3.noarch.rpm
+Downloading toolchain RPM: ca-certificates-tools-3.0.0-8.azl3.noarch.rpm
+Downloading toolchain RPM: ca-certificates-base-3.0.0-8.azl3.noarch.rpm
+Downloading toolchain RPM: ca-certificates-3.0.0-8.azl3.noarch.rpm
+Downloading toolchain RPM: dwz-0.14-2.azl3.x86_64.rpm
+Downloading toolchain RPM: unzip-6.0-21.azl3.x86_64.rpm
+Downloading toolchain RPM: python3-3.12.9-1.azl3.x86_64.rpm
+Downloading toolchain RPM: python3-devel-3.12.9-1.azl3.x86_64.rpm
+Downloading toolchain RPM: python3-libs-3.12.9-1.azl3.x86_64.rpm
+Downloading toolchain RPM: python3-setuptools-69.0.3-4.azl3.noarch.rpm
+Downloading toolchain RPM: python3-pygments-2.7.4-2.azl3.noarch.rpm
+Downloading toolchain RPM: which-2.21-8.azl3.x86_64.rpm
+Downloading toolchain RPM: libselinux-3.6-3.azl3.x86_64.rpm
+Downloading toolchain RPM: slang-2.3.3-1.azl3.x86_64.rpm
+Downloading toolchain RPM: newt-0.52.23-1.azl3.x86_64.rpm
+Downloading toolchain RPM: newt-lang-0.52.23-1.azl3.x86_64.rpm
+Downloading toolchain RPM: chkconfig-1.25-1.azl3.x86_64.rpm
+Downloading toolchain RPM: chkconfig-lang-1.25-1.azl3.x86_64.rpm
+Downloading toolchain RPM: msopenjdk-17-17.0.12-1.x86_64.rpm
+Downloading toolchain RPM: pyproject-rpm-macros-1.12.0-2.azl3.noarch.rpm
+Downloading toolchain RPM: pyproject-srpm-macros-1.12.0-2.azl3.noarch.rpm
+Downloading toolchain RPM: python3-rpm-generators-14-11.azl3.noarch.rpm
+Downloading toolchain RPM: python3-packaging-23.2-3.azl3.noarch.rpm
+Downloading toolchain RPM: audit-3.1.2-1.azl3.x86_64.rpm
+Downloading toolchain RPM: audit-libs-3.1.2-1.azl3.x86_64.rpm
+Downloading toolchain RPM: libxcrypt-4.4.36-2.azl3.x86_64.rpm
+Downloading toolchain RPM: libxcrypt-devel-4.4.36-2.azl3.x86_64.rpm
+Downloading toolchain RPM: acl-2.3.1-2.azl3.x86_64.rpm
+Downloading toolchain RPM: acl-debuginfo-2.3.1-2.azl3.x86_64.rpm
+Downloading toolchain RPM: asciidoc-10.2.0-2.azl3.noarch.rpm
+Downloading toolchain RPM: attr-debuginfo-2.5.2-1.azl3.x86_64.rpm
+Downloading toolchain RPM: audit-debuginfo-3.1.2-1.azl3.x86_64.rpm
+Downloading toolchain RPM: audit-devel-3.1.2-1.azl3.x86_64.rpm
+Downloading toolchain RPM: azurelinux-repos-amd-3.0-4.azl3.noarch.rpm
+Downloading toolchain RPM: azurelinux-repos-amd-preview-3.0-4.azl3.noarch.rpm
+Downloading toolchain RPM: azurelinux-repos-debug-3.0-4.azl3.noarch.rpm
+Downloading toolchain RPM: azurelinux-repos-debug-preview-3.0-4.azl3.noarch.rpm
+Downloading toolchain RPM: azurelinux-repos-extended-3.0-4.azl3.noarch.rpm
+Downloading toolchain RPM: azurelinux-repos-extended-debug-3.0-4.azl3.noarch.rpm
+Downloading toolchain RPM: azurelinux-repos-extended-debug-preview-3.0-4.azl3.noarch.rpm
+Downloading toolchain RPM: azurelinux-repos-extended-preview-3.0-4.azl3.noarch.rpm
+Downloading toolchain RPM: azurelinux-repos-ms-non-oss-3.0-4.azl3.noarch.rpm
+Downloading toolchain RPM: azurelinux-repos-ms-non-oss-preview-3.0-4.azl3.noarch.rpm
+Downloading toolchain RPM: azurelinux-repos-ms-oss-3.0-4.azl3.noarch.rpm
+Downloading toolchain RPM: azurelinux-repos-ms-oss-preview-3.0-4.azl3.noarch.rpm
+Downloading toolchain RPM: azurelinux-repos-preview-3.0-4.azl3.noarch.rpm
+Downloading toolchain RPM: bash-debuginfo-5.2.15-3.azl3.x86_64.rpm
+Downloading toolchain RPM: binutils-aarch64-linux-gnu-2.41-4.azl3.x86_64.rpm
+Downloading toolchain RPM: binutils-debuginfo-2.41-4.azl3.x86_64.rpm
+Downloading toolchain RPM: bison-debuginfo-3.8.2-1.azl3.x86_64.rpm
+Downloading toolchain RPM: bzip2-debuginfo-1.0.8-1.azl3.x86_64.rpm
+Downloading toolchain RPM: ca-certificates-legacy-3.0.0-8.azl3.noarch.rpm
+Downloading toolchain RPM: ccache-4.8.3-3.azl3.x86_64.rpm
+Downloading toolchain RPM: ccache-debuginfo-4.8.3-3.azl3.x86_64.rpm
+Downloading toolchain RPM: check-0.15.2-1.azl3.x86_64.rpm
+Downloading toolchain RPM: check-debuginfo-0.15.2-1.azl3.x86_64.rpm
+Downloading toolchain RPM: chkconfig-debuginfo-1.25-1.azl3.x86_64.rpm
+Downloading toolchain RPM: cmake-3.30.3-4.azl3.x86_64.rpm
+Downloading toolchain RPM: cmake-debuginfo-3.30.3-4.azl3.x86_64.rpm
+Downloading toolchain RPM: coreutils-debuginfo-9.4-6.azl3.x86_64.rpm
+Downloading toolchain RPM: cpio-debuginfo-2.14-1.azl3.x86_64.rpm
+Downloading toolchain RPM: cracklib-2.9.11-1.azl3.x86_64.rpm
+Downloading toolchain RPM: cracklib-debuginfo-2.9.11-1.azl3.x86_64.rpm
+Downloading toolchain RPM: cracklib-devel-2.9.11-1.azl3.x86_64.rpm
+Downloading toolchain RPM: cracklib-dicts-2.9.11-1.azl3.x86_64.rpm
+Downloading toolchain RPM: cracklib-lang-2.9.11-1.azl3.x86_64.rpm
+Downloading toolchain RPM: createrepo_c-debuginfo-1.0.3-1.azl3.x86_64.rpm
+Downloading toolchain RPM: createrepo_c-devel-1.0.3-1.azl3.x86_64.rpm
+Downloading toolchain RPM: cross-binutils-common-2.41-4.azl3.noarch.rpm
+Downloading toolchain RPM: cross-gcc-common-13.2.0-7.azl3.noarch.rpm
+Downloading toolchain RPM: curl-debuginfo-8.11.1-2.azl3.x86_64.rpm
+Downloading toolchain RPM: Cython-debuginfo-3.0.5-2.azl3.x86_64.rpm
+Downloading toolchain RPM: debugedit-debuginfo-5.0-2.azl3.x86_64.rpm
+Downloading toolchain RPM: diffutils-debuginfo-3.10-1.azl3.x86_64.rpm
+Downloading toolchain RPM: dwz-debuginfo-0.14-2.azl3.x86_64.rpm
+Downloading toolchain RPM: e2fsprogs-debuginfo-1.47.0-2.azl3.x86_64.rpm
+Downloading toolchain RPM: e2fsprogs-lang-1.47.0-2.azl3.x86_64.rpm
+Downloading toolchain RPM: elfutils-debuginfo-0.189-3.azl3.x86_64.rpm
+Downloading toolchain RPM: expat-debuginfo-2.6.3-2.azl3.x86_64.rpm
+Downloading toolchain RPM: file-debuginfo-5.45-1.azl3.x86_64.rpm
+Downloading toolchain RPM: filesystem-asc-1.1-21.azl3.x86_64.rpm
+Downloading toolchain RPM: findutils-debuginfo-4.9.0-1.azl3.x86_64.rpm
+Downloading toolchain RPM: flex-debuginfo-2.6.4-7.azl3.x86_64.rpm
+Downloading toolchain RPM: gawk-debuginfo-5.2.2-1.azl3.x86_64.rpm
+Downloading toolchain RPM: gcc-aarch64-linux-gnu-13.2.0-7.azl3.x86_64.rpm
+Downloading toolchain RPM: gcc-c++-aarch64-linux-gnu-13.2.0-7.azl3.x86_64.rpm
+Downloading toolchain RPM: gcc-debuginfo-13.2.0-7.azl3.x86_64.rpm
+Downloading toolchain RPM: gdbm-debuginfo-1.23-1.azl3.x86_64.rpm
+Downloading toolchain RPM: gettext-debuginfo-0.22-1.azl3.x86_64.rpm
+Downloading toolchain RPM: gfortran-13.2.0-7.azl3.x86_64.rpm
+Downloading toolchain RPM: glib-debuginfo-2.78.1-5.azl3.x86_64.rpm
+Downloading toolchain RPM: glib-devel-2.78.1-5.azl3.x86_64.rpm
+Downloading toolchain RPM: glib-doc-2.78.1-5.azl3.noarch.rpm
+Downloading toolchain RPM: glib-schemas-2.78.1-5.azl3.x86_64.rpm
+Downloading toolchain RPM: glibc-debuginfo-2.38-9.azl3.x86_64.rpm
+Downloading toolchain RPM: glibc-static-2.38-9.azl3.x86_64.rpm
+Downloading toolchain RPM: gmp-debuginfo-6.3.0-1.azl3.x86_64.rpm
+Downloading toolchain RPM: gnupg2-debuginfo-2.4.4-2.azl3.x86_64.rpm
+Downloading toolchain RPM: gperf-3.1-5.azl3.x86_64.rpm
+Downloading toolchain RPM: gperf-debuginfo-3.1-5.azl3.x86_64.rpm
+Downloading toolchain RPM: gpgme-debuginfo-1.23.2-2.azl3.x86_64.rpm
+Downloading toolchain RPM: gpgme-devel-1.23.2-2.azl3.x86_64.rpm
+Downloading toolchain RPM: grep-debuginfo-3.11-2.azl3.x86_64.rpm
+Downloading toolchain RPM: gzip-debuginfo-1.13-1.azl3.x86_64.rpm
+Downloading toolchain RPM: intltool-0.51.0-7.azl3.noarch.rpm
+Downloading toolchain RPM: itstool-2.0.7-1.azl3.noarch.rpm
+Downloading toolchain RPM: kbd-debuginfo-2.2.0-2.azl3.x86_64.rpm
+Downloading toolchain RPM: kbd-2.2.0-2.azl3.x86_64.rpm
+Downloading toolchain RPM: kernel-cross-headers-6.6.76.1-2.azl3.noarch.rpm
+Downloading toolchain RPM: kmod-30-1.azl3.x86_64.rpm
+Downloading toolchain RPM: kmod-debuginfo-30-1.azl3.x86_64.rpm
+Downloading toolchain RPM: kmod-devel-30-1.azl3.x86_64.rpm
+Downloading toolchain RPM: krb5-debuginfo-1.21.3-2.azl3.x86_64.rpm
+Downloading toolchain RPM: krb5-lang-1.21.3-2.azl3.x86_64.rpm
+Downloading toolchain RPM: libacl-devel-2.3.1-2.azl3.x86_64.rpm
+Downloading toolchain RPM: libarchive-debuginfo-3.7.7-1.azl3.x86_64.rpm
+Downloading toolchain RPM: libassuan-debuginfo-2.5.6-1.azl3.x86_64.rpm
+Downloading toolchain RPM: libattr-devel-2.5.2-1.azl3.x86_64.rpm
+Downloading toolchain RPM: libbacktrace-static-13.2.0-7.azl3.x86_64.rpm
+Downloading toolchain RPM: libcap-debuginfo-2.69-3.azl3.x86_64.rpm
+Downloading toolchain RPM: libcap-ng-debuginfo-0.8.4-1.azl3.x86_64.rpm
+Downloading toolchain RPM: libffi-debuginfo-3.4.4-1.azl3.x86_64.rpm
+Downloading toolchain RPM: libgcrypt-debuginfo-1.10.2-1.azl3.x86_64.rpm
+Downloading toolchain RPM: libgcrypt-devel-1.10.2-1.azl3.x86_64.rpm
+Downloading toolchain RPM: libgpg-error-debuginfo-1.47-1.azl3.x86_64.rpm
+Downloading toolchain RPM: libgpg-error-devel-1.47-1.azl3.x86_64.rpm
+Downloading toolchain RPM: libgpg-error-lang-1.47-1.azl3.x86_64.rpm
+Downloading toolchain RPM: libksba-debuginfo-1.6.4-1.azl3.x86_64.rpm
+Downloading toolchain RPM: libmetalink-debuginfo-0.1.3-1.azl3.x86_64.rpm
+Downloading toolchain RPM: libmetalink-devel-0.1.3-1.azl3.x86_64.rpm
+Downloading toolchain RPM: libmpc-debuginfo-1.3.1-1.azl3.x86_64.rpm
+Downloading toolchain RPM: libpcre2-16-0-10.42-3.azl3.x86_64.rpm
+Downloading toolchain RPM: libpcre2-32-0-10.42-3.azl3.x86_64.rpm
+Downloading toolchain RPM: libpcre2-8-0-10.42-3.azl3.x86_64.rpm
+Downloading toolchain RPM: libpcre2-posix2-10.42-3.azl3.x86_64.rpm
+Downloading toolchain RPM: libpipeline-debuginfo-1.5.7-1.azl3.x86_64.rpm
+Downloading toolchain RPM: libpkgconf-devel-2.0.2-1.azl3.x86_64.rpm
+Downloading toolchain RPM: libselinux-debuginfo-3.6-3.azl3.x86_64.rpm
+Downloading toolchain RPM: libselinux-devel-3.6-3.azl3.x86_64.rpm
+Downloading toolchain RPM: libselinux-python3-3.6-3.azl3.x86_64.rpm
+Downloading toolchain RPM: libselinux-utils-3.6-3.azl3.x86_64.rpm
+Downloading toolchain RPM: libsepol-debuginfo-3.6-1.azl3.x86_64.rpm
+Downloading toolchain RPM: libsepol-devel-3.6-1.azl3.x86_64.rpm
+Downloading toolchain RPM: libsolv-debuginfo-0.7.28-2.azl3.x86_64.rpm
+Downloading toolchain RPM: libsolv-tools-0.7.28-2.azl3.x86_64.rpm
+Downloading toolchain RPM: libssh2-debuginfo-1.11.0-1.azl3.x86_64.rpm
+Downloading toolchain RPM: libtasn1-debuginfo-4.19.0-1.azl3.x86_64.rpm
+Downloading toolchain RPM: libtasn1-devel-4.19.0-1.azl3.x86_64.rpm
+Downloading toolchain RPM: libtool-debuginfo-2.4.7-1.azl3.x86_64.rpm
+Downloading toolchain RPM: libxml2-debuginfo-2.11.5-4.azl3.x86_64.rpm
+Downloading toolchain RPM: libxcrypt-debuginfo-4.4.36-2.azl3.x86_64.rpm
+Downloading toolchain RPM: libxslt-debuginfo-1.1.39-1.azl3.x86_64.rpm
+Downloading toolchain RPM: libxslt-devel-1.1.39-1.azl3.x86_64.rpm
+Downloading toolchain RPM: lua-debuginfo-5.4.6-1.azl3.x86_64.rpm
+Downloading toolchain RPM: lua-devel-5.4.6-1.azl3.x86_64.rpm
+Downloading toolchain RPM: lua-rpm-macros-1-6.azl3.noarch.rpm
+Downloading toolchain RPM: lua-srpm-macros-1-6.azl3.noarch.rpm
+Downloading toolchain RPM: lua-static-5.4.6-1.azl3.x86_64.rpm
+Downloading toolchain RPM: lz4-1.9.4-1.azl3.x86_64.rpm
+Downloading toolchain RPM: lz4-debuginfo-1.9.4-1.azl3.x86_64.rpm
+Downloading toolchain RPM: lz4-devel-1.9.4-1.azl3.x86_64.rpm
+Downloading toolchain RPM: m4-debuginfo-1.4.19-2.azl3.x86_64.rpm
+Downloading toolchain RPM: make-debuginfo-4.4.1-2.azl3.x86_64.rpm
+Downloading toolchain RPM: meson-1.3.1-1.azl3.noarch.rpm
+Downloading toolchain RPM: mpfr-debuginfo-4.2.1-1.azl3.x86_64.rpm
+Downloading toolchain RPM: ncurses-debuginfo-6.4-2.azl3.x86_64.rpm
+Downloading toolchain RPM: newt-debuginfo-0.52.23-1.azl3.x86_64.rpm
+Downloading toolchain RPM: newt-devel-0.52.23-1.azl3.x86_64.rpm
+Downloading toolchain RPM: nghttp2-debuginfo-1.61.0-2.azl3.x86_64.rpm
+Downloading toolchain RPM: ninja-build-1.11.1-1.azl3.x86_64.rpm
+Downloading toolchain RPM: ninja-build-debuginfo-1.11.1-1.azl3.x86_64.rpm
+Downloading toolchain RPM: npth-debuginfo-1.6-4.azl3.x86_64.rpm
+Downloading toolchain RPM: npth-devel-1.6-4.azl3.x86_64.rpm
+Downloading toolchain RPM: ntsysv-1.25-1.azl3.x86_64.rpm
+Downloading toolchain RPM: openssl-debuginfo-3.3.3-1.azl3.x86_64.rpm
+Downloading toolchain RPM: p11-kit-debuginfo-0.25.0-1.azl3.x86_64.rpm
+Downloading toolchain RPM: p11-kit-devel-0.25.0-1.azl3.x86_64.rpm
+Downloading toolchain RPM: p11-kit-server-0.25.0-1.azl3.x86_64.rpm
+Downloading toolchain RPM: pam-1.5.3-4.azl3.x86_64.rpm
+Downloading toolchain RPM: pam-debuginfo-1.5.3-4.azl3.x86_64.rpm
+Downloading toolchain RPM: pam-devel-1.5.3-4.azl3.x86_64.rpm
+Downloading toolchain RPM: pam-lang-1.5.3-4.azl3.x86_64.rpm
+Downloading toolchain RPM: patch-debuginfo-2.7.6-9.azl3.x86_64.rpm
+Downloading toolchain RPM: pcre2-10.42-3.azl3.x86_64.rpm
+Downloading toolchain RPM: pcre2-debuginfo-10.42-3.azl3.x86_64.rpm
+Downloading toolchain RPM: pcre2-devel-10.42-3.azl3.x86_64.rpm
+Downloading toolchain RPM: pcre2-devel-static-10.42-3.azl3.x86_64.rpm
+Downloading toolchain RPM: pcre2-doc-10.42-3.azl3.noarch.rpm
+Downloading toolchain RPM: pcre2-tools-10.42-3.azl3.x86_64.rpm
+Downloading toolchain RPM: perl-Archive-Tar-2.40-506.azl3.noarch.rpm
+Downloading toolchain RPM: perl-Attribute-Handlers-1.03-506.azl3.noarch.rpm
+Downloading toolchain RPM: perl-autodie-2.36-506.azl3.noarch.rpm
+Downloading toolchain RPM: perl-AutoLoader-5.74-506.azl3.noarch.rpm
+Downloading toolchain RPM: perl-AutoSplit-5.74-506.azl3.noarch.rpm
+Downloading toolchain RPM: perl-autouse-1.11-506.azl3.noarch.rpm
+Downloading toolchain RPM: perl-Benchmark-1.24-506.azl3.noarch.rpm
+Downloading toolchain RPM: perl-bignum-0.66-506.azl3.noarch.rpm
+Downloading toolchain RPM: perl-blib-1.07-506.azl3.noarch.rpm
+Downloading toolchain RPM: perl-Compress-Raw-Bzip2-2.204-506.azl3.x86_64.rpm
+Downloading toolchain RPM: perl-Compress-Raw-Zlib-2.204-506.azl3.x86_64.rpm
+Downloading toolchain RPM: perl-Config-Extensions-0.03-506.azl3.noarch.rpm
+Downloading toolchain RPM: perl-Config-Perl-V-0.36-506.azl3.noarch.rpm
+Downloading toolchain RPM: perl-CPAN-2.36-506.azl3.noarch.rpm
+Downloading toolchain RPM: perl-CPAN-Meta-2.150010-506.azl3.noarch.rpm
+Downloading toolchain RPM: perl-CPAN-Meta-Requirements-2.140-506.azl3.noarch.rpm
+Downloading toolchain RPM: perl-CPAN-Meta-YAML-0.018-506.azl3.noarch.rpm
+Downloading toolchain RPM: perl-DBD-SQLite-1.74-2.azl3.x86_64.rpm
+Downloading toolchain RPM: perl-DBD-SQLite-debuginfo-1.74-2.azl3.x86_64.rpm
+Downloading toolchain RPM: perl-DBI-1.643-3.azl3.x86_64.rpm
+Downloading toolchain RPM: perl-DBI-debuginfo-1.643-3.azl3.x86_64.rpm
+Downloading toolchain RPM: perl-DBIx-Simple-1.37-7.azl3.noarch.rpm
+Downloading toolchain RPM: perl-DBM_Filter-0.06-506.azl3.noarch.rpm
+Downloading toolchain RPM: perl-debugger-1.60-506.azl3.noarch.rpm
+Downloading toolchain RPM: perl-debuginfo-5.38.2-506.azl3.x86_64.rpm
+Downloading toolchain RPM: perl-deprecate-0.04-506.azl3.noarch.rpm
+Downloading toolchain RPM: perl-devel-5.38.2-506.azl3.x86_64.rpm
+Downloading toolchain RPM: perl-Devel-Peek-1.33-506.azl3.x86_64.rpm
+Downloading toolchain RPM: perl-Devel-PPPort-3.71-506.azl3.x86_64.rpm
+Downloading toolchain RPM: perl-Devel-SelfStubber-1.06-506.azl3.noarch.rpm
+Downloading toolchain RPM: perl-diagnostics-1.39-506.azl3.noarch.rpm
+Downloading toolchain RPM: perl-Digest-1.20-506.azl3.noarch.rpm
+Downloading toolchain RPM: perl-Digest-MD5-2.58-506.azl3.x86_64.rpm
+Downloading toolchain RPM: perl-Digest-SHA-6.04-506.azl3.x86_64.rpm
+Downloading toolchain RPM: perl-DirHandle-1.05-506.azl3.noarch.rpm
+Downloading toolchain RPM: perl-doc-5.38.2-506.azl3.noarch.rpm
+Downloading toolchain RPM: perl-Dumpvalue-2.27-506.azl3.noarch.rpm
+Downloading toolchain RPM: perl-Encode-devel-3.19-506.azl3.noarch.rpm
+Downloading toolchain RPM: perl-encoding-3.00-506.azl3.x86_64.rpm
+Downloading toolchain RPM: perl-encoding-warnings-0.14-506.azl3.noarch.rpm
+Downloading toolchain RPM: perl-English-1.11-506.azl3.noarch.rpm
+Downloading toolchain RPM: perl-Env-1.06-506.azl3.noarch.rpm
+Downloading toolchain RPM: perl-experimental-0.031-506.azl3.noarch.rpm
+Downloading toolchain RPM: perl-ExtUtils-CBuilder-0.280238-506.azl3.noarch.rpm
+Downloading toolchain RPM: perl-ExtUtils-Command-7.70-506.azl3.noarch.rpm
+Downloading toolchain RPM: perl-ExtUtils-Constant-0.25-506.azl3.noarch.rpm
+Downloading toolchain RPM: perl-ExtUtils-Embed-1.35-506.azl3.noarch.rpm
+Downloading toolchain RPM: perl-ExtUtils-Install-2.22-506.azl3.noarch.rpm
+Downloading toolchain RPM: perl-ExtUtils-MakeMaker-7.70-506.azl3.noarch.rpm
+Downloading toolchain RPM: perl-ExtUtils-Manifest-1.73-506.azl3.noarch.rpm
+Downloading toolchain RPM: perl-ExtUtils-Miniperl-1.13-506.azl3.noarch.rpm
+Downloading toolchain RPM: perl-ExtUtils-MM-Utils-7.44-506.azl3.noarch.rpm
+Downloading toolchain RPM: perl-ExtUtils-ParseXS-3.51-506.azl3.noarch.rpm
+Downloading toolchain RPM: perl-Fedora-VSP-0.001-20.azl3.noarch.rpm
+Downloading toolchain RPM: perl-fields-2.27-506.azl3.noarch.rpm
+Downloading toolchain RPM: perl-File-DosGlob-1.12-506.azl3.x86_64.rpm
+Downloading toolchain RPM: perl-File-Fetch-1.04-506.azl3.noarch.rpm
+Downloading toolchain RPM: perl-File-Find-1.43-506.azl3.noarch.rpm
+Downloading toolchain RPM: perl-FileCache-1.10-506.azl3.noarch.rpm
+Downloading toolchain RPM: perl-filetest-1.03-506.azl3.noarch.rpm
+Downloading toolchain RPM: perl-Filter-1.64-506.azl3.x86_64.rpm
+Downloading toolchain RPM: perl-Filter-Simple-0.96-506.azl3.noarch.rpm
+Downloading toolchain RPM: perl-FindBin-1.53-506.azl3.noarch.rpm
+Downloading toolchain RPM: perl-GDBM_File-1.24-506.azl3.x86_64.rpm
+Downloading toolchain RPM: perl-generators-1.15-2.azl3.noarch.rpm
+Downloading toolchain RPM: perl-Hash-Util-0.30-506.azl3.x86_64.rpm
+Downloading toolchain RPM: perl-Hash-Util-FieldHash-1.26-506.azl3.x86_64.rpm
+Downloading toolchain RPM: perl-I18N-Collate-1.02-506.azl3.noarch.rpm
+Downloading toolchain RPM: perl-I18N-LangTags-0.45-506.azl3.noarch.rpm
+Downloading toolchain RPM: perl-IO-Compress-2.204-506.azl3.noarch.rpm
+Downloading toolchain RPM: perl-IO-Socket-IP-0.41-506.azl3.noarch.rpm
+Downloading toolchain RPM: perl-IO-Zlib-1.14-506.azl3.noarch.rpm
+Downloading toolchain RPM: perl-IPC-Cmd-1.04-506.azl3.noarch.rpm
+Downloading toolchain RPM: perl-IPC-SysV-2.09-506.azl3.x86_64.rpm
+Downloading toolchain RPM: perl-JSON-PP-4.16-506.azl3.noarch.rpm
+Downloading toolchain RPM: perl-less-0.03-506.azl3.noarch.rpm
+Downloading toolchain RPM: perl-lib-0.65-506.azl3.x86_64.rpm
+Downloading toolchain RPM: perl-libintl-perl-1.33-1.azl3.x86_64.rpm
+Downloading toolchain RPM: perl-libintl-perl-debuginfo-1.33-1.azl3.x86_64.rpm
+Downloading toolchain RPM: perl-libnet-3.15-506.azl3.noarch.rpm
+Downloading toolchain RPM: perl-libnetcfg-5.38.2-506.azl3.noarch.rpm
+Downloading toolchain RPM: perl-Locale-Maketext-1.33-506.azl3.noarch.rpm
+Downloading toolchain RPM: perl-Locale-Maketext-Simple-0.21-506.azl3.noarch.rpm
+Downloading toolchain RPM: perl-Math-BigInt-1.9998.37-506.azl3.noarch.rpm
+Downloading toolchain RPM: perl-Math-BigInt-FastCalc-0.501.300-506.azl3.x86_64.rpm
+Downloading toolchain RPM: perl-Math-BigRat-0.2624-506.azl3.noarch.rpm
+Downloading toolchain RPM: perl-Math-Complex-1.62-506.azl3.noarch.rpm
+Downloading toolchain RPM: perl-Memoize-1.16-506.azl3.noarch.rpm
+Downloading toolchain RPM: perl-meta-notation-5.38.2-506.azl3.noarch.rpm
+Downloading toolchain RPM: perl-Module-CoreList-5.20231129-506.azl3.noarch.rpm
+Downloading toolchain RPM: perl-Module-CoreList-tools-5.20231129-506.azl3.noarch.rpm
+Downloading toolchain RPM: perl-Module-Load-0.36-506.azl3.noarch.rpm
+Downloading toolchain RPM: perl-Module-Load-Conditional-0.74-506.azl3.noarch.rpm
+Downloading toolchain RPM: perl-Module-Loaded-0.08-506.azl3.noarch.rpm
+Downloading toolchain RPM: perl-Module-Metadata-1.000037-506.azl3.noarch.rpm
+Downloading toolchain RPM: perl-NDBM_File-1.16-506.azl3.x86_64.rpm
+Downloading toolchain RPM: perl-Net-1.03-506.azl3.noarch.rpm
+Downloading toolchain RPM: perl-Net-Ping-2.76-506.azl3.noarch.rpm
+Downloading toolchain RPM: perl-NEXT-0.69-506.azl3.noarch.rpm
+Downloading toolchain RPM: perl-Object-Accessor-0.48-10.azl3.noarch.rpm
+Downloading toolchain RPM: perl-ODBM_File-1.18-506.azl3.x86_64.rpm
+Downloading toolchain RPM: perl-Opcode-1.64-506.azl3.x86_64.rpm
+Downloading toolchain RPM: perl-open-1.13-506.azl3.noarch.rpm
+Downloading toolchain RPM: perl-Params-Check-0.38-506.azl3.noarch.rpm
+Downloading toolchain RPM: perl-Perl-OSType-1.010-506.azl3.noarch.rpm
+Downloading toolchain RPM: perl-perlfaq-5.20210520-506.azl3.noarch.rpm
+Downloading toolchain RPM: perl-PerlIO-via-QuotedPrint-0.10-506.azl3.noarch.rpm
+Downloading toolchain RPM: perl-ph-5.38.2-506.azl3.x86_64.rpm
+Downloading toolchain RPM: perl-Pod-Checker-1.75-506.azl3.noarch.rpm
+Downloading toolchain RPM: perl-Pod-Functions-1.14-506.azl3.noarch.rpm
+Downloading toolchain RPM: perl-Safe-2.44-506.azl3.noarch.rpm
+Downloading toolchain RPM: perl-Pod-Html-1.34-506.azl3.noarch.rpm
+Downloading toolchain RPM: perl-Search-Dict-1.07-506.azl3.noarch.rpm
+Downloading toolchain RPM: perl-SelfLoader-1.26-506.azl3.noarch.rpm
+Downloading toolchain RPM: perl-sigtrap-1.10-506.azl3.noarch.rpm
+Downloading toolchain RPM: perl-sort-2.05-506.azl3.noarch.rpm
+Downloading toolchain RPM: perl-Sys-Hostname-1.25-506.azl3.x86_64.rpm
+Downloading toolchain RPM: perl-Sys-Syslog-0.36-506.azl3.x86_64.rpm
+Downloading toolchain RPM: perl-Term-Complete-1.403-506.azl3.noarch.rpm
+Downloading toolchain RPM: perl-Term-ReadLine-1.17-506.azl3.noarch.rpm
+Downloading toolchain RPM: perl-Test-1.31-506.azl3.noarch.rpm
+Downloading toolchain RPM: perl-Test-Harness-3.44-506.azl3.noarch.rpm
+Downloading toolchain RPM: perl-Test-Simple-1.302194-506.azl3.noarch.rpm
+Downloading toolchain RPM: perl-Test-Warnings-0.032-2.azl3.noarch.rpm
+Downloading toolchain RPM: perl-tests-5.38.2-506.azl3.x86_64.rpm
+Downloading toolchain RPM: perl-Text-Abbrev-1.02-506.azl3.noarch.rpm
+Downloading toolchain RPM: perl-Text-Balanced-2.06-506.azl3.noarch.rpm
+Downloading toolchain RPM: perl-Text-Template-1.61-2.azl3.noarch.rpm
+Downloading toolchain RPM: perl-Thread-3.05-506.azl3.noarch.rpm
+Downloading toolchain RPM: perl-Thread-Semaphore-2.13-506.azl3.noarch.rpm
+Downloading toolchain RPM: perl-Tie-4.6-506.azl3.noarch.rpm
+Downloading toolchain RPM: perl-Tie-File-1.07-506.azl3.noarch.rpm
+Downloading toolchain RPM: perl-Tie-Memoize-1.1-506.azl3.noarch.rpm
+Downloading toolchain RPM: perl-Tie-RefHash-1.40-506.azl3.noarch.rpm
+Downloading toolchain RPM: perl-Time-1.03-506.azl3.noarch.rpm
+Downloading toolchain RPM: perl-Time-HiRes-1.9775-506.azl3.x86_64.rpm
+Downloading toolchain RPM: perl-Time-Piece-1.3401-506.azl3.x86_64.rpm
+Downloading toolchain RPM: perl-Unicode-Collate-1.31-506.azl3.x86_64.rpm
+Downloading toolchain RPM: perl-Unicode-UCD-0.78-506.azl3.noarch.rpm
+Downloading toolchain RPM: perl-User-pwent-1.04-506.azl3.noarch.rpm
+Downloading toolchain RPM: perl-utils-5.38.2-506.azl3.noarch.rpm
+Downloading toolchain RPM: perl-version-0.99.29-506.azl3.noarch.rpm
+Downloading toolchain RPM: perl-vmsish-1.04-506.azl3.noarch.rpm
+Downloading toolchain RPM: perl-XML-Parser-2.47-1.azl3.x86_64.rpm
+Downloading toolchain RPM: perl-XML-Parser-debuginfo-2.47-1.azl3.x86_64.rpm
+Downloading toolchain RPM: pinentry-debuginfo-1.2.1-1.azl3.x86_64.rpm
+Downloading toolchain RPM: pkgconf-debuginfo-2.0.2-1.azl3.x86_64.rpm
+Downloading toolchain RPM: popt-debuginfo-1.19-1.azl3.x86_64.rpm
+Downloading toolchain RPM: procps-ng-debuginfo-4.0.4-1.azl3.x86_64.rpm
+Downloading toolchain RPM: python-markupsafe-debuginfo-2.1.3-1.azl3.x86_64.rpm
+Downloading toolchain RPM: python-wheel-wheel-0.43.0-1.azl3.noarch.rpm
+Downloading toolchain RPM: python3-audit-3.1.2-1.azl3.x86_64.rpm
+Downloading toolchain RPM: python3-cracklib-2.9.11-1.azl3.x86_64.rpm
+Downloading toolchain RPM: python3-curses-3.12.9-1.azl3.x86_64.rpm
+Downloading toolchain RPM: python3-Cython-3.0.5-2.azl3.x86_64.rpm
+Downloading toolchain RPM: python3-debuginfo-3.12.9-1.azl3.x86_64.rpm
+Downloading toolchain RPM: python3-flit-core-3.9.0-1.azl3.noarch.rpm
+Downloading toolchain RPM: python3-gpg-1.23.2-2.azl3.x86_64.rpm
+Downloading toolchain RPM: python3-jinja2-3.1.2-2.azl3.noarch.rpm
+Downloading toolchain RPM: python3-libcap-ng-0.8.4-1.azl3.x86_64.rpm
+Downloading toolchain RPM: python3-libxml2-2.11.5-4.azl3.x86_64.rpm
+Downloading toolchain RPM: python3-lxml-4.9.3-1.azl3.x86_64.rpm
+Downloading toolchain RPM: python3-magic-5.45-1.azl3.noarch.rpm
+Downloading toolchain RPM: python3-markupsafe-2.1.3-1.azl3.x86_64.rpm
+Downloading toolchain RPM: python3-newt-0.52.23-1.azl3.x86_64.rpm
+Downloading toolchain RPM: python3-pip-24.2-2.azl3.noarch.rpm
+Downloading toolchain RPM: python3-rpm-4.18.2-1.azl3.x86_64.rpm
+Downloading toolchain RPM: python3-test-3.12.9-1.azl3.x86_64.rpm
+Downloading toolchain RPM: python3-tools-3.12.9-1.azl3.x86_64.rpm
+Downloading toolchain RPM: python3-wheel-0.43.0-1.azl3.noarch.rpm
+Downloading toolchain RPM: readline-debuginfo-8.2-1.azl3.x86_64.rpm
+Downloading toolchain RPM: rpm-debuginfo-4.18.2-1.azl3.x86_64.rpm
+Downloading toolchain RPM: sed-debuginfo-4.9-1.azl3.x86_64.rpm
+Downloading toolchain RPM: slang-debuginfo-2.3.3-1.azl3.x86_64.rpm
+Downloading toolchain RPM: slang-devel-2.3.3-1.azl3.x86_64.rpm
+Downloading toolchain RPM: sqlite-debuginfo-3.44.0-1.azl3.x86_64.rpm
+Downloading toolchain RPM: swig-4.2.1-1.azl3.x86_64.rpm
+Downloading toolchain RPM: swig-debuginfo-4.2.1-1.azl3.x86_64.rpm
+Downloading toolchain RPM: systemd-bootstrap-250.3-17.azl3.x86_64.rpm
+Downloading toolchain RPM: systemd-bootstrap-debuginfo-250.3-17.azl3.x86_64.rpm
+Downloading toolchain RPM: systemd-bootstrap-devel-250.3-17.azl3.x86_64.rpm
+Downloading toolchain RPM: systemd-bootstrap-libs-250.3-17.azl3.x86_64.rpm
+Downloading toolchain RPM: systemd-bootstrap-rpm-macros-250.3-17.azl3.noarch.rpm
+Downloading toolchain RPM: tar-debuginfo-1.35-1.azl3.x86_64.rpm
+Downloading toolchain RPM: tdnf-autoupdate-3.5.8-7.azl3.x86_64.rpm
+Downloading toolchain RPM: tdnf-debuginfo-3.5.8-7.azl3.x86_64.rpm
+Downloading toolchain RPM: tdnf-plugin-metalink-3.5.8-7.azl3.x86_64.rpm
+Downloading toolchain RPM: tdnf-python-3.5.8-7.azl3.x86_64.rpm
+Downloading toolchain RPM: texinfo-debuginfo-7.0.3-1.azl3.x86_64.rpm
+Downloading toolchain RPM: unzip-debuginfo-6.0-21.azl3.x86_64.rpm
+Downloading toolchain RPM: util-linux-debuginfo-2.40.2-1.azl3.x86_64.rpm
+Downloading toolchain RPM: util-linux-lang-2.40.2-1.azl3.x86_64.rpm
+Downloading toolchain RPM: which-debuginfo-2.21-8.azl3.x86_64.rpm
+Downloading toolchain RPM: xz-debuginfo-5.4.4-1.azl3.x86_64.rpm
+Downloading toolchain RPM: zip-3.0-6.azl3.x86_64.rpm
+Downloading toolchain RPM: zip-debuginfo-3.0-6.azl3.x86_64.rpm
+Downloading toolchain RPM: zlib-debuginfo-1.3.1-1.azl3.x86_64.rpm
+Downloading toolchain RPM: zstd-debuginfo-1.5.5-2.azl3.x86_64.rpm
+Downloading toolchain RPM: zstd-doc-1.5.5-2.azl3.x86_64.rpm
+/third_disk/bb04Mar/azurelinux/toolkit/tools/pkggen/worker/create_worker_chroot.sh /third_disk/bb04Mar/azurelinux/build/worker /third_disk/bb04Mar/azurelinux/toolkit/resources/manifests/package/pkggen_core_x86_64.txt /third_disk/bb04Mar/azurelinux/build/toolchain_rpms /third_disk/bb04Mar/azurelinux/toolkit/out/tools/containercheck /third_disk/bb04Mar/azurelinux/build/logs
+mkdir: created directory '/third_disk/bb04Mar/azurelinux/build/worker/worker_chroot/dev'
+Adding RPM to worker chroot 0%: filesystem-1.1-21.azl3.x86_64.rpm.
+Adding RPM to worker chroot 0%: kernel-headers-6.6.76.1-2.azl3.noarch.rpm.
+Adding RPM to worker chroot 0%: glibc-2.38-9.azl3.x86_64.rpm.
+Adding RPM to worker chroot 1%: glibc-devel-2.38-9.azl3.x86_64.rpm.
+Adding RPM to worker chroot 1%: glibc-i18n-2.38-9.azl3.x86_64.rpm.
+Adding RPM to worker chroot 1%: glibc-iconv-2.38-9.azl3.x86_64.rpm.
+Adding RPM to worker chroot 2%: glibc-lang-2.38-9.azl3.x86_64.rpm.
+Adding RPM to worker chroot 2%: glibc-locales-all-2.38-9.azl3.x86_64.rpm.
+Adding RPM to worker chroot 2%: glibc-nscd-2.38-9.azl3.x86_64.rpm.
+Adding RPM to worker chroot 3%: glibc-tools-2.38-9.azl3.x86_64.rpm.
+Adding RPM to worker chroot 3%: zlib-1.3.1-1.azl3.x86_64.rpm.
+Adding RPM to worker chroot 4%: zlib-devel-1.3.1-1.azl3.x86_64.rpm.
+Adding RPM to worker chroot 4%: file-5.45-1.azl3.x86_64.rpm.
+Adding RPM to worker chroot 4%: file-devel-5.45-1.azl3.x86_64.rpm.
+Adding RPM to worker chroot 5%: file-libs-5.45-1.azl3.x86_64.rpm.
+Adding RPM to worker chroot 5%: binutils-2.41-4.azl3.x86_64.rpm.
+Adding RPM to worker chroot 5%: binutils-devel-2.41-4.azl3.x86_64.rpm.
+Adding RPM to worker chroot 6%: gmp-6.3.0-1.azl3.x86_64.rpm.
+Adding RPM to worker chroot 6%: gmp-devel-6.3.0-1.azl3.x86_64.rpm.
+Adding RPM to worker chroot 7%: mpfr-4.2.1-1.azl3.x86_64.rpm.
+Adding RPM to worker chroot 7%: mpfr-devel-4.2.1-1.azl3.x86_64.rpm.
+Adding RPM to worker chroot 7%: libmetalink-0.1.3-1.azl3.x86_64.rpm.
+Adding RPM to worker chroot 8%: libmpc-1.3.1-1.azl3.x86_64.rpm.
+Adding RPM to worker chroot 8%: libgcc-13.2.0-7.azl3.x86_64.rpm.
+Adding RPM to worker chroot 8%: libgcc-atomic-13.2.0-7.azl3.x86_64.rpm.
+Adding RPM to worker chroot 9%: libgcc-devel-13.2.0-7.azl3.x86_64.rpm.
+Adding RPM to worker chroot 9%: libstdc++-13.2.0-7.azl3.x86_64.rpm.
+Adding RPM to worker chroot 10%: libstdc++-devel-13.2.0-7.azl3.x86_64.rpm.
+Adding RPM to worker chroot 10%: libgomp-13.2.0-7.azl3.x86_64.rpm.
+Adding RPM to worker chroot 10%: libgomp-devel-13.2.0-7.azl3.x86_64.rpm.
+Adding RPM to worker chroot 11%: gcc-13.2.0-7.azl3.x86_64.rpm.
+Adding RPM to worker chroot 11%: gcc-c++-13.2.0-7.azl3.x86_64.rpm.
+Adding RPM to worker chroot 11%: libpkgconf-2.0.2-1.azl3.x86_64.rpm.
+Adding RPM to worker chroot 12%: pkgconf-2.0.2-1.azl3.x86_64.rpm.
+Adding RPM to worker chroot 12%: pkgconf-m4-2.0.2-1.azl3.noarch.rpm.
+Adding RPM to worker chroot 13%: pkgconf-pkg-config-2.0.2-1.azl3.x86_64.rpm.
+Adding RPM to worker chroot 13%: ncurses-6.4-2.azl3.x86_64.rpm.
+Adding RPM to worker chroot 13%: ncurses-compat-6.4-2.azl3.x86_64.rpm.
+Adding RPM to worker chroot 14%: ncurses-devel-6.4-2.azl3.x86_64.rpm.
+Adding RPM to worker chroot 14%: ncurses-libs-6.4-2.azl3.x86_64.rpm.
+Adding RPM to worker chroot 14%: ncurses-term-6.4-2.azl3.x86_64.rpm.
+Adding RPM to worker chroot 15%: readline-8.2-1.azl3.x86_64.rpm.
+Adding RPM to worker chroot 15%: readline-devel-8.2-1.azl3.x86_64.rpm.
+Adding RPM to worker chroot 16%: libattr-2.5.2-1.azl3.x86_64.rpm.
+Adding RPM to worker chroot 16%: attr-2.5.2-1.azl3.x86_64.rpm.
+Adding RPM to worker chroot 16%: libacl-2.3.1-2.azl3.x86_64.rpm.
+Adding RPM to worker chroot 17%: coreutils-9.4-6.azl3.x86_64.rpm.
+Adding RPM to worker chroot 17%: coreutils-lang-9.4-6.azl3.x86_64.rpm.
+Adding RPM to worker chroot 17%: bash-5.2.15-3.azl3.x86_64.rpm.
+Adding RPM to worker chroot 18%: bash-devel-5.2.15-3.azl3.x86_64.rpm.
+Adding RPM to worker chroot 18%: bash-lang-5.2.15-3.azl3.x86_64.rpm.
+Adding RPM to worker chroot 19%: bzip2-1.0.8-1.azl3.x86_64.rpm.
+Adding RPM to worker chroot 19%: bzip2-devel-1.0.8-1.azl3.x86_64.rpm.
+Adding RPM to worker chroot 19%: bzip2-libs-1.0.8-1.azl3.x86_64.rpm.
+Adding RPM to worker chroot 20%: sed-4.9-1.azl3.x86_64.rpm.
+Adding RPM to worker chroot 20%: sed-lang-4.9-1.azl3.x86_64.rpm.
+Adding RPM to worker chroot 20%: procps-ng-4.0.4-1.azl3.x86_64.rpm.
+Adding RPM to worker chroot 21%: procps-ng-devel-4.0.4-1.azl3.x86_64.rpm.
+Adding RPM to worker chroot 21%: procps-ng-lang-4.0.4-1.azl3.x86_64.rpm.
+Adding RPM to worker chroot 22%: m4-1.4.19-2.azl3.x86_64.rpm.
+Adding RPM to worker chroot 22%: grep-3.11-2.azl3.x86_64.rpm.
+Adding RPM to worker chroot 22%: grep-lang-3.11-2.azl3.x86_64.rpm.
+Adding RPM to worker chroot 23%: diffutils-3.10-1.azl3.x86_64.rpm.
+Adding RPM to worker chroot 23%: gawk-5.2.2-1.azl3.x86_64.rpm.
+Adding RPM to worker chroot 23%: findutils-4.9.0-1.azl3.x86_64.rpm.
+Adding RPM to worker chroot 24%: findutils-lang-4.9.0-1.azl3.x86_64.rpm.
+Adding RPM to worker chroot 24%: gettext-0.22-1.azl3.x86_64.rpm.
+Adding RPM to worker chroot 25%: gzip-1.13-1.azl3.x86_64.rpm.
+Adding RPM to worker chroot 25%: make-4.4.1-2.azl3.x86_64.rpm.
+Adding RPM to worker chroot 25%: patch-2.7.6-9.azl3.x86_64.rpm.
+Adding RPM to worker chroot 26%: libcap-ng-0.8.4-1.azl3.x86_64.rpm.
+Adding RPM to worker chroot 26%: libcap-ng-devel-0.8.4-1.azl3.x86_64.rpm.
+Adding RPM to worker chroot 26%: util-linux-2.40.2-1.azl3.x86_64.rpm.
+Adding RPM to worker chroot 27%: util-linux-devel-2.40.2-1.azl3.x86_64.rpm.
+Adding RPM to worker chroot 27%: util-linux-libs-2.40.2-1.azl3.x86_64.rpm.
+Adding RPM to worker chroot 28%: tar-1.35-1.azl3.x86_64.rpm.
+Adding RPM to worker chroot 28%: xz-5.4.4-1.azl3.x86_64.rpm.
+Adding RPM to worker chroot 28%: xz-devel-5.4.4-1.azl3.x86_64.rpm.
+Adding RPM to worker chroot 29%: xz-lang-5.4.4-1.azl3.x86_64.rpm.
+Adding RPM to worker chroot 29%: xz-libs-5.4.4-1.azl3.x86_64.rpm.
+Adding RPM to worker chroot 29%: zstd-1.5.5-2.azl3.x86_64.rpm.
+Adding RPM to worker chroot 30%: zstd-devel-1.5.5-2.azl3.x86_64.rpm.
+Adding RPM to worker chroot 30%: zstd-libs-1.5.5-2.azl3.x86_64.rpm.
+Adding RPM to worker chroot 31%: libtool-2.4.7-1.azl3.x86_64.rpm.
+Adding RPM to worker chroot 31%: flex-2.6.4-7.azl3.x86_64.rpm.
+Adding RPM to worker chroot 31%: flex-devel-2.6.4-7.azl3.x86_64.rpm.
+Adding RPM to worker chroot 32%: bison-3.8.2-1.azl3.x86_64.rpm.
+Adding RPM to worker chroot 32%: popt-1.19-1.azl3.x86_64.rpm.
+Adding RPM to worker chroot 32%: popt-devel-1.19-1.azl3.x86_64.rpm.
+Adding RPM to worker chroot 33%: popt-lang-1.19-1.azl3.x86_64.rpm.
+Adding RPM to worker chroot 33%: sqlite-3.44.0-1.azl3.x86_64.rpm.
+Adding RPM to worker chroot 34%: sqlite-devel-3.44.0-1.azl3.x86_64.rpm.
+Adding RPM to worker chroot 34%: sqlite-libs-3.44.0-1.azl3.x86_64.rpm.
+Adding RPM to worker chroot 34%: elfutils-0.189-3.azl3.x86_64.rpm.
+Adding RPM to worker chroot 35%: elfutils-default-yama-scope-0.189-3.azl3.noarch.rpm.
+Adding RPM to worker chroot 35%: elfutils-devel-0.189-3.azl3.x86_64.rpm.
+Adding RPM to worker chroot 35%: elfutils-devel-static-0.189-3.azl3.x86_64.rpm.
+Adding RPM to worker chroot 36%: elfutils-libelf-0.189-3.azl3.x86_64.rpm.
+Adding RPM to worker chroot 36%: elfutils-libelf-devel-0.189-3.azl3.x86_64.rpm.
+Adding RPM to worker chroot 37%: elfutils-libelf-devel-static-0.189-3.azl3.x86_64.rpm.
+Adding RPM to worker chroot 37%: elfutils-libelf-lang-0.189-3.azl3.x86_64.rpm.
+Adding RPM to worker chroot 37%: expat-2.6.3-2.azl3.x86_64.rpm.
+Adding RPM to worker chroot 38%: expat-devel-2.6.3-2.azl3.x86_64.rpm.
+Adding RPM to worker chroot 38%: expat-libs-2.6.3-2.azl3.x86_64.rpm.
+Adding RPM to worker chroot 38%: libpipeline-1.5.7-1.azl3.x86_64.rpm.
+Adding RPM to worker chroot 39%: libpipeline-devel-1.5.7-1.azl3.x86_64.rpm.
+Adding RPM to worker chroot 39%: gdbm-1.23-1.azl3.x86_64.rpm.
+Adding RPM to worker chroot 40%: gdbm-devel-1.23-1.azl3.x86_64.rpm.
+Adding RPM to worker chroot 40%: gdbm-lang-1.23-1.azl3.x86_64.rpm.
+Adding RPM to worker chroot 40%: perl-B-1.88-506.azl3.x86_64.rpm.
+Adding RPM to worker chroot 41%: perl-Carp-1.54-506.azl3.noarch.rpm.
+Adding RPM to worker chroot 41%: perl-Class-Struct-0.68-506.azl3.noarch.rpm.
+Adding RPM to worker chroot 41%: perl-Data-Dumper-2.188-506.azl3.x86_64.rpm.
+Adding RPM to worker chroot 42%: perl-DynaLoader-1.54-506.azl3.x86_64.rpm.
+Adding RPM to worker chroot 42%: perl-Encode-3.19-506.azl3.x86_64.rpm.
+Adding RPM to worker chroot 43%: perl-Errno-1.37-506.azl3.x86_64.rpm.
+Adding RPM to worker chroot 43%: perl-Exporter-5.77-506.azl3.noarch.rpm.
+Adding RPM to worker chroot 43%: perl-Fcntl-1.15-506.azl3.x86_64.rpm.
+Adding RPM to worker chroot 44%: perl-File-Basename-2.86-506.azl3.noarch.rpm.
+Adding RPM to worker chroot 44%: perl-File-Compare-1.100.700-506.azl3.noarch.rpm.
+Adding RPM to worker chroot 44%: perl-File-Copy-2.41-506.azl3.noarch.rpm.
+Adding RPM to worker chroot 45%: perl-File-Path-2.18-506.azl3.noarch.rpm.
+Adding RPM to worker chroot 45%: perl-File-Temp-0.231.100-506.azl3.noarch.rpm.
+Adding RPM to worker chroot 46%: perl-File-stat-1.13-506.azl3.noarch.rpm.
+Adding RPM to worker chroot 46%: perl-FileHandle-2.05-506.azl3.noarch.rpm.
+Adding RPM to worker chroot 46%: perl-Getopt-Long-2.54-506.azl3.noarch.rpm.
+Adding RPM to worker chroot 47%: perl-Getopt-Std-1.13-506.azl3.noarch.rpm.
+Adding RPM to worker chroot 47%: perl-HTTP-Tiny-0.086-506.azl3.noarch.rpm.
+Adding RPM to worker chroot 47%: perl-I18N-Langinfo-0.22-506.azl3.x86_64.rpm.
+Adding RPM to worker chroot 48%: perl-IO-1.52-506.azl3.x86_64.rpm.
+Adding RPM to worker chroot 48%: perl-IPC-Open3-1.22-506.azl3.noarch.rpm.
+Adding RPM to worker chroot 49%: perl-MIME-Base64-3.16-506.azl3.x86_64.rpm.
+Adding RPM to worker chroot 49%: perl-POSIX-2.13-506.azl3.x86_64.rpm.
+Adding RPM to worker chroot 49%: perl-PathTools-3.89-506.azl3.x86_64.rpm.
+Adding RPM to worker chroot 50%: perl-Pod-Escapes-1.07-506.azl3.noarch.rpm.
+Adding RPM to worker chroot 50%: perl-Pod-Perldoc-3.28.01-506.azl3.noarch.rpm.
+Adding RPM to worker chroot 50%: perl-Pod-Simple-3.43-506.azl3.noarch.rpm.
+Adding RPM to worker chroot 51%: perl-Pod-Usage-2.03-506.azl3.noarch.rpm.
+Adding RPM to worker chroot 51%: perl-Scalar-List-Utils-1.63-506.azl3.x86_64.rpm.
+Adding RPM to worker chroot 52%: perl-SelectSaver-1.02-506.azl3.noarch.rpm.
+Adding RPM to worker chroot 52%: perl-Socket-2.036-506.azl3.x86_64.rpm.
+Adding RPM to worker chroot 52%: perl-Storable-3.32-506.azl3.x86_64.rpm.
+Adding RPM to worker chroot 53%: perl-Symbol-1.09-506.azl3.noarch.rpm.
+Adding RPM to worker chroot 53%: perl-Term-ANSIColor-5.01-506.azl3.noarch.rpm.
+Adding RPM to worker chroot 53%: perl-Term-Cap-1.18-506.azl3.noarch.rpm.
+Adding RPM to worker chroot 54%: perl-Text-ParseWords-3.31-506.azl3.noarch.rpm.
+Adding RPM to worker chroot 54%: perl-Text-Tabs+Wrap-2021.0814-506.azl3.noarch.rpm.
+Adding RPM to worker chroot 55%: perl-Thread-Queue-3.14-506.azl3.noarch.rpm.
+Adding RPM to worker chroot 55%: perl-Time-Local-1.300-506.azl3.noarch.rpm.
+Adding RPM to worker chroot 55%: perl-Unicode-Normalize-1.32-506.azl3.x86_64.rpm.
+Adding RPM to worker chroot 56%: perl-base-2.27-506.azl3.noarch.rpm.
+Adding RPM to worker chroot 56%: perl-constant-1.33-506.azl3.noarch.rpm.
+Adding RPM to worker chroot 56%: perl-if-0.61.000-506.azl3.noarch.rpm.
+Adding RPM to worker chroot 57%: perl-interpreter-5.38.2-506.azl3.x86_64.rpm.
+Adding RPM to worker chroot 57%: perl-libs-5.38.2-506.azl3.x86_64.rpm.
+Adding RPM to worker chroot 58%: perl-locale-1.10-506.azl3.noarch.rpm.
+Adding RPM to worker chroot 58%: perl-macros-5.38.2-506.azl3.noarch.rpm.
+Adding RPM to worker chroot 58%: perl-mro-1.28-506.azl3.x86_64.rpm.
+Adding RPM to worker chroot 59%: perl-overload-1.37-506.azl3.noarch.rpm.
+Adding RPM to worker chroot 59%: perl-overloading-0.02-506.azl3.noarch.rpm.
+Adding RPM to worker chroot 59%: perl-parent-0.241-506.azl3.noarch.rpm.
+Adding RPM to worker chroot 60%: perl-podlators-5.01-506.azl3.noarch.rpm.
+Adding RPM to worker chroot 60%: perl-subs-1.04-506.azl3.noarch.rpm.
+Adding RPM to worker chroot 61%: perl-threads-2.36-506.azl3.x86_64.rpm.
+Adding RPM to worker chroot 61%: perl-threads-shared-1.68-506.azl3.x86_64.rpm.
+Adding RPM to worker chroot 61%: perl-vars-1.05-506.azl3.noarch.rpm.
+Adding RPM to worker chroot 62%: perl-5.38.2-506.azl3.x86_64.rpm.
+Adding RPM to worker chroot 62%: texinfo-7.0.3-1.azl3.x86_64.rpm.
+Adding RPM to worker chroot 62%: gtk-doc-1.33.2-1.azl3.noarch.rpm.
+Adding RPM to worker chroot 63%: autoconf-2.72-2.azl3.noarch.rpm.
+Adding RPM to worker chroot 63%: automake-1.16.5-2.azl3.noarch.rpm.
+Adding RPM to worker chroot 64%: ocaml-srpm-macros-9-4.azl3.noarch.rpm.
+Adding RPM to worker chroot 64%: openssl-3.3.3-1.azl3.x86_64.rpm.
+Adding RPM to worker chroot 64%: openssl-devel-3.3.3-1.azl3.x86_64.rpm.
+Adding RPM to worker chroot 65%: openssl-libs-3.3.3-1.azl3.x86_64.rpm.
+Adding RPM to worker chroot 65%: openssl-perl-3.3.3-1.azl3.x86_64.rpm.
+Adding RPM to worker chroot 65%: openssl-static-3.3.3-1.azl3.x86_64.rpm.
+Adding RPM to worker chroot 66%: libcap-2.69-3.azl3.x86_64.rpm.
+Adding RPM to worker chroot 66%: libcap-devel-2.69-3.azl3.x86_64.rpm.
+Adding RPM to worker chroot 67%: debugedit-5.0-2.azl3.x86_64.rpm.
+Adding RPM to worker chroot 67%: libarchive-3.7.7-1.azl3.x86_64.rpm.
+Adding RPM to worker chroot 67%: libarchive-devel-3.7.7-1.azl3.x86_64.rpm.
+Adding RPM to worker chroot 68%: rpm-4.18.2-1.azl3.x86_64.rpm.
+Adding RPM to worker chroot 68%: rpm-build-4.18.2-1.azl3.x86_64.rpm.
+Adding RPM to worker chroot 68%: rpm-build-libs-4.18.2-1.azl3.x86_64.rpm.
+Adding RPM to worker chroot 69%: rpm-devel-4.18.2-1.azl3.x86_64.rpm.
+Adding RPM to worker chroot 69%: rpm-lang-4.18.2-1.azl3.x86_64.rpm.
+Adding RPM to worker chroot 70%: rpm-libs-4.18.2-1.azl3.x86_64.rpm.
+Adding RPM to worker chroot 70%: cpio-2.14-1.azl3.x86_64.rpm.
+Adding RPM to worker chroot 70%: cpio-lang-2.14-1.azl3.x86_64.rpm.
+Adding RPM to worker chroot 71%: e2fsprogs-libs-1.47.0-2.azl3.x86_64.rpm.
+Adding RPM to worker chroot 71%: e2fsprogs-1.47.0-2.azl3.x86_64.rpm.
+Adding RPM to worker chroot 71%: e2fsprogs-devel-1.47.0-2.azl3.x86_64.rpm.
+Adding RPM to worker chroot 72%: libsolv-0.7.28-2.azl3.x86_64.rpm.
+Adding RPM to worker chroot 72%: libsolv-devel-0.7.28-2.azl3.x86_64.rpm.
+Adding RPM to worker chroot 73%: libssh2-1.11.0-1.azl3.x86_64.rpm.
+Adding RPM to worker chroot 73%: libssh2-devel-1.11.0-1.azl3.x86_64.rpm.
+Adding RPM to worker chroot 73%: krb5-1.21.3-2.azl3.x86_64.rpm.
+Adding RPM to worker chroot 74%: krb5-devel-1.21.3-2.azl3.x86_64.rpm.
+Adding RPM to worker chroot 74%: nghttp2-1.61.0-2.azl3.x86_64.rpm.
+Adding RPM to worker chroot 74%: nghttp2-devel-1.61.0-2.azl3.x86_64.rpm.
+Adding RPM to worker chroot 75%: curl-8.11.1-2.azl3.x86_64.rpm.
+Adding RPM to worker chroot 75%: curl-devel-8.11.1-2.azl3.x86_64.rpm.
+Adding RPM to worker chroot 76%: curl-libs-8.11.1-2.azl3.x86_64.rpm.
+Adding RPM to worker chroot 76%: createrepo_c-1.0.3-1.azl3.x86_64.rpm.
+Adding RPM to worker chroot 76%: libxml2-2.11.5-4.azl3.x86_64.rpm.
+Adding RPM to worker chroot 77%: libxml2-devel-2.11.5-4.azl3.x86_64.rpm.
+Adding RPM to worker chroot 77%: docbook-dtd-xml-4.5-11.azl3.noarch.rpm.
+Adding RPM to worker chroot 77%: docbook-style-xsl-1.79.1-14.azl3.noarch.rpm.
+Adding RPM to worker chroot 78%: libsepol-3.6-1.azl3.x86_64.rpm.
+Adding RPM to worker chroot 78%: glib-2.78.1-5.azl3.x86_64.rpm.
+Adding RPM to worker chroot 79%: libltdl-2.4.7-1.azl3.x86_64.rpm.
+Adding RPM to worker chroot 79%: libltdl-devel-2.4.7-1.azl3.x86_64.rpm.
+Adding RPM to worker chroot 79%: lua-5.4.6-1.azl3.x86_64.rpm.
+Adding RPM to worker chroot 80%: lua-libs-5.4.6-1.azl3.x86_64.rpm.
+Adding RPM to worker chroot 80%: azurelinux-rpm-macros-3.0-7.azl3.noarch.rpm.
+Adding RPM to worker chroot 80%: azurelinux-check-macros-3.0-7.azl3.noarch.rpm.
+Adding RPM to worker chroot 81%: tdnf-3.5.8-7.azl3.x86_64.rpm.
+Adding RPM to worker chroot 81%: tdnf-cli-libs-3.5.8-7.azl3.x86_64.rpm.
+Adding RPM to worker chroot 82%: tdnf-devel-3.5.8-7.azl3.x86_64.rpm.
+Adding RPM to worker chroot 82%: tdnf-plugin-repogpgcheck-3.5.8-7.azl3.x86_64.rpm.
+Adding RPM to worker chroot 82%: libassuan-2.5.6-1.azl3.x86_64.rpm.
+Adding RPM to worker chroot 83%: libassuan-devel-2.5.6-1.azl3.x86_64.rpm.
+Adding RPM to worker chroot 83%: libgpg-error-1.47-1.azl3.x86_64.rpm.
+Adding RPM to worker chroot 83%: libgcrypt-1.10.2-1.azl3.x86_64.rpm.
+Adding RPM to worker chroot 84%: libksba-1.6.4-1.azl3.x86_64.rpm.
+Adding RPM to worker chroot 84%: libksba-devel-1.6.4-1.azl3.x86_64.rpm.
+Adding RPM to worker chroot 85%: libxslt-1.1.39-1.azl3.x86_64.rpm.
+Adding RPM to worker chroot 85%: npth-1.6-4.azl3.x86_64.rpm.
+Adding RPM to worker chroot 85%: pinentry-1.2.1-1.azl3.x86_64.rpm.
+Adding RPM to worker chroot 86%: gnupg2-2.4.4-2.azl3.x86_64.rpm.
+Adding RPM to worker chroot 86%: gnupg2-lang-2.4.4-2.azl3.x86_64.rpm.
+Adding RPM to worker chroot 86%: gpgme-1.23.2-2.azl3.x86_64.rpm.
+Adding RPM to worker chroot 87%: azurelinux-repos-shared-3.0-4.azl3.noarch.rpm.
+Adding RPM to worker chroot 87%: azurelinux-repos-3.0-4.azl3.noarch.rpm.
+Adding RPM to worker chroot 88%: libffi-3.4.4-1.azl3.x86_64.rpm.
+Adding RPM to worker chroot 88%: libffi-devel-3.4.4-1.azl3.x86_64.rpm.
+Adding RPM to worker chroot 88%: libtasn1-4.19.0-1.azl3.x86_64.rpm.
+Adding RPM to worker chroot 89%: p11-kit-0.25.0-1.azl3.x86_64.rpm.
+Adding RPM to worker chroot 89%: p11-kit-trust-0.25.0-1.azl3.x86_64.rpm.
+Adding RPM to worker chroot 89%: ca-certificates-shared-3.0.0-8.azl3.noarch.rpm.
+Adding RPM to worker chroot 90%: ca-certificates-tools-3.0.0-8.azl3.noarch.rpm.
+Adding RPM to worker chroot 90%: ca-certificates-base-3.0.0-8.azl3.noarch.rpm.
+Adding RPM to worker chroot 91%: ca-certificates-3.0.0-8.azl3.noarch.rpm.
+Adding RPM to worker chroot 91%: dwz-0.14-2.azl3.x86_64.rpm.
+Adding RPM to worker chroot 91%: unzip-6.0-21.azl3.x86_64.rpm.
+Adding RPM to worker chroot 92%: python3-3.12.9-1.azl3.x86_64.rpm.
+Adding RPM to worker chroot 92%: python3-devel-3.12.9-1.azl3.x86_64.rpm.
+Adding RPM to worker chroot 92%: python3-libs-3.12.9-1.azl3.x86_64.rpm.
+Adding RPM to worker chroot 93%: python3-setuptools-69.0.3-4.azl3.noarch.rpm.
+Adding RPM to worker chroot 93%: python3-pygments-2.7.4-2.azl3.noarch.rpm.
+Adding RPM to worker chroot 94%: which-2.21-8.azl3.x86_64.rpm.
+Adding RPM to worker chroot 94%: libselinux-3.6-3.azl3.x86_64.rpm.
+Adding RPM to worker chroot 94%: slang-2.3.3-1.azl3.x86_64.rpm.
+Adding RPM to worker chroot 95%: newt-0.52.23-1.azl3.x86_64.rpm.
+Adding RPM to worker chroot 95%: newt-lang-0.52.23-1.azl3.x86_64.rpm.
+Adding RPM to worker chroot 95%: chkconfig-1.25-1.azl3.x86_64.rpm.
+Adding RPM to worker chroot 96%: chkconfig-lang-1.25-1.azl3.x86_64.rpm.
+Adding RPM to worker chroot 96%: msopenjdk-17-17.0.12-1.x86_64.rpm.
+Adding RPM to worker chroot 97%: pyproject-rpm-macros-1.12.0-2.azl3.noarch.rpm.
+Adding RPM to worker chroot 97%: pyproject-srpm-macros-1.12.0-2.azl3.noarch.rpm.
+Adding RPM to worker chroot 97%: python3-rpm-generators-14-11.azl3.noarch.rpm.
+Adding RPM to worker chroot 98%: python3-packaging-23.2-3.azl3.noarch.rpm.
+Adding RPM to worker chroot 98%: audit-3.1.2-1.azl3.x86_64.rpm.
+Adding RPM to worker chroot 98%: audit-libs-3.1.2-1.azl3.x86_64.rpm.
+Adding RPM to worker chroot 99%: libxcrypt-4.4.36-2.azl3.x86_64.rpm.
+Adding RPM to worker chroot 99%: libxcrypt-devel-4.4.36-2.azl3.x86_64.rpm.
+Current host 'RPM version 4.18.2' with rpm db 'sqlite', guest has 'RPM version 4.18.2' with rpm db 'sqlite'
+The host rpm db 'sqlite' matches the guest. Not rebuilding the database.
+Importing Azure Linux GPG keys.
+Importing GPG key: /etc/pki/rpm-gpg/MICROSOFT-RPM-GPG-KEY
+Done installing all packages, creating /third_disk/bb04Mar/azurelinux/build/worker/worker_chroot.tar.gz.
+Done creating /third_disk/bb04Mar/azurelinux/build/worker/worker_chroot.tar.gz.
+/third_disk/bb04Mar/azurelinux/toolkit/out/tools/specreader \
+	--dir ../SPECS-EXTENDED \
+	--spec-list="389-ds-base CharLS GConf2 GeoIP GeoIP-GeoLite-data Judy LibRaw ORBit2 openexr PEGTL PyGreSQL sdl12-compat SDL2 SDL_sound SuperLU Xaw3d a52dec accountsservice acpid adcli adobe-mappings-cmap adobe-mappings-pdf advancecomp alsa-firmware alsa-plugins amtk amtterm ansible-freeipa aopalliance apache-commons-beanutils apache-commons-codec apache-commons-collections apache-commons-collections4 apache-commons-compress apache-commons-daemon apache-commons-dbcp apache-commons-digester apache-commons-httpclient apache-commons-io apache-commons-jexl apache-commons-lang apache-commons-net apache-commons-pool apache-commons-pool2 apache-commons-validator apache-commons-vfs apache-parent args4j arptables arpwatch asio aspell-en audiofile babeltrace babl baekmuk-ttf-fonts base64coder bats bcache-tools bcel bea-stax beust-jcommander biosdevname blosc bolt boom-boot booth botan2 breezy bsf buildah bwidget cachefilesd cairomm capnproto capstone cassandra catatonit catch1 cdparanoia cdrdao celt051 certmonger cfitsio cgdcbxd cglib chan cim-schema cjose cldr-emoji-annotation clucene clutter clutter-gst3 clutter-gtk cmake-fedora cogl colorize compat-lua container-exception-logger containernetworking-plugins convmv corosync corosync-qdevice cpp-hocon cppcheck cpptest cpuid crash-ptdump-command cri-o criu crypto-policies cscope custodia dbus-c++ fwupd dcraw deltarpm device-mapper-persistent-data diffstat discount dleyna dleyna-core dmraid docbook-simple docbook-slides docbook-style-dsssl docbook-utils docbook2X docbook5-style-xsl dogtail dotconf dovecot dpkg driverctl dropwatch drpm dumpet dvd+rw-tools dyninst ecj edac-utils efax efi-rpm-macros elinks enca enchant enscript evemu exempi exiv2 fabtests facter fakechroot fence-agents fetchmail fftw filebench flac flashrom flite fltk fonts-rpm-macros foomatic-db freeradius freexl fros fstrm fuse-overlayfs fuse-sshfs fwupd fwupd-efi fxload gavl gconf-editor gcr gdal gdisk generic-logos genwqe-tools geoclue2 geolite2 geronimo-specs ghc-srpm-macros gi-docgen gl-manpages jakarta-annotations glew glm glog gnome-desktop-testing gnome-doc-utils gnome-icon-theme gnome-keyring gnu-getopt gnu-regexp go-rpm-macros gom google-api-python-client google-crosextra-caladea-fonts google-crosextra-carlito-fonts gphoto2 gpm gpsbabel graphene graphite2 gsl gspell gssdp gssntlmssp gstreamer1 gstreamer1-plugins-base gtk-vnc gtkspell gupnp gupnp-av gupnp-dlna gupnp-igd hawtjni hdf hiera highlight hping3 hsakmt httpcomponents-core hunspell-af hunspell-ar hunspell-as hunspell-ast hunspell-az hunspell-be hunspell-bg hunspell-bn hunspell-br hunspell-ca hunspell-cop hunspell-csb hunspell-cv hunspell-cy hunspell-da hunspell-de hunspell-dsb hunspell-el hunspell-eo hunspell-es hunspell-et hunspell-eu hunspell-fa hunspell-fj hunspell-fo hunspell-fr hunspell-fur hunspell-fy hunspell-ga hunspell-gd hunspell-gl hunspell-grc hunspell-gu hunspell-gv hunspell-haw hunspell-hi hunspell-hil hunspell-hr hunspell-hsb hunspell-ht hunspell-hu hunspell-hy hunspell-ia hunspell-id hunspell-is hunspell-it hunspell-kk hunspell-km hunspell-kn hunspell-ko hunspell-ku hunspell-ky hunspell-la hunspell-lb hunspell-ln hunspell-mai hunspell-mg hunspell-mi hunspell-mk hunspell-ml hunspell-mn hunspell-mos hunspell-mr hunspell-ms hunspell-mt hunspell-nds hunspell-ne hunspell-nl hunspell-no hunspell-nr hunspell-nso hunspell-ny hunspell-om hunspell-or hunspell-pa hunspell-pl hunspell-pt hunspell-quh hunspell-ro hunspell-ru hunspell-rw hunspell-se hunspell-shs hunspell-si hunspell-sk hunspell-sl hunspell-smj hunspell-so hunspell-sq hunspell-sr hunspell-sv hunspell-sw hunspell-ta hunspell-te hunspell-tet hunspell-th hunspell-tk hunspell-tl hunspell-tn hunspell-tpi hunspell-ts hunspell-uk hunspell-uz hunspell-ve hunspell-vi hunspell-wa hunspell-xh hunspell-yi hyphen hyphen-as hyphen-bg hyphen-bn hyphen-ca hyphen-da hyphen-de hyphen-el hyphen-es hyphen-fa hyphen-fo hyphen-fr hyphen-ga hyphen-gl hyphen-grc hyphen-gu hyphen-hi hyphen-hsb hyphen-hu hyphen-ia hyphen-id hyphen-is hyphen-it hyphen-kn hyphen-ku hyphen-lt hyphen-mi hyphen-ml hyphen-mn hyphen-mr hyphen-nl hyphen-or hyphen-pa hyphen-pl hyphen-pt hyphen-ro hyphen-ru hyphen-sa hyphen-sk hyphen-sl hyphen-sv hyphen-ta hyphen-te hyphen-tk hyphen-uk ibus ibus-chewing ibus-hangul ibus-kkc ibus-libzhuyin ibus-m17n ibus-rawcode ibus-sayura ibus-table ibus-table-chinese icc-profiles-openicc icon-naming-utils iftop iio-sensor-proxy ilmbase imaptest indent intel-cmt-cat ioping ipa-pgothic-fonts ipcalc iprutils iptstate irssi iso-codes isomd5sum iwd jabberpy jakarta-taglibs-standard jansi jarjar javacc jbigkit jboss-interceptors-1.2-api jdepend jdom2 jfsutils jimtcl jlex jline jose js-jquery jsch jsoncpp jsoup jtidy junitperf jzlib kde-filesystem kernel-rt keybinder3 keycloak-httpd-client-install kronosnet kyotocabinet ladspa lame langtable lasso latencytop lcov leatherman ledmon lensfun lftp libEMF libIDL libXScrnSaver libabw libao libappstream-glib libart_lgpl libasyncns libavc1394 libblockdev libbsd libbytesize libcanberra libcbor libcdio libcdio-paranoia libcdr libchewing libcli libcmis libcmpiutil libcroco libdap libdatrie libdazzle libdbi libdbusmenu libdc1394 libdeflate libdmx libdvdnav libdvdread libeasyfc libecb libeot libepubgen libesmtp libetonyek libexttextcat libfreehand libftdi libgadu libgdither libgee libgee06 libgeotiff libgexiv2 libgit2-glib libglade2 libgovirt libgphoto2 libgsf libgta libgxps libhangul libibcommon libicns libid3tag libiec61883 libieee1284 libimobiledevice libindicator libiodbc libipt libiptcdata libjaylink libjcat libkeepalive libkkc libkkc-data libkml liblangtag libldb liblerc liblockfile liblouis liblqr-1 libmad libmediaart libmikmod libmodman libmodplug libmodulemd1 libmpcdec libmspub libmtp libmusicbrainz5 libmwaw libnet libntlm libnumbertext liboauth libodfgen libofa libogg liboggz liboil libomxil-bellagio libopenraw liboping libosinfo libotf libotr libpagemaker libpaper libpeas libpfm libpinyin libplist libpmemobj-cpp libpng12 libpng15 libproxy libqb libqxp librabbitmq libraqm libraw1394 libreport librevenge librx libsamplerate libsass libsecret libsigc++20 libsigsegv libsmbios libspiro libsrtp libstaroffice snowball libteam libtevent libthai libtheora libtnc libtomcrypt libtommath libtranslit libucil libunicap libuninameslist libusb1 libusbmuxd libutempter libvdpau libverto libvisio libvisual libvorbis libvpx libwnck3 libwpd libwpe libwpg libwps libwvstreams libxklavier libxmlb libyami libyubikey libzmf lilv linuxconsoletools lksctp-tools lockdev logwatch lpsolve lrzsz lua-expat lua-filesystem lua-json lua-lpeg lua-lunitx lua-term luksmeta lv2 lzip m17n-db m17n-lib s-nail mallard-rng man-pages-l10n man-pages-l10n man-pages-l10n man-pages-ja man-pages-l10n man-pages-l10n man-pages-ru man-pages-zh-CN mariadb-connector-odbc marisa maven-parent mcelog mdds meanwhile mecab mecab-ipadic media-player-info memkind metis microcode_ctl microdnf minicom minizip-ng mksh mobile-broadband-provider-info mod_auth_gssapi mod_auth_mellon mod_auth_openidc mod_authnz_pam mod_fcgid mod_http2 mod_intercept_form_submit mod_lookup_identity mod_md mod_security mod_security_crs mod_wsgi mosh mpage mrtg mt-st mtx mutt mythes mythes-bg mythes-ca mythes-cs mythes-da mythes-de mythes-el mythes-en mythes-eo mythes-es mythes-fr mythes-ga mythes-hu mythes-mi mythes-ne mythes-nl mythes-pl mythes-pt mythes-ro mythes-ru mythes-sk mythes-sl mythes-sv mythes-uk neon netcdf netcf netlabel_tools netpbm netsniff-ng nilfs-utils nkf nload nodejs-nodemon nodejs-packaging nss-pam-ldapd numatop nvmetcli objectweb-anttask objenesis ocaml-calendar ocaml-camlp5 ocaml-csv ocaml-curses ocaml-extlib ocaml-fpath ocaml-libvirt ocaml-markup ocaml-tyxml ocaml-xml-light ocaml-zarith ocl-icd oddjob ogdi omping opal opencc opencl-filesystem opencl-headers opencryptoki opendnssec openjade openjpeg openobex openoffice-lv openrdate openslp openssl-ibmpkcs11 openwsman optipng orc oro os-prober osgi-annotation osgi-compendium osgi-core osinfo-db osinfo-db-tools overpass-fonts pacemaker pacrunner pakchois papi paps parallel passim pbzip2 pcp perl-Algorithm-Diff perl-Alien-Build perl-Alien-pkgconf perl-AnyEvent perl-AnyEvent-AIO perl-AnyEvent-BDB perl-App-FatPacker perl-AppConfig perl-Archive-Extract perl-Authen-SASL perl-B-Debug perl-B-Hooks-EndOfScope perl-B-Keywords perl-B-Lint perl-BDB perl-BSD-Resource perl-Browser-Open perl-Business-ISBN perl-Business-ISBN-Data perl-CBOR-XS perl-CSS-Tiny perl-Class-Accessor perl-Class-C3 perl-Class-C3-XS perl-Class-Data-Inheritable perl-Class-Factory-Util perl-Class-Inspector perl-Class-Load perl-Class-Load-XS perl-Class-Method-Modifiers perl-Class-Singleton perl-Class-Tiny perl-Color-ANSI-Util perl-Color-RGB-Util perl-ColorThemeBase-Static perl-ColorThemeRole-ANSI perl-ColorThemeUtil-ANSI perl-ColorThemes-Standard perl-Compress-LZF perl-Compress-Raw-Lzma perl-Config-AutoConf perl-Config-INI perl-Config-INI-Reader-Multiline perl-Config-IniFiles perl-Config-Simple perl-Config-Tiny perl-Const-Fast perl-Convert-ASN1 perl-Convert-Bencode perl-Coro perl-Coro-Multicore perl-Cpanel-JSON-XS perl-Crypt-CBC perl-Crypt-DES perl-Crypt-IDEA perl-Crypt-OpenSSL-Bignum perl-Crypt-OpenSSL-Guess perl-Crypt-OpenSSL-RSA perl-Crypt-OpenSSL-Random perl-DBD-MySQL perl-Data-Munge perl-Data-Peek perl-Data-Section perl-Data-UUID perl-Date-ISO8601 perl-Date-Manip perl-DateTime perl-DateTime-Format-Builder perl-DateTime-Format-DateParse perl-DateTime-Format-HTTP perl-DateTime-Format-IBeat perl-DateTime-Format-ISO8601 perl-DateTime-Format-Mail perl-DateTime-Format-Strptime perl-DateTime-Locale perl-DateTime-TimeZone perl-DateTime-TimeZone-SystemV perl-DateTime-TimeZone-Tzfile perl-Devel-CallChecker perl-Devel-EnforceEncapsulation perl-Devel-Leak perl-Devel-Size perl-Digest-BubbleBabble perl-Digest-CRC perl-Dist-CheckConflicts perl-DynaLoader-Functions perl-EV perl-Email-Address perl-Email-Date-Format perl-Encode-Detect perl-Encode-EUCJPASCII perl-Encode-IMAPUTF7 perl-Env-ShellWords perl-Error perl-Eval-Closure perl-Event perl-Exception-Class perl-ExtUtils-Config perl-ExtUtils-Helpers perl-ExtUtils-InstallPaths perl-ExtUtils-PkgConfig perl-FCGI perl-FFI-CheckLib perl-File-BOM perl-File-BaseDir perl-File-CheckTree perl-File-Copy-Recursive perl-File-DesktopEntry perl-File-Find-Object perl-File-Find-Object-Rule perl-File-Find-Rule perl-File-Find-Rule-Perl perl-File-Inplace perl-File-MimeInfo perl-File-ReadBackwards perl-File-Remove perl-File-ShareDir perl-File-ShareDir-Install perl-File-Slurp perl-File-Slurp-Tiny perl-File-Slurper perl-File-Type perl-File-chdir perl-Font-TTF perl-FreezeThaw perl-GD perl-GD-Barcode perl-GSSAPI perl-Getopt-ArgvFile perl-Graphics-ColorNamesLite-WWW perl-Guard perl-HTML-Tree perl-Hook-LexWrap perl-IO-AIO perl-IO-All perl-IO-CaptureOutput perl-IO-Compress-Lzma perl-IO-Multiplex perl-IO-SessionData perl-IO-Socket-INET6 perl-IPC-Run perl-IPC-Run3 perl-IPC-System-Simple perl-Image-Base perl-Image-Info perl-Image-Xbm perl-Image-Xpm perl-Importer perl-Inline-Files perl-JSON-Color perl-JSON-MaybeXS perl-LDAP perl-LWP-Protocol-https perl-Lingua-EN-Inflect perl-List-MoreUtils-XS perl-Locale-Codes perl-Locale-Maketext-Gettext perl-Locale-Msgfmt perl-Locale-PO perl-Log-Message perl-Log-Message-Simple perl-MIME-Charset perl-MIME-Lite perl-MIME-Types perl-MLDBM perl-MRO-Compat perl-Mail-AuthenticationResults perl-Mail-DKIM perl-Mail-IMAPTalk perl-Mail-SPF perl-MailTools perl-Math-Int64 perl-Mixin-Linewise perl-Module-Build-Tiny perl-Module-Install-AuthorRequires perl-Module-Install-AutoLicense perl-Module-Install-GithubMeta perl-Module-Install-ManifestSkip perl-Module-Install-ReadmeFromPod perl-Module-Install-ReadmeMarkdownFromPod perl-Module-Install-TestBase perl-Module-Load-Util perl-Module-Manifest perl-Module-Manifest-Skip perl-Module-Package perl-Module-Package-Au perl-Module-Pluggable perl-Module-Signature perl-Mojolicious perl-Moo perl-Mozilla-CA perl-Mozilla-LDAP perl-NNTPClient perl-Net-CIDR-Lite perl-Net-DNS perl-Net-DNS-Resolver-Mock perl-Net-DNS-Resolver-Programmable perl-Net-Daemon perl-Net-IMAP-Simple perl-Net-IMAP-Simple-SSL perl-Net-IP perl-Net-LibIDN2 perl-Net-Patricia perl-Net-SMTP-SSL perl-Net-SNMP perl-Net-Telnet perl-Newt perl-Number-Compare perl-Object-Deadly perl-Object-HashBase perl-PAR-Dist perl-PPI perl-PPI-HTML perl-PPIx-QuoteLike perl-PPIx-Regexp perl-PPIx-Utilities perl-Package-Anon perl-Package-Constants perl-Package-DeprecationManager perl-Package-Stash perl-Package-Stash-XS perl-Paper-Specs perl-Parallel-Iterator perl-Params-Classify perl-Params-Validate perl-Params-ValidationCompiler perl-Parse-RecDescent perl-Parse-Yapp perl-Path-Tiny perl-Perl-Critic perl-Perl-Critic-More perl-Perl-MinimumVersion perl-Perl4-CoreLibs perl-PerlIO-gzip perl-PerlIO-utf8_strict perl-PkgConfig-LibPkgConf perl-Pod-Coverage-TrustPod perl-Pod-Escapes perl-Pod-Eventual perl-Pod-LaTeX perl-Pod-Markdown perl-Pod-POM perl-Pod-Plainer perl-Pod-Spell perl-Probe-Perl perl-Razor-Agent perl-Readonly perl-Readonly-XS perl-Ref-Util perl-Ref-Util-XS perl-Regexp-Pattern-Perl perl-Return-MultiLevel perl-Role-Tiny perl-SGMLSpm perl-SNMP_Session perl-Scope-Guard perl-Scope-Upper perl-Socket6 perl-Software-License perl-Sort-Versions perl-Specio perl-Spiffy perl-String-CRC32 perl-String-Format perl-String-Similarity perl-Sub-Info perl-Sub-Uplevel perl-Switch perl-Syntax-Highlight-Engine-Kate perl-Sys-CPU perl-Sys-MemInfo perl-Taint-Runtime perl-Task-Weaken perl-Term-Size-Any perl-Term-Size-Perl perl-Term-Table perl-Term-UI perl-TermReadKey perl-Test-Base perl-Test-CPAN-Meta perl-Test-CPAN-Meta-JSON perl-Test-ClassAPI perl-Test-Differences perl-Test-DistManifest perl-Test-Distribution perl-Test-EOL perl-Test-Exception perl-Test-Exit perl-Test-FailWarnings perl-Test-File perl-Test-File-ShareDir perl-Test-Harness perl-Test-HasVersion perl-Test-InDistDir perl-Test-Inter perl-Test-LongString perl-Test-Manifest perl-Test-MinimumVersion perl-Test-MockObject perl-Test-MockRandom perl-Test-NoTabs perl-Test-Object perl-Test-Portability-Files perl-Test-Script perl-Test-Simple perl-Test-SubCalls perl-Test-Synopsis perl-Test-TrailingSpace perl-Test-Vars perl-Test-Warn perl-Test-utf8 perl-Test2-Plugin-NoWarnings perl-Test-Simple perl-Test2-Tools-Explain perl-Text-CSV_XS perl-Text-CharWidth perl-Text-Diff perl-Text-Glob perl-Text-Iconv perl-Text-Soundex perl-Text-Unidecode perl-Text-WrapI18N perl-Tie-IxHash perl-Tree-DAG_Node perl-UNIVERSAL-can perl-UNIVERSAL-isa perl-Unicode-EastAsianWidth perl-Unicode-LineBreak perl-Unicode-Map8 perl-Unicode-String perl-Unicode-UTF8 perl-Unix-Syslog perl-Variable-Magic perl-Version-Requirements perl-XML-Catalog perl-XML-DOM perl-XML-Dumper perl-XML-Filter-BufferText perl-XML-Generator perl-XML-Grove perl-XML-Handler-YAWriter perl-XML-Parser-Lite perl-XML-RegExp perl-XML-SAX-Writer perl-XML-Simple perl-XML-TokeParser perl-XML-TreeBuilder perl-XML-Twig perl-XML-Writer perl-XML-XPathEngine perl-XString perl-YAML-LibYAML perl-YAML-PP perl-YAML-Syck perl-boolean perl-gettext perl-inc-latest perl-libnet perl-libxml-perl perl-namespace-autoclean perl-namespace-clean perl-prefork perltidy phodav physfs pinfo pipewire pkcs11-helper plexus-pom plotutils pmdk-convert pngcrush pngnq po4a podman polkit-pkla-compat portreserve potrace powertop ppp pps-tools pptp procmail proj ps_mem psacct psutils ptlib publicsuffix publicsuffix-list pulseaudio puppet pyatspi pykickstart pylint pyparted pyserial python-CommonMark python-IPy python-PyMySQL python-aiodns python-aiohttp python-alsa python-argcomplete python-argparse-manpage python-astroid python-augeas python-azure-sdk python-beautifulsoup4 python-betamax python-blinker python-blivet python-breathe python-cbor2 python-cheetah python-cmd2 python-colorama python-configshell python-cups python-curio python-d2to1 python-dbus-client-gen python-dbus-python-client-gen python-dbus-signature-pyparsing python-ddt python-debtcollector python-dmidecode python-dns python-dtopt python-dulwich python-enchant python-entrypoints python-extras python-faker python-fasteners python-fixtures python-flake8 python-flaky python-flask python-fluidity-sm python-funcsigs python-genshi python-gssapi python-hs-dbus-signature python-httplib2 python-humanize python-hwdata python-inotify python-into-dbus-python python-iso8601 python-isodate python-isort python-itsdangerous python-justbases python-justbytes python-jwcrypto python-kdcproxy python-kerberos python-kmod python-lazy-object-proxy python-ldap python-mccabe python-memcached python-mimeparse python-monotonic python-msal python-msrestazure python-mutagen python-ntlm-auth python-oauth2client python-openstackdocstheme python-oslo-i18n python-oslo-sphinx python-paramiko python-podman-api python-productmd python-pycares python-pydbus python-pymongo python-pyperclip python-pyrsistent python-pytest-flake8 python-pytest-relaxed python-pytest-runner python-pytest-subtests python-pytest-timeout python-pytoml python-qrcode python-rdflib python-recommonmark python-requests-file python-requests-ftp python-requests-kerberos python-requests-toolbelt python-requests_ntlm python-rfc3986 python-rpmfluff python-rtslib python-s3transfer python-semantic_version python-should_dsl python-simpleline python-slip python-smartypants python-sniffio python-soupsieve python-sphinx-epytext python-sphinxcontrib-apidoc python-sphinxcontrib-httpdomain python-sphinxcontrib-jquery python-sphinxygen python-suds python-systemd python-tempita python-testpath python-testresources python-testscenarios python-testtools python-toml python-tornado python-tox python-trio python-typogrify python-uamqp python-unittest2 python-uritemplate python-urwid python-uswid python-varlink python-voluptuous python-waitress python-webencodings python-webtest python-whoosh python-winrm python-xmltodict python-yubico python-zmq python3-mallard-ducktype python3-typed_ast pyusb pywbem pyxattr qhull qpdf qperf qr-code-generator qt5-qtconnectivity qt5-qtsensors qt5-qtserialport quagga raptor2 rarian rasqal rcs rdist re2c realmd rear recode regexp relaxngDatatype rhash rhino rhnlib rust-ripgrep rp-pppoe rpmlint rr rtkit ruby-augeas rubygem-bson rubygem-coderay rubygem-deep_merge rubygem-diff-lcs rubygem-eventmachine rubygem-hocon rubygem-liquid rubygem-maruku rubygem-mongo rubygem-mysql2 rubygem-pkg-config rubygem-puppet-resource_api rubygem-rouge rubygem-rspec-expectations rubygem-rspec-support rubygem-thor rubygem-thread_order rusers rust-cbindgen samba sassist satyr sbc sblim-cim-client2 sblim-cmpi-base sblim-cmpi-devel sblim-cmpi-fsvol sblim-cmpi-network sblim-cmpi-nfsv3 sblim-cmpi-nfsv4 sblim-cmpi-params sblim-cmpi-sysfs sblim-cmpi-syslog sblim-indication_helper sblim-sfcCommon sblim-sfcb sblim-sfcc sblim-testsuite sblim-wbemcli scl-utils scotch screen sdparm serd servletapi4 servletapi5 setserial sgpio shapelib sip skkdic slirp4netns smc-tools sombok sord sound-theme-freedesktop soundtouch sox soxr sparsehash spausedd speex speexdsp spice-protocol spice-vdagent splix sratom star startup-notification stress-ng stunnel subscription-manager suitesparse switcheroo-control systemd-bootchart t1lib t1utils taglib tang targetcli tbb tcl-pgtcl tclx teckit telnet tix tk tlog tmpwatch tn5250 tofrodos trilead-ssh2 tss2 ttmkfdir twolame uchardet ucpp ucs-miscfixed-fonts udftools udica udisks2 uglify-js umoci unicode-emoji unicode-ucd unique3 units upower uriparser urlview usb_modeswitch usb_modeswitch-data usbguard usbmuxd ustr uthash uw-imap v4l-utils vhostmd vino virt-p2v virt-top virt-who vmem volume_key vorbis-tools watchdog wavpack web-assets webrtc-audio-processing whois wireshark woff2 wordnet wpebackend-fdo wsmancli wvdial x3270 xalan-j2 xapian-core xbean xdelta xdg-dbus-proxy xdg-utils xerces-j2 xfconf xfsdump xhtml1-dtds xmldb-api xmlrpc-c xmlunit xorg-x11-drv-libinput xorg-x11-fonts xorg-x11-server xorg-x11-utils xpp2 xpp3 xrestop xterm xz-java yelp-tools yelp-xsl ykclient ypserv z3 zenity zopfli zziplib" \
+	--build-dir /third_disk/bb04Mar/azurelinux/build/spec_parsing \
+	--srpm-dir /third_disk/bb04Mar/azurelinux/build/INTERMEDIATE_SRPMS \
+	--rpm-dir /third_disk/bb04Mar/azurelinux/out/RPMS \
+	--toolchain-manifest="/third_disk/bb04Mar/azurelinux/toolkit/resources/manifests/package/toolchain_x86_64.txt" \
+	--toolchain-rpms-dir="/third_disk/bb04Mar/azurelinux/build/toolchain_rpms" \
+	--dist-tag .azl3 \
+	--worker-tar /third_disk/bb04Mar/azurelinux/build/worker/worker_chroot.tar.gz \
+	--run-check \
+	--log-file=/third_disk/bb04Mar/azurelinux/build/logs/pkggen/workplan/specs.json.log --log-level=info --log-color=auto \
+	--cpu-prof-file=/third_disk/bb04Mar/azurelinux/build/profile/specreader.cpu.pprof \
+	--mem-prof-file=/third_disk/bb04Mar/azurelinux/build/profile/specreader.mem.pprof \
+	--trace-file=/third_disk/bb04Mar/azurelinux/build/profile/specreader.trace \
+	 \
+	 \
+	 \
+	--timestamp-file=/third_disk/bb04Mar/azurelinux/build/timestamp/specreader.jsonl \
+	 \
+	--output /third_disk/bb04Mar/azurelinux/build/pkg_artifacts/specs.json
+/third_disk/bb04Mar/azurelinux/toolkit/out/tools/rpmssnapshot \
+	--input="../SPECS-EXTENDED" \
+	--output="/third_disk/bb04Mar/azurelinux/build/rpms_snapshots/SPECS-EXTENDED_rpms_snapshot.json" \
+	--build-dir="/third_disk/bb04Mar/azurelinux/build/rpms_snapshots" \
+	--dist-tag=.azl3 \
+	--worker-tar="/third_disk/bb04Mar/azurelinux/build/worker/worker_chroot.tar.gz" \
+	--log-level=info \
+	--log-file="/third_disk/bb04Mar/azurelinux/build/logs/rpms_snapshots/rpms_snapshot.log" \
+	--log-color="auto"
+GODEBUG=netdns=go /third_disk/bb04Mar/azurelinux/toolkit/out/tools/srpmpacker \
+	--dir=../SPECS-EXTENDED \
+	--output-dir=/third_disk/bb04Mar/azurelinux/build/INTERMEDIATE_SRPMS \
+	--source-url=https://azurelinuxsrcstorage.blob.core.windows.net/sources/core \
+	--dist-tag=.azl3 \
+	--ca-cert= \
+	--tls-cert= \
+	--tls-key= \
+	--build-dir=/third_disk/bb04Mar/azurelinux/build/SRPM_packaging \
+	--signature-handling=update \
+	--worker-tar=/third_disk/bb04Mar/azurelinux/build/worker/worker_chroot.tar.gz \
+	--run-check \
+	--pack-list="389-ds-base CharLS GConf2 GeoIP GeoIP-GeoLite-data Judy LibRaw ORBit2 openexr PEGTL PyGreSQL sdl12-compat SDL2 SDL_sound SuperLU Xaw3d a52dec accountsservice acpid adcli adobe-mappings-cmap adobe-mappings-pdf advancecomp alsa-firmware alsa-plugins amtk amtterm ansible-freeipa aopalliance apache-commons-beanutils apache-commons-codec apache-commons-collections apache-commons-collections4 apache-commons-compress apache-commons-daemon apache-commons-dbcp apache-commons-digester apache-commons-httpclient apache-commons-io apache-commons-jexl apache-commons-lang apache-commons-net apache-commons-pool apache-commons-pool2 apache-commons-validator apache-commons-vfs apache-parent args4j arptables arpwatch asio aspell-en audiofile babeltrace babl baekmuk-ttf-fonts base64coder bats bcache-tools bcel bea-stax beust-jcommander biosdevname blosc bolt boom-boot booth botan2 breezy bsf buildah bwidget cachefilesd cairomm capnproto capstone cassandra catatonit catch1 cdparanoia cdrdao celt051 certmonger cfitsio cgdcbxd cglib chan cim-schema cjose cldr-emoji-annotation clucene clutter clutter-gst3 clutter-gtk cmake-fedora cogl colorize compat-lua container-exception-logger containernetworking-plugins convmv corosync corosync-qdevice cpp-hocon cppcheck cpptest cpuid crash-ptdump-command cri-o criu crypto-policies cscope custodia dbus-c++ fwupd dcraw deltarpm device-mapper-persistent-data diffstat discount dleyna dleyna-core dmraid docbook-simple docbook-slides docbook-style-dsssl docbook-utils docbook2X docbook5-style-xsl dogtail dotconf dovecot dpkg driverctl dropwatch drpm dumpet dvd+rw-tools dyninst ecj edac-utils efax efi-rpm-macros elinks enca enchant enscript evemu exempi exiv2 fabtests facter fakechroot fence-agents fetchmail fftw filebench flac flashrom flite fltk fonts-rpm-macros foomatic-db freeradius freexl fros fstrm fuse-overlayfs fuse-sshfs fwupd fwupd-efi fxload gavl gconf-editor gcr gdal gdisk generic-logos genwqe-tools geoclue2 geolite2 geronimo-specs ghc-srpm-macros gi-docgen gl-manpages jakarta-annotations glew glm glog gnome-desktop-testing gnome-doc-utils gnome-icon-theme gnome-keyring gnu-getopt gnu-regexp go-rpm-macros gom google-api-python-client google-crosextra-caladea-fonts google-crosextra-carlito-fonts gphoto2 gpm gpsbabel graphene graphite2 gsl gspell gssdp gssntlmssp gstreamer1 gstreamer1-plugins-base gtk-vnc gtkspell gupnp gupnp-av gupnp-dlna gupnp-igd hawtjni hdf hiera highlight hping3 hsakmt httpcomponents-core hunspell-af hunspell-ar hunspell-as hunspell-ast hunspell-az hunspell-be hunspell-bg hunspell-bn hunspell-br hunspell-ca hunspell-cop hunspell-csb hunspell-cv hunspell-cy hunspell-da hunspell-de hunspell-dsb hunspell-el hunspell-eo hunspell-es hunspell-et hunspell-eu hunspell-fa hunspell-fj hunspell-fo hunspell-fr hunspell-fur hunspell-fy hunspell-ga hunspell-gd hunspell-gl hunspell-grc hunspell-gu hunspell-gv hunspell-haw hunspell-hi hunspell-hil hunspell-hr hunspell-hsb hunspell-ht hunspell-hu hunspell-hy hunspell-ia hunspell-id hunspell-is hunspell-it hunspell-kk hunspell-km hunspell-kn hunspell-ko hunspell-ku hunspell-ky hunspell-la hunspell-lb hunspell-ln hunspell-mai hunspell-mg hunspell-mi hunspell-mk hunspell-ml hunspell-mn hunspell-mos hunspell-mr hunspell-ms hunspell-mt hunspell-nds hunspell-ne hunspell-nl hunspell-no hunspell-nr hunspell-nso hunspell-ny hunspell-om hunspell-or hunspell-pa hunspell-pl hunspell-pt hunspell-quh hunspell-ro hunspell-ru hunspell-rw hunspell-se hunspell-shs hunspell-si hunspell-sk hunspell-sl hunspell-smj hunspell-so hunspell-sq hunspell-sr hunspell-sv hunspell-sw hunspell-ta hunspell-te hunspell-tet hunspell-th hunspell-tk hunspell-tl hunspell-tn hunspell-tpi hunspell-ts hunspell-uk hunspell-uz hunspell-ve hunspell-vi hunspell-wa hunspell-xh hunspell-yi hyphen hyphen-as hyphen-bg hyphen-bn hyphen-ca hyphen-da hyphen-de hyphen-el hyphen-es hyphen-fa hyphen-fo hyphen-fr hyphen-ga hyphen-gl hyphen-grc hyphen-gu hyphen-hi hyphen-hsb hyphen-hu hyphen-ia hyphen-id hyphen-is hyphen-it hyphen-kn hyphen-ku hyphen-lt hyphen-mi hyphen-ml hyphen-mn hyphen-mr hyphen-nl hyphen-or hyphen-pa hyphen-pl hyphen-pt hyphen-ro hyphen-ru hyphen-sa hyphen-sk hyphen-sl hyphen-sv hyphen-ta hyphen-te hyphen-tk hyphen-uk ibus ibus-chewing ibus-hangul ibus-kkc ibus-libzhuyin ibus-m17n ibus-rawcode ibus-sayura ibus-table ibus-table-chinese icc-profiles-openicc icon-naming-utils iftop iio-sensor-proxy ilmbase imaptest indent intel-cmt-cat ioping ipa-pgothic-fonts ipcalc iprutils iptstate irssi iso-codes isomd5sum iwd jabberpy jakarta-taglibs-standard jansi jarjar javacc jbigkit jboss-interceptors-1.2-api jdepend jdom2 jfsutils jimtcl jlex jline jose js-jquery jsch jsoncpp jsoup jtidy junitperf jzlib kde-filesystem kernel-rt keybinder3 keycloak-httpd-client-install kronosnet kyotocabinet ladspa lame langtable lasso latencytop lcov leatherman ledmon lensfun lftp libEMF libIDL libXScrnSaver libabw libao libappstream-glib libart_lgpl libasyncns libavc1394 libblockdev libbsd libbytesize libcanberra libcbor libcdio libcdio-paranoia libcdr libchewing libcli libcmis libcmpiutil libcroco libdap libdatrie libdazzle libdbi libdbusmenu libdc1394 libdeflate libdmx libdvdnav libdvdread libeasyfc libecb libeot libepubgen libesmtp libetonyek libexttextcat libfreehand libftdi libgadu libgdither libgee libgee06 libgeotiff libgexiv2 libgit2-glib libglade2 libgovirt libgphoto2 libgsf libgta libgxps libhangul libibcommon libicns libid3tag libiec61883 libieee1284 libimobiledevice libindicator libiodbc libipt libiptcdata libjaylink libjcat libkeepalive libkkc libkkc-data libkml liblangtag libldb liblerc liblockfile liblouis liblqr-1 libmad libmediaart libmikmod libmodman libmodplug libmodulemd1 libmpcdec libmspub libmtp libmusicbrainz5 libmwaw libnet libntlm libnumbertext liboauth libodfgen libofa libogg liboggz liboil libomxil-bellagio libopenraw liboping libosinfo libotf libotr libpagemaker libpaper libpeas libpfm libpinyin libplist libpmemobj-cpp libpng12 libpng15 libproxy libqb libqxp librabbitmq libraqm libraw1394 libreport librevenge librx libsamplerate libsass libsecret libsigc++20 libsigsegv libsmbios libspiro libsrtp libstaroffice snowball libteam libtevent libthai libtheora libtnc libtomcrypt libtommath libtranslit libucil libunicap libuninameslist libusb1 libusbmuxd libutempter libvdpau libverto libvisio libvisual libvorbis libvpx libwnck3 libwpd libwpe libwpg libwps libwvstreams libxklavier libxmlb libyami libyubikey libzmf lilv linuxconsoletools lksctp-tools lockdev logwatch lpsolve lrzsz lua-expat lua-filesystem lua-json lua-lpeg lua-lunitx lua-term luksmeta lv2 lzip m17n-db m17n-lib s-nail mallard-rng man-pages-l10n man-pages-l10n man-pages-l10n man-pages-ja man-pages-l10n man-pages-l10n man-pages-ru man-pages-zh-CN mariadb-connector-odbc marisa maven-parent mcelog mdds meanwhile mecab mecab-ipadic media-player-info memkind metis microcode_ctl microdnf minicom minizip-ng mksh mobile-broadband-provider-info mod_auth_gssapi mod_auth_mellon mod_auth_openidc mod_authnz_pam mod_fcgid mod_http2 mod_intercept_form_submit mod_lookup_identity mod_md mod_security mod_security_crs mod_wsgi mosh mpage mrtg mt-st mtx mutt mythes mythes-bg mythes-ca mythes-cs mythes-da mythes-de mythes-el mythes-en mythes-eo mythes-es mythes-fr mythes-ga mythes-hu mythes-mi mythes-ne mythes-nl mythes-pl mythes-pt mythes-ro mythes-ru mythes-sk mythes-sl mythes-sv mythes-uk neon netcdf netcf netlabel_tools netpbm netsniff-ng nilfs-utils nkf nload nodejs-nodemon nodejs-packaging nss-pam-ldapd numatop nvmetcli objectweb-anttask objenesis ocaml-calendar ocaml-camlp5 ocaml-csv ocaml-curses ocaml-extlib ocaml-fpath ocaml-libvirt ocaml-markup ocaml-tyxml ocaml-xml-light ocaml-zarith ocl-icd oddjob ogdi omping opal opencc opencl-filesystem opencl-headers opencryptoki opendnssec openjade openjpeg openobex openoffice-lv openrdate openslp openssl-ibmpkcs11 openwsman optipng orc oro os-prober osgi-annotation osgi-compendium osgi-core osinfo-db osinfo-db-tools overpass-fonts pacemaker pacrunner pakchois papi paps parallel passim pbzip2 pcp perl-Algorithm-Diff perl-Alien-Build perl-Alien-pkgconf perl-AnyEvent perl-AnyEvent-AIO perl-AnyEvent-BDB perl-App-FatPacker perl-AppConfig perl-Archive-Extract perl-Authen-SASL perl-B-Debug perl-B-Hooks-EndOfScope perl-B-Keywords perl-B-Lint perl-BDB perl-BSD-Resource perl-Browser-Open perl-Business-ISBN perl-Business-ISBN-Data perl-CBOR-XS perl-CSS-Tiny perl-Class-Accessor perl-Class-C3 perl-Class-C3-XS perl-Class-Data-Inheritable perl-Class-Factory-Util perl-Class-Inspector perl-Class-Load perl-Class-Load-XS perl-Class-Method-Modifiers perl-Class-Singleton perl-Class-Tiny perl-Color-ANSI-Util perl-Color-RGB-Util perl-ColorThemeBase-Static perl-ColorThemeRole-ANSI perl-ColorThemeUtil-ANSI perl-ColorThemes-Standard perl-Compress-LZF perl-Compress-Raw-Lzma perl-Config-AutoConf perl-Config-INI perl-Config-INI-Reader-Multiline perl-Config-IniFiles perl-Config-Simple perl-Config-Tiny perl-Const-Fast perl-Convert-ASN1 perl-Convert-Bencode perl-Coro perl-Coro-Multicore perl-Cpanel-JSON-XS perl-Crypt-CBC perl-Crypt-DES perl-Crypt-IDEA perl-Crypt-OpenSSL-Bignum perl-Crypt-OpenSSL-Guess perl-Crypt-OpenSSL-RSA perl-Crypt-OpenSSL-Random perl-DBD-MySQL perl-Data-Munge perl-Data-Peek perl-Data-Section perl-Data-UUID perl-Date-ISO8601 perl-Date-Manip perl-DateTime perl-DateTime-Format-Builder perl-DateTime-Format-DateParse perl-DateTime-Format-HTTP perl-DateTime-Format-IBeat perl-DateTime-Format-ISO8601 perl-DateTime-Format-Mail perl-DateTime-Format-Strptime perl-DateTime-Locale perl-DateTime-TimeZone perl-DateTime-TimeZone-SystemV perl-DateTime-TimeZone-Tzfile perl-Devel-CallChecker perl-Devel-EnforceEncapsulation perl-Devel-Leak perl-Devel-Size perl-Digest-BubbleBabble perl-Digest-CRC perl-Dist-CheckConflicts perl-DynaLoader-Functions perl-EV perl-Email-Address perl-Email-Date-Format perl-Encode-Detect perl-Encode-EUCJPASCII perl-Encode-IMAPUTF7 perl-Env-ShellWords perl-Error perl-Eval-Closure perl-Event perl-Exception-Class perl-ExtUtils-Config perl-ExtUtils-Helpers perl-ExtUtils-InstallPaths perl-ExtUtils-PkgConfig perl-FCGI perl-FFI-CheckLib perl-File-BOM perl-File-BaseDir perl-File-CheckTree perl-File-Copy-Recursive perl-File-DesktopEntry perl-File-Find-Object perl-File-Find-Object-Rule perl-File-Find-Rule perl-File-Find-Rule-Perl perl-File-Inplace perl-File-MimeInfo perl-File-ReadBackwards perl-File-Remove perl-File-ShareDir perl-File-ShareDir-Install perl-File-Slurp perl-File-Slurp-Tiny perl-File-Slurper perl-File-Type perl-File-chdir perl-Font-TTF perl-FreezeThaw perl-GD perl-GD-Barcode perl-GSSAPI perl-Getopt-ArgvFile perl-Graphics-ColorNamesLite-WWW perl-Guard perl-HTML-Tree perl-Hook-LexWrap perl-IO-AIO perl-IO-All perl-IO-CaptureOutput perl-IO-Compress-Lzma perl-IO-Multiplex perl-IO-SessionData perl-IO-Socket-INET6 perl-IPC-Run perl-IPC-Run3 perl-IPC-System-Simple perl-Image-Base perl-Image-Info perl-Image-Xbm perl-Image-Xpm perl-Importer perl-Inline-Files perl-JSON-Color perl-JSON-MaybeXS perl-LDAP perl-LWP-Protocol-https perl-Lingua-EN-Inflect perl-List-MoreUtils-XS perl-Locale-Codes perl-Locale-Maketext-Gettext perl-Locale-Msgfmt perl-Locale-PO perl-Log-Message perl-Log-Message-Simple perl-MIME-Charset perl-MIME-Lite perl-MIME-Types perl-MLDBM perl-MRO-Compat perl-Mail-AuthenticationResults perl-Mail-DKIM perl-Mail-IMAPTalk perl-Mail-SPF perl-MailTools perl-Math-Int64 perl-Mixin-Linewise perl-Module-Build-Tiny perl-Module-Install-AuthorRequires perl-Module-Install-AutoLicense perl-Module-Install-GithubMeta perl-Module-Install-ManifestSkip perl-Module-Install-ReadmeFromPod perl-Module-Install-ReadmeMarkdownFromPod perl-Module-Install-TestBase perl-Module-Load-Util perl-Module-Manifest perl-Module-Manifest-Skip perl-Module-Package perl-Module-Package-Au perl-Module-Pluggable perl-Module-Signature perl-Mojolicious perl-Moo perl-Mozilla-CA perl-Mozilla-LDAP perl-NNTPClient perl-Net-CIDR-Lite perl-Net-DNS perl-Net-DNS-Resolver-Mock perl-Net-DNS-Resolver-Programmable perl-Net-Daemon perl-Net-IMAP-Simple perl-Net-IMAP-Simple-SSL perl-Net-IP perl-Net-LibIDN2 perl-Net-Patricia perl-Net-SMTP-SSL perl-Net-SNMP perl-Net-Telnet perl-Newt perl-Number-Compare perl-Object-Deadly perl-Object-HashBase perl-PAR-Dist perl-PPI perl-PPI-HTML perl-PPIx-QuoteLike perl-PPIx-Regexp perl-PPIx-Utilities perl-Package-Anon perl-Package-Constants perl-Package-DeprecationManager perl-Package-Stash perl-Package-Stash-XS perl-Paper-Specs perl-Parallel-Iterator perl-Params-Classify perl-Params-Validate perl-Params-ValidationCompiler perl-Parse-RecDescent perl-Parse-Yapp perl-Path-Tiny perl-Perl-Critic perl-Perl-Critic-More perl-Perl-MinimumVersion perl-Perl4-CoreLibs perl-PerlIO-gzip perl-PerlIO-utf8_strict perl-PkgConfig-LibPkgConf perl-Pod-Coverage-TrustPod perl-Pod-Escapes perl-Pod-Eventual perl-Pod-LaTeX perl-Pod-Markdown perl-Pod-POM perl-Pod-Plainer perl-Pod-Spell perl-Probe-Perl perl-Razor-Agent perl-Readonly perl-Readonly-XS perl-Ref-Util perl-Ref-Util-XS perl-Regexp-Pattern-Perl perl-Return-MultiLevel perl-Role-Tiny perl-SGMLSpm perl-SNMP_Session perl-Scope-Guard perl-Scope-Upper perl-Socket6 perl-Software-License perl-Sort-Versions perl-Specio perl-Spiffy perl-String-CRC32 perl-String-Format perl-String-Similarity perl-Sub-Info perl-Sub-Uplevel perl-Switch perl-Syntax-Highlight-Engine-Kate perl-Sys-CPU perl-Sys-MemInfo perl-Taint-Runtime perl-Task-Weaken perl-Term-Size-Any perl-Term-Size-Perl perl-Term-Table perl-Term-UI perl-TermReadKey perl-Test-Base perl-Test-CPAN-Meta perl-Test-CPAN-Meta-JSON perl-Test-ClassAPI perl-Test-Differences perl-Test-DistManifest perl-Test-Distribution perl-Test-EOL perl-Test-Exception perl-Test-Exit perl-Test-FailWarnings perl-Test-File perl-Test-File-ShareDir perl-Test-Harness perl-Test-HasVersion perl-Test-InDistDir perl-Test-Inter perl-Test-LongString perl-Test-Manifest perl-Test-MinimumVersion perl-Test-MockObject perl-Test-MockRandom perl-Test-NoTabs perl-Test-Object perl-Test-Portability-Files perl-Test-Script perl-Test-Simple perl-Test-SubCalls perl-Test-Synopsis perl-Test-TrailingSpace perl-Test-Vars perl-Test-Warn perl-Test-utf8 perl-Test2-Plugin-NoWarnings perl-Test-Simple perl-Test2-Tools-Explain perl-Text-CSV_XS perl-Text-CharWidth perl-Text-Diff perl-Text-Glob perl-Text-Iconv perl-Text-Soundex perl-Text-Unidecode perl-Text-WrapI18N perl-Tie-IxHash perl-Tree-DAG_Node perl-UNIVERSAL-can perl-UNIVERSAL-isa perl-Unicode-EastAsianWidth perl-Unicode-LineBreak perl-Unicode-Map8 perl-Unicode-String perl-Unicode-UTF8 perl-Unix-Syslog perl-Variable-Magic perl-Version-Requirements perl-XML-Catalog perl-XML-DOM perl-XML-Dumper perl-XML-Filter-BufferText perl-XML-Generator perl-XML-Grove perl-XML-Handler-YAWriter perl-XML-Parser-Lite perl-XML-RegExp perl-XML-SAX-Writer perl-XML-Simple perl-XML-TokeParser perl-XML-TreeBuilder perl-XML-Twig perl-XML-Writer perl-XML-XPathEngine perl-XString perl-YAML-LibYAML perl-YAML-PP perl-YAML-Syck perl-boolean perl-gettext perl-inc-latest perl-libnet perl-libxml-perl perl-namespace-autoclean perl-namespace-clean perl-prefork perltidy phodav physfs pinfo pipewire pkcs11-helper plexus-pom plotutils pmdk-convert pngcrush pngnq po4a podman polkit-pkla-compat portreserve potrace powertop ppp pps-tools pptp procmail proj ps_mem psacct psutils ptlib publicsuffix publicsuffix-list pulseaudio puppet pyatspi pykickstart pylint pyparted pyserial python-CommonMark python-IPy python-PyMySQL python-aiodns python-aiohttp python-alsa python-argcomplete python-argparse-manpage python-astroid python-augeas python-azure-sdk python-beautifulsoup4 python-betamax python-blinker python-blivet python-breathe python-cbor2 python-cheetah python-cmd2 python-colorama python-configshell python-cups python-curio python-d2to1 python-dbus-client-gen python-dbus-python-client-gen python-dbus-signature-pyparsing python-ddt python-debtcollector python-dmidecode python-dns python-dtopt python-dulwich python-enchant python-entrypoints python-extras python-faker python-fasteners python-fixtures python-flake8 python-flaky python-flask python-fluidity-sm python-funcsigs python-genshi python-gssapi python-hs-dbus-signature python-httplib2 python-humanize python-hwdata python-inotify python-into-dbus-python python-iso8601 python-isodate python-isort python-itsdangerous python-justbases python-justbytes python-jwcrypto python-kdcproxy python-kerberos python-kmod python-lazy-object-proxy python-ldap python-mccabe python-memcached python-mimeparse python-monotonic python-msal python-msrestazure python-mutagen python-ntlm-auth python-oauth2client python-openstackdocstheme python-oslo-i18n python-oslo-sphinx python-paramiko python-podman-api python-productmd python-pycares python-pydbus python-pymongo python-pyperclip python-pyrsistent python-pytest-flake8 python-pytest-relaxed python-pytest-runner python-pytest-subtests python-pytest-timeout python-pytoml python-qrcode python-rdflib python-recommonmark python-requests-file python-requests-ftp python-requests-kerberos python-requests-toolbelt python-requests_ntlm python-rfc3986 python-rpmfluff python-rtslib python-s3transfer python-semantic_version python-should_dsl python-simpleline python-slip python-smartypants python-sniffio python-soupsieve python-sphinx-epytext python-sphinxcontrib-apidoc python-sphinxcontrib-httpdomain python-sphinxcontrib-jquery python-sphinxygen python-suds python-systemd python-tempita python-testpath python-testresources python-testscenarios python-testtools python-toml python-tornado python-tox python-trio python-typogrify python-uamqp python-unittest2 python-uritemplate python-urwid python-uswid python-varlink python-voluptuous python-waitress python-webencodings python-webtest python-whoosh python-winrm python-xmltodict python-yubico python-zmq python3-mallard-ducktype python3-typed_ast pyusb pywbem pyxattr qhull qpdf qperf qr-code-generator qt5-qtconnectivity qt5-qtsensors qt5-qtserialport quagga raptor2 rarian rasqal rcs rdist re2c realmd rear recode regexp relaxngDatatype rhash rhino rhnlib rust-ripgrep rp-pppoe rpmlint rr rtkit ruby-augeas rubygem-bson rubygem-coderay rubygem-deep_merge rubygem-diff-lcs rubygem-eventmachine rubygem-hocon rubygem-liquid rubygem-maruku rubygem-mongo rubygem-mysql2 rubygem-pkg-config rubygem-puppet-resource_api rubygem-rouge rubygem-rspec-expectations rubygem-rspec-support rubygem-thor rubygem-thread_order rusers rust-cbindgen samba sassist satyr sbc sblim-cim-client2 sblim-cmpi-base sblim-cmpi-devel sblim-cmpi-fsvol sblim-cmpi-network sblim-cmpi-nfsv3 sblim-cmpi-nfsv4 sblim-cmpi-params sblim-cmpi-sysfs sblim-cmpi-syslog sblim-indication_helper sblim-sfcCommon sblim-sfcb sblim-sfcc sblim-testsuite sblim-wbemcli scl-utils scotch screen sdparm serd servletapi4 servletapi5 setserial sgpio shapelib sip skkdic slirp4netns smc-tools sombok sord sound-theme-freedesktop soundtouch sox soxr sparsehash spausedd speex speexdsp spice-protocol spice-vdagent splix sratom star startup-notification stress-ng stunnel subscription-manager suitesparse switcheroo-control systemd-bootchart t1lib t1utils taglib tang targetcli tbb tcl-pgtcl tclx teckit telnet tix tk tlog tmpwatch tn5250 tofrodos trilead-ssh2 tss2 ttmkfdir twolame uchardet ucpp ucs-miscfixed-fonts udftools udica udisks2 uglify-js umoci unicode-emoji unicode-ucd unique3 units upower uriparser urlview usb_modeswitch usb_modeswitch-data usbguard usbmuxd ustr uthash uw-imap v4l-utils vhostmd vino virt-p2v virt-top virt-who vmem volume_key vorbis-tools watchdog wavpack web-assets webrtc-audio-processing whois wireshark woff2 wordnet wpebackend-fdo wsmancli wvdial x3270 xalan-j2 xapian-core xbean xdelta xdg-dbus-proxy xdg-utils xerces-j2 xfconf xfsdump xhtml1-dtds xmldb-api xmlrpc-c xmlunit xorg-x11-drv-libinput xorg-x11-fonts xorg-x11-server xorg-x11-utils xpp2 xpp3 xrestop xterm xz-java yelp-tools yelp-xsl ykclient ypserv z3 zenity zopfli zziplib" \
+	--log-file=/third_disk/bb04Mar/azurelinux/build/logs/pkggen/srpms/srpmpacker.log \
+	--log-level=info \
+	--log-color=auto \
+	--cpu-prof-file=/third_disk/bb04Mar/azurelinux/build/profile/srpm_packer.cpu.pprof \
+	--mem-prof-file=/third_disk/bb04Mar/azurelinux/build/profile/srpm_packer.mem.pprof \
+	--trace-file=/third_disk/bb04Mar/azurelinux/build/profile/srpm_packer.trace \
+	 \
+	 \
+	 \
+	--timestamp-file=/third_disk/bb04Mar/azurelinux/build/timestamp/srpm_packer.jsonl && \
+touch /third_disk/bb04Mar/azurelinux/build/make_status/build_srpms.flag
+[33mWARN[0m[0000][srpmpacker] Will update signature files as needed        
+[36mINFO[0m[0008][rpmssnapshot] Generating RPMs snapshot from specs inside (../SPECS-EXTENDED). 
+[36mINFO[0m[0008][specreader] Parsing SPECs inside a chroot environment    
+[36mINFO[0m[0008][srpmpacker] Packing SRPMs inside a chroot environment    
+[36mINFO[0m[0008][srpmpacker] Finding all SPEC files                       
+[33mWARN[0m[0016][rpmssnapshot] error: line 28: Unknown tag: %gometa
+error: query of specfile /chroot_mnt/delve/delve.spec failed, can't parse 
+[31mERRO[0m[0016][rpmssnapshot] Failed to generate snapshot from specs folder (../SPECS-EXTENDED) into (/third_disk/bb04Mar/azurelinux/build/rpms_snapshots/SPECS-EXTENDED_rpms_snapshot.json). Error: failed to retrieve a list of specs inside (/chroot_mnt):
+failed while querrying spec (/chroot_mnt/delve/delve.spec). Error: failed to query SPEC (/chroot_mnt/delve/delve.spec):
+exit status 1. 
+[31mPANI[0m[0024][srpmpacker] unexpected number of matches (0) for spec file (nvmetcli) 
+panic: (*logrus.Entry) 0xc000200070
+
+goroutine 1 [running]:
+github.com/sirupsen/logrus.(*Entry).log(0xc000200000, 0x0, {0xc0004fe500, 0x39})
+	/root/go/pkg/mod/github.com/sirupsen/logrus@v1.9.3/entry.go:260 +0x485
+github.com/sirupsen/logrus.(*Entry).Log(0xc000200000, 0x0, {0xc0005a3b78?, 0x6969d0?, 0xc0001dcac0?})
+	/root/go/pkg/mod/github.com/sirupsen/logrus@v1.9.3/entry.go:304 +0x48
+github.com/sirupsen/logrus.(*Entry).Logln(0xc000200000, 0x0, {0xc0005a3c10?, 0x0?, 0x7ffe113e3f63?})
+	/root/go/pkg/mod/github.com/sirupsen/logrus@v1.9.3/entry.go:394 +0x7f
+github.com/sirupsen/logrus.(*Logger).Logln(0xc0001dca80, 0x0, {0xc0005a3c10, 0x1, 0x1})
+	/root/go/pkg/mod/github.com/sirupsen/logrus@v1.9.3/logger.go:298 +0x58
+github.com/sirupsen/logrus.(*Logger).Panicln(...)
+	/root/go/pkg/mod/github.com/sirupsen/logrus@v1.9.3/logger.go:339
+github.com/microsoft/azurelinux/toolkit/tools/internal/logger.PanicOnError({0x7fb4e0?, 0xc000119de0?}, {0x0?, 0x10000?, 0xc000430d20?})
+	/third_disk/bb04Mar/azurelinux/toolkit/tools/internal/logger/log.go:162 +0xb7
+main.main()
+	/third_disk/bb04Mar/azurelinux/toolkit/tools/srpmpacker/srpmpacker.go:191 +0x929
+make: *** [/third_disk/bb04Mar/azurelinux/toolkit/scripts/srpm_pack.mk:81: /third_disk/bb04Mar/azurelinux/build/make_status/build_srpms.flag] Error 2
+make: *** Waiting for unfinished jobs....
+[31mPANI[0m[0040][specreader] failed to parse native specs:
+failed to parse specs: 
+unexpected number of matches (0) for spec file (nvmetcli) in directory (/third_disk/bb04Mar/azurelinux/SPECS-EXTENDED)
+unexpected number of matches (0) for spec file (minizip-ng) in directory (/third_disk/bb04Mar/azurelinux/SPECS-EXTENDED)
+unexpected number of matches (0) for spec file (jakarta-annotations) in directory (/third_disk/bb04Mar/azurelinux/SPECS-EXTENDED)
+unexpected number of matches (0) for spec file (ghc-srpm-macros) in directory (/third_disk/bb04Mar/azurelinux/SPECS-EXTENDED) 
+panic: (*logrus.Entry) 0xc0001982a0
+
+goroutine 1 [running]:
+github.com/sirupsen/logrus.(*Entry).log(0xc0001981c0, 0x0, {0xc00034cd80, 0x225})
+	/root/go/pkg/mod/github.com/sirupsen/logrus@v1.9.3/entry.go:260 +0x485
+github.com/sirupsen/logrus.(*Entry).Log(0xc0001981c0, 0x0, {0xc0004d9cd0?, 0x54bcd0?, 0xc000342940?})
+	/root/go/pkg/mod/github.com/sirupsen/logrus@v1.9.3/entry.go:304 +0x48
+github.com/sirupsen/logrus.(*Entry).Logln(0xc0001981c0, 0x0, {0xc0004d9d68?, 0x5?, 0x89f111?})
+	/root/go/pkg/mod/github.com/sirupsen/logrus@v1.9.3/entry.go:394 +0x7f
+github.com/sirupsen/logrus.(*Logger).Logln(0xc000342900, 0x0, {0xc0004d9d68, 0x1, 0x1})
+	/root/go/pkg/mod/github.com/sirupsen/logrus@v1.9.3/logger.go:298 +0x58
+github.com/sirupsen/logrus.(*Logger).Panicln(...)
+	/root/go/pkg/mod/github.com/sirupsen/logrus@v1.9.3/logger.go:339
+github.com/microsoft/azurelinux/toolkit/tools/internal/logger.PanicOnError({0x843a80?, 0xc00039c2a0?}, {0x0?, 0x5?, 0x7ffc8710ffdf?})
+	/third_disk/bb04Mar/azurelinux/toolkit/tools/internal/logger/log.go:162 +0xb7
+main.main()
+	/third_disk/bb04Mar/azurelinux/toolkit/tools/specreader/specreader.go:78 +0x5ba
+make: *** [/third_disk/bb04Mar/azurelinux/toolkit/scripts/pkggen.mk:96: /third_disk/bb04Mar/azurelinux/build/pkg_artifacts/specs.json] Error 2
+make: *** Deleting file '/third_disk/bb04Mar/azurelinux/build/toolchain_rpms/x86_64/gcc-debuginfo-13.2.0-7.azl3.x86_64.rpm'
+Terminated
+make: *** [/third_disk/bb04Mar/azurelinux/toolkit/scripts/toolchain.mk:311: /third_disk/bb04Mar/azurelinux/build/toolchain_rpms/x86_64/gcc-debuginfo-13.2.0-7.azl3.x86_64.rpm] Terminated

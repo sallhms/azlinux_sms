@@ -1,0 +1,1765 @@
+AZLINUX_ROOT=/third_disk/bb05Mar/azurelinux/
+DOWNLOADED_SPECS_PATH=/fifth_disk/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/
+DATA_PATH_FOR_LISTS=/third_disk/bb05Mar/azurelinux/didwhat/BULK_BLD_THINGS
+STARTING THE COPY OF TARBALLS TO THE SPECS-EXTENDED FOLDER
+==========================================================
+spcfl_fullpath=/third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/PyGreSQL/PyGreSQL.spec
+	srcpath=https://github.com/PyGreSQL/PyGreSQL/archive/refs/tags/6.0.1.tar.gz#/PyGreSQL-6.0.1.tar.gz
+PyGreSQL-6.0.1.tar.gz already with us in /third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/PyGreSQL, for package PyGreSQL
+PyGreSQL-6.0.1.tar.gz need met, for package PyGreSQL
+spcfl_fullpath=/third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/ansible-freeipa/ansible-freeipa.spec
+	srcpath=https://github.com/freeipa/ansible-freeipa/archive/v1.13.2.tar.gz#/ansible-freeipa-1.13.2.tar.gz
+ansible-freeipa-1.13.2.tar.gz already with us in /third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/ansible-freeipa, for package ansible-freeipa
+ansible-freeipa-1.13.2.tar.gz need met, for package ansible-freeipa
+spcfl_fullpath=/third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/apache-commons-daemon/apache-commons-daemon.spec
+	srcpath=https://archive.apache.org/dist/commons/daemon/source/commons-daemon-1.2.3-src.tar.gz
+commons-daemon-1.2.3-src.tar.gz already with us in /third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/apache-commons-daemon, for package apache-commons-daemon
+commons-daemon-1.2.3-src.tar.gz need met, for package apache-commons-daemon
+	srcpath=https://archive.apache.org/dist/commons/daemon/source/commons-daemon-1.2.3-src.tar.gz.asc
+commons-daemon-1.2.3-src.tar.gz.asc already with us in /third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/apache-commons-daemon, for package apache-commons-daemon
+commons-daemon-1.2.3-src.tar.gz.asc need met, for package apache-commons-daemon
+	srcpath=apache-commons-daemon.keyring
+apache-commons-daemon.keyring already with us in /third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/apache-commons-daemon, for package apache-commons-daemon
+apache-commons-daemon.keyring need met, for package apache-commons-daemon
+	srcpath=apache-commons-daemon-build.xml
+apache-commons-daemon-build.xml already with us in /third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/apache-commons-daemon, for package apache-commons-daemon
+apache-commons-daemon-build.xml need met, for package apache-commons-daemon
+spcfl_fullpath=/third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/bats/bats.spec
+	srcpath=https://github.com/bats-core/bats-core/archive/v1.11.0.tar.gz#/bats-core-1.11.0.tar.gz
+bats-core-1.11.0.tar.gz already with us in /third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/bats, for package bats
+bats-core-1.11.0.tar.gz need met, for package bats
+spcfl_fullpath=/third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/botan2/botan2.spec
+	srcpath=https://botan.randombit.net/releases/Botan-2.19.5.tar.xz
+Botan-2.19.5.tar.xz already with us in /third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/botan2, for package botan2
+Botan-2.19.5.tar.xz need met, for package botan2
+spcfl_fullpath=/third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/bwidget/bwidget.spec
+	srcpath=http://downloads.sourceforge.net/tcllib/bwidget-1.10.1.tar.gz
+bwidget-1.10.1.tar.gz already with us in /third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/bwidget, for package bwidget
+bwidget-1.10.1.tar.gz need met, for package bwidget
+spcfl_fullpath=/third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/cairomm/cairomm.spec
+	srcpath=https://www.cairographics.org/releases/cairomm-1.14.5.tar.xz
+cairomm-1.14.5.tar.xz already with us in /third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/cairomm, for package cairomm
+cairomm-1.14.5.tar.xz need met, for package cairomm
+	srcpath=https://www.cairographics.org/releases/cairomm-1.14.5.tar.xz.asc
+cairomm-1.14.5.tar.xz.asc already with us in /third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/cairomm, for package cairomm
+cairomm-1.14.5.tar.xz.asc need met, for package cairomm
+	srcpath=https://gitlab.freedesktop.org/freedesktop/freedesktop/uploads/0ac64e9582659f70a719d59fb02cd037/gpg_key.pub
+gpg_key.pub already with us in /third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/cairomm, for package cairomm
+gpg_key.pub need met, for package cairomm
+spcfl_fullpath=/third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/capstone/capstone.spec
+	srcpath=https://github.com/capstone-engine/capstone/archive/5.0.1.tar.gz#/capstone-5.0.1.tar.gz
+capstone-5.0.1.tar.gz already with us in /third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/capstone, for package capstone
+capstone-5.0.1.tar.gz need met, for package capstone
+	srcpath=cstool.1
+cstool.1 already with us in /third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/capstone, for package capstone
+cstool.1 need met, for package capstone
+spcfl_fullpath=/third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/cfitsio/cfitsio.spec
+	srcpath=http://heasarc.gsfc.nasa.gov/FTP/software/fitsio/c/cfitsio-4.5.0.tar.gz
+cfitsio-4.5.0.tar.gz already with us in /third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/cfitsio, for package cfitsio
+cfitsio-4.5.0.tar.gz need met, for package cfitsio
+spcfl_fullpath=/third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/cim-schema/cim-schema.spec
+	srcpath=http://www.dmtf.org/standards/cim/cim_schema_v2541/cim_schema_2.54.1Experimental-MOFs.zip
+cim_schema_2.54.1Experimental-MOFs.zip already with us in /third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/cim-schema, for package cim-schema
+cim_schema_2.54.1Experimental-MOFs.zip need met, for package cim-schema
+	srcpath=http://www.dmtf.org/standards/cim/cim_schema_v2541/cim_schema_2.54.1Experimental-Doc.zip
+cim_schema_2.54.1Experimental-Doc.zip already with us in /third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/cim-schema, for package cim-schema
+cim_schema_2.54.1Experimental-Doc.zip need met, for package cim-schema
+	srcpath=LICENSE
+LICENSE already with us in /third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/cim-schema, for package cim-schema
+LICENSE need met, for package cim-schema
+spcfl_fullpath=/third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/cjose/cjose.spec
+	srcpath=https://github.com/OpenIDC/cjose/releases/download/v0.6.2.2/cjose-0.6.2.2.tar.gz
+cjose-0.6.2.2.tar.gz already with us in /third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/cjose, for package cjose
+cjose-0.6.2.2.tar.gz need met, for package cjose
+spcfl_fullpath=/third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/cldr-emoji-annotation/cldr-emoji-annotation.spec
+	srcpath=https://github.com/unicode-org/cldr/archive/refs/tags/release-46-1-beta2.zip#/cldr-release-46-1-beta2.zip
+	trbl=cldr-release-46-1-beta2.zip
+	Will copy the pre-downloaded cldr-release-46-1-beta2.zip to SPECS-EXTENDED folder /third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/cldr-emoji-annotation
+	copy success, tarball /third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/cldr-emoji-annotation/cldr-release-46-1-beta2.zip for package cldr-emoji-annotation
+cldr-release-46-1-beta2.zip need met, for package cldr-emoji-annotation
+spcfl_fullpath=/third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/console-setup/console-setup.spec
+	srcpath=http://ftp.de.debian.org/debian/pool/main/c/console-setup/console-setup_1.230.tar.xz
+console-setup_1.230.tar.xz already with us in /third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/console-setup, for package console-setup
+console-setup_1.230.tar.xz need met, for package console-setup
+spcfl_fullpath=/third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/corosync/corosync.spec
+	srcpath=https://build.clusterlabs.org/corosync/releases/corosync-3.1.9.tar.gz#/corosync-3.1.9.tar.gz
+corosync-3.1.9.tar.gz already with us in /third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/corosync, for package corosync
+corosync-3.1.9.tar.gz need met, for package corosync
+spcfl_fullpath=/third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/cpuid/cpuid.spec
+	srcpath=http://www.etallen.com/cpuid/cpuid-20241023.src.tar.gz
+cpuid-20241023.src.tar.gz already with us in /third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/cpuid, for package cpuid
+cpuid-20241023.src.tar.gz need met, for package cpuid
+spcfl_fullpath=/third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/dovecot/dovecot.spec
+	srcpath=https://www.dovecot.org/releases/2.3/dovecot-2.3.21.1.tar.gz
+dovecot-2.3.21.1.tar.gz already with us in /third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/dovecot, for package dovecot
+dovecot-2.3.21.1.tar.gz need met, for package dovecot
+	srcpath=dovecot.init
+dovecot.init already with us in /third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/dovecot, for package dovecot
+dovecot.init need met, for package dovecot
+	srcpath=dovecot.pam
+dovecot.pam already with us in /third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/dovecot, for package dovecot
+dovecot.pam need met, for package dovecot
+	srcpath=https://pigeonhole.dovecot.org/releases/2.3/dovecot-2.3-pigeonhole-0.5.21.1.tar.gz
+dovecot-2.3-pigeonhole-0.5.21.1.tar.gz already with us in /third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/dovecot, for package dovecot
+dovecot-2.3-pigeonhole-0.5.21.1.tar.gz need met, for package dovecot
+	srcpath=dovecot.sysconfig
+dovecot.sysconfig already with us in /third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/dovecot, for package dovecot
+dovecot.sysconfig need met, for package dovecot
+	srcpath=dovecot.tmpfilesd
+dovecot.tmpfilesd already with us in /third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/dovecot, for package dovecot
+dovecot.tmpfilesd need met, for package dovecot
+	srcpath=dovecot.conf.5
+dovecot.conf.5 already with us in /third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/dovecot, for package dovecot
+dovecot.conf.5 need met, for package dovecot
+	srcpath=prestartscript
+prestartscript already with us in /third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/dovecot, for package dovecot
+prestartscript need met, for package dovecot
+	srcpath=dovecot.sysusers
+dovecot.sysusers already with us in /third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/dovecot, for package dovecot
+dovecot.sysusers need met, for package dovecot
+spcfl_fullpath=/third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/driverctl/driverctl.spec
+	srcpath=https://gitlab.com/driverctl/driverctl/repository/archive.tar.gz?ref=0.115#/driverctl-0.115-2ba60536eb20ca0a6a751bd8b6501dba84ec45d3.tar.gz
+	trbl=driverctl-0.115-2ba60536eb20ca0a6a751bd8b6501dba84ec45d3.tar.gz
+	Missing tarball driverctl-0.115-2ba60536eb20ca0a6a751bd8b6501dba84ec45d3.tar.gz in pre-downloaded /fifth_disk/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs//driverctl for package driverctl
+	Trying the download now...
+	of https://gitlab.com/driverctl/driverctl/repository/archive.tar.gz?ref=0.115#/driverctl-0.115-2ba60536eb20ca0a6a751bd8b6501dba84ec45d3.tar.gz
+	as /third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/driverctl/driverctl-0.115-2ba60536eb20ca0a6a751bd8b6501dba84ec45d3.tar.gz
+[0] Downloading 'https://gitlab.com/driverctl/driverctl/repository/archive.tar.gz?ref=0.115#/driverctl-0.115-2ba60536eb20ca0a6a751bd8b6501dba84ec45d3.tar.gz' ...
+HTTP response 302  [https://gitlab.com/driverctl/driverctl/repository/archive.tar.gz?ref=0.115#/driverctl-0.115-2ba60536eb20ca0a6a751bd8b6501dba84ec45d3.tar.gz]
+Adding URL: https://gitlab.com/users/sign_in
+[0] Downloading 'https://gitlab.com/users/sign_in' ...
+HTTP ERROR response 403  [https://gitlab.com/users/sign_in]
+	download success, tarball /third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/driverctl/driverctl-0.115-2ba60536eb20ca0a6a751bd8b6501dba84ec45d3.tar.gz for package driverctl
+driverctl-0.115-2ba60536eb20ca0a6a751bd8b6501dba84ec45d3.tar.gz need met, for package driverctl
+spcfl_fullpath=/third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/facter/facter.spec
+	srcpath=https://downloads.puppetlabs.com/facter/facter-4.9.0.gem
+facter-4.9.0.gem already with us in /third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/facter, for package facter
+facter-4.9.0.gem need met, for package facter
+	srcpath=https://downloads.puppetlabs.com/facter/facter-4.9.0.gem.asc
+facter-4.9.0.gem.asc already with us in /third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/facter, for package facter
+facter-4.9.0.gem.asc need met, for package facter
+	srcpath=https://downloads.puppetlabs.com/puppet-gpg-signing-key-20250406.pub
+puppet-gpg-signing-key-20250406.pub already with us in /third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/facter, for package facter
+puppet-gpg-signing-key-20250406.pub need met, for package facter
+spcfl_fullpath=/third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/flite/flite.spec
+	srcpath=https://github.com/festvox/flite/archive/refs/tags/v2.2.tar.gz#/flite-2.2.tar.gz
+flite-2.2.tar.gz already with us in /third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/flite, for package flite
+flite-2.2.tar.gz need met, for package flite
+spcfl_fullpath=/third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/foomatic-db/foomatic-db.spec
+	srcpath=http://www.openprinting.org/download/foomatic/foomatic-db-4.0-20241027.tar.gz
+	trbl=foomatic-db-4.0-20241027.tar.gz
+	Missing tarball foomatic-db-4.0-20241027.tar.gz in pre-downloaded /fifth_disk/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs//foomatic-db for package foomatic-db
+	Trying the download now...
+	of http://www.openprinting.org/download/foomatic/foomatic-db-4.0-20241027.tar.gz
+	as /third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/foomatic-db/foomatic-db-4.0-20241027.tar.gz
+[0] Downloading 'http://www.openprinting.org/download/foomatic/foomatic-db-4.0-20241027.tar.gz' ...
+HTTP response 301 Moved Permanently [http://www.openprinting.org/download/foomatic/foomatic-db-4.0-20241027.tar.gz]
+Adding URL: https://www.openprinting.org/download/foomatic/foomatic-db-4.0-20241027.tar.gz
+[0] Downloading 'https://www.openprinting.org/download/foomatic/foomatic-db-4.0-20241027.tar.gz' ...
+HTTP ERROR response 404 Not Found [https://www.openprinting.org/download/foomatic/foomatic-db-4.0-20241027.tar.gz]
+	download fail, tarball /third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/foomatic-db/foomatic-db-4.0-20241027.tar.gz for package foomatic-db
+foomatic-db-4.0-20241027.tar.gz need unmet, for package foomatic-db
+spcfl_fullpath=/third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/freeradius/freeradius.spec
+	srcpath=https://github.com/FreeRADIUS/freeradius-server/releases/download/release_3_2_5/freeradius-server-3.2.5.tar.bz2
+freeradius-server-3.2.5.tar.bz2 already with us in /third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/freeradius, for package freeradius
+freeradius-server-3.2.5.tar.bz2 need met, for package freeradius
+	srcpath=radiusd.service
+radiusd.service already with us in /third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/freeradius, for package freeradius
+radiusd.service need met, for package freeradius
+	srcpath=freeradius-logrotate
+freeradius-logrotate already with us in /third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/freeradius, for package freeradius
+freeradius-logrotate need met, for package freeradius
+	srcpath=freeradius-pam-conf
+freeradius-pam-conf already with us in /third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/freeradius, for package freeradius
+freeradius-pam-conf need met, for package freeradius
+	srcpath=freeradius-tmpfiles.conf
+freeradius-tmpfiles.conf already with us in /third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/freeradius, for package freeradius
+freeradius-tmpfiles.conf need met, for package freeradius
+	srcpath=freeradius.sysusers
+freeradius.sysusers already with us in /third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/freeradius, for package freeradius
+freeradius.sysusers need met, for package freeradius
+spcfl_fullpath=/third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/freexl/freexl.spec
+	srcpath=https://www.gaia-gis.it/gaia-sins/freexl-sources/freexl-2.0.0.tar.gz
+freexl-2.0.0.tar.gz already with us in /third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/freexl, for package freexl
+freexl-2.0.0.tar.gz need met, for package freexl
+spcfl_fullpath=/third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/ghc-srpm-macros/ghc-srpm-macros.spec
+	Missing spec /third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/ghc-srpm-macros/ghc-srpm-macros.spec for package ghc-srpm-macros
+spcfl_fullpath=/third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/glassfish-annotation-api/glassfish-annotation-api.spec
+	srcpath=https://github.com/javaee/javax.annotation/archive/1.3.2.tar.gz#/glassfish-annotation-api-1.3.2.tar.gz
+glassfish-annotation-api-1.3.2.tar.gz already with us in /third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/glassfish-annotation-api, for package glassfish-annotation-api
+glassfish-annotation-api-1.3.2.tar.gz need met, for package glassfish-annotation-api
+	srcpath=glassfish-annotation-api-build.xml
+glassfish-annotation-api-build.xml already with us in /third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/glassfish-annotation-api, for package glassfish-annotation-api
+glassfish-annotation-api-build.xml need met, for package glassfish-annotation-api
+	srcpath=https://raw.githubusercontent.com/javaee/javax.annotation/master/LICENSE
+LICENSE already with us in /third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/glassfish-annotation-api, for package glassfish-annotation-api
+LICENSE need met, for package glassfish-annotation-api
+spcfl_fullpath=/third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/gphoto2/gphoto2.spec
+	srcpath=http://downloads.sourceforge.net/gphoto/gphoto2-2.5.28.tar.bz2
+gphoto2-2.5.28.tar.bz2 already with us in /third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/gphoto2, for package gphoto2
+gphoto2-2.5.28.tar.bz2 need met, for package gphoto2
+spcfl_fullpath=/third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/gsl/gsl.spec
+	srcpath=https://ftp.gnu.org/gnu/gsl/gsl-2.8.tar.gz
+gsl-2.8.tar.gz already with us in /third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/gsl, for package gsl
+gsl-2.8.tar.gz need met, for package gsl
+spcfl_fullpath=/third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/gspell/gspell.spec
+	srcpath=https://gitlab.gnome.org/GNOME/gspell/-/archive/1.14.0/gspell-1.14.0.tar.gz
+gspell-1.14.0.tar.gz already with us in /third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/gspell, for package gspell
+gspell-1.14.0.tar.gz need met, for package gspell
+spcfl_fullpath=/third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/gstreamer1/gstreamer1.spec
+	srcpath=http://gstreamer.freedesktop.org/src/gstreamer/gstreamer-1.24.8.tar.xz
+gstreamer-1.24.8.tar.xz already with us in /third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/gstreamer1, for package gstreamer1
+gstreamer-1.24.8.tar.xz need met, for package gstreamer1
+	srcpath=gstreamer1.prov
+gstreamer1.prov already with us in /third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/gstreamer1, for package gstreamer1
+gstreamer1.prov need met, for package gstreamer1
+	srcpath=gstreamer1.attr
+gstreamer1.attr already with us in /third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/gstreamer1, for package gstreamer1
+gstreamer1.attr need met, for package gstreamer1
+spcfl_fullpath=/third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/gtk-vnc/gtk-vnc.spec
+	srcpath=https://download.gnome.org/sources/gtk-vnc/1.3/gtk-vnc-1.3.1.tar.xz
+gtk-vnc-1.3.1.tar.xz already with us in /third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/gtk-vnc, for package gtk-vnc
+gtk-vnc-1.3.1.tar.xz need met, for package gtk-vnc
+spcfl_fullpath=/third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/gupnp/gupnp.spec
+	srcpath=https://github.com/GNOME/gupnp/archive/refs/tags/gupnp-1.6.7.tar.gz
+gupnp-1.6.7.tar.gz already with us in /third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/gupnp, for package gupnp
+gupnp-1.6.7.tar.gz need met, for package gupnp
+spcfl_fullpath=/third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/gupnp-av/gupnp-av.spec
+	srcpath=http://download.gnome.org/sources/gupnp-av/0.14/gupnp-av-0.14.1.tar.xz
+gupnp-av-0.14.1.tar.xz already with us in /third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/gupnp-av, for package gupnp-av
+gupnp-av-0.14.1.tar.xz need met, for package gupnp-av
+spcfl_fullpath=/third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/gupnp-igd/gupnp-igd.spec
+	srcpath=https://github.com/GNOME/gupnp-igd/archive/refs/tags/1.6.0.tar.gz#/gupnp-igd-1.6.0.tar.gz
+gupnp-igd-1.6.0.tar.gz already with us in /third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/gupnp-igd, for package gupnp-igd
+gupnp-igd-1.6.0.tar.gz need met, for package gupnp-igd
+spcfl_fullpath=/third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/highlight/highlight.spec
+	srcpath=http://www.andre-simon.de/zip/highlight-4.14.tar.bz2
+highlight-4.14.tar.bz2 already with us in /third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/highlight, for package highlight
+highlight-4.14.tar.bz2 need met, for package highlight
+spcfl_fullpath=/third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/hunspell-az/hunspell-az.spec
+	srcpath=https://github.com/mozillaz/spellchecker/archive/refs/heads/master.zip#/azerbaijani_spellchecker-0.2.zip
+	trbl=azerbaijani_spellchecker-0.2.zip
+	Will copy the pre-downloaded azerbaijani_spellchecker-0.2.zip to SPECS-EXTENDED folder /third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/hunspell-az
+	copy success, tarball /third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/hunspell-az/azerbaijani_spellchecker-0.2.zip for package hunspell-az
+azerbaijani_spellchecker-0.2.zip need met, for package hunspell-az
+spcfl_fullpath=/third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/hunspell-csb/hunspell-csb.spec
+	srcpath=https://addons.thunderbird.net/firefox/downloads/latest/kashubian-spell-checker-poland/addon-222511-latest.xpi
+addon-222511-latest.xpi already with us in /third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/hunspell-csb, for package hunspell-csb
+addon-222511-latest.xpi need met, for package hunspell-csb
+spcfl_fullpath=/third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/hunspell-eu/hunspell-eu.spec
+	srcpath=http://xuxen.eus/static/hunspell/xuxen_5.1_hunspell.zip
+	trbl=xuxen_5.1_hunspell.zip
+	Will copy the pre-downloaded xuxen_5.1_hunspell.zip to SPECS-EXTENDED folder /third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/hunspell-eu
+	copy success, tarball /third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/hunspell-eu/xuxen_5.1_hunspell.zip for package hunspell-eu
+xuxen_5.1_hunspell.zip need met, for package hunspell-eu
+spcfl_fullpath=/third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/hunspell-ga/hunspell-ga.spec
+	srcpath=https://github.com/kscanne/gaelspell/releases/download/v5.1/hunspell-ga-5.1.zip
+	trbl=hunspell-ga-5.1.zip
+	Will copy the pre-downloaded hunspell-ga-5.1.zip to SPECS-EXTENDED folder /third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/hunspell-ga
+	copy success, tarball /third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/hunspell-ga/hunspell-ga-5.1.zip for package hunspell-ga
+hunspell-ga-5.1.zip need met, for package hunspell-ga
+spcfl_fullpath=/third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/hunspell-it/hunspell-it.spec
+	srcpath=https://pagure.io/dizionario_italiano/archive/5.1.1/dizionario_italiano-5.1.1.tar.gz
+dizionario_italiano-5.1.1.tar.gz already with us in /third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/hunspell-it, for package hunspell-it
+dizionario_italiano-5.1.1.tar.gz need met, for package hunspell-it
+spcfl_fullpath=/third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/hunspell-mr/hunspell-mr.spec
+	srcpath=https://addons.mozilla.org/firefox/downloads/file/4324409/marathi_dictionary-14.01webext.xpi
+marathi_dictionary-14.01webext.xpi already with us in /third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/hunspell-mr, for package hunspell-mr
+marathi_dictionary-14.01webext.xpi need met, for package hunspell-mr
+spcfl_fullpath=/third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/hunspell-pl/hunspell-pl.spec
+	srcpath=https://sjp.pl/sl/ort/sjp-myspell-pl-20240901.zip
+	trbl=sjp-myspell-pl-20240901.zip
+	Will copy the pre-downloaded sjp-myspell-pl-20240901.zip to SPECS-EXTENDED folder /third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/hunspell-pl
+	copy success, tarball /third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/hunspell-pl/sjp-myspell-pl-20240901.zip for package hunspell-pl
+sjp-myspell-pl-20240901.zip need met, for package hunspell-pl
+spcfl_fullpath=/third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/hunspell-pt/hunspell-pt.spec
+	srcpath=http://natura.di.uminho.pt/download/sources/Dictionaries/hunspell/hunspell-pt_PT-20130125.tar.gz
+hunspell-pt_PT-20130125.tar.gz already with us in /third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/hunspell-pt, for package hunspell-pt
+hunspell-pt_PT-20130125.tar.gz need met, for package hunspell-pt
+	srcpath=https://pt-br.libreoffice.org/assets/Uploads/PT-BR-Documents/VERO/ptBR-2013-10-30AOC-2.zip
+	trbl=ptBR-2013-10-30AOC-2.zip
+	Will copy the pre-downloaded ptBR-2013-10-30AOC-2.zip to SPECS-EXTENDED folder /third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/hunspell-pt
+	copy success, tarball /third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/hunspell-pt/ptBR-2013-10-30AOC-2.zip for package hunspell-pt
+ptBR-2013-10-30AOC-2.zip need met, for package hunspell-pt
+spcfl_fullpath=/third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/hunspell-ro/hunspell-ro.spec
+	srcpath=http://downloads.sourceforge.net/rospell/ro_RO.3.3.10.zip
+	trbl=ro_RO.3.3.10.zip
+	Will copy the pre-downloaded ro_RO.3.3.10.zip to SPECS-EXTENDED folder /third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/hunspell-ro
+	copy success, tarball /third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/hunspell-ro/ro_RO.3.3.10.zip for package hunspell-ro
+ro_RO.3.3.10.zip need met, for package hunspell-ro
+spcfl_fullpath=/third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/hyphen-ca/hyphen-ca.spec
+	srcpath=https://github.com/jaumeortola/hyphen-ca/archive/refs/tags/v1.5.tar.gz#/hyphen-ca-1.5.tar.gz
+hyphen-ca-1.5.tar.gz already with us in /third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/hyphen-ca, for package hyphen-ca
+hyphen-ca-1.5.tar.gz need met, for package hyphen-ca
+spcfl_fullpath=/third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/hyphen-it/hyphen-it.spec
+	srcpath=https://pagure.io/dizionario_italiano/archive/5.1.1/dizionario_italiano-5.1.1.tar.gz
+dizionario_italiano-5.1.1.tar.gz already with us in /third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/hyphen-it, for package hyphen-it
+dizionario_italiano-5.1.1.tar.gz need met, for package hyphen-it
+spcfl_fullpath=/third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/hyphen-pt/hyphen-pt.spec
+	srcpath=https://pt-br.libreoffice.org/assets/Uploads/PT-BR-Documents/VERO/hyphptBR-213.zip
+	trbl=hyphptBR-213.zip
+	Will copy the pre-downloaded hyphptBR-213.zip to SPECS-EXTENDED folder /third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/hyphen-pt
+	copy success, tarball /third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/hyphen-pt/hyphptBR-213.zip for package hyphen-pt
+hyphptBR-213.zip need met, for package hyphen-pt
+	srcpath=https://sourceforge.net/projects/openofficeorg.mirror/files/contrib/dictionaries/hyph_pt_PT.zip
+	trbl=hyph_pt_PT.zip
+	Will copy the pre-downloaded hyph_pt_PT.zip to SPECS-EXTENDED folder /third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/hyphen-pt
+	copy success, tarball /third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/hyphen-pt/hyph_pt_PT.zip for package hyphen-pt
+hyph_pt_PT.zip need met, for package hyphen-pt
+spcfl_fullpath=/third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/hyphen-ru/hyphen-ru.spec
+	srcpath=http://mirrors.ctan.org/language/hyph-utf8/tex/generic/hyph-utf8/patterns/tex/hyph-ru.tex
+hyph-ru.tex already with us in /third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/hyphen-ru, for package hyphen-ru
+hyph-ru.tex need met, for package hyphen-ru
+	srcpath=http://mirrors.ctan.org/language/hyph-utf8/tex/generic/hyph-utf8/patterns/txt/hyph-ru.pat.txt
+hyph-ru.pat.txt already with us in /third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/hyphen-ru, for package hyphen-ru
+hyph-ru.pat.txt need met, for package hyphen-ru
+spcfl_fullpath=/third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/hyphen-tk/hyphen-tk.spec
+	srcpath=http://mirror.ctan.org/language/hyph-utf8/tex/generic/hyph-utf8/patterns/tex/hyph-tk.tex
+hyph-tk.tex already with us in /third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/hyphen-tk, for package hyphen-tk
+hyph-tk.tex need met, for package hyphen-tk
+spcfl_fullpath=/third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/irssi/irssi.spec
+	srcpath=https://github.com/irssi/irssi/releases/download/1.4.5/irssi-1.4.5.tar.xz
+irssi-1.4.5.tar.xz already with us in /third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/irssi, for package irssi
+irssi-1.4.5.tar.xz need met, for package irssi
+	srcpath=https://github.com/irssi/irssi/releases/download/1.4.5/irssi-1.4.5.tar.xz.asc
+irssi-1.4.5.tar.xz.asc already with us in /third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/irssi, for package irssi
+irssi-1.4.5.tar.xz.asc need met, for package irssi
+	srcpath=gpgkey-7EE65E3082A5FB06AC7C368D00CCB587DDBEF0E1.asc
+gpgkey-7EE65E3082A5FB06AC7C368D00CCB587DDBEF0E1.asc already with us in /third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/irssi, for package irssi
+gpgkey-7EE65E3082A5FB06AC7C368D00CCB587DDBEF0E1.asc need met, for package irssi
+	srcpath=irssi-config.h
+irssi-config.h already with us in /third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/irssi, for package irssi
+irssi-config.h need met, for package irssi
+spcfl_fullpath=/third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/iso-codes/iso-codes.spec
+	srcpath=https://salsa.debian.org/iso-codes-team/iso-codes/-/archive/v4.17.0/iso-codes-v4.17.0.tar.gz
+iso-codes-v4.17.0.tar.gz already with us in /third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/iso-codes, for package iso-codes
+iso-codes-v4.17.0.tar.gz need met, for package iso-codes
+spcfl_fullpath=/third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/isomd5sum/isomd5sum.spec
+	srcpath=https://github.com/rhinstaller/isomd5sum/archive/1.2.5/isomd5sum-1.2.5.tar.gz
+isomd5sum-1.2.5.tar.gz already with us in /third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/isomd5sum, for package isomd5sum
+isomd5sum-1.2.5.tar.gz need met, for package isomd5sum
+spcfl_fullpath=/third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/iwd/iwd.spec
+	srcpath=https://www.kernel.org/pub/linux/network/wireless/iwd-3.3.tar.xz
+iwd-3.3.tar.xz already with us in /third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/iwd, for package iwd
+iwd-3.3.tar.xz need met, for package iwd
+spcfl_fullpath=/third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/jbigkit/jbigkit.spec
+	srcpath=http://www.cl.cam.ac.uk/~mgk25/download/jbigkit-2.1.tar.gz
+jbigkit-2.1.tar.gz already with us in /third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/jbigkit, for package jbigkit
+jbigkit-2.1.tar.gz need met, for package jbigkit
+spcfl_fullpath=/third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/jdom2/jdom2.spec
+	srcpath=https://github.com/hunterhacker/jdom/archive/JDOM-2.0.6.1.tar.gz#/jdom2-2.0.6.1.tar.gz
+jdom2-2.0.6.1.tar.gz already with us in /third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/jdom2, for package jdom2
+jdom2-2.0.6.1.tar.gz need met, for package jdom2
+	srcpath=bnd.properties
+bnd.properties already with us in /third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/jdom2, for package jdom2
+bnd.properties need met, for package jdom2
+	srcpath=generate-tarball.sh
+generate-tarball.sh already with us in /third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/jdom2, for package jdom2
+generate-tarball.sh need met, for package jdom2
+spcfl_fullpath=/third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/jlex/jlex.spec
+	srcpath=http://www.cs.princeton.edu/~appel/modern/java/JLex/Archive/1.2.6/Main.java
+Main.java already with us in /third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/jlex, for package jlex
+Main.java need met, for package jlex
+	srcpath=jlex-1.2.6.build.xml
+jlex-1.2.6.build.xml already with us in /third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/jlex, for package jlex
+jlex-1.2.6.build.xml need met, for package jlex
+	srcpath=http://www.cs.princeton.edu/~appel/modern/java/JLex/Archive/1.2.6/manual.html
+manual.html already with us in /third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/jlex, for package jlex
+manual.html need met, for package jlex
+	srcpath=http://www.cs.princeton.edu/~appel/modern/java/JLex/Archive/1.2.6/sample.lex
+sample.lex already with us in /third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/jlex, for package jlex
+sample.lex need met, for package jlex
+spcfl_fullpath=/third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/js-jquery/js-jquery.spec
+	srcpath=https://github.com/jquery/jquery/archive/3.7.1/jquery-3.7.1.tar.gz
+jquery-3.7.1.tar.gz already with us in /third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/js-jquery, for package js-jquery
+jquery-3.7.1.tar.gz need met, for package js-jquery
+	srcpath=jquery_3.7.1_node_modules.tar.gz
+jquery_3.7.1_node_modules.tar.gz already with us in /third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/js-jquery, for package js-jquery
+jquery_3.7.1_node_modules.tar.gz need met, for package js-jquery
+spcfl_fullpath=/third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/jsoncpp/jsoncpp.spec
+	srcpath=https://github.com/open-source-parsers/jsoncpp/archive/1.9.5.tar.gz#/jsoncpp-1.9.5.tar.gz
+jsoncpp-1.9.5.tar.gz already with us in /third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/jsoncpp, for package jsoncpp
+jsoncpp-1.9.5.tar.gz need met, for package jsoncpp
+spcfl_fullpath=/third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/junitperf/junitperf.spec
+	srcpath=https://github.com/clarkware/junitperf/archive/refs/tags/1.9.1.zip#/junitperf-1.9.1.zip
+junitperf-1.9.1.zip already with us in /third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/junitperf, for package junitperf
+junitperf-1.9.1.zip need met, for package junitperf
+spcfl_fullpath=/third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/kde-filesystem/kde-filesystem.spec
+	srcpath=teamnames
+teamnames already with us in /third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/kde-filesystem, for package kde-filesystem
+teamnames need met, for package kde-filesystem
+	srcpath=macros.kde4
+macros.kde4 already with us in /third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/kde-filesystem, for package kde-filesystem
+macros.kde4 need met, for package kde-filesystem
+	srcpath=applnk-hidden-directory
+applnk-hidden-directory already with us in /third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/kde-filesystem, for package kde-filesystem
+applnk-hidden-directory need met, for package kde-filesystem
+spcfl_fullpath=/third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/keycloak-httpd-client-install/keycloak-httpd-client-install.spec
+	srcpath=https://github.com/latchset/keycloak-httpd-client-install/archive/refs/tags/v1.3.tar.gz#/keycloak-httpd-client-install-1.3.tar.gz
+keycloak-httpd-client-install-1.3.tar.gz already with us in /third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/keycloak-httpd-client-install, for package keycloak-httpd-client-install
+keycloak-httpd-client-install-1.3.tar.gz need met, for package keycloak-httpd-client-install
+spcfl_fullpath=/third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/kyotocabinet/kyotocabinet.spec
+	srcpath=https://dbmx.net/kyotocabinet/pkg/kyotocabinet-1.2.80.tar.gz
+kyotocabinet-1.2.80.tar.gz already with us in /third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/kyotocabinet, for package kyotocabinet
+kyotocabinet-1.2.80.tar.gz need met, for package kyotocabinet
+spcfl_fullpath=/third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/ladspa/ladspa.spec
+	srcpath=http://www.ladspa.org/download/ladspa_sdk_1.17.tgz
+ladspa_sdk_1.17.tgz already with us in /third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/ladspa, for package ladspa
+ladspa_sdk_1.17.tgz need met, for package ladspa
+spcfl_fullpath=/third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/langtable/langtable.spec
+	srcpath=https://github.com/mike-fabian/langtable/archive/refs/tags/0.0.68.tar.gz#/langtable-0.0.68.tar.gz
+langtable-0.0.68.tar.gz already with us in /third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/langtable, for package langtable
+langtable-0.0.68.tar.gz need met, for package langtable
+spcfl_fullpath=/third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/lasso/lasso.spec
+	srcpath=https://dev.entrouvert.org/lasso/lasso-2.8.2.tar.gz
+lasso-2.8.2.tar.gz already with us in /third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/lasso, for package lasso
+lasso-2.8.2.tar.gz need met, for package lasso
+spcfl_fullpath=/third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/lcov/lcov.spec
+	srcpath=https://github.com/linux-test-project/lcov/archive/refs/tags/v2.0.tar.gz#/lcov-2.0.tar.gz
+lcov-2.0.tar.gz already with us in /third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/lcov, for package lcov
+lcov-2.0.tar.gz need met, for package lcov
+spcfl_fullpath=/third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/ledmon/ledmon.spec
+	srcpath=https://github.com/intel/ledmon/archive/v1.1.0/ledmon-1.1.0.tar.gz
+ledmon-1.1.0.tar.gz already with us in /third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/ledmon, for package ledmon
+ledmon-1.1.0.tar.gz need met, for package ledmon
+spcfl_fullpath=/third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/lensfun/lensfun.spec
+	srcpath=https://github.com/lensfun/lensfun/archive/v0.3.4/lensfun-0.3.4.tar.gz
+lensfun-0.3.4.tar.gz already with us in /third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/lensfun, for package lensfun
+lensfun-0.3.4.tar.gz need met, for package lensfun
+	srcpath=https://lensfun.sourceforge.net/db/version_1.tar.bz2
+version_1.tar.bz2 already with us in /third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/lensfun, for package lensfun
+version_1.tar.bz2 need met, for package lensfun
+spcfl_fullpath=/third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/libXScrnSaver/libXScrnSaver.spec
+	srcpath=https://www.x.org/pub/individual/lib/libXScrnSaver-1.2.4.tar.xz
+libXScrnSaver-1.2.4.tar.xz already with us in /third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/libXScrnSaver, for package libXScrnSaver
+libXScrnSaver-1.2.4.tar.xz need met, for package libXScrnSaver
+spcfl_fullpath=/third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/libblockdev/libblockdev.spec
+	srcpath=https://github.com/storaged-project/libblockdev/releases/download/3.2.0-1.azl3/libblockdev-3.2.0.tar.gz
+	trbl=libblockdev-3.2.0.tar.gz
+	Missing tarball libblockdev-3.2.0.tar.gz in pre-downloaded /fifth_disk/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs//libblockdev for package libblockdev
+	Trying the download now...
+	of https://github.com/storaged-project/libblockdev/releases/download/3.2.0-1.azl3/libblockdev-3.2.0.tar.gz
+	as /third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/libblockdev/libblockdev-3.2.0.tar.gz
+[0] Downloading 'https://github.com/storaged-project/libblockdev/releases/download/3.2.0-1.azl3/libblockdev-3.2.0.tar.gz' ...
+HTTP ERROR response 404  [https://github.com/storaged-project/libblockdev/releases/download/3.2.0-1.azl3/libblockdev-3.2.0.tar.gz]
+	download fail, tarball /third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/libblockdev/libblockdev-3.2.0.tar.gz for package libblockdev
+libblockdev-3.2.0.tar.gz need unmet, for package libblockdev
+spcfl_fullpath=/third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/libcdio/libcdio.spec
+	srcpath=https://ftp.gnu.org/gnu/libcdio/libcdio-2.1.0.tar.bz2
+libcdio-2.1.0.tar.bz2 already with us in /third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/libcdio, for package libcdio
+libcdio-2.1.0.tar.bz2 need met, for package libcdio
+	srcpath=https://ftp.gnu.org/gnu/libcdio/libcdio-2.1.0.tar.bz2.sig
+libcdio-2.1.0.tar.bz2.sig already with us in /third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/libcdio, for package libcdio
+libcdio-2.1.0.tar.bz2.sig need met, for package libcdio
+	srcpath=libcdio-no_date_footer.hml
+libcdio-no_date_footer.hml already with us in /third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/libcdio, for package libcdio
+libcdio-no_date_footer.hml need met, for package libcdio
+	srcpath=cdio_config.h
+cdio_config.h already with us in /third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/libcdio, for package libcdio
+cdio_config.h need met, for package libcdio
+spcfl_fullpath=/third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/libcdio-paranoia/libcdio-paranoia.spec
+	srcpath=https://ftp.gnu.org/gnu/libcdio/libcdio-paranoia-10.2+2.0.1.tar.bz2
+libcdio-paranoia-10.2+2.0.1.tar.bz2 already with us in /third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/libcdio-paranoia, for package libcdio-paranoia
+libcdio-paranoia-10.2+2.0.1.tar.bz2 need met, for package libcdio-paranoia
+spcfl_fullpath=/third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/libcdr/libcdr.spec
+	srcpath=https://dev-www.libreoffice.org/src/libcdr/libcdr-0.1.7.tar.xz
+libcdr-0.1.7.tar.xz already with us in /third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/libcdr, for package libcdr
+libcdr-0.1.7.tar.xz need met, for package libcdr
+spcfl_fullpath=/third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/libdazzle/libdazzle.spec
+	srcpath=https://download.gnome.org/sources/libdazzle/3.44/libdazzle-3.44.0.tar.xz
+libdazzle-3.44.0.tar.xz already with us in /third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/libdazzle, for package libdazzle
+libdazzle-3.44.0.tar.xz need met, for package libdazzle
+spcfl_fullpath=/third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/libdc1394/libdc1394.spec
+	srcpath=https://downloads.sourceforge.net/project/libdc1394/libdc1394-2/2.2.7/libdc1394-2.2.7.tar.gz
+libdc1394-2.2.7.tar.gz already with us in /third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/libdc1394, for package libdc1394
+libdc1394-2.2.7.tar.gz need met, for package libdc1394
+spcfl_fullpath=/third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/libdvdnav/libdvdnav.spec
+	srcpath=https://download.videolan.org/pub/videolan/libdvdnav/6.1.1/libdvdnav-6.1.1.tar.bz2
+libdvdnav-6.1.1.tar.bz2 already with us in /third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/libdvdnav, for package libdvdnav
+libdvdnav-6.1.1.tar.bz2 need met, for package libdvdnav
+	srcpath=https://download.videolan.org/pub/videolan/libdvdnav/6.1.1/libdvdnav-6.1.1.tar.bz2.asc
+libdvdnav-6.1.1.tar.bz2.asc already with us in /third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/libdvdnav, for package libdvdnav
+libdvdnav-6.1.1.tar.bz2.asc need met, for package libdvdnav
+	srcpath=https://download.videolan.org/pub/keys/7180713BE58D1ADC.asc
+7180713BE58D1ADC.asc already with us in /third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/libdvdnav, for package libdvdnav
+7180713BE58D1ADC.asc need met, for package libdvdnav
+spcfl_fullpath=/third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/libeasyfc/libeasyfc.spec
+	srcpath=https://bitbucket.org/tagoh/libeasyfc/downloads/libeasyfc-0.14.1.tar.bz2
+libeasyfc-0.14.1.tar.bz2 already with us in /third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/libeasyfc, for package libeasyfc
+libeasyfc-0.14.1.tar.bz2 need met, for package libeasyfc
+spcfl_fullpath=/third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/libgexiv2/libgexiv2.spec
+	srcpath=https://download.gnome.org/sources/gexiv2/0.14/gexiv2-0.14.3.tar.xz#/libgexiv2-0.14.3.tar.xz
+libgexiv2-0.14.3.tar.xz already with us in /third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/libgexiv2, for package libgexiv2
+libgexiv2-0.14.3.tar.xz need met, for package libgexiv2
+spcfl_fullpath=/third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/libgsf/libgsf.spec
+	srcpath=https://download.gnome.org/sources/libgsf/1.14/libgsf-1.14.53.tar.xz
+libgsf-1.14.53.tar.xz already with us in /third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/libgsf, for package libgsf
+libgsf-1.14.53.tar.xz need met, for package libgsf
+spcfl_fullpath=/third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/libgxps/libgxps.spec
+	srcpath=https://ftp.gnome.org/pub/gnome/sources/libgxps/0.3/libgxps-0.3.2.tar.xz
+libgxps-0.3.2.tar.xz already with us in /third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/libgxps, for package libgxps
+libgxps-0.3.2.tar.xz need met, for package libgxps
+spcfl_fullpath=/third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/libiodbc/libiodbc.spec
+	srcpath=https://github.com/openlink/iODBC/archive/v3.52.16/libiodbc-3.52.16.tar.gz
+libiodbc-3.52.16.tar.gz already with us in /third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/libiodbc, for package libiodbc
+libiodbc-3.52.16.tar.gz need met, for package libiodbc
+spcfl_fullpath=/third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/liblangtag/liblangtag.spec
+	srcpath=https://bitbucket.org/tagoh/liblangtag/downloads/liblangtag-0.6.7.tar.bz2
+liblangtag-0.6.7.tar.bz2 already with us in /third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/liblangtag, for package liblangtag
+liblangtag-0.6.7.tar.bz2 need met, for package liblangtag
+spcfl_fullpath=/third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/liblockfile/liblockfile.spec
+	srcpath=http://ftp.de.debian.org/debian/pool/main/libl/liblockfile/liblockfile_1.17.orig.tar.gz
+liblockfile_1.17.orig.tar.gz already with us in /third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/liblockfile, for package liblockfile
+liblockfile_1.17.orig.tar.gz need met, for package liblockfile
+spcfl_fullpath=/third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/liblqr-1/liblqr-1.spec
+	srcpath=https://liblqr.wikidot.com/local--files/en:download-page/liblqr-1-0.4.3.tar.bz2
+liblqr-1-0.4.3.tar.bz2 already with us in /third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/liblqr-1, for package liblqr-1
+liblqr-1-0.4.3.tar.bz2 need met, for package liblqr-1
+spcfl_fullpath=/third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/libmtp/libmtp.spec
+	srcpath=https://download.sourceforge.net/libmtp/libmtp-1.1.19.tar.gz
+libmtp-1.1.19.tar.gz already with us in /third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/libmtp, for package libmtp
+libmtp-1.1.19.tar.gz need met, for package libmtp
+spcfl_fullpath=/third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/libmwaw/libmwaw.spec
+	srcpath=http://downloads.sourceforge.net/libmwaw/libmwaw-0.3.22.tar.xz
+libmwaw-0.3.22.tar.xz already with us in /third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/libmwaw, for package libmwaw
+libmwaw-0.3.22.tar.xz need met, for package libmwaw
+spcfl_fullpath=/third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/libnet/libnet.spec
+	srcpath=https://github.com/libnet/libnet/releases/download/v1.3/libnet-1.3.tar.gz
+libnet-1.3.tar.gz already with us in /third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/libnet, for package libnet
+libnet-1.3.tar.gz need met, for package libnet
+spcfl_fullpath=/third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/libnumbertext/libnumbertext.spec
+	srcpath=https://github.com/Numbertext/libnumbertext/releases/download/1.0.11/libnumbertext-1.0.11.tar.xz
+libnumbertext-1.0.11.tar.xz already with us in /third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/libnumbertext, for package libnumbertext
+libnumbertext-1.0.11.tar.xz need met, for package libnumbertext
+spcfl_fullpath=/third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/libogg/libogg.spec
+	srcpath=http://downloads.xiph.org/releases/ogg/libogg-1.3.5.tar.xz
+libogg-1.3.5.tar.xz already with us in /third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/libogg, for package libogg
+libogg-1.3.5.tar.xz need met, for package libogg
+spcfl_fullpath=/third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/libosinfo/libosinfo.spec
+	srcpath=https://releases.pagure.org/libosinfo/libosinfo-1.11.0.tar.xz
+libosinfo-1.11.0.tar.xz already with us in /third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/libosinfo, for package libosinfo
+libosinfo-1.11.0.tar.xz need met, for package libosinfo
+spcfl_fullpath=/third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/libotf/libotf.spec
+	srcpath=http://download.savannah.gnu.org/releases/m17n/libotf-0.9.16.tar.gz
+libotf-0.9.16.tar.gz already with us in /third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/libotf, for package libotf
+libotf-0.9.16.tar.gz need met, for package libotf
+spcfl_fullpath=/third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/libpfm/libpfm.spec
+	srcpath=http://sourceforge.net/projects/perfmon2/files/libpfm4/libpfm-4.13.0.tar.gz
+libpfm-4.13.0.tar.gz already with us in /third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/libpfm, for package libpfm
+libpfm-4.13.0.tar.gz need met, for package libpfm
+spcfl_fullpath=/third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/libproxy/libproxy.spec
+	srcpath=https://github.com/libproxy/libproxy/archive/refs/tags/0.5.8.tar.gz
+0.5.8.tar.gz already with us in /third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/libproxy, for package libproxy
+0.5.8.tar.gz need met, for package libproxy
+spcfl_fullpath=/third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/libreport/libreport.spec
+	srcpath=https://github.com/abrt/libreport/archive/2.17.15/libreport-2.17.15.tar.gz
+libreport-2.17.15.tar.gz already with us in /third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/libreport, for package libreport
+libreport-2.17.15.tar.gz need met, for package libreport
+spcfl_fullpath=/third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/librevenge/librevenge.spec
+	srcpath=http://downloads.sourceforge.net/libwpd/librevenge-0.0.5.tar.xz
+librevenge-0.0.5.tar.xz already with us in /third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/librevenge, for package librevenge
+librevenge-0.0.5.tar.xz need met, for package librevenge
+spcfl_fullpath=/third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/libsecret/libsecret.spec
+	srcpath=https://download.gnome.org/sources/libsecret/0.21/libsecret-0.21.4.tar.xz
+libsecret-0.21.4.tar.xz already with us in /third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/libsecret, for package libsecret
+libsecret-0.21.4.tar.xz need met, for package libsecret
+spcfl_fullpath=/third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/libspiro/libspiro.spec
+	srcpath=https://github.com/fontforge/libspiro/releases/download/20240903/libspiro-dist-20240903.tar.gz
+libspiro-dist-20240903.tar.gz already with us in /third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/libspiro, for package libspiro
+libspiro-dist-20240903.tar.gz need met, for package libspiro
+spcfl_fullpath=/third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/libsrtp/libsrtp.spec
+	srcpath=https://github.com/cisco/libsrtp/archive/v2.6.0.tar.gz
+v2.6.0.tar.gz already with us in /third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/libsrtp, for package libsrtp
+v2.6.0.tar.gz need met, for package libsrtp
+spcfl_fullpath=/third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/libtevent/libtevent.spec
+	srcpath=https://samba.org/ftp/tevent/tevent-0.16.1.tar.gz
+tevent-0.16.1.tar.gz already with us in /third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/libtevent, for package libtevent
+tevent-0.16.1.tar.gz need met, for package libtevent
+	srcpath=https://samba.org/ftp/tevent/tevent-0.16.1.tar.asc
+tevent-0.16.1.tar.asc already with us in /third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/libtevent, for package libtevent
+tevent-0.16.1.tar.asc need met, for package libtevent
+	srcpath=tevent.keyring
+tevent.keyring already with us in /third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/libtevent, for package libtevent
+tevent.keyring need met, for package libtevent
+spcfl_fullpath=/third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/libusbmuxd/libusbmuxd.spec
+	srcpath=https://github.com/libimobiledevice/libusbmuxd/releases/download/2.1.0/libusbmuxd-2.1.0.tar.bz2
+libusbmuxd-2.1.0.tar.bz2 already with us in /third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/libusbmuxd, for package libusbmuxd
+libusbmuxd-2.1.0.tar.bz2 need met, for package libusbmuxd
+spcfl_fullpath=/third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/libutempter/libutempter.spec
+	srcpath=ftp://ftp.altlinux.org/pub/people/ldv/utempter/libutempter-1.2.1.tar.gz
+libutempter-1.2.1.tar.gz already with us in /third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/libutempter, for package libutempter
+libutempter-1.2.1.tar.gz need met, for package libutempter
+spcfl_fullpath=/third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/libvdpau/libvdpau.spec
+	srcpath=https://gitlab.freedesktop.org/vdpau/libvdpau/-/archive/1.5/libvdpau-1.5.tar.bz2
+libvdpau-1.5.tar.bz2 already with us in /third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/libvdpau, for package libvdpau
+libvdpau-1.5.tar.bz2 need met, for package libvdpau
+spcfl_fullpath=/third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/libvpx/libvpx.spec
+	srcpath=https://github.com/webmproject/libvpx/archive/v1.14.1.tar.gz#/libvpx-1.14.1.tar.gz
+libvpx-1.14.1.tar.gz already with us in /third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/libvpx, for package libvpx
+libvpx-1.14.1.tar.gz need met, for package libvpx
+	srcpath=vpx_config.h
+vpx_config.h already with us in /third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/libvpx, for package libvpx
+vpx_config.h need met, for package libvpx
+	srcpath=libvpx.ver
+libvpx.ver already with us in /third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/libvpx, for package libvpx
+libvpx.ver need met, for package libvpx
+spcfl_fullpath=/third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/libwpe/libwpe.spec
+	srcpath=https://github.com/WebPlatformForEmbedded/libwpe/releases/download/1.15.2/libwpe-1.15.2.tar.xz
+libwpe-1.15.2.tar.xz already with us in /third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/libwpe, for package libwpe
+libwpe-1.15.2.tar.xz need met, for package libwpe
+	srcpath=https://github.com/WebPlatformForEmbedded/libwpe/releases/download/1.15.2/libwpe-1.15.2.tar.xz.asc
+libwpe-1.15.2.tar.xz.asc already with us in /third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/libwpe, for package libwpe
+libwpe-1.15.2.tar.xz.asc need met, for package libwpe
+	srcpath=gpgkey-5AA3BC334FD7E3369E7C77B291C559DBE4C9123B.gpg
+gpgkey-5AA3BC334FD7E3369E7C77B291C559DBE4C9123B.gpg already with us in /third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/libwpe, for package libwpe
+gpgkey-5AA3BC334FD7E3369E7C77B291C559DBE4C9123B.gpg need met, for package libwpe
+spcfl_fullpath=/third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/libwpg/libwpg.spec
+	srcpath=https://download.sourceforge.net/libwpg/libwpg-0.3.4.tar.xz
+libwpg-0.3.4.tar.xz already with us in /third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/libwpg, for package libwpg
+libwpg-0.3.4.tar.xz need met, for package libwpg
+spcfl_fullpath=/third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/libwps/libwps.spec
+	srcpath=http://downloads.sourceforge.net/libwps/libwps-0.4.14.tar.xz
+libwps-0.4.14.tar.xz already with us in /third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/libwps, for package libwps
+libwps-0.4.14.tar.xz need met, for package libwps
+spcfl_fullpath=/third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/lilv/lilv.spec
+	srcpath=https://download.drobilla.net/lilv-0.24.26.tar.xz
+lilv-0.24.26.tar.xz already with us in /third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/lilv, for package lilv
+lilv-0.24.26.tar.xz need met, for package lilv
+	srcpath=https://download.drobilla.net/lilv-0.24.26.tar.xz.sig
+lilv-0.24.26.tar.xz.sig already with us in /third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/lilv, for package lilv
+lilv-0.24.26.tar.xz.sig need met, for package lilv
+	srcpath=https://drobilla.net/drobilla.gpg
+drobilla.gpg already with us in /third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/lilv, for package lilv
+drobilla.gpg need met, for package lilv
+spcfl_fullpath=/third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/lksctp-tools/lksctp-tools.spec
+	srcpath=https://github.com/sctp/lksctp-tools/archive/lksctp-tools-1.0.19.tar.gz
+lksctp-tools-1.0.19.tar.gz already with us in /third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/lksctp-tools, for package lksctp-tools
+lksctp-tools-1.0.19.tar.gz need met, for package lksctp-tools
+spcfl_fullpath=/third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/logwatch/logwatch.spec
+	srcpath=https://sourceforge.net/projects/logwatch/files/logwatch-7.11/logwatch-7.11.tar.gz
+logwatch-7.11.tar.gz already with us in /third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/logwatch, for package logwatch
+logwatch-7.11.tar.gz need met, for package logwatch
+spcfl_fullpath=/third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/lua-expat/lua-expat.spec
+	srcpath=https://github.com/lunarmodules/luaexpat/archive/1.5.2/luaexpat-1.5.2.tar.gz
+luaexpat-1.5.2.tar.gz already with us in /third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/lua-expat, for package lua-expat
+luaexpat-1.5.2.tar.gz need met, for package lua-expat
+spcfl_fullpath=/third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/lua-filesystem/lua-filesystem.spec
+	srcpath=https://github.com/keplerproject/luafilesystem/archive/v1_8_0/luafilesystem-1.8.0.tar.gz
+luafilesystem-1.8.0.tar.gz already with us in /third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/lua-filesystem, for package lua-filesystem
+luafilesystem-1.8.0.tar.gz need met, for package lua-filesystem
+spcfl_fullpath=/third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/lua-json/lua-json.spec
+	srcpath=https://github.com/harningt/luajson/archive/1.3.4/luajson-1.3.4.tar.gz
+luajson-1.3.4.tar.gz already with us in /third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/lua-json, for package lua-json
+luajson-1.3.4.tar.gz need met, for package lua-json
+spcfl_fullpath=/third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/lua-lpeg/lua-lpeg.spec
+	srcpath=https://www.inf.puc-rio.br/~roberto/lpeg/lpeg-1.1.0.tar.gz
+lpeg-1.1.0.tar.gz already with us in /third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/lua-lpeg, for package lua-lpeg
+lpeg-1.1.0.tar.gz need met, for package lua-lpeg
+spcfl_fullpath=/third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/lua-term/lua-term.spec
+	srcpath=https://github.com/hoelzro/lua-term/archive/0.08.tar.gz#/lua-term-0.08.tar.gz
+lua-term-0.08.tar.gz already with us in /third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/lua-term, for package lua-term
+lua-term-0.08.tar.gz need met, for package lua-term
+spcfl_fullpath=/third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/lzip/lzip.spec
+	srcpath=http://download.savannah.gnu.org/releases/lzip/lzip-1.24.1.tar.gz
+lzip-1.24.1.tar.gz already with us in /third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/lzip, for package lzip
+lzip-1.24.1.tar.gz need met, for package lzip
+	srcpath=http://download.savannah.gnu.org/releases/lzip/lzip-1.24.1.tar.gz.sig
+	trbl=lzip-1.24.1.tar.gz.sig
+	Will copy the pre-downloaded lzip-1.24.1.tar.gz.sig to SPECS-EXTENDED folder /third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/lzip
+	copy success, tarball /third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/lzip/lzip-1.24.1.tar.gz.sig for package lzip
+lzip-1.24.1.tar.gz.sig need met, for package lzip
+spcfl_fullpath=/third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/m17n-db/m17n-db.spec
+	srcpath=http://download-mirror.savannah.gnu.org/releases/m17n/m17n-db-1.8.9.tar.gz
+m17n-db-1.8.9.tar.gz already with us in /third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/m17n-db, for package m17n-db
+m17n-db-1.8.9.tar.gz need met, for package m17n-db
+	srcpath=https://raw.githubusercontent.com/gnuman/m17n-inglish-mims/master/minglish/minglish.mim
+minglish.mim already with us in /third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/m17n-db, for package m17n-db
+minglish.mim need met, for package m17n-db
+spcfl_fullpath=/third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/m17n-lib/m17n-lib.spec
+	srcpath=http://download.savannah.gnu.org/releases/m17n/m17n-lib-1.8.4.tar.gz
+m17n-lib-1.8.4.tar.gz already with us in /third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/m17n-lib, for package m17n-lib
+m17n-lib-1.8.4.tar.gz need met, for package m17n-lib
+spcfl_fullpath=/third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/man-pages-ja/man-pages-ja.spec
+	srcpath=https://linuxjm.osdn.jp/man-pages-ja-20230915.tar.gz
+man-pages-ja-20230915.tar.gz already with us in /third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/man-pages-ja, for package man-pages-ja
+man-pages-ja-20230915.tar.gz need met, for package man-pages-ja
+	srcpath=man-pages-ja-rpm.pl
+man-pages-ja-rpm.pl already with us in /third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/man-pages-ja, for package man-pages-ja
+man-pages-ja-rpm.pl need met, for package man-pages-ja
+	srcpath=man-pages-ja-tail.1
+man-pages-ja-tail.1 already with us in /third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/man-pages-ja, for package man-pages-ja
+man-pages-ja-tail.1 need met, for package man-pages-ja
+	srcpath=man-pages-ja-echo.1
+man-pages-ja-echo.1 already with us in /third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/man-pages-ja, for package man-pages-ja
+man-pages-ja-echo.1 need met, for package man-pages-ja
+	srcpath=man-pages-ja-tar.1
+man-pages-ja-tar.1 already with us in /third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/man-pages-ja, for package man-pages-ja
+man-pages-ja-tar.1 need met, for package man-pages-ja
+	srcpath=man-pages-ja-snmptrapd.8
+man-pages-ja-snmptrapd.8 already with us in /third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/man-pages-ja, for package man-pages-ja
+man-pages-ja-snmptrapd.8 need met, for package man-pages-ja
+spcfl_fullpath=/third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/mariadb-connector-odbc/mariadb-connector-odbc.spec
+	srcpath=https://archive.mariadb.org/connector-odbc-3.2.1/mariadb-connector-odbc-3.2.1-rc-src.tar.gz
+mariadb-connector-odbc-3.2.1-rc-src.tar.gz already with us in /third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/mariadb-connector-odbc, for package mariadb-connector-odbc
+mariadb-connector-odbc-3.2.1-rc-src.tar.gz need met, for package mariadb-connector-odbc
+spcfl_fullpath=/third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/maven-parent/maven-parent.spec
+	srcpath=https://repo1.maven.org/maven2/org/apache/maven/maven-parent/41/maven-parent-41-source-release.zip#/maven-parent-41.zip
+maven-parent-41.zip already with us in /third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/maven-parent, for package maven-parent
+maven-parent-41.zip need met, for package maven-parent
+spcfl_fullpath=/third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/mdds/mdds.spec
+	srcpath=http://kohei.us/files/mdds/src/mdds-2.1.1.tar.bz2
+mdds-2.1.1.tar.bz2 already with us in /third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/mdds, for package mdds
+mdds-2.1.1.tar.bz2 need met, for package mdds
+spcfl_fullpath=/third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/memkind/memkind.spec
+	srcpath=https://github.com/memkind/memkind/archive/v1.14.0/memkind-1.14.0.tar.gz
+memkind-1.14.0.tar.gz already with us in /third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/memkind, for package memkind
+memkind-1.14.0.tar.gz need met, for package memkind
+spcfl_fullpath=/third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/minicom/minicom.spec
+	srcpath=https://salsa.debian.org/minicom-team/minicom/-/archive/2.9/minicom-2.9.tar.gz
+minicom-2.9.tar.gz already with us in /third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/minicom, for package minicom
+minicom-2.9.tar.gz need met, for package minicom
+spcfl_fullpath=/third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/mod_auth_openidc/mod_auth_openidc.spec
+	srcpath=https://github.com/OpenIDC/mod_auth_openidc/releases/download/v2.4.15.7/mod_auth_openidc-2.4.15.7.tar.gz
+mod_auth_openidc-2.4.15.7.tar.gz already with us in /third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/mod_auth_openidc, for package mod_auth_openidc
+mod_auth_openidc-2.4.15.7.tar.gz need met, for package mod_auth_openidc
+spcfl_fullpath=/third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/mod_authnz_pam/mod_authnz_pam.spec
+	srcpath=https://www.adelton.com/apache/mod_authnz_pam/mod_authnz_pam-1.2.3.tar.gz
+mod_authnz_pam-1.2.3.tar.gz already with us in /third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/mod_authnz_pam, for package mod_authnz_pam
+mod_authnz_pam-1.2.3.tar.gz need met, for package mod_authnz_pam
+spcfl_fullpath=/third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/mod_intercept_form_submit/mod_intercept_form_submit.spec
+	srcpath=https://www.adelton.com/apache/mod_intercept_form_submit/mod_intercept_form_submit-1.2.0.tar.gz
+mod_intercept_form_submit-1.2.0.tar.gz already with us in /third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/mod_intercept_form_submit, for package mod_intercept_form_submit
+mod_intercept_form_submit-1.2.0.tar.gz need met, for package mod_intercept_form_submit
+spcfl_fullpath=/third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/mod_md/mod_md.spec
+	srcpath=https://github.com/icing/mod_md/releases/download/v2.4.26/mod_md-2.4.26.tar.gz
+mod_md-2.4.26.tar.gz already with us in /third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/mod_md, for package mod_md
+mod_md-2.4.26.tar.gz need met, for package mod_md
+spcfl_fullpath=/third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/mod_security/mod_security.spec
+	srcpath=https://github.com/SpiderLabs/ModSecurity/releases/download/v2.9.7/modsecurity-2.9.7.tar.gz
+modsecurity-2.9.7.tar.gz already with us in /third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/mod_security, for package mod_security
+modsecurity-2.9.7.tar.gz need met, for package mod_security
+	srcpath=mod_security.conf
+mod_security.conf already with us in /third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/mod_security, for package mod_security
+mod_security.conf need met, for package mod_security
+	srcpath=10-mod_security.conf
+10-mod_security.conf already with us in /third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/mod_security, for package mod_security
+10-mod_security.conf need met, for package mod_security
+	srcpath=modsecurity_localrules.conf
+modsecurity_localrules.conf already with us in /third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/mod_security, for package mod_security
+modsecurity_localrules.conf need met, for package mod_security
+spcfl_fullpath=/third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/mod_security_crs/mod_security_crs.spec
+	srcpath=https://github.com/coreruleset/coreruleset/archive/refs/tags/v4.2.0.tar.gz#/mod_security_crs-4.2.0.tar.gz
+mod_security_crs-4.2.0.tar.gz already with us in /third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/mod_security_crs, for package mod_security_crs
+mod_security_crs-4.2.0.tar.gz need met, for package mod_security_crs
+spcfl_fullpath=/third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/mutt/mutt.spec
+	srcpath=ftp://ftp.mutt.org/pub/mutt/mutt-2.2.13.tar.gz
+mutt-2.2.13.tar.gz already with us in /third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/mutt, for package mutt
+mutt-2.2.13.tar.gz need met, for package mutt
+	srcpath=mutt_ldap_query
+mutt_ldap_query already with us in /third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/mutt, for package mutt
+mutt_ldap_query need met, for package mutt
+spcfl_fullpath=/third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/mythes/mythes.spec
+	srcpath=https://github.com/hunspell/mythes/releases/download/v1.2.5/mythes-1.2.5.tar.xz
+mythes-1.2.5.tar.xz already with us in /third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/mythes, for package mythes
+mythes-1.2.5.tar.xz need met, for package mythes
+spcfl_fullpath=/third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/mythes-ca/mythes-ca.spec
+	srcpath=https://github.com/Softcatala/sinonims-cat/releases/latest/download/thesaurus-ca.oxt
+thesaurus-ca.oxt already with us in /third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/mythes-ca, for package mythes-ca
+thesaurus-ca.oxt need met, for package mythes-ca
+spcfl_fullpath=/third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/mythes-de/mythes-de.spec
+	srcpath=https://www.openthesaurus.de/export/Deutscher-Thesaurus.oxt
+Deutscher-Thesaurus.oxt already with us in /third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/mythes-de, for package mythes-de
+Deutscher-Thesaurus.oxt need met, for package mythes-de
+	srcpath=https://www.openthesaurus.de/export/Schweizer-Thesaurus.oxt
+Schweizer-Thesaurus.oxt already with us in /third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/mythes-de, for package mythes-de
+Schweizer-Thesaurus.oxt need met, for package mythes-de
+spcfl_fullpath=/third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/nvmetcli/nvmetcli.spec
+	Missing spec /third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/nvmetcli/nvmetcli.spec for package nvmetcli
+spcfl_fullpath=/third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/ocaml-curses/ocaml-curses.spec
+	srcpath=https://github.com/mbacarella/curses/archive/1.0.11/curses-1.0.11.tar.gz#/ocaml-curses-1.0.11.tar.gz
+ocaml-curses-1.0.11.tar.gz already with us in /third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/ocaml-curses, for package ocaml-curses
+ocaml-curses-1.0.11.tar.gz need met, for package ocaml-curses
+spcfl_fullpath=/third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/ocaml-extlib/ocaml-extlib.spec
+	srcpath=https://github.com/ygrek/ocaml-extlib/releases/download/1.7.9/extlib-1.7.9.tar.gz
+extlib-1.7.9.tar.gz already with us in /third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/ocaml-extlib, for package ocaml-extlib
+extlib-1.7.9.tar.gz need met, for package ocaml-extlib
+spcfl_fullpath=/third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/ocaml-tyxml/ocaml-tyxml.spec
+	srcpath=https://github.com/ocsigen/tyxml/releases/download/4.6.0/tyxml-4.6.0.tbz
+tyxml-4.6.0.tbz already with us in /third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/ocaml-tyxml, for package ocaml-tyxml
+tyxml-4.6.0.tbz need met, for package ocaml-tyxml
+spcfl_fullpath=/third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/ocl-icd/ocl-icd.spec
+	srcpath=https://github.com/OCL-dev/ocl-icd/archive/v2.3.2/ocl-icd-2.3.2.tar.gz
+ocl-icd-2.3.2.tar.gz already with us in /third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/ocl-icd, for package ocl-icd
+ocl-icd-2.3.2.tar.gz need met, for package ocl-icd
+spcfl_fullpath=/third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/ogdi/ogdi.spec
+	srcpath=https://github.com/libogdi/ogdi/archive/ogdi_4_1_1.tar.gz#/ogdi-4.1.1.tar.gz
+ogdi-4.1.1.tar.gz already with us in /third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/ogdi, for package ogdi
+ogdi-4.1.1.tar.gz need met, for package ogdi
+	srcpath=https://ogdi.sourceforge.net/ogdi.pdf
+ogdi.pdf already with us in /third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/ogdi, for package ogdi
+ogdi.pdf need met, for package ogdi
+spcfl_fullpath=/third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/opencl-headers/opencl-headers.spec
+	srcpath=https://github.com/KhronosGroup/OpenCL-Headers/archive/4ea6df132107e3b4b9407f903204b5522fdffcd6/OpenCL-Headers-4ea6df1.tar.gz#/OpenCL-Headers-4ea6df1.tar.gz
+OpenCL-Headers-4ea6df1.tar.gz already with us in /third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/opencl-headers, for package opencl-headers
+OpenCL-Headers-4ea6df1.tar.gz need met, for package opencl-headers
+	srcpath=https://github.com/KhronosGroup/OpenCL-CLHPP/archive/v2024.10.24/OpenCL-CLHPP-v2024.10.24.tar.gz
+OpenCL-CLHPP-v2024.10.24.tar.gz already with us in /third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/opencl-headers, for package opencl-headers
+OpenCL-CLHPP-v2024.10.24.tar.gz need met, for package opencl-headers
+spcfl_fullpath=/third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/opencryptoki/opencryptoki.spec
+	srcpath=https://github.com/opencryptoki/opencryptoki/archive/v3.24.0/opencryptoki-3.24.0.tar.gz
+opencryptoki-3.24.0.tar.gz already with us in /third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/opencryptoki, for package opencryptoki
+opencryptoki-3.24.0.tar.gz need met, for package opencryptoki
+	srcpath=opencryptoki.module
+opencryptoki.module already with us in /third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/opencryptoki, for package opencryptoki
+opencryptoki.module need met, for package opencryptoki
+spcfl_fullpath=/third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/opendnssec/opendnssec.spec
+	srcpath=http://www.opendnssec.org/files/source/opendnssec-2.1.14.tar.gz
+opendnssec-2.1.14.tar.gz already with us in /third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/opendnssec, for package opendnssec
+opendnssec-2.1.14.tar.gz need met, for package opendnssec
+	srcpath=ods-enforcerd.service
+ods-enforcerd.service already with us in /third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/opendnssec, for package opendnssec
+ods-enforcerd.service need met, for package opendnssec
+	srcpath=ods-signerd.service
+ods-signerd.service already with us in /third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/opendnssec, for package opendnssec
+ods-signerd.service need met, for package opendnssec
+	srcpath=ods.sysconfig
+ods.sysconfig already with us in /third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/opendnssec, for package opendnssec
+ods.sysconfig need met, for package opendnssec
+	srcpath=conf.xml
+conf.xml already with us in /third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/opendnssec, for package opendnssec
+conf.xml need met, for package opendnssec
+	srcpath=tmpfiles-opendnssec.conf
+tmpfiles-opendnssec.conf already with us in /third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/opendnssec, for package opendnssec
+tmpfiles-opendnssec.conf need met, for package opendnssec
+	srcpath=opendnssec.cron
+opendnssec.cron already with us in /third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/opendnssec, for package opendnssec
+opendnssec.cron need met, for package opendnssec
+	srcpath=opendnssec-2.1.sqlite_convert.sql
+opendnssec-2.1.sqlite_convert.sql already with us in /third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/opendnssec, for package opendnssec
+opendnssec-2.1.sqlite_convert.sql need met, for package opendnssec
+	srcpath=opendnssec-2.1.sqlite_rpmversion.sql
+opendnssec-2.1.sqlite_rpmversion.sql already with us in /third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/opendnssec, for package opendnssec
+opendnssec-2.1.sqlite_rpmversion.sql need met, for package opendnssec
+spcfl_fullpath=/third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/openoffice-lv/openoffice-lv.spec
+	srcpath=https://dict.dv.lv/download/lv_LV-1.4.0.oxt
+	trbl=lv_LV-1.4.0.oxt
+	Will copy the pre-downloaded lv_LV-1.4.0.oxt to SPECS-EXTENDED folder /third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/openoffice-lv
+	copy success, tarball /third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/openoffice-lv/lv_LV-1.4.0.oxt for package openoffice-lv
+lv_LV-1.4.0.oxt need met, for package openoffice-lv
+spcfl_fullpath=/third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/optipng/optipng.spec
+	srcpath=https://downloads.sourceforge.net/optipng/optipng-0.7.8.tar.gz
+optipng-0.7.8.tar.gz already with us in /third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/optipng, for package optipng
+optipng-0.7.8.tar.gz need met, for package optipng
+spcfl_fullpath=/third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/oro/oro.spec
+	srcpath=https://archive.apache.org/dist/jakarta/oro/source/jakarta-oro-2.0.8.tar.gz
+jakarta-oro-2.0.8.tar.gz already with us in /third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/oro, for package oro
+jakarta-oro-2.0.8.tar.gz need met, for package oro
+	srcpath=https://repo1.maven.org/maven2/oro/oro/2.0.8/oro-2.0.8.pom
+oro-2.0.8.pom already with us in /third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/oro, for package oro
+oro-2.0.8.pom need met, for package oro
+spcfl_fullpath=/third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/osinfo-db/osinfo-db.spec
+	srcpath=https://releases.pagure.org/libosinfo/osinfo-db-20240701.tar.xz
+osinfo-db-20240701.tar.xz already with us in /third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/osinfo-db, for package osinfo-db
+osinfo-db-20240701.tar.xz need met, for package osinfo-db
+	srcpath=https://releases.pagure.org/libosinfo/osinfo-db-20240701.tar.xz.asc
+osinfo-db-20240701.tar.xz.asc already with us in /third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/osinfo-db, for package osinfo-db
+osinfo-db-20240701.tar.xz.asc need met, for package osinfo-db
+spcfl_fullpath=/third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/osinfo-db-tools/osinfo-db-tools.spec
+	srcpath=https://releases.pagure.org/libosinfo/osinfo-db-tools-1.12.0.tar.xz
+osinfo-db-tools-1.12.0.tar.xz already with us in /third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/osinfo-db-tools, for package osinfo-db-tools
+osinfo-db-tools-1.12.0.tar.xz need met, for package osinfo-db-tools
+spcfl_fullpath=/third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/paps/paps.spec
+	srcpath=https://github.com/dov/paps/releases/download/v0.8.0/paps-0.8.0.tar.gz
+paps-0.8.0.tar.gz already with us in /third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/paps, for package paps
+paps-0.8.0.tar.gz need met, for package paps
+	srcpath=paps.convs
+paps.convs already with us in /third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/paps, for package paps
+paps.convs need met, for package paps
+	srcpath=29-paps.conf
+29-paps.conf already with us in /third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/paps, for package paps
+29-paps.conf need met, for package paps
+	srcpath=https://downloads.sourceforge.net/paps/paps-0.6.8.tar.gz
+paps-0.6.8.tar.gz already with us in /third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/paps, for package paps
+paps-0.6.8.tar.gz need met, for package paps
+spcfl_fullpath=/third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/perl-AnyEvent-BDB/perl-AnyEvent-BDB.spec
+	srcpath=https://cpan.metacpan.org/authors/id/M/ML/MLEHMANN/AnyEvent-BDB-1.1.tar.gz
+AnyEvent-BDB-1.1.tar.gz already with us in /third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/perl-AnyEvent-BDB, for package perl-AnyEvent-BDB
+AnyEvent-BDB-1.1.tar.gz need met, for package perl-AnyEvent-BDB
+spcfl_fullpath=/third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/perl-Archive-Extract/perl-Archive-Extract.spec
+	srcpath=https://cpan.metacpan.org/authors/id/B/BI/BINGOS/Archive-Extract-0.88.tar.gz#/perl-Archive-Extract-0.88.tar.gz
+perl-Archive-Extract-0.88.tar.gz already with us in /third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/perl-Archive-Extract, for package perl-Archive-Extract
+perl-Archive-Extract-0.88.tar.gz need met, for package perl-Archive-Extract
+spcfl_fullpath=/third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/perl-Authen-SASL/perl-Authen-SASL.spec
+	srcpath=https://cpan.metacpan.org/authors/id/E/EH/EHUELS/Authen-SASL-2.1700.tar.gz#/perl-Authen-SASL-2.1700.tar.gz
+perl-Authen-SASL-2.1700.tar.gz already with us in /third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/perl-Authen-SASL, for package perl-Authen-SASL
+perl-Authen-SASL-2.1700.tar.gz need met, for package perl-Authen-SASL
+spcfl_fullpath=/third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/perl-B-Hooks-EndOfScope/perl-B-Hooks-EndOfScope.spec
+	srcpath=https://cpan.metacpan.org/modules/by-module/B/B-Hooks-EndOfScope-0.28.tar.gz#/perl-B-Hooks-EndOfScope-0.28.tar.gz
+perl-B-Hooks-EndOfScope-0.28.tar.gz already with us in /third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/perl-B-Hooks-EndOfScope, for package perl-B-Hooks-EndOfScope
+perl-B-Hooks-EndOfScope-0.28.tar.gz need met, for package perl-B-Hooks-EndOfScope
+spcfl_fullpath=/third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/perl-Business-ISBN/perl-Business-ISBN.spec
+	srcpath=https://cpan.metacpan.org/authors/id/B/BD/BDFOY/Business-ISBN-3.009.tar.gz#/perl-Business-ISBN-3.009.tar.gz
+	trbl=perl-Business-ISBN-3.009.tar.gz
+	Missing tarball perl-Business-ISBN-3.009.tar.gz in pre-downloaded /fifth_disk/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs//perl-Business-ISBN for package perl-Business-ISBN
+	Trying the download now...
+	of https://cpan.metacpan.org/authors/id/B/BD/BDFOY/Business-ISBN-3.009.tar.gz#/perl-Business-ISBN-3.009.tar.gz
+	as /third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/perl-Business-ISBN/perl-Business-ISBN-3.009.tar.gz
+[0] Downloading 'https://cpan.metacpan.org/authors/id/B/BD/BDFOY/Business-ISBN-3.009.tar.gz#/perl-Business-ISBN-3.009.tar.gz' ...
+HTTP ERROR response 404  [https://cpan.metacpan.org/authors/id/B/BD/BDFOY/Business-ISBN-3.009.tar.gz#/perl-Business-ISBN-3.009.tar.gz]
+	download fail, tarball /third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/perl-Business-ISBN/perl-Business-ISBN-3.009.tar.gz for package perl-Business-ISBN
+perl-Business-ISBN-3.009.tar.gz need unmet, for package perl-Business-ISBN
+spcfl_fullpath=/third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/perl-Business-ISBN-Data/perl-Business-ISBN-Data.spec
+	srcpath=https://cpan.metacpan.org/modules/by-module/Business/Business-ISBN-Data-20240930.001.tar.gz#/perl-Business-ISBN-Data-20240930.001.tar.gz
+perl-Business-ISBN-Data-20240930.001.tar.gz already with us in /third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/perl-Business-ISBN-Data, for package perl-Business-ISBN-Data
+perl-Business-ISBN-Data-20240930.001.tar.gz need met, for package perl-Business-ISBN-Data
+spcfl_fullpath=/third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/perl-CBOR-XS/perl-CBOR-XS.spec
+	srcpath=https://cpan.metacpan.org/authors/id/M/ML/MLEHMANN/CBOR-XS-1.87.tar.gz
+CBOR-XS-1.87.tar.gz already with us in /third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/perl-CBOR-XS, for package perl-CBOR-XS
+CBOR-XS-1.87.tar.gz need met, for package perl-CBOR-XS
+spcfl_fullpath=/third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/perl-Class-C3/perl-Class-C3.spec
+	srcpath=https://cpan.metacpan.org/modules/by-module/Class/Class-C3-0.35.tar.gz
+Class-C3-0.35.tar.gz already with us in /third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/perl-Class-C3, for package perl-Class-C3
+Class-C3-0.35.tar.gz need met, for package perl-Class-C3
+spcfl_fullpath=/third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/perl-Class-Data-Inheritable/perl-Class-Data-Inheritable.spec
+	srcpath=https://cpan.metacpan.org/authors/id/R/RS/RSHERER/Class-Data-Inheritable-%{version}.tar.gz#/perl-Class-Data-Inheritable-0.09.tar.gz
+	trbl=perl-Class-Data-Inheritable-0.09.tar.gz
+	Missing tarball perl-Class-Data-Inheritable-0.09.tar.gz in pre-downloaded /fifth_disk/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs//perl-Class-Data-Inheritable for package perl-Class-Data-Inheritable
+	Trying the download now...
+	of https://cpan.metacpan.org/authors/id/R/RS/RSHERER/Class-Data-Inheritable-%{version}.tar.gz#/perl-Class-Data-Inheritable-0.09.tar.gz
+	as /third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/perl-Class-Data-Inheritable/perl-Class-Data-Inheritable-0.09.tar.gz
+[0] Downloading 'https://cpan.metacpan.org/authors/id/R/RS/RSHERER/Class-Data-Inheritable-%{version}.tar.gz#/perl-Class-Data-Inheritable-0.09.tar.gz' ...
+HTTP ERROR response 404  [https://cpan.metacpan.org/authors/id/R/RS/RSHERER/Class-Data-Inheritable-%{version}.tar.gz#/perl-Class-Data-Inheritable-0.09.tar.gz]
+	download fail, tarball /third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/perl-Class-Data-Inheritable/perl-Class-Data-Inheritable-0.09.tar.gz for package perl-Class-Data-Inheritable
+perl-Class-Data-Inheritable-0.09.tar.gz need unmet, for package perl-Class-Data-Inheritable
+spcfl_fullpath=/third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/perl-Compress-Raw-Lzma/perl-Compress-Raw-Lzma.spec
+	srcpath=https://cpan.metacpan.org/modules/by-module/Compress/Compress-Raw-Lzma-2.213.tar.gz
+Compress-Raw-Lzma-2.213.tar.gz already with us in /third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/perl-Compress-Raw-Lzma, for package perl-Compress-Raw-Lzma
+Compress-Raw-Lzma-2.213.tar.gz need met, for package perl-Compress-Raw-Lzma
+	srcpath=LICENSE.PTR
+LICENSE.PTR already with us in /third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/perl-Compress-Raw-Lzma, for package perl-Compress-Raw-Lzma
+LICENSE.PTR need met, for package perl-Compress-Raw-Lzma
+spcfl_fullpath=/third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/perl-Config-AutoConf/perl-Config-AutoConf.spec
+	srcpath=https://cpan.metacpan.org/authors/id/A/AM/AMBS/Config-AutoConf-0.320.tar.gz
+Config-AutoConf-0.320.tar.gz already with us in /third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/perl-Config-AutoConf, for package perl-Config-AutoConf
+Config-AutoConf-0.320.tar.gz need met, for package perl-Config-AutoConf
+spcfl_fullpath=/third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/perl-Config-INI/perl-Config-INI.spec
+	srcpath=https://cpan.metacpan.org/authors/id/R/RJ/RJBS/Config-INI-0.029.tar.gz
+Config-INI-0.029.tar.gz already with us in /third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/perl-Config-INI, for package perl-Config-INI
+Config-INI-0.029.tar.gz need met, for package perl-Config-INI
+spcfl_fullpath=/third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/perl-Config-Tiny/perl-Config-Tiny.spec
+	srcpath=https://cpan.metacpan.org/modules/by-module/Config/Config-Tiny-2.30.tgz
+Config-Tiny-2.30.tgz already with us in /third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/perl-Config-Tiny, for package perl-Config-Tiny
+Config-Tiny-2.30.tgz need met, for package perl-Config-Tiny
+spcfl_fullpath=/third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/perl-Crypt-OpenSSL-RSA/perl-Crypt-OpenSSL-RSA.spec
+	srcpath=https://cpan.metacpan.org/authors/id/T/TO/TODDR/Crypt-OpenSSL-RSA-0.33.tar.gz
+Crypt-OpenSSL-RSA-0.33.tar.gz already with us in /third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/perl-Crypt-OpenSSL-RSA, for package perl-Crypt-OpenSSL-RSA
+Crypt-OpenSSL-RSA-0.33.tar.gz need met, for package perl-Crypt-OpenSSL-RSA
+spcfl_fullpath=/third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/perl-Crypt-OpenSSL-Random/perl-Crypt-OpenSSL-Random.spec
+	srcpath=https://cpan.metacpan.org/authors/id/R/RU/RURBAN/Crypt-OpenSSL-Random-0.17.tar.gz#/perl-Crypt-OpenSSL-Random-0.17.tar.gz
+perl-Crypt-OpenSSL-Random-0.17.tar.gz already with us in /third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/perl-Crypt-OpenSSL-Random, for package perl-Crypt-OpenSSL-Random
+perl-Crypt-OpenSSL-Random-0.17.tar.gz need met, for package perl-Crypt-OpenSSL-Random
+spcfl_fullpath=/third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/perl-Data-Peek/perl-Data-Peek.spec
+	srcpath=https://cpan.metacpan.org/authors/id/H/HM/HMBRAND/Data-Peek-0.52.tgz#/perl-Data-Peek-0.52.tgz
+perl-Data-Peek-0.52.tgz already with us in /third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/perl-Data-Peek, for package perl-Data-Peek
+perl-Data-Peek-0.52.tgz need met, for package perl-Data-Peek
+spcfl_fullpath=/third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/perl-Data-Section/perl-Data-Section.spec
+	srcpath=https://cpan.metacpan.org/authors/id/R/RJ/RJBS/Data-Section-0.200008.tar.gz
+Data-Section-0.200008.tar.gz already with us in /third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/perl-Data-Section, for package perl-Data-Section
+Data-Section-0.200008.tar.gz need met, for package perl-Data-Section
+spcfl_fullpath=/third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/perl-Date-Manip/perl-Date-Manip.spec
+	srcpath=https://cpan.metacpan.org/authors/id/S/SB/SBECK/Date-Manip-6.95.tar.gz#/perl-Date-Manip-6.95.tar.gz
+perl-Date-Manip-6.95.tar.gz already with us in /third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/perl-Date-Manip, for package perl-Date-Manip
+perl-Date-Manip-6.95.tar.gz need met, for package perl-Date-Manip
+spcfl_fullpath=/third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/perl-Devel-CallChecker/perl-Devel-CallChecker.spec
+	srcpath=https://cpan.metacpan.org/authors/id/Z/ZE/ZEFRAM/Devel-CallChecker-0.009.tar.gz#/perl-Devel-CallChecker-0.009.tar.gz
+perl-Devel-CallChecker-0.009.tar.gz already with us in /third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/perl-Devel-CallChecker, for package perl-Devel-CallChecker
+perl-Devel-CallChecker-0.009.tar.gz need met, for package perl-Devel-CallChecker
+spcfl_fullpath=/third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/perl-Digest-CRC/perl-Digest-CRC.spec
+	srcpath=https://cpan.metacpan.org/authors/id/O/OL/OLIMAUL/Digest-CRC-0.24.tar.gz#/perl-Digest-CRC-0.24.tar.gz
+perl-Digest-CRC-0.24.tar.gz already with us in /third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/perl-Digest-CRC, for package perl-Digest-CRC
+perl-Digest-CRC-0.24.tar.gz need met, for package perl-Digest-CRC
+spcfl_fullpath=/third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/perl-DynaLoader-Functions/perl-DynaLoader-Functions.spec
+	srcpath=https://cpan.metacpan.org/authors/id/Z/ZE/ZEFRAM/DynaLoader-Functions-0.004.tar.gz#/perl-DynaLoader-Functions-0.004.tar.gz
+perl-DynaLoader-Functions-0.004.tar.gz already with us in /third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/perl-DynaLoader-Functions, for package perl-DynaLoader-Functions
+perl-DynaLoader-Functions-0.004.tar.gz need met, for package perl-DynaLoader-Functions
+spcfl_fullpath=/third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/perl-EV/perl-EV.spec
+	srcpath=https://cpan.metacpan.org/authors/id/M/ML/MLEHMANN/EV-4.34.tar.gz
+EV-4.34.tar.gz already with us in /third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/perl-EV, for package perl-EV
+EV-4.34.tar.gz need met, for package perl-EV
+spcfl_fullpath=/third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/perl-Email-Address/perl-Email-Address.spec
+	srcpath=https://cpan.metacpan.org/modules/by-module/Email/Email-Address-1.913.tar.gz#/perl-Email-Address-1.913.tar.gz
+perl-Email-Address-1.913.tar.gz already with us in /third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/perl-Email-Address, for package perl-Email-Address
+perl-Email-Address-1.913.tar.gz need met, for package perl-Email-Address
+spcfl_fullpath=/third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/perl-Email-Date-Format/perl-Email-Date-Format.spec
+	srcpath=https://cpan.metacpan.org/authors/id/R/RJ/RJBS/Email-Date-Format-1.008.tar.gz#/perl-Email-Date-Format-1.008.tar.gz
+perl-Email-Date-Format-1.008.tar.gz already with us in /third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/perl-Email-Date-Format, for package perl-Email-Date-Format
+perl-Email-Date-Format-1.008.tar.gz need met, for package perl-Email-Date-Format
+spcfl_fullpath=/third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/perl-Event/perl-Event.spec
+	srcpath=https://cpan.metacpan.org/authors/id/E/ET/ETJ/Event-1.28.tar.gz#/perl-Event-1.28.tar.gz
+perl-Event-1.28.tar.gz already with us in /third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/perl-Event, for package perl-Event
+perl-Event-1.28.tar.gz need met, for package perl-Event
+spcfl_fullpath=/third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/perl-Exception-Class/perl-Exception-Class.spec
+	srcpath=https://cpan.metacpan.org/authors/id/D/DR/DROLSKY/Exception-Class-1.45.tar.gz#/perl-Exception-Class-1.45.tar.gz
+perl-Exception-Class-1.45.tar.gz already with us in /third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/perl-Exception-Class, for package perl-Exception-Class
+perl-Exception-Class-1.45.tar.gz need met, for package perl-Exception-Class
+spcfl_fullpath=/third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/perl-ExtUtils-Config/perl-ExtUtils-Config.spec
+	srcpath=https://cpan.metacpan.org/modules/by-module/ExtUtils/ExtUtils-Config-0.010.tar.gz#/perl-ExtUtils-Config-0.010.tar.gz
+perl-ExtUtils-Config-0.010.tar.gz already with us in /third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/perl-ExtUtils-Config, for package perl-ExtUtils-Config
+perl-ExtUtils-Config-0.010.tar.gz need met, for package perl-ExtUtils-Config
+spcfl_fullpath=/third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/perl-ExtUtils-Helpers/perl-ExtUtils-Helpers.spec
+	srcpath=https://cpan.metacpan.org/modules/by-module/ExtUtils/ExtUtils-Helpers-0.028.tar.gz#/perl-ExtUtils-Helpers-0.028.tar.gz
+perl-ExtUtils-Helpers-0.028.tar.gz already with us in /third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/perl-ExtUtils-Helpers, for package perl-ExtUtils-Helpers
+perl-ExtUtils-Helpers-0.028.tar.gz need met, for package perl-ExtUtils-Helpers
+spcfl_fullpath=/third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/perl-ExtUtils-InstallPaths/perl-ExtUtils-InstallPaths.spec
+	srcpath=https://cpan.metacpan.org/modules/by-module/ExtUtils/ExtUtils-InstallPaths-0.014.tar.gz#/perl-ExtUtils-InstallPaths-0.014.tar.gz
+perl-ExtUtils-InstallPaths-0.014.tar.gz already with us in /third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/perl-ExtUtils-InstallPaths, for package perl-ExtUtils-InstallPaths
+perl-ExtUtils-InstallPaths-0.014.tar.gz need met, for package perl-ExtUtils-InstallPaths
+spcfl_fullpath=/third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/perl-File-BOM/perl-File-BOM.spec
+	srcpath=https://cpan.metacpan.org/authors/id/M/MA/MATTLAW/File-BOM-0.18.tar.gz#/perl-File-BOM-0.18.tar.gz
+perl-File-BOM-0.18.tar.gz already with us in /third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/perl-File-BOM, for package perl-File-BOM
+perl-File-BOM-0.18.tar.gz need met, for package perl-File-BOM
+spcfl_fullpath=/third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/perl-File-BaseDir/perl-File-BaseDir.spec
+	srcpath=https://cpan.metacpan.org/authors/id/P/PL/PLICEASE/File-BaseDir-0.09.tar.gz#/perl-File-BaseDir-0.09.tar.gz
+perl-File-BaseDir-0.09.tar.gz already with us in /third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/perl-File-BaseDir, for package perl-File-BaseDir
+perl-File-BaseDir-0.09.tar.gz need met, for package perl-File-BaseDir
+spcfl_fullpath=/third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/perl-File-Find-Object/perl-File-Find-Object.spec
+	srcpath=https://cpan.metacpan.org/authors/id/S/SH/SHLOMIF/File-Find-Object-0.3.8.tar.gz#/perl-File-Find-Object-0.3.8.tar.gz
+perl-File-Find-Object-0.3.8.tar.gz already with us in /third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/perl-File-Find-Object, for package perl-File-Find-Object
+perl-File-Find-Object-0.3.8.tar.gz need met, for package perl-File-Find-Object
+spcfl_fullpath=/third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/perl-File-Find-Rule-Perl/perl-File-Find-Rule-Perl.spec
+	srcpath=https://cpan.metacpan.org/authors/id/E/ET/ETHER/File-Find-Rule-Perl-1.16.tar.gz
+File-Find-Rule-Perl-1.16.tar.gz already with us in /third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/perl-File-Find-Rule-Perl, for package perl-File-Find-Rule-Perl
+File-Find-Rule-Perl-1.16.tar.gz need met, for package perl-File-Find-Rule-Perl
+spcfl_fullpath=/third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/perl-File-ReadBackwards/perl-File-ReadBackwards.spec
+	srcpath=https://cpan.metacpan.org/authors/id/U/UR/URI/File-ReadBackwards-1.06.tar.gz#/perl-File-ReadBackwards-1.06.tar.gz
+	trbl=perl-File-ReadBackwards-1.06.tar.gz
+	Missing tarball perl-File-ReadBackwards-1.06.tar.gz in pre-downloaded /fifth_disk/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs//perl-File-ReadBackwards for package perl-File-ReadBackwards
+	Trying the download now...
+	of https://cpan.metacpan.org/authors/id/U/UR/URI/File-ReadBackwards-1.06.tar.gz#/perl-File-ReadBackwards-1.06.tar.gz
+	as /third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/perl-File-ReadBackwards/perl-File-ReadBackwards-1.06.tar.gz
+[0] Downloading 'https://cpan.metacpan.org/authors/id/U/UR/URI/File-ReadBackwards-1.06.tar.gz#/perl-File-ReadBackwards-1.06.tar.gz' ...
+HTTP ERROR response 404  [https://cpan.metacpan.org/authors/id/U/UR/URI/File-ReadBackwards-1.06.tar.gz#/perl-File-ReadBackwards-1.06.tar.gz]
+	download fail, tarball /third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/perl-File-ReadBackwards/perl-File-ReadBackwards-1.06.tar.gz for package perl-File-ReadBackwards
+perl-File-ReadBackwards-1.06.tar.gz need unmet, for package perl-File-ReadBackwards
+spcfl_fullpath=/third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/perl-File-ShareDir/perl-File-ShareDir.spec
+	srcpath=https://cpan.metacpan.org/authors/id/R/RE/REHSACK/File-ShareDir-1.118.tar.gz
+File-ShareDir-1.118.tar.gz already with us in /third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/perl-File-ShareDir, for package perl-File-ShareDir
+File-ShareDir-1.118.tar.gz need met, for package perl-File-ShareDir
+spcfl_fullpath=/third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/perl-File-Slurp/perl-File-Slurp.spec
+	srcpath=https://cpan.metacpan.org/modules/by-module/File/File-Slurp-9999.32.tar.gz#/perl-File-Slurp-9999.32.tar.gz
+perl-File-Slurp-9999.32.tar.gz already with us in /third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/perl-File-Slurp, for package perl-File-Slurp
+perl-File-Slurp-9999.32.tar.gz need met, for package perl-File-Slurp
+spcfl_fullpath=/third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/perl-File-Slurper/perl-File-Slurper.spec
+	srcpath=https://cpan.metacpan.org/authors/id/L/LE/LEONT/File-Slurper-0.014.tar.gz
+File-Slurper-0.014.tar.gz already with us in /third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/perl-File-Slurper, for package perl-File-Slurper
+File-Slurper-0.014.tar.gz need met, for package perl-File-Slurper
+spcfl_fullpath=/third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/perl-GD/perl-GD.spec
+	srcpath=https://cpan.metacpan.org/modules/by-module/GD/GD-2.83.tar.gz
+GD-2.83.tar.gz already with us in /third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/perl-GD, for package perl-GD
+GD-2.83.tar.gz need met, for package perl-GD
+spcfl_fullpath=/third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/perl-IO-Compress-Lzma/perl-IO-Compress-Lzma.spec
+	srcpath=https://cpan.metacpan.org/modules/by-module/IO/IO-Compress-Lzma-2.213.tar.gz
+IO-Compress-Lzma-2.213.tar.gz already with us in /third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/perl-IO-Compress-Lzma, for package perl-IO-Compress-Lzma
+IO-Compress-Lzma-2.213.tar.gz need met, for package perl-IO-Compress-Lzma
+	srcpath=LICENSE.PTR
+LICENSE.PTR already with us in /third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/perl-IO-Compress-Lzma, for package perl-IO-Compress-Lzma
+LICENSE.PTR need met, for package perl-IO-Compress-Lzma
+spcfl_fullpath=/third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/perl-Image-Info/perl-Image-Info.spec
+	srcpath=https://cpan.metacpan.org/authors/id/S/SR/SREZIC/Image-Info-1.44.tar.gz
+Image-Info-1.44.tar.gz already with us in /third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/perl-Image-Info, for package perl-Image-Info
+Image-Info-1.44.tar.gz need met, for package perl-Image-Info
+spcfl_fullpath=/third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/perl-Importer/perl-Importer.spec
+	srcpath=https://cpan.metacpan.org/authors/id/E/EX/EXODIST/Importer-0.026.tar.gz#/perl-Importer-0.026.tar.gz
+perl-Importer-0.026.tar.gz already with us in /third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/perl-Importer, for package perl-Importer
+perl-Importer-0.026.tar.gz need met, for package perl-Importer
+spcfl_fullpath=/third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/perl-LWP-Protocol-https/perl-LWP-Protocol-https.spec
+	srcpath=https://cpan.metacpan.org/authors/id/O/OA/OALDERS/LWP-Protocol-https-6.14.tar.gz#/perl-LWP-Protocol-https-6.14.tar.gz
+perl-LWP-Protocol-https-6.14.tar.gz already with us in /third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/perl-LWP-Protocol-https, for package perl-LWP-Protocol-https
+perl-LWP-Protocol-https-6.14.tar.gz need met, for package perl-LWP-Protocol-https
+spcfl_fullpath=/third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/perl-List-MoreUtils-XS/perl-List-MoreUtils-XS.spec
+	srcpath=https://cpan.metacpan.org/modules/by-module/List/List-MoreUtils-XS-0.430.tar.gz
+List-MoreUtils-XS-0.430.tar.gz already with us in /third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/perl-List-MoreUtils-XS, for package perl-List-MoreUtils-XS
+List-MoreUtils-XS-0.430.tar.gz need met, for package perl-List-MoreUtils-XS
+spcfl_fullpath=/third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/perl-Locale-Codes/perl-Locale-Codes.spec
+	srcpath=https://cpan.metacpan.org/authors/id/S/SB/SBECK/Locale-Codes-3.81.tar.gz#/perl-Locale-Codes-3.81.tar.gz
+perl-Locale-Codes-3.81.tar.gz already with us in /third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/perl-Locale-Codes, for package perl-Locale-Codes
+perl-Locale-Codes-3.81.tar.gz need met, for package perl-Locale-Codes
+spcfl_fullpath=/third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/perl-Locale-Msgfmt/perl-Locale-Msgfmt.spec
+	srcpath=https://cpan.metacpan.org/authors/id/A/AZ/AZAWAWI/Locale-Msgfmt-0.15.tar.gz#/perl-Locale-Msgfmt-0.15.tar.gz
+perl-Locale-Msgfmt-0.15.tar.gz already with us in /third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/perl-Locale-Msgfmt, for package perl-Locale-Msgfmt
+perl-Locale-Msgfmt-0.15.tar.gz need met, for package perl-Locale-Msgfmt
+spcfl_fullpath=/third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/perl-Mail-AuthenticationResults/perl-Mail-AuthenticationResults.spec
+	srcpath=https://cpan.metacpan.org/modules/by-module/Mail/Mail-AuthenticationResults-2.20231031.tar.gz
+Mail-AuthenticationResults-2.20231031.tar.gz already with us in /third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/perl-Mail-AuthenticationResults, for package perl-Mail-AuthenticationResults
+Mail-AuthenticationResults-2.20231031.tar.gz need met, for package perl-Mail-AuthenticationResults
+spcfl_fullpath=/third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/perl-Mixin-Linewise/perl-Mixin-Linewise.spec
+	srcpath=https://cpan.metacpan.org/authors/id/R/RJ/RJBS/Mixin-Linewise-0.111.tar.gz
+Mixin-Linewise-0.111.tar.gz already with us in /third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/perl-Mixin-Linewise, for package perl-Mixin-Linewise
+Mixin-Linewise-0.111.tar.gz need met, for package perl-Mixin-Linewise
+spcfl_fullpath=/third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/perl-Module-Build-Tiny/perl-Module-Build-Tiny.spec
+	srcpath=https://cpan.metacpan.org/modules/by-module/Module/Module-Build-Tiny-0.051.tar.gz#/perl-Module-Build-Tiny-0.051.tar.gz
+perl-Module-Build-Tiny-0.051.tar.gz already with us in /third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/perl-Module-Build-Tiny, for package perl-Module-Build-Tiny
+perl-Module-Build-Tiny-0.051.tar.gz need met, for package perl-Module-Build-Tiny
+spcfl_fullpath=/third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/perl-Module-Load-Util/perl-Module-Load-Util.spec
+	srcpath=https://cpan.metacpan.org/authors/id/P/PE/PERLANCAR/Module-Load-Util-0.012.tar.gz
+Module-Load-Util-0.012.tar.gz already with us in /third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/perl-Module-Load-Util, for package perl-Module-Load-Util
+Module-Load-Util-0.012.tar.gz need met, for package perl-Module-Load-Util
+spcfl_fullpath=/third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/perl-Module-Signature/perl-Module-Signature.spec
+	srcpath=https://cpan.metacpan.org/authors/id/T/TI/TIMLEGGE/Module-Signature-0.89.tar.gz#/perl-Module-Signature-0.89.tar.gz
+perl-Module-Signature-0.89.tar.gz already with us in /third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/perl-Module-Signature, for package perl-Module-Signature
+perl-Module-Signature-0.89.tar.gz need met, for package perl-Module-Signature
+spcfl_fullpath=/third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/perl-Mojolicious/perl-Mojolicious.spec
+	srcpath=http://cpan.metacpan.org/authors/id/S/SR/SRI/Mojolicious-9.37.tar.gz#/perl-Mojolicious-9.37.tar.gz
+perl-Mojolicious-9.37.tar.gz already with us in /third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/perl-Mojolicious, for package perl-Mojolicious
+perl-Mojolicious-9.37.tar.gz need met, for package perl-Mojolicious
+spcfl_fullpath=/third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/perl-Moo/perl-Moo.spec
+	srcpath=https://cpan.metacpan.org/authors/id/H/HA/HAARG/Moo-2.005005.tar.gz#/perl-Moo-2.005005.tar.gz
+perl-Moo-2.005005.tar.gz already with us in /third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/perl-Moo, for package perl-Moo
+perl-Moo-2.005005.tar.gz need met, for package perl-Moo
+spcfl_fullpath=/third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/perl-Net-Telnet/perl-Net-Telnet.spec
+	srcpath=https://cpan.metacpan.org/authors/id/J/JR/JROGERS/Net-Telnet-3.05.tar.gz#/perl-Net-Telnet-3.05.tar.gz
+perl-Net-Telnet-3.05.tar.gz already with us in /third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/perl-Net-Telnet, for package perl-Net-Telnet
+perl-Net-Telnet-3.05.tar.gz need met, for package perl-Net-Telnet
+spcfl_fullpath=/third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/perl-PPI/perl-PPI.spec
+	srcpath=https://cpan.metacpan.org/modules/by-module/PPI/PPI-1.279.tar.gz
+PPI-1.279.tar.gz already with us in /third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/perl-PPI, for package perl-PPI
+PPI-1.279.tar.gz need met, for package perl-PPI
+spcfl_fullpath=/third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/perl-PPIx-QuoteLike/perl-PPIx-QuoteLike.spec
+	srcpath=https://cpan.metacpan.org/authors/id/W/WY/WYANT/PPIx-QuoteLike-0.023.tar.gz#/perl-PPIx-QuoteLike-0.023.tar.gz
+perl-PPIx-QuoteLike-0.023.tar.gz already with us in /third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/perl-PPIx-QuoteLike, for package perl-PPIx-QuoteLike
+perl-PPIx-QuoteLike-0.023.tar.gz need met, for package perl-PPIx-QuoteLike
+spcfl_fullpath=/third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/perl-PPIx-Regexp/perl-PPIx-Regexp.spec
+	srcpath=https://cpan.metacpan.org/authors/id/W/WY/WYANT/PPIx-Regexp-0.088.tar.gz
+PPIx-Regexp-0.088.tar.gz already with us in /third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/perl-PPIx-Regexp, for package perl-PPIx-Regexp
+PPIx-Regexp-0.088.tar.gz need met, for package perl-PPIx-Regexp
+spcfl_fullpath=/third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/perl-Package-DeprecationManager/perl-Package-DeprecationManager.spec
+	srcpath=https://cpan.metacpan.org/authors/id/D/DR/DROLSKY/Package-DeprecationManager-0.18.tar.gz#/perl-Package-DeprecationManager-0.18.tar.gz
+perl-Package-DeprecationManager-0.18.tar.gz already with us in /third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/perl-Package-DeprecationManager, for package perl-Package-DeprecationManager
+perl-Package-DeprecationManager-0.18.tar.gz need met, for package perl-Package-DeprecationManager
+spcfl_fullpath=/third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/perl-Package-Stash-XS/perl-Package-Stash-XS.spec
+	srcpath=https://cpan.metacpan.org/modules/by-module/Package/Package-Stash-XS-0.30.tar.gz
+Package-Stash-XS-0.30.tar.gz already with us in /third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/perl-Package-Stash-XS, for package perl-Package-Stash-XS
+Package-Stash-XS-0.30.tar.gz need met, for package perl-Package-Stash-XS
+spcfl_fullpath=/third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/perl-Path-Tiny/perl-Path-Tiny.spec
+	srcpath=https://cpan.metacpan.org/authors/id/D/DA/DAGOLDEN/Path-Tiny-0.146.tar.gz#/perl-Path-Tiny-0.146.tar.gz
+perl-Path-Tiny-0.146.tar.gz already with us in /third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/perl-Path-Tiny, for package perl-Path-Tiny
+perl-Path-Tiny-0.146.tar.gz need met, for package perl-Path-Tiny
+spcfl_fullpath=/third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/perl-PerlIO-utf8_strict/perl-PerlIO-utf8_strict.spec
+	srcpath=https://cpan.metacpan.org/modules/by-module/PerlIO/PerlIO-utf8_strict-0.010.tar.gz
+PerlIO-utf8_strict-0.010.tar.gz already with us in /third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/perl-PerlIO-utf8_strict, for package perl-PerlIO-utf8_strict
+PerlIO-utf8_strict-0.010.tar.gz need met, for package perl-PerlIO-utf8_strict
+spcfl_fullpath=/third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/perl-Pod-Coverage-TrustPod/perl-Pod-Coverage-TrustPod.spec
+	srcpath=https://cpan.metacpan.org/modules/by-module/Pod/Pod-Coverage-TrustPod-0.100006.tar.gz
+Pod-Coverage-TrustPod-0.100006.tar.gz already with us in /third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/perl-Pod-Coverage-TrustPod, for package perl-Pod-Coverage-TrustPod
+Pod-Coverage-TrustPod-0.100006.tar.gz need met, for package perl-Pod-Coverage-TrustPod
+spcfl_fullpath=/third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/perl-Pod-Eventual/perl-Pod-Eventual.spec
+	srcpath=https://cpan.metacpan.org/modules/by-module/Pod/Pod-Eventual-0.094003.tar.gz
+Pod-Eventual-0.094003.tar.gz already with us in /third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/perl-Pod-Eventual, for package perl-Pod-Eventual
+Pod-Eventual-0.094003.tar.gz need met, for package perl-Pod-Eventual
+spcfl_fullpath=/third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/perl-Pod-Markdown/perl-Pod-Markdown.spec
+	srcpath=https://cpan.metacpan.org/authors/id/R/RW/RWSTAUNER/Pod-Markdown-3.400.tar.gz
+Pod-Markdown-3.400.tar.gz already with us in /third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/perl-Pod-Markdown, for package perl-Pod-Markdown
+Pod-Markdown-3.400.tar.gz need met, for package perl-Pod-Markdown
+spcfl_fullpath=/third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/perl-Pod-Spell/perl-Pod-Spell.spec
+	srcpath=https://cpan.metacpan.org/modules/by-module/Pod/Pod-Spell-1.27.tar.gz
+Pod-Spell-1.27.tar.gz already with us in /third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/perl-Pod-Spell, for package perl-Pod-Spell
+Pod-Spell-1.27.tar.gz need met, for package perl-Pod-Spell
+spcfl_fullpath=/third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/perl-Return-MultiLevel/perl-Return-MultiLevel.spec
+	srcpath=https://cpan.metacpan.org/authors/id/P/PL/PLICEASE/Return-MultiLevel-0.08.tar.gz#/perl-Return-MultiLevel-0.08.tar.gz
+perl-Return-MultiLevel-0.08.tar.gz already with us in /third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/perl-Return-MultiLevel, for package perl-Return-MultiLevel
+perl-Return-MultiLevel-0.08.tar.gz need met, for package perl-Return-MultiLevel
+spcfl_fullpath=/third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/perl-Role-Tiny/perl-Role-Tiny.spec
+	srcpath=https://cpan.metacpan.org/authors/id/H/HA/HAARG/Role-Tiny-2.002004.tar.gz#/perl-Role-Tiny-2.002004.tar.gz
+perl-Role-Tiny-2.002004.tar.gz already with us in /third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/perl-Role-Tiny, for package perl-Role-Tiny
+perl-Role-Tiny-2.002004.tar.gz need met, for package perl-Role-Tiny
+spcfl_fullpath=/third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/perl-SNMP_Session/perl-SNMP_Session.spec
+	srcpath=https://cpan.metacpan.org/authors/id/S/SK/SKIM/SNMP_Session-1.16.tar.gz#/perl-SNMP_Session-1.16.tar.gz
+perl-SNMP_Session-1.16.tar.gz already with us in /third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/perl-SNMP_Session, for package perl-SNMP_Session
+perl-SNMP_Session-1.16.tar.gz need met, for package perl-SNMP_Session
+spcfl_fullpath=/third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/perl-Scope-Upper/perl-Scope-Upper.spec
+	srcpath=https://cpan.metacpan.org/authors/id/V/VP/VPIT/Scope-Upper-0.34.tar.gz#/perl-Scope-Upper-0.34.tar.gz
+perl-Scope-Upper-0.34.tar.gz already with us in /third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/perl-Scope-Upper, for package perl-Scope-Upper
+perl-Scope-Upper-0.34.tar.gz need met, for package perl-Scope-Upper
+spcfl_fullpath=/third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/perl-Software-License/perl-Software-License.spec
+	srcpath=https://cpan.metacpan.org/authors/id/L/LE/LEONT/Software-License-0.104006.tar.gz
+Software-License-0.104006.tar.gz already with us in /third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/perl-Software-License, for package perl-Software-License
+Software-License-0.104006.tar.gz need met, for package perl-Software-License
+spcfl_fullpath=/third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/perl-Term-UI/perl-Term-UI.spec
+	srcpath=https://cpan.metacpan.org/authors/id/B/BI/BINGOS/Term-UI-0.50.tar.gz
+Term-UI-0.50.tar.gz already with us in /third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/perl-Term-UI, for package perl-Term-UI
+Term-UI-0.50.tar.gz need met, for package perl-Term-UI
+spcfl_fullpath=/third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/perl-Test-Differences/perl-Test-Differences.spec
+	srcpath=https://cpan.metacpan.org/modules/by-module/Test/Test-Differences-0.71.tar.gz
+Test-Differences-0.71.tar.gz already with us in /third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/perl-Test-Differences, for package perl-Test-Differences
+Test-Differences-0.71.tar.gz need met, for package perl-Test-Differences
+spcfl_fullpath=/third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/perl-Test-Harness/perl-Test-Harness.spec
+	srcpath=https://cpan.metacpan.org/authors/id/L/LE/LEONT/Test-Harness-3.50.tar.gz#/perl-Test-Harness-3.50.tar.gz
+perl-Test-Harness-3.50.tar.gz already with us in /third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/perl-Test-Harness, for package perl-Test-Harness
+perl-Test-Harness-3.50.tar.gz need met, for package perl-Test-Harness
+spcfl_fullpath=/third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/perl-Test-Inter/perl-Test-Inter.spec
+	srcpath=https://cpan.metacpan.org/authors/id/S/SB/SBECK/Test-Inter-1.11.tar.gz#/perl-Test-Inter-1.11.tar.gz
+perl-Test-Inter-1.11.tar.gz already with us in /third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/perl-Test-Inter, for package perl-Test-Inter
+perl-Test-Inter-1.11.tar.gz need met, for package perl-Test-Inter
+spcfl_fullpath=/third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/perl-Test-Warn/perl-Test-Warn.spec
+	srcpath=https://cpan.metacpan.org/modules/by-module/Test/Test-Warn-0.37.tar.gz
+Test-Warn-0.37.tar.gz already with us in /third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/perl-Test-Warn, for package perl-Test-Warn
+Test-Warn-0.37.tar.gz need met, for package perl-Test-Warn
+spcfl_fullpath=/third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/perl-Text-CSV_XS/perl-Text-CSV_XS.spec
+	srcpath=https://cpan.metacpan.org/modules/by-module/Text/Text-CSV_XS-1.60.tgz
+Text-CSV_XS-1.60.tgz already with us in /third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/perl-Text-CSV_XS, for package perl-Text-CSV_XS
+Text-CSV_XS-1.60.tgz need met, for package perl-Text-CSV_XS
+spcfl_fullpath=/third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/perl-Tree-DAG_Node/perl-Tree-DAG_Node.spec
+	srcpath=https://cpan.metacpan.org/modules/by-module/Tree/Tree-DAG_Node-1.32.tgz
+Tree-DAG_Node-1.32.tgz already with us in /third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/perl-Tree-DAG_Node, for package perl-Tree-DAG_Node
+Tree-DAG_Node-1.32.tgz need met, for package perl-Tree-DAG_Node
+spcfl_fullpath=/third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/perl-Variable-Magic/perl-Variable-Magic.spec
+	srcpath=https://cpan.metacpan.org/authors/id/V/VP/VPIT/Variable-Magic-0.64.tar.gz
+Variable-Magic-0.64.tar.gz already with us in /third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/perl-Variable-Magic, for package perl-Variable-Magic
+Variable-Magic-0.64.tar.gz need met, for package perl-Variable-Magic
+spcfl_fullpath=/third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/perl-XML-Generator/perl-XML-Generator.spec
+	srcpath=https://cpan.metacpan.org/authors/id/T/TI/TIMLEGGE/XML-Generator-1.13.tar.gz
+XML-Generator-1.13.tar.gz already with us in /third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/perl-XML-Generator, for package perl-XML-Generator
+XML-Generator-1.13.tar.gz need met, for package perl-XML-Generator
+spcfl_fullpath=/third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/perl-XML-Writer/perl-XML-Writer.spec
+	srcpath=https://cpan.metacpan.org/authors/id/J/JO/JOSEPHW/XML-Writer-0.900.tar.gz
+XML-Writer-0.900.tar.gz already with us in /third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/perl-XML-Writer, for package perl-XML-Writer
+XML-Writer-0.900.tar.gz need met, for package perl-XML-Writer
+spcfl_fullpath=/third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/perl-XString/perl-XString.spec
+	srcpath=https://cpan.metacpan.org/authors/id/A/AT/ATOOMIC/XString-0.005.tar.gz
+XString-0.005.tar.gz already with us in /third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/perl-XString, for package perl-XString
+XString-0.005.tar.gz need met, for package perl-XString
+spcfl_fullpath=/third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/perl-YAML-LibYAML/perl-YAML-LibYAML.spec
+	srcpath=https://cpan.metacpan.org/modules/by-module/YAML/YAML-LibYAML-v0.902.0.tar.gz
+YAML-LibYAML-v0.902.0.tar.gz already with us in /third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/perl-YAML-LibYAML, for package perl-YAML-LibYAML
+YAML-LibYAML-v0.902.0.tar.gz need met, for package perl-YAML-LibYAML
+spcfl_fullpath=/third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/perl-YAML-Syck/perl-YAML-Syck.spec
+	srcpath=https://cpan.metacpan.org/modules/by-module/YAML/YAML-Syck-1.34.tar.gz
+YAML-Syck-1.34.tar.gz already with us in /third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/perl-YAML-Syck, for package perl-YAML-Syck
+YAML-Syck-1.34.tar.gz need met, for package perl-YAML-Syck
+spcfl_fullpath=/third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/perl-libnet/perl-libnet.spec
+	srcpath=https://cpan.metacpan.org/authors/id/S/SH/SHAY/libnet-3.15.tar.gz
+libnet-3.15.tar.gz already with us in /third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/perl-libnet, for package perl-libnet
+libnet-3.15.tar.gz need met, for package perl-libnet
+spcfl_fullpath=/third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/perltidy/perltidy.spec
+	srcpath=https://www.cpan.org/authors/id/S/SH/SHANCOCK/Perl-Tidy-20240903.tar.gz
+Perl-Tidy-20240903.tar.gz already with us in /third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/perltidy, for package perltidy
+Perl-Tidy-20240903.tar.gz need met, for package perltidy
+spcfl_fullpath=/third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/pinfo/pinfo.spec
+	srcpath=https://github.com/baszoetekouw/pinfo/archive/refs/tags/v0.6.13.tar.gz
+v0.6.13.tar.gz already with us in /third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/pinfo, for package pinfo
+v0.6.13.tar.gz need met, for package pinfo
+spcfl_fullpath=/third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/pkcs11-helper/pkcs11-helper.spec
+	srcpath=https://github.com/OpenSC/pkcs11-helper/releases/download/pkcs11-helper-1.30.0/pkcs11-helper-1.30.0.tar.bz2
+pkcs11-helper-1.30.0.tar.bz2 already with us in /third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/pkcs11-helper, for package pkcs11-helper
+pkcs11-helper-1.30.0.tar.bz2 need met, for package pkcs11-helper
+spcfl_fullpath=/third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/powertop/powertop.spec
+	srcpath=http://github.com/fenrus75/powertop/archive/v2.15/powertop-2.15.tar.gz
+powertop-2.15.tar.gz already with us in /third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/powertop, for package powertop
+powertop-2.15.tar.gz need met, for package powertop
+	srcpath=powertop.service
+powertop.service already with us in /third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/powertop, for package powertop
+powertop.service need met, for package powertop
+spcfl_fullpath=/third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/pps-tools/pps-tools.spec
+	srcpath=https://github.com/redlab-i/pps-tools/archive/v1.0.3/pps-tools-1.0.3.tar.gz
+pps-tools-1.0.3.tar.gz already with us in /third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/pps-tools, for package pps-tools
+pps-tools-1.0.3.tar.gz need met, for package pps-tools
+spcfl_fullpath=/third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/puppet/puppet.spec
+	srcpath=https://downloads.puppetlabs.com/puppet/puppet-8.6.0.tar.gz
+puppet-8.6.0.tar.gz already with us in /third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/puppet, for package puppet
+puppet-8.6.0.tar.gz need met, for package puppet
+	srcpath=https://downloads.puppetlabs.com/puppet/puppet-8.6.0.tar.gz.asc
+puppet-8.6.0.tar.gz.asc already with us in /third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/puppet, for package puppet
+puppet-8.6.0.tar.gz.asc need met, for package puppet
+	srcpath=RPM-GPG-KEY-puppet-20250406
+RPM-GPG-KEY-puppet-20250406 already with us in /third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/puppet, for package puppet
+RPM-GPG-KEY-puppet-20250406 need met, for package puppet
+	srcpath=https://forge.puppet.com/v3/files/puppetlabs-augeas_core-1.4.0.tar.gz
+puppetlabs-augeas_core-1.4.0.tar.gz already with us in /third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/puppet, for package puppet
+puppetlabs-augeas_core-1.4.0.tar.gz need met, for package puppet
+	srcpath=https://forge.puppet.com/v3/files/puppetlabs-cron_core-1.2.1.tar.gz
+puppetlabs-cron_core-1.2.1.tar.gz already with us in /third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/puppet, for package puppet
+puppetlabs-cron_core-1.2.1.tar.gz need met, for package puppet
+	srcpath=https://forge.puppet.com/v3/files/puppetlabs-host_core-1.2.0.tar.gz
+puppetlabs-host_core-1.2.0.tar.gz already with us in /third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/puppet, for package puppet
+puppetlabs-host_core-1.2.0.tar.gz need met, for package puppet
+	srcpath=https://forge.puppet.com/v3/files/puppetlabs-mount_core-1.2.0.tar.gz
+puppetlabs-mount_core-1.2.0.tar.gz already with us in /third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/puppet, for package puppet
+puppetlabs-mount_core-1.2.0.tar.gz need met, for package puppet
+	srcpath=https://forge.puppet.com/v3/files/puppetlabs-scheduled_task-3.2.0.tar.gz
+puppetlabs-scheduled_task-3.2.0.tar.gz already with us in /third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/puppet, for package puppet
+puppetlabs-scheduled_task-3.2.0.tar.gz need met, for package puppet
+	srcpath=https://forge.puppet.com/v3/files/puppetlabs-selinux_core-1.3.0.tar.gz
+puppetlabs-selinux_core-1.3.0.tar.gz already with us in /third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/puppet, for package puppet
+puppetlabs-selinux_core-1.3.0.tar.gz need met, for package puppet
+	srcpath=https://forge.puppet.com/v3/files/puppetlabs-sshkeys_core-2.4.0.tar.gz
+puppetlabs-sshkeys_core-2.4.0.tar.gz already with us in /third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/puppet, for package puppet
+puppetlabs-sshkeys_core-2.4.0.tar.gz need met, for package puppet
+	srcpath=https://forge.puppet.com/v3/files/puppetlabs-yumrepo_core-2.0.0.tar.gz
+puppetlabs-yumrepo_core-2.0.0.tar.gz already with us in /third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/puppet, for package puppet
+puppetlabs-yumrepo_core-2.0.0.tar.gz need met, for package puppet
+	srcpath=https://forge.puppet.com/v3/files/puppetlabs-zfs_core-1.4.0.tar.gz
+puppetlabs-zfs_core-1.4.0.tar.gz already with us in /third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/puppet, for package puppet
+puppetlabs-zfs_core-1.4.0.tar.gz need met, for package puppet
+	srcpath=https://forge.puppet.com/v3/files/puppetlabs-zone_core-1.1.0.tar.gz
+puppetlabs-zone_core-1.1.0.tar.gz already with us in /third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/puppet, for package puppet
+puppetlabs-zone_core-1.1.0.tar.gz need met, for package puppet
+	srcpath=puppet-nm-dispatcher.systemd
+puppet-nm-dispatcher.systemd already with us in /third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/puppet, for package puppet
+puppet-nm-dispatcher.systemd need met, for package puppet
+	srcpath=start-puppet-wrapper
+start-puppet-wrapper already with us in /third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/puppet, for package puppet
+start-puppet-wrapper need met, for package puppet
+	srcpath=logrotate
+logrotate already with us in /third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/puppet, for package puppet
+logrotate need met, for package puppet
+spcfl_fullpath=/third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/pykickstart/pykickstart.spec
+	srcpath=https://github.com/pykickstart/pykickstart/releases/download/r3.58/pykickstart-3.58.tar.gz
+pykickstart-3.58.tar.gz already with us in /third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/pykickstart, for package pykickstart
+pykickstart-3.58.tar.gz need met, for package pykickstart
+spcfl_fullpath=/third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/pyparted/pyparted.spec
+	srcpath=https://github.com/dcantrell/pyparted/releases/download/v3.13.0/pyparted-3.13.0.tar.gz
+pyparted-3.13.0.tar.gz already with us in /third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/pyparted, for package pyparted
+pyparted-3.13.0.tar.gz need met, for package pyparted
+	srcpath=https://github.com/dcantrell/pyparted/releases/download/v3.13.0/pyparted-3.13.0.tar.gz.asc
+pyparted-3.13.0.tar.gz.asc already with us in /third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/pyparted, for package pyparted
+pyparted-3.13.0.tar.gz.asc need met, for package pyparted
+	srcpath=keyring.gpg
+keyring.gpg already with us in /third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/pyparted, for package pyparted
+keyring.gpg need met, for package pyparted
+	srcpath=trustdb.gpg
+trustdb.gpg already with us in /third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/pyparted, for package pyparted
+trustdb.gpg need met, for package pyparted
+spcfl_fullpath=/third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/python-IPy/python-IPy.spec
+	srcpath=https://files.pythonhosted.org/packages/source/I/IPy/IPy-1.01.tar.gz#/python-IPy-1.01.tar.gz
+python-IPy-1.01.tar.gz already with us in /third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/python-IPy, for package python-IPy
+python-IPy-1.01.tar.gz need met, for package python-IPy
+spcfl_fullpath=/third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/python-aiodns/python-aiodns.spec
+	srcpath=https://github.com/saghul/aiodns/archive/v3.2.0/aiodns-3.2.0.tar.gz#/python-aiodns-3.2.0.tar.gz
+python-aiodns-3.2.0.tar.gz already with us in /third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/python-aiodns, for package python-aiodns
+python-aiodns-3.2.0.tar.gz need met, for package python-aiodns
+spcfl_fullpath=/third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/python-alsa/python-alsa.spec
+	srcpath=ftp://ftp.alsa-project.org/pub/pyalsa/pyalsa-1.2.12.tar.bz2
+pyalsa-1.2.12.tar.bz2 already with us in /third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/python-alsa, for package python-alsa
+pyalsa-1.2.12.tar.bz2 need met, for package python-alsa
+spcfl_fullpath=/third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/python-astroid/python-astroid.spec
+	srcpath=https://github.com/pylint-dev/astroid/archive/v3.3.8/astroid-3.3.8.tar.gz#/python-astroid-3.3.8.tar.gz
+python-astroid-3.3.8.tar.gz already with us in /third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/python-astroid, for package python-astroid
+python-astroid-3.3.8.tar.gz need met, for package python-astroid
+spcfl_fullpath=/third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/python-betamax/python-betamax.spec
+	srcpath=https://github.com/sigmavirus24/betamax/archive/0.9.0/betamax-0.9.0.tar.gz
+betamax-0.9.0.tar.gz already with us in /third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/python-betamax, for package python-betamax
+betamax-0.9.0.tar.gz need met, for package python-betamax
+spcfl_fullpath=/third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/python-blinker/python-blinker.spec
+	srcpath=https://github.com/pallets-eco/blinker/archive/1.7.0/blinker-1.7.0.tar.gz
+blinker-1.7.0.tar.gz already with us in /third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/python-blinker, for package python-blinker
+blinker-1.7.0.tar.gz need met, for package python-blinker
+spcfl_fullpath=/third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/python-blivet/python-blivet.spec
+	srcpath=http://github.com/storaged-project/blivet/archive/blivet-3.11.0.tar.gz
+blivet-3.11.0.tar.gz already with us in /third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/python-blivet, for package python-blivet
+blivet-3.11.0.tar.gz need met, for package python-blivet
+	srcpath=http://github.com/storaged-project/blivet/archive/blivet-3.11.0-tests.tar.gz
+blivet-3.11.0-tests.tar.gz already with us in /third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/python-blivet, for package python-blivet
+blivet-3.11.0-tests.tar.gz need met, for package python-blivet
+spcfl_fullpath=/third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/python-cheetah/python-cheetah.spec
+	srcpath=https://github.com/CheetahTemplate3/cheetah3/archive/3.2.6.post1/Cheetah3-3.2.6.post1.tar.gz#/python-cheetah-3.2.6.post1.tar.gz
+python-cheetah-3.2.6.post1.tar.gz already with us in /third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/python-cheetah, for package python-cheetah
+python-cheetah-3.2.6.post1.tar.gz need met, for package python-cheetah
+spcfl_fullpath=/third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/python-cmd2/python-cmd2.spec
+	srcpath=https://files.pythonhosted.org/packages/39/a0/830934f19f07e77c7d332fd5b41358611afc8d33d8cea78259b9a5d7f8ef/cmd2-2.4.2.tar.gz#/python-cmd2-2.4.2.tar.gz
+python-cmd2-2.4.2.tar.gz already with us in /third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/python-cmd2, for package python-cmd2
+python-cmd2-2.4.2.tar.gz need met, for package python-cmd2
+spcfl_fullpath=/third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/python-colorama/python-colorama.spec
+	srcpath=https://github.com/tartley/colorama/archive/0.4.6/colorama-0.4.6.tar.gz#/python-colorama-0.4.6.tar.gz
+python-colorama-0.4.6.tar.gz already with us in /third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/python-colorama, for package python-colorama
+python-colorama-0.4.6.tar.gz need met, for package python-colorama
+spcfl_fullpath=/third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/python-cups/python-cups.spec
+	srcpath=https://github.com/OpenPrinting/pycups/releases/download/v2.0.4/pycups-2.0.4.tar.gz
+pycups-2.0.4.tar.gz already with us in /third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/python-cups, for package python-cups
+pycups-2.0.4.tar.gz need met, for package python-cups
+spcfl_fullpath=/third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/python-dns/python-dns.spec
+	srcpath=https://github.com/rthalley/dnspython/archive/v2.6.1/dnspython-2.6.1.tar.gz#/python-dns-2.6.1.tar.gz
+python-dns-2.6.1.tar.gz already with us in /third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/python-dns, for package python-dns
+python-dns-2.6.1.tar.gz need met, for package python-dns
+spcfl_fullpath=/third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/python-dulwich/python-dulwich.spec
+	srcpath=https://files.pythonhosted.org/packages/source/d/dulwich/dulwich-0.21.7.tar.gz#/python-dulwich-0.21.7.tar.gz
+python-dulwich-0.21.7.tar.gz already with us in /third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/python-dulwich, for package python-dulwich
+python-dulwich-0.21.7.tar.gz need met, for package python-dulwich
+spcfl_fullpath=/third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/python-entrypoints/python-entrypoints.spec
+	srcpath=https://github.com/takluyver/entrypoints/archive/0.4/entrypoints-0.4.tar.gz
+entrypoints-0.4.tar.gz already with us in /third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/python-entrypoints, for package python-entrypoints
+entrypoints-0.4.tar.gz need met, for package python-entrypoints
+spcfl_fullpath=/third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/python-fixtures/python-fixtures.spec
+	srcpath=https://files.pythonhosted.org/packages/source/f/fixtures/fixtures-4.0.1.tar.gz
+fixtures-4.0.1.tar.gz already with us in /third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/python-fixtures, for package python-fixtures
+fixtures-4.0.1.tar.gz need met, for package python-fixtures
+spcfl_fullpath=/third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/python-gssapi/python-gssapi.spec
+	srcpath=https://github.com/pythongssapi/python-gssapi/releases/download/v1.7.3/python-gssapi-1.7.3.tar.gz
+python-gssapi-1.7.3.tar.gz already with us in /third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/python-gssapi, for package python-gssapi
+python-gssapi-1.7.3.tar.gz need met, for package python-gssapi
+spcfl_fullpath=/third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/python-mutagen/python-mutagen.spec
+	srcpath=https://github.com/quodlibet/mutagen/releases/download/release-1.47.0/mutagen-1.47.0.tar.gz
+mutagen-1.47.0.tar.gz already with us in /third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/python-mutagen, for package python-mutagen
+mutagen-1.47.0.tar.gz need met, for package python-mutagen
+spcfl_fullpath=/third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/python-oslo-i18n/python-oslo-i18n.spec
+	srcpath=https://tarballs.openstack.org/oslo.i18n/oslo.i18n-6.3.0.tar.gz#/python-oslo-i18n-6.3.0.tar.gz
+python-oslo-i18n-6.3.0.tar.gz already with us in /third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/python-oslo-i18n, for package python-oslo-i18n
+python-oslo-i18n-6.3.0.tar.gz need met, for package python-oslo-i18n
+	srcpath=https://tarballs.openstack.org/oslo.i18n/oslo.i18n-6.3.0.tar.gz.asc
+oslo.i18n-6.3.0.tar.gz.asc already with us in /third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/python-oslo-i18n, for package python-oslo-i18n
+oslo.i18n-6.3.0.tar.gz.asc need met, for package python-oslo-i18n
+	srcpath=https://releases.openstack.org/_static/0x2ef3fe0ec2b075ab7458b5f8b702b20b13df2318.txt
+0x2ef3fe0ec2b075ab7458b5f8b702b20b13df2318.txt already with us in /third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/python-oslo-i18n, for package python-oslo-i18n
+0x2ef3fe0ec2b075ab7458b5f8b702b20b13df2318.txt need met, for package python-oslo-i18n
+spcfl_fullpath=/third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/python-pycares/python-pycares.spec
+	srcpath=https://github.com/saghul/pycares/archive/pycares-4.3.0.tar.gz#/python-pycares-4.3.0.tar.gz
+python-pycares-4.3.0.tar.gz already with us in /third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/python-pycares, for package python-pycares
+python-pycares-4.3.0.tar.gz need met, for package python-pycares
+spcfl_fullpath=/third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/python-pymongo/python-pymongo.spec
+	srcpath=https://github.com/mongodb/mongo-python-driver/archive/refs/tags/4.2.0.tar.gz#/python-pymongo-4.2.0.tar.gz
+python-pymongo-4.2.0.tar.gz already with us in /third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/python-pymongo, for package python-pymongo
+python-pymongo-4.2.0.tar.gz need met, for package python-pymongo
+spcfl_fullpath=/third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/python-qrcode/python-qrcode.spec
+	srcpath=https://files.pythonhosted.org/packages/source/q/qrcode/qrcode-7.4.2.tar.gz#/python-qrcode-7.4.2.tar.gz
+python-qrcode-7.4.2.tar.gz already with us in /third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/python-qrcode, for package python-qrcode
+python-qrcode-7.4.2.tar.gz need met, for package python-qrcode
+spcfl_fullpath=/third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/python-rdflib/python-rdflib.spec
+	srcpath=https://files.pythonhosted.org/packages/source/r/rdflib/rdflib-7.0.0.tar.gz#/python-rdflib-7.0.0.tar.gz
+python-rdflib-7.0.0.tar.gz already with us in /third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/python-rdflib, for package python-rdflib
+python-rdflib-7.0.0.tar.gz need met, for package python-rdflib
+spcfl_fullpath=/third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/python-recommonmark/python-recommonmark.spec
+	srcpath=https://github.com/readthedocs/recommonmark/archive/0.7.1/recommonmark-0.7.1.tar.gz#/python-recommonmark-0.7.1.tar.gz
+python-recommonmark-0.7.1.tar.gz already with us in /third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/python-recommonmark, for package python-recommonmark
+python-recommonmark-0.7.1.tar.gz need met, for package python-recommonmark
+spcfl_fullpath=/third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/python-requests-file/python-requests-file.spec
+	srcpath=https://files.pythonhosted.org/packages/source/r/requests-file/requests-file-2.0.0.tar.gz#/python-requests-file-2.0.0.tar.gz
+python-requests-file-2.0.0.tar.gz already with us in /third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/python-requests-file, for package python-requests-file
+python-requests-file-2.0.0.tar.gz need met, for package python-requests-file
+spcfl_fullpath=/third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/python-requests-kerberos/python-requests-kerberos.spec
+	srcpath=https://github.com/requests/requests-kerberos/archive/v0.14.0/requests-kerberos-0.14.0.tar.gz
+requests-kerberos-0.14.0.tar.gz already with us in /third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/python-requests-kerberos, for package python-requests-kerberos
+requests-kerberos-0.14.0.tar.gz need met, for package python-requests-kerberos
+spcfl_fullpath=/third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/python-rtslib/python-rtslib.spec
+	srcpath=https://github.com/open-iscsi/rtslib-fb/archive/v2.1.76/rtslib-fb-2.1.76.tar.gz#/python-rtslib-2.1.76.tar.gz
+python-rtslib-2.1.76.tar.gz already with us in /third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/python-rtslib, for package python-rtslib
+python-rtslib-2.1.76.tar.gz need met, for package python-rtslib
+spcfl_fullpath=/third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/python-semantic_version/python-semantic_version.spec
+	srcpath=https://github.com/rbarrois/python-semanticversion/archive/2.10.0/python-semanticversion-2.10.0.tar.gz
+python-semanticversion-2.10.0.tar.gz already with us in /third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/python-semantic_version, for package python-semantic_version
+python-semanticversion-2.10.0.tar.gz need met, for package python-semantic_version
+spcfl_fullpath=/third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/python-simpleline/python-simpleline.spec
+	srcpath=https://github.com/rhinstaller/python-simpleline/releases/download/1.9.0/simpleline-1.9.0.tar.gz#/python-simpleline-1.9.0.tar.gz
+python-simpleline-1.9.0.tar.gz already with us in /third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/python-simpleline, for package python-simpleline
+python-simpleline-1.9.0.tar.gz need met, for package python-simpleline
+spcfl_fullpath=/third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/python-sniffio/python-sniffio.spec
+	srcpath=https://files.pythonhosted.org/packages/source/s/sniffio/sniffio-1.3.1.tar.gz#/python-sniffio-1.3.1.tar.gz
+python-sniffio-1.3.1.tar.gz already with us in /third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/python-sniffio, for package python-sniffio
+python-sniffio-1.3.1.tar.gz need met, for package python-sniffio
+spcfl_fullpath=/third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/python-suds/python-suds.spec
+	srcpath=https://github.com/suds-community/suds/archive/v1.1.2.tar.gz#/suds-1.1.2.tar.gz
+suds-1.1.2.tar.gz already with us in /third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/python-suds, for package python-suds
+suds-1.1.2.tar.gz need met, for package python-suds
+spcfl_fullpath=/third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/python-testtools/python-testtools.spec
+	srcpath=https://files.pythonhosted.org/packages/07/a7/3f3daee7a525d5288b84581448d21a39d0b9ae9f4a235d99850682944857/testtools-2.7.1.tar.gz#/python-testtools-2.7.1.tar.gz
+python-testtools-2.7.1.tar.gz already with us in /third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/python-testtools, for package python-testtools
+python-testtools-2.7.1.tar.gz need met, for package python-testtools
+spcfl_fullpath=/third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/python-tox/python-tox.spec
+	srcpath=https://files.pythonhosted.org/packages/cf/7b/97f757e159983737bdd8fb513f4c263cd411a846684814ed5433434a1fa9/tox-4.24.1.tar.gz#/python-tox-4.24.1.tar.gz
+python-tox-4.24.1.tar.gz already with us in /third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/python-tox, for package python-tox
+python-tox-4.24.1.tar.gz need met, for package python-tox
+spcfl_fullpath=/third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/python-varlink/python-varlink.spec
+	srcpath=https://github.com/varlink/python-varlink/archive/31.0.0/python-varlink-31.0.0.tar.gz
+python-varlink-31.0.0.tar.gz already with us in /third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/python-varlink, for package python-varlink
+python-varlink-31.0.0.tar.gz need met, for package python-varlink
+spcfl_fullpath=/third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/python-voluptuous/python-voluptuous.spec
+	srcpath=https://files.pythonhosted.org/packages/source/v/voluptuous/voluptuous-0.15.2.tar.gz#/python-voluptuous-0.15.2.tar.gz
+python-voluptuous-0.15.2.tar.gz already with us in /third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/python-voluptuous, for package python-voluptuous
+python-voluptuous-0.15.2.tar.gz need met, for package python-voluptuous
+spcfl_fullpath=/third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/pyxattr/pyxattr.spec
+	srcpath=https://pyxattr.k1024.org//downloads/pyxattr-0.7.2.tar.gz
+pyxattr-0.7.2.tar.gz already with us in /third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/pyxattr, for package pyxattr
+pyxattr-0.7.2.tar.gz need met, for package pyxattr
+	srcpath=https://pyxattr.k1024.org//downloads/pyxattr-0.7.2.tar.gz.asc
+pyxattr-0.7.2.tar.gz.asc already with us in /third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/pyxattr, for package pyxattr
+pyxattr-0.7.2.tar.gz.asc need met, for package pyxattr
+	srcpath=https://k1024.org/files/key.asc
+key.asc already with us in /third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/pyxattr, for package pyxattr
+key.asc need met, for package pyxattr
+spcfl_fullpath=/third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/qpdf/qpdf.spec
+	srcpath=https://github.com/qpdf/qpdf/releases/download/v11.9.1/qpdf-11.9.1.tar.gz
+qpdf-11.9.1.tar.gz already with us in /third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/qpdf, for package qpdf
+qpdf-11.9.1.tar.gz need met, for package qpdf
+	srcpath=https://github.com/qpdf/qpdf/releases/download/v11.9.1/qpdf-11.9.1-doc.zip
+qpdf-11.9.1-doc.zip already with us in /third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/qpdf, for package qpdf
+qpdf-11.9.1-doc.zip need met, for package qpdf
+spcfl_fullpath=/third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/qr-code-generator/qr-code-generator.spec
+	srcpath=https://github.com/nayuki/QR-Code-generator/archive/refs/tags/v1.8.0.tar.gz#/qr-code-generator-1.8.0.tar.gz
+qr-code-generator-1.8.0.tar.gz already with us in /third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/qr-code-generator, for package qr-code-generator
+qr-code-generator-1.8.0.tar.gz need met, for package qr-code-generator
+	srcpath=https://github.com/EasyCoding/qrcodegen-cmake/archive/v1.8.0-cmake2/qrcodegen-cmake-1.8.0-cmake2.tar.gz
+qrcodegen-cmake-1.8.0-cmake2.tar.gz already with us in /third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/qr-code-generator, for package qr-code-generator
+qrcodegen-cmake-1.8.0-cmake2.tar.gz need met, for package qr-code-generator
+spcfl_fullpath=/third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/relaxngDatatype/relaxngDatatype.spec
+	srcpath=https://github.com/java-schema-utilities/relaxng-datatype-java/archive/relaxngDatatype-2011.1.tar.gz
+relaxngDatatype-2011.1.tar.gz already with us in /third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/relaxngDatatype, for package relaxngDatatype
+relaxngDatatype-2011.1.tar.gz need met, for package relaxngDatatype
+	srcpath=copying.txt
+copying.txt already with us in /third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/relaxngDatatype, for package relaxngDatatype
+copying.txt need met, for package relaxngDatatype
+spcfl_fullpath=/third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/rhash/rhash.spec
+	srcpath=https://github.com/rhash/RHash/archive/v1.4.4/rhash-1.4.4.tar.gz
+rhash-1.4.4.tar.gz already with us in /third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/rhash, for package rhash
+rhash-1.4.4.tar.gz need met, for package rhash
+spcfl_fullpath=/third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/rubygem-flexmock/rubygem-flexmock.spec
+	srcpath=https://github.com/doudou/flexmock/archive/refs/tags/v3.0.1.tar.gz#/rubygem-flexmock-3.0.1.tar.gz
+rubygem-flexmock-3.0.1.tar.gz already with us in /third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/rubygem-flexmock, for package rubygem-flexmock
+rubygem-flexmock-3.0.1.tar.gz need met, for package rubygem-flexmock
+spcfl_fullpath=/third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/rubygem-pkg-config/rubygem-pkg-config.spec
+	srcpath=https://github.com/ruby-gnome/pkg-config/archive/refs/tags/1.5.7.tar.gz#/rubygem-pkg-config-1.5.7.tar.gz
+rubygem-pkg-config-1.5.7.tar.gz already with us in /third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/rubygem-pkg-config, for package rubygem-pkg-config
+rubygem-pkg-config-1.5.7.tar.gz need met, for package rubygem-pkg-config
+spcfl_fullpath=/third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/rubygem-rouge/rubygem-rouge.spec
+	srcpath=https://rubygems.org/gems/rouge-4.4.0.gem
+rouge-4.4.0.gem already with us in /third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/rubygem-rouge, for package rubygem-rouge
+rouge-4.4.0.gem need met, for package rubygem-rouge
+	srcpath=rouge-4.4.0-test-missing-files.tar.gz
+rouge-4.4.0-test-missing-files.tar.gz already with us in /third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/rubygem-rouge, for package rubygem-rouge
+rouge-4.4.0-test-missing-files.tar.gz need met, for package rubygem-rouge
+	srcpath=rouge-create-missing-test-files.sh
+rouge-create-missing-test-files.sh already with us in /third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/rubygem-rouge, for package rubygem-rouge
+rouge-create-missing-test-files.sh need met, for package rubygem-rouge
+	srcpath=spec_helper_assert.rb
+spec_helper_assert.rb already with us in /third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/rubygem-rouge, for package rubygem-rouge
+spec_helper_assert.rb need met, for package rubygem-rouge
+	srcpath=bundler.rb
+bundler.rb already with us in /third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/rubygem-rouge, for package rubygem-rouge
+bundler.rb need met, for package rubygem-rouge
+spcfl_fullpath=/third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/rubygem-rspec-support/rubygem-rspec-support.spec
+	srcpath=https://github.com/rspec/rspec-support/archive/refs/tags/v3.13.1.tar.gz#/rubygem-rspec-support-3.13.1.tar.gz
+rubygem-rspec-support-3.13.1.tar.gz already with us in /third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/rubygem-rspec-support, for package rubygem-rspec-support
+rubygem-rspec-support-3.13.1.tar.gz need met, for package rubygem-rspec-support
+	srcpath=rspec-related-create-full-tarball.sh
+rspec-related-create-full-tarball.sh already with us in /third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/rubygem-rspec-support, for package rubygem-rspec-support
+rspec-related-create-full-tarball.sh need met, for package rubygem-rspec-support
+spcfl_fullpath=/third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/satyr/satyr.spec
+	srcpath=https://github.com/abrt/satyr/releases/download/0.43/satyr-0.43.tar.gz
+satyr-0.43.tar.gz already with us in /third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/satyr, for package satyr
+satyr-0.43.tar.gz need met, for package satyr
+spcfl_fullpath=/third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/serd/serd.spec
+	srcpath=https://download.drobilla.net/serd-0.32.4.tar.xz
+serd-0.32.4.tar.xz already with us in /third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/serd, for package serd
+serd-0.32.4.tar.xz need met, for package serd
+	srcpath=https://download.drobilla.net/serd-0.32.4.tar.xz.sig
+serd-0.32.4.tar.xz.sig already with us in /third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/serd, for package serd
+serd-0.32.4.tar.xz.sig need met, for package serd
+	srcpath=https://drobilla.net/drobilla.gpg
+drobilla.gpg already with us in /third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/serd, for package serd
+drobilla.gpg need met, for package serd
+spcfl_fullpath=/third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/smc-tools/smc-tools.spec
+	srcpath=https://github.com/ibm-s390-linux/smc-tools/archive/1.8.4/smc-tools-1.8.4.tar.gz
+smc-tools-1.8.4.tar.gz already with us in /third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/smc-tools, for package smc-tools
+smc-tools-1.8.4.tar.gz need met, for package smc-tools
+spcfl_fullpath=/third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/sord/sord.spec
+	srcpath=https://download.drobilla.net/sord-0.16.18.tar.xz
+sord-0.16.18.tar.xz already with us in /third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/sord, for package sord
+sord-0.16.18.tar.xz need met, for package sord
+	srcpath=https://download.drobilla.net/sord-0.16.18.tar.xz.sig
+sord-0.16.18.tar.xz.sig already with us in /third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/sord, for package sord
+sord-0.16.18.tar.xz.sig need met, for package sord
+	srcpath=https://drobilla.net/drobilla.gpg
+drobilla.gpg already with us in /third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/sord, for package sord
+drobilla.gpg need met, for package sord
+spcfl_fullpath=/third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/spausedd/spausedd.spec
+	srcpath=https://github.com/jfriesse/spausedd/releases/download/20210719/spausedd-20210719.tar.gz
+spausedd-20210719.tar.gz already with us in /third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/spausedd, for package spausedd
+spausedd-20210719.tar.gz need met, for package spausedd
+spcfl_fullpath=/third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/spice-protocol/spice-protocol.spec
+	srcpath=https://www.spice-space.org/download/releases/spice-protocol-0.14.4.tar.xz
+spice-protocol-0.14.4.tar.xz already with us in /third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/spice-protocol, for package spice-protocol
+spice-protocol-0.14.4.tar.xz need met, for package spice-protocol
+	srcpath=https://www.spice-space.org/download/releases/spice-protocol-0.14.4.tar.xz.sig
+	trbl=spice-protocol-0.14.4.tar.xz.sig
+	Will copy the pre-downloaded spice-protocol-0.14.4.tar.xz.sig to SPECS-EXTENDED folder /third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/spice-protocol
+	copy success, tarball /third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/spice-protocol/spice-protocol-0.14.4.tar.xz.sig for package spice-protocol
+spice-protocol-0.14.4.tar.xz.sig need met, for package spice-protocol
+	srcpath=victortoso-E37A484F.keyring
+	trbl=victortoso-E37A484F.keyring
+	Will copy the pre-downloaded victortoso-E37A484F.keyring to SPECS-EXTENDED folder /third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/spice-protocol
+	copy success, tarball /third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/spice-protocol/victortoso-E37A484F.keyring for package spice-protocol
+victortoso-E37A484F.keyring need met, for package spice-protocol
+spcfl_fullpath=/third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/sratom/sratom.spec
+	srcpath=https://download.drobilla.net/sratom-0.6.16.tar.xz
+sratom-0.6.16.tar.xz already with us in /third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/sratom, for package sratom
+sratom-0.6.16.tar.xz need met, for package sratom
+	srcpath=https://download.drobilla.net/sratom-0.6.16.tar.xz.sig
+sratom-0.6.16.tar.xz.sig already with us in /third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/sratom, for package sratom
+sratom-0.6.16.tar.xz.sig need met, for package sratom
+	srcpath=https://drobilla.net/drobilla.gpg
+drobilla.gpg already with us in /third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/sratom, for package sratom
+drobilla.gpg need met, for package sratom
+spcfl_fullpath=/third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/taglib/taglib.spec
+	srcpath=https://taglib.github.io/releases/taglib-1.13.1.tar.gz
+taglib-1.13.1.tar.gz already with us in /third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/taglib, for package taglib
+taglib-1.13.1.tar.gz need met, for package taglib
+	srcpath=taglib-snapshot.sh
+taglib-snapshot.sh already with us in /third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/taglib, for package taglib
+taglib-snapshot.sh need met, for package taglib
+spcfl_fullpath=/third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/targetcli/targetcli.spec
+	srcpath=https://github.com/open-iscsi/targetcli-fb/archive/v2.1.58/targetcli-fb-2.1.58.tar.gz
+targetcli-fb-2.1.58.tar.gz already with us in /third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/targetcli, for package targetcli
+targetcli-fb-2.1.58.tar.gz need met, for package targetcli
+spcfl_fullpath=/third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/tbb/tbb.spec
+	srcpath=https://github.com/intel/tbb/archive/v2021.13.0/tbb-2021.13.0.tar.gz
+tbb-2021.13.0.tar.gz already with us in /third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/tbb, for package tbb
+tbb-2021.13.0.tar.gz need met, for package tbb
+	srcpath=tbbmalloc.pc
+tbbmalloc.pc already with us in /third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/tbb, for package tbb
+tbbmalloc.pc need met, for package tbb
+	srcpath=tbbmalloc_proxy.pc
+tbbmalloc_proxy.pc already with us in /third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/tbb, for package tbb
+tbbmalloc_proxy.pc need met, for package tbb
+spcfl_fullpath=/third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/unicode-emoji/unicode-emoji.spec
+	srcpath=https://www.unicode.org/license.txt
+license.txt already with us in /third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/unicode-emoji, for package unicode-emoji
+license.txt need met, for package unicode-emoji
+	srcpath=https://www.unicode.org/Public/emoji/15.1/ReadMe.txt
+ReadMe.txt already with us in /third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/unicode-emoji, for package unicode-emoji
+ReadMe.txt need met, for package unicode-emoji
+	srcpath=https://www.unicode.org/Public/15.1.0/ucd/emoji/emoji-data.txt
+emoji-data.txt already with us in /third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/unicode-emoji, for package unicode-emoji
+emoji-data.txt need met, for package unicode-emoji
+	srcpath=https://www.unicode.org/Public/emoji/15.1/emoji-sequences.txt
+emoji-sequences.txt already with us in /third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/unicode-emoji, for package unicode-emoji
+emoji-sequences.txt need met, for package unicode-emoji
+	srcpath=https://www.unicode.org/Public/emoji/15.1/emoji-test.txt
+emoji-test.txt already with us in /third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/unicode-emoji, for package unicode-emoji
+emoji-test.txt need met, for package unicode-emoji
+	srcpath=https://www.unicode.org/Public/15.1.0/ucd/emoji/emoji-variation-sequences.txt
+emoji-variation-sequences.txt already with us in /third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/unicode-emoji, for package unicode-emoji
+emoji-variation-sequences.txt need met, for package unicode-emoji
+	srcpath=https://www.unicode.org/Public/emoji/15.1/emoji-zwj-sequences.txt
+emoji-zwj-sequences.txt already with us in /third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/unicode-emoji, for package unicode-emoji
+emoji-zwj-sequences.txt need met, for package unicode-emoji
+spcfl_fullpath=/third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/unicode-ucd/unicode-ucd.spec
+	srcpath=https://www.unicode.org/Public/zipped/16.0.0/UCD.zip
+UCD.zip already with us in /third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/unicode-ucd, for package unicode-ucd
+UCD.zip need met, for package unicode-ucd
+	srcpath=https://www.unicode.org/Public/zipped/16.0.0/Unihan.zip
+Unihan.zip already with us in /third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/unicode-ucd, for package unicode-ucd
+Unihan.zip need met, for package unicode-ucd
+	srcpath=https://www.unicode.org/license.txt
+license.txt already with us in /third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/unicode-ucd, for package unicode-ucd
+license.txt need met, for package unicode-ucd
+spcfl_fullpath=/third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/units/units.spec
+	srcpath=https://ftp.gnu.org/gnu/units/units-2.23.tar.gz
+units-2.23.tar.gz already with us in /third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/units, for package units
+units-2.23.tar.gz need met, for package units
+spcfl_fullpath=/third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/v4l-utils/v4l-utils.spec
+	srcpath=https://www.linuxtv.org/downloads/v4l-utils/v4l-utils-1.22.1.tar.bz2
+v4l-utils-1.22.1.tar.bz2 already with us in /third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/v4l-utils, for package v4l-utils
+v4l-utils-1.22.1.tar.bz2 need met, for package v4l-utils
+spcfl_fullpath=/third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/virt-p2v/virt-p2v.spec
+	srcpath=https://download.libguestfs.org/virt-p2v/virt-p2v-1.42.4.tar.gz
+virt-p2v-1.42.4.tar.gz already with us in /third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/virt-p2v, for package virt-p2v
+virt-p2v-1.42.4.tar.gz need met, for package virt-p2v
+	srcpath=https://download.libguestfs.org/virt-p2v/virt-p2v-1.42.4.tar.gz.sig
+virt-p2v-1.42.4.tar.gz.sig already with us in /third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/virt-p2v, for package virt-p2v
+virt-p2v-1.42.4.tar.gz.sig need met, for package virt-p2v
+	srcpath=libguestfs.keyring
+libguestfs.keyring already with us in /third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/virt-p2v, for package virt-p2v
+libguestfs.keyring need met, for package virt-p2v
+spcfl_fullpath=/third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/webrtc-audio-processing/webrtc-audio-processing.spec
+	srcpath=http://freedesktop.org/software/pulseaudio/webrtc-audio-processing/webrtc-audio-processing-1.3.tar.xz
+webrtc-audio-processing-1.3.tar.xz already with us in /third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/webrtc-audio-processing, for package webrtc-audio-processing
+webrtc-audio-processing-1.3.tar.xz need met, for package webrtc-audio-processing
+spcfl_fullpath=/third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/xcb-util-wm/xcb-util-wm.spec
+	srcpath=https://xcb.freedesktop.org/dist/xcb-util-wm-0.4.2.tar.xz
+xcb-util-wm-0.4.2.tar.xz already with us in /third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/xcb-util-wm, for package xcb-util-wm
+xcb-util-wm-0.4.2.tar.xz need met, for package xcb-util-wm
+spcfl_fullpath=/third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/xdg-dbus-proxy/xdg-dbus-proxy.spec
+	srcpath=https://github.com/flatpak/xdg-dbus-proxy/releases/download/0.1.6/xdg-dbus-proxy-0.1.6.tar.xz
+xdg-dbus-proxy-0.1.6.tar.xz already with us in /third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/xdg-dbus-proxy, for package xdg-dbus-proxy
+xdg-dbus-proxy-0.1.6.tar.xz need met, for package xdg-dbus-proxy
+spcfl_fullpath=/third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/xmlrpc-c/xmlrpc-c.spec
+	srcpath=https://sourceforge.net/projects/xmlrpc-c/files/Xmlrpc-c%20Super%20Stable/1.59.03/xmlrpc-c-1.59.03.tgz
+xmlrpc-c-1.59.03.tgz already with us in /third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/xmlrpc-c, for package xmlrpc-c
+xmlrpc-c-1.59.03.tgz need met, for package xmlrpc-c
+spcfl_fullpath=/third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/xterm/xterm.spec
+	srcpath=https://invisible-island.net/archives/xterm/xterm-395.tgz
+xterm-395.tgz already with us in /third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/xterm, for package xterm
+xterm-395.tgz need met, for package xterm
+	srcpath=https://invisible-island.net/archives/xterm/xterm-395.tgz.asc
+xterm-395.tgz.asc already with us in /third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/xterm, for package xterm
+xterm-395.tgz.asc need met, for package xterm
+	srcpath=https://invisible-island.net/public/dickey@invisible-island.net-rsa3072.asc
+dickey@invisible-island.net-rsa3072.asc already with us in /third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/xterm, for package xterm
+dickey@invisible-island.net-rsa3072.asc need met, for package xterm
+	srcpath=https://invisible-island.net/archives/xterm/16colors.txt
+16colors.txt already with us in /third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/xterm, for package xterm
+16colors.txt need met, for package xterm
+spcfl_fullpath=/third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/yelp-tools/yelp-tools.spec
+	srcpath=https://download.gnome.org/sources/yelp-tools/42/yelp-tools-42.1.tar.xz
+yelp-tools-42.1.tar.xz already with us in /third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/yelp-tools, for package yelp-tools
+yelp-tools-42.1.tar.xz need met, for package yelp-tools
+spcfl_fullpath=/third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/yelp-xsl/yelp-xsl.spec
+	srcpath=https://download.gnome.org/sources/yelp-xsl/42/yelp-xsl-42.1.tar.xz
+yelp-xsl-42.1.tar.xz already with us in /third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/yelp-xsl, for package yelp-xsl
+yelp-xsl-42.1.tar.xz need met, for package yelp-xsl
+spcfl_fullpath=/third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/z3/z3.spec
+	srcpath=https://github.com/Z3Prover/z3/archive/z3-4.13.3.tar.gz
+z3-4.13.3.tar.gz already with us in /third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/z3, for package z3
+z3-4.13.3.tar.gz need met, for package z3
+spcfl_fullpath=/third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/zziplib/zziplib.spec
+	srcpath=https://github.com/gdraheim/zziplib/archive/v0.13.74.tar.gz#/zziplib-0.13.74.tar.gz
+zziplib-0.13.74.tar.gz already with us in /third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/zziplib, for package zziplib
+zziplib-0.13.74.tar.gz need met, for package zziplib
+spcfl_fullpath=/third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/libimobiledevice-glue/libimobiledevice-glue.spec
+	srcpath=https://github.com/libimobiledevice/libimobiledevice-glue/releases/download/1.3.1/libimobiledevice-glue-1.3.1.tar.bz2
+libimobiledevice-glue-1.3.1.tar.bz2 already with us in /third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/libimobiledevice-glue, for package libimobiledevice-glue
+libimobiledevice-glue-1.3.1.tar.bz2 need met, for package libimobiledevice-glue
+spcfl_fullpath=/third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/rubygem-puppet-resource_api/rubygem-puppet-resource_api.spec
+	srcpath=https://rubygems.org/gems/puppet-resource_api-1.8.18.gem
+puppet-resource_api-1.8.18.gem already with us in /third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/rubygem-puppet-resource_api, for package rubygem-puppet-resource_api
+puppet-resource_api-1.8.18.gem need met, for package rubygem-puppet-resource_api
+spcfl_fullpath=/third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/rubygem-hocon/rubygem-hocon.spec
+	srcpath=https://rubygems.org/gems/hocon-1.4.0.gem
+hocon-1.4.0.gem already with us in /third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/rubygem-hocon, for package rubygem-hocon
+hocon-1.4.0.gem need met, for package rubygem-hocon
+	srcpath=https://github.com/puppetlabs/ruby-hocon/archive/1.4.0/ruby-hocon-1.4.0.tar.gz
+ruby-hocon-1.4.0.tar.gz already with us in /third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/rubygem-hocon, for package rubygem-hocon
+ruby-hocon-1.4.0.tar.gz need met, for package rubygem-hocon
+spcfl_fullpath=/third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/rubygem-deep_merge/rubygem-deep_merge.spec
+	srcpath=https://rubygems.org/gems/deep_merge-1.2.2.gem
+deep_merge-1.2.2.gem already with us in /third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/rubygem-deep_merge, for package rubygem-deep_merge
+deep_merge-1.2.2.gem need met, for package rubygem-deep_merge
+spcfl_fullpath=/third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/libselinux/libselinux.spec
+	Missing spec /third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/libselinux/libselinux.spec for package libselinux
+spcfl_fullpath=/third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/rubygem-scanf/rubygem-scanf.spec
+	srcpath=https://rubygems.org/gems/scanf-1.0.0.gem
+scanf-1.0.0.gem already with us in /third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/rubygem-scanf, for package rubygem-scanf
+scanf-1.0.0.gem need met, for package rubygem-scanf
+	srcpath=LICENSE.txt
+LICENSE.txt already with us in /third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/rubygem-scanf, for package rubygem-scanf
+LICENSE.txt need met, for package rubygem-scanf
+	srcpath=data.txt
+data.txt already with us in /third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/rubygem-scanf, for package rubygem-scanf
+data.txt need met, for package rubygem-scanf
+	srcpath=test_scanf.rb
+test_scanf.rb already with us in /third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/rubygem-scanf, for package rubygem-scanf
+test_scanf.rb need met, for package rubygem-scanf
+	srcpath=test_scanfblocks.rb
+test_scanfblocks.rb already with us in /third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/rubygem-scanf, for package rubygem-scanf
+test_scanfblocks.rb need met, for package rubygem-scanf
+	srcpath=test_scanfio.rb
+test_scanfio.rb already with us in /third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/rubygem-scanf, for package rubygem-scanf
+test_scanfio.rb need met, for package rubygem-scanf
+spcfl_fullpath=/third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/rubygem-test-unit-ruby-core/rubygem-test-unit-ruby-core.spec
+	srcpath=https://rubygems.org/gems/test-unit-ruby-core-1.0.6.gem
+test-unit-ruby-core-1.0.6.gem already with us in /third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/rubygem-test-unit-ruby-core, for package rubygem-test-unit-ruby-core
+test-unit-ruby-core-1.0.6.gem need met, for package rubygem-test-unit-ruby-core
+	srcpath=test-unit-ruby-core-1.0.6-additional.tar.gz
+	trbl=test-unit-ruby-core-1.0.6-additional.tar.gz
+	Missing tarball test-unit-ruby-core-1.0.6-additional.tar.gz in pre-downloaded /fifth_disk/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs//rubygem-test-unit-ruby-core for package rubygem-test-unit-ruby-core
+	non-http path!  Skipping download.
+	srcpath=test-unit-ruby-core-create-missing-files.sh
+test-unit-ruby-core-create-missing-files.sh already with us in /third_disk/bb05Mar/azurelinux//SPECS-EXTENDED/rubygem-test-unit-ruby-core, for package rubygem-test-unit-ruby-core
+test-unit-ruby-core-create-missing-files.sh need met, for package rubygem-test-unit-ruby-core

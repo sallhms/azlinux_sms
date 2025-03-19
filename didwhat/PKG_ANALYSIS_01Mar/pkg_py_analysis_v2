@@ -1,0 +1,256 @@
+
+
+
+MSTR_LIST="/home/neerajs/Downloads/docker_folder/impspc/mlist_extpkg"
+#MSTR_LIST="/home/neerajs/Downloads/docker_folder/impspc/smlist_w_badpkgnm"
+#MSTR_LIST="/home/neerajs/Downloads/docker_folder/impspc/fifty_pkglist"
+#MSTR_LIST="/home/neerajs/Downloads/docker_folder/impspc/first_fifty_pkglist"
+#MSTR_LIST="/home/neerajs/Downloads/docker_folder/impspc/somelist_pkgs"
+MSREPO_2MAIN_WORKDIR="/home/neerajs/work/REPOS/Microsoft_AZL/azurelinux"
+MSREPO_3DEV_WORKDIR="/home/neerajs/work/REPOS/Microsoft_AZL/azurelinux"
+BUILD_ARTFCT_STATUS_FL="/home/neerajs/Downloads/daily_builds/06Nov2024/build_state.csv"
+#BUILD_ARTFCT_STATUS_FL="/home/neerajs/utils/TestIdeas/PKG_ANALYSIS/last_fifty_build_state.csv"
+DNLD_DETAILS_FL="/home/neerajs/Downloads/docker_folder/impspc/fetchdir/scr_run_log.txt"
+
+import pandas as pd
+import re
+from pathlib import Path
+
+ver_bld_status = ''
+rel_bld_status = ''
+bld_status = ''
+
+dnld_ver = ''
+dnld_rel = ''
+dnld_det_fl_object = ''
+dnld_det_fl_lines = ''
+dnld_det_success = 0
+dnld_det_srpmlist = []
+dl_srpm_count = 0
+dl_srpm1 = 'Default Initialized'
+dl_srpm2 = 'Default Initialized'
+dl_srpm3 = 'Default Initialized'
+
+pkg_existence = ''
+
+def check_build_status(pnm):
+	global ver_bld_status
+	global rel_bld_status
+	global bld_status
+
+	cols = ['Package','State','Blocker','IsTest']
+	table = pd.read_csv(BUILD_ARTFCT_STATUS_FL, usecols=cols)
+	for row in table.itertuples():
+		#if src.rpm extension is present split it and pick the name part excluding src.rpm
+		name_wo_srcrpm = re.split(r"(.src.rpm)", row[1])
+		name_parts = re.search(r"(.*)-(.*)-(.*)$", name_wo_srcrpm[0])
+		#print(f'for srpm name {row[1]} the parts of the package name are:')
+		#print(f'Full string:{name_parts[0]}, package name:{name_parts[1]}, version:{name_parts[2]}, release:{name_parts[3]}')
+		if ( pnm == name_parts[1] ):
+			#print (f'for package {pnm}, the srpm is {name_parts[0]}, version is {name_parts[2]}, release is {name_parts[3]}') 
+			ver_bld_status = name_parts[2]
+			rel_bld_status = name_parts[3]
+			bld_status = row[2]
+			break
+	if ( pnm != name_parts[1] ):
+		#print (f'package {pnm} not in the build list')
+		ver_bld_status = f'Not Found'
+		rel_bld_status = f'Not Found'
+		bld_status = f'Not Found'
+
+def check_dnld_status(pkname):
+	global dnld_det_fl_lines
+	in_pk_section = 0
+	global dnld_det_srpmlist
+	global dnld_det_success
+	global dnld_ver
+	global dnld_rel
+	global dl_srpm_count
+	global dl_srpm1
+	global dl_srpm2
+	global dl_srpm3
+
+	dnld_det_srpmlist.clear()
+	dnld_det_success = 0
+	dl_srpm_count = 0
+	dl_srpm1 = 'Default Initialized'
+	dl_srpm2 = 'Default Initialized'
+	dl_srpm3 = 'Default Initialized'
+	dnld_ver = ''
+	dnld_rel = ''
+
+	count = 0
+	for line in dnld_det_fl_lines:
+		count = count + 1
+		#print (line)
+		pk_first_line_parts = re.search(r"^Attempting for (.*)", line)
+		if ( pk_first_line_parts != None ):
+			#print (f'line num {count} is: {pk_first_line_parts}')
+			#print (f'first part {pk_first_line_parts[0]}, second part {pk_first_line_parts[1]}')
+			if ( pkname == pk_first_line_parts[1] ):
+				in_pk_section = 1
+				#print (f'{pkname}: Section starts at line {count}')
+
+		if ( 1 == in_pk_section ):
+			#print (f'{pkname}: line {count} in package section')
+			ignore_pattern1 = re.search(r"^===================", line)
+			if ( ignore_pattern1 != None ):
+				#print (f'Ignoring the pattern 1')
+				continue
+			ignore_pattern2 = re.search(r"^dest_dir\/.*", line)
+			if ( ignore_pattern2 != None ):
+				#print (f'Ignoring the pattern 2')
+				continue
+			ignore_pattern3 = re.search(r"^enabling fedora-.*source repository", line)
+			if ( ignore_pattern3 != None ):
+				#print (f'Ignoring the pattern 3')
+				continue
+			ignore_pattern4 = re.search(r"^enabling updates-source repository", line)
+			if ( ignore_pattern4 != None ):
+				#print (f'Ignoring the pattern 4')
+				continue
+			ignore_pattern5 = re.search(r"^Fedora 41 .*/s \| .*", line)
+			if ( ignore_pattern5 != None ):
+				#print (f'Ignoring the pattern 5')
+				continue
+			ignore_pattern6 = re.search(r"^Last metadata expiration check:.*", line)
+			if ( ignore_pattern6 != None ):
+				#print (f'Ignoring the pattern 6')
+				continue
+			srpm_pattern = re.search(r"^(.*) [0-9][0-9\.]*.*\|.*", line)
+			if ( srpm_pattern != None ):
+				stripped_srpm_pattern=srpm_pattern[1].strip()
+				#print (f'{pkname}: srpm_pattern is {stripped_srpm_pattern}')
+				dnld_det_srpmlist.append(stripped_srpm_pattern)
+				dl_srpm_count = dl_srpm_count + 1
+			end_pattern_failcase = re.search(r"^DL FAIL:.*", line)
+			if ( end_pattern_failcase != None ):
+				end_pk_section = 1
+				dnld_det_success = 0
+				#print (f'{pkname}: download fail seen at line {count}')
+				break
+
+			end_pattern_successcase = re.search(r"^DL SUCCESS:.*", line)
+			if ( end_pattern_successcase != None ):
+				end_pk_section = 1
+				dnld_det_success = 1
+				#print (f'{pkname}: download success seen at line {count}')
+				#print (f'the srpm list is {dnld_det_srpmlist}')
+				#find the version and release of the first srpm in the list of srpms downloaded for this package
+				#remove the .src.rpm extension if present in the name of the package file
+				name_wo_srcrpm = re.split(r"(.src.rpm)", dnld_det_srpmlist[0])
+				if ( name_wo_srcrpm != None):
+					name_parts = re.search(r"(.*)-(.*)-(.*)$", name_wo_srcrpm[0])
+					#print(f'for srpm name {row[1]} the parts of the package name are:')
+					#print(f'Full string:{name_parts[0]}, package name:{name_parts[1]}, version:{name_parts[2]}, release:{name_parts[3]}')
+					dnld_ver = name_parts[2] 
+					dnld_rel = name_parts[3] 
+					#print(f'For the first srpm version is {dnld_ver} and release is {dnld_rel}')
+				if ( 1 <= dl_srpm_count ):
+					dl_srpm1 = dnld_det_srpmlist[0]
+				if ( 2 <= dl_srpm_count ):
+					dl_srpm2 = dnld_det_srpmlist[1]
+				if ( 3 <= dl_srpm_count ):
+					dl_srpm3 = dnld_det_srpmlist[2]
+				break
+
+	if ( 1 != in_pk_section ):
+		#print (f'{pkname}: Not in downloads')
+		dnld_det_success = 0
+
+def check_pkg_azl_existence(pkname):
+	global pkg_existence
+
+	pathstr=MSREPO_3DEV_WORKDIR + "/SPECS/" + pkname
+	#print (f'pathstr is {pathstr}')
+	file=Path(pathstr)
+	if ( file.is_dir() ):
+		pkg_in_3_core = 1
+	else:
+		pkg_in_3_core = 0
+		
+	pathstr=MSREPO_3DEV_WORKDIR + "/SPECS-EXTENDED/" + pkname
+	#print (f'pathstr is {pathstr}')
+	file=Path(pathstr)
+	if ( file.is_dir() ):
+		pkg_in_3_ext = 1
+	else:
+		pkg_in_3_ext = 0
+
+	if ( pkg_in_3_core == 1 and pkg_in_3_ext == 1):
+		pkg_existence = 'EXISTS_IN_BOTH'
+	elif ( pkg_in_3_core == 1 and pkg_in_3_ext == 0):
+		pkg_existence = 'MOVED_TO_CORE'
+	elif ( pkg_in_3_core == 0 and pkg_in_3_ext == 0):
+		pkg_existence = 'REMOVED_FROM_BOTH'
+	else:
+		pkg_existence = 'EXISTS_IN_EXT'
+
+	#print (f'{pkname} {pkg_existence}')
+
+		
+def main() -> None:
+	global bld_status
+	global ver_bld_status
+	global rel_bld_status
+	global dnld_det_fl_object
+	global dnld_det_fl_lines
+	global dnld_ver
+	global dnld_rel
+	global dnld_det_srpmlist
+	global dl_srpm_count
+	global dl_srpm1
+	global dl_srpm2
+	global dl_srpm3
+	global dnld_det_success
+	global pkg_existence
+
+	dnld_det_fl_object = open(DNLD_DETAILS_FL, 'r')
+	dnld_det_fl_lines = dnld_det_fl_object.readlines()
+	
+	pk_count = 0
+	print (f'Package,Build Status,Version in Build Status,Release in Build Status,Download Success,Dowloaded SRPM 1,Dowloaded SRPM 2,Dowloaded SRPM 3,Version First SRPM,Release First SRPM,Package location info')
+	table = pd.read_csv(MSTR_LIST, header=None)
+	for row in table.itertuples():
+		pk_count = pk_count + 1
+
+		#print(f'Package Name {row[1]}')
+		pkname = row[1]
+		check_build_status(pkname)
+		#print (f' Package:{pkname}, Version:{ver_bld_status}, Release:{rel_bld_status}, Build Status:{bld_status}')
+		check_dnld_status(pkname)
+		#check pkg existence in Azure Linux Repository
+		check_pkg_azl_existence(pkname)
+
+		print (f'{pkname},{bld_status},{ver_bld_status},{rel_bld_status},{dnld_det_success},{dl_srpm1},{dl_srpm2},{dl_srpm3},{dnld_ver},{dnld_rel},{pkg_existence}')
+		#if ( pk_count > 7 ):
+			#break
+		
+if __name__ == '__main__':
+	main()
+
+#Change History
+#-------------
+#v1:
+#Initial version.  Takes as input :
+#    1.   The Master List of packages, 
+#    2.   Path for 2.0 main branch of Mariner Sources, 
+#    3.   3.0-dev branch of Mariner Sources (Azure Linux Sources), 
+#    4.   Build status csv file from 3.0 main Build Artifacts, 
+#    5.   Downloads details generated by the download script 
+#And generates information :
+#    1.   About the presence of the package in 3.0-dev branch SPECS and SPECS-EXTENDED folders, 
+#    2.   Build status of package in the csv file, 
+#    3.   Its version and release in that build, 
+#    4.   The download information like if download was successful or not, 
+#    5.   Which srpms were downloaded for a given package, 
+#    6.   And the version and release of the first srpm downloaded
+#NOTE 1:  About existence in Mariner sources, only the information about existence in 3.0-dev SPECS and SPECS-EXTENDED folders is generated.
+#         The input of the 2.0 Mariner Sources paths is ignored as of now.
+#
+#v2:
+#    1.   The srpm file downloaded information is not printed into the output csv as a list, which used to generate variable number
+#         of columns.  Instead 3 has been assumed as an upper limit on the downloaded srpms whose information we will capture.  
+#         This way there is a fixed number of columns for the downloaded srpms per package, which is 3.
+#         In practical run only two columns got used and that too for only one package "libldb".  For rest all packages if the download is 
+#         successful, this count has been 1 only.  For "libldb" two srpm files "samba" and "libldb" were downloaded.

@@ -1,0 +1,436 @@
+time="2025-03-18T21:34:37Z" level=info msg="* Creating a ccache manager instance *"
+time="2025-03-18T21:34:37Z" level=info msg="  ccache root folder         : (/third_disk/bb17Mar/azurelinux/ccache)"
+time="2025-03-18T21:34:37Z" level=info msg="  ccache remote configuration: (/third_disk/bb17Mar/azurelinux/toolkit/resources/manifests/package/ccache-configuration.json)"
+time="2025-03-18T21:34:37Z" level=info msg="  loading ccache configuration file: /third_disk/bb17Mar/azurelinux/toolkit/resources/manifests/package/ccache-configuration.json"
+time="2025-03-18T21:34:37Z" level=info msg="    Type           : azure-blob-storage"
+time="2025-03-18T21:34:37Z" level=info msg="    TenantId       : "
+time="2025-03-18T21:34:37Z" level=info msg="    UserName       : "
+time="2025-03-18T21:34:37Z" level=info msg="    StorageAccount : marinerccache"
+time="2025-03-18T21:34:37Z" level=info msg="    ContainerName  : 30-stable"
+time="2025-03-18T21:34:37Z" level=info msg="    Tagsfolder     : tags"
+time="2025-03-18T21:34:37Z" level=info msg="    DownloadEnabled: true"
+time="2025-03-18T21:34:37Z" level=info msg="    DownloadLatest : true"
+time="2025-03-18T21:34:37Z" level=info msg="    DownloadFolder : "
+time="2025-03-18T21:34:37Z" level=info msg="    UploadEnabled  : false"
+time="2025-03-18T21:34:37Z" level=info msg="    UploadFolder   : "
+time="2025-03-18T21:34:37Z" level=info msg="    UpdateLatest   : false"
+time="2025-03-18T21:34:37Z" level=info msg="    KeepLatestOnly : false"
+time="2025-03-18T21:34:37Z" level=info msg="  creating blob storage client..."
+time="2025-03-18T21:34:37Z" level=info msg="  ccache pkg folder : (/third_disk/bb17Mar/azurelinux/ccache/work/x86_64/rubygem-liquid)"
+time="2025-03-18T21:34:37Z" level=info msg="  tag local source  : (/third_disk/bb17Mar/azurelinux/ccache/downloads/rubygem-liquid-latest-build.txt)"
+time="2025-03-18T21:34:37Z" level=info msg="  tag remote source : (x86_64/tags/rubygem-liquid-latest-build.txt)"
+time="2025-03-18T21:34:37Z" level=info msg="  tag local target  : (/third_disk/bb17Mar/azurelinux/ccache/uploads/rubygem-liquid-latest-build.txt)"
+time="2025-03-18T21:34:37Z" level=info msg="  tag remote target : (x86_64/tags/rubygem-liquid-latest-build.txt)"
+time="2025-03-18T21:34:37Z" level=info msg="  ccache is configured to use the latest from the remote store..."
+time="2025-03-18T21:34:37Z" level=info msg="  checking if (/third_disk/bb17Mar/azurelinux/ccache/downloads/rubygem-liquid-latest-build.txt) already exists..."
+time="2025-03-18T21:34:37Z" level=info msg="  updating () to (3.0.20250206-3.0-729715)..."
+time="2025-03-18T21:34:37Z" level=info msg="  tar local source  : (/third_disk/bb17Mar/azurelinux/ccache/downloads/rubygem-liquid-ccache.tar.gz)"
+time="2025-03-18T21:34:37Z" level=info msg="  tar remote source : (x86_64/3.0.20250206-3.0-729715/rubygem-liquid-ccache.tar.gz)"
+time="2025-03-18T21:34:37Z" level=info msg="  tar local target  : (/third_disk/bb17Mar/azurelinux/ccache/uploads/rubygem-liquid-ccache.tar.gz)"
+time="2025-03-18T21:34:37Z" level=info msg="  tar remote target : (x86_64//rubygem-liquid-ccache.tar.gz)"
+time="2025-03-18T21:34:37Z" level=info msg="* processing download of ccache artifacts..."
+time="2025-03-18T21:34:37Z" level=info msg="  downloading (x86_64/3.0.20250206-3.0-729715/rubygem-liquid-ccache.tar.gz) to (/third_disk/bb17Mar/azurelinux/ccache/downloads/rubygem-liquid-ccache.tar.gz)..."
+time="2025-03-18T21:34:37Z" level=info msg="Building (rubygem-liquid-5.1.0-1.azl3.src.rpm)."
+time="2025-03-18T21:34:39Z" level=info msg="  download time: 2.30763893s"
+time="2025-03-18T21:34:39Z" level=info msg="  uncompressing (/third_disk/bb17Mar/azurelinux/ccache/downloads/rubygem-liquid-ccache.tar.gz) into (/third_disk/bb17Mar/azurelinux/ccache/work/x86_64/rubygem-liquid)."
+time="2025-03-18T21:34:39Z" level=debug msg="Executing: [tar xf /third_disk/bb17Mar/azurelinux/ccache/downloads/rubygem-liquid-ccache.tar.gz -C /third_disk/bb17Mar/azurelinux/ccache/work/x86_64/rubygem-liquid .]"
+time="2025-03-18T21:34:39Z" level=info msg="  uncompress time: 66.97529ms"
+time="2025-03-18T21:34:39Z" level=debug msg="Executing: [systemd-detect-virt -c]"
+time="2025-03-18T21:34:39Z" level=debug msg="Tool is not running in a container, systemd-detect-virt reports: 'none'"
+time="2025-03-18T21:34:39Z" level=debug msg="Using (/usr/bin/pigz) to extract tar"
+time="2025-03-18T21:34:39Z" level=debug msg="Executing: [tar -I /usr/bin/pigz -xf /third_disk/bb17Mar/azurelinux/build/worker/worker_chroot.tar.gz -C /third_disk/bb17Mar/azurelinux/build/worker/chroot/rubygem-liquid-5.1.0-1.azl3_TEST_BUILD]"
+time="2025-03-18T21:35:06Z" level=debug msg="Mounting: source: (), target: (/third_disk/bb17Mar/azurelinux/build/worker/chroot/rubygem-liquid-5.1.0-1.azl3_TEST_BUILD/dev), fstype: (devtmpfs), flags: (0x0), data: ()"
+time="2025-03-18T21:35:06Z" level=debug msg="Mounting: source: (), target: (/third_disk/bb17Mar/azurelinux/build/worker/chroot/rubygem-liquid-5.1.0-1.azl3_TEST_BUILD/proc), fstype: (proc), flags: (0x0), data: ()"
+time="2025-03-18T21:35:06Z" level=debug msg="Mounting: source: (), target: (/third_disk/bb17Mar/azurelinux/build/worker/chroot/rubygem-liquid-5.1.0-1.azl3_TEST_BUILD/sys), fstype: (sysfs), flags: (0x0), data: ()"
+time="2025-03-18T21:35:06Z" level=debug msg="Mounting: source: (), target: (/third_disk/bb17Mar/azurelinux/build/worker/chroot/rubygem-liquid-5.1.0-1.azl3_TEST_BUILD/run), fstype: (tmpfs), flags: (0x0), data: ()"
+time="2025-03-18T21:35:06Z" level=debug msg="Mounting: source: (), target: (/third_disk/bb17Mar/azurelinux/build/worker/chroot/rubygem-liquid-5.1.0-1.azl3_TEST_BUILD/dev/pts), fstype: (devpts), flags: (0x0), data: (gid=5,mode=620)"
+time="2025-03-18T21:35:06Z" level=debug msg="Mounting: source: (), target: (/third_disk/bb17Mar/azurelinux/build/worker/chroot/rubygem-liquid-5.1.0-1.azl3_TEST_BUILD/localrpms), fstype: (overlay), flags: (0x0), data: (lowerdir=/third_disk/bb17Mar/azurelinux/out/RPMS,upperdir=/third_disk/bb17Mar/azurelinux/build/worker/chroot/rubygem-liquid-5.1.0-1.azl3_TEST_BUILD/localrpms,workdir=/third_disk/bb17Mar/azurelinux/build/worker/chroot/rubygem-liquid-5.1.0-1.azl3_TEST_BUILD/overlaywork_rpms)"
+time="2025-03-18T21:35:06Z" level=debug msg="Mounting: source: (), target: (/third_disk/bb17Mar/azurelinux/build/worker/chroot/rubygem-liquid-5.1.0-1.azl3_TEST_BUILD/toolchainrpms), fstype: (overlay), flags: (0x0), data: (lowerdir=/third_disk/bb17Mar/azurelinux/build/toolchain_rpms,upperdir=/third_disk/bb17Mar/azurelinux/build/worker/chroot/rubygem-liquid-5.1.0-1.azl3_TEST_BUILD/toolchainrpms,workdir=/third_disk/bb17Mar/azurelinux/build/worker/chroot/rubygem-liquid-5.1.0-1.azl3_TEST_BUILD/overlaywork_toolchain)"
+time="2025-03-18T21:35:06Z" level=debug msg="Mounting: source: (/third_disk/bb17Mar/azurelinux/build/rpm_cache/cache), target: (/third_disk/bb17Mar/azurelinux/build/worker/chroot/rubygem-liquid-5.1.0-1.azl3_TEST_BUILD/upstream-cached-rpms), fstype: (), flags: (0xc0ed1000), data: ()"
+time="2025-03-18T21:35:06Z" level=debug msg="Mounting: source: (/third_disk/bb17Mar/azurelinux/ccache/work/x86_64/rubygem-liquid), target: (/third_disk/bb17Mar/azurelinux/build/worker/chroot/rubygem-liquid-5.1.0-1.azl3_TEST_BUILD/ccache-dir), fstype: (), flags: (0xc0ed1000), data: ()"
+time="2025-03-18T21:35:06Z" level=debug msg="Enabling network access because we're running package tests."
+time="2025-03-18T21:35:06Z" level=debug msg="Copying (/third_disk/bb17Mar/azurelinux/toolkit/resources/manifests/package/local.repo) to (/third_disk/bb17Mar/azurelinux/build/worker/chroot/rubygem-liquid-5.1.0-1.azl3_TEST_BUILD/etc/yum.repos.d/local.repo)"
+time="2025-03-18T21:35:06Z" level=debug msg="Executing: [cp --preserve=mode /third_disk/bb17Mar/azurelinux/toolkit/resources/manifests/package/local.repo /third_disk/bb17Mar/azurelinux/build/worker/chroot/rubygem-liquid-5.1.0-1.azl3_TEST_BUILD/etc/yum.repos.d/local.repo]"
+time="2025-03-18T21:35:06Z" level=debug msg="Copying (/third_disk/bb17Mar/azurelinux/build/INTERMEDIATE_SRPMS/rubygem-liquid-5.1.0-1.azl3.src.rpm) to (/third_disk/bb17Mar/azurelinux/build/worker/chroot/rubygem-liquid-5.1.0-1.azl3_TEST_BUILD/root/SRPMS/rubygem-liquid-5.1.0-1.azl3.src.rpm)"
+time="2025-03-18T21:35:06Z" level=debug msg="Executing: [cp --preserve=mode /third_disk/bb17Mar/azurelinux/build/INTERMEDIATE_SRPMS/rubygem-liquid-5.1.0-1.azl3.src.rpm /third_disk/bb17Mar/azurelinux/build/worker/chroot/rubygem-liquid-5.1.0-1.azl3_TEST_BUILD/root/SRPMS/rubygem-liquid-5.1.0-1.azl3.src.rpm]"
+time="2025-03-18T21:35:06Z" level=debug msg="Copying (/third_disk/bb17Mar/azurelinux/toolkit/resources/manifests/package/macros.override) to (/third_disk/bb17Mar/azurelinux/build/worker/chroot/rubygem-liquid-5.1.0-1.azl3_TEST_BUILD/usr/lib/rpm/macros.d/macros.override)"
+time="2025-03-18T21:35:06Z" level=debug msg="Executing: [cp --preserve=mode /third_disk/bb17Mar/azurelinux/toolkit/resources/manifests/package/macros.override /third_disk/bb17Mar/azurelinux/build/worker/chroot/rubygem-liquid-5.1.0-1.azl3_TEST_BUILD/usr/lib/rpm/macros.d/macros.override]"
+time="2025-03-18T21:35:06Z" level=debug msg="Copying (/etc/resolv.conf) to (/third_disk/bb17Mar/azurelinux/build/worker/chroot/rubygem-liquid-5.1.0-1.azl3_TEST_BUILD/etc/resolv.conf)"
+time="2025-03-18T21:35:06Z" level=debug msg="Executing: [cp --preserve=mode /etc/resolv.conf /third_disk/bb17Mar/azurelinux/build/worker/chroot/rubygem-liquid-5.1.0-1.azl3_TEST_BUILD/etc/resolv.conf]"
+time="2025-03-18T21:35:06Z" level=debug msg="Entering Chroot: '/third_disk/bb17Mar/azurelinux/build/worker/chroot/rubygem-liquid-5.1.0-1.azl3_TEST_BUILD'"
+time="2025-03-18T21:35:06Z" level=debug msg="Creating RPM repository in (/localrpms)"
+time="2025-03-18T21:35:06Z" level=debug msg="Executing: [createrepo_c --compatibility /localrpms]"
+time="2025-03-18T21:35:19Z" level=debug msg="Creating RPM repository in (/toolchainrpms)"
+time="2025-03-18T21:35:19Z" level=debug msg="Executing: [createrepo_c --compatibility /toolchainrpms]"
+time="2025-03-18T21:35:30Z" level=debug msg="Executing: [tdnf install -y --releasever=3.0 ruby-3.3.5-1.azl3.x86_64 rubygems-devel-3.5.22-1.azl3.noarch rubygem-minitest-5.19.0-1.azl3.noarch]"
+time="2025-03-18T21:35:54Z" level=info msg="USE_CCACHE: installing package: ccache"
+time="2025-03-18T21:35:54Z" level=debug msg="Executing: [tdnf install -y --releasever=3.0 ccache]"
+time="2025-03-18T21:36:07Z" level=debug msg="Executing: [rpmbuild -ri --nodeps -D with_check 1 -D dist .azl3 -D azl 3 -D distro_release_version 3.0.20250318.1347 -D mariner_build_number 1c8f149b8 -D distro_module_ldflags  -Wl,-dT,%{_topdir}/BUILD/module_info.ld -D ccache_enabled true /root/SRPMS/rubygem-liquid-5.1.0-1.azl3.src.rpm]"
+time="2025-03-18T21:36:11Z" level=debug msg="Installing /root/SRPMS/rubygem-liquid-5.1.0-1.azl3.src.rpm"
+time="2025-03-18T21:36:11Z" level=debug msg="Executing(%prep): /bin/sh -e /var/tmp/rpm-tmp.2JaOgh"
+time="2025-03-18T21:36:11Z" level=debug msg="+ umask 022"
+time="2025-03-18T21:36:11Z" level=debug msg="+ cd /usr/src/azl/BUILD"
+time="2025-03-18T21:36:11Z" level=debug msg="+ /usr/lib/rpm/azl/gen-ld-script.sh rubygem-liquid 5.1.0-1.azl3 /usr/src/azl 3.0.20250318.1347"
+time="2025-03-18T21:36:11Z" level=debug msg="gen-ld-script.sh name(rubygem-liquid) version(5.1.0-1.azl3) _topdir(/usr/src/azl) osversion(3.0.20250318.1347)"
+time="2025-03-18T21:36:12Z" level=debug msg="==== ELF note generator v2.1.2 ===="
+time="2025-03-18T21:36:12Z" level=debug msg="outdir is: /usr/src/azl/BUILD/"
+time="2025-03-18T21:36:12Z" level=debug msg="Stamp method: LinkerOnly"
+time="2025-03-18T21:36:12Z" level=debug
+time="2025-03-18T21:36:12Z" level=debug msg="#ifndef _AUTO_MODULE_INFO_H_"
+time="2025-03-18T21:36:12Z" level=debug msg="#define _AUTO_MODULE_INFO_H_"
+time="2025-03-18T21:36:12Z" level=debug
+time="2025-03-18T21:36:12Z" level=debug msg="#define MODULE_VERSION      \"5.1.0.0\""
+time="2025-03-18T21:36:12Z" level=debug msg="#define PACKAGE_VERSION     \"5.1.0-1.azl3\""
+time="2025-03-18T21:36:12Z" level=debug msg="#define PACKAGE_NAME        \"rubygem-liquid\""
+time="2025-03-18T21:36:12Z" level=debug msg="#define TARGET_OS           \"mariner\""
+time="2025-03-18T21:36:12Z" level=debug msg="#define TARGET_OS_VERSION   \"3.0\""
+time="2025-03-18T21:36:12Z" level=debug
+time="2025-03-18T21:36:12Z" level=debug msg="#endif //_AUTO_MODULE_INFO_H_"
+time="2025-03-18T21:36:12Z" level=debug msg="Generated /usr/src/azl/BUILD/auto_module_info.h file..."
+time="2025-03-18T21:36:12Z" level=debug
+time="2025-03-18T21:36:12Z" level=debug msg="Successfully generated module_info.ld and .note.package files..."
+time="2025-03-18T21:36:12Z" level=debug msg="+ cd /usr/src/azl/BUILD"
+time="2025-03-18T21:36:12Z" level=debug msg="+ rm -rf liquid-5.1.0"
+time="2025-03-18T21:36:12Z" level=debug msg="+ /usr/lib/rpm/rpmuncompress -x /usr/src/azl/SOURCES/liquid-5.1.0.tar.gz"
+time="2025-03-18T21:36:12Z" level=debug msg="+ STATUS=0"
+time="2025-03-18T21:36:12Z" level=debug msg="+ '[' 0 -ne 0 ']'"
+time="2025-03-18T21:36:12Z" level=debug msg="+ cd liquid-5.1.0"
+time="2025-03-18T21:36:12Z" level=debug msg="+ /bin/chmod -Rf a+rX,u+w,g-w,o-w ."
+time="2025-03-18T21:36:12Z" level=debug msg="+ RPM_EC=0"
+time="2025-03-18T21:36:12Z" level=debug msg="++ jobs -p"
+time="2025-03-18T21:36:12Z" level=debug msg="+ exit 0"
+time="2025-03-18T21:36:12Z" level=debug msg="Executing(%build): /bin/sh -e /var/tmp/rpm-tmp.F5zHDr"
+time="2025-03-18T21:36:12Z" level=debug msg="+ umask 022"
+time="2025-03-18T21:36:12Z" level=debug msg="+ cd /usr/src/azl/BUILD"
+time="2025-03-18T21:36:12Z" level=debug msg="+ CFLAGS='-O2 -g -pipe -Wall -Werror=format-security -Wp,-D_FORTIFY_SOURCE=2 -Wp,-D_GLIBCXX_ASSERTIONS -fexceptions -fstack-protector-strong -grecord-gcc-switches -specs=/usr/lib/rpm/azl/default-hardened-cc1    -fcommon -m64 -mtune=generic -fasynchronous-unwind-tables -fstack-clash-protection -fcf-protection'"
+time="2025-03-18T21:36:12Z" level=debug msg="+ export CFLAGS"
+time="2025-03-18T21:36:12Z" level=debug msg="+ CXXFLAGS='-O2 -g -pipe -Wall -Werror=format-security -Wp,-D_FORTIFY_SOURCE=2 -Wp,-D_GLIBCXX_ASSERTIONS -fexceptions -fstack-protector-strong -grecord-gcc-switches -specs=/usr/lib/rpm/azl/default-hardened-cc1    -fcommon -m64 -mtune=generic -fasynchronous-unwind-tables -fstack-clash-protection -fcf-protection'"
+time="2025-03-18T21:36:12Z" level=debug msg="+ export CXXFLAGS"
+time="2025-03-18T21:36:12Z" level=debug msg="+ FFLAGS='-O2 -g -pipe -Wall -Werror=format-security -Wp,-D_FORTIFY_SOURCE=2 -Wp,-D_GLIBCXX_ASSERTIONS -fexceptions -fstack-protector-strong -grecord-gcc-switches -specs=/usr/lib/rpm/azl/default-hardened-cc1    -fcommon -m64 -mtune=generic -fasynchronous-unwind-tables -fstack-clash-protection -fcf-protection -I/usr/lib/gfortran/modules'"
+time="2025-03-18T21:36:12Z" level=debug msg="+ export FFLAGS"
+time="2025-03-18T21:36:12Z" level=debug msg="+ FCFLAGS='-O2 -g -pipe -Wall -Werror=format-security -Wp,-D_FORTIFY_SOURCE=2 -Wp,-D_GLIBCXX_ASSERTIONS -fexceptions -fstack-protector-strong -grecord-gcc-switches -specs=/usr/lib/rpm/azl/default-hardened-cc1    -fcommon -m64 -mtune=generic -fasynchronous-unwind-tables -fstack-clash-protection -fcf-protection -I/usr/lib/gfortran/modules'"
+time="2025-03-18T21:36:12Z" level=debug msg="+ export FCFLAGS"
+time="2025-03-18T21:36:12Z" level=debug msg="+ LDFLAGS='-Wl,-z,relro -Wl,--as-needed  -Wl,-z,now -specs=/usr/lib/rpm/azl/default-hardened-ld -Wl,-dT,/usr/src/azl/BUILD/module_info.ld'"
+time="2025-03-18T21:36:12Z" level=debug msg="+ export LDFLAGS"
+time="2025-03-18T21:36:12Z" level=debug msg="+ LT_SYS_LIBRARY_PATH=/usr/lib:"
+time="2025-03-18T21:36:12Z" level=debug msg="+ export LT_SYS_LIBRARY_PATH"
+time="2025-03-18T21:36:12Z" level=debug msg="+ PATH=/usr/lib/ccache:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
+time="2025-03-18T21:36:12Z" level=debug msg="+ export PATH"
+time="2025-03-18T21:36:12Z" level=debug msg="+ CCACHE_DIR=/ccache-dir"
+time="2025-03-18T21:36:12Z" level=debug msg="+ export CCACHE_DIR"
+time="2025-03-18T21:36:12Z" level=debug msg="+ CCACHE_COMPILERCHECK=content"
+time="2025-03-18T21:36:12Z" level=debug msg="+ export CCACHE_COMPILERCHECK"
+time="2025-03-18T21:36:12Z" level=debug msg="+ ccache --zero-stats"
+time="2025-03-18T21:36:12Z" level=debug msg="Statistics zeroed"
+time="2025-03-18T21:36:12Z" level=debug msg="+ cd liquid-5.1.0"
+time="2025-03-18T21:36:12Z" level=debug msg="+ gem build liquid"
+time="2025-03-18T21:36:13Z" level=debug msg="WARNING:  open-ended dependency on minitest (>= 0, development) is not recommended"
+time="2025-03-18T21:36:13Z" level=debug msg="  use a bounded requirement, such as \"~> x.y\""
+time="2025-03-18T21:36:13Z" level=debug msg="WARNING:  See https://guides.rubygems.org/specification-reference/ for help"
+time="2025-03-18T21:36:14Z" level=debug msg="  Successfully built RubyGem"
+time="2025-03-18T21:36:14Z" level=debug msg="  Name: liquid"
+time="2025-03-18T21:36:14Z" level=debug msg="  Version: 5.1.0"
+time="2025-03-18T21:36:14Z" level=debug msg="  File: liquid-5.1.0.gem"
+time="2025-03-18T21:36:14Z" level=debug msg="+ mkdir -p ./usr/lib/ruby/gems/3.3.0"
+time="2025-03-18T21:36:14Z" level=debug msg="+ CONFIGURE_ARGS='--with-cflags='\\''-O2 -g -pipe -Wall -Werror=format-security -Wp,-D_FORTIFY_SOURCE=2 -Wp,-D_GLIBCXX_ASSERTIONS -fexceptions -fstack-protector-strong -grecord-gcc-switches -specs=/usr/lib/rpm/azl/default-hardened-cc1    -fcommon -m64 -mtune=generic -fasynchronous-unwind-tables -fstack-clash-protection -fcf-protection'\\'' --with-cxxflags='\\''-O2 -g -pipe -Wall -Werror=format-security -Wp,-D_FORTIFY_SOURCE=2 -Wp,-D_GLIBCXX_ASSERTIONS -fexceptions -fstack-protector-strong -grecord-gcc-switches -specs=/usr/lib/rpm/azl/default-hardened-cc1    -fcommon -m64 -mtune=generic -fasynchronous-unwind-tables -fstack-clash-protection -fcf-protection'\\'' '"
+time="2025-03-18T21:36:14Z" level=debug msg="+ gem install -V --local --bindir /usr/bin --build-root . --force --document=ri,rdoc liquid-5.1.0.gem"
+time="2025-03-18T21:36:16Z" level=debug msg="WARNING:  You build with buildroot."
+time="2025-03-18T21:36:16Z" level=debug msg="  Build root: /usr/src/azl/BUILD/liquid-5.1.0"
+time="2025-03-18T21:36:16Z" level=debug msg="  Bin dir: /usr/src/azl/BUILD/liquid-5.1.0/usr/bin"
+time="2025-03-18T21:36:16Z" level=debug msg="  Gem home: /usr/src/azl/BUILD/liquid-5.1.0/usr/lib/ruby/gems/3.3.0"
+time="2025-03-18T21:36:16Z" level=debug msg="  Plugins dir: /usr/src/azl/BUILD/liquid-5.1.0/usr/lib/ruby/gems/3.3.0/plugins"
+time="2025-03-18T21:36:16Z" level=debug msg=/usr/src/azl/BUILD/liquid-5.1.0/usr/lib/ruby/gems/3.3.0/gems/liquid-5.1.0/History.md
+time="2025-03-18T21:36:16Z" level=debug msg=/usr/src/azl/BUILD/liquid-5.1.0/usr/lib/ruby/gems/3.3.0/gems/liquid-5.1.0/LICENSE
+time="2025-03-18T21:36:16Z" level=debug msg=/usr/src/azl/BUILD/liquid-5.1.0/usr/lib/ruby/gems/3.3.0/gems/liquid-5.1.0/README.md
+time="2025-03-18T21:36:16Z" level=debug msg=/usr/src/azl/BUILD/liquid-5.1.0/usr/lib/ruby/gems/3.3.0/gems/liquid-5.1.0/lib/liquid.rb
+time="2025-03-18T21:36:16Z" level=debug msg=/usr/src/azl/BUILD/liquid-5.1.0/usr/lib/ruby/gems/3.3.0/gems/liquid-5.1.0/lib/liquid/block.rb
+time="2025-03-18T21:36:16Z" level=debug msg=/usr/src/azl/BUILD/liquid-5.1.0/usr/lib/ruby/gems/3.3.0/gems/liquid-5.1.0/lib/liquid/block_body.rb
+time="2025-03-18T21:36:16Z" level=debug msg=/usr/src/azl/BUILD/liquid-5.1.0/usr/lib/ruby/gems/3.3.0/gems/liquid-5.1.0/lib/liquid/condition.rb
+time="2025-03-18T21:36:16Z" level=debug msg=/usr/src/azl/BUILD/liquid-5.1.0/usr/lib/ruby/gems/3.3.0/gems/liquid-5.1.0/lib/liquid/context.rb
+time="2025-03-18T21:36:16Z" level=debug msg=/usr/src/azl/BUILD/liquid-5.1.0/usr/lib/ruby/gems/3.3.0/gems/liquid-5.1.0/lib/liquid/document.rb
+time="2025-03-18T21:36:16Z" level=debug msg=/usr/src/azl/BUILD/liquid-5.1.0/usr/lib/ruby/gems/3.3.0/gems/liquid-5.1.0/lib/liquid/drop.rb
+time="2025-03-18T21:36:16Z" level=debug msg=/usr/src/azl/BUILD/liquid-5.1.0/usr/lib/ruby/gems/3.3.0/gems/liquid-5.1.0/lib/liquid/errors.rb
+time="2025-03-18T21:36:16Z" level=debug msg=/usr/src/azl/BUILD/liquid-5.1.0/usr/lib/ruby/gems/3.3.0/gems/liquid-5.1.0/lib/liquid/expression.rb
+time="2025-03-18T21:36:16Z" level=debug msg=/usr/src/azl/BUILD/liquid-5.1.0/usr/lib/ruby/gems/3.3.0/gems/liquid-5.1.0/lib/liquid/extensions.rb
+time="2025-03-18T21:36:16Z" level=debug msg=/usr/src/azl/BUILD/liquid-5.1.0/usr/lib/ruby/gems/3.3.0/gems/liquid-5.1.0/lib/liquid/file_system.rb
+time="2025-03-18T21:36:16Z" level=debug msg=/usr/src/azl/BUILD/liquid-5.1.0/usr/lib/ruby/gems/3.3.0/gems/liquid-5.1.0/lib/liquid/forloop_drop.rb
+time="2025-03-18T21:36:16Z" level=debug msg=/usr/src/azl/BUILD/liquid-5.1.0/usr/lib/ruby/gems/3.3.0/gems/liquid-5.1.0/lib/liquid/i18n.rb
+time="2025-03-18T21:36:16Z" level=debug msg=/usr/src/azl/BUILD/liquid-5.1.0/usr/lib/ruby/gems/3.3.0/gems/liquid-5.1.0/lib/liquid/interrupts.rb
+time="2025-03-18T21:36:16Z" level=debug msg=/usr/src/azl/BUILD/liquid-5.1.0/usr/lib/ruby/gems/3.3.0/gems/liquid-5.1.0/lib/liquid/lexer.rb
+time="2025-03-18T21:36:16Z" level=debug msg=/usr/src/azl/BUILD/liquid-5.1.0/usr/lib/ruby/gems/3.3.0/gems/liquid-5.1.0/lib/liquid/locales/en.yml
+time="2025-03-18T21:36:16Z" level=debug msg=/usr/src/azl/BUILD/liquid-5.1.0/usr/lib/ruby/gems/3.3.0/gems/liquid-5.1.0/lib/liquid/parse_context.rb
+time="2025-03-18T21:36:16Z" level=debug msg=/usr/src/azl/BUILD/liquid-5.1.0/usr/lib/ruby/gems/3.3.0/gems/liquid-5.1.0/lib/liquid/parse_tree_visitor.rb
+time="2025-03-18T21:36:16Z" level=debug msg=/usr/src/azl/BUILD/liquid-5.1.0/usr/lib/ruby/gems/3.3.0/gems/liquid-5.1.0/lib/liquid/parser.rb
+time="2025-03-18T21:36:16Z" level=debug msg=/usr/src/azl/BUILD/liquid-5.1.0/usr/lib/ruby/gems/3.3.0/gems/liquid-5.1.0/lib/liquid/parser_switching.rb
+time="2025-03-18T21:36:16Z" level=debug msg=/usr/src/azl/BUILD/liquid-5.1.0/usr/lib/ruby/gems/3.3.0/gems/liquid-5.1.0/lib/liquid/partial_cache.rb
+time="2025-03-18T21:36:16Z" level=debug msg=/usr/src/azl/BUILD/liquid-5.1.0/usr/lib/ruby/gems/3.3.0/gems/liquid-5.1.0/lib/liquid/profiler.rb
+time="2025-03-18T21:36:16Z" level=debug msg=/usr/src/azl/BUILD/liquid-5.1.0/usr/lib/ruby/gems/3.3.0/gems/liquid-5.1.0/lib/liquid/profiler/hooks.rb
+time="2025-03-18T21:36:16Z" level=debug msg=/usr/src/azl/BUILD/liquid-5.1.0/usr/lib/ruby/gems/3.3.0/gems/liquid-5.1.0/lib/liquid/range_lookup.rb
+time="2025-03-18T21:36:16Z" level=debug msg=/usr/src/azl/BUILD/liquid-5.1.0/usr/lib/ruby/gems/3.3.0/gems/liquid-5.1.0/lib/liquid/register.rb
+time="2025-03-18T21:36:16Z" level=debug msg=/usr/src/azl/BUILD/liquid-5.1.0/usr/lib/ruby/gems/3.3.0/gems/liquid-5.1.0/lib/liquid/resource_limits.rb
+time="2025-03-18T21:36:16Z" level=debug msg=/usr/src/azl/BUILD/liquid-5.1.0/usr/lib/ruby/gems/3.3.0/gems/liquid-5.1.0/lib/liquid/standardfilters.rb
+time="2025-03-18T21:36:16Z" level=debug msg=/usr/src/azl/BUILD/liquid-5.1.0/usr/lib/ruby/gems/3.3.0/gems/liquid-5.1.0/lib/liquid/static_registers.rb
+time="2025-03-18T21:36:16Z" level=debug msg=/usr/src/azl/BUILD/liquid-5.1.0/usr/lib/ruby/gems/3.3.0/gems/liquid-5.1.0/lib/liquid/strainer_factory.rb
+time="2025-03-18T21:36:16Z" level=debug msg=/usr/src/azl/BUILD/liquid-5.1.0/usr/lib/ruby/gems/3.3.0/gems/liquid-5.1.0/lib/liquid/strainer_template.rb
+time="2025-03-18T21:36:16Z" level=debug msg=/usr/src/azl/BUILD/liquid-5.1.0/usr/lib/ruby/gems/3.3.0/gems/liquid-5.1.0/lib/liquid/tablerowloop_drop.rb
+time="2025-03-18T21:36:16Z" level=debug msg=/usr/src/azl/BUILD/liquid-5.1.0/usr/lib/ruby/gems/3.3.0/gems/liquid-5.1.0/lib/liquid/tag.rb
+time="2025-03-18T21:36:16Z" level=debug msg=/usr/src/azl/BUILD/liquid-5.1.0/usr/lib/ruby/gems/3.3.0/gems/liquid-5.1.0/lib/liquid/tag/disableable.rb
+time="2025-03-18T21:36:16Z" level=debug msg=/usr/src/azl/BUILD/liquid-5.1.0/usr/lib/ruby/gems/3.3.0/gems/liquid-5.1.0/lib/liquid/tag/disabler.rb
+time="2025-03-18T21:36:16Z" level=debug msg=/usr/src/azl/BUILD/liquid-5.1.0/usr/lib/ruby/gems/3.3.0/gems/liquid-5.1.0/lib/liquid/tags/assign.rb
+time="2025-03-18T21:36:16Z" level=debug msg=/usr/src/azl/BUILD/liquid-5.1.0/usr/lib/ruby/gems/3.3.0/gems/liquid-5.1.0/lib/liquid/tags/break.rb
+time="2025-03-18T21:36:16Z" level=debug msg=/usr/src/azl/BUILD/liquid-5.1.0/usr/lib/ruby/gems/3.3.0/gems/liquid-5.1.0/lib/liquid/tags/capture.rb
+time="2025-03-18T21:36:16Z" level=debug msg=/usr/src/azl/BUILD/liquid-5.1.0/usr/lib/ruby/gems/3.3.0/gems/liquid-5.1.0/lib/liquid/tags/case.rb
+time="2025-03-18T21:36:16Z" level=debug msg=/usr/src/azl/BUILD/liquid-5.1.0/usr/lib/ruby/gems/3.3.0/gems/liquid-5.1.0/lib/liquid/tags/comment.rb
+time="2025-03-18T21:36:16Z" level=debug msg=/usr/src/azl/BUILD/liquid-5.1.0/usr/lib/ruby/gems/3.3.0/gems/liquid-5.1.0/lib/liquid/tags/continue.rb
+time="2025-03-18T21:36:16Z" level=debug msg=/usr/src/azl/BUILD/liquid-5.1.0/usr/lib/ruby/gems/3.3.0/gems/liquid-5.1.0/lib/liquid/tags/cycle.rb
+time="2025-03-18T21:36:16Z" level=debug msg=/usr/src/azl/BUILD/liquid-5.1.0/usr/lib/ruby/gems/3.3.0/gems/liquid-5.1.0/lib/liquid/tags/decrement.rb
+time="2025-03-18T21:36:16Z" level=debug msg=/usr/src/azl/BUILD/liquid-5.1.0/usr/lib/ruby/gems/3.3.0/gems/liquid-5.1.0/lib/liquid/tags/echo.rb
+time="2025-03-18T21:36:16Z" level=debug msg=/usr/src/azl/BUILD/liquid-5.1.0/usr/lib/ruby/gems/3.3.0/gems/liquid-5.1.0/lib/liquid/tags/for.rb
+time="2025-03-18T21:36:16Z" level=debug msg=/usr/src/azl/BUILD/liquid-5.1.0/usr/lib/ruby/gems/3.3.0/gems/liquid-5.1.0/lib/liquid/tags/if.rb
+time="2025-03-18T21:36:16Z" level=debug msg=/usr/src/azl/BUILD/liquid-5.1.0/usr/lib/ruby/gems/3.3.0/gems/liquid-5.1.0/lib/liquid/tags/ifchanged.rb
+time="2025-03-18T21:36:16Z" level=debug msg=/usr/src/azl/BUILD/liquid-5.1.0/usr/lib/ruby/gems/3.3.0/gems/liquid-5.1.0/lib/liquid/tags/include.rb
+time="2025-03-18T21:36:16Z" level=debug msg=/usr/src/azl/BUILD/liquid-5.1.0/usr/lib/ruby/gems/3.3.0/gems/liquid-5.1.0/lib/liquid/tags/increment.rb
+time="2025-03-18T21:36:16Z" level=debug msg=/usr/src/azl/BUILD/liquid-5.1.0/usr/lib/ruby/gems/3.3.0/gems/liquid-5.1.0/lib/liquid/tags/raw.rb
+time="2025-03-18T21:36:16Z" level=debug msg=/usr/src/azl/BUILD/liquid-5.1.0/usr/lib/ruby/gems/3.3.0/gems/liquid-5.1.0/lib/liquid/tags/render.rb
+time="2025-03-18T21:36:16Z" level=debug msg=/usr/src/azl/BUILD/liquid-5.1.0/usr/lib/ruby/gems/3.3.0/gems/liquid-5.1.0/lib/liquid/tags/table_row.rb
+time="2025-03-18T21:36:16Z" level=debug msg=/usr/src/azl/BUILD/liquid-5.1.0/usr/lib/ruby/gems/3.3.0/gems/liquid-5.1.0/lib/liquid/tags/unless.rb
+time="2025-03-18T21:36:16Z" level=debug msg=/usr/src/azl/BUILD/liquid-5.1.0/usr/lib/ruby/gems/3.3.0/gems/liquid-5.1.0/lib/liquid/template.rb
+time="2025-03-18T21:36:16Z" level=debug msg=/usr/src/azl/BUILD/liquid-5.1.0/usr/lib/ruby/gems/3.3.0/gems/liquid-5.1.0/lib/liquid/template_factory.rb
+time="2025-03-18T21:36:16Z" level=debug msg=/usr/src/azl/BUILD/liquid-5.1.0/usr/lib/ruby/gems/3.3.0/gems/liquid-5.1.0/lib/liquid/tokenizer.rb
+time="2025-03-18T21:36:16Z" level=debug msg=/usr/src/azl/BUILD/liquid-5.1.0/usr/lib/ruby/gems/3.3.0/gems/liquid-5.1.0/lib/liquid/usage.rb
+time="2025-03-18T21:36:16Z" level=debug msg=/usr/src/azl/BUILD/liquid-5.1.0/usr/lib/ruby/gems/3.3.0/gems/liquid-5.1.0/lib/liquid/utils.rb
+time="2025-03-18T21:36:16Z" level=debug msg=/usr/src/azl/BUILD/liquid-5.1.0/usr/lib/ruby/gems/3.3.0/gems/liquid-5.1.0/lib/liquid/variable.rb
+time="2025-03-18T21:36:16Z" level=debug msg=/usr/src/azl/BUILD/liquid-5.1.0/usr/lib/ruby/gems/3.3.0/gems/liquid-5.1.0/lib/liquid/variable_lookup.rb
+time="2025-03-18T21:36:16Z" level=debug msg=/usr/src/azl/BUILD/liquid-5.1.0/usr/lib/ruby/gems/3.3.0/gems/liquid-5.1.0/lib/liquid/version.rb
+time="2025-03-18T21:36:16Z" level=debug msg=/usr/src/azl/BUILD/liquid-5.1.0/usr/lib/ruby/gems/3.3.0/gems/liquid-5.1.0/test/fixtures/en_locale.yml
+time="2025-03-18T21:36:16Z" level=debug msg=/usr/src/azl/BUILD/liquid-5.1.0/usr/lib/ruby/gems/3.3.0/gems/liquid-5.1.0/test/integration/assign_test.rb
+time="2025-03-18T21:36:16Z" level=debug msg=/usr/src/azl/BUILD/liquid-5.1.0/usr/lib/ruby/gems/3.3.0/gems/liquid-5.1.0/test/integration/blank_test.rb
+time="2025-03-18T21:36:16Z" level=debug msg=/usr/src/azl/BUILD/liquid-5.1.0/usr/lib/ruby/gems/3.3.0/gems/liquid-5.1.0/test/integration/block_test.rb
+time="2025-03-18T21:36:16Z" level=debug msg=/usr/src/azl/BUILD/liquid-5.1.0/usr/lib/ruby/gems/3.3.0/gems/liquid-5.1.0/test/integration/capture_test.rb
+time="2025-03-18T21:36:16Z" level=debug msg=/usr/src/azl/BUILD/liquid-5.1.0/usr/lib/ruby/gems/3.3.0/gems/liquid-5.1.0/test/integration/context_test.rb
+time="2025-03-18T21:36:16Z" level=debug msg=/usr/src/azl/BUILD/liquid-5.1.0/usr/lib/ruby/gems/3.3.0/gems/liquid-5.1.0/test/integration/document_test.rb
+time="2025-03-18T21:36:16Z" level=debug msg=/usr/src/azl/BUILD/liquid-5.1.0/usr/lib/ruby/gems/3.3.0/gems/liquid-5.1.0/test/integration/drop_test.rb
+time="2025-03-18T21:36:16Z" level=debug msg=/usr/src/azl/BUILD/liquid-5.1.0/usr/lib/ruby/gems/3.3.0/gems/liquid-5.1.0/test/integration/error_handling_test.rb
+time="2025-03-18T21:36:16Z" level=debug msg=/usr/src/azl/BUILD/liquid-5.1.0/usr/lib/ruby/gems/3.3.0/gems/liquid-5.1.0/test/integration/expression_test.rb
+time="2025-03-18T21:36:16Z" level=debug msg=/usr/src/azl/BUILD/liquid-5.1.0/usr/lib/ruby/gems/3.3.0/gems/liquid-5.1.0/test/integration/filter_test.rb
+time="2025-03-18T21:36:16Z" level=debug msg=/usr/src/azl/BUILD/liquid-5.1.0/usr/lib/ruby/gems/3.3.0/gems/liquid-5.1.0/test/integration/hash_ordering_test.rb
+time="2025-03-18T21:36:16Z" level=debug msg=/usr/src/azl/BUILD/liquid-5.1.0/usr/lib/ruby/gems/3.3.0/gems/liquid-5.1.0/test/integration/output_test.rb
+time="2025-03-18T21:36:16Z" level=debug msg=/usr/src/azl/BUILD/liquid-5.1.0/usr/lib/ruby/gems/3.3.0/gems/liquid-5.1.0/test/integration/parsing_quirks_test.rb
+time="2025-03-18T21:36:16Z" level=debug msg=/usr/src/azl/BUILD/liquid-5.1.0/usr/lib/ruby/gems/3.3.0/gems/liquid-5.1.0/test/integration/profiler_test.rb
+time="2025-03-18T21:36:16Z" level=debug msg=/usr/src/azl/BUILD/liquid-5.1.0/usr/lib/ruby/gems/3.3.0/gems/liquid-5.1.0/test/integration/security_test.rb
+time="2025-03-18T21:36:16Z" level=debug msg=/usr/src/azl/BUILD/liquid-5.1.0/usr/lib/ruby/gems/3.3.0/gems/liquid-5.1.0/test/integration/standard_filter_test.rb
+time="2025-03-18T21:36:16Z" level=debug msg=/usr/src/azl/BUILD/liquid-5.1.0/usr/lib/ruby/gems/3.3.0/gems/liquid-5.1.0/test/integration/tag/disableable_test.rb
+time="2025-03-18T21:36:16Z" level=debug msg=/usr/src/azl/BUILD/liquid-5.1.0/usr/lib/ruby/gems/3.3.0/gems/liquid-5.1.0/test/integration/tag_test.rb
+time="2025-03-18T21:36:16Z" level=debug msg=/usr/src/azl/BUILD/liquid-5.1.0/usr/lib/ruby/gems/3.3.0/gems/liquid-5.1.0/test/integration/tags/break_tag_test.rb
+time="2025-03-18T21:36:16Z" level=debug msg=/usr/src/azl/BUILD/liquid-5.1.0/usr/lib/ruby/gems/3.3.0/gems/liquid-5.1.0/test/integration/tags/continue_tag_test.rb
+time="2025-03-18T21:36:16Z" level=debug msg=/usr/src/azl/BUILD/liquid-5.1.0/usr/lib/ruby/gems/3.3.0/gems/liquid-5.1.0/test/integration/tags/echo_test.rb
+time="2025-03-18T21:36:16Z" level=debug msg=/usr/src/azl/BUILD/liquid-5.1.0/usr/lib/ruby/gems/3.3.0/gems/liquid-5.1.0/test/integration/tags/for_tag_test.rb
+time="2025-03-18T21:36:16Z" level=debug msg=/usr/src/azl/BUILD/liquid-5.1.0/usr/lib/ruby/gems/3.3.0/gems/liquid-5.1.0/test/integration/tags/if_else_tag_test.rb
+time="2025-03-18T21:36:16Z" level=debug msg=/usr/src/azl/BUILD/liquid-5.1.0/usr/lib/ruby/gems/3.3.0/gems/liquid-5.1.0/test/integration/tags/include_tag_test.rb
+time="2025-03-18T21:36:16Z" level=debug msg=/usr/src/azl/BUILD/liquid-5.1.0/usr/lib/ruby/gems/3.3.0/gems/liquid-5.1.0/test/integration/tags/increment_tag_test.rb
+time="2025-03-18T21:36:16Z" level=debug msg=/usr/src/azl/BUILD/liquid-5.1.0/usr/lib/ruby/gems/3.3.0/gems/liquid-5.1.0/test/integration/tags/liquid_tag_test.rb
+time="2025-03-18T21:36:16Z" level=debug msg=/usr/src/azl/BUILD/liquid-5.1.0/usr/lib/ruby/gems/3.3.0/gems/liquid-5.1.0/test/integration/tags/raw_tag_test.rb
+time="2025-03-18T21:36:16Z" level=debug msg=/usr/src/azl/BUILD/liquid-5.1.0/usr/lib/ruby/gems/3.3.0/gems/liquid-5.1.0/test/integration/tags/render_tag_test.rb
+time="2025-03-18T21:36:16Z" level=debug msg=/usr/src/azl/BUILD/liquid-5.1.0/usr/lib/ruby/gems/3.3.0/gems/liquid-5.1.0/test/integration/tags/standard_tag_test.rb
+time="2025-03-18T21:36:16Z" level=debug msg=/usr/src/azl/BUILD/liquid-5.1.0/usr/lib/ruby/gems/3.3.0/gems/liquid-5.1.0/test/integration/tags/statements_test.rb
+time="2025-03-18T21:36:16Z" level=debug msg=/usr/src/azl/BUILD/liquid-5.1.0/usr/lib/ruby/gems/3.3.0/gems/liquid-5.1.0/test/integration/tags/table_row_test.rb
+time="2025-03-18T21:36:16Z" level=debug msg=/usr/src/azl/BUILD/liquid-5.1.0/usr/lib/ruby/gems/3.3.0/gems/liquid-5.1.0/test/integration/tags/unless_else_tag_test.rb
+time="2025-03-18T21:36:16Z" level=debug msg=/usr/src/azl/BUILD/liquid-5.1.0/usr/lib/ruby/gems/3.3.0/gems/liquid-5.1.0/test/integration/template_test.rb
+time="2025-03-18T21:36:16Z" level=debug msg=/usr/src/azl/BUILD/liquid-5.1.0/usr/lib/ruby/gems/3.3.0/gems/liquid-5.1.0/test/integration/trim_mode_test.rb
+time="2025-03-18T21:36:16Z" level=debug msg=/usr/src/azl/BUILD/liquid-5.1.0/usr/lib/ruby/gems/3.3.0/gems/liquid-5.1.0/test/integration/variable_test.rb
+time="2025-03-18T21:36:16Z" level=debug msg=/usr/src/azl/BUILD/liquid-5.1.0/usr/lib/ruby/gems/3.3.0/gems/liquid-5.1.0/test/test_helper.rb
+time="2025-03-18T21:36:16Z" level=debug msg=/usr/src/azl/BUILD/liquid-5.1.0/usr/lib/ruby/gems/3.3.0/gems/liquid-5.1.0/test/unit/block_unit_test.rb
+time="2025-03-18T21:36:16Z" level=debug msg=/usr/src/azl/BUILD/liquid-5.1.0/usr/lib/ruby/gems/3.3.0/gems/liquid-5.1.0/test/unit/condition_unit_test.rb
+time="2025-03-18T21:36:16Z" level=debug msg=/usr/src/azl/BUILD/liquid-5.1.0/usr/lib/ruby/gems/3.3.0/gems/liquid-5.1.0/test/unit/file_system_unit_test.rb
+time="2025-03-18T21:36:16Z" level=debug msg=/usr/src/azl/BUILD/liquid-5.1.0/usr/lib/ruby/gems/3.3.0/gems/liquid-5.1.0/test/unit/i18n_unit_test.rb
+time="2025-03-18T21:36:16Z" level=debug msg=/usr/src/azl/BUILD/liquid-5.1.0/usr/lib/ruby/gems/3.3.0/gems/liquid-5.1.0/test/unit/lexer_unit_test.rb
+time="2025-03-18T21:36:16Z" level=debug msg=/usr/src/azl/BUILD/liquid-5.1.0/usr/lib/ruby/gems/3.3.0/gems/liquid-5.1.0/test/unit/parse_tree_visitor_test.rb
+time="2025-03-18T21:36:16Z" level=debug msg=/usr/src/azl/BUILD/liquid-5.1.0/usr/lib/ruby/gems/3.3.0/gems/liquid-5.1.0/test/unit/parser_unit_test.rb
+time="2025-03-18T21:36:16Z" level=debug msg=/usr/src/azl/BUILD/liquid-5.1.0/usr/lib/ruby/gems/3.3.0/gems/liquid-5.1.0/test/unit/partial_cache_unit_test.rb
+time="2025-03-18T21:36:16Z" level=debug msg=/usr/src/azl/BUILD/liquid-5.1.0/usr/lib/ruby/gems/3.3.0/gems/liquid-5.1.0/test/unit/regexp_unit_test.rb
+time="2025-03-18T21:36:16Z" level=debug msg=/usr/src/azl/BUILD/liquid-5.1.0/usr/lib/ruby/gems/3.3.0/gems/liquid-5.1.0/test/unit/static_registers_unit_test.rb
+time="2025-03-18T21:36:16Z" level=debug msg=/usr/src/azl/BUILD/liquid-5.1.0/usr/lib/ruby/gems/3.3.0/gems/liquid-5.1.0/test/unit/strainer_factory_unit_test.rb
+time="2025-03-18T21:36:16Z" level=debug msg=/usr/src/azl/BUILD/liquid-5.1.0/usr/lib/ruby/gems/3.3.0/gems/liquid-5.1.0/test/unit/strainer_template_unit_test.rb
+time="2025-03-18T21:36:16Z" level=debug msg=/usr/src/azl/BUILD/liquid-5.1.0/usr/lib/ruby/gems/3.3.0/gems/liquid-5.1.0/test/unit/tag_unit_test.rb
+time="2025-03-18T21:36:16Z" level=debug msg=/usr/src/azl/BUILD/liquid-5.1.0/usr/lib/ruby/gems/3.3.0/gems/liquid-5.1.0/test/unit/tags/case_tag_unit_test.rb
+time="2025-03-18T21:36:16Z" level=debug msg=/usr/src/azl/BUILD/liquid-5.1.0/usr/lib/ruby/gems/3.3.0/gems/liquid-5.1.0/test/unit/tags/for_tag_unit_test.rb
+time="2025-03-18T21:36:16Z" level=debug msg=/usr/src/azl/BUILD/liquid-5.1.0/usr/lib/ruby/gems/3.3.0/gems/liquid-5.1.0/test/unit/tags/if_tag_unit_test.rb
+time="2025-03-18T21:36:16Z" level=debug msg=/usr/src/azl/BUILD/liquid-5.1.0/usr/lib/ruby/gems/3.3.0/gems/liquid-5.1.0/test/unit/template_factory_unit_test.rb
+time="2025-03-18T21:36:16Z" level=debug msg=/usr/src/azl/BUILD/liquid-5.1.0/usr/lib/ruby/gems/3.3.0/gems/liquid-5.1.0/test/unit/template_unit_test.rb
+time="2025-03-18T21:36:16Z" level=debug msg=/usr/src/azl/BUILD/liquid-5.1.0/usr/lib/ruby/gems/3.3.0/gems/liquid-5.1.0/test/unit/tokenizer_unit_test.rb
+time="2025-03-18T21:36:16Z" level=debug msg=/usr/src/azl/BUILD/liquid-5.1.0/usr/lib/ruby/gems/3.3.0/gems/liquid-5.1.0/test/unit/variable_unit_test.rb
+time="2025-03-18T21:36:16Z" level=debug msg="Successfully installed liquid-5.1.0"
+time="2025-03-18T21:36:16Z" level=debug msg="Parsing documentation for liquid-5.1.0"
+time="2025-03-18T21:36:16Z" level=debug msg="Parsing sources..."
+time="2025-03-18T21:36:16Z" level=debug msg="  1% [ 1/61]  History.md"
+time="2025-03-18T21:36:16Z" level=debug msg="  3% [ 2/61]  README.md"
+time="2025-03-18T21:36:16Z" level=debug msg="  4% [ 3/61]  lib/liquid.rb"
+time="2025-03-18T21:36:16Z" level=debug msg="  6% [ 4/61]  lib/liquid/block.rb"
+time="2025-03-18T21:36:16Z" level=debug msg="  8% [ 5/61]  lib/liquid/block_body.rb"
+time="2025-03-18T21:36:17Z" level=debug msg="  9% [ 6/61]  lib/liquid/condition.rb"
+time="2025-03-18T21:36:17Z" level=debug msg=" 11% [ 7/61]  lib/liquid/context.rb"
+time="2025-03-18T21:36:17Z" level=debug msg=" 13% [ 8/61]  lib/liquid/document.rb"
+time="2025-03-18T21:36:17Z" level=debug msg=" 14% [ 9/61]  lib/liquid/drop.rb"
+time="2025-03-18T21:36:17Z" level=debug msg=" 16% [10/61]  lib/liquid/errors.rb"
+time="2025-03-18T21:36:17Z" level=debug msg=" 18% [11/61]  lib/liquid/expression.rb"
+time="2025-03-18T21:36:17Z" level=debug msg=" 19% [12/61]  lib/liquid/extensions.rb"
+time="2025-03-18T21:36:17Z" level=debug msg=" 21% [13/61]  lib/liquid/file_system.rb"
+time="2025-03-18T21:36:17Z" level=debug msg=" 22% [14/61]  lib/liquid/forloop_drop.rb"
+time="2025-03-18T21:36:17Z" level=debug msg=" 24% [15/61]  lib/liquid/i18n.rb"
+time="2025-03-18T21:36:17Z" level=debug msg=" 26% [16/61]  lib/liquid/interrupts.rb"
+time="2025-03-18T21:36:17Z" level=debug msg=" 27% [17/61]  lib/liquid/lexer.rb"
+time="2025-03-18T21:36:17Z" level=debug msg=" 29% [18/61]  lib/liquid/parse_context.rb"
+time="2025-03-18T21:36:17Z" level=debug msg=" 31% [19/61]  lib/liquid/parse_tree_visitor.rb"
+time="2025-03-18T21:36:17Z" level=debug msg=" 32% [20/61]  lib/liquid/parser.rb"
+time="2025-03-18T21:36:17Z" level=debug msg=" 34% [21/61]  lib/liquid/parser_switching.rb"
+time="2025-03-18T21:36:17Z" level=debug msg=" 36% [22/61]  lib/liquid/partial_cache.rb"
+time="2025-03-18T21:36:17Z" level=debug msg=" 37% [23/61]  lib/liquid/profiler.rb"
+time="2025-03-18T21:36:17Z" level=debug msg=" 39% [24/61]  lib/liquid/profiler/hooks.rb"
+time="2025-03-18T21:36:17Z" level=debug msg=" 40% [25/61]  lib/liquid/range_lookup.rb"
+time="2025-03-18T21:36:17Z" level=debug msg=" 42% [26/61]  lib/liquid/register.rb"
+time="2025-03-18T21:36:17Z" level=debug msg=" 44% [27/61]  lib/liquid/resource_limits.rb"
+time="2025-03-18T21:36:17Z" level=debug msg=" 45% [28/61]  lib/liquid/standardfilters.rb"
+time="2025-03-18T21:36:17Z" level=debug msg=" 47% [29/61]  lib/liquid/static_registers.rb"
+time="2025-03-18T21:36:17Z" level=debug msg=" 49% [30/61]  lib/liquid/strainer_factory.rb"
+time="2025-03-18T21:36:17Z" level=debug msg=" 50% [31/61]  lib/liquid/strainer_template.rb"
+time="2025-03-18T21:36:17Z" level=debug msg=" 52% [32/61]  lib/liquid/tablerowloop_drop.rb"
+time="2025-03-18T21:36:17Z" level=debug msg=" 54% [33/61]  lib/liquid/tag.rb"
+time="2025-03-18T21:36:17Z" level=debug msg=" 55% [34/61]  lib/liquid/tag/disableable.rb"
+time="2025-03-18T21:36:17Z" level=debug msg=" 57% [35/61]  lib/liquid/tag/disabler.rb"
+time="2025-03-18T21:36:17Z" level=debug msg=" 59% [36/61]  lib/liquid/tags/assign.rb"
+time="2025-03-18T21:36:17Z" level=debug msg=" 60% [37/61]  lib/liquid/tags/break.rb"
+time="2025-03-18T21:36:17Z" level=debug msg=" 62% [38/61]  lib/liquid/tags/capture.rb"
+time="2025-03-18T21:36:17Z" level=debug msg=" 63% [39/61]  lib/liquid/tags/case.rb"
+time="2025-03-18T21:36:17Z" level=debug msg=" 65% [40/61]  lib/liquid/tags/comment.rb"
+time="2025-03-18T21:36:17Z" level=debug msg=" 67% [41/61]  lib/liquid/tags/continue.rb"
+time="2025-03-18T21:36:17Z" level=debug msg=" 68% [42/61]  lib/liquid/tags/cycle.rb"
+time="2025-03-18T21:36:17Z" level=debug msg=" 70% [43/61]  lib/liquid/tags/decrement.rb"
+time="2025-03-18T21:36:17Z" level=debug msg=" 72% [44/61]  lib/liquid/tags/echo.rb"
+time="2025-03-18T21:36:17Z" level=debug msg=" 73% [45/61]  lib/liquid/tags/for.rb"
+time="2025-03-18T21:36:17Z" level=debug msg=" 75% [46/61]  lib/liquid/tags/if.rb"
+time="2025-03-18T21:36:17Z" level=debug msg=" 77% [47/61]  lib/liquid/tags/ifchanged.rb"
+time="2025-03-18T21:36:17Z" level=debug msg=" 78% [48/61]  lib/liquid/tags/include.rb"
+time="2025-03-18T21:36:17Z" level=debug msg=" 80% [49/61]  lib/liquid/tags/increment.rb"
+time="2025-03-18T21:36:17Z" level=debug msg=" 81% [50/61]  lib/liquid/tags/raw.rb"
+time="2025-03-18T21:36:17Z" level=debug msg=" 83% [51/61]  lib/liquid/tags/render.rb"
+time="2025-03-18T21:36:17Z" level=debug msg=" 85% [52/61]  lib/liquid/tags/table_row.rb"
+time="2025-03-18T21:36:17Z" level=debug msg=" 86% [53/61]  lib/liquid/tags/unless.rb"
+time="2025-03-18T21:36:17Z" level=debug msg=" 88% [54/61]  lib/liquid/template.rb"
+time="2025-03-18T21:36:17Z" level=debug msg=" 90% [55/61]  lib/liquid/template_factory.rb"
+time="2025-03-18T21:36:17Z" level=debug msg=" 91% [56/61]  lib/liquid/tokenizer.rb"
+time="2025-03-18T21:36:17Z" level=debug msg=" 93% [57/61]  lib/liquid/usage.rb"
+time="2025-03-18T21:36:17Z" level=debug msg=" 95% [58/61]  lib/liquid/utils.rb"
+time="2025-03-18T21:36:17Z" level=debug msg=" 96% [59/61]  lib/liquid/variable.rb"
+time="2025-03-18T21:36:18Z" level=debug msg=" 98% [60/61]  lib/liquid/variable_lookup.rb"
+time="2025-03-18T21:36:18Z" level=debug msg="100% [61/61]  lib/liquid/version.rb"
+time="2025-03-18T21:36:19Z" level=debug
+time="2025-03-18T21:36:19Z" level=debug msg="Installing ri documentation for liquid-5.1.0"
+time="2025-03-18T21:36:19Z" level=debug msg="Installing darkfish documentation for liquid-5.1.0"
+time="2025-03-18T21:36:21Z" level=debug msg="Done installing documentation for liquid after 5 seconds"
+time="2025-03-18T21:36:21Z" level=debug msg="1 gem installed"
+time="2025-03-18T21:36:21Z" level=debug msg="+ RPM_EC=0"
+time="2025-03-18T21:36:21Z" level=debug msg="++ jobs -p"
+time="2025-03-18T21:36:21Z" level=debug msg="+ exit 0"
+time="2025-03-18T21:36:21Z" level=debug msg="Executing(%install): /bin/sh -e /var/tmp/rpm-tmp.uUjeBd"
+time="2025-03-18T21:36:21Z" level=debug msg="+ umask 022"
+time="2025-03-18T21:36:21Z" level=debug msg="+ cd /usr/src/azl/BUILD"
+time="2025-03-18T21:36:21Z" level=debug msg="+ /bin/rm -rf /usr/src/azl/BUILDROOT/rubygem-liquid-5.1.0-1.azl3.x86_64"
+time="2025-03-18T21:36:21Z" level=debug msg="+ /bin/mkdir -p /usr/src/azl/BUILDROOT"
+time="2025-03-18T21:36:21Z" level=debug msg="+ /bin/mkdir /usr/src/azl/BUILDROOT/rubygem-liquid-5.1.0-1.azl3.x86_64"
+time="2025-03-18T21:36:21Z" level=debug msg="+ cd liquid-5.1.0"
+time="2025-03-18T21:36:21Z" level=debug msg="+ mkdir -p /usr/src/azl/BUILDROOT/rubygem-liquid-5.1.0-1.azl3.x86_64/usr/lib/ruby/gems/3.3.0"
+time="2025-03-18T21:36:21Z" level=debug msg="+ cp -a .//usr/lib/ruby/gems/3.3.0/build_info .//usr/lib/ruby/gems/3.3.0/cache .//usr/lib/ruby/gems/3.3.0/doc .//usr/lib/ruby/gems/3.3.0/extensions .//usr/lib/ruby/gems/3.3.0/gems .//usr/lib/ruby/gems/3.3.0/plugins .//usr/lib/ruby/gems/3.3.0/specifications /usr/src/azl/BUILDROOT/rubygem-liquid-5.1.0-1.azl3.x86_64/usr/lib/ruby/gems/3.3.0/"
+time="2025-03-18T21:36:22Z" level=debug msg="+ /bin/find-debuginfo -j8 -m --build-id-seed 5.1.0-1.azl3 --unique-debug-suffix -5.1.0-1.azl3.x86_64 --unique-debug-src-base rubygem-liquid-5.1.0-1.azl3.x86_64 /usr/src/azl/BUILD/liquid-5.1.0"
+time="2025-03-18T21:36:22Z" level=debug msg="find: 'debug': No such file or directory"
+time="2025-03-18T21:36:22Z" level=debug msg="+ /usr/lib/rpm/brp-compress /usr"
+time="2025-03-18T21:36:22Z" level=debug msg="+ /usr/lib/rpm/brp-strip-comment-note /bin/strip /bin/objdump"
+time="2025-03-18T21:36:22Z" level=debug msg="+ /usr/lib/rpm/brp-strip-static-archive /bin/strip"
+time="2025-03-18T21:36:22Z" level=debug msg="+ /usr/lib/rpm/azl/brp-python-bytecompile /usr/bin/python3 1 0"
+time="2025-03-18T21:36:22Z" level=debug msg="+ find /usr/src/azl/BUILDROOT/rubygem-liquid-5.1.0-1.azl3.x86_64 -name '*.pc'"
+time="2025-03-18T21:36:22Z" level=debug msg="+ xargs '-I{}' sed -i -e 's@-Wl,-dT,/usr/src/azl/BUILD/module_info.ld@ @' '{}'"
+time="2025-03-18T21:36:22Z" level=debug msg="+ /usr/lib/rpm/brp-strip /bin/strip"
+time="2025-03-18T21:36:22Z" level=debug msg="+ CCACHE_DIR=/ccache-dir"
+time="2025-03-18T21:36:22Z" level=debug msg="+ export CCACHE_DIR"
+time="2025-03-18T21:36:22Z" level=debug msg="+ ccache --show-stats"
+time="2025-03-18T21:36:22Z" level=debug msg="Local storage:"
+time="2025-03-18T21:36:22Z" level=debug msg="  Cache size (GiB): 0.0 / 5.0 ( 0.00%)"
+time="2025-03-18T21:36:22Z" level=debug msg="Executing(%check): /bin/sh -e /var/tmp/rpm-tmp.Z5eZwP"
+time="2025-03-18T21:36:22Z" level=debug msg="====== CHECK START rubygem-liquid"
+time="2025-03-18T21:36:22Z" level=debug msg="/usr/src/azl/BUILD/liquid-5.1.0/usr/lib/ruby/gems/3.3.0/gems/liquid-5.1.0 /usr/src/azl/BUILD/liquid-5.1.0"
+time="2025-03-18T21:36:22Z" level=debug msg="+ umask 022"
+time="2025-03-18T21:36:22Z" level=debug msg="+ cd /usr/src/azl/BUILD"
+time="2025-03-18T21:36:22Z" level=debug msg="+ [[ -n '' ]]"
+time="2025-03-18T21:36:22Z" level=debug msg="+ [[ -n '' ]]"
+time="2025-03-18T21:36:22Z" level=debug msg="+ echo '====== CHECK START rubygem-liquid'"
+time="2025-03-18T21:36:22Z" level=debug msg="+ set +e"
+time="2025-03-18T21:36:22Z" level=debug msg="+ cd liquid-5.1.0"
+time="2025-03-18T21:36:22Z" level=debug msg="+ pushd ./usr/lib/ruby/gems/3.3.0/gems/liquid-5.1.0"
+time="2025-03-18T21:36:22Z" level=debug msg="+ ruby -Ilib:test -e 'Dir.glob \"./test/**/*_test.rb\", &method(:require)'"
+time="2025-03-18T21:36:23Z" level=debug msg="Run options: --seed 57901"
+time="2025-03-18T21:36:23Z" level=debug
+time="2025-03-18T21:36:23Z" level=debug msg="# Running:"
+time="2025-03-18T21:36:23Z" level=debug
+time="2025-03-18T21:36:23Z" level=debug msg="/usr/src/azl/BUILD/liquid-5.1.0/usr/lib/ruby/gems/3.3.0/gems/liquid-5.1.0/lib/liquid/static_registers.rb:34: warning: block supersedes default value argument"
+time="2025-03-18T21:36:24Z" level=debug msg=.........................................................................................................................................................................................................................................................................................................................................................................E................................................................................................................................................................................................................................................................................................................................................................................
+time="2025-03-18T21:36:24Z" level=debug
+time="2025-03-18T21:36:24Z" level=debug msg="Finished in 0.486590s, 1500.2355 runs/s, 3575.9038 assertions/s."
+time="2025-03-18T21:36:24Z" level=debug
+time="2025-03-18T21:36:24Z" level=debug msg="  1) Error:"
+time="2025-03-18T21:36:24Z" level=debug msg="ContextTest#test_interrupt_avoids_object_allocations:"
+time="2025-03-18T21:36:24Z" level=debug msg="LoadError: cannot load such file -- stackprof"
+time="2025-03-18T21:36:24Z" level=debug msg="    <internal:/usr/lib/ruby/3.3.0/rubygems/core_ext/kernel_require.rb>:136:in `require'"
+time="2025-03-18T21:36:24Z" level=debug msg="    <internal:/usr/lib/ruby/3.3.0/rubygems/core_ext/kernel_require.rb>:136:in `require'"
+time="2025-03-18T21:36:24Z" level=debug msg="    /usr/src/azl/BUILD/liquid-5.1.0/usr/lib/ruby/gems/3.3.0/gems/liquid-5.1.0/test/integration/context_test.rb:629:in `assert_no_object_allocations'"
+time="2025-03-18T21:36:24Z" level=debug msg="    /usr/src/azl/BUILD/liquid-5.1.0/usr/lib/ruby/gems/3.3.0/gems/liquid-5.1.0/test/integration/context_test.rb:465:in `test_interrupt_avoids_object_allocations'"
+time="2025-03-18T21:36:24Z" level=debug
+time="2025-03-18T21:36:24Z" level=debug msg="730 runs, 1740 assertions, 0 failures, 1 errors, 0 skips"
+time="2025-03-18T21:36:24Z" level=debug msg=/usr/src/azl/BUILD/liquid-5.1.0
+time="2025-03-18T21:36:24Z" level=debug msg="====== CHECK DONE rubygem-liquid. EXIT STATUS 0"
+time="2025-03-18T21:36:24Z" level=debug msg="+ popd"
+time="2025-03-18T21:36:24Z" level=debug msg="+ echo '====== CHECK DONE rubygem-liquid. EXIT STATUS 0'"
+time="2025-03-18T21:36:24Z" level=debug msg="+ set -e"
+time="2025-03-18T21:36:24Z" level=debug msg="Processing files: rubygem-liquid-5.1.0-1.azl3.noarch"
+time="2025-03-18T21:36:25Z" level=debug msg="Provides: rubygem(liquid) = 5.1.0 rubygem-liquid = 5.1.0-1.azl3"
+time="2025-03-18T21:36:25Z" level=debug msg="Requires(rpmlib): rpmlib(CompressedFileNames) <= 3.0.4-1 rpmlib(FileDigests) <= 4.6.0-1 rpmlib(PayloadFilesHavePrefix) <= 4.0-1"
+time="2025-03-18T21:36:25Z" level=debug msg="Requires: ruby(rubygems) >= 1.3.7"
+time="2025-03-18T21:36:25Z" level=debug msg="Processing files: rubygem-liquid-doc-5.1.0-1.azl3.noarch"
+time="2025-03-18T21:36:26Z" level=debug msg="Provides: rubygem-liquid-doc = 5.1.0-1.azl3"
+time="2025-03-18T21:36:26Z" level=debug msg="Requires(rpmlib): rpmlib(CompressedFileNames) <= 3.0.4-1 rpmlib(FileDigests) <= 4.6.0-1 rpmlib(PayloadFilesHavePrefix) <= 4.0-1"
+time="2025-03-18T21:36:26Z" level=debug msg="Requires: /usr/bin/env"
+time="2025-03-18T21:36:26Z" level=debug msg="Checking for unpackaged file(s): /usr/lib/rpm/check-files /usr/src/azl/BUILDROOT/rubygem-liquid-5.1.0-1.azl3.x86_64"
+time="2025-03-18T21:36:26Z" level=debug msg="Build thread in chroot finished."
+time="2025-03-18T21:36:26Z" level=debug msg="Exiting Chroot: '/third_disk/bb17Mar/azurelinux/build/worker/chroot/rubygem-liquid-5.1.0-1.azl3_TEST_BUILD'"
+time="2025-03-18T21:36:26Z" level=info msg="* processing upload of ccache artifacts..."
+time="2025-03-18T21:36:26Z" level=info msg="  ccache update is disabled for this build."
+time="2025-03-18T21:36:26Z" level=debug msg="Entering Chroot: '/third_disk/bb17Mar/azurelinux/build/worker/chroot/rubygem-liquid-5.1.0-1.azl3_TEST_BUILD'"
+time="2025-03-18T21:36:26Z" level=debug msg="Executing: [gpgconf --list-components]"
+time="2025-03-18T21:36:26Z" level=debug msg="gpg:OpenPGP:/usr/bin/gpg2"
+time="2025-03-18T21:36:26Z" level=debug msg="gpgsm:S/MIME:/usr/bin/gpgsm"
+time="2025-03-18T21:36:26Z" level=debug msg="keyboxd:Public Keys:/usr/libexec/keyboxd"
+time="2025-03-18T21:36:26Z" level=debug msg="gpg-agent:Private Keys:/usr/bin/gpg-agent"
+time="2025-03-18T21:36:26Z" level=debug msg="scdaemon:Smartcards:/usr/libexec/scdaemon"
+time="2025-03-18T21:36:26Z" level=debug msg="dirmngr:Network:/usr/bin/dirmngr"
+time="2025-03-18T21:36:26Z" level=debug msg="pinentry:Passphrase Entry:/usr/bin/pinentry"
+time="2025-03-18T21:36:26Z" level=debug msg="Found gpg-agent running inside chroot. Stopping it."
+time="2025-03-18T21:36:26Z" level=debug msg="Executing: [gpgconf --kill gpg-agent]"
+time="2025-03-18T21:36:26Z" level=debug msg="Found keyboxd running inside chroot. Stopping it."
+time="2025-03-18T21:36:26Z" level=debug msg="Executing: [gpgconf --kill keyboxd]"
+time="2025-03-18T21:36:26Z" level=debug msg="Exiting Chroot: '/third_disk/bb17Mar/azurelinux/build/worker/chroot/rubygem-liquid-5.1.0-1.azl3_TEST_BUILD'"
+time="2025-03-18T21:36:26Z" level=debug msg="Unmounting (/third_disk/bb17Mar/azurelinux/build/worker/chroot/rubygem-liquid-5.1.0-1.azl3_TEST_BUILD/ccache-dir)"
+time="2025-03-18T21:36:26Z" level=debug msg="Calling unmount on path(/third_disk/bb17Mar/azurelinux/build/worker/chroot/rubygem-liquid-5.1.0-1.azl3_TEST_BUILD/ccache-dir) with flags (0)"
+time="2025-03-18T21:36:26Z" level=debug msg="Unmounting (/third_disk/bb17Mar/azurelinux/build/worker/chroot/rubygem-liquid-5.1.0-1.azl3_TEST_BUILD/upstream-cached-rpms)"
+time="2025-03-18T21:36:26Z" level=debug msg="Calling unmount on path(/third_disk/bb17Mar/azurelinux/build/worker/chroot/rubygem-liquid-5.1.0-1.azl3_TEST_BUILD/upstream-cached-rpms) with flags (0)"
+time="2025-03-18T21:36:26Z" level=debug msg="Unmounting (/third_disk/bb17Mar/azurelinux/build/worker/chroot/rubygem-liquid-5.1.0-1.azl3_TEST_BUILD/toolchainrpms)"
+time="2025-03-18T21:36:26Z" level=debug msg="Calling unmount on path(/third_disk/bb17Mar/azurelinux/build/worker/chroot/rubygem-liquid-5.1.0-1.azl3_TEST_BUILD/toolchainrpms) with flags (0)"
+time="2025-03-18T21:36:26Z" level=debug msg="Unmounting (/third_disk/bb17Mar/azurelinux/build/worker/chroot/rubygem-liquid-5.1.0-1.azl3_TEST_BUILD/localrpms)"
+time="2025-03-18T21:36:26Z" level=debug msg="Calling unmount on path(/third_disk/bb17Mar/azurelinux/build/worker/chroot/rubygem-liquid-5.1.0-1.azl3_TEST_BUILD/localrpms) with flags (0)"
+time="2025-03-18T21:36:26Z" level=debug msg="Unmounting (/third_disk/bb17Mar/azurelinux/build/worker/chroot/rubygem-liquid-5.1.0-1.azl3_TEST_BUILD/dev/pts)"
+time="2025-03-18T21:36:26Z" level=debug msg="Calling unmount on path(/third_disk/bb17Mar/azurelinux/build/worker/chroot/rubygem-liquid-5.1.0-1.azl3_TEST_BUILD/dev/pts) with flags (0)"
+time="2025-03-18T21:36:26Z" level=debug msg="Unmounting (/third_disk/bb17Mar/azurelinux/build/worker/chroot/rubygem-liquid-5.1.0-1.azl3_TEST_BUILD/run)"
+time="2025-03-18T21:36:26Z" level=debug msg="Calling unmount on path(/third_disk/bb17Mar/azurelinux/build/worker/chroot/rubygem-liquid-5.1.0-1.azl3_TEST_BUILD/run) with flags (0)"
+time="2025-03-18T21:36:26Z" level=debug msg="Unmounting (/third_disk/bb17Mar/azurelinux/build/worker/chroot/rubygem-liquid-5.1.0-1.azl3_TEST_BUILD/sys)"
+time="2025-03-18T21:36:26Z" level=debug msg="Calling unmount on path(/third_disk/bb17Mar/azurelinux/build/worker/chroot/rubygem-liquid-5.1.0-1.azl3_TEST_BUILD/sys) with flags (0)"
+time="2025-03-18T21:36:26Z" level=debug msg="Unmounting (/third_disk/bb17Mar/azurelinux/build/worker/chroot/rubygem-liquid-5.1.0-1.azl3_TEST_BUILD/proc)"
+time="2025-03-18T21:36:26Z" level=debug msg="Calling unmount on path(/third_disk/bb17Mar/azurelinux/build/worker/chroot/rubygem-liquid-5.1.0-1.azl3_TEST_BUILD/proc) with flags (0)"
+time="2025-03-18T21:36:26Z" level=debug msg="Unmounting (/third_disk/bb17Mar/azurelinux/build/worker/chroot/rubygem-liquid-5.1.0-1.azl3_TEST_BUILD/dev)"
+time="2025-03-18T21:36:26Z" level=debug msg="Calling unmount on path(/third_disk/bb17Mar/azurelinux/build/worker/chroot/rubygem-liquid-5.1.0-1.azl3_TEST_BUILD/dev) with flags (0)"

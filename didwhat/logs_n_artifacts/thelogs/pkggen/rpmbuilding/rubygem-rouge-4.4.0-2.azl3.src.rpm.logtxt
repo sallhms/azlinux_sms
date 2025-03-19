@@ -1,0 +1,1291 @@
+time="2025-03-18T21:36:34Z" level=info msg="* Creating a ccache manager instance *"
+time="2025-03-18T21:36:34Z" level=info msg="  ccache root folder         : (/third_disk/bb17Mar/azurelinux/ccache)"
+time="2025-03-18T21:36:34Z" level=info msg="  ccache remote configuration: (/third_disk/bb17Mar/azurelinux/toolkit/resources/manifests/package/ccache-configuration.json)"
+time="2025-03-18T21:36:34Z" level=info msg="  loading ccache configuration file: /third_disk/bb17Mar/azurelinux/toolkit/resources/manifests/package/ccache-configuration.json"
+time="2025-03-18T21:36:34Z" level=info msg="    Type           : azure-blob-storage"
+time="2025-03-18T21:36:34Z" level=info msg="    TenantId       : "
+time="2025-03-18T21:36:34Z" level=info msg="    UserName       : "
+time="2025-03-18T21:36:34Z" level=info msg="    StorageAccount : marinerccache"
+time="2025-03-18T21:36:34Z" level=info msg="    ContainerName  : 30-stable"
+time="2025-03-18T21:36:34Z" level=info msg="    Tagsfolder     : tags"
+time="2025-03-18T21:36:34Z" level=info msg="    DownloadEnabled: true"
+time="2025-03-18T21:36:34Z" level=info msg="    DownloadLatest : true"
+time="2025-03-18T21:36:34Z" level=info msg="    DownloadFolder : "
+time="2025-03-18T21:36:34Z" level=info msg="    UploadEnabled  : false"
+time="2025-03-18T21:36:34Z" level=info msg="    UploadFolder   : "
+time="2025-03-18T21:36:34Z" level=info msg="    UpdateLatest   : false"
+time="2025-03-18T21:36:34Z" level=info msg="    KeepLatestOnly : false"
+time="2025-03-18T21:36:34Z" level=info msg="  creating blob storage client..."
+time="2025-03-18T21:36:34Z" level=info msg="  ccache pkg folder : (/third_disk/bb17Mar/azurelinux/ccache/work/x86_64/rubygem-rouge)"
+time="2025-03-18T21:36:34Z" level=info msg="  tag local source  : (/third_disk/bb17Mar/azurelinux/ccache/downloads/rubygem-rouge-latest-build.txt)"
+time="2025-03-18T21:36:34Z" level=info msg="  tag remote source : (x86_64/tags/rubygem-rouge-latest-build.txt)"
+time="2025-03-18T21:36:34Z" level=info msg="  tag local target  : (/third_disk/bb17Mar/azurelinux/ccache/uploads/rubygem-rouge-latest-build.txt)"
+time="2025-03-18T21:36:34Z" level=info msg="  tag remote target : (x86_64/tags/rubygem-rouge-latest-build.txt)"
+time="2025-03-18T21:36:34Z" level=info msg="  ccache is configured to use the latest from the remote store..."
+time="2025-03-18T21:36:34Z" level=info msg="  checking if (/third_disk/bb17Mar/azurelinux/ccache/downloads/rubygem-rouge-latest-build.txt) already exists..."
+time="2025-03-18T21:36:34Z" level=info msg="  downloading (x86_64/tags/rubygem-rouge-latest-build.txt) to (/third_disk/bb17Mar/azurelinux/ccache/downloads/rubygem-rouge-latest-build.txt)..."
+time="2025-03-18T21:36:35Z" level=info msg="  download time: 1.435712266s"
+time="2025-03-18T21:36:35Z" level=info msg="  updating () to (3.0.20250206-3.0-729715)..."
+time="2025-03-18T21:36:35Z" level=info msg="  tar local source  : (/third_disk/bb17Mar/azurelinux/ccache/downloads/rubygem-rouge-ccache.tar.gz)"
+time="2025-03-18T21:36:35Z" level=info msg="  tar remote source : (x86_64/3.0.20250206-3.0-729715/rubygem-rouge-ccache.tar.gz)"
+time="2025-03-18T21:36:35Z" level=info msg="  tar local target  : (/third_disk/bb17Mar/azurelinux/ccache/uploads/rubygem-rouge-ccache.tar.gz)"
+time="2025-03-18T21:36:35Z" level=info msg="  tar remote target : (x86_64//rubygem-rouge-ccache.tar.gz)"
+time="2025-03-18T21:36:35Z" level=info msg="* processing download of ccache artifacts..."
+time="2025-03-18T21:36:35Z" level=info msg="  downloading (x86_64/3.0.20250206-3.0-729715/rubygem-rouge-ccache.tar.gz) to (/third_disk/bb17Mar/azurelinux/ccache/downloads/rubygem-rouge-ccache.tar.gz)..."
+time="2025-03-18T21:36:35Z" level=info msg="Building (rubygem-rouge-4.4.0-2.azl3.src.rpm)."
+time="2025-03-18T21:36:38Z" level=info msg="  download time: 2.6343993s"
+time="2025-03-18T21:36:38Z" level=info msg="  uncompressing (/third_disk/bb17Mar/azurelinux/ccache/downloads/rubygem-rouge-ccache.tar.gz) into (/third_disk/bb17Mar/azurelinux/ccache/work/x86_64/rubygem-rouge)."
+time="2025-03-18T21:36:38Z" level=debug msg="Executing: [tar xf /third_disk/bb17Mar/azurelinux/ccache/downloads/rubygem-rouge-ccache.tar.gz -C /third_disk/bb17Mar/azurelinux/ccache/work/x86_64/rubygem-rouge .]"
+time="2025-03-18T21:36:38Z" level=info msg="  uncompress time: 44.514328ms"
+time="2025-03-18T21:36:38Z" level=debug msg="Executing: [systemd-detect-virt -c]"
+time="2025-03-18T21:36:38Z" level=debug msg="Tool is not running in a container, systemd-detect-virt reports: 'none'"
+time="2025-03-18T21:36:38Z" level=debug msg="Using (/usr/bin/pigz) to extract tar"
+time="2025-03-18T21:36:38Z" level=debug msg="Executing: [tar -I /usr/bin/pigz -xf /third_disk/bb17Mar/azurelinux/build/worker/worker_chroot.tar.gz -C /third_disk/bb17Mar/azurelinux/build/worker/chroot/rubygem-rouge-4.4.0-2.azl3]"
+time="2025-03-18T21:37:04Z" level=debug msg="Mounting: source: (), target: (/third_disk/bb17Mar/azurelinux/build/worker/chroot/rubygem-rouge-4.4.0-2.azl3/dev), fstype: (devtmpfs), flags: (0x0), data: ()"
+time="2025-03-18T21:37:04Z" level=debug msg="Mounting: source: (), target: (/third_disk/bb17Mar/azurelinux/build/worker/chroot/rubygem-rouge-4.4.0-2.azl3/proc), fstype: (proc), flags: (0x0), data: ()"
+time="2025-03-18T21:37:04Z" level=debug msg="Mounting: source: (), target: (/third_disk/bb17Mar/azurelinux/build/worker/chroot/rubygem-rouge-4.4.0-2.azl3/sys), fstype: (sysfs), flags: (0x0), data: ()"
+time="2025-03-18T21:37:04Z" level=debug msg="Mounting: source: (), target: (/third_disk/bb17Mar/azurelinux/build/worker/chroot/rubygem-rouge-4.4.0-2.azl3/run), fstype: (tmpfs), flags: (0x0), data: ()"
+time="2025-03-18T21:37:04Z" level=debug msg="Mounting: source: (), target: (/third_disk/bb17Mar/azurelinux/build/worker/chroot/rubygem-rouge-4.4.0-2.azl3/dev/pts), fstype: (devpts), flags: (0x0), data: (gid=5,mode=620)"
+time="2025-03-18T21:37:04Z" level=debug msg="Mounting: source: (), target: (/third_disk/bb17Mar/azurelinux/build/worker/chroot/rubygem-rouge-4.4.0-2.azl3/localrpms), fstype: (overlay), flags: (0x0), data: (lowerdir=/third_disk/bb17Mar/azurelinux/out/RPMS,upperdir=/third_disk/bb17Mar/azurelinux/build/worker/chroot/rubygem-rouge-4.4.0-2.azl3/localrpms,workdir=/third_disk/bb17Mar/azurelinux/build/worker/chroot/rubygem-rouge-4.4.0-2.azl3/overlaywork_rpms)"
+time="2025-03-18T21:37:04Z" level=debug msg="Mounting: source: (), target: (/third_disk/bb17Mar/azurelinux/build/worker/chroot/rubygem-rouge-4.4.0-2.azl3/toolchainrpms), fstype: (overlay), flags: (0x0), data: (lowerdir=/third_disk/bb17Mar/azurelinux/build/toolchain_rpms,upperdir=/third_disk/bb17Mar/azurelinux/build/worker/chroot/rubygem-rouge-4.4.0-2.azl3/toolchainrpms,workdir=/third_disk/bb17Mar/azurelinux/build/worker/chroot/rubygem-rouge-4.4.0-2.azl3/overlaywork_toolchain)"
+time="2025-03-18T21:37:04Z" level=debug msg="Mounting: source: (/third_disk/bb17Mar/azurelinux/build/rpm_cache/cache), target: (/third_disk/bb17Mar/azurelinux/build/worker/chroot/rubygem-rouge-4.4.0-2.azl3/upstream-cached-rpms), fstype: (), flags: (0xc0ed1000), data: ()"
+time="2025-03-18T21:37:04Z" level=debug msg="Mounting: source: (/third_disk/bb17Mar/azurelinux/ccache/work/x86_64/rubygem-rouge), target: (/third_disk/bb17Mar/azurelinux/build/worker/chroot/rubygem-rouge-4.4.0-2.azl3/ccache-dir), fstype: (), flags: (0xc0ed1000), data: ()"
+time="2025-03-18T21:37:04Z" level=debug msg="Copying (/third_disk/bb17Mar/azurelinux/toolkit/resources/manifests/package/local.repo) to (/third_disk/bb17Mar/azurelinux/build/worker/chroot/rubygem-rouge-4.4.0-2.azl3/etc/yum.repos.d/local.repo)"
+time="2025-03-18T21:37:04Z" level=debug msg="Executing: [cp --preserve=mode /third_disk/bb17Mar/azurelinux/toolkit/resources/manifests/package/local.repo /third_disk/bb17Mar/azurelinux/build/worker/chroot/rubygem-rouge-4.4.0-2.azl3/etc/yum.repos.d/local.repo]"
+time="2025-03-18T21:37:04Z" level=debug msg="Copying (/third_disk/bb17Mar/azurelinux/build/INTERMEDIATE_SRPMS/rubygem-rouge-4.4.0-2.azl3.src.rpm) to (/third_disk/bb17Mar/azurelinux/build/worker/chroot/rubygem-rouge-4.4.0-2.azl3/root/SRPMS/rubygem-rouge-4.4.0-2.azl3.src.rpm)"
+time="2025-03-18T21:37:04Z" level=debug msg="Executing: [cp --preserve=mode /third_disk/bb17Mar/azurelinux/build/INTERMEDIATE_SRPMS/rubygem-rouge-4.4.0-2.azl3.src.rpm /third_disk/bb17Mar/azurelinux/build/worker/chroot/rubygem-rouge-4.4.0-2.azl3/root/SRPMS/rubygem-rouge-4.4.0-2.azl3.src.rpm]"
+time="2025-03-18T21:37:04Z" level=debug msg="Copying (/third_disk/bb17Mar/azurelinux/toolkit/resources/manifests/package/macros.override) to (/third_disk/bb17Mar/azurelinux/build/worker/chroot/rubygem-rouge-4.4.0-2.azl3/usr/lib/rpm/macros.d/macros.override)"
+time="2025-03-18T21:37:04Z" level=debug msg="Executing: [cp --preserve=mode /third_disk/bb17Mar/azurelinux/toolkit/resources/manifests/package/macros.override /third_disk/bb17Mar/azurelinux/build/worker/chroot/rubygem-rouge-4.4.0-2.azl3/usr/lib/rpm/macros.d/macros.override]"
+time="2025-03-18T21:37:04Z" level=debug msg="Entering Chroot: '/third_disk/bb17Mar/azurelinux/build/worker/chroot/rubygem-rouge-4.4.0-2.azl3'"
+time="2025-03-18T21:37:04Z" level=debug msg="Creating RPM repository in (/localrpms)"
+time="2025-03-18T21:37:04Z" level=debug msg="Executing: [createrepo_c --compatibility /localrpms]"
+time="2025-03-18T21:37:10Z" level=debug msg="Creating RPM repository in (/toolchainrpms)"
+time="2025-03-18T21:37:10Z" level=debug msg="Executing: [createrepo_c --compatibility /toolchainrpms]"
+time="2025-03-18T21:37:21Z" level=debug msg="Executing: [tdnf install -y --releasever=3.0 help2man-1.49.3-1.azl3.noarch ruby-3.3.5-1.azl3.x86_64 rubygems-devel-3.5.22-1.azl3.noarch rubygem-rake-13.0.6-6.azl3.noarch rubygem-minitest-5.19.0-1.azl3.noarch]"
+time="2025-03-18T21:37:24Z" level=debug msg="Error(1207) : Could not resolve hostname"
+time="2025-03-18T21:37:24Z" level=debug msg="Error: Failed to synchronize cache for repo 'Azure Linux Official Base 3.0 x86_64'"
+time="2025-03-18T21:37:37Z" level=info msg="USE_CCACHE: installing package: ccache"
+time="2025-03-18T21:37:37Z" level=debug msg="Executing: [tdnf install -y --releasever=3.0 ccache]"
+time="2025-03-18T21:37:37Z" level=debug msg="Error(1207) : Could not resolve hostname"
+time="2025-03-18T21:37:37Z" level=debug msg="Error: Failed to synchronize cache for repo 'Azure Linux Official Base 3.0 x86_64'"
+time="2025-03-18T21:37:43Z" level=debug msg="Executing: [rpmbuild --nocheck --rebuild --nodeps -D distro_module_ldflags  -Wl,-dT,%{_topdir}/BUILD/module_info.ld -D ccache_enabled true -D with_check 0 -D dist .azl3 -D azl 3 -D distro_release_version 3.0.20250318.1347 -D mariner_build_number 1c8f149b8 /root/SRPMS/rubygem-rouge-4.4.0-2.azl3.src.rpm]"
+time="2025-03-18T21:37:46Z" level=debug msg="warning: Could not canonicalize hostname: azuli-m1"
+time="2025-03-18T21:37:46Z" level=debug msg="Installing /root/SRPMS/rubygem-rouge-4.4.0-2.azl3.src.rpm"
+time="2025-03-18T21:37:46Z" level=debug msg="Executing(%prep): /bin/sh -e /var/tmp/rpm-tmp.CJWjPZ"
+time="2025-03-18T21:37:46Z" level=debug msg="+ umask 022"
+time="2025-03-18T21:37:46Z" level=debug msg="+ cd /usr/src/azl/BUILD"
+time="2025-03-18T21:37:46Z" level=debug msg="+ /usr/lib/rpm/azl/gen-ld-script.sh rubygem-rouge 4.4.0-2.azl3 /usr/src/azl 3.0.20250318.1347"
+time="2025-03-18T21:37:46Z" level=debug msg="gen-ld-script.sh name(rubygem-rouge) version(4.4.0-2.azl3) _topdir(/usr/src/azl) osversion(3.0.20250318.1347)"
+time="2025-03-18T21:37:47Z" level=debug msg="==== ELF note generator v2.1.2 ===="
+time="2025-03-18T21:37:47Z" level=debug msg="outdir is: /usr/src/azl/BUILD/"
+time="2025-03-18T21:37:47Z" level=debug msg="Stamp method: LinkerOnly"
+time="2025-03-18T21:37:47Z" level=debug
+time="2025-03-18T21:37:47Z" level=debug msg="#ifndef _AUTO_MODULE_INFO_H_"
+time="2025-03-18T21:37:47Z" level=debug msg="#define _AUTO_MODULE_INFO_H_"
+time="2025-03-18T21:37:47Z" level=debug
+time="2025-03-18T21:37:47Z" level=debug msg="#define MODULE_VERSION      \"4.4.0.0\""
+time="2025-03-18T21:37:47Z" level=debug msg="#define PACKAGE_VERSION     \"4.4.0-2.azl3\""
+time="2025-03-18T21:37:47Z" level=debug msg="#define PACKAGE_NAME        \"rubygem-rouge\""
+time="2025-03-18T21:37:47Z" level=debug msg="#define TARGET_OS           \"mariner\""
+time="2025-03-18T21:37:47Z" level=debug msg="#define TARGET_OS_VERSION   \"3.0\""
+time="2025-03-18T21:37:47Z" level=debug
+time="2025-03-18T21:37:47Z" level=debug msg="#endif //_AUTO_MODULE_INFO_H_"
+time="2025-03-18T21:37:47Z" level=debug msg="Generated /usr/src/azl/BUILD/auto_module_info.h file..."
+time="2025-03-18T21:37:47Z" level=debug
+time="2025-03-18T21:37:47Z" level=debug msg="Successfully generated module_info.ld and .note.package files..."
+time="2025-03-18T21:37:47Z" level=debug msg="+ cd /usr/src/azl/BUILD"
+time="2025-03-18T21:37:47Z" level=debug msg="+ rm -rf rouge-4.4.0"
+time="2025-03-18T21:37:47Z" level=debug msg="+ /usr/lib/rpm/rpmuncompress -x /usr/src/azl/SOURCES/rouge-4.4.0.gem"
+time="2025-03-18T21:37:48Z" level=debug msg="Unpacked gem: '/usr/src/azl/BUILD/rouge-4.4.0'"
+time="2025-03-18T21:37:48Z" level=debug msg="+ STATUS=0"
+time="2025-03-18T21:37:48Z" level=debug msg="+ '[' 0 -ne 0 ']'"
+time="2025-03-18T21:37:48Z" level=debug msg="+ cd rouge-4.4.0"
+time="2025-03-18T21:37:48Z" level=debug msg="+ /usr/lib/rpm/rpmuncompress -x /usr/src/azl/SOURCES/rouge-4.4.0-test-missing-files.tar.gz"
+time="2025-03-18T21:37:49Z" level=debug msg="+ STATUS=0"
+time="2025-03-18T21:37:49Z" level=debug msg="+ '[' 0 -ne 0 ']'"
+time="2025-03-18T21:37:49Z" level=debug msg="+ /bin/chmod -Rf a+rX,u+w,g-w,o-w ."
+time="2025-03-18T21:37:49Z" level=debug msg="+ mv ../rouge-4.4.0.gemspec ."
+time="2025-03-18T21:37:49Z" level=debug msg="+ cp -a rouge-4.4.0/spec ."
+time="2025-03-18T21:37:49Z" level=debug msg="+ mkdir FAKE"
+time="2025-03-18T21:37:49Z" level=debug msg="+ cp -a /usr/src/azl/SOURCES/bundler.rb FAKE/"
+time="2025-03-18T21:37:49Z" level=debug msg="+ cp -pa /usr/src/azl/SOURCES/spec_helper_assert.rb spec/"
+time="2025-03-18T21:37:49Z" level=debug msg="+ RPM_EC=0"
+time="2025-03-18T21:37:49Z" level=debug msg="++ jobs -p"
+time="2025-03-18T21:37:49Z" level=debug msg="+ exit 0"
+time="2025-03-18T21:37:49Z" level=debug msg="Executing(%build): /bin/sh -e /var/tmp/rpm-tmp.JnanW5"
+time="2025-03-18T21:37:49Z" level=debug msg="+ umask 022"
+time="2025-03-18T21:37:49Z" level=debug msg="+ cd /usr/src/azl/BUILD"
+time="2025-03-18T21:37:49Z" level=debug msg="+ CFLAGS='-O2 -g -pipe -Wall -Werror=format-security -Wp,-D_FORTIFY_SOURCE=2 -Wp,-D_GLIBCXX_ASSERTIONS -fexceptions -fstack-protector-strong -grecord-gcc-switches -specs=/usr/lib/rpm/azl/default-hardened-cc1    -fcommon -m64 -mtune=generic -fasynchronous-unwind-tables -fstack-clash-protection -fcf-protection'"
+time="2025-03-18T21:37:49Z" level=debug msg="+ export CFLAGS"
+time="2025-03-18T21:37:49Z" level=debug msg="+ CXXFLAGS='-O2 -g -pipe -Wall -Werror=format-security -Wp,-D_FORTIFY_SOURCE=2 -Wp,-D_GLIBCXX_ASSERTIONS -fexceptions -fstack-protector-strong -grecord-gcc-switches -specs=/usr/lib/rpm/azl/default-hardened-cc1    -fcommon -m64 -mtune=generic -fasynchronous-unwind-tables -fstack-clash-protection -fcf-protection'"
+time="2025-03-18T21:37:49Z" level=debug msg="+ export CXXFLAGS"
+time="2025-03-18T21:37:49Z" level=debug msg="+ FFLAGS='-O2 -g -pipe -Wall -Werror=format-security -Wp,-D_FORTIFY_SOURCE=2 -Wp,-D_GLIBCXX_ASSERTIONS -fexceptions -fstack-protector-strong -grecord-gcc-switches -specs=/usr/lib/rpm/azl/default-hardened-cc1    -fcommon -m64 -mtune=generic -fasynchronous-unwind-tables -fstack-clash-protection -fcf-protection -I/usr/lib/gfortran/modules'"
+time="2025-03-18T21:37:49Z" level=debug msg="+ export FFLAGS"
+time="2025-03-18T21:37:49Z" level=debug msg="+ FCFLAGS='-O2 -g -pipe -Wall -Werror=format-security -Wp,-D_FORTIFY_SOURCE=2 -Wp,-D_GLIBCXX_ASSERTIONS -fexceptions -fstack-protector-strong -grecord-gcc-switches -specs=/usr/lib/rpm/azl/default-hardened-cc1    -fcommon -m64 -mtune=generic -fasynchronous-unwind-tables -fstack-clash-protection -fcf-protection -I/usr/lib/gfortran/modules'"
+time="2025-03-18T21:37:49Z" level=debug msg="+ export FCFLAGS"
+time="2025-03-18T21:37:49Z" level=debug msg="+ LDFLAGS='-Wl,-z,relro -Wl,--as-needed  -Wl,-z,now -specs=/usr/lib/rpm/azl/default-hardened-ld -Wl,-dT,/usr/src/azl/BUILD/module_info.ld'"
+time="2025-03-18T21:37:49Z" level=debug msg="+ export LDFLAGS"
+time="2025-03-18T21:37:49Z" level=debug msg="+ LT_SYS_LIBRARY_PATH=/usr/lib:"
+time="2025-03-18T21:37:49Z" level=debug msg="+ export LT_SYS_LIBRARY_PATH"
+time="2025-03-18T21:37:49Z" level=debug msg="+ PATH=/usr/lib/ccache:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
+time="2025-03-18T21:37:49Z" level=debug msg="+ export PATH"
+time="2025-03-18T21:37:49Z" level=debug msg="+ CCACHE_DIR=/ccache-dir"
+time="2025-03-18T21:37:49Z" level=debug msg="+ export CCACHE_DIR"
+time="2025-03-18T21:37:49Z" level=debug msg="+ CCACHE_COMPILERCHECK=content"
+time="2025-03-18T21:37:49Z" level=debug msg="+ export CCACHE_COMPILERCHECK"
+time="2025-03-18T21:37:49Z" level=debug msg="+ ccache --zero-stats"
+time="2025-03-18T21:37:49Z" level=debug msg="Statistics zeroed"
+time="2025-03-18T21:37:49Z" level=debug msg="+ cd rouge-4.4.0"
+time="2025-03-18T21:37:49Z" level=debug msg="+ gem build rouge-4.4.0.gemspec"
+time="2025-03-18T21:37:49Z" level=debug msg="WARNING:  expected RubyGems version 3.5.16, was 3.5.3"
+time="2025-03-18T21:37:49Z" level=debug msg="WARNING:  See https://guides.rubygems.org/specification-reference/ for help"
+time="2025-03-18T21:37:50Z" level=debug msg="  Successfully built RubyGem"
+time="2025-03-18T21:37:50Z" level=debug msg="  Name: rouge"
+time="2025-03-18T21:37:50Z" level=debug msg="  Version: 4.4.0"
+time="2025-03-18T21:37:50Z" level=debug msg="  File: rouge-4.4.0.gem"
+time="2025-03-18T21:37:50Z" level=debug msg="+ mkdir -p ./usr/lib/ruby/gems/3.3.0"
+time="2025-03-18T21:37:50Z" level=debug msg="+ CONFIGURE_ARGS='--with-cflags='\\''-O2 -g -pipe -Wall -Werror=format-security -Wp,-D_FORTIFY_SOURCE=2 -Wp,-D_GLIBCXX_ASSERTIONS -fexceptions -fstack-protector-strong -grecord-gcc-switches -specs=/usr/lib/rpm/azl/default-hardened-cc1    -fcommon -m64 -mtune=generic -fasynchronous-unwind-tables -fstack-clash-protection -fcf-protection'\\'' --with-cxxflags='\\''-O2 -g -pipe -Wall -Werror=format-security -Wp,-D_FORTIFY_SOURCE=2 -Wp,-D_GLIBCXX_ASSERTIONS -fexceptions -fstack-protector-strong -grecord-gcc-switches -specs=/usr/lib/rpm/azl/default-hardened-cc1    -fcommon -m64 -mtune=generic -fasynchronous-unwind-tables -fstack-clash-protection -fcf-protection'\\'' '"
+time="2025-03-18T21:37:50Z" level=debug msg="+ gem install -V --local --bindir /usr/bin --build-root . --force --document=ri,rdoc rouge-4.4.0.gem"
+time="2025-03-18T21:37:51Z" level=debug msg="WARNING:  You build with buildroot."
+time="2025-03-18T21:37:51Z" level=debug msg="  Build root: /usr/src/azl/BUILD/rouge-4.4.0"
+time="2025-03-18T21:37:51Z" level=debug msg="  Bin dir: /usr/src/azl/BUILD/rouge-4.4.0/usr/bin"
+time="2025-03-18T21:37:51Z" level=debug msg="  Gem home: /usr/src/azl/BUILD/rouge-4.4.0/usr/lib/ruby/gems/3.3.0"
+time="2025-03-18T21:37:51Z" level=debug msg="  Plugins dir: /usr/src/azl/BUILD/rouge-4.4.0/usr/lib/ruby/gems/3.3.0/plugins"
+time="2025-03-18T21:37:52Z" level=debug msg=/usr/src/azl/BUILD/rouge-4.4.0/usr/lib/ruby/gems/3.3.0/gems/rouge-4.4.0/Gemfile
+time="2025-03-18T21:37:52Z" level=debug msg=/usr/src/azl/BUILD/rouge-4.4.0/usr/lib/ruby/gems/3.3.0/gems/rouge-4.4.0/LICENSE
+time="2025-03-18T21:37:52Z" level=debug msg=/usr/src/azl/BUILD/rouge-4.4.0/usr/lib/ruby/gems/3.3.0/gems/rouge-4.4.0/bin/rougify
+time="2025-03-18T21:37:52Z" level=debug msg=/usr/src/azl/BUILD/rouge-4.4.0/usr/lib/ruby/gems/3.3.0/gems/rouge-4.4.0/lib/rouge.rb
+time="2025-03-18T21:37:52Z" level=debug msg=/usr/src/azl/BUILD/rouge-4.4.0/usr/lib/ruby/gems/3.3.0/gems/rouge-4.4.0/lib/rouge/cli.rb
+time="2025-03-18T21:37:52Z" level=debug msg=/usr/src/azl/BUILD/rouge-4.4.0/usr/lib/ruby/gems/3.3.0/gems/rouge-4.4.0/lib/rouge/demos/abap
+time="2025-03-18T21:37:52Z" level=debug msg=/usr/src/azl/BUILD/rouge-4.4.0/usr/lib/ruby/gems/3.3.0/gems/rouge-4.4.0/lib/rouge/demos/actionscript
+time="2025-03-18T21:37:52Z" level=debug msg=/usr/src/azl/BUILD/rouge-4.4.0/usr/lib/ruby/gems/3.3.0/gems/rouge-4.4.0/lib/rouge/demos/ada
+time="2025-03-18T21:37:52Z" level=debug msg=/usr/src/azl/BUILD/rouge-4.4.0/usr/lib/ruby/gems/3.3.0/gems/rouge-4.4.0/lib/rouge/demos/apache
+time="2025-03-18T21:37:52Z" level=debug msg=/usr/src/azl/BUILD/rouge-4.4.0/usr/lib/ruby/gems/3.3.0/gems/rouge-4.4.0/lib/rouge/demos/apex
+time="2025-03-18T21:37:52Z" level=debug msg=/usr/src/azl/BUILD/rouge-4.4.0/usr/lib/ruby/gems/3.3.0/gems/rouge-4.4.0/lib/rouge/demos/apiblueprint
+time="2025-03-18T21:37:52Z" level=debug msg=/usr/src/azl/BUILD/rouge-4.4.0/usr/lib/ruby/gems/3.3.0/gems/rouge-4.4.0/lib/rouge/demos/applescript
+time="2025-03-18T21:37:52Z" level=debug msg=/usr/src/azl/BUILD/rouge-4.4.0/usr/lib/ruby/gems/3.3.0/gems/rouge-4.4.0/lib/rouge/demos/armasm
+time="2025-03-18T21:37:52Z" level=debug msg=/usr/src/azl/BUILD/rouge-4.4.0/usr/lib/ruby/gems/3.3.0/gems/rouge-4.4.0/lib/rouge/demos/augeas
+time="2025-03-18T21:37:52Z" level=debug msg=/usr/src/azl/BUILD/rouge-4.4.0/usr/lib/ruby/gems/3.3.0/gems/rouge-4.4.0/lib/rouge/demos/awk
+time="2025-03-18T21:37:52Z" level=debug msg=/usr/src/azl/BUILD/rouge-4.4.0/usr/lib/ruby/gems/3.3.0/gems/rouge-4.4.0/lib/rouge/demos/batchfile
+time="2025-03-18T21:37:52Z" level=debug msg=/usr/src/azl/BUILD/rouge-4.4.0/usr/lib/ruby/gems/3.3.0/gems/rouge-4.4.0/lib/rouge/demos/bbcbasic
+time="2025-03-18T21:37:52Z" level=debug msg=/usr/src/azl/BUILD/rouge-4.4.0/usr/lib/ruby/gems/3.3.0/gems/rouge-4.4.0/lib/rouge/demos/bibtex
+time="2025-03-18T21:37:52Z" level=debug msg=/usr/src/azl/BUILD/rouge-4.4.0/usr/lib/ruby/gems/3.3.0/gems/rouge-4.4.0/lib/rouge/demos/biml
+time="2025-03-18T21:37:52Z" level=debug msg=/usr/src/azl/BUILD/rouge-4.4.0/usr/lib/ruby/gems/3.3.0/gems/rouge-4.4.0/lib/rouge/demos/bpf
+time="2025-03-18T21:37:52Z" level=debug msg=/usr/src/azl/BUILD/rouge-4.4.0/usr/lib/ruby/gems/3.3.0/gems/rouge-4.4.0/lib/rouge/demos/brainfuck
+time="2025-03-18T21:37:52Z" level=debug msg=/usr/src/azl/BUILD/rouge-4.4.0/usr/lib/ruby/gems/3.3.0/gems/rouge-4.4.0/lib/rouge/demos/brightscript
+time="2025-03-18T21:37:52Z" level=debug msg=/usr/src/azl/BUILD/rouge-4.4.0/usr/lib/ruby/gems/3.3.0/gems/rouge-4.4.0/lib/rouge/demos/bsl
+time="2025-03-18T21:37:52Z" level=debug msg=/usr/src/azl/BUILD/rouge-4.4.0/usr/lib/ruby/gems/3.3.0/gems/rouge-4.4.0/lib/rouge/demos/c
+time="2025-03-18T21:37:52Z" level=debug msg=/usr/src/azl/BUILD/rouge-4.4.0/usr/lib/ruby/gems/3.3.0/gems/rouge-4.4.0/lib/rouge/demos/ceylon
+time="2025-03-18T21:37:52Z" level=debug msg=/usr/src/azl/BUILD/rouge-4.4.0/usr/lib/ruby/gems/3.3.0/gems/rouge-4.4.0/lib/rouge/demos/cfscript
+time="2025-03-18T21:37:52Z" level=debug msg=/usr/src/azl/BUILD/rouge-4.4.0/usr/lib/ruby/gems/3.3.0/gems/rouge-4.4.0/lib/rouge/demos/cisco_ios
+time="2025-03-18T21:37:52Z" level=debug msg=/usr/src/azl/BUILD/rouge-4.4.0/usr/lib/ruby/gems/3.3.0/gems/rouge-4.4.0/lib/rouge/demos/clean
+time="2025-03-18T21:37:52Z" level=debug msg=/usr/src/azl/BUILD/rouge-4.4.0/usr/lib/ruby/gems/3.3.0/gems/rouge-4.4.0/lib/rouge/demos/clojure
+time="2025-03-18T21:37:52Z" level=debug msg=/usr/src/azl/BUILD/rouge-4.4.0/usr/lib/ruby/gems/3.3.0/gems/rouge-4.4.0/lib/rouge/demos/cmake
+time="2025-03-18T21:37:52Z" level=debug msg=/usr/src/azl/BUILD/rouge-4.4.0/usr/lib/ruby/gems/3.3.0/gems/rouge-4.4.0/lib/rouge/demos/cmhg
+time="2025-03-18T21:37:52Z" level=debug msg=/usr/src/azl/BUILD/rouge-4.4.0/usr/lib/ruby/gems/3.3.0/gems/rouge-4.4.0/lib/rouge/demos/codeowners
+time="2025-03-18T21:37:52Z" level=debug msg=/usr/src/azl/BUILD/rouge-4.4.0/usr/lib/ruby/gems/3.3.0/gems/rouge-4.4.0/lib/rouge/demos/coffeescript
+time="2025-03-18T21:37:52Z" level=debug msg=/usr/src/azl/BUILD/rouge-4.4.0/usr/lib/ruby/gems/3.3.0/gems/rouge-4.4.0/lib/rouge/demos/common_lisp
+time="2025-03-18T21:37:52Z" level=debug msg=/usr/src/azl/BUILD/rouge-4.4.0/usr/lib/ruby/gems/3.3.0/gems/rouge-4.4.0/lib/rouge/demos/conf
+time="2025-03-18T21:37:52Z" level=debug msg=/usr/src/azl/BUILD/rouge-4.4.0/usr/lib/ruby/gems/3.3.0/gems/rouge-4.4.0/lib/rouge/demos/console
+time="2025-03-18T21:37:52Z" level=debug msg=/usr/src/azl/BUILD/rouge-4.4.0/usr/lib/ruby/gems/3.3.0/gems/rouge-4.4.0/lib/rouge/demos/coq
+time="2025-03-18T21:37:52Z" level=debug msg=/usr/src/azl/BUILD/rouge-4.4.0/usr/lib/ruby/gems/3.3.0/gems/rouge-4.4.0/lib/rouge/demos/cpp
+time="2025-03-18T21:37:52Z" level=debug msg=/usr/src/azl/BUILD/rouge-4.4.0/usr/lib/ruby/gems/3.3.0/gems/rouge-4.4.0/lib/rouge/demos/crystal
+time="2025-03-18T21:37:52Z" level=debug msg=/usr/src/azl/BUILD/rouge-4.4.0/usr/lib/ruby/gems/3.3.0/gems/rouge-4.4.0/lib/rouge/demos/csharp
+time="2025-03-18T21:37:52Z" level=debug msg=/usr/src/azl/BUILD/rouge-4.4.0/usr/lib/ruby/gems/3.3.0/gems/rouge-4.4.0/lib/rouge/demos/css
+time="2025-03-18T21:37:52Z" level=debug msg=/usr/src/azl/BUILD/rouge-4.4.0/usr/lib/ruby/gems/3.3.0/gems/rouge-4.4.0/lib/rouge/demos/csvs
+time="2025-03-18T21:37:52Z" level=debug msg=/usr/src/azl/BUILD/rouge-4.4.0/usr/lib/ruby/gems/3.3.0/gems/rouge-4.4.0/lib/rouge/demos/cuda
+time="2025-03-18T21:37:52Z" level=debug msg=/usr/src/azl/BUILD/rouge-4.4.0/usr/lib/ruby/gems/3.3.0/gems/rouge-4.4.0/lib/rouge/demos/cypher
+time="2025-03-18T21:37:52Z" level=debug msg=/usr/src/azl/BUILD/rouge-4.4.0/usr/lib/ruby/gems/3.3.0/gems/rouge-4.4.0/lib/rouge/demos/cython
+time="2025-03-18T21:37:52Z" level=debug msg=/usr/src/azl/BUILD/rouge-4.4.0/usr/lib/ruby/gems/3.3.0/gems/rouge-4.4.0/lib/rouge/demos/d
+time="2025-03-18T21:37:52Z" level=debug msg=/usr/src/azl/BUILD/rouge-4.4.0/usr/lib/ruby/gems/3.3.0/gems/rouge-4.4.0/lib/rouge/demos/dafny
+time="2025-03-18T21:37:52Z" level=debug msg=/usr/src/azl/BUILD/rouge-4.4.0/usr/lib/ruby/gems/3.3.0/gems/rouge-4.4.0/lib/rouge/demos/dart
+time="2025-03-18T21:37:52Z" level=debug msg=/usr/src/azl/BUILD/rouge-4.4.0/usr/lib/ruby/gems/3.3.0/gems/rouge-4.4.0/lib/rouge/demos/datastudio
+time="2025-03-18T21:37:52Z" level=debug msg=/usr/src/azl/BUILD/rouge-4.4.0/usr/lib/ruby/gems/3.3.0/gems/rouge-4.4.0/lib/rouge/demos/diff
+time="2025-03-18T21:37:52Z" level=debug msg=/usr/src/azl/BUILD/rouge-4.4.0/usr/lib/ruby/gems/3.3.0/gems/rouge-4.4.0/lib/rouge/demos/digdag
+time="2025-03-18T21:37:52Z" level=debug msg=/usr/src/azl/BUILD/rouge-4.4.0/usr/lib/ruby/gems/3.3.0/gems/rouge-4.4.0/lib/rouge/demos/docker
+time="2025-03-18T21:37:52Z" level=debug msg=/usr/src/azl/BUILD/rouge-4.4.0/usr/lib/ruby/gems/3.3.0/gems/rouge-4.4.0/lib/rouge/demos/dot
+time="2025-03-18T21:37:52Z" level=debug msg=/usr/src/azl/BUILD/rouge-4.4.0/usr/lib/ruby/gems/3.3.0/gems/rouge-4.4.0/lib/rouge/demos/ecl
+time="2025-03-18T21:37:52Z" level=debug msg=/usr/src/azl/BUILD/rouge-4.4.0/usr/lib/ruby/gems/3.3.0/gems/rouge-4.4.0/lib/rouge/demos/eex
+time="2025-03-18T21:37:52Z" level=debug msg=/usr/src/azl/BUILD/rouge-4.4.0/usr/lib/ruby/gems/3.3.0/gems/rouge-4.4.0/lib/rouge/demos/eiffel
+time="2025-03-18T21:37:52Z" level=debug msg=/usr/src/azl/BUILD/rouge-4.4.0/usr/lib/ruby/gems/3.3.0/gems/rouge-4.4.0/lib/rouge/demos/elixir
+time="2025-03-18T21:37:52Z" level=debug msg=/usr/src/azl/BUILD/rouge-4.4.0/usr/lib/ruby/gems/3.3.0/gems/rouge-4.4.0/lib/rouge/demos/elm
+time="2025-03-18T21:37:52Z" level=debug msg=/usr/src/azl/BUILD/rouge-4.4.0/usr/lib/ruby/gems/3.3.0/gems/rouge-4.4.0/lib/rouge/demos/email
+time="2025-03-18T21:37:52Z" level=debug msg=/usr/src/azl/BUILD/rouge-4.4.0/usr/lib/ruby/gems/3.3.0/gems/rouge-4.4.0/lib/rouge/demos/epp
+time="2025-03-18T21:37:52Z" level=debug msg=/usr/src/azl/BUILD/rouge-4.4.0/usr/lib/ruby/gems/3.3.0/gems/rouge-4.4.0/lib/rouge/demos/erb
+time="2025-03-18T21:37:52Z" level=debug msg=/usr/src/azl/BUILD/rouge-4.4.0/usr/lib/ruby/gems/3.3.0/gems/rouge-4.4.0/lib/rouge/demos/erlang
+time="2025-03-18T21:37:52Z" level=debug msg=/usr/src/azl/BUILD/rouge-4.4.0/usr/lib/ruby/gems/3.3.0/gems/rouge-4.4.0/lib/rouge/demos/escape
+time="2025-03-18T21:37:52Z" level=debug msg=/usr/src/azl/BUILD/rouge-4.4.0/usr/lib/ruby/gems/3.3.0/gems/rouge-4.4.0/lib/rouge/demos/factor
+time="2025-03-18T21:37:52Z" level=debug msg=/usr/src/azl/BUILD/rouge-4.4.0/usr/lib/ruby/gems/3.3.0/gems/rouge-4.4.0/lib/rouge/demos/fluent
+time="2025-03-18T21:37:52Z" level=debug msg=/usr/src/azl/BUILD/rouge-4.4.0/usr/lib/ruby/gems/3.3.0/gems/rouge-4.4.0/lib/rouge/demos/fortran
+time="2025-03-18T21:37:52Z" level=debug msg=/usr/src/azl/BUILD/rouge-4.4.0/usr/lib/ruby/gems/3.3.0/gems/rouge-4.4.0/lib/rouge/demos/freefem
+time="2025-03-18T21:37:52Z" level=debug msg=/usr/src/azl/BUILD/rouge-4.4.0/usr/lib/ruby/gems/3.3.0/gems/rouge-4.4.0/lib/rouge/demos/fsharp
+time="2025-03-18T21:37:52Z" level=debug msg=/usr/src/azl/BUILD/rouge-4.4.0/usr/lib/ruby/gems/3.3.0/gems/rouge-4.4.0/lib/rouge/demos/gdscript
+time="2025-03-18T21:37:52Z" level=debug msg=/usr/src/azl/BUILD/rouge-4.4.0/usr/lib/ruby/gems/3.3.0/gems/rouge-4.4.0/lib/rouge/demos/ghc-cmm
+time="2025-03-18T21:37:52Z" level=debug msg=/usr/src/azl/BUILD/rouge-4.4.0/usr/lib/ruby/gems/3.3.0/gems/rouge-4.4.0/lib/rouge/demos/ghc-core
+time="2025-03-18T21:37:52Z" level=debug msg=/usr/src/azl/BUILD/rouge-4.4.0/usr/lib/ruby/gems/3.3.0/gems/rouge-4.4.0/lib/rouge/demos/gherkin
+time="2025-03-18T21:37:52Z" level=debug msg=/usr/src/azl/BUILD/rouge-4.4.0/usr/lib/ruby/gems/3.3.0/gems/rouge-4.4.0/lib/rouge/demos/glsl
+time="2025-03-18T21:37:52Z" level=debug msg=/usr/src/azl/BUILD/rouge-4.4.0/usr/lib/ruby/gems/3.3.0/gems/rouge-4.4.0/lib/rouge/demos/go
+time="2025-03-18T21:37:52Z" level=debug msg=/usr/src/azl/BUILD/rouge-4.4.0/usr/lib/ruby/gems/3.3.0/gems/rouge-4.4.0/lib/rouge/demos/gradle
+time="2025-03-18T21:37:52Z" level=debug msg=/usr/src/azl/BUILD/rouge-4.4.0/usr/lib/ruby/gems/3.3.0/gems/rouge-4.4.0/lib/rouge/demos/graphql
+time="2025-03-18T21:37:52Z" level=debug msg=/usr/src/azl/BUILD/rouge-4.4.0/usr/lib/ruby/gems/3.3.0/gems/rouge-4.4.0/lib/rouge/demos/groovy
+time="2025-03-18T21:37:52Z" level=debug msg=/usr/src/azl/BUILD/rouge-4.4.0/usr/lib/ruby/gems/3.3.0/gems/rouge-4.4.0/lib/rouge/demos/hack
+time="2025-03-18T21:37:52Z" level=debug msg=/usr/src/azl/BUILD/rouge-4.4.0/usr/lib/ruby/gems/3.3.0/gems/rouge-4.4.0/lib/rouge/demos/haml
+time="2025-03-18T21:37:52Z" level=debug msg=/usr/src/azl/BUILD/rouge-4.4.0/usr/lib/ruby/gems/3.3.0/gems/rouge-4.4.0/lib/rouge/demos/handlebars
+time="2025-03-18T21:37:52Z" level=debug msg=/usr/src/azl/BUILD/rouge-4.4.0/usr/lib/ruby/gems/3.3.0/gems/rouge-4.4.0/lib/rouge/demos/haskell
+time="2025-03-18T21:37:52Z" level=debug msg=/usr/src/azl/BUILD/rouge-4.4.0/usr/lib/ruby/gems/3.3.0/gems/rouge-4.4.0/lib/rouge/demos/haxe
+time="2025-03-18T21:37:52Z" level=debug msg=/usr/src/azl/BUILD/rouge-4.4.0/usr/lib/ruby/gems/3.3.0/gems/rouge-4.4.0/lib/rouge/demos/hcl
+time="2025-03-18T21:37:52Z" level=debug msg=/usr/src/azl/BUILD/rouge-4.4.0/usr/lib/ruby/gems/3.3.0/gems/rouge-4.4.0/lib/rouge/demos/hlsl
+time="2025-03-18T21:37:52Z" level=debug msg=/usr/src/azl/BUILD/rouge-4.4.0/usr/lib/ruby/gems/3.3.0/gems/rouge-4.4.0/lib/rouge/demos/hocon
+time="2025-03-18T21:37:52Z" level=debug msg=/usr/src/azl/BUILD/rouge-4.4.0/usr/lib/ruby/gems/3.3.0/gems/rouge-4.4.0/lib/rouge/demos/hql
+time="2025-03-18T21:37:52Z" level=debug msg=/usr/src/azl/BUILD/rouge-4.4.0/usr/lib/ruby/gems/3.3.0/gems/rouge-4.4.0/lib/rouge/demos/html
+time="2025-03-18T21:37:52Z" level=debug msg=/usr/src/azl/BUILD/rouge-4.4.0/usr/lib/ruby/gems/3.3.0/gems/rouge-4.4.0/lib/rouge/demos/http
+time="2025-03-18T21:37:52Z" level=debug msg=/usr/src/azl/BUILD/rouge-4.4.0/usr/lib/ruby/gems/3.3.0/gems/rouge-4.4.0/lib/rouge/demos/hylang
+time="2025-03-18T21:37:52Z" level=debug msg=/usr/src/azl/BUILD/rouge-4.4.0/usr/lib/ruby/gems/3.3.0/gems/rouge-4.4.0/lib/rouge/demos/idlang
+time="2025-03-18T21:37:52Z" level=debug msg=/usr/src/azl/BUILD/rouge-4.4.0/usr/lib/ruby/gems/3.3.0/gems/rouge-4.4.0/lib/rouge/demos/idris
+time="2025-03-18T21:37:52Z" level=debug msg=/usr/src/azl/BUILD/rouge-4.4.0/usr/lib/ruby/gems/3.3.0/gems/rouge-4.4.0/lib/rouge/demos/iecst
+time="2025-03-18T21:37:52Z" level=debug msg=/usr/src/azl/BUILD/rouge-4.4.0/usr/lib/ruby/gems/3.3.0/gems/rouge-4.4.0/lib/rouge/demos/igorpro
+time="2025-03-18T21:37:52Z" level=debug msg=/usr/src/azl/BUILD/rouge-4.4.0/usr/lib/ruby/gems/3.3.0/gems/rouge-4.4.0/lib/rouge/demos/ini
+time="2025-03-18T21:37:52Z" level=debug msg=/usr/src/azl/BUILD/rouge-4.4.0/usr/lib/ruby/gems/3.3.0/gems/rouge-4.4.0/lib/rouge/demos/io
+time="2025-03-18T21:37:52Z" level=debug msg=/usr/src/azl/BUILD/rouge-4.4.0/usr/lib/ruby/gems/3.3.0/gems/rouge-4.4.0/lib/rouge/demos/irb
+time="2025-03-18T21:37:52Z" level=debug msg=/usr/src/azl/BUILD/rouge-4.4.0/usr/lib/ruby/gems/3.3.0/gems/rouge-4.4.0/lib/rouge/demos/irb_output
+time="2025-03-18T21:37:52Z" level=debug msg=/usr/src/azl/BUILD/rouge-4.4.0/usr/lib/ruby/gems/3.3.0/gems/rouge-4.4.0/lib/rouge/demos/isabelle
+time="2025-03-18T21:37:52Z" level=debug msg=/usr/src/azl/BUILD/rouge-4.4.0/usr/lib/ruby/gems/3.3.0/gems/rouge-4.4.0/lib/rouge/demos/isbl
+time="2025-03-18T21:37:52Z" level=debug msg=/usr/src/azl/BUILD/rouge-4.4.0/usr/lib/ruby/gems/3.3.0/gems/rouge-4.4.0/lib/rouge/demos/j
+time="2025-03-18T21:37:52Z" level=debug msg=/usr/src/azl/BUILD/rouge-4.4.0/usr/lib/ruby/gems/3.3.0/gems/rouge-4.4.0/lib/rouge/demos/janet
+time="2025-03-18T21:37:52Z" level=debug msg=/usr/src/azl/BUILD/rouge-4.4.0/usr/lib/ruby/gems/3.3.0/gems/rouge-4.4.0/lib/rouge/demos/java
+time="2025-03-18T21:37:52Z" level=debug msg=/usr/src/azl/BUILD/rouge-4.4.0/usr/lib/ruby/gems/3.3.0/gems/rouge-4.4.0/lib/rouge/demos/javascript
+time="2025-03-18T21:37:52Z" level=debug msg=/usr/src/azl/BUILD/rouge-4.4.0/usr/lib/ruby/gems/3.3.0/gems/rouge-4.4.0/lib/rouge/demos/jinja
+time="2025-03-18T21:37:52Z" level=debug msg=/usr/src/azl/BUILD/rouge-4.4.0/usr/lib/ruby/gems/3.3.0/gems/rouge-4.4.0/lib/rouge/demos/jsl
+time="2025-03-18T21:37:52Z" level=debug msg=/usr/src/azl/BUILD/rouge-4.4.0/usr/lib/ruby/gems/3.3.0/gems/rouge-4.4.0/lib/rouge/demos/json
+time="2025-03-18T21:37:52Z" level=debug msg=/usr/src/azl/BUILD/rouge-4.4.0/usr/lib/ruby/gems/3.3.0/gems/rouge-4.4.0/lib/rouge/demos/json-doc
+time="2025-03-18T21:37:52Z" level=debug msg=/usr/src/azl/BUILD/rouge-4.4.0/usr/lib/ruby/gems/3.3.0/gems/rouge-4.4.0/lib/rouge/demos/jsonnet
+time="2025-03-18T21:37:52Z" level=debug msg=/usr/src/azl/BUILD/rouge-4.4.0/usr/lib/ruby/gems/3.3.0/gems/rouge-4.4.0/lib/rouge/demos/jsp
+time="2025-03-18T21:37:52Z" level=debug msg=/usr/src/azl/BUILD/rouge-4.4.0/usr/lib/ruby/gems/3.3.0/gems/rouge-4.4.0/lib/rouge/demos/jsx
+time="2025-03-18T21:37:52Z" level=debug msg=/usr/src/azl/BUILD/rouge-4.4.0/usr/lib/ruby/gems/3.3.0/gems/rouge-4.4.0/lib/rouge/demos/julia
+time="2025-03-18T21:37:52Z" level=debug msg=/usr/src/azl/BUILD/rouge-4.4.0/usr/lib/ruby/gems/3.3.0/gems/rouge-4.4.0/lib/rouge/demos/kotlin
+time="2025-03-18T21:37:52Z" level=debug msg=/usr/src/azl/BUILD/rouge-4.4.0/usr/lib/ruby/gems/3.3.0/gems/rouge-4.4.0/lib/rouge/demos/lasso
+time="2025-03-18T21:37:52Z" level=debug msg=/usr/src/azl/BUILD/rouge-4.4.0/usr/lib/ruby/gems/3.3.0/gems/rouge-4.4.0/lib/rouge/demos/lean
+time="2025-03-18T21:37:52Z" level=debug msg=/usr/src/azl/BUILD/rouge-4.4.0/usr/lib/ruby/gems/3.3.0/gems/rouge-4.4.0/lib/rouge/demos/liquid
+time="2025-03-18T21:37:52Z" level=debug msg=/usr/src/azl/BUILD/rouge-4.4.0/usr/lib/ruby/gems/3.3.0/gems/rouge-4.4.0/lib/rouge/demos/literate_coffeescript
+time="2025-03-18T21:37:52Z" level=debug msg=/usr/src/azl/BUILD/rouge-4.4.0/usr/lib/ruby/gems/3.3.0/gems/rouge-4.4.0/lib/rouge/demos/literate_haskell
+time="2025-03-18T21:37:52Z" level=debug msg=/usr/src/azl/BUILD/rouge-4.4.0/usr/lib/ruby/gems/3.3.0/gems/rouge-4.4.0/lib/rouge/demos/livescript
+time="2025-03-18T21:37:52Z" level=debug msg=/usr/src/azl/BUILD/rouge-4.4.0/usr/lib/ruby/gems/3.3.0/gems/rouge-4.4.0/lib/rouge/demos/llvm
+time="2025-03-18T21:37:52Z" level=debug msg=/usr/src/azl/BUILD/rouge-4.4.0/usr/lib/ruby/gems/3.3.0/gems/rouge-4.4.0/lib/rouge/demos/lua
+time="2025-03-18T21:37:52Z" level=debug msg=/usr/src/azl/BUILD/rouge-4.4.0/usr/lib/ruby/gems/3.3.0/gems/rouge-4.4.0/lib/rouge/demos/lustre
+time="2025-03-18T21:37:52Z" level=debug msg=/usr/src/azl/BUILD/rouge-4.4.0/usr/lib/ruby/gems/3.3.0/gems/rouge-4.4.0/lib/rouge/demos/lutin
+time="2025-03-18T21:37:52Z" level=debug msg=/usr/src/azl/BUILD/rouge-4.4.0/usr/lib/ruby/gems/3.3.0/gems/rouge-4.4.0/lib/rouge/demos/m68k
+time="2025-03-18T21:37:52Z" level=debug msg=/usr/src/azl/BUILD/rouge-4.4.0/usr/lib/ruby/gems/3.3.0/gems/rouge-4.4.0/lib/rouge/demos/magik
+time="2025-03-18T21:37:52Z" level=debug msg=/usr/src/azl/BUILD/rouge-4.4.0/usr/lib/ruby/gems/3.3.0/gems/rouge-4.4.0/lib/rouge/demos/make
+time="2025-03-18T21:37:52Z" level=debug msg=/usr/src/azl/BUILD/rouge-4.4.0/usr/lib/ruby/gems/3.3.0/gems/rouge-4.4.0/lib/rouge/demos/markdown
+time="2025-03-18T21:37:52Z" level=debug msg=/usr/src/azl/BUILD/rouge-4.4.0/usr/lib/ruby/gems/3.3.0/gems/rouge-4.4.0/lib/rouge/demos/mason
+time="2025-03-18T21:37:52Z" level=debug msg=/usr/src/azl/BUILD/rouge-4.4.0/usr/lib/ruby/gems/3.3.0/gems/rouge-4.4.0/lib/rouge/demos/mathematica
+time="2025-03-18T21:37:52Z" level=debug msg=/usr/src/azl/BUILD/rouge-4.4.0/usr/lib/ruby/gems/3.3.0/gems/rouge-4.4.0/lib/rouge/demos/matlab
+time="2025-03-18T21:37:52Z" level=debug msg=/usr/src/azl/BUILD/rouge-4.4.0/usr/lib/ruby/gems/3.3.0/gems/rouge-4.4.0/lib/rouge/demos/meson
+time="2025-03-18T21:37:52Z" level=debug msg=/usr/src/azl/BUILD/rouge-4.4.0/usr/lib/ruby/gems/3.3.0/gems/rouge-4.4.0/lib/rouge/demos/minizinc
+time="2025-03-18T21:37:52Z" level=debug msg=/usr/src/azl/BUILD/rouge-4.4.0/usr/lib/ruby/gems/3.3.0/gems/rouge-4.4.0/lib/rouge/demos/mojo
+time="2025-03-18T21:37:52Z" level=debug msg=/usr/src/azl/BUILD/rouge-4.4.0/usr/lib/ruby/gems/3.3.0/gems/rouge-4.4.0/lib/rouge/demos/moonscript
+time="2025-03-18T21:37:52Z" level=debug msg=/usr/src/azl/BUILD/rouge-4.4.0/usr/lib/ruby/gems/3.3.0/gems/rouge-4.4.0/lib/rouge/demos/mosel
+time="2025-03-18T21:37:52Z" level=debug msg=/usr/src/azl/BUILD/rouge-4.4.0/usr/lib/ruby/gems/3.3.0/gems/rouge-4.4.0/lib/rouge/demos/msgtrans
+time="2025-03-18T21:37:52Z" level=debug msg=/usr/src/azl/BUILD/rouge-4.4.0/usr/lib/ruby/gems/3.3.0/gems/rouge-4.4.0/lib/rouge/demos/mxml
+time="2025-03-18T21:37:52Z" level=debug msg=/usr/src/azl/BUILD/rouge-4.4.0/usr/lib/ruby/gems/3.3.0/gems/rouge-4.4.0/lib/rouge/demos/nasm
+time="2025-03-18T21:37:52Z" level=debug msg=/usr/src/azl/BUILD/rouge-4.4.0/usr/lib/ruby/gems/3.3.0/gems/rouge-4.4.0/lib/rouge/demos/nesasm
+time="2025-03-18T21:37:52Z" level=debug msg=/usr/src/azl/BUILD/rouge-4.4.0/usr/lib/ruby/gems/3.3.0/gems/rouge-4.4.0/lib/rouge/demos/nginx
+time="2025-03-18T21:37:52Z" level=debug msg=/usr/src/azl/BUILD/rouge-4.4.0/usr/lib/ruby/gems/3.3.0/gems/rouge-4.4.0/lib/rouge/demos/nial
+time="2025-03-18T21:37:52Z" level=debug msg=/usr/src/azl/BUILD/rouge-4.4.0/usr/lib/ruby/gems/3.3.0/gems/rouge-4.4.0/lib/rouge/demos/nim
+time="2025-03-18T21:37:52Z" level=debug msg=/usr/src/azl/BUILD/rouge-4.4.0/usr/lib/ruby/gems/3.3.0/gems/rouge-4.4.0/lib/rouge/demos/nix
+time="2025-03-18T21:37:52Z" level=debug msg=/usr/src/azl/BUILD/rouge-4.4.0/usr/lib/ruby/gems/3.3.0/gems/rouge-4.4.0/lib/rouge/demos/objective_c
+time="2025-03-18T21:37:52Z" level=debug msg=/usr/src/azl/BUILD/rouge-4.4.0/usr/lib/ruby/gems/3.3.0/gems/rouge-4.4.0/lib/rouge/demos/objective_cpp
+time="2025-03-18T21:37:52Z" level=debug msg=/usr/src/azl/BUILD/rouge-4.4.0/usr/lib/ruby/gems/3.3.0/gems/rouge-4.4.0/lib/rouge/demos/ocaml
+time="2025-03-18T21:37:52Z" level=debug msg=/usr/src/azl/BUILD/rouge-4.4.0/usr/lib/ruby/gems/3.3.0/gems/rouge-4.4.0/lib/rouge/demos/ocl
+time="2025-03-18T21:37:52Z" level=debug msg=/usr/src/azl/BUILD/rouge-4.4.0/usr/lib/ruby/gems/3.3.0/gems/rouge-4.4.0/lib/rouge/demos/openedge
+time="2025-03-18T21:37:52Z" level=debug msg=/usr/src/azl/BUILD/rouge-4.4.0/usr/lib/ruby/gems/3.3.0/gems/rouge-4.4.0/lib/rouge/demos/opentype_feature_file
+time="2025-03-18T21:37:52Z" level=debug msg=/usr/src/azl/BUILD/rouge-4.4.0/usr/lib/ruby/gems/3.3.0/gems/rouge-4.4.0/lib/rouge/demos/p4
+time="2025-03-18T21:37:52Z" level=debug msg=/usr/src/azl/BUILD/rouge-4.4.0/usr/lib/ruby/gems/3.3.0/gems/rouge-4.4.0/lib/rouge/demos/pascal
+time="2025-03-18T21:37:52Z" level=debug msg=/usr/src/azl/BUILD/rouge-4.4.0/usr/lib/ruby/gems/3.3.0/gems/rouge-4.4.0/lib/rouge/demos/perl
+time="2025-03-18T21:37:52Z" level=debug msg=/usr/src/azl/BUILD/rouge-4.4.0/usr/lib/ruby/gems/3.3.0/gems/rouge-4.4.0/lib/rouge/demos/php
+time="2025-03-18T21:37:52Z" level=debug msg=/usr/src/azl/BUILD/rouge-4.4.0/usr/lib/ruby/gems/3.3.0/gems/rouge-4.4.0/lib/rouge/demos/plaintext
+time="2025-03-18T21:37:52Z" level=debug msg=/usr/src/azl/BUILD/rouge-4.4.0/usr/lib/ruby/gems/3.3.0/gems/rouge-4.4.0/lib/rouge/demos/plist
+time="2025-03-18T21:37:52Z" level=debug msg=/usr/src/azl/BUILD/rouge-4.4.0/usr/lib/ruby/gems/3.3.0/gems/rouge-4.4.0/lib/rouge/demos/plsql
+time="2025-03-18T21:37:52Z" level=debug msg=/usr/src/azl/BUILD/rouge-4.4.0/usr/lib/ruby/gems/3.3.0/gems/rouge-4.4.0/lib/rouge/demos/pony
+time="2025-03-18T21:37:52Z" level=debug msg=/usr/src/azl/BUILD/rouge-4.4.0/usr/lib/ruby/gems/3.3.0/gems/rouge-4.4.0/lib/rouge/demos/postscript
+time="2025-03-18T21:37:52Z" level=debug msg=/usr/src/azl/BUILD/rouge-4.4.0/usr/lib/ruby/gems/3.3.0/gems/rouge-4.4.0/lib/rouge/demos/powershell
+time="2025-03-18T21:37:52Z" level=debug msg=/usr/src/azl/BUILD/rouge-4.4.0/usr/lib/ruby/gems/3.3.0/gems/rouge-4.4.0/lib/rouge/demos/praat
+time="2025-03-18T21:37:52Z" level=debug msg=/usr/src/azl/BUILD/rouge-4.4.0/usr/lib/ruby/gems/3.3.0/gems/rouge-4.4.0/lib/rouge/demos/prolog
+time="2025-03-18T21:37:52Z" level=debug msg=/usr/src/azl/BUILD/rouge-4.4.0/usr/lib/ruby/gems/3.3.0/gems/rouge-4.4.0/lib/rouge/demos/prometheus
+time="2025-03-18T21:37:52Z" level=debug msg=/usr/src/azl/BUILD/rouge-4.4.0/usr/lib/ruby/gems/3.3.0/gems/rouge-4.4.0/lib/rouge/demos/properties
+time="2025-03-18T21:37:52Z" level=debug msg=/usr/src/azl/BUILD/rouge-4.4.0/usr/lib/ruby/gems/3.3.0/gems/rouge-4.4.0/lib/rouge/demos/protobuf
+time="2025-03-18T21:37:52Z" level=debug msg=/usr/src/azl/BUILD/rouge-4.4.0/usr/lib/ruby/gems/3.3.0/gems/rouge-4.4.0/lib/rouge/demos/puppet
+time="2025-03-18T21:37:52Z" level=debug msg=/usr/src/azl/BUILD/rouge-4.4.0/usr/lib/ruby/gems/3.3.0/gems/rouge-4.4.0/lib/rouge/demos/python
+time="2025-03-18T21:37:52Z" level=debug msg=/usr/src/azl/BUILD/rouge-4.4.0/usr/lib/ruby/gems/3.3.0/gems/rouge-4.4.0/lib/rouge/demos/q
+time="2025-03-18T21:37:52Z" level=debug msg=/usr/src/azl/BUILD/rouge-4.4.0/usr/lib/ruby/gems/3.3.0/gems/rouge-4.4.0/lib/rouge/demos/qml
+time="2025-03-18T21:37:52Z" level=debug msg=/usr/src/azl/BUILD/rouge-4.4.0/usr/lib/ruby/gems/3.3.0/gems/rouge-4.4.0/lib/rouge/demos/r
+time="2025-03-18T21:37:52Z" level=debug msg=/usr/src/azl/BUILD/rouge-4.4.0/usr/lib/ruby/gems/3.3.0/gems/rouge-4.4.0/lib/rouge/demos/racket
+time="2025-03-18T21:37:52Z" level=debug msg=/usr/src/azl/BUILD/rouge-4.4.0/usr/lib/ruby/gems/3.3.0/gems/rouge-4.4.0/lib/rouge/demos/reasonml
+time="2025-03-18T21:37:52Z" level=debug msg=/usr/src/azl/BUILD/rouge-4.4.0/usr/lib/ruby/gems/3.3.0/gems/rouge-4.4.0/lib/rouge/demos/rego
+time="2025-03-18T21:37:52Z" level=debug msg=/usr/src/azl/BUILD/rouge-4.4.0/usr/lib/ruby/gems/3.3.0/gems/rouge-4.4.0/lib/rouge/demos/rescript
+time="2025-03-18T21:37:52Z" level=debug msg=/usr/src/azl/BUILD/rouge-4.4.0/usr/lib/ruby/gems/3.3.0/gems/rouge-4.4.0/lib/rouge/demos/rml
+time="2025-03-18T21:37:52Z" level=debug msg=/usr/src/azl/BUILD/rouge-4.4.0/usr/lib/ruby/gems/3.3.0/gems/rouge-4.4.0/lib/rouge/demos/robot_framework
+time="2025-03-18T21:37:52Z" level=debug msg=/usr/src/azl/BUILD/rouge-4.4.0/usr/lib/ruby/gems/3.3.0/gems/rouge-4.4.0/lib/rouge/demos/ruby
+time="2025-03-18T21:37:52Z" level=debug msg=/usr/src/azl/BUILD/rouge-4.4.0/usr/lib/ruby/gems/3.3.0/gems/rouge-4.4.0/lib/rouge/demos/rust
+time="2025-03-18T21:37:52Z" level=debug msg=/usr/src/azl/BUILD/rouge-4.4.0/usr/lib/ruby/gems/3.3.0/gems/rouge-4.4.0/lib/rouge/demos/sas
+time="2025-03-18T21:37:52Z" level=debug msg=/usr/src/azl/BUILD/rouge-4.4.0/usr/lib/ruby/gems/3.3.0/gems/rouge-4.4.0/lib/rouge/demos/sass
+time="2025-03-18T21:37:52Z" level=debug msg=/usr/src/azl/BUILD/rouge-4.4.0/usr/lib/ruby/gems/3.3.0/gems/rouge-4.4.0/lib/rouge/demos/scala
+time="2025-03-18T21:37:52Z" level=debug msg=/usr/src/azl/BUILD/rouge-4.4.0/usr/lib/ruby/gems/3.3.0/gems/rouge-4.4.0/lib/rouge/demos/scheme
+time="2025-03-18T21:37:52Z" level=debug msg=/usr/src/azl/BUILD/rouge-4.4.0/usr/lib/ruby/gems/3.3.0/gems/rouge-4.4.0/lib/rouge/demos/scss
+time="2025-03-18T21:37:52Z" level=debug msg=/usr/src/azl/BUILD/rouge-4.4.0/usr/lib/ruby/gems/3.3.0/gems/rouge-4.4.0/lib/rouge/demos/sed
+time="2025-03-18T21:37:52Z" level=debug msg=/usr/src/azl/BUILD/rouge-4.4.0/usr/lib/ruby/gems/3.3.0/gems/rouge-4.4.0/lib/rouge/demos/shell
+time="2025-03-18T21:37:52Z" level=debug msg=/usr/src/azl/BUILD/rouge-4.4.0/usr/lib/ruby/gems/3.3.0/gems/rouge-4.4.0/lib/rouge/demos/sieve
+time="2025-03-18T21:37:52Z" level=debug msg=/usr/src/azl/BUILD/rouge-4.4.0/usr/lib/ruby/gems/3.3.0/gems/rouge-4.4.0/lib/rouge/demos/slice
+time="2025-03-18T21:37:52Z" level=debug msg=/usr/src/azl/BUILD/rouge-4.4.0/usr/lib/ruby/gems/3.3.0/gems/rouge-4.4.0/lib/rouge/demos/slim
+time="2025-03-18T21:37:52Z" level=debug msg=/usr/src/azl/BUILD/rouge-4.4.0/usr/lib/ruby/gems/3.3.0/gems/rouge-4.4.0/lib/rouge/demos/smalltalk
+time="2025-03-18T21:37:52Z" level=debug msg=/usr/src/azl/BUILD/rouge-4.4.0/usr/lib/ruby/gems/3.3.0/gems/rouge-4.4.0/lib/rouge/demos/smarty
+time="2025-03-18T21:37:52Z" level=debug msg=/usr/src/azl/BUILD/rouge-4.4.0/usr/lib/ruby/gems/3.3.0/gems/rouge-4.4.0/lib/rouge/demos/sml
+time="2025-03-18T21:37:52Z" level=debug msg=/usr/src/azl/BUILD/rouge-4.4.0/usr/lib/ruby/gems/3.3.0/gems/rouge-4.4.0/lib/rouge/demos/sparql
+time="2025-03-18T21:37:52Z" level=debug msg=/usr/src/azl/BUILD/rouge-4.4.0/usr/lib/ruby/gems/3.3.0/gems/rouge-4.4.0/lib/rouge/demos/sqf
+time="2025-03-18T21:37:52Z" level=debug msg=/usr/src/azl/BUILD/rouge-4.4.0/usr/lib/ruby/gems/3.3.0/gems/rouge-4.4.0/lib/rouge/demos/sql
+time="2025-03-18T21:37:52Z" level=debug msg=/usr/src/azl/BUILD/rouge-4.4.0/usr/lib/ruby/gems/3.3.0/gems/rouge-4.4.0/lib/rouge/demos/ssh
+time="2025-03-18T21:37:52Z" level=debug msg=/usr/src/azl/BUILD/rouge-4.4.0/usr/lib/ruby/gems/3.3.0/gems/rouge-4.4.0/lib/rouge/demos/stan
+time="2025-03-18T21:37:52Z" level=debug msg=/usr/src/azl/BUILD/rouge-4.4.0/usr/lib/ruby/gems/3.3.0/gems/rouge-4.4.0/lib/rouge/demos/stata
+time="2025-03-18T21:37:52Z" level=debug msg=/usr/src/azl/BUILD/rouge-4.4.0/usr/lib/ruby/gems/3.3.0/gems/rouge-4.4.0/lib/rouge/demos/supercollider
+time="2025-03-18T21:37:52Z" level=debug msg=/usr/src/azl/BUILD/rouge-4.4.0/usr/lib/ruby/gems/3.3.0/gems/rouge-4.4.0/lib/rouge/demos/svelte
+time="2025-03-18T21:37:52Z" level=debug msg=/usr/src/azl/BUILD/rouge-4.4.0/usr/lib/ruby/gems/3.3.0/gems/rouge-4.4.0/lib/rouge/demos/swift
+time="2025-03-18T21:37:52Z" level=debug msg=/usr/src/azl/BUILD/rouge-4.4.0/usr/lib/ruby/gems/3.3.0/gems/rouge-4.4.0/lib/rouge/demos/systemd
+time="2025-03-18T21:37:52Z" level=debug msg=/usr/src/azl/BUILD/rouge-4.4.0/usr/lib/ruby/gems/3.3.0/gems/rouge-4.4.0/lib/rouge/demos/syzlang
+time="2025-03-18T21:37:52Z" level=debug msg=/usr/src/azl/BUILD/rouge-4.4.0/usr/lib/ruby/gems/3.3.0/gems/rouge-4.4.0/lib/rouge/demos/syzprog
+time="2025-03-18T21:37:52Z" level=debug msg=/usr/src/azl/BUILD/rouge-4.4.0/usr/lib/ruby/gems/3.3.0/gems/rouge-4.4.0/lib/rouge/demos/tap
+time="2025-03-18T21:37:52Z" level=debug msg=/usr/src/azl/BUILD/rouge-4.4.0/usr/lib/ruby/gems/3.3.0/gems/rouge-4.4.0/lib/rouge/demos/tcl
+time="2025-03-18T21:37:52Z" level=debug msg=/usr/src/azl/BUILD/rouge-4.4.0/usr/lib/ruby/gems/3.3.0/gems/rouge-4.4.0/lib/rouge/demos/terraform
+time="2025-03-18T21:37:52Z" level=debug msg=/usr/src/azl/BUILD/rouge-4.4.0/usr/lib/ruby/gems/3.3.0/gems/rouge-4.4.0/lib/rouge/demos/tex
+time="2025-03-18T21:37:52Z" level=debug msg=/usr/src/azl/BUILD/rouge-4.4.0/usr/lib/ruby/gems/3.3.0/gems/rouge-4.4.0/lib/rouge/demos/toml
+time="2025-03-18T21:37:52Z" level=debug msg=/usr/src/azl/BUILD/rouge-4.4.0/usr/lib/ruby/gems/3.3.0/gems/rouge-4.4.0/lib/rouge/demos/tsx
+time="2025-03-18T21:37:52Z" level=debug msg=/usr/src/azl/BUILD/rouge-4.4.0/usr/lib/ruby/gems/3.3.0/gems/rouge-4.4.0/lib/rouge/demos/ttcn3
+time="2025-03-18T21:37:52Z" level=debug msg=/usr/src/azl/BUILD/rouge-4.4.0/usr/lib/ruby/gems/3.3.0/gems/rouge-4.4.0/lib/rouge/demos/tulip
+time="2025-03-18T21:37:52Z" level=debug msg=/usr/src/azl/BUILD/rouge-4.4.0/usr/lib/ruby/gems/3.3.0/gems/rouge-4.4.0/lib/rouge/demos/turtle
+time="2025-03-18T21:37:52Z" level=debug msg=/usr/src/azl/BUILD/rouge-4.4.0/usr/lib/ruby/gems/3.3.0/gems/rouge-4.4.0/lib/rouge/demos/twig
+time="2025-03-18T21:37:52Z" level=debug msg=/usr/src/azl/BUILD/rouge-4.4.0/usr/lib/ruby/gems/3.3.0/gems/rouge-4.4.0/lib/rouge/demos/typescript
+time="2025-03-18T21:37:52Z" level=debug msg=/usr/src/azl/BUILD/rouge-4.4.0/usr/lib/ruby/gems/3.3.0/gems/rouge-4.4.0/lib/rouge/demos/vala
+time="2025-03-18T21:37:52Z" level=debug msg=/usr/src/azl/BUILD/rouge-4.4.0/usr/lib/ruby/gems/3.3.0/gems/rouge-4.4.0/lib/rouge/demos/vb
+time="2025-03-18T21:37:52Z" level=debug msg=/usr/src/azl/BUILD/rouge-4.4.0/usr/lib/ruby/gems/3.3.0/gems/rouge-4.4.0/lib/rouge/demos/vcl
+time="2025-03-18T21:37:52Z" level=debug msg=/usr/src/azl/BUILD/rouge-4.4.0/usr/lib/ruby/gems/3.3.0/gems/rouge-4.4.0/lib/rouge/demos/velocity
+time="2025-03-18T21:37:52Z" level=debug msg=/usr/src/azl/BUILD/rouge-4.4.0/usr/lib/ruby/gems/3.3.0/gems/rouge-4.4.0/lib/rouge/demos/verilog
+time="2025-03-18T21:37:52Z" level=debug msg=/usr/src/azl/BUILD/rouge-4.4.0/usr/lib/ruby/gems/3.3.0/gems/rouge-4.4.0/lib/rouge/demos/vhdl
+time="2025-03-18T21:37:52Z" level=debug msg=/usr/src/azl/BUILD/rouge-4.4.0/usr/lib/ruby/gems/3.3.0/gems/rouge-4.4.0/lib/rouge/demos/viml
+time="2025-03-18T21:37:52Z" level=debug msg=/usr/src/azl/BUILD/rouge-4.4.0/usr/lib/ruby/gems/3.3.0/gems/rouge-4.4.0/lib/rouge/demos/vue
+time="2025-03-18T21:37:52Z" level=debug msg=/usr/src/azl/BUILD/rouge-4.4.0/usr/lib/ruby/gems/3.3.0/gems/rouge-4.4.0/lib/rouge/demos/wollok
+time="2025-03-18T21:37:52Z" level=debug msg=/usr/src/azl/BUILD/rouge-4.4.0/usr/lib/ruby/gems/3.3.0/gems/rouge-4.4.0/lib/rouge/demos/xml
+time="2025-03-18T21:37:52Z" level=debug msg=/usr/src/azl/BUILD/rouge-4.4.0/usr/lib/ruby/gems/3.3.0/gems/rouge-4.4.0/lib/rouge/demos/xojo
+time="2025-03-18T21:37:52Z" level=debug msg=/usr/src/azl/BUILD/rouge-4.4.0/usr/lib/ruby/gems/3.3.0/gems/rouge-4.4.0/lib/rouge/demos/xpath
+time="2025-03-18T21:37:52Z" level=debug msg=/usr/src/azl/BUILD/rouge-4.4.0/usr/lib/ruby/gems/3.3.0/gems/rouge-4.4.0/lib/rouge/demos/xquery
+time="2025-03-18T21:37:52Z" level=debug msg=/usr/src/azl/BUILD/rouge-4.4.0/usr/lib/ruby/gems/3.3.0/gems/rouge-4.4.0/lib/rouge/demos/yaml
+time="2025-03-18T21:37:52Z" level=debug msg=/usr/src/azl/BUILD/rouge-4.4.0/usr/lib/ruby/gems/3.3.0/gems/rouge-4.4.0/lib/rouge/demos/yang
+time="2025-03-18T21:37:52Z" level=debug msg=/usr/src/azl/BUILD/rouge-4.4.0/usr/lib/ruby/gems/3.3.0/gems/rouge-4.4.0/lib/rouge/demos/zig
+time="2025-03-18T21:37:52Z" level=debug msg=/usr/src/azl/BUILD/rouge-4.4.0/usr/lib/ruby/gems/3.3.0/gems/rouge-4.4.0/lib/rouge/formatter.rb
+time="2025-03-18T21:37:52Z" level=debug msg=/usr/src/azl/BUILD/rouge-4.4.0/usr/lib/ruby/gems/3.3.0/gems/rouge-4.4.0/lib/rouge/formatters/html.rb
+time="2025-03-18T21:37:52Z" level=debug msg=/usr/src/azl/BUILD/rouge-4.4.0/usr/lib/ruby/gems/3.3.0/gems/rouge-4.4.0/lib/rouge/formatters/html_inline.rb
+time="2025-03-18T21:37:52Z" level=debug msg=/usr/src/azl/BUILD/rouge-4.4.0/usr/lib/ruby/gems/3.3.0/gems/rouge-4.4.0/lib/rouge/formatters/html_legacy.rb
+time="2025-03-18T21:37:52Z" level=debug msg=/usr/src/azl/BUILD/rouge-4.4.0/usr/lib/ruby/gems/3.3.0/gems/rouge-4.4.0/lib/rouge/formatters/html_line_highlighter.rb
+time="2025-03-18T21:37:52Z" level=debug msg=/usr/src/azl/BUILD/rouge-4.4.0/usr/lib/ruby/gems/3.3.0/gems/rouge-4.4.0/lib/rouge/formatters/html_line_table.rb
+time="2025-03-18T21:37:52Z" level=debug msg=/usr/src/azl/BUILD/rouge-4.4.0/usr/lib/ruby/gems/3.3.0/gems/rouge-4.4.0/lib/rouge/formatters/html_linewise.rb
+time="2025-03-18T21:37:52Z" level=debug msg=/usr/src/azl/BUILD/rouge-4.4.0/usr/lib/ruby/gems/3.3.0/gems/rouge-4.4.0/lib/rouge/formatters/html_pygments.rb
+time="2025-03-18T21:37:52Z" level=debug msg=/usr/src/azl/BUILD/rouge-4.4.0/usr/lib/ruby/gems/3.3.0/gems/rouge-4.4.0/lib/rouge/formatters/html_table.rb
+time="2025-03-18T21:37:52Z" level=debug msg=/usr/src/azl/BUILD/rouge-4.4.0/usr/lib/ruby/gems/3.3.0/gems/rouge-4.4.0/lib/rouge/formatters/null.rb
+time="2025-03-18T21:37:52Z" level=debug msg=/usr/src/azl/BUILD/rouge-4.4.0/usr/lib/ruby/gems/3.3.0/gems/rouge-4.4.0/lib/rouge/formatters/terminal256.rb
+time="2025-03-18T21:37:52Z" level=debug msg=/usr/src/azl/BUILD/rouge-4.4.0/usr/lib/ruby/gems/3.3.0/gems/rouge-4.4.0/lib/rouge/formatters/terminal_truecolor.rb
+time="2025-03-18T21:37:52Z" level=debug msg=/usr/src/azl/BUILD/rouge-4.4.0/usr/lib/ruby/gems/3.3.0/gems/rouge-4.4.0/lib/rouge/formatters/tex.rb
+time="2025-03-18T21:37:52Z" level=debug msg=/usr/src/azl/BUILD/rouge-4.4.0/usr/lib/ruby/gems/3.3.0/gems/rouge-4.4.0/lib/rouge/guesser.rb
+time="2025-03-18T21:37:52Z" level=debug msg=/usr/src/azl/BUILD/rouge-4.4.0/usr/lib/ruby/gems/3.3.0/gems/rouge-4.4.0/lib/rouge/guessers/disambiguation.rb
+time="2025-03-18T21:37:52Z" level=debug msg=/usr/src/azl/BUILD/rouge-4.4.0/usr/lib/ruby/gems/3.3.0/gems/rouge-4.4.0/lib/rouge/guessers/filename.rb
+time="2025-03-18T21:37:52Z" level=debug msg=/usr/src/azl/BUILD/rouge-4.4.0/usr/lib/ruby/gems/3.3.0/gems/rouge-4.4.0/lib/rouge/guessers/glob_mapping.rb
+time="2025-03-18T21:37:52Z" level=debug msg=/usr/src/azl/BUILD/rouge-4.4.0/usr/lib/ruby/gems/3.3.0/gems/rouge-4.4.0/lib/rouge/guessers/mimetype.rb
+time="2025-03-18T21:37:52Z" level=debug msg=/usr/src/azl/BUILD/rouge-4.4.0/usr/lib/ruby/gems/3.3.0/gems/rouge-4.4.0/lib/rouge/guessers/modeline.rb
+time="2025-03-18T21:37:52Z" level=debug msg=/usr/src/azl/BUILD/rouge-4.4.0/usr/lib/ruby/gems/3.3.0/gems/rouge-4.4.0/lib/rouge/guessers/source.rb
+time="2025-03-18T21:37:52Z" level=debug msg=/usr/src/azl/BUILD/rouge-4.4.0/usr/lib/ruby/gems/3.3.0/gems/rouge-4.4.0/lib/rouge/guessers/util.rb
+time="2025-03-18T21:37:52Z" level=debug msg=/usr/src/azl/BUILD/rouge-4.4.0/usr/lib/ruby/gems/3.3.0/gems/rouge-4.4.0/lib/rouge/lexer.rb
+time="2025-03-18T21:37:52Z" level=debug msg=/usr/src/azl/BUILD/rouge-4.4.0/usr/lib/ruby/gems/3.3.0/gems/rouge-4.4.0/lib/rouge/lexers/abap.rb
+time="2025-03-18T21:37:52Z" level=debug msg=/usr/src/azl/BUILD/rouge-4.4.0/usr/lib/ruby/gems/3.3.0/gems/rouge-4.4.0/lib/rouge/lexers/actionscript.rb
+time="2025-03-18T21:37:52Z" level=debug msg=/usr/src/azl/BUILD/rouge-4.4.0/usr/lib/ruby/gems/3.3.0/gems/rouge-4.4.0/lib/rouge/lexers/ada.rb
+time="2025-03-18T21:37:52Z" level=debug msg=/usr/src/azl/BUILD/rouge-4.4.0/usr/lib/ruby/gems/3.3.0/gems/rouge-4.4.0/lib/rouge/lexers/apache.rb
+time="2025-03-18T21:37:52Z" level=debug msg=/usr/src/azl/BUILD/rouge-4.4.0/usr/lib/ruby/gems/3.3.0/gems/rouge-4.4.0/lib/rouge/lexers/apache/keywords.rb
+time="2025-03-18T21:37:52Z" level=debug msg=/usr/src/azl/BUILD/rouge-4.4.0/usr/lib/ruby/gems/3.3.0/gems/rouge-4.4.0/lib/rouge/lexers/apex.rb
+time="2025-03-18T21:37:52Z" level=debug msg=/usr/src/azl/BUILD/rouge-4.4.0/usr/lib/ruby/gems/3.3.0/gems/rouge-4.4.0/lib/rouge/lexers/apiblueprint.rb
+time="2025-03-18T21:37:52Z" level=debug msg=/usr/src/azl/BUILD/rouge-4.4.0/usr/lib/ruby/gems/3.3.0/gems/rouge-4.4.0/lib/rouge/lexers/apple_script.rb
+time="2025-03-18T21:37:52Z" level=debug msg=/usr/src/azl/BUILD/rouge-4.4.0/usr/lib/ruby/gems/3.3.0/gems/rouge-4.4.0/lib/rouge/lexers/armasm.rb
+time="2025-03-18T21:37:52Z" level=debug msg=/usr/src/azl/BUILD/rouge-4.4.0/usr/lib/ruby/gems/3.3.0/gems/rouge-4.4.0/lib/rouge/lexers/augeas.rb
+time="2025-03-18T21:37:52Z" level=debug msg=/usr/src/azl/BUILD/rouge-4.4.0/usr/lib/ruby/gems/3.3.0/gems/rouge-4.4.0/lib/rouge/lexers/awk.rb
+time="2025-03-18T21:37:52Z" level=debug msg=/usr/src/azl/BUILD/rouge-4.4.0/usr/lib/ruby/gems/3.3.0/gems/rouge-4.4.0/lib/rouge/lexers/batchfile.rb
+time="2025-03-18T21:37:52Z" level=debug msg=/usr/src/azl/BUILD/rouge-4.4.0/usr/lib/ruby/gems/3.3.0/gems/rouge-4.4.0/lib/rouge/lexers/bbcbasic.rb
+time="2025-03-18T21:37:52Z" level=debug msg=/usr/src/azl/BUILD/rouge-4.4.0/usr/lib/ruby/gems/3.3.0/gems/rouge-4.4.0/lib/rouge/lexers/bibtex.rb
+time="2025-03-18T21:37:52Z" level=debug msg=/usr/src/azl/BUILD/rouge-4.4.0/usr/lib/ruby/gems/3.3.0/gems/rouge-4.4.0/lib/rouge/lexers/biml.rb
+time="2025-03-18T21:37:52Z" level=debug msg=/usr/src/azl/BUILD/rouge-4.4.0/usr/lib/ruby/gems/3.3.0/gems/rouge-4.4.0/lib/rouge/lexers/bpf.rb
+time="2025-03-18T21:37:52Z" level=debug msg=/usr/src/azl/BUILD/rouge-4.4.0/usr/lib/ruby/gems/3.3.0/gems/rouge-4.4.0/lib/rouge/lexers/brainfuck.rb
+time="2025-03-18T21:37:52Z" level=debug msg=/usr/src/azl/BUILD/rouge-4.4.0/usr/lib/ruby/gems/3.3.0/gems/rouge-4.4.0/lib/rouge/lexers/brightscript.rb
+time="2025-03-18T21:37:52Z" level=debug msg=/usr/src/azl/BUILD/rouge-4.4.0/usr/lib/ruby/gems/3.3.0/gems/rouge-4.4.0/lib/rouge/lexers/bsl.rb
+time="2025-03-18T21:37:52Z" level=debug msg=/usr/src/azl/BUILD/rouge-4.4.0/usr/lib/ruby/gems/3.3.0/gems/rouge-4.4.0/lib/rouge/lexers/c.rb
+time="2025-03-18T21:37:52Z" level=debug msg=/usr/src/azl/BUILD/rouge-4.4.0/usr/lib/ruby/gems/3.3.0/gems/rouge-4.4.0/lib/rouge/lexers/ceylon.rb
+time="2025-03-18T21:37:52Z" level=debug msg=/usr/src/azl/BUILD/rouge-4.4.0/usr/lib/ruby/gems/3.3.0/gems/rouge-4.4.0/lib/rouge/lexers/cfscript.rb
+time="2025-03-18T21:37:52Z" level=debug msg=/usr/src/azl/BUILD/rouge-4.4.0/usr/lib/ruby/gems/3.3.0/gems/rouge-4.4.0/lib/rouge/lexers/cisco_ios.rb
+time="2025-03-18T21:37:52Z" level=debug msg=/usr/src/azl/BUILD/rouge-4.4.0/usr/lib/ruby/gems/3.3.0/gems/rouge-4.4.0/lib/rouge/lexers/clean.rb
+time="2025-03-18T21:37:52Z" level=debug msg=/usr/src/azl/BUILD/rouge-4.4.0/usr/lib/ruby/gems/3.3.0/gems/rouge-4.4.0/lib/rouge/lexers/clojure.rb
+time="2025-03-18T21:37:52Z" level=debug msg=/usr/src/azl/BUILD/rouge-4.4.0/usr/lib/ruby/gems/3.3.0/gems/rouge-4.4.0/lib/rouge/lexers/cmake.rb
+time="2025-03-18T21:37:52Z" level=debug msg=/usr/src/azl/BUILD/rouge-4.4.0/usr/lib/ruby/gems/3.3.0/gems/rouge-4.4.0/lib/rouge/lexers/cmhg.rb
+time="2025-03-18T21:37:52Z" level=debug msg=/usr/src/azl/BUILD/rouge-4.4.0/usr/lib/ruby/gems/3.3.0/gems/rouge-4.4.0/lib/rouge/lexers/codeowners.rb
+time="2025-03-18T21:37:52Z" level=debug msg=/usr/src/azl/BUILD/rouge-4.4.0/usr/lib/ruby/gems/3.3.0/gems/rouge-4.4.0/lib/rouge/lexers/coffeescript.rb
+time="2025-03-18T21:37:52Z" level=debug msg=/usr/src/azl/BUILD/rouge-4.4.0/usr/lib/ruby/gems/3.3.0/gems/rouge-4.4.0/lib/rouge/lexers/common_lisp.rb
+time="2025-03-18T21:37:52Z" level=debug msg=/usr/src/azl/BUILD/rouge-4.4.0/usr/lib/ruby/gems/3.3.0/gems/rouge-4.4.0/lib/rouge/lexers/conf.rb
+time="2025-03-18T21:37:52Z" level=debug msg=/usr/src/azl/BUILD/rouge-4.4.0/usr/lib/ruby/gems/3.3.0/gems/rouge-4.4.0/lib/rouge/lexers/console.rb
+time="2025-03-18T21:37:52Z" level=debug msg=/usr/src/azl/BUILD/rouge-4.4.0/usr/lib/ruby/gems/3.3.0/gems/rouge-4.4.0/lib/rouge/lexers/coq.rb
+time="2025-03-18T21:37:52Z" level=debug msg=/usr/src/azl/BUILD/rouge-4.4.0/usr/lib/ruby/gems/3.3.0/gems/rouge-4.4.0/lib/rouge/lexers/cpp.rb
+time="2025-03-18T21:37:52Z" level=debug msg=/usr/src/azl/BUILD/rouge-4.4.0/usr/lib/ruby/gems/3.3.0/gems/rouge-4.4.0/lib/rouge/lexers/crystal.rb
+time="2025-03-18T21:37:52Z" level=debug msg=/usr/src/azl/BUILD/rouge-4.4.0/usr/lib/ruby/gems/3.3.0/gems/rouge-4.4.0/lib/rouge/lexers/csharp.rb
+time="2025-03-18T21:37:52Z" level=debug msg=/usr/src/azl/BUILD/rouge-4.4.0/usr/lib/ruby/gems/3.3.0/gems/rouge-4.4.0/lib/rouge/lexers/css.rb
+time="2025-03-18T21:37:52Z" level=debug msg=/usr/src/azl/BUILD/rouge-4.4.0/usr/lib/ruby/gems/3.3.0/gems/rouge-4.4.0/lib/rouge/lexers/csvs.rb
+time="2025-03-18T21:37:52Z" level=debug msg=/usr/src/azl/BUILD/rouge-4.4.0/usr/lib/ruby/gems/3.3.0/gems/rouge-4.4.0/lib/rouge/lexers/cuda.rb
+time="2025-03-18T21:37:52Z" level=debug msg=/usr/src/azl/BUILD/rouge-4.4.0/usr/lib/ruby/gems/3.3.0/gems/rouge-4.4.0/lib/rouge/lexers/cypher.rb
+time="2025-03-18T21:37:52Z" level=debug msg=/usr/src/azl/BUILD/rouge-4.4.0/usr/lib/ruby/gems/3.3.0/gems/rouge-4.4.0/lib/rouge/lexers/cython.rb
+time="2025-03-18T21:37:52Z" level=debug msg=/usr/src/azl/BUILD/rouge-4.4.0/usr/lib/ruby/gems/3.3.0/gems/rouge-4.4.0/lib/rouge/lexers/d.rb
+time="2025-03-18T21:37:52Z" level=debug msg=/usr/src/azl/BUILD/rouge-4.4.0/usr/lib/ruby/gems/3.3.0/gems/rouge-4.4.0/lib/rouge/lexers/dafny.rb
+time="2025-03-18T21:37:52Z" level=debug msg=/usr/src/azl/BUILD/rouge-4.4.0/usr/lib/ruby/gems/3.3.0/gems/rouge-4.4.0/lib/rouge/lexers/dart.rb
+time="2025-03-18T21:37:52Z" level=debug msg=/usr/src/azl/BUILD/rouge-4.4.0/usr/lib/ruby/gems/3.3.0/gems/rouge-4.4.0/lib/rouge/lexers/datastudio.rb
+time="2025-03-18T21:37:52Z" level=debug msg=/usr/src/azl/BUILD/rouge-4.4.0/usr/lib/ruby/gems/3.3.0/gems/rouge-4.4.0/lib/rouge/lexers/diff.rb
+time="2025-03-18T21:37:52Z" level=debug msg=/usr/src/azl/BUILD/rouge-4.4.0/usr/lib/ruby/gems/3.3.0/gems/rouge-4.4.0/lib/rouge/lexers/digdag.rb
+time="2025-03-18T21:37:52Z" level=debug msg=/usr/src/azl/BUILD/rouge-4.4.0/usr/lib/ruby/gems/3.3.0/gems/rouge-4.4.0/lib/rouge/lexers/docker.rb
+time="2025-03-18T21:37:52Z" level=debug msg=/usr/src/azl/BUILD/rouge-4.4.0/usr/lib/ruby/gems/3.3.0/gems/rouge-4.4.0/lib/rouge/lexers/dot.rb
+time="2025-03-18T21:37:52Z" level=debug msg=/usr/src/azl/BUILD/rouge-4.4.0/usr/lib/ruby/gems/3.3.0/gems/rouge-4.4.0/lib/rouge/lexers/ecl.rb
+time="2025-03-18T21:37:52Z" level=debug msg=/usr/src/azl/BUILD/rouge-4.4.0/usr/lib/ruby/gems/3.3.0/gems/rouge-4.4.0/lib/rouge/lexers/eex.rb
+time="2025-03-18T21:37:52Z" level=debug msg=/usr/src/azl/BUILD/rouge-4.4.0/usr/lib/ruby/gems/3.3.0/gems/rouge-4.4.0/lib/rouge/lexers/eiffel.rb
+time="2025-03-18T21:37:52Z" level=debug msg=/usr/src/azl/BUILD/rouge-4.4.0/usr/lib/ruby/gems/3.3.0/gems/rouge-4.4.0/lib/rouge/lexers/elixir.rb
+time="2025-03-18T21:37:52Z" level=debug msg=/usr/src/azl/BUILD/rouge-4.4.0/usr/lib/ruby/gems/3.3.0/gems/rouge-4.4.0/lib/rouge/lexers/elm.rb
+time="2025-03-18T21:37:52Z" level=debug msg=/usr/src/azl/BUILD/rouge-4.4.0/usr/lib/ruby/gems/3.3.0/gems/rouge-4.4.0/lib/rouge/lexers/email.rb
+time="2025-03-18T21:37:52Z" level=debug msg=/usr/src/azl/BUILD/rouge-4.4.0/usr/lib/ruby/gems/3.3.0/gems/rouge-4.4.0/lib/rouge/lexers/epp.rb
+time="2025-03-18T21:37:52Z" level=debug msg=/usr/src/azl/BUILD/rouge-4.4.0/usr/lib/ruby/gems/3.3.0/gems/rouge-4.4.0/lib/rouge/lexers/erb.rb
+time="2025-03-18T21:37:52Z" level=debug msg=/usr/src/azl/BUILD/rouge-4.4.0/usr/lib/ruby/gems/3.3.0/gems/rouge-4.4.0/lib/rouge/lexers/erlang.rb
+time="2025-03-18T21:37:52Z" level=debug msg=/usr/src/azl/BUILD/rouge-4.4.0/usr/lib/ruby/gems/3.3.0/gems/rouge-4.4.0/lib/rouge/lexers/escape.rb
+time="2025-03-18T21:37:52Z" level=debug msg=/usr/src/azl/BUILD/rouge-4.4.0/usr/lib/ruby/gems/3.3.0/gems/rouge-4.4.0/lib/rouge/lexers/factor.rb
+time="2025-03-18T21:37:52Z" level=debug msg=/usr/src/azl/BUILD/rouge-4.4.0/usr/lib/ruby/gems/3.3.0/gems/rouge-4.4.0/lib/rouge/lexers/fluent.rb
+time="2025-03-18T21:37:52Z" level=debug msg=/usr/src/azl/BUILD/rouge-4.4.0/usr/lib/ruby/gems/3.3.0/gems/rouge-4.4.0/lib/rouge/lexers/fortran.rb
+time="2025-03-18T21:37:52Z" level=debug msg=/usr/src/azl/BUILD/rouge-4.4.0/usr/lib/ruby/gems/3.3.0/gems/rouge-4.4.0/lib/rouge/lexers/freefem.rb
+time="2025-03-18T21:37:52Z" level=debug msg=/usr/src/azl/BUILD/rouge-4.4.0/usr/lib/ruby/gems/3.3.0/gems/rouge-4.4.0/lib/rouge/lexers/fsharp.rb
+time="2025-03-18T21:37:52Z" level=debug msg=/usr/src/azl/BUILD/rouge-4.4.0/usr/lib/ruby/gems/3.3.0/gems/rouge-4.4.0/lib/rouge/lexers/gdscript.rb
+time="2025-03-18T21:37:52Z" level=debug msg=/usr/src/azl/BUILD/rouge-4.4.0/usr/lib/ruby/gems/3.3.0/gems/rouge-4.4.0/lib/rouge/lexers/ghc_cmm.rb
+time="2025-03-18T21:37:52Z" level=debug msg=/usr/src/azl/BUILD/rouge-4.4.0/usr/lib/ruby/gems/3.3.0/gems/rouge-4.4.0/lib/rouge/lexers/ghc_core.rb
+time="2025-03-18T21:37:52Z" level=debug msg=/usr/src/azl/BUILD/rouge-4.4.0/usr/lib/ruby/gems/3.3.0/gems/rouge-4.4.0/lib/rouge/lexers/gherkin.rb
+time="2025-03-18T21:37:52Z" level=debug msg=/usr/src/azl/BUILD/rouge-4.4.0/usr/lib/ruby/gems/3.3.0/gems/rouge-4.4.0/lib/rouge/lexers/gherkin/keywords.rb
+time="2025-03-18T21:37:52Z" level=debug msg=/usr/src/azl/BUILD/rouge-4.4.0/usr/lib/ruby/gems/3.3.0/gems/rouge-4.4.0/lib/rouge/lexers/glsl.rb
+time="2025-03-18T21:37:52Z" level=debug msg=/usr/src/azl/BUILD/rouge-4.4.0/usr/lib/ruby/gems/3.3.0/gems/rouge-4.4.0/lib/rouge/lexers/go.rb
+time="2025-03-18T21:37:52Z" level=debug msg=/usr/src/azl/BUILD/rouge-4.4.0/usr/lib/ruby/gems/3.3.0/gems/rouge-4.4.0/lib/rouge/lexers/gradle.rb
+time="2025-03-18T21:37:52Z" level=debug msg=/usr/src/azl/BUILD/rouge-4.4.0/usr/lib/ruby/gems/3.3.0/gems/rouge-4.4.0/lib/rouge/lexers/graphql.rb
+time="2025-03-18T21:37:52Z" level=debug msg=/usr/src/azl/BUILD/rouge-4.4.0/usr/lib/ruby/gems/3.3.0/gems/rouge-4.4.0/lib/rouge/lexers/groovy.rb
+time="2025-03-18T21:37:52Z" level=debug msg=/usr/src/azl/BUILD/rouge-4.4.0/usr/lib/ruby/gems/3.3.0/gems/rouge-4.4.0/lib/rouge/lexers/hack.rb
+time="2025-03-18T21:37:52Z" level=debug msg=/usr/src/azl/BUILD/rouge-4.4.0/usr/lib/ruby/gems/3.3.0/gems/rouge-4.4.0/lib/rouge/lexers/haml.rb
+time="2025-03-18T21:37:52Z" level=debug msg=/usr/src/azl/BUILD/rouge-4.4.0/usr/lib/ruby/gems/3.3.0/gems/rouge-4.4.0/lib/rouge/lexers/handlebars.rb
+time="2025-03-18T21:37:52Z" level=debug msg=/usr/src/azl/BUILD/rouge-4.4.0/usr/lib/ruby/gems/3.3.0/gems/rouge-4.4.0/lib/rouge/lexers/haskell.rb
+time="2025-03-18T21:37:52Z" level=debug msg=/usr/src/azl/BUILD/rouge-4.4.0/usr/lib/ruby/gems/3.3.0/gems/rouge-4.4.0/lib/rouge/lexers/haxe.rb
+time="2025-03-18T21:37:52Z" level=debug msg=/usr/src/azl/BUILD/rouge-4.4.0/usr/lib/ruby/gems/3.3.0/gems/rouge-4.4.0/lib/rouge/lexers/hcl.rb
+time="2025-03-18T21:37:52Z" level=debug msg=/usr/src/azl/BUILD/rouge-4.4.0/usr/lib/ruby/gems/3.3.0/gems/rouge-4.4.0/lib/rouge/lexers/hlsl.rb
+time="2025-03-18T21:37:52Z" level=debug msg=/usr/src/azl/BUILD/rouge-4.4.0/usr/lib/ruby/gems/3.3.0/gems/rouge-4.4.0/lib/rouge/lexers/hocon.rb
+time="2025-03-18T21:37:52Z" level=debug msg=/usr/src/azl/BUILD/rouge-4.4.0/usr/lib/ruby/gems/3.3.0/gems/rouge-4.4.0/lib/rouge/lexers/hql.rb
+time="2025-03-18T21:37:52Z" level=debug msg=/usr/src/azl/BUILD/rouge-4.4.0/usr/lib/ruby/gems/3.3.0/gems/rouge-4.4.0/lib/rouge/lexers/html.rb
+time="2025-03-18T21:37:52Z" level=debug msg=/usr/src/azl/BUILD/rouge-4.4.0/usr/lib/ruby/gems/3.3.0/gems/rouge-4.4.0/lib/rouge/lexers/http.rb
+time="2025-03-18T21:37:52Z" level=debug msg=/usr/src/azl/BUILD/rouge-4.4.0/usr/lib/ruby/gems/3.3.0/gems/rouge-4.4.0/lib/rouge/lexers/hylang.rb
+time="2025-03-18T21:37:52Z" level=debug msg=/usr/src/azl/BUILD/rouge-4.4.0/usr/lib/ruby/gems/3.3.0/gems/rouge-4.4.0/lib/rouge/lexers/idlang.rb
+time="2025-03-18T21:37:52Z" level=debug msg=/usr/src/azl/BUILD/rouge-4.4.0/usr/lib/ruby/gems/3.3.0/gems/rouge-4.4.0/lib/rouge/lexers/idris.rb
+time="2025-03-18T21:37:52Z" level=debug msg=/usr/src/azl/BUILD/rouge-4.4.0/usr/lib/ruby/gems/3.3.0/gems/rouge-4.4.0/lib/rouge/lexers/iecst.rb
+time="2025-03-18T21:37:52Z" level=debug msg=/usr/src/azl/BUILD/rouge-4.4.0/usr/lib/ruby/gems/3.3.0/gems/rouge-4.4.0/lib/rouge/lexers/igorpro.rb
+time="2025-03-18T21:37:52Z" level=debug msg=/usr/src/azl/BUILD/rouge-4.4.0/usr/lib/ruby/gems/3.3.0/gems/rouge-4.4.0/lib/rouge/lexers/ini.rb
+time="2025-03-18T21:37:52Z" level=debug msg=/usr/src/azl/BUILD/rouge-4.4.0/usr/lib/ruby/gems/3.3.0/gems/rouge-4.4.0/lib/rouge/lexers/io.rb
+time="2025-03-18T21:37:52Z" level=debug msg=/usr/src/azl/BUILD/rouge-4.4.0/usr/lib/ruby/gems/3.3.0/gems/rouge-4.4.0/lib/rouge/lexers/irb.rb
+time="2025-03-18T21:37:52Z" level=debug msg=/usr/src/azl/BUILD/rouge-4.4.0/usr/lib/ruby/gems/3.3.0/gems/rouge-4.4.0/lib/rouge/lexers/isabelle.rb
+time="2025-03-18T21:37:52Z" level=debug msg=/usr/src/azl/BUILD/rouge-4.4.0/usr/lib/ruby/gems/3.3.0/gems/rouge-4.4.0/lib/rouge/lexers/isbl.rb
+time="2025-03-18T21:37:52Z" level=debug msg=/usr/src/azl/BUILD/rouge-4.4.0/usr/lib/ruby/gems/3.3.0/gems/rouge-4.4.0/lib/rouge/lexers/isbl/builtins.rb
+time="2025-03-18T21:37:52Z" level=debug msg=/usr/src/azl/BUILD/rouge-4.4.0/usr/lib/ruby/gems/3.3.0/gems/rouge-4.4.0/lib/rouge/lexers/j.rb
+time="2025-03-18T21:37:52Z" level=debug msg=/usr/src/azl/BUILD/rouge-4.4.0/usr/lib/ruby/gems/3.3.0/gems/rouge-4.4.0/lib/rouge/lexers/janet.rb
+time="2025-03-18T21:37:52Z" level=debug msg=/usr/src/azl/BUILD/rouge-4.4.0/usr/lib/ruby/gems/3.3.0/gems/rouge-4.4.0/lib/rouge/lexers/java.rb
+time="2025-03-18T21:37:52Z" level=debug msg=/usr/src/azl/BUILD/rouge-4.4.0/usr/lib/ruby/gems/3.3.0/gems/rouge-4.4.0/lib/rouge/lexers/javascript.rb
+time="2025-03-18T21:37:52Z" level=debug msg=/usr/src/azl/BUILD/rouge-4.4.0/usr/lib/ruby/gems/3.3.0/gems/rouge-4.4.0/lib/rouge/lexers/jinja.rb
+time="2025-03-18T21:37:52Z" level=debug msg=/usr/src/azl/BUILD/rouge-4.4.0/usr/lib/ruby/gems/3.3.0/gems/rouge-4.4.0/lib/rouge/lexers/jsl.rb
+time="2025-03-18T21:37:52Z" level=debug msg=/usr/src/azl/BUILD/rouge-4.4.0/usr/lib/ruby/gems/3.3.0/gems/rouge-4.4.0/lib/rouge/lexers/json.rb
+time="2025-03-18T21:37:52Z" level=debug msg=/usr/src/azl/BUILD/rouge-4.4.0/usr/lib/ruby/gems/3.3.0/gems/rouge-4.4.0/lib/rouge/lexers/json_doc.rb
+time="2025-03-18T21:37:52Z" level=debug msg=/usr/src/azl/BUILD/rouge-4.4.0/usr/lib/ruby/gems/3.3.0/gems/rouge-4.4.0/lib/rouge/lexers/jsonnet.rb
+time="2025-03-18T21:37:52Z" level=debug msg=/usr/src/azl/BUILD/rouge-4.4.0/usr/lib/ruby/gems/3.3.0/gems/rouge-4.4.0/lib/rouge/lexers/jsp.rb
+time="2025-03-18T21:37:52Z" level=debug msg=/usr/src/azl/BUILD/rouge-4.4.0/usr/lib/ruby/gems/3.3.0/gems/rouge-4.4.0/lib/rouge/lexers/jsx.rb
+time="2025-03-18T21:37:52Z" level=debug msg=/usr/src/azl/BUILD/rouge-4.4.0/usr/lib/ruby/gems/3.3.0/gems/rouge-4.4.0/lib/rouge/lexers/julia.rb
+time="2025-03-18T21:37:52Z" level=debug msg=/usr/src/azl/BUILD/rouge-4.4.0/usr/lib/ruby/gems/3.3.0/gems/rouge-4.4.0/lib/rouge/lexers/kotlin.rb
+time="2025-03-18T21:37:52Z" level=debug msg=/usr/src/azl/BUILD/rouge-4.4.0/usr/lib/ruby/gems/3.3.0/gems/rouge-4.4.0/lib/rouge/lexers/lasso.rb
+time="2025-03-18T21:37:52Z" level=debug msg=/usr/src/azl/BUILD/rouge-4.4.0/usr/lib/ruby/gems/3.3.0/gems/rouge-4.4.0/lib/rouge/lexers/lasso/keywords.rb
+time="2025-03-18T21:37:52Z" level=debug msg=/usr/src/azl/BUILD/rouge-4.4.0/usr/lib/ruby/gems/3.3.0/gems/rouge-4.4.0/lib/rouge/lexers/lean.rb
+time="2025-03-18T21:37:52Z" level=debug msg=/usr/src/azl/BUILD/rouge-4.4.0/usr/lib/ruby/gems/3.3.0/gems/rouge-4.4.0/lib/rouge/lexers/liquid.rb
+time="2025-03-18T21:37:52Z" level=debug msg=/usr/src/azl/BUILD/rouge-4.4.0/usr/lib/ruby/gems/3.3.0/gems/rouge-4.4.0/lib/rouge/lexers/literate_coffeescript.rb
+time="2025-03-18T21:37:52Z" level=debug msg=/usr/src/azl/BUILD/rouge-4.4.0/usr/lib/ruby/gems/3.3.0/gems/rouge-4.4.0/lib/rouge/lexers/literate_haskell.rb
+time="2025-03-18T21:37:52Z" level=debug msg=/usr/src/azl/BUILD/rouge-4.4.0/usr/lib/ruby/gems/3.3.0/gems/rouge-4.4.0/lib/rouge/lexers/livescript.rb
+time="2025-03-18T21:37:52Z" level=debug msg=/usr/src/azl/BUILD/rouge-4.4.0/usr/lib/ruby/gems/3.3.0/gems/rouge-4.4.0/lib/rouge/lexers/llvm.rb
+time="2025-03-18T21:37:52Z" level=debug msg=/usr/src/azl/BUILD/rouge-4.4.0/usr/lib/ruby/gems/3.3.0/gems/rouge-4.4.0/lib/rouge/lexers/llvm/keywords.rb
+time="2025-03-18T21:37:52Z" level=debug msg=/usr/src/azl/BUILD/rouge-4.4.0/usr/lib/ruby/gems/3.3.0/gems/rouge-4.4.0/lib/rouge/lexers/lua.rb
+time="2025-03-18T21:37:52Z" level=debug msg=/usr/src/azl/BUILD/rouge-4.4.0/usr/lib/ruby/gems/3.3.0/gems/rouge-4.4.0/lib/rouge/lexers/lua/keywords.rb
+time="2025-03-18T21:37:52Z" level=debug msg=/usr/src/azl/BUILD/rouge-4.4.0/usr/lib/ruby/gems/3.3.0/gems/rouge-4.4.0/lib/rouge/lexers/lustre.rb
+time="2025-03-18T21:37:52Z" level=debug msg=/usr/src/azl/BUILD/rouge-4.4.0/usr/lib/ruby/gems/3.3.0/gems/rouge-4.4.0/lib/rouge/lexers/lutin.rb
+time="2025-03-18T21:37:52Z" level=debug msg=/usr/src/azl/BUILD/rouge-4.4.0/usr/lib/ruby/gems/3.3.0/gems/rouge-4.4.0/lib/rouge/lexers/m68k.rb
+time="2025-03-18T21:37:52Z" level=debug msg=/usr/src/azl/BUILD/rouge-4.4.0/usr/lib/ruby/gems/3.3.0/gems/rouge-4.4.0/lib/rouge/lexers/magik.rb
+time="2025-03-18T21:37:52Z" level=debug msg=/usr/src/azl/BUILD/rouge-4.4.0/usr/lib/ruby/gems/3.3.0/gems/rouge-4.4.0/lib/rouge/lexers/make.rb
+time="2025-03-18T21:37:52Z" level=debug msg=/usr/src/azl/BUILD/rouge-4.4.0/usr/lib/ruby/gems/3.3.0/gems/rouge-4.4.0/lib/rouge/lexers/markdown.rb
+time="2025-03-18T21:37:52Z" level=debug msg=/usr/src/azl/BUILD/rouge-4.4.0/usr/lib/ruby/gems/3.3.0/gems/rouge-4.4.0/lib/rouge/lexers/mason.rb
+time="2025-03-18T21:37:52Z" level=debug msg=/usr/src/azl/BUILD/rouge-4.4.0/usr/lib/ruby/gems/3.3.0/gems/rouge-4.4.0/lib/rouge/lexers/mathematica.rb
+time="2025-03-18T21:37:52Z" level=debug msg=/usr/src/azl/BUILD/rouge-4.4.0/usr/lib/ruby/gems/3.3.0/gems/rouge-4.4.0/lib/rouge/lexers/mathematica/keywords.rb
+time="2025-03-18T21:37:52Z" level=debug msg=/usr/src/azl/BUILD/rouge-4.4.0/usr/lib/ruby/gems/3.3.0/gems/rouge-4.4.0/lib/rouge/lexers/matlab.rb
+time="2025-03-18T21:37:52Z" level=debug msg=/usr/src/azl/BUILD/rouge-4.4.0/usr/lib/ruby/gems/3.3.0/gems/rouge-4.4.0/lib/rouge/lexers/matlab/builtins.rb
+time="2025-03-18T21:37:52Z" level=debug msg=/usr/src/azl/BUILD/rouge-4.4.0/usr/lib/ruby/gems/3.3.0/gems/rouge-4.4.0/lib/rouge/lexers/matlab/keywords.rb
+time="2025-03-18T21:37:52Z" level=debug msg=/usr/src/azl/BUILD/rouge-4.4.0/usr/lib/ruby/gems/3.3.0/gems/rouge-4.4.0/lib/rouge/lexers/meson.rb
+time="2025-03-18T21:37:52Z" level=debug msg=/usr/src/azl/BUILD/rouge-4.4.0/usr/lib/ruby/gems/3.3.0/gems/rouge-4.4.0/lib/rouge/lexers/minizinc.rb
+time="2025-03-18T21:37:52Z" level=debug msg=/usr/src/azl/BUILD/rouge-4.4.0/usr/lib/ruby/gems/3.3.0/gems/rouge-4.4.0/lib/rouge/lexers/mojo.rb
+time="2025-03-18T21:37:52Z" level=debug msg=/usr/src/azl/BUILD/rouge-4.4.0/usr/lib/ruby/gems/3.3.0/gems/rouge-4.4.0/lib/rouge/lexers/moonscript.rb
+time="2025-03-18T21:37:52Z" level=debug msg=/usr/src/azl/BUILD/rouge-4.4.0/usr/lib/ruby/gems/3.3.0/gems/rouge-4.4.0/lib/rouge/lexers/mosel.rb
+time="2025-03-18T21:37:52Z" level=debug msg=/usr/src/azl/BUILD/rouge-4.4.0/usr/lib/ruby/gems/3.3.0/gems/rouge-4.4.0/lib/rouge/lexers/msgtrans.rb
+time="2025-03-18T21:37:52Z" level=debug msg=/usr/src/azl/BUILD/rouge-4.4.0/usr/lib/ruby/gems/3.3.0/gems/rouge-4.4.0/lib/rouge/lexers/mxml.rb
+time="2025-03-18T21:37:52Z" level=debug msg=/usr/src/azl/BUILD/rouge-4.4.0/usr/lib/ruby/gems/3.3.0/gems/rouge-4.4.0/lib/rouge/lexers/nasm.rb
+time="2025-03-18T21:37:52Z" level=debug msg=/usr/src/azl/BUILD/rouge-4.4.0/usr/lib/ruby/gems/3.3.0/gems/rouge-4.4.0/lib/rouge/lexers/nesasm.rb
+time="2025-03-18T21:37:52Z" level=debug msg=/usr/src/azl/BUILD/rouge-4.4.0/usr/lib/ruby/gems/3.3.0/gems/rouge-4.4.0/lib/rouge/lexers/nginx.rb
+time="2025-03-18T21:37:52Z" level=debug msg=/usr/src/azl/BUILD/rouge-4.4.0/usr/lib/ruby/gems/3.3.0/gems/rouge-4.4.0/lib/rouge/lexers/nial.rb
+time="2025-03-18T21:37:52Z" level=debug msg=/usr/src/azl/BUILD/rouge-4.4.0/usr/lib/ruby/gems/3.3.0/gems/rouge-4.4.0/lib/rouge/lexers/nim.rb
+time="2025-03-18T21:37:52Z" level=debug msg=/usr/src/azl/BUILD/rouge-4.4.0/usr/lib/ruby/gems/3.3.0/gems/rouge-4.4.0/lib/rouge/lexers/nix.rb
+time="2025-03-18T21:37:52Z" level=debug msg=/usr/src/azl/BUILD/rouge-4.4.0/usr/lib/ruby/gems/3.3.0/gems/rouge-4.4.0/lib/rouge/lexers/objective_c.rb
+time="2025-03-18T21:37:52Z" level=debug msg=/usr/src/azl/BUILD/rouge-4.4.0/usr/lib/ruby/gems/3.3.0/gems/rouge-4.4.0/lib/rouge/lexers/objective_c/common.rb
+time="2025-03-18T21:37:52Z" level=debug msg=/usr/src/azl/BUILD/rouge-4.4.0/usr/lib/ruby/gems/3.3.0/gems/rouge-4.4.0/lib/rouge/lexers/objective_cpp.rb
+time="2025-03-18T21:37:52Z" level=debug msg=/usr/src/azl/BUILD/rouge-4.4.0/usr/lib/ruby/gems/3.3.0/gems/rouge-4.4.0/lib/rouge/lexers/ocaml.rb
+time="2025-03-18T21:37:52Z" level=debug msg=/usr/src/azl/BUILD/rouge-4.4.0/usr/lib/ruby/gems/3.3.0/gems/rouge-4.4.0/lib/rouge/lexers/ocaml/common.rb
+time="2025-03-18T21:37:52Z" level=debug msg=/usr/src/azl/BUILD/rouge-4.4.0/usr/lib/ruby/gems/3.3.0/gems/rouge-4.4.0/lib/rouge/lexers/ocl.rb
+time="2025-03-18T21:37:52Z" level=debug msg=/usr/src/azl/BUILD/rouge-4.4.0/usr/lib/ruby/gems/3.3.0/gems/rouge-4.4.0/lib/rouge/lexers/openedge.rb
+time="2025-03-18T21:37:52Z" level=debug msg=/usr/src/azl/BUILD/rouge-4.4.0/usr/lib/ruby/gems/3.3.0/gems/rouge-4.4.0/lib/rouge/lexers/opentype_feature_file.rb
+time="2025-03-18T21:37:52Z" level=debug msg=/usr/src/azl/BUILD/rouge-4.4.0/usr/lib/ruby/gems/3.3.0/gems/rouge-4.4.0/lib/rouge/lexers/p4.rb
+time="2025-03-18T21:37:52Z" level=debug msg=/usr/src/azl/BUILD/rouge-4.4.0/usr/lib/ruby/gems/3.3.0/gems/rouge-4.4.0/lib/rouge/lexers/pascal.rb
+time="2025-03-18T21:37:52Z" level=debug msg=/usr/src/azl/BUILD/rouge-4.4.0/usr/lib/ruby/gems/3.3.0/gems/rouge-4.4.0/lib/rouge/lexers/perl.rb
+time="2025-03-18T21:37:52Z" level=debug msg=/usr/src/azl/BUILD/rouge-4.4.0/usr/lib/ruby/gems/3.3.0/gems/rouge-4.4.0/lib/rouge/lexers/php.rb
+time="2025-03-18T21:37:52Z" level=debug msg=/usr/src/azl/BUILD/rouge-4.4.0/usr/lib/ruby/gems/3.3.0/gems/rouge-4.4.0/lib/rouge/lexers/php/keywords.rb
+time="2025-03-18T21:37:52Z" level=debug msg=/usr/src/azl/BUILD/rouge-4.4.0/usr/lib/ruby/gems/3.3.0/gems/rouge-4.4.0/lib/rouge/lexers/plain_text.rb
+time="2025-03-18T21:37:52Z" level=debug msg=/usr/src/azl/BUILD/rouge-4.4.0/usr/lib/ruby/gems/3.3.0/gems/rouge-4.4.0/lib/rouge/lexers/plist.rb
+time="2025-03-18T21:37:52Z" level=debug msg=/usr/src/azl/BUILD/rouge-4.4.0/usr/lib/ruby/gems/3.3.0/gems/rouge-4.4.0/lib/rouge/lexers/plsql.rb
+time="2025-03-18T21:37:52Z" level=debug msg=/usr/src/azl/BUILD/rouge-4.4.0/usr/lib/ruby/gems/3.3.0/gems/rouge-4.4.0/lib/rouge/lexers/pony.rb
+time="2025-03-18T21:37:52Z" level=debug msg=/usr/src/azl/BUILD/rouge-4.4.0/usr/lib/ruby/gems/3.3.0/gems/rouge-4.4.0/lib/rouge/lexers/postscript.rb
+time="2025-03-18T21:37:52Z" level=debug msg=/usr/src/azl/BUILD/rouge-4.4.0/usr/lib/ruby/gems/3.3.0/gems/rouge-4.4.0/lib/rouge/lexers/powershell.rb
+time="2025-03-18T21:37:52Z" level=debug msg=/usr/src/azl/BUILD/rouge-4.4.0/usr/lib/ruby/gems/3.3.0/gems/rouge-4.4.0/lib/rouge/lexers/praat.rb
+time="2025-03-18T21:37:52Z" level=debug msg=/usr/src/azl/BUILD/rouge-4.4.0/usr/lib/ruby/gems/3.3.0/gems/rouge-4.4.0/lib/rouge/lexers/prolog.rb
+time="2025-03-18T21:37:52Z" level=debug msg=/usr/src/azl/BUILD/rouge-4.4.0/usr/lib/ruby/gems/3.3.0/gems/rouge-4.4.0/lib/rouge/lexers/prometheus.rb
+time="2025-03-18T21:37:52Z" level=debug msg=/usr/src/azl/BUILD/rouge-4.4.0/usr/lib/ruby/gems/3.3.0/gems/rouge-4.4.0/lib/rouge/lexers/properties.rb
+time="2025-03-18T21:37:52Z" level=debug msg=/usr/src/azl/BUILD/rouge-4.4.0/usr/lib/ruby/gems/3.3.0/gems/rouge-4.4.0/lib/rouge/lexers/protobuf.rb
+time="2025-03-18T21:37:52Z" level=debug msg=/usr/src/azl/BUILD/rouge-4.4.0/usr/lib/ruby/gems/3.3.0/gems/rouge-4.4.0/lib/rouge/lexers/puppet.rb
+time="2025-03-18T21:37:52Z" level=debug msg=/usr/src/azl/BUILD/rouge-4.4.0/usr/lib/ruby/gems/3.3.0/gems/rouge-4.4.0/lib/rouge/lexers/python.rb
+time="2025-03-18T21:37:52Z" level=debug msg=/usr/src/azl/BUILD/rouge-4.4.0/usr/lib/ruby/gems/3.3.0/gems/rouge-4.4.0/lib/rouge/lexers/q.rb
+time="2025-03-18T21:37:52Z" level=debug msg=/usr/src/azl/BUILD/rouge-4.4.0/usr/lib/ruby/gems/3.3.0/gems/rouge-4.4.0/lib/rouge/lexers/qml.rb
+time="2025-03-18T21:37:52Z" level=debug msg=/usr/src/azl/BUILD/rouge-4.4.0/usr/lib/ruby/gems/3.3.0/gems/rouge-4.4.0/lib/rouge/lexers/r.rb
+time="2025-03-18T21:37:52Z" level=debug msg=/usr/src/azl/BUILD/rouge-4.4.0/usr/lib/ruby/gems/3.3.0/gems/rouge-4.4.0/lib/rouge/lexers/racket.rb
+time="2025-03-18T21:37:52Z" level=debug msg=/usr/src/azl/BUILD/rouge-4.4.0/usr/lib/ruby/gems/3.3.0/gems/rouge-4.4.0/lib/rouge/lexers/reasonml.rb
+time="2025-03-18T21:37:52Z" level=debug msg=/usr/src/azl/BUILD/rouge-4.4.0/usr/lib/ruby/gems/3.3.0/gems/rouge-4.4.0/lib/rouge/lexers/rego.rb
+time="2025-03-18T21:37:52Z" level=debug msg=/usr/src/azl/BUILD/rouge-4.4.0/usr/lib/ruby/gems/3.3.0/gems/rouge-4.4.0/lib/rouge/lexers/rescript.rb
+time="2025-03-18T21:37:52Z" level=debug msg=/usr/src/azl/BUILD/rouge-4.4.0/usr/lib/ruby/gems/3.3.0/gems/rouge-4.4.0/lib/rouge/lexers/rml.rb
+time="2025-03-18T21:37:52Z" level=debug msg=/usr/src/azl/BUILD/rouge-4.4.0/usr/lib/ruby/gems/3.3.0/gems/rouge-4.4.0/lib/rouge/lexers/robot_framework.rb
+time="2025-03-18T21:37:52Z" level=debug msg=/usr/src/azl/BUILD/rouge-4.4.0/usr/lib/ruby/gems/3.3.0/gems/rouge-4.4.0/lib/rouge/lexers/ruby.rb
+time="2025-03-18T21:37:52Z" level=debug msg=/usr/src/azl/BUILD/rouge-4.4.0/usr/lib/ruby/gems/3.3.0/gems/rouge-4.4.0/lib/rouge/lexers/rust.rb
+time="2025-03-18T21:37:52Z" level=debug msg=/usr/src/azl/BUILD/rouge-4.4.0/usr/lib/ruby/gems/3.3.0/gems/rouge-4.4.0/lib/rouge/lexers/sas.rb
+time="2025-03-18T21:37:52Z" level=debug msg=/usr/src/azl/BUILD/rouge-4.4.0/usr/lib/ruby/gems/3.3.0/gems/rouge-4.4.0/lib/rouge/lexers/sass.rb
+time="2025-03-18T21:37:52Z" level=debug msg=/usr/src/azl/BUILD/rouge-4.4.0/usr/lib/ruby/gems/3.3.0/gems/rouge-4.4.0/lib/rouge/lexers/sass/common.rb
+time="2025-03-18T21:37:52Z" level=debug msg=/usr/src/azl/BUILD/rouge-4.4.0/usr/lib/ruby/gems/3.3.0/gems/rouge-4.4.0/lib/rouge/lexers/scala.rb
+time="2025-03-18T21:37:52Z" level=debug msg=/usr/src/azl/BUILD/rouge-4.4.0/usr/lib/ruby/gems/3.3.0/gems/rouge-4.4.0/lib/rouge/lexers/scheme.rb
+time="2025-03-18T21:37:52Z" level=debug msg=/usr/src/azl/BUILD/rouge-4.4.0/usr/lib/ruby/gems/3.3.0/gems/rouge-4.4.0/lib/rouge/lexers/scss.rb
+time="2025-03-18T21:37:52Z" level=debug msg=/usr/src/azl/BUILD/rouge-4.4.0/usr/lib/ruby/gems/3.3.0/gems/rouge-4.4.0/lib/rouge/lexers/sed.rb
+time="2025-03-18T21:37:52Z" level=debug msg=/usr/src/azl/BUILD/rouge-4.4.0/usr/lib/ruby/gems/3.3.0/gems/rouge-4.4.0/lib/rouge/lexers/shell.rb
+time="2025-03-18T21:37:52Z" level=debug msg=/usr/src/azl/BUILD/rouge-4.4.0/usr/lib/ruby/gems/3.3.0/gems/rouge-4.4.0/lib/rouge/lexers/sieve.rb
+time="2025-03-18T21:37:52Z" level=debug msg=/usr/src/azl/BUILD/rouge-4.4.0/usr/lib/ruby/gems/3.3.0/gems/rouge-4.4.0/lib/rouge/lexers/slice.rb
+time="2025-03-18T21:37:52Z" level=debug msg=/usr/src/azl/BUILD/rouge-4.4.0/usr/lib/ruby/gems/3.3.0/gems/rouge-4.4.0/lib/rouge/lexers/slim.rb
+time="2025-03-18T21:37:52Z" level=debug msg=/usr/src/azl/BUILD/rouge-4.4.0/usr/lib/ruby/gems/3.3.0/gems/rouge-4.4.0/lib/rouge/lexers/smalltalk.rb
+time="2025-03-18T21:37:52Z" level=debug msg=/usr/src/azl/BUILD/rouge-4.4.0/usr/lib/ruby/gems/3.3.0/gems/rouge-4.4.0/lib/rouge/lexers/smarty.rb
+time="2025-03-18T21:37:52Z" level=debug msg=/usr/src/azl/BUILD/rouge-4.4.0/usr/lib/ruby/gems/3.3.0/gems/rouge-4.4.0/lib/rouge/lexers/sml.rb
+time="2025-03-18T21:37:52Z" level=debug msg=/usr/src/azl/BUILD/rouge-4.4.0/usr/lib/ruby/gems/3.3.0/gems/rouge-4.4.0/lib/rouge/lexers/sparql.rb
+time="2025-03-18T21:37:52Z" level=debug msg=/usr/src/azl/BUILD/rouge-4.4.0/usr/lib/ruby/gems/3.3.0/gems/rouge-4.4.0/lib/rouge/lexers/sqf.rb
+time="2025-03-18T21:37:52Z" level=debug msg=/usr/src/azl/BUILD/rouge-4.4.0/usr/lib/ruby/gems/3.3.0/gems/rouge-4.4.0/lib/rouge/lexers/sqf/keywords.rb
+time="2025-03-18T21:37:52Z" level=debug msg=/usr/src/azl/BUILD/rouge-4.4.0/usr/lib/ruby/gems/3.3.0/gems/rouge-4.4.0/lib/rouge/lexers/sql.rb
+time="2025-03-18T21:37:52Z" level=debug msg=/usr/src/azl/BUILD/rouge-4.4.0/usr/lib/ruby/gems/3.3.0/gems/rouge-4.4.0/lib/rouge/lexers/ssh.rb
+time="2025-03-18T21:37:52Z" level=debug msg=/usr/src/azl/BUILD/rouge-4.4.0/usr/lib/ruby/gems/3.3.0/gems/rouge-4.4.0/lib/rouge/lexers/stan.rb
+time="2025-03-18T21:37:52Z" level=debug msg=/usr/src/azl/BUILD/rouge-4.4.0/usr/lib/ruby/gems/3.3.0/gems/rouge-4.4.0/lib/rouge/lexers/stata.rb
+time="2025-03-18T21:37:52Z" level=debug msg=/usr/src/azl/BUILD/rouge-4.4.0/usr/lib/ruby/gems/3.3.0/gems/rouge-4.4.0/lib/rouge/lexers/supercollider.rb
+time="2025-03-18T21:37:52Z" level=debug msg=/usr/src/azl/BUILD/rouge-4.4.0/usr/lib/ruby/gems/3.3.0/gems/rouge-4.4.0/lib/rouge/lexers/svelte.rb
+time="2025-03-18T21:37:52Z" level=debug msg=/usr/src/azl/BUILD/rouge-4.4.0/usr/lib/ruby/gems/3.3.0/gems/rouge-4.4.0/lib/rouge/lexers/swift.rb
+time="2025-03-18T21:37:52Z" level=debug msg=/usr/src/azl/BUILD/rouge-4.4.0/usr/lib/ruby/gems/3.3.0/gems/rouge-4.4.0/lib/rouge/lexers/systemd.rb
+time="2025-03-18T21:37:52Z" level=debug msg=/usr/src/azl/BUILD/rouge-4.4.0/usr/lib/ruby/gems/3.3.0/gems/rouge-4.4.0/lib/rouge/lexers/syzlang.rb
+time="2025-03-18T21:37:52Z" level=debug msg=/usr/src/azl/BUILD/rouge-4.4.0/usr/lib/ruby/gems/3.3.0/gems/rouge-4.4.0/lib/rouge/lexers/syzprog.rb
+time="2025-03-18T21:37:52Z" level=debug msg=/usr/src/azl/BUILD/rouge-4.4.0/usr/lib/ruby/gems/3.3.0/gems/rouge-4.4.0/lib/rouge/lexers/tap.rb
+time="2025-03-18T21:37:52Z" level=debug msg=/usr/src/azl/BUILD/rouge-4.4.0/usr/lib/ruby/gems/3.3.0/gems/rouge-4.4.0/lib/rouge/lexers/tcl.rb
+time="2025-03-18T21:37:52Z" level=debug msg=/usr/src/azl/BUILD/rouge-4.4.0/usr/lib/ruby/gems/3.3.0/gems/rouge-4.4.0/lib/rouge/lexers/terraform.rb
+time="2025-03-18T21:37:52Z" level=debug msg=/usr/src/azl/BUILD/rouge-4.4.0/usr/lib/ruby/gems/3.3.0/gems/rouge-4.4.0/lib/rouge/lexers/tex.rb
+time="2025-03-18T21:37:52Z" level=debug msg=/usr/src/azl/BUILD/rouge-4.4.0/usr/lib/ruby/gems/3.3.0/gems/rouge-4.4.0/lib/rouge/lexers/toml.rb
+time="2025-03-18T21:37:52Z" level=debug msg=/usr/src/azl/BUILD/rouge-4.4.0/usr/lib/ruby/gems/3.3.0/gems/rouge-4.4.0/lib/rouge/lexers/tsx.rb
+time="2025-03-18T21:37:52Z" level=debug msg=/usr/src/azl/BUILD/rouge-4.4.0/usr/lib/ruby/gems/3.3.0/gems/rouge-4.4.0/lib/rouge/lexers/ttcn3.rb
+time="2025-03-18T21:37:52Z" level=debug msg=/usr/src/azl/BUILD/rouge-4.4.0/usr/lib/ruby/gems/3.3.0/gems/rouge-4.4.0/lib/rouge/lexers/tulip.rb
+time="2025-03-18T21:37:52Z" level=debug msg=/usr/src/azl/BUILD/rouge-4.4.0/usr/lib/ruby/gems/3.3.0/gems/rouge-4.4.0/lib/rouge/lexers/turtle.rb
+time="2025-03-18T21:37:52Z" level=debug msg=/usr/src/azl/BUILD/rouge-4.4.0/usr/lib/ruby/gems/3.3.0/gems/rouge-4.4.0/lib/rouge/lexers/twig.rb
+time="2025-03-18T21:37:52Z" level=debug msg=/usr/src/azl/BUILD/rouge-4.4.0/usr/lib/ruby/gems/3.3.0/gems/rouge-4.4.0/lib/rouge/lexers/typescript.rb
+time="2025-03-18T21:37:52Z" level=debug msg=/usr/src/azl/BUILD/rouge-4.4.0/usr/lib/ruby/gems/3.3.0/gems/rouge-4.4.0/lib/rouge/lexers/typescript/common.rb
+time="2025-03-18T21:37:52Z" level=debug msg=/usr/src/azl/BUILD/rouge-4.4.0/usr/lib/ruby/gems/3.3.0/gems/rouge-4.4.0/lib/rouge/lexers/vala.rb
+time="2025-03-18T21:37:52Z" level=debug msg=/usr/src/azl/BUILD/rouge-4.4.0/usr/lib/ruby/gems/3.3.0/gems/rouge-4.4.0/lib/rouge/lexers/varnish.rb
+time="2025-03-18T21:37:52Z" level=debug msg=/usr/src/azl/BUILD/rouge-4.4.0/usr/lib/ruby/gems/3.3.0/gems/rouge-4.4.0/lib/rouge/lexers/vb.rb
+time="2025-03-18T21:37:52Z" level=debug msg=/usr/src/azl/BUILD/rouge-4.4.0/usr/lib/ruby/gems/3.3.0/gems/rouge-4.4.0/lib/rouge/lexers/velocity.rb
+time="2025-03-18T21:37:52Z" level=debug msg=/usr/src/azl/BUILD/rouge-4.4.0/usr/lib/ruby/gems/3.3.0/gems/rouge-4.4.0/lib/rouge/lexers/verilog.rb
+time="2025-03-18T21:37:52Z" level=debug msg=/usr/src/azl/BUILD/rouge-4.4.0/usr/lib/ruby/gems/3.3.0/gems/rouge-4.4.0/lib/rouge/lexers/vhdl.rb
+time="2025-03-18T21:37:52Z" level=debug msg=/usr/src/azl/BUILD/rouge-4.4.0/usr/lib/ruby/gems/3.3.0/gems/rouge-4.4.0/lib/rouge/lexers/viml.rb
+time="2025-03-18T21:37:52Z" level=debug msg=/usr/src/azl/BUILD/rouge-4.4.0/usr/lib/ruby/gems/3.3.0/gems/rouge-4.4.0/lib/rouge/lexers/viml/keywords.rb
+time="2025-03-18T21:37:52Z" level=debug msg=/usr/src/azl/BUILD/rouge-4.4.0/usr/lib/ruby/gems/3.3.0/gems/rouge-4.4.0/lib/rouge/lexers/vue.rb
+time="2025-03-18T21:37:52Z" level=debug msg=/usr/src/azl/BUILD/rouge-4.4.0/usr/lib/ruby/gems/3.3.0/gems/rouge-4.4.0/lib/rouge/lexers/wollok.rb
+time="2025-03-18T21:37:52Z" level=debug msg=/usr/src/azl/BUILD/rouge-4.4.0/usr/lib/ruby/gems/3.3.0/gems/rouge-4.4.0/lib/rouge/lexers/xml.rb
+time="2025-03-18T21:37:52Z" level=debug msg=/usr/src/azl/BUILD/rouge-4.4.0/usr/lib/ruby/gems/3.3.0/gems/rouge-4.4.0/lib/rouge/lexers/xojo.rb
+time="2025-03-18T21:37:52Z" level=debug msg=/usr/src/azl/BUILD/rouge-4.4.0/usr/lib/ruby/gems/3.3.0/gems/rouge-4.4.0/lib/rouge/lexers/xpath.rb
+time="2025-03-18T21:37:52Z" level=debug msg=/usr/src/azl/BUILD/rouge-4.4.0/usr/lib/ruby/gems/3.3.0/gems/rouge-4.4.0/lib/rouge/lexers/xquery.rb
+time="2025-03-18T21:37:52Z" level=debug msg=/usr/src/azl/BUILD/rouge-4.4.0/usr/lib/ruby/gems/3.3.0/gems/rouge-4.4.0/lib/rouge/lexers/yaml.rb
+time="2025-03-18T21:37:52Z" level=debug msg=/usr/src/azl/BUILD/rouge-4.4.0/usr/lib/ruby/gems/3.3.0/gems/rouge-4.4.0/lib/rouge/lexers/yang.rb
+time="2025-03-18T21:37:52Z" level=debug msg=/usr/src/azl/BUILD/rouge-4.4.0/usr/lib/ruby/gems/3.3.0/gems/rouge-4.4.0/lib/rouge/lexers/zig.rb
+time="2025-03-18T21:37:52Z" level=debug msg=/usr/src/azl/BUILD/rouge-4.4.0/usr/lib/ruby/gems/3.3.0/gems/rouge-4.4.0/lib/rouge/plugins/redcarpet.rb
+time="2025-03-18T21:37:52Z" level=debug msg=/usr/src/azl/BUILD/rouge-4.4.0/usr/lib/ruby/gems/3.3.0/gems/rouge-4.4.0/lib/rouge/regex_lexer.rb
+time="2025-03-18T21:37:52Z" level=debug msg=/usr/src/azl/BUILD/rouge-4.4.0/usr/lib/ruby/gems/3.3.0/gems/rouge-4.4.0/lib/rouge/template_lexer.rb
+time="2025-03-18T21:37:52Z" level=debug msg=/usr/src/azl/BUILD/rouge-4.4.0/usr/lib/ruby/gems/3.3.0/gems/rouge-4.4.0/lib/rouge/tex_theme_renderer.rb
+time="2025-03-18T21:37:52Z" level=debug msg=/usr/src/azl/BUILD/rouge-4.4.0/usr/lib/ruby/gems/3.3.0/gems/rouge-4.4.0/lib/rouge/text_analyzer.rb
+time="2025-03-18T21:37:52Z" level=debug msg=/usr/src/azl/BUILD/rouge-4.4.0/usr/lib/ruby/gems/3.3.0/gems/rouge-4.4.0/lib/rouge/theme.rb
+time="2025-03-18T21:37:52Z" level=debug msg=/usr/src/azl/BUILD/rouge-4.4.0/usr/lib/ruby/gems/3.3.0/gems/rouge-4.4.0/lib/rouge/themes/base16.rb
+time="2025-03-18T21:37:52Z" level=debug msg=/usr/src/azl/BUILD/rouge-4.4.0/usr/lib/ruby/gems/3.3.0/gems/rouge-4.4.0/lib/rouge/themes/bw.rb
+time="2025-03-18T21:37:52Z" level=debug msg=/usr/src/azl/BUILD/rouge-4.4.0/usr/lib/ruby/gems/3.3.0/gems/rouge-4.4.0/lib/rouge/themes/colorful.rb
+time="2025-03-18T21:37:52Z" level=debug msg=/usr/src/azl/BUILD/rouge-4.4.0/usr/lib/ruby/gems/3.3.0/gems/rouge-4.4.0/lib/rouge/themes/github.rb
+time="2025-03-18T21:37:52Z" level=debug msg=/usr/src/azl/BUILD/rouge-4.4.0/usr/lib/ruby/gems/3.3.0/gems/rouge-4.4.0/lib/rouge/themes/gruvbox.rb
+time="2025-03-18T21:37:52Z" level=debug msg=/usr/src/azl/BUILD/rouge-4.4.0/usr/lib/ruby/gems/3.3.0/gems/rouge-4.4.0/lib/rouge/themes/igor_pro.rb
+time="2025-03-18T21:37:52Z" level=debug msg=/usr/src/azl/BUILD/rouge-4.4.0/usr/lib/ruby/gems/3.3.0/gems/rouge-4.4.0/lib/rouge/themes/magritte.rb
+time="2025-03-18T21:37:52Z" level=debug msg=/usr/src/azl/BUILD/rouge-4.4.0/usr/lib/ruby/gems/3.3.0/gems/rouge-4.4.0/lib/rouge/themes/molokai.rb
+time="2025-03-18T21:37:52Z" level=debug msg=/usr/src/azl/BUILD/rouge-4.4.0/usr/lib/ruby/gems/3.3.0/gems/rouge-4.4.0/lib/rouge/themes/monokai.rb
+time="2025-03-18T21:37:52Z" level=debug msg=/usr/src/azl/BUILD/rouge-4.4.0/usr/lib/ruby/gems/3.3.0/gems/rouge-4.4.0/lib/rouge/themes/monokai_sublime.rb
+time="2025-03-18T21:37:52Z" level=debug msg=/usr/src/azl/BUILD/rouge-4.4.0/usr/lib/ruby/gems/3.3.0/gems/rouge-4.4.0/lib/rouge/themes/pastie.rb
+time="2025-03-18T21:37:52Z" level=debug msg=/usr/src/azl/BUILD/rouge-4.4.0/usr/lib/ruby/gems/3.3.0/gems/rouge-4.4.0/lib/rouge/themes/thankful_eyes.rb
+time="2025-03-18T21:37:52Z" level=debug msg=/usr/src/azl/BUILD/rouge-4.4.0/usr/lib/ruby/gems/3.3.0/gems/rouge-4.4.0/lib/rouge/themes/tulip.rb
+time="2025-03-18T21:37:52Z" level=debug msg=/usr/src/azl/BUILD/rouge-4.4.0/usr/lib/ruby/gems/3.3.0/gems/rouge-4.4.0/lib/rouge/token.rb
+time="2025-03-18T21:37:52Z" level=debug msg=/usr/src/azl/BUILD/rouge-4.4.0/usr/lib/ruby/gems/3.3.0/gems/rouge-4.4.0/lib/rouge/util.rb
+time="2025-03-18T21:37:52Z" level=debug msg=/usr/src/azl/BUILD/rouge-4.4.0/usr/lib/ruby/gems/3.3.0/gems/rouge-4.4.0/lib/rouge/version.rb
+time="2025-03-18T21:37:52Z" level=debug msg=/usr/src/azl/BUILD/rouge-4.4.0/usr/lib/ruby/gems/3.3.0/gems/rouge-4.4.0/rouge.gemspec
+time="2025-03-18T21:37:52Z" level=debug msg=/usr/src/azl/BUILD/rouge-4.4.0/usr/bin/rougify
+time="2025-03-18T21:37:52Z" level=debug msg="Successfully installed rouge-4.4.0"
+time="2025-03-18T21:37:52Z" level=debug msg="Parsing documentation for rouge-4.4.0"
+time="2025-03-18T21:37:52Z" level=debug msg="Parsing sources..."
+time="2025-03-18T21:37:52Z" level=debug msg="  0% [ 1/507]  lib/rouge.rb"
+time="2025-03-18T21:37:52Z" level=debug msg="  0% [ 2/507]  lib/rouge/cli.rb"
+time="2025-03-18T21:37:53Z" level=debug msg="  0% [ 3/507]  lib/rouge/demos/abap"
+time="2025-03-18T21:37:53Z" level=debug msg="  0% [ 4/507]  lib/rouge/demos/actionscript"
+time="2025-03-18T21:37:53Z" level=debug msg="  0% [ 5/507]  lib/rouge/demos/ada"
+time="2025-03-18T21:37:53Z" level=debug msg="  1% [ 6/507]  lib/rouge/demos/apache"
+time="2025-03-18T21:37:53Z" level=debug msg="  1% [ 7/507]  lib/rouge/demos/apex"
+time="2025-03-18T21:37:53Z" level=debug msg="  1% [ 8/507]  lib/rouge/demos/apiblueprint"
+time="2025-03-18T21:37:53Z" level=debug msg="  1% [ 9/507]  lib/rouge/demos/applescript"
+time="2025-03-18T21:37:53Z" level=debug msg="  1% [10/507]  lib/rouge/demos/armasm"
+time="2025-03-18T21:37:53Z" level=debug msg="  2% [11/507]  lib/rouge/demos/augeas"
+time="2025-03-18T21:37:53Z" level=debug msg="  2% [12/507]  lib/rouge/demos/awk"
+time="2025-03-18T21:37:53Z" level=debug msg="  2% [13/507]  lib/rouge/demos/batchfile"
+time="2025-03-18T21:37:53Z" level=debug msg="  2% [14/507]  lib/rouge/demos/bbcbasic"
+time="2025-03-18T21:37:53Z" level=debug msg="  2% [15/507]  lib/rouge/demos/bibtex"
+time="2025-03-18T21:37:53Z" level=debug msg="  3% [16/507]  lib/rouge/demos/biml"
+time="2025-03-18T21:37:53Z" level=debug msg="  3% [17/507]  lib/rouge/demos/bpf"
+time="2025-03-18T21:37:53Z" level=debug msg="  3% [18/507]  lib/rouge/demos/brainfuck"
+time="2025-03-18T21:37:53Z" level=debug msg="  3% [19/507]  lib/rouge/demos/brightscript"
+time="2025-03-18T21:37:53Z" level=debug msg="  3% [20/507]  lib/rouge/demos/bsl"
+time="2025-03-18T21:37:53Z" level=debug msg="  4% [21/507]  lib/rouge/demos/c"
+time="2025-03-18T21:37:53Z" level=debug msg="  4% [22/507]  lib/rouge/demos/ceylon"
+time="2025-03-18T21:37:53Z" level=debug msg="  4% [23/507]  lib/rouge/demos/cfscript"
+time="2025-03-18T21:37:53Z" level=debug msg="  4% [24/507]  lib/rouge/demos/cisco_ios"
+time="2025-03-18T21:37:53Z" level=debug msg="  4% [25/507]  lib/rouge/demos/clean"
+time="2025-03-18T21:37:53Z" level=debug msg="  5% [26/507]  lib/rouge/demos/clojure"
+time="2025-03-18T21:37:53Z" level=debug msg="  5% [27/507]  lib/rouge/demos/cmake"
+time="2025-03-18T21:37:53Z" level=debug msg="  5% [28/507]  lib/rouge/demos/cmhg"
+time="2025-03-18T21:37:53Z" level=debug msg="  5% [29/507]  lib/rouge/demos/codeowners"
+time="2025-03-18T21:37:53Z" level=debug msg="  5% [30/507]  lib/rouge/demos/coffeescript"
+time="2025-03-18T21:37:53Z" level=debug msg="  6% [31/507]  lib/rouge/demos/common_lisp"
+time="2025-03-18T21:37:53Z" level=debug msg="  6% [32/507]  lib/rouge/demos/conf"
+time="2025-03-18T21:37:53Z" level=debug msg="  6% [33/507]  lib/rouge/demos/console"
+time="2025-03-18T21:37:53Z" level=debug msg="  6% [34/507]  lib/rouge/demos/coq"
+time="2025-03-18T21:37:53Z" level=debug msg="  6% [35/507]  lib/rouge/demos/cpp"
+time="2025-03-18T21:37:53Z" level=debug msg="  7% [36/507]  lib/rouge/demos/crystal"
+time="2025-03-18T21:37:53Z" level=debug msg="  7% [37/507]  lib/rouge/demos/csharp"
+time="2025-03-18T21:37:53Z" level=debug msg="  7% [38/507]  lib/rouge/demos/css"
+time="2025-03-18T21:37:53Z" level=debug msg="  7% [39/507]  lib/rouge/demos/csvs"
+time="2025-03-18T21:37:53Z" level=debug msg="  7% [40/507]  lib/rouge/demos/cuda"
+time="2025-03-18T21:37:53Z" level=debug msg="  8% [41/507]  lib/rouge/demos/cypher"
+time="2025-03-18T21:37:53Z" level=debug msg="  8% [42/507]  lib/rouge/demos/cython"
+time="2025-03-18T21:37:53Z" level=debug msg="  8% [43/507]  lib/rouge/demos/d"
+time="2025-03-18T21:37:53Z" level=debug msg="  8% [44/507]  lib/rouge/demos/dafny"
+time="2025-03-18T21:37:53Z" level=debug msg="  8% [45/507]  lib/rouge/demos/dart"
+time="2025-03-18T21:37:53Z" level=debug msg="  9% [46/507]  lib/rouge/demos/datastudio"
+time="2025-03-18T21:37:53Z" level=debug msg="  9% [47/507]  lib/rouge/demos/diff"
+time="2025-03-18T21:37:53Z" level=debug msg="  9% [48/507]  lib/rouge/demos/digdag"
+time="2025-03-18T21:37:53Z" level=debug msg="  9% [49/507]  lib/rouge/demos/docker"
+time="2025-03-18T21:37:53Z" level=debug msg="  9% [50/507]  lib/rouge/demos/dot"
+time="2025-03-18T21:37:53Z" level=debug msg=" 10% [51/507]  lib/rouge/demos/ecl"
+time="2025-03-18T21:37:53Z" level=debug msg=" 10% [52/507]  lib/rouge/demos/eex"
+time="2025-03-18T21:37:53Z" level=debug msg=" 10% [53/507]  lib/rouge/demos/eiffel"
+time="2025-03-18T21:37:53Z" level=debug msg=" 10% [54/507]  lib/rouge/demos/elixir"
+time="2025-03-18T21:37:53Z" level=debug msg=" 10% [55/507]  lib/rouge/demos/elm"
+time="2025-03-18T21:37:53Z" level=debug msg=" 11% [56/507]  lib/rouge/demos/email"
+time="2025-03-18T21:37:53Z" level=debug msg=" 11% [57/507]  lib/rouge/demos/epp"
+time="2025-03-18T21:37:53Z" level=debug msg=" 11% [58/507]  lib/rouge/demos/erb"
+time="2025-03-18T21:37:53Z" level=debug msg=" 11% [59/507]  lib/rouge/demos/erlang"
+time="2025-03-18T21:37:53Z" level=debug msg=" 11% [60/507]  lib/rouge/demos/escape"
+time="2025-03-18T21:37:53Z" level=debug msg=" 12% [61/507]  lib/rouge/demos/factor"
+time="2025-03-18T21:37:53Z" level=debug msg=" 12% [62/507]  lib/rouge/demos/fluent"
+time="2025-03-18T21:37:53Z" level=debug msg=" 12% [63/507]  lib/rouge/demos/fortran"
+time="2025-03-18T21:37:53Z" level=debug msg=" 12% [64/507]  lib/rouge/demos/freefem"
+time="2025-03-18T21:37:53Z" level=debug msg=" 12% [65/507]  lib/rouge/demos/fsharp"
+time="2025-03-18T21:37:53Z" level=debug msg=" 13% [66/507]  lib/rouge/demos/gdscript"
+time="2025-03-18T21:37:53Z" level=debug msg=" 13% [67/507]  lib/rouge/demos/ghc-cmm"
+time="2025-03-18T21:37:53Z" level=debug msg=" 13% [68/507]  lib/rouge/demos/ghc-core"
+time="2025-03-18T21:37:53Z" level=debug msg=" 13% [69/507]  lib/rouge/demos/gherkin"
+time="2025-03-18T21:37:53Z" level=debug msg=" 13% [70/507]  lib/rouge/demos/glsl"
+time="2025-03-18T21:37:53Z" level=debug msg=" 14% [71/507]  lib/rouge/demos/go"
+time="2025-03-18T21:37:53Z" level=debug msg=" 14% [72/507]  lib/rouge/demos/gradle"
+time="2025-03-18T21:37:53Z" level=debug msg=" 14% [73/507]  lib/rouge/demos/graphql"
+time="2025-03-18T21:37:53Z" level=debug msg=" 14% [74/507]  lib/rouge/demos/groovy"
+time="2025-03-18T21:37:53Z" level=debug msg=" 14% [75/507]  lib/rouge/demos/hack"
+time="2025-03-18T21:37:53Z" level=debug msg=" 14% [76/507]  lib/rouge/demos/haml"
+time="2025-03-18T21:37:53Z" level=debug msg=" 15% [77/507]  lib/rouge/demos/handlebars"
+time="2025-03-18T21:37:53Z" level=debug msg=" 15% [78/507]  lib/rouge/demos/haskell"
+time="2025-03-18T21:37:53Z" level=debug msg=" 15% [79/507]  lib/rouge/demos/haxe"
+time="2025-03-18T21:37:53Z" level=debug msg=" 15% [80/507]  lib/rouge/demos/hcl"
+time="2025-03-18T21:37:53Z" level=debug msg=" 15% [81/507]  lib/rouge/demos/hlsl"
+time="2025-03-18T21:37:53Z" level=debug msg=" 16% [82/507]  lib/rouge/demos/hocon"
+time="2025-03-18T21:37:53Z" level=debug msg=" 16% [83/507]  lib/rouge/demos/hql"
+time="2025-03-18T21:37:53Z" level=debug msg=" 16% [84/507]  lib/rouge/demos/html"
+time="2025-03-18T21:37:53Z" level=debug msg=" 16% [85/507]  lib/rouge/demos/http"
+time="2025-03-18T21:37:53Z" level=debug msg=" 16% [86/507]  lib/rouge/demos/hylang"
+time="2025-03-18T21:37:53Z" level=debug msg=" 17% [87/507]  lib/rouge/demos/idlang"
+time="2025-03-18T21:37:53Z" level=debug msg=" 17% [88/507]  lib/rouge/demos/idris"
+time="2025-03-18T21:37:53Z" level=debug msg=" 17% [89/507]  lib/rouge/demos/iecst"
+time="2025-03-18T21:37:53Z" level=debug msg=" 17% [90/507]  lib/rouge/demos/igorpro"
+time="2025-03-18T21:37:53Z" level=debug msg=" 17% [91/507]  lib/rouge/demos/ini"
+time="2025-03-18T21:37:53Z" level=debug msg=" 18% [92/507]  lib/rouge/demos/io"
+time="2025-03-18T21:37:53Z" level=debug msg=" 18% [93/507]  lib/rouge/demos/irb"
+time="2025-03-18T21:37:53Z" level=debug msg=" 18% [94/507]  lib/rouge/demos/irb_output"
+time="2025-03-18T21:37:53Z" level=debug msg=" 18% [95/507]  lib/rouge/demos/isabelle"
+time="2025-03-18T21:37:53Z" level=debug msg=" 18% [96/507]  lib/rouge/demos/isbl"
+time="2025-03-18T21:37:53Z" level=debug msg=" 19% [97/507]  lib/rouge/demos/j"
+time="2025-03-18T21:37:53Z" level=debug msg=" 19% [98/507]  lib/rouge/demos/janet"
+time="2025-03-18T21:37:53Z" level=debug msg=" 19% [99/507]  lib/rouge/demos/java"
+time="2025-03-18T21:37:53Z" level=debug msg=" 19% [100/507]  lib/rouge/demos/javascript"
+time="2025-03-18T21:37:53Z" level=debug msg=" 19% [101/507]  lib/rouge/demos/jinja"
+time="2025-03-18T21:37:53Z" level=debug msg=" 20% [102/507]  lib/rouge/demos/jsl"
+time="2025-03-18T21:37:53Z" level=debug msg=" 20% [103/507]  lib/rouge/demos/json"
+time="2025-03-18T21:37:53Z" level=debug msg=" 20% [104/507]  lib/rouge/demos/json-doc"
+time="2025-03-18T21:37:53Z" level=debug msg=" 20% [105/507]  lib/rouge/demos/jsonnet"
+time="2025-03-18T21:37:53Z" level=debug msg=" 20% [106/507]  lib/rouge/demos/jsp"
+time="2025-03-18T21:37:53Z" level=debug msg=" 21% [107/507]  lib/rouge/demos/jsx"
+time="2025-03-18T21:37:53Z" level=debug msg=" 21% [108/507]  lib/rouge/demos/julia"
+time="2025-03-18T21:37:53Z" level=debug msg=" 21% [109/507]  lib/rouge/demos/kotlin"
+time="2025-03-18T21:37:53Z" level=debug msg=" 21% [110/507]  lib/rouge/demos/lasso"
+time="2025-03-18T21:37:53Z" level=debug msg=" 21% [111/507]  lib/rouge/demos/lean"
+time="2025-03-18T21:37:53Z" level=debug msg=" 22% [112/507]  lib/rouge/demos/liquid"
+time="2025-03-18T21:37:53Z" level=debug msg=" 22% [113/507]  lib/rouge/demos/literate_coffeescript"
+time="2025-03-18T21:37:53Z" level=debug msg=" 22% [114/507]  lib/rouge/demos/literate_haskell"
+time="2025-03-18T21:37:53Z" level=debug msg=" 22% [115/507]  lib/rouge/demos/livescript"
+time="2025-03-18T21:37:53Z" level=debug msg=" 22% [116/507]  lib/rouge/demos/llvm"
+time="2025-03-18T21:37:53Z" level=debug msg=" 23% [117/507]  lib/rouge/demos/lua"
+time="2025-03-18T21:37:53Z" level=debug msg=" 23% [118/507]  lib/rouge/demos/lustre"
+time="2025-03-18T21:37:53Z" level=debug msg=" 23% [119/507]  lib/rouge/demos/lutin"
+time="2025-03-18T21:37:53Z" level=debug msg=" 23% [120/507]  lib/rouge/demos/m68k"
+time="2025-03-18T21:37:53Z" level=debug msg=" 23% [121/507]  lib/rouge/demos/magik"
+time="2025-03-18T21:37:53Z" level=debug msg=" 24% [122/507]  lib/rouge/demos/make"
+time="2025-03-18T21:37:53Z" level=debug msg=" 24% [123/507]  lib/rouge/demos/markdown"
+time="2025-03-18T21:37:53Z" level=debug msg=" 24% [124/507]  lib/rouge/demos/mason"
+time="2025-03-18T21:37:53Z" level=debug msg=" 24% [125/507]  lib/rouge/demos/mathematica"
+time="2025-03-18T21:37:53Z" level=debug msg=" 24% [126/507]  lib/rouge/demos/matlab"
+time="2025-03-18T21:37:53Z" level=debug msg=" 25% [127/507]  lib/rouge/demos/meson"
+time="2025-03-18T21:37:53Z" level=debug msg=" 25% [128/507]  lib/rouge/demos/minizinc"
+time="2025-03-18T21:37:53Z" level=debug msg=" 25% [129/507]  lib/rouge/demos/mojo"
+time="2025-03-18T21:37:53Z" level=debug msg=" 25% [130/507]  lib/rouge/demos/moonscript"
+time="2025-03-18T21:37:53Z" level=debug msg=" 25% [131/507]  lib/rouge/demos/mosel"
+time="2025-03-18T21:37:53Z" level=debug msg=" 26% [132/507]  lib/rouge/demos/msgtrans"
+time="2025-03-18T21:37:53Z" level=debug msg=" 26% [133/507]  lib/rouge/demos/mxml"
+time="2025-03-18T21:37:53Z" level=debug msg=" 26% [134/507]  lib/rouge/demos/nasm"
+time="2025-03-18T21:37:53Z" level=debug msg=" 26% [135/507]  lib/rouge/demos/nesasm"
+time="2025-03-18T21:37:53Z" level=debug msg=" 26% [136/507]  lib/rouge/demos/nginx"
+time="2025-03-18T21:37:53Z" level=debug msg=" 27% [137/507]  lib/rouge/demos/nial"
+time="2025-03-18T21:37:53Z" level=debug msg=" 27% [138/507]  lib/rouge/demos/nim"
+time="2025-03-18T21:37:53Z" level=debug msg=" 27% [139/507]  lib/rouge/demos/nix"
+time="2025-03-18T21:37:53Z" level=debug msg=" 27% [140/507]  lib/rouge/demos/objective_c"
+time="2025-03-18T21:37:53Z" level=debug msg=" 27% [141/507]  lib/rouge/demos/objective_cpp"
+time="2025-03-18T21:37:53Z" level=debug msg=" 28% [142/507]  lib/rouge/demos/ocaml"
+time="2025-03-18T21:37:53Z" level=debug msg=" 28% [143/507]  lib/rouge/demos/ocl"
+time="2025-03-18T21:37:53Z" level=debug msg=" 28% [144/507]  lib/rouge/demos/openedge"
+time="2025-03-18T21:37:53Z" level=debug msg=" 28% [145/507]  lib/rouge/demos/opentype_feature_file"
+time="2025-03-18T21:37:53Z" level=debug msg=" 28% [146/507]  lib/rouge/demos/p4"
+time="2025-03-18T21:37:53Z" level=debug msg=" 28% [147/507]  lib/rouge/demos/pascal"
+time="2025-03-18T21:37:53Z" level=debug msg=" 29% [148/507]  lib/rouge/demos/perl"
+time="2025-03-18T21:37:53Z" level=debug msg=" 29% [149/507]  lib/rouge/demos/php"
+time="2025-03-18T21:37:53Z" level=debug msg=" 29% [150/507]  lib/rouge/demos/plaintext"
+time="2025-03-18T21:37:53Z" level=debug msg=" 29% [151/507]  lib/rouge/demos/plist"
+time="2025-03-18T21:37:53Z" level=debug msg=" 29% [152/507]  lib/rouge/demos/plsql"
+time="2025-03-18T21:37:53Z" level=debug msg=" 30% [153/507]  lib/rouge/demos/pony"
+time="2025-03-18T21:37:53Z" level=debug msg=" 30% [154/507]  lib/rouge/demos/postscript"
+time="2025-03-18T21:37:53Z" level=debug msg=" 30% [155/507]  lib/rouge/demos/powershell"
+time="2025-03-18T21:37:53Z" level=debug msg=" 30% [156/507]  lib/rouge/demos/praat"
+time="2025-03-18T21:37:53Z" level=debug msg=" 30% [157/507]  lib/rouge/demos/prolog"
+time="2025-03-18T21:37:53Z" level=debug msg=" 31% [158/507]  lib/rouge/demos/prometheus"
+time="2025-03-18T21:37:53Z" level=debug msg=" 31% [159/507]  lib/rouge/demos/properties"
+time="2025-03-18T21:37:53Z" level=debug msg=" 31% [160/507]  lib/rouge/demos/protobuf"
+time="2025-03-18T21:37:53Z" level=debug msg=" 31% [161/507]  lib/rouge/demos/puppet"
+time="2025-03-18T21:37:53Z" level=debug msg=" 31% [162/507]  lib/rouge/demos/python"
+time="2025-03-18T21:37:53Z" level=debug msg=" 32% [163/507]  lib/rouge/demos/q"
+time="2025-03-18T21:37:53Z" level=debug msg=" 32% [164/507]  lib/rouge/demos/qml"
+time="2025-03-18T21:37:53Z" level=debug msg=" 32% [165/507]  lib/rouge/demos/r"
+time="2025-03-18T21:37:53Z" level=debug msg=" 32% [166/507]  lib/rouge/demos/racket"
+time="2025-03-18T21:37:53Z" level=debug msg=" 32% [167/507]  lib/rouge/demos/reasonml"
+time="2025-03-18T21:37:53Z" level=debug msg=" 33% [168/507]  lib/rouge/demos/rego"
+time="2025-03-18T21:37:53Z" level=debug msg=" 33% [169/507]  lib/rouge/demos/rescript"
+time="2025-03-18T21:37:53Z" level=debug msg=" 33% [170/507]  lib/rouge/demos/rml"
+time="2025-03-18T21:37:53Z" level=debug msg=" 33% [171/507]  lib/rouge/demos/robot_framework"
+time="2025-03-18T21:37:53Z" level=debug msg=" 33% [172/507]  lib/rouge/demos/ruby"
+time="2025-03-18T21:37:53Z" level=debug msg=" 34% [173/507]  lib/rouge/demos/rust"
+time="2025-03-18T21:37:53Z" level=debug msg=" 34% [174/507]  lib/rouge/demos/sas"
+time="2025-03-18T21:37:53Z" level=debug msg=" 34% [175/507]  lib/rouge/demos/sass"
+time="2025-03-18T21:37:53Z" level=debug msg=" 34% [176/507]  lib/rouge/demos/scala"
+time="2025-03-18T21:37:53Z" level=debug msg=" 34% [177/507]  lib/rouge/demos/scheme"
+time="2025-03-18T21:37:53Z" level=debug msg=" 35% [178/507]  lib/rouge/demos/scss"
+time="2025-03-18T21:37:53Z" level=debug msg=" 35% [179/507]  lib/rouge/demos/sed"
+time="2025-03-18T21:37:53Z" level=debug msg=" 35% [180/507]  lib/rouge/demos/shell"
+time="2025-03-18T21:37:53Z" level=debug msg=" 35% [181/507]  lib/rouge/demos/sieve"
+time="2025-03-18T21:37:53Z" level=debug msg=" 35% [182/507]  lib/rouge/demos/slice"
+time="2025-03-18T21:37:53Z" level=debug msg=" 36% [183/507]  lib/rouge/demos/slim"
+time="2025-03-18T21:37:53Z" level=debug msg=" 36% [184/507]  lib/rouge/demos/smalltalk"
+time="2025-03-18T21:37:53Z" level=debug msg=" 36% [185/507]  lib/rouge/demos/smarty"
+time="2025-03-18T21:37:53Z" level=debug msg=" 36% [186/507]  lib/rouge/demos/sml"
+time="2025-03-18T21:37:53Z" level=debug msg=" 36% [187/507]  lib/rouge/demos/sparql"
+time="2025-03-18T21:37:53Z" level=debug msg=" 37% [188/507]  lib/rouge/demos/sqf"
+time="2025-03-18T21:37:53Z" level=debug msg=" 37% [189/507]  lib/rouge/demos/sql"
+time="2025-03-18T21:37:53Z" level=debug msg=" 37% [190/507]  lib/rouge/demos/ssh"
+time="2025-03-18T21:37:53Z" level=debug msg=" 37% [191/507]  lib/rouge/demos/stan"
+time="2025-03-18T21:37:53Z" level=debug msg=" 37% [192/507]  lib/rouge/demos/stata"
+time="2025-03-18T21:37:53Z" level=debug msg=" 38% [193/507]  lib/rouge/demos/supercollider"
+time="2025-03-18T21:37:53Z" level=debug msg=" 38% [194/507]  lib/rouge/demos/svelte"
+time="2025-03-18T21:37:53Z" level=debug msg=" 38% [195/507]  lib/rouge/demos/swift"
+time="2025-03-18T21:37:53Z" level=debug msg=" 38% [196/507]  lib/rouge/demos/systemd"
+time="2025-03-18T21:37:53Z" level=debug msg=" 38% [197/507]  lib/rouge/demos/syzlang"
+time="2025-03-18T21:37:53Z" level=debug msg=" 39% [198/507]  lib/rouge/demos/syzprog"
+time="2025-03-18T21:37:53Z" level=debug msg=" 39% [199/507]  lib/rouge/demos/tap"
+time="2025-03-18T21:37:53Z" level=debug msg=" 39% [200/507]  lib/rouge/demos/tcl"
+time="2025-03-18T21:37:53Z" level=debug msg=" 39% [201/507]  lib/rouge/demos/terraform"
+time="2025-03-18T21:37:53Z" level=debug msg=" 39% [202/507]  lib/rouge/demos/tex"
+time="2025-03-18T21:37:53Z" level=debug msg=" 40% [203/507]  lib/rouge/demos/toml"
+time="2025-03-18T21:37:53Z" level=debug msg=" 40% [204/507]  lib/rouge/demos/tsx"
+time="2025-03-18T21:37:53Z" level=debug msg=" 40% [205/507]  lib/rouge/demos/ttcn3"
+time="2025-03-18T21:37:53Z" level=debug msg=" 40% [206/507]  lib/rouge/demos/tulip"
+time="2025-03-18T21:37:53Z" level=debug msg=" 40% [207/507]  lib/rouge/demos/turtle"
+time="2025-03-18T21:37:53Z" level=debug msg=" 41% [208/507]  lib/rouge/demos/twig"
+time="2025-03-18T21:37:53Z" level=debug msg=" 41% [209/507]  lib/rouge/demos/typescript"
+time="2025-03-18T21:37:53Z" level=debug msg=" 41% [210/507]  lib/rouge/demos/vala"
+time="2025-03-18T21:37:53Z" level=debug msg=" 41% [211/507]  lib/rouge/demos/vb"
+time="2025-03-18T21:37:53Z" level=debug msg=" 41% [212/507]  lib/rouge/demos/vcl"
+time="2025-03-18T21:37:53Z" level=debug msg=" 42% [213/507]  lib/rouge/demos/velocity"
+time="2025-03-18T21:37:53Z" level=debug msg=" 42% [214/507]  lib/rouge/demos/verilog"
+time="2025-03-18T21:37:53Z" level=debug msg=" 42% [215/507]  lib/rouge/demos/vhdl"
+time="2025-03-18T21:37:53Z" level=debug msg=" 42% [216/507]  lib/rouge/demos/viml"
+time="2025-03-18T21:37:53Z" level=debug msg=" 42% [217/507]  lib/rouge/demos/vue"
+time="2025-03-18T21:37:53Z" level=debug msg=" 42% [218/507]  lib/rouge/demos/wollok"
+time="2025-03-18T21:37:53Z" level=debug msg=" 43% [219/507]  lib/rouge/demos/xml"
+time="2025-03-18T21:37:53Z" level=debug msg=" 43% [220/507]  lib/rouge/demos/xojo"
+time="2025-03-18T21:37:53Z" level=debug msg=" 43% [221/507]  lib/rouge/demos/xpath"
+time="2025-03-18T21:37:53Z" level=debug msg=" 43% [222/507]  lib/rouge/demos/xquery"
+time="2025-03-18T21:37:53Z" level=debug msg=" 43% [223/507]  lib/rouge/demos/yaml"
+time="2025-03-18T21:37:53Z" level=debug msg=" 44% [224/507]  lib/rouge/demos/yang"
+time="2025-03-18T21:37:53Z" level=debug msg=" 44% [225/507]  lib/rouge/demos/zig"
+time="2025-03-18T21:37:53Z" level=debug msg=" 44% [226/507]  lib/rouge/formatter.rb"
+time="2025-03-18T21:37:53Z" level=debug msg=" 44% [227/507]  lib/rouge/formatters/html.rb"
+time="2025-03-18T21:37:53Z" level=debug msg=" 44% [228/507]  lib/rouge/formatters/html_inline.rb"
+time="2025-03-18T21:37:53Z" level=debug msg=" 45% [229/507]  lib/rouge/formatters/html_legacy.rb"
+time="2025-03-18T21:37:53Z" level=debug msg=" 45% [230/507]  lib/rouge/formatters/html_line_highlighter.rb"
+time="2025-03-18T21:37:53Z" level=debug msg=" 45% [231/507]  lib/rouge/formatters/html_line_table.rb"
+time="2025-03-18T21:37:53Z" level=debug msg=" 45% [232/507]  lib/rouge/formatters/html_linewise.rb"
+time="2025-03-18T21:37:53Z" level=debug msg=" 45% [233/507]  lib/rouge/formatters/html_pygments.rb"
+time="2025-03-18T21:37:53Z" level=debug msg=" 46% [234/507]  lib/rouge/formatters/html_table.rb"
+time="2025-03-18T21:37:53Z" level=debug msg=" 46% [235/507]  lib/rouge/formatters/null.rb"
+time="2025-03-18T21:37:53Z" level=debug msg=" 46% [236/507]  lib/rouge/formatters/terminal256.rb"
+time="2025-03-18T21:37:53Z" level=debug msg=" 46% [237/507]  lib/rouge/formatters/terminal_truecolor.rb"
+time="2025-03-18T21:37:53Z" level=debug msg=" 46% [238/507]  lib/rouge/formatters/tex.rb"
+time="2025-03-18T21:37:53Z" level=debug msg=" 47% [239/507]  lib/rouge/guesser.rb"
+time="2025-03-18T21:37:53Z" level=debug msg=" 47% [240/507]  lib/rouge/guessers/disambiguation.rb"
+time="2025-03-18T21:37:53Z" level=debug msg=" 47% [241/507]  lib/rouge/guessers/filename.rb"
+time="2025-03-18T21:37:53Z" level=debug msg=" 47% [242/507]  lib/rouge/guessers/glob_mapping.rb"
+time="2025-03-18T21:37:53Z" level=debug msg=" 47% [243/507]  lib/rouge/guessers/mimetype.rb"
+time="2025-03-18T21:37:53Z" level=debug msg=" 48% [244/507]  lib/rouge/guessers/modeline.rb"
+time="2025-03-18T21:37:53Z" level=debug msg=" 48% [245/507]  lib/rouge/guessers/source.rb"
+time="2025-03-18T21:37:53Z" level=debug msg=" 48% [246/507]  lib/rouge/guessers/util.rb"
+time="2025-03-18T21:37:53Z" level=debug msg=" 48% [247/507]  lib/rouge/lexer.rb"
+time="2025-03-18T21:37:53Z" level=debug msg=" 48% [248/507]  lib/rouge/lexers/abap.rb"
+time="2025-03-18T21:37:53Z" level=debug msg=" 49% [249/507]  lib/rouge/lexers/actionscript.rb"
+time="2025-03-18T21:37:53Z" level=debug msg=" 49% [250/507]  lib/rouge/lexers/ada.rb"
+time="2025-03-18T21:37:53Z" level=debug msg=" 49% [251/507]  lib/rouge/lexers/apache.rb"
+time="2025-03-18T21:37:53Z" level=debug msg=" 49% [252/507]  lib/rouge/lexers/apache/keywords.rb"
+time="2025-03-18T21:37:53Z" level=debug msg=" 49% [253/507]  lib/rouge/lexers/apex.rb"
+time="2025-03-18T21:37:53Z" level=debug msg=" 50% [254/507]  lib/rouge/lexers/apiblueprint.rb"
+time="2025-03-18T21:37:53Z" level=debug msg=" 50% [255/507]  lib/rouge/lexers/apple_script.rb"
+time="2025-03-18T21:37:53Z" level=debug msg=" 50% [256/507]  lib/rouge/lexers/armasm.rb"
+time="2025-03-18T21:37:53Z" level=debug msg=" 50% [257/507]  lib/rouge/lexers/augeas.rb"
+time="2025-03-18T21:37:53Z" level=debug msg=" 50% [258/507]  lib/rouge/lexers/awk.rb"
+time="2025-03-18T21:37:53Z" level=debug msg=" 51% [259/507]  lib/rouge/lexers/batchfile.rb"
+time="2025-03-18T21:37:53Z" level=debug msg=" 51% [260/507]  lib/rouge/lexers/bbcbasic.rb"
+time="2025-03-18T21:37:53Z" level=debug msg=" 51% [261/507]  lib/rouge/lexers/bibtex.rb"
+time="2025-03-18T21:37:53Z" level=debug msg=" 51% [262/507]  lib/rouge/lexers/biml.rb"
+time="2025-03-18T21:37:53Z" level=debug msg=" 51% [263/507]  lib/rouge/lexers/bpf.rb"
+time="2025-03-18T21:37:53Z" level=debug msg=" 52% [264/507]  lib/rouge/lexers/brainfuck.rb"
+time="2025-03-18T21:37:53Z" level=debug msg=" 52% [265/507]  lib/rouge/lexers/brightscript.rb"
+time="2025-03-18T21:37:53Z" level=debug msg=" 52% [266/507]  lib/rouge/lexers/bsl.rb"
+time="2025-03-18T21:37:53Z" level=debug msg=" 52% [267/507]  lib/rouge/lexers/c.rb"
+time="2025-03-18T21:37:53Z" level=debug msg=" 52% [268/507]  lib/rouge/lexers/ceylon.rb"
+time="2025-03-18T21:37:53Z" level=debug msg=" 53% [269/507]  lib/rouge/lexers/cfscript.rb"
+time="2025-03-18T21:37:53Z" level=debug msg=" 53% [270/507]  lib/rouge/lexers/cisco_ios.rb"
+time="2025-03-18T21:37:53Z" level=debug msg=" 53% [271/507]  lib/rouge/lexers/clean.rb"
+time="2025-03-18T21:37:53Z" level=debug msg=" 53% [272/507]  lib/rouge/lexers/clojure.rb"
+time="2025-03-18T21:37:53Z" level=debug msg=" 53% [273/507]  lib/rouge/lexers/cmake.rb"
+time="2025-03-18T21:37:54Z" level=debug msg=" 54% [274/507]  lib/rouge/lexers/cmhg.rb"
+time="2025-03-18T21:37:54Z" level=debug msg=" 54% [275/507]  lib/rouge/lexers/codeowners.rb"
+time="2025-03-18T21:37:54Z" level=debug msg=" 54% [276/507]  lib/rouge/lexers/coffeescript.rb"
+time="2025-03-18T21:37:54Z" level=debug msg=" 54% [277/507]  lib/rouge/lexers/common_lisp.rb"
+time="2025-03-18T21:37:54Z" level=debug msg=" 54% [278/507]  lib/rouge/lexers/conf.rb"
+time="2025-03-18T21:37:54Z" level=debug msg=" 55% [279/507]  lib/rouge/lexers/console.rb"
+time="2025-03-18T21:37:54Z" level=debug msg=" 55% [280/507]  lib/rouge/lexers/coq.rb"
+time="2025-03-18T21:37:54Z" level=debug msg=" 55% [281/507]  lib/rouge/lexers/cpp.rb"
+time="2025-03-18T21:37:54Z" level=debug msg=" 55% [282/507]  lib/rouge/lexers/crystal.rb"
+time="2025-03-18T21:37:54Z" level=debug msg=" 55% [283/507]  lib/rouge/lexers/csharp.rb"
+time="2025-03-18T21:37:54Z" level=debug msg=" 56% [284/507]  lib/rouge/lexers/css.rb"
+time="2025-03-18T21:37:54Z" level=debug msg=" 56% [285/507]  lib/rouge/lexers/csvs.rb"
+time="2025-03-18T21:37:54Z" level=debug msg=" 56% [286/507]  lib/rouge/lexers/cuda.rb"
+time="2025-03-18T21:37:54Z" level=debug msg=" 56% [287/507]  lib/rouge/lexers/cypher.rb"
+time="2025-03-18T21:37:54Z" level=debug msg=" 56% [288/507]  lib/rouge/lexers/cython.rb"
+time="2025-03-18T21:37:54Z" level=debug msg=" 57% [289/507]  lib/rouge/lexers/d.rb"
+time="2025-03-18T21:37:54Z" level=debug msg=" 57% [290/507]  lib/rouge/lexers/dafny.rb"
+time="2025-03-18T21:37:54Z" level=debug msg=" 57% [291/507]  lib/rouge/lexers/dart.rb"
+time="2025-03-18T21:37:54Z" level=debug msg=" 57% [292/507]  lib/rouge/lexers/datastudio.rb"
+time="2025-03-18T21:37:54Z" level=debug msg=" 57% [293/507]  lib/rouge/lexers/diff.rb"
+time="2025-03-18T21:37:54Z" level=debug msg=" 57% [294/507]  lib/rouge/lexers/digdag.rb"
+time="2025-03-18T21:37:54Z" level=debug msg=" 58% [295/507]  lib/rouge/lexers/docker.rb"
+time="2025-03-18T21:37:54Z" level=debug msg=" 58% [296/507]  lib/rouge/lexers/dot.rb"
+time="2025-03-18T21:37:54Z" level=debug msg=" 58% [297/507]  lib/rouge/lexers/ecl.rb"
+time="2025-03-18T21:37:54Z" level=debug msg=" 58% [298/507]  lib/rouge/lexers/eex.rb"
+time="2025-03-18T21:37:54Z" level=debug msg=" 58% [299/507]  lib/rouge/lexers/eiffel.rb"
+time="2025-03-18T21:37:54Z" level=debug msg=" 59% [300/507]  lib/rouge/lexers/elixir.rb"
+time="2025-03-18T21:37:54Z" level=debug msg=" 59% [301/507]  lib/rouge/lexers/elm.rb"
+time="2025-03-18T21:37:54Z" level=debug msg=" 59% [302/507]  lib/rouge/lexers/email.rb"
+time="2025-03-18T21:37:54Z" level=debug msg=" 59% [303/507]  lib/rouge/lexers/epp.rb"
+time="2025-03-18T21:37:54Z" level=debug msg=" 59% [304/507]  lib/rouge/lexers/erb.rb"
+time="2025-03-18T21:37:54Z" level=debug msg=" 60% [305/507]  lib/rouge/lexers/erlang.rb"
+time="2025-03-18T21:37:54Z" level=debug msg=" 60% [306/507]  lib/rouge/lexers/escape.rb"
+time="2025-03-18T21:37:54Z" level=debug msg=" 60% [307/507]  lib/rouge/lexers/factor.rb"
+time="2025-03-18T21:37:54Z" level=debug msg=" 60% [308/507]  lib/rouge/lexers/fluent.rb"
+time="2025-03-18T21:37:54Z" level=debug msg=" 60% [309/507]  lib/rouge/lexers/fortran.rb"
+time="2025-03-18T21:37:54Z" level=debug msg=" 61% [310/507]  lib/rouge/lexers/freefem.rb"
+time="2025-03-18T21:37:54Z" level=debug msg=" 61% [311/507]  lib/rouge/lexers/fsharp.rb"
+time="2025-03-18T21:37:54Z" level=debug msg=" 61% [312/507]  lib/rouge/lexers/gdscript.rb"
+time="2025-03-18T21:37:54Z" level=debug msg=" 61% [313/507]  lib/rouge/lexers/ghc_cmm.rb"
+time="2025-03-18T21:37:54Z" level=debug msg=" 61% [314/507]  lib/rouge/lexers/ghc_core.rb"
+time="2025-03-18T21:37:54Z" level=debug msg=" 62% [315/507]  lib/rouge/lexers/gherkin.rb"
+time="2025-03-18T21:37:54Z" level=debug msg=" 62% [316/507]  lib/rouge/lexers/gherkin/keywords.rb"
+time="2025-03-18T21:37:55Z" level=debug msg=" 62% [317/507]  lib/rouge/lexers/glsl.rb"
+time="2025-03-18T21:37:55Z" level=debug msg=" 62% [318/507]  lib/rouge/lexers/go.rb"
+time="2025-03-18T21:37:55Z" level=debug msg=" 62% [319/507]  lib/rouge/lexers/gradle.rb"
+time="2025-03-18T21:37:55Z" level=debug msg=" 63% [320/507]  lib/rouge/lexers/graphql.rb"
+time="2025-03-18T21:37:55Z" level=debug msg=" 63% [321/507]  lib/rouge/lexers/groovy.rb"
+time="2025-03-18T21:37:55Z" level=debug msg=" 63% [322/507]  lib/rouge/lexers/hack.rb"
+time="2025-03-18T21:37:55Z" level=debug msg=" 63% [323/507]  lib/rouge/lexers/haml.rb"
+time="2025-03-18T21:37:55Z" level=debug msg=" 63% [324/507]  lib/rouge/lexers/handlebars.rb"
+time="2025-03-18T21:37:55Z" level=debug msg=" 64% [325/507]  lib/rouge/lexers/haskell.rb"
+time="2025-03-18T21:37:55Z" level=debug msg=" 64% [326/507]  lib/rouge/lexers/haxe.rb"
+time="2025-03-18T21:37:55Z" level=debug msg=" 64% [327/507]  lib/rouge/lexers/hcl.rb"
+time="2025-03-18T21:37:55Z" level=debug msg=" 64% [328/507]  lib/rouge/lexers/hlsl.rb"
+time="2025-03-18T21:37:55Z" level=debug msg=" 64% [329/507]  lib/rouge/lexers/hocon.rb"
+time="2025-03-18T21:37:55Z" level=debug msg=" 65% [330/507]  lib/rouge/lexers/hql.rb"
+time="2025-03-18T21:37:55Z" level=debug msg=" 65% [331/507]  lib/rouge/lexers/html.rb"
+time="2025-03-18T21:37:55Z" level=debug msg=" 65% [332/507]  lib/rouge/lexers/http.rb"
+time="2025-03-18T21:37:55Z" level=debug msg=" 65% [333/507]  lib/rouge/lexers/hylang.rb"
+time="2025-03-18T21:37:55Z" level=debug msg=" 65% [334/507]  lib/rouge/lexers/idlang.rb"
+time="2025-03-18T21:37:55Z" level=debug msg=" 66% [335/507]  lib/rouge/lexers/idris.rb"
+time="2025-03-18T21:37:55Z" level=debug msg=" 66% [336/507]  lib/rouge/lexers/iecst.rb"
+time="2025-03-18T21:37:55Z" level=debug msg=" 66% [337/507]  lib/rouge/lexers/igorpro.rb"
+time="2025-03-18T21:37:55Z" level=debug msg=" 66% [338/507]  lib/rouge/lexers/ini.rb"
+time="2025-03-18T21:37:55Z" level=debug msg=" 66% [339/507]  lib/rouge/lexers/io.rb"
+time="2025-03-18T21:37:55Z" level=debug msg=" 67% [340/507]  lib/rouge/lexers/irb.rb"
+time="2025-03-18T21:37:55Z" level=debug msg=" 67% [341/507]  lib/rouge/lexers/isabelle.rb"
+time="2025-03-18T21:37:55Z" level=debug msg=" 67% [342/507]  lib/rouge/lexers/isbl.rb"
+time="2025-03-18T21:37:55Z" level=debug msg=" 67% [343/507]  lib/rouge/lexers/isbl/builtins.rb"
+time="2025-03-18T21:37:55Z" level=debug msg=" 67% [344/507]  lib/rouge/lexers/j.rb"
+time="2025-03-18T21:37:55Z" level=debug msg=" 68% [345/507]  lib/rouge/lexers/janet.rb"
+time="2025-03-18T21:37:55Z" level=debug msg=" 68% [346/507]  lib/rouge/lexers/java.rb"
+time="2025-03-18T21:37:55Z" level=debug msg=" 68% [347/507]  lib/rouge/lexers/javascript.rb"
+time="2025-03-18T21:37:56Z" level=debug msg=" 68% [348/507]  lib/rouge/lexers/jinja.rb"
+time="2025-03-18T21:37:56Z" level=debug msg=" 68% [349/507]  lib/rouge/lexers/jsl.rb"
+time="2025-03-18T21:37:56Z" level=debug msg=" 69% [350/507]  lib/rouge/lexers/json.rb"
+time="2025-03-18T21:37:56Z" level=debug msg=" 69% [351/507]  lib/rouge/lexers/json_doc.rb"
+time="2025-03-18T21:37:56Z" level=debug msg=" 69% [352/507]  lib/rouge/lexers/jsonnet.rb"
+time="2025-03-18T21:37:56Z" level=debug msg=" 69% [353/507]  lib/rouge/lexers/jsp.rb"
+time="2025-03-18T21:37:56Z" level=debug msg=" 69% [354/507]  lib/rouge/lexers/jsx.rb"
+time="2025-03-18T21:37:56Z" level=debug msg=" 70% [355/507]  lib/rouge/lexers/julia.rb"
+time="2025-03-18T21:37:56Z" level=debug msg=" 70% [356/507]  lib/rouge/lexers/kotlin.rb"
+time="2025-03-18T21:37:56Z" level=debug msg=" 70% [357/507]  lib/rouge/lexers/lasso.rb"
+time="2025-03-18T21:37:56Z" level=debug msg=" 70% [358/507]  lib/rouge/lexers/lasso/keywords.rb"
+time="2025-03-18T21:37:56Z" level=debug msg=" 70% [359/507]  lib/rouge/lexers/lean.rb"
+time="2025-03-18T21:37:56Z" level=debug msg=" 71% [360/507]  lib/rouge/lexers/liquid.rb"
+time="2025-03-18T21:37:56Z" level=debug msg=" 71% [361/507]  lib/rouge/lexers/literate_coffeescript.rb"
+time="2025-03-18T21:37:56Z" level=debug msg=" 71% [362/507]  lib/rouge/lexers/literate_haskell.rb"
+time="2025-03-18T21:37:56Z" level=debug msg=" 71% [363/507]  lib/rouge/lexers/livescript.rb"
+time="2025-03-18T21:37:56Z" level=debug msg=" 71% [364/507]  lib/rouge/lexers/llvm.rb"
+time="2025-03-18T21:37:56Z" level=debug msg=" 71% [365/507]  lib/rouge/lexers/llvm/keywords.rb"
+time="2025-03-18T21:37:56Z" level=debug msg=" 72% [366/507]  lib/rouge/lexers/lua.rb"
+time="2025-03-18T21:37:56Z" level=debug msg=" 72% [367/507]  lib/rouge/lexers/lua/keywords.rb"
+time="2025-03-18T21:37:56Z" level=debug msg=" 72% [368/507]  lib/rouge/lexers/lustre.rb"
+time="2025-03-18T21:37:56Z" level=debug msg=" 72% [369/507]  lib/rouge/lexers/lutin.rb"
+time="2025-03-18T21:37:56Z" level=debug msg=" 72% [370/507]  lib/rouge/lexers/m68k.rb"
+time="2025-03-18T21:37:56Z" level=debug msg=" 73% [371/507]  lib/rouge/lexers/magik.rb"
+time="2025-03-18T21:37:56Z" level=debug msg=" 73% [372/507]  lib/rouge/lexers/make.rb"
+time="2025-03-18T21:37:56Z" level=debug msg=" 73% [373/507]  lib/rouge/lexers/markdown.rb"
+time="2025-03-18T21:37:56Z" level=debug msg=" 73% [374/507]  lib/rouge/lexers/mason.rb"
+time="2025-03-18T21:37:56Z" level=debug msg=" 73% [375/507]  lib/rouge/lexers/mathematica.rb"
+time="2025-03-18T21:37:56Z" level=debug msg=" 74% [376/507]  lib/rouge/lexers/mathematica/keywords.rb"
+time="2025-03-18T21:37:57Z" level=debug msg=" 74% [377/507]  lib/rouge/lexers/matlab.rb"
+time="2025-03-18T21:37:57Z" level=debug msg=" 74% [378/507]  lib/rouge/lexers/matlab/builtins.rb"
+time="2025-03-18T21:37:57Z" level=debug msg=" 74% [379/507]  lib/rouge/lexers/matlab/keywords.rb"
+time="2025-03-18T21:37:58Z" level=debug msg=" 74% [380/507]  lib/rouge/lexers/meson.rb"
+time="2025-03-18T21:37:58Z" level=debug msg=" 75% [381/507]  lib/rouge/lexers/minizinc.rb"
+time="2025-03-18T21:37:58Z" level=debug msg=" 75% [382/507]  lib/rouge/lexers/mojo.rb"
+time="2025-03-18T21:37:58Z" level=debug msg=" 75% [383/507]  lib/rouge/lexers/moonscript.rb"
+time="2025-03-18T21:37:58Z" level=debug msg=" 75% [384/507]  lib/rouge/lexers/mosel.rb"
+time="2025-03-18T21:37:58Z" level=debug msg=" 75% [385/507]  lib/rouge/lexers/msgtrans.rb"
+time="2025-03-18T21:37:58Z" level=debug msg=" 76% [386/507]  lib/rouge/lexers/mxml.rb"
+time="2025-03-18T21:37:58Z" level=debug msg=" 76% [387/507]  lib/rouge/lexers/nasm.rb"
+time="2025-03-18T21:37:58Z" level=debug msg=" 76% [388/507]  lib/rouge/lexers/nesasm.rb"
+time="2025-03-18T21:37:58Z" level=debug msg=" 76% [389/507]  lib/rouge/lexers/nginx.rb"
+time="2025-03-18T21:37:58Z" level=debug msg=" 76% [390/507]  lib/rouge/lexers/nial.rb"
+time="2025-03-18T21:37:58Z" level=debug msg=" 77% [391/507]  lib/rouge/lexers/nim.rb"
+time="2025-03-18T21:37:58Z" level=debug msg=" 77% [392/507]  lib/rouge/lexers/nix.rb"
+time="2025-03-18T21:37:58Z" level=debug msg=" 77% [393/507]  lib/rouge/lexers/objective_c.rb"
+time="2025-03-18T21:37:58Z" level=debug msg=" 77% [394/507]  lib/rouge/lexers/objective_c/common.rb"
+time="2025-03-18T21:37:58Z" level=debug msg=" 77% [395/507]  lib/rouge/lexers/objective_cpp.rb"
+time="2025-03-18T21:37:58Z" level=debug msg=" 78% [396/507]  lib/rouge/lexers/ocaml.rb"
+time="2025-03-18T21:37:58Z" level=debug msg=" 78% [397/507]  lib/rouge/lexers/ocaml/common.rb"
+time="2025-03-18T21:37:58Z" level=debug msg=" 78% [398/507]  lib/rouge/lexers/ocl.rb"
+time="2025-03-18T21:37:58Z" level=debug msg=" 78% [399/507]  lib/rouge/lexers/openedge.rb"
+time="2025-03-18T21:37:58Z" level=debug msg=" 78% [400/507]  lib/rouge/lexers/opentype_feature_file.rb"
+time="2025-03-18T21:37:58Z" level=debug msg=" 79% [401/507]  lib/rouge/lexers/p4.rb"
+time="2025-03-18T21:37:58Z" level=debug msg=" 79% [402/507]  lib/rouge/lexers/pascal.rb"
+time="2025-03-18T21:37:58Z" level=debug msg=" 79% [403/507]  lib/rouge/lexers/perl.rb"
+time="2025-03-18T21:37:58Z" level=debug msg=" 79% [404/507]  lib/rouge/lexers/php.rb"
+time="2025-03-18T21:37:58Z" level=debug msg=" 79% [405/507]  lib/rouge/lexers/php/keywords.rb"
+time="2025-03-18T21:37:59Z" level=debug msg=" 80% [406/507]  lib/rouge/lexers/plain_text.rb"
+time="2025-03-18T21:37:59Z" level=debug msg=" 80% [407/507]  lib/rouge/lexers/plist.rb"
+time="2025-03-18T21:37:59Z" level=debug msg=" 80% [408/507]  lib/rouge/lexers/plsql.rb"
+time="2025-03-18T21:37:59Z" level=debug msg=" 80% [409/507]  lib/rouge/lexers/pony.rb"
+time="2025-03-18T21:37:59Z" level=debug msg=" 80% [410/507]  lib/rouge/lexers/postscript.rb"
+time="2025-03-18T21:37:59Z" level=debug msg=" 81% [411/507]  lib/rouge/lexers/powershell.rb"
+time="2025-03-18T21:37:59Z" level=debug msg=" 81% [412/507]  lib/rouge/lexers/praat.rb"
+time="2025-03-18T21:37:59Z" level=debug msg=" 81% [413/507]  lib/rouge/lexers/prolog.rb"
+time="2025-03-18T21:37:59Z" level=debug msg=" 81% [414/507]  lib/rouge/lexers/prometheus.rb"
+time="2025-03-18T21:37:59Z" level=debug msg=" 81% [415/507]  lib/rouge/lexers/properties.rb"
+time="2025-03-18T21:37:59Z" level=debug msg=" 82% [416/507]  lib/rouge/lexers/protobuf.rb"
+time="2025-03-18T21:37:59Z" level=debug msg=" 82% [417/507]  lib/rouge/lexers/puppet.rb"
+time="2025-03-18T21:38:00Z" level=debug msg=" 82% [418/507]  lib/rouge/lexers/python.rb"
+time="2025-03-18T21:38:00Z" level=debug msg=" 82% [419/507]  lib/rouge/lexers/q.rb"
+time="2025-03-18T21:38:00Z" level=debug msg=" 82% [420/507]  lib/rouge/lexers/qml.rb"
+time="2025-03-18T21:38:00Z" level=debug msg=" 83% [421/507]  lib/rouge/lexers/r.rb"
+time="2025-03-18T21:38:00Z" level=debug msg=" 83% [422/507]  lib/rouge/lexers/racket.rb"
+time="2025-03-18T21:38:00Z" level=debug msg=" 83% [423/507]  lib/rouge/lexers/reasonml.rb"
+time="2025-03-18T21:38:00Z" level=debug msg=" 83% [424/507]  lib/rouge/lexers/rego.rb"
+time="2025-03-18T21:38:00Z" level=debug msg=" 83% [425/507]  lib/rouge/lexers/rescript.rb"
+time="2025-03-18T21:38:00Z" level=debug msg=" 84% [426/507]  lib/rouge/lexers/rml.rb"
+time="2025-03-18T21:38:00Z" level=debug msg=" 84% [427/507]  lib/rouge/lexers/robot_framework.rb"
+time="2025-03-18T21:38:00Z" level=debug msg=" 84% [428/507]  lib/rouge/lexers/ruby.rb"
+time="2025-03-18T21:38:00Z" level=debug msg=" 84% [429/507]  lib/rouge/lexers/rust.rb"
+time="2025-03-18T21:38:00Z" level=debug msg=" 84% [430/507]  lib/rouge/lexers/sas.rb"
+time="2025-03-18T21:38:00Z" level=debug msg=" 85% [431/507]  lib/rouge/lexers/sass.rb"
+time="2025-03-18T21:38:00Z" level=debug msg=" 85% [432/507]  lib/rouge/lexers/sass/common.rb"
+time="2025-03-18T21:38:00Z" level=debug msg=" 85% [433/507]  lib/rouge/lexers/scala.rb"
+time="2025-03-18T21:38:00Z" level=debug msg=" 85% [434/507]  lib/rouge/lexers/scheme.rb"
+time="2025-03-18T21:38:00Z" level=debug msg=" 85% [435/507]  lib/rouge/lexers/scss.rb"
+time="2025-03-18T21:38:00Z" level=debug msg=" 85% [436/507]  lib/rouge/lexers/sed.rb"
+time="2025-03-18T21:38:00Z" level=debug msg=" 86% [437/507]  lib/rouge/lexers/shell.rb"
+time="2025-03-18T21:38:00Z" level=debug msg=" 86% [438/507]  lib/rouge/lexers/sieve.rb"
+time="2025-03-18T21:38:00Z" level=debug msg=" 86% [439/507]  lib/rouge/lexers/slice.rb"
+time="2025-03-18T21:38:00Z" level=debug msg=" 86% [440/507]  lib/rouge/lexers/slim.rb"
+time="2025-03-18T21:38:00Z" level=debug msg=" 86% [441/507]  lib/rouge/lexers/smalltalk.rb"
+time="2025-03-18T21:38:00Z" level=debug msg=" 87% [442/507]  lib/rouge/lexers/smarty.rb"
+time="2025-03-18T21:38:00Z" level=debug msg=" 87% [443/507]  lib/rouge/lexers/sml.rb"
+time="2025-03-18T21:38:00Z" level=debug msg=" 87% [444/507]  lib/rouge/lexers/sparql.rb"
+time="2025-03-18T21:38:00Z" level=debug msg=" 87% [445/507]  lib/rouge/lexers/sqf.rb"
+time="2025-03-18T21:38:00Z" level=debug msg=" 87% [446/507]  lib/rouge/lexers/sqf/keywords.rb"
+time="2025-03-18T21:38:01Z" level=debug msg=" 88% [447/507]  lib/rouge/lexers/sql.rb"
+time="2025-03-18T21:38:01Z" level=debug msg=" 88% [448/507]  lib/rouge/lexers/ssh.rb"
+time="2025-03-18T21:38:01Z" level=debug msg=" 88% [449/507]  lib/rouge/lexers/stan.rb"
+time="2025-03-18T21:38:01Z" level=debug msg=" 88% [450/507]  lib/rouge/lexers/stata.rb"
+time="2025-03-18T21:38:01Z" level=debug msg=" 88% [451/507]  lib/rouge/lexers/supercollider.rb"
+time="2025-03-18T21:38:01Z" level=debug msg=" 89% [452/507]  lib/rouge/lexers/svelte.rb"
+time="2025-03-18T21:38:01Z" level=debug msg=" 89% [453/507]  lib/rouge/lexers/swift.rb"
+time="2025-03-18T21:38:01Z" level=debug msg=" 89% [454/507]  lib/rouge/lexers/systemd.rb"
+time="2025-03-18T21:38:01Z" level=debug msg=" 89% [455/507]  lib/rouge/lexers/syzlang.rb"
+time="2025-03-18T21:38:01Z" level=debug msg=" 89% [456/507]  lib/rouge/lexers/syzprog.rb"
+time="2025-03-18T21:38:01Z" level=debug msg=" 90% [457/507]  lib/rouge/lexers/tap.rb"
+time="2025-03-18T21:38:01Z" level=debug msg=" 90% [458/507]  lib/rouge/lexers/tcl.rb"
+time="2025-03-18T21:38:01Z" level=debug msg=" 90% [459/507]  lib/rouge/lexers/terraform.rb"
+time="2025-03-18T21:38:01Z" level=debug msg=" 90% [460/507]  lib/rouge/lexers/tex.rb"
+time="2025-03-18T21:38:01Z" level=debug msg=" 90% [461/507]  lib/rouge/lexers/toml.rb"
+time="2025-03-18T21:38:01Z" level=debug msg=" 91% [462/507]  lib/rouge/lexers/tsx.rb"
+time="2025-03-18T21:38:01Z" level=debug msg=" 91% [463/507]  lib/rouge/lexers/ttcn3.rb"
+time="2025-03-18T21:38:01Z" level=debug msg=" 91% [464/507]  lib/rouge/lexers/tulip.rb"
+time="2025-03-18T21:38:01Z" level=debug msg=" 91% [465/507]  lib/rouge/lexers/turtle.rb"
+time="2025-03-18T21:38:01Z" level=debug msg=" 91% [466/507]  lib/rouge/lexers/twig.rb"
+time="2025-03-18T21:38:01Z" level=debug msg=" 92% [467/507]  lib/rouge/lexers/typescript.rb"
+time="2025-03-18T21:38:01Z" level=debug msg=" 92% [468/507]  lib/rouge/lexers/typescript/common.rb"
+time="2025-03-18T21:38:01Z" level=debug msg=" 92% [469/507]  lib/rouge/lexers/vala.rb"
+time="2025-03-18T21:38:01Z" level=debug msg=" 92% [470/507]  lib/rouge/lexers/varnish.rb"
+time="2025-03-18T21:38:01Z" level=debug msg=" 92% [471/507]  lib/rouge/lexers/vb.rb"
+time="2025-03-18T21:38:01Z" level=debug msg=" 93% [472/507]  lib/rouge/lexers/velocity.rb"
+time="2025-03-18T21:38:01Z" level=debug msg=" 93% [473/507]  lib/rouge/lexers/verilog.rb"
+time="2025-03-18T21:38:01Z" level=debug msg=" 93% [474/507]  lib/rouge/lexers/vhdl.rb"
+time="2025-03-18T21:38:01Z" level=debug msg=" 93% [475/507]  lib/rouge/lexers/viml.rb"
+time="2025-03-18T21:38:01Z" level=debug msg=" 93% [476/507]  lib/rouge/lexers/viml/keywords.rb"
+time="2025-03-18T21:38:01Z" level=debug msg=" 94% [477/507]  lib/rouge/lexers/vue.rb"
+time="2025-03-18T21:38:01Z" level=debug msg=" 94% [478/507]  lib/rouge/lexers/wollok.rb"
+time="2025-03-18T21:38:01Z" level=debug msg=" 94% [479/507]  lib/rouge/lexers/xml.rb"
+time="2025-03-18T21:38:01Z" level=debug msg=" 94% [480/507]  lib/rouge/lexers/xojo.rb"
+time="2025-03-18T21:38:01Z" level=debug msg=" 94% [481/507]  lib/rouge/lexers/xpath.rb"
+time="2025-03-18T21:38:01Z" level=debug msg=" 95% [482/507]  lib/rouge/lexers/xquery.rb"
+time="2025-03-18T21:38:01Z" level=debug msg=" 95% [483/507]  lib/rouge/lexers/yaml.rb"
+time="2025-03-18T21:38:02Z" level=debug msg=" 95% [484/507]  lib/rouge/lexers/yang.rb"
+time="2025-03-18T21:38:02Z" level=debug msg=" 95% [485/507]  lib/rouge/lexers/zig.rb"
+time="2025-03-18T21:38:02Z" level=debug msg=" 95% [486/507]  lib/rouge/plugins/redcarpet.rb"
+time="2025-03-18T21:38:02Z" level=debug msg=" 96% [487/507]  lib/rouge/regex_lexer.rb"
+time="2025-03-18T21:38:02Z" level=debug msg=" 96% [488/507]  lib/rouge/template_lexer.rb"
+time="2025-03-18T21:38:02Z" level=debug msg=" 96% [489/507]  lib/rouge/tex_theme_renderer.rb"
+time="2025-03-18T21:38:02Z" level=debug msg=" 96% [490/507]  lib/rouge/text_analyzer.rb"
+time="2025-03-18T21:38:02Z" level=debug msg=" 96% [491/507]  lib/rouge/theme.rb"
+time="2025-03-18T21:38:02Z" level=debug msg=" 97% [492/507]  lib/rouge/themes/base16.rb"
+time="2025-03-18T21:38:02Z" level=debug msg=" 97% [493/507]  lib/rouge/themes/bw.rb"
+time="2025-03-18T21:38:02Z" level=debug msg=" 97% [494/507]  lib/rouge/themes/colorful.rb"
+time="2025-03-18T21:38:02Z" level=debug msg=" 97% [495/507]  lib/rouge/themes/github.rb"
+time="2025-03-18T21:38:02Z" level=debug msg=" 97% [496/507]  lib/rouge/themes/gruvbox.rb"
+time="2025-03-18T21:38:02Z" level=debug msg=" 98% [497/507]  lib/rouge/themes/igor_pro.rb"
+time="2025-03-18T21:38:02Z" level=debug msg=" 98% [498/507]  lib/rouge/themes/magritte.rb"
+time="2025-03-18T21:38:02Z" level=debug msg=" 98% [499/507]  lib/rouge/themes/molokai.rb"
+time="2025-03-18T21:38:02Z" level=debug msg=" 98% [500/507]  lib/rouge/themes/monokai.rb"
+time="2025-03-18T21:38:02Z" level=debug msg=" 98% [501/507]  lib/rouge/themes/monokai_sublime.rb"
+time="2025-03-18T21:38:02Z" level=debug msg=" 99% [502/507]  lib/rouge/themes/pastie.rb"
+time="2025-03-18T21:38:02Z" level=debug msg=" 99% [503/507]  lib/rouge/themes/thankful_eyes.rb"
+time="2025-03-18T21:38:02Z" level=debug msg=" 99% [504/507]  lib/rouge/themes/tulip.rb"
+time="2025-03-18T21:38:02Z" level=debug msg=" 99% [505/507]  lib/rouge/token.rb"
+time="2025-03-18T21:38:02Z" level=debug msg=" 99% [506/507]  lib/rouge/util.rb"
+time="2025-03-18T21:38:02Z" level=debug msg="100% [507/507]  lib/rouge/version.rb"
+time="2025-03-18T21:38:03Z" level=debug
+time="2025-03-18T21:38:03Z" level=debug msg="Installing ri documentation for rouge-4.4.0"
+time="2025-03-18T21:38:03Z" level=debug msg="Installing darkfish documentation for rouge-4.4.0"
+time="2025-03-18T21:38:10Z" level=debug msg="Done installing documentation for rouge after 18 seconds"
+time="2025-03-18T21:38:10Z" level=debug msg="1 gem installed"
+time="2025-03-18T21:38:10Z" level=debug msg="+ RPM_EC=0"
+time="2025-03-18T21:38:10Z" level=debug msg="++ jobs -p"
+time="2025-03-18T21:38:10Z" level=debug msg="+ exit 0"
+time="2025-03-18T21:38:10Z" level=debug msg="Executing(%install): /bin/sh -e /var/tmp/rpm-tmp.7odNID"
+time="2025-03-18T21:38:10Z" level=debug msg="+ umask 022"
+time="2025-03-18T21:38:10Z" level=debug msg="+ cd /usr/src/azl/BUILD"
+time="2025-03-18T21:38:10Z" level=debug msg="+ /bin/rm -rf /usr/src/azl/BUILDROOT/rubygem-rouge-4.4.0-2.azl3.x86_64"
+time="2025-03-18T21:38:10Z" level=debug msg="+ /bin/mkdir -p /usr/src/azl/BUILDROOT"
+time="2025-03-18T21:38:10Z" level=debug msg="+ /bin/mkdir /usr/src/azl/BUILDROOT/rubygem-rouge-4.4.0-2.azl3.x86_64"
+time="2025-03-18T21:38:10Z" level=debug msg="+ cd rouge-4.4.0"
+time="2025-03-18T21:38:10Z" level=debug msg="+ mkdir -p /usr/src/azl/BUILDROOT/rubygem-rouge-4.4.0-2.azl3.x86_64/usr/lib/ruby/gems/3.3.0"
+time="2025-03-18T21:38:10Z" level=debug msg="+ cp -a ./usr/lib/ruby/gems/3.3.0/build_info ./usr/lib/ruby/gems/3.3.0/cache ./usr/lib/ruby/gems/3.3.0/doc ./usr/lib/ruby/gems/3.3.0/extensions ./usr/lib/ruby/gems/3.3.0/gems ./usr/lib/ruby/gems/3.3.0/plugins ./usr/lib/ruby/gems/3.3.0/specifications /usr/src/azl/BUILDROOT/rubygem-rouge-4.4.0-2.azl3.x86_64/usr/lib/ruby/gems/3.3.0/"
+time="2025-03-18T21:38:14Z" level=debug msg="+ mkdir -p /usr/src/azl/BUILDROOT/rubygem-rouge-4.4.0-2.azl3.x86_64/usr/bin"
+time="2025-03-18T21:38:14Z" level=debug msg="+ cp -pa ./usr/bin/rougify /usr/src/azl/BUILDROOT/rubygem-rouge-4.4.0-2.azl3.x86_64/usr/bin/"
+time="2025-03-18T21:38:14Z" level=debug msg="+ find /usr/src/azl/BUILDROOT/rubygem-rouge-4.4.0-2.azl3.x86_64/usr/lib/ruby/gems/3.3.0/gems/rouge-4.4.0/bin -type f"
+time="2025-03-18T21:38:14Z" level=debug msg="+ xargs chmod a+x"
+time="2025-03-18T21:38:14Z" level=debug msg="+ export GEM_PATH=/usr/src/azl/BUILDROOT/rubygem-rouge-4.4.0-2.azl3.x86_64/usr/lib/ruby/gems/3.3.0:/usr/lib/ruby/gems/3.3.0"
+time="2025-03-18T21:38:14Z" level=debug msg="+ GEM_PATH=/usr/src/azl/BUILDROOT/rubygem-rouge-4.4.0-2.azl3.x86_64/usr/lib/ruby/gems/3.3.0:/usr/lib/ruby/gems/3.3.0"
+time="2025-03-18T21:38:14Z" level=debug msg="+ mkdir -p /usr/src/azl/BUILDROOT/rubygem-rouge-4.4.0-2.azl3.x86_64/usr/share/man/man1"
+time="2025-03-18T21:38:14Z" level=debug msg="+ help2man -N -s1 -o /usr/src/azl/BUILDROOT/rubygem-rouge-4.4.0-2.azl3.x86_64/usr/share/man/man1/rougify.1 /usr/src/azl/BUILDROOT/rubygem-rouge-4.4.0-2.azl3.x86_64/usr/bin/rougify"
+time="2025-03-18T21:38:16Z" level=debug msg="+ rm -f /usr/src/azl/BUILDROOT/rubygem-rouge-4.4.0-2.azl3.x86_64/usr/lib/ruby/gems/3.3.0/cache/rouge-4.4.0.gem"
+time="2025-03-18T21:38:16Z" level=debug msg="+ pushd /usr/src/azl/BUILDROOT/rubygem-rouge-4.4.0-2.azl3.x86_64/usr/lib/ruby/gems/3.3.0/gems/rouge-4.4.0"
+time="2025-03-18T21:38:16Z" level=debug msg="/usr/src/azl/BUILDROOT/rubygem-rouge-4.4.0-2.azl3.x86_64/usr/lib/ruby/gems/3.3.0/gems/rouge-4.4.0 /usr/src/azl/BUILD/rouge-4.4.0"
+time="2025-03-18T21:38:16Z" level=debug msg="+ rm -rf Gemfile rouge.gemspec"
+time="2025-03-18T21:38:16Z" level=debug msg="+ popd"
+time="2025-03-18T21:38:16Z" level=debug msg=/usr/src/azl/BUILD/rouge-4.4.0
+time="2025-03-18T21:38:16Z" level=debug msg="+ /bin/find-debuginfo -j8 -m --build-id-seed 4.4.0-2.azl3 --unique-debug-suffix -4.4.0-2.azl3.x86_64 --unique-debug-src-base rubygem-rouge-4.4.0-2.azl3.x86_64 /usr/src/azl/BUILD/rouge-4.4.0"
+time="2025-03-18T21:38:17Z" level=debug msg="find: 'debug': No such file or directory"
+time="2025-03-18T21:38:17Z" level=debug msg="+ /usr/lib/rpm/brp-compress /usr"
+time="2025-03-18T21:38:17Z" level=debug msg="+ /usr/lib/rpm/brp-strip-comment-note /bin/strip /bin/objdump"
+time="2025-03-18T21:38:17Z" level=debug msg="+ /usr/lib/rpm/brp-strip-static-archive /bin/strip"
+time="2025-03-18T21:38:18Z" level=debug msg="+ /usr/lib/rpm/azl/brp-python-bytecompile /usr/bin/python3 1 0"
+time="2025-03-18T21:38:18Z" level=debug msg="+ xargs '-I{}' sed -i -e 's@-Wl,-dT,/usr/src/azl/BUILD/module_info.ld@ @' '{}'"
+time="2025-03-18T21:38:18Z" level=debug msg="+ find /usr/src/azl/BUILDROOT/rubygem-rouge-4.4.0-2.azl3.x86_64 -name '*.pc'"
+time="2025-03-18T21:38:18Z" level=debug msg="+ /usr/lib/rpm/brp-strip /bin/strip"
+time="2025-03-18T21:38:18Z" level=debug msg="+ CCACHE_DIR=/ccache-dir"
+time="2025-03-18T21:38:18Z" level=debug msg="+ export CCACHE_DIR"
+time="2025-03-18T21:38:18Z" level=debug msg="+ ccache --show-stats"
+time="2025-03-18T21:38:18Z" level=debug msg="Local storage:"
+time="2025-03-18T21:38:18Z" level=debug msg="  Cache size (GiB): 0.0 / 5.0 ( 0.00%)"
+time="2025-03-18T21:38:18Z" level=debug msg="Processing files: rubygem-rouge-4.4.0-2.azl3.noarch"
+time="2025-03-18T21:38:20Z" level=debug msg="Provides: rubygem(rouge) = 4.4.0 rubygem-rouge = 4.4.0-2.azl3"
+time="2025-03-18T21:38:20Z" level=debug msg="Requires(rpmlib): rpmlib(CompressedFileNames) <= 3.0.4-1 rpmlib(FileDigests) <= 4.6.0-1 rpmlib(PayloadFilesHavePrefix) <= 4.0-1"
+time="2025-03-18T21:38:20Z" level=debug msg="Requires: /usr/bin/env /usr/bin/ruby ruby(rubygems)"
+time="2025-03-18T21:38:20Z" level=debug msg="Processing files: rubygem-rouge-doc-4.4.0-2.azl3.noarch"
+time="2025-03-18T21:38:22Z" level=debug msg="Provides: rubygem-rouge-doc = 4.4.0-2.azl3"
+time="2025-03-18T21:38:22Z" level=debug msg="Requires(rpmlib): rpmlib(CompressedFileNames) <= 3.0.4-1 rpmlib(FileDigests) <= 4.6.0-1 rpmlib(PayloadFilesHavePrefix) <= 4.0-1"
+time="2025-03-18T21:38:22Z" level=debug msg="Checking for unpackaged file(s): /usr/lib/rpm/check-files /usr/src/azl/BUILDROOT/rubygem-rouge-4.4.0-2.azl3.x86_64"
+time="2025-03-18T21:38:22Z" level=debug msg="Wrote: /usr/src/azl/RPMS/noarch/rubygem-rouge-4.4.0-2.azl3.noarch.rpm"
+time="2025-03-18T21:38:22Z" level=debug msg="Wrote: /usr/src/azl/RPMS/noarch/rubygem-rouge-doc-4.4.0-2.azl3.noarch.rpm"
+time="2025-03-18T21:38:22Z" level=debug msg="Executing(%clean): /bin/sh -e /var/tmp/rpm-tmp.nhOfqW"
+time="2025-03-18T21:38:22Z" level=debug msg="+ umask 022"
+time="2025-03-18T21:38:22Z" level=debug msg="+ cd /usr/src/azl/BUILD"
+time="2025-03-18T21:38:22Z" level=debug msg="+ cd rouge-4.4.0"
+time="2025-03-18T21:38:22Z" level=debug msg="+ /bin/rm -rf /usr/src/azl/BUILDROOT/rubygem-rouge-4.4.0-2.azl3.x86_64"
+time="2025-03-18T21:38:23Z" level=debug msg="+ RPM_EC=0"
+time="2025-03-18T21:38:23Z" level=debug msg="++ jobs -p"
+time="2025-03-18T21:38:23Z" level=debug msg="+ exit 0"
+time="2025-03-18T21:38:23Z" level=debug msg="Executing(rmbuild): /bin/sh -e /var/tmp/rpm-tmp.3DmEpz"
+time="2025-03-18T21:38:23Z" level=debug msg="+ umask 022"
+time="2025-03-18T21:38:23Z" level=debug msg="+ cd /usr/src/azl/BUILD"
+time="2025-03-18T21:38:23Z" level=debug msg="+ rm -rf rouge-4.4.0 rouge-4.4.0.gemspec"
+time="2025-03-18T21:38:23Z" level=debug msg="+ RPM_EC=0"
+time="2025-03-18T21:38:23Z" level=debug msg="++ jobs -p"
+time="2025-03-18T21:38:23Z" level=debug msg="+ exit 0"
+time="2025-03-18T21:38:23Z" level=debug
+time="2025-03-18T21:38:23Z" level=debug msg="RPM build warnings:"
+time="2025-03-18T21:38:23Z" level=debug msg="    Could not canonicalize hostname: azuli-m1"
+time="2025-03-18T21:38:23Z" level=debug msg="Build thread in chroot finished."
+time="2025-03-18T21:38:23Z" level=debug msg="Exiting Chroot: '/third_disk/bb17Mar/azurelinux/build/worker/chroot/rubygem-rouge-4.4.0-2.azl3'"
+time="2025-03-18T21:38:23Z" level=debug msg="Moving (/third_disk/bb17Mar/azurelinux/build/worker/chroot/rubygem-rouge-4.4.0-2.azl3/usr/src/azl/RPMS/noarch/rubygem-rouge-4.4.0-2.azl3.noarch.rpm) -> (/third_disk/bb17Mar/azurelinux/out/RPMS/noarch/rubygem-rouge-4.4.0-2.azl3.noarch.rpm)"
+time="2025-03-18T21:38:23Z" level=debug msg="Executing: [mv /third_disk/bb17Mar/azurelinux/build/worker/chroot/rubygem-rouge-4.4.0-2.azl3/usr/src/azl/RPMS/noarch/rubygem-rouge-4.4.0-2.azl3.noarch.rpm /third_disk/bb17Mar/azurelinux/out/RPMS/noarch/rubygem-rouge-4.4.0-2.azl3.noarch.rpm]"
+time="2025-03-18T21:38:23Z" level=debug msg="Moving (/third_disk/bb17Mar/azurelinux/build/worker/chroot/rubygem-rouge-4.4.0-2.azl3/usr/src/azl/RPMS/noarch/rubygem-rouge-doc-4.4.0-2.azl3.noarch.rpm) -> (/third_disk/bb17Mar/azurelinux/out/RPMS/noarch/rubygem-rouge-doc-4.4.0-2.azl3.noarch.rpm)"
+time="2025-03-18T21:38:23Z" level=debug msg="Executing: [mv /third_disk/bb17Mar/azurelinux/build/worker/chroot/rubygem-rouge-4.4.0-2.azl3/usr/src/azl/RPMS/noarch/rubygem-rouge-doc-4.4.0-2.azl3.noarch.rpm /third_disk/bb17Mar/azurelinux/out/RPMS/noarch/rubygem-rouge-doc-4.4.0-2.azl3.noarch.rpm]"
+time="2025-03-18T21:38:23Z" level=info msg="* processing upload of ccache artifacts..."
+time="2025-03-18T21:38:23Z" level=info msg="  ccache update is disabled for this build."
+time="2025-03-18T21:38:23Z" level=debug msg="Entering Chroot: '/third_disk/bb17Mar/azurelinux/build/worker/chroot/rubygem-rouge-4.4.0-2.azl3'"
+time="2025-03-18T21:38:23Z" level=debug msg="Executing: [gpgconf --list-components]"
+time="2025-03-18T21:38:23Z" level=debug msg="gpg:OpenPGP:/usr/bin/gpg2"
+time="2025-03-18T21:38:23Z" level=debug msg="gpgsm:S/MIME:/usr/bin/gpgsm"
+time="2025-03-18T21:38:23Z" level=debug msg="keyboxd:Public Keys:/usr/libexec/keyboxd"
+time="2025-03-18T21:38:23Z" level=debug msg="gpg-agent:Private Keys:/usr/bin/gpg-agent"
+time="2025-03-18T21:38:23Z" level=debug msg="scdaemon:Smartcards:/usr/libexec/scdaemon"
+time="2025-03-18T21:38:23Z" level=debug msg="dirmngr:Network:/usr/bin/dirmngr"
+time="2025-03-18T21:38:23Z" level=debug msg="pinentry:Passphrase Entry:/usr/bin/pinentry"
+time="2025-03-18T21:38:23Z" level=debug msg="Found gpg-agent running inside chroot. Stopping it."
+time="2025-03-18T21:38:23Z" level=debug msg="Executing: [gpgconf --kill gpg-agent]"
+time="2025-03-18T21:38:23Z" level=debug msg="Found keyboxd running inside chroot. Stopping it."
+time="2025-03-18T21:38:23Z" level=debug msg="Executing: [gpgconf --kill keyboxd]"
+time="2025-03-18T21:38:23Z" level=debug msg="Exiting Chroot: '/third_disk/bb17Mar/azurelinux/build/worker/chroot/rubygem-rouge-4.4.0-2.azl3'"
+time="2025-03-18T21:38:23Z" level=debug msg="Unmounting (/third_disk/bb17Mar/azurelinux/build/worker/chroot/rubygem-rouge-4.4.0-2.azl3/ccache-dir)"
+time="2025-03-18T21:38:23Z" level=debug msg="Calling unmount on path(/third_disk/bb17Mar/azurelinux/build/worker/chroot/rubygem-rouge-4.4.0-2.azl3/ccache-dir) with flags (0)"
+time="2025-03-18T21:38:23Z" level=debug msg="Unmounting (/third_disk/bb17Mar/azurelinux/build/worker/chroot/rubygem-rouge-4.4.0-2.azl3/upstream-cached-rpms)"
+time="2025-03-18T21:38:23Z" level=debug msg="Calling unmount on path(/third_disk/bb17Mar/azurelinux/build/worker/chroot/rubygem-rouge-4.4.0-2.azl3/upstream-cached-rpms) with flags (0)"
+time="2025-03-18T21:38:23Z" level=debug msg="Unmounting (/third_disk/bb17Mar/azurelinux/build/worker/chroot/rubygem-rouge-4.4.0-2.azl3/toolchainrpms)"
+time="2025-03-18T21:38:23Z" level=debug msg="Calling unmount on path(/third_disk/bb17Mar/azurelinux/build/worker/chroot/rubygem-rouge-4.4.0-2.azl3/toolchainrpms) with flags (0)"
+time="2025-03-18T21:38:24Z" level=debug msg="Unmounting (/third_disk/bb17Mar/azurelinux/build/worker/chroot/rubygem-rouge-4.4.0-2.azl3/localrpms)"
+time="2025-03-18T21:38:24Z" level=debug msg="Calling unmount on path(/third_disk/bb17Mar/azurelinux/build/worker/chroot/rubygem-rouge-4.4.0-2.azl3/localrpms) with flags (0)"
+time="2025-03-18T21:38:24Z" level=debug msg="Unmounting (/third_disk/bb17Mar/azurelinux/build/worker/chroot/rubygem-rouge-4.4.0-2.azl3/dev/pts)"
+time="2025-03-18T21:38:24Z" level=debug msg="Calling unmount on path(/third_disk/bb17Mar/azurelinux/build/worker/chroot/rubygem-rouge-4.4.0-2.azl3/dev/pts) with flags (0)"
+time="2025-03-18T21:38:24Z" level=debug msg="Unmounting (/third_disk/bb17Mar/azurelinux/build/worker/chroot/rubygem-rouge-4.4.0-2.azl3/run)"
+time="2025-03-18T21:38:24Z" level=debug msg="Calling unmount on path(/third_disk/bb17Mar/azurelinux/build/worker/chroot/rubygem-rouge-4.4.0-2.azl3/run) with flags (0)"
+time="2025-03-18T21:38:24Z" level=debug msg="Unmounting (/third_disk/bb17Mar/azurelinux/build/worker/chroot/rubygem-rouge-4.4.0-2.azl3/sys)"
+time="2025-03-18T21:38:24Z" level=debug msg="Calling unmount on path(/third_disk/bb17Mar/azurelinux/build/worker/chroot/rubygem-rouge-4.4.0-2.azl3/sys) with flags (0)"
+time="2025-03-18T21:38:24Z" level=debug msg="Unmounting (/third_disk/bb17Mar/azurelinux/build/worker/chroot/rubygem-rouge-4.4.0-2.azl3/proc)"
+time="2025-03-18T21:38:24Z" level=debug msg="Calling unmount on path(/third_disk/bb17Mar/azurelinux/build/worker/chroot/rubygem-rouge-4.4.0-2.azl3/proc) with flags (0)"
+time="2025-03-18T21:38:24Z" level=debug msg="Unmounting (/third_disk/bb17Mar/azurelinux/build/worker/chroot/rubygem-rouge-4.4.0-2.azl3/dev)"
+time="2025-03-18T21:38:24Z" level=debug msg="Calling unmount on path(/third_disk/bb17Mar/azurelinux/build/worker/chroot/rubygem-rouge-4.4.0-2.azl3/dev) with flags (0)"
+time="2025-03-18T21:38:27Z" level=debug msg="Copying (/third_disk/bb17Mar/azurelinux/build/INTERMEDIATE_SRPMS/rubygem-rouge-4.4.0-2.azl3.src.rpm) to (/third_disk/bb17Mar/azurelinux/out/SRPMS/rubygem-rouge-4.4.0-2.azl3.src.rpm)"
+time="2025-03-18T21:38:27Z" level=debug msg="Executing: [cp --preserve=mode /third_disk/bb17Mar/azurelinux/build/INTERMEDIATE_SRPMS/rubygem-rouge-4.4.0-2.azl3.src.rpm /third_disk/bb17Mar/azurelinux/out/SRPMS/rubygem-rouge-4.4.0-2.azl3.src.rpm]"
+time="2025-03-18T21:38:27Z" level=info msg="Built (rubygem-rouge-4.4.0-2.azl3.src.rpm) -> [/third_disk/bb17Mar/azurelinux/out/RPMS/noarch/rubygem-rouge-4.4.0-2.azl3.noarch.rpm /third_disk/bb17Mar/azurelinux/out/RPMS/noarch/rubygem-rouge-doc-4.4.0-2.azl3.noarch.rpm]."

@@ -1,0 +1,1464 @@
+time="2025-03-18T19:18:47Z" level=info msg="* Creating a ccache manager instance *"
+time="2025-03-18T19:18:47Z" level=info msg="  ccache root folder         : (/third_disk/bb17Mar/azurelinux/ccache)"
+time="2025-03-18T19:18:47Z" level=info msg="  ccache remote configuration: (/third_disk/bb17Mar/azurelinux/toolkit/resources/manifests/package/ccache-configuration.json)"
+time="2025-03-18T19:18:47Z" level=info msg="  loading ccache configuration file: /third_disk/bb17Mar/azurelinux/toolkit/resources/manifests/package/ccache-configuration.json"
+time="2025-03-18T19:18:47Z" level=info msg="    Type           : azure-blob-storage"
+time="2025-03-18T19:18:47Z" level=info msg="    TenantId       : "
+time="2025-03-18T19:18:47Z" level=info msg="    UserName       : "
+time="2025-03-18T19:18:47Z" level=info msg="    StorageAccount : marinerccache"
+time="2025-03-18T19:18:47Z" level=info msg="    ContainerName  : 30-stable"
+time="2025-03-18T19:18:47Z" level=info msg="    Tagsfolder     : tags"
+time="2025-03-18T19:18:47Z" level=info msg="    DownloadEnabled: true"
+time="2025-03-18T19:18:47Z" level=info msg="    DownloadLatest : true"
+time="2025-03-18T19:18:47Z" level=info msg="    DownloadFolder : "
+time="2025-03-18T19:18:47Z" level=info msg="    UploadEnabled  : false"
+time="2025-03-18T19:18:47Z" level=info msg="    UploadFolder   : "
+time="2025-03-18T19:18:47Z" level=info msg="    UpdateLatest   : false"
+time="2025-03-18T19:18:47Z" level=info msg="    KeepLatestOnly : false"
+time="2025-03-18T19:18:47Z" level=info msg="  creating blob storage client..."
+time="2025-03-18T19:18:47Z" level=info msg="  ccache pkg folder : (/third_disk/bb17Mar/azurelinux/ccache/work/x86_64/yelp-xsl)"
+time="2025-03-18T19:18:47Z" level=info msg="  tag local source  : (/third_disk/bb17Mar/azurelinux/ccache/downloads/yelp-xsl-latest-build.txt)"
+time="2025-03-18T19:18:47Z" level=info msg="  tag remote source : (x86_64/tags/yelp-xsl-latest-build.txt)"
+time="2025-03-18T19:18:47Z" level=info msg="  tag local target  : (/third_disk/bb17Mar/azurelinux/ccache/uploads/yelp-xsl-latest-build.txt)"
+time="2025-03-18T19:18:47Z" level=info msg="  tag remote target : (x86_64/tags/yelp-xsl-latest-build.txt)"
+time="2025-03-18T19:18:47Z" level=info msg="  ccache is configured to use the latest from the remote store..."
+time="2025-03-18T19:18:47Z" level=info msg="  checking if (/third_disk/bb17Mar/azurelinux/ccache/downloads/yelp-xsl-latest-build.txt) already exists..."
+time="2025-03-18T19:18:47Z" level=info msg="  downloading (x86_64/tags/yelp-xsl-latest-build.txt) to (/third_disk/bb17Mar/azurelinux/ccache/downloads/yelp-xsl-latest-build.txt)..."
+time="2025-03-18T19:18:48Z" level=info msg="  download time: 1.408473359s"
+time="2025-03-18T19:18:48Z" level=info msg="  updating () to (3.0.20250311-3.0-759739)..."
+time="2025-03-18T19:18:48Z" level=info msg="  tar local source  : (/third_disk/bb17Mar/azurelinux/ccache/downloads/yelp-xsl-ccache.tar.gz)"
+time="2025-03-18T19:18:48Z" level=info msg="  tar remote source : (x86_64/3.0.20250311-3.0-759739/yelp-xsl-ccache.tar.gz)"
+time="2025-03-18T19:18:48Z" level=info msg="  tar local target  : (/third_disk/bb17Mar/azurelinux/ccache/uploads/yelp-xsl-ccache.tar.gz)"
+time="2025-03-18T19:18:48Z" level=info msg="  tar remote target : (x86_64//yelp-xsl-ccache.tar.gz)"
+time="2025-03-18T19:18:48Z" level=info msg="* processing download of ccache artifacts..."
+time="2025-03-18T19:18:48Z" level=info msg="  downloading (x86_64/3.0.20250311-3.0-759739/yelp-xsl-ccache.tar.gz) to (/third_disk/bb17Mar/azurelinux/ccache/downloads/yelp-xsl-ccache.tar.gz)..."
+time="2025-03-18T19:18:48Z" level=info msg="Building (yelp-xsl-42.1-6.azl3.src.rpm)."
+time="2025-03-18T19:18:53Z" level=info msg="  download time: 4.81255161s"
+time="2025-03-18T19:18:53Z" level=info msg="  uncompressing (/third_disk/bb17Mar/azurelinux/ccache/downloads/yelp-xsl-ccache.tar.gz) into (/third_disk/bb17Mar/azurelinux/ccache/work/x86_64/yelp-xsl)."
+time="2025-03-18T19:18:53Z" level=debug msg="Executing: [tar xf /third_disk/bb17Mar/azurelinux/ccache/downloads/yelp-xsl-ccache.tar.gz -C /third_disk/bb17Mar/azurelinux/ccache/work/x86_64/yelp-xsl .]"
+time="2025-03-18T19:18:53Z" level=info msg="  uncompress time: 24.238981ms"
+time="2025-03-18T19:18:53Z" level=debug msg="Executing: [systemd-detect-virt -c]"
+time="2025-03-18T19:18:53Z" level=debug msg="Tool is not running in a container, systemd-detect-virt reports: 'none'"
+time="2025-03-18T19:18:53Z" level=debug msg="Using (/usr/bin/pigz) to extract tar"
+time="2025-03-18T19:18:53Z" level=debug msg="Executing: [tar -I /usr/bin/pigz -xf /third_disk/bb17Mar/azurelinux/build/worker/worker_chroot.tar.gz -C /third_disk/bb17Mar/azurelinux/build/worker/chroot/yelp-xsl-42.1-6.azl3]"
+time="2025-03-18T19:19:24Z" level=debug msg="Mounting: source: (), target: (/third_disk/bb17Mar/azurelinux/build/worker/chroot/yelp-xsl-42.1-6.azl3/dev), fstype: (devtmpfs), flags: (0x0), data: ()"
+time="2025-03-18T19:19:24Z" level=debug msg="Mounting: source: (), target: (/third_disk/bb17Mar/azurelinux/build/worker/chroot/yelp-xsl-42.1-6.azl3/proc), fstype: (proc), flags: (0x0), data: ()"
+time="2025-03-18T19:19:24Z" level=debug msg="Mounting: source: (), target: (/third_disk/bb17Mar/azurelinux/build/worker/chroot/yelp-xsl-42.1-6.azl3/sys), fstype: (sysfs), flags: (0x0), data: ()"
+time="2025-03-18T19:19:24Z" level=debug msg="Mounting: source: (), target: (/third_disk/bb17Mar/azurelinux/build/worker/chroot/yelp-xsl-42.1-6.azl3/run), fstype: (tmpfs), flags: (0x0), data: ()"
+time="2025-03-18T19:19:24Z" level=debug msg="Mounting: source: (), target: (/third_disk/bb17Mar/azurelinux/build/worker/chroot/yelp-xsl-42.1-6.azl3/dev/pts), fstype: (devpts), flags: (0x0), data: (gid=5,mode=620)"
+time="2025-03-18T19:19:24Z" level=debug msg="Mounting: source: (), target: (/third_disk/bb17Mar/azurelinux/build/worker/chroot/yelp-xsl-42.1-6.azl3/localrpms), fstype: (overlay), flags: (0x0), data: (lowerdir=/third_disk/bb17Mar/azurelinux/out/RPMS,upperdir=/third_disk/bb17Mar/azurelinux/build/worker/chroot/yelp-xsl-42.1-6.azl3/localrpms,workdir=/third_disk/bb17Mar/azurelinux/build/worker/chroot/yelp-xsl-42.1-6.azl3/overlaywork_rpms)"
+time="2025-03-18T19:19:24Z" level=debug msg="Mounting: source: (), target: (/third_disk/bb17Mar/azurelinux/build/worker/chroot/yelp-xsl-42.1-6.azl3/toolchainrpms), fstype: (overlay), flags: (0x0), data: (lowerdir=/third_disk/bb17Mar/azurelinux/build/toolchain_rpms,upperdir=/third_disk/bb17Mar/azurelinux/build/worker/chroot/yelp-xsl-42.1-6.azl3/toolchainrpms,workdir=/third_disk/bb17Mar/azurelinux/build/worker/chroot/yelp-xsl-42.1-6.azl3/overlaywork_toolchain)"
+time="2025-03-18T19:19:24Z" level=debug msg="Mounting: source: (/third_disk/bb17Mar/azurelinux/build/rpm_cache/cache), target: (/third_disk/bb17Mar/azurelinux/build/worker/chroot/yelp-xsl-42.1-6.azl3/upstream-cached-rpms), fstype: (), flags: (0xc0ed1000), data: ()"
+time="2025-03-18T19:19:24Z" level=debug msg="Mounting: source: (/third_disk/bb17Mar/azurelinux/ccache/work/x86_64/yelp-xsl), target: (/third_disk/bb17Mar/azurelinux/build/worker/chroot/yelp-xsl-42.1-6.azl3/ccache-dir), fstype: (), flags: (0xc0ed1000), data: ()"
+time="2025-03-18T19:19:24Z" level=debug msg="Copying (/third_disk/bb17Mar/azurelinux/toolkit/resources/manifests/package/local.repo) to (/third_disk/bb17Mar/azurelinux/build/worker/chroot/yelp-xsl-42.1-6.azl3/etc/yum.repos.d/local.repo)"
+time="2025-03-18T19:19:24Z" level=debug msg="Executing: [cp --preserve=mode /third_disk/bb17Mar/azurelinux/toolkit/resources/manifests/package/local.repo /third_disk/bb17Mar/azurelinux/build/worker/chroot/yelp-xsl-42.1-6.azl3/etc/yum.repos.d/local.repo]"
+time="2025-03-18T19:19:24Z" level=debug msg="Copying (/third_disk/bb17Mar/azurelinux/build/INTERMEDIATE_SRPMS/yelp-xsl-42.1-6.azl3.src.rpm) to (/third_disk/bb17Mar/azurelinux/build/worker/chroot/yelp-xsl-42.1-6.azl3/root/SRPMS/yelp-xsl-42.1-6.azl3.src.rpm)"
+time="2025-03-18T19:19:24Z" level=debug msg="Executing: [cp --preserve=mode /third_disk/bb17Mar/azurelinux/build/INTERMEDIATE_SRPMS/yelp-xsl-42.1-6.azl3.src.rpm /third_disk/bb17Mar/azurelinux/build/worker/chroot/yelp-xsl-42.1-6.azl3/root/SRPMS/yelp-xsl-42.1-6.azl3.src.rpm]"
+time="2025-03-18T19:19:25Z" level=debug msg="Copying (/third_disk/bb17Mar/azurelinux/toolkit/resources/manifests/package/macros.override) to (/third_disk/bb17Mar/azurelinux/build/worker/chroot/yelp-xsl-42.1-6.azl3/usr/lib/rpm/macros.d/macros.override)"
+time="2025-03-18T19:19:25Z" level=debug msg="Executing: [cp --preserve=mode /third_disk/bb17Mar/azurelinux/toolkit/resources/manifests/package/macros.override /third_disk/bb17Mar/azurelinux/build/worker/chroot/yelp-xsl-42.1-6.azl3/usr/lib/rpm/macros.d/macros.override]"
+time="2025-03-18T19:19:25Z" level=debug msg="Entering Chroot: '/third_disk/bb17Mar/azurelinux/build/worker/chroot/yelp-xsl-42.1-6.azl3'"
+time="2025-03-18T19:19:25Z" level=debug msg="Creating RPM repository in (/localrpms)"
+time="2025-03-18T19:19:25Z" level=debug msg="Executing: [createrepo_c --compatibility /localrpms]"
+time="2025-03-18T19:19:29Z" level=debug msg="Creating RPM repository in (/toolchainrpms)"
+time="2025-03-18T19:19:29Z" level=debug msg="Executing: [createrepo_c --compatibility /toolchainrpms]"
+time="2025-03-18T19:19:40Z" level=debug msg="Executing: [tdnf install -y --releasever=3.0 python3-libxml2-2.11.5-4.azl3.x86_64 itstool-2.0.7-1.azl3.noarch libxml2-2.11.5-4.azl3.x86_64 python3-mallard-ducktype-1.0.2-6.azl3.noarch gcc-13.2.0-7.azl3.x86_64 make-4.4.1-2.azl3.x86_64 libxslt-1.1.39-1.azl3.x86_64]"
+time="2025-03-18T19:19:43Z" level=debug msg="Error(1207) : Could not resolve hostname"
+time="2025-03-18T19:19:43Z" level=debug msg="Error: Failed to synchronize cache for repo 'Azure Linux Official Base 3.0 x86_64'"
+time="2025-03-18T19:19:43Z" level=debug msg="Package libxml2-2.11.5-4.azl3.x86_64 is already installed."
+time="2025-03-18T19:19:43Z" level=debug msg="Package gcc-13.2.0-7.azl3.x86_64 is already installed."
+time="2025-03-18T19:19:43Z" level=debug msg="Package make-4.4.1-2.azl3.x86_64 is already installed."
+time="2025-03-18T19:19:43Z" level=debug msg="Package libxslt-1.1.39-1.azl3.x86_64 is already installed."
+time="2025-03-18T19:19:49Z" level=info msg="USE_CCACHE: installing package: ccache"
+time="2025-03-18T19:19:49Z" level=debug msg="Executing: [tdnf install -y --releasever=3.0 ccache]"
+time="2025-03-18T19:19:50Z" level=debug msg="Error(1207) : Could not resolve hostname"
+time="2025-03-18T19:19:50Z" level=debug msg="Error: Failed to synchronize cache for repo 'Azure Linux Official Base 3.0 x86_64'"
+time="2025-03-18T19:19:57Z" level=debug msg="Executing: [rpmbuild --nocheck --rebuild --nodeps -D with_check 0 -D dist .azl3 -D azl 3 -D distro_release_version 3.0.20250318.1347 -D mariner_build_number 1c8f149b8 -D distro_module_ldflags  -Wl,-dT,%{_topdir}/BUILD/module_info.ld -D ccache_enabled true /root/SRPMS/yelp-xsl-42.1-6.azl3.src.rpm]"
+time="2025-03-18T19:19:57Z" level=debug msg="warning: Could not canonicalize hostname: azuli-m1"
+time="2025-03-18T19:19:57Z" level=debug msg="+ umask 022"
+time="2025-03-18T19:19:57Z" level=debug msg="+ cd /usr/src/azl/BUILD"
+time="2025-03-18T19:19:57Z" level=debug msg="+ /usr/lib/rpm/azl/gen-ld-script.sh yelp-xsl 42.1-6.azl3 /usr/src/azl 3.0.20250318.1347"
+time="2025-03-18T19:19:57Z" level=debug msg="Installing /root/SRPMS/yelp-xsl-42.1-6.azl3.src.rpm"
+time="2025-03-18T19:19:57Z" level=debug msg="Executing(%prep): /bin/sh -e /var/tmp/rpm-tmp.VTzNYx"
+time="2025-03-18T19:19:57Z" level=debug msg="gen-ld-script.sh name(yelp-xsl) version(42.1-6.azl3) _topdir(/usr/src/azl) osversion(3.0.20250318.1347)"
+time="2025-03-18T19:19:58Z" level=debug msg="==== ELF note generator v2.1.2 ===="
+time="2025-03-18T19:19:58Z" level=debug msg="outdir is: /usr/src/azl/BUILD/"
+time="2025-03-18T19:19:58Z" level=debug msg="Stamp method: LinkerOnly"
+time="2025-03-18T19:19:58Z" level=debug
+time="2025-03-18T19:19:58Z" level=debug msg="#ifndef _AUTO_MODULE_INFO_H_"
+time="2025-03-18T19:19:58Z" level=debug msg="#define _AUTO_MODULE_INFO_H_"
+time="2025-03-18T19:19:58Z" level=debug
+time="2025-03-18T19:19:58Z" level=debug msg="#define MODULE_VERSION      \"42.1.0.0\""
+time="2025-03-18T19:19:58Z" level=debug msg="#define PACKAGE_VERSION     \"42.1-6.azl3\""
+time="2025-03-18T19:19:58Z" level=debug msg="#define PACKAGE_NAME        \"yelp-xsl\""
+time="2025-03-18T19:19:58Z" level=debug msg="#define TARGET_OS           \"mariner\""
+time="2025-03-18T19:19:58Z" level=debug msg="#define TARGET_OS_VERSION   \"3.0\""
+time="2025-03-18T19:19:58Z" level=debug
+time="2025-03-18T19:19:58Z" level=debug msg="#endif //_AUTO_MODULE_INFO_H_"
+time="2025-03-18T19:19:58Z" level=debug msg="Generated /usr/src/azl/BUILD/auto_module_info.h file..."
+time="2025-03-18T19:19:58Z" level=debug
+time="2025-03-18T19:19:58Z" level=debug msg="Successfully generated module_info.ld and .note.package files..."
+time="2025-03-18T19:19:58Z" level=debug msg="+ cd /usr/src/azl/BUILD"
+time="2025-03-18T19:19:58Z" level=debug msg="+ rm -rf yelp-xsl-42.1"
+time="2025-03-18T19:19:58Z" level=debug msg="+ /usr/lib/rpm/rpmuncompress -x /usr/src/azl/SOURCES/yelp-xsl-42.1.tar.xz"
+time="2025-03-18T19:19:58Z" level=debug msg="+ STATUS=0"
+time="2025-03-18T19:19:58Z" level=debug msg="+ '[' 0 -ne 0 ']'"
+time="2025-03-18T19:19:58Z" level=debug msg="+ cd yelp-xsl-42.1"
+time="2025-03-18T19:19:58Z" level=debug msg="+ /bin/chmod -Rf a+rX,u+w,g-w,o-w ."
+time="2025-03-18T19:19:58Z" level=debug msg="+ RPM_EC=0"
+time="2025-03-18T19:19:58Z" level=debug msg="++ jobs -p"
+time="2025-03-18T19:19:58Z" level=debug msg="+ exit 0"
+time="2025-03-18T19:19:58Z" level=debug msg="Executing(%build): /bin/sh -e /var/tmp/rpm-tmp.pzvif1"
+time="2025-03-18T19:19:58Z" level=debug msg="+ umask 022"
+time="2025-03-18T19:19:58Z" level=debug msg="+ cd /usr/src/azl/BUILD"
+time="2025-03-18T19:19:58Z" level=debug msg="+ CFLAGS='-O2 -g -pipe -Wall -Werror=format-security -Wp,-D_FORTIFY_SOURCE=2 -Wp,-D_GLIBCXX_ASSERTIONS -fexceptions -fstack-protector-strong -grecord-gcc-switches -specs=/usr/lib/rpm/azl/default-hardened-cc1    -fcommon -m64 -mtune=generic -fasynchronous-unwind-tables -fstack-clash-protection -fcf-protection'"
+time="2025-03-18T19:19:58Z" level=debug msg="+ export CFLAGS"
+time="2025-03-18T19:19:58Z" level=debug msg="+ CXXFLAGS='-O2 -g -pipe -Wall -Werror=format-security -Wp,-D_FORTIFY_SOURCE=2 -Wp,-D_GLIBCXX_ASSERTIONS -fexceptions -fstack-protector-strong -grecord-gcc-switches -specs=/usr/lib/rpm/azl/default-hardened-cc1    -fcommon -m64 -mtune=generic -fasynchronous-unwind-tables -fstack-clash-protection -fcf-protection'"
+time="2025-03-18T19:19:58Z" level=debug msg="+ export CXXFLAGS"
+time="2025-03-18T19:19:58Z" level=debug msg="+ FFLAGS='-O2 -g -pipe -Wall -Werror=format-security -Wp,-D_FORTIFY_SOURCE=2 -Wp,-D_GLIBCXX_ASSERTIONS -fexceptions -fstack-protector-strong -grecord-gcc-switches -specs=/usr/lib/rpm/azl/default-hardened-cc1    -fcommon -m64 -mtune=generic -fasynchronous-unwind-tables -fstack-clash-protection -fcf-protection -I/usr/lib/gfortran/modules'"
+time="2025-03-18T19:19:58Z" level=debug msg="+ export FFLAGS"
+time="2025-03-18T19:19:58Z" level=debug msg="+ FCFLAGS='-O2 -g -pipe -Wall -Werror=format-security -Wp,-D_FORTIFY_SOURCE=2 -Wp,-D_GLIBCXX_ASSERTIONS -fexceptions -fstack-protector-strong -grecord-gcc-switches -specs=/usr/lib/rpm/azl/default-hardened-cc1    -fcommon -m64 -mtune=generic -fasynchronous-unwind-tables -fstack-clash-protection -fcf-protection -I/usr/lib/gfortran/modules'"
+time="2025-03-18T19:19:58Z" level=debug msg="+ export FCFLAGS"
+time="2025-03-18T19:19:58Z" level=debug msg="+ LDFLAGS='-Wl,-z,relro -Wl,--as-needed  -Wl,-z,now -specs=/usr/lib/rpm/azl/default-hardened-ld -Wl,-dT,/usr/src/azl/BUILD/module_info.ld'"
+time="2025-03-18T19:19:58Z" level=debug msg="+ export LDFLAGS"
+time="2025-03-18T19:19:58Z" level=debug msg="+ LT_SYS_LIBRARY_PATH=/usr/lib:"
+time="2025-03-18T19:19:58Z" level=debug msg="+ export LT_SYS_LIBRARY_PATH"
+time="2025-03-18T19:19:58Z" level=debug msg="+ PATH=/usr/lib/ccache:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
+time="2025-03-18T19:19:58Z" level=debug msg="+ export PATH"
+time="2025-03-18T19:19:58Z" level=debug msg="+ CCACHE_DIR=/ccache-dir"
+time="2025-03-18T19:19:58Z" level=debug msg="+ export CCACHE_DIR"
+time="2025-03-18T19:19:58Z" level=debug msg="+ CCACHE_COMPILERCHECK=content"
+time="2025-03-18T19:19:58Z" level=debug msg="+ export CCACHE_COMPILERCHECK"
+time="2025-03-18T19:19:58Z" level=debug msg="+ ccache --zero-stats"
+time="2025-03-18T19:19:59Z" level=debug msg="Statistics zeroed"
+time="2025-03-18T19:19:59Z" level=debug msg="+ cd yelp-xsl-42.1"
+time="2025-03-18T19:19:59Z" level=debug msg="+ CFLAGS='-O2 -g -pipe -Wall -Werror=format-security -Wp,-D_FORTIFY_SOURCE=2 -Wp,-D_GLIBCXX_ASSERTIONS -fexceptions -fstack-protector-strong -grecord-gcc-switches -specs=/usr/lib/rpm/azl/default-hardened-cc1    -fcommon -m64 -mtune=generic -fasynchronous-unwind-tables -fstack-clash-protection -fcf-protection'"
+time="2025-03-18T19:19:59Z" level=debug msg="+ export CFLAGS"
+time="2025-03-18T19:19:59Z" level=debug msg="+ CXXFLAGS='-O2 -g -pipe -Wall -Werror=format-security -Wp,-D_FORTIFY_SOURCE=2 -Wp,-D_GLIBCXX_ASSERTIONS -fexceptions -fstack-protector-strong -grecord-gcc-switches -specs=/usr/lib/rpm/azl/default-hardened-cc1    -fcommon -m64 -mtune=generic -fasynchronous-unwind-tables -fstack-clash-protection -fcf-protection'"
+time="2025-03-18T19:19:59Z" level=debug msg="+ export CXXFLAGS"
+time="2025-03-18T19:19:59Z" level=debug msg="+ FFLAGS='-O2 -g -pipe -Wall -Werror=format-security -Wp,-D_FORTIFY_SOURCE=2 -Wp,-D_GLIBCXX_ASSERTIONS -fexceptions -fstack-protector-strong -grecord-gcc-switches -specs=/usr/lib/rpm/azl/default-hardened-cc1    -fcommon -m64 -mtune=generic -fasynchronous-unwind-tables -fstack-clash-protection -fcf-protection -I/usr/lib/gfortran/modules'"
+time="2025-03-18T19:19:59Z" level=debug msg="+ export FFLAGS"
+time="2025-03-18T19:19:59Z" level=debug msg="+ FCFLAGS='-O2 -g -pipe -Wall -Werror=format-security -Wp,-D_FORTIFY_SOURCE=2 -Wp,-D_GLIBCXX_ASSERTIONS -fexceptions -fstack-protector-strong -grecord-gcc-switches -specs=/usr/lib/rpm/azl/default-hardened-cc1    -fcommon -m64 -mtune=generic -fasynchronous-unwind-tables -fstack-clash-protection -fcf-protection -I/usr/lib/gfortran/modules'"
+time="2025-03-18T19:19:59Z" level=debug msg="+ export FCFLAGS"
+time="2025-03-18T19:19:59Z" level=debug msg="+ LDFLAGS='-Wl,-z,relro -Wl,--as-needed  -Wl,-z,now -specs=/usr/lib/rpm/azl/default-hardened-ld -Wl,-dT,/usr/src/azl/BUILD/module_info.ld'"
+time="2025-03-18T19:19:59Z" level=debug msg="+ export LDFLAGS"
+time="2025-03-18T19:19:59Z" level=debug msg="+ LT_SYS_LIBRARY_PATH=/usr/lib:"
+time="2025-03-18T19:19:59Z" level=debug msg="+ export LT_SYS_LIBRARY_PATH"
+time="2025-03-18T19:19:59Z" level=debug msg="+ ./configure --host=x86_64-pc-linux-gnu --build=x86_64-pc-linux-gnu --program-prefix= --disable-dependency-tracking --prefix=/usr --exec-prefix=/usr --bindir=/usr/bin --sbindir=/usr/sbin --sysconfdir=/etc --datadir=/usr/share --includedir=/usr/include --libdir=/usr/lib --libexecdir=/usr/libexec --localstatedir=/var --sharedstatedir=/var/lib --mandir=/usr/share/man --infodir=/usr/share/info --enable-doc"
+time="2025-03-18T19:19:59Z" level=debug msg="checking for a BSD-compatible install... /usr/bin/install -c"
+time="2025-03-18T19:19:59Z" level=debug msg="checking whether build environment is sane... yes"
+time="2025-03-18T19:19:59Z" level=debug msg="checking for a race-free mkdir -p... /usr/bin/mkdir -p"
+time="2025-03-18T19:19:59Z" level=debug msg="checking for gawk... gawk"
+time="2025-03-18T19:20:00Z" level=debug msg="checking whether make sets $(MAKE)... yes"
+time="2025-03-18T19:20:00Z" level=debug msg="checking whether make supports nested variables... yes"
+time="2025-03-18T19:20:00Z" level=debug msg="checking for gawk... (cached) gawk"
+time="2025-03-18T19:20:00Z" level=debug msg="checking for itstool... itstool"
+time="2025-03-18T19:20:00Z" level=debug msg="/usr/bin/itstool:223: SyntaxWarning: invalid escape sequence '\\s'"
+time="2025-03-18T19:20:00Z" level=debug msg="  if re.sub('\\s+', ' ', text).strip() != '':"
+time="2025-03-18T19:20:00Z" level=debug msg="/usr/bin/itstool:321: SyntaxWarning: invalid escape sequence '\\s'"
+time="2025-03-18T19:20:00Z" level=debug msg="  message = re.sub('\\s+', ' ', message).strip()"
+time="2025-03-18T19:20:00Z" level=debug msg="/usr/bin/itstool:459: SyntaxWarning: invalid escape sequence '\\s'"
+time="2025-03-18T19:20:00Z" level=debug msg="  return re.sub('\\s+', ' ', self.locnote).strip()"
+time="2025-03-18T19:20:00Z" level=debug msg="/usr/bin/itstool:461: SyntaxWarning: invalid escape sequence '\\s'"
+time="2025-03-18T19:20:00Z" level=debug msg="  return '(itstool) link: ' + re.sub('\\s+', ' ', self.locnoteref).strip()"
+time="2025-03-18T19:20:00Z" level=debug msg="/usr/bin/itstool:892: SyntaxWarning: invalid escape sequence '\\<'"
+time="2025-03-18T19:20:00Z" level=debug msg="  regex = re.compile('(.*) \\<(.*)\\>, (.*)')"
+time="2025-03-18T19:20:00Z" level=debug msg="/usr/bin/itstool:927: SyntaxWarning: invalid escape sequence '\\s'"
+time="2025-03-18T19:20:00Z" level=debug msg="  if re.sub('\\s+', '', prevtext) == '':"
+time="2025-03-18T19:20:00Z" level=debug msg="/usr/bin/itstool:1471: SyntaxWarning: invalid escape sequence '\\.'"
+time="2025-03-18T19:20:00Z" level=debug msg="  _locale_pattern = re.compile('([a-zA-Z0-9-]+)(_[A-Za-z0-9]+)?(@[A-Za-z0-9]+)?(\\.[A-Za-z0-9]+)?')"
+time="2025-03-18T19:20:00Z" level=debug msg="checking for a sed that does not truncate output... /usr/bin/sed"
+time="2025-03-18T19:20:00Z" level=debug msg="checking whether NLS is requested... yes"
+time="2025-03-18T19:20:00Z" level=debug msg="checking for msgfmt... /usr/bin/msgfmt"
+time="2025-03-18T19:20:00Z" level=debug msg="checking for gmsgfmt... /usr/bin/msgfmt"
+time="2025-03-18T19:20:00Z" level=debug msg="checking for xgettext... /usr/bin/xgettext"
+time="2025-03-18T19:20:00Z" level=debug msg="checking for msgmerge... /usr/bin/msgmerge"
+time="2025-03-18T19:20:00Z" level=debug msg="checking whether make supports the include directive... yes (GNU style)"
+time="2025-03-18T19:20:00Z" level=debug msg="checking for x86_64-pc-linux-gnu-gcc... x86_64-pc-linux-gnu-gcc"
+time="2025-03-18T19:20:01Z" level=debug msg="checking whether the C compiler works... yes"
+time="2025-03-18T19:20:01Z" level=debug msg="checking for C compiler default output file name... a.out"
+time="2025-03-18T19:20:02Z" level=debug msg="checking for suffix of executables... "
+time="2025-03-18T19:20:02Z" level=debug msg="checking whether we are cross compiling... no"
+time="2025-03-18T19:20:02Z" level=debug msg="checking for suffix of object files... o"
+time="2025-03-18T19:20:02Z" level=debug msg="checking whether the compiler supports GNU C... yes"
+time="2025-03-18T19:20:02Z" level=debug msg="checking whether x86_64-pc-linux-gnu-gcc accepts -g... yes"
+time="2025-03-18T19:20:03Z" level=debug msg="checking for x86_64-pc-linux-gnu-gcc option to enable C11 features... none needed"
+time="2025-03-18T19:20:03Z" level=debug msg="checking whether x86_64-pc-linux-gnu-gcc understands -c and -o together... yes"
+time="2025-03-18T19:20:03Z" level=debug msg="checking dependency style of x86_64-pc-linux-gnu-gcc... none"
+time="2025-03-18T19:20:03Z" level=debug msg="checking build system type... x86_64-pc-linux-gnu"
+time="2025-03-18T19:20:03Z" level=debug msg="checking host system type... x86_64-pc-linux-gnu"
+time="2025-03-18T19:20:03Z" level=debug msg="checking for ld used by x86_64-pc-linux-gnu-gcc... /usr/bin/ld"
+time="2025-03-18T19:20:03Z" level=debug msg="checking if the linker (/usr/bin/ld) is GNU ld... yes"
+time="2025-03-18T19:20:03Z" level=debug msg="checking for shared library run path origin... done"
+time="2025-03-18T19:20:04Z" level=debug msg="checking how to run the C preprocessor... x86_64-pc-linux-gnu-gcc -E"
+time="2025-03-18T19:20:04Z" level=debug msg="checking for grep that handles long lines and -e... /usr/bin/grep"
+time="2025-03-18T19:20:04Z" level=debug msg="checking for egrep... /usr/bin/grep -E"
+time="2025-03-18T19:20:04Z" level=debug msg="checking for CFPreferencesCopyAppValue... no"
+time="2025-03-18T19:20:04Z" level=debug msg="checking for CFLocaleCopyCurrent... no"
+time="2025-03-18T19:20:04Z" level=debug msg="checking for GNU gettext in libc... yes"
+time="2025-03-18T19:20:04Z" level=debug msg="checking whether to use NLS... yes"
+time="2025-03-18T19:20:04Z" level=debug msg="checking where the gettext function comes from... libc"
+time="2025-03-18T19:20:04Z" level=debug msg="checking for xmllint... xmllint"
+time="2025-03-18T19:20:04Z" level=debug msg="checking for xsltproc... xsltproc"
+time="2025-03-18T19:20:04Z" level=debug msg="checking that generated files are newer than configure... done"
+time="2025-03-18T19:20:04Z" level=debug msg="configure: creating ./config.status"
+time="2025-03-18T19:20:05Z" level=debug msg="config.status: creating Makefile"
+time="2025-03-18T19:20:05Z" level=debug msg="config.status: creating yelp-xsl.pc"
+time="2025-03-18T19:20:05Z" level=debug msg="config.status: creating js/Makefile"
+time="2025-03-18T19:20:05Z" level=debug msg="config.status: creating doc/Makefile"
+time="2025-03-18T19:20:05Z" level=debug msg="config.status: creating doc/yelp-xsl/Makefile"
+time="2025-03-18T19:20:05Z" level=debug msg="config.status: creating po/Makefile.in"
+time="2025-03-18T19:20:05Z" level=debug msg="config.status: creating xslt/Makefile"
+time="2025-03-18T19:20:06Z" level=debug msg="config.status: creating xslt/common/Makefile"
+time="2025-03-18T19:20:06Z" level=debug msg="config.status: creating xslt/common/css/Makefile"
+time="2025-03-18T19:20:06Z" level=debug msg="config.status: creating xslt/common/domains/Makefile"
+time="2025-03-18T19:20:06Z" level=debug msg="config.status: creating xslt/common/icons/Makefile"
+time="2025-03-18T19:20:06Z" level=debug msg="config.status: creating xslt/docbook/Makefile"
+time="2025-03-18T19:20:06Z" level=debug msg="config.status: creating xslt/docbook/common/Makefile"
+time="2025-03-18T19:20:06Z" level=debug msg="config.status: creating xslt/docbook/html/Makefile"
+time="2025-03-18T19:20:06Z" level=debug msg="config.status: creating xslt/mallard/Makefile"
+time="2025-03-18T19:20:07Z" level=debug msg="config.status: creating xslt/mallard/cache/Makefile"
+time="2025-03-18T19:20:07Z" level=debug msg="config.status: creating xslt/mallard/common/Makefile"
+time="2025-03-18T19:20:07Z" level=debug msg="config.status: creating xslt/mallard/html/Makefile"
+time="2025-03-18T19:20:07Z" level=debug msg="config.status: executing po-directories commands"
+time="2025-03-18T19:20:07Z" level=debug msg="config.status: creating po/POTFILES"
+time="2025-03-18T19:20:07Z" level=debug msg="config.status: setting ALL_LINGUAS in configure.in is obsolete"
+time="2025-03-18T19:20:07Z" level=debug msg="config.status: creating po/Makefile"
+time="2025-03-18T19:20:07Z" level=debug msg="config.status: executing depfiles commands"
+time="2025-03-18T19:20:07Z" level=debug
+time="2025-03-18T19:20:07Z" level=debug msg="yelp-xsl-42.1:"
+time="2025-03-18T19:20:07Z" level=debug
+time="2025-03-18T19:20:07Z" level=debug msg="\tprefix:                   /usr"
+time="2025-03-18T19:20:07Z" level=debug
+time="2025-03-18T19:20:07Z" level=debug msg="\tDocumentation:            yes"
+time="2025-03-18T19:20:07Z" level=debug
+time="2025-03-18T19:20:07Z" level=debug msg="+ /usr/bin/make -O -j8 V=1 VERBOSE=1"
+time="2025-03-18T19:20:07Z" level=debug msg="Making all in js"
+time="2025-03-18T19:20:07Z" level=debug msg="make[1]: Nothing to be done for 'all'."
+time="2025-03-18T19:20:07Z" level=debug msg="Making all in xslt"
+time="2025-03-18T19:20:07Z" level=debug msg="Making all in common"
+time="2025-03-18T19:20:07Z" level=debug msg="Making all in css"
+time="2025-03-18T19:20:07Z" level=debug msg="make[3]: Nothing to be done for 'all'."
+time="2025-03-18T19:20:07Z" level=debug msg="Making all in domains"
+time="2025-03-18T19:20:07Z" level=debug msg="make[3]: Nothing to be done for 'all'."
+time="2025-03-18T19:20:07Z" level=debug msg="Making all in icons"
+time="2025-03-18T19:20:07Z" level=debug msg="make[3]: Nothing to be done for 'all'."
+time="2025-03-18T19:20:07Z" level=debug msg="make[3]: Nothing to be done for 'all-am'."
+time="2025-03-18T19:20:07Z" level=debug msg="Making all in docbook"
+time="2025-03-18T19:20:07Z" level=debug msg="Making all in common"
+time="2025-03-18T19:20:07Z" level=debug msg="make[3]: Nothing to be done for 'all'."
+time="2025-03-18T19:20:07Z" level=debug msg="Making all in html"
+time="2025-03-18T19:20:07Z" level=debug msg="make[3]: Nothing to be done for 'all'."
+time="2025-03-18T19:20:07Z" level=debug msg="make[3]: Nothing to be done for 'all-am'."
+time="2025-03-18T19:20:07Z" level=debug msg="Making all in mallard"
+time="2025-03-18T19:20:08Z" level=debug msg="Making all in common"
+time="2025-03-18T19:20:08Z" level=debug msg="make[3]: Nothing to be done for 'all'."
+time="2025-03-18T19:20:08Z" level=debug msg="Making all in html"
+time="2025-03-18T19:20:08Z" level=debug msg="make[3]: Nothing to be done for 'all'."
+time="2025-03-18T19:20:08Z" level=debug msg="Making all in cache"
+time="2025-03-18T19:20:08Z" level=debug msg="make[3]: Nothing to be done for 'all'."
+time="2025-03-18T19:20:08Z" level=debug msg="make[3]: Nothing to be done for 'all-am'."
+time="2025-03-18T19:20:08Z" level=debug msg="make[2]: Nothing to be done for 'all-am'."
+time="2025-03-18T19:20:08Z" level=debug msg="Making all in doc"
+time="2025-03-18T19:20:08Z" level=debug msg="Making all in yelp-xsl"
+time="2025-03-18T19:20:08Z" level=debug msg="make[2]: Entering directory '/usr/src/azl/BUILD/yelp-xsl-42.1/doc/yelp-xsl'"
+time="2025-03-18T19:20:08Z" level=debug msg="xsltproc -o \"ducks/db2html.duck\" \\"
+time="2025-03-18T19:20:08Z" level=debug msg="--stringparam xsldoc.id \"db2html\" \\"
+time="2025-03-18T19:20:08Z" level=debug msg="\"./xsldoc.xsl\" \\"
+time="2025-03-18T19:20:08Z" level=debug msg="\"/usr/src/azl/BUILD/yelp-xsl-42.1/doc/yelp-xsl/../../xslt/docbook/html/db2html.xsl\""
+time="2025-03-18T19:20:08Z" level=debug msg="make[2]: Leaving directory '/usr/src/azl/BUILD/yelp-xsl-42.1/doc/yelp-xsl'"
+time="2025-03-18T19:20:08Z" level=debug msg="make[2]: Entering directory '/usr/src/azl/BUILD/yelp-xsl-42.1/doc/yelp-xsl'"
+time="2025-03-18T19:20:08Z" level=debug msg="xsltproc -o \"ducks/db-title.duck\" \\"
+time="2025-03-18T19:20:08Z" level=debug msg="--stringparam xsldoc.id \"db-title\" \\"
+time="2025-03-18T19:20:08Z" level=debug msg="\"./xsldoc.xsl\" \\"
+time="2025-03-18T19:20:08Z" level=debug msg="\"/usr/src/azl/BUILD/yelp-xsl-42.1/doc/yelp-xsl/../../xslt/docbook/common/db-title.xsl\""
+time="2025-03-18T19:20:08Z" level=debug msg="make[2]: Leaving directory '/usr/src/azl/BUILD/yelp-xsl-42.1/doc/yelp-xsl'"
+time="2025-03-18T19:20:08Z" level=debug msg="make[2]: Entering directory '/usr/src/azl/BUILD/yelp-xsl-42.1/doc/yelp-xsl'"
+time="2025-03-18T19:20:08Z" level=debug msg="xsltproc -o \"ducks/db-xref.duck\" \\"
+time="2025-03-18T19:20:08Z" level=debug msg="--stringparam xsldoc.id \"db-xref\" \\"
+time="2025-03-18T19:20:08Z" level=debug msg="\"./xsldoc.xsl\" \\"
+time="2025-03-18T19:20:08Z" level=debug msg="\"/usr/src/azl/BUILD/yelp-xsl-42.1/doc/yelp-xsl/../../xslt/docbook/common/db-xref.xsl\""
+time="2025-03-18T19:20:08Z" level=debug msg="make[2]: Leaving directory '/usr/src/azl/BUILD/yelp-xsl-42.1/doc/yelp-xsl'"
+time="2025-03-18T19:20:08Z" level=debug msg="make[2]: Entering directory '/usr/src/azl/BUILD/yelp-xsl-42.1/doc/yelp-xsl'"
+time="2025-03-18T19:20:08Z" level=debug msg="xsltproc -o \"ducks/db-chunk.duck\" \\"
+time="2025-03-18T19:20:08Z" level=debug msg="--stringparam xsldoc.id \"db-chunk\" \\"
+time="2025-03-18T19:20:08Z" level=debug msg="\"./xsldoc.xsl\" \\"
+time="2025-03-18T19:20:08Z" level=debug msg="\"/usr/src/azl/BUILD/yelp-xsl-42.1/doc/yelp-xsl/../../xslt/docbook/common/db-chunk.xsl\""
+time="2025-03-18T19:20:08Z" level=debug msg="make[2]: Leaving directory '/usr/src/azl/BUILD/yelp-xsl-42.1/doc/yelp-xsl'"
+time="2025-03-18T19:20:08Z" level=debug msg="make[2]: Entering directory '/usr/src/azl/BUILD/yelp-xsl-42.1/doc/yelp-xsl'"
+time="2025-03-18T19:20:08Z" level=debug msg="xsltproc -o \"ducks/db2html-bibliography.duck\" \\"
+time="2025-03-18T19:20:08Z" level=debug msg="--stringparam xsldoc.id \"db2html-bibliography\" \\"
+time="2025-03-18T19:20:08Z" level=debug msg="\"./xsldoc.xsl\" \\"
+time="2025-03-18T19:20:08Z" level=debug msg="\"/usr/src/azl/BUILD/yelp-xsl-42.1/doc/yelp-xsl/../../xslt/docbook/html/db2html-bibliography.xsl\""
+time="2025-03-18T19:20:08Z" level=debug msg="make[2]: Leaving directory '/usr/src/azl/BUILD/yelp-xsl-42.1/doc/yelp-xsl'"
+time="2025-03-18T19:20:08Z" level=debug msg="make[2]: Entering directory '/usr/src/azl/BUILD/yelp-xsl-42.1/doc/yelp-xsl'"
+time="2025-03-18T19:20:08Z" level=debug msg="xsltproc -o \"ducks/db-common.duck\" \\"
+time="2025-03-18T19:20:08Z" level=debug msg="--stringparam xsldoc.id \"db-common\" \\"
+time="2025-03-18T19:20:08Z" level=debug msg="\"./xsldoc.xsl\" \\"
+time="2025-03-18T19:20:08Z" level=debug msg="\"/usr/src/azl/BUILD/yelp-xsl-42.1/doc/yelp-xsl/../../xslt/docbook/common/db-common.xsl\""
+time="2025-03-18T19:20:08Z" level=debug msg="make[2]: Leaving directory '/usr/src/azl/BUILD/yelp-xsl-42.1/doc/yelp-xsl'"
+time="2025-03-18T19:20:08Z" level=debug msg="make[2]: Entering directory '/usr/src/azl/BUILD/yelp-xsl-42.1/doc/yelp-xsl'"
+time="2025-03-18T19:20:08Z" level=debug msg="xsltproc -o \"ducks/db2html-callout.duck\" \\"
+time="2025-03-18T19:20:08Z" level=debug msg="--stringparam xsldoc.id \"db2html-callout\" \\"
+time="2025-03-18T19:20:08Z" level=debug msg="\"./xsldoc.xsl\" \\"
+time="2025-03-18T19:20:08Z" level=debug msg="\"/usr/src/azl/BUILD/yelp-xsl-42.1/doc/yelp-xsl/../../xslt/docbook/html/db2html-callout.xsl\""
+time="2025-03-18T19:20:08Z" level=debug msg="make[2]: Leaving directory '/usr/src/azl/BUILD/yelp-xsl-42.1/doc/yelp-xsl'"
+time="2025-03-18T19:20:08Z" level=debug msg="make[2]: Entering directory '/usr/src/azl/BUILD/yelp-xsl-42.1/doc/yelp-xsl'"
+time="2025-03-18T19:20:08Z" level=debug msg="xsltproc -o \"ducks/db2html-ebnf.duck\" \\"
+time="2025-03-18T19:20:08Z" level=debug msg="--stringparam xsldoc.id \"db2html-ebnf\" \\"
+time="2025-03-18T19:20:08Z" level=debug msg="\"./xsldoc.xsl\" \\"
+time="2025-03-18T19:20:08Z" level=debug msg="\"/usr/src/azl/BUILD/yelp-xsl-42.1/doc/yelp-xsl/../../xslt/docbook/html/db2html-ebnf.xsl\""
+time="2025-03-18T19:20:08Z" level=debug msg="make[2]: Leaving directory '/usr/src/azl/BUILD/yelp-xsl-42.1/doc/yelp-xsl'"
+time="2025-03-18T19:20:08Z" level=debug msg="make[2]: Entering directory '/usr/src/azl/BUILD/yelp-xsl-42.1/doc/yelp-xsl'"
+time="2025-03-18T19:20:08Z" level=debug msg="xsltproc -o \"ducks/db2html-block.duck\" \\"
+time="2025-03-18T19:20:08Z" level=debug msg="--stringparam xsldoc.id \"db2html-block\" \\"
+time="2025-03-18T19:20:08Z" level=debug msg="\"./xsldoc.xsl\" \\"
+time="2025-03-18T19:20:08Z" level=debug msg="\"/usr/src/azl/BUILD/yelp-xsl-42.1/doc/yelp-xsl/../../xslt/docbook/html/db2html-block.xsl\""
+time="2025-03-18T19:20:08Z" level=debug msg="make[2]: Leaving directory '/usr/src/azl/BUILD/yelp-xsl-42.1/doc/yelp-xsl'"
+time="2025-03-18T19:20:08Z" level=debug msg="make[2]: Entering directory '/usr/src/azl/BUILD/yelp-xsl-42.1/doc/yelp-xsl'"
+time="2025-03-18T19:20:08Z" level=debug msg="xsltproc -o \"ducks/db-profile.duck\" \\"
+time="2025-03-18T19:20:08Z" level=debug msg="--stringparam xsldoc.id \"db-profile\" \\"
+time="2025-03-18T19:20:08Z" level=debug msg="\"./xsldoc.xsl\" \\"
+time="2025-03-18T19:20:08Z" level=debug msg="\"/usr/src/azl/BUILD/yelp-xsl-42.1/doc/yelp-xsl/../../xslt/docbook/common/db-profile.xsl\""
+time="2025-03-18T19:20:08Z" level=debug msg="make[2]: Leaving directory '/usr/src/azl/BUILD/yelp-xsl-42.1/doc/yelp-xsl'"
+time="2025-03-18T19:20:08Z" level=debug msg="make[2]: Entering directory '/usr/src/azl/BUILD/yelp-xsl-42.1/doc/yelp-xsl'"
+time="2025-03-18T19:20:08Z" level=debug msg="xsltproc -o \"ducks/db2html-classsynopsis.duck\" \\"
+time="2025-03-18T19:20:08Z" level=debug msg="--stringparam xsldoc.id \"db2html-classsynopsis\" \\"
+time="2025-03-18T19:20:08Z" level=debug msg="\"./xsldoc.xsl\" \\"
+time="2025-03-18T19:20:08Z" level=debug msg="\"/usr/src/azl/BUILD/yelp-xsl-42.1/doc/yelp-xsl/../../xslt/docbook/html/db2html-classsynopsis.xsl\""
+time="2025-03-18T19:20:08Z" level=debug msg="make[2]: Leaving directory '/usr/src/azl/BUILD/yelp-xsl-42.1/doc/yelp-xsl'"
+time="2025-03-18T19:20:08Z" level=debug msg="make[2]: Entering directory '/usr/src/azl/BUILD/yelp-xsl-42.1/doc/yelp-xsl'"
+time="2025-03-18T19:20:08Z" level=debug msg="xsltproc -o \"ducks/db2html-cmdsynopsis.duck\" \\"
+time="2025-03-18T19:20:08Z" level=debug msg="--stringparam xsldoc.id \"db2html-cmdsynopsis\" \\"
+time="2025-03-18T19:20:08Z" level=debug msg="\"./xsldoc.xsl\" \\"
+time="2025-03-18T19:20:08Z" level=debug msg="\"/usr/src/azl/BUILD/yelp-xsl-42.1/doc/yelp-xsl/../../xslt/docbook/html/db2html-cmdsynopsis.xsl\""
+time="2025-03-18T19:20:08Z" level=debug msg="make[2]: Leaving directory '/usr/src/azl/BUILD/yelp-xsl-42.1/doc/yelp-xsl'"
+time="2025-03-18T19:20:08Z" level=debug msg="make[2]: Entering directory '/usr/src/azl/BUILD/yelp-xsl-42.1/doc/yelp-xsl'"
+time="2025-03-18T19:20:08Z" level=debug msg="xsltproc -o \"ducks/db2html-funcsynopsis.duck\" \\"
+time="2025-03-18T19:20:08Z" level=debug msg="--stringparam xsldoc.id \"db2html-funcsynopsis\" \\"
+time="2025-03-18T19:20:08Z" level=debug msg="\"./xsldoc.xsl\" \\"
+time="2025-03-18T19:20:08Z" level=debug msg="\"/usr/src/azl/BUILD/yelp-xsl-42.1/doc/yelp-xsl/../../xslt/docbook/html/db2html-funcsynopsis.xsl\""
+time="2025-03-18T19:20:08Z" level=debug msg="make[2]: Leaving directory '/usr/src/azl/BUILD/yelp-xsl-42.1/doc/yelp-xsl'"
+time="2025-03-18T19:20:08Z" level=debug msg="make[2]: Entering directory '/usr/src/azl/BUILD/yelp-xsl-42.1/doc/yelp-xsl'"
+time="2025-03-18T19:20:08Z" level=debug msg="xsltproc -o \"ducks/db2html-footnote.duck\" \\"
+time="2025-03-18T19:20:08Z" level=debug msg="--stringparam xsldoc.id \"db2html-footnote\" \\"
+time="2025-03-18T19:20:08Z" level=debug msg="\"./xsldoc.xsl\" \\"
+time="2025-03-18T19:20:08Z" level=debug msg="\"/usr/src/azl/BUILD/yelp-xsl-42.1/doc/yelp-xsl/../../xslt/docbook/html/db2html-footnote.xsl\""
+time="2025-03-18T19:20:08Z" level=debug msg="make[2]: Leaving directory '/usr/src/azl/BUILD/yelp-xsl-42.1/doc/yelp-xsl'"
+time="2025-03-18T19:20:08Z" level=debug msg="make[2]: Entering directory '/usr/src/azl/BUILD/yelp-xsl-42.1/doc/yelp-xsl'"
+time="2025-03-18T19:20:08Z" level=debug msg="xsltproc -o \"ducks/db2html-index.duck\" \\"
+time="2025-03-18T19:20:08Z" level=debug msg="--stringparam xsldoc.id \"db2html-index\" \\"
+time="2025-03-18T19:20:08Z" level=debug msg="\"./xsldoc.xsl\" \\"
+time="2025-03-18T19:20:08Z" level=debug msg="\"/usr/src/azl/BUILD/yelp-xsl-42.1/doc/yelp-xsl/../../xslt/docbook/html/db2html-index.xsl\""
+time="2025-03-18T19:20:08Z" level=debug msg="make[2]: Leaving directory '/usr/src/azl/BUILD/yelp-xsl-42.1/doc/yelp-xsl'"
+time="2025-03-18T19:20:08Z" level=debug msg="make[2]: Entering directory '/usr/src/azl/BUILD/yelp-xsl-42.1/doc/yelp-xsl'"
+time="2025-03-18T19:20:08Z" level=debug msg="xsltproc -o \"ducks/db2html-division.duck\" \\"
+time="2025-03-18T19:20:08Z" level=debug msg="--stringparam xsldoc.id \"db2html-division\" \\"
+time="2025-03-18T19:20:08Z" level=debug msg="\"./xsldoc.xsl\" \\"
+time="2025-03-18T19:20:08Z" level=debug msg="\"/usr/src/azl/BUILD/yelp-xsl-42.1/doc/yelp-xsl/../../xslt/docbook/html/db2html-division.xsl\""
+time="2025-03-18T19:20:08Z" level=debug msg="make[2]: Leaving directory '/usr/src/azl/BUILD/yelp-xsl-42.1/doc/yelp-xsl'"
+time="2025-03-18T19:20:08Z" level=debug msg="make[2]: Entering directory '/usr/src/azl/BUILD/yelp-xsl-42.1/doc/yelp-xsl'"
+time="2025-03-18T19:20:08Z" level=debug msg="xsltproc -o \"ducks/db2html-list.duck\" \\"
+time="2025-03-18T19:20:08Z" level=debug msg="--stringparam xsldoc.id \"db2html-list\" \\"
+time="2025-03-18T19:20:08Z" level=debug msg="\"./xsldoc.xsl\" \\"
+time="2025-03-18T19:20:08Z" level=debug msg="\"/usr/src/azl/BUILD/yelp-xsl-42.1/doc/yelp-xsl/../../xslt/docbook/html/db2html-list.xsl\""
+time="2025-03-18T19:20:08Z" level=debug msg="make[2]: Leaving directory '/usr/src/azl/BUILD/yelp-xsl-42.1/doc/yelp-xsl'"
+time="2025-03-18T19:20:08Z" level=debug msg="make[2]: Entering directory '/usr/src/azl/BUILD/yelp-xsl-42.1/doc/yelp-xsl'"
+time="2025-03-18T19:20:08Z" level=debug msg="xsltproc -o \"ducks/db2html-inline.duck\" \\"
+time="2025-03-18T19:20:08Z" level=debug msg="--stringparam xsldoc.id \"db2html-inline\" \\"
+time="2025-03-18T19:20:08Z" level=debug msg="\"./xsldoc.xsl\" \\"
+time="2025-03-18T19:20:08Z" level=debug msg="\"/usr/src/azl/BUILD/yelp-xsl-42.1/doc/yelp-xsl/../../xslt/docbook/html/db2html-inline.xsl\""
+time="2025-03-18T19:20:08Z" level=debug msg="make[2]: Leaving directory '/usr/src/azl/BUILD/yelp-xsl-42.1/doc/yelp-xsl'"
+time="2025-03-18T19:20:08Z" level=debug msg="make[2]: Entering directory '/usr/src/azl/BUILD/yelp-xsl-42.1/doc/yelp-xsl'"
+time="2025-03-18T19:20:08Z" level=debug msg="xsltproc -o \"ducks/db2html-links.duck\" \\"
+time="2025-03-18T19:20:08Z" level=debug msg="--stringparam xsldoc.id \"db2html-links\" \\"
+time="2025-03-18T19:20:08Z" level=debug msg="\"./xsldoc.xsl\" \\"
+time="2025-03-18T19:20:08Z" level=debug msg="\"/usr/src/azl/BUILD/yelp-xsl-42.1/doc/yelp-xsl/../../xslt/docbook/html/db2html-links.xsl\""
+time="2025-03-18T19:20:08Z" level=debug msg="make[2]: Leaving directory '/usr/src/azl/BUILD/yelp-xsl-42.1/doc/yelp-xsl'"
+time="2025-03-18T19:20:08Z" level=debug msg="make[2]: Entering directory '/usr/src/azl/BUILD/yelp-xsl-42.1/doc/yelp-xsl'"
+time="2025-03-18T19:20:08Z" level=debug msg="xsltproc -o \"ducks/db2html-refentry.duck\" \\"
+time="2025-03-18T19:20:08Z" level=debug msg="--stringparam xsldoc.id \"db2html-refentry\" \\"
+time="2025-03-18T19:20:08Z" level=debug msg="\"./xsldoc.xsl\" \\"
+time="2025-03-18T19:20:08Z" level=debug msg="\"/usr/src/azl/BUILD/yelp-xsl-42.1/doc/yelp-xsl/../../xslt/docbook/html/db2html-refentry.xsl\""
+time="2025-03-18T19:20:08Z" level=debug msg="make[2]: Leaving directory '/usr/src/azl/BUILD/yelp-xsl-42.1/doc/yelp-xsl'"
+time="2025-03-18T19:20:08Z" level=debug msg="make[2]: Entering directory '/usr/src/azl/BUILD/yelp-xsl-42.1/doc/yelp-xsl'"
+time="2025-03-18T19:20:08Z" level=debug msg="xsltproc -o \"ducks/db2html-math.duck\" \\"
+time="2025-03-18T19:20:08Z" level=debug msg="--stringparam xsldoc.id \"db2html-math\" \\"
+time="2025-03-18T19:20:08Z" level=debug msg="\"./xsldoc.xsl\" \\"
+time="2025-03-18T19:20:08Z" level=debug msg="\"/usr/src/azl/BUILD/yelp-xsl-42.1/doc/yelp-xsl/../../xslt/docbook/html/db2html-math.xsl\""
+time="2025-03-18T19:20:08Z" level=debug msg="make[2]: Leaving directory '/usr/src/azl/BUILD/yelp-xsl-42.1/doc/yelp-xsl'"
+time="2025-03-18T19:20:08Z" level=debug msg="make[2]: Entering directory '/usr/src/azl/BUILD/yelp-xsl-42.1/doc/yelp-xsl'"
+time="2025-03-18T19:20:08Z" level=debug msg="xsltproc -o \"ducks/db2xhtml.duck\" \\"
+time="2025-03-18T19:20:08Z" level=debug msg="--stringparam xsldoc.id \"db2xhtml\" \\"
+time="2025-03-18T19:20:08Z" level=debug msg="\"./xsldoc.xsl\" \\"
+time="2025-03-18T19:20:08Z" level=debug msg="\"/usr/src/azl/BUILD/yelp-xsl-42.1/doc/yelp-xsl/../../xslt/docbook/html/db2xhtml.xsl\""
+time="2025-03-18T19:20:08Z" level=debug msg="make[2]: Leaving directory '/usr/src/azl/BUILD/yelp-xsl-42.1/doc/yelp-xsl'"
+time="2025-03-18T19:20:08Z" level=debug msg="make[2]: Entering directory '/usr/src/azl/BUILD/yelp-xsl-42.1/doc/yelp-xsl'"
+time="2025-03-18T19:20:08Z" level=debug msg="xsltproc -o \"ducks/db2html-xref.duck\" \\"
+time="2025-03-18T19:20:08Z" level=debug msg="--stringparam xsldoc.id \"db2html-xref\" \\"
+time="2025-03-18T19:20:08Z" level=debug msg="\"./xsldoc.xsl\" \\"
+time="2025-03-18T19:20:08Z" level=debug msg="\"/usr/src/azl/BUILD/yelp-xsl-42.1/doc/yelp-xsl/../../xslt/docbook/html/db2html-xref.xsl\""
+time="2025-03-18T19:20:08Z" level=debug msg="make[2]: Leaving directory '/usr/src/azl/BUILD/yelp-xsl-42.1/doc/yelp-xsl'"
+time="2025-03-18T19:20:08Z" level=debug msg="make[2]: Entering directory '/usr/src/azl/BUILD/yelp-xsl-42.1/doc/yelp-xsl'"
+time="2025-03-18T19:20:08Z" level=debug msg="xsltproc -o \"ducks/db2html-media.duck\" \\"
+time="2025-03-18T19:20:08Z" level=debug msg="--stringparam xsldoc.id \"db2html-media\" \\"
+time="2025-03-18T19:20:08Z" level=debug msg="\"./xsldoc.xsl\" \\"
+time="2025-03-18T19:20:08Z" level=debug msg="\"/usr/src/azl/BUILD/yelp-xsl-42.1/doc/yelp-xsl/../../xslt/docbook/html/db2html-media.xsl\""
+time="2025-03-18T19:20:08Z" level=debug msg="make[2]: Leaving directory '/usr/src/azl/BUILD/yelp-xsl-42.1/doc/yelp-xsl'"
+time="2025-03-18T19:20:08Z" level=debug msg="make[2]: Entering directory '/usr/src/azl/BUILD/yelp-xsl-42.1/doc/yelp-xsl'"
+time="2025-03-18T19:20:08Z" level=debug msg="xsltproc -o \"ducks/l10n-numbers.duck\" \\"
+time="2025-03-18T19:20:08Z" level=debug msg="--stringparam xsldoc.id \"l10n-numbers\" \\"
+time="2025-03-18T19:20:08Z" level=debug msg="\"./xsldoc.xsl\" \\"
+time="2025-03-18T19:20:08Z" level=debug msg="\"/usr/src/azl/BUILD/yelp-xsl-42.1/doc/yelp-xsl/../../xslt/common/l10n-numbers.xsl\""
+time="2025-03-18T19:20:08Z" level=debug msg="make[2]: Leaving directory '/usr/src/azl/BUILD/yelp-xsl-42.1/doc/yelp-xsl'"
+time="2025-03-18T19:20:08Z" level=debug msg="make[2]: Entering directory '/usr/src/azl/BUILD/yelp-xsl-42.1/doc/yelp-xsl'"
+time="2025-03-18T19:20:08Z" level=debug msg="xsltproc -o \"ducks/mal-cache.duck\" \\"
+time="2025-03-18T19:20:08Z" level=debug msg="--stringparam xsldoc.id \"mal-cache\" \\"
+time="2025-03-18T19:20:08Z" level=debug msg="\"./xsldoc.xsl\" \\"
+time="2025-03-18T19:20:08Z" level=debug msg="\"/usr/src/azl/BUILD/yelp-xsl-42.1/doc/yelp-xsl/../../xslt/mallard/cache/mal-cache.xsl\""
+time="2025-03-18T19:20:08Z" level=debug msg="make[2]: Leaving directory '/usr/src/azl/BUILD/yelp-xsl-42.1/doc/yelp-xsl'"
+time="2025-03-18T19:20:08Z" level=debug msg="make[2]: Entering directory '/usr/src/azl/BUILD/yelp-xsl-42.1/doc/yelp-xsl'"
+time="2025-03-18T19:20:08Z" level=debug msg="xsltproc -o \"ducks/color.duck\" \\"
+time="2025-03-18T19:20:08Z" level=debug msg="--stringparam xsldoc.id \"color\" \\"
+time="2025-03-18T19:20:08Z" level=debug msg="\"./xsldoc.xsl\" \\"
+time="2025-03-18T19:20:08Z" level=debug msg="\"/usr/src/azl/BUILD/yelp-xsl-42.1/doc/yelp-xsl/../../xslt/common/color.xsl\""
+time="2025-03-18T19:20:08Z" level=debug msg="make[2]: Leaving directory '/usr/src/azl/BUILD/yelp-xsl-42.1/doc/yelp-xsl'"
+time="2025-03-18T19:20:08Z" level=debug msg="make[2]: Entering directory '/usr/src/azl/BUILD/yelp-xsl-42.1/doc/yelp-xsl'"
+time="2025-03-18T19:20:08Z" level=debug msg="xsltproc -o \"ducks/mal-gloss.duck\" \\"
+time="2025-03-18T19:20:08Z" level=debug msg="--stringparam xsldoc.id \"mal-gloss\" \\"
+time="2025-03-18T19:20:08Z" level=debug msg="\"./xsldoc.xsl\" \\"
+time="2025-03-18T19:20:08Z" level=debug msg="\"/usr/src/azl/BUILD/yelp-xsl-42.1/doc/yelp-xsl/../../xslt/mallard/common/mal-gloss.xsl\""
+time="2025-03-18T19:20:08Z" level=debug msg="make[2]: Leaving directory '/usr/src/azl/BUILD/yelp-xsl-42.1/doc/yelp-xsl'"
+time="2025-03-18T19:20:08Z" level=debug msg="make[2]: Entering directory '/usr/src/azl/BUILD/yelp-xsl-42.1/doc/yelp-xsl'"
+time="2025-03-18T19:20:08Z" level=debug msg="xsltproc -o \"ducks/mal-sort.duck\" \\"
+time="2025-03-18T19:20:08Z" level=debug msg="--stringparam xsldoc.id \"mal-sort\" \\"
+time="2025-03-18T19:20:08Z" level=debug msg="\"./xsldoc.xsl\" \\"
+time="2025-03-18T19:20:08Z" level=debug msg="\"/usr/src/azl/BUILD/yelp-xsl-42.1/doc/yelp-xsl/../../xslt/mallard/common/mal-sort.xsl\""
+time="2025-03-18T19:20:08Z" level=debug msg="make[2]: Leaving directory '/usr/src/azl/BUILD/yelp-xsl-42.1/doc/yelp-xsl'"
+time="2025-03-18T19:20:08Z" level=debug msg="make[2]: Entering directory '/usr/src/azl/BUILD/yelp-xsl-42.1/doc/yelp-xsl'"
+time="2025-03-18T19:20:08Z" level=debug msg="xsltproc -o \"ducks/mal2html.duck\" \\"
+time="2025-03-18T19:20:08Z" level=debug msg="--stringparam xsldoc.id \"mal2html\" \\"
+time="2025-03-18T19:20:08Z" level=debug msg="\"./xsldoc.xsl\" \\"
+time="2025-03-18T19:20:08Z" level=debug msg="\"/usr/src/azl/BUILD/yelp-xsl-42.1/doc/yelp-xsl/../../xslt/mallard/html/mal2html.xsl\""
+time="2025-03-18T19:20:08Z" level=debug msg="make[2]: Leaving directory '/usr/src/azl/BUILD/yelp-xsl-42.1/doc/yelp-xsl'"
+time="2025-03-18T19:20:08Z" level=debug msg="make[2]: Entering directory '/usr/src/azl/BUILD/yelp-xsl-42.1/doc/yelp-xsl'"
+time="2025-03-18T19:20:08Z" level=debug msg="xsltproc -o \"ducks/mal-if.duck\" \\"
+time="2025-03-18T19:20:08Z" level=debug msg="--stringparam xsldoc.id \"mal-if\" \\"
+time="2025-03-18T19:20:08Z" level=debug msg="\"./xsldoc.xsl\" \\"
+time="2025-03-18T19:20:08Z" level=debug msg="\"/usr/src/azl/BUILD/yelp-xsl-42.1/doc/yelp-xsl/../../xslt/mallard/common/mal-if.xsl\""
+time="2025-03-18T19:20:08Z" level=debug msg="make[2]: Leaving directory '/usr/src/azl/BUILD/yelp-xsl-42.1/doc/yelp-xsl'"
+time="2025-03-18T19:20:08Z" level=debug msg="make[2]: Entering directory '/usr/src/azl/BUILD/yelp-xsl-42.1/doc/yelp-xsl'"
+time="2025-03-18T19:20:08Z" level=debug msg="xsltproc -o \"ducks/icons.duck\" \\"
+time="2025-03-18T19:20:08Z" level=debug msg="--stringparam xsldoc.id \"icons\" \\"
+time="2025-03-18T19:20:08Z" level=debug msg="\"./xsldoc.xsl\" \\"
+time="2025-03-18T19:20:08Z" level=debug msg="\"/usr/src/azl/BUILD/yelp-xsl-42.1/doc/yelp-xsl/../../xslt/common/icons.xsl\""
+time="2025-03-18T19:20:08Z" level=debug msg="make[2]: Leaving directory '/usr/src/azl/BUILD/yelp-xsl-42.1/doc/yelp-xsl'"
+time="2025-03-18T19:20:08Z" level=debug msg="make[2]: Entering directory '/usr/src/azl/BUILD/yelp-xsl-42.1/doc/yelp-xsl'"
+time="2025-03-18T19:20:08Z" level=debug msg="xsltproc -o \"ducks/mal2html-api.duck\" \\"
+time="2025-03-18T19:20:08Z" level=debug msg="--stringparam xsldoc.id \"mal2html-api\" \\"
+time="2025-03-18T19:20:08Z" level=debug msg="\"./xsldoc.xsl\" \\"
+time="2025-03-18T19:20:08Z" level=debug msg="\"/usr/src/azl/BUILD/yelp-xsl-42.1/doc/yelp-xsl/../../xslt/mallard/html/mal2html-api.xsl\""
+time="2025-03-18T19:20:08Z" level=debug msg="make[2]: Leaving directory '/usr/src/azl/BUILD/yelp-xsl-42.1/doc/yelp-xsl'"
+time="2025-03-18T19:20:08Z" level=debug msg="make[2]: Entering directory '/usr/src/azl/BUILD/yelp-xsl-42.1/doc/yelp-xsl'"
+time="2025-03-18T19:20:08Z" level=debug msg="xsltproc -o \"ducks/mal2html-gloss.duck\" \\"
+time="2025-03-18T19:20:08Z" level=debug msg="--stringparam xsldoc.id \"mal2html-gloss\" \\"
+time="2025-03-18T19:20:08Z" level=debug msg="\"./xsldoc.xsl\" \\"
+time="2025-03-18T19:20:08Z" level=debug msg="\"/usr/src/azl/BUILD/yelp-xsl-42.1/doc/yelp-xsl/../../xslt/mallard/html/mal2html-gloss.xsl\""
+time="2025-03-18T19:20:08Z" level=debug msg="make[2]: Leaving directory '/usr/src/azl/BUILD/yelp-xsl-42.1/doc/yelp-xsl'"
+time="2025-03-18T19:20:08Z" level=debug msg="make[2]: Entering directory '/usr/src/azl/BUILD/yelp-xsl-42.1/doc/yelp-xsl'"
+time="2025-03-18T19:20:08Z" level=debug msg="xsltproc -o \"ducks/mal2html-block.duck\" \\"
+time="2025-03-18T19:20:08Z" level=debug msg="--stringparam xsldoc.id \"mal2html-block\" \\"
+time="2025-03-18T19:20:08Z" level=debug msg="\"./xsldoc.xsl\" \\"
+time="2025-03-18T19:20:08Z" level=debug msg="\"/usr/src/azl/BUILD/yelp-xsl-42.1/doc/yelp-xsl/../../xslt/mallard/html/mal2html-block.xsl\""
+time="2025-03-18T19:20:08Z" level=debug msg="make[2]: Leaving directory '/usr/src/azl/BUILD/yelp-xsl-42.1/doc/yelp-xsl'"
+time="2025-03-18T19:20:08Z" level=debug msg="make[2]: Entering directory '/usr/src/azl/BUILD/yelp-xsl-42.1/doc/yelp-xsl'"
+time="2025-03-18T19:20:08Z" level=debug msg="xsltproc -o \"ducks/db2html-table.duck\" \\"
+time="2025-03-18T19:20:08Z" level=debug msg="--stringparam xsldoc.id \"db2html-table\" \\"
+time="2025-03-18T19:20:08Z" level=debug msg="\"./xsldoc.xsl\" \\"
+time="2025-03-18T19:20:08Z" level=debug msg="\"/usr/src/azl/BUILD/yelp-xsl-42.1/doc/yelp-xsl/../../xslt/docbook/html/db2html-table.xsl\""
+time="2025-03-18T19:20:08Z" level=debug msg="make[2]: Leaving directory '/usr/src/azl/BUILD/yelp-xsl-42.1/doc/yelp-xsl'"
+time="2025-03-18T19:20:08Z" level=debug msg="make[2]: Entering directory '/usr/src/azl/BUILD/yelp-xsl-42.1/doc/yelp-xsl'"
+time="2025-03-18T19:20:08Z" level=debug msg="xsltproc -o \"ducks/mal2html-inline.duck\" \\"
+time="2025-03-18T19:20:08Z" level=debug msg="--stringparam xsldoc.id \"mal2html-inline\" \\"
+time="2025-03-18T19:20:08Z" level=debug msg="\"./xsldoc.xsl\" \\"
+time="2025-03-18T19:20:08Z" level=debug msg="\"/usr/src/azl/BUILD/yelp-xsl-42.1/doc/yelp-xsl/../../xslt/mallard/html/mal2html-inline.xsl\""
+time="2025-03-18T19:20:08Z" level=debug msg="make[2]: Leaving directory '/usr/src/azl/BUILD/yelp-xsl-42.1/doc/yelp-xsl'"
+time="2025-03-18T19:20:08Z" level=debug msg="make[2]: Entering directory '/usr/src/azl/BUILD/yelp-xsl-42.1/doc/yelp-xsl'"
+time="2025-03-18T19:20:08Z" level=debug msg="xsltproc -o \"ducks/mal2html-list.duck\" \\"
+time="2025-03-18T19:20:08Z" level=debug msg="--stringparam xsldoc.id \"mal2html-list\" \\"
+time="2025-03-18T19:20:08Z" level=debug msg="\"./xsldoc.xsl\" \\"
+time="2025-03-18T19:20:08Z" level=debug msg="\"/usr/src/azl/BUILD/yelp-xsl-42.1/doc/yelp-xsl/../../xslt/mallard/html/mal2html-list.xsl\""
+time="2025-03-18T19:20:08Z" level=debug msg="make[2]: Leaving directory '/usr/src/azl/BUILD/yelp-xsl-42.1/doc/yelp-xsl'"
+time="2025-03-18T19:20:08Z" level=debug msg="make[2]: Entering directory '/usr/src/azl/BUILD/yelp-xsl-42.1/doc/yelp-xsl'"
+time="2025-03-18T19:20:08Z" level=debug msg="xsltproc -o \"ducks/mal2html-math.duck\" \\"
+time="2025-03-18T19:20:08Z" level=debug msg="--stringparam xsldoc.id \"mal2html-math\" \\"
+time="2025-03-18T19:20:08Z" level=debug msg="\"./xsldoc.xsl\" \\"
+time="2025-03-18T19:20:08Z" level=debug msg="\"/usr/src/azl/BUILD/yelp-xsl-42.1/doc/yelp-xsl/../../xslt/mallard/html/mal2html-math.xsl\""
+time="2025-03-18T19:20:08Z" level=debug msg="make[2]: Leaving directory '/usr/src/azl/BUILD/yelp-xsl-42.1/doc/yelp-xsl'"
+time="2025-03-18T19:20:08Z" level=debug msg="make[2]: Entering directory '/usr/src/azl/BUILD/yelp-xsl-42.1/doc/yelp-xsl'"
+time="2025-03-18T19:20:08Z" level=debug msg="xsltproc -o \"ducks/l10n.duck\" \\"
+time="2025-03-18T19:20:08Z" level=debug msg="--stringparam xsldoc.id \"l10n\" \\"
+time="2025-03-18T19:20:08Z" level=debug msg="\"./xsldoc.xsl\" \\"
+time="2025-03-18T19:20:08Z" level=debug msg="\"/usr/src/azl/BUILD/yelp-xsl-42.1/doc/yelp-xsl/../../xslt/common/l10n.xsl\""
+time="2025-03-18T19:20:08Z" level=debug msg="make[2]: Leaving directory '/usr/src/azl/BUILD/yelp-xsl-42.1/doc/yelp-xsl'"
+time="2025-03-18T19:20:08Z" level=debug msg="make[2]: Entering directory '/usr/src/azl/BUILD/yelp-xsl-42.1/doc/yelp-xsl'"
+time="2025-03-18T19:20:08Z" level=debug msg="xsltproc -o \"ducks/mal2html-svg.duck\" \\"
+time="2025-03-18T19:20:08Z" level=debug msg="--stringparam xsldoc.id \"mal2html-svg\" \\"
+time="2025-03-18T19:20:08Z" level=debug msg="\"./xsldoc.xsl\" \\"
+time="2025-03-18T19:20:08Z" level=debug msg="\"/usr/src/azl/BUILD/yelp-xsl-42.1/doc/yelp-xsl/../../xslt/mallard/html/mal2html-svg.xsl\""
+time="2025-03-18T19:20:08Z" level=debug msg="make[2]: Leaving directory '/usr/src/azl/BUILD/yelp-xsl-42.1/doc/yelp-xsl'"
+time="2025-03-18T19:20:08Z" level=debug msg="make[2]: Entering directory '/usr/src/azl/BUILD/yelp-xsl-42.1/doc/yelp-xsl'"
+time="2025-03-18T19:20:08Z" level=debug msg="xsltproc -o \"ducks/mal2html-media.duck\" \\"
+time="2025-03-18T19:20:08Z" level=debug msg="--stringparam xsldoc.id \"mal2html-media\" \\"
+time="2025-03-18T19:20:08Z" level=debug msg="\"./xsldoc.xsl\" \\"
+time="2025-03-18T19:20:08Z" level=debug msg="\"/usr/src/azl/BUILD/yelp-xsl-42.1/doc/yelp-xsl/../../xslt/mallard/html/mal2html-media.xsl\""
+time="2025-03-18T19:20:08Z" level=debug msg="make[2]: Leaving directory '/usr/src/azl/BUILD/yelp-xsl-42.1/doc/yelp-xsl'"
+time="2025-03-18T19:20:08Z" level=debug msg="make[2]: Entering directory '/usr/src/azl/BUILD/yelp-xsl-42.1/doc/yelp-xsl'"
+time="2025-03-18T19:20:08Z" level=debug msg="xsltproc -o \"ducks/mal2html-table.duck\" \\"
+time="2025-03-18T19:20:08Z" level=debug msg="--stringparam xsldoc.id \"mal2html-table\" \\"
+time="2025-03-18T19:20:08Z" level=debug msg="\"./xsldoc.xsl\" \\"
+time="2025-03-18T19:20:08Z" level=debug msg="\"/usr/src/azl/BUILD/yelp-xsl-42.1/doc/yelp-xsl/../../xslt/mallard/html/mal2html-table.xsl\""
+time="2025-03-18T19:20:08Z" level=debug msg="make[2]: Leaving directory '/usr/src/azl/BUILD/yelp-xsl-42.1/doc/yelp-xsl'"
+time="2025-03-18T19:20:08Z" level=debug msg="make[2]: Entering directory '/usr/src/azl/BUILD/yelp-xsl-42.1/doc/yelp-xsl'"
+time="2025-03-18T19:20:08Z" level=debug msg="xsltproc -o \"ducks/mal2xhtml.duck\" \\"
+time="2025-03-18T19:20:08Z" level=debug msg="--stringparam xsldoc.id \"mal2xhtml\" \\"
+time="2025-03-18T19:20:08Z" level=debug msg="\"./xsldoc.xsl\" \\"
+time="2025-03-18T19:20:08Z" level=debug msg="\"/usr/src/azl/BUILD/yelp-xsl-42.1/doc/yelp-xsl/../../xslt/mallard/html/mal2xhtml.xsl\""
+time="2025-03-18T19:20:08Z" level=debug msg="make[2]: Leaving directory '/usr/src/azl/BUILD/yelp-xsl-42.1/doc/yelp-xsl'"
+time="2025-03-18T19:20:08Z" level=debug msg="make[2]: Entering directory '/usr/src/azl/BUILD/yelp-xsl-42.1/doc/yelp-xsl'"
+time="2025-03-18T19:20:08Z" level=debug msg="xsltproc -o \"ducks/tmpl.duck\" \\"
+time="2025-03-18T19:20:08Z" level=debug msg="--stringparam xsldoc.id \"tmpl\" \\"
+time="2025-03-18T19:20:08Z" level=debug msg="\"./xsldoc.xsl\" \\"
+time="2025-03-18T19:20:08Z" level=debug msg="\"/usr/src/azl/BUILD/yelp-xsl-42.1/doc/yelp-xsl/../../xslt/common/tmpl.xsl\""
+time="2025-03-18T19:20:08Z" level=debug msg="make[2]: Leaving directory '/usr/src/azl/BUILD/yelp-xsl-42.1/doc/yelp-xsl'"
+time="2025-03-18T19:20:08Z" level=debug msg="make[2]: Entering directory '/usr/src/azl/BUILD/yelp-xsl-42.1/doc/yelp-xsl'"
+time="2025-03-18T19:20:08Z" level=debug msg="xsltproc -o \"ducks/ttml.duck\" \\"
+time="2025-03-18T19:20:08Z" level=debug msg="--stringparam xsldoc.id \"ttml\" \\"
+time="2025-03-18T19:20:08Z" level=debug msg="\"./xsldoc.xsl\" \\"
+time="2025-03-18T19:20:08Z" level=debug msg="\"/usr/src/azl/BUILD/yelp-xsl-42.1/doc/yelp-xsl/../../xslt/common/ttml.xsl\""
+time="2025-03-18T19:20:08Z" level=debug msg="make[2]: Leaving directory '/usr/src/azl/BUILD/yelp-xsl-42.1/doc/yelp-xsl'"
+time="2025-03-18T19:20:08Z" level=debug msg="make[2]: Entering directory '/usr/src/azl/BUILD/yelp-xsl-42.1/doc/yelp-xsl'"
+time="2025-03-18T19:20:08Z" level=debug msg="xsltproc -o \"ducks/utils.duck\" \\"
+time="2025-03-18T19:20:08Z" level=debug msg="--stringparam xsldoc.id \"utils\" \\"
+time="2025-03-18T19:20:08Z" level=debug msg="\"./xsldoc.xsl\" \\"
+time="2025-03-18T19:20:08Z" level=debug msg="\"/usr/src/azl/BUILD/yelp-xsl-42.1/doc/yelp-xsl/../../xslt/common/utils.xsl\""
+time="2025-03-18T19:20:08Z" level=debug msg="make[2]: Leaving directory '/usr/src/azl/BUILD/yelp-xsl-42.1/doc/yelp-xsl'"
+time="2025-03-18T19:20:08Z" level=debug msg="make[2]: Entering directory '/usr/src/azl/BUILD/yelp-xsl-42.1/doc/yelp-xsl'"
+time="2025-03-18T19:20:08Z" level=debug msg="xsltproc -o \"ducks/mal2html-page.duck\" \\"
+time="2025-03-18T19:20:08Z" level=debug msg="--stringparam xsldoc.id \"mal2html-page\" \\"
+time="2025-03-18T19:20:08Z" level=debug msg="\"./xsldoc.xsl\" \\"
+time="2025-03-18T19:20:08Z" level=debug msg="\"/usr/src/azl/BUILD/yelp-xsl-42.1/doc/yelp-xsl/../../xslt/mallard/html/mal2html-page.xsl\""
+time="2025-03-18T19:20:08Z" level=debug msg="make[2]: Leaving directory '/usr/src/azl/BUILD/yelp-xsl-42.1/doc/yelp-xsl'"
+time="2025-03-18T19:20:08Z" level=debug msg="make[2]: Entering directory '/usr/src/azl/BUILD/yelp-xsl-42.1/doc/yelp-xsl'"
+time="2025-03-18T19:20:08Z" level=debug msg="xsltproc -o \"ducks/mal2html-links.duck\" \\"
+time="2025-03-18T19:20:08Z" level=debug msg="--stringparam xsldoc.id \"mal2html-links\" \\"
+time="2025-03-18T19:20:08Z" level=debug msg="\"./xsldoc.xsl\" \\"
+time="2025-03-18T19:20:08Z" level=debug msg="\"/usr/src/azl/BUILD/yelp-xsl-42.1/doc/yelp-xsl/../../xslt/mallard/html/mal2html-links.xsl\""
+time="2025-03-18T19:20:08Z" level=debug msg="make[2]: Leaving directory '/usr/src/azl/BUILD/yelp-xsl-42.1/doc/yelp-xsl'"
+time="2025-03-18T19:20:08Z" level=debug msg="make[2]: Entering directory '/usr/src/azl/BUILD/yelp-xsl-42.1/doc/yelp-xsl'"
+time="2025-03-18T19:20:08Z" level=debug msg="xsltproc -o \"ducks/mal2html-ui.duck\" \\"
+time="2025-03-18T19:20:08Z" level=debug msg="--stringparam xsldoc.id \"mal2html-ui\" \\"
+time="2025-03-18T19:20:08Z" level=debug msg="\"./xsldoc.xsl\" \\"
+time="2025-03-18T19:20:08Z" level=debug msg="\"/usr/src/azl/BUILD/yelp-xsl-42.1/doc/yelp-xsl/../../xslt/mallard/html/mal2html-ui.xsl\""
+time="2025-03-18T19:20:08Z" level=debug msg="make[2]: Leaving directory '/usr/src/azl/BUILD/yelp-xsl-42.1/doc/yelp-xsl'"
+time="2025-03-18T19:20:08Z" level=debug msg="make[2]: Entering directory '/usr/src/azl/BUILD/yelp-xsl-42.1/doc/yelp-xsl'"
+time="2025-03-18T19:20:08Z" level=debug msg="xsltproc -o \"ducks/html.duck\" \\"
+time="2025-03-18T19:20:08Z" level=debug msg="--stringparam xsldoc.id \"html\" \\"
+time="2025-03-18T19:20:08Z" level=debug msg="\"./xsldoc.xsl\" \\"
+time="2025-03-18T19:20:08Z" level=debug msg="\"/usr/src/azl/BUILD/yelp-xsl-42.1/doc/yelp-xsl/../../xslt/common/html.xsl\""
+time="2025-03-18T19:20:08Z" level=debug msg="make[2]: Leaving directory '/usr/src/azl/BUILD/yelp-xsl-42.1/doc/yelp-xsl'"
+time="2025-03-18T19:20:08Z" level=debug msg="make[2]: Entering directory '/usr/src/azl/BUILD/yelp-xsl-42.1/doc/yelp-xsl'"
+time="2025-03-18T19:20:08Z" level=debug msg="xsltproc -o \"ducks/mal-link.duck\" \\"
+time="2025-03-18T19:20:08Z" level=debug msg="--stringparam xsldoc.id \"mal-link\" \\"
+time="2025-03-18T19:20:08Z" level=debug msg="\"./xsldoc.xsl\" \\"
+time="2025-03-18T19:20:08Z" level=debug msg="\"/usr/src/azl/BUILD/yelp-xsl-42.1/doc/yelp-xsl/../../xslt/mallard/common/mal-link.xsl\""
+time="2025-03-18T19:20:08Z" level=debug msg="make[2]: Leaving directory '/usr/src/azl/BUILD/yelp-xsl-42.1/doc/yelp-xsl'"
+time="2025-03-18T19:20:11Z" level=debug msg="make[2]: Entering directory '/usr/src/azl/BUILD/yelp-xsl-42.1/doc/yelp-xsl'"
+time="2025-03-18T19:20:11Z" level=debug msg="/usr/bin/mkdir -p C"
+time="2025-03-18T19:20:11Z" level=debug msg="ls ."
+time="2025-03-18T19:20:11Z" level=debug msg=C
+time="2025-03-18T19:20:11Z" level=debug msg=Makefile
+time="2025-03-18T19:20:11Z" level=debug msg=Makefile.am
+time="2025-03-18T19:20:11Z" level=debug msg=Makefile.in
+time="2025-03-18T19:20:11Z" level=debug msg=ducks
+time="2025-03-18T19:20:11Z" level=debug msg=static
+time="2025-03-18T19:20:11Z" level=debug msg=xsldoc.xsl
+time="2025-03-18T19:20:11Z" level=debug msg="ducktype -o C/ ./ducks/*.duck ./static/*.duck"
+time="2025-03-18T19:20:11Z" level=debug msg="make[2]: Leaving directory '/usr/src/azl/BUILD/yelp-xsl-42.1/doc/yelp-xsl'"
+time="2025-03-18T19:20:12Z" level=debug msg="make[2]: Entering directory '/usr/src/azl/BUILD/yelp-xsl-42.1/doc/yelp-xsl'"
+time="2025-03-18T19:20:12Z" level=debug msg="/usr/bin/mkdir -p C"
+time="2025-03-18T19:20:12Z" level=debug msg="ls ."
+time="2025-03-18T19:20:12Z" level=debug msg=C
+time="2025-03-18T19:20:12Z" level=debug msg=Makefile
+time="2025-03-18T19:20:12Z" level=debug msg=Makefile.am
+time="2025-03-18T19:20:12Z" level=debug msg=Makefile.in
+time="2025-03-18T19:20:12Z" level=debug msg=ducks
+time="2025-03-18T19:20:12Z" level=debug msg=static
+time="2025-03-18T19:20:12Z" level=debug msg=xsldoc.xsl
+time="2025-03-18T19:20:12Z" level=debug msg="ducktype -o C/ ./ducks/*.duck ./static/*.duck"
+time="2025-03-18T19:20:12Z" level=debug msg="make[2]: Leaving directory '/usr/src/azl/BUILD/yelp-xsl-42.1/doc/yelp-xsl'"
+time="2025-03-18T19:20:12Z" level=debug msg="make[2]: Entering directory '/usr/src/azl/BUILD/yelp-xsl-42.1/doc/yelp-xsl'"
+time="2025-03-18T19:20:12Z" level=debug msg="/usr/bin/mkdir -p C"
+time="2025-03-18T19:20:12Z" level=debug msg="ls ."
+time="2025-03-18T19:20:12Z" level=debug msg=C
+time="2025-03-18T19:20:12Z" level=debug msg=Makefile
+time="2025-03-18T19:20:12Z" level=debug msg=Makefile.am
+time="2025-03-18T19:20:12Z" level=debug msg=Makefile.in
+time="2025-03-18T19:20:12Z" level=debug msg=ducks
+time="2025-03-18T19:20:12Z" level=debug msg=static
+time="2025-03-18T19:20:12Z" level=debug msg=xsldoc.xsl
+time="2025-03-18T19:20:12Z" level=debug msg="ducktype -o C/ ./ducks/*.duck ./static/*.duck"
+time="2025-03-18T19:20:12Z" level=debug msg="make[2]: Leaving directory '/usr/src/azl/BUILD/yelp-xsl-42.1/doc/yelp-xsl'"
+time="2025-03-18T19:20:12Z" level=debug msg="make[2]: Entering directory '/usr/src/azl/BUILD/yelp-xsl-42.1/doc/yelp-xsl'"
+time="2025-03-18T19:20:12Z" level=debug msg="/usr/bin/mkdir -p C"
+time="2025-03-18T19:20:12Z" level=debug msg="ls ."
+time="2025-03-18T19:20:12Z" level=debug msg=C
+time="2025-03-18T19:20:12Z" level=debug msg=Makefile
+time="2025-03-18T19:20:12Z" level=debug msg=Makefile.am
+time="2025-03-18T19:20:12Z" level=debug msg=Makefile.in
+time="2025-03-18T19:20:12Z" level=debug msg=ducks
+time="2025-03-18T19:20:12Z" level=debug msg=static
+time="2025-03-18T19:20:12Z" level=debug msg=xsldoc.xsl
+time="2025-03-18T19:20:12Z" level=debug msg="ducktype -o C/ ./ducks/*.duck ./static/*.duck"
+time="2025-03-18T19:20:12Z" level=debug msg="make[2]: Leaving directory '/usr/src/azl/BUILD/yelp-xsl-42.1/doc/yelp-xsl'"
+time="2025-03-18T19:20:12Z" level=debug msg="make[2]: Entering directory '/usr/src/azl/BUILD/yelp-xsl-42.1/doc/yelp-xsl'"
+time="2025-03-18T19:20:12Z" level=debug msg="/usr/bin/mkdir -p C"
+time="2025-03-18T19:20:12Z" level=debug msg="ls ."
+time="2025-03-18T19:20:12Z" level=debug msg=C
+time="2025-03-18T19:20:12Z" level=debug msg=Makefile
+time="2025-03-18T19:20:12Z" level=debug msg=Makefile.am
+time="2025-03-18T19:20:12Z" level=debug msg=Makefile.in
+time="2025-03-18T19:20:12Z" level=debug msg=ducks
+time="2025-03-18T19:20:12Z" level=debug msg=static
+time="2025-03-18T19:20:12Z" level=debug msg=xsldoc.xsl
+time="2025-03-18T19:20:12Z" level=debug msg="ducktype -o C/ ./ducks/*.duck ./static/*.duck"
+time="2025-03-18T19:20:12Z" level=debug msg="make[2]: Leaving directory '/usr/src/azl/BUILD/yelp-xsl-42.1/doc/yelp-xsl'"
+time="2025-03-18T19:20:12Z" level=debug msg="make[2]: Entering directory '/usr/src/azl/BUILD/yelp-xsl-42.1/doc/yelp-xsl'"
+time="2025-03-18T19:20:12Z" level=debug msg="/usr/bin/mkdir -p C"
+time="2025-03-18T19:20:12Z" level=debug msg="ls ."
+time="2025-03-18T19:20:12Z" level=debug msg=C
+time="2025-03-18T19:20:12Z" level=debug msg=Makefile
+time="2025-03-18T19:20:12Z" level=debug msg=Makefile.am
+time="2025-03-18T19:20:12Z" level=debug msg=Makefile.in
+time="2025-03-18T19:20:12Z" level=debug msg=ducks
+time="2025-03-18T19:20:12Z" level=debug msg=static
+time="2025-03-18T19:20:12Z" level=debug msg=xsldoc.xsl
+time="2025-03-18T19:20:12Z" level=debug msg="ducktype -o C/ ./ducks/*.duck ./static/*.duck"
+time="2025-03-18T19:20:12Z" level=debug msg="make[2]: Leaving directory '/usr/src/azl/BUILD/yelp-xsl-42.1/doc/yelp-xsl'"
+time="2025-03-18T19:20:12Z" level=debug msg="make[2]: Entering directory '/usr/src/azl/BUILD/yelp-xsl-42.1/doc/yelp-xsl'"
+time="2025-03-18T19:20:12Z" level=debug msg="/usr/bin/mkdir -p C"
+time="2025-03-18T19:20:12Z" level=debug msg="ls ."
+time="2025-03-18T19:20:12Z" level=debug msg=C
+time="2025-03-18T19:20:12Z" level=debug msg=Makefile
+time="2025-03-18T19:20:12Z" level=debug msg=Makefile.am
+time="2025-03-18T19:20:12Z" level=debug msg=Makefile.in
+time="2025-03-18T19:20:12Z" level=debug msg=ducks
+time="2025-03-18T19:20:12Z" level=debug msg=static
+time="2025-03-18T19:20:12Z" level=debug msg=xsldoc.xsl
+time="2025-03-18T19:20:12Z" level=debug msg="ducktype -o C/ ./ducks/*.duck ./static/*.duck"
+time="2025-03-18T19:20:12Z" level=debug msg="make[2]: Leaving directory '/usr/src/azl/BUILD/yelp-xsl-42.1/doc/yelp-xsl'"
+time="2025-03-18T19:20:12Z" level=debug msg="make[2]: Entering directory '/usr/src/azl/BUILD/yelp-xsl-42.1/doc/yelp-xsl'"
+time="2025-03-18T19:20:12Z" level=debug msg="/usr/bin/mkdir -p C"
+time="2025-03-18T19:20:12Z" level=debug msg="ls ."
+time="2025-03-18T19:20:12Z" level=debug msg=C
+time="2025-03-18T19:20:12Z" level=debug msg=Makefile
+time="2025-03-18T19:20:12Z" level=debug msg=Makefile.am
+time="2025-03-18T19:20:12Z" level=debug msg=Makefile.in
+time="2025-03-18T19:20:12Z" level=debug msg=ducks
+time="2025-03-18T19:20:12Z" level=debug msg=static
+time="2025-03-18T19:20:12Z" level=debug msg=xsldoc.xsl
+time="2025-03-18T19:20:12Z" level=debug msg="ducktype -o C/ ./ducks/*.duck ./static/*.duck"
+time="2025-03-18T19:20:12Z" level=debug msg="make[2]: Leaving directory '/usr/src/azl/BUILD/yelp-xsl-42.1/doc/yelp-xsl'"
+time="2025-03-18T19:20:14Z" level=debug msg="make[2]: Entering directory '/usr/src/azl/BUILD/yelp-xsl-42.1/doc/yelp-xsl'"
+time="2025-03-18T19:20:14Z" level=debug msg="/usr/bin/mkdir -p C"
+time="2025-03-18T19:20:14Z" level=debug msg="ls ."
+time="2025-03-18T19:20:14Z" level=debug msg=C
+time="2025-03-18T19:20:14Z" level=debug msg=Makefile
+time="2025-03-18T19:20:14Z" level=debug msg=Makefile.am
+time="2025-03-18T19:20:14Z" level=debug msg=Makefile.in
+time="2025-03-18T19:20:14Z" level=debug msg=ducks
+time="2025-03-18T19:20:14Z" level=debug msg=static
+time="2025-03-18T19:20:14Z" level=debug msg=xsldoc.xsl
+time="2025-03-18T19:20:14Z" level=debug msg="ducktype -o C/ ./ducks/*.duck ./static/*.duck"
+time="2025-03-18T19:20:14Z" level=debug msg="make[2]: Leaving directory '/usr/src/azl/BUILD/yelp-xsl-42.1/doc/yelp-xsl'"
+time="2025-03-18T19:20:14Z" level=debug msg="make[2]: Entering directory '/usr/src/azl/BUILD/yelp-xsl-42.1/doc/yelp-xsl'"
+time="2025-03-18T19:20:14Z" level=debug msg="/usr/bin/mkdir -p C"
+time="2025-03-18T19:20:14Z" level=debug msg="ls ."
+time="2025-03-18T19:20:14Z" level=debug msg=C
+time="2025-03-18T19:20:14Z" level=debug msg=Makefile
+time="2025-03-18T19:20:14Z" level=debug msg=Makefile.am
+time="2025-03-18T19:20:14Z" level=debug msg=Makefile.in
+time="2025-03-18T19:20:14Z" level=debug msg=ducks
+time="2025-03-18T19:20:14Z" level=debug msg=static
+time="2025-03-18T19:20:14Z" level=debug msg=xsldoc.xsl
+time="2025-03-18T19:20:14Z" level=debug msg="ducktype -o C/ ./ducks/*.duck ./static/*.duck"
+time="2025-03-18T19:20:14Z" level=debug msg="make[2]: Leaving directory '/usr/src/azl/BUILD/yelp-xsl-42.1/doc/yelp-xsl'"
+time="2025-03-18T19:20:14Z" level=debug msg="make[2]: Entering directory '/usr/src/azl/BUILD/yelp-xsl-42.1/doc/yelp-xsl'"
+time="2025-03-18T19:20:14Z" level=debug msg="/usr/bin/mkdir -p C"
+time="2025-03-18T19:20:14Z" level=debug msg="ls ."
+time="2025-03-18T19:20:14Z" level=debug msg=C
+time="2025-03-18T19:20:14Z" level=debug msg=Makefile
+time="2025-03-18T19:20:14Z" level=debug msg=Makefile.am
+time="2025-03-18T19:20:14Z" level=debug msg=Makefile.in
+time="2025-03-18T19:20:14Z" level=debug msg=ducks
+time="2025-03-18T19:20:14Z" level=debug msg=static
+time="2025-03-18T19:20:14Z" level=debug msg=xsldoc.xsl
+time="2025-03-18T19:20:14Z" level=debug msg="ducktype -o C/ ./ducks/*.duck ./static/*.duck"
+time="2025-03-18T19:20:14Z" level=debug msg="make[2]: Leaving directory '/usr/src/azl/BUILD/yelp-xsl-42.1/doc/yelp-xsl'"
+time="2025-03-18T19:20:14Z" level=debug msg="make[2]: Entering directory '/usr/src/azl/BUILD/yelp-xsl-42.1/doc/yelp-xsl'"
+time="2025-03-18T19:20:14Z" level=debug msg="/usr/bin/mkdir -p C"
+time="2025-03-18T19:20:14Z" level=debug msg="ls ."
+time="2025-03-18T19:20:14Z" level=debug msg=C
+time="2025-03-18T19:20:14Z" level=debug msg=Makefile
+time="2025-03-18T19:20:14Z" level=debug msg=Makefile.am
+time="2025-03-18T19:20:14Z" level=debug msg=Makefile.in
+time="2025-03-18T19:20:14Z" level=debug msg=ducks
+time="2025-03-18T19:20:14Z" level=debug msg=static
+time="2025-03-18T19:20:14Z" level=debug msg=xsldoc.xsl
+time="2025-03-18T19:20:14Z" level=debug msg="ducktype -o C/ ./ducks/*.duck ./static/*.duck"
+time="2025-03-18T19:20:14Z" level=debug msg="make[2]: Leaving directory '/usr/src/azl/BUILD/yelp-xsl-42.1/doc/yelp-xsl'"
+time="2025-03-18T19:20:14Z" level=debug msg="make[2]: Entering directory '/usr/src/azl/BUILD/yelp-xsl-42.1/doc/yelp-xsl'"
+time="2025-03-18T19:20:14Z" level=debug msg="/usr/bin/mkdir -p C"
+time="2025-03-18T19:20:14Z" level=debug msg="ls ."
+time="2025-03-18T19:20:14Z" level=debug msg=C
+time="2025-03-18T19:20:14Z" level=debug msg=Makefile
+time="2025-03-18T19:20:14Z" level=debug msg=Makefile.am
+time="2025-03-18T19:20:14Z" level=debug msg=Makefile.in
+time="2025-03-18T19:20:14Z" level=debug msg=ducks
+time="2025-03-18T19:20:14Z" level=debug msg=static
+time="2025-03-18T19:20:14Z" level=debug msg=xsldoc.xsl
+time="2025-03-18T19:20:14Z" level=debug msg="ducktype -o C/ ./ducks/*.duck ./static/*.duck"
+time="2025-03-18T19:20:14Z" level=debug msg="make[2]: Leaving directory '/usr/src/azl/BUILD/yelp-xsl-42.1/doc/yelp-xsl'"
+time="2025-03-18T19:20:15Z" level=debug msg="make[2]: Entering directory '/usr/src/azl/BUILD/yelp-xsl-42.1/doc/yelp-xsl'"
+time="2025-03-18T19:20:15Z" level=debug msg="/usr/bin/mkdir -p C"
+time="2025-03-18T19:20:15Z" level=debug msg="ls ."
+time="2025-03-18T19:20:15Z" level=debug msg=C
+time="2025-03-18T19:20:15Z" level=debug msg=Makefile
+time="2025-03-18T19:20:15Z" level=debug msg=Makefile.am
+time="2025-03-18T19:20:15Z" level=debug msg=Makefile.in
+time="2025-03-18T19:20:15Z" level=debug msg=ducks
+time="2025-03-18T19:20:15Z" level=debug msg=static
+time="2025-03-18T19:20:15Z" level=debug msg=xsldoc.xsl
+time="2025-03-18T19:20:15Z" level=debug msg="ducktype -o C/ ./ducks/*.duck ./static/*.duck"
+time="2025-03-18T19:20:15Z" level=debug msg="make[2]: Leaving directory '/usr/src/azl/BUILD/yelp-xsl-42.1/doc/yelp-xsl'"
+time="2025-03-18T19:20:15Z" level=debug msg="make[2]: Entering directory '/usr/src/azl/BUILD/yelp-xsl-42.1/doc/yelp-xsl'"
+time="2025-03-18T19:20:15Z" level=debug msg="/usr/bin/mkdir -p C"
+time="2025-03-18T19:20:15Z" level=debug msg="ls ."
+time="2025-03-18T19:20:15Z" level=debug msg=C
+time="2025-03-18T19:20:15Z" level=debug msg=Makefile
+time="2025-03-18T19:20:15Z" level=debug msg=Makefile.am
+time="2025-03-18T19:20:15Z" level=debug msg=Makefile.in
+time="2025-03-18T19:20:15Z" level=debug msg=ducks
+time="2025-03-18T19:20:15Z" level=debug msg=static
+time="2025-03-18T19:20:15Z" level=debug msg=xsldoc.xsl
+time="2025-03-18T19:20:15Z" level=debug msg="ducktype -o C/ ./ducks/*.duck ./static/*.duck"
+time="2025-03-18T19:20:15Z" level=debug msg="make[2]: Leaving directory '/usr/src/azl/BUILD/yelp-xsl-42.1/doc/yelp-xsl'"
+time="2025-03-18T19:20:15Z" level=debug msg="make[2]: Entering directory '/usr/src/azl/BUILD/yelp-xsl-42.1/doc/yelp-xsl'"
+time="2025-03-18T19:20:15Z" level=debug msg="/usr/bin/mkdir -p C"
+time="2025-03-18T19:20:15Z" level=debug msg="ls ."
+time="2025-03-18T19:20:15Z" level=debug msg=C
+time="2025-03-18T19:20:15Z" level=debug msg=Makefile
+time="2025-03-18T19:20:15Z" level=debug msg=Makefile.am
+time="2025-03-18T19:20:15Z" level=debug msg=Makefile.in
+time="2025-03-18T19:20:15Z" level=debug msg=ducks
+time="2025-03-18T19:20:15Z" level=debug msg=static
+time="2025-03-18T19:20:15Z" level=debug msg=xsldoc.xsl
+time="2025-03-18T19:20:15Z" level=debug msg="ducktype -o C/ ./ducks/*.duck ./static/*.duck"
+time="2025-03-18T19:20:15Z" level=debug msg="make[2]: Leaving directory '/usr/src/azl/BUILD/yelp-xsl-42.1/doc/yelp-xsl'"
+time="2025-03-18T19:20:16Z" level=debug msg="make[2]: Entering directory '/usr/src/azl/BUILD/yelp-xsl-42.1/doc/yelp-xsl'"
+time="2025-03-18T19:20:16Z" level=debug msg="/usr/bin/mkdir -p C"
+time="2025-03-18T19:20:16Z" level=debug msg="ls ."
+time="2025-03-18T19:20:16Z" level=debug msg=C
+time="2025-03-18T19:20:16Z" level=debug msg=Makefile
+time="2025-03-18T19:20:16Z" level=debug msg=Makefile.am
+time="2025-03-18T19:20:16Z" level=debug msg=Makefile.in
+time="2025-03-18T19:20:16Z" level=debug msg=ducks
+time="2025-03-18T19:20:16Z" level=debug msg=static
+time="2025-03-18T19:20:16Z" level=debug msg=xsldoc.xsl
+time="2025-03-18T19:20:16Z" level=debug msg="ducktype -o C/ ./ducks/*.duck ./static/*.duck"
+time="2025-03-18T19:20:16Z" level=debug msg="make[2]: Leaving directory '/usr/src/azl/BUILD/yelp-xsl-42.1/doc/yelp-xsl'"
+time="2025-03-18T19:20:16Z" level=debug msg="make[2]: Entering directory '/usr/src/azl/BUILD/yelp-xsl-42.1/doc/yelp-xsl'"
+time="2025-03-18T19:20:16Z" level=debug msg="/usr/bin/mkdir -p C"
+time="2025-03-18T19:20:16Z" level=debug msg="ls ."
+time="2025-03-18T19:20:16Z" level=debug msg=C
+time="2025-03-18T19:20:16Z" level=debug msg=Makefile
+time="2025-03-18T19:20:16Z" level=debug msg=Makefile.am
+time="2025-03-18T19:20:16Z" level=debug msg=Makefile.in
+time="2025-03-18T19:20:16Z" level=debug msg=ducks
+time="2025-03-18T19:20:16Z" level=debug msg=static
+time="2025-03-18T19:20:16Z" level=debug msg=xsldoc.xsl
+time="2025-03-18T19:20:16Z" level=debug msg="ducktype -o C/ ./ducks/*.duck ./static/*.duck"
+time="2025-03-18T19:20:16Z" level=debug msg="make[2]: Leaving directory '/usr/src/azl/BUILD/yelp-xsl-42.1/doc/yelp-xsl'"
+time="2025-03-18T19:20:16Z" level=debug msg="make[2]: Entering directory '/usr/src/azl/BUILD/yelp-xsl-42.1/doc/yelp-xsl'"
+time="2025-03-18T19:20:16Z" level=debug msg="/usr/bin/mkdir -p C"
+time="2025-03-18T19:20:16Z" level=debug msg="ls ."
+time="2025-03-18T19:20:16Z" level=debug msg=C
+time="2025-03-18T19:20:16Z" level=debug msg=Makefile
+time="2025-03-18T19:20:16Z" level=debug msg=Makefile.am
+time="2025-03-18T19:20:16Z" level=debug msg=Makefile.in
+time="2025-03-18T19:20:16Z" level=debug msg=ducks
+time="2025-03-18T19:20:16Z" level=debug msg=static
+time="2025-03-18T19:20:16Z" level=debug msg=xsldoc.xsl
+time="2025-03-18T19:20:16Z" level=debug msg="ducktype -o C/ ./ducks/*.duck ./static/*.duck"
+time="2025-03-18T19:20:16Z" level=debug msg="make[2]: Leaving directory '/usr/src/azl/BUILD/yelp-xsl-42.1/doc/yelp-xsl'"
+time="2025-03-18T19:20:16Z" level=debug msg="make[2]: Entering directory '/usr/src/azl/BUILD/yelp-xsl-42.1/doc/yelp-xsl'"
+time="2025-03-18T19:20:16Z" level=debug msg="/usr/bin/mkdir -p C"
+time="2025-03-18T19:20:16Z" level=debug msg="ls ."
+time="2025-03-18T19:20:16Z" level=debug msg=C
+time="2025-03-18T19:20:16Z" level=debug msg=Makefile
+time="2025-03-18T19:20:16Z" level=debug msg=Makefile.am
+time="2025-03-18T19:20:16Z" level=debug msg=Makefile.in
+time="2025-03-18T19:20:16Z" level=debug msg=ducks
+time="2025-03-18T19:20:16Z" level=debug msg=static
+time="2025-03-18T19:20:16Z" level=debug msg=xsldoc.xsl
+time="2025-03-18T19:20:16Z" level=debug msg="ducktype -o C/ ./ducks/*.duck ./static/*.duck"
+time="2025-03-18T19:20:16Z" level=debug msg="make[2]: Leaving directory '/usr/src/azl/BUILD/yelp-xsl-42.1/doc/yelp-xsl'"
+time="2025-03-18T19:20:17Z" level=debug msg="make[2]: Entering directory '/usr/src/azl/BUILD/yelp-xsl-42.1/doc/yelp-xsl'"
+time="2025-03-18T19:20:17Z" level=debug msg="/usr/bin/mkdir -p C"
+time="2025-03-18T19:20:17Z" level=debug msg="ls ."
+time="2025-03-18T19:20:17Z" level=debug msg=C
+time="2025-03-18T19:20:17Z" level=debug msg=Makefile
+time="2025-03-18T19:20:17Z" level=debug msg=Makefile.am
+time="2025-03-18T19:20:17Z" level=debug msg=Makefile.in
+time="2025-03-18T19:20:17Z" level=debug msg=ducks
+time="2025-03-18T19:20:17Z" level=debug msg=static
+time="2025-03-18T19:20:17Z" level=debug msg=xsldoc.xsl
+time="2025-03-18T19:20:17Z" level=debug msg="ducktype -o C/ ./ducks/*.duck ./static/*.duck"
+time="2025-03-18T19:20:17Z" level=debug msg="make[2]: Leaving directory '/usr/src/azl/BUILD/yelp-xsl-42.1/doc/yelp-xsl'"
+time="2025-03-18T19:20:17Z" level=debug msg="make[2]: Entering directory '/usr/src/azl/BUILD/yelp-xsl-42.1/doc/yelp-xsl'"
+time="2025-03-18T19:20:17Z" level=debug msg="/usr/bin/mkdir -p C"
+time="2025-03-18T19:20:17Z" level=debug msg="ls ."
+time="2025-03-18T19:20:17Z" level=debug msg=C
+time="2025-03-18T19:20:17Z" level=debug msg=Makefile
+time="2025-03-18T19:20:17Z" level=debug msg=Makefile.am
+time="2025-03-18T19:20:17Z" level=debug msg=Makefile.in
+time="2025-03-18T19:20:17Z" level=debug msg=ducks
+time="2025-03-18T19:20:17Z" level=debug msg=static
+time="2025-03-18T19:20:17Z" level=debug msg=xsldoc.xsl
+time="2025-03-18T19:20:17Z" level=debug msg="ducktype -o C/ ./ducks/*.duck ./static/*.duck"
+time="2025-03-18T19:20:17Z" level=debug msg="make[2]: Leaving directory '/usr/src/azl/BUILD/yelp-xsl-42.1/doc/yelp-xsl'"
+time="2025-03-18T19:20:17Z" level=debug msg="make[2]: Entering directory '/usr/src/azl/BUILD/yelp-xsl-42.1/doc/yelp-xsl'"
+time="2025-03-18T19:20:17Z" level=debug msg="/usr/bin/mkdir -p C"
+time="2025-03-18T19:20:17Z" level=debug msg="ls ."
+time="2025-03-18T19:20:17Z" level=debug msg=C
+time="2025-03-18T19:20:17Z" level=debug msg=Makefile
+time="2025-03-18T19:20:17Z" level=debug msg=Makefile.am
+time="2025-03-18T19:20:17Z" level=debug msg=Makefile.in
+time="2025-03-18T19:20:17Z" level=debug msg=ducks
+time="2025-03-18T19:20:17Z" level=debug msg=static
+time="2025-03-18T19:20:17Z" level=debug msg=xsldoc.xsl
+time="2025-03-18T19:20:17Z" level=debug msg="ducktype -o C/ ./ducks/*.duck ./static/*.duck"
+time="2025-03-18T19:20:17Z" level=debug msg="make[2]: Leaving directory '/usr/src/azl/BUILD/yelp-xsl-42.1/doc/yelp-xsl'"
+time="2025-03-18T19:20:18Z" level=debug msg="make[2]: Entering directory '/usr/src/azl/BUILD/yelp-xsl-42.1/doc/yelp-xsl'"
+time="2025-03-18T19:20:18Z" level=debug msg="/usr/bin/mkdir -p C"
+time="2025-03-18T19:20:18Z" level=debug msg="ls ."
+time="2025-03-18T19:20:18Z" level=debug msg=C
+time="2025-03-18T19:20:18Z" level=debug msg=Makefile
+time="2025-03-18T19:20:18Z" level=debug msg=Makefile.am
+time="2025-03-18T19:20:18Z" level=debug msg=Makefile.in
+time="2025-03-18T19:20:18Z" level=debug msg=ducks
+time="2025-03-18T19:20:18Z" level=debug msg=static
+time="2025-03-18T19:20:18Z" level=debug msg=xsldoc.xsl
+time="2025-03-18T19:20:18Z" level=debug msg="ducktype -o C/ ./ducks/*.duck ./static/*.duck"
+time="2025-03-18T19:20:18Z" level=debug msg="make[2]: Leaving directory '/usr/src/azl/BUILD/yelp-xsl-42.1/doc/yelp-xsl'"
+time="2025-03-18T19:20:18Z" level=debug msg="make[2]: Entering directory '/usr/src/azl/BUILD/yelp-xsl-42.1/doc/yelp-xsl'"
+time="2025-03-18T19:20:18Z" level=debug msg="/usr/bin/mkdir -p C"
+time="2025-03-18T19:20:18Z" level=debug msg="ls ."
+time="2025-03-18T19:20:18Z" level=debug msg=C
+time="2025-03-18T19:20:18Z" level=debug msg=Makefile
+time="2025-03-18T19:20:18Z" level=debug msg=Makefile.am
+time="2025-03-18T19:20:18Z" level=debug msg=Makefile.in
+time="2025-03-18T19:20:18Z" level=debug msg=ducks
+time="2025-03-18T19:20:18Z" level=debug msg=static
+time="2025-03-18T19:20:18Z" level=debug msg=xsldoc.xsl
+time="2025-03-18T19:20:18Z" level=debug msg="ducktype -o C/ ./ducks/*.duck ./static/*.duck"
+time="2025-03-18T19:20:18Z" level=debug msg="make[2]: Leaving directory '/usr/src/azl/BUILD/yelp-xsl-42.1/doc/yelp-xsl'"
+time="2025-03-18T19:20:18Z" level=debug msg="make[2]: Entering directory '/usr/src/azl/BUILD/yelp-xsl-42.1/doc/yelp-xsl'"
+time="2025-03-18T19:20:18Z" level=debug msg="/usr/bin/mkdir -p C"
+time="2025-03-18T19:20:18Z" level=debug msg="ls ."
+time="2025-03-18T19:20:18Z" level=debug msg=C
+time="2025-03-18T19:20:18Z" level=debug msg=Makefile
+time="2025-03-18T19:20:18Z" level=debug msg=Makefile.am
+time="2025-03-18T19:20:18Z" level=debug msg=Makefile.in
+time="2025-03-18T19:20:18Z" level=debug msg=ducks
+time="2025-03-18T19:20:18Z" level=debug msg=static
+time="2025-03-18T19:20:18Z" level=debug msg=xsldoc.xsl
+time="2025-03-18T19:20:18Z" level=debug msg="ducktype -o C/ ./ducks/*.duck ./static/*.duck"
+time="2025-03-18T19:20:18Z" level=debug msg="make[2]: Leaving directory '/usr/src/azl/BUILD/yelp-xsl-42.1/doc/yelp-xsl'"
+time="2025-03-18T19:20:18Z" level=debug msg="make[2]: Entering directory '/usr/src/azl/BUILD/yelp-xsl-42.1/doc/yelp-xsl'"
+time="2025-03-18T19:20:18Z" level=debug msg="/usr/bin/mkdir -p C"
+time="2025-03-18T19:20:18Z" level=debug msg="ls ."
+time="2025-03-18T19:20:18Z" level=debug msg=C
+time="2025-03-18T19:20:18Z" level=debug msg=Makefile
+time="2025-03-18T19:20:18Z" level=debug msg=Makefile.am
+time="2025-03-18T19:20:18Z" level=debug msg=Makefile.in
+time="2025-03-18T19:20:18Z" level=debug msg=ducks
+time="2025-03-18T19:20:18Z" level=debug msg=static
+time="2025-03-18T19:20:18Z" level=debug msg=xsldoc.xsl
+time="2025-03-18T19:20:18Z" level=debug msg="ducktype -o C/ ./ducks/*.duck ./static/*.duck"
+time="2025-03-18T19:20:18Z" level=debug msg="make[2]: Leaving directory '/usr/src/azl/BUILD/yelp-xsl-42.1/doc/yelp-xsl'"
+time="2025-03-18T19:20:19Z" level=debug msg="make[2]: Entering directory '/usr/src/azl/BUILD/yelp-xsl-42.1/doc/yelp-xsl'"
+time="2025-03-18T19:20:19Z" level=debug msg="/usr/bin/mkdir -p C"
+time="2025-03-18T19:20:19Z" level=debug msg="ls ."
+time="2025-03-18T19:20:19Z" level=debug msg=C
+time="2025-03-18T19:20:19Z" level=debug msg=Makefile
+time="2025-03-18T19:20:19Z" level=debug msg=Makefile.am
+time="2025-03-18T19:20:19Z" level=debug msg=Makefile.in
+time="2025-03-18T19:20:19Z" level=debug msg=ducks
+time="2025-03-18T19:20:19Z" level=debug msg=static
+time="2025-03-18T19:20:19Z" level=debug msg=xsldoc.xsl
+time="2025-03-18T19:20:19Z" level=debug msg="ducktype -o C/ ./ducks/*.duck ./static/*.duck"
+time="2025-03-18T19:20:19Z" level=debug msg="make[2]: Leaving directory '/usr/src/azl/BUILD/yelp-xsl-42.1/doc/yelp-xsl'"
+time="2025-03-18T19:20:19Z" level=debug msg="make[2]: Entering directory '/usr/src/azl/BUILD/yelp-xsl-42.1/doc/yelp-xsl'"
+time="2025-03-18T19:20:19Z" level=debug msg="/usr/bin/mkdir -p C"
+time="2025-03-18T19:20:19Z" level=debug msg="ls ."
+time="2025-03-18T19:20:19Z" level=debug msg=C
+time="2025-03-18T19:20:19Z" level=debug msg=Makefile
+time="2025-03-18T19:20:19Z" level=debug msg=Makefile.am
+time="2025-03-18T19:20:19Z" level=debug msg=Makefile.in
+time="2025-03-18T19:20:19Z" level=debug msg=ducks
+time="2025-03-18T19:20:19Z" level=debug msg=static
+time="2025-03-18T19:20:19Z" level=debug msg=xsldoc.xsl
+time="2025-03-18T19:20:19Z" level=debug msg="ducktype -o C/ ./ducks/*.duck ./static/*.duck"
+time="2025-03-18T19:20:19Z" level=debug msg="make[2]: Leaving directory '/usr/src/azl/BUILD/yelp-xsl-42.1/doc/yelp-xsl'"
+time="2025-03-18T19:20:19Z" level=debug msg="make[2]: Entering directory '/usr/src/azl/BUILD/yelp-xsl-42.1/doc/yelp-xsl'"
+time="2025-03-18T19:20:19Z" level=debug msg="/usr/bin/mkdir -p C"
+time="2025-03-18T19:20:19Z" level=debug msg="ls ."
+time="2025-03-18T19:20:19Z" level=debug msg=C
+time="2025-03-18T19:20:19Z" level=debug msg=Makefile
+time="2025-03-18T19:20:19Z" level=debug msg=Makefile.am
+time="2025-03-18T19:20:19Z" level=debug msg=Makefile.in
+time="2025-03-18T19:20:19Z" level=debug msg=ducks
+time="2025-03-18T19:20:19Z" level=debug msg=static
+time="2025-03-18T19:20:19Z" level=debug msg=xsldoc.xsl
+time="2025-03-18T19:20:19Z" level=debug msg="ducktype -o C/ ./ducks/*.duck ./static/*.duck"
+time="2025-03-18T19:20:19Z" level=debug msg="make[2]: Leaving directory '/usr/src/azl/BUILD/yelp-xsl-42.1/doc/yelp-xsl'"
+time="2025-03-18T19:20:19Z" level=debug msg="make[2]: Entering directory '/usr/src/azl/BUILD/yelp-xsl-42.1/doc/yelp-xsl'"
+time="2025-03-18T19:20:19Z" level=debug msg="/usr/bin/mkdir -p C"
+time="2025-03-18T19:20:19Z" level=debug msg="ls ."
+time="2025-03-18T19:20:19Z" level=debug msg=C
+time="2025-03-18T19:20:19Z" level=debug msg=Makefile
+time="2025-03-18T19:20:19Z" level=debug msg=Makefile.am
+time="2025-03-18T19:20:19Z" level=debug msg=Makefile.in
+time="2025-03-18T19:20:19Z" level=debug msg=ducks
+time="2025-03-18T19:20:19Z" level=debug msg=static
+time="2025-03-18T19:20:19Z" level=debug msg=xsldoc.xsl
+time="2025-03-18T19:20:19Z" level=debug msg="ducktype -o C/ ./ducks/*.duck ./static/*.duck"
+time="2025-03-18T19:20:19Z" level=debug msg="make[2]: Leaving directory '/usr/src/azl/BUILD/yelp-xsl-42.1/doc/yelp-xsl'"
+time="2025-03-18T19:20:19Z" level=debug msg="make[2]: Entering directory '/usr/src/azl/BUILD/yelp-xsl-42.1/doc/yelp-xsl'"
+time="2025-03-18T19:20:19Z" level=debug msg="/usr/bin/mkdir -p C"
+time="2025-03-18T19:20:19Z" level=debug msg="ls ."
+time="2025-03-18T19:20:19Z" level=debug msg=C
+time="2025-03-18T19:20:19Z" level=debug msg=Makefile
+time="2025-03-18T19:20:19Z" level=debug msg=Makefile.am
+time="2025-03-18T19:20:19Z" level=debug msg=Makefile.in
+time="2025-03-18T19:20:19Z" level=debug msg=ducks
+time="2025-03-18T19:20:19Z" level=debug msg=static
+time="2025-03-18T19:20:19Z" level=debug msg=xsldoc.xsl
+time="2025-03-18T19:20:19Z" level=debug msg="ducktype -o C/ ./ducks/*.duck ./static/*.duck"
+time="2025-03-18T19:20:19Z" level=debug msg="make[2]: Leaving directory '/usr/src/azl/BUILD/yelp-xsl-42.1/doc/yelp-xsl'"
+time="2025-03-18T19:20:20Z" level=debug msg="make[2]: Entering directory '/usr/src/azl/BUILD/yelp-xsl-42.1/doc/yelp-xsl'"
+time="2025-03-18T19:20:20Z" level=debug msg="/usr/bin/mkdir -p C"
+time="2025-03-18T19:20:20Z" level=debug msg="ls ."
+time="2025-03-18T19:20:20Z" level=debug msg=C
+time="2025-03-18T19:20:20Z" level=debug msg=Makefile
+time="2025-03-18T19:20:20Z" level=debug msg=Makefile.am
+time="2025-03-18T19:20:20Z" level=debug msg=Makefile.in
+time="2025-03-18T19:20:20Z" level=debug msg=ducks
+time="2025-03-18T19:20:20Z" level=debug msg=static
+time="2025-03-18T19:20:20Z" level=debug msg=xsldoc.xsl
+time="2025-03-18T19:20:20Z" level=debug msg="ducktype -o C/ ./ducks/*.duck ./static/*.duck"
+time="2025-03-18T19:20:20Z" level=debug msg="make[2]: Leaving directory '/usr/src/azl/BUILD/yelp-xsl-42.1/doc/yelp-xsl'"
+time="2025-03-18T19:20:20Z" level=debug msg="make[2]: Entering directory '/usr/src/azl/BUILD/yelp-xsl-42.1/doc/yelp-xsl'"
+time="2025-03-18T19:20:20Z" level=debug msg="/usr/bin/mkdir -p C"
+time="2025-03-18T19:20:20Z" level=debug msg="ls ."
+time="2025-03-18T19:20:20Z" level=debug msg=C
+time="2025-03-18T19:20:20Z" level=debug msg=Makefile
+time="2025-03-18T19:20:20Z" level=debug msg=Makefile.am
+time="2025-03-18T19:20:20Z" level=debug msg=Makefile.in
+time="2025-03-18T19:20:20Z" level=debug msg=ducks
+time="2025-03-18T19:20:20Z" level=debug msg=static
+time="2025-03-18T19:20:20Z" level=debug msg=xsldoc.xsl
+time="2025-03-18T19:20:20Z" level=debug msg="ducktype -o C/ ./ducks/*.duck ./static/*.duck"
+time="2025-03-18T19:20:20Z" level=debug msg="make[2]: Leaving directory '/usr/src/azl/BUILD/yelp-xsl-42.1/doc/yelp-xsl'"
+time="2025-03-18T19:20:21Z" level=debug msg="make[2]: Entering directory '/usr/src/azl/BUILD/yelp-xsl-42.1/doc/yelp-xsl'"
+time="2025-03-18T19:20:21Z" level=debug msg="/usr/bin/mkdir -p C"
+time="2025-03-18T19:20:21Z" level=debug msg="ls ."
+time="2025-03-18T19:20:21Z" level=debug msg=C
+time="2025-03-18T19:20:21Z" level=debug msg=Makefile
+time="2025-03-18T19:20:21Z" level=debug msg=Makefile.am
+time="2025-03-18T19:20:21Z" level=debug msg=Makefile.in
+time="2025-03-18T19:20:21Z" level=debug msg=ducks
+time="2025-03-18T19:20:21Z" level=debug msg=static
+time="2025-03-18T19:20:21Z" level=debug msg=xsldoc.xsl
+time="2025-03-18T19:20:21Z" level=debug msg="ducktype -o C/ ./ducks/*.duck ./static/*.duck"
+time="2025-03-18T19:20:21Z" level=debug msg="make[2]: Leaving directory '/usr/src/azl/BUILD/yelp-xsl-42.1/doc/yelp-xsl'"
+time="2025-03-18T19:20:21Z" level=debug msg="make[2]: Entering directory '/usr/src/azl/BUILD/yelp-xsl-42.1/doc/yelp-xsl'"
+time="2025-03-18T19:20:21Z" level=debug msg="/usr/bin/mkdir -p C"
+time="2025-03-18T19:20:21Z" level=debug msg="ls ."
+time="2025-03-18T19:20:21Z" level=debug msg=C
+time="2025-03-18T19:20:21Z" level=debug msg=Makefile
+time="2025-03-18T19:20:21Z" level=debug msg=Makefile.am
+time="2025-03-18T19:20:21Z" level=debug msg=Makefile.in
+time="2025-03-18T19:20:21Z" level=debug msg=ducks
+time="2025-03-18T19:20:21Z" level=debug msg=static
+time="2025-03-18T19:20:21Z" level=debug msg=xsldoc.xsl
+time="2025-03-18T19:20:21Z" level=debug msg="ducktype -o C/ ./ducks/*.duck ./static/*.duck"
+time="2025-03-18T19:20:21Z" level=debug msg="make[2]: Leaving directory '/usr/src/azl/BUILD/yelp-xsl-42.1/doc/yelp-xsl'"
+time="2025-03-18T19:20:21Z" level=debug msg="make[2]: Entering directory '/usr/src/azl/BUILD/yelp-xsl-42.1/doc/yelp-xsl'"
+time="2025-03-18T19:20:21Z" level=debug msg="/usr/bin/mkdir -p C"
+time="2025-03-18T19:20:21Z" level=debug msg="ls ."
+time="2025-03-18T19:20:21Z" level=debug msg=C
+time="2025-03-18T19:20:21Z" level=debug msg=Makefile
+time="2025-03-18T19:20:21Z" level=debug msg=Makefile.am
+time="2025-03-18T19:20:21Z" level=debug msg=Makefile.in
+time="2025-03-18T19:20:21Z" level=debug msg=ducks
+time="2025-03-18T19:20:21Z" level=debug msg=static
+time="2025-03-18T19:20:21Z" level=debug msg=xsldoc.xsl
+time="2025-03-18T19:20:21Z" level=debug msg="ducktype -o C/ ./ducks/*.duck ./static/*.duck"
+time="2025-03-18T19:20:21Z" level=debug msg="make[2]: Leaving directory '/usr/src/azl/BUILD/yelp-xsl-42.1/doc/yelp-xsl'"
+time="2025-03-18T19:20:21Z" level=debug msg="make[2]: Entering directory '/usr/src/azl/BUILD/yelp-xsl-42.1/doc/yelp-xsl'"
+time="2025-03-18T19:20:21Z" level=debug msg="/usr/bin/mkdir -p C"
+time="2025-03-18T19:20:21Z" level=debug msg="ls ."
+time="2025-03-18T19:20:21Z" level=debug msg=C
+time="2025-03-18T19:20:21Z" level=debug msg=Makefile
+time="2025-03-18T19:20:21Z" level=debug msg=Makefile.am
+time="2025-03-18T19:20:21Z" level=debug msg=Makefile.in
+time="2025-03-18T19:20:21Z" level=debug msg=ducks
+time="2025-03-18T19:20:21Z" level=debug msg=static
+time="2025-03-18T19:20:21Z" level=debug msg=xsldoc.xsl
+time="2025-03-18T19:20:21Z" level=debug msg="ducktype -o C/ ./ducks/*.duck ./static/*.duck"
+time="2025-03-18T19:20:21Z" level=debug msg="make[2]: Leaving directory '/usr/src/azl/BUILD/yelp-xsl-42.1/doc/yelp-xsl'"
+time="2025-03-18T19:20:21Z" level=debug msg="make[2]: Entering directory '/usr/src/azl/BUILD/yelp-xsl-42.1/doc/yelp-xsl'"
+time="2025-03-18T19:20:21Z" level=debug msg="/usr/bin/mkdir -p C"
+time="2025-03-18T19:20:21Z" level=debug msg="ls ."
+time="2025-03-18T19:20:21Z" level=debug msg=C
+time="2025-03-18T19:20:21Z" level=debug msg=Makefile
+time="2025-03-18T19:20:21Z" level=debug msg=Makefile.am
+time="2025-03-18T19:20:21Z" level=debug msg=Makefile.in
+time="2025-03-18T19:20:21Z" level=debug msg=ducks
+time="2025-03-18T19:20:21Z" level=debug msg=static
+time="2025-03-18T19:20:21Z" level=debug msg=xsldoc.xsl
+time="2025-03-18T19:20:21Z" level=debug msg="ducktype -o C/ ./ducks/*.duck ./static/*.duck"
+time="2025-03-18T19:20:21Z" level=debug msg="make[2]: Leaving directory '/usr/src/azl/BUILD/yelp-xsl-42.1/doc/yelp-xsl'"
+time="2025-03-18T19:20:22Z" level=debug msg="make[2]: Entering directory '/usr/src/azl/BUILD/yelp-xsl-42.1/doc/yelp-xsl'"
+time="2025-03-18T19:20:22Z" level=debug msg="/usr/bin/mkdir -p C"
+time="2025-03-18T19:20:22Z" level=debug msg="ls ."
+time="2025-03-18T19:20:22Z" level=debug msg=C
+time="2025-03-18T19:20:22Z" level=debug msg=Makefile
+time="2025-03-18T19:20:22Z" level=debug msg=Makefile.am
+time="2025-03-18T19:20:22Z" level=debug msg=Makefile.in
+time="2025-03-18T19:20:22Z" level=debug msg=ducks
+time="2025-03-18T19:20:22Z" level=debug msg=static
+time="2025-03-18T19:20:22Z" level=debug msg=xsldoc.xsl
+time="2025-03-18T19:20:22Z" level=debug msg="ducktype -o C/ ./ducks/*.duck ./static/*.duck"
+time="2025-03-18T19:20:22Z" level=debug msg="make[2]: Leaving directory '/usr/src/azl/BUILD/yelp-xsl-42.1/doc/yelp-xsl'"
+time="2025-03-18T19:20:22Z" level=debug msg="make[2]: Entering directory '/usr/src/azl/BUILD/yelp-xsl-42.1/doc/yelp-xsl'"
+time="2025-03-18T19:20:22Z" level=debug msg="/usr/bin/mkdir -p C"
+time="2025-03-18T19:20:22Z" level=debug msg="ls ."
+time="2025-03-18T19:20:22Z" level=debug msg=C
+time="2025-03-18T19:20:22Z" level=debug msg=Makefile
+time="2025-03-18T19:20:22Z" level=debug msg=Makefile.am
+time="2025-03-18T19:20:22Z" level=debug msg=Makefile.in
+time="2025-03-18T19:20:22Z" level=debug msg=ducks
+time="2025-03-18T19:20:22Z" level=debug msg=static
+time="2025-03-18T19:20:22Z" level=debug msg=xsldoc.xsl
+time="2025-03-18T19:20:22Z" level=debug msg="ducktype -o C/ ./ducks/*.duck ./static/*.duck"
+time="2025-03-18T19:20:22Z" level=debug msg="make[2]: Leaving directory '/usr/src/azl/BUILD/yelp-xsl-42.1/doc/yelp-xsl'"
+time="2025-03-18T19:20:23Z" level=debug msg="make[2]: Entering directory '/usr/src/azl/BUILD/yelp-xsl-42.1/doc/yelp-xsl'"
+time="2025-03-18T19:20:23Z" level=debug msg="/usr/bin/mkdir -p C"
+time="2025-03-18T19:20:23Z" level=debug msg="ls ."
+time="2025-03-18T19:20:23Z" level=debug msg=C
+time="2025-03-18T19:20:23Z" level=debug msg=Makefile
+time="2025-03-18T19:20:23Z" level=debug msg=Makefile.am
+time="2025-03-18T19:20:23Z" level=debug msg=Makefile.in
+time="2025-03-18T19:20:23Z" level=debug msg=ducks
+time="2025-03-18T19:20:23Z" level=debug msg=static
+time="2025-03-18T19:20:23Z" level=debug msg=xsldoc.xsl
+time="2025-03-18T19:20:23Z" level=debug msg="ducktype -o C/ ./ducks/*.duck ./static/*.duck"
+time="2025-03-18T19:20:23Z" level=debug msg="make[2]: Leaving directory '/usr/src/azl/BUILD/yelp-xsl-42.1/doc/yelp-xsl'"
+time="2025-03-18T19:20:23Z" level=debug msg="make[2]: Entering directory '/usr/src/azl/BUILD/yelp-xsl-42.1/doc/yelp-xsl'"
+time="2025-03-18T19:20:23Z" level=debug msg="/usr/bin/mkdir -p C"
+time="2025-03-18T19:20:23Z" level=debug msg="ls ."
+time="2025-03-18T19:20:23Z" level=debug msg=C
+time="2025-03-18T19:20:23Z" level=debug msg=Makefile
+time="2025-03-18T19:20:23Z" level=debug msg=Makefile.am
+time="2025-03-18T19:20:23Z" level=debug msg=Makefile.in
+time="2025-03-18T19:20:23Z" level=debug msg=ducks
+time="2025-03-18T19:20:23Z" level=debug msg=static
+time="2025-03-18T19:20:23Z" level=debug msg=xsldoc.xsl
+time="2025-03-18T19:20:23Z" level=debug msg="ducktype -o C/ ./ducks/*.duck ./static/*.duck"
+time="2025-03-18T19:20:23Z" level=debug msg="make[2]: Leaving directory '/usr/src/azl/BUILD/yelp-xsl-42.1/doc/yelp-xsl'"
+time="2025-03-18T19:20:23Z" level=debug msg="make[2]: Entering directory '/usr/src/azl/BUILD/yelp-xsl-42.1/doc/yelp-xsl'"
+time="2025-03-18T19:20:23Z" level=debug msg="/usr/bin/mkdir -p C"
+time="2025-03-18T19:20:23Z" level=debug msg="ls ."
+time="2025-03-18T19:20:23Z" level=debug msg=C
+time="2025-03-18T19:20:23Z" level=debug msg=Makefile
+time="2025-03-18T19:20:23Z" level=debug msg=Makefile.am
+time="2025-03-18T19:20:23Z" level=debug msg=Makefile.in
+time="2025-03-18T19:20:23Z" level=debug msg=ducks
+time="2025-03-18T19:20:23Z" level=debug msg=static
+time="2025-03-18T19:20:23Z" level=debug msg=xsldoc.xsl
+time="2025-03-18T19:20:23Z" level=debug msg="ducktype -o C/ ./ducks/*.duck ./static/*.duck"
+time="2025-03-18T19:20:23Z" level=debug msg="make[2]: Leaving directory '/usr/src/azl/BUILD/yelp-xsl-42.1/doc/yelp-xsl'"
+time="2025-03-18T19:20:23Z" level=debug msg="make[2]: Entering directory '/usr/src/azl/BUILD/yelp-xsl-42.1/doc/yelp-xsl'"
+time="2025-03-18T19:20:23Z" level=debug msg="/usr/bin/mkdir -p C"
+time="2025-03-18T19:20:23Z" level=debug msg="ls ."
+time="2025-03-18T19:20:23Z" level=debug msg=C
+time="2025-03-18T19:20:23Z" level=debug msg=Makefile
+time="2025-03-18T19:20:23Z" level=debug msg=Makefile.am
+time="2025-03-18T19:20:23Z" level=debug msg=Makefile.in
+time="2025-03-18T19:20:23Z" level=debug msg=ducks
+time="2025-03-18T19:20:23Z" level=debug msg=static
+time="2025-03-18T19:20:23Z" level=debug msg=xsldoc.xsl
+time="2025-03-18T19:20:23Z" level=debug msg="ducktype -o C/ ./ducks/*.duck ./static/*.duck"
+time="2025-03-18T19:20:23Z" level=debug msg="make[2]: Leaving directory '/usr/src/azl/BUILD/yelp-xsl-42.1/doc/yelp-xsl'"
+time="2025-03-18T19:20:24Z" level=debug msg="make[2]: Entering directory '/usr/src/azl/BUILD/yelp-xsl-42.1/doc/yelp-xsl'"
+time="2025-03-18T19:20:24Z" level=debug msg="/usr/bin/mkdir -p C"
+time="2025-03-18T19:20:24Z" level=debug msg="ls ."
+time="2025-03-18T19:20:24Z" level=debug msg=C
+time="2025-03-18T19:20:24Z" level=debug msg=Makefile
+time="2025-03-18T19:20:24Z" level=debug msg=Makefile.am
+time="2025-03-18T19:20:24Z" level=debug msg=Makefile.in
+time="2025-03-18T19:20:24Z" level=debug msg=ducks
+time="2025-03-18T19:20:24Z" level=debug msg=static
+time="2025-03-18T19:20:24Z" level=debug msg=xsldoc.xsl
+time="2025-03-18T19:20:24Z" level=debug msg="ducktype -o C/ ./ducks/*.duck ./static/*.duck"
+time="2025-03-18T19:20:24Z" level=debug msg="make[2]: Leaving directory '/usr/src/azl/BUILD/yelp-xsl-42.1/doc/yelp-xsl'"
+time="2025-03-18T19:20:24Z" level=debug msg="make[2]: Entering directory '/usr/src/azl/BUILD/yelp-xsl-42.1/doc/yelp-xsl'"
+time="2025-03-18T19:20:24Z" level=debug msg="/usr/bin/mkdir -p C"
+time="2025-03-18T19:20:24Z" level=debug msg="ls ."
+time="2025-03-18T19:20:24Z" level=debug msg=C
+time="2025-03-18T19:20:24Z" level=debug msg=Makefile
+time="2025-03-18T19:20:24Z" level=debug msg=Makefile.am
+time="2025-03-18T19:20:24Z" level=debug msg=Makefile.in
+time="2025-03-18T19:20:24Z" level=debug msg=ducks
+time="2025-03-18T19:20:24Z" level=debug msg=static
+time="2025-03-18T19:20:24Z" level=debug msg=xsldoc.xsl
+time="2025-03-18T19:20:24Z" level=debug msg="ducktype -o C/ ./ducks/*.duck ./static/*.duck"
+time="2025-03-18T19:20:24Z" level=debug msg="make[2]: Leaving directory '/usr/src/azl/BUILD/yelp-xsl-42.1/doc/yelp-xsl'"
+time="2025-03-18T19:20:24Z" level=debug msg="make[2]: Entering directory '/usr/src/azl/BUILD/yelp-xsl-42.1/doc/yelp-xsl'"
+time="2025-03-18T19:20:24Z" level=debug msg="/usr/bin/mkdir -p C"
+time="2025-03-18T19:20:24Z" level=debug msg="ls ."
+time="2025-03-18T19:20:24Z" level=debug msg=C
+time="2025-03-18T19:20:24Z" level=debug msg=Makefile
+time="2025-03-18T19:20:24Z" level=debug msg=Makefile.am
+time="2025-03-18T19:20:24Z" level=debug msg=Makefile.in
+time="2025-03-18T19:20:24Z" level=debug msg=ducks
+time="2025-03-18T19:20:24Z" level=debug msg=static
+time="2025-03-18T19:20:24Z" level=debug msg=xsldoc.xsl
+time="2025-03-18T19:20:24Z" level=debug msg="ducktype -o C/ ./ducks/*.duck ./static/*.duck"
+time="2025-03-18T19:20:24Z" level=debug msg="make[2]: Leaving directory '/usr/src/azl/BUILD/yelp-xsl-42.1/doc/yelp-xsl'"
+time="2025-03-18T19:20:25Z" level=debug msg="make[2]: Entering directory '/usr/src/azl/BUILD/yelp-xsl-42.1/doc/yelp-xsl'"
+time="2025-03-18T19:20:25Z" level=debug msg="/usr/bin/mkdir -p C"
+time="2025-03-18T19:20:25Z" level=debug msg="ls ."
+time="2025-03-18T19:20:25Z" level=debug msg=C
+time="2025-03-18T19:20:25Z" level=debug msg=Makefile
+time="2025-03-18T19:20:25Z" level=debug msg=Makefile.am
+time="2025-03-18T19:20:25Z" level=debug msg=Makefile.in
+time="2025-03-18T19:20:25Z" level=debug msg=ducks
+time="2025-03-18T19:20:25Z" level=debug msg=static
+time="2025-03-18T19:20:25Z" level=debug msg=xsldoc.xsl
+time="2025-03-18T19:20:25Z" level=debug msg="ducktype -o C/ ./ducks/*.duck ./static/*.duck"
+time="2025-03-18T19:20:25Z" level=debug msg="make[2]: Leaving directory '/usr/src/azl/BUILD/yelp-xsl-42.1/doc/yelp-xsl'"
+time="2025-03-18T19:20:25Z" level=debug msg="make[2]: Entering directory '/usr/src/azl/BUILD/yelp-xsl-42.1/doc/yelp-xsl'"
+time="2025-03-18T19:20:25Z" level=debug msg="/usr/bin/mkdir -p C"
+time="2025-03-18T19:20:25Z" level=debug msg="ls ."
+time="2025-03-18T19:20:25Z" level=debug msg=C
+time="2025-03-18T19:20:25Z" level=debug msg=Makefile
+time="2025-03-18T19:20:25Z" level=debug msg=Makefile.am
+time="2025-03-18T19:20:25Z" level=debug msg=Makefile.in
+time="2025-03-18T19:20:25Z" level=debug msg=ducks
+time="2025-03-18T19:20:25Z" level=debug msg=static
+time="2025-03-18T19:20:25Z" level=debug msg=xsldoc.xsl
+time="2025-03-18T19:20:25Z" level=debug msg="ducktype -o C/ ./ducks/*.duck ./static/*.duck"
+time="2025-03-18T19:20:25Z" level=debug msg="make[2]: Leaving directory '/usr/src/azl/BUILD/yelp-xsl-42.1/doc/yelp-xsl'"
+time="2025-03-18T19:20:25Z" level=debug msg="make[2]: Entering directory '/usr/src/azl/BUILD/yelp-xsl-42.1/doc/yelp-xsl'"
+time="2025-03-18T19:20:25Z" level=debug msg="/usr/bin/mkdir -p C"
+time="2025-03-18T19:20:25Z" level=debug msg="ls ."
+time="2025-03-18T19:20:25Z" level=debug msg=C
+time="2025-03-18T19:20:25Z" level=debug msg=Makefile
+time="2025-03-18T19:20:25Z" level=debug msg=Makefile.am
+time="2025-03-18T19:20:25Z" level=debug msg=Makefile.in
+time="2025-03-18T19:20:25Z" level=debug msg=ducks
+time="2025-03-18T19:20:25Z" level=debug msg=static
+time="2025-03-18T19:20:25Z" level=debug msg=xsldoc.xsl
+time="2025-03-18T19:20:25Z" level=debug msg="ducktype -o C/ ./ducks/*.duck ./static/*.duck"
+time="2025-03-18T19:20:25Z" level=debug msg="make[2]: Leaving directory '/usr/src/azl/BUILD/yelp-xsl-42.1/doc/yelp-xsl'"
+time="2025-03-18T19:20:25Z" level=debug msg="make[2]: Entering directory '/usr/src/azl/BUILD/yelp-xsl-42.1/doc/yelp-xsl'"
+time="2025-03-18T19:20:25Z" level=debug msg="/usr/bin/mkdir -p C"
+time="2025-03-18T19:20:25Z" level=debug msg="ls ."
+time="2025-03-18T19:20:25Z" level=debug msg=C
+time="2025-03-18T19:20:25Z" level=debug msg=Makefile
+time="2025-03-18T19:20:25Z" level=debug msg=Makefile.am
+time="2025-03-18T19:20:25Z" level=debug msg=Makefile.in
+time="2025-03-18T19:20:25Z" level=debug msg=ducks
+time="2025-03-18T19:20:25Z" level=debug msg=static
+time="2025-03-18T19:20:25Z" level=debug msg=xsldoc.xsl
+time="2025-03-18T19:20:25Z" level=debug msg="ducktype -o C/ ./ducks/*.duck ./static/*.duck"
+time="2025-03-18T19:20:25Z" level=debug msg="make[2]: Leaving directory '/usr/src/azl/BUILD/yelp-xsl-42.1/doc/yelp-xsl'"
+time="2025-03-18T19:20:25Z" level=debug msg="make[2]: Nothing to be done for 'all-am'."
+time="2025-03-18T19:20:25Z" level=debug msg="make[1]: Nothing to be done for 'all-am'."
+time="2025-03-18T19:20:25Z" level=debug msg="+ RPM_EC=0"
+time="2025-03-18T19:20:25Z" level=debug msg="++ jobs -p"
+time="2025-03-18T19:20:25Z" level=debug msg="+ exit 0"
+time="2025-03-18T19:20:25Z" level=debug msg="Executing(%install): /bin/sh -e /var/tmp/rpm-tmp.J23uor"
+time="2025-03-18T19:20:25Z" level=debug msg="+ umask 022"
+time="2025-03-18T19:20:25Z" level=debug msg="+ cd /usr/src/azl/BUILD"
+time="2025-03-18T19:20:25Z" level=debug msg="+ /bin/rm -rf /usr/src/azl/BUILDROOT/yelp-xsl-42.1-6.azl3.x86_64"
+time="2025-03-18T19:20:25Z" level=debug msg="+ /bin/mkdir -p /usr/src/azl/BUILDROOT"
+time="2025-03-18T19:20:25Z" level=debug msg="+ /bin/mkdir /usr/src/azl/BUILDROOT/yelp-xsl-42.1-6.azl3.x86_64"
+time="2025-03-18T19:20:25Z" level=debug msg="+ cd yelp-xsl-42.1"
+time="2025-03-18T19:20:25Z" level=debug msg="+ /usr/bin/make install DESTDIR=/usr/src/azl/BUILDROOT/yelp-xsl-42.1-6.azl3.x86_64 'INSTALL=/bin/install -p'"
+time="2025-03-18T19:20:26Z" level=debug msg="Making install in js"
+time="2025-03-18T19:20:26Z" level=debug msg="make[1]: Entering directory '/usr/src/azl/BUILD/yelp-xsl-42.1/js'"
+time="2025-03-18T19:20:26Z" level=debug msg="make[2]: Entering directory '/usr/src/azl/BUILD/yelp-xsl-42.1/js'"
+time="2025-03-18T19:20:26Z" level=debug msg="make[2]: Nothing to be done for 'install-exec-am'."
+time="2025-03-18T19:20:26Z" level=debug msg=" /usr/bin/mkdir -p '/usr/src/azl/BUILDROOT/yelp-xsl-42.1-6.azl3.x86_64/usr/share/yelp-xsl/js'"
+time="2025-03-18T19:20:26Z" level=debug msg=" /bin/install -p -m 644 highlight.pack.js '/usr/src/azl/BUILDROOT/yelp-xsl-42.1-6.azl3.x86_64/usr/share/yelp-xsl/js'"
+time="2025-03-18T19:20:26Z" level=debug msg="make[2]: Leaving directory '/usr/src/azl/BUILD/yelp-xsl-42.1/js'"
+time="2025-03-18T19:20:26Z" level=debug msg="make[1]: Leaving directory '/usr/src/azl/BUILD/yelp-xsl-42.1/js'"
+time="2025-03-18T19:20:26Z" level=debug msg="Making install in xslt"
+time="2025-03-18T19:20:26Z" level=debug msg="make[1]: Entering directory '/usr/src/azl/BUILD/yelp-xsl-42.1/xslt'"
+time="2025-03-18T19:20:26Z" level=debug msg="Making install in common"
+time="2025-03-18T19:20:26Z" level=debug msg="make[2]: Entering directory '/usr/src/azl/BUILD/yelp-xsl-42.1/xslt/common'"
+time="2025-03-18T19:20:26Z" level=debug msg="Making install in css"
+time="2025-03-18T19:20:26Z" level=debug msg="make[3]: Entering directory '/usr/src/azl/BUILD/yelp-xsl-42.1/xslt/common/css'"
+time="2025-03-18T19:20:26Z" level=debug msg="make[4]: Entering directory '/usr/src/azl/BUILD/yelp-xsl-42.1/xslt/common/css'"
+time="2025-03-18T19:20:26Z" level=debug msg="make[4]: Nothing to be done for 'install-exec-am'."
+time="2025-03-18T19:20:26Z" level=debug msg=" /usr/bin/mkdir -p '/usr/src/azl/BUILDROOT/yelp-xsl-42.1-6.azl3.x86_64/usr/share/yelp-xsl/xslt/common/css'"
+time="2025-03-18T19:20:26Z" level=debug msg=" /bin/install -p -m 644 core.css.tmpl docbook.css.tmpl elements.css.tmpl mallard.css.tmpl mallard-editor.css.tmpl syntax.css.tmpl '/usr/src/azl/BUILDROOT/yelp-xsl-42.1-6.azl3.x86_64/usr/share/yelp-xsl/xslt/common/css'"
+time="2025-03-18T19:20:26Z" level=debug msg="make[4]: Leaving directory '/usr/src/azl/BUILD/yelp-xsl-42.1/xslt/common/css'"
+time="2025-03-18T19:20:26Z" level=debug msg="make[3]: Leaving directory '/usr/src/azl/BUILD/yelp-xsl-42.1/xslt/common/css'"
+time="2025-03-18T19:20:26Z" level=debug msg="Making install in domains"
+time="2025-03-18T19:20:26Z" level=debug msg="make[3]: Entering directory '/usr/src/azl/BUILD/yelp-xsl-42.1/xslt/common/domains'"
+time="2025-03-18T19:20:26Z" level=debug msg="make[4]: Entering directory '/usr/src/azl/BUILD/yelp-xsl-42.1/xslt/common/domains'"
+time="2025-03-18T19:20:26Z" level=debug msg="make[4]: Nothing to be done for 'install-exec-am'."
+time="2025-03-18T19:20:26Z" level=debug msg=" /usr/bin/mkdir -p '/usr/src/azl/BUILDROOT/yelp-xsl-42.1-6.azl3.x86_64/usr/share/yelp-xsl/xslt/common/domains'"
+time="2025-03-18T19:20:26Z" level=debug msg=" /bin/install -p -m 644 yelp-xsl.xml '/usr/src/azl/BUILDROOT/yelp-xsl-42.1-6.azl3.x86_64/usr/share/yelp-xsl/xslt/common/domains'"
+time="2025-03-18T19:20:26Z" level=debug msg="make[4]: Leaving directory '/usr/src/azl/BUILD/yelp-xsl-42.1/xslt/common/domains'"
+time="2025-03-18T19:20:26Z" level=debug msg="make[3]: Leaving directory '/usr/src/azl/BUILD/yelp-xsl-42.1/xslt/common/domains'"
+time="2025-03-18T19:20:26Z" level=debug msg="Making install in icons"
+time="2025-03-18T19:20:26Z" level=debug msg="make[3]: Entering directory '/usr/src/azl/BUILD/yelp-xsl-42.1/xslt/common/icons'"
+time="2025-03-18T19:20:26Z" level=debug msg="make[4]: Entering directory '/usr/src/azl/BUILD/yelp-xsl-42.1/xslt/common/icons'"
+time="2025-03-18T19:20:26Z" level=debug msg="make[4]: Nothing to be done for 'install-exec-am'."
+time="2025-03-18T19:20:26Z" level=debug msg=" /usr/bin/mkdir -p '/usr/src/azl/BUILDROOT/yelp-xsl-42.1-6.azl3.x86_64/usr/share/yelp-xsl/xslt/common/icons'"
+time="2025-03-18T19:20:26Z" level=debug msg=" /bin/install -p -m 644 yelp-note-advanced.svg yelp-note-bug.svg yelp-note-important.svg yelp-note-note.svg yelp-note-package.svg yelp-note-tip.svg yelp-note-warning.svg '/usr/src/azl/BUILDROOT/yelp-xsl-42.1-6.azl3.x86_64/usr/share/yelp-xsl/xslt/common/icons'"
+time="2025-03-18T19:20:26Z" level=debug msg="make[4]: Leaving directory '/usr/src/azl/BUILD/yelp-xsl-42.1/xslt/common/icons'"
+time="2025-03-18T19:20:26Z" level=debug msg="make[3]: Leaving directory '/usr/src/azl/BUILD/yelp-xsl-42.1/xslt/common/icons'"
+time="2025-03-18T19:20:26Z" level=debug msg="make[3]: Entering directory '/usr/src/azl/BUILD/yelp-xsl-42.1/xslt/common'"
+time="2025-03-18T19:20:26Z" level=debug msg="make[4]: Entering directory '/usr/src/azl/BUILD/yelp-xsl-42.1/xslt/common'"
+time="2025-03-18T19:20:26Z" level=debug msg="make[4]: Nothing to be done for 'install-exec-am'."
+time="2025-03-18T19:20:26Z" level=debug msg=" /usr/bin/mkdir -p '/usr/src/azl/BUILDROOT/yelp-xsl-42.1-6.azl3.x86_64/usr/share/yelp-xsl/xslt/common'"
+time="2025-03-18T19:20:26Z" level=debug msg=" /bin/install -p -m 644 color.xsl icons.xsl l10n.xsl l10n-numbers.xsl html.xsl tmpl.xsl ttml.xsl utils.xsl '/usr/src/azl/BUILDROOT/yelp-xsl-42.1-6.azl3.x86_64/usr/share/yelp-xsl/xslt/common'"
+time="2025-03-18T19:20:26Z" level=debug msg="make[4]: Leaving directory '/usr/src/azl/BUILD/yelp-xsl-42.1/xslt/common'"
+time="2025-03-18T19:20:26Z" level=debug msg="make[3]: Leaving directory '/usr/src/azl/BUILD/yelp-xsl-42.1/xslt/common'"
+time="2025-03-18T19:20:26Z" level=debug msg="make[2]: Leaving directory '/usr/src/azl/BUILD/yelp-xsl-42.1/xslt/common'"
+time="2025-03-18T19:20:26Z" level=debug msg="Making install in docbook"
+time="2025-03-18T19:20:26Z" level=debug msg="make[2]: Entering directory '/usr/src/azl/BUILD/yelp-xsl-42.1/xslt/docbook'"
+time="2025-03-18T19:20:26Z" level=debug msg="Making install in common"
+time="2025-03-18T19:20:26Z" level=debug msg="make[3]: Entering directory '/usr/src/azl/BUILD/yelp-xsl-42.1/xslt/docbook/common'"
+time="2025-03-18T19:20:26Z" level=debug msg="make[4]: Entering directory '/usr/src/azl/BUILD/yelp-xsl-42.1/xslt/docbook/common'"
+time="2025-03-18T19:20:26Z" level=debug msg="make[4]: Nothing to be done for 'install-exec-am'."
+time="2025-03-18T19:20:26Z" level=debug msg=" /usr/bin/mkdir -p '/usr/src/azl/BUILDROOT/yelp-xsl-42.1-6.azl3.x86_64/usr/share/yelp-xsl/xslt/docbook/common'"
+time="2025-03-18T19:20:26Z" level=debug msg=" /bin/install -p -m 644 db-chunk.xsl db-common.xsl db-profile.xsl db-title.xsl db-xref.xsl db-selectors.mod '/usr/src/azl/BUILDROOT/yelp-xsl-42.1-6.azl3.x86_64/usr/share/yelp-xsl/xslt/docbook/common'"
+time="2025-03-18T19:20:26Z" level=debug msg="make[4]: Leaving directory '/usr/src/azl/BUILD/yelp-xsl-42.1/xslt/docbook/common'"
+time="2025-03-18T19:20:26Z" level=debug msg="make[3]: Leaving directory '/usr/src/azl/BUILD/yelp-xsl-42.1/xslt/docbook/common'"
+time="2025-03-18T19:20:26Z" level=debug msg="Making install in html"
+time="2025-03-18T19:20:26Z" level=debug msg="make[3]: Entering directory '/usr/src/azl/BUILD/yelp-xsl-42.1/xslt/docbook/html'"
+time="2025-03-18T19:20:26Z" level=debug msg="make[4]: Entering directory '/usr/src/azl/BUILD/yelp-xsl-42.1/xslt/docbook/html'"
+time="2025-03-18T19:20:26Z" level=debug msg="make[4]: Nothing to be done for 'install-exec-am'."
+time="2025-03-18T19:20:26Z" level=debug msg=" /usr/bin/mkdir -p '/usr/src/azl/BUILDROOT/yelp-xsl-42.1-6.azl3.x86_64/usr/share/yelp-xsl/xslt/docbook/html'"
+time="2025-03-18T19:20:26Z" level=debug msg=" /bin/install -p -m 644 db2html-bibliography.xsl db2html-block.xsl db2html-callout.xsl db2html-classsynopsis.xsl db2html-cmdsynopsis.xsl db2html-division.xsl db2html-ebnf.xsl db2html-footnote.xsl db2html-funcsynopsis.xsl db2html-index.xsl db2html-inline.xsl db2html-links.xsl db2html-math.xsl db2html-media.xsl db2html-list.xsl db2html-refentry.xsl db2html-suppressed.xsl db2html-table.xsl db2html-xref.xsl db2html.xsl db2xhtml.xsl '/usr/src/azl/BUILDROOT/yelp-xsl-42.1-6.azl3.x86_64/usr/share/yelp-xsl/xslt/docbook/html'"
+time="2025-03-18T19:20:26Z" level=debug msg="make[4]: Leaving directory '/usr/src/azl/BUILD/yelp-xsl-42.1/xslt/docbook/html'"
+time="2025-03-18T19:20:26Z" level=debug msg="make[3]: Leaving directory '/usr/src/azl/BUILD/yelp-xsl-42.1/xslt/docbook/html'"
+time="2025-03-18T19:20:26Z" level=debug msg="make[3]: Entering directory '/usr/src/azl/BUILD/yelp-xsl-42.1/xslt/docbook'"
+time="2025-03-18T19:20:26Z" level=debug msg="make[4]: Entering directory '/usr/src/azl/BUILD/yelp-xsl-42.1/xslt/docbook'"
+time="2025-03-18T19:20:26Z" level=debug msg="make[4]: Nothing to be done for 'install-exec-am'."
+time="2025-03-18T19:20:26Z" level=debug msg="make[4]: Nothing to be done for 'install-data-am'."
+time="2025-03-18T19:20:26Z" level=debug msg="make[4]: Leaving directory '/usr/src/azl/BUILD/yelp-xsl-42.1/xslt/docbook'"
+time="2025-03-18T19:20:26Z" level=debug msg="make[3]: Leaving directory '/usr/src/azl/BUILD/yelp-xsl-42.1/xslt/docbook'"
+time="2025-03-18T19:20:26Z" level=debug msg="make[2]: Leaving directory '/usr/src/azl/BUILD/yelp-xsl-42.1/xslt/docbook'"
+time="2025-03-18T19:20:26Z" level=debug msg="Making install in mallard"
+time="2025-03-18T19:20:26Z" level=debug msg="make[2]: Entering directory '/usr/src/azl/BUILD/yelp-xsl-42.1/xslt/mallard'"
+time="2025-03-18T19:20:26Z" level=debug msg="Making install in common"
+time="2025-03-18T19:20:26Z" level=debug msg="make[3]: Entering directory '/usr/src/azl/BUILD/yelp-xsl-42.1/xslt/mallard/common'"
+time="2025-03-18T19:20:26Z" level=debug msg="make[4]: Entering directory '/usr/src/azl/BUILD/yelp-xsl-42.1/xslt/mallard/common'"
+time="2025-03-18T19:20:26Z" level=debug msg="make[4]: Nothing to be done for 'install-exec-am'."
+time="2025-03-18T19:20:26Z" level=debug msg=" /usr/bin/mkdir -p '/usr/src/azl/BUILDROOT/yelp-xsl-42.1-6.azl3.x86_64/usr/share/yelp-xsl/xslt/mallard/common'"
+time="2025-03-18T19:20:26Z" level=debug msg=" /bin/install -p -m 644 mal-gloss.xsl mal-if.xsl mal-link.xsl mal-sort.xsl '/usr/src/azl/BUILDROOT/yelp-xsl-42.1-6.azl3.x86_64/usr/share/yelp-xsl/xslt/mallard/common'"
+time="2025-03-18T19:20:26Z" level=debug msg="make[4]: Leaving directory '/usr/src/azl/BUILD/yelp-xsl-42.1/xslt/mallard/common'"
+time="2025-03-18T19:20:26Z" level=debug msg="make[3]: Leaving directory '/usr/src/azl/BUILD/yelp-xsl-42.1/xslt/mallard/common'"
+time="2025-03-18T19:20:26Z" level=debug msg="Making install in html"
+time="2025-03-18T19:20:26Z" level=debug msg="make[3]: Entering directory '/usr/src/azl/BUILD/yelp-xsl-42.1/xslt/mallard/html'"
+time="2025-03-18T19:20:26Z" level=debug msg="make[4]: Entering directory '/usr/src/azl/BUILD/yelp-xsl-42.1/xslt/mallard/html'"
+time="2025-03-18T19:20:26Z" level=debug msg="make[4]: Nothing to be done for 'install-exec-am'."
+time="2025-03-18T19:20:26Z" level=debug msg=" /usr/bin/mkdir -p '/usr/src/azl/BUILDROOT/yelp-xsl-42.1-6.azl3.x86_64/usr/share/yelp-xsl/xslt/mallard/html'"
+time="2025-03-18T19:20:26Z" level=debug msg=" /bin/install -p -m 644 mal2html-api.xsl mal2html-block.xsl mal2html-gloss.xsl mal2html-inline.xsl mal2html-links.xsl mal2html-list.xsl mal2html-math.xsl mal2html-media.xsl mal2html-page.xsl mal2html-svg.xsl mal2html-table.xsl mal2html-ui.xsl mal2html.xsl mal2xhtml.xsl '/usr/src/azl/BUILDROOT/yelp-xsl-42.1-6.azl3.x86_64/usr/share/yelp-xsl/xslt/mallard/html'"
+time="2025-03-18T19:20:26Z" level=debug msg="make[4]: Leaving directory '/usr/src/azl/BUILD/yelp-xsl-42.1/xslt/mallard/html'"
+time="2025-03-18T19:20:26Z" level=debug msg="make[3]: Leaving directory '/usr/src/azl/BUILD/yelp-xsl-42.1/xslt/mallard/html'"
+time="2025-03-18T19:20:26Z" level=debug msg="Making install in cache"
+time="2025-03-18T19:20:26Z" level=debug msg="make[3]: Entering directory '/usr/src/azl/BUILD/yelp-xsl-42.1/xslt/mallard/cache'"
+time="2025-03-18T19:20:26Z" level=debug msg="make[4]: Entering directory '/usr/src/azl/BUILD/yelp-xsl-42.1/xslt/mallard/cache'"
+time="2025-03-18T19:20:26Z" level=debug msg="make[4]: Nothing to be done for 'install-exec-am'."
+time="2025-03-18T19:20:26Z" level=debug msg=" /usr/bin/mkdir -p '/usr/src/azl/BUILDROOT/yelp-xsl-42.1-6.azl3.x86_64/usr/share/yelp-xsl/xslt/mallard/cache'"
+time="2025-03-18T19:20:26Z" level=debug msg=" /bin/install -p -m 644 mal-cache.xsl '/usr/src/azl/BUILDROOT/yelp-xsl-42.1-6.azl3.x86_64/usr/share/yelp-xsl/xslt/mallard/cache'"
+time="2025-03-18T19:20:26Z" level=debug msg="make[4]: Leaving directory '/usr/src/azl/BUILD/yelp-xsl-42.1/xslt/mallard/cache'"
+time="2025-03-18T19:20:26Z" level=debug msg="make[3]: Leaving directory '/usr/src/azl/BUILD/yelp-xsl-42.1/xslt/mallard/cache'"
+time="2025-03-18T19:20:26Z" level=debug msg="make[3]: Entering directory '/usr/src/azl/BUILD/yelp-xsl-42.1/xslt/mallard'"
+time="2025-03-18T19:20:26Z" level=debug msg="make[4]: Entering directory '/usr/src/azl/BUILD/yelp-xsl-42.1/xslt/mallard'"
+time="2025-03-18T19:20:26Z" level=debug msg="make[4]: Nothing to be done for 'install-exec-am'."
+time="2025-03-18T19:20:26Z" level=debug msg="make[4]: Nothing to be done for 'install-data-am'."
+time="2025-03-18T19:20:26Z" level=debug msg="make[4]: Leaving directory '/usr/src/azl/BUILD/yelp-xsl-42.1/xslt/mallard'"
+time="2025-03-18T19:20:26Z" level=debug msg="make[3]: Leaving directory '/usr/src/azl/BUILD/yelp-xsl-42.1/xslt/mallard'"
+time="2025-03-18T19:20:26Z" level=debug msg="make[2]: Leaving directory '/usr/src/azl/BUILD/yelp-xsl-42.1/xslt/mallard'"
+time="2025-03-18T19:20:26Z" level=debug msg="make[2]: Entering directory '/usr/src/azl/BUILD/yelp-xsl-42.1/xslt'"
+time="2025-03-18T19:20:26Z" level=debug msg="make[3]: Entering directory '/usr/src/azl/BUILD/yelp-xsl-42.1/xslt'"
+time="2025-03-18T19:20:26Z" level=debug msg="make[3]: Nothing to be done for 'install-exec-am'."
+time="2025-03-18T19:20:26Z" level=debug msg="make[3]: Nothing to be done for 'install-data-am'."
+time="2025-03-18T19:20:26Z" level=debug msg="make[3]: Leaving directory '/usr/src/azl/BUILD/yelp-xsl-42.1/xslt'"
+time="2025-03-18T19:20:26Z" level=debug msg="make[2]: Leaving directory '/usr/src/azl/BUILD/yelp-xsl-42.1/xslt'"
+time="2025-03-18T19:20:26Z" level=debug msg="make[1]: Leaving directory '/usr/src/azl/BUILD/yelp-xsl-42.1/xslt'"
+time="2025-03-18T19:20:26Z" level=debug msg="Making install in doc"
+time="2025-03-18T19:20:26Z" level=debug msg="make[1]: Entering directory '/usr/src/azl/BUILD/yelp-xsl-42.1/doc'"
+time="2025-03-18T19:20:26Z" level=debug msg="Making install in yelp-xsl"
+time="2025-03-18T19:20:26Z" level=debug msg="make[2]: Entering directory '/usr/src/azl/BUILD/yelp-xsl-42.1/doc/yelp-xsl'"
+time="2025-03-18T19:20:26Z" level=debug msg="make[3]: Entering directory '/usr/src/azl/BUILD/yelp-xsl-42.1/doc/yelp-xsl'"
+time="2025-03-18T19:20:26Z" level=debug msg="make[3]: Nothing to be done for 'install-exec-am'."
+time="2025-03-18T19:20:26Z" level=debug msg="make[3]: Nothing to be done for 'install-data-am'."
+time="2025-03-18T19:20:26Z" level=debug msg="make[3]: Leaving directory '/usr/src/azl/BUILD/yelp-xsl-42.1/doc/yelp-xsl'"
+time="2025-03-18T19:20:26Z" level=debug msg="make[2]: Leaving directory '/usr/src/azl/BUILD/yelp-xsl-42.1/doc/yelp-xsl'"
+time="2025-03-18T19:20:26Z" level=debug msg="make[2]: Entering directory '/usr/src/azl/BUILD/yelp-xsl-42.1/doc'"
+time="2025-03-18T19:20:26Z" level=debug msg="make[3]: Entering directory '/usr/src/azl/BUILD/yelp-xsl-42.1/doc'"
+time="2025-03-18T19:20:26Z" level=debug msg="make[3]: Nothing to be done for 'install-exec-am'."
+time="2025-03-18T19:20:26Z" level=debug msg="make[3]: Nothing to be done for 'install-data-am'."
+time="2025-03-18T19:20:26Z" level=debug msg="make[3]: Leaving directory '/usr/src/azl/BUILD/yelp-xsl-42.1/doc'"
+time="2025-03-18T19:20:26Z" level=debug msg="make[2]: Leaving directory '/usr/src/azl/BUILD/yelp-xsl-42.1/doc'"
+time="2025-03-18T19:20:26Z" level=debug msg="make[1]: Leaving directory '/usr/src/azl/BUILD/yelp-xsl-42.1/doc'"
+time="2025-03-18T19:20:27Z" level=debug msg="make[1]: Entering directory '/usr/src/azl/BUILD/yelp-xsl-42.1'"
+time="2025-03-18T19:20:27Z" level=debug msg="make[2]: Entering directory '/usr/src/azl/BUILD/yelp-xsl-42.1'"
+time="2025-03-18T19:20:27Z" level=debug msg="make[2]: Nothing to be done for 'install-exec-am'."
+time="2025-03-18T19:20:27Z" level=debug msg=" /usr/bin/mkdir -p '/usr/src/azl/BUILDROOT/yelp-xsl-42.1-6.azl3.x86_64/usr/share/pkgconfig'"
+time="2025-03-18T19:20:27Z" level=debug msg=" /bin/install -p -m 644 yelp-xsl.pc '/usr/src/azl/BUILDROOT/yelp-xsl-42.1-6.azl3.x86_64/usr/share/pkgconfig'"
+time="2025-03-18T19:20:27Z" level=debug msg="+ /bin/find-debuginfo -j8 -m --build-id-seed 42.1-6.azl3 --unique-debug-suffix -42.1-6.azl3.x86_64 --unique-debug-src-base yelp-xsl-42.1-6.azl3.x86_64 /usr/src/azl/BUILD/yelp-xsl-42.1"
+time="2025-03-18T19:20:27Z" level=debug msg="make[2]: Leaving directory '/usr/src/azl/BUILD/yelp-xsl-42.1'"
+time="2025-03-18T19:20:27Z" level=debug msg="make[1]: Leaving directory '/usr/src/azl/BUILD/yelp-xsl-42.1'"
+time="2025-03-18T19:20:27Z" level=debug msg="+ /usr/lib/rpm/brp-compress /usr"
+time="2025-03-18T19:20:27Z" level=debug msg="+ /usr/lib/rpm/brp-strip-comment-note /bin/strip /bin/objdump"
+time="2025-03-18T19:20:27Z" level=debug msg="+ /usr/lib/rpm/brp-strip-static-archive /bin/strip"
+time="2025-03-18T19:20:27Z" level=debug msg="+ /usr/lib/rpm/azl/brp-python-bytecompile /usr/bin/python3 1 0"
+time="2025-03-18T19:20:27Z" level=debug msg="+ find /usr/src/azl/BUILDROOT/yelp-xsl-42.1-6.azl3.x86_64 -name '*.pc'"
+time="2025-03-18T19:20:27Z" level=debug msg="+ xargs '-I{}' sed -i -e 's@-Wl,-dT,/usr/src/azl/BUILD/module_info.ld@ @' '{}'"
+time="2025-03-18T19:20:27Z" level=debug msg="+ /usr/lib/rpm/brp-strip /bin/strip"
+time="2025-03-18T19:20:27Z" level=debug msg="+ CCACHE_DIR=/ccache-dir"
+time="2025-03-18T19:20:27Z" level=debug msg="+ export CCACHE_DIR"
+time="2025-03-18T19:20:27Z" level=debug msg="+ ccache --show-stats"
+time="2025-03-18T19:20:27Z" level=debug msg="Cacheable calls:      6 /  23 (26.09%)"
+time="2025-03-18T19:20:27Z" level=debug msg="  Hits:               1 /   6 (16.67%)"
+time="2025-03-18T19:20:27Z" level=debug msg="    Direct:           1 /   1 (100.0%)"
+time="2025-03-18T19:20:27Z" level=debug msg="    Preprocessed:     0 /   1 ( 0.00%)"
+time="2025-03-18T19:20:27Z" level=debug msg="  Misses:             5 /   6 (83.33%)"
+time="2025-03-18T19:20:27Z" level=debug msg="Uncacheable calls:   17 /  23 (73.91%)"
+time="2025-03-18T19:20:27Z" level=debug msg="Local storage:"
+time="2025-03-18T19:20:27Z" level=debug msg="  Cache size (GiB): 0.0 / 5.0 ( 0.01%)"
+time="2025-03-18T19:20:27Z" level=debug msg="  Hits:               1 /   6 (16.67%)"
+time="2025-03-18T19:20:27Z" level=debug msg="  Misses:             5 /   6 (83.33%)"
+time="2025-03-18T19:20:28Z" level=debug msg="Processing files: yelp-xsl-42.1-6.azl3.noarch"
+time="2025-03-18T19:20:28Z" level=debug msg="Executing(%doc): /bin/sh -e /var/tmp/rpm-tmp.erciXF"
+time="2025-03-18T19:20:28Z" level=debug msg="+ umask 022"
+time="2025-03-18T19:20:28Z" level=debug msg="+ cd /usr/src/azl/BUILD"
+time="2025-03-18T19:20:28Z" level=debug msg="+ cd yelp-xsl-42.1"
+time="2025-03-18T19:20:28Z" level=debug msg="+ DOCDIR=/usr/src/azl/BUILDROOT/yelp-xsl-42.1-6.azl3.x86_64/usr/share/doc/yelp-xsl"
+time="2025-03-18T19:20:28Z" level=debug msg="+ export LC_ALL=C"
+time="2025-03-18T19:20:28Z" level=debug msg="+ LC_ALL=C"
+time="2025-03-18T19:20:28Z" level=debug msg="+ export DOCDIR"
+time="2025-03-18T19:20:28Z" level=debug msg="+ /bin/mkdir -p /usr/src/azl/BUILDROOT/yelp-xsl-42.1-6.azl3.x86_64/usr/share/doc/yelp-xsl"
+time="2025-03-18T19:20:28Z" level=debug msg="+ cp -pr AUTHORS /usr/src/azl/BUILDROOT/yelp-xsl-42.1-6.azl3.x86_64/usr/share/doc/yelp-xsl"
+time="2025-03-18T19:20:28Z" level=debug msg="+ cp -pr README.md /usr/src/azl/BUILDROOT/yelp-xsl-42.1-6.azl3.x86_64/usr/share/doc/yelp-xsl"
+time="2025-03-18T19:20:28Z" level=debug msg="+ RPM_EC=0"
+time="2025-03-18T19:20:28Z" level=debug msg="++ jobs -p"
+time="2025-03-18T19:20:28Z" level=debug msg="+ exit 0"
+time="2025-03-18T19:20:28Z" level=debug msg="+ umask 022"
+time="2025-03-18T19:20:28Z" level=debug msg="+ cd /usr/src/azl/BUILD"
+time="2025-03-18T19:20:28Z" level=debug msg="+ cd yelp-xsl-42.1"
+time="2025-03-18T19:20:28Z" level=debug msg="+ LICENSEDIR=/usr/src/azl/BUILDROOT/yelp-xsl-42.1-6.azl3.x86_64/usr/share/licenses/yelp-xsl"
+time="2025-03-18T19:20:28Z" level=debug msg="+ export LC_ALL=C"
+time="2025-03-18T19:20:28Z" level=debug msg="+ LC_ALL=C"
+time="2025-03-18T19:20:28Z" level=debug msg="+ export LICENSEDIR"
+time="2025-03-18T19:20:28Z" level=debug msg="+ /bin/mkdir -p /usr/src/azl/BUILDROOT/yelp-xsl-42.1-6.azl3.x86_64/usr/share/licenses/yelp-xsl"
+time="2025-03-18T19:20:28Z" level=debug msg="Executing(%license): /bin/sh -e /var/tmp/rpm-tmp.hOoxoW"
+time="2025-03-18T19:20:28Z" level=debug msg="+ cp -pr COPYING /usr/src/azl/BUILDROOT/yelp-xsl-42.1-6.azl3.x86_64/usr/share/licenses/yelp-xsl"
+time="2025-03-18T19:20:28Z" level=debug msg="+ cp -pr COPYING.GPL /usr/src/azl/BUILDROOT/yelp-xsl-42.1-6.azl3.x86_64/usr/share/licenses/yelp-xsl"
+time="2025-03-18T19:20:28Z" level=debug msg="+ cp -pr COPYING.LGPL /usr/src/azl/BUILDROOT/yelp-xsl-42.1-6.azl3.x86_64/usr/share/licenses/yelp-xsl"
+time="2025-03-18T19:20:28Z" level=debug msg="+ RPM_EC=0"
+time="2025-03-18T19:20:28Z" level=debug msg="++ jobs -p"
+time="2025-03-18T19:20:28Z" level=debug msg="+ exit 0"
+time="2025-03-18T19:20:28Z" level=debug msg="Provides: yelp-xsl = 42.1-6.azl3"
+time="2025-03-18T19:20:28Z" level=debug msg="Requires(rpmlib): rpmlib(CompressedFileNames) <= 3.0.4-1 rpmlib(FileDigests) <= 4.6.0-1 rpmlib(PayloadFilesHavePrefix) <= 4.0-1"
+time="2025-03-18T19:20:28Z" level=debug msg="Processing files: yelp-xsl-devel-42.1-6.azl3.noarch"
+time="2025-03-18T19:20:28Z" level=debug msg="Provides: pkgconfig(yelp-xsl) = 42.1 yelp-xsl-devel = 42.1-6.azl3"
+time="2025-03-18T19:20:28Z" level=debug msg="Requires(rpmlib): rpmlib(CompressedFileNames) <= 3.0.4-1 rpmlib(FileDigests) <= 4.6.0-1 rpmlib(PayloadFilesHavePrefix) <= 4.0-1"
+time="2025-03-18T19:20:28Z" level=debug msg="Requires: /usr/bin/pkg-config"
+time="2025-03-18T19:20:28Z" level=debug msg="Checking for unpackaged file(s): /usr/lib/rpm/check-files /usr/src/azl/BUILDROOT/yelp-xsl-42.1-6.azl3.x86_64"
+time="2025-03-18T19:20:28Z" level=debug msg="Wrote: /usr/src/azl/RPMS/noarch/yelp-xsl-devel-42.1-6.azl3.noarch.rpm"
+time="2025-03-18T19:20:28Z" level=debug msg="Wrote: /usr/src/azl/RPMS/noarch/yelp-xsl-42.1-6.azl3.noarch.rpm"
+time="2025-03-18T19:20:28Z" level=debug msg="+ umask 022"
+time="2025-03-18T19:20:28Z" level=debug msg="Executing(%clean): /bin/sh -e /var/tmp/rpm-tmp.PR4DrC"
+time="2025-03-18T19:20:28Z" level=debug msg="+ cd /usr/src/azl/BUILD"
+time="2025-03-18T19:20:28Z" level=debug msg="+ cd yelp-xsl-42.1"
+time="2025-03-18T19:20:28Z" level=debug msg="+ /bin/rm -rf /usr/src/azl/BUILDROOT/yelp-xsl-42.1-6.azl3.x86_64"
+time="2025-03-18T19:20:28Z" level=debug msg="+ RPM_EC=0"
+time="2025-03-18T19:20:28Z" level=debug msg="++ jobs -p"
+time="2025-03-18T19:20:28Z" level=debug msg="+ exit 0"
+time="2025-03-18T19:20:28Z" level=debug msg="Executing(rmbuild): /bin/sh -e /var/tmp/rpm-tmp.tJmwMK"
+time="2025-03-18T19:20:28Z" level=debug msg="+ umask 022"
+time="2025-03-18T19:20:28Z" level=debug msg="+ cd /usr/src/azl/BUILD"
+time="2025-03-18T19:20:28Z" level=debug msg="+ rm -rf yelp-xsl-42.1 yelp-xsl-42.1.gemspec"
+time="2025-03-18T19:20:28Z" level=debug msg="+ RPM_EC=0"
+time="2025-03-18T19:20:28Z" level=debug msg="++ jobs -p"
+time="2025-03-18T19:20:28Z" level=debug msg="+ exit 0"
+time="2025-03-18T19:20:28Z" level=debug
+time="2025-03-18T19:20:28Z" level=debug msg="RPM build warnings:"
+time="2025-03-18T19:20:28Z" level=debug msg="    Could not canonicalize hostname: azuli-m1"
+time="2025-03-18T19:20:28Z" level=debug msg="Build thread in chroot finished."
+time="2025-03-18T19:20:28Z" level=debug msg="Exiting Chroot: '/third_disk/bb17Mar/azurelinux/build/worker/chroot/yelp-xsl-42.1-6.azl3'"
+time="2025-03-18T19:20:28Z" level=debug msg="Moving (/third_disk/bb17Mar/azurelinux/build/worker/chroot/yelp-xsl-42.1-6.azl3/usr/src/azl/RPMS/noarch/yelp-xsl-42.1-6.azl3.noarch.rpm) -> (/third_disk/bb17Mar/azurelinux/out/RPMS/noarch/yelp-xsl-42.1-6.azl3.noarch.rpm)"
+time="2025-03-18T19:20:28Z" level=debug msg="Executing: [mv /third_disk/bb17Mar/azurelinux/build/worker/chroot/yelp-xsl-42.1-6.azl3/usr/src/azl/RPMS/noarch/yelp-xsl-42.1-6.azl3.noarch.rpm /third_disk/bb17Mar/azurelinux/out/RPMS/noarch/yelp-xsl-42.1-6.azl3.noarch.rpm]"
+time="2025-03-18T19:20:28Z" level=debug msg="Moving (/third_disk/bb17Mar/azurelinux/build/worker/chroot/yelp-xsl-42.1-6.azl3/usr/src/azl/RPMS/noarch/yelp-xsl-devel-42.1-6.azl3.noarch.rpm) -> (/third_disk/bb17Mar/azurelinux/out/RPMS/noarch/yelp-xsl-devel-42.1-6.azl3.noarch.rpm)"
+time="2025-03-18T19:20:28Z" level=debug msg="Executing: [mv /third_disk/bb17Mar/azurelinux/build/worker/chroot/yelp-xsl-42.1-6.azl3/usr/src/azl/RPMS/noarch/yelp-xsl-devel-42.1-6.azl3.noarch.rpm /third_disk/bb17Mar/azurelinux/out/RPMS/noarch/yelp-xsl-devel-42.1-6.azl3.noarch.rpm]"
+time="2025-03-18T19:20:28Z" level=info msg="* processing upload of ccache artifacts..."
+time="2025-03-18T19:20:28Z" level=info msg="  ccache update is disabled for this build."
+time="2025-03-18T19:20:28Z" level=debug msg="Entering Chroot: '/third_disk/bb17Mar/azurelinux/build/worker/chroot/yelp-xsl-42.1-6.azl3'"
+time="2025-03-18T19:20:28Z" level=debug msg="Executing: [gpgconf --list-components]"
+time="2025-03-18T19:20:28Z" level=debug msg="gpg:OpenPGP:/usr/bin/gpg2"
+time="2025-03-18T19:20:28Z" level=debug msg="gpgsm:S/MIME:/usr/bin/gpgsm"
+time="2025-03-18T19:20:28Z" level=debug msg="keyboxd:Public Keys:/usr/libexec/keyboxd"
+time="2025-03-18T19:20:28Z" level=debug msg="gpg-agent:Private Keys:/usr/bin/gpg-agent"
+time="2025-03-18T19:20:28Z" level=debug msg="scdaemon:Smartcards:/usr/libexec/scdaemon"
+time="2025-03-18T19:20:28Z" level=debug msg="dirmngr:Network:/usr/bin/dirmngr"
+time="2025-03-18T19:20:28Z" level=debug msg="pinentry:Passphrase Entry:/usr/bin/pinentry"
+time="2025-03-18T19:20:28Z" level=debug msg="Found gpg-agent running inside chroot. Stopping it."
+time="2025-03-18T19:20:28Z" level=debug msg="Executing: [gpgconf --kill gpg-agent]"
+time="2025-03-18T19:20:28Z" level=debug msg="Found keyboxd running inside chroot. Stopping it."
+time="2025-03-18T19:20:28Z" level=debug msg="Executing: [gpgconf --kill keyboxd]"
+time="2025-03-18T19:20:28Z" level=debug msg="Exiting Chroot: '/third_disk/bb17Mar/azurelinux/build/worker/chroot/yelp-xsl-42.1-6.azl3'"
+time="2025-03-18T19:20:28Z" level=debug msg="Unmounting (/third_disk/bb17Mar/azurelinux/build/worker/chroot/yelp-xsl-42.1-6.azl3/ccache-dir)"
+time="2025-03-18T19:20:28Z" level=debug msg="Calling unmount on path(/third_disk/bb17Mar/azurelinux/build/worker/chroot/yelp-xsl-42.1-6.azl3/ccache-dir) with flags (0)"
+time="2025-03-18T19:20:28Z" level=debug msg="Unmounting (/third_disk/bb17Mar/azurelinux/build/worker/chroot/yelp-xsl-42.1-6.azl3/upstream-cached-rpms)"
+time="2025-03-18T19:20:28Z" level=debug msg="Calling unmount on path(/third_disk/bb17Mar/azurelinux/build/worker/chroot/yelp-xsl-42.1-6.azl3/upstream-cached-rpms) with flags (0)"
+time="2025-03-18T19:20:28Z" level=debug msg="Unmounting (/third_disk/bb17Mar/azurelinux/build/worker/chroot/yelp-xsl-42.1-6.azl3/toolchainrpms)"
+time="2025-03-18T19:20:28Z" level=debug msg="Calling unmount on path(/third_disk/bb17Mar/azurelinux/build/worker/chroot/yelp-xsl-42.1-6.azl3/toolchainrpms) with flags (0)"
+time="2025-03-18T19:20:29Z" level=debug msg="Unmounting (/third_disk/bb17Mar/azurelinux/build/worker/chroot/yelp-xsl-42.1-6.azl3/localrpms)"
+time="2025-03-18T19:20:29Z" level=debug msg="Calling unmount on path(/third_disk/bb17Mar/azurelinux/build/worker/chroot/yelp-xsl-42.1-6.azl3/localrpms) with flags (0)"
+time="2025-03-18T19:20:29Z" level=debug msg="Unmounting (/third_disk/bb17Mar/azurelinux/build/worker/chroot/yelp-xsl-42.1-6.azl3/dev/pts)"
+time="2025-03-18T19:20:29Z" level=debug msg="Calling unmount on path(/third_disk/bb17Mar/azurelinux/build/worker/chroot/yelp-xsl-42.1-6.azl3/dev/pts) with flags (0)"
+time="2025-03-18T19:20:29Z" level=debug msg="Unmounting (/third_disk/bb17Mar/azurelinux/build/worker/chroot/yelp-xsl-42.1-6.azl3/run)"
+time="2025-03-18T19:20:29Z" level=debug msg="Calling unmount on path(/third_disk/bb17Mar/azurelinux/build/worker/chroot/yelp-xsl-42.1-6.azl3/run) with flags (0)"
+time="2025-03-18T19:20:29Z" level=debug msg="Unmounting (/third_disk/bb17Mar/azurelinux/build/worker/chroot/yelp-xsl-42.1-6.azl3/sys)"
+time="2025-03-18T19:20:29Z" level=debug msg="Calling unmount on path(/third_disk/bb17Mar/azurelinux/build/worker/chroot/yelp-xsl-42.1-6.azl3/sys) with flags (0)"
+time="2025-03-18T19:20:29Z" level=debug msg="Unmounting (/third_disk/bb17Mar/azurelinux/build/worker/chroot/yelp-xsl-42.1-6.azl3/proc)"
+time="2025-03-18T19:20:29Z" level=debug msg="Calling unmount on path(/third_disk/bb17Mar/azurelinux/build/worker/chroot/yelp-xsl-42.1-6.azl3/proc) with flags (0)"
+time="2025-03-18T19:20:29Z" level=debug msg="Unmounting (/third_disk/bb17Mar/azurelinux/build/worker/chroot/yelp-xsl-42.1-6.azl3/dev)"
+time="2025-03-18T19:20:29Z" level=debug msg="Calling unmount on path(/third_disk/bb17Mar/azurelinux/build/worker/chroot/yelp-xsl-42.1-6.azl3/dev) with flags (0)"
+time="2025-03-18T19:20:33Z" level=info msg="Built (yelp-xsl-42.1-6.azl3.src.rpm) -> [/third_disk/bb17Mar/azurelinux/out/RPMS/noarch/yelp-xsl-42.1-6.azl3.noarch.rpm /third_disk/bb17Mar/azurelinux/out/RPMS/noarch/yelp-xsl-devel-42.1-6.azl3.noarch.rpm]."
+time="2025-03-18T19:20:33Z" level=debug msg="Copying (/third_disk/bb17Mar/azurelinux/build/INTERMEDIATE_SRPMS/yelp-xsl-42.1-6.azl3.src.rpm) to (/third_disk/bb17Mar/azurelinux/out/SRPMS/yelp-xsl-42.1-6.azl3.src.rpm)"
+time="2025-03-18T19:20:33Z" level=debug msg="Executing: [cp --preserve=mode /third_disk/bb17Mar/azurelinux/build/INTERMEDIATE_SRPMS/yelp-xsl-42.1-6.azl3.src.rpm /third_disk/bb17Mar/azurelinux/out/SRPMS/yelp-xsl-42.1-6.azl3.src.rpm]"

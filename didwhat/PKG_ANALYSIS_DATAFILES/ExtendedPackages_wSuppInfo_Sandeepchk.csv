@@ -1,0 +1,13 @@
+Package,Developer,Upgrade to be done (Y/N/To be removed),Is some confirmation required (Y/N),Confirmation done  (Y/N),2.0 EXT pkg present in either SPECS or EXT of 3.0-dev (Y/N),2.0 EXT pkg present in EXT of 3.0-dev(Y/N),"Confirm if removal is deliberate (Y/N) (If N in both Column F and Column G, here we put Y.  A Y here means we must check with Microsoft if this is a deliberate removal of the package)","Moved from EXT in 2.0 to Core in 3.0-dev (Y/N) (If Y in Column F and N in Column G, then this is Y)",Remarks,"Priority (P0, P1, P2)",New Name of Package,Package added to Azure Linux 3.0-dev,,"OLDPriority (P0, P1, P2)",SAME/DIFF
+CharLS,Jyoti,Override_to_Y,N,N,Y,Y,N,N,,P1,NA,N,,P1,SAME
+GConf2,Jyoti,,N,N,Y,Y,N,N,,P1,NA,N,,P1,SAME
+GeoIP,Jyoti,,N,N,Y,Y,N,N,,P1,NA,N,,P1,SAME
+pcp,Sandeep,,N,N,Y,Y,N,N,,P1,NA,N,,P1,SAME
+python-iso8601,Sandeep,,N,N,Y,Y,N,N,,CP_batch1,NA,N,,CP_batch1,SAME
+python-isodate,Sandeep,,N,N,Y,Y,N,N,,CP_batch1,NA,N,,CP_batch1,SAME
+python-productmd,Sandeep,,N,N,Y,Y,N,N,,CP_batch1,NA,N,,CP_batch1,SAME
+python-pytest-timeout,Sandeep,,N,N,Y,Y,N,N,,CP_batch1,NA,N,,CP_batch1,SAME
+perl-Class-ISA,Kevin,,N,N,Y,N,N,Y,,P1,NA,N,,P1,SAME
+perl-Class-Inspector,,,N,N,Y,Y,N,N,,NA,NA,N,,,DIFFERENT
+perl-Class-Load,Kevin,,N,N,Y,Y,N,N,,P1,NA,N,,P1,SAME
+perl-Class-Load-XS,Kevin,,N,N,Y,Y,N,N,,P1,NA,N,,P1,SAME

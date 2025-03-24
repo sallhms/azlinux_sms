@@ -1,0 +1,908 @@
+
+
+MSTR_LIST="/third_disk/bb17Mar/azurelinux/didwhat/PKG_ANALYSIS_DATAFILES/ExtendedPackages_wSuppInfo.csv"
+#MSTR_LIST="/third_disk/bb04Mar/azurelinux/didwhat/PKG_ANALYSIS_DATAFILES/ExtendedPackages_wSuppInfo_split2.csv"
+
+#MSTR_LIST="/third_disk/bb03Mar/azurelinux/didwhat/PKG_ANALYSIS_DATAFILES/ExtendedPackages_wSuppInfo_small_devs.csv"
+#MSTR_LIST="/home/neerajs/PKG_ANALYSIS_DATAFILES/ExtendedPackages_wSuppInfo.csv"
+#MSTR_LIST="/home/neerajs/Downloads/docker_folder/impspc/mlist_extpkg"
+#MSTR_LIST="/home/neerajs/Downloads/docker_folder/impspc/smlist_w_badpkgnm"
+#MSTR_LIST="/home/neerajs/Downloads/docker_folder/impspc/fifty_pkglist"
+#MSTR_LIST="/home/neerajs/Downloads/docker_folder/impspc/first_fifty_pkglist"
+#MSTR_LIST="/home/neerajs/Downloads/docker_folder/impspc/somelist_pkgs"
+
+#MSREPO_2MAIN_WORKDIR="/home/neerajs/work/REPOS/Microsoft_AZL/azurelinux"
+
+#Here we provide path to a branch that has been created over the commit SHA "ccf7dd5e8", because
+#this commit SHA is the parent of the commit SHA "c6803dffe" in which the merge of upgraded 
+#CharLS happened.  So, when we check the branch created over "ccf7dd5e8" for checkes like EXISTS_IN_EXT 
+#or MOVED_TO_CORE, we will get results correct even for CharLS, which we believe was the first upgrade
+#PR merged.
+MSREPO_3DEV_WORKDIR="/fifth_disk/upgdReferenceBranch/azurelinux"
+#MSREPO_3DEV_WORKDIR="/home/neerajs/work/REPOS/Microsoft_AZL/azurelinux"
+#MSREPO_3DEV_WORKDIR="/home/neerajs/Downloads/docker_folder/REPOS/Microsoft_AZL/azurelinux"
+
+#This is a constant now.  Although I am not very sure if we do need these build results of
+#06 Nov 2024 for the SPECS-EXTENDED pipeline.  We don't need these because we are using a 
+#more accurate code in this python program for detection of the version of a Package at that
+#time.
+#In addition to detection of package version, this would be required for knowing if a package
+#builds in the pipeline or not.  But for that we are now carrying out daily build.
+BUILD_ARTFCT_STATUS_FL="/third_disk/bb17Mar/azurelinux/didwhat/PKG_ANALYSIS_DATAFILES/build_state_06Nov2024.csv"
+#BUILD_ARTFCT_STATUS_FL="/home/neerajs/Downloads/daily_builds/06Nov2024/build_state.csv"
+#BUILD_ARTFCT_STATUS_FL="/home/neerajs/utils/TestIdeas/PKG_ANALYSIS_DATAFILES/last_fifty_build_state.csv"
+
+#This is a constant now.  It is the results of the download of spec files from Fedora 41
+DNLD_DETAILS_FL="/third_disk/bb17Mar/azurelinux/didwhat/PKG_ANALYSIS_DATAFILES/scr_run_log.txt"
+#DNLD_DETAILS_FL="/home/neerajs/Downloads/docker_folder/impspc/fetchdir/scr_run_log.txt"
+
+REPO_FOR_PR_SEARCH="https://github.com/microsoft/azurelinux.git"
+
+BULK_BUILD_ROOT="/fifth_disk/bb_dec23/code/azurelinux"
+ADD_BULK_BUILD_ARTFCT_STATUS_FL="/third_disk/bb17Mar/azurelinux/didwhat/PKG_ANALYSIS_DATAFILES/build_state_17Mar.csv"
+#ADD_BULK_BUILD_ARTFCT_STATUS_FL="/third_disk/bb05Mar/azurelinux/didwhat/PKG_ANALYSIS_DATAFILES/build_state_additional.csv"
+#ADD_BULK_BUILD_ARTFCT_STATUS_FL="/home/neerajs/utils/PKG_ANALYSIS_27Feb/build_state.csv"
+
+UNDER_REVIEW_PR_FILE="/home/neerajs/PKG_ANALYSIS_DATAFILES/PRTracking.csv"
+AKHILA_PACKAGE_CSV_FL="/home/neerajs/PKG_ANALYSIS_DATAFILES/PackageUpgradeReport-Akhila.csv"
+AKARSH_PACKAGE_CSV_FL="/home/neerajs/PKG_ANALYSIS_DATAFILES/PackageUpgradeReport-Akarsh.csv"
+ANINDA_PACKAGE_CSV_FL="/home/neerajs/PKG_ANALYSIS_DATAFILES/PackageUpgradeReport-Aninda.csv"
+ARCHANA_PACKAGE_CSV_FL="/home/neerajs/PKG_ANALYSIS_DATAFILES/PackageUpgradeReport-Archana.csv"
+JAGADEESH_PACKAGE_CSV_FL="/home/neerajs/PKG_ANALYSIS_DATAFILES/PackageUpgradeReport-Jagadeesh.csv"
+JYOTI_PACKAGE_CSV_FL="/home/neerajs/PKG_ANALYSIS_DATAFILES/PackageUpgradeReport-Jyoti.csv"
+KEVIN_PACKAGE_CSV_FL="/home/neerajs/PKG_ANALYSIS_DATAFILES/PackageUpgradeReport-Kevin.csv"
+NEERAJ_PACKAGE_CSV_FL="/home/neerajs/PKG_ANALYSIS_DATAFILES/PackageUpgradeReport-Neeraj.csv"
+SREENIVASULU_PACKAGE_CSV_FL="/home/neerajs/PKG_ANALYSIS_DATAFILES/PackageUpgradeReport-Sreenivas.csv"
+SUMIT_PACKAGE_CSV_FL="/home/neerajs/PKG_ANALYSIS_DATAFILES/PackageUpgradeReport-Sumit.csv"
+
+import pandas as pd
+import re
+from pathlib import Path
+from pyrpm.spec import Spec, replace_macros
+# Import the glob module, which allows you to search for files using wildcard patterns
+import glob
+#inspecting the program frames
+import inspect
+#parsing json output
+import json
+# invoke and use output of shell script in python
+import subprocess
+
+#In case the analysis is being done before the build the additional bulk build artifact status
+#file won't be available.
+#We neither open the corresponding build artifact file ADD_BULK_BUILD_ARTFCT_STATUS_FL
+#in that case nor do we create the additional column "Additional Bulk Build Status"
+#prebuild_analysis=True
+prebuild_analysis=False
+
+mstr_list_developer = 'Not Assigned'
+mstr_list_pkg_prio = 'Not Assigned'
+link_raised_PR = 'Not Assigned'
+pkgname_raised_PR = 'Not Assigned'
+mstr_list_upgd_decision = ''
+final_upgd_decision = ''
+mstr_list_pkgnewname = ''
+mstr_list_addedpkg = ''
+
+PRnum = ''
+PRstatus = ''
+PRcreationdate = ''
+PRtopicbranch = ''
+PRrepository = ''
+PRreponame = ''
+PRrepoowner = ''
+PRrepologin = ''
+PRorigin = ''
+
+ver_bld_status = ''
+rel_bld_status = ''
+bld_status = ''
+
+ver_ab_bld_status = ''
+rel_ab_bld_status = ''
+ab_bld_status = ''
+
+dnld_ver = ''
+dnld_rel = ''
+dnld_det_fl_object = ''
+dnld_det_fl_lines = ''
+dnld_det_success = 0
+dnld_det_srpmlist = []
+dl_srpm_count = 0
+dl_srpm1 = 'Default Initialized'
+dl_srpm2 = 'Default Initialized'
+dl_srpm3 = 'Default Initialized'
+
+pkg_existence = ''
+ver_in_3_dev = ''
+
+upgd_reqd = 'Revisit'
+
+bulk_build_success = ''
+bulk_build_success_count = 0
+
+rev_pr_fl_row_count = 0
+rev_pr_fl_pkgname = 'Not Assigned'
+rev_pr_fl_serial_num = 0
+rev_pr_fl_developer = 'Not Assigned'
+rev_pr_fl_prlink = 'Not Assigned'
+rev_pr_fl_reviewer = 'Not Assigned'
+rev_pr_fl_status = 'Not Assigned'
+
+# function to detect that an empty field has been read, which is presented as a nan by pd.read_csv()
+def isNaN(num):
+	return num != num
+
+# function useful for logging statements.  Generates the name of the function from where it is called. 
+def func_nm_shrthnd():
+    # get the frame object of the function
+    prev_frame = inspect.currentframe().f_back
+    return prev_frame.f_code.co_name
+
+def check_build_status(pnm):
+	global ver_bld_status
+	global rel_bld_status
+	global bld_status
+
+	cols = ['Package','State','Blocker','IsTest']
+	table = pd.read_csv(BUILD_ARTFCT_STATUS_FL, usecols=cols)
+	for row in table.itertuples():
+		#if src.rpm extension is present split it and pick the name part excluding src.rpm
+		name_wo_srcrpm = re.split(r"(.src.rpm)", row[1])
+		name_parts = re.search(r"(.*)-(.*)-(.*)$", name_wo_srcrpm[0])
+		#print(f'for srpm name {row[1]} the parts of the package name are:')
+		#print(f'Full string:{name_parts[0]}, package name:{name_parts[1]}, version:{name_parts[2]}, release:{name_parts[3]}')
+		if ( pnm == name_parts[1] ):
+			#print (f'for package {pnm}, the srpm is {name_parts[0]}, version is {name_parts[2]}, release is {name_parts[3]}') 
+			ver_bld_status = name_parts[2]
+			rel_bld_status = name_parts[3]
+			bld_status = row[2]
+			break
+	if ( pnm != name_parts[1] ):
+		#print (f'package {pnm} not in the build list')
+		ver_bld_status = f'Not Found'
+		rel_bld_status = f'Not Found'
+		bld_status = f'Not Found'
+
+def check_dnld_status(pkname):
+	global dnld_det_fl_lines
+	in_pk_section = 0
+	global dnld_det_srpmlist
+	global dnld_det_success
+	global dnld_ver
+	global dnld_rel
+	global dl_srpm_count
+	global dl_srpm1
+	global dl_srpm2
+	global dl_srpm3
+
+	dnld_det_srpmlist.clear()
+	dnld_det_success = 0
+	dl_srpm_count = 0
+	dl_srpm1 = 'Default Initialized'
+	dl_srpm2 = 'Default Initialized'
+	dl_srpm3 = 'Default Initialized'
+	dnld_ver = 'Not Found'
+	dnld_rel = 'Not Found'
+	package_name_from_srpm = ''
+
+	count = 0
+	for line in dnld_det_fl_lines:
+		count = count + 1
+		#print (line)
+		pk_first_line_parts = re.search(r"^Attempting for (.*)", line)
+		if ( pk_first_line_parts != None ):
+			#print (f'line num {count} is: {pk_first_line_parts}')
+			#print (f'first part {pk_first_line_parts[0]}, second part {pk_first_line_parts[1]}')
+			if ( pkname == pk_first_line_parts[1] ):
+				in_pk_section = 1
+				#print (f'{pkname}: Section starts at line {count}')
+
+		if ( 1 == in_pk_section ):
+			#print (f'{pkname}: line {count} in package section')
+			ignore_pattern1 = re.search(r"^===================", line)
+			if ( ignore_pattern1 != None ):
+				#print (f'Ignoring the pattern 1')
+				continue
+			ignore_pattern2 = re.search(r"^dest_dir\/.*", line)
+			if ( ignore_pattern2 != None ):
+				#print (f'Ignoring the pattern 2')
+				continue
+			ignore_pattern3 = re.search(r"^enabling fedora-.*source repository", line)
+			if ( ignore_pattern3 != None ):
+				#print (f'Ignoring the pattern 3')
+				continue
+			ignore_pattern4 = re.search(r"^enabling updates-source repository", line)
+			if ( ignore_pattern4 != None ):
+				#print (f'Ignoring the pattern 4')
+				continue
+			ignore_pattern5 = re.search(r"^Fedora 41 .*/s \| .*", line)
+			if ( ignore_pattern5 != None ):
+				#print (f'Ignoring the pattern 5')
+				continue
+			ignore_pattern6 = re.search(r"^Last metadata expiration check:.*", line)
+			if ( ignore_pattern6 != None ):
+				#print (f'Ignoring the pattern 6')
+				continue
+			srpm_pattern = re.search(r"^(.*) [0-9][0-9\.]*.*\|.*", line)
+			if ( srpm_pattern != None ):
+				stripped_srpm_pattern=srpm_pattern[1].strip()
+				#print (f'{pkname}: srpm_pattern is {stripped_srpm_pattern}')
+				dnld_det_srpmlist.append(stripped_srpm_pattern)
+				dl_srpm_count = dl_srpm_count + 1
+			end_pattern_failcase = re.search(r"^DL FAIL:.*", line)
+			if ( end_pattern_failcase != None ):
+				end_pk_section = 1
+				dnld_det_success = 0
+				#print (f'{pkname}: download fail seen at line {count}')
+				break
+
+			end_pattern_successcase = re.search(r"^DL SUCCESS:.*", line)
+			if ( end_pattern_successcase != None ):
+				end_pk_section = 1
+				dnld_det_success = 1
+				#print (f'{pkname}: download success seen at line {count}')
+				#print (f'the srpm list is {dnld_det_srpmlist}')
+				#find the version and release of the first srpm in the list of srpms downloaded for this package
+				#remove the .src.rpm extension if present in the name of the package file
+				#Use the name from the first srpm for all packages except libldb
+				if ( 'libldb' != pkname ):
+					name_wo_srcrpm = re.split(r"(.src.rpm)", dnld_det_srpmlist[0])
+					if ( name_wo_srcrpm != None):
+						name_parts = re.search(r"(.*)-(.*)-(.*)$", name_wo_srcrpm[0])
+						#print(f'for srpm name {pkname} the parts of the package name are:')
+						#print(f'Full string:{name_parts[0]}, package name:{name_parts[1]}, version:{name_parts[2]}, release:{name_parts[3]}')
+						dnld_ver = name_parts[2] 
+						dnld_rel = name_parts[3] 
+						#print(f'For the first srpm version is {dnld_ver} and release is {dnld_rel}')
+				#for libldb only use the version number from that downloaded srpm which is libldb.*.src.rpm
+				elif ( 'libldb' == pkname ):
+					#hard coding the ver and rel because extracting those from one of the multiple srpms
+					#downloaded was a complex thing.  Requires going through the list of downloaded srpms
+					#and also the lines for these downloads are not as simple as the cases where single
+					#srpm is downloaded, because these lines for multiples downloads include (1/2): and 
+					#(2/2): etc in the start.
+					dnld_ver = '2.9.1'
+					dnld_rel = '4'
+							
+				if ( 1 <= dl_srpm_count ):
+					dl_srpm1 = dnld_det_srpmlist[0]
+				if ( 2 <= dl_srpm_count ):
+					dl_srpm2 = dnld_det_srpmlist[1]
+				if ( 3 <= dl_srpm_count ):
+					dl_srpm3 = dnld_det_srpmlist[2]
+				break
+
+	if ( 1 != in_pk_section ):
+		#print (f'{pkname}: Not in downloads')
+		dnld_det_success = 0
+
+def check_pkg_azl_existence(pkname):
+	global pkg_existence
+	global mstr_list_addedpkg
+	global ver_in_3_dev
+	ver_in_3_dev = 'Not Found'
+
+	if ( mstr_list_addedpkg == 'Y' ):
+		pkg_existence = 'NEW_ADDITION'
+	else:
+		dirpathstr=MSREPO_3DEV_WORKDIR + "/SPECS/" + pkname
+		#print (f'dirpathstr is {dirpathstr}')
+		file=Path(dirpathstr)
+		if ( file.is_dir() ):
+			pkg_in_3_core = 1
+		else:
+			pkg_in_3_core = 0
+			
+		dirpathstr=MSREPO_3DEV_WORKDIR + "/SPECS-EXTENDED/" + pkname
+		#print (f'dirpathstr is {dirpathstr}')
+		file=Path(dirpathstr)
+		if ( file.is_dir() ):
+			pkg_in_3_ext = 1
+		else:
+			pkg_in_3_ext = 0
+
+		if ( pkg_in_3_core == 1 and pkg_in_3_ext == 1):
+			pkg_existence = 'EXISTS_IN_BOTH'
+		elif ( pkg_in_3_core == 1 and pkg_in_3_ext == 0):
+			pkg_existence = 'MOVED_TO_CORE'
+		elif ( pkg_in_3_core == 0 and pkg_in_3_ext == 0):
+			pkg_existence = 'REMOVED_FROM_BOTH'
+		else:
+			pkg_existence = 'EXISTS_IN_EXT'
+		
+		if ( 'EXISTS_IN_EXT' == pkg_existence ):
+			flpathstr=MSREPO_3DEV_WORKDIR + "/SPECS-EXTENDED/" + pkname + "/" + pkname + ".spec"
+			file=Path(flpathstr)
+			if ( file.is_file() ):
+				spec = Spec.from_file(flpathstr)
+				ver_in_3_dev = spec.version
+				#If there are macros in ver_in_3_dev, try to replace them
+				if '%' in ver_in_3_dev:
+					ver_in_3_dev = replace_macros(spec.version, spec)
+				#if even after replacing the macros there are unresolved components remaining
+				if '%' in ver_in_3_dev:
+					ver_in_3_dev = 'Not Found'
+			else:
+				ver_in_3_dev = 'No Spec Found'
+
+	#print (f'{pkname} {pkg_existence}')
+
+def parse_version(version):
+	# Replace special cases
+	version = version.replace('Not_Found', '0').replace('Not_found', '0').replace('_', '.')
+	
+	# Split the version into components
+	# This regex captures numbers, letters, and special characters
+	components = re.split(r'[\.]', version)
+	# Filter out empty strings and return a list of components
+	return [comp for comp in components if comp]
+
+def compare_version(first_ver, sec_ver):
+	#print(f'first_ver : {first_ver} , sec_ver : {sec_ver}')
+	#first_ver = str(first_ver)
+	#sec_ver = str(sec_ver)
+	parsed_v1 = parse_version(first_ver)
+	parsed_v2 = parse_version(sec_ver)
+	#print(func_nm_shrthnd() + f': first_ver parsed: {parsed_v1}, length: {len(parsed_v1)} , sec_ver parsed: {parsed_v2}, length: {len(parsed_v2)}')
+	# Compare the parsed components
+
+	#if only one of the versions is in dotted notation, we will let the developer decide
+	if ( (len(parsed_v1) == 1 or len(parsed_v2) == 1) and (len(parsed_v1) != len(parsed_v2)) ):
+		return 'Revisit Ver Compare'
+
+	for comp1, comp2 in zip(parsed_v1, parsed_v2):
+		if str(comp1).isdigit() and str(comp2).isdigit():
+			# Compare as integers
+			if int(comp1) < int(comp2):
+				return 'First Less than Second'
+			elif int(comp1) > int(comp2):
+				return 'First Greater than Second'
+		#if one of the versions has non-numeric component, let the developer decide
+		else:
+			return 'Revisit Ver Compare'
+	# reaching here means that the two versions are equal if the number of elements is also equal
+	if ( len(parsed_v1) == len(parsed_v2) ):
+		return 'First Equal to Second'
+	else:
+		return 'Revisit Ver Compare'
+
+def set_upgrade_reqd(pkname):
+	global ver_bld_status
+	global dnld_ver
+	global upgd_reqd
+
+	upgd_reqd = 'Revisit'
+
+	if ( 'Not Found' == ver_bld_status ):
+		upgd_reqd = 'Revisit No Bld Ver'
+	elif ('Not Found' == dnld_ver ):
+		upgd_reqd = 'Revisit No Dnld Ver'
+	else:
+		result = compare_version(ver_bld_status, dnld_ver)
+		#print (func_nm_shrthnd() + f': Package {pkname}: version in build status {ver_bld_status}, downloaded version {dnld_ver}, result = {result}')
+		if ( 'First Less than Second' == result ):
+			upgd_reqd = 'Y'
+		elif ( 'First Equal to Second' == result ):
+			upgd_reqd = 'N'
+		elif ( 'First Greater than Second' == result ):
+			upgd_reqd = 'N'
+		else:
+			upgd_reqd = result
+		
+def check_bulk_build(pkname):
+	global dnld_det_srpmlist
+	global bulk_build_success_count
+	global bulk_build_success
+	global dl_srpm_count
+
+	bulk_build_success = 'N'
+	bulk_build_success_count = 0
+	package_name = ''
+	ver = ''
+	rel = ''
+
+	#print (f'check_bulk_build Entered')
+	#check for each downloaded srpm for this package, if the correspoding srpm was generated by bulk build
+	for i, srpm_file_name in enumerate(dnld_det_srpmlist):
+		name_wo_srcrpm = re.split(r"(.src.rpm)", srpm_file_name)
+		if ( name_wo_srcrpm != None):
+			name_parts = re.search(r"(.*)-(.*)-(.*)$", name_wo_srcrpm[0])
+			#print(f'for srpm name {srpm_file_name} the parts of the package name are:')
+			#print(f'Full string:{name_parts[0]}, package name:{name_parts[1]}, version:{name_parts[2]}, release:{name_parts[3]}')
+			package_name = name_parts[1]
+			ver = name_parts[2] 
+			rel = name_parts[3] 
+			#print(f'For the srpm {srpm_file_name}, the version is {ver} and release is {rel}')
+
+			#filpathstr=BULK_BUILD_ROOT + "/out/SRPMS/" + package_name + "-" + ver + "-" + rel + ".azl3.src.rpm"
+			#file=Path(filpathstr)
+			#if ( file.is_file(filpathstr) ):
+			pathstr = BULK_BUILD_ROOT + "/out/SRPMS/" 
+			filnamestr = package_name + "-" + ver + "-*.azl3.src.rpm"
+			#print (f'Will be looking for file {pathstr}{filnamestr}')
+			found_built_file = 0
+			for path in Path(pathstr).glob(filnamestr):
+				#print (f'Found {filnamestr} as {path}')
+				found_built_file = found_built_file + 1
+				bulk_build_success_count = bulk_build_success_count + 1
+			#if ( 0 == found_built_file ):
+				#print (f'Missing {pathstr}{filnamestr}')
+
+		#print (f'bulk_build_success_count {bulk_build_success_count} / dl_srpm_count {dl_srpm_count}')
+		if ( bulk_build_success_count < dl_srpm_count ):
+			bulk_build_success = 'N'
+			#print (f'Bulk build fail for {pkname}.  Generated count {bulk_build_success_count}, Expected count {dl_srpm_count}')
+		else:
+			bulk_build_success = 'Y'
+			#print (f'Bulk build success for {pkname}')
+
+#This function is based on the check_build_status, because we plan to use the
+#build_status.csv generated by the additional bulk build, instead of the 
+#checking of files in the out/SRPMS/ directory.  This second method has been 
+#used for the analysis of the results of the Dec bulk build.  But for the 
+#additonal bulk build we intend to use the build_status.csv, which is smaller 
+#and easier to retain for script usage
+def check_additional_bulkbuild_status(pnm):
+	global ver_ab_bld_status
+	global rel_ab_bld_status
+	global ab_bld_status
+
+	cols = ['Package','State','Blocker','IsTest']
+	table = pd.read_csv(ADD_BULK_BUILD_ARTFCT_STATUS_FL, usecols=cols)
+	for row in table.itertuples():
+		#if src.rpm extension is present split it and pick the name part excluding src.rpm
+		name_wo_srcrpm = re.split(r"(.src.rpm)", row[1])
+		name_parts = re.search(r"(.*)-(.*)-(.*)$", name_wo_srcrpm[0])
+		#print(f'for srpm name {row[1]} the parts of the package name are:')
+		#print(f'Full string:{name_parts[0]}, package name:{name_parts[1]}, version:{name_parts[2]}, release:{name_parts[3]}')
+		if ( pnm == name_parts[1] ):
+			#print (f'for package {pnm}, the srpm is {name_parts[0]}, version is {name_parts[2]}, release is {name_parts[3]}') 
+			ver_ab_bld_status = name_parts[2]
+			rel_ab_bld_status = name_parts[3]
+			ab_bld_status = row[2]
+			break
+	if ( pnm != name_parts[1] ):
+		#print (f'package {pnm} not in the build list')
+		ver_ab_bld_status = f'Not Found'
+		rel_ab_bld_status = f'Not Found'
+		ab_bld_status = f'Not Found'
+
+
+def check_under_rev_PRs(pkname):
+	global rev_pr_fl_row_count
+	global rev_pr_fl_pkgname
+	global rev_pr_fl_serial_num
+	global rev_pr_fl_developer
+	global rev_pr_fl_prlink
+	global rev_pr_fl_reviewer
+	global rev_pr_fl_status
+
+	cols = ['S.No.','Package Name','Dev','PR Link','Reviewer','Status']
+	pr_list_table = pd.read_csv(UNDER_REVIEW_PR_FILE, usecols=cols, sep=",", na_values="None")
+
+	#print(func_nm_shrthnd() + f':{pkname}:')
+	rev_pr_fl_row_count = 0
+	for row_rev_pr_fl in pr_list_table.itertuples():
+		rev_pr_fl_row_count = rev_pr_fl_row_count + 1
+		rev_pr_fl_pkgname = row_rev_pr_fl[2]
+		
+		if ( rev_pr_fl_pkgname == pkname ):
+			rev_pr_fl_serial_num = row_rev_pr_fl[1]
+			rev_pr_fl_developer = row_rev_pr_fl[3]
+			rev_pr_fl_prlink = row_rev_pr_fl[4]
+			rev_pr_fl_reviewer = row_rev_pr_fl[5]
+			rev_pr_fl_status = row_rev_pr_fl[6]
+			if (isNaN(rev_pr_fl_prlink)):
+				rev_pr_fl_prlink = 'NA'
+			if (isNaN(rev_pr_fl_reviewer)):
+				rev_pr_fl_reviewer = 'NA'
+			if (isNaN(rev_pr_fl_status)):
+				rev_pr_fl_status = 'NA'
+			#print (func_nm_shrthnd() + f':full row:{row_rev_pr_fl}')
+			#print (func_nm_shrthnd() + f':rownum:{rev_pr_fl_row_count},serial number:{rev_pr_fl_serial_num},pkgname:{rev_pr_fl_pkgname},developer:{rev_pr_fl_developer},prlink:{rev_pr_fl_prlink}',reviewer:{rev_pr_fl_reviewer},status:{rev_pr_fl_status})
+			break
+	if ( rev_pr_fl_pkgname != pkname ):
+		rev_pr_fl_developer = 'NA'
+		rev_pr_fl_developer = 'NA'
+		rev_pr_fl_prlink = 'NA'
+		rev_pr_fl_reviewer = 'NA'
+		rev_pr_fl_status = 'NA'
+		## The below two lines have been replace by the above 4 lines
+		## Finally this complete function "check_under_rev_PRs" will be removed because we do not need to 
+		## fill these manually updated columns any more in the report.
+		#print (func_nm_shrthnd() + f':ERROR: {pkname} not found in upgrade csv file')
+		#exit(1)
+
+def check_PR(pkname, dev_name):
+	global link_raised_PR
+	global PRnum
+	global PRstatus
+	global PRcreationdate
+	global PRtopicbranch
+	global PRrepository
+	global PRreponame
+	global PRrepoowner
+	global PRrepologin
+	global PRorigin
+
+	if ( 'NA' == dev_name):
+        	link_raised_PR = 'NA'
+        	author_github_nm = 'NA'
+	elif ( 'Akarsh' == dev_name):
+        	author_github_nm = 'AkarshHCL'
+	elif ( 'Akhila' == dev_name):
+        	author_github_nm = 'akhila-guruju'
+	elif ( 'Aninda' == dev_name):
+        	author_github_nm = 'aninda-al'
+	elif ( 'Archana' == dev_name):
+        	author_github_nm = 'archana25-ms'
+	elif ( 'Jagadeesh' == dev_name):
+        	author_github_nm = 'durgajagadeesh'
+	elif ( 'Jyoti' == dev_name):
+        	author_github_nm = 'jykanase'
+	elif ( 'Kevin' == dev_name):
+        	author_github_nm = 'kevin-b-lockwood'
+	elif ( 'Neeraj' == dev_name):
+        	author_github_nm = 'sallhms'
+	elif ( 'Sreenivasulu' == dev_name):
+        	author_github_nm = 'v-smalavathu'
+	elif ( 'Sumit' == dev_name):
+        	author_github_nm = 'SumitJenaHCL'
+	elif ( 'Sandeep' == dev_name):
+        	author_github_nm = 'cyberbandya007'
+	elif ( 'CBL-Mariner-Bot' == dev_name):
+		author_github_nm = 'CBL-Mariner-Bot'
+	elif ( 'Mayank' == dev_name):
+        	author_github_nm = 'mayankfz'
+	else:
+		print (func_nm_shrthnd() + f':ERROR: Unknown developer name {dev_name}')
+		exit(1)
+
+	if ( author_github_nm == 'NA' ):
+		#print ('PR cannot be found without dev assigned to Package')
+		PRnum='NA'
+		PRstatus='NA'
+		PRcreationdate='NA'
+		link_raised_PR='NA'
+		PRtopicbranch='NA'
+		PRrepository = 'NA'
+		PRreponame = 'NA'
+		PRrepoowner = 'NA'
+		PRrepologin = 'NA'
+		PRorigin= 'NA'
+		return
+
+	#sh_scr_result=subprocess.run(['/home/neerajs/utils/PR_queries/find_PR_given_pkg_author', '/home/neerajs/Downloads/docker_folder/REPOS/Microsoft_AZL/azurelinux', 'kevin-b-lockwood', 'perl-Lingua-EN-Inflect'], stdout=subprocess.PIPE)
+	#author_github_nm='kevin-b-lockwood'
+	#pkname='perl-Lingua-EN-Inflect'
+	sh_scr_result=subprocess.run(['/home/neerajs/utils/PR_queries/find_PR_given_pkg_author', f'{REPO_FOR_PR_SEARCH}', f'{author_github_nm}', f'{pkname}'], stdout=subprocess.PIPE)
+	strres = (sh_scr_result.stdout.decode('utf-8')).rstrip()
+	#print (func_nm_shrthnd() + f': PR search results: {strres}')
+	res_parts = re.split(r" ", strres)
+	#print(f'res_parts={res_parts}')
+	if (len(res_parts) != 3):
+		#print ('pkg not found')
+		PRnum='NA'
+		PRstatus='NA'
+		PRcreationdate='NA'
+		link_raised_PR='NA'
+		PRtopicbranch='NA'
+		PRrepository = 'NA'
+		PRreponame = 'NA'
+		PRrepoowner = 'NA'
+		PRrepologin = 'NA'
+		PRorigin= 'NA'
+	else:
+		PRnum=res_parts[0]
+		PRstatus=res_parts[1]
+		PRcreationdate=res_parts[2]
+		link_raised_PR=f'https://github.com/microsoft/azurelinux/pull/{PRnum}'
+
+		#Determine the topic branch for the PR PRnum
+		#cmd = f'gh pr view {PRnum} -R https://github.com/microsoft/azurelinux.git --json headRefName'
+		cmd = f'gh pr view {PRnum} -R https://github.com/microsoft/azurelinux.git --json headRefName,headRefOid,headRepository,headRepositoryOwner'
+		sh_scr_result=subprocess.Popen(cmd, shell=True, stdout=subprocess.PIPE)
+		#print(func_nm_shrthnd() + f': gh pr view full results, i.e. sh_scr_result = {sh_scr_result}')
+		
+		#convert the output into a string
+		outAsStr,err = sh_scr_result.communicate()
+
+		#Convert string to JSON
+		outAsJson=json.loads(outAsStr)
+		#print(func_nm_shrthnd() + f': gh pr view results, i.e. outAsJson = {outAsJson}')
+
+		#Parse json for desired element, i.e. the topic branch name or the headRefName
+		PRtopicbranch = outAsJson["headRefName"]
+		PRrepository = outAsJson["headRepository"]
+		PRreponame = PRrepository["name"]
+		PRrepoowner = outAsJson["headRepositoryOwner"]
+		PRrepologin = PRrepoowner["login"]
+		PRorigin=f'https://github.com/{PRrepologin}/{PRreponame}.git'
+		#print(func_nm_shrthnd() + f': gh pr view results, i.e. Topic Branch = {PRtopicbranch}, Repository = {PRrepository}, Owner = {PRrepoowner}, Reponame = {PRreponame}, Repologin = {PRrepologin}, Origin for pull command = {PRorigin}')
+
+	#print(f'PRcreationdate={PRcreationdate} PRnum={PRnum} PRstatus={PRstatus} link_raised_PR={link_raised_PR} Topic Branch={PRtopicbranch}Repologin = {PRrepologin}, Origin for pull command = {PRorigin}')
+	
+
+
+def check_manual_upgrade(pkname, mstr_list_developer):
+	global link_raised_PR
+	global pkgname_raised_PR
+
+	#print (func_nm_shrthnd() + f':Entered.  pkname is {pkname}, developer from master list is {mstr_list_developer}')
+
+	cols = ['S.No.','Package Name','Need Upgrade (Y/N/Revisit/Remove)','Upgrade to version (Version/Revisit/NA)','Priority (P0, P1, P3)','Evaluator','Status (Not Started, Ongoing, PR Raised, PR in Review, Done-Upgrade, Done-FixBuild, Done-OtherChanges, NA-Uptodate)','Obsoleted and Frozen PR Link','Start Date','End Date','Last activity date','3.0-dev Daily Build status   (Y/N)','Build status date','Version in 2.0','Version in 3.0','Latest Version  (Fedora Sources)','Fedora Sources Link','Latest Upstream Version','Upstream Sources Link','Remark / Plan for the package','PR Link']
+
+	if ( 'NA' == mstr_list_developer):
+		link_raised_PR = 'NA'
+	elif ( 'Akarsh' == mstr_list_developer):
+		dev_csv_table = pd.read_csv(AKARSH_PACKAGE_CSV_FL, usecols=cols, sep=",", na_values="None")
+	elif ( 'Akhila' == mstr_list_developer):
+		dev_csv_table = pd.read_csv(AKHILA_PACKAGE_CSV_FL, usecols=cols, sep=",", na_values="None")
+	elif ( 'Aninda' == mstr_list_developer):
+		dev_csv_table = pd.read_csv(ANINDA_PACKAGE_CSV_FL, usecols=cols, sep=",", na_values="None")
+	elif ( 'Archana' == mstr_list_developer):
+		dev_csv_table = pd.read_csv(ARCHANA_PACKAGE_CSV_FL, usecols=cols, sep=",", na_values="None")
+	elif ( 'Jagadeesh' == mstr_list_developer):
+		dev_csv_table = pd.read_csv(JAGADEESH_PACKAGE_CSV_FL, usecols=cols, sep=",", na_values="None")
+	elif ( 'Jyoti' == mstr_list_developer):
+		dev_csv_table = pd.read_csv(JYOTI_PACKAGE_CSV_FL, usecols=cols, sep=",", na_values="None")
+	elif ( 'Kevin' == mstr_list_developer):
+		dev_csv_table = pd.read_csv(KEVIN_PACKAGE_CSV_FL, usecols=cols, sep=",", na_values="None")
+	elif ( 'Neeraj' == mstr_list_developer):
+		dev_csv_table = pd.read_csv(NEERAJ_PACKAGE_CSV_FL, usecols=cols, sep=",", na_values="None")
+	elif ( 'Sreenivasulu' == mstr_list_developer):
+		dev_csv_table = pd.read_csv(SREENIVASULU_PACKAGE_CSV_FL, usecols=cols, sep=",", na_values="None")
+	elif ( 'Sumit' == mstr_list_developer):
+		dev_csv_table = pd.read_csv(SUMIT_PACKAGE_CSV_FL, usecols=cols, sep=",", na_values="None")
+	else:
+		print (func_nm_shrthnd() + f':ERROR: Unknown developer name {mstr_list_developer}')
+		exit(1)
+	
+	# if valid developer name then check the corresponding csv file
+	if ( 'NA' != mstr_list_developer):
+		row_count_dev_csv = 0
+		for row_dev_csv in dev_csv_table.itertuples():
+			row_count_dev_csv = row_count_dev_csv + 1
+			pkgname_raised_PR = row_dev_csv[2]
+			if isNaN(pkgname_raised_PR):
+				pkgname_raised_PR = 'NA'
+			if (pkgname_raised_PR == pkname ):
+				link_raised_PR = row_dev_csv[8]
+				if isNaN(link_raised_PR):
+					link_raised_PR = 'NA'
+				break
+		if (pkgname_raised_PR != pkname ):
+			link_raised_PR = 'NA'
+	#print (func_nm_shrthnd() + f' PR Link {link_raised_PR}')
+
+def main() -> None:
+	global bld_status
+	global ver_bld_status
+	global rel_bld_status
+
+	global ver_ab_bld_status
+	global rel_ab_bld_status
+	global ab_bld_status
+
+	global dnld_det_fl_object
+	global dnld_det_fl_lines
+	global dnld_ver
+	global dnld_rel
+	global dnld_det_srpmlist
+	global dl_srpm_count
+	global dl_srpm1
+	global dl_srpm2
+	global dl_srpm3
+	global dnld_det_success
+	global pkg_existence
+	global ver_in_3_dev
+	global upgd_reqd
+	global bulk_build_success
+	global bulk_build_success_count
+	global rev_pr_fl_developer
+	global rev_pr_fl_prlink
+	global rev_pr_fl_reviewer
+	global rev_pr_fl_status
+	global mstr_list_developer 
+	global mstr_list_pkg_prio
+	global mstr_list_pkgnewname
+	global mstr_list_addedpkg
+	global link_raised_PR
+	global PRnum
+	global PRstatus
+	global PRcreationdate
+	global PRtopicbranch
+	global PRrepository
+	global PRreponame
+	global PRrepoowner
+	global PRrepologin
+	global PRorigin
+	global mstr_list_upgd_decision
+	global final_upgd_decision
+
+	dnld_det_fl_object = open(DNLD_DETAILS_FL, 'r')
+	dnld_det_fl_lines = dnld_det_fl_object.readlines()
+	
+	pk_count = 0
+
+	cols = ['Package','Developer','Upgrade to be done (Y/N/To be removed)','Is some confirmation required (Y/N)','Confirmation done  (Y/N)','2.0 EXT pkg present in either SPECS or EXT of 3.0-dev (Y/N)','2.0 EXT pkg present in EXT of 3.0-dev(Y/N)','Confirm if removal is deliberate (Y/N) (If N in both Column F and Column G, here we put Y.  A Y here means we must check with Microsoft if this is a deliberate removal of the package)','Moved from EXT in 2.0 to Core in 3.0-dev (Y/N) (If Y in Column F and N in Column G, then this is Y)','Remarks','Priority (P0, P1, P2)','New Name of Package','Package added to Azure Linux 3.0-dev']
+	table = pd.read_csv(MSTR_LIST, usecols=cols)
+
+	if ( prebuild_analysis == True ):
+		print (f'Package,New Name of Package,Package Priority,Developer in Master List,PR Number,Link of PR Raised,PR Status,PR Creation Date,Upgrade Required,Final Upgrade Decision (Y/N),Build Status,Version in Build Status,Release in Build Status,Download Success,Number SRPMs downloaded,Dowloaded SRPM 1,Dowloaded SRPM 2,Dowloaded SRPM 3,Version Downloaded SRPM,Release Downloaded SRPM,Package location info,Package Version in 3.0-dev,Bulk Build Success,Bulk Build Number of SRPMs,Developer from under review sheet,Under Review PR Link,Reviewer,Review Status,PR Origin,TopicBranch')
+	else:
+		print (f'Package,New Name of Package,Package Priority,Developer in Master List,PR Number,Link of PR Raised,PR Status,PR Creation Date,Upgrade Required,Final Upgrade Decision (Y/N),Build Status,Version in Build Status,Release in Build Status,Download Success,Number SRPMs downloaded,Dowloaded SRPM 1,Dowloaded SRPM 2,Dowloaded SRPM 3,Version Downloaded SRPM,Release Downloaded SRPM,Package location info,Package Version in 3.0-dev,Bulk Build Success,Bulk Build Number of SRPMs,Developer from under review sheet,Under Review PR Link,Reviewer,Review Status,PR Origin,TopicBranch,Additional Bulk Build Status')
+	for row in table.itertuples():
+		pk_count = pk_count + 1
+		pkname = row[1]
+		#print(f'Package Name {row[1]}')
+		#NOVALIDPACKAGE terminates the for loop
+		#just write the terminal package name and leave the loop
+		if ( pkname == 'NOVALIDPACKAGE'):
+			print (f'{pkname},,,,,,,,,,,,,,,,,,,,,,,,,,,,,,')
+			break
+		mstr_list_developer = row[2]
+		#print(f'Master List Developer {row[2]}')
+		if isNaN(mstr_list_developer):
+			mstr_list_developer = 'NA'
+		mstr_list_upgd_decision = row[3]
+		#print(f'Upgrade to be done (Y/N/To be removed) {row[3]}')
+		if isNaN(mstr_list_upgd_decision):
+			mstr_list_upgd_decision = 'NA'
+		mstr_list_pkg_prio = row[11]
+		#print(f'Master List Package Priority {row[11]}')
+		if isNaN(mstr_list_pkg_prio):
+			mstr_list_pkg_prio = 'NA'
+		mstr_list_pkgnewname = row[12]
+		#print(f'New Name of the Package {row[12]}')
+		if isNaN(mstr_list_pkgnewname):
+			mstr_list_pkgnewname = 'NA'
+		mstr_list_addedpkg = row[13]
+		#print(f'Package needs to be added {row[13]}')
+		if isNaN(mstr_list_addedpkg):
+			mstr_list_addedpkg = 'NA'
+
+		check_build_status(pkname)
+		#print (f' Package:{pkname}, Version:{ver_bld_status}, Release:{rel_bld_status}, Build Status:{bld_status}')
+		check_dnld_status(pkname)
+		#check pkg existence in Azure Linux Repository
+		check_pkg_azl_existence(pkname)
+		set_upgrade_reqd(pkname)
+		check_bulk_build(pkname)
+		if ( prebuild_analysis == False ):
+			check_additional_bulkbuild_status(pkname)
+		check_under_rev_PRs(pkname)
+		#check_manual_upgrade(pkname, mstr_list_developer)
+		check_PR(pkname, mstr_list_developer)
+		#if author is Sandeep, and search has failed, we can search with an alternative name
+		if ( ( PRnum == 'NA' ) and ( mstr_list_developer == 'Sandeep' ) ):
+			mstr_list_developer = 'CBL-Mariner-Bot'
+			check_PR(pkname, mstr_list_developer)
+
+		if ( mstr_list_upgd_decision == 'Override_to_Y'):
+			final_upgd_decision = 'Y'
+		else:
+			final_upgd_decision = upgd_reqd 
+		#mstr_list_developer="kevin-b-lockwood"
+		#pkname="perl-Lingua-EN-Inflect"
+		#check_PR(pkname, mstr_list_developer)
+		#mstr_list_developer="kevin-b-lockwood"
+		#pkname="libipt"
+		#check_PR(pkname, mstr_list_developer)
+		#mstr_list_developer="kevin-b-lockwood"
+		#pkname="perl-Lingua-EN-Inflecte"
+		#check_PR(pkname, mstr_list_developer)
+
+		if ( prebuild_analysis == True ):
+			print (f'{pkname},{mstr_list_pkgnewname},{mstr_list_pkg_prio},{mstr_list_developer},{PRnum},{link_raised_PR},{PRstatus},{PRcreationdate},{upgd_reqd},{final_upgd_decision},{bld_status},{ver_bld_status},{rel_bld_status},{dnld_det_success},{dl_srpm_count},{dl_srpm1},{dl_srpm2},{dl_srpm3},{dnld_ver},{dnld_rel},{pkg_existence},{ver_in_3_dev},{bulk_build_success},{bulk_build_success_count},{rev_pr_fl_developer},{rev_pr_fl_prlink},{rev_pr_fl_reviewer},{rev_pr_fl_status},{PRorigin},{PRtopicbranch}')
+		else:
+			print (f'{pkname},{mstr_list_pkgnewname},{mstr_list_pkg_prio},{mstr_list_developer},{PRnum},{link_raised_PR},{PRstatus},{PRcreationdate},{upgd_reqd},{final_upgd_decision},{bld_status},{ver_bld_status},{rel_bld_status},{dnld_det_success},{dl_srpm_count},{dl_srpm1},{dl_srpm2},{dl_srpm3},{dnld_ver},{dnld_rel},{pkg_existence},{ver_in_3_dev},{bulk_build_success},{bulk_build_success_count},{rev_pr_fl_developer},{rev_pr_fl_prlink},{rev_pr_fl_reviewer},{rev_pr_fl_status},{PRorigin},{PRtopicbranch},{ab_bld_status}')
+
+		#For quick testing we uncomment the below two lines.  The effect is same as a small 
+		#master list of packages (20 entries only)
+		#if ( pk_count >= 20 ):
+		#	break
+
+if __name__ == '__main__':
+	main()
+
+#Change History
+#-------------
+#v1:
+#Initial version.  Takes as input :
+#    1.   The Master List of packages, 
+#    2.   Path for 2.0 main branch of Mariner Sources, 
+#    3.   3.0-dev branch of Mariner Sources (Azure Linux Sources), 
+#    4.   Build status csv file from 3.0 main Build Artifacts, 
+#    5.   Downloads details generated by the download script 
+#And generates information :
+#    1.   About the presence of the package in 3.0-dev branch SPECS and SPECS-EXTENDED folders, 
+#    2.   Build status of package in the csv file, 
+#    3.   Its version and release in that build, 
+#    4.   The download information like if download was successful or not, 
+#    5.   Which srpms were downloaded for a given package, 
+#    6.   And the version and release of the first srpm downloaded
+#NOTE 1:  About existence in Mariner sources, only the information about existence in 3.0-dev SPECS and SPECS-EXTENDED folders is generated.
+#         The input of the 2.0 Mariner Sources paths is ignored as of now.
+#
+#v2:
+#    1.   The srpm file downloaded information is not printed into the output csv as a list, which used to generate variable number
+#         of columns.  Instead 3 has been assumed as an upper limit on the downloaded srpms whose information we will capture.  
+#         This way there is a fixed number of columns for the downloaded srpms per package, which is 3.
+#         In practical run only two columns got used and that too for only one package "libldb".  For rest all packages if the download is 
+#         successful, this count has been 1 only.  For "libldb" two srpm files "samba" and "libldb" were downloaded.
+#v3:
+#    1.   Since there is only one package with more than one downloads of srpms, we will hard code the version number derived from the
+#         downloaded srpm that corresponds to the package.  The package is "libldb".  There are two srpms downloaded for it libldb and 
+#         samba.  We will hard code the version number of libldb srpm as the new version for this package.
+#    2.   The tool extracts the version number from the spec file too.
+#NOTE 1:  There was no need to do this, i.e. extract the version number from spec file.  The reason is that the
+#         we get version from the pkg_artifacts build_status.csv file even for packages for which the build had
+#         failed.  Whereas, parsing of spec file sometimes doesn't yield version number, instead it gives more
+#         macros.  In effect, the version number derived from the build_status.csv is better and available in 
+#         more cases.
+#    3.   Added the field (column) "upgd_reqd", based upon the comparison between "ver_bld_status" and "dnld_ver".
+#v4:
+#    1.   Added capability to include bulk build results.
+#v5:
+#    1.   Added the capability to include the Under Review PR information.
+#    2.   Added the capability to include the Total Raised PR information, that is it uses information from csv files of individual developers.
+#v6:
+#    1.   Improved the comparison of the package versions in 3.0-dev and the downloaded SRPM, in order to arrive at a more accurate
+#         decision in the column "Upgrade Required".  Earlier we would declare upgrade required just on mismatch of the two strings (of 
+#         version).  Now we first check that the number of parts are equal in each version and that all of their parts are numbers.  
+#         In case they are we compare and give the result.  Otherwise, we return "Revisit Ver Compare".  Therefore, if the number of parts
+#         in the two versions is unequal or the parts are not numbers we return "Revisit Ver Compare".
+#v7:
+#    1.   It is now a script that can be run from ~/utils and can pick files from any directory and generate results in any directory
+#v8:
+#    1.   The most important changes are the fixes to the package version comparison logic added in v6.  The result are now more accurate.
+#         Actually, in v6 the logic for version comparison and therefore the decision about whether to upgrade or not, was buggy.
+#v9:
+#    1.   The PR number, PR status and PR Creation Date are now populated by querying from 
+#         github.
+#    2.   Even the PR link is prepared from this query.
+#    3.   Earlier PR information was extracted from the individual excel sheets of 
+#         Devs.  That used to be a lengthy process and could not be fully automated
+#         because the excel sheets had to be kept at one place and even needed to be 
+#         converted into csv.
+#    4.   Now everything will be smooth.
+#v10:
+#    1.   Use the "Upgrade to be done (Y/N/To be removed)" column i.e. Column C, of "ExtendedPackages_wSuppInfo.xlsx" for overiding
+#         the decision made on the basis of comparison of package version between the 3.0-dev pipeline build status and the downloaded
+#         versions from Fedora 41. 
+#    2.   A new value "Override_to_Y" in this column will override the decision based upon the comparison of versions.  
+#    3.   There will be a new column "Final Upgrade Decision (Y/N)" in the output csv of this script, for the final value
+#         decided.
+#v11:
+#    1.   Added the capability to handle new package name.  Now the input file "ExtendedPackages_wSuppInfo.xlsx" will have an additional
+#         column I (New Name of Package).  This column will be used by this script to generate the additional 
+#         column B (New Name of Package) in the output.
+#    2.   Added Sandeep (github user name "cyberbandya007") and Mayank (github user name "mayankfz") as authors to the code.  This will
+#         be useful in searching for their PRs for a given package.
+#    3.   In the function "check_under_rev_PRs" when package is not found in the file "UNDER_REVIEW_PR_FILE", then instead of failing  
+#         we return 'NA' values.  Slowly, this function will be removed as we don't need to parse the file "UNDER_REVIEW_PR_FILE" any
+#         more.
+#v12:
+#    1.   Added handling of the case when a new package is added to Azure Linux.
+#    2.   Now the header of the csv output generated by this script does not have any blank space following the comma.  Earlier the 
+#         space after the comma needed unnecessary handling in the scripts that read this csv output. 
+#v13:
+#    1.   Added handling of one extra build results data as input and corresponding column 
+#         to the output.
+#v14:
+#    1.   The various input files will now be part of the didwhat folder under the 
+#    	  source tree of the branch being built.
+#    2.   The source code to be used as the reference against which the decisions like
+#         EXISTS_IN_BOTH, MOVED_TO_CORE will be taken is now a specific commit id
+#         based branch.
+#v15:
+#    1.   Carried out detection of origin and topic branch for a PR.  This will be useful to pull changes from these PRs if required.
+#v16:
+#    1.   The script "find_PR_given_pkg_author" now takes as input the repo path instead of the Source code directory.
+#    2.   The variable "MSREPO_2MAIN_WORKDIR" is not used anymore.
+#v17:
+#    1.   Added capability to handle the case when for a given developer it is possible to have PRs raised using more than one github
+#         name.  For example for "Sandeep" we first check for PR raised by "cyberbandya007" and if necessary for github name of 
+#         "CBL-Mariner-Bot" too.

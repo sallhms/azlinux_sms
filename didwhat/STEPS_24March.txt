@@ -1,0 +1,282 @@
+There were hydrate failures seens for several packages in the pipeline.
+As a temporary get around we replaced their contents by their 3.0-dev versions.
+The packages are listed in the file "list_hydrate_failed".
+
+These were first removed:
+```
+ [2025-03-24 10:29.32] /third_disk/ppline_24Mar/azurelinux [neerajs.azuli-m1]$ dirtochk=SPECS-EXTENDED/; listtochk=./didwhat/list_hydrate_failed; for pknm in `cat $listtochk`; do if [ ! -d $dirtochk ]; then echo "$pknm missing in $dirtochk"; else echo "removing $pknm from $dirtochk"; rm -rf SPECS-EXTENDED/$pknm; fi; done
+removing device-mapper-persistent-data from SPECS-EXTENDED/
+removing hunspell-de from SPECS-EXTENDED/
+removing gdal from SPECS-EXTENDED/
+removing jansi from SPECS-EXTENDED/
+removing jsoup from SPECS-EXTENDED/
+removing js-jquery from SPECS-EXTENDED/
+removing libetonyek from SPECS-EXTENDED/
+removing lpsolve from SPECS-EXTENDED/
+removing nodejs-nodemon from SPECS-EXTENDED/
+removing openexr from SPECS-EXTENDED/
+removing python-pydbus from SPECS-EXTENDED/
+removing python-dbusmock from SPECS-EXTENDED/
+removing python-hwdata from SPECS-EXTENDED/
+removing nodejs-packaging from SPECS-EXTENDED/
+removing rubygem-mysql2 from SPECS-EXTENDED/
+removing rubygem-test-unit-ruby-core from SPECS-EXTENDED/
+removing netpbm from SPECS-EXTENDED/
+removing rubygem-rspec-expectations from SPECS-EXTENDED/
+removing rubygem-rspec-mocks from SPECS-EXTENDED/
+removing virt-who from SPECS-EXTENDED/
+removing xrestop from SPECS-EXTENDED/
+removing xalan-j2 from SPECS-EXTENDED/
+removing xmlunit from SPECS-EXTENDED/
+removing rubygem-rouge from SPECS-EXTENDED/
+removing subscription-manager from SPECS-EXTENDED/
+removing wsmancli from SPECS-EXTENDED/
+removing rear from SPECS-EXTENDED/
+removing llvm from SPECS-EXTENDED/
+removing libpsl from SPECS-EXTENDED/
+removing publicsuffix from SPECS-EXTENDED/
+removing publicsuffix-list from SPECS-EXTENDED/
+ [2025-03-24 10:30.19] /third_disk/ppline_24Mar/azurelinux [neerajs.azuli-m1]$
+```
+
+These removals were committed:
+```
+ [2025-03-24 10:30.40] /third_disk/ppline_24Mar/azurelinux [neerajs.azuli-m1]$ git commit -m "packages with hydrate failures for sources will be replaced by 3.0-dev versions.  First step is to remove their folders"
+[topic_24Mar_ppline 0d25702e0] packages with hydrate failures for sources will be replaced by 3.0-dev versions.  First step is to remove their folders
+ 185 files changed, 58315 deletions(-)
+ delete mode 100755 SPECS-EXTENDED/device-mapper-persistent-data/0001-Tweak-cargo.toml-to-work-with-vendor-directory.patch
+ delete mode 100755 SPECS-EXTENDED/device-mapper-persistent-data/0002-tests-Explicitly-set-the-pipe-size-for-triggering-EP.patch
+ delete mode 100755 SPECS-EXTENDED/device-mapper-persistent-data/0003-tests-Fix-closing-the-pipe-fd-twice.patch
+ delete mode 100644 SPECS-EXTENDED/device-mapper-persistent-data/device-mapper-persistent-data.signatures.json
+ delete mode 100755 SPECS-EXTENDED/device-mapper-persistent-data/device-mapper-persistent-data.spec
+ delete mode 100755 SPECS-EXTENDED/gdal/PROVENANCE.TXT-fedora
+ delete mode 100755 SPECS-EXTENDED/gdal/cpl-config.h
+ delete mode 100755 SPECS-EXTENDED/gdal/gdal-cleaner.sh
+
+<snip>
+<snip>
+
+ delete mode 100755 SPECS-EXTENDED/xmlunit/0004-Port-to-assertj-core-3.patch
+ delete mode 100755 SPECS-EXTENDED/xmlunit/generate-tarball.sh
+ delete mode 100644 SPECS-EXTENDED/xmlunit/xmlunit.signatures.json
+ delete mode 100644 SPECS-EXTENDED/xmlunit/xmlunit.spec
+ delete mode 100644 SPECS-EXTENDED/xrestop/xrestop.signatures.json
+ delete mode 100644 SPECS-EXTENDED/xrestop/xrestop.spec
+ [2025-03-24 10:31.54] /third_disk/ppline_24Mar/azurelinux [neerajs.azuli-m1]$ git log --oneline -5
+0d25702e0 (HEAD -> topic_24Mar_ppline) packages with hydrate failures for sources will be replaced by 3.0-dev versions.  First step is to remove their folders
+6e20ca4b7 (origin/topic_24Mar_ppline) SPECS-EXTENDED from the 17 Mar Bulk Build exercise
+db8dbfe9d (origin/3.0-dev, 3.0-dev) bug: fix remote build dependency variability (#12842)
+37046eff6 gdb: enable debugging all targets (#12205)
+6d93d4260 [3.0] dracut: patch for systemd-cryptsetup module to be included  (#12827)
+ [2025-03-24 10:32.00] /third_disk/ppline_24Mar/azurelinux [neerajs.azuli-m1]$
+```
+
+These were then copied from their 3.0-dev versions:
+```
+ [2025-03-24 10:30.19] /third_disk/ppline_24Mar/azurelinux [neerajs.azuli-m1]$ fromdir=../3.0-dev-SPECS-XT/SPECS-EXTENDED/;todir=SPECS-EXTENDED/; listtochk=./didwhat/list_hydrate_failed; for pknm in `cat $listtochk`; do if [ ! -d $fromdir/$pknm ]; then echo "$pknm missing in $fromdir"; else echo "Copying $pknm from$fromdir to $todir"; cp -r $fromdir/$pknm $todir/$pknm; fi; done
+Copying device-mapper-persistent-data from../3.0-dev-SPECS-XT/SPECS-EXTENDED/ to SPECS-EXTENDED/
+Copying hunspell-de from../3.0-dev-SPECS-XT/SPECS-EXTENDED/ to SPECS-EXTENDED/
+Copying gdal from../3.0-dev-SPECS-XT/SPECS-EXTENDED/ to SPECS-EXTENDED/
+Copying jansi from../3.0-dev-SPECS-XT/SPECS-EXTENDED/ to SPECS-EXTENDED/
+Copying jsoup from../3.0-dev-SPECS-XT/SPECS-EXTENDED/ to SPECS-EXTENDED/
+Copying js-jquery from../3.0-dev-SPECS-XT/SPECS-EXTENDED/ to SPECS-EXTENDED/
+Copying libetonyek from../3.0-dev-SPECS-XT/SPECS-EXTENDED/ to SPECS-EXTENDED/
+Copying lpsolve from../3.0-dev-SPECS-XT/SPECS-EXTENDED/ to SPECS-EXTENDED/
+Copying nodejs-nodemon from../3.0-dev-SPECS-XT/SPECS-EXTENDED/ to SPECS-EXTENDED/
+Copying openexr from../3.0-dev-SPECS-XT/SPECS-EXTENDED/ to SPECS-EXTENDED/
+Copying python-pydbus from../3.0-dev-SPECS-XT/SPECS-EXTENDED/ to SPECS-EXTENDED/
+Copying python-dbusmock from../3.0-dev-SPECS-XT/SPECS-EXTENDED/ to SPECS-EXTENDED/
+Copying python-hwdata from../3.0-dev-SPECS-XT/SPECS-EXTENDED/ to SPECS-EXTENDED/
+Copying nodejs-packaging from../3.0-dev-SPECS-XT/SPECS-EXTENDED/ to SPECS-EXTENDED/
+Copying rubygem-mysql2 from../3.0-dev-SPECS-XT/SPECS-EXTENDED/ to SPECS-EXTENDED/
+Copying rubygem-test-unit-ruby-core from../3.0-dev-SPECS-XT/SPECS-EXTENDED/ to SPECS-EXTENDED/
+Copying netpbm from../3.0-dev-SPECS-XT/SPECS-EXTENDED/ to SPECS-EXTENDED/
+Copying rubygem-rspec-expectations from../3.0-dev-SPECS-XT/SPECS-EXTENDED/ to SPECS-EXTENDED/
+Copying rubygem-rspec-mocks from../3.0-dev-SPECS-XT/SPECS-EXTENDED/ to SPECS-EXTENDED/
+Copying virt-who from../3.0-dev-SPECS-XT/SPECS-EXTENDED/ to SPECS-EXTENDED/
+Copying xrestop from../3.0-dev-SPECS-XT/SPECS-EXTENDED/ to SPECS-EXTENDED/
+Copying xalan-j2 from../3.0-dev-SPECS-XT/SPECS-EXTENDED/ to SPECS-EXTENDED/
+Copying xmlunit from../3.0-dev-SPECS-XT/SPECS-EXTENDED/ to SPECS-EXTENDED/
+Copying rubygem-rouge from../3.0-dev-SPECS-XT/SPECS-EXTENDED/ to SPECS-EXTENDED/
+Copying subscription-manager from../3.0-dev-SPECS-XT/SPECS-EXTENDED/ to SPECS-EXTENDED/
+Copying wsmancli from../3.0-dev-SPECS-XT/SPECS-EXTENDED/ to SPECS-EXTENDED/
+Copying rear from../3.0-dev-SPECS-XT/SPECS-EXTENDED/ to SPECS-EXTENDED/
+Copying llvm from../3.0-dev-SPECS-XT/SPECS-EXTENDED/ to SPECS-EXTENDED/
+Copying libpsl from../3.0-dev-SPECS-XT/SPECS-EXTENDED/ to SPECS-EXTENDED/
+Copying publicsuffix from../3.0-dev-SPECS-XT/SPECS-EXTENDED/ to SPECS-EXTENDED/
+Copying publicsuffix-list from../3.0-dev-SPECS-XT/SPECS-EXTENDED/ to SPECS-EXTENDED/
+ [2025-03-24 10:32.19] /third_disk/ppline_24Mar/azurelinux [neerajs.azuli-m1]$
+```
+
+These replaced folders were committed too:
+```
+ [2025-03-24 10:33.35] /third_disk/ppline_24Mar/azurelinux [neerajs.azuli-m1]$ git commit -m "packages with hydrate failures for sources will be replaced by 3.0-dev versions.  To complete the replace, copying their 3.0-dev folders"
+[topic_24Mar_ppline 52cb28383] packages with hydrate failures for sources will be replaced by 3.0-dev versions.  To complete the replace, copying their 3.0-dev folders
+ 112 files changed, 39901 insertions(+)
+ create mode 100644 SPECS-EXTENDED/device-mapper-persistent-data/device-mapper-persistent-data-avoid-strip.patch
+ create mode 100644 SPECS-EXTENDED/device-mapper-persistent-data/device-mapper-persistent-data.signatures.json
+ create mode 100644 SPECS-EXTENDED/device-mapper-persistent-data/device-mapper-persistent-data.spec
+ create mode 100644 SPECS-EXTENDED/gdal/cpl-config.h
+ create mode 100755 SPECS-EXTENDED/gdal/gdal-config
+ create mode 100644 SPECS-EXTENDED/gdal/gdal.signatures.json
+
+<snip>
+<snip>
+
+ create mode 100644 SPECS-EXTENDED/xmlunit/xmlunit.signatures.json
+ create mode 100644 SPECS-EXTENDED/xmlunit/xmlunit.spec
+ create mode 100644 SPECS-EXTENDED/xrestop/xrestop.signatures.json
+ create mode 100644 SPECS-EXTENDED/xrestop/xrestop.spec
+ [2025-03-24 10:33.37] /third_disk/ppline_24Mar/azurelinux [neerajs.azuli-m1]$ git log --oneline -5
+52cb28383 (HEAD -> topic_24Mar_ppline) packages with hydrate failures for sources will be replaced by 3.0-dev versions.  To complete the replace, copying their 3.0-dev folders
+0d25702e0 packages with hydrate failures for sources will be replaced by 3.0-dev versions.  First step is to remove their folders
+6e20ca4b7 (origin/topic_24Mar_ppline) SPECS-EXTENDED from the 17 Mar Bulk Build exercise
+db8dbfe9d (origin/3.0-dev, 3.0-dev) bug: fix remote build dependency variability (#12842)
+37046eff6 gdb: enable debugging all targets (#12205)
+ [2025-03-24 10:33.44] /third_disk/ppline_24Mar/azurelinux [neerajs.azuli-m1]$
+```
+
+On 25 Mar there were more errors noticed.
+This time instead of manually finding out the directories affected I used the script.  The logs from the pipeline were copy pasted into "Sandeep_pipeline_errors_25Mar.txt".  Then the list2_remove_action was produced using a shell command as follows.
+```
+ [2025-03-25 10:29.47] /third_disk/ppline_24Mar/azurelinux/didwhat [neerajs.azuli-m1]$ grep -e "-- ERROR - Failed to download source tarball for " Sandeep_pipeline_errors_25Mar.txt | awk '{print $11}' | awk 'BEGIN {FS="."} {print $1}' > list2_remove_action
+```
+
+While checking a few of these manually we had noticed that the affected folders for all of the first 6 cases evaluated, all needed to be removed.
+Replacing those by 3.0-dev version would not work, because those initial 6 were already 3.0-dev version.
+
+That is why the generated list is named as a remove list "list2_remove_action".
+
+Removed the folders of 125 packages as per the list2_remove_action:
+```
+ [2025-03-25 10:38.14] /third_disk/ppline_24Mar/azurelinux/SPECS-EXTENDED [neerajs.azuli-m1]$ for pkgnm in `cat ../didwhat/list2_remove_action`; do echo "removing ./$pkgnm"; rm -rf ./$pkgnm; done
+removing ./hyphen-da
+removing ./dleyna-core
+removing ./hunspell-tl
+removing ./xorg-x11-drv-libinput
+removing ./hyphen-ga
+
+
+<snip>
+<snip>
+
+
+removing ./samba
+removing ./rhino
+removing ./enchant
+removing ./hunspell-uz
+removing ./hunspell-so
+removing ./hunspell-om
+removing ./libgdither
+removing ./man-pages-ja
+ [2025-03-25 10:39.02] /third_disk/ppline_24Mar/azurelinux/SPECS-EXTENDED [neerajs.azuli-m1]$
+```
+
+Verified that all the package folders are indeed removed now:
+```
+ [2025-03-25 10:39.02] /third_disk/ppline_24Mar/azurelinux/SPECS-EXTENDED [neerajs.azuli-m1]$ for pkgnm in `cat ../didwhat/list2_remove_action`; do if [ ! -d ./$pkgnm ]; then echo "$pkgnm missing"; else echo "$pknm exists"; fi; done | grep -e "exists" | wc
+      0       0       0
+ [2025-03-25 10:40.21] /third_disk/ppline_24Mar/azurelinux/SPECS-EXTENDED [neerajs.azuli-m1]$ for pkgnm in `cat ../didwhat/list2_remove_action`; do if [ ! -d ./$pkgnm ]; then echo "$pkgnm missing"; else echo "$pknm exists"; fi; done | grep -e "missing" | wc
+    125     250    2425
+ [2025-03-25 10:40.26] /third_disk/ppline_24Mar/azurelinux/SPECS-EXTENDED [neerajs.azuli-m1]$
+```
+
+Carried out git add and git commit of these changes:
+```
+ [2025-03-25 10:41.05] /third_disk/ppline_24Mar/azurelinux [neerajs.azuli-m1]$ git add SPECS-EXTENDED/
+ [2025-03-25 10:41.10] /third_disk/ppline_24Mar/azurelinux [neerajs.azuli-m1]$ git status
+On branch topic_24Mar_ppline
+Changes to be committed:
+  (use "git restore --staged <file>..." to unstage)
+        deleted:    SPECS-EXTENDED/a52dec/a52dec-0.7.4-rpath64.patch
+        deleted:    SPECS-EXTENDED/a52dec/a52dec-configure-optflags.patch
+        deleted:    SPECS-EXTENDED/a52dec/a52dec.signatures.json
+        deleted:    SPECS-EXTENDED/a52dec/a52dec.spec
+        deleted:    SPECS-EXTENDED/a52dec/liba52-silence.patch
+        deleted:    SPECS-EXTENDED/alsa-firmware/alsa-firmware.signatures.json
+
+
+<snip>
+<snip>
+
+
+        deleted:    SPECS-EXTENDED/xalan-j2/xalan-j2-noxsltcdeps.patch
+        deleted:    SPECS-EXTENDED/xalan-j2/xalan-j2-serializer-MANIFEST.MF
+        deleted:    SPECS-EXTENDED/xalan-j2/xalan-j2.signatures.json
+        deleted:    SPECS-EXTENDED/xalan-j2/xalan-j2.spec
+        deleted:    SPECS-EXTENDED/xalan-j2/xsltc-2.7.2.pom
+        deleted:    SPECS-EXTENDED/xorg-x11-drv-libinput/0001-Add-a-DPIScaleFactor-option-as-temporary-solution-to.patch
+        deleted:    SPECS-EXTENDED/xorg-x11-drv-libinput/71-libinput-overrides-wacom.conf
+        deleted:    SPECS-EXTENDED/xorg-x11-drv-libinput/xorg-x11-drv-libinput.signatures.json
+        deleted:    SPECS-EXTENDED/xorg-x11-drv-libinput/xorg-x11-drv-libinput.spec
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+        didwhat/
+
+ [2025-03-25 10:41.13] /third_disk/ppline_24Mar/azurelinux [neerajs.azuli-m1]$ git log --oneline -5
+52cb28383 (HEAD -> topic_24Mar_ppline, origin/topic_24Mar_ppline) packages with hydrate failures for sources will be replaced by 3.0-dev versions.  To complete the replace, copying their 3.0-dev folders
+0d25702e0 packages with hydrate failures for sources will be replaced by 3.0-dev versions.  First step is to remove their folders
+6e20ca4b7 SPECS-EXTENDED from the 17 Mar Bulk Build exercise
+db8dbfe9d (origin/3.0-dev, 3.0-dev) bug: fix remote build dependency variability (#12842)
+37046eff6 gdb: enable debugging all targets (#12205)
+ [2025-03-25 10:41.21] /third_disk/ppline_24Mar/azurelinux [neerajs.azuli-m1]$
+ [2025-03-25 10:41.21] /third_disk/ppline_24Mar/azurelinux [neerajs.azuli-m1]$ git commit -m "Removed package folders for which pipeline failed to download tarballs.  List was list2_remove_action."
+[topic_24Mar_ppline e19d3a330] Removed package folders for which pipeline failed to download tarballs.  List was list2_remove_action.
+ 551 files changed, 85180 deletions(-)
+ delete mode 100644 SPECS-EXTENDED/a52dec/a52dec-0.7.4-rpath64.patch
+ delete mode 100644 SPECS-EXTENDED/a52dec/a52dec-configure-optflags.patch
+ delete mode 100644 SPECS-EXTENDED/a52dec/a52dec.signatures.json
+ delete mode 100644 SPECS-EXTENDED/a52dec/a52dec.spec
+ delete mode 100644 SPECS-EXTENDED/a52dec/liba52-silence.patch
+ delete mode 100644 SPECS-EXTENDED/alsa-firmware/alsa-firmware.signatures.json
+ delete mode 100644 SPECS-EXTENDED/alsa-firmware/alsa-firmware.spec
+
+
+<snip>
+<snip>
+
+
+ delete mode 100644 SPECS-EXTENDED/xalan-j2/xsltc-2.7.2.pom
+ delete mode 100644 SPECS-EXTENDED/xorg-x11-drv-libinput/0001-Add-a-DPIScaleFactor-option-as-temporary-solution-to.patch
+ delete mode 100644 SPECS-EXTENDED/xorg-x11-drv-libinput/71-libinput-overrides-wacom.conf
+ delete mode 100644 SPECS-EXTENDED/xorg-x11-drv-libinput/xorg-x11-drv-libinput.signatures.json
+ delete mode 100644 SPECS-EXTENDED/xorg-x11-drv-libinput/xorg-x11-drv-libinput.spec
+ [2025-03-25 10:43.07] /third_disk/ppline_24Mar/azurelinux [neerajs.azuli-m1]$ git status
+On branch topic_24Mar_ppline
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+        didwhat/
+
+nothing added to commit but untracked files present (use "git add" to track)
+ [2025-03-25 10:43.10] /third_disk/ppline_24Mar/azurelinux [neerajs.azuli-m1]$ git log --oneline -5
+e19d3a330 (HEAD -> topic_24Mar_ppline) Removed package folders for which pipeline failed to download tarballs.  List was list2_remove_action.
+52cb28383 (origin/topic_24Mar_ppline) packages with hydrate failures for sources will be replaced by 3.0-dev versions.  To complete the replace, copying their 3.0-dev folders
+0d25702e0 packages with hydrate failures for sources will be replaced by 3.0-dev versions.  First step is to remove their folders
+6e20ca4b7 SPECS-EXTENDED from the 17 Mar Bulk Build exercise
+db8dbfe9d (origin/3.0-dev, 3.0-dev) bug: fix remote build dependency variability (#12842)
+ [2025-03-25 10:43.21] /third_disk/ppline_24Mar/azurelinux [neerajs.azuli-m1]
+```
+
+Pushed these changes:
+```
+ [2025-03-25 10:47.18] /third_disk/ppline_24Mar/azurelinux [neerajs.azuli-m1]$ git push origin topic_24Mar_ppline
+Enumerating objects: 5, done.
+Counting objects: 100% (5/5), done.
+Delta compression using up to 8 threads
+Compressing objects: 100% (3/3), done.
+Writing objects: 100% (3/3), 783 bytes | 783.00 KiB/s, done.
+Total 3 (delta 2), reused 0 (delta 0), pack-reused 0 (from 0)
+remote: Resolving deltas: 100% (2/2), completed with 2 local objects.
+To https://github.com/sallhms/azurelinux.git
+   52cb28383..e19d3a330  topic_24Mar_ppline -> topic_24Mar_ppline
+ [2025-03-25 10:47.43] /third_disk/ppline_24Mar/azurelinux [neerajs.azuli-m1]$ git log --oneline -5
+e19d3a330 (HEAD -> topic_24Mar_ppline, origin/topic_24Mar_ppline) Removed package folders for which pipeline failed to download tarballs.  List was list2_remove_action.
+52cb28383 packages with hydrate failures for sources will be replaced by 3.0-dev versions.  To complete the replace, copying their 3.0-dev folders
+0d25702e0 packages with hydrate failures for sources will be replaced by 3.0-dev versions.  First step is to remove their folders
+6e20ca4b7 SPECS-EXTENDED from the 17 Mar Bulk Build exercise
+db8dbfe9d (origin/3.0-dev, 3.0-dev) bug: fix remote build dependency variability (#12842)
+ [2025-03-25 10:47.46] /third_disk/ppline_24Mar/azurelinux [neerajs.azuli-m1]$
+```
+
+

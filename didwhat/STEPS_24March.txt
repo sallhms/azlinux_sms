@@ -279,4 +279,72 @@ db8dbfe9d (origin/3.0-dev, 3.0-dev) bug: fix remote build dependency variability
  [2025-03-25 10:47.46] /third_disk/ppline_24Mar/azurelinux [neerajs.azuli-m1]$
 ```
 
+26 Mar 2025
+===========
+
+Identifying the spec files with Source lines having no path or non-https paths for source tarballs.
+As per discussion with Sandeep today, all of these package folders will be removed.
+
+```
+ [2025-03-26 07:45.09] /third_disk/ppline_24Mar/azurelinux/didwhat [neerajs.azuli-m1]$ srcroot=/third_disk/ppline_24Mar/azurelinux/; for spcfl in `find $srcroot/SPECS-EXTENDED -name "*.spec" -print`; do grep -e "^Source[0-9]*:" $spcfl | grep -v -e "https" > /dev/null; if [ $? -eq 0 ]; then echo $spcfl; fi; done > list_spcfls_nonhttps_Source
+ [2025-03-26 07:46.50] /third_disk/ppline_24Mar/azurelinux/didwhat [neerajs.azuli-m1]$ srcroot=/third_disk/ppline_24Mar/azurelinux/; for spcfl in `find $srcroot/SPECS-EXTENDED -name "*.spec" -print`; do grep -e "^Source[0-9]*:" $spcfl | grep -v -e "https"; if [ $? -eq 0 ]; then echo "$spcfl:: non-httpslines listed above"; fi; done > list_spcfls_nonhttps_Source_lines
+ [2025-03-26 07:48.18] /third_disk/ppline_24Mar/azurelinux/didwhat [neerajs.azuli-m1]$ wc spcfls_nonhttps_Source
+  530   530 42588 spcfls_nonhttps_Source
+ [2025-03-26 07:48.48] /third_disk/ppline_24Mar/azurelinux/didwhat [neerajs.azuli-m1]$ grep -e ":: non-https" spcfls_nonhttps_Source_lines | wc
+    530    2120   58488
+ [2025-03-26 07:49.07] /third_disk/ppline_24Mar/azurelinux/didwhat [neerajs.azuli-m1]$ wc spcfls_nonhttps_Source_lines
+  1363   3798 103838 spcfls_nonhttps_Source_lines
+ [2025-03-26 07:49.16] /third_disk/ppline_24Mar/azurelinux/didwhat [neerajs.azuli-m1]$
+```
+
+The files of our interest are listed in "list_spcfls_nonhttps_Source"
+
+Just for crossverification, list down the tarball download errors faced in the latest pipeline run:
+```
+ [2025-03-26 08:02.44] /third_disk/ppline_24Mar/azurelinux/didwhat [neerajs.azuli-m1]$ logfl=Sandeep_pline_errlog_buildid771430.txt; grep -e "-- ERROR - Failed to download source tarball for " $logfl | awk '{print $11}' | awk 'BEGIN {FS="."} {print $1}'
+opendnssec
+pmdk-convert
+ [2025-03-26 08:02.56] /third_disk/ppline_24Mar/azurelinux/didwhat [neerajs.azuli-m1]$ logfl=Sandeep_pline_errlog_buildid771430.txt; grep -e "-- ERROR - Failed to download source tarball for " $logfl
+2025-03-25T16:51:52.7336543Z -- ERROR - Failed to download source tarball for opendnssec. Removing opendnssec from build process.
+2025-03-25T16:52:14.0389314Z -- ERROR - Failed to download source tarball for pmdk-convert. Removing pmdk-convert from build process.
+```
+
+There were only two - opendnssec and pmdk-convert.
+
+Comparing against the results of the spec files with non-https Source, we see that there were 530 such spec files.
+Out of these 530 only opendnssec is there, and pmdk-convert is not there.  Which means that pmdk-convert has 
+https path present for Source.
+```
+ [2025-03-26 08:08.39] /third_disk/ppline_24Mar/azurelinux/didwhat [neerajs.azuli-m1]$ grep -e "opendnssec" -e "pmdk-convert" list_spcfls_nonhttps_Source
+/third_disk/ppline_24Mar/azurelinux//SPECS-EXTENDED/opendnssec/opendnssec.spec
+```
+
+Indeed that is true:
+```
+ [2025-03-26 08:12.56] /third_disk/ppline_24Mar/azurelinux/didwhat [neerajs.azuli-m1]$ grep -e "^Source" ../SPECS-EXTENDED/pmdk-convert/pmdk-convert.spec
+Source0:        https://github.com/pmem/pmdk-convert/releases/download/%{upstreamversion}/pmdk-convert-%{upstreamversion}.tar.gz
+Source1:        https://github.com/pmem/pmdk/archive/1.0.tar.gz#/nvml-1.0.tar.gz
+Source2:        https://github.com/pmem/pmdk/archive/1.1.tar.gz#/nvml-1.1.tar.gz
+Source3:        https://github.com/pmem/pmdk/releases/download/1.2.4/pmdk-1.2.4.tar.gz
+Source4:        https://github.com/pmem/pmdk/releases/download/1.3.3/pmdk-1.3.3.tar.gz
+Source5:        https://github.com/pmem/pmdk/releases/download/1.4.3/pmdk-1.4.3.tar.gz
+Source6:        https://github.com/pmem/pmdk/releases/download/1.5.2/pmdk-1.5.2.tar.gz
+Source7:        https://github.com/pmem/pmdk/releases/download/1.6.1/pmdk-1.6.1.tar.gz
+Source8:        https://github.com/pmem/pmdk/releases/download/1.7/pmdk-1.7.tar.gz
+ [2025-03-26 08:19.30] /third_disk/ppline_24Mar/azurelinux/didwhat [neerajs.azuli-m1]$
+```
+
+Finding out the list of spec files with purely no path in any of the Source lines:
+```
+ [2025-03-26 08:03.15] /third_disk/ppline_24Mar/azurelinux/didwhat [neerajs.azuli-m1]$ srcroot=/third_disk/ppline_24Mar/azurelinux/; for spcfl in `find $srcroot/SPECS-EXTENDED -name "*.spec" -print`; do grep -e "^Source[0-9]*:" $spcfl | grep -v -e "http" > /dev/null; if [ $? -eq 0 ]; then echo $spcfl; fi; done > list_spcfls_nonpath_Source
+ [2025-03-26 08:28.04] /third_disk/ppline_24Mar/azurelinux/didwhat [neerajs.azuli-m1]$ srcroot=/third_disk/ppline_24Mar/azurelinux/; for spcfl in `find $srcroot/SPECS-EXTENDED -name "*.spec" -print`; do grep -e "^Source[0-9]*:" $spcfl | grep -v -e "http"; if [ $? -eq 0 ]; then echo "$spcfl:: non-path Source lines listed above"; fi; done > list_spcfls_nonpath_Source_lines
+ [2025-03-26 08:30.48] /third_disk/ppline_24Mar/azurelinux/didwhat [neerajs.azuli-m1]$ wc list_spcfls_nonpath_Source list_spcfls_nonpath_Source_lines
+  348   348 28170 list_spcfls_nonpath_Source
+  919  3242 64556 list_spcfls_nonpath_Source_lines
+ 1267  3590 92726 total
+ [2025-03-26 08:30.57] /third_disk/ppline_24Mar/azurelinux/didwhat [neerajs.azuli-m1]$
+ [2025-03-26 08:34.25] /third_disk/ppline_24Mar/azurelinux/didwhat [neerajs.azuli-m1]$ grep -e ":: non-path Source lines" list_spcfls_nonpath_Source_lines | wc
+    348    2088   41046
+ [2025-03-26 08:34.35] /third_disk/ppline_24Mar/azurelinux/didwhat [neerajs.azuli-m1]$
+```
 

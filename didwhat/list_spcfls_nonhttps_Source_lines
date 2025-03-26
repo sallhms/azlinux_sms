@@ -1,0 +1,1363 @@
+Source:         http://download.sourceforge.net/openjade/openjade-%{version}.tar.gz
+Source2:        config.guess
+Source3:        config.sub
+/third_disk/ppline_24Mar/azurelinux//SPECS-EXTENDED/openjade/openjade.spec:: non-httpslines listed above
+Source0:        http://downloads.sourceforge.net/gphoto/%{name}-%{version}.tar.bz2
+/third_disk/ppline_24Mar/azurelinux//SPECS-EXTENDED/gphoto2/gphoto2.spec:: non-httpslines listed above
+Source1: %{name}-LICENSE.txt
+/third_disk/ppline_24Mar/azurelinux//SPECS-EXTENDED/setserial/setserial.spec:: non-httpslines listed above
+Source0: http://downloads.sourceforge.net/project/sblim/%{name}/%{name}-%{version}.tar.bz2
+/third_disk/ppline_24Mar/azurelinux//SPECS-EXTENDED/sblim-sfcc/sblim-sfcc.spec:: non-httpslines listed above
+Source1:        cassandra.service
+Source2:        cassandra-build-cache-%{version}.tar.gz
+/third_disk/ppline_24Mar/azurelinux//SPECS-EXTENDED/cassandra/cassandra.spec:: non-httpslines listed above
+Source: http://download.savannah.gnu.org/releases/smc/hyphenation/patterns/%{name}-%{version}.tar.bz2
+/third_disk/ppline_24Mar/azurelinux//SPECS-EXTENDED/hyphen-te/hyphen-te.spec:: non-httpslines listed above
+Source1:        %{name}-build.xml
+/third_disk/ppline_24Mar/azurelinux//SPECS-EXTENDED/osgi-compendium/osgi-compendium.spec:: non-httpslines listed above
+Source:           %{url}/archive/v%{version}/%{oname}-%{version}.tar.gz#/%{name}-%{version}.tar.gz
+/third_disk/ppline_24Mar/azurelinux//SPECS-EXTENDED/python-rtslib/python-rtslib.spec:: non-httpslines listed above
+Source0:        http://people.redhat.com/~rjones/virt-top/files/%{name}-%{version}.tar.gz
+Source1:        http://people.redhat.com/~rjones/virt-top/files/%{name}-%{version}.tar.gz.sig
+Source2:        processcsv.py
+Source3:        processcsv.py.pod
+Source4:        libguestfs.keyring
+/third_disk/ppline_24Mar/azurelinux//SPECS-EXTENDED/virt-top/virt-top.spec:: non-httpslines listed above
+Source:         %{url}/archive/%{version}/%{name}-%{version}.tar.gz
+/third_disk/ppline_24Mar/azurelinux//SPECS-EXTENDED/leatherman/leatherman.spec:: non-httpslines listed above
+Source0:   http://prdownloads.sourceforge.net/%{name}/%{name}-%{version}.tar.bz2
+/third_disk/ppline_24Mar/azurelinux//SPECS-EXTENDED/cdrdao/cdrdao.spec:: non-httpslines listed above
+Source0:        http://downloads.sourceforge.net/pmt/%{name}-%{version}-nolib.tar.xz
+Source1:        %{name}.sgml
+/third_disk/ppline_24Mar/azurelinux//SPECS-EXTENDED/pngcrush/pngcrush.spec:: non-httpslines listed above
+Source0: %{url}/archive/v%{version}/%{srcname}-%{version}.tar.gz
+/third_disk/ppline_24Mar/azurelinux//SPECS-EXTENDED/python-webencodings/python-webencodings.spec:: non-httpslines listed above
+Source:         %pypi_source 
+/third_disk/ppline_24Mar/azurelinux//SPECS-EXTENDED/python-fixtures/python-fixtures.spec:: non-httpslines listed above
+Source0: hyph-hsb.tex
+Source1: %{name}-LICENSE.txt
+/third_disk/ppline_24Mar/azurelinux//SPECS-EXTENDED/hyphen-hsb/hyphen-hsb.spec:: non-httpslines listed above
+Source2:        http://www.oasis-open.org/docbook/xml/mathml/1.1CR1/dbmathml.dtd
+Source3:        http://www.w3.org/Math/DTD/mathml2.tgz
+Source4:        gl-manpages-1.0.1.tar.bz2
+Source5:        metainfo.xsl
+/third_disk/ppline_24Mar/azurelinux//SPECS-EXTENDED/gl-manpages/gl-manpages.spec:: non-httpslines listed above
+Source0:       http://downloads.sourceforge.net/dbus-cplusplus/lib%{name}-%{version}.tar.gz
+/third_disk/ppline_24Mar/azurelinux//SPECS-EXTENDED/dbus-c++/dbus-c++.spec:: non-httpslines listed above
+Source:         %{url}/archive/%{version}/%{name}-%{version}.tar.gz
+/third_disk/ppline_24Mar/azurelinux//SPECS-EXTENDED/python-uswid/python-uswid.spec:: non-httpslines listed above
+Source: http://www.sk-spell.sk.cx/files/hunspell-sk-%{upstreamid}.zip
+/third_disk/ppline_24Mar/azurelinux//SPECS-EXTENDED/hunspell-sk/hunspell-sk.spec:: non-httpslines listed above
+Source0:	http://libopenraw.freedesktop.org/download/%{name}-%{version}.tar.bz2
+/third_disk/ppline_24Mar/azurelinux//SPECS-EXTENDED/libopenraw/libopenraw.spec:: non-httpslines listed above
+Source0: http://downloads.sourceforge.net/%{name}/suite3270-%{version}-src.tgz
+Source1: x3270.png
+Source2: x3270.desktop
+/third_disk/ppline_24Mar/azurelinux//SPECS-EXTENDED/x3270/x3270.spec:: non-httpslines listed above
+Source0: 	%{url}/archive/refs/tags/v1.8.0.tar.gz#/%{name}-%{version}.tar.gz
+/third_disk/ppline_24Mar/azurelinux//SPECS-EXTENDED/qr-code-generator/qr-code-generator.spec:: non-httpslines listed above
+Source:         %{url}/archive/%{version}/fasteners-%{version}.tar.gz
+/third_disk/ppline_24Mar/azurelinux//SPECS-EXTENDED/python-fasteners/python-fasteners.spec:: non-httpslines listed above
+Source0:        %{pypi_source}#/%{name}-%{version}.tar.gz
+/third_disk/ppline_24Mar/azurelinux//SPECS-EXTENDED/python-openstackdocstheme/python-openstackdocstheme.spec:: non-httpslines listed above
+Source: libuser-%{version}.tar.gz
+/third_disk/ppline_24Mar/azurelinux//SPECS-EXTENDED/libuser/libuser.spec:: non-httpslines listed above
+Source0: hyph-grc.tex
+Source1: %{name}-LICENSE.txt
+/third_disk/ppline_24Mar/azurelinux//SPECS-EXTENDED/hyphen-grc/hyphen-grc.spec:: non-httpslines listed above
+Source0: http://www.dicollecte.org/download/fr/hyph-fr-v3.0.zip
+Source1: %{name}-LICENSE.txt
+/third_disk/ppline_24Mar/azurelinux//SPECS-EXTENDED/hyphen-fr/hyphen-fr.spec:: non-httpslines listed above
+Source0:        %{url}/archive/v%{version}/%{name}-%{version}.tar.gz
+/third_disk/ppline_24Mar/azurelinux//SPECS-EXTENDED/ioping/ioping.spec:: non-httpslines listed above
+Source0:        %{url}/archive/%{shortcommit}/%{srcname}-%{shortcommit}.tar.gz
+/third_disk/ppline_24Mar/azurelinux//SPECS-EXTENDED/python-azure-sdk/python-azure-sdk.spec:: non-httpslines listed above
+Source1:        LICENSE
+/third_disk/ppline_24Mar/azurelinux//SPECS-EXTENDED/python-kerberos/python-kerberos.spec:: non-httpslines listed above
+Source0: %{_distro_sources_url}/lockdev-%{version}.%{checkout}.tar.gz
+/third_disk/ppline_24Mar/azurelinux//SPECS-EXTENDED/lockdev/lockdev.spec:: non-httpslines listed above
+Source0:        %{pypi_source testpath}
+/third_disk/ppline_24Mar/azurelinux//SPECS-EXTENDED/python-testpath/python-testpath.spec:: non-httpslines listed above
+Source0: %{url}/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
+/third_disk/ppline_24Mar/azurelinux//SPECS-EXTENDED/slirp4netns/slirp4netns.spec:: non-httpslines listed above
+Source: http://www.shkenca.org/shkarkime/myspell-sq_AL-%{version}.zip
+/third_disk/ppline_24Mar/azurelinux//SPECS-EXTENDED/hunspell-sq/hunspell-sq.spec:: non-httpslines listed above
+Source0:        http://www.apache.org/dist/httpcomponents/commons-httpclient/source/%{short_name}-%{version}-src.tar.gz
+Source1:        http://repo.maven.apache.org/maven2/%{short_name}/%{short_name}/%{version}/%{short_name}-%{version}.pom
+/third_disk/ppline_24Mar/azurelinux//SPECS-EXTENDED/apache-commons-httpclient/apache-commons-httpclient.spec:: non-httpslines listed above
+Source:         %{giturl}/archive/%{name}-%{version}.tar.gz
+/third_disk/ppline_24Mar/azurelinux//SPECS-EXTENDED/javacc/javacc.spec:: non-httpslines listed above
+Source:        %{url}/-/archive/v%{version}/sphinxygen-v%{version}.tar.gz#/%{name}-v%{version}.tar.gz
+/third_disk/ppline_24Mar/azurelinux//SPECS-EXTENDED/python-sphinxygen/python-sphinxygen.spec:: non-httpslines listed above
+Source2:       pacemaker.sysusers
+/third_disk/ppline_24Mar/azurelinux//SPECS-EXTENDED/pacemaker/pacemaker.spec:: non-httpslines listed above
+Source: http://downloads.sourceforge.net/armspell/myspell-hy-%{version}.tar.gz
+/third_disk/ppline_24Mar/azurelinux//SPECS-EXTENDED/hunspell-hy/hunspell-hy.spec:: non-httpslines listed above
+Source0:        http://downloads.sourceforge.net/sblim/%{name}-%{version}.tar.bz2
+/third_disk/ppline_24Mar/azurelinux//SPECS-EXTENDED/sblim-wbemcli/sblim-wbemcli.spec:: non-httpslines listed above
+Source: http://downloads.sourceforge.net/rospell/ro_RO.%{version}.zip
+/third_disk/ppline_24Mar/azurelinux//SPECS-EXTENDED/hunspell-ro/hunspell-ro.spec:: non-httpslines listed above
+Source1: scrollkeeper-omf.dtd
+/third_disk/ppline_24Mar/azurelinux//SPECS-EXTENDED/rarian/rarian.spec:: non-httpslines listed above
+Source0:        %{_distro_sources_url}/aopalliance-src.tar.gz
+Source2:        %{name}-MANIFEST.MF
+Source3:        %{name}-LICENSE.txt 
+/third_disk/ppline_24Mar/azurelinux//SPECS-EXTENDED/aopalliance/aopalliance.spec:: non-httpslines listed above
+Source0: http://j3e.de/linux/convmv/convmv-%{version}.tar.gz
+/third_disk/ppline_24Mar/azurelinux//SPECS-EXTENDED/convmv/convmv.spec:: non-httpslines listed above
+Source: http://downloads.sourceforge.net/%{name}/%{name}-%{version}.tar.xz
+/third_disk/ppline_24Mar/azurelinux//SPECS-EXTENDED/libepubgen/libepubgen.spec:: non-httpslines listed above
+Source0:        http://downloads.sourceforge.net/gphoto/%{name}-%{version}.tar.bz2
+/third_disk/ppline_24Mar/azurelinux//SPECS-EXTENDED/libgphoto2/libgphoto2.spec:: non-httpslines listed above
+Source: http://ftp.gnu.org/gnu/aspell/dict/gv/aspell-gv-0.50-0.tar.bz2
+/third_disk/ppline_24Mar/azurelinux//SPECS-EXTENDED/hunspell-gv/hunspell-gv.spec:: non-httpslines listed above
+Source0:          http://downloads.sourceforge.net/watchdog/watchdog-%{version}.tar.gz
+Source2:          README.watchdog.ipmi
+Source3:          README.Fedora
+Source4:          watchdog.service
+Source5:          watchdog-ping.service
+/third_disk/ppline_24Mar/azurelinux//SPECS-EXTENDED/watchdog/watchdog.spec:: non-httpslines listed above
+Source0:   %{pypi_source}#/%{name}-%{version}.tar.gz
+/third_disk/ppline_24Mar/azurelinux//SPECS-EXTENDED/python-voluptuous/python-voluptuous.spec:: non-httpslines listed above
+Source0: http://people.freedesktop.org/~mccann/dist/sound-theme-freedesktop-%{version}.tar.bz2
+/third_disk/ppline_24Mar/azurelinux//SPECS-EXTENDED/sound-theme-freedesktop/sound-theme-freedesktop.spec:: non-httpslines listed above
+Source:  http://anishpatil.fedorapeople.org/hi_in.%{version}.tar.gz
+/third_disk/ppline_24Mar/azurelinux//SPECS-EXTENDED/hunspell-hi/hunspell-hi.spec:: non-httpslines listed above
+Source0:        %{url}/archive/refs/tags/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
+/third_disk/ppline_24Mar/azurelinux//SPECS-EXTENDED/python-into-dbus-python/python-into-dbus-python.spec:: non-httpslines listed above
+Source0:        http://www.latencytop.org/download/%{name}-%{version}.tar.gz
+Source1:        %{name}-LICENSE.txt
+/third_disk/ppline_24Mar/azurelinux//SPECS-EXTENDED/latencytop/latencytop.spec:: non-httpslines listed above
+Source5: criu-tmpfiles.conf
+/third_disk/ppline_24Mar/azurelinux//SPECS-EXTENDED/criu/criu.spec:: non-httpslines listed above
+Source0:	http://downloads.sourceforge.net/mecab/%{name}-%{majorver}-%{date}.tar.gz
+Source2:	http://www.jipdec.or.jp/icot/ARCHIVE/terms-and-conditions-for-IFS-J.html
+Source3:	LICENSE.Fedora
+/third_disk/ppline_24Mar/azurelinux//SPECS-EXTENDED/mecab-ipadic/mecab-ipadic.spec:: non-httpslines listed above
+Source0:	http://downloads.sourceforge.net/%{name}/%{name}-%{version}.tar.gz
+Source1:	http://potrace.sourceforge.net/potrace.pdf
+Source2:	http://potrace.sourceforge.net/potracelib.pdf
+/third_disk/ppline_24Mar/azurelinux//SPECS-EXTENDED/potrace/potrace.spec:: non-httpslines listed above
+Source1:        bsf-pom.xml
+/third_disk/ppline_24Mar/azurelinux//SPECS-EXTENDED/bsf/bsf.spec:: non-httpslines listed above
+Source: http://dev-www.libreoffice.org/src/%{name}/%{name}-%{version}.tar.xz
+/third_disk/ppline_24Mar/azurelinux//SPECS-EXTENDED/libqxp/libqxp.spec:: non-httpslines listed above
+Source0:	http://www.icculus.org/physfs/downloads/physfs-%{version}.tar.bz2
+/third_disk/ppline_24Mar/azurelinux//SPECS-EXTENDED/physfs/physfs.spec:: non-httpslines listed above
+Source0: http://mirrors.ctan.org/language/hyphenation/fahyph.zip
+Source1: %{name}-LICENSE.txt
+/third_disk/ppline_24Mar/azurelinux//SPECS-EXTENDED/hyphen-fa/hyphen-fa.spec:: non-httpslines listed above
+Source:         %{url}/archive/%{commit}/curio-%{shortcommit}.tar.gz
+/third_disk/ppline_24Mar/azurelinux//SPECS-EXTENDED/python-curio/python-curio.spec:: non-httpslines listed above
+Source0: http://www.cl.cam.ac.uk/~mgk25/download/ucs-fonts.tar.gz
+Source1: 66-ucs-miscfixed.conf
+/third_disk/ppline_24Mar/azurelinux//SPECS-EXTENDED/ucs-miscfixed-fonts/ucs-miscfixed-fonts.spec:: non-httpslines listed above
+Source: %{_distro_sources_url}/%{name}-%{version}.tar.xz
+Source1: gpm.service
+/third_disk/ppline_24Mar/azurelinux//SPECS-EXTENDED/gpm/gpm.spec:: non-httpslines listed above
+Source0:        http://www.lcdf.org/~eddietwo/type/t1utils-%{version}.tar.gz
+/third_disk/ppline_24Mar/azurelinux//SPECS-EXTENDED/t1utils/t1utils.spec:: non-httpslines listed above
+Source:         %{url}archive/v%{version}/sphinxcontrib-jquery-%{version}.tar.gz
+/third_disk/ppline_24Mar/azurelinux//SPECS-EXTENDED/python-sphinxcontrib-jquery/python-sphinxcontrib-jquery.spec:: non-httpslines listed above
+Source1:        jarjar.pom
+Source2:        jarjar-util.pom
+/third_disk/ppline_24Mar/azurelinux//SPECS-EXTENDED/jarjar/jarjar.spec:: non-httpslines listed above
+Source0: %{_distro_sources_url}/%{name}-1.2-0.10-src.tar.gz
+/third_disk/ppline_24Mar/azurelinux//SPECS-EXTENDED/sgpio/sgpio.spec:: non-httpslines listed above
+Source:    %{url}/archive/v%{version}/%{name}-%{version}.tar.gz
+Source1:   xt5250.desktop
+/third_disk/ppline_24Mar/azurelinux//SPECS-EXTENDED/tn5250/tn5250.spec:: non-httpslines listed above
+Source1:       vhostmd.conf
+/third_disk/ppline_24Mar/azurelinux//SPECS-EXTENDED/vhostmd/vhostmd.spec:: non-httpslines listed above
+Source1:        %{name}-%{version}-vendor.tar.gz
+Source2:        crio.service
+Source3:        sysconfig.crio
+Source4:        crio.conf
+Source5:        cri-o-rpmlintrc
+Source6:        kubelet.env
+/third_disk/ppline_24Mar/azurelinux//SPECS-EXTENDED/cri-o/cri-o.spec:: non-httpslines listed above
+Source:         %{forgeurl}/archive/%{commit}/%{name}-%{commit}.tar.gz
+/third_disk/ppline_24Mar/azurelinux//SPECS-EXTENDED/libimobiledevice/libimobiledevice.spec:: non-httpslines listed above
+Source:         %{url}/archive/v%{version}/%{oname}-%{version}.tar.gz
+/third_disk/ppline_24Mar/azurelinux//SPECS-EXTENDED/python-configshell/python-configshell.spec:: non-httpslines listed above
+Source: http://audiofile.68k.org/%{name}-%{version}.tar.gz
+/third_disk/ppline_24Mar/azurelinux//SPECS-EXTENDED/audiofile/audiofile.spec:: non-httpslines listed above
+Source1:        COPYING
+Source2:        README
+Source3:        AUTHORS
+/third_disk/ppline_24Mar/azurelinux//SPECS-EXTENDED/wsmancli/wsmancli.spec:: non-httpslines listed above
+Source1:        oui.csv
+Source2:        arpwatch.service
+Source3:        arpwatch.sysconfig
+Source4:        arp2ethers.8
+Source5:        massagevendor.8
+Source6:        arpwatch.sysusers
+/third_disk/ppline_24Mar/azurelinux//SPECS-EXTENDED/arpwatch/arpwatch.spec:: non-httpslines listed above
+Source: http://download.gnome.org/sources/libIDL/0.8/%{name}-%{version}.tar.bz2
+/third_disk/ppline_24Mar/azurelinux//SPECS-EXTENDED/libIDL/libIDL.spec:: non-httpslines listed above
+Source0: http://downloads.sourceforge.net/sblim/%{name}-%{version}.tar.bz2
+Source1: sfcb.service
+Source2: sfcbdump.1.gz
+Source3: sfcbinst2mof.1.gz
+Source4: sfcbtrace.1.gz
+/third_disk/ppline_24Mar/azurelinux//SPECS-EXTENDED/sblim-sfcb/sblim-sfcb.spec:: non-httpslines listed above
+Source0:        http://www.etallen.com/%{name}/%{name}-%{version}.src.tar.gz
+/third_disk/ppline_24Mar/azurelinux//SPECS-EXTENDED/cpuid/cpuid.spec:: non-httpslines listed above
+Source1:        config
+Source2:        sha512hmac-openssl.sh
+Source3:        cbl-mariner-ca-20211013.pem
+Source4:        cpupower
+Source5:        cpupower.service
+/third_disk/ppline_24Mar/azurelinux//SPECS-EXTENDED/kernel-rt/kernel-rt.spec:: non-httpslines listed above
+Source0:       http://seb.dbzteam.org/pub/pyinotify/releases/pyinotify-%{version}.tar.gz
+/third_disk/ppline_24Mar/azurelinux//SPECS-EXTENDED/python-inotify/python-inotify.spec:: non-httpslines listed above
+Source: http://download.savannah.gnu.org/releases/smc/hyphenation/patterns/%{name}-%{version}.tar.bz2
+/third_disk/ppline_24Mar/azurelinux//SPECS-EXTENDED/hyphen-pa/hyphen-pa.spec:: non-httpslines listed above
+Source0: %{_distro_sources_url}/%{name}-%{version}.tar.gz
+/third_disk/ppline_24Mar/azurelinux//SPECS-EXTENDED/device-mapper-persistent-data/device-mapper-persistent-data.spec:: non-httpslines listed above
+Source2:        usbguard-daemon.conf
+/third_disk/ppline_24Mar/azurelinux//SPECS-EXTENDED/usbguard/usbguard.spec:: non-httpslines listed above
+Source0:        http://gsdview.appspot.com/chromeos-localmirror/distfiles/%{archivename}.tar.gz
+Source1:        30-0-%{fontname}-fontconfig.conf
+Source2:        62-%{fontname}-fontconfig.conf
+Source3:        %{fontname}.metainfo.xml
+/third_disk/ppline_24Mar/azurelinux//SPECS-EXTENDED/google-crosextra-caladea-fonts/google-crosextra-caladea-fonts.spec:: non-httpslines listed above
+Source0:	%{_distro_sources_url}/%{name}-%{version}.tar.gz
+/third_disk/ppline_24Mar/azurelinux//SPECS-EXTENDED/python-hwdata/python-hwdata.spec:: non-httpslines listed above
+Source1:        cstool.1
+/third_disk/ppline_24Mar/azurelinux//SPECS-EXTENDED/capstone/capstone.spec:: non-httpslines listed above
+Source0:        http://downloads.sourceforge.net/sblim/%{name}-%{version}.tar.bz2
+/third_disk/ppline_24Mar/azurelinux//SPECS-EXTENDED/sblim-cmpi-base/sblim-cmpi-base.spec:: non-httpslines listed above
+Source0: http://ispell.math.upatras.gr/files/ooffice/el_GR-%{version}.zip
+Source1: %{name}-LICENSE.txt
+/third_disk/ppline_24Mar/azurelinux//SPECS-EXTENDED/hunspell-el/hunspell-el.spec:: non-httpslines listed above
+Source: http://dev-www.libreoffice.org/src/%{name}/%{name}-%{version}.tar.xz
+/third_disk/ppline_24Mar/azurelinux//SPECS-EXTENDED/libmspub/libmspub.spec:: non-httpslines listed above
+Source1: opencryptoki.module
+/third_disk/ppline_24Mar/azurelinux//SPECS-EXTENDED/opencryptoki/opencryptoki.spec:: non-httpslines listed above
+Source2:        plugin.properties
+/third_disk/ppline_24Mar/azurelinux//SPECS-EXTENDED/jsch/jsch.spec:: non-httpslines listed above
+Source0: http://www.dechifro.org/dcraw/archive/dcraw-%{version}.tar.gz
+/third_disk/ppline_24Mar/azurelinux//SPECS-EXTENDED/dcraw/dcraw.spec:: non-httpslines listed above
+Source:         %{pypi_source testresources}
+/third_disk/ppline_24Mar/azurelinux//SPECS-EXTENDED/python-testresources/python-testresources.spec:: non-httpslines listed above
+Source0: http://download.gnome.org/sources/GConf/3.2/GConf-%{version}.tar.xz
+Source1: macros.gconf2
+/third_disk/ppline_24Mar/azurelinux//SPECS-EXTENDED/GConf2/GConf2.spec:: non-httpslines listed above
+Source1:        LICENSE.PTR
+/third_disk/ppline_24Mar/azurelinux//SPECS-EXTENDED/perl-IO-Compress-Lzma/perl-IO-Compress-Lzma.spec:: non-httpslines listed above
+Source0: %{URL}/archive/v%{version}/%{name}-%{version}.tar.gz
+Source2: procmailrc
+/third_disk/ppline_24Mar/azurelinux//SPECS-EXTENDED/procmail/procmail.spec:: non-httpslines listed above
+Source0:       http://mirror.ox.ac.uk/sites/rsync.apache.org/xerces/j/source/Xerces-J-src.%{version}.tar.gz
+Source11:      %{name}-version.1
+Source12:      %{name}-constants.1
+Source7:       %{name}-pom.xml
+/third_disk/ppline_24Mar/azurelinux//SPECS-EXTENDED/xerces-j2/xerces-j2.spec:: non-httpslines listed above
+Source: http://www.openfabrics.org/downloads/management/%{name}-%{version}.tar.gz
+/third_disk/ppline_24Mar/azurelinux//SPECS-EXTENDED/libibcommon/libibcommon.spec:: non-httpslines listed above
+Source0:        http://downloads.sourceforge.net/project/sblim/providers/%{name}/%{version}/%{name}-%{version}.tar.bz2
+/third_disk/ppline_24Mar/azurelinux//SPECS-EXTENDED/sblim-cmpi-fsvol/sblim-cmpi-fsvol.spec:: non-httpslines listed above
+Source: %{_distro_sources_url}/th_el.zip
+/third_disk/ppline_24Mar/azurelinux//SPECS-EXTENDED/mythes-el/mythes-el.spec:: non-httpslines listed above
+Source:         http://www.kernel.org/pub/linux/libs/ieee1394/%{name}-%{version}.tar.gz
+/third_disk/ppline_24Mar/azurelinux//SPECS-EXTENDED/libiec61883/libiec61883.spec:: non-httpslines listed above
+Source1:        README.md
+/third_disk/ppline_24Mar/azurelinux//SPECS-EXTENDED/libkkc/libkkc.spec:: non-httpslines listed above
+Source: http://people.freedesktop.org/~svu/libxklavier-5.4.tar.bz2
+/third_disk/ppline_24Mar/azurelinux//SPECS-EXTENDED/libxklavier/libxklavier.spec:: non-httpslines listed above
+Source0:        http://downloads.sourceforge.net/sblim/%{name}-%{version}.tar.bz2
+/third_disk/ppline_24Mar/azurelinux//SPECS-EXTENDED/sblim-cmpi-sysfs/sblim-cmpi-sysfs.spec:: non-httpslines listed above
+Source0:        %{src_base}/cairomm-%{version}.tar.xz
+Source1:        %{src_base}/cairomm-%{version}.tar.xz.asc
+/third_disk/ppline_24Mar/azurelinux//SPECS-EXTENDED/cairomm/cairomm.spec:: non-httpslines listed above
+Source0:        http://downloads.sourceforge.net/sblim/%{name}-%{version}.tar.bz2
+/third_disk/ppline_24Mar/azurelinux//SPECS-EXTENDED/sblim-testsuite/sblim-testsuite.spec:: non-httpslines listed above
+Source0:   http://people.freedesktop.org/~hughsient/appstream-glib/releases/appstream-glib-%{version}.tar.xz
+/third_disk/ppline_24Mar/azurelinux//SPECS-EXTENDED/libappstream-glib/libappstream-glib.spec:: non-httpslines listed above
+Source1:    macros.scl-filesystem
+/third_disk/ppline_24Mar/azurelinux//SPECS-EXTENDED/scl-utils/scl-utils.spec:: non-httpslines listed above
+Source:         %{pypi_source}
+/third_disk/ppline_24Mar/azurelinux//SPECS-EXTENDED/python-iso8601/python-iso8601.spec:: non-httpslines listed above
+Source0:        http://downloads.sourceforge.net/project/sblim/providers/%{name}/%{version}/%{name}-%{version}.tar.bz2
+/third_disk/ppline_24Mar/azurelinux//SPECS-EXTENDED/sblim-cmpi-nfsv4/sblim-cmpi-nfsv4.spec:: non-httpslines listed above
+Source1:        license.txt
+/third_disk/ppline_24Mar/azurelinux//SPECS-EXTENDED/perl-Getopt-ArgvFile/perl-Getopt-ArgvFile.spec:: non-httpslines listed above
+Source0: http://downloads.sourceforge.net/docbook/%{name}-%{version}.tar.gz
+Source1: %{name}.xml
+Source2: %{name}.cat
+Source3: %{name}.README.redhat
+Source4: %{name}-tests.tar.gz
+/third_disk/ppline_24Mar/azurelinux//SPECS-EXTENDED/docbook-slides/docbook-slides.spec:: non-httpslines listed above
+Source: http://download.savannah.gnu.org/releases/smc/hyphenation/patterns/%{name}-%{version}.tar.bz2
+/third_disk/ppline_24Mar/azurelinux//SPECS-EXTENDED/hyphen-ta/hyphen-ta.spec:: non-httpslines listed above
+Source:    %{forgesource}
+/third_disk/ppline_24Mar/azurelinux//SPECS-EXTENDED/fonts-rpm-macros/fonts-rpm-macros.spec:: non-httpslines listed above
+Source0:	http://www.draisberghof.de/%{name}/%{source_name}-%{version}.tar.bz2
+Source1:	http://www.draisberghof.de/usb_modeswitch/device_reference.txt
+/third_disk/ppline_24Mar/azurelinux//SPECS-EXTENDED/usb_modeswitch/usb_modeswitch.spec:: non-httpslines listed above
+Source: http://anishpatil.fedorapeople.org/pa_in.%{version}.tar.gz
+/third_disk/ppline_24Mar/azurelinux//SPECS-EXTENDED/hunspell-pa/hunspell-pa.spec:: non-httpslines listed above
+Source1: ods-enforcerd.service
+Source2: ods-signerd.service
+Source3: ods.sysconfig
+Source4: conf.xml
+Source5: tmpfiles-opendnssec.conf
+Source6: opendnssec.cron
+Source7: opendnssec-2.1.sqlite_convert.sql
+Source8: opendnssec-2.1.sqlite_rpmversion.sql
+/third_disk/ppline_24Mar/azurelinux//SPECS-EXTENDED/opendnssec/opendnssec.spec:: non-httpslines listed above
+Source0:        http://downloads.sourceforge.net/sblim/%{name}-%{version}.tar.bz2
+Source1: macros.sblim-cmpi-devel
+/third_disk/ppline_24Mar/azurelinux//SPECS-EXTENDED/sblim-cmpi-devel/sblim-cmpi-devel.spec:: non-httpslines listed above
+Source:         %pypi_source trio
+/third_disk/ppline_24Mar/azurelinux//SPECS-EXTENDED/python-trio/python-trio.spec:: non-httpslines listed above
+Source:         http://downloads.xiph.org/releases/ogg/%{name}-%{version}.tar.xz
+/third_disk/ppline_24Mar/azurelinux//SPECS-EXTENDED/libogg/libogg.spec:: non-httpslines listed above
+Source0:        %{_distro_sources_url}/%{full_name}-4-src.tar.gz
+/third_disk/ppline_24Mar/azurelinux//SPECS-EXTENDED/servletapi4/servletapi4.spec:: non-httpslines listed above
+Source0:       http://download.gnome.org/sources/gupnp-av/0.14/%{name}-%{version}.tar.xz
+/third_disk/ppline_24Mar/azurelinux//SPECS-EXTENDED/gupnp-av/gupnp-av.spec:: non-httpslines listed above
+Source0:        http://download.savannah.gnu.org/releases/m17n/%{name}-%{version}.tar.gz
+/third_disk/ppline_24Mar/azurelinux//SPECS-EXTENDED/libotf/libotf.spec:: non-httpslines listed above
+Source1: %{name}-LICENSE.txt
+/third_disk/ppline_24Mar/azurelinux//SPECS-EXTENDED/hunspell-uk/hunspell-uk.spec:: non-httpslines listed above
+Source:         %{crates_source}
+/third_disk/ppline_24Mar/azurelinux//SPECS-EXTENDED/rust-ripgrep/rust-ripgrep.spec:: non-httpslines listed above
+Source:         %{url}/archive/%{version}/%{name}-%{version}.tar.gz
+/third_disk/ppline_24Mar/azurelinux//SPECS-EXTENDED/libvarlink/libvarlink.spec:: non-httpslines listed above
+Source1:        gitignore
+Source4:        10-quirks.conf
+Source10:       xserver.pamd
+Source20:  http://svn.exactcode.de/t2/trunk/package/xorg/xorg-server/xvfb-run.sh
+Source30:       xserver-sdk-abi-requires.release
+Source31:       xserver-sdk-abi-requires.git
+Source40:       driver-abi-rebuild.sh
+/third_disk/ppline_24Mar/azurelinux//SPECS-EXTENDED/xorg-x11-server/xorg-x11-server.spec:: non-httpslines listed above
+Source: http://dev-www.libreoffice.org/src/%{name}/%{name}-%{version}.tar.xz
+/third_disk/ppline_24Mar/azurelinux//SPECS-EXTENDED/libzmf/libzmf.spec:: non-httpslines listed above
+Source0:	%{name}-%{version}.tar.gz
+/third_disk/ppline_24Mar/azurelinux//SPECS-EXTENDED/distribution-gpg-keys/distribution-gpg-keys.spec:: non-httpslines listed above
+Source:       http://www.kraxel.org/releases/%{name}/%{name}-%{version}.tar.gz
+/third_disk/ppline_24Mar/azurelinux//SPECS-EXTENDED/amtterm/amtterm.spec:: non-httpslines listed above
+Source0: %{_distro_sources_url}/%{name}-%{version}.tar.gz
+/third_disk/ppline_24Mar/azurelinux//SPECS-EXTENDED/setuptool/setuptool.spec:: non-httpslines listed above
+Source2:        apache-commons-daemon.keyring
+Source10:       apache-commons-daemon-build.xml
+/third_disk/ppline_24Mar/azurelinux//SPECS-EXTENDED/apache-commons-daemon/apache-commons-daemon.spec:: non-httpslines listed above
+Source: http://downloads.sourceforge.net/lingala/hunspell-ln-0.02.zip
+/third_disk/ppline_24Mar/azurelinux//SPECS-EXTENDED/hunspell-ln/hunspell-ln.spec:: non-httpslines listed above
+Source3:       bnd.properties
+Source4:        generate-tarball.sh
+/third_disk/ppline_24Mar/azurelinux//SPECS-EXTENDED/jdom2/jdom2.spec:: non-httpslines listed above
+Source: http://mirror.ctan.org/language/hyph-utf8/tex/generic/hyph-utf8/patterns/tex/hyph-tk.tex
+/third_disk/ppline_24Mar/azurelinux//SPECS-EXTENDED/hyphen-tk/hyphen-tk.spec:: non-httpslines listed above
+Source100: radiusd.service
+Source102: freeradius-logrotate
+Source103: freeradius-pam-conf
+Source104: freeradius-tmpfiles.conf
+Source105: freeradius.sysusers
+/third_disk/ppline_24Mar/azurelinux//SPECS-EXTENDED/freeradius/freeradius.spec:: non-httpslines listed above
+Source0:        http://downloads.sourceforge.net/project/openicc/OpenICC-Profiles/%{name}-%{version}.tar.bz2
+/third_disk/ppline_24Mar/azurelinux//SPECS-EXTENDED/icc-profiles-openicc/icc-profiles-openicc.spec:: non-httpslines listed above
+Source0:        %{pypi_source}
+/third_disk/ppline_24Mar/azurelinux//SPECS-EXTENDED/python-toml/python-toml.spec:: non-httpslines listed above
+Source:         %pypi_source
+/third_disk/ppline_24Mar/azurelinux//SPECS-EXTENDED/python-ddt/python-ddt.spec:: non-httpslines listed above
+Source0:	http://people.redhat.com/dhowells/fscache/cachefilesd-%{version}.tar.bz2
+Source1:	%{name}-LICENSE.txt
+/third_disk/ppline_24Mar/azurelinux//SPECS-EXTENDED/cachefilesd/cachefilesd.spec:: non-httpslines listed above
+Source: http://downloads.sourceforge.net/libwpd/%{name}-%{version}.tar.xz
+/third_disk/ppline_24Mar/azurelinux//SPECS-EXTENDED/libodfgen/libodfgen.spec:: non-httpslines listed above
+Source0:        %{url}/downloads/%{name}-%{version}.tar.gz
+Source1:        %{url}/downloads/%{name}-%{version}.tar.gz.asc
+/third_disk/ppline_24Mar/azurelinux//SPECS-EXTENDED/pyxattr/pyxattr.spec:: non-httpslines listed above
+Source0:        http://www.extreme.indiana.edu/dist/java-repository/xpp3/distributions/xpp3-%{version}_src.tgz
+Source1:        http://central.maven.org/maven2/xpp3/xpp3/%{version}/xpp3-%{version}.pom
+Source2:        http://central.maven.org/maven2/xpp3/xpp3_min/%{version}/xpp3_min-%{version}.pom
+Source3:        http://central.maven.org/maven2/xpp3/xpp3_xpath/%{version}/xpp3_xpath-%{version}.pom
+Source4:        %{name}-%{version}-OSGI-MANIFEST.MF
+/third_disk/ppline_24Mar/azurelinux//SPECS-EXTENDED/xpp3/xpp3.spec:: non-httpslines listed above
+Source0:       gpsbabel-%{version}.tar.gz
+Source2:       %{name}.png
+/third_disk/ppline_24Mar/azurelinux//SPECS-EXTENDED/gpsbabel/gpsbabel.spec:: non-httpslines listed above
+Source2:        gpgkey-15D41BC02EB807D405EFFAF6C9183BEA0288CDEE.gpg
+/third_disk/ppline_24Mar/azurelinux//SPECS-EXTENDED/teckit/teckit.spec:: non-httpslines listed above
+Source1: COPYING
+/third_disk/ppline_24Mar/azurelinux//SPECS-EXTENDED/diffstat/diffstat.spec:: non-httpslines listed above
+Source0:        %{_distro_sources_url}/%{name}-%{version}.tar.gz
+/third_disk/ppline_24Mar/azurelinux//SPECS-EXTENDED/publicsuffix/publicsuffix.spec:: non-httpslines listed above
+Source0:	http://downloads.sf.net/pptpclient/pptp-%{version}.tar.gz
+Source1:	pptp-tmpfs.conf
+/third_disk/ppline_24Mar/azurelinux//SPECS-EXTENDED/pptp/pptp.spec:: non-httpslines listed above
+Source0:	http://lftp.yar.ru/ftp/%{name}-%{version}.tar.xz
+/third_disk/ppline_24Mar/azurelinux//SPECS-EXTENDED/lftp/lftp.spec:: non-httpslines listed above
+Source1:        %{name}-build.xml
+/third_disk/ppline_24Mar/azurelinux//SPECS-EXTENDED/jboss-interceptors-1.2-api/jboss-interceptors-1.2-api.spec:: non-httpslines listed above
+Source0: http://kohei.us/files/%{name}/src/%{name}-%{version}.tar.bz2
+/third_disk/ppline_24Mar/azurelinux//SPECS-EXTENDED/mdds/mdds.spec:: non-httpslines listed above
+Source: http://download.savannah.gnu.org/releases/smc/hyphenation/patterns/%{name}-%{version}.tar.bz2
+/third_disk/ppline_24Mar/azurelinux//SPECS-EXTENDED/hyphen-as/hyphen-as.spec:: non-httpslines listed above
+Source: http://dev-www.libreoffice.org/src/%{name}/%{name}-%{version}.tar.xz
+/third_disk/ppline_24Mar/azurelinux//SPECS-EXTENDED/libvisio/libvisio.spec:: non-httpslines listed above
+Source0:        %{url}/archive/%{version}/rpmlint-%{version}.tar.gz
+Source1:        fedora.toml
+Source3:        scoring.toml
+Source4:        users-groups.toml
+Source5:        warn-on-functions.toml
+/third_disk/ppline_24Mar/azurelinux//SPECS-EXTENDED/rpmlint/rpmlint.spec:: non-httpslines listed above
+Source: %{_distro_sources_url}/hunspell-hyphen-mi-0.1.%{upstreamid}-beta.tar.gz
+/third_disk/ppline_24Mar/azurelinux//SPECS-EXTENDED/hyphen-mi/hyphen-mi.spec:: non-httpslines listed above
+Source0: %{name}-%{version}.tar.bz2
+Source1: fedora-dmraid-activation
+Source2: dmraid-activation.service
+/third_disk/ppline_24Mar/azurelinux//SPECS-EXTENDED/dmraid/dmraid.spec:: non-httpslines listed above
+Source0: http://downloads.sourceforge.net/pngnq/pngnq-%{version}.tar.gz
+/third_disk/ppline_24Mar/azurelinux//SPECS-EXTENDED/pngnq/pngnq.spec:: non-httpslines listed above
+Source: http://hunspell.chv.su/files/Chuvash_Spell-1.06.oxt
+/third_disk/ppline_24Mar/azurelinux//SPECS-EXTENDED/hunspell-cv/hunspell-cv.spec:: non-httpslines listed above
+Source0: http://www.esperantilo.org/literumilo-fontoj.tar.gz
+Source1: %{name}-LICENSE.txt
+/third_disk/ppline_24Mar/azurelinux//SPECS-EXTENDED/hunspell-eo/hunspell-eo.spec:: non-httpslines listed above
+Source0: http://xuxen.eus/static/hunspell/xuxen_%{version}_hunspell.zip
+/third_disk/ppline_24Mar/azurelinux//SPECS-EXTENDED/hunspell-eu/hunspell-eu.spec:: non-httpslines listed above
+Source0:        http://prdownloads.sourceforge.net/docbook/docbook-dsssl-%{version}.tar.gz
+Source1:        %{name}.Makefile
+Source2:        LICENSE.PTR
+/third_disk/ppline_24Mar/azurelinux//SPECS-EXTENDED/docbook-style-dsssl/docbook-style-dsssl.spec:: non-httpslines listed above
+Source:         %{pypi_source humanize}
+/third_disk/ppline_24Mar/azurelinux//SPECS-EXTENDED/python-humanize/python-humanize.spec:: non-httpslines listed above
+Source0:        http://freedesktop.org/software/pulseaudio/webrtc-audio-processing/%{name}-%{version}.tar.xz
+/third_disk/ppline_24Mar/azurelinux//SPECS-EXTENDED/webrtc-audio-processing/webrtc-audio-processing.spec:: non-httpslines listed above
+Source: http://dev-www.libreoffice.org/src/%{name}/%{name}-%{version}.tar.xz
+/third_disk/ppline_24Mar/azurelinux//SPECS-EXTENDED/libfreehand/libfreehand.spec:: non-httpslines listed above
+Source0:        %{url}/archive/%{version}/%{srcname}-%{version}.tar.gz
+/third_disk/ppline_24Mar/azurelinux//SPECS-EXTENDED/python-betamax/python-betamax.spec:: non-httpslines listed above
+Source0: http://downloads.sourceforge.net/magyarispell/hu_HU-%{version}.tar.gz
+Source1: %{name}-LICENSE.txt
+/third_disk/ppline_24Mar/azurelinux//SPECS-EXTENDED/hunspell-hu/hunspell-hu.spec:: non-httpslines listed above
+Source0:        %{url}/archive/%{commit0}/%{name}-%{shortcommit0}.tar.gz
+/third_disk/ppline_24Mar/azurelinux//SPECS-EXTENDED/libyami/libyami.spec:: non-httpslines listed above
+Source: http://digilander.libero.it/paganf/coretors/myspell-fur-12092005.zip
+/third_disk/ppline_24Mar/azurelinux//SPECS-EXTENDED/hunspell-fur/hunspell-fur.spec:: non-httpslines listed above
+Source0:        http://download.augeas.net/ruby/%{name}-%{version}.tgz
+/third_disk/ppline_24Mar/azurelinux//SPECS-EXTENDED/ruby-augeas/ruby-augeas.spec:: non-httpslines listed above
+Source: http://gtkspell.sourceforge.net/download/%{name}-%{version}.tar.gz
+/third_disk/ppline_24Mar/azurelinux//SPECS-EXTENDED/gtkspell/gtkspell.spec:: non-httpslines listed above
+Source0:        http://www.cl.cam.ac.uk/~mgk25/download/jbigkit-%{version}.tar.gz
+/third_disk/ppline_24Mar/azurelinux//SPECS-EXTENDED/jbigkit/jbigkit.spec:: non-httpslines listed above
+Source: http://dev-www.libreoffice.org/src/%{name}/%{name}-%{version}.tar.xz
+/third_disk/ppline_24Mar/azurelinux//SPECS-EXTENDED/libpagemaker/libpagemaker.spec:: non-httpslines listed above
+Source0:	http://tango.freedesktop.org/releases/%{name}-%{version}.tar.bz2
+/third_disk/ppline_24Mar/azurelinux//SPECS-EXTENDED/icon-naming-utils/icon-naming-utils.spec:: non-httpslines listed above
+Source0:        %{pypi_source}
+/third_disk/ppline_24Mar/azurelinux//SPECS-EXTENDED/python-flask/python-flask.spec:: non-httpslines listed above
+Source2:        steffen.asc
+/third_disk/ppline_24Mar/azurelinux//SPECS-EXTENDED/s-nail/s-nail.spec:: non-httpslines listed above
+Source0:        %{url}/archive/%{version}/%{mod_name}-%{version}.tar.gz
+/third_disk/ppline_24Mar/azurelinux//SPECS-EXTENDED/python-blinker/python-blinker.spec:: non-httpslines listed above
+Source2:        victortoso-E37A484F.keyring
+/third_disk/ppline_24Mar/azurelinux//SPECS-EXTENDED/spice-protocol/spice-protocol.spec:: non-httpslines listed above
+Source0:        http://gsdview.appspot.com/chromeos-localmirror/distfiles/%{archivename}.tar.gz
+Source1:        30-0-%{fontname}-fontconfig.conf
+Source2:        62-%{fontname}-fontconfig.conf
+Source3:        %{fontname}.metainfo.xml
+/third_disk/ppline_24Mar/azurelinux//SPECS-EXTENDED/google-crosextra-carlito-fonts/google-crosextra-carlito-fonts.spec:: non-httpslines listed above
+Source0: %{forgesource}
+/third_disk/ppline_24Mar/azurelinux//SPECS-EXTENDED/isomd5sum/isomd5sum.spec:: non-httpslines listed above
+Source: http://liboil.freedesktop.org/download/%{name}-%{version}.tar.gz
+/third_disk/ppline_24Mar/azurelinux//SPECS-EXTENDED/liboil/liboil.spec:: non-httpslines listed above
+Source2:        brz-icon-64.png
+/third_disk/ppline_24Mar/azurelinux//SPECS-EXTENDED/breezy/breezy.spec:: non-httpslines listed above
+Source0:        http://downloads.sourceforge.net/project/sblim/providers/%{name}/%{version}/%{name}-%{version}.tar.bz2
+/third_disk/ppline_24Mar/azurelinux//SPECS-EXTENDED/sblim-cmpi-nfsv3/sblim-cmpi-nfsv3.spec:: non-httpslines listed above
+Source:				%{url}/releases/download/v%{version}/raqm-%{version}.tar.xz
+/third_disk/ppline_24Mar/azurelinux//SPECS-EXTENDED/libraqm/libraqm.spec:: non-httpslines listed above
+Source:         %{url}/archive/v%{version}/pyrsistent-%{version}.tar.gz
+/third_disk/ppline_24Mar/azurelinux//SPECS-EXTENDED/python-pyrsistent/python-pyrsistent.spec:: non-httpslines listed above
+Source0: http://www.and.org/ustr/%{version}/%{name}-%{version}.tar.bz2
+/third_disk/ppline_24Mar/azurelinux//SPECS-EXTENDED/ustr/ustr.spec:: non-httpslines listed above
+Source0: %{_distro_sources_url}/fxload-%{version}-noa3load.tar.gz
+Source1: fxload-generate-tarball.sh
+/third_disk/ppline_24Mar/azurelinux//SPECS-EXTENDED/fxload/fxload.spec:: non-httpslines listed above
+Source0:        %{pypi_source}
+/third_disk/ppline_24Mar/azurelinux//SPECS-EXTENDED/python-s3transfer/python-s3transfer.spec:: non-httpslines listed above
+Source0:        http://cpan.org/authors/id/S/SH/SHERZODR/Config-Simple-%{version}.tar.gz
+/third_disk/ppline_24Mar/azurelinux//SPECS-EXTENDED/perl-Config-Simple/perl-Config-Simple.spec:: non-httpslines listed above
+Source1:        tang.sysusers
+/third_disk/ppline_24Mar/azurelinux//SPECS-EXTENDED/tang/tang.spec:: non-httpslines listed above
+Source1:        %{name}autotest-%{version}.tar.gz
+Source2:        cpl-config.h
+Source3:        gdal-config
+/third_disk/ppline_24Mar/azurelinux//SPECS-EXTENDED/gdal/gdal.spec:: non-httpslines listed above
+Source0:        %{url}/Archive/%{version}/Main.java
+Source1:        %{name}-%{version}.build.xml
+Source2:        %{url}/Archive/%{version}/manual.html
+Source3:        %{url}/Archive/%{version}/sample.lex
+/third_disk/ppline_24Mar/azurelinux//SPECS-EXTENDED/jlex/jlex.spec:: non-httpslines listed above
+Source: http://prdownloads.sourceforge.net/libdbi/%{name}-%{version}.tar.gz
+/third_disk/ppline_24Mar/azurelinux//SPECS-EXTENDED/libdbi/libdbi.spec:: non-httpslines listed above
+Source2:       http://keys.openpgp.org/pks/lookup?op=get&search=0xE5F8F8212F77A498#/willem.nlnetlabs.nl
+/third_disk/ppline_24Mar/azurelinux//SPECS-EXTENDED/perl-Net-DNS/perl-Net-DNS.spec:: non-httpslines listed above
+Source:       %{url}/archive/%{version}/dizionario_italiano-%{version}.tar.gz
+/third_disk/ppline_24Mar/azurelinux//SPECS-EXTENDED/hunspell-it/hunspell-it.spec:: non-httpslines listed above
+Source0:	http://www.draisberghof.de/usb_modeswitch/%{source_name}-%{version}.tar.bz2
+/third_disk/ppline_24Mar/azurelinux//SPECS-EXTENDED/usb_modeswitch-data/usb_modeswitch-data.spec:: non-httpslines listed above
+Source:         %{url}/archive/%{version}/dizionario_italiano-%{version}.tar.gz
+/third_disk/ppline_24Mar/azurelinux//SPECS-EXTENDED/hyphen-it/hyphen-it.spec:: non-httpslines listed above
+Source0:        http://downloads.sourceforge.net/modplug-xmms/%{name}-%{version}.tar.gz
+/third_disk/ppline_24Mar/azurelinux//SPECS-EXTENDED/libmodplug/libmodplug.spec:: non-httpslines listed above
+Source0:    http://downloads.sourceforge.net/libzhuyin/ibus-libzhuyin/%{name}-%{version}.tar.gz
+/third_disk/ppline_24Mar/azurelinux//SPECS-EXTENDED/ibus-libzhuyin/ibus-libzhuyin.spec:: non-httpslines listed above
+Source0:        %{url}/archive/%{version}/%{name}-%{version}.tar.gz
+/third_disk/ppline_24Mar/azurelinux//SPECS-EXTENDED/microdnf/microdnf.spec:: non-httpslines listed above
+Source2:	gpgkey-7EE65E3082A5FB06AC7C368D00CCB587DDBEF0E1.asc
+Source3:	irssi-config.h
+/third_disk/ppline_24Mar/azurelinux//SPECS-EXTENDED/irssi/irssi.spec:: non-httpslines listed above
+Source0:        %{url}/archive/refs/tags/v%{version}.tar.gz#/python-%{srcname}-%{version}.tar.gz
+/third_disk/ppline_24Mar/azurelinux//SPECS-EXTENDED/python-dbus-signature-pyparsing/python-dbus-signature-pyparsing.spec:: non-httpslines listed above
+Source0:          http://0pointer.de/public/%{name}-%{version}.tar.xz
+/third_disk/ppline_24Mar/azurelinux//SPECS-EXTENDED/rtkit/rtkit.spec:: non-httpslines listed above
+Source0:        %{_distro_sources_url}/%{name}-%{version}.tar.bz2
+/third_disk/ppline_24Mar/azurelinux//SPECS-EXTENDED/sblim-cmpi-syslog/sblim-cmpi-syslog.spec:: non-httpslines listed above
+Source1: iprdbg.8.gz
+/third_disk/ppline_24Mar/azurelinux//SPECS-EXTENDED/iprutils/iprutils.spec:: non-httpslines listed above
+Source0:        %{url}/releases/download/v%{version}/%{name}-%{version_no_tilde}-Source.tar.xz
+Source1:        %{url}/releases/download/v%{version}/%{name}-%{version_no_tilde}-Source.tar.xz.minisig
+/third_disk/ppline_24Mar/azurelinux//SPECS-EXTENDED/ibus-chewing/ibus-chewing.spec:: non-httpslines listed above
+Source: http://downloads.sourceforge.net/%{name}/%{name}-%{version}-Source.tar.gz
+/third_disk/ppline_24Mar/azurelinux//SPECS-EXTENDED/openobex/openobex.spec:: non-httpslines listed above
+Source1:        data.tar.xz
+/third_disk/ppline_24Mar/azurelinux//SPECS-EXTENDED/openjpeg/openjpeg.spec:: non-httpslines listed above
+Source0: http://icl.cs.utk.edu/projects/papi/downloads/%{name}-%{version}.tar.gz
+/third_disk/ppline_24Mar/azurelinux//SPECS-EXTENDED/papi/papi.spec:: non-httpslines listed above
+Source: http://sourceforge.net/projects/man-pages-ru/files/man-pages-ru_%{mpr_version}.tar.bz2
+/third_disk/ppline_24Mar/azurelinux//SPECS-EXTENDED/man-pages-ru/man-pages-ru.spec:: non-httpslines listed above
+Source2: acpid.video.conf
+Source3: acpid.power.conf
+Source4: acpid.power.sh
+Source5: acpid.service
+Source6: acpid.sysconfig
+Source7: acpid.socket
+/third_disk/ppline_24Mar/azurelinux//SPECS-EXTENDED/acpid/acpid.spec:: non-httpslines listed above
+Source1:    %{forgesource}
+/third_disk/ppline_24Mar/azurelinux//SPECS-EXTENDED/go-rpm-macros/go-rpm-macros.spec:: non-httpslines listed above
+Source0: http://www.freedesktop.org/software/startup-notification/releases/%{name}-%{version}.tar.gz
+/third_disk/ppline_24Mar/azurelinux//SPECS-EXTENDED/startup-notification/startup-notification.spec:: non-httpslines listed above
+Source:         %{pypi_source productmd}
+/third_disk/ppline_24Mar/azurelinux//SPECS-EXTENDED/python-productmd/python-productmd.spec:: non-httpslines listed above
+Source0:        %{pypi_source}
+/third_disk/ppline_24Mar/azurelinux//SPECS-EXTENDED/python-sphinx-epytext/python-sphinx-epytext.spec:: non-httpslines listed above
+Source0:        %{_distro_sources_url}/%{full_name}-5-src.tar.gz
+/third_disk/ppline_24Mar/azurelinux//SPECS-EXTENDED/servletapi5/servletapi5.spec:: non-httpslines listed above
+Source0: http://www.adelton.com/apache/mod_lookup_identity/%{name}-%{version}.tar.gz
+/third_disk/ppline_24Mar/azurelinux//SPECS-EXTENDED/mod_lookup_identity/mod_lookup_identity.spec:: non-httpslines listed above
+Source0:	http://downloads.sourceforge.net/%{name}/%{name}-%{version}.tar.gz
+/third_disk/ppline_24Mar/azurelinux//SPECS-EXTENDED/libkeepalive/libkeepalive.spec:: non-httpslines listed above
+Source: http://www.moheb.de/download/dict-cop_EG_v03.oxt
+/third_disk/ppline_24Mar/azurelinux//SPECS-EXTENDED/hunspell-cop/hunspell-cop.spec:: non-httpslines listed above
+Source: http://www.danielnaber.de/wn2ooo/wn2ooo20050723.tgz#/%{name}-%{version}.tgz
+/third_disk/ppline_24Mar/azurelinux//SPECS-EXTENDED/mythes-en/mythes-en.spec:: non-httpslines listed above
+Source2:        gpgkey-7F49314A26E0DE78427680E05F1B2A0789F12B11.gpg
+/third_disk/ppline_24Mar/azurelinux//SPECS-EXTENDED/babeltrace/babeltrace.spec:: non-httpslines listed above
+Source0:        %{_distro_sources_url}/t1lib-%{version}.tar.gz
+/third_disk/ppline_24Mar/azurelinux//SPECS-EXTENDED/t1lib/t1lib.spec:: non-httpslines listed above
+Source0: http://tug.org/svn/texhyphen/trunk/hyph-utf8/tex/generic/hyph-utf8/patterns/tex/hyph-lt.tex?view=co#/hyph-lt.tex
+Source1: %{name}-LICENSE.txt
+/third_disk/ppline_24Mar/azurelinux//SPECS-EXTENDED/hyphen-lt/hyphen-lt.spec:: non-httpslines listed above
+Source:         http://www.openfabrics.org/downloads/%{name}/%{name}-%{version}.tar.gz
+/third_disk/ppline_24Mar/azurelinux//SPECS-EXTENDED/qperf/qperf.spec:: non-httpslines listed above
+Source:         %{url}/archive/v%{version}/%{oname}-%{version}.tar.gz
+/third_disk/ppline_24Mar/azurelinux//SPECS-EXTENDED/targetcli/targetcli.spec:: non-httpslines listed above
+Source: http://downloads.sourceforge.net/aspell-nds/hunspell-nds-0.1.zip
+/third_disk/ppline_24Mar/azurelinux//SPECS-EXTENDED/hunspell-nds/hunspell-nds.spec:: non-httpslines listed above
+Source2: libcdio-no_date_footer.hml
+Source3: cdio_config.h
+/third_disk/ppline_24Mar/azurelinux//SPECS-EXTENDED/libcdio/libcdio.spec:: non-httpslines listed above
+Source2:   elinks.conf
+/third_disk/ppline_24Mar/azurelinux//SPECS-EXTENDED/elinks/elinks.spec:: non-httpslines listed above
+Source0:        http://download.savannah.gnu.org/releases/m17n/%{name}-%{version}.tar.gz
+/third_disk/ppline_24Mar/azurelinux//SPECS-EXTENDED/m17n-lib/m17n-lib.spec:: non-httpslines listed above
+Source0:       %pypi_source argcomplete
+/third_disk/ppline_24Mar/azurelinux//SPECS-EXTENDED/python-argcomplete/python-argcomplete.spec:: non-httpslines listed above
+Source1:        %{name}_build.xml
+/third_disk/ppline_24Mar/azurelinux//SPECS-EXTENDED/jzlib/jzlib.spec:: non-httpslines listed above
+Source: http://download.savannah.gnu.org/releases/smc/hyphenation/patterns/%{name}-%{version}.tar.bz2
+/third_disk/ppline_24Mar/azurelinux//SPECS-EXTENDED/hyphen-ml/hyphen-ml.spec:: non-httpslines listed above
+Source1: LICENSE.txt
+Source2: data.txt
+Source3: test_scanf.rb
+Source4: test_scanfblocks.rb
+Source5: test_scanfio.rb
+/third_disk/ppline_24Mar/azurelinux//SPECS-EXTENDED/rubygem-scanf/rubygem-scanf.spec:: non-httpslines listed above
+Source:         http://download.librdf.org/source/%{name}-%{version}.tar.gz
+/third_disk/ppline_24Mar/azurelinux//SPECS-EXTENDED/rasqal/rasqal.spec:: non-httpslines listed above
+Source0:        http://anishpatil.fedorapeople.org/te_in.%{version}.tar.gz
+/third_disk/ppline_24Mar/azurelinux//SPECS-EXTENDED/hunspell-te/hunspell-te.spec:: non-httpslines listed above
+Source0:	%{url}/releases/download/keybinder-3.0-v%{version}/keybinder-3.0-%{version}.tar.gz
+/third_disk/ppline_24Mar/azurelinux//SPECS-EXTENDED/keybinder3/keybinder3.spec:: non-httpslines listed above
+Source:         %{url}/archive/refs/tags/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
+/third_disk/ppline_24Mar/azurelinux//SPECS-EXTENDED/meanwhile/meanwhile.spec:: non-httpslines listed above
+Source0: http://www.dicollecte.org/download/fr/thesaurus-v%{version}.zip
+Source1: %{name}-LICENSE.txt
+/third_disk/ppline_24Mar/azurelinux//SPECS-EXTENDED/mythes-fr/mythes-fr.spec:: non-httpslines listed above
+Source0: http://download.savannah.gnu.org/releases/interlingua/ia_myspell.zip
+Source1: %{name}-LICENSE.txt
+/third_disk/ppline_24Mar/azurelinux//SPECS-EXTENDED/hunspell-ia/hunspell-ia.spec:: non-httpslines listed above
+Source: http://www.cce.com/efax/download/%{name}-%{version}-001114.tar.gz
+Source1: logrotate-efax
+/third_disk/ppline_24Mar/azurelinux//SPECS-EXTENDED/efax/efax.spec:: non-httpslines listed above
+Source0: http://downloads.sourceforge.net/%{name}/%{name}-%{version}.tar.gz
+/third_disk/ppline_24Mar/azurelinux//SPECS-EXTENDED/mtx/mtx.spec:: non-httpslines listed above
+Source1: dovecot.init
+Source2: dovecot.pam
+Source9: dovecot.sysconfig
+Source10: dovecot.tmpfilesd
+Source14: dovecot.conf.5
+Source15: prestartscript
+Source16: dovecot.sysusers
+/third_disk/ppline_24Mar/azurelinux//SPECS-EXTENDED/dovecot/dovecot.spec:: non-httpslines listed above
+Source0: http://download.sourceforge.net/sourceforge/tcl/%{name}%{version}-src.tar.gz
+/third_disk/ppline_24Mar/azurelinux//SPECS-EXTENDED/tk/tk.spec:: non-httpslines listed above
+Source0: %{pypi_source pyroute2}
+/third_disk/ppline_24Mar/azurelinux//SPECS-EXTENDED/python-pyroute2/python-pyroute2.spec:: non-httpslines listed above
+Source0:        %{_distro_sources_url}/jakarta-taglibs-standard-%{version}-src.tar.bz2
+/third_disk/ppline_24Mar/azurelinux//SPECS-EXTENDED/jakarta-taglibs-standard/jakarta-taglibs-standard.spec:: non-httpslines listed above
+Source2: MANIFEST.MF
+/third_disk/ppline_24Mar/azurelinux//SPECS-EXTENDED/ecj/ecj.spec:: non-httpslines listed above
+Source: %{_distro_sources_url}/thes_ru_RU_v2.zip
+/third_disk/ppline_24Mar/azurelinux//SPECS-EXTENDED/mythes-ru/mythes-ru.spec:: non-httpslines listed above
+Source: http://downloads.sourceforge.net/bgoffice/OOo-hyph-bg-%{version}.zip
+/third_disk/ppline_24Mar/azurelinux//SPECS-EXTENDED/hyphen-bg/hyphen-bg.spec:: non-httpslines listed above
+Source0: http://downloads.sf.net/openslp/openslp-%{version}.tar.gz
+Source2: slpd.8.gz
+Source3: slptool.1.gz
+Source4: slpd.service
+/third_disk/ppline_24Mar/azurelinux//SPECS-EXTENDED/openslp/openslp.spec:: non-httpslines listed above
+Source0: http://download.gnome.org/sources/gnome-icon-theme/3.12/%{name}-%{version}.tar.xz
+Source1: legacy-icon-mapping.xml
+/third_disk/ppline_24Mar/azurelinux//SPECS-EXTENDED/gnome-icon-theme/gnome-icon-theme.spec:: non-httpslines listed above
+Source0:        %{url}/archive/v%{version}/%{name}-%{version}.tar.gz
+/third_disk/ppline_24Mar/azurelinux//SPECS-EXTENDED/google-api-python-client/google-api-python-client.spec:: non-httpslines listed above
+Source: http://downloads.sourceforge.net/%{name}/%{name}-%{version}.tar.xz
+/third_disk/ppline_24Mar/azurelinux//SPECS-EXTENDED/libmwaw/libmwaw.spec:: non-httpslines listed above
+Source0:    %{tarball}-%{gitdate}.tar.xz
+Source1:    make-git-snapshot.sh
+Source2:    commitid
+/third_disk/ppline_24Mar/azurelinux//SPECS-EXTENDED/libdmx/libdmx.spec:: non-httpslines listed above
+Source0:        %{url}/releases/download/release-%{version}/%{modname}-%{version}.tar.gz
+/third_disk/ppline_24Mar/azurelinux//SPECS-EXTENDED/python-mutagen/python-mutagen.spec:: non-httpslines listed above
+Source0:        %{homepage}/releases/download/%{version}/%{name}-%{version}.tar.gz
+/third_disk/ppline_24Mar/azurelinux//SPECS-EXTENDED/libverto/libverto.spec:: non-httpslines listed above
+Source:         %{url}/archive/refs/tags/%{version}.tar.gz#/%{name}-%{version}.tar.gz
+/third_disk/ppline_24Mar/azurelinux//SPECS-EXTENDED/graphene/graphene.spec:: non-httpslines listed above
+Source: %{_distro_sources_url}/nagybence-huhyphn-aa3fc85.tar.gz
+/third_disk/ppline_24Mar/azurelinux//SPECS-EXTENDED/hyphen-hu/hyphen-hu.spec:: non-httpslines listed above
+Source: http://extensions.libreoffice.org/extension-center/swedish-spelling-dictionary-den-stora-svenska-ordlistan/releases/2.28/ooo_swedish_dict_2-28.oxt
+/third_disk/ppline_24Mar/azurelinux//SPECS-EXTENDED/hunspell-sv/hunspell-sv.spec:: non-httpslines listed above
+Source: http://downloads.sourceforge.net/libwpd/%{name}-%{version}.tar.xz
+/third_disk/ppline_24Mar/azurelinux//SPECS-EXTENDED/librevenge/librevenge.spec:: non-httpslines listed above
+Source2:        6E6EF9A0BA478006E2776E4CC037BB413134D111.gpg
+/third_disk/ppline_24Mar/azurelinux//SPECS-EXTENDED/flashrom/flashrom.spec:: non-httpslines listed above
+Source0:	http://opensource.yubico.com/yubico-c-client/releases/ykclient-%{version}.tar.gz
+/third_disk/ppline_24Mar/azurelinux//SPECS-EXTENDED/ykclient/ykclient.spec:: non-httpslines listed above
+Source0:        http://www.extreme.indiana.edu/xgws/xsoap/xpp/download/PullParser2/PullParser2.1.10.tar.bz2
+/third_disk/ppline_24Mar/azurelinux//SPECS-EXTENDED/xpp2/xpp2.spec:: non-httpslines listed above
+Source2:        custodia.conf
+Source3:        custodia@.service
+Source4:        custodia@.socket
+Source5:        custodia.tmpfiles.conf
+/third_disk/ppline_24Mar/azurelinux//SPECS-EXTENDED/custodia/custodia.spec:: non-httpslines listed above
+Source0:        %{name}-%{gitdate}.tar.bz2
+Source1:        make-git-snapshot.sh
+Source2:        commitid
+Source0:        http://www.freedesktop.org/software/%{name}/%{name}-%{version}.tar.xz
+/third_disk/ppline_24Mar/azurelinux//SPECS-EXTENDED/evemu/evemu.spec:: non-httpslines listed above
+Source: http://www.meso.ee/~jjpp/speller/ispell-et_%{upstreamid}.tar.gz
+/third_disk/ppline_24Mar/azurelinux//SPECS-EXTENDED/hunspell-et/hunspell-et.spec:: non-httpslines listed above
+Source1:        wsgi.conf
+Source2:        wsgi-python3.conf
+/third_disk/ppline_24Mar/azurelinux//SPECS-EXTENDED/mod_wsgi/mod_wsgi.spec:: non-httpslines listed above
+Source1:        %{name}-LICENSE.txt
+/third_disk/ppline_24Mar/azurelinux//SPECS-EXTENDED/python-tempita/python-tempita.spec:: non-httpslines listed above
+Source1:        aspell-mail.txt
+/third_disk/ppline_24Mar/azurelinux//SPECS-EXTENDED/apache-commons-codec/apache-commons-codec.spec:: non-httpslines listed above
+Source0:        %{pypi_source pyperclip}
+/third_disk/ppline_24Mar/azurelinux//SPECS-EXTENDED/python-pyperclip/python-pyperclip.spec:: non-httpslines listed above
+Source0:        %{_distro_sources_url}/jtidy-r813.tar.bz2
+Source1:        %{name}.jtidy.script
+Source2:        build.xml
+Source3:        maven-build.properties
+Source4:        maven-build.xml
+/third_disk/ppline_24Mar/azurelinux//SPECS-EXTENDED/jtidy/jtidy.spec:: non-httpslines listed above
+Source:         %{pypi_source}#/%{name}-%{version}.tar.gz
+/third_disk/ppline_24Mar/azurelinux//SPECS-EXTENDED/python-rdflib/python-rdflib.spec:: non-httpslines listed above
+Source1: teamnames
+Source2: macros.kde4
+Source3: applnk-hidden-directory
+/third_disk/ppline_24Mar/azurelinux//SPECS-EXTENDED/kde-filesystem/kde-filesystem.spec:: non-httpslines listed above
+Source1: %{name}-LICENSE.txt
+/third_disk/ppline_24Mar/azurelinux//SPECS-EXTENDED/hunspell-gl/hunspell-gl.spec:: non-httpslines listed above
+Source0: http://otr.cypherpunks.ca/%{name}-%{version}.tar.gz
+/third_disk/ppline_24Mar/azurelinux//SPECS-EXTENDED/libotr/libotr.spec:: non-httpslines listed above
+Source1:        LICENSE.PTR
+/third_disk/ppline_24Mar/azurelinux//SPECS-EXTENDED/perl-Compress-Raw-Lzma/perl-Compress-Raw-Lzma.spec:: non-httpslines listed above
+Source0:	http://sourceforge.net/projects/perfmon2/files/libpfm4/%{name}-%{version}.tar.gz
+/third_disk/ppline_24Mar/azurelinux//SPECS-EXTENDED/libpfm/libpfm.spec:: non-httpslines listed above
+Source0:        %{url}/archive/%{version}/%{name}-%{version}.tar.gz
+/third_disk/ppline_24Mar/azurelinux//SPECS-EXTENDED/smc-tools/smc-tools.spec:: non-httpslines listed above
+Source: http://download.savannah.gnu.org/releases/smc/hyphenation/patterns/%{name}-%{version}.tar.bz2
+/third_disk/ppline_24Mar/azurelinux//SPECS-EXTENDED/hyphen-mr/hyphen-mr.spec:: non-httpslines listed above
+Source1:        %{name}.pom
+Source2:        %{name}-build.xml
+/third_disk/ppline_24Mar/azurelinux//SPECS-EXTENDED/beust-jcommander/beust-jcommander.spec:: non-httpslines listed above
+Source0: http://cvs.linux.hr/spell/myspell/hr_HR.zip
+Source1: %{name}-LICENSE.txt
+/third_disk/ppline_24Mar/azurelinux//SPECS-EXTENDED/hunspell-hr/hunspell-hr.spec:: non-httpslines listed above
+Source0:        http://downloads.sourceforge.net/%{name}/%{name}-%{version}.tar.gz
+Source1:        LICENSE
+Source2:        filebench.1
+/third_disk/ppline_24Mar/azurelinux//SPECS-EXTENDED/filebench/filebench.spec:: non-httpslines listed above
+Source0:        http://downloads.sourceforge.net/%{name}/%{name}-%{version}.tar.gz
+/third_disk/ppline_24Mar/azurelinux//SPECS-EXTENDED/nload/nload.spec:: non-httpslines listed above
+Source0: http://anishpatil.fedorapeople.org/or_in.%{version}.tar.gz
+/third_disk/ppline_24Mar/azurelinux//SPECS-EXTENDED/hunspell-or/hunspell-or.spec:: non-httpslines listed above
+Source: http://anishpatil.fedorapeople.org/ta_in.%{version}.tar.gz
+/third_disk/ppline_24Mar/azurelinux//SPECS-EXTENDED/hunspell-ta/hunspell-ta.spec:: non-httpslines listed above
+Source0:	http://www.kernel.org/pub/linux/network/connman/pacrunner-%{version}.tar.xz
+/third_disk/ppline_24Mar/azurelinux//SPECS-EXTENDED/pacrunner/pacrunner.spec:: non-httpslines listed above
+Source0:    taglib-%{version}-%{snap}.tar.gz
+Source1:    taglib-snapshot.sh
+/third_disk/ppline_24Mar/azurelinux//SPECS-EXTENDED/taglib/taglib.spec:: non-httpslines listed above
+Source0: %{url}/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
+/third_disk/ppline_24Mar/azurelinux//SPECS-EXTENDED/catatonit/catatonit.spec:: non-httpslines listed above
+Source:         %{url}/archive/v%{version}/requests-kerberos-%{version}.tar.gz
+/third_disk/ppline_24Mar/azurelinux//SPECS-EXTENDED/python-requests-kerberos/python-requests-kerberos.spec:: non-httpslines listed above
+Source1:        %{name}-build.xml
+/third_disk/ppline_24Mar/azurelinux//SPECS-EXTENDED/apache-commons-digester/apache-commons-digester.spec:: non-httpslines listed above
+Source2:	license-investigation.txt
+Source3:	%{name}-LICENSE.txt
+Source200:	README-skkdic.rh.ja
+/third_disk/ppline_24Mar/azurelinux//SPECS-EXTENDED/skkdic/skkdic.spec:: non-httpslines listed above
+Source0: http://www.ctan.org/get/language/hyphenation/iahyphen.tex
+Source1: %{name}-LICENSE.txt
+/third_disk/ppline_24Mar/azurelinux//SPECS-EXTENDED/hyphen-ia/hyphen-ia.spec:: non-httpslines listed above
+Source: http://www.abcburkina.net/ancien/documents/lingu/DicoMoore.zip
+/third_disk/ppline_24Mar/azurelinux//SPECS-EXTENDED/hunspell-mos/hunspell-mos.spec:: non-httpslines listed above
+Source0:       http://downloads.sf.net/sourceforge/%{srcname}/%{srcname}-%{version}-0.tar.gz
+Source1:       %{name}-LICENSE.txt
+/third_disk/ppline_24Mar/azurelinux//SPECS-EXTENDED/jabberpy/jabberpy.spec:: non-httpslines listed above
+Source1:		vpx_config.h
+Source2:		libvpx.ver
+/third_disk/ppline_24Mar/azurelinux//SPECS-EXTENDED/libvpx/libvpx.spec:: non-httpslines listed above
+Source0:        http://archive.apache.org/dist/commons/%{base_name}/source/%{short_name}-%{version}-src.tar.gz
+/third_disk/ppline_24Mar/azurelinux//SPECS-EXTENDED/apache-commons-lang/apache-commons-lang.spec:: non-httpslines listed above
+Source7: tbbmalloc.pc
+Source8: tbbmalloc_proxy.pc
+/third_disk/ppline_24Mar/azurelinux//SPECS-EXTENDED/tbb/tbb.spec:: non-httpslines listed above
+Source: russian_spellchecking_dictionary-0.4.4-fx+tb+sm.xpi
+/third_disk/ppline_24Mar/azurelinux//SPECS-EXTENDED/hunspell-ru/hunspell-ru.spec:: non-httpslines listed above
+Source1:	%{name}.service
+/third_disk/ppline_24Mar/azurelinux//SPECS-EXTENDED/cgdcbxd/cgdcbxd.spec:: non-httpslines listed above
+Source:         %{url}/releases/download/%{version}/%{name}-%{version}.tar.bz2
+/third_disk/ppline_24Mar/azurelinux//SPECS-EXTENDED/drpm/drpm.spec:: non-httpslines listed above
+Source1: %{name}-LICENSE.txt
+/third_disk/ppline_24Mar/azurelinux//SPECS-EXTENDED/hyphen-sa/hyphen-sa.spec:: non-httpslines listed above
+Source:         %{giturl}/archive/%{name}-%{version}.tar.gz
+/third_disk/ppline_24Mar/azurelinux//SPECS-EXTENDED/z3/z3.spec:: non-httpslines listed above
+Source1: %{name}-LICENSE.txt
+/third_disk/ppline_24Mar/azurelinux//SPECS-EXTENDED/hunspell-nso/hunspell-nso.spec:: non-httpslines listed above
+Source: http://download.savannah.gnu.org/releases/smc/hyphenation/patterns/%{name}-%{version}.tar.bz2
+/third_disk/ppline_24Mar/azurelinux//SPECS-EXTENDED/hyphen-bn/hyphen-bn.spec:: non-httpslines listed above
+Source0:        %{url}/archive/refs/tags/v%{version}.tar.gz#/python-%{srcname}-%{version}.tar.gz
+/third_disk/ppline_24Mar/azurelinux//SPECS-EXTENDED/python-dbus-client-gen/python-dbus-client-gen.spec:: non-httpslines listed above
+Source: http://sourceforge.net/projects/ayaspell/files/hunspell-ar_%{version}.%{ver_date}.zip
+/third_disk/ppline_24Mar/azurelinux//SPECS-EXTENDED/hunspell-ar/hunspell-ar.spec:: non-httpslines listed above
+Source:         %{url}/archive/%{version}/microsoft-authentication-library-for-python-%{version}.tar.gz
+/third_disk/ppline_24Mar/azurelinux//SPECS-EXTENDED/python-msal/python-msal.spec:: non-httpslines listed above
+Source1: ppp-pam.conf
+Source2: ppp-logrotate.conf
+Source3: ppp-tmpfiles.conf
+Source4: ip-down
+Source5: ip-down.ipv6to4
+Source6: ip-up
+Source7: ip-up.ipv6to4
+Source8: ipv6-down
+Source9: ipv6-up
+Source12: ppp-watch.tar.xz
+Source13: ipv6-up.initscripts
+Source14: ipv6-down.initscripts
+/third_disk/ppline_24Mar/azurelinux//SPECS-EXTENDED/ppp/ppp.spec:: non-httpslines listed above
+Source0:        http://downloads.sourceforge.net/sourceforge/lame/%{name}-%{version}.tar.gz
+/third_disk/ppline_24Mar/azurelinux//SPECS-EXTENDED/lame/lame.spec:: non-httpslines listed above
+Source0:        %{url}/releases/download/libmodulemd-%{version}/modulemd-%{version}.tar.xz
+/third_disk/ppline_24Mar/azurelinux//SPECS-EXTENDED/libmodulemd1/libmodulemd1.spec:: non-httpslines listed above
+Source:		http://fy.chalmers.se/~appro/linux/DVD+RW/tools/dvd+rw-tools-%{version}.tar.gz
+Source1:	index.html
+/third_disk/ppline_24Mar/azurelinux//SPECS-EXTENDED/dvd+rw-tools/dvd+rw-tools.spec:: non-httpslines listed above
+Source:         %{crates_source}
+/third_disk/ppline_24Mar/azurelinux//SPECS-EXTENDED/rust-cbindgen/rust-cbindgen.spec:: non-httpslines listed above
+Source0: http://natura.di.uminho.pt/download/sources/Dictionaries/hunspell/hunspell-pt_PT-20130125.tar.gz
+/third_disk/ppline_24Mar/azurelinux//SPECS-EXTENDED/hunspell-pt/hunspell-pt.spec:: non-httpslines listed above
+Source0:        http://downloads.sourceforge.net/omxil/%{name}-%{version}.tar.gz
+/third_disk/ppline_24Mar/azurelinux//SPECS-EXTENDED/libomxil-bellagio/libomxil-bellagio.spec:: non-httpslines listed above
+Source1:        pipewire.sysusers
+/third_disk/ppline_24Mar/azurelinux//SPECS-EXTENDED/pipewire/pipewire.spec:: non-httpslines listed above
+Source1: ypserv.service
+Source2: yppasswdd.service
+Source3: ypxfrd.service
+Source4: rpc.yppasswdd.env
+Source5: yppasswdd-pre-setdomain
+/third_disk/ppline_24Mar/azurelinux//SPECS-EXTENDED/ypserv/ypserv.spec:: non-httpslines listed above
+Source2:        gpgkey-5AA3BC334FD7E3369E7C77B291C559DBE4C9123B.gpg
+/third_disk/ppline_24Mar/azurelinux//SPECS-EXTENDED/libwpe/libwpe.spec:: non-httpslines listed above
+Source1:        cbctest1.pl
+Source2:        Crypt-CBC-GH6.pl
+/third_disk/ppline_24Mar/azurelinux//SPECS-EXTENDED/perl-Crypt-CBC/perl-Crypt-CBC.spec:: non-httpslines listed above
+Source0:         %{_distro_sources_url}/%{name}-%{version}.tar.xz
+/third_disk/ppline_24Mar/azurelinux//SPECS-EXTENDED/netpbm/netpbm.spec:: non-httpslines listed above
+Source0:        http://downloads.sourceforge.net/project/sblim/%{name}/%{version}/%{name}-%{version}-src.zip
+/third_disk/ppline_24Mar/azurelinux//SPECS-EXTENDED/sblim-cim-client2/sblim-cim-client2.spec:: non-httpslines listed above
+Source1:	localepaper.c
+Source2:        paperconf.1
+/third_disk/ppline_24Mar/azurelinux//SPECS-EXTENDED/libpaper/libpaper.spec:: non-httpslines listed above
+Source0:        %{giturl}/archive/%{version}/camlp5-%{version}.tar.gz
+/third_disk/ppline_24Mar/azurelinux//SPECS-EXTENDED/ocaml-camlp5/ocaml-camlp5.spec:: non-httpslines listed above
+Source1: %{name}-LICENSE.txt
+/third_disk/ppline_24Mar/azurelinux//SPECS-EXTENDED/hunspell-no/hunspell-no.spec:: non-httpslines listed above
+Source0:        http://ftp.de.debian.org/debian/pool/main/libl/liblockfile/liblockfile_%{version}.orig.tar.gz
+/third_disk/ppline_24Mar/azurelinux//SPECS-EXTENDED/liblockfile/liblockfile.spec:: non-httpslines listed above
+Source2:       libguestfs.keyring
+/third_disk/ppline_24Mar/azurelinux//SPECS-EXTENDED/virt-p2v/virt-p2v.spec:: non-httpslines listed above
+Source1: %{name}-LICENSE.txt
+/third_disk/ppline_24Mar/azurelinux//SPECS-EXTENDED/hunspell-xh/hunspell-xh.spec:: non-httpslines listed above
+Source0:	http://downloads.sourceforge.net/sblim/%{name}-%{version}.tar.bz2
+/third_disk/ppline_24Mar/azurelinux//SPECS-EXTENDED/sblim-sfcCommon/sblim-sfcCommon.spec:: non-httpslines listed above
+Source: http://www.sk-spell.sk.cx/thesaurus/download/OOo-Thesaurus2-sk_SK.zip
+/third_disk/ppline_24Mar/azurelinux//SPECS-EXTENDED/mythes-sk/mythes-sk.spec:: non-httpslines listed above
+Source0:        %pypi_source argparse-manpage
+/third_disk/ppline_24Mar/azurelinux//SPECS-EXTENDED/python-argparse-manpage/python-argparse-manpage.spec:: non-httpslines listed above
+Source1:        jquery_%{version}_node_modules.tar.gz
+/third_disk/ppline_24Mar/azurelinux//SPECS-EXTENDED/js-jquery/js-jquery.spec:: non-httpslines listed above
+Source0:        %{_distro_sources_url}/GeoIP.dat.gz
+Source1:        %{_distro_sources_url}/GeoIPv6.dat.gz
+Source2:        %{_distro_sources_url}/GeoLiteCity.dat.gz
+Source3:        %{_distro_sources_url}/GeoLiteCityv6.dat.gz
+Source4:        %{_distro_sources_url}/GeoIPASNum.dat.gz
+Source5:        %{_distro_sources_url}/GeoIPASNumv6.dat.gz
+Source6:        LICENSE
+/third_disk/ppline_24Mar/azurelinux//SPECS-EXTENDED/GeoIP-GeoLite-data/GeoIP-GeoLite-data.spec:: non-httpslines listed above
+Source:         %{url}/-/archive/%{version}/gi-docgen-%{version}.tar.bz2
+/third_disk/ppline_24Mar/azurelinux//SPECS-EXTENDED/gi-docgen/gi-docgen.spec:: non-httpslines listed above
+Source1:        http://www.gnu.org/licenses/lgpl-2.1.txt
+Source2:        ps_mem.1
+/third_disk/ppline_24Mar/azurelinux//SPECS-EXTENDED/ps_mem/ps_mem.spec:: non-httpslines listed above
+Source0: http://cyberelk.net/tim/data/portreserve/stable/%{name}-%{version}.tar.bz2
+Source1: portreserve.service
+/third_disk/ppline_24Mar/azurelinux//SPECS-EXTENDED/portreserve/portreserve.spec:: non-httpslines listed above
+Source0:        %{_distro_sources_url}/%{name}-%{version}.tar.gz
+/third_disk/ppline_24Mar/azurelinux//SPECS-EXTENDED/virt-who/virt-who.spec:: non-httpslines listed above
+Source0:	%{_distro_sources_url}/clucene-core-2.3.3.4-%{git_short}.tar.xz
+Source0:	http://downloads.sourceforge.net/clucene/clucene-core-%{version}.tar.gz
+/third_disk/ppline_24Mar/azurelinux//SPECS-EXTENDED/clucene/clucene.spec:: non-httpslines listed above
+Source2:	rspec-related-create-full-tarball.sh
+/third_disk/ppline_24Mar/azurelinux//SPECS-EXTENDED/rubygem-rspec-support/rubygem-rspec-support.spec:: non-httpslines listed above
+Source0:	http://iij.dl.osdn.jp/nkf/64158/%{name}-%{version}.tar.gz
+Source3:	nkf.copyright
+Source4:	nkf.1j
+/third_disk/ppline_24Mar/azurelinux//SPECS-EXTENDED/nkf/nkf.spec:: non-httpslines listed above
+Source1: %{name}-LICENSE.txt
+/third_disk/ppline_24Mar/azurelinux//SPECS-EXTENDED/hunspell-mn/hunspell-mn.spec:: non-httpslines listed above
+Source0:        http://downloads.yoctoproject.org/releases/%{name}/%{name}-%{version}.tar.gz
+/third_disk/ppline_24Mar/azurelinux//SPECS-EXTENDED/xrestop/xrestop.spec:: non-httpslines listed above
+Source1:      %{name}-fedora-make.inc.in
+/third_disk/ppline_24Mar/azurelinux//SPECS-EXTENDED/SuperLU/SuperLU.spec:: non-httpslines listed above
+Source0: %{_distro_sources_url}/%{name}-%{version}.tar.gz
+Source1: %{_distro_sources_url}/%{name}-ruby-1.6.4.tar.gz
+Source2: enscript-php-1.6.4.st
+/third_disk/ppline_24Mar/azurelinux//SPECS-EXTENDED/enscript/enscript.spec:: non-httpslines listed above
+Source0:        %{url}/archive/%{version}/%{name}-%{version}.tar.gz
+/third_disk/ppline_24Mar/azurelinux//SPECS-EXTENDED/fakechroot/fakechroot.spec:: non-httpslines listed above
+Source1:        minizip-1.3.0.tar.gz
+/third_disk/ppline_24Mar/azurelinux//SPECS-EXTENDED/libkml/libkml.spec:: non-httpslines listed above
+Source2:        ED31791B2C5C1613AF388B8AD113FCAC3C4E599F.gpg
+/third_disk/ppline_24Mar/azurelinux//SPECS-EXTENDED/fuse-sshfs/fuse-sshfs.spec:: non-httpslines listed above
+Source0:        http://ftp.frugalware.org/pub/other/sources/gnu.regexp/gnu.regexp-%{version}.tar.gz
+Source1:        %{name}.build.xml
+/third_disk/ppline_24Mar/azurelinux//SPECS-EXTENDED/gnu-regexp/gnu-regexp.spec:: non-httpslines listed above
+Source0:        http://download.savannah.gnu.org/releases/lzip/lzip-%{version}.tar.gz
+Source1:        http://download.savannah.gnu.org/releases/lzip/lzip-%{version}.tar.gz.sig
+/third_disk/ppline_24Mar/azurelinux//SPECS-EXTENDED/lzip/lzip.spec:: non-httpslines listed above
+Source0:        %{giturl}/archive/v%{version}/%{name}-%{version}.tar.gz
+/third_disk/ppline_24Mar/azurelinux//SPECS-EXTENDED/snowball/snowball.spec:: non-httpslines listed above
+Source: http://download.savannah.gnu.org/releases/smc/hyphenation/patterns/%{name}-%{version}.tar.bz2
+/third_disk/ppline_24Mar/azurelinux//SPECS-EXTENDED/hyphen-or/hyphen-or.spec:: non-httpslines listed above
+Source:		http://www.ex-parrot.com/~pdw/%{name}/download/%{name}-%{version}pre4.tar.gz
+/third_disk/ppline_24Mar/azurelinux//SPECS-EXTENDED/iftop/iftop.spec:: non-httpslines listed above
+Source0:   http://oss.oetiker.ch/mrtg/pub/mrtg-%{version}.tar.gz
+Source1:   http://oss.oetiker.ch/mrtg/pub/mrtg-%{version}.tar.gz.md5
+Source2:   mrtg.cfg
+Source3:   filter-requires-mrtg.sh
+Source5:   mrtg-httpd.conf
+Source6:   filter-provides-mrtg.sh
+Source7:   mrtg.tmpfiles
+Source8:   mrtg.service
+Source9:   mrtg.timer
+Source100: %{modulename}.te
+Source101: %{modulename}.if
+Source102: %{modulename}.fc
+/third_disk/ppline_24Mar/azurelinux//SPECS-EXTENDED/mrtg/mrtg.spec:: non-httpslines listed above
+Source0:        %{url}/archive/release-%{version}/%{name}-%{version}.tar.gz
+Source1:        SDL_config.h
+/third_disk/ppline_24Mar/azurelinux//SPECS-EXTENDED/sdl12-compat/sdl12-compat.spec:: non-httpslines listed above
+Source0:          http://github.com/fenrus75/%{name}/archive/v%{version}/%{name}-%{version}.tar.gz
+Source1:          powertop.service
+/third_disk/ppline_24Mar/azurelinux//SPECS-EXTENDED/powertop/powertop.spec:: non-httpslines listed above
+Source: http://downloads.spellchecker.lu/packages/OOo3/SpellcheckerLu.oxt
+/third_disk/ppline_24Mar/azurelinux//SPECS-EXTENDED/hunspell-lb/hunspell-lb.spec:: non-httpslines listed above
+Source0:        pulseaudio-%{version}-%{gitrel}-g%{shortcommit}.tar.xz
+Source0:        http://freedesktop.org/software/pulseaudio/releases/pulseaudio-%{version}.tar.xz
+Source1:        http://freedesktop.org/software/pulseaudio/releases/pulseaudio-%{version}.tar.xz.sha256sum
+Source5:        default.pa-for-gdm
+/third_disk/ppline_24Mar/azurelinux//SPECS-EXTENDED/pulseaudio/pulseaudio.spec:: non-httpslines listed above
+Source: http://dl.cihar.com/enca/enca-%{version}.tar.xz
+/third_disk/ppline_24Mar/azurelinux//SPECS-EXTENDED/enca/enca.spec:: non-httpslines listed above
+Source0: %{url}/archive/%{built_tag}.tar.gz
+/third_disk/ppline_24Mar/azurelinux//SPECS-EXTENDED/containernetworking-plugins/containernetworking-plugins.spec:: non-httpslines listed above
+Source0:        http://download.sourceforge.net/%{name}/%{name}-%{version}-src.zip
+Source1:        http://repo1.maven.org/maven2/%{name}/%{name}/%{version}/%{name}-%{version}.pom
+/third_disk/ppline_24Mar/azurelinux//SPECS-EXTENDED/xmlunit/xmlunit.spec:: non-httpslines listed above
+Source:         %{forgeurl}/archive/%{commit}/%{name}-%{commit}.tar.gz
+/third_disk/ppline_24Mar/azurelinux//SPECS-EXTENDED/usbmuxd/usbmuxd.spec:: non-httpslines listed above
+Source: http://88.200.20.8:85/download/thes_sl_SI_v2.zip
+/third_disk/ppline_24Mar/azurelinux//SPECS-EXTENDED/mythes-sl/mythes-sl.spec:: non-httpslines listed above
+Source:        http://download.osgeo.org/geotiff/%{name}/%{name}-%{version}.tar.gz
+/third_disk/ppline_24Mar/azurelinux//SPECS-EXTENDED/libgeotiff/libgeotiff.spec:: non-httpslines listed above
+Source1: stinit.service
+/third_disk/ppline_24Mar/azurelinux//SPECS-EXTENDED/mt-st/mt-st.spec:: non-httpslines listed above
+Source:     %{url}/releases/download/v%{version}/%{name}-%{version}.tar.gz
+/third_disk/ppline_24Mar/azurelinux//SPECS-EXTENDED/psutils/psutils.spec:: non-httpslines listed above
+Source0: http://download.gnome.org/sources/libart_lgpl/2.3/%{name}-%{version}.tar.bz2
+/third_disk/ppline_24Mar/azurelinux//SPECS-EXTENDED/libart_lgpl/libart_lgpl.spec:: non-httpslines listed above
+Source1: http://mirrors.ctan.org/language/hyph-utf8/tex/generic/hyph-utf8/patterns/tex/hyph-ru.tex
+Source2: http://mirrors.ctan.org/language/hyph-utf8/tex/generic/hyph-utf8/patterns/txt/hyph-ru.pat.txt
+/third_disk/ppline_24Mar/azurelinux//SPECS-EXTENDED/hyphen-ru/hyphen-ru.spec:: non-httpslines listed above
+Source0:        http://downloads.sourceforge.net/%{name}/%{name}-%{version}.tar.gz
+/third_disk/ppline_24Mar/azurelinux//SPECS-EXTENDED/openrdate/openrdate.spec:: non-httpslines listed above
+Source0:        %pypi_source
+/third_disk/ppline_24Mar/azurelinux//SPECS-EXTENDED/python-genshi/python-genshi.spec:: non-httpslines listed above
+Source1:        %{name}-build.tar.xz
+/third_disk/ppline_24Mar/azurelinux//SPECS-EXTENDED/args4j/args4j.spec:: non-httpslines listed above
+Source0: %{download_url}#/%{name}-%{version}.tar.gz
+/third_disk/ppline_24Mar/azurelinux//SPECS-EXTENDED/fuse-overlayfs/fuse-overlayfs.spec:: non-httpslines listed above
+Source: %{git0}/archive/v%{version}.tar.gz
+/third_disk/ppline_24Mar/azurelinux//SPECS-EXTENDED/buildah/buildah.spec:: non-httpslines listed above
+Source0: http://downloads.sourceforge.net/synonimy/OOo2-Thesaurus-%{version}.zip
+Source1: %{name}-LICENSE.txt
+/third_disk/ppline_24Mar/azurelinux//SPECS-EXTENDED/mythes-pl/mythes-pl.spec:: non-httpslines listed above
+Source0: http://www.manyfish.co.uk/pakchois/pakchois-%{version}.tar.gz
+Source1: %{name}-LICENSE.txt
+/third_disk/ppline_24Mar/azurelinux//SPECS-EXTENDED/pakchois/pakchois.spec:: non-httpslines listed above
+Source0:	http://downloads.sourceforge.net/pgtclng/pgtcl%{version}.tar.gz
+Source1:	http://downloads.sourceforge.net/pgtclng/pgtcldocs-%{docs_hash}.zip
+/third_disk/ppline_24Mar/azurelinux//SPECS-EXTENDED/tcl-pgtcl/tcl-pgtcl.spec:: non-httpslines listed above
+Source: http://download.savannah.gnu.org/releases/smc/hyphenation/patterns/%{name}-%{version}.tar.bz2
+/third_disk/ppline_24Mar/azurelinux//SPECS-EXTENDED/hyphen-kn/hyphen-kn.spec:: non-httpslines listed above
+Source0:	http://downloads.sourceforge.net/sblim/%{name}-%{version}.tar.bz2
+/third_disk/ppline_24Mar/azurelinux//SPECS-EXTENDED/sblim-indication_helper/sblim-indication_helper.spec:: non-httpslines listed above
+Source1: mod_security.conf
+Source2: 10-mod_security.conf
+Source3: modsecurity_localrules.conf
+/third_disk/ppline_24Mar/azurelinux//SPECS-EXTENDED/mod_security/mod_security.spec:: non-httpslines listed above
+Source: http://esperanto.mv.ru/Download/dict-eo.oxt
+/third_disk/ppline_24Mar/azurelinux//SPECS-EXTENDED/mythes-eo/mythes-eo.spec:: non-httpslines listed above
+Source:         %{pypi_source requests-mock}
+/third_disk/ppline_24Mar/azurelinux//SPECS-EXTENDED/python-requests-mock/python-requests-mock.spec:: non-httpslines listed above
+Source1:        h4comp
+/third_disk/ppline_24Mar/azurelinux//SPECS-EXTENDED/hdf/hdf.spec:: non-httpslines listed above
+Source0: http://ftp.netfilter.org/pub/arptables/%{name}-%{version}.tar.gz
+Source1: arptables.service
+Source2: arptables-legacy-helper
+/third_disk/ppline_24Mar/azurelinux//SPECS-EXTENDED/arptables/arptables.spec:: non-httpslines listed above
+Source0:       http://download.osgeo.org/shapelib/%{name}-%{version}%{?pre:%pre}.tar.gz
+Source1:       %{name}-man.tar.gz
+/third_disk/ppline_24Mar/azurelinux//SPECS-EXTENDED/shapelib/shapelib.spec:: non-httpslines listed above
+Source0:        http://cpan.metacpan.org/authors/id/S/SR/SRI/Mojolicious-%{version}.tar.gz#/%{name}-%{version}.tar.gz
+/third_disk/ppline_24Mar/azurelinux//SPECS-EXTENDED/perl-Mojolicious/perl-Mojolicious.spec:: non-httpslines listed above
+Source:         %{url}/archive/%{version}/%{name}-%{version}.tar.gz
+/third_disk/ppline_24Mar/azurelinux//SPECS-EXTENDED/deltarpm/deltarpm.spec:: non-httpslines listed above
+Source1: config-util
+/third_disk/ppline_24Mar/azurelinux//SPECS-EXTENDED/usermode/usermode.spec:: non-httpslines listed above
+Source: http://www.ohse.de/uwe/releases/%{name}-%{version}.tar.gz
+/third_disk/ppline_24Mar/azurelinux//SPECS-EXTENDED/lrzsz/lrzsz.spec:: non-httpslines listed above
+Source0:	http://downloads.sourceforge.net/%{name}/%{name}-%{version}.tar.xz
+/third_disk/ppline_24Mar/azurelinux//SPECS-EXTENDED/libwps/libwps.spec:: non-httpslines listed above
+Source0:        %{url}/archive/refs/tags/%{version}.tar.gz#/%{name}-%{version}.tar.gz
+/third_disk/ppline_24Mar/azurelinux//SPECS-EXTENDED/pywbem/pywbem.spec:: non-httpslines listed above
+Source0:        %{url}/archive/v%{version}/%{srcname}-%{version}.tar.gz#/azure-%{srcname}-python-%{version}.tar.gz
+/third_disk/ppline_24Mar/azurelinux//SPECS-EXTENDED/python-uamqp/python-uamqp.spec:: non-httpslines listed above
+Source1:	openwsmand.8.gz
+Source2:	openwsmand.service
+Source3:	owsmantestcert.sh
+Source100: %{modulename}.te
+Source101: %{modulename}.if
+Source102: %{modulename}.fc
+/third_disk/ppline_24Mar/azurelinux//SPECS-EXTENDED/openwsman/openwsman.spec:: non-httpslines listed above
+Source1: %{name}-LICENSE.txt
+/third_disk/ppline_24Mar/azurelinux//SPECS-EXTENDED/hunspell-nr/hunspell-nr.spec:: non-httpslines listed above
+Source0:        %{_distro_sources_url}/ow_util_ant_tasks_1.2.zip
+Source1:        %{name}-LICENSE.txt
+/third_disk/ppline_24Mar/azurelinux//SPECS-EXTENDED/objectweb-anttask/objectweb-anttask.spec:: non-httpslines listed above
+Source0:        %{forgeurl}/archive/v%{version}/pyzmq-%{version}.tar.gz
+/third_disk/ppline_24Mar/azurelinux//SPECS-EXTENDED/python-zmq/python-zmq.spec:: non-httpslines listed above
+Source: http://download.gnome.org/sources/libglade/2.6/libglade-%{version}.tar.bz2
+/third_disk/ppline_24Mar/azurelinux//SPECS-EXTENDED/libglade2/libglade2.spec:: non-httpslines listed above
+Source1:        test-setup.t
+Source2:        test-clean.t
+Source3:        testrules.yml
+Source4:        test-env.sh
+/third_disk/ppline_24Mar/azurelinux//SPECS-EXTENDED/perl-DBD-MySQL/perl-DBD-MySQL.spec:: non-httpslines listed above
+Source2: alan.coopersmith.asc
+/third_disk/ppline_24Mar/azurelinux//SPECS-EXTENDED/Xaw3d/Xaw3d.spec:: non-httpslines listed above
+Source1:        paps.convs
+Source2:        29-paps.conf
+/third_disk/ppline_24Mar/azurelinux//SPECS-EXTENDED/paps/paps.spec:: non-httpslines listed above
+Source1:        LICENSE.PTR
+/third_disk/ppline_24Mar/azurelinux//SPECS-EXTENDED/perl-Test-utf8/perl-Test-utf8.spec:: non-httpslines listed above
+Source:         %{url}/archive/%{version}/pytest-relaxed-%{version}.tar.gz#/%{name}-%{version}.tar.gz
+/third_disk/ppline_24Mar/azurelinux//SPECS-EXTENDED/python-pytest-relaxed/python-pytest-relaxed.spec:: non-httpslines listed above
+Source0:            %{url}/archive/%{version}/%{modname}-%{version}.tar.gz
+/third_disk/ppline_24Mar/azurelinux//SPECS-EXTENDED/python3-typed_ast/python3-typed_ast.spec:: non-httpslines listed above
+Source:         http://www.ladspa.org/download/%{name}_sdk_%{version}.tgz
+/third_disk/ppline_24Mar/azurelinux//SPECS-EXTENDED/ladspa/ladspa.spec:: non-httpslines listed above
+Source0: http://www.docbook.org/xml/simple/1.1/%{name}-%{version}.zip
+Source1: %{name}.README.redhat
+Source2: %{name}.xml
+Source3: %{name}.cat
+Source4: LICENSE.PTR
+/third_disk/ppline_24Mar/azurelinux//SPECS-EXTENDED/docbook-simple/docbook-simple.spec:: non-httpslines listed above
+Source0: %{_distro_sources_url}/%{name}-%{version}.tar.gz
+/third_disk/ppline_24Mar/azurelinux//SPECS-EXTENDED/container-exception-logger/container-exception-logger.spec:: non-httpslines listed above
+Source1: %{name}-LICENSE.txt
+Source2: hyphen-be-LICENSE.txt
+/third_disk/ppline_24Mar/azurelinux//SPECS-EXTENDED/hunspell-be/hunspell-be.spec:: non-httpslines listed above
+Source1:        LICENSE
+Source2:        macros.web-assets
+Source3:        web-assets.conf
+Source4:        README.devel
+/third_disk/ppline_24Mar/azurelinux//SPECS-EXTENDED/web-assets/web-assets.spec:: non-httpslines listed above
+Source0:       http://cpan.org/authors/id/B/BH/BHALLISSY/Font-TTF-%{version}.tar.gz
+/third_disk/ppline_24Mar/azurelinux//SPECS-EXTENDED/perl-Font-TTF/perl-Font-TTF.spec:: non-httpslines listed above
+Source0:        %{pypi_source}#/%{name}-%{version}.tar.gz
+/third_disk/ppline_24Mar/azurelinux//SPECS-EXTENDED/python-requests-file/python-requests-file.spec:: non-httpslines listed above
+Source0:        http://downloads.sourceforge.net/sblim/%{name}-%{version}.tar.bz2
+/third_disk/ppline_24Mar/azurelinux//SPECS-EXTENDED/sblim-cmpi-network/sblim-cmpi-network.spec:: non-httpslines listed above
+Source0:        http://downloads.sourceforge.net/%{name}/%{name}-%{version}.tar.gz
+/third_disk/ppline_24Mar/azurelinux//SPECS-EXTENDED/liboauth/liboauth.spec:: non-httpslines listed above
+Source: http://ftp.gnu.org/gnu/aspell/dict/ky/aspell6-ky-0.01-0.tar.bz2
+/third_disk/ppline_24Mar/azurelinux//SPECS-EXTENDED/hunspell-ky/hunspell-ky.spec:: non-httpslines listed above
+Source:         %{pypi_source python_mimeparse}
+/third_disk/ppline_24Mar/azurelinux//SPECS-EXTENDED/python-mimeparse/python-mimeparse.spec:: non-httpslines listed above
+Source:           %{url}/archive/%{version}/flake8-%{version}.tar.gz
+/third_disk/ppline_24Mar/azurelinux//SPECS-EXTENDED/python-flake8/python-flake8.spec:: non-httpslines listed above
+Source1:        http://www.apache.org/licenses/LICENSE-2.0.txt
+/third_disk/ppline_24Mar/azurelinux//SPECS-EXTENDED/plexus-pom/plexus-pom.spec:: non-httpslines listed above
+Source1:        LICENSE.PTR
+/third_disk/ppline_24Mar/azurelinux//SPECS-EXTENDED/perl-MLDBM/perl-MLDBM.spec:: non-httpslines listed above
+Source0:        %{_distro_sources_url}/%{name}-%{version}.tar.gz
+/third_disk/ppline_24Mar/azurelinux//SPECS-EXTENDED/libucil/libucil.spec:: non-httpslines listed above
+Source0:        %{url}/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
+/third_disk/ppline_24Mar/azurelinux//SPECS-EXTENDED/jsoncpp/jsoncpp.spec:: non-httpslines listed above
+Source: http://downloads.sourceforge.net/rospell/th_ro_RO.%{version}.zip
+/third_disk/ppline_24Mar/azurelinux//SPECS-EXTENDED/mythes-ro/mythes-ro.spec:: non-httpslines listed above
+Source0:        http://downloads.sourceforge.net/tcllib/bwidget-%{version}.tar.gz
+/third_disk/ppline_24Mar/azurelinux//SPECS-EXTENDED/bwidget/bwidget.spec:: non-httpslines listed above
+Source0: %{_distro_sources_url}/rx-%{version}.tar.bz2
+/third_disk/ppline_24Mar/azurelinux//SPECS-EXTENDED/librx/librx.spec:: non-httpslines listed above
+Source: %{url}/archive/refs/tags/v%{version}.tar.gz
+/third_disk/ppline_24Mar/azurelinux//SPECS-EXTENDED/pinfo/pinfo.spec:: non-httpslines listed above
+Source0: %{git}/archive/%{commit}/%{name}-%{shortcommit}.tar.gz
+/third_disk/ppline_24Mar/azurelinux//SPECS-EXTENDED/python-podman-api/python-podman-api.spec:: non-httpslines listed above
+Source1:        %{name}-build.xml
+/third_disk/ppline_24Mar/azurelinux//SPECS-EXTENDED/jansi/jansi.spec:: non-httpslines listed above
+Source:         http://tukaani.org/xz/xz-java-%{version}.zip
+/third_disk/ppline_24Mar/azurelinux//SPECS-EXTENDED/xz-java/xz-java.spec:: non-httpslines listed above
+Source2:        %{name}-xinput
+Source3:        %{name}.conf.5
+/third_disk/ppline_24Mar/azurelinux//SPECS-EXTENDED/ibus/ibus.spec:: non-httpslines listed above
+Source0:        %pypi_source
+/third_disk/ppline_24Mar/azurelinux//SPECS-EXTENDED/python-isodate/python-isodate.spec:: non-httpslines listed above
+Source10: sip-wrapper.sh
+Source1: macros.sip
+/third_disk/ppline_24Mar/azurelinux//SPECS-EXTENDED/sip/sip.spec:: non-httpslines listed above
+Source0:        http://www.urbanophile.com/arenn/hacking/getopt/java-getopt-%{version}.tar.gz
+/third_disk/ppline_24Mar/azurelinux//SPECS-EXTENDED/gnu-getopt/gnu-getopt.spec:: non-httpslines listed above
+Source3:        libbsd-cdefs.h
+/third_disk/ppline_24Mar/azurelinux//SPECS-EXTENDED/libbsd/libbsd.spec:: non-httpslines listed above
+Source:         http://www.kernel.org/pub/linux/libs/ieee1394/%{name}-%{version}.tar.xz
+/third_disk/ppline_24Mar/azurelinux//SPECS-EXTENDED/libraw1394/libraw1394.spec:: non-httpslines listed above
+Source0:        http://downloads.sourceforge.net/%{name}/%{name}-%{version}-Source.tar.xz
+/third_disk/ppline_24Mar/azurelinux//SPECS-EXTENDED/soxr/soxr.spec:: non-httpslines listed above
+Source0:        http://gstreamer.freedesktop.org/src/gstreamer/gstreamer-%{version}.tar.xz
+Source1:        gstreamer1.prov
+Source2:        gstreamer1.attr
+/third_disk/ppline_24Mar/azurelinux//SPECS-EXTENDED/gstreamer1/gstreamer1.spec:: non-httpslines listed above
+Source: 	%{url}/archive/v%{version}/%{name}-%{version}.tar.gz
+/third_disk/ppline_24Mar/azurelinux//SPECS-EXTENDED/intel-cmt-cat/intel-cmt-cat.spec:: non-httpslines listed above
+Source0:    %name-%version.tar.gz
+/third_disk/ppline_24Mar/azurelinux//SPECS-EXTENDED/python-templated-dictionary/python-templated-dictionary.spec:: non-httpslines listed above
+Source: http://downloads.sourceforge.net/project/aoo-extensions/4587/8/hunspell-gd-2.6.oxt
+/third_disk/ppline_24Mar/azurelinux//SPECS-EXTENDED/hunspell-gd/hunspell-gd.spec:: non-httpslines listed above
+Source:     	%{url}/releases/download/v%{version}/recode-%{version}.tar.gz
+/third_disk/ppline_24Mar/azurelinux//SPECS-EXTENDED/recode/recode.spec:: non-httpslines listed above
+Source1:	%{name}-fontconfig.conf
+Source2:	%{fontname}.metainfo.xml
+Source3:	%{fontname}-mono-fonts-fontconfig.conf
+Source4:	%{fontname}-mono.metainfo.xml
+/third_disk/ppline_24Mar/azurelinux//SPECS-EXTENDED/overpass-fonts/overpass-fonts.spec:: non-httpslines listed above
+Source0:        %{_distro_sources_url}/%{name}-%{version}.tar.gz
+Source1000:     geronimo-specs.build.xml
+Source1001:     undot.py
+/third_disk/ppline_24Mar/azurelinux//SPECS-EXTENDED/geronimo-specs/geronimo-specs.spec:: non-httpslines listed above
+Source0:        %{url}/archive/%{version}/recommonmark-%{version}.tar.gz#/%{name}-%{version}.tar.gz
+/third_disk/ppline_24Mar/azurelinux//SPECS-EXTENDED/python-recommonmark/python-recommonmark.spec:: non-httpslines listed above
+Source0:        %{_distro_sources_url}/xmldb-xapi-%{cvs_version}-src.tar.bz2
+/third_disk/ppline_24Mar/azurelinux//SPECS-EXTENDED/xmldb-api/xmldb-api.spec:: non-httpslines listed above
+Source0:        %{url}/archive/jline-parent-%{version}.tar.gz
+/third_disk/ppline_24Mar/azurelinux//SPECS-EXTENDED/jline/jline.spec:: non-httpslines listed above
+Source1:        screen.pam
+/third_disk/ppline_24Mar/azurelinux//SPECS-EXTENDED/screen/screen.spec:: non-httpslines listed above
+Source0:	http://www.apache.org/dist/httpd/mod_fcgid/mod_fcgid-%{version}.tar.bz2
+Source1:	fcgid.conf
+Source2:	mod_fcgid-2.1-README.RPM
+Source3:	mod_fcgid-2.1-README.SELinux
+Source4:	mod_fcgid-tmpfs.conf
+Source5:	fcgid24.conf
+/third_disk/ppline_24Mar/azurelinux//SPECS-EXTENDED/mod_fcgid/mod_fcgid.spec:: non-httpslines listed above
+Source0:        %{_distro_sources_url}/stax-src-%{version}.zip
+Source1:        stax-%{version}.pom
+Source2:        stax-api-%{apiver}.pom
+Source10:       http://apache.org/licenses/LICENSE-2.0.txt
+/third_disk/ppline_24Mar/azurelinux//SPECS-EXTENDED/bea-stax/bea-stax.spec:: non-httpslines listed above
+Source: http://data.opentaal.org/opentaalbank/thesaurus/download/thes_nl.oxt
+/third_disk/ppline_24Mar/azurelinux//SPECS-EXTENDED/mythes-nl/mythes-nl.spec:: non-httpslines listed above
+Source0:        %{pypi_source}#/%{name}-%{version}.tar.gz
+/third_disk/ppline_24Mar/azurelinux//SPECS-EXTENDED/python-dulwich/python-dulwich.spec:: non-httpslines listed above
+Source:         %{url}/archive/%{version}/%{srcname}-%{version}.tar.gz
+/third_disk/ppline_24Mar/azurelinux//SPECS-EXTENDED/python-semantic_version/python-semantic_version.spec:: non-httpslines listed above
+Source:         %{giturl}/releases/download/%{version}/tyxml-%{version}.tbz
+/third_disk/ppline_24Mar/azurelinux//SPECS-EXTENDED/ocaml-tyxml/ocaml-tyxml.spec:: non-httpslines listed above
+Source1: auth_mellon.conf
+Source2: 10-auth_mellon.conf
+Source3: mod_auth_mellon.conf
+Source4: mellon_create_metadata.sh
+Source5: README.redhat.rst
+/third_disk/ppline_24Mar/azurelinux//SPECS-EXTENDED/mod_auth_mellon/mod_auth_mellon.spec:: non-httpslines listed above
+Source0: %{_distro_sources_url}/%{name}-%{version}.tar.gz
+Source1: %{_distro_sources_url}/bcache-status-20140220.tar.gz
+/third_disk/ppline_24Mar/azurelinux//SPECS-EXTENDED/bcache-tools/bcache-tools.spec:: non-httpslines listed above
+Source0: http://downloads.sourceforge.net/myspellkurdish/ku_TR-021.zip
+/third_disk/ppline_24Mar/azurelinux//SPECS-EXTENDED/hunspell-ku/hunspell-ku.spec:: non-httpslines listed above
+Source1: %{name}-LICENSE.txt
+/third_disk/ppline_24Mar/azurelinux//SPECS-EXTENDED/hunspell-kk/hunspell-kk.spec:: non-httpslines listed above
+Source0:        http://arthurdejong.org/nss-pam-ldapd/nss-pam-ldapd-%{version}.tar.gz
+Source1:        http://arthurdejong.org/nss-pam-ldapd/nss-pam-ldapd-%{version}.tar.gz.sig
+Source3:        nslcd.tmpfiles
+Source4:        nslcd.service
+/third_disk/ppline_24Mar/azurelinux//SPECS-EXTENDED/nss-pam-ldapd/nss-pam-ldapd.spec:: non-httpslines listed above
+Source0:        %{pypi_source}
+/third_disk/ppline_24Mar/azurelinux//SPECS-EXTENDED/python-pytest-timeout/python-pytest-timeout.spec:: non-httpslines listed above
+Source: http://downloads.sourceforge.net/sourceforge/bgoffice/OOo-thes-bg-%{version}.zip
+/third_disk/ppline_24Mar/azurelinux//SPECS-EXTENDED/mythes-bg/mythes-bg.spec:: non-httpslines listed above
+Source2:        RPM-GPG-KEY-puppet-20250406
+Source13:       puppet-nm-dispatcher.systemd
+Source14:       start-puppet-wrapper
+Source15:       logrotate
+/third_disk/ppline_24Mar/azurelinux//SPECS-EXTENDED/puppet/puppet.spec:: non-httpslines listed above
+Source0:        http://kldp.net/baekmuk/release/865-%{archivename}.tar.gz#/%{archivename}.tar.gz
+Source3:        baekmuk-ttf-batang.conf
+Source4:        baekmuk-ttf-dotum.conf
+Source5:        baekmuk-ttf-gulim.conf
+Source6:        baekmuk-ttf-hline.conf
+Source7:        %{fontname}-batang.metainfo.xml
+Source8:        %{fontname}-dotum.metainfo.xml
+Source9:        %{fontname}-gulim.metainfo.xml
+Source10:       %{fontname}-hline.metainfo.xml
+Source11:       %{fontname}.metainfo.xml
+/third_disk/ppline_24Mar/azurelinux//SPECS-EXTENDED/baekmuk-ttf-fonts/baekmuk-ttf-fonts.spec:: non-httpslines listed above
+Source0:        http://heasarc.gsfc.nasa.gov/FTP/software/fitsio/c/%{name}-%{version}.tar.gz
+/third_disk/ppline_24Mar/azurelinux//SPECS-EXTENDED/cfitsio/cfitsio.spec:: non-httpslines listed above
+Source:         %{url}/archive/v%{version}/aiohttp-%{version}.tar.gz
+/third_disk/ppline_24Mar/azurelinux//SPECS-EXTENDED/python-aiohttp/python-aiohttp.spec:: non-httpslines listed above
+Source: http://download.savannah.gnu.org/releases/smc/hyphenation/patterns/%{name}-%{version}.tar.bz2
+/third_disk/ppline_24Mar/azurelinux//SPECS-EXTENDED/hyphen-gu/hyphen-gu.spec:: non-httpslines listed above
+Source: http://downloads.sourceforge.net/bgoffice/OOo-spell-bg-%{version}.zip
+/third_disk/ppline_24Mar/azurelinux//SPECS-EXTENDED/hunspell-bg/hunspell-bg.spec:: non-httpslines listed above
+Source: %{_distro_sources_url}/mythes-mi-0.1.%{upstreamid}-beta.tar.gz
+/third_disk/ppline_24Mar/azurelinux//SPECS-EXTENDED/mythes-mi/mythes-mi.spec:: non-httpslines listed above
+Source1:        fltk-config.sh
+/third_disk/ppline_24Mar/azurelinux//SPECS-EXTENDED/fltk/fltk.spec:: non-httpslines listed above
+Source:  http://download.librdf.org/source/raptor2-%{version}.tar.gz
+/third_disk/ppline_24Mar/azurelinux//SPECS-EXTENDED/raptor2/raptor2.spec:: non-httpslines listed above
+Source0: xdg-utils-%{version}-%{snap}.tar.gz
+/third_disk/ppline_24Mar/azurelinux//SPECS-EXTENDED/xdg-utils/xdg-utils.spec:: non-httpslines listed above
+Source0:        %{URL}/archive/%{name}-%{version}.tar.gz
+/third_disk/ppline_24Mar/azurelinux//SPECS-EXTENDED/zopfli/zopfli.spec:: non-httpslines listed above
+Source0:        http://www.netsniff-ng.org/pub/%{name}/%{name}-%{version}.tar.xz
+/third_disk/ppline_24Mar/azurelinux//SPECS-EXTENDED/netsniff-ng/netsniff-ng.spec:: non-httpslines listed above
+Source1: %{name}-LICENSE.txt
+/third_disk/ppline_24Mar/azurelinux//SPECS-EXTENDED/mythes-da/mythes-da.spec:: non-httpslines listed above
+Source0:        %{url}/archive/%{version}/edac-utils-%{version}.tar.gz
+Source1:        edac.service
+/third_disk/ppline_24Mar/azurelinux//SPECS-EXTENDED/edac-utils/edac-utils.spec:: non-httpslines listed above
+Source0: %{git0}/archive/v%{version_no_tilde}.tar.gz
+/third_disk/ppline_24Mar/azurelinux//SPECS-EXTENDED/podman/podman.spec:: non-httpslines listed above
+Source1:          dot-mkshrc
+Source2:          rtchecks.expected
+/third_disk/ppline_24Mar/azurelinux//SPECS-EXTENDED/mksh/mksh.spec:: non-httpslines listed above
+Source0:        %{url}/archive/%{version}/%{name}-%{version}.tar.gz
+/third_disk/ppline_24Mar/azurelinux//SPECS-EXTENDED/python-cbor2/python-cbor2.spec:: non-httpslines listed above
+Source0: http://www.dicollecte.org/download/fr/hunspell-french-dictionaries-v%{version}.zip
+Source1: %{name}-LICENSE.txt
+/third_disk/ppline_24Mar/azurelinux//SPECS-EXTENDED/hunspell-fr/hunspell-fr.spec:: non-httpslines listed above
+Source1: %{name}-LICENSE.txt
+/third_disk/ppline_24Mar/azurelinux//SPECS-EXTENDED/hunspell-ve/hunspell-ve.spec:: non-httpslines listed above
+Source0: http://chanae.walon.org/walon/aspell-wa-%{version}.tar.bz2
+/third_disk/ppline_24Mar/azurelinux//SPECS-EXTENDED/hunspell-wa/hunspell-wa.spec:: non-httpslines listed above
+Source: http://dev-www.libreoffice.org/src/%{name}/%{name}-%{version}.tar.xz
+/third_disk/ppline_24Mar/azurelinux//SPECS-EXTENDED/libabw/libabw.spec:: non-httpslines listed above
+Source0: http://download.gnome.org/sources/gconf-editor/3.0/%{name}-%{version}.tar.xz
+/third_disk/ppline_24Mar/azurelinux//SPECS-EXTENDED/gconf-editor/gconf-editor.spec:: non-httpslines listed above
+Source1:        SDL_config.h
+Source2:        SDL_revision.h
+/third_disk/ppline_24Mar/azurelinux//SPECS-EXTENDED/SDL2/SDL2.spec:: non-httpslines listed above
+Source0:        http://archive.apache.org/dist/commons/collections/source/commons-collections4-%{version}-src.tar.gz
+/third_disk/ppline_24Mar/azurelinux//SPECS-EXTENDED/apache-commons-collections4/apache-commons-collections4.spec:: non-httpslines listed above
+Source0:        http://downloads.sourceforge.net/docbook2x/docbook2X-%{version}.tar.gz
+/third_disk/ppline_24Mar/azurelinux//SPECS-EXTENDED/docbook2X/docbook2X.spec:: non-httpslines listed above
+Source: http://anishpatil.fedorapeople.org/bn_in.%{version}.tar.gz
+/third_disk/ppline_24Mar/azurelinux//SPECS-EXTENDED/hunspell-bn/hunspell-bn.spec:: non-httpslines listed above
+Source0:        %{_distro_sources_url}/%{name}-%{version}.tar.gz
+Source1:        %{name}-build.xml
+Source100:      generate-tarball.sh
+/third_disk/ppline_24Mar/azurelinux//SPECS-EXTENDED/jsoup/jsoup.spec:: non-httpslines listed above
+Source1: %{name}-LICENSE.txt
+/third_disk/ppline_24Mar/azurelinux//SPECS-EXTENDED/hyphen-sv/hyphen-sv.spec:: non-httpslines listed above
+Source1: pngusr.dfa
+/third_disk/ppline_24Mar/azurelinux//SPECS-EXTENDED/libpng15/libpng15.spec:: non-httpslines listed above
+Source: http://download.savannah.gnu.org/releases/smc/Spellchecker/ooo-hunspell-ml-%{version}.tar.bz2
+/third_disk/ppline_24Mar/azurelinux//SPECS-EXTENDED/hunspell-ml/hunspell-ml.spec:: non-httpslines listed above
+Source0:        http://www.dmtf.org/standards/cim/cim_schema_v%{major}%{minor}%{update}/cim_schema_%{version}Experimental-MOFs.zip
+Source1:        http://www.dmtf.org/standards/cim/cim_schema_v%{major}%{minor}%{update}/cim_schema_%{version}Experimental-Doc.zip
+Source2:        LICENSE
+/third_disk/ppline_24Mar/azurelinux//SPECS-EXTENDED/cim-schema/cim-schema.spec:: non-httpslines listed above
+Source0:	http://releases.pagure.org/polkit-pkla-compat/polkit-pkla-compat-%{version}.tar.xz
+/third_disk/ppline_24Mar/azurelinux//SPECS-EXTENDED/polkit-pkla-compat/polkit-pkla-compat.spec:: non-httpslines listed above
+Source0:        %{_distro_sources_url}/%{name}-%{version}.tar.gz
+Source1:        %{name}-filter.sh
+/third_disk/ppline_24Mar/azurelinux//SPECS-EXTENDED/libunicap/libunicap.spec:: non-httpslines listed above
+Source0:            %{url}/archive/v%{version}/%{pypi_name}-%{version}.tar.gz#/%{name}-%{version}.tar.gz
+/third_disk/ppline_24Mar/azurelinux//SPECS-EXTENDED/python-xmltodict/python-xmltodict.spec:: non-httpslines listed above
+Source0:    http://download-mirror.savannah.gnu.org/releases/m17n/%{name}-%{version}.tar.gz
+/third_disk/ppline_24Mar/azurelinux//SPECS-EXTENDED/m17n-db/m17n-db.spec:: non-httpslines listed above
+Source0:        %{URL}/archive/v%{version}.tar.gz#/breathe-%{version}.tar.gz
+Source1:        %{URL}/releases/download/v%{version}/%{srcname}-%{version}.tar.gz.sig
+/third_disk/ppline_24Mar/azurelinux//SPECS-EXTENDED/python-breathe/python-breathe.spec:: non-httpslines listed above
+Source1: %{name}-LICENSE.txt
+/third_disk/ppline_24Mar/azurelinux//SPECS-EXTENDED/hyphen-ku/hyphen-ku.spec:: non-httpslines listed above
+Source0: http://anishpatil.fedorapeople.org/gu_in.%{version}.tar.gz
+Source1: %{name}-LICENSE.txt
+/third_disk/ppline_24Mar/azurelinux//SPECS-EXTENDED/hunspell-gu/hunspell-gu.spec:: non-httpslines listed above
+Source0:       %{url}/archive/%{version}/%{srcname}-%{version}.tar.gz
+/third_disk/ppline_24Mar/azurelinux//SPECS-EXTENDED/python-paramiko/python-paramiko.spec:: non-httpslines listed above
+Source1:        copying.txt
+/third_disk/ppline_24Mar/azurelinux//SPECS-EXTENDED/relaxngDatatype/relaxngDatatype.spec:: non-httpslines listed above
+Source0:       %{_distro_sources_url}/%{npm_name}-v%{version}-bundled.tar.gz
+/third_disk/ppline_24Mar/azurelinux//SPECS-EXTENDED/nodejs-nodemon/nodejs-nodemon.spec:: non-httpslines listed above
+Source:    http://downloads.sourceforge.net/lpsolve/lp_solve_%{version}_source.tar.gz
+/third_disk/ppline_24Mar/azurelinux//SPECS-EXTENDED/lpsolve/lpsolve.spec:: non-httpslines listed above
+Source1: generate-tarball.sh
+/third_disk/ppline_24Mar/azurelinux//SPECS-EXTENDED/python-waitress/python-waitress.spec:: non-httpslines listed above
+Source0:	%{url}/archive/v%{version}/%{name}-%{version}.tar.gz
+Source1:	mcelog.conf
+/third_disk/ppline_24Mar/azurelinux//SPECS-EXTENDED/mcelog/mcelog.spec:: non-httpslines listed above
+Source0: http://0pointer.de/lennart/projects/libasyncns/libasyncns-%{version}.tar.gz
+/third_disk/ppline_24Mar/azurelinux//SPECS-EXTENDED/libasyncns/libasyncns.spec:: non-httpslines listed above
+Source1:  BCrypt.java
+/third_disk/ppline_24Mar/azurelinux//SPECS-EXTENDED/trilead-ssh2/trilead-ssh2.spec:: non-httpslines listed above
+Source0:        http://cvs.schmorp.de/libecb/?view=tar&pathrev=rxvt-unicode-rel-%{underscore_version}#/%{name}-%{version}.tar.gz
+/third_disk/ppline_24Mar/azurelinux//SPECS-EXTENDED/libecb/libecb.spec:: non-httpslines listed above
+Source0: http://downloads.sourceforge.net/%{name}/%{name}-%{version}.tar.bz2
+/third_disk/ppline_24Mar/azurelinux//SPECS-EXTENDED/libieee1284/libieee1284.spec:: non-httpslines listed above
+Source0:        http://downloads.sourceforge.net/sblim/%{name}-%{version}.tar.bz2
+/third_disk/ppline_24Mar/azurelinux//SPECS-EXTENDED/sblim-cmpi-params/sblim-cmpi-params.spec:: non-httpslines listed above
+Source2:	8B055AE86DEFF458.asc
+/third_disk/ppline_24Mar/azurelinux//SPECS-EXTENDED/nilfs-utils/nilfs-utils.spec:: non-httpslines listed above
+Source0:        %{url}/archive/refs/tags/v%{version}.tar.gz#/python-%{srcname}-%{version}.tar.gz
+/third_disk/ppline_24Mar/azurelinux//SPECS-EXTENDED/python-dbus-python-client-gen/python-dbus-python-client-gen.spec:: non-httpslines listed above
+Source0:        %{_distro_sources_url}/%{name}-%{date}.tar.xz
+Source1:        %{name}.catalog.xml
+Source2:        LICENSE.PTR
+Source99:       %{name}-prepare-tarball.sh
+/third_disk/ppline_24Mar/azurelinux//SPECS-EXTENDED/xhtml1-dtds/xhtml1-dtds.spec:: non-httpslines listed above
+Source0: %{_distro_sources_url}/%{name}-%{version}.%{checkout}.tar.bz2
+/third_disk/ppline_24Mar/azurelinux//SPECS-EXTENDED/splix/splix.spec:: non-httpslines listed above
+Source0: %{pypi_source}
+/third_disk/ppline_24Mar/azurelinux//SPECS-EXTENDED/pyusb/pyusb.spec:: non-httpslines listed above
+Source1:        %{name}-build.xml
+/third_disk/ppline_24Mar/azurelinux//SPECS-EXTENDED/glassfish-annotation-api/glassfish-annotation-api.spec:: non-httpslines listed above
+Source0: http://tug.org/svn/texhyphen/trunk/hyph-utf8/tex/generic/hyph-utf8/patterns/tex/hyph-mn-cyrl.tex?view=co#/hyph-mn-cyrl.tex
+Source1: %{name}-LICENSE.txt
+/third_disk/ppline_24Mar/azurelinux//SPECS-EXTENDED/hyphen-mn/hyphen-mn.spec:: non-httpslines listed above
+Source: http://dev-www.libreoffice.org/src/%{name}/%{name}-%{version}.tar.xz
+/third_disk/ppline_24Mar/azurelinux//SPECS-EXTENDED/libetonyek/libetonyek.spec:: non-httpslines listed above
+Source0:        %{url}/archive/v%{version}/%{pypi_name}-%{version}.tar.gz
+/third_disk/ppline_24Mar/azurelinux//SPECS-EXTENDED/python-smartypants/python-smartypants.spec:: non-httpslines listed above
+Source: http://download.savannah.gnu.org/releases/smc/hyphenation/patterns/%{name}-%{version}.tar.bz2
+/third_disk/ppline_24Mar/azurelinux//SPECS-EXTENDED/hyphen-hi/hyphen-hi.spec:: non-httpslines listed above
+Source1: ilmbase-config.h
+/third_disk/ppline_24Mar/azurelinux//SPECS-EXTENDED/ilmbase/ilmbase.spec:: non-httpslines listed above
+Source0:        %{url}/releases/download/v%{version}/%{name}-%{version}.tar.gz
+Source1:        tlog.sysusers
+/third_disk/ppline_24Mar/azurelinux//SPECS-EXTENDED/tlog/tlog.spec:: non-httpslines listed above
+Source0:        http://www.andre-simon.de/zip/%{name}-%{version}.tar.bz2
+/third_disk/ppline_24Mar/azurelinux//SPECS-EXTENDED/highlight/highlight.spec:: non-httpslines listed above
+Source:             %{pypi_source mccabe}
+/third_disk/ppline_24Mar/azurelinux//SPECS-EXTENDED/python-mccabe/python-mccabe.spec:: non-httpslines listed above
+Source0:	http://downloads.sf.net/judy/Judy-%{version}.tar.gz
+Source1:	README.Fedora
+/third_disk/ppline_24Mar/azurelinux//SPECS-EXTENDED/Judy/Judy.spec:: non-httpslines listed above
+Source0:        %{url}/-/archive/%{version}/%{name}-%{version}.tar.gz
+/third_disk/ppline_24Mar/azurelinux//SPECS-EXTENDED/bolt/bolt.spec:: non-httpslines listed above
+Source0:        %{pypi_source}
+/third_disk/ppline_24Mar/azurelinux//SPECS-EXTENDED/python-itsdangerous/python-itsdangerous.spec:: non-httpslines listed above
+Source0:        http://archive.apache.org/dist/commons/bcel/source/bcel-%{version}-src.tar.gz
+/third_disk/ppline_24Mar/azurelinux//SPECS-EXTENDED/bcel/bcel.spec:: non-httpslines listed above
+Source: http://downloads.sourceforge.net/rospell/hyph_ro_RO.3.3.6.zip
+/third_disk/ppline_24Mar/azurelinux//SPECS-EXTENDED/hyphen-ro/hyphen-ro.spec:: non-httpslines listed above
+Source2:          %{name}-devel.README
+Source4:          389-ds-base.sysusers
+/third_disk/ppline_24Mar/azurelinux//SPECS-EXTENDED/389-ds-base/389-ds-base.spec:: non-httpslines listed above
+Source0:        http://downloads.us.xiph.org/releases/celt/celt-%{version}.tar.gz
+/third_disk/ppline_24Mar/azurelinux//SPECS-EXTENDED/celt051/celt051.spec:: non-httpslines listed above
+Source0:        %{forgeurl}/archive/v%{basever}/pylint-%{basever}.tar.gz
+/third_disk/ppline_24Mar/azurelinux//SPECS-EXTENDED/pylint/pylint.spec:: non-httpslines listed above
+Source2:       keyring.gpg
+Source3:       trustdb.gpg
+/third_disk/ppline_24Mar/azurelinux//SPECS-EXTENDED/pyparted/pyparted.spec:: non-httpslines listed above
+Source: http://dev-www.libreoffice.org/src/%{name}-%{version}.tar.bz2
+/third_disk/ppline_24Mar/azurelinux//SPECS-EXTENDED/libeot/libeot.spec:: non-httpslines listed above
+Source0: %pypi_source
+/third_disk/ppline_24Mar/azurelinux//SPECS-EXTENDED/pyserial/pyserial.spec:: non-httpslines listed above
+Source0:        http://downloads.sourceforge.net/icns/%{name}-%{version}.tar.gz
+/third_disk/ppline_24Mar/azurelinux//SPECS-EXTENDED/libicns/libicns.spec:: non-httpslines listed above
+Source0: %{_distro_sources_url}/%{name}-%{version}.tar.bz2
+Source1: %{name}-LICENSE.txt
+Source10: ttmkfdir.1
+/third_disk/ppline_24Mar/azurelinux//SPECS-EXTENDED/ttmkfdir/ttmkfdir.spec:: non-httpslines listed above
+Source0:        http://www.lua.org/ftp/lua-%{version}.tar.gz
+/third_disk/ppline_24Mar/azurelinux//SPECS-EXTENDED/compat-lua/compat-lua.spec:: non-httpslines listed above
+Source0:        http://www.freedesktop.org/software/media-player-info/%{name}-%{version}.tar.gz
+/third_disk/ppline_24Mar/azurelinux//SPECS-EXTENDED/media-player-info/media-player-info.spec:: non-httpslines listed above
+Source0:        %{url}/archive/v%{version}/aiodns-%{version}.tar.gz#/%{name}-%{version}.tar.gz
+/third_disk/ppline_24Mar/azurelinux//SPECS-EXTENDED/python-aiodns/python-aiodns.spec:: non-httpslines listed above

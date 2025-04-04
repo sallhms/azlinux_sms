@@ -1,0 +1,1174 @@
+ [2025-03-18 06:19.19] /third_disk/bb17Mar/azurelinux [neerajs.azuli-m1]$ git commit -m "Committing the changes resulting from the run of the script prep_ext_folder"
+[topic_17Mar d9c470638] Committing the changes resulting from the run of the script prep_ext_folder
+ 1153 files changed, 137711 insertions(+), 86058 deletions(-)
+ delete mode 100644 SPECS-EXTENDED/OpenEXR/OpenEXR.signatures.json
+ delete mode 100644 SPECS-EXTENDED/OpenEXR/OpenEXR.spec
+ delete mode 100644 SPECS-EXTENDED/OpenEXR/openexr-2.3.0-bigendian.patch
+ delete mode 100644 SPECS-EXTENDED/OpenEXR/openexr-2.3.0-tests.patch
+ create mode 100755 SPECS-EXTENDED/alsa-plugins/alsa-git.patch
+ delete mode 100644 SPECS-EXTENDED/alsa-plugins/alsa-plugins.signatures.json
+ mode change 100644 => 100755 SPECS-EXTENDED/alsa-plugins/alsa-plugins.spec
+ delete mode 100644 SPECS-EXTENDED/apache-commons-codec/apache-commons-codec-build.xml
+ delete mode 100644 SPECS-EXTENDED/apache-commons-codec/apache-commons-codec.signatures.json
+ mode change 100644 => 100755 SPECS-EXTENDED/apache-commons-codec/apache-commons-codec.spec
+ mode change 100644 => 100755 SPECS-EXTENDED/apache-commons-codec/aspell-mail.txt
+ delete mode 100644 SPECS-EXTENDED/apache-commons-codec/commons-codec-1.15-src.tar.gz.asc
+ delete mode 100644 SPECS-EXTENDED/apache-commons-collections4/apache-commons-collections4.signatures.json
+ mode change 100644 => 100755 SPECS-EXTENDED/apache-commons-collections4/apache-commons-collections4.spec
+ delete mode 100644 SPECS-EXTENDED/apache-commons-collections4/commons-collections4-4.1-bundle.patch
+ delete mode 100644 SPECS-EXTENDED/apache-commons-collections4/commons-collections4-4.1-javadoc.patch
+ delete mode 100644 SPECS-EXTENDED/apache-commons-collections4/commons-collections4-4.1-jdk11.patch
+ mode change 100644 => 100755 SPECS-EXTENDED/apache-commons-compress/0001-Remove-Brotli-compressor.patch
+ mode change 100644 => 100755 SPECS-EXTENDED/apache-commons-compress/0002-Remove-ZSTD-compressor.patch
+ create mode 100755 SPECS-EXTENDED/apache-commons-compress/0003-Remove-Pack200-compressor.patch
+ delete mode 100644 SPECS-EXTENDED/apache-commons-compress/apache-commons-compress-build.xml
+ delete mode 100644 SPECS-EXTENDED/apache-commons-compress/apache-commons-compress.signatures.json
+ mode change 100644 => 100755 SPECS-EXTENDED/apache-commons-compress/apache-commons-compress.spec
+ delete mode 100644 SPECS-EXTENDED/apache-commons-compress/commons-compress-1.19-src.tar.gz.asc
+ delete mode 100644 SPECS-EXTENDED/apache-commons-compress/fix_java_8_compatibility.patch
+ delete mode 100644 SPECS-EXTENDED/apache-commons-io/apache-commons-io-build.xml
+ delete mode 100644 SPECS-EXTENDED/apache-commons-io/apache-commons-io.signatures.json
+ mode change 100644 => 100755 SPECS-EXTENDED/apache-commons-io/apache-commons-io.spec
+ delete mode 100644 SPECS-EXTENDED/apache-commons-io/commons-io-2.14.0-src.tar.gz.asc
+ delete mode 100644 SPECS-EXTENDED/apache-commons-jexl/0001-Port-to-current-javacc.patch
+ delete mode 100644 SPECS-EXTENDED/apache-commons-jexl/001-Fix-tests.patch
+ create mode 100755 SPECS-EXTENDED/apache-commons-jexl/KEYS
+ create mode 100755 SPECS-EXTENDED/apache-commons-jexl/apache-commons-jexl-javacc.patch
+ mode change 100644 => 100755 SPECS-EXTENDED/apache-commons-jexl/apache-commons-jexl-javadoc.patch
+ delete mode 100644 SPECS-EXTENDED/apache-commons-jexl/apache-commons-jexl.signatures.json
+ delete mode 100644 SPECS-EXTENDED/apache-commons-jexl/build.xml
+ delete mode 100644 SPECS-EXTENDED/apache-commons-jexl/common.xml
+ create mode 100755 SPECS-EXTENDED/apache-commons-jexl/commons-jexl-3.4.0-src.tar.gz.asc
+ delete mode 100644 SPECS-EXTENDED/apache-commons-jexl/jexl2-compat-build.xml
+ create mode 100755 SPECS-EXTENDED/apache-commons-net/KEYS
+ delete mode 100644 SPECS-EXTENDED/apache-commons-net/apache-commons-net-build.xml
+ delete mode 100644 SPECS-EXTENDED/apache-commons-net/apache-commons-net.signatures.json
+ mode change 100644 => 100755 SPECS-EXTENDED/apache-commons-net/apache-commons-net.spec
+ create mode 100755 SPECS-EXTENDED/apache-commons-net/commons-net-3.11.0-src.tar.gz.asc
+ create mode 100755 SPECS-EXTENDED/apache-commons-vfs/KEYS
+ create mode 100755 SPECS-EXTENDED/apache-commons-vfs/apache-commons-vfs-httpclient.patch
+ create mode 100755 SPECS-EXTENDED/apache-commons-vfs/apache-commons-vfs.spec
+ create mode 100755 SPECS-EXTENDED/apache-commons-vfs/commons-vfs-2.9.0-src.tar.gz.asc
+ delete mode 100644 SPECS-EXTENDED/apache-commons-vfs2/0001_exlcude_abstractclass_from_test.patch
+ delete mode 100644 SPECS-EXTENDED/apache-commons-vfs2/0002_remove_ftpFile_providers.patch
+ delete mode 100644 SPECS-EXTENDED/apache-commons-vfs2/apache-commons-vfs2.signatures.json
+ delete mode 100644 SPECS-EXTENDED/apache-commons-vfs2/apache-commons-vfs2.spec
+ delete mode 100644 SPECS-EXTENDED/apache-commons-vfs2/build.xml
+ delete mode 100644 SPECS-EXTENDED/apache-commons-vfs2/common.xml
+ delete mode 100644 SPECS-EXTENDED/apache-commons-vfs2/commons-vfs2-build.xml
+ delete mode 100644 SPECS-EXTENDED/apache-commons-vfs2/commons-vfs2-examples-build.xml
+ delete mode 100644 SPECS-EXTENDED/bcel/bcel-5.2-encoding.patch
+ delete mode 100644 SPECS-EXTENDED/bcel/bcel-5.2-src.tar.gz.asc
+ delete mode 100644 SPECS-EXTENDED/bcel/bcel-5.2.pom
+ delete mode 100644 SPECS-EXTENDED/bcel/bcel.keyring
+ delete mode 100644 SPECS-EXTENDED/bcel/bcel.signatures.json
+ mode change 100644 => 100755 SPECS-EXTENDED/bcel/bcel.spec
+ delete mode 100644 SPECS-EXTENDED/booth/CVE-2022-2553.patch
+ delete mode 100644 SPECS-EXTENDED/booth/booth.signatures.json
+ mode change 100644 => 100755 SPECS-EXTENDED/booth/booth.spec
+ delete mode 100644 SPECS-EXTENDED/breezy/breezy-3.0.2.tar.gz.asc
+ create mode 100755 SPECS-EXTENDED/breezy/breezy-3.3.8.tar.gz.asc
+ delete mode 100644 SPECS-EXTENDED/breezy/breezy.signatures.json
+ mode change 100644 => 100755 SPECS-EXTENDED/breezy/breezy.spec
+ mode change 100644 => 100755 SPECS-EXTENDED/breezy/brz-icon-64.png
+ delete mode 100644 SPECS-EXTENDED/buildah/CVE-2022-2990.patch
+ delete mode 100644 SPECS-EXTENDED/buildah/buildah.signatures.json
+ mode change 100644 => 100755 SPECS-EXTENDED/buildah/buildah.spec
+ create mode 100755 SPECS-EXTENDED/cdrdao/21.patch
+ delete mode 100644 SPECS-EXTENDED/cdrdao/cdrdao-1.2.4-ax_pthread.patch
+ delete mode 100644 SPECS-EXTENDED/cdrdao/cdrdao-1.2.4-wformat-security.patch
+ create mode 100755 SPECS-EXTENDED/cdrdao/cdrdao-1.2.5-Fix-version-command.patch
+ delete mode 100644 SPECS-EXTENDED/cdrdao/cdrdao.signatures.json
+ mode change 100644 => 100755 SPECS-EXTENDED/cdrdao/cdrdao.spec
+ create mode 100755 SPECS-EXTENDED/cglib/0001-Remove-unused-import.patch
+ delete mode 100644 SPECS-EXTENDED/cglib/cglib.signatures.json
+ mode change 100644 => 100755 SPECS-EXTENDED/cglib/cglib.spec
+ rename SPECS-EXTENDED/cjkuni-uming-fonts/{cjkuni-uming-fonts-fontconfig.conf => 65-cjkuni-uming-fonts.conf} (97%)
+ mode change 100644 => 100755
+ rename SPECS-EXTENDED/cjkuni-uming-fonts/{90-ttf-arphic-uming-embolden.conf => 90-cjkuni-uming-fonts-embolden.conf} (89%)
+ mode change 100644 => 100755
+ delete mode 100644 SPECS-EXTENDED/cjkuni-uming-fonts/cjkuni-uming-fonts.signatures.json
+ mode change 100644 => 100755 SPECS-EXTENDED/cjkuni-uming-fonts/cjkuni-uming-fonts.spec
+ delete mode 100644 SPECS-EXTENDED/containernetworking-plugins/containernetworking-plugins.signatures.json
+ mode change 100644 => 100755 SPECS-EXTENDED/containernetworking-plugins/containernetworking-plugins.spec
+ delete mode 100644 SPECS-EXTENDED/cppcheck/cppcheck-1.88-htmlreport-python3.patch
+ rename SPECS-EXTENDED/cppcheck/{cppcheck-2.2-translations.patch => cppcheck-2.11-translations.patch} (59%)
+ mode change 100644 => 100755
+ delete mode 100644 SPECS-EXTENDED/cppcheck/cppcheck-2.7-disable-test-testmathlib-tostring.patch
+ delete mode 100644 SPECS-EXTENDED/cppcheck/cppcheck-2.7-tinyxml2.patch
+ delete mode 100644 SPECS-EXTENDED/cppcheck/cppcheck.signatures.json
+ mode change 100644 => 100755 SPECS-EXTENDED/cppcheck/cppcheck.spec
+ create mode 100755 SPECS-EXTENDED/criu/Makefile.config-set-CR_PLUGIN_DEFAULT-variable.patch
+ mode change 100644 => 100755 SPECS-EXTENDED/criu/criu-tmpfiles.conf
+ create mode 100755 SPECS-EXTENDED/criu/criu.pc.patch
+ delete mode 100644 SPECS-EXTENDED/criu/criu.signatures.json
+ mode change 100644 => 100755 SPECS-EXTENDED/criu/criu.spec
+ delete mode 100644 SPECS-EXTENDED/criu/unifying_struct_names.patch
+ delete mode 100644 SPECS-EXTENDED/crypto-policies/crypto-policies.signatures.json
+ mode change 100644 => 100755 SPECS-EXTENDED/crypto-policies/crypto-policies.spec
+ delete mode 100644 SPECS-EXTENDED/dbxtool/0001-don-t-use-f-in-dbxtool.service.patch
+ delete mode 100644 SPECS-EXTENDED/dbxtool/0002-Make-quiet-exit-on-missing-PK-KEK-not-return-error-s.patch
+ delete mode 100644 SPECS-EXTENDED/dbxtool/0003-fix-relop-in-esl_iter_next.patch
+ delete mode 100644 SPECS-EXTENDED/dbxtool/0004-Make-dbxtool.service-not-run-on-live-images.patch
+ delete mode 100644 SPECS-EXTENDED/dbxtool/dbxtool-8-ccldflags.patch
+ delete mode 100644 SPECS-EXTENDED/dbxtool/dbxtool.signatures.json
+ delete mode 100644 SPECS-EXTENDED/dbxtool/dbxtool.spec
+ create mode 100755 SPECS-EXTENDED/device-mapper-persistent-data/0001-Tweak-cargo.toml-to-work-with-vendor-directory.patch
+ create mode 100755 SPECS-EXTENDED/device-mapper-persistent-data/0002-tests-Explicitly-set-the-pipe-size-for-triggering-EP.patch
+ create mode 100755 SPECS-EXTENDED/device-mapper-persistent-data/0003-tests-Fix-closing-the-pipe-fd-twice.patch
+ delete mode 100644 SPECS-EXTENDED/device-mapper-persistent-data/device-mapper-persistent-data-avoid-strip.patch
+ delete mode 100644 SPECS-EXTENDED/device-mapper-persistent-data/device-mapper-persistent-data.signatures.json
+ mode change 100644 => 100755 SPECS-EXTENDED/device-mapper-persistent-data/device-mapper-persistent-data.spec
+ create mode 100755 SPECS-EXTENDED/distribution-gpg-keys/distribution-gpg-keys.spec
+ delete mode 100644 SPECS-EXTENDED/dleyna-connector-dbus/dleyna-connector-dbus.signatures.json
+ delete mode 100644 SPECS-EXTENDED/dleyna-connector-dbus/dleyna-connector-dbus.spec
+ create mode 100755 SPECS-EXTENDED/dleyna/dleyna.spec
+ mode change 100644 => 100755 SPECS-EXTENDED/dmraid/avoid_register.patch
+ mode change 100644 => 100755 SPECS-EXTENDED/dmraid/bz626417_19-enabling_registration_degraded_volume.patch
+ mode change 100644 => 100755 SPECS-EXTENDED/dmraid/bz626417_20-cleanup_some_compilation_warning.patch
+ mode change 100644 => 100755 SPECS-EXTENDED/dmraid/bz626417_21-add_option_that_postpones_any_metadata_updates.patch
+ mode change 100644 => 100755 SPECS-EXTENDED/dmraid/bz635995-data_corruption_during_activation_volume_marked_for_rebuild.patch
+ mode change 100644 => 100755 SPECS-EXTENDED/dmraid/ddf1_lsi_persistent_name.patch
+ delete mode 100644 SPECS-EXTENDED/dmraid/dmraid-1.0.0.rc16-test_devices.patch
+ mode change 100644 => 100755 SPECS-EXTENDED/dmraid/dmraid-activation.service
+ create mode 100755 SPECS-EXTENDED/dmraid/dmraid-c99.patch
+ mode change 100644 => 100755 SPECS-EXTENDED/dmraid/dmraid-fix-build-to-honour-cflags-var.patch
+ mode change 100644 => 100755 SPECS-EXTENDED/dmraid/dmraid-fix-destdir.patch
+ mode change 100644 => 100755 SPECS-EXTENDED/dmraid/dmraid-fix-errors-and-warnings-triggered-by-CFLAGS.patch
+ mode change 100644 => 100755 SPECS-EXTENDED/dmraid/dmraid-fix-missing-destdir.patch
+ mode change 100644 => 100755 SPECS-EXTENDED/dmraid/dmraid-fix-so-flags.patch
+ create mode 100755 SPECS-EXTENDED/dmraid/dmraid-use-modern-run-lock-dir.patch
+ delete mode 100644 SPECS-EXTENDED/dmraid/dmraid.signatures.json
+ mode change 100644 => 100755 SPECS-EXTENDED/dmraid/dmraid.spec
+ mode change 100644 => 100755 SPECS-EXTENDED/dmraid/fedora-dmraid-activation
+ mode change 100644 => 100755 SPECS-EXTENDED/dmraid/fix_sil_jbod.patch
+ mode change 100644 => 100755 SPECS-EXTENDED/dmraid/libversion-display.patch
+ mode change 100644 => 100755 SPECS-EXTENDED/dmraid/libversion.patch
+ mode change 100644 => 100755 SPECS-EXTENDED/dmraid/move_pattern_file_to_var.patch
+ mode change 100644 => 100755 SPECS-EXTENDED/dmraid/pdc_raid10_failure.patch
+ mode change 100644 => 100755 SPECS-EXTENDED/dmraid/return_error_wo_disks.patch
+ create mode 100755 SPECS-EXTENDED/dyninst/dwarf-error.patch
+ delete mode 100644 SPECS-EXTENDED/dyninst/dyninst-10.1.0-aarch-regs.patch
+ delete mode 100644 SPECS-EXTENDED/dyninst/dyninst-10.1.0-result.patch
+ create mode 100755 SPECS-EXTENDED/dyninst/dyninst-cmake3.27.patch
+ delete mode 100644 SPECS-EXTENDED/dyninst/dyninst.signatures.json
+ mode change 100644 => 100755 SPECS-EXTENDED/dyninst/dyninst.spec
+ delete mode 100644 SPECS-EXTENDED/dyninst/gcc-11-fix.patch
+ create mode 100755 SPECS-EXTENDED/dyninst/onetbb.patch
+ delete mode 100644 SPECS-EXTENDED/dyninst/testsuite-10.1.0-386.patch
+ delete mode 100644 SPECS-EXTENDED/dyninst/testsuite-10.1.0-gettid.patch
+ rename SPECS-EXTENDED/ecj/{ecj-rpmdebuginfo.patch => 0001-Always-generate-bytecode-debuginfo.patch} (61%)
+ mode change 100644 => 100755
+ mode change 100644 => 100755 SPECS-EXTENDED/ecj/MANIFEST.MF
+ rename SPECS-EXTENDED/ecj/{ecj-3.18.0.pom => ecj-3.29.0.pom} (92%)
+ mode change 100644 => 100755
+ delete mode 100644 SPECS-EXTENDED/ecj/ecj-encoding.patch
+ delete mode 100644 SPECS-EXTENDED/ecj/ecj.signatures.json
+ mode change 100644 => 100755 SPECS-EXTENDED/ecj/ecj.spec
+ delete mode 100644 SPECS-EXTENDED/ecj/java10api.pom
+ delete mode 100644 SPECS-EXTENDED/ecj/jdk10u-jdk8compat.patch
+ mode change 100644 => 100755 SPECS-EXTENDED/efax/efax-0.9-config.patch
+ mode change 100644 => 100755 SPECS-EXTENDED/efax/efax-0.9-manpage.patch
+ mode change 100644 => 100755 SPECS-EXTENDED/efax/efax-0.9-misc.patch
+ mode change 100644 => 100755 SPECS-EXTENDED/efax/efax-0.9-msg-va_list.patch
+ mode change 100644 => 100755 SPECS-EXTENDED/efax/efax-0.9-nullptr.patch
+ mode change 100644 => 100755 SPECS-EXTENDED/efax/efax-0.9-numlines.patch
+ mode change 100644 => 100755 SPECS-EXTENDED/efax/efax-0.9-pdf.patch
+ mode change 100644 => 100755 SPECS-EXTENDED/efax/efax-0.9-quote.patch
+ mode change 100644 => 100755 SPECS-EXTENDED/efax/efax-0.9-viewcmd.patch
+ mode change 100644 => 100755 SPECS-EXTENDED/efax/efax-0.9a-001114-crash.patch
+ mode change 100644 => 100755 SPECS-EXTENDED/efax/efax-0.9a-001114-format-security.patch
+ mode change 100644 => 100755 SPECS-EXTENDED/efax/efax-0.9a-001114-multiple-definition.patch
+ delete mode 100644 SPECS-EXTENDED/efax/efax.signatures.json
+ mode change 100644 => 100755 SPECS-EXTENDED/efax/efax.spec
+ mode change 100644 => 100755 SPECS-EXTENDED/efax/efax08a-time.patch
+ mode change 100644 => 100755 SPECS-EXTENDED/efax/logrotate-efax
+ mode change 100644 => 100755 SPECS-EXTENDED/elinks/0000-elinks-0.15.0-ssl-noegd.patch
+ mode change 100644 => 100755 SPECS-EXTENDED/elinks/0001-elinks-0.15.1-utf_8_io-default.patch
+ mode change 100644 => 100755 SPECS-EXTENDED/elinks/0004-elinks-0.15.0-sysname.patch
+ mode change 100644 => 100755 SPECS-EXTENDED/elinks/0005-elinks-0.15.0-xterm.patch
+ delete mode 100644 SPECS-EXTENDED/elinks/0006-elinks-0.16.0-libidn2.patch
+ mode change 100644 => 100755 SPECS-EXTENDED/elinks/elinks-0.11.0-getaddrinfo.patch
+ mode change 100644 => 100755 SPECS-EXTENDED/elinks/elinks-0.12pre6-list_is_singleton.patch
+ mode change 100644 => 100755 SPECS-EXTENDED/elinks/elinks.conf
+ delete mode 100644 SPECS-EXTENDED/elinks/elinks.signatures.json
+ mode change 100644 => 100755 SPECS-EXTENDED/elinks/elinks.spec
+ create mode 100755 SPECS-EXTENDED/fence-agents/fence-agents.spec
+ delete mode 100644 SPECS-EXTENDED/fence-virt/fence-virt.signatures.json
+ delete mode 100644 SPECS-EXTENDED/fence-virt/fence-virt.spec
+ delete mode 100644 SPECS-EXTENDED/gcr/gcr.signatures.json
+ mode change 100644 => 100755 SPECS-EXTENDED/gcr/gcr.spec
+ create mode 100755 SPECS-EXTENDED/gdal/PROVENANCE.TXT-fedora
+ mode change 100644 => 100755 SPECS-EXTENDED/gdal/cpl-config.h
+ create mode 100755 SPECS-EXTENDED/gdal/gdal-cleaner.sh
+ delete mode 100644 SPECS-EXTENDED/gdal/gdal.signatures.json
+ mode change 100644 => 100755 SPECS-EXTENDED/gdal/gdal.spec
+ create mode 100755 SPECS-EXTENDED/gdal/gdal_incompatible-pointer-types.patch
+ mode change 100644 => 100755 SPECS-EXTENDED/gdal/gdal_utils.patch
+ delete mode 100644 SPECS-EXTENDED/gnome-keyring/gnome-keyring.signatures.json
+ mode change 100644 => 100755 SPECS-EXTENDED/gnome-keyring/gnome-keyring.spec
+ delete mode 100644 SPECS-EXTENDED/google-noto-cjk-fonts/genfontconf.sh
+ delete mode 100644 SPECS-EXTENDED/google-noto-cjk-fonts/google-noto-cjk-fonts.signatures.json
+ delete mode 100644 SPECS-EXTENDED/google-noto-cjk-fonts/google-noto-cjk-fonts.spec
+ delete mode 100644 SPECS-EXTENDED/google-noto-emoji-fonts/google-noto-emoji-color.metainfo.xml
+ delete mode 100644 SPECS-EXTENDED/google-noto-emoji-fonts/google-noto-emoji-fonts.signatures.json
+ mode change 100644 => 100755 SPECS-EXTENDED/google-noto-emoji-fonts/google-noto-emoji-fonts.spec
+ delete mode 100644 SPECS-EXTENDED/google-noto-emoji-fonts/google-noto-emoji.metainfo.xml
+ mode change 100644 => 100755 SPECS-EXTENDED/google-noto-emoji-fonts/noto-emoji-build-all-flags.patch
+ delete mode 100644 SPECS-EXTENDED/google-noto-emoji-fonts/noto-emoji-check-sequence.patch
+ mode change 100644 => 100755 SPECS-EXTENDED/google-noto-emoji-fonts/noto-emoji-use-gm.patch
+ mode change 100644 => 100755 SPECS-EXTENDED/google-noto-emoji-fonts/noto-emoji-use-system-pngquant.patch
+ rename SPECS-EXTENDED/{google-noto-cjk-fonts/65-google-noto-cjk-fonts.conf => google-noto-sans-cjk-vf-fonts/65-google-noto-sans-cjk-vf-fonts.conf} (76%)
+ mode change 100644 => 100755
+ create mode 100755 SPECS-EXTENDED/google-noto-sans-cjk-vf-fonts/65-google-noto-sans-mono-cjk-vf-fonts.conf
+ rename SPECS-EXTENDED/{google-noto-cjk-fonts => google-noto-sans-cjk-vf-fonts}/genfontconf.py (98%)
+ mode change 100644 => 100755
+ create mode 100755 SPECS-EXTENDED/google-noto-sans-cjk-vf-fonts/google-noto-sans-cjk-vf-fonts.spec
+ mode change 100644 => 100755 SPECS-EXTENDED/gpsbabel/0002-No-solicitation.patch
+ mode change 100644 => 100755 SPECS-EXTENDED/gpsbabel/gpsbabel.png
+ delete mode 100644 SPECS-EXTENDED/gpsbabel/gpsbabel.signatures.json
+ mode change 100644 => 100755 SPECS-EXTENDED/gpsbabel/gpsbabel.spec
+ delete mode 100644 SPECS-EXTENDED/hawtjni-runtime/hawtjni-runtime.signatures.json
+ delete mode 100644 SPECS-EXTENDED/hawtjni-runtime/hawtjni-runtime.spec
+ create mode 100755 SPECS-EXTENDED/hawtjni/00-hawtjni-port-to-commons-lang3.patch
+ create mode 100755 SPECS-EXTENDED/hawtjni/hawtjni.spec
+ create mode 100755 SPECS-EXTENDED/httpcomponents-core/0001-Port-to-mockito-2.patch
+ create mode 100755 SPECS-EXTENDED/httpcomponents-core/0002-Port-to-Mockito-5.patch
+ delete mode 100644 SPECS-EXTENDED/httpcomponents-core/httpcomponents-core-java8compat.patch
+ delete mode 100644 SPECS-EXTENDED/httpcomponents-core/httpcomponents-core.signatures.json
+ mode change 100644 => 100755 SPECS-EXTENDED/httpcomponents-core/httpcomponents-core.spec
+ delete mode 100644 SPECS-EXTENDED/hunspell-ca/hunspell-ca.signatures.json
+ mode change 100644 => 100755 SPECS-EXTENDED/hunspell-ca/hunspell-ca.spec
+ delete mode 100644 SPECS-EXTENDED/hunspell-de/hunspell-de.signatures.json
+ mode change 100644 => 100755 SPECS-EXTENDED/hunspell-de/hunspell-de.spec
+ create mode 100755 SPECS-EXTENDED/hunspell-es/es_AR.oxt
+ create mode 100755 SPECS-EXTENDED/hunspell-es/es_BO.oxt
+ create mode 100755 SPECS-EXTENDED/hunspell-es/es_CL.oxt
+ create mode 100755 SPECS-EXTENDED/hunspell-es/es_CO.oxt
+ create mode 100755 SPECS-EXTENDED/hunspell-es/es_CR.oxt
+ create mode 100755 SPECS-EXTENDED/hunspell-es/es_CU.oxt
+ create mode 100755 SPECS-EXTENDED/hunspell-es/es_DO.oxt
+ create mode 100755 SPECS-EXTENDED/hunspell-es/es_EC.oxt
+ create mode 100755 SPECS-EXTENDED/hunspell-es/es_ES.oxt
+ create mode 100755 SPECS-EXTENDED/hunspell-es/es_GQ.oxt
+ create mode 100755 SPECS-EXTENDED/hunspell-es/es_GT.oxt
+ create mode 100755 SPECS-EXTENDED/hunspell-es/es_HN.oxt
+ create mode 100755 SPECS-EXTENDED/hunspell-es/es_MX.oxt
+ create mode 100755 SPECS-EXTENDED/hunspell-es/es_NI.oxt
+ create mode 100755 SPECS-EXTENDED/hunspell-es/es_PA.oxt
+ create mode 100755 SPECS-EXTENDED/hunspell-es/es_PE.oxt
+ create mode 100755 SPECS-EXTENDED/hunspell-es/es_PR.oxt
+ create mode 100755 SPECS-EXTENDED/hunspell-es/es_PY.oxt
+ create mode 100755 SPECS-EXTENDED/hunspell-es/es_SV.oxt
+ create mode 100755 SPECS-EXTENDED/hunspell-es/es_US.oxt
+ create mode 100755 SPECS-EXTENDED/hunspell-es/es_UY.oxt
+ create mode 100755 SPECS-EXTENDED/hunspell-es/es_VE.oxt
+ delete mode 100644 SPECS-EXTENDED/hunspell-es/hunspell-es.signatures.json
+ mode change 100644 => 100755 SPECS-EXTENDED/hunspell-es/hunspell-es.spec
+ delete mode 100644 SPECS-EXTENDED/hunspell-ru/hunspell-ru.signatures.json
+ mode change 100644 => 100755 SPECS-EXTENDED/hunspell-ru/hunspell-ru.spec
+ delete mode 100644 SPECS-EXTENDED/ibus-chewing/ibus-chewing-1799517-no-gob2.patch
+ create mode 100755 SPECS-EXTENDED/ibus-chewing/ibus-chewing-2.1.2-Source.tar.xz.minisig
+ delete mode 100644 SPECS-EXTENDED/ibus-chewing/ibus-chewing.signatures.json
+ mode change 100644 => 100755 SPECS-EXTENDED/ibus-chewing/ibus-chewing.spec
+ mode change 100644 => 100755 SPECS-EXTENDED/ibus-hangul/ibus-hangul-setup-abspath.patch
+ delete mode 100644 SPECS-EXTENDED/ibus-hangul/ibus-hangul.signatures.json
+ mode change 100644 => 100755 SPECS-EXTENDED/ibus-hangul/ibus-hangul.spec
+ delete mode 100644 SPECS-EXTENDED/ibus-libzhuyin/ibus-libzhuyin.signatures.json
+ mode change 100644 => 100755 SPECS-EXTENDED/ibus-libzhuyin/ibus-libzhuyin.spec
+ delete mode 100644 SPECS-EXTENDED/ibus-m17n/ibus-m17n.signatures.json
+ mode change 100644 => 100755 SPECS-EXTENDED/ibus-m17n/ibus-m17n.spec
+ delete mode 100644 SPECS-EXTENDED/ibus-table-chinese/ibus-table-chinese.signatures.json
+ mode change 100644 => 100755 SPECS-EXTENDED/ibus-table-chinese/ibus-table-chinese.spec
+ delete mode 100644 SPECS-EXTENDED/ibus-table/ibus-table.signatures.json
+ mode change 100644 => 100755 SPECS-EXTENDED/ibus-table/ibus-table.spec
+ delete mode 100644 SPECS-EXTENDED/iio-sensor-proxy/iio-sensor-proxy.signatures.json
+ mode change 100644 => 100755 SPECS-EXTENDED/iio-sensor-proxy/iio-sensor-proxy.spec
+ delete mode 100644 SPECS-EXTENDED/imaptest/imaptest.signatures.json
+ mode change 100644 => 100755 SPECS-EXTENDED/imaptest/imaptest.spec
+ create mode 100755 SPECS-EXTENDED/jansi/generate-tarball.sh
+ delete mode 100644 SPECS-EXTENDED/jansi/jansi-build.xml
+ mode change 100644 => 100755 SPECS-EXTENDED/jansi/jansi-jni.patch
+ delete mode 100644 SPECS-EXTENDED/jansi/jansi.signatures.json
+ mode change 100644 => 100755 SPECS-EXTENDED/jansi/jansi.spec
+ create mode 100755 SPECS-EXTENDED/javacc/0001-Fix-javadoc-errors-in-JavaCharStream.template.patch
+ delete mode 100644 SPECS-EXTENDED/javacc/javacc-bootstrap.signatures.json
+ delete mode 100644 SPECS-EXTENDED/javacc/javacc-bootstrap.spec
+ delete mode 100644 SPECS-EXTENDED/javacc/javacc.signatures.json
+ mode change 100644 => 100755 SPECS-EXTENDED/javacc/javacc.spec
+ delete mode 100644 SPECS-EXTENDED/jdepend/jdepend-2.9.1.pom
+ delete mode 100644 SPECS-EXTENDED/jdepend/jdepend-target16.patch
+ delete mode 100644 SPECS-EXTENDED/jdepend/jdepend.signatures.json
+ mode change 100644 => 100755 SPECS-EXTENDED/jdepend/jdepend.spec
+ delete mode 100644 SPECS-EXTENDED/jimtcl/jimtcl-fix_doc_paths.patch
+ delete mode 100644 SPECS-EXTENDED/jimtcl/jimtcl.signatures.json
+ mode change 100644 => 100755 SPECS-EXTENDED/jimtcl/jimtcl.spec
+ delete mode 100644 SPECS-EXTENDED/jline/jline-build.xml
+ delete mode 100644 SPECS-EXTENDED/jline/jline-jansi2.patch
+ delete mode 100644 SPECS-EXTENDED/jline/jline-java8compat.patch
+ create mode 100755 SPECS-EXTENDED/jline/jline-native-arches.patch
+ delete mode 100644 SPECS-EXTENDED/jline/jline.signatures.json
+ mode change 100644 => 100755 SPECS-EXTENDED/jline/jline.spec
+ delete mode 100644 SPECS-EXTENDED/jose/jose.signatures.json
+ mode change 100644 => 100755 SPECS-EXTENDED/jose/jose.spec
+ mode change 100644 => 100755 SPECS-EXTENDED/jsoup/generate-tarball.sh
+ delete mode 100644 SPECS-EXTENDED/jsoup/jsoup-build.xml
+ delete mode 100644 SPECS-EXTENDED/jsoup/jsoup.signatures.json
+ mode change 100644 => 100755 SPECS-EXTENDED/jsoup/jsoup.spec
+ delete mode 100644 SPECS-EXTENDED/libappstream-glib/libappstream-glib.signatures.json
+ mode change 100644 => 100755 SPECS-EXTENDED/libappstream-glib/libappstream-glib.spec
+ create mode 100755 SPECS-EXTENDED/libchewing/0001-Delete-unused-optional-dependencies.patch
+ delete mode 100644 SPECS-EXTENDED/libchewing/0001-chewing.py-supports-platforms-with-64bit-pointer.patch
+ create mode 100755 SPECS-EXTENDED/libchewing/libchewing-0.9.1.tar.zst
+ create mode 100755 SPECS-EXTENDED/libchewing/libchewing-0.9.1.tar.zst.asc
+ create mode 100755 SPECS-EXTENDED/libchewing/libchewing.pgp
+ delete mode 100644 SPECS-EXTENDED/libchewing/libchewing.signatures.json
+ mode change 100644 => 100755 SPECS-EXTENDED/libchewing/libchewing.spec
+ delete mode 100644 SPECS-EXTENDED/libetonyek/0001-glm-force-dmat3-initialization-needed-from-v0.9.9.0.patch
+ delete mode 100644 SPECS-EXTENDED/libetonyek/libetonyek.signatures.json
+ mode change 100644 => 100755 SPECS-EXTENDED/libetonyek/libetonyek.spec
+ delete mode 100644 SPECS-EXTENDED/libgeotiff/libgeotiff.signatures.json
+ mode change 100644 => 100755 SPECS-EXTENDED/libgeotiff/libgeotiff.spec
+ mode change 100644 => 100755 SPECS-EXTENDED/libgeotiff/libgeotiff_cmake.patch
+ delete mode 100644 SPECS-EXTENDED/libgit2-glib/20.patch
+ delete mode 100644 SPECS-EXTENDED/libgit2-glib/22.patch
+ create mode 100755 SPECS-EXTENDED/libgit2-glib/libgit2-1.8.x.patch
+ delete mode 100644 SPECS-EXTENDED/libgit2-glib/libgit2-glib.signatures.json
+ mode change 100644 => 100755 SPECS-EXTENDED/libgit2-glib/libgit2-glib.spec
+ delete mode 100644 SPECS-EXTENDED/libimobiledevice/a7568f456d10f1aff61534e3216201a857865247...9b857fc42cdc4921e1e3f190c5ea907774e04758.patch
+ delete mode 100644 SPECS-EXTENDED/libimobiledevice/libimobiledevice.signatures.json
+ mode change 100644 => 100755 SPECS-EXTENDED/libimobiledevice/libimobiledevice.spec
+ delete mode 100644 SPECS-EXTENDED/libldb/0001-PATCH-wafsamba-Fix-few-SyntaxWarnings-caused-by-regu.patch
+ delete mode 100644 SPECS-EXTENDED/libldb/ldb-2.1.4.tar.asc
+ create mode 100755 SPECS-EXTENDED/libldb/ldb-2.9.1.tar.asc
+ create mode 100755 SPECS-EXTENDED/libldb/ldb.keyring
+ delete mode 100644 SPECS-EXTENDED/libldb/libldb-LICENSE.txt
+ create mode 100755 SPECS-EXTENDED/libldb/libldb-fix-indexes-performance.patch
+ delete mode 100644 SPECS-EXTENDED/libldb/libldb.signatures.json
+ mode change 100644 => 100755 SPECS-EXTENDED/libldb/libldb.spec
+ create mode 100755 SPECS-EXTENDED/libmpcdec/0001-changes-a-seeking-behavior-that-confused-some-people.patch
+ create mode 100755 SPECS-EXTENDED/libmpcdec/0002-removed-some-gcc-warnings-and-compilation-issues.patch
+ create mode 100755 SPECS-EXTENDED/libmpcdec/0003-prevent-endless-loops.patch
+ create mode 100755 SPECS-EXTENDED/libmpcdec/0004-add-extern-keyword-to-global-variable-declaration-do.patch
+ create mode 100755 SPECS-EXTENDED/libmpcdec/0005-add-raw-output-to-mpcdec-not-really-tested.patch
+ create mode 100755 SPECS-EXTENDED/libmpcdec/0008-FSF-address-change.patch
+ create mode 100755 SPECS-EXTENDED/libmpcdec/0011-removed-some-new-gcc-warnings.patch
+ create mode 100755 SPECS-EXTENDED/libmpcdec/0012-mpcenc-remove-compilation-error-and-a-warning.patch
+ create mode 100755 SPECS-EXTENDED/libmpcdec/0013-mpc2sv8-fix-a-segfault-caused-by-commit-r476.patch
+ delete mode 100644 SPECS-EXTENDED/libmpcdec/libmpcdec.signatures.json
+ mode change 100644 => 100755 SPECS-EXTENDED/libmpcdec/libmpcdec.spec
+ create mode 100755 SPECS-EXTENDED/libmpcdec/r475-cmake.patch
+ delete mode 100644 SPECS-EXTENDED/libpaper/libpaper-file-leak.patch
+ delete mode 100644 SPECS-EXTENDED/libpaper/libpaper-useglibcfallback.patch
+ delete mode 100644 SPECS-EXTENDED/libpaper/libpaper.signatures.json
+ mode change 100644 => 100755 SPECS-EXTENDED/libpaper/libpaper.spec
+ create mode 100755 SPECS-EXTENDED/libpaper/localepaper.c
+ create mode 100755 SPECS-EXTENDED/libpaper/paperconf.1
+ delete mode 100644 SPECS-EXTENDED/libpeas/libpeas.signatures.json
+ mode change 100644 => 100755 SPECS-EXTENDED/libpeas/libpeas.spec
+ create mode 100755 SPECS-EXTENDED/libpsl/libpsl.spec
+ delete mode 100644 SPECS-EXTENDED/libstemmer/BSD.txt
+ delete mode 100644 SPECS-EXTENDED/libstemmer/Notice.txt
+ delete mode 100644 SPECS-EXTENDED/libstemmer/libstemmer.signatures.json
+ delete mode 100644 SPECS-EXTENDED/libstemmer/libstemmer.spec
+ create mode 100755 SPECS-EXTENDED/libuser/0001-tests-use-crypt_r-with-Python-3.13.patch
+ create mode 100755 SPECS-EXTENDED/libuser/libuser.spec
+ mode change 100644 => 100755 SPECS-EXTENDED/libvisual/libvisual-0.4.0-better-altivec-detection.patch
+ delete mode 100644 SPECS-EXTENDED/libvisual/libvisual-0.4.0-format-security.patch
+ delete mode 100644 SPECS-EXTENDED/libvisual/libvisual-0.4.0-inlinedefineconflict.patch
+ create mode 100755 SPECS-EXTENDED/libvisual/libvisual-0.4.0-respect-environment-ldflags.patch
+ create mode 100755 SPECS-EXTENDED/libvisual/libvisual-c99.patch
+ delete mode 100644 SPECS-EXTENDED/libvisual/libvisual.signatures.json
+ mode change 100644 => 100755 SPECS-EXTENDED/libvisual/libvisual.spec
+ create mode 100755 SPECS-EXTENDED/llvm/0001-18-Always-build-shared-libs-for-LLD.patch
+ create mode 100755 SPECS-EXTENDED/llvm/0001-19-Always-build-shared-libs-for-LLD.patch
+ create mode 100755 SPECS-EXTENDED/llvm/0001-Driver-Give-devtoolset-path-precedence-over-Installe.patch
+ create mode 100755 SPECS-EXTENDED/llvm/0001-Fix-page-size-constant-on-aarch64-and-ppc64le.patch
+ create mode 100755 SPECS-EXTENDED/llvm/0001-PATCH-clang-Make-funwind-tables-the-default-on-all-a.patch
+ create mode 100755 SPECS-EXTENDED/llvm/0001-Workaround-a-bug-in-ORC-on-ppc64le.patch
+ create mode 100755 SPECS-EXTENDED/llvm/0001-openmp-Add-option-to-disable-tsan-tests-111548.patch
+ create mode 100755 SPECS-EXTENDED/llvm/0001-openmp-Use-core_siblings_list-if-physical_package_id.patch
+ create mode 100755 SPECS-EXTENDED/llvm/0001-profile-Use-base-vaddr-for-__llvm_write_binary_ids-n.patch
+ create mode 100755 SPECS-EXTENDED/llvm/0003-PATCH-clang-Don-t-install-static-libraries.patch
+ create mode 100755 SPECS-EXTENDED/llvm/18-99273.patch
+ create mode 100755 SPECS-EXTENDED/llvm/llvm-project-19.1.5.src.tar.xz.sig
+ create mode 100755 SPECS-EXTENDED/llvm/llvm.spec
+ create mode 100755 SPECS-EXTENDED/llvm/macros.clang
+ create mode 100755 SPECS-EXTENDED/llvm/release-keys.asc
+ create mode 100755 SPECS-EXTENDED/lpsolve/lp_solve-5.5.2.11-Link-a-tool-to-a-shared-library.patch
+ create mode 100755 SPECS-EXTENDED/lpsolve/lp_solve-5.5.2.11-Port-lp_MDO-to-colamd-3.0.4.patch
+ create mode 100755 SPECS-EXTENDED/lpsolve/lp_solve-5.5.2.11-Port-to-C99.patch
+ create mode 100755 SPECS-EXTENDED/lpsolve/lp_solve-5.5.2.11-Rebase-COLAMD-to-3.0.4.patch
+ create mode 100755 SPECS-EXTENDED/lpsolve/lp_solve-5.5.2.11-Respect-CC-CFLAGS-and-LDFLAGS.patch
+ delete mode 100644 SPECS-EXTENDED/lpsolve/lpsolve-5.5.0.11.cflags.patch
+ delete mode 100644 SPECS-EXTENDED/lpsolve/lpsolve-5.5.2.0.defines.patch
+ delete mode 100644 SPECS-EXTENDED/lpsolve/lpsolve.signatures.json
+ mode change 100644 => 100755 SPECS-EXTENDED/lpsolve/lpsolve.spec
+ delete mode 100644 SPECS-EXTENDED/lua-lunit/lua-lunit.signatures.json
+ delete mode 100644 SPECS-EXTENDED/lua-lunit/lua-lunit.spec
+ create mode 100755 SPECS-EXTENDED/lua-lunitx/lua-lunitx.spec
+ delete mode 100755 SPECS-EXTENDED/mailx/get-upstream-tarball.sh
+ delete mode 100644 SPECS-EXTENDED/mailx/mailx-12.3-pager.patch
+ delete mode 100644 SPECS-EXTENDED/mailx/mailx-12.5-collect.patch
+ delete mode 100644 SPECS-EXTENDED/mailx/mailx-12.5-empty-from.patch
+ delete mode 100644 SPECS-EXTENDED/mailx/mailx-12.5-encsplit.patch
+ delete mode 100644 SPECS-EXTENDED/mailx/mailx-12.5-fio.c-Unconditionally-require-wordexp-support.patch
+ delete mode 100644 SPECS-EXTENDED/mailx/mailx-12.5-fname-null.patch
+ delete mode 100644 SPECS-EXTENDED/mailx/mailx-12.5-globname-Invoke-wordexp-with-WRDE_NOCMD-CVE-2004-277.patch
+ delete mode 100644 SPECS-EXTENDED/mailx/mailx-12.5-lzw.patch
+ delete mode 100644 SPECS-EXTENDED/mailx/mailx-12.5-man-page-fixes.patch
+ delete mode 100644 SPECS-EXTENDED/mailx/mailx-12.5-nss-hostname-matching.patch
+ delete mode 100644 SPECS-EXTENDED/mailx/mailx-12.5-openssl.patch
+ delete mode 100644 SPECS-EXTENDED/mailx/mailx-12.5-outof-Introduce-expandaddr-flag.patch
+ delete mode 100644 SPECS-EXTENDED/mailx/mailx-12.5-unpack-Disable-option-processing-for-email-addresses.patch
+ delete mode 100644 SPECS-EXTENDED/mailx/mailx-12.5-usage.patch
+ delete mode 100644 SPECS-EXTENDED/mailx/mailx.signatures.json
+ delete mode 100644 SPECS-EXTENDED/mailx/mailx.spec
+ delete mode 100644 SPECS-EXTENDED/mailx/nail-11.25-config.patch
+ delete mode 100644 SPECS-EXTENDED/man-pages-cs/man-pages-cs-0.18.20090209-socket.patch
+ delete mode 100644 SPECS-EXTENDED/man-pages-cs/man-pages-cs-0.18.20090209-test.patch
+ delete mode 100644 SPECS-EXTENDED/man-pages-cs/man-pages-cs-01.patch
+ delete mode 100644 SPECS-EXTENDED/man-pages-cs/man-pages-cs-02.patch
+ delete mode 100644 SPECS-EXTENDED/man-pages-cs/man-pages-cs-03.patch
+ delete mode 100644 SPECS-EXTENDED/man-pages-cs/man-pages-cs-04.patch
+ delete mode 100644 SPECS-EXTENDED/man-pages-cs/man-pages-cs-05.patch
+ delete mode 100644 SPECS-EXTENDED/man-pages-cs/man-pages-cs-06.patch
+ delete mode 100644 SPECS-EXTENDED/man-pages-cs/man-pages-cs-07.patch
+ delete mode 100644 SPECS-EXTENDED/man-pages-cs/man-pages-cs-08.patch
+ delete mode 100644 SPECS-EXTENDED/man-pages-cs/man-pages-cs-09.patch
+ delete mode 100644 SPECS-EXTENDED/man-pages-cs/man-pages-cs-10.patch
+ delete mode 100644 SPECS-EXTENDED/man-pages-cs/man-pages-cs-11.patch
+ delete mode 100644 SPECS-EXTENDED/man-pages-cs/man-pages-cs.signatures.json
+ delete mode 100644 SPECS-EXTENDED/man-pages-cs/man-pages-cs.spec
+ delete mode 100644 SPECS-EXTENDED/man-pages-es/man-pages-es.signatures.json
+ delete mode 100644 SPECS-EXTENDED/man-pages-es/man-pages-es.spec
+ delete mode 100644 SPECS-EXTENDED/man-pages-it/man-pages-it.signatures.json
+ delete mode 100644 SPECS-EXTENDED/man-pages-it/man-pages-it.spec
+ delete mode 100644 SPECS-EXTENDED/man-pages-ko/Man_Page_Copyright
+ delete mode 100644 SPECS-EXTENDED/man-pages-ko/man-pages-ko-20050219.patch
+ delete mode 100644 SPECS-EXTENDED/man-pages-ko/man-pages-ko.signatures.json
+ delete mode 100644 SPECS-EXTENDED/man-pages-ko/man-pages-ko.spec
+ create mode 100755 SPECS-EXTENDED/man-pages-l10n/man-pages-l10n.spec
+ delete mode 100644 SPECS-EXTENDED/man-pages-pl/man-pages-pl.signatures.json
+ delete mode 100644 SPECS-EXTENDED/man-pages-pl/man-pages-pl.spec
+ delete mode 100644 SPECS-EXTENDED/man-pages-zh-CN/man-pages-zh-CN.signatures.json
+ mode change 100644 => 100755 SPECS-EXTENDED/man-pages-zh-CN/man-pages-zh-CN.spec
+ delete mode 100644 SPECS-EXTENDED/marisa/marisa.signatures.json
+ mode change 100644 => 100755 SPECS-EXTENDED/marisa/marisa.spec
+ delete mode 100644 SPECS-EXTENDED/microdnf/microdnf.signatures.json
+ mode change 100644 => 100755 SPECS-EXTENDED/microdnf/microdnf.spec
+ mode change 100644 => 100755 SPECS-EXTENDED/mksh/dot-mkshrc
+ delete mode 100644 SPECS-EXTENDED/mksh/mksh.signatures.json
+ mode change 100644 => 100755 SPECS-EXTENDED/mksh/mksh.spec
+ mode change 100644 => 100755 SPECS-EXTENDED/mksh/rtchecks.expected
+ create mode 100755 SPECS-EXTENDED/mock-core-configs/mock-core-configs.spec
+ create mode 100755 SPECS-EXTENDED/mock/mock.spec
+ delete mode 100644 SPECS-EXTENDED/mod_auth_gssapi/Fix-integer-sizes-used-with-ap_set_flag_slot.patch
+ delete mode 100644 SPECS-EXTENDED/mod_auth_gssapi/Fix-tests-to-work-with-python3.patch
+ delete mode 100644 SPECS-EXTENDED/mod_auth_gssapi/In-tests-show-the-exception-on-failure.patch
+ delete mode 100644 SPECS-EXTENDED/mod_auth_gssapi/mod_auth_gssapi.signatures.json
+ mode change 100644 => 100755 SPECS-EXTENDED/mod_auth_gssapi/mod_auth_gssapi.spec
+ delete mode 100644 SPECS-EXTENDED/mod_auth_gssapi/tests-Test-suite-fixes-for-virtualenv-and-clang.patch
+ create mode 100755 SPECS-EXTENDED/mod_auth_mellon/0000-configure.patch
+ mode change 100644 => 100755 SPECS-EXTENDED/mod_auth_mellon/10-auth_mellon.conf
+ delete mode 100644 SPECS-EXTENDED/mod_auth_mellon/CVE-2021-3639.patch
+ mode change 100644 => 100755 SPECS-EXTENDED/mod_auth_mellon/README.redhat.rst
+ mode change 100644 => 100755 SPECS-EXTENDED/mod_auth_mellon/auth_mellon.conf
+ mode change 100644 => 100755 SPECS-EXTENDED/mod_auth_mellon/mellon_create_metadata.sh
+ mode change 100644 => 100755 SPECS-EXTENDED/mod_auth_mellon/mod_auth_mellon.conf
+ delete mode 100644 SPECS-EXTENDED/mod_auth_mellon/mod_auth_mellon.signatures.json
+ mode change 100644 => 100755 SPECS-EXTENDED/mod_auth_mellon/mod_auth_mellon.spec
+ mode change 100644 => 100755 SPECS-EXTENDED/mod_wsgi/mod_wsgi-4.5.20-exports.patch
+ delete mode 100644 SPECS-EXTENDED/mod_wsgi/mod_wsgi.signatures.json
+ mode change 100644 => 100755 SPECS-EXTENDED/mod_wsgi/mod_wsgi.spec
+ mode change 100644 => 100755 SPECS-EXTENDED/mod_wsgi/wsgi-python3.conf
+ mode change 100644 => 100755 SPECS-EXTENDED/mod_wsgi/wsgi.conf
+ mode change 100644 => 100755 SPECS-EXTENDED/mrtg/mrtg-2.15.0-lib64.patch
+ create mode 100755 SPECS-EXTENDED/mrtg/mrtg-2.17.10.tar.gz.md5
+ mode change 100644 => 100755 SPECS-EXTENDED/mrtg/mrtg-2.17.2-socket6-fix.patch
+ mode change 100644 => 100755 SPECS-EXTENDED/mrtg/mrtg-2.17.4-cfgmaker-ifhighspeed.patch
+ delete mode 100644 SPECS-EXTENDED/mrtg/mrtg-2.17.7-traffic-sum-man-option.patch
+ delete mode 100644 SPECS-EXTENDED/mrtg/mrtg-2.17.7.tar.gz.md5
+ create mode 100755 SPECS-EXTENDED/mrtg/mrtg-configure-c99.patch
+ mode change 100644 => 100755 SPECS-EXTENDED/mrtg/mrtg-httpd.conf
+ mode change 100644 => 100755 SPECS-EXTENDED/mrtg/mrtg.cfg
+ create mode 100755 SPECS-EXTENDED/mrtg/mrtg.fc
+ create mode 100755 SPECS-EXTENDED/mrtg/mrtg.if
+ mode change 100644 => 100755 SPECS-EXTENDED/mrtg/mrtg.service
+ delete mode 100644 SPECS-EXTENDED/mrtg/mrtg.signatures.json
+ mode change 100644 => 100755 SPECS-EXTENDED/mrtg/mrtg.spec
+ create mode 100755 SPECS-EXTENDED/mrtg/mrtg.te
+ mode change 100644 => 100755 SPECS-EXTENDED/mrtg/mrtg.timer
+ mode change 100644 => 100755 SPECS-EXTENDED/mrtg/mrtg.tmpfiles
+ create mode 100755 SPECS-EXTENDED/netcdf/2431.patch
+ create mode 100755 SPECS-EXTENDED/netcdf/2827.patch
+ create mode 100755 SPECS-EXTENDED/netcdf/2850.patch
+ delete mode 100644 SPECS-EXTENDED/netcdf/netcdf-plugin.patch
+ create mode 100755 SPECS-EXTENDED/netcdf/netcdf-tst-blosc.patch
+ delete mode 100644 SPECS-EXTENDED/netcdf/netcdf.signatures.json
+ mode change 100644 => 100755 SPECS-EXTENDED/netcdf/netcdf.spec
+ delete mode 100644 SPECS-EXTENDED/netpbm/disable-pamx-build.patch
+ mode change 100644 => 100755 SPECS-EXTENDED/netpbm/netpbm-CAN-2005-2471.patch
+ mode change 100644 => 100755 SPECS-EXTENDED/netpbm/netpbm-CVE-2017-2587.patch
+ mode change 100644 => 100755 SPECS-EXTENDED/netpbm/netpbm-bmptopnm.patch
+ create mode 100755 SPECS-EXTENDED/netpbm/netpbm-c99-2.patch
+ create mode 100755 SPECS-EXTENDED/netpbm/netpbm-c99.patch
+ delete mode 100644 SPECS-EXTENDED/netpbm/netpbm-cmuwtopbm.patch
+ mode change 100644 => 100755 SPECS-EXTENDED/netpbm/netpbm-docfix.patch
+ delete mode 100644 SPECS-EXTENDED/netpbm/netpbm-fiasco-overflow.patch
+ mode change 100644 => 100755 SPECS-EXTENDED/netpbm/netpbm-gcc4.patch
+ mode change 100644 => 100755 SPECS-EXTENDED/netpbm/netpbm-glibc.patch
+ mode change 100644 => 100755 SPECS-EXTENDED/netpbm/netpbm-jasper.patch
+ mode change 100644 => 100755 SPECS-EXTENDED/netpbm/netpbm-libdir-so.patch
+ mode change 100644 => 100755 SPECS-EXTENDED/netpbm/netpbm-manfix.patch
+ delete mode 100644 SPECS-EXTENDED/netpbm/netpbm-manual-pages.patch
+ mode change 100644 => 100755 SPECS-EXTENDED/netpbm/netpbm-multilib.patch
+ mode change 100644 => 100755 SPECS-EXTENDED/netpbm/netpbm-pamtojpeg2k.patch
+ mode change 100644 => 100755 SPECS-EXTENDED/netpbm/netpbm-ppmfadeusage.patch
+ mode change 100644 => 100755 SPECS-EXTENDED/netpbm/netpbm-python3.patch
+ mode change 100644 => 100755 SPECS-EXTENDED/netpbm/netpbm-security-code.patch
+ mode change 100644 => 100755 SPECS-EXTENDED/netpbm/netpbm-security-scripts.patch
+ mode change 100644 => 100755 SPECS-EXTENDED/netpbm/netpbm-time.patch
+ delete mode 100644 SPECS-EXTENDED/netpbm/netpbm-userguide.patch
+ mode change 100644 => 100755 SPECS-EXTENDED/netpbm/netpbm-xwdfix.patch
+ delete mode 100644 SPECS-EXTENDED/netpbm/netpbm.signatures.json
+ mode change 100644 => 100755 SPECS-EXTENDED/netpbm/netpbm.spec
+ delete mode 100644 SPECS-EXTENDED/nodejs-nodemon/nodejs-nodemon.signatures.json
+ mode change 100644 => 100755 SPECS-EXTENDED/nodejs-nodemon/nodejs-nodemon.spec
+ create mode 100755 SPECS-EXTENDED/nodejs-packaging/LICENSE
+ create mode 100755 SPECS-EXTENDED/nodejs-packaging/README.md
+ create mode 100755 SPECS-EXTENDED/nodejs-packaging/macros.nodejs
+ create mode 100755 SPECS-EXTENDED/nodejs-packaging/multiver_modules
+ create mode 100755 SPECS-EXTENDED/nodejs-packaging/nodejs-fixdep
+ create mode 100755 SPECS-EXTENDED/nodejs-packaging/nodejs-packaging-bundler
+ delete mode 100644 SPECS-EXTENDED/nodejs-packaging/nodejs-packaging.signatures.json
+ mode change 100644 => 100755 SPECS-EXTENDED/nodejs-packaging/nodejs-packaging.spec
+ create mode 100755 SPECS-EXTENDED/nodejs-packaging/nodejs-setversion
+ create mode 100755 SPECS-EXTENDED/nodejs-packaging/nodejs-symlink-deps
+ create mode 100755 SPECS-EXTENDED/nodejs-packaging/nodejs.attr
+ create mode 100755 SPECS-EXTENDED/nodejs-packaging/nodejs.prov
+ create mode 100755 SPECS-EXTENDED/nodejs-packaging/nodejs.req
+ create mode 100755 SPECS-EXTENDED/nodejs-packaging/nodejs_abi.attr
+ create mode 100755 SPECS-EXTENDED/nodejs-packaging/nodejs_abi.req
+ delete mode 100644 SPECS-EXTENDED/objenesis/objenesis.signatures.json
+ mode change 100644 => 100755 SPECS-EXTENDED/objenesis/objenesis.spec
+ delete mode 100644 SPECS-EXTENDED/ocaml-camlp5/camlp5-6.11-kill-warn-error.patch
+ create mode 100755 SPECS-EXTENDED/ocaml-camlp5/camlp5-8.00-kill-warn-error.patch
+ delete mode 100644 SPECS-EXTENDED/ocaml-camlp5/ocaml-camlp5.signatures.json
+ mode change 100644 => 100755 SPECS-EXTENDED/ocaml-camlp5/ocaml-camlp5.spec
+ create mode 100755 SPECS-EXTENDED/opencc/opencc-fixes-std-initializer-list.patch
+ delete mode 100644 SPECS-EXTENDED/opencc/opencc.signatures.json
+ mode change 100644 => 100755 SPECS-EXTENDED/opencc/opencc.spec
+ delete mode 100644 SPECS-EXTENDED/opencc/parallel-build-fix.patch
+ create mode 100755 SPECS-EXTENDED/openexr/march-x86-64-v3.patch
+ create mode 100755 SPECS-EXTENDED/openexr/openexr.spec
+ rename SPECS-EXTENDED/{openjpeg2/openjpeg2.spec => openjpeg/openjpeg.spec} (66%)
+ mode change 100644 => 100755
+ delete mode 100644 SPECS-EXTENDED/openjpeg2/openjpeg2.signatures.json
+ delete mode 100644 SPECS-EXTENDED/openjpeg2/openjpeg2_CVE-2020-27814.patch
+ delete mode 100644 SPECS-EXTENDED/openjpeg2/openjpeg2_CVE-2020-27823.patch
+ delete mode 100644 SPECS-EXTENDED/openjpeg2/openjpeg2_CVE-2020-27824.patch
+ delete mode 100644 SPECS-EXTENDED/openjpeg2/openjpeg2_CVE-2020-27841.patch
+ delete mode 100644 SPECS-EXTENDED/openjpeg2/openjpeg2_CVE-2020-27842.patch
+ delete mode 100644 SPECS-EXTENDED/openjpeg2/openjpeg2_CVE-2020-27843.patch
+ delete mode 100644 SPECS-EXTENDED/openjpeg2/openjpeg2_CVE-2020-27845.patch
+ delete mode 100644 SPECS-EXTENDED/openjpeg2/openjpeg2_CVE-2020-6851.patch
+ delete mode 100644 SPECS-EXTENDED/openjpeg2/openjpeg2_CVE-2020-8112.patch
+ delete mode 100644 SPECS-EXTENDED/openjpeg2/openjpeg2_opj2.patch
+ mode change 100644 => 100755 SPECS-EXTENDED/openwsman/openwsman-2.4.0-pamsetup.patch
+ mode change 100644 => 100755 SPECS-EXTENDED/openwsman/openwsman-2.4.12-ruby-binding-build.patch
+ mode change 100644 => 100755 SPECS-EXTENDED/openwsman/openwsman-2.6.2-openssl-1.1-fix.patch
+ mode change 100644 => 100755 SPECS-EXTENDED/openwsman/openwsman-2.6.5-http-status-line.patch
+ delete mode 100644 SPECS-EXTENDED/openwsman/openwsman-2.6.5-libcurl-error-codes-update.patch
+ delete mode 100644 SPECS-EXTENDED/openwsman/openwsman-2.6.8-CVE-2019-3816.patch
+ delete mode 100644 SPECS-EXTENDED/openwsman/openwsman-2.6.8-CVE-2019-3833.patch
+ create mode 100755 SPECS-EXTENDED/openwsman/openwsman-2.6.8-update-ssleay-conf.patch
+ create mode 100755 SPECS-EXTENDED/openwsman/openwsman-2.7.2-fix-ftbfs.patch
+ create mode 100755 SPECS-EXTENDED/openwsman/openwsman.fc
+ create mode 100755 SPECS-EXTENDED/openwsman/openwsman.if
+ delete mode 100644 SPECS-EXTENDED/openwsman/openwsman.signatures.json
+ mode change 100644 => 100755 SPECS-EXTENDED/openwsman/openwsman.spec
+ create mode 100755 SPECS-EXTENDED/openwsman/openwsman.te
+ mode change 100644 => 100755 SPECS-EXTENDED/openwsman/openwsmand.service
+ mode change 100644 => 100755 SPECS-EXTENDED/openwsman/owsmantestcert.sh
+ create mode 100755 SPECS-EXTENDED/opus/opus.spec
+ create mode 100755 SPECS-EXTENDED/opus/rfc6716.txt
+ create mode 100755 SPECS-EXTENDED/opus/rfc8251.txt
+ delete mode 100644 SPECS-EXTENDED/osgi-annotation/osgi-annotation-build.xml
+ delete mode 100644 SPECS-EXTENDED/osgi-annotation/osgi-annotation.signatures.json
+ mode change 100644 => 100755 SPECS-EXTENDED/osgi-annotation/osgi-annotation.spec
+ rename SPECS-EXTENDED/osgi-annotation/{osgi.annotation-7.0.0.pom => osgi.annotation-8.1.0.pom} (51%)
+ mode change 100644 => 100755
+ delete mode 100644 SPECS-EXTENDED/osgi-core/LICENSE-2.0
+ delete mode 100644 SPECS-EXTENDED/osgi-core/osgi-core-build.xml
+ delete mode 100644 SPECS-EXTENDED/osgi-core/osgi-core.signatures.json
+ mode change 100644 => 100755 SPECS-EXTENDED/osgi-core/osgi-core.spec
+ delete mode 100644 SPECS-EXTENDED/osgi-core/osgi.core-7.0.0.pom
+ delete mode 100644 SPECS-EXTENDED/pacemaker/pacemaker.signatures.json
+ mode change 100644 => 100755 SPECS-EXTENDED/pacemaker/pacemaker.spec
+ create mode 100755 SPECS-EXTENDED/pacemaker/pacemaker.sysusers
+ create mode 100755 SPECS-EXTENDED/papi/papi-libsde.patch
+ create mode 100755 SPECS-EXTENDED/papi/papi-nostatic.patch
+ create mode 100755 SPECS-EXTENDED/papi/papi-python3.patch
+ delete mode 100644 SPECS-EXTENDED/papi/papi.signatures.json
+ mode change 100644 => 100755 SPECS-EXTENDED/papi/papi.spec
+ create mode 100755 SPECS-EXTENDED/perl-Alien-Build/Alien-Build-2.65-Remove-redundant-SHA-implementations.patch
+ rename SPECS-EXTENDED/perl-Alien-Build/{Alien-Build-1.96-Remove-redundant-pkgconfig-implementations.patch => Alien-Build-2.83-Remove-redundant-pkgconfig-implementations.patch} (88%)
+ mode change 100644 => 100755
+ delete mode 100644 SPECS-EXTENDED/perl-Alien-Build/perl-Alien-Build.signatures.json
+ mode change 100644 => 100755 SPECS-EXTENDED/perl-Alien-Build/perl-Alien-Build.spec
+ mode change 100644 => 100755 SPECS-EXTENDED/perl-Cpanel-JSON-XS/Cpanel-JSON-XS-4.20-signature.patch
+ delete mode 100644 SPECS-EXTENDED/perl-Cpanel-JSON-XS/perl-Cpanel-JSON-XS.signatures.json
+ mode change 100644 => 100755 SPECS-EXTENDED/perl-Cpanel-JSON-XS/perl-Cpanel-JSON-XS.spec
+ create mode 100755 SPECS-EXTENDED/perl-Crypt-CBC/Crypt-CBC-3.04-3.05.patch
+ create mode 100755 SPECS-EXTENDED/perl-Crypt-CBC/Crypt-CBC-GH6.pl
+ create mode 100755 SPECS-EXTENDED/perl-Crypt-CBC/cbctest1.pl
+ delete mode 100644 SPECS-EXTENDED/perl-Crypt-CBC/perl-Crypt-CBC.signatures.json
+ mode change 100644 => 100755 SPECS-EXTENDED/perl-Crypt-CBC/perl-Crypt-CBC.spec
+ create mode 100755 SPECS-EXTENDED/perl-Crypt-CBC/randomiv.patch
+ delete mode 100644 SPECS-EXTENDED/perl-DBD-MySQL/perl-DBD-MySQL.signatures.json
+ mode change 100644 => 100755 SPECS-EXTENDED/perl-DBD-MySQL/perl-DBD-MySQL.spec
+ create mode 100755 SPECS-EXTENDED/perl-DBD-MySQL/test-clean.t
+ create mode 100755 SPECS-EXTENDED/perl-DBD-MySQL/test-env.sh
+ create mode 100755 SPECS-EXTENDED/perl-DBD-MySQL/test-setup.t
+ create mode 100755 SPECS-EXTENDED/perl-DBD-MySQL/testrules.yml
+ delete mode 100644 SPECS-EXTENDED/perl-Data-Munge/perl-Data-Munge.signatures.json
+ mode change 100644 => 100755 SPECS-EXTENDED/perl-Data-Munge/perl-Data-Munge.spec
+ delete mode 100644 SPECS-EXTENDED/perl-DateTime-Format-Builder/perl-DateTime-Format-Builder.signatures.json
+ mode change 100644 => 100755 SPECS-EXTENDED/perl-DateTime-Format-Builder/perl-DateTime-Format-Builder.spec
+ delete mode 100644 SPECS-EXTENDED/perl-DateTime-Format-ISO8601/perl-DateTime-Format-ISO8601.signatures.json
+ mode change 100644 => 100755 SPECS-EXTENDED/perl-DateTime-Format-ISO8601/perl-DateTime-Format-ISO8601.spec
+ delete mode 100644 SPECS-EXTENDED/perl-DateTime-Format-Strptime/perl-DateTime-Format-Strptime.signatures.json
+ mode change 100644 => 100755 SPECS-EXTENDED/perl-DateTime-Format-Strptime/perl-DateTime-Format-Strptime.spec
+ delete mode 100644 SPECS-EXTENDED/perl-DateTime-Locale/perl-DateTime-Locale.signatures.json
+ mode change 100644 => 100755 SPECS-EXTENDED/perl-DateTime-Locale/perl-DateTime-Locale.spec
+ mode change 100644 => 100755 SPECS-EXTENDED/perl-DateTime-TimeZone/DateTime-TimeZone-2.04-Parse-etc-localtime-by-DateTime-TimeZone-Tzfile.patch
+ delete mode 100644 SPECS-EXTENDED/perl-DateTime-TimeZone/perl-DateTime-TimeZone.signatures.json
+ mode change 100644 => 100755 SPECS-EXTENDED/perl-DateTime-TimeZone/perl-DateTime-TimeZone.spec
+ delete mode 100644 SPECS-EXTENDED/perl-DateTime/perl-DateTime.signatures.json
+ mode change 100644 => 100755 SPECS-EXTENDED/perl-DateTime/perl-DateTime.spec
+ mode change 100644 => 100755 SPECS-EXTENDED/perl-FCGI/FCGI-0.78-CVE-2012-6687.patch
+ delete mode 100644 SPECS-EXTENDED/perl-FCGI/perl-FCGI.signatures.json
+ mode change 100644 => 100755 SPECS-EXTENDED/perl-FCGI/perl-FCGI.spec
+ delete mode 100644 SPECS-EXTENDED/perl-FFI-CheckLib/perl-FFI-CheckLib.signatures.json
+ mode change 100644 => 100755 SPECS-EXTENDED/perl-FFI-CheckLib/perl-FFI-CheckLib.spec
+ mode change 100644 => 100755 SPECS-EXTENDED/perl-File-Find-Object-Rule/File-Find-Object-Rule-0.0310-shellbang.patch
+ delete mode 100644 SPECS-EXTENDED/perl-File-Find-Object-Rule/perl-File-Find-Object-Rule.signatures.json
+ mode change 100644 => 100755 SPECS-EXTENDED/perl-File-Find-Object-Rule/perl-File-Find-Object-Rule.spec
+ delete mode 100644 SPECS-EXTENDED/perl-File-MimeInfo/perl-File-MimeInfo.signatures.json
+ mode change 100644 => 100755 SPECS-EXTENDED/perl-File-MimeInfo/perl-File-MimeInfo.spec
+ delete mode 100644 SPECS-EXTENDED/perl-GD-Barcode/perl-GD-Barcode.signatures.json
+ mode change 100644 => 100755 SPECS-EXTENDED/perl-GD-Barcode/perl-GD-Barcode.spec
+ create mode 100755 SPECS-EXTENDED/perl-IO-Socket-INET6/IO-Socket-INET6-2.72-bz1207174-fix_random_test_error.patch
+ create mode 100755 SPECS-EXTENDED/perl-IO-Socket-INET6/IO-Socket-INET6-2.72-fix_die_in_test.patch
+ delete mode 100644 SPECS-EXTENDED/perl-IO-Socket-INET6/perl-IO-Socket-INET6.signatures.json
+ mode change 100644 => 100755 SPECS-EXTENDED/perl-IO-Socket-INET6/perl-IO-Socket-INET6.spec
+ delete mode 100644 SPECS-EXTENDED/perl-JSON-Color/perl-JSON-Color.signatures.json
+ mode change 100644 => 100755 SPECS-EXTENDED/perl-JSON-Color/perl-JSON-Color.spec
+ delete mode 100644 SPECS-EXTENDED/perl-JSON-MaybeXS/perl-JSON-MaybeXS.signatures.json
+ mode change 100644 => 100755 SPECS-EXTENDED/perl-JSON-MaybeXS/perl-JSON-MaybeXS.spec
+ delete mode 100644 SPECS-EXTENDED/perl-LDAP/LICENSE.PTR
+ delete mode 100644 SPECS-EXTENDED/perl-LDAP/perl-LDAP.signatures.json
+ mode change 100644 => 100755 SPECS-EXTENDED/perl-LDAP/perl-LDAP.spec
+ mode change 100644 => 100755 SPECS-EXTENDED/perl-LDAP/perl-ldap-0.65-Configure-usr-sbin-slapd-for-tests.patch
+ delete mode 100644 SPECS-EXTENDED/perl-LDAP/perl-ldap-0.66-Correct-a-shell-bang-in-data-regenerate_cert.sh.patch
+ mode change 100644 => 100755 SPECS-EXTENDED/perl-LDAP/perl-ldap-0.66-test-Remove-a-test-for-cancelling-asynchronous-calls.patch
+ create mode 100755 SPECS-EXTENDED/perl-LDAP/perl-ldap-0.68-Do-not-default-IO-Socket-IP-to-AI_ADDRCONFIG-flag.patch
+ mode change 100644 => 100755 SPECS-EXTENDED/perl-Locale-Maketext-Gettext/gettexttomakettext.patch
+ delete mode 100644 SPECS-EXTENDED/perl-Locale-Maketext-Gettext/perl-Locale-Maketext-Gettext.signatures.json
+ mode change 100644 => 100755 SPECS-EXTENDED/perl-Locale-Maketext-Gettext/perl-Locale-Maketext-Gettext.spec
+ delete mode 100644 SPECS-EXTENDED/perl-MIME-Lite/perl-MIME-Lite.signatures.json
+ mode change 100644 => 100755 SPECS-EXTENDED/perl-MIME-Lite/perl-MIME-Lite.spec
+ delete mode 100644 SPECS-EXTENDED/perl-MIME-Types/perl-MIME-Types.signatures.json
+ mode change 100644 => 100755 SPECS-EXTENDED/perl-MIME-Types/perl-MIME-Types.spec
+ delete mode 100644 SPECS-EXTENDED/perl-Mail-DKIM/perl-Mail-DKIM.signatures.json
+ mode change 100644 => 100755 SPECS-EXTENDED/perl-Mail-DKIM/perl-Mail-DKIM.spec
+ delete mode 100644 SPECS-EXTENDED/perl-Mail-SPF/Mail-SPF-v2.8.0-POD.patch
+ delete mode 100644 SPECS-EXTENDED/perl-Mail-SPF/Mail-SPF-v2.8.0-testsuite.patch
+ delete mode 100644 SPECS-EXTENDED/perl-Mail-SPF/perl-Mail-SPF.signatures.json
+ mode change 100644 => 100755 SPECS-EXTENDED/perl-Mail-SPF/perl-Mail-SPF.spec
+ delete mode 100644 SPECS-EXTENDED/perl-Net-DNS-Resolver-Mock/perl-Net-DNS-Resolver-Mock.signatures.json
+ mode change 100644 => 100755 SPECS-EXTENDED/perl-Net-DNS-Resolver-Mock/perl-Net-DNS-Resolver-Mock.spec
+ create mode 100755 SPECS-EXTENDED/perl-Net-DNS/Net-DNS-1.47.tar.gz.sig
+ delete mode 100644 SPECS-EXTENDED/perl-Net-DNS/perl-Net-DNS.signatures.json
+ mode change 100644 => 100755 SPECS-EXTENDED/perl-Net-DNS/perl-Net-DNS.spec
+ create mode 100755 SPECS-EXTENDED/perl-Net-DNS/willem.nlnetlabs.nl
+ delete mode 100644 SPECS-EXTENDED/perl-Package-Stash/perl-Package-Stash.signatures.json
+ mode change 100644 => 100755 SPECS-EXTENDED/perl-Package-Stash/perl-Package-Stash.spec
+ delete mode 100644 SPECS-EXTENDED/perl-Params-Validate/perl-Params-Validate.signatures.json
+ mode change 100644 => 100755 SPECS-EXTENDED/perl-Params-Validate/perl-Params-Validate.spec
+ delete mode 100644 SPECS-EXTENDED/perl-Params-ValidationCompiler/perl-Params-ValidationCompiler.signatures.json
+ mode change 100644 => 100755 SPECS-EXTENDED/perl-Params-ValidationCompiler/perl-Params-ValidationCompiler.spec
+ mode change 100644 => 100755 SPECS-EXTENDED/perl-Perl-Critic/0001-Change-default-spell-check-tool-from-aspell-to-hunsp.patch
+ mode change 100644 => 100755 SPECS-EXTENDED/perl-Perl-Critic/Perl-Critic-1.136-ppidump-shellbang.patch
+ delete mode 100644 SPECS-EXTENDED/perl-Perl-Critic/perl-Perl-Critic.signatures.json
+ mode change 100644 => 100755 SPECS-EXTENDED/perl-Perl-Critic/perl-Perl-Critic.spec
+ delete mode 100644 SPECS-EXTENDED/perl-Perl-MinimumVersion/perl-Perl-MinimumVersion.signatures.json
+ mode change 100644 => 100755 SPECS-EXTENDED/perl-Perl-MinimumVersion/perl-Perl-MinimumVersion.spec
+ delete mode 100644 SPECS-EXTENDED/perl-Perl4-CoreLibs/Perl4-CoreLibs-0.004-y2k20.patch
+ delete mode 100644 SPECS-EXTENDED/perl-Perl4-CoreLibs/perl-Perl4-CoreLibs.signatures.json
+ mode change 100644 => 100755 SPECS-EXTENDED/perl-Perl4-CoreLibs/perl-Perl4-CoreLibs.spec
+ delete mode 100644 SPECS-EXTENDED/perl-SGMLSpm/perl-SGMLSpm.signatures.json
+ mode change 100644 => 100755 SPECS-EXTENDED/perl-SGMLSpm/perl-SGMLSpm.spec
+ delete mode 100644 SPECS-EXTENDED/perl-Specio/perl-Specio.signatures.json
+ mode change 100644 => 100755 SPECS-EXTENDED/perl-Specio/perl-Specio.spec
+ rename SPECS-EXTENDED/perl-Term-Table/{Term-Table-0.015-Use-system-Object-HashBase.patch => Term-Table-0.022-Use-system-Object-HashBase.patch} (96%)
+ mode change 100644 => 100755
+ delete mode 100644 SPECS-EXTENDED/perl-Term-Table/perl-Term-Table.signatures.json
+ mode change 100644 => 100755 SPECS-EXTENDED/perl-Term-Table/perl-Term-Table.spec
+ delete mode 100644 SPECS-EXTENDED/perl-Test-MinimumVersion/perl-Test-MinimumVersion.signatures.json
+ mode change 100644 => 100755 SPECS-EXTENDED/perl-Test-MinimumVersion/perl-Test-MinimumVersion.spec
+ delete mode 100644 SPECS-EXTENDED/perl-Test-Script/perl-Test-Script.signatures.json
+ mode change 100644 => 100755 SPECS-EXTENDED/perl-Test-Script/perl-Test-Script.spec
+ create mode 100755 SPECS-EXTENDED/perl-Test-Simple/Test-Simple-1.302200-add_perl.patch
+ delete mode 100644 SPECS-EXTENDED/perl-Test-TrailingSpace/perl-Test-TrailingSpace.signatures.json
+ mode change 100644 => 100755 SPECS-EXTENDED/perl-Test-TrailingSpace/perl-Test-TrailingSpace.spec
+ delete mode 100644 SPECS-EXTENDED/perl-Test2-Plugin-NoWarnings/perl-Test2-Plugin-NoWarnings.signatures.json
+ mode change 100644 => 100755 SPECS-EXTENDED/perl-Test2-Plugin-NoWarnings/perl-Test2-Plugin-NoWarnings.spec
+ delete mode 100644 SPECS-EXTENDED/perl-Test2-Suite/perl-Test2-Suite.signatures.json
+ delete mode 100644 SPECS-EXTENDED/perl-Test2-Suite/perl-Test2-Suite.spec
+ delete mode 100644 SPECS-EXTENDED/perl-XML-LibXSLT/perl-XML-LibXSLT.signatures.json
+ mode change 100644 => 100755 SPECS-EXTENDED/perl-XML-LibXSLT/perl-XML-LibXSLT.spec
+ delete mode 100644 SPECS-EXTENDED/perl-YAML-PP/perl-YAML-PP.signatures.json
+ mode change 100644 => 100755 SPECS-EXTENDED/perl-YAML-PP/perl-YAML-PP.spec
+ delete mode 100644 SPECS-EXTENDED/pipewire/0001-Build-media-session-from-local-tarbal.patch
+ delete mode 100644 SPECS-EXTENDED/pipewire/pipewire.signatures.json
+ mode change 100644 => 100755 SPECS-EXTENDED/pipewire/pipewire.spec
+ create mode 100755 SPECS-EXTENDED/pipewire/pipewire.sysusers
+ delete mode 100644 SPECS-EXTENDED/po4a/po4a.signatures.json
+ mode change 100644 => 100755 SPECS-EXTENDED/po4a/po4a.spec
+ delete mode 100644 SPECS-EXTENDED/podman/CVE-2022-2989.patch
+ delete mode 100644 SPECS-EXTENDED/podman/podman.signatures.json
+ mode change 100644 => 100755 SPECS-EXTENDED/podman/podman.spec
+ delete mode 100644 SPECS-EXTENDED/proj/proj.signatures.json
+ mode change 100644 => 100755 SPECS-EXTENDED/proj/proj.spec
+ delete mode 100644 SPECS-EXTENDED/psl-make-dafsa/psl-make-dafsa.signatures.json
+ delete mode 100644 SPECS-EXTENDED/psl-make-dafsa/psl-make-dafsa.spec
+ delete mode 100644 SPECS-EXTENDED/psutils/psutils-paperconf.patch
+ delete mode 100644 SPECS-EXTENDED/psutils/psutils.signatures.json
+ mode change 100644 => 100755 SPECS-EXTENDED/psutils/psutils.spec
+ create mode 100755 SPECS-EXTENDED/pulseaudio/0001-tests-Don-t-run-volume-tests-with-impossible-alignme.patch
+ create mode 100755 SPECS-EXTENDED/pulseaudio/default.pa-for-gdm
+ mode change 100644 => 100755 SPECS-EXTENDED/pulseaudio/pulseaudio-11.1-autospawn_disable.patch
+ create mode 100755 SPECS-EXTENDED/pulseaudio/pulseaudio-17.0.tar.xz.sha256sum
+ mode change 100644 => 100755 SPECS-EXTENDED/pulseaudio/pulseaudio-autostart.patch
+ delete mode 100644 SPECS-EXTENDED/pulseaudio/pulseaudio.signatures.json
+ mode change 100644 => 100755 SPECS-EXTENDED/pulseaudio/pulseaudio.spec
+ delete mode 100644 SPECS-EXTENDED/pylint/pylint.signatures.json
+ mode change 100644 => 100755 SPECS-EXTENDED/pylint/pylint.spec
+ create mode 100755 SPECS-EXTENDED/python-aiohttp/0001-Fix-incorrect-parsing-of-chunk-extensions-with-the-p.patch
+ create mode 100755 SPECS-EXTENDED/python-aiohttp/0001-Unbundle-llhttp.patch
+ delete mode 100644 SPECS-EXTENDED/python-aiohttp/python-aiohttp.signatures.json
+ mode change 100644 => 100755 SPECS-EXTENDED/python-aiohttp/python-aiohttp.spec
+ delete mode 100644 SPECS-EXTENDED/python-aiohttp/unbundle-http-parser.patch
+ delete mode 100644 SPECS-EXTENDED/python-argcomplete/python-argcomplete.signatures.json
+ mode change 100644 => 100755 SPECS-EXTENDED/python-argcomplete/python-argcomplete.spec
+ delete mode 100644 SPECS-EXTENDED/python-beautifulsoup4/python-beautifulsoup4.signatures.json
+ mode change 100644 => 100755 SPECS-EXTENDED/python-beautifulsoup4/python-beautifulsoup4.spec
+ create mode 100755 SPECS-EXTENDED/python-beautifulsoup4/soupsieve26.patch
+ delete mode 100644 SPECS-EXTENDED/python-curio/python-curio.signatures.json
+ mode change 100644 => 100755 SPECS-EXTENDED/python-curio/python-curio.spec
+ delete mode 100644 SPECS-EXTENDED/python-dbusmock/python-dbusmock.signatures.json
+ mode change 100644 => 100755 SPECS-EXTENDED/python-dbusmock/python-dbusmock.spec
+ delete mode 100644 SPECS-EXTENDED/python-ddt/python-ddt.signatures.json
+ mode change 100644 => 100755 SPECS-EXTENDED/python-ddt/python-ddt.spec
+ create mode 100755 SPECS-EXTENDED/python-debtcollector/0x2ef3fe0ec2b075ab7458b5f8b702b20b13df2318.txt
+ create mode 100755 SPECS-EXTENDED/python-debtcollector/debtcollector-3.0.0.tar.gz.asc
+ delete mode 100644 SPECS-EXTENDED/python-debtcollector/python-debtcollector.signatures.json
+ mode change 100644 => 100755 SPECS-EXTENDED/python-debtcollector/python-debtcollector.spec
+ create mode 100755 SPECS-EXTENDED/python-dmidecode/python-dmidecode-rhbz2154949.patch
+ delete mode 100644 SPECS-EXTENDED/python-dmidecode/python-dmidecode.signatures.json
+ mode change 100644 => 100755 SPECS-EXTENDED/python-dmidecode/python-dmidecode.spec
+ delete mode 100644 SPECS-EXTENDED/python-faker/python-faker.signatures.json
+ mode change 100644 => 100755 SPECS-EXTENDED/python-faker/python-faker.spec
+ delete mode 100644 SPECS-EXTENDED/python-fasteners/80a3eaed75276faf21034e7e6c626fd19485ea39.patch
+ delete mode 100644 SPECS-EXTENDED/python-fasteners/python-fasteners.signatures.json
+ mode change 100644 => 100755 SPECS-EXTENDED/python-fasteners/python-fasteners.spec
+ delete mode 100644 SPECS-EXTENDED/python-flake8/python-flake8.signatures.json
+ mode change 100644 => 100755 SPECS-EXTENDED/python-flake8/python-flake8.spec
+ delete mode 100644 SPECS-EXTENDED/python-flask/python-flask.signatures.json
+ mode change 100644 => 100755 SPECS-EXTENDED/python-flask/python-flask.spec
+ delete mode 100644 SPECS-EXTENDED/python-genshi/python-genshi.signatures.json
+ mode change 100644 => 100755 SPECS-EXTENDED/python-genshi/python-genshi.spec
+ mode change 100644 => 100755 SPECS-EXTENDED/python-httplib2/python-httplib2.certfile.patch
+ delete mode 100644 SPECS-EXTENDED/python-httplib2/python-httplib2.signatures.json
+ mode change 100644 => 100755 SPECS-EXTENDED/python-httplib2/python-httplib2.spec
+ delete mode 100644 SPECS-EXTENDED/python-hwdata/python-hwdata.signatures.json
+ mode change 100644 => 100755 SPECS-EXTENDED/python-hwdata/python-hwdata.spec
+ create mode 100755 SPECS-EXTENDED/python-iso8601/0001-Add-docs-and-test-extras.patch
+ delete mode 100644 SPECS-EXTENDED/python-iso8601/python-iso8601.signatures.json
+ mode change 100644 => 100755 SPECS-EXTENDED/python-iso8601/python-iso8601.spec
+ delete mode 100644 SPECS-EXTENDED/python-isodate/python-isodate-LICENSE.txt
+ delete mode 100644 SPECS-EXTENDED/python-isodate/python-isodate.signatures.json
+ mode change 100644 => 100755 SPECS-EXTENDED/python-isodate/python-isodate.spec
+ delete mode 100644 SPECS-EXTENDED/python-itsdangerous/python-itsdangerous.signatures.json
+ mode change 100644 => 100755 SPECS-EXTENDED/python-itsdangerous/python-itsdangerous.spec
+ delete mode 100644 SPECS-EXTENDED/python-jwcrypto/python-jwcrypto.signatures.json
+ mode change 100644 => 100755 SPECS-EXTENDED/python-jwcrypto/python-jwcrypto.spec
+ delete mode 100644 SPECS-EXTENDED/python-lit/python-lit-LICENSE.txt
+ delete mode 100644 SPECS-EXTENDED/python-lit/python-lit.signatures.json
+ delete mode 100644 SPECS-EXTENDED/python-lit/python-lit.spec
+ delete mode 100644 SPECS-EXTENDED/python-mccabe/python-mccabe.signatures.json
+ mode change 100644 => 100755 SPECS-EXTENDED/python-mccabe/python-mccabe.spec
+ delete mode 100644 SPECS-EXTENDED/python-mimeparse/python-mimeparse.signatures.json
+ mode change 100644 => 100755 SPECS-EXTENDED/python-mimeparse/python-mimeparse.spec
+ delete mode 100644 SPECS-EXTENDED/python-msal/python-msal.signatures.json
+ mode change 100644 => 100755 SPECS-EXTENDED/python-msal/python-msal.spec
+ mode change 100644 => 100755 SPECS-EXTENDED/python-paramiko/0003-remove-pytest-relaxed-dep.patch
+ create mode 100755 SPECS-EXTENDED/python-paramiko/0004-remove-icecream-dep.patch
+ delete mode 100644 SPECS-EXTENDED/python-paramiko/0004-remove-mock-dep.patch
+ create mode 100755 SPECS-EXTENDED/python-paramiko/0005-remove-invoke-dep.patch
+ delete mode 100644 SPECS-EXTENDED/python-paramiko/python-paramiko.signatures.json
+ mode change 100644 => 100755 SPECS-EXTENDED/python-paramiko/python-paramiko.spec
+ create mode 100755 SPECS-EXTENDED/python-productmd/0001-images-add-type-and-formats-for-erofs-and-squashfs-t.patch
+ delete mode 100644 SPECS-EXTENDED/python-productmd/python-productmd.signatures.json
+ mode change 100644 => 100755 SPECS-EXTENDED/python-productmd/python-productmd.spec
+ delete mode 100644 SPECS-EXTENDED/python-pyperclip/0001-Skip-tests-irrelevant-in-the-context-of-Fedora-packa.patch
+ delete mode 100644 SPECS-EXTENDED/python-pyperclip/python-pyperclip-LICENSE.txt
+ delete mode 100644 SPECS-EXTENDED/python-pyperclip/python-pyperclip.signatures.json
+ mode change 100644 => 100755 SPECS-EXTENDED/python-pyperclip/python-pyperclip.spec
+ create mode 100755 SPECS-EXTENDED/python-pyroute2/python-pyroute2.spec
+ create mode 100755 SPECS-EXTENDED/python-pyrsistent/284.patch
+ delete mode 100644 SPECS-EXTENDED/python-pyrsistent/SOURCES/00-relax-dependencies.patch
+ delete mode 100644 SPECS-EXTENDED/python-pyrsistent/python-pyrsistent.signatures.json
+ mode change 100644 => 100755 SPECS-EXTENDED/python-pyrsistent/python-pyrsistent.spec
+ delete mode 100644 SPECS-EXTENDED/python-pytest-timeout/python-pytest-timeout.signatures.json
+ mode change 100644 => 100755 SPECS-EXTENDED/python-pytest-timeout/python-pytest-timeout.spec
+ delete mode 100644 SPECS-EXTENDED/python-requests-mock/0001-tox-add-py39-environment.patch
+ delete mode 100644 SPECS-EXTENDED/python-requests-mock/0002-Use-system-urllib3-package.patch
+ mode change 100644 => 100755 SPECS-EXTENDED/python-requests-mock/0003-Allow-skipping-purl-tests-if-it-is-not-present.patch
+ delete mode 100644 SPECS-EXTENDED/python-requests-mock/python-requests-mock.signatures.json
+ mode change 100644 => 100755 SPECS-EXTENDED/python-requests-mock/python-requests-mock.spec
+ delete mode 100644 SPECS-EXTENDED/python-requests_ntlm/python-requests_ntlm.signatures.json
+ mode change 100644 => 100755 SPECS-EXTENDED/python-requests_ntlm/python-requests_ntlm.spec
+ delete mode 100644 SPECS-EXTENDED/python-s3transfer/python-s3transfer.signatures.json
+ mode change 100644 => 100755 SPECS-EXTENDED/python-s3transfer/python-s3transfer.spec
+ create mode 100755 SPECS-EXTENDED/python-templated-dictionary/python-templated-dictionary.spec
+ delete mode 100644 SPECS-EXTENDED/python-testresources/python-testresources.signatures.json
+ mode change 100644 => 100755 SPECS-EXTENDED/python-testresources/python-testresources.spec
+ delete mode 100644 SPECS-EXTENDED/python-toml/python-toml.signatures.json
+ mode change 100644 => 100755 SPECS-EXTENDED/python-toml/python-toml.spec
+ delete mode 100644 SPECS-EXTENDED/python-trio/python-trio.signatures.json
+ mode change 100644 => 100755 SPECS-EXTENDED/python-trio/python-trio.spec
+ create mode 100755 SPECS-EXTENDED/python-trio/python3.13-PR-2959.patch
+ create mode 100755 SPECS-EXTENDED/python-trio/python3.13-PR-3005.patch
+ delete mode 100644 SPECS-EXTENDED/python-webtest/python-webtest.signatures.json
+ mode change 100644 => 100755 SPECS-EXTENDED/python-webtest/python-webtest.spec
+ create mode 100755 SPECS-EXTENDED/python-winrm/python-winrm-mock.patch
+ delete mode 100644 SPECS-EXTENDED/python-winrm/python-winrm.signatures.json
+ mode change 100644 => 100755 SPECS-EXTENDED/python-winrm/python-winrm.spec
+ create mode 100755 SPECS-EXTENDED/python-zmq/1961.patch
+ rename SPECS-EXTENDED/{osgi-annotation/LICENSE-2.0 => python-zmq/LICENSE.Apache-2.0} (100%)
+ mode change 100644 => 100755
+ delete mode 100644 SPECS-EXTENDED/python-zmq/python-zmq.signatures.json
+ mode change 100644 => 100755 SPECS-EXTENDED/python-zmq/python-zmq.spec
+ delete mode 100644 SPECS-EXTENDED/pyusb/pyusb.signatures.json
+ mode change 100644 => 100755 SPECS-EXTENDED/pyusb/pyusb.spec
+ create mode 100755 SPECS-EXTENDED/qt5-qtconnectivity/qt5-qtconnectivity-gcc11.patch
+ delete mode 100644 SPECS-EXTENDED/qt5-qtconnectivity/qt5-qtconnectivity.signatures.json
+ mode change 100644 => 100755 SPECS-EXTENDED/qt5-qtconnectivity/qt5-qtconnectivity.spec
+ delete mode 100644 SPECS-EXTENDED/qt5-qtsensors/qt5-qtsensors.signatures.json
+ mode change 100644 => 100755 SPECS-EXTENDED/qt5-qtsensors/qt5-qtsensors.spec
+ delete mode 100644 SPECS-EXTENDED/qt5-qtserialport/qt5-qtserialport.signatures.json
+ mode change 100644 => 100755 SPECS-EXTENDED/qt5-qtserialport/qt5-qtserialport.spec
+ delete mode 100644 SPECS-EXTENDED/rarian/rarian-0.8.1-categories.patch
+ delete mode 100644 SPECS-EXTENDED/rarian/rarian.signatures.json
+ mode change 100644 => 100755 SPECS-EXTENDED/rarian/rarian.spec
+ mode change 100644 => 100755 SPECS-EXTENDED/rarian/scrollkeeper-omf.dtd
+ create mode 100755 SPECS-EXTENDED/rear/Makefile
+ create mode 100755 SPECS-EXTENDED/rear/rear-CVE-2024-23301.patch
+ create mode 100755 SPECS-EXTENDED/rear/rear-bz1492177-warning.patch
+ create mode 100755 SPECS-EXTENDED/rear/rear-bz1747468.patch
+ create mode 100755 SPECS-EXTENDED/rear/rear-bz2091163.patch
+ create mode 100755 SPECS-EXTENDED/rear/rear-bz2104005.patch
+ create mode 100755 SPECS-EXTENDED/rear/rear-bz2119501.patch
+ create mode 100755 SPECS-EXTENDED/rear/rear-bz2120736.patch
+ create mode 100755 SPECS-EXTENDED/rear/rear-bz2130945.patch
+ create mode 100755 SPECS-EXTENDED/rear/rear-bz2188593-nbu-systemd.patch
+ create mode 100755 SPECS-EXTENDED/rear/rear-copy-console-kernel-cmdline-from-host.patch
+ create mode 100755 SPECS-EXTENDED/rear/rear-device-shrinking-bz2223895.patch
+ create mode 100755 SPECS-EXTENDED/rear/rear-fix-backup-of-btrfs-subvolumes.patch
+ create mode 100755 SPECS-EXTENDED/rear/rear-fix-compatibility-with-newer-systemd-bz2254871.patch
+ create mode 100755 SPECS-EXTENDED/rear/rear-fix-ipv6.patch
+ create mode 100755 SPECS-EXTENDED/rear/rear-fix-libsystemd-ldd-warning.patch
+ create mode 100755 SPECS-EXTENDED/rear/rear-nbu-RHEL-17390-RHEL-17393.patch
+ create mode 100755 SPECS-EXTENDED/rear/rear-remove-lvmdevices-bz2145014.patch
+ create mode 100755 SPECS-EXTENDED/rear/rear-resolve-libraries-for-symlinks-in-COPY_AS_IS-RHEL-15108.patch
+ create mode 100755 SPECS-EXTENDED/rear/rear-restore-hybrid-bootloader-RHEL-16864.patch
+ create mode 100755 SPECS-EXTENDED/rear/rear-save-lvm-poolmetadatasize-RHEL-6984.patch
+ create mode 100755 SPECS-EXTENDED/rear/rear-skip-btrfs-subvolumes-when-detecting-ESP-partitions.patch
+ create mode 100755 SPECS-EXTENDED/rear/rear-skip-invalid-drives-RHEL-22863.patch
+ create mode 100755 SPECS-EXTENDED/rear/rear-skip-useless-xfs-mount-options-RHEL-10478.patch
+ create mode 100755 SPECS-EXTENDED/rear/rear-uefi-booting-with-multiple-cdrom-devices.patch
+ create mode 100755 SPECS-EXTENDED/rear/rear-uefi-usb-secureboot-bz2196445.patch
+ create mode 100755 SPECS-EXTENDED/rear/rear.cron
+ create mode 100755 SPECS-EXTENDED/rear/rear.service
+ delete mode 100644 SPECS-EXTENDED/rear/rear.signatures.json
+ mode change 100644 => 100755 SPECS-EXTENDED/rear/rear.spec
+ create mode 100755 SPECS-EXTENDED/rear/rear.timer
+ create mode 100755 SPECS-EXTENDED/rear/s390-no-clobber-disks.patch
+ delete mode 100644 SPECS-EXTENDED/resource-agents/resource-agents.signatures.json
+ mode change 100644 => 100755 SPECS-EXTENDED/resource-agents/resource-agents.spec
+ rename SPECS-EXTENDED/rhino/{rhino-1.7.7.1.pom => rhino-1.7.14.pom} (56%)
+ mode change 100644 => 100755
+ delete mode 100644 SPECS-EXTENDED/rhino/rhino-addOrbitManifest.patch
+ delete mode 100644 SPECS-EXTENDED/rhino/rhino-build.patch
+ delete mode 100644 SPECS-EXTENDED/rhino/rhino-debugger.script
+ create mode 100755 SPECS-EXTENDED/rhino/rhino-engine-1.7.14.pom
+ delete mode 100644 SPECS-EXTENDED/rhino/rhino-idswitch.script
+ delete mode 100644 SPECS-EXTENDED/rhino/rhino-jsc.script
+ create mode 100755 SPECS-EXTENDED/rhino/rhino-runtime-1.7.14.pom
+ delete mode 100644 SPECS-EXTENDED/rhino/rhino.script
+ delete mode 100644 SPECS-EXTENDED/rhino/rhino.signatures.json
+ mode change 100644 => 100755 SPECS-EXTENDED/rhino/rhino.spec
+ delete mode 100644 SPECS-EXTENDED/ripgrep/cargo_config
+ delete mode 100644 SPECS-EXTENDED/ripgrep/ripgrep.signatures.json
+ delete mode 100644 SPECS-EXTENDED/ripgrep/ripgrep.spec
+ create mode 100755 SPECS-EXTENDED/rpmlint/1163.patch
+ create mode 100755 SPECS-EXTENDED/rpmlint/fedora.toml
+ delete mode 100644 SPECS-EXTENDED/rpmlint/rpmlint-1.10-suppress-locale-error.patch
+ delete mode 100644 SPECS-EXTENDED/rpmlint/rpmlint-1.11-rpm4.15.patch
+ delete mode 100644 SPECS-EXTENDED/rpmlint/rpmlint-etc.config
+ delete mode 100644 SPECS-EXTENDED/rpmlint/rpmlint.config
+ delete mode 100644 SPECS-EXTENDED/rpmlint/rpmlint.signatures.json
+ mode change 100644 => 100755 SPECS-EXTENDED/rpmlint/rpmlint.spec
+ create mode 100755 SPECS-EXTENDED/rpmlint/scoring.toml
+ create mode 100755 SPECS-EXTENDED/rpmlint/users-groups.toml
+ create mode 100755 SPECS-EXTENDED/rpmlint/warn-on-functions.toml
+ create mode 100755 SPECS-EXTENDED/rubygem-mysql2/rubygem-mysql2-0.5.4-use-ssl-pem-files-in-repo.patch
+ create mode 100755 SPECS-EXTENDED/rubygem-mysql2/rubygem-mysql2-0.5.5-openssl-CA-TRUE.patch
+ delete mode 100644 SPECS-EXTENDED/rubygem-mysql2/rubygem-mysql2.signatures.json
+ mode change 100644 => 100755 SPECS-EXTENDED/rubygem-mysql2/rubygem-mysql2.spec
+ mode change 100644 => 100755 SPECS-EXTENDED/rubygem-rspec-expectations/rspec-related-create-full-tarball.sh
+ delete mode 100644 SPECS-EXTENDED/rubygem-rspec-expectations/rubygem-rspec-expectations.signatures.json
+ mode change 100644 => 100755 SPECS-EXTENDED/rubygem-rspec-expectations/rubygem-rspec-expectations.spec
+ mode change 100644 => 100755 SPECS-EXTENDED/rubygem-rspec-mocks/rspec-related-create-full-tarball.sh
+ delete mode 100644 SPECS-EXTENDED/rubygem-rspec-mocks/rubygem-rspec-mocks.signatures.json
+ mode change 100644 => 100755 SPECS-EXTENDED/rubygem-rspec-mocks/rubygem-rspec-mocks.spec
+ delete mode 100644 SPECS-EXTENDED/rust-cbindgen/cargo_config
+ create mode 100755 SPECS-EXTENDED/rust-cbindgen/cbindgen-0.27.0.crate
+ create mode 100755 SPECS-EXTENDED/rust-cbindgen/cbindgen-fix-metadata.diff
+ delete mode 100644 SPECS-EXTENDED/rust-cbindgen/disable-static-library.patch
+ delete mode 100644 SPECS-EXTENDED/rust-cbindgen/rust-cbindgen.signatures.json
+ mode change 100644 => 100755 SPECS-EXTENDED/rust-cbindgen/rust-cbindgen.spec
+ create mode 100755 SPECS-EXTENDED/rust-ripgrep/ripgrep-14.1.1.crate
+ create mode 100755 SPECS-EXTENDED/rust-ripgrep/ripgrep-fix-metadata-auto.diff
+ create mode 100755 SPECS-EXTENDED/rust-ripgrep/rust-ripgrep.spec
+ create mode 100755 SPECS-EXTENDED/s-nail/s-nail-14.9.25-test-sha256.patch
+ create mode 100755 SPECS-EXTENDED/s-nail/s-nail-14.9.25.tar.xz.asc
+ create mode 100755 SPECS-EXTENDED/s-nail/s-nail-makeflags.patch
+ create mode 100755 SPECS-EXTENDED/s-nail/s-nail.spec
+ create mode 100755 SPECS-EXTENDED/s-nail/steffen.asc
+ delete mode 100644 SPECS-EXTENDED/samba/0001-Disable-building-smb.conf.5-in-docs-xml-wscript.patch
+ mode change 100644 => 100755 SPECS-EXTENDED/samba/README.downgrade
+ mode change 100644 => 100755 SPECS-EXTENDED/samba/pam_winbind.conf
+ create mode 100755 SPECS-EXTENDED/samba/samba-4.21.0-s3-notifyd.patch
+ create mode 100755 SPECS-EXTENDED/samba/samba-4.21.2.tar.asc
+ create mode 100755 SPECS-EXTENDED/samba/samba-pubkey_AA99442FB680B620.gpg
+ create mode 100755 SPECS-EXTENDED/samba/samba-systemd-sysusers.conf
+ create mode 100755 SPECS-EXTENDED/samba/samba-usershares-systemd-sysusers.conf
+ create mode 100755 SPECS-EXTENDED/samba/samba-winbind-systemd-sysusers.conf
+ create mode 100755 SPECS-EXTENDED/samba/samba.abignore
+ mode change 100644 => 100755 SPECS-EXTENDED/samba/samba.logrotate
+ mode change 100644 => 100755 SPECS-EXTENDED/samba/samba.pamd
+ delete mode 100644 SPECS-EXTENDED/samba/samba.signatures.json
+ mode change 100644 => 100755 SPECS-EXTENDED/samba/samba.spec
+ mode change 100644 => 100755 SPECS-EXTENDED/samba/smb.conf.example
+ mode change 100644 => 100755 SPECS-EXTENDED/samba/smb.conf.vendor
+ create mode 100755 SPECS-EXTENDED/samba/usershares.conf.vendor
+ delete mode 100644 SPECS-EXTENDED/scotch/scotch-Makefile.shared.inc.in
+ delete mode 100644 SPECS-EXTENDED/scotch/scotch-gfortran.patch
+ delete mode 100644 SPECS-EXTENDED/scotch/scotch-ldflags.patch
+ delete mode 100644 SPECS-EXTENDED/scotch/scotch.signatures.json
+ mode change 100644 => 100755 SPECS-EXTENDED/scotch/scotch.spec
+ create mode 100755 SPECS-EXTENDED/scotch/scotch_installdirs.patch
+ delete mode 100644 SPECS-EXTENDED/shapelib/CVE-2022-0699.patch
+ delete mode 100644 SPECS-EXTENDED/shapelib/c75b9281a5b9452d92e1682bdfe6019a13ed819f.diff
+ delete mode 100644 SPECS-EXTENDED/shapelib/rpmlint-errors.patch
+ delete mode 100644 SPECS-EXTENDED/shapelib/shapelib.signatures.json
+ mode change 100644 => 100755 SPECS-EXTENDED/shapelib/shapelib.spec
+ create mode 100755 SPECS-EXTENDED/snowball/snowball-sharedlib.patch
+ create mode 100755 SPECS-EXTENDED/snowball/snowball.spec
+ mode change 100644 => 100755 SPECS-EXTENDED/stunnel/Certificate-Creation
+ create mode 100755 SPECS-EXTENDED/stunnel/pgp.asc
+ mode change 100644 => 100755 SPECS-EXTENDED/stunnel/pop3-redirect.xinetd
+ mode change 100644 => 100755 SPECS-EXTENDED/stunnel/sfinger.xinetd
+ mode change 100644 => 100755 SPECS-EXTENDED/stunnel/stunnel-5.50-authpriv.patch
+ delete mode 100644 SPECS-EXTENDED/stunnel/stunnel-5.56-coverity.patch
+ mode change 100644 => 100755 SPECS-EXTENDED/stunnel/stunnel-5.56-curves-doc-update.patch
+ delete mode 100644 SPECS-EXTENDED/stunnel/stunnel-5.56.tar.gz.asc
+ mode change 100644 => 100755 SPECS-EXTENDED/stunnel/stunnel-5.61-systemd-service.patch
+ delete mode 100644 SPECS-EXTENDED/stunnel/stunnel-5.62-disabled-curves.patch
+ mode change 100644 => 100755 SPECS-EXTENDED/stunnel/stunnel-5.69-system-ciphers.patch
+ rename SPECS-EXTENDED/stunnel/{stunnel-5.69-default-tls-version.patch => stunnel-5.72-default-tls-version.patch} (82%)
+ mode change 100644 => 100755
+ create mode 100755 SPECS-EXTENDED/stunnel/stunnel-5.73.tar.gz.asc
+ mode change 100644 => 100755 SPECS-EXTENDED/stunnel/stunnel-pop3s-client.conf
+ mode change 100644 => 100755 SPECS-EXTENDED/stunnel/stunnel-sfinger.conf
+ delete mode 100644 SPECS-EXTENDED/stunnel/stunnel.signatures.json
+ mode change 100644 => 100755 SPECS-EXTENDED/stunnel/stunnel.spec
+ mode change 100644 => 100755 SPECS-EXTENDED/stunnel/stunnel@.service
+ delete mode 100644 SPECS-EXTENDED/subscription-manager/subscription-manager.signatures.json
+ mode change 100644 => 100755 SPECS-EXTENDED/subscription-manager/subscription-manager.spec
+ delete mode 100644 SPECS-EXTENDED/suitesparse/suitesparse.signatures.json
+ mode change 100644 => 100755 SPECS-EXTENDED/suitesparse/suitesparse.spec
+ delete mode 100644 SPECS-EXTENDED/switcheroo-control/switcheroo-control.signatures.json
+ mode change 100644 => 100755 SPECS-EXTENDED/switcheroo-control/switcheroo-control.spec
+ delete mode 100644 SPECS-EXTENDED/tang/tang.signatures.json
+ mode change 100644 => 100755 SPECS-EXTENDED/tang/tang.spec
+ mode change 100644 => 100755 SPECS-EXTENDED/tang/tang.sysusers
+ mode change 100644 => 100755 SPECS-EXTENDED/tk/tk-8.6.10-font-sizes-fix.patch
+ rename SPECS-EXTENDED/tk/{tk-8.6.10-conf.patch => tk-8.6.12-conf.patch} (74%)
+ mode change 100644 => 100755
+ rename SPECS-EXTENDED/tk/{tk-8.6.10-make.patch => tk-8.6.12-make.patch} (84%)
+ mode change 100644 => 100755
+ delete mode 100644 SPECS-EXTENDED/tk/tk-8.6.7-no-fonts-fix.patch
+ delete mode 100644 SPECS-EXTENDED/tk/tk.signatures.json
+ mode change 100644 => 100755 SPECS-EXTENDED/tk/tk.spec
+ create mode 100755 SPECS-EXTENDED/trilead-ssh2/BCrypt.java
+ delete mode 100644 SPECS-EXTENDED/trilead-ssh2/trilead-ssh2.signatures.json
+ mode change 100644 => 100755 SPECS-EXTENDED/trilead-ssh2/trilead-ssh2.spec
+ delete mode 100644 SPECS-EXTENDED/udisks2/ignore-apple-boot-part.patch
+ delete mode 100644 SPECS-EXTENDED/udisks2/udisks-2.10.0-doc_annotations.patch
+ create mode 100755 SPECS-EXTENDED/udisks2/udisks-2.11.0-BLKRRPART_harder.patch
+ create mode 100755 SPECS-EXTENDED/udisks2/udisks-2.11.0-targetcli_config.json_netif_timeout.patch
+ create mode 100755 SPECS-EXTENDED/udisks2/udisks-2.11.0-udiskslinuxblock_survive_missing_fstab.patch
+ create mode 100755 SPECS-EXTENDED/udisks2/udisks-2.11.0-udiskslinuxmanager_use_after_free.patch
+ delete mode 100644 SPECS-EXTENDED/udisks2/udisks2.signatures.json
+ mode change 100644 => 100755 SPECS-EXTENDED/udisks2/udisks2.spec
+ create mode 100755 SPECS-EXTENDED/upower/0001-Fix-race-condition-in-test_sibling_priority_no_overwrite.patch
+ create mode 100755 SPECS-EXTENDED/upower/0002-linux-up-enumerator-udev-Find-the.patch
+ delete mode 100644 SPECS-EXTENDED/upower/upower.signatures.json
+ mode change 100644 => 100755 SPECS-EXTENDED/upower/upower.spec
+ delete mode 100644 SPECS-EXTENDED/usb_modeswitch/0001-usb_modeswitch-count-the-target-devices-from-zero.patch
+ mode change 100644 => 100755 SPECS-EXTENDED/usb_modeswitch/device_reference-utf8.patch
+ mode change 100644 => 100755 SPECS-EXTENDED/usb_modeswitch/device_reference.txt
+ delete mode 100644 SPECS-EXTENDED/usb_modeswitch/usb_modeswitch.signatures.json
+ mode change 100644 => 100755 SPECS-EXTENDED/usb_modeswitch/usb_modeswitch.spec
+ delete mode 100644 SPECS-EXTENDED/usbguard/usbguard-0.7.6-libqb.patch
+ mode change 100644 => 100755 SPECS-EXTENDED/usbguard/usbguard-daemon.conf
+ create mode 100755 SPECS-EXTENDED/usbguard/usbguard-revert-catch.patch
+ delete mode 100644 SPECS-EXTENDED/usbguard/usbguard.signatures.json
+ mode change 100644 => 100755 SPECS-EXTENDED/usbguard/usbguard.spec
+ delete mode 100644 SPECS-EXTENDED/usbmuxd/68bdf4be88b128c56eea5117361c4e7b51eb27b1...9af2b12552693a47601347e1eafc1e94132d727e.patch
+ delete mode 100644 SPECS-EXTENDED/usbmuxd/usbmuxd.signatures.json
+ mode change 100644 => 100755 SPECS-EXTENDED/usbmuxd/usbmuxd.spec
+ create mode 100755 SPECS-EXTENDED/usermode/config-util
+ create mode 100755 SPECS-EXTENDED/usermode/usermode.spec
+ delete mode 100644 SPECS-EXTENDED/virt-top/0001-libvirt-Handle-VIR_DOMAIN_PMSUSPENDED-state.patch
+ create mode 100755 SPECS-EXTENDED/virt-top/0001-virt-top-fix-to-explicitly-disconnect-from-libvirtd.patch
+ create mode 100755 SPECS-EXTENDED/virt-top/0002-virt-top-fix-to-parse-init-file-correctly.patch
+ create mode 100755 SPECS-EXTENDED/virt-top/0003-src-Include-libxml-parser.h.patch
+ create mode 100755 SPECS-EXTENDED/virt-top/libguestfs.keyring
+ mode change 100644 => 100755 SPECS-EXTENDED/virt-top/processcsv.py.pod
+ rename SPECS-EXTENDED/virt-top/{virt-top-1.0.4-processcsv-documentation.patch => virt-top-1.0.9-processcsv-documentation.patch} (70%)
+ mode change 100644 => 100755
+ create mode 100755 SPECS-EXTENDED/virt-top/virt-top-1.1.1-ocaml-bytecode.patch
+ create mode 100755 SPECS-EXTENDED/virt-top/virt-top-1.1.1.tar.gz.sig
+ delete mode 100644 SPECS-EXTENDED/virt-top/virt-top.signatures.json
+ mode change 100644 => 100755 SPECS-EXTENDED/virt-top/virt-top.spec
+ delete mode 100644 SPECS-EXTENDED/virt-who/virt-who.signatures.json
+ mode change 100644 => 100755 SPECS-EXTENDED/virt-who/virt-who.spec
+ create mode 100755 SPECS-EXTENDED/watchdog/0001-Choose-libtirpc-or-another-RPC-library-for-XDR-heade.patch
+ delete mode 100644 SPECS-EXTENDED/watchdog/0001-Include-linux-param.h-for-EXEC_PAGESIZE-definition.patch
+ delete mode 100644 SPECS-EXTENDED/watchdog/0002-Generalize-and-make-watchdog-refresh-settimeout-work.patch
+ create mode 100755 SPECS-EXTENDED/watchdog/0002-mem-leak-verbose.patch
+ delete mode 100644 SPECS-EXTENDED/watchdog/0003-Ignore-build-products-in-GIT.patch
+ delete mode 100644 SPECS-EXTENDED/watchdog/0004-Compile-with-musl-when-nfs-is-disabled.patch
+ delete mode 100644 SPECS-EXTENDED/watchdog/0005-Rename-READ_ENUM-to-READ_YESNO.patch
+ delete mode 100644 SPECS-EXTENDED/watchdog/0006-Make-IT87-fix-up-automatic-by-default.patch
+ delete mode 100644 SPECS-EXTENDED/watchdog/0007-Synced-Debian-files-with-5.15-2.patch
+ delete mode 100644 SPECS-EXTENDED/watchdog/0008-Fix-automated-CentOS-7-build.patch
+ delete mode 100644 SPECS-EXTENDED/watchdog/0009-Bugfix-against-watchdog-configuration-file-corruptio.patch
+ delete mode 100644 SPECS-EXTENDED/watchdog/0010-Choose-libtirpc-or-another-RPC-library-for-XDR-heade.patch
+ rename SPECS-EXTENDED/watchdog/{0004-watchdog-5.13-rhseldoc.patch => 0099-watchdog-5.16-rhseldoc.patch} (73%)
+ mode change 100644 => 100755
+ mode change 100644 => 100755 SPECS-EXTENDED/watchdog/README.Fedora
+ mode change 100644 => 100755 SPECS-EXTENDED/watchdog/README.watchdog.ipmi
+ mode change 100644 => 100755 SPECS-EXTENDED/watchdog/watchdog-ping.service
+ mode change 100644 => 100755 SPECS-EXTENDED/watchdog/watchdog.service
+ delete mode 100644 SPECS-EXTENDED/watchdog/watchdog.signatures.json
+ mode change 100644 => 100755 SPECS-EXTENDED/watchdog/watchdog.spec
+ create mode 100755 SPECS-EXTENDED/whois/md-pgp.asc
+ delete mode 100644 SPECS-EXTENDED/whois/whois.signatures.json
+ mode change 100644 => 100755 SPECS-EXTENDED/whois/whois.spec
+ create mode 100755 SPECS-EXTENDED/whois/whois_5.5.20.dsc
+ mode change 100644 => 100755 SPECS-EXTENDED/wireshark/90-wireshark-usbmon.rules
+ create mode 100755 SPECS-EXTENDED/wireshark/SIGNATURES-4.4.2.txt
+ mode change 100644 => 100755 SPECS-EXTENDED/wireshark/wireshark-0002-Customize-permission-denied-error.patch
+ mode change 100644 => 100755 SPECS-EXTENDED/wireshark/wireshark-0003-fix-string-overrun-in-plugins-profinet.patch
+ mode change 100644 => 100755 SPECS-EXTENDED/wireshark/wireshark-0004-Restore-Fedora-specific-groups.patch
+ mode change 100644 => 100755 SPECS-EXTENDED/wireshark/wireshark-0005-Fix-paths-in-a-wireshark.desktop-file.patch
+ mode change 100644 => 100755 SPECS-EXTENDED/wireshark/wireshark-0006-Move-tmp-to-var-tmp.patch
+ mode change 100644 => 100755 SPECS-EXTENDED/wireshark/wireshark-0007-cmakelists.patch
+ delete mode 100644 SPECS-EXTENDED/wireshark/wireshark-0008-glib2-g_strdup-build.patch
+ create mode 100755 SPECS-EXTENDED/wireshark/wireshark-0008-pkgconfig.patch
+ delete mode 100644 SPECS-EXTENDED/wireshark/wireshark-0009-fix-asn2wrs-cmake.patch
+ delete mode 100644 SPECS-EXTENDED/wireshark/wireshark-0010-ripemd-fips-core-dump.patch
+ delete mode 100644 SPECS-EXTENDED/wireshark/wireshark-0011-manage-interfaces-crash.patch
+ delete mode 100644 SPECS-EXTENDED/wireshark/wireshark.signatures.json
+ mode change 100644 => 100755 SPECS-EXTENDED/wireshark/wireshark.spec
+ create mode 100755 SPECS-EXTENDED/wireshark/wireshark.sysusers
+ mode change 100644 => 100755 SPECS-EXTENDED/wsmancli/AUTHORS
+ mode change 100644 => 100755 SPECS-EXTENDED/wsmancli/COPYING
+ mode change 100644 => 100755 SPECS-EXTENDED/wsmancli/README
+ mode change 100644 => 100755 SPECS-EXTENDED/wsmancli/missing-pthread-symbols.patch
+ delete mode 100644 SPECS-EXTENDED/wsmancli/wsmancli.signatures.json
+ mode change 100644 => 100755 SPECS-EXTENDED/wsmancli/wsmancli.spec
+ delete mode 100644 SPECS-EXTENDED/x3270/x3270-3.5-ibmhostpath.patch
+ mode change 100644 => 100755 SPECS-EXTENDED/x3270/x3270-3.5-paths.patch
+ mode change 100644 => 100755 SPECS-EXTENDED/x3270/x3270.desktop
+ mode change 100644 => 100755 SPECS-EXTENDED/x3270/x3270.png
+ delete mode 100644 SPECS-EXTENDED/x3270/x3270.signatures.json
+ mode change 100644 => 100755 SPECS-EXTENDED/x3270/x3270.spec
+ create mode 100755 SPECS-EXTENDED/xalan-j2/generate-tarball.sh
+ delete mode 100644 SPECS-EXTENDED/xalan-j2/openjdk-build.patch
+ delete mode 100644 SPECS-EXTENDED/xalan-j2/optional-xerces-req.patch
+ delete mode 100644 SPECS-EXTENDED/xalan-j2/serializer-2.7.2.pom
+ create mode 100755 SPECS-EXTENDED/xalan-j2/serializer-2.7.3.pom
+ delete mode 100644 SPECS-EXTENDED/xalan-j2/xalan-2.7.2.pom
+ create mode 100755 SPECS-EXTENDED/xalan-j2/xalan-2.7.3.pom
+ mode change 100644 => 100755 SPECS-EXTENDED/xalan-j2/xalan-j2-MANIFEST.MF
+ delete mode 100644 SPECS-EXTENDED/xalan-j2/xalan-j2-crosslink.patch
+ delete mode 100644 SPECS-EXTENDED/xalan-j2/xalan-j2-manifest.patch
+ mode change 100644 => 100755 SPECS-EXTENDED/xalan-j2/xalan-j2-noxsltcdeps.patch
+ mode change 100644 => 100755 SPECS-EXTENDED/xalan-j2/xalan-j2-serializer-MANIFEST.MF
+ delete mode 100644 SPECS-EXTENDED/xalan-j2/xalan-j2.signatures.json
+ mode change 100644 => 100755 SPECS-EXTENDED/xalan-j2/xalan-j2.spec
+ rename SPECS-EXTENDED/xalan-j2/{xsltc-2.7.2.pom => xsltc-2.7.3.pom} (81%)
+ mode change 100644 => 100755
+ delete mode 100644 SPECS-EXTENDED/xbean/0001-Remove-unused-import.patch
+ rename SPECS-EXTENDED/xbean/{0002-Unbundle-ASM.patch => 0001-Unbundle-ASM.patch} (100%)
+ mode change 100644 => 100755
+ rename SPECS-EXTENDED/xbean/{0003-Remove-dependency-on-log4j-and-commons-logging.patch => 0002-Remove-dependency-on-log4j-and-commons-logging.patch} (100%)
+ mode change 100644 => 100755
+ delete mode 100644 SPECS-EXTENDED/xbean/downgrading-asm-version.patch
+ delete mode 100644 SPECS-EXTENDED/xbean/jdk-11-fix.patch
+ delete mode 100644 SPECS-EXTENDED/xbean/xbean.signatures.json
+ mode change 100644 => 100755 SPECS-EXTENDED/xbean/xbean.spec
+ create mode 100755 SPECS-EXTENDED/xerces-j2/ExperimentalTaglet.java
+ create mode 100755 SPECS-EXTENDED/xerces-j2/InternalTaglet.java
+ create mode 100755 SPECS-EXTENDED/xerces-j2/XJavac.java
+ delete mode 100644 SPECS-EXTENDED/xerces-j2/ant-build-fix.patch
+ delete mode 100644 SPECS-EXTENDED/xerces-j2/xerces-2_11_0-jdk7.patch
+ mode change 100644 => 100755 SPECS-EXTENDED/xerces-j2/xerces-j2-build.patch
+ mode change 100644 => 100755 SPECS-EXTENDED/xerces-j2/xerces-j2-constants.1
+ delete mode 100644 SPECS-EXTENDED/xerces-j2/xerces-j2-constants.sh
+ mode change 100644 => 100755 SPECS-EXTENDED/xerces-j2/xerces-j2-manifest.patch
+ create mode 100755 SPECS-EXTENDED/xerces-j2/xerces-j2-pom.xml
+ mode change 100644 => 100755 SPECS-EXTENDED/xerces-j2/xerces-j2-version.1
+ delete mode 100644 SPECS-EXTENDED/xerces-j2/xerces-j2-version.sh
+ delete mode 100644 SPECS-EXTENDED/xerces-j2/xerces-j2.signatures.json
+ mode change 100644 => 100755 SPECS-EXTENDED/xerces-j2/xerces-j2.spec
+ delete mode 100644 SPECS-EXTENDED/xerces-j2/xercesImpl-2.12.0.pom
+ create mode 100755 SPECS-EXTENDED/xmlunit/0001-Disable-tests-requiring-network-access.patch
+ create mode 100755 SPECS-EXTENDED/xmlunit/0002-Use-local-schema.patch
+ create mode 100755 SPECS-EXTENDED/xmlunit/0003-Drop-support-for-JAXB.patch
+ create mode 100755 SPECS-EXTENDED/xmlunit/0004-Port-to-assertj-core-3.patch
+ create mode 100755 SPECS-EXTENDED/xmlunit/generate-tarball.sh
+ delete mode 100644 SPECS-EXTENDED/xmlunit/xmlunit-1.5.pom
+ delete mode 100644 SPECS-EXTENDED/xmlunit/xmlunit.signatures.json
+ mode change 100644 => 100755 SPECS-EXTENDED/xmlunit/xmlunit.spec
+ delete mode 100644 SPECS-EXTENDED/zenity/zenity.signatures.json
+ mode change 100644 => 100755 SPECS-EXTENDED/zenity/zenity.spec
+ [2025-03-18 06:20.41] /third_disk/bb17Mar/azurelinux [neerajs.azuli-m1]$

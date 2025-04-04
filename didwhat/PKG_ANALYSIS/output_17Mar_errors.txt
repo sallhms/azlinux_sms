@@ -1,0 +1,2 @@
+Post "https://api.github.com/graphql": dial tcp 20.207.73.85:443: i/o timeout
+Post "https://api.github.com/graphql": dial tcp 20.207.73.85:443: i/o timeout

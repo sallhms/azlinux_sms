@@ -1,0 +1,543 @@
+AZLINUX_ROOT=/third_disk/bb17Mar/azurelinux/
+DNLDS_ROOT=/fifth_disk/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/
+DATA_PATH_FOR_LISTS=/third_disk/bb17Mar/azurelinux/didwhat/BULK_BLD_THINGS
+
+STARTING REMOVAL of folders FROM:
+/third_disk/bb17Mar/azurelinux//SPECS-EXTENDED
+OpenEXR
+alsa-plugins
+/third_disk/bb17Mar/azurelinux//SPECS-EXTENDED/annobin not found
+apache-commons-codec
+apache-commons-collections4
+apache-commons-compress
+apache-commons-io
+apache-commons-jexl
+apache-commons-net
+apache-commons-vfs2
+bcel
+booth
+breezy
+buildah
+cdrdao
+cglib
+cjkuni-uming-fonts
+containernetworking-plugins
+cppcheck
+criu
+crypto-policies
+dbxtool
+device-mapper-persistent-data
+/third_disk/bb17Mar/azurelinux//SPECS-EXTENDED/distribution-gpg-keys not found
+dleyna-connector-dbus
+dmraid
+dyninst
+ecj
+efax
+/third_disk/bb17Mar/azurelinux//SPECS-EXTENDED/egl-wayland not found
+/third_disk/bb17Mar/azurelinux//SPECS-EXTENDED/eglexternalplatform not found
+elinks
+fence-virt
+/third_disk/bb17Mar/azurelinux//SPECS-EXTENDED/freeglut not found
+gcr
+gdal
+gnome-keyring
+google-noto-cjk-fonts
+google-noto-emoji-fonts
+gpsbabel
+hawtjni-runtime
+httpcomponents-core
+hunspell-ca
+hunspell-de
+hunspell-es
+hunspell-ru
+ibus-chewing
+ibus-hangul
+ibus-libzhuyin
+ibus-m17n
+ibus-table
+ibus-table-chinese
+iio-sensor-proxy
+imaptest
+/third_disk/bb17Mar/azurelinux//SPECS-EXTENDED/iniparser not found
+jansi
+javacc
+jdepend
+jimtcl
+jline
+jose
+jsoup
+/third_disk/bb17Mar/azurelinux//SPECS-EXTENDED/libXres not found
+/third_disk/bb17Mar/azurelinux//SPECS-EXTENDED/libXv not found
+libappstream-glib
+libchewing
+libetonyek
+libgeotiff
+libgit2-glib
+/third_disk/bb17Mar/azurelinux//SPECS-EXTENDED/libidn2 not found
+libimobiledevice
+libldb
+/third_disk/bb17Mar/azurelinux//SPECS-EXTENDED/libmicrohttpd not found
+libmpcdec
+libpaper
+libpeas
+libstemmer
+/third_disk/bb17Mar/azurelinux//SPECS-EXTENDED/libuser not found
+/third_disk/bb17Mar/azurelinux//SPECS-EXTENDED/libva not found
+libvisual
+lpsolve
+lua-lunit
+mailx
+man-pages-cs
+man-pages-es
+man-pages-it
+man-pages-ko
+man-pages-pl
+man-pages-zh-CN
+marisa
+microdnf
+mksh
+/third_disk/bb17Mar/azurelinux//SPECS-EXTENDED/mock not found
+/third_disk/bb17Mar/azurelinux//SPECS-EXTENDED/mock-core-configs not found
+mod_auth_gssapi
+mod_auth_mellon
+mod_wsgi
+mrtg
+/third_disk/bb17Mar/azurelinux//SPECS-EXTENDED/mtr not found
+netcdf
+netpbm
+nodejs-nodemon
+nodejs-packaging
+/third_disk/bb17Mar/azurelinux//SPECS-EXTENDED/nss-mdns not found
+objenesis
+ocaml-camlp5
+/third_disk/bb17Mar/azurelinux//SPECS-EXTENDED/ocaml-parsexp not found
+/third_disk/bb17Mar/azurelinux//SPECS-EXTENDED/ocaml-sexplib not found
+opencc
+openjpeg2
+openwsman
+/third_disk/bb17Mar/azurelinux//SPECS-EXTENDED/opus not found
+osgi-annotation
+osgi-core
+pacemaker
+papi
+/third_disk/bb17Mar/azurelinux//SPECS-EXTENDED/perl-Algorithm-C3 not found
+perl-Alien-Build
+/third_disk/bb17Mar/azurelinux//SPECS-EXTENDED/perl-B-Hooks-OP-Check not found
+/third_disk/bb17Mar/azurelinux//SPECS-EXTENDED/perl-Class-ISA not found
+/third_disk/bb17Mar/azurelinux//SPECS-EXTENDED/perl-Class-XSAccessor not found
+/third_disk/bb17Mar/azurelinux//SPECS-EXTENDED/perl-Clone not found
+perl-Cpanel-JSON-XS
+perl-Crypt-CBC
+perl-DBD-MySQL
+perl-Data-Munge
+/third_disk/bb17Mar/azurelinux//SPECS-EXTENDED/perl-Data-OptList not found
+perl-DateTime
+perl-DateTime-Format-Builder
+perl-DateTime-Format-ISO8601
+perl-DateTime-Format-Strptime
+perl-DateTime-Locale
+perl-DateTime-TimeZone
+/third_disk/bb17Mar/azurelinux//SPECS-EXTENDED/perl-Devel-Caller not found
+/third_disk/bb17Mar/azurelinux//SPECS-EXTENDED/perl-Devel-Cycle not found
+/third_disk/bb17Mar/azurelinux//SPECS-EXTENDED/perl-Devel-GlobalDestruction not found
+/third_disk/bb17Mar/azurelinux//SPECS-EXTENDED/perl-Devel-GlobalDestruction-XS not found
+/third_disk/bb17Mar/azurelinux//SPECS-EXTENDED/perl-Devel-Hide not found
+/third_disk/bb17Mar/azurelinux//SPECS-EXTENDED/perl-Devel-LexAlias not found
+/third_disk/bb17Mar/azurelinux//SPECS-EXTENDED/perl-ExtUtils-Depends not found
+perl-FCGI
+perl-FFI-CheckLib
+perl-File-Find-Object-Rule
+perl-File-MimeInfo
+perl-GD-Barcode
+perl-IO-Socket-INET6
+/third_disk/bb17Mar/azurelinux//SPECS-EXTENDED/perl-Import-Into not found
+perl-JSON-Color
+perl-JSON-MaybeXS
+perl-LDAP
+perl-Locale-Maketext-Gettext
+perl-MIME-Lite
+perl-MIME-Types
+perl-Mail-DKIM
+perl-Mail-SPF
+/third_disk/bb17Mar/azurelinux//SPECS-EXTENDED/perl-Module-Implementation not found
+/third_disk/bb17Mar/azurelinux//SPECS-EXTENDED/perl-Module-Runtime not found
+perl-Net-DNS
+perl-Net-DNS-Resolver-Mock
+/third_disk/bb17Mar/azurelinux//SPECS-EXTENDED/perl-Package-Generator not found
+perl-Package-Stash
+/third_disk/bb17Mar/azurelinux//SPECS-EXTENDED/perl-PadWalker not found
+/third_disk/bb17Mar/azurelinux//SPECS-EXTENDED/perl-Params-Util not found
+perl-Params-Validate
+perl-Params-ValidationCompiler
+perl-Perl-Critic
+/third_disk/bb17Mar/azurelinux//SPECS-EXTENDED/perl-Perl-Destruct-Level not found
+perl-Perl-MinimumVersion
+perl-Perl4-CoreLibs
+perl-SGMLSpm
+/third_disk/bb17Mar/azurelinux//SPECS-EXTENDED/perl-SUPER not found
+perl-Specio
+/third_disk/bb17Mar/azurelinux//SPECS-EXTENDED/perl-Sub-Exporter not found
+/third_disk/bb17Mar/azurelinux//SPECS-EXTENDED/perl-Sub-Exporter-Progressive not found
+/third_disk/bb17Mar/azurelinux//SPECS-EXTENDED/perl-Sub-Identify not found
+/third_disk/bb17Mar/azurelinux//SPECS-EXTENDED/perl-Sub-Install not found
+/third_disk/bb17Mar/azurelinux//SPECS-EXTENDED/perl-Sub-Quote not found
+perl-Term-Table
+/third_disk/bb17Mar/azurelinux//SPECS-EXTENDED/perl-Test-Memory-Cycle not found
+perl-Test-MinimumVersion
+/third_disk/bb17Mar/azurelinux//SPECS-EXTENDED/perl-Test-Output not found
+/third_disk/bb17Mar/azurelinux//SPECS-EXTENDED/perl-Test-Requires not found
+perl-Test-Script
+/third_disk/bb17Mar/azurelinux//SPECS-EXTENDED/perl-Test-Taint not found
+perl-Test-TrailingSpace
+/third_disk/bb17Mar/azurelinux//SPECS-EXTENDED/perl-Test-Without-Module not found
+perl-Test2-Plugin-NoWarnings
+perl-Test2-Suite
+perl-XML-LibXSLT
+perl-YAML-PP
+/third_disk/bb17Mar/azurelinux//SPECS-EXTENDED/perl-bareword-filehandles not found
+/third_disk/bb17Mar/azurelinux//SPECS-EXTENDED/perl-indirect not found
+/third_disk/bb17Mar/azurelinux//SPECS-EXTENDED/perl-multidimensional not found
+/third_disk/bb17Mar/azurelinux//SPECS-EXTENDED/perl-strictures not found
+/third_disk/bb17Mar/azurelinux//SPECS-EXTENDED/pesign not found
+pipewire
+po4a
+podman
+/third_disk/bb17Mar/azurelinux//SPECS-EXTENDED/poetry not found
+proj
+psl-make-dafsa
+psutils
+pulseaudio
+/third_disk/bb17Mar/azurelinux//SPECS-EXTENDED/pybind11 not found
+/third_disk/bb17Mar/azurelinux//SPECS-EXTENDED/pyflakes not found
+pylint
+python-aiohttp
+python-argcomplete
+python-beautifulsoup4
+python-curio
+python-dbusmock
+python-ddt
+python-debtcollector
+python-dmidecode
+/third_disk/bb17Mar/azurelinux//SPECS-EXTENDED/python-evdev not found
+python-faker
+python-fasteners
+python-flake8
+python-flask
+python-genshi
+python-httplib2
+python-hwdata
+python-iso8601
+python-isodate
+python-itsdangerous
+python-jwcrypto
+python-lit
+python-mccabe
+python-mimeparse
+python-msal
+/third_disk/bb17Mar/azurelinux//SPECS-EXTENDED/python-openpyxl not found
+python-paramiko
+python-productmd
+python-pyperclip
+/third_disk/bb17Mar/azurelinux//SPECS-EXTENDED/python-pyroute2 not found
+python-pyrsistent
+python-pytest-timeout
+python-requests-mock
+python-requests_ntlm
+/third_disk/bb17Mar/azurelinux//SPECS-EXTENDED/python-rpm-generators not found
+python-s3transfer
+/third_disk/bb17Mar/azurelinux//SPECS-EXTENDED/python-templated-dictionary not found
+python-testresources
+python-toml
+python-trio
+python-webtest
+python-winrm
+python-zmq
+pyusb
+qt5-qtconnectivity
+qt5-qtsensors
+qt5-qtserialport
+rarian
+/third_disk/bb17Mar/azurelinux//SPECS-EXTENDED/rasdaemon not found
+rear
+resource-agents
+rhino
+ripgrep
+rpmlint
+rubygem-mysql2
+rubygem-rspec-expectations
+rubygem-rspec-mocks
+rust-cbindgen
+samba
+scotch
+shapelib
+/third_disk/bb17Mar/azurelinux//SPECS-EXTENDED/spirv-headers not found
+/third_disk/bb17Mar/azurelinux//SPECS-EXTENDED/spirv-tools not found
+stunnel
+subscription-manager
+suitesparse
+switcheroo-control
+/third_disk/bb17Mar/azurelinux//SPECS-EXTENDED/sysfsutils not found
+tang
+tk
+trilead-ssh2
+udisks2
+upower
+usb_modeswitch
+usbguard
+usbmuxd
+/third_disk/bb17Mar/azurelinux//SPECS-EXTENDED/usermode not found
+virt-top
+virt-who
+watchdog
+whois
+wireshark
+wsmancli
+x3270
+xalan-j2
+xbean
+/third_disk/bb17Mar/azurelinux//SPECS-EXTENDED/xcb-util not found
+/third_disk/bb17Mar/azurelinux//SPECS-EXTENDED/xcb-util-image not found
+/third_disk/bb17Mar/azurelinux//SPECS-EXTENDED/xcb-util-keysyms not found
+/third_disk/bb17Mar/azurelinux//SPECS-EXTENDED/xcb-util-renderutil not found
+xerces-j2
+xmlunit
+zenity
+
+STARTING COPY of folders FROM:
+/fifth_disk/downloaded_pkgs/import_specs_modify_cgmjson/output/fedora/specs/
+TO:
+/third_disk/bb17Mar/azurelinux//SPECS-EXTENDED
+openexr
+alsa-plugins
+apache-commons-codec
+apache-commons-collections4
+apache-commons-compress
+apache-commons-io
+apache-commons-jexl
+apache-commons-net
+apache-commons-vfs
+bcel
+booth
+breezy
+buildah
+cdrdao
+cglib
+cjkuni-uming-fonts
+containernetworking-plugins
+cppcheck
+criu
+crypto-policies
+fwupd
+device-mapper-persistent-data
+distribution-gpg-keys
+dleyna
+dmraid
+dyninst
+ecj
+efax
+elinks
+fence-agents
+gcr
+gdal
+gnome-keyring
+google-noto-sans-cjk-vf-fonts
+google-noto-emoji-fonts
+gpsbabel
+hawtjni
+httpcomponents-core
+hunspell-ca
+hunspell-de
+hunspell-es
+hunspell-ru
+ibus-chewing
+ibus-hangul
+ibus-libzhuyin
+ibus-m17n
+ibus-table
+ibus-table-chinese
+iio-sensor-proxy
+imaptest
+jansi
+javacc
+jdepend
+jimtcl
+jline
+jose
+jsoup
+libappstream-glib
+libchewing
+libetonyek
+libgeotiff
+libgit2-glib
+libimobiledevice
+libldb
+libmpcdec
+libpaper
+libpeas
+snowball
+libuser
+libvisual
+lpsolve
+lua-lunitx
+s-nail
+man-pages-l10n
+man-pages-l10n
+man-pages-l10n
+man-pages-l10n
+man-pages-l10n
+man-pages-zh-CN
+marisa
+microdnf
+mksh
+mock
+mock-core-configs
+mod_auth_gssapi
+mod_auth_mellon
+mod_wsgi
+mrtg
+netcdf
+netpbm
+nodejs-nodemon
+nodejs-packaging
+objenesis
+ocaml-camlp5
+opencc
+openjpeg
+openwsman
+opus
+osgi-annotation
+osgi-core
+pacemaker
+papi
+perl-Alien-Build
+perl-Cpanel-JSON-XS
+perl-Crypt-CBC
+perl-DBD-MySQL
+perl-Data-Munge
+perl-DateTime
+perl-DateTime-Format-Builder
+perl-DateTime-Format-ISO8601
+perl-DateTime-Format-Strptime
+perl-DateTime-Locale
+perl-DateTime-TimeZone
+perl-FCGI
+perl-FFI-CheckLib
+perl-File-Find-Object-Rule
+perl-File-MimeInfo
+perl-GD-Barcode
+perl-IO-Socket-INET6
+perl-JSON-Color
+perl-JSON-MaybeXS
+perl-LDAP
+perl-Locale-Maketext-Gettext
+perl-MIME-Lite
+perl-MIME-Types
+perl-Mail-DKIM
+perl-Mail-SPF
+perl-Net-DNS
+perl-Net-DNS-Resolver-Mock
+perl-Package-Stash
+perl-Params-Validate
+perl-Params-ValidationCompiler
+perl-Perl-Critic
+perl-Perl-MinimumVersion
+perl-Perl4-CoreLibs
+perl-SGMLSpm
+perl-Specio
+perl-Term-Table
+perl-Test-MinimumVersion
+perl-Test-Script
+perl-Test-TrailingSpace
+perl-Test2-Plugin-NoWarnings
+perl-Test-Simple
+perl-XML-LibXSLT
+perl-YAML-PP
+pipewire
+po4a
+podman
+proj
+libpsl
+psutils
+pulseaudio
+pylint
+python-aiohttp
+python-argcomplete
+python-beautifulsoup4
+python-curio
+python-dbusmock
+python-ddt
+python-debtcollector
+python-dmidecode
+python-faker
+python-fasteners
+python-flake8
+python-flask
+python-genshi
+python-httplib2
+python-hwdata
+python-iso8601
+python-isodate
+python-itsdangerous
+python-jwcrypto
+llvm
+python-mccabe
+python-mimeparse
+python-msal
+python-paramiko
+python-productmd
+python-pyperclip
+python-pyroute2
+python-pyrsistent
+python-pytest-timeout
+python-requests-mock
+python-requests_ntlm
+python-s3transfer
+python-templated-dictionary
+python-testresources
+python-toml
+python-trio
+python-webtest
+python-winrm
+python-zmq
+pyusb
+qt5-qtconnectivity
+qt5-qtsensors
+qt5-qtserialport
+rarian
+rear
+resource-agents
+rhino
+rust-ripgrep
+rpmlint
+rubygem-mysql2
+rubygem-rspec-expectations
+rubygem-rspec-mocks
+rust-cbindgen
+samba
+scotch
+shapelib
+stunnel
+subscription-manager
+suitesparse
+switcheroo-control
+tang
+tk
+trilead-ssh2
+udisks2
+upower
+usb_modeswitch
+usbguard
+usbmuxd
+usermode
+virt-top
+virt-who
+watchdog
+whois
+wireshark
+wsmancli
+x3270
+xalan-j2
+xbean
+xerces-j2
+xmlunit
+zenity

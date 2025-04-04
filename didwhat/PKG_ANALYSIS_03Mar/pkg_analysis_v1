@@ -1,0 +1,58 @@
+
+MSTR_LIST="/home/neerajs/Downloads/docker_folder/impspc/mlist_extpkg"
+MSREPO_2MAIN_WORKDIR="/home/neerajs/work/REPOS/Microsoft_AZL/azurelinux"
+MSREPO_3DEV_WORKDIR="/home/neerajs/work/REPOS/Microsoft_AZL/azurelinux"
+BUILD_ARTFCT_STATUS_FL="/home/neerajs/Downloads/daily_builds/06Nov2024/build_state.csv"
+
+
+HeaderLine="Package Name, Exists in Main core, Exists in main extended, Exists in 3.0-dev core, Exists in 3.0-dev extended"
+echo $HeaderLine
+for pkg in `cat $MSTR_LIST | head -5`
+do
+
+#check and make note of existence of the package in 2.0 main core and extended
+	if [ -d $MSREPO_2MAIN_WORKDIR/SPECS/SPECS/$pkg ]
+	then
+		exists_in_2main_core=1
+	else
+		exists_in_2main_core=0
+	fi
+	if [ -d $MSREPO_2MAIN_WORKDIR/SPECS-EXTENDED/$pkg ]
+	then
+		exists_in_2main_ext=1
+	else
+		exists_in_2main_ext=0
+	fi
+
+#check and make note of existence of the package in 3.0-dev core and extended
+	if [ -d $MSREPO_3DEV_WORKDIR/SPECS/SPECS/$pkg ]
+	then
+		exists_in_3dev_core=1
+	else
+		exists_in_3dev_core=0
+	fi
+	if [ -d $MSREPO_3DEV_WORKDIR/SPECS-EXTENDED/$pkg ]
+	then
+		exists_in_3dev_ext=1
+	else
+		exists_in_3dev_ext=0
+	fi
+
+PKG_DETAILS_LINE="$pkg,exists_in_2main_core,exists_in_2main_ext,exists_in_3dev_core,exists_in_3dev_ext"
+
+for line in `cat $BUILD_ARTFCT_STATUS_FL`
+do
+	SRPM_FL=$(echo $line | awk '{print $1}')
+	SRPRM_STATUS=$(echo $line | awk '{print $2}')
+
+	PKG_NM_PART=
+done
+#PKG_BLD_STATE=$(awk 'BEGIN {FS=","} {if (NR != 1) {print $2}}' $BUILD_ARTFCT_STATUS_FL)
+#PKG_DETAILS_LINE="$PKG_DETAILS_LINE,$PKG_BLD_STATE"
+
+echo $PKG_DETAILS_LINE
+done
+
+
+
+

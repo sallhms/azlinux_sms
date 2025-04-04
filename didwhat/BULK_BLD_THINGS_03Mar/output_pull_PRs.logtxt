@@ -1,0 +1,1021 @@
+AZLINUX_ROOT=/third_disk/bb04Mar/azurelinux/
+DATA_PATH_FOR_LISTS=/third_disk/bb04Mar/azurelinux/didwhat/BULK_BLD_THINGS_03Mar
+STARTING PULL OF PRs (PR branches)
+==================================
+/third_disk/bb04Mar/azurelinux /third_disk/bb04Mar/azurelinux/didwhat/BULK_BLD_THINGS_03Mar
+Pulling from ORIGIN=https://github.com/jykanase/azurelinux.git BRANCH=topic_PyGreSQL
+Auto-merging cgmanifest.json
+Pull Success
+Pulling from ORIGIN=https://github.com/durgajagadeesh/azurelinux_djpalli.git BRANCH=Topic_ansible-freeipa
+Auto-merging cgmanifest.json
+Pull Success
+Pulling from ORIGIN=https://github.com/durgajagadeesh/azurelinux_djpalli.git BRANCH=Topic_apache-commons-daemon
+Pull Success
+Pulling from ORIGIN=https://github.com/kevin-b-lockwood/azurelinux.git BRANCH=kevin-b-lockwood/bats-1.11.0-1
+Auto-merging cgmanifest.json
+Pull Success
+Pulling from ORIGIN=https://github.com/AkarshHCL/azurelinux.git BRANCH=topic_boom-boot
+Auto-merging cgmanifest.json
+CONFLICT (content): Merge conflict in cgmanifest.json
+Automatic merge failed; fix conflicts and then commit the result.
+Pull Failed, will do git merge --abort for this branch
+Pulling from ORIGIN=https://github.com/AkarshHCL/azurelinux.git BRANCH=topic2_botan2
+Auto-merging cgmanifest.json
+Pull Success
+Pulling from ORIGIN=https://github.com/AkarshHCL/azurelinux.git BRANCH=topic_bwidget
+Auto-merging cgmanifest.json
+Pull Success
+Pulling from ORIGIN=https://github.com/AkarshHCL/azurelinux.git BRANCH=topic_cairomm
+Auto-merging cgmanifest.json
+Pull Success
+Pulling from ORIGIN=https://github.com/AkarshHCL/azurelinux.git BRANCH=topic_capstone
+Auto-merging cgmanifest.json
+Pull Success
+Pulling from ORIGIN=https://github.com/AkarshHCL/azurelinux.git BRANCH=topic_certmonger
+Auto-merging SPECS-EXTENDED/certmonger/certmonger.signatures.json
+Auto-merging SPECS-EXTENDED/certmonger/certmonger.spec
+CONFLICT (content): Merge conflict in SPECS-EXTENDED/certmonger/certmonger.spec
+Auto-merging cgmanifest.json
+CONFLICT (content): Merge conflict in cgmanifest.json
+Automatic merge failed; fix conflicts and then commit the result.
+Pull Failed, will do git merge --abort for this branch
+Pulling from ORIGIN=https://github.com/AkarshHCL/azurelinux.git BRANCH=topic_cfitsio
+Auto-merging cgmanifest.json
+Pull Success
+Pulling from ORIGIN=https://github.com/AkarshHCL/azurelinux.git BRANCH=topic_cim-schema
+Auto-merging cgmanifest.json
+Pull Success
+Pulling from ORIGIN=https://github.com/AkarshHCL/azurelinux.git BRANCH=topic_cjose
+Auto-merging cgmanifest.json
+Pull Success
+Pulling from ORIGIN=https://github.com/AkarshHCL/azurelinux.git BRANCH=topic_cldr-emoji-annotation
+Auto-merging cgmanifest.json
+Pull Success
+Pulling from ORIGIN=https://github.com/AkarshHCL/azurelinux.git BRANCH=topic_console-setup
+Auto-merging cgmanifest.json
+Pull Success
+Pulling from ORIGIN=https://github.com/akhila-guruju/azurelinux-test.git BRANCH=topic_corosync
+Auto-merging cgmanifest.json
+Pull Success
+Pulling from ORIGIN=https://github.com/AkarshHCL/azurelinux.git BRANCH=topic_cpuid
+Auto-merging cgmanifest.json
+Pull Success
+Pulling from ORIGIN=https://github.com/SumitJenaHCL/azurelinux.git BRANCH=topic_dovecot
+Auto-merging cgmanifest.json
+Pull Success
+Pulling from ORIGIN=https://github.com/SumitJenaHCL/azurelinux.git BRANCH=topic_dpkg
+Auto-merging LICENSES-AND-NOTICES/SPECS/LICENSES-MAP.md
+CONFLICT (content): Merge conflict in LICENSES-AND-NOTICES/SPECS/LICENSES-MAP.md
+Auto-merging LICENSES-AND-NOTICES/SPECS/data/licenses.json
+Auto-merging cgmanifest.json
+Automatic merge failed; fix conflicts and then commit the result.
+Pull Failed, will do git merge --abort for this branch
+Pulling from ORIGIN=https://github.com/SumitJenaHCL/azurelinux.git BRANCH=topic_driverctl
+Auto-merging cgmanifest.json
+Pull Success
+Pulling from ORIGIN=https://github.com/jykanase/azurelinux.git BRANCH=topic_facter
+Auto-merging cgmanifest.json
+Pull Success
+Pulling from ORIGIN=https://github.com/jykanase/azurelinux.git BRANCH=topic_flite
+Auto-merging cgmanifest.json
+Pull Success
+Pulling from ORIGIN=https://github.com/jykanase/azurelinux.git BRANCH=topic_foomatic-db
+Auto-merging cgmanifest.json
+Pull Success
+Pulling from ORIGIN=https://github.com/jykanase/azurelinux.git BRANCH=topic_freeradius
+Auto-merging cgmanifest.json
+Pull Success
+Pulling from ORIGIN=https://github.com/jykanase/azurelinux.git BRANCH=topic_freexl
+Auto-merging cgmanifest.json
+Pull Success
+Pulling from ORIGIN=https://github.com/durgajagadeesh/azurelinux_djpalli.git BRANCH=Topic_apache-commons-lang
+Pull Success
+Pulling from ORIGIN=https://github.com/durgajagadeesh/azurelinux_djpalli.git BRANCH=Topic_glassfish-annotation-api
+Pull Success
+Pulling from ORIGIN=https://github.com/kevin-b-lockwood/azurelinux.git BRANCH=kevin-b-lockwood/gphoto2-2.5.28-1
+Auto-merging cgmanifest.json
+Pull Success
+Pulling from ORIGIN=https://github.com/kevin-b-lockwood/azurelinux.git BRANCH=kevin-b-lockwood/gsl-2.8-1
+Auto-merging cgmanifest.json
+Pull Success
+Pulling from ORIGIN=https://github.com/kevin-b-lockwood/azurelinux.git BRANCH=kevin-b-lockwood/gspell-1.14.0-1
+Auto-merging cgmanifest.json
+Pull Success
+Pulling from ORIGIN=https://github.com/kevin-b-lockwood/azurelinux.git BRANCH=kevin-b-lockwood/gstreamer1-1.24.8-1
+Auto-merging cgmanifest.json
+Pull Success
+Pulling from ORIGIN=https://github.com/kevin-b-lockwood/azurelinux.git BRANCH=kevin-b-lockwood/gstreamer1-plugins-base-1.24.8-1
+Auto-merging SPECS-EXTENDED/gstreamer1-plugins-base/gstreamer1-plugins-base.spec
+CONFLICT (content): Merge conflict in SPECS-EXTENDED/gstreamer1-plugins-base/gstreamer1-plugins-base.spec
+Auto-merging cgmanifest.json
+Automatic merge failed; fix conflicts and then commit the result.
+Pull Failed, will do git merge --abort for this branch
+Pulling from ORIGIN=https://github.com/kevin-b-lockwood/azurelinux.git BRANCH=kevin-b-lockwood/gtk-vnc-1.3.1-1
+Auto-merging cgmanifest.json
+Pull Success
+Pulling from ORIGIN=https://github.com/kevin-b-lockwood/azurelinux.git BRANCH=kevin-b-lockwood/gupnp-1.6.7-1
+Auto-merging cgmanifest.json
+Pull Success
+Pulling from ORIGIN=https://github.com/kevin-b-lockwood/azurelinux.git BRANCH=kevin-b-lockwood/gupnp-av-0.14.1-1
+Auto-merging cgmanifest.json
+Pull Success
+Pulling from ORIGIN=https://github.com/kevin-b-lockwood/azurelinux.git BRANCH=kevin-b-lockwood/gupnp-igd-1.6.0-1
+Auto-merging cgmanifest.json
+Pull Success
+Pulling from ORIGIN=https://github.com/kevin-b-lockwood/azurelinux.git BRANCH=kevin-b-lockwood/highlight-4.15-1
+Auto-merging cgmanifest.json
+Pull Success
+Pulling from ORIGIN=https://github.com/AkarshHCL/azurelinux.git BRANCH=topic_hunspell-az
+Auto-merging cgmanifest.json
+Pull Success
+Pulling from ORIGIN=https://github.com/AkarshHCL/azurelinux.git BRANCH=topic_hunspell-csb
+Auto-merging cgmanifest.json
+Pull Success
+Pulling from ORIGIN=https://github.com/AkarshHCL/azurelinux.git BRANCH=topic_hunspell-eu
+Auto-merging cgmanifest.json
+Pull Success
+Pulling from ORIGIN=https://github.com/AkarshHCL/azurelinux.git BRANCH=topic_hunspell-ga
+Auto-merging cgmanifest.json
+Pull Success
+Pulling from ORIGIN=https://github.com/AkarshHCL/azurelinux.git BRANCH=topic_hunspell-it
+Auto-merging cgmanifest.json
+Pull Success
+Pulling from ORIGIN=https://github.com/AkarshHCL/azurelinux.git BRANCH=topic_hunspell-mr
+Auto-merging cgmanifest.json
+Pull Success
+Pulling from ORIGIN=https://github.com/AkarshHCL/azurelinux.git BRANCH=topic_huspell-pl
+Auto-merging cgmanifest.json
+Pull Success
+Pulling from ORIGIN=https://github.com/AkarshHCL/azurelinux.git BRANCH=topic_hunspell-pt
+Auto-merging cgmanifest.json
+Pull Success
+Pulling from ORIGIN=https://github.com/AkarshHCL/azurelinux.git BRANCH=topic_hunspell-ro
+Auto-merging cgmanifest.json
+Pull Success
+Pulling from ORIGIN=https://github.com/v-smalavathu/azurelinux1.git BRANCH=topic_hyphen-ca
+Auto-merging cgmanifest.json
+Pull Success
+Pulling from ORIGIN=https://github.com/v-smalavathu/azurelinux1.git BRANCH=topic_hyphen-it
+Auto-merging cgmanifest.json
+Pull Success
+Pulling from ORIGIN=https://github.com/v-smalavathu/azurelinux1.git BRANCH=topic_hyphen-pt
+Auto-merging cgmanifest.json
+Pull Success
+Pulling from ORIGIN=https://github.com/v-smalavathu/azurelinux1.git BRANCH=topic_hyphen-ru
+Auto-merging cgmanifest.json
+Pull Success
+Pulling from ORIGIN=https://github.com/v-smalavathu/azurelinux1.git BRANCH=topic_hyphen-tk
+Auto-merging cgmanifest.json
+Pull Success
+Pulling from ORIGIN=https://github.com/SumitJenaHCL/azurelinux.git BRANCH=topic_irssi
+Auto-merging cgmanifest.json
+Pull Success
+Pulling from ORIGIN=https://github.com/AkarshHCL/azurelinux.git BRANCH=topic_iso-codes
+Auto-merging cgmanifest.json
+Pull Success
+Pulling from ORIGIN=https://github.com/AkarshHCL/azurelinux.git BRANCH=topic_isomd5sum
+Auto-merging cgmanifest.json
+Pull Success
+Pulling from ORIGIN=https://github.com/SumitJenaHCL/azurelinux.git BRANCH=topic_iwd
+Auto-merging cgmanifest.json
+Pull Success
+Pulling from ORIGIN=https://github.com/jykanase/azurelinux.git BRANCH=topic_jbigkit
+Pull Success
+Pulling from ORIGIN=https://github.com/AkarshHCL/azurelinux.git BRANCH=topic_jdom2
+Auto-merging cgmanifest.json
+Pull Success
+Pulling from ORIGIN=https://github.com/SumitJenaHCL/azurelinux.git BRANCH=topic_jlex
+Auto-merging cgmanifest.json
+Pull Success
+Pulling from ORIGIN=https://github.com/AkarshHCL/azurelinux.git BRANCH=topic_js-jquery
+Auto-merging cgmanifest.json
+Pull Success
+Pulling from ORIGIN=https://github.com/AkarshHCL/azurelinux.git BRANCH=topic_jsoncpp
+Auto-merging cgmanifest.json
+Pull Success
+Pulling from ORIGIN=https://github.com/AkarshHCL/azurelinux.git BRANCH=topic_juniterperf
+Pull Success
+Pulling from ORIGIN=https://github.com/aninda-al/azurelinux-test.git BRANCH=upgrade-kde-filesystem
+Pull Success
+Pulling from ORIGIN=https://github.com/aninda-al/azurelinux-test.git BRANCH=upgrade-keycloak-httpd-client-install
+Auto-merging cgmanifest.json
+Pull Success
+Pulling from ORIGIN=https://github.com/aninda-al/azurelinux-test.git BRANCH=upgrade-kyotocabinet
+Auto-merging cgmanifest.json
+Pull Success
+Pulling from ORIGIN=https://github.com/aninda-al/azurelinux-test.git BRANCH=upgrade-ladspa
+Auto-merging cgmanifest.json
+Pull Success
+Pulling from ORIGIN=https://github.com/aninda-al/azurelinux-test.git BRANCH=upgrade-langtable
+Auto-merging cgmanifest.json
+Pull Success
+Pulling from ORIGIN=https://github.com/aninda-al/azurelinux-test.git BRANCH=upgrade-lasso
+Auto-merging cgmanifest.json
+Pull Success
+Pulling from ORIGIN=https://github.com/aninda-al/azurelinux-test.git BRANCH=upgrade-lcov
+Auto-merging cgmanifest.json
+Pull Success
+Pulling from ORIGIN=https://github.com/aninda-al/azurelinux-test.git BRANCH=upgrade-ledmon
+Auto-merging cgmanifest.json
+Pull Success
+Pulling from ORIGIN=https://github.com/aninda-al/azurelinux-test.git BRANCH=upgrade-lensfun
+Auto-merging cgmanifest.json
+Pull Success
+Pulling from ORIGIN=https://github.com/aninda-al/azurelinux-test.git BRANCH=upgrade-libXScrnSaver
+Auto-merging cgmanifest.json
+Pull Success
+Pulling from ORIGIN=https://github.com/jykanase/azurelinux.git BRANCH=topic_libblockdev
+Auto-merging cgmanifest.json
+Pull Success
+Pulling from ORIGIN=https://github.com/jykanase/azurelinux.git BRANCH=topic_libcdio
+Auto-merging cgmanifest.json
+Pull Success
+Pulling from ORIGIN=https://github.com/jykanase/azurelinux.git BRANCH=topic_libcdio-paranoia
+Auto-merging cgmanifest.json
+Pull Success
+Pulling from ORIGIN=https://github.com/jykanase/azurelinux.git BRANCH=topic_libcdr
+Auto-merging cgmanifest.json
+Pull Success
+Pulling from ORIGIN=https://github.com/jykanase/azurelinux.git BRANCH=topic_libdazzle
+Auto-merging cgmanifest.json
+Pull Success
+Pulling from ORIGIN=https://github.com/jykanase/azurelinux.git BRANCH=topic_libdc1394
+Auto-merging cgmanifest.json
+Pull Success
+Pulling from ORIGIN=https://github.com/jykanase/azurelinux.git BRANCH=topic_libdvdnav
+Auto-merging cgmanifest.json
+Pull Success
+Pulling from ORIGIN=https://github.com/jykanase/azurelinux.git BRANCH=topic_libeasyfc
+Auto-merging cgmanifest.json
+Pull Success
+Pulling from ORIGIN=https://github.com/durgajagadeesh/azurelinux_djpalli.git BRANCH=Topic_Libgexiv2
+Auto-merging cgmanifest.json
+Pull Success
+Pulling from ORIGIN=https://github.com/durgajagadeesh/azurelinux_djpalli.git BRANCH=Topic_libgsf
+Auto-merging cgmanifest.json
+Pull Success
+Pulling from ORIGIN=https://github.com/durgajagadeesh/azurelinux_djpalli.git BRANCH=Topic_libgxps
+Auto-merging cgmanifest.json
+Pull Success
+Pulling from ORIGIN=https://github.com/kevin-b-lockwood/azurelinux.git BRANCH=libiodbc-3.52.16-1
+Auto-merging cgmanifest.json
+Pull Success
+Pulling from ORIGIN=https://github.com/kevin-b-lockwood/azurelinux.git BRANCH=kevin-b-lockwood/liblangtag-0.6.7-1
+Auto-merging cgmanifest.json
+Pull Success
+Pulling from ORIGIN=https://github.com/kevin-b-lockwood/azurelinux.git BRANCH=kevin-b-lockwood/liblockfile-1.17-1
+Auto-merging cgmanifest.json
+Pull Success
+Pulling from ORIGIN=https://github.com/kevin-b-lockwood/azurelinux.git BRANCH=kevin-b-lockwood/liblqr-1-0.4.3-1
+Auto-merging cgmanifest.json
+Pull Success
+Pulling from ORIGIN=https://github.com/AkarshHCL/azurelinux.git BRANCH=topic_libmtp
+Auto-merging cgmanifest.json
+Pull Success
+Pulling from ORIGIN=https://github.com/AkarshHCL/azurelinux.git BRANCH=topic_libmwaw
+Auto-merging cgmanifest.json
+Pull Success
+Pulling from ORIGIN=https://github.com/AkarshHCL/azurelinux.git BRANCH=topic_libnet
+Auto-merging cgmanifest.json
+Pull Success
+Pulling from ORIGIN=https://github.com/AkarshHCL/azurelinux.git BRANCH=topic_libnumbertext
+Auto-merging cgmanifest.json
+Pull Success
+Pulling from ORIGIN=https://github.com/AkarshHCL/azurelinux.git BRANCH=topic_libogg
+Auto-merging cgmanifest.json
+Pull Success
+Pulling from ORIGIN=https://github.com/AkarshHCL/azurelinux.git BRANCH=topic_libosinfo
+Auto-merging cgmanifest.json
+Pull Success
+Pulling from ORIGIN=https://github.com/AkarshHCL/azurelinux.git BRANCH=topic_libotf
+Auto-merging cgmanifest.json
+Pull Success
+Pulling from ORIGIN=https://github.com/SumitJenaHCL/azurelinux.git BRANCH=topic_libotr
+Auto-merging SPECS-EXTENDED/libotr/libotr.spec
+CONFLICT (content): Merge conflict in SPECS-EXTENDED/libotr/libotr.spec
+Automatic merge failed; fix conflicts and then commit the result.
+Pull Failed, will do git merge --abort for this branch
+Pulling from ORIGIN=https://github.com/AkarshHCL/azurelinux.git BRANCH=topic_libpfm
+Auto-merging cgmanifest.json
+Pull Success
+Pulling from ORIGIN=https://github.com/SumitJenaHCL/azurelinux.git BRANCH=topic_libproxy
+Auto-merging cgmanifest.json
+Pull Success
+Pulling from ORIGIN=https://github.com/SumitJenaHCL/azurelinux.git BRANCH=topic_libreport
+Auto-merging cgmanifest.json
+Pull Success
+Pulling from ORIGIN=https://github.com/SumitJenaHCL/azurelinux.git BRANCH=topic_librevenge
+Auto-merging cgmanifest.json
+Pull Success
+Pulling from ORIGIN=https://github.com/SumitJenaHCL/azurelinux.git BRANCH=topic_libsecret
+Auto-merging cgmanifest.json
+Pull Success
+Pulling from ORIGIN=https://github.com/SumitJenaHCL/azurelinux.git BRANCH=topic_libspiro
+Auto-merging cgmanifest.json
+Pull Success
+Pulling from ORIGIN=https://github.com/SumitJenaHCL/azurelinux.git BRANCH=topic_libsrtp
+Auto-merging cgmanifest.json
+Pull Success
+Pulling from ORIGIN=https://github.com/v-smalavathu/azurelinux1.git BRANCH=topic_libtevent
+Auto-merging cgmanifest.json
+Pull Success
+Pulling from ORIGIN=https://github.com/kevin-b-lockwood/azurelinux.git BRANCH=kevin-b-lockwood/libusbmuxd-2.1.0-1
+Auto-merging cgmanifest.json
+Pull Success
+Pulling from ORIGIN=https://github.com/v-smalavathu/azurelinux1.git BRANCH=topic_libutempter
+Auto-merging cgmanifest.json
+Pull Success
+Pulling from ORIGIN=https://github.com/v-smalavathu/azurelinux1.git BRANCH=topic_libvdpau
+Auto-merging cgmanifest.json
+Pull Success
+Pulling from ORIGIN=https://github.com/v-smalavathu/azurelinux1.git BRANCH=topic_libvpx
+Auto-merging cgmanifest.json
+Pull Success
+Pulling from ORIGIN=https://github.com/v-smalavathu/azurelinux1.git BRANCH=topic_libwpe
+Auto-merging cgmanifest.json
+Pull Success
+Pulling from ORIGIN=https://github.com/aninda-al/azurelinux-test.git BRANCH=upgrade-libwpg
+Auto-merging cgmanifest.json
+Pull Success
+Pulling from ORIGIN=https://github.com/aninda-al/azurelinux-test.git BRANCH=upgrade-libwps
+Auto-merging cgmanifest.json
+Pull Success
+Pulling from ORIGIN=https://github.com/aninda-al/azurelinux-test.git BRANCH=upgrade-libxmlb
+Auto-merging SPECS-EXTENDED/libxmlb/libxmlb.signatures.json
+Auto-merging SPECS-EXTENDED/libxmlb/libxmlb.spec
+CONFLICT (content): Merge conflict in SPECS-EXTENDED/libxmlb/libxmlb.spec
+Auto-merging cgmanifest.json
+Automatic merge failed; fix conflicts and then commit the result.
+Pull Failed, will do git merge --abort for this branch
+Pulling from ORIGIN=https://github.com/jykanase/azurelinux.git BRANCH=topic_lilv
+Auto-merging cgmanifest.json
+Pull Success
+Pulling from ORIGIN=https://github.com/aninda-al/azurelinux-test.git BRANCH=upgrade-lksctp-tools
+Auto-merging cgmanifest.json
+Pull Success
+Pulling from ORIGIN=https://github.com/aninda-al/azurelinux-test.git BRANCH=upgrade-logwatch
+Auto-merging cgmanifest.json
+Pull Success
+Pulling from ORIGIN=https://github.com/aninda-al/azurelinux-test.git BRANCH=upgrade-lua-expat
+Auto-merging cgmanifest.json
+Pull Success
+Pulling from ORIGIN=https://github.com/aninda-al/azurelinux-test.git BRANCH=upgrade-lua-filesystem
+Auto-merging cgmanifest.json
+Pull Success
+Pulling from ORIGIN=https://github.com/aninda-al/azurelinux-test.git BRANCH=upgrade-lua-json
+Auto-merging cgmanifest.json
+Pull Success
+Pulling from ORIGIN=https://github.com/aninda-al/azurelinux-test.git BRANCH=upgrade-lua-lpeg
+Auto-merging cgmanifest.json
+Pull Success
+Pulling from ORIGIN=https://github.com/aninda-al/azurelinux-test.git BRANCH=upgrade-lua-term
+Auto-merging cgmanifest.json
+Pull Success
+Pulling from ORIGIN=https://github.com/aninda-al/azurelinux-test.git BRANCH=upgrade-lzip
+Auto-merging cgmanifest.json
+Pull Success
+Pulling from ORIGIN=https://github.com/aninda-al/azurelinux-test.git BRANCH=upgrade_m17n-db
+Auto-merging cgmanifest.json
+Pull Success
+Pulling from ORIGIN=https://github.com/aninda-al/azurelinux-test.git BRANCH=upgrade-m17n-lib
+Auto-merging cgmanifest.json
+Pull Success
+Pulling from ORIGIN=https://github.com/aninda-al/azurelinux-test.git BRANCH=upgrage-man-pages-ja
+Auto-merging cgmanifest.json
+Pull Success
+Pulling from ORIGIN=https://github.com/aninda-al/azurelinux-test.git BRANCH=upgrade-mariadb-connector-odbc
+Auto-merging cgmanifest.json
+Pull Success
+Pulling from ORIGIN=https://github.com/archana25-ms/azurelinux-archana.git BRANCH=topic_maven-parent
+Auto-merging cgmanifest.json
+Pull Success
+Pulling from ORIGIN=https://github.com/aninda-al/azurelinux-test.git BRANCH=upgrade-mdds
+Auto-merging cgmanifest.json
+Pull Success
+Pulling from ORIGIN=https://github.com/akhila-guruju/azurelinux-test.git BRANCH=topic_memkind
+Auto-merging cgmanifest.json
+Pull Success
+Pulling from ORIGIN=https://github.com/akhila-guruju/azurelinux-test.git BRANCH=topic_minicom
+Auto-merging cgmanifest.json
+Pull Success
+Pulling from ORIGIN=https://github.com/archana25-ms/azurelinux-archana.git BRANCH=topic_minizip-ng
+Auto-merging LICENSES-AND-NOTICES/SPECS/LICENSES-MAP.md
+CONFLICT (content): Merge conflict in LICENSES-AND-NOTICES/SPECS/LICENSES-MAP.md
+Auto-merging LICENSES-AND-NOTICES/SPECS/data/licenses.json
+Auto-merging cgmanifest.json
+Automatic merge failed; fix conflicts and then commit the result.
+Pull Failed, will do git merge --abort for this branch
+Pulling from ORIGIN=https://github.com/aninda-al/azurelinux-test.git BRANCH=upgrade-mod_auth_openidc
+Auto-merging cgmanifest.json
+Pull Success
+Pulling from ORIGIN=https://github.com/aninda-al/azurelinux-test.git BRANCH=upgrade-mod_authnz_pam
+Auto-merging cgmanifest.json
+Pull Success
+Pulling from ORIGIN=https://github.com/aninda-al/azurelinux-test.git BRANCH=upgrade-mod_intercept_form_submit
+Auto-merging cgmanifest.json
+Pull Success
+Pulling from ORIGIN=https://github.com/aninda-al/azurelinux-test.git BRANCH=upgrade-mod_md
+Auto-merging cgmanifest.json
+Pull Success
+Pulling from ORIGIN=https://github.com/aninda-al/azurelinux-test.git BRANCH=upgrade-mod_security
+Auto-merging cgmanifest.json
+Pull Success
+Pulling from ORIGIN=https://github.com/aninda-al/azurelinux-test.git BRANCH=upgrade-mod_modsecurity_crs
+Auto-merging cgmanifest.json
+Pull Success
+Pulling from ORIGIN=https://github.com/aninda-al/azurelinux-test.git BRANCH=upgrade-mythes
+Auto-merging cgmanifest.json
+Pull Success
+Pulling from ORIGIN=https://github.com/aninda-al/azurelinux-test.git BRANCH=upgrade-mythes-ca
+Auto-merging cgmanifest.json
+Pull Success
+Pulling from ORIGIN=https://github.com/aninda-al/azurelinux-test.git BRANCH=upgrade-mythes-de
+Auto-merging cgmanifest.json
+Pull Success
+Pulling from ORIGIN=https://github.com/durgajagadeesh/azurelinux_djpalli.git BRANCH=Topic_nvmetcli
+Auto-merging cgmanifest.json
+Pull Success
+Pulling from ORIGIN=https://github.com/durgajagadeesh/azurelinux_djpalli.git BRANCH=Topic_ocaml-curses
+Auto-merging cgmanifest.json
+Pull Success
+Pulling from ORIGIN=https://github.com/durgajagadeesh/azurelinux_djpalli.git BRANCH=Topic_ocaml-extlib
+Auto-merging cgmanifest.json
+Pull Success
+Pulling from ORIGIN=https://github.com/durgajagadeesh/azurelinux_djpalli.git BRANCH=Topic_ocaml-tyxml
+Auto-merging cgmanifest.json
+Pull Success
+Pulling from ORIGIN=https://github.com/durgajagadeesh/azurelinux_djpalli.git BRANCH=Topic_ocl-icd
+Auto-merging cgmanifest.json
+Pull Success
+Pulling from ORIGIN=https://github.com/durgajagadeesh/azurelinux_djpalli.git BRANCH=Topic_ogdi
+Auto-merging cgmanifest.json
+Pull Success
+Pulling from ORIGIN=https://github.com/durgajagadeesh/azurelinux_djpalli.git BRANCH=Topic_opencl-headers
+Auto-merging cgmanifest.json
+Pull Success
+Pulling from ORIGIN=https://github.com/durgajagadeesh/azurelinux_djpalli.git BRANCH=Topic_opencryptoki
+Auto-merging cgmanifest.json
+Pull Success
+Pulling from ORIGIN=https://github.com/durgajagadeesh/azurelinux_djpalli.git BRANCH=Topic_opendnssec
+Auto-merging cgmanifest.json
+Pull Success
+Pulling from ORIGIN=https://github.com/durgajagadeesh/azurelinux_djpalli.git BRANCH=Topic_openoffice-lv
+Auto-merging cgmanifest.json
+Pull Success
+Pulling from ORIGIN=https://github.com/durgajagadeesh/azurelinux_djpalli.git BRANCH=Topic_optipng
+Auto-merging cgmanifest.json
+Pull Success
+Pulling from ORIGIN=https://github.com/durgajagadeesh/azurelinux_djpalli.git BRANCH=Topic_oro
+Pull Success
+Pulling from ORIGIN=https://github.com/jykanase/azurelinux.git BRANCH=topic_os-prober
+Auto-merging cgmanifest.json
+Pull Success
+Pulling from ORIGIN=https://github.com/jykanase/azurelinux.git BRANCH=topic_osinfo-db
+Auto-merging cgmanifest.json
+Pull Success
+Pulling from ORIGIN=https://github.com/jykanase/azurelinux.git BRANCH=topic_osinfo-db-tools
+Auto-merging cgmanifest.json
+Pull Success
+Pulling from ORIGIN=https://github.com/jykanase/azurelinux.git BRANCH=topic_paps
+Auto-merging cgmanifest.json
+Pull Success
+Pulling from ORIGIN=https://github.com/jykanase/azurelinux.git BRANCH=topic_perl-AnyEvent-BDB
+Pull Success
+Pulling from ORIGIN=https://github.com/jykanase/azurelinux.git BRANCH=topic_perl-Archive-Extract
+Auto-merging cgmanifest.json
+Pull Success
+Pulling from ORIGIN=https://github.com/SumitJenaHCL/azurelinux.git BRANCH=topic_perl-Authen-SASL
+Auto-merging cgmanifest.json
+Pull Success
+Pulling from ORIGIN=https://github.com/jykanase/azurelinux.git BRANCH=topic_perl-B-Hooks-EndOfScope
+Auto-merging cgmanifest.json
+Pull Success
+Pulling from ORIGIN=https://github.com/jykanase/azurelinux.git BRANCH=topic_perl-Business-ISBN
+Auto-merging cgmanifest.json
+Pull Success
+Pulling from ORIGIN=https://github.com/jykanase/azurelinux.git BRANCH=topic_perl-Business-ISBN-Data
+Auto-merging cgmanifest.json
+Pull Success
+Pulling from ORIGIN=https://github.com/SumitJenaHCL/azurelinux.git BRANCH=topic_perl-CBOR-XS
+Auto-merging cgmanifest.json
+Pull Success
+Pulling from ORIGIN=https://github.com/SumitJenaHCL/azurelinux.git BRANCH=topic_perl-Class-C3
+Auto-merging cgmanifest.json
+Pull Success
+Pulling from ORIGIN=https://github.com/jykanase/azurelinux.git BRANCH=topic_perl-Class-Data-Inheritable
+Auto-merging cgmanifest.json
+Pull Success
+Pulling from ORIGIN=https://github.com/kevin-b-lockwood/azurelinux.git BRANCH=kevin-b-lockwood/perl-Color-RGB-Util-0.607-1
+Auto-merging LICENSES-AND-NOTICES/SPECS/LICENSES-MAP.md
+CONFLICT (content): Merge conflict in LICENSES-AND-NOTICES/SPECS/LICENSES-MAP.md
+Auto-merging LICENSES-AND-NOTICES/SPECS/data/licenses.json
+Auto-merging cgmanifest.json
+Automatic merge failed; fix conflicts and then commit the result.
+Pull Failed, will do git merge --abort for this branch
+Pulling from ORIGIN=https://github.com/SumitJenaHCL/azurelinux.git BRANCH=topic_perl-Compress-Raw-Lzma
+Auto-merging cgmanifest.json
+Pull Success
+Pulling from ORIGIN=https://github.com/SumitJenaHCL/azurelinux.git BRANCH=topic_perl-Config-AutoConf
+Auto-merging cgmanifest.json
+Pull Success
+Pulling from ORIGIN=https://github.com/SumitJenaHCL/azurelinux.git BRANCH=topic_perl-Config-INI
+Auto-merging cgmanifest.json
+Pull Success
+Pulling from ORIGIN=https://github.com/SumitJenaHCL/azurelinux.git BRANCH=topic_perl-Config-Tiny
+Auto-merging cgmanifest.json
+Pull Success
+Pulling from ORIGIN=https://github.com/SumitJenaHCL/azurelinux.git BRANCH=topic_perl-Crypt-OpenSSL-RSA
+Auto-merging cgmanifest.json
+Pull Success
+Pulling from ORIGIN=https://github.com/jykanase/azurelinux.git BRANCH=topic_perl-Crypt-OpenSSL-Random
+Auto-merging cgmanifest.json
+Pull Success
+Pulling from ORIGIN=https://github.com/jykanase/azurelinux.git BRANCH=topic_perl-Data-Peek
+Auto-merging cgmanifest.json
+Pull Success
+Pulling from ORIGIN=https://github.com/SumitJenaHCL/azurelinux.git BRANCH=topic_perl-Data-Section
+Auto-merging cgmanifest.json
+Pull Success
+Pulling from ORIGIN=https://github.com/jykanase/azurelinux.git BRANCH=topic_perl-Date-Manip
+Auto-merging cgmanifest.json
+Pull Success
+Pulling from ORIGIN=https://github.com/kevin-b-lockwood/azurelinux.git BRANCH=kevin-b-lockwood/perl-Devel-CallChecker-0.009-1
+Auto-merging cgmanifest.json
+Pull Success
+Pulling from ORIGIN=https://github.com/kevin-b-lockwood/azurelinux.git BRANCH=kevin-b-lockwood/perl-Digest-CRC-0.24-1
+Auto-merging cgmanifest.json
+Pull Success
+Pulling from ORIGIN=https://github.com/kevin-b-lockwood/azurelinux.git BRANCH=kevin-b-lockwood/perl-DynaLoader-Functions-0.004-1
+Auto-merging cgmanifest.json
+Pull Success
+Pulling from ORIGIN=https://github.com/SumitJenaHCL/azurelinux.git BRANCH=topic_perl-EV
+Auto-merging cgmanifest.json
+Pull Success
+Pulling from ORIGIN=https://github.com/kevin-b-lockwood/azurelinux.git BRANCH=kevin-b-lockwood/perl-Email-Address-1.913-1
+Auto-merging cgmanifest.json
+Pull Success
+Pulling from ORIGIN=https://github.com/kevin-b-lockwood/azurelinux.git BRANCH=kevin-b-lockwood/perl-Email-Date-Format-1.008-1
+Auto-merging cgmanifest.json
+Pull Success
+Pulling from ORIGIN=https://github.com/kevin-b-lockwood/azurelinux.git BRANCH=kevin-b-lockwood/perl-Event-1.28-1
+Auto-merging cgmanifest.json
+Pull Success
+Pulling from ORIGIN=https://github.com/kevin-b-lockwood/azurelinux.git BRANCH=kevin-b-lockwood/perl-Exception-Class-1.45-1
+Auto-merging cgmanifest.json
+Pull Success
+Pulling from ORIGIN=https://github.com/kevin-b-lockwood/azurelinux.git BRANCH=kevin-b-lockwood/perl-ExtUtils-Config-0.010-1
+Auto-merging cgmanifest.json
+Pull Success
+Pulling from ORIGIN=https://github.com/kevin-b-lockwood/azurelinux.git BRANCH=kevin-b-lockwood/perl-ExtUtils-Helpers-0.028-1
+Auto-merging cgmanifest.json
+Pull Success
+Pulling from ORIGIN=https://github.com/kevin-b-lockwood/azurelinux.git BRANCH=kevin-b-lockwood/perl-ExtUtils-InstallPaths-0.014-1
+Auto-merging cgmanifest.json
+Pull Success
+Pulling from ORIGIN=https://github.com/aninda-al/azurelinux-test.git BRANCH=upgrade-perl-File-BOM
+Auto-merging cgmanifest.json
+Pull Success
+Pulling from ORIGIN=https://github.com/aninda-al/azurelinux-test.git BRANCH=upgrade-perl-File-BaseDir
+Auto-merging cgmanifest.json
+Pull Success
+Pulling from ORIGIN=https://github.com/aninda-al/azurelinux-test.git BRANCH=upgrade-perl-File-Find-Object
+Auto-merging cgmanifest.json
+Pull Success
+Pulling from ORIGIN=https://github.com/SumitJenaHCL/azurelinux.git BRANCH=topic_perl-File-Find-Rule-Perl
+Auto-merging cgmanifest.json
+Pull Success
+Pulling from ORIGIN=https://github.com/kevin-b-lockwood/azurelinux.git BRANCH=kevin-b-lockwood/perl-File-ReadBackwards-1.06-1
+Auto-merging cgmanifest.json
+Pull Success
+Pulling from ORIGIN=https://github.com/SumitJenaHCL/azurelinux.git BRANCH=topic_perl-File-ShareDir
+Auto-merging cgmanifest.json
+Pull Success
+Pulling from ORIGIN=https://github.com/kevin-b-lockwood/azurelinux.git BRANCH=kevin-b-lockwood/perl-File-Slurp-9999.32-1
+Auto-merging cgmanifest.json
+Pull Success
+Pulling from ORIGIN=https://github.com/SumitJenaHCL/azurelinux.git BRANCH=topic_perl-File-Slurper
+Auto-merging cgmanifest.json
+Pull Success
+Pulling from ORIGIN=https://github.com/SumitJenaHCL/azurelinux.git BRANCH=topic_perl-GD
+Auto-merging cgmanifest.json
+Pull Success
+Pulling from ORIGIN=https://github.com/SumitJenaHCL/azurelinux.git BRANCH=topic_perl-IO-Compress-Lzma
+Auto-merging cgmanifest.json
+Pull Success
+Pulling from ORIGIN=https://github.com/SumitJenaHCL/azurelinux.git BRANCH=topic_perl-Image-Info
+Auto-merging cgmanifest.json
+Pull Success
+Pulling from ORIGIN=https://github.com/kevin-b-lockwood/azurelinux.git BRANCH=kevin-b-lockwood/perl-Importer-0.026-1
+Auto-merging cgmanifest.json
+Pull Success
+Pulling from ORIGIN=https://github.com/kevin-b-lockwood/azurelinux.git BRANCH=kevin-b-lockwood/perl-LWP-Protocol-https-6.14-1
+Auto-merging cgmanifest.json
+Pull Success
+Pulling from ORIGIN=https://github.com/SumitJenaHCL/azurelinux.git BRANCH=topic_perl-List-MoreUtils-XS
+Auto-merging cgmanifest.json
+Pull Success
+Pulling from ORIGIN=https://github.com/kevin-b-lockwood/azurelinux.git BRANCH=kevin-b-lockwood/perl-Locale-Codes-3.81-1
+Auto-merging cgmanifest.json
+Pull Success
+Pulling from ORIGIN=https://github.com/SumitJenaHCL/azurelinux.git BRANCH=topic_perl-Locale-Msgfmt
+Pull Success
+Pulling from ORIGIN=https://github.com/SumitJenaHCL/azurelinux.git BRANCH=topic_perl-Mail-AuthenticationResults
+Auto-merging cgmanifest.json
+Pull Success
+Pulling from ORIGIN=https://github.com/SumitJenaHCL/azurelinux.git BRANCH=topic_perl-Mixin-Linewise
+Auto-merging cgmanifest.json
+Pull Success
+Pulling from ORIGIN=https://github.com/jykanase/azurelinux.git BRANCH=topic_perl-Module-Build-Tiny
+Auto-merging cgmanifest.json
+Pull Success
+Pulling from ORIGIN=https://github.com/SumitJenaHCL/azurelinux.git BRANCH=topic_perl-Module-Load-Util
+Auto-merging cgmanifest.json
+Pull Success
+Pulling from ORIGIN=https://github.com/jykanase/azurelinux.git BRANCH=topic_perl-Module-Signature
+Auto-merging cgmanifest.json
+Pull Success
+Pulling from ORIGIN=https://github.com/v-smalavathu/azurelinux1.git BRANCH=topic_perl-Mojolicious
+Auto-merging cgmanifest.json
+Pull Success
+Pulling from ORIGIN=https://github.com/v-smalavathu/azurelinux1.git BRANCH=topic_perl-Moo
+Auto-merging cgmanifest.json
+Pull Success
+Pulling from ORIGIN=https://github.com/v-smalavathu/azurelinux1.git BRANCH=topic_perl-Net-Telnet
+Auto-merging cgmanifest.json
+Pull Success
+Pulling from ORIGIN=https://github.com/SumitJenaHCL/azurelinux.git BRANCH=topic_perl-PPI
+Auto-merging cgmanifest.json
+Pull Success
+Pulling from ORIGIN=https://github.com/kevin-b-lockwood/azurelinux.git BRANCH=kevin-b-lockwood/perl-PPIx-QuoteLike-0.023-1
+Auto-merging cgmanifest.json
+Pull Success
+Pulling from ORIGIN=https://github.com/SumitJenaHCL/azurelinux.git BRANCH=topic_perl-PPIx-Regexp
+Auto-merging cgmanifest.json
+Pull Success
+Pulling from ORIGIN=https://github.com/kevin-b-lockwood/azurelinux.git BRANCH=kevin-b-lockwood/perl-Package-DeprecationManager-0.18-1
+Auto-merging cgmanifest.json
+Pull Success
+Pulling from ORIGIN=https://github.com/SumitJenaHCL/azurelinux.git BRANCH=topic_perl-Package-Stash-XS
+Auto-merging cgmanifest.json
+Pull Success
+Pulling from ORIGIN=https://github.com/v-smalavathu/azurelinux1.git BRANCH=topic_perl-Path-Tiny
+Auto-merging cgmanifest.json
+Pull Success
+Pulling from ORIGIN=https://github.com/SumitJenaHCL/azurelinux.git BRANCH=topic_perl-PerlIO-utf8_strict
+Auto-merging cgmanifest.json
+Pull Success
+Pulling from ORIGIN=https://github.com/SumitJenaHCL/azurelinux.git BRANCH=topic_perl-Pod-Coverage-TrustPod
+Auto-merging cgmanifest.json
+Pull Success
+Pulling from ORIGIN=https://github.com/SumitJenaHCL/azurelinux.git BRANCH=topic_perl-Pod-Eventual
+Auto-merging cgmanifest.json
+Pull Success
+Pulling from ORIGIN=https://github.com/SumitJenaHCL/azurelinux.git BRANCH=topic_perl-Pod-Markdown
+Auto-merging cgmanifest.json
+Pull Success
+Pulling from ORIGIN=https://github.com/SumitJenaHCL/azurelinux.git BRANCH=topic_perl-Pod-Spell
+Auto-merging cgmanifest.json
+Pull Success
+Pulling from ORIGIN=https://github.com/v-smalavathu/azurelinux1.git BRANCH=topic_perl-Return-MultiLevel
+Auto-merging cgmanifest.json
+Pull Success
+Pulling from ORIGIN=https://github.com/v-smalavathu/azurelinux1.git BRANCH=topic_perl-Role-Tiny
+Auto-merging cgmanifest.json
+Pull Success
+Pulling from ORIGIN=https://github.com/v-smalavathu/azurelinux1.git BRANCH=topic_perl-SNMP_Session
+Auto-merging cgmanifest.json
+Pull Success
+Pulling from ORIGIN=https://github.com/v-smalavathu/azurelinux1.git BRANCH=topic_perl-Scope-Upper
+Auto-merging cgmanifest.json
+Pull Success
+Pulling from ORIGIN=https://github.com/SumitJenaHCL/azurelinux.git BRANCH=topic_perl-Software-License
+Auto-merging cgmanifest.json
+Pull Success
+Pulling from ORIGIN=https://github.com/SumitJenaHCL/azurelinux.git BRANCH=topic_perl-Term-UI
+Auto-merging cgmanifest.json
+Pull Success
+Pulling from ORIGIN=https://github.com/SumitJenaHCL/azurelinux.git BRANCH=topic_perl-Test-Differences
+Auto-merging cgmanifest.json
+Pull Success
+Pulling from ORIGIN=https://github.com/v-smalavathu/azurelinux1.git BRANCH=topic_perl-Test-Harness
+Auto-merging cgmanifest.json
+Pull Success
+Pulling from ORIGIN=https://github.com/v-smalavathu/azurelinux1.git BRANCH=topic_perl-Test-Inter
+Auto-merging cgmanifest.json
+Pull Success
+Pulling from ORIGIN=https://github.com/SumitJenaHCL/azurelinux.git BRANCH=topic_perl-Test-Warn
+Auto-merging cgmanifest.json
+Pull Success
+Pulling from ORIGIN=https://github.com/SumitJenaHCL/azurelinux.git BRANCH=topic_perl-Text-CSV_XS
+Auto-merging cgmanifest.json
+Pull Success
+Pulling from ORIGIN=https://github.com/SumitJenaHCL/azurelinux.git BRANCH=topic_perl-Tree-DAG_Node
+Auto-merging cgmanifest.json
+Pull Success
+Pulling from ORIGIN=https://github.com/SumitJenaHCL/azurelinux.git BRANCH=topic_perl-Variable-Magic
+Auto-merging cgmanifest.json
+Pull Success
+Pulling from ORIGIN=https://github.com/SumitJenaHCL/azurelinux.git BRANCH=topic_perl-XML-Generator
+Auto-merging cgmanifest.json
+Pull Success
+Pulling from ORIGIN=https://github.com/SumitJenaHCL/azurelinux.git BRANCH=topic_perl-XML-Writer
+Auto-merging cgmanifest.json
+Pull Success
+Pulling from ORIGIN=https://github.com/SumitJenaHCL/azurelinux.git BRANCH=topic_perl-XString
+Auto-merging cgmanifest.json
+Pull Success
+Pulling from ORIGIN=https://github.com/SumitJenaHCL/azurelinux.git BRANCH=topic_perl-YAML-LibYAML
+Auto-merging cgmanifest.json
+Pull Success
+Pulling from ORIGIN=https://github.com/SumitJenaHCL/azurelinux.git BRANCH=Topic_perl-YAML-Syck
+Auto-merging cgmanifest.json
+Pull Success
+Pulling from ORIGIN=https://github.com/SumitJenaHCL/azurelinux.git BRANCH=topic_perl-libnet
+Auto-merging cgmanifest.json
+Pull Success
+Pulling from ORIGIN=https://github.com/SumitJenaHCL/azurelinux.git BRANCH=topic_perltidy
+Auto-merging cgmanifest.json
+Pull Success
+Pulling from ORIGIN=https://github.com/SumitJenaHCL/azurelinux.git BRANCH=topic_pinfo
+Auto-merging cgmanifest.json
+Pull Success
+Pulling from ORIGIN=https://github.com/SumitJenaHCL/azurelinux.git BRANCH=topic_pkcs11-helper
+Auto-merging cgmanifest.json
+Pull Success
+Pulling from ORIGIN=https://github.com/archana25-ms/azurelinux-archana.git BRANCH=topic_plexus-pom
+Auto-merging LICENSES-AND-NOTICES/SPECS/LICENSES-MAP.md
+CONFLICT (content): Merge conflict in LICENSES-AND-NOTICES/SPECS/LICENSES-MAP.md
+Auto-merging LICENSES-AND-NOTICES/SPECS/data/licenses.json
+Auto-merging cgmanifest.json
+Automatic merge failed; fix conflicts and then commit the result.
+Pull Failed, will do git merge --abort for this branch
+Pulling from ORIGIN=https://github.com/SumitJenaHCL/azurelinux.git BRANCH=topic_powertop
+Auto-merging cgmanifest.json
+Pull Success
+Pulling from ORIGIN=https://github.com/SumitJenaHCL/azurelinux.git BRANCH=topic_pps-tools
+Auto-merging cgmanifest.json
+Pull Success
+Pulling from ORIGIN=https://github.com/SumitJenaHCL/azurelinux.git BRANCH=topic_puppet
+Auto-merging cgmanifest.json
+Pull Success
+Pulling from ORIGIN=https://github.com/SumitJenaHCL/azurelinux.git BRANCH=topic_pykickstart
+Auto-merging cgmanifest.json
+Pull Success
+Pulling from ORIGIN=https://github.com/SumitJenaHCL/azurelinux.git BRANCH=topic_pyparted
+Auto-merging cgmanifest.json
+Pull Success
+Pulling from ORIGIN=https://github.com/SumitJenaHCL/azurelinux.git BRANCH=topic_python-IPy
+Auto-merging cgmanifest.json
+Pull Success
+Pulling from ORIGIN=https://github.com/akhila-guruju/azurelinux-test.git BRANCH=topic_python-aiodns
+Auto-merging cgmanifest.json
+Pull Success
+Pulling from ORIGIN=https://github.com/SumitJenaHCL/azurelinux.git BRANCH=topic_python-alsa
+Auto-merging cgmanifest.json
+Pull Success
+Pulling from ORIGIN=https://github.com/akhila-guruju/azurelinux-test.git BRANCH=topic_python-astroid
+Auto-merging cgmanifest.json
+Pull Success
+Pulling from ORIGIN=https://github.com/SumitJenaHCL/azurelinux.git BRANCH=topic_python-betamax
+Auto-merging cgmanifest.json
+Pull Success
+Pulling from ORIGIN=https://github.com/aninda-al/azurelinux-test.git BRANCH=upgrade-python-blinker
+Auto-merging cgmanifest.json
+Pull Success
+Pulling from ORIGIN=https://github.com/SumitJenaHCL/azurelinux.git BRANCH=topic_python-blivet
+Auto-merging cgmanifest.json
+Pull Success
+Pulling from ORIGIN=https://github.com/aninda-al/azurelinux-test.git BRANCH=upgrade-python-cheetah
+Auto-merging cgmanifest.json
+Pull Success
+Pulling from ORIGIN=https://github.com/SumitJenaHCL/azurelinux.git BRANCH=topic_python-cmd2
+Auto-merging cgmanifest.json
+Pull Success
+Pulling from ORIGIN=https://github.com/akhila-guruju/azurelinux-test.git BRANCH=topic_python-colorama
+Auto-merging cgmanifest.json
+Pull Success
+Pulling from ORIGIN=https://github.com/SumitJenaHCL/azurelinux.git BRANCH=topic_python-cups
+Auto-merging cgmanifest.json
+Pull Success
+Pulling from ORIGIN=https://github.com/archana25-ms/azurelinux-archana.git BRANCH=topic_python-dns
+Auto-merging cgmanifest.json
+Pull Success
+Pulling from ORIGIN=https://github.com/akhila-guruju/azurelinux-test.git BRANCH=topic_python-dulwich
+Auto-merging cgmanifest.json
+Pull Success
+Pulling from ORIGIN=https://github.com/AkarshHCL/azurelinux.git BRANCH=topic_python-entrypoint
+Auto-merging cgmanifest.json
+Pull Success
+Pulling from ORIGIN=https://github.com/AkarshHCL/azurelinux.git BRANCH=topic_fixtures
+Auto-merging cgmanifest.json
+Pull Success
+Pulling from ORIGIN=https://github.com/AkarshHCL/azurelinux.git BRANCH=topic_python-gssapi
+Auto-merging cgmanifest.json
+Pull Success
+Pulling from ORIGIN=https://github.com/archana25-ms/azurelinux-archana.git BRANCH=topic_python-mutagen
+Auto-merging cgmanifest.json
+Pull Success
+Pulling from ORIGIN=https://github.com/archana25-ms/azurelinux-archana.git BRANCH=topic_python-oslo-i18n
+Auto-merging cgmanifest.json
+Pull Success
+Pulling from ORIGIN=https://github.com/akhila-guruju/azurelinux-test.git BRANCH=topic_python-pycares
+Auto-merging cgmanifest.json
+Pull Success
+Pulling from ORIGIN=https://github.com/akhila-guruju/azurelinux-test.git BRANCH=topic_python-pymongo
+Auto-merging cgmanifest.json
+Pull Success
+Pulling from ORIGIN=https://github.com/akhila-guruju/azurelinux-test.git BRANCH=topic_python-qrcode
+Auto-merging cgmanifest.json
+Pull Success
+Pulling from ORIGIN=https://github.com/akhila-guruju/azurelinux-test.git BRANCH=topic_python-rdflib
+Auto-merging cgmanifest.json
+Pull Success
+Pulling from ORIGIN=https://github.com/v-smalavathu/azurelinux1.git BRANCH=topic_python-recommonmark
+Auto-merging cgmanifest.json
+Pull Success
+Pulling from ORIGIN=https://github.com/akhila-guruju/azurelinux-test.git BRANCH=topic_python-requests-file
+Auto-merging cgmanifest.json
+Pull Success
+Pulling from ORIGIN=https://github.com/SumitJenaHCL/azurelinux.git BRANCH=topic_python-requests-kerberos
+Auto-merging cgmanifest.json
+Pull Success
+Pulling from ORIGIN=https://github.com/akhila-guruju/azurelinux-test.git BRANCH=topic_python-rtslib
+Auto-merging cgmanifest.json
+Pull Success
+Pulling from ORIGIN=https://github.com/SumitJenaHCL/azurelinux.git BRANCH=topic_python-semantic_version
+Auto-merging cgmanifest.json
+Pull Success
+Pulling from ORIGIN=https://github.com/akhila-guruju/azurelinux-test.git BRANCH=topic_python-simpleline
+Auto-merging cgmanifest.json
+Pull Success
+Pulling from ORIGIN=https://github.com/akhila-guruju/azurelinux-test.git BRANCH=topic_python-sniffio
+Auto-merging cgmanifest.json
+Pull Success
+Pulling from ORIGIN=https://github.com/archana25-ms/azurelinux-archana.git BRANCH=topic_python-suds
+Auto-merging cgmanifest.json
+Pull Success
+Pulling from ORIGIN=https://github.com/jykanase/azurelinux.git BRANCH=topic_python-testtools
+Auto-merging cgmanifest.json
+Pull Success
+Pulling from ORIGIN=https://github.com/jykanase/azurelinux.git BRANCH=topic_python-tox
+Auto-merging cgmanifest.json
+Pull Success
+Pulling from ORIGIN=https://github.com/akhila-guruju/azurelinux-test.git BRANCH=topic_python-varlink
+Auto-merging cgmanifest.json
+Pull Success
+Pulling from ORIGIN=https://github.com/archana25-ms/azurelinux-archana.git BRANCH=topic_python-voluptuous
+Auto-merging cgmanifest.json
+Pull Success
+Pulling from ORIGIN=https://github.com/v-smalavathu/azurelinux1.git BRANCH=topic_pyxattr
+Auto-merging cgmanifest.json
+Pull Success
+Pulling from ORIGIN=https://github.com/akhila-guruju/azurelinux-test.git BRANCH=topic_qpdf
+Auto-merging cgmanifest.json
+Pull Success
+Pulling from ORIGIN=https://github.com/akhila-guruju/azurelinux-test.git BRANCH=topic_qr-code-generator
+Auto-merging cgmanifest.json
+Pull Success
+Pulling from ORIGIN=https://github.com/durgajagadeesh/azurelinux_djpalli.git BRANCH=Topic_relaxngDatatype
+Pull Success
+Pulling from ORIGIN=https://github.com/akhila-guruju/azurelinux-test.git BRANCH=topic_rhash
+Auto-merging cgmanifest.json
+Pull Success
+Pulling from ORIGIN=https://github.com/akhila-guruju/azurelinux-test.git BRANCH=topic_rubygem-flexmock
+Auto-merging cgmanifest.json
+Pull Success
+Pulling from ORIGIN=https://github.com/akhila-guruju/azurelinux-test.git BRANCH=topic_rubygem-pkg-config
+Auto-merging cgmanifest.json
+Pull Success
+Pulling from ORIGIN=https://github.com/akhila-guruju/azurelinux-test.git BRANCH=topic_rubygem-rouge
+Auto-merging cgmanifest.json
+Pull Success
+Pulling from ORIGIN=https://github.com/archana25-ms/azurelinux-archana.git BRANCH=topic_rubygem-rspec-support
+Auto-merging cgmanifest.json
+Pull Success
+Pulling from ORIGIN=https://github.com/SumitJenaHCL/azurelinux.git BRANCH=topic_satyr
+Auto-merging cgmanifest.json
+Pull Success
+Pulling from ORIGIN=https://github.com/jykanase/azurelinux.git BRANCH=topic_serd
+Auto-merging cgmanifest.json
+Pull Success
+Pulling from ORIGIN=https://github.com/AkarshHCL/azurelinux.git BRANCH=topic_smc-tools
+Auto-merging cgmanifest.json
+Pull Success
+Pulling from ORIGIN=https://github.com/jykanase/azurelinux.git BRANCH=topic_sord
+Auto-merging cgmanifest.json
+Pull Success
+Pulling from ORIGIN=https://github.com/archana25-ms/azurelinux-archana.git BRANCH=topic-spausedd
+Auto-merging cgmanifest.json
+Pull Success
+Pulling from ORIGIN=https://github.com/archana25-ms/azurelinux-archana.git BRANCH=topic_spice-protocol
+Auto-merging cgmanifest.json
+Pull Success
+Pulling from ORIGIN=https://github.com/jykanase/azurelinux.git BRANCH=topic_sratom
+Auto-merging cgmanifest.json
+Pull Success
+Pulling from ORIGIN=https://github.com/archana25-ms/azurelinux-archana.git BRANCH=topic_taglib
+Auto-merging cgmanifest.json
+Pull Success
+Pulling from ORIGIN=https://github.com/archana25-ms/azurelinux-archana.git BRANCH=topic_targetcli
+Auto-merging cgmanifest.json
+Pull Success
+Pulling from ORIGIN=https://github.com/microsoft/azurelinux.git BRANCH=mayansingh/tbb_upgrade
+Auto-merging cgmanifest.json
+Pull Success
+Pulling from ORIGIN=https://github.com/durgajagadeesh/azurelinux_djpalli.git BRANCH=Topic_unicode-emoji
+Auto-merging cgmanifest.json
+Pull Success
+Pulling from ORIGIN=https://github.com/durgajagadeesh/azurelinux_djpalli.git BRANCH=Topic_unicode-ucd
+Auto-merging cgmanifest.json
+Pull Success
+Pulling from ORIGIN=https://github.com/durgajagadeesh/azurelinux_djpalli.git BRANCH=Topic_units
+Auto-merging cgmanifest.json
+Pull Success
+Pulling from ORIGIN=https://github.com/jykanase/azurelinux.git BRANCH=topic_v4l-utils
+Pull Success
+Pulling from ORIGIN=https://github.com/archana25-ms/azurelinux-archana.git BRANCH=topic_virt-p2v
+Auto-merging cgmanifest.json
+Pull Success
+Pulling from ORIGIN=https://github.com/AkarshHCL/azurelinux.git BRANCH=topic_webrtc-audio-processing
+Auto-merging cgmanifest.json
+Pull Success
+Pulling from ORIGIN=https://github.com/aninda-al/azurelinux-test.git BRANCH=upgrade-xcb-util-wm
+Auto-merging cgmanifest.json
+Pull Success
+Pulling from ORIGIN=https://github.com/aninda-al/azurelinux-test.git BRANCH=upgrade-xdg-dbus-proxy
+Auto-merging cgmanifest.json
+Pull Success
+Pulling from ORIGIN=https://github.com/SumitJenaHCL/azurelinux.git BRANCH=topic_xmlrpc-c
+Auto-merging cgmanifest.json
+Pull Success
+Pulling from ORIGIN=https://github.com/archana25-ms/azurelinux-archana.git BRANCH=topic_xterm
+Auto-merging cgmanifest.json
+Pull Success
+Pulling from ORIGIN=https://github.com/archana25-ms/azurelinux-archana.git BRANCH=topic_yelp-tools
+Auto-merging cgmanifest.json
+Pull Success
+Pulling from ORIGIN=https://github.com/archana25-ms/azurelinux-archana.git BRANCH=topic_yelp-xsl
+Auto-merging cgmanifest.json
+Pull Success
+Pulling from ORIGIN=https://github.com/microsoft/azurelinux.git BRANCH=mayansingh/d3_upgrade
+Auto-merging cgmanifest.json
+Pull Success
+Pulling from ORIGIN=https://github.com/jykanase/azurelinux.git BRANCH=topic_zziplib
+Auto-merging cgmanifest.json
+Pull Success
+Pulling from ORIGIN=https://github.com/jykanase/azurelinux.git BRANCH=topic_rubygem-sys-filesystem
+Auto-merging LICENSES-AND-NOTICES/SPECS/LICENSES-MAP.md
+CONFLICT (content): Merge conflict in LICENSES-AND-NOTICES/SPECS/LICENSES-MAP.md
+Auto-merging LICENSES-AND-NOTICES/SPECS/data/licenses.json
+Auto-merging cgmanifest.json
+Automatic merge failed; fix conflicts and then commit the result.
+Pull Failed, will do git merge --abort for this branch
+Pulling from ORIGIN=https://github.com/kevin-b-lockwood/azurelinux.git BRANCH=kevin-b-lockwood/libimobiledevice-glue-1.3.1-1
+Pull Success
+Pulling from ORIGIN=https://github.com/SumitJenaHCL/azurelinux.git BRANCH=topic_rubygem-puppet-resource_api
+Auto-merging cgmanifest.json
+Pull Success
+Pulling from ORIGIN=https://github.com/SumitJenaHCL/azurelinux.git BRANCH=topic_rubygem-hocon
+Auto-merging cgmanifest.json
+Pull Success
+Pulling from ORIGIN=https://github.com/SumitJenaHCL/azurelinux.git BRANCH=topic_rubygem-deep_merge
+Auto-merging cgmanifest.json
+Pull Success
+Pulling from ORIGIN=https://github.com/SumitJenaHCL/azurelinux.git BRANCH=topic_libselinux
+Auto-merging cgmanifest.json
+Pull Success
+Pulling from ORIGIN=https://github.com/SumitJenaHCL/azurelinux.git BRANCH=topic_rubygem-racc
+Auto-merging LICENSES-AND-NOTICES/SPECS/LICENSES-MAP.md
+CONFLICT (content): Merge conflict in LICENSES-AND-NOTICES/SPECS/LICENSES-MAP.md
+Auto-merging LICENSES-AND-NOTICES/SPECS/data/licenses.json
+Auto-merging cgmanifest.json
+Automatic merge failed; fix conflicts and then commit the result.
+Pull Failed, will do git merge --abort for this branch
+Pulling from ORIGIN=https://github.com/SumitJenaHCL/azurelinux.git BRANCH=topic_rubygem-scanf
+Auto-merging cgmanifest.json
+Pull Success
+Pulling from ORIGIN=https://github.com/SumitJenaHCL/azurelinux.git BRANCH=topic_rubygem-test-unit-ruby-core
+Auto-merging cgmanifest.json
+Pull Success
+Pulling from ORIGIN=https://github.com/kevin-b-lockwood/azurelinux.git BRANCH=kevin-b-lockwood/perl-Test-RandomResult-0.001-14
+Auto-merging LICENSES-AND-NOTICES/SPECS/LICENSES-MAP.md
+CONFLICT (content): Merge conflict in LICENSES-AND-NOTICES/SPECS/LICENSES-MAP.md
+Auto-merging LICENSES-AND-NOTICES/SPECS/data/licenses.json
+Auto-merging cgmanifest.json
+Automatic merge failed; fix conflicts and then commit the result.
+Pull Failed, will do git merge --abort for this branch
+Pulling from ORIGIN=https://github.com/jykanase/azurelinux.git BRANCH=topic_python-pyproject_api
+Auto-merging LICENSES-AND-NOTICES/SPECS/LICENSES-MAP.md
+CONFLICT (content): Merge conflict in LICENSES-AND-NOTICES/SPECS/LICENSES-MAP.md
+Auto-merging LICENSES-AND-NOTICES/SPECS/data/licenses.json
+Auto-merging cgmanifest.json
+Automatic merge failed; fix conflicts and then commit the result.
+Pull Failed, will do git merge --abort for this branch
+Pulling from ORIGIN=https://github.com/jykanase/azurelinux.git BRANCH=topic_zix
+Auto-merging LICENSES-AND-NOTICES/SPECS/LICENSES-MAP.md
+CONFLICT (content): Merge conflict in LICENSES-AND-NOTICES/SPECS/LICENSES-MAP.md
+Auto-merging LICENSES-AND-NOTICES/SPECS/data/licenses.json
+Auto-merging cgmanifest.json
+Automatic merge failed; fix conflicts and then commit the result.
+Pull Failed, will do git merge --abort for this branch
+/third_disk/bb04Mar/azurelinux/didwhat/BULK_BLD_THINGS_03Mar

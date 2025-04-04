@@ -656,4 +656,46 @@ INFO[19690][scheduler] systemd-detect-virt reports that the tool is running in a
 INFO[19690][scheduler] Cleanup finished
 make: *** [/third_disk/bb_easy_03Apr/azurelinux/toolkit/scripts/pkggen.mk:301: /third_disk/bb_easy_03Apr/azurelinux/build/mak
 ```
+
+Ensuring that untracked zip files don't make it into the future commits.
+Added a filter in ".git/info/exclude".
+For that added a line "SPECS*/**/*.zip" at the end of this file.
+Checked zip files in git status before and after adding the filter in the above file.
+The effect is seen in the form of .zip file not getting reported as untracked file.
+```
+05b541f48 Merge branch 'topic_rubygem-deep_merge' of https://github.com/SumitJenaHCL/azurelinux into topic_easybb03Apr
+ [2025-04-04 10:17.48] /third_disk/bb_easy_03Apr/azurelinux [neerajs.azuli-m1]$ vim didwhat/STEPS_17Mar2025.txt
+ [2025-04-04 10:19.05] /third_disk/bb_easy_03Apr/azurelinux [neerajs.azuli-m1]$ git status | grep zip
+        modified:   SPECS-EXTENDED/js-jquery/js-jquery-disable-gzip-js.patch
+        SPECS-EXTENDED/cldr-emoji-annotation/cldr-release-46-1-beta2.zip
+        SPECS-EXTENDED/hunspell-az/azerbaijani_spellchecker-0.2.zip
+        SPECS-EXTENDED/hunspell-ca/ca.3.0.8-hunspell.zip
+        SPECS-EXTENDED/hunspell-eu/xuxen_5.1_hunspell.zip
+        SPECS-EXTENDED/hunspell-ga/hunspell-ga-5.1.zip
+        SPECS-EXTENDED/hunspell-pt/ptBR-2013-10-30AOC-2.zip
+        SPECS-EXTENDED/hunspell-ro/ro_RO.3.3.10.zip
+        SPECS-EXTENDED/hyphen-pt/hyph_pt_PT.zip
+        SPECS-EXTENDED/hyphen-pt/hyphptBR-213.zip
+        SPECS-EXTENDED/junitperf/junitperf-1.9.1.zip
+        SPECS-EXTENDED/lzip/lzip-1.24.1.tar.gz.sig
+        SPECS-EXTENDED/qpdf/qpdf-11.9.1-doc.zip
+        SPECS-EXTENDED/unicode-ucd/UCD.zip
+        SPECS-EXTENDED/unicode-ucd/Unihan.zip
+ [2025-04-04 10:19.35] /third_disk/bb_easy_03Apr/azurelinux [neerajs.azuli-m1]$
+ [2025-04-04 10:22.58] /third_disk/bb_easy_03Apr/azurelinux [neerajs.azuli-m1]$ vim didwhat/STEPS_17Mar2025.txt
+ [2025-04-04 10:23.29] /third_disk/bb_easy_03Apr/azurelinux [neerajs.azuli-m1]$ vim .git/info/exclude
+ [2025-04-04 10:24.11] /third_disk/bb_easy_03Apr/azurelinux [neerajs.azuli-m1]$ git status | grep zip
+        modified:   SPECS-EXTENDED/js-jquery/js-jquery-disable-gzip-js.patch
+        SPECS-EXTENDED/lzip/lzip-1.24.1.tar.gz.sig
+ [2025-04-04 10:24.24] /third_disk/bb_easy_03Apr/azurelinux [neerajs.azuli-m1]$ cat .git/info/exclude
+# git ls-files --others --exclude-from=.git/info/exclude
+# Lines that start with '#' are comments.
+# For a project mostly in C, the following would be a good set of
+# exclude patterns (uncomment them if you want to use them):
+# *.[oa]
+# *~
+SPECS*/**/*.zip
+ [2025-04-04 10:24.45] /third_disk/bb_easy_03Apr/azurelinux [neerajs.azuli-m1]$
+```
+
  

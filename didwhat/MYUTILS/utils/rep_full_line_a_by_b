@@ -1,0 +1,50 @@
+#!/bin/bash
+
+#set -e
+#set -x
+
+function clean_up {
+    echo "====== Cleaning up ======"
+
+    if [[ -f "$WORKING_TEMP_FILE" ]]
+    then
+        rm -rf "$WORKING_TEMP_FILE"
+    fi
+}
+trap clean_up EXIT SIGINT SIGTERM
+
+PROG_NAME=$0
+print_usage()
+{
+	echo "Usage:"
+	echo "${PROG_NAME##*/} <orig_line> <replace_by_line> <inout_file>"
+	echo ""
+	echo "Description:"
+	echo "Replace a given pattern by another pattern when the whole"
+	echo "line match is found.  Caution: The file is changed in place."
+	echo ""
+}
+
+if [ $# -ne 3 ]
+then
+	print_usage
+	exit
+fi
+
+ORIG_STR=$1
+BY_STR=$2
+INOUT_FILE=$3
+
+WORKING_TEMP_FILE="$(mktemp -q)"
+#echo $WORKING_TEMP_FILE
+
+awk -v avar_origstr="$ORIG_STR" -v avar_bystr="$BY_STR" '
+($0 == avar_origstr)  {print avar_bystr}
+!($0 == avar_origstr) {print $0}
+' $INOUT_FILE > $WORKING_TEMP_FILE 
+
+#echo $WORKING_TEMP_FILE
+cp $WORKING_TEMP_FILE $INOUT_FILE
+
+#set +x
+#set +e

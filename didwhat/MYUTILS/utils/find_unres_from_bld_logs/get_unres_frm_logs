@@ -1,0 +1,36 @@
+awk '
+	BEGIN {
+		unres_dep_started=0
+		unres_dep_finished=0
+		firstskipped=0
+	}
+
+	/\[scheduler\] Unresolved dependencies:/ {
+#		print ("Going to set unres_dep_started to 1")
+		unres_dep_started=1
+	}
+
+	/\[scheduler\] Blocked SRPMs:/ {
+#		print ("Going to set unres_dep_finished to 1")
+		unres_dep_finished=1
+	}
+
+	{
+		if (firstskipped==1) 
+		{
+#			printf ("first skipped is %s, dep started is %s, dep finished is %s\n", firstskipped, unres_dep_started, unres_dep_finished)
+#			print ($0)
+			if ((unres_dep_started==1) && (unres_dep_finished==0))
+			{
+				print $3
+			}
+		}
+
+		if ((unres_dep_started==1) && (firstskipped==0))
+		{
+#			print ("going to set first skipped to 1")
+#			print ($0)
+			firstskipped=1
+		}
+	}
+'

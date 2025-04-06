@@ -1,0 +1,37 @@
+# Install required dependencies.
+# Recommended but not required: `pigz` for faster compression operations.
+sudo tdnf -y install \
+    acl \
+    binutils \
+    cdrkit \
+    curl \
+    diffutils \
+    dosfstools \
+    gawk \
+    glibc-devel \
+    genisoimage \
+    git \
+    golang \
+    jq \
+    kernel-headers \
+    make \
+    moby-cli \
+    moby-engine \
+    openssl \
+    parted \
+    pigz \
+    qemu-img \
+    rpm \
+    rpm-build \
+    sudo \
+    tar \
+    wget \
+    xfsprogs \
+    zstd
+    
+
+# Enable Docker daemon at boot
+sudo systemctl enable --now docker.service
+
+# Add current user to docker group
+sudo usermod -aG docker $USER

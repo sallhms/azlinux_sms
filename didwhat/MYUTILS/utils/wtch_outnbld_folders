@@ -1,0 +1,13 @@
+
+# if disk is mentioned then df will be done for that disk too
+
+if [ $# -ge 1 ]
+then
+diskpath="$1"
+else
+diskpath=""
+fi
+
+#while true; do date; if ! [ "$diskpath" = "" ]; then df $diskpath; fi; echo "--------------------"; du -hs build/toolchain_rpms/* out/RPMS/* out/SRPMS/; ls -lrt build/toolchain_rpms/x86_64/ | tail -5; echo -n "Files in out RPMS noarch " ; ls out/RPMS/noarch/ | wc; echo -n "Files in RPMS x86_64 "; ls out/RPMS/x86_64/ | wc; echo -n "Files in out SRPMS "; ls out/SRPMS/ | wc; ls -lrt out/SRPMS/ | tail -10; sleep 30; echo; echo; done
+
+while true; do date; if [ -n "$diskpath" ]; then df $diskpath; fi; echo "--------------------"; du -hs build/toolchain_rpms/* out/RPMS/* out/SRPMS/; ls -lrt build/toolchain_rpms/x86_64/ | tail -5; echo -n "Files in out RPMS noarch " ; ls out/RPMS/noarch/ | wc; echo -n "Files in RPMS x86_64 "; ls out/RPMS/x86_64/ | wc; echo -n "Files in out SRPMS "; ls out/SRPMS/ | wc; ls -lrt out/SRPMS/ | tail -10; sleep 30; echo; echo; done

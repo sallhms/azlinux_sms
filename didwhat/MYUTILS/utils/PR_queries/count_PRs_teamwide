@@ -1,0 +1,42 @@
+#!/usr/bin/bash
+# First argument has to be the state for which you intend to carry out the search
+# Second argument has to be the list of authornames file
+
+print_usage() {
+	echo "Usage:"
+	echo "$0 state_of_PR file_listing_author_github_names"
+	echo "	state_of_PR {open|closed|merged|unmerged|all}"
+	exit 1
+}
+
+if [ $# -ne 2 ]
+then
+	print_usage
+fi
+
+state=$1
+listauthors=$2
+search_template="EMPTY"
+
+case "$state" in 
+	open ) ;;
+	closed ) ;;
+	merged ) ;;
+	all ) ;;
+	unmerged ) search_template='-S is:closed is:unmerged';;
+	* ) echo "Invalid state specified=$state"; print_usage;;
+esac
+
+#set -x
+for githubname in `cat $listauthors`
+do
+if [  "$search_template" == "EMPTY" ]
+then
+	#echo "1" $search_template
+	count=`gh pr list -L 100 --author "$githubname" --state $state | wc -l`
+else
+	#echo "2" $search_template
+	count=`gh pr list -L 100 --author "$githubname" -S "$search_template" | wc -l`
+fi
+echo "Number of PRs by $githubname in $state state is $count"
+done

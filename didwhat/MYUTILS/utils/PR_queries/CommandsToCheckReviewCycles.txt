@@ -1,0 +1,182 @@
+[neerajs@c28ccb9221c8 azurelinux]$ gh pr -L 100 list --author "jykanase" -S "review requested in:comments" --state open
+no pull requests match your search in microsoft/azurelinux
+[neerajs@c28ccb9221c8 azurelinux]$ gh pr -L 100 list --author "SumitJenaHCL" -S "review requested in:comments" --state open
+
+Showing 3 of 3 pull requests in microsoft/azurelinux that match your search
+
+ID      TITLE                                          BRANCH                                 CREATED AT       
+#11619  Upgrade: python-betamax to version 0.9.0       SumitJenaHCL:topic_python-betamax      about 1 month ago
+#11671  Upgrade: python-cmd2 to version 2.4.2          SumitJenaHCL:topic_python-cmd2         about 1 month ago
+#11672  Upgrade: python-configshell to version 1.1.30  SumitJenaHCL:topic_python-configshell  about 1 month ago
+[neerajs@c28ccb9221c8 azurelinux]$ gh pr -L 100 list --author "SumitJenaHCL" -S "review requested" --state open
+
+Showing 3 of 3 pull requests in microsoft/azurelinux that match your search
+
+ID      TITLE                                          BRANCH                                 CREATED AT       
+#11619  Upgrade: python-betamax to version 0.9.0       SumitJenaHCL:topic_python-betamax      about 1 month ago
+#11671  Upgrade: python-cmd2 to version 2.4.2          SumitJenaHCL:topic_python-cmd2         about 1 month ago
+#11672  Upgrade: python-configshell to version 1.1.30  SumitJenaHCL:topic_python-configshell  about 1 month ago
+[neerajs@c28ccb9221c8 azurelinux]$ gh pr -L 100 list --author "SumitJenaHCL" -S "requested a review" --state open
+
+Showing 2 of 2 pull requests in microsoft/azurelinux that match your search
+
+ID      TITLE                                     BRANCH                             CREATED AT       
+#11619  Upgrade: python-betamax to version 0.9.0  SumitJenaHCL:topic_python-betamax  about 1 month ago
+#11671  Upgrade: python-cmd2 to version 2.4.2     SumitJenaHCL:topic_python-cmd2     about 1 month ago
+[neerajs@c28ccb9221c8 azurelinux]$ gh pr -L 100 list --author "SumitJenaHCL" -S "requested review" --state open
+
+Showing 3 of 3 pull requests in microsoft/azurelinux that match your search
+
+ID      TITLE                                          BRANCH                                 CREATED AT       
+#11619  Upgrade: python-betamax to version 0.9.0       SumitJenaHCL:topic_python-betamax      about 1 month ago
+#11671  Upgrade: python-cmd2 to version 2.4.2          SumitJenaHCL:topic_python-cmd2         about 1 month ago
+#11672  Upgrade: python-configshell to version 1.1.30  SumitJenaHCL:topic_python-configshell  about 1 month ago
+[neerajs@c28ccb9221c8 azurelinux]$ gh pr -L 100 list --author "jykanase" -S "requested review" --state open
+no pull requests match your search in microsoft/azurelinux
+[neerajs@c28ccb9221c8 azurelinux]$ gh pr view --json reviews
+^C
+[neerajs@c28ccb9221c8 azurelinux]$ gh pr view --json reviews #11619
+no pull requests found for branch "3.0"
+[neerajs@c28ccb9221c8 azurelinux]$ gh pr view --json reviews #11619
+no pull requests found for branch "3.0"
+[neerajs@c28ccb9221c8 azurelinux]$ gh pr view --json reviews https://github.com/microsoft/azurelinux/pull/11782
+{
+  "reviews": [
+    {
+      "id": "PRR_kwDOEMtmMM6XCPah",
+      "author": {
+        "login": "Sumynwa"
+      },
+      "authorAssociation": "CONTRIBUTOR",
+      "body": "",
+      "submittedAt": "2025-01-07T10:26:55Z",
+      "includesCreatedEdit": false,
+      "reactionGroups": [],
+      "state": "CHANGES_REQUESTED",
+      "commit": {
+        "oid": "7429df295edeedf5244e929300428f8e5c62185d"
+      }
+    },
+    {
+      "id": "PRR_kwDOEMtmMM6XCTKM",
+      "author": {
+        "login": "jykanase"
+      },
+      "authorAssociation": "CONTRIBUTOR",
+      "body": "",
+      "submittedAt": "2025-01-07T10:29:51Z",
+      "includesCreatedEdit": false,
+      "reactionGroups": [],
+      "state": "COMMENTED",
+      "commit": {
+        "oid": "7429df295edeedf5244e929300428f8e5c62185d"
+      }
+    },
+    {
+      "id": "PRR_kwDOEMtmMM6XCeUG",
+      "author": {
+        "login": "jykanase"
+      },
+      "authorAssociation": "CONTRIBUTOR",
+      "body": "",
+      "submittedAt": "2025-01-07T10:49:40Z",
+      "includesCreatedEdit": false,
+      "reactionGroups": [],
+      "state": "COMMENTED",
+      "commit": {
+        "oid": "7429df295edeedf5244e929300428f8e5c62185d"
+      }
+    },
+    {
+      "id": "PRR_kwDOEMtmMM6XNkWi",
+      "author": {
+        "login": "Sumynwa"
+      },
+      "authorAssociation": "CONTRIBUTOR",
+      "body": "",
+      "submittedAt": "2025-01-08T11:38:39Z",
+      "includesCreatedEdit": false,
+      "reactionGroups": [],
+      "state": "CHANGES_REQUESTED",
+      "commit": {
+        "oid": "649c5e54bd3ae9e10ee3e73fd0c0da7754c098e9"
+      }
+    },
+    {
+      "id": "PRR_kwDOEMtmMM6YA486",
+      "author": {
+        "login": "jykanase"
+      },
+      "authorAssociation": "CONTRIBUTOR",
+      "body": "",
+      "submittedAt": "2025-01-14T16:40:05Z",
+      "includesCreatedEdit": false,
+      "reactionGroups": [],
+      "state": "COMMENTED",
+      "commit": {
+        "oid": "fb766ef15480ce824a611ce134a6b92a73305942"
+      }
+    }
+  ]
+}
+[neerajs@c28ccb9221c8 azurelinux]$ gh pr view --json reviews https://github.com/microsoft/azurelinux/pull/12201
+{
+  "reviews": []
+}
+[neerajs@c28ccb9221c8 azurelinux]$ gh pr view --json reviews https://github.com/microsoft/azurelinux/pull/11782 | grep "\state\": \"CHANGES_REQUESTED\""
+[neerajs@c28ccb9221c8 azurelinux]$ gh pr view --json reviews https://github.com/microsoft/azurelinux/pull/11782 > ghoutput
+[neerajs@c28ccb9221c8 azurelinux]$ vim ghoutput 
+[neerajs@c28ccb9221c8 azurelinux]$ gh pr view --json reviews https://github.com/microsoft/azurelinux/pull/11782 | grep "CHANGES_REQUESTED"
+{"reviews":[{"id":"PRR_kwDOEMtmMM6XCPah","author":{"login":"Sumynwa"},"authorAssociation":"CONTRIBUTOR","body":"","submittedAt":"2025-01-07T10:26:55Z","includesCreatedEdit":false,"reactionGroups":[],"state":"CHANGES_REQUESTED","commit":{"oid":"7429df295edeedf5244e929300428f8e5c62185d"}},{"id":"PRR_kwDOEMtmMM6XCTKM","author":{"login":"jykanase"},"authorAssociation":"CONTRIBUTOR","body":"","submittedAt":"2025-01-07T10:29:51Z","includesCreatedEdit":false,"reactionGroups":[],"state":"COMMENTED","commit":{"oid":"7429df295edeedf5244e929300428f8e5c62185d"}},{"id":"PRR_kwDOEMtmMM6XCeUG","author":{"login":"jykanase"},"authorAssociation":"CONTRIBUTOR","body":"","submittedAt":"2025-01-07T10:49:40Z","includesCreatedEdit":false,"reactionGroups":[],"state":"COMMENTED","commit":{"oid":"7429df295edeedf5244e929300428f8e5c62185d"}},{"id":"PRR_kwDOEMtmMM6XNkWi","author":{"login":"Sumynwa"},"authorAssociation":"CONTRIBUTOR","body":"","submittedAt":"2025-01-08T11:38:39Z","includesCreatedEdit":false,"reactionGroups":[],"state":"CHANGES_REQUESTED","commit":{"oid":"649c5e54bd3ae9e10ee3e73fd0c0da7754c098e9"}},{"id":"PRR_kwDOEMtmMM6YA486","author":{"login":"jykanase"},"authorAssociation":"CONTRIBUTOR","body":"","submittedAt":"2025-01-14T16:40:05Z","includesCreatedEdit":false,"reactionGroups":[],"state":"COMMENTED","commit":{"oid":"fb766ef15480ce824a611ce134a6b92a73305942"}}]}
+[neerajs@c28ccb9221c8 azurelinux]$ gh pr view --json reviews https://github.com/microsoft/azurelinux/pull/11782 | grep "\"state\": \"CHANGES_REQUESTED\""
+[neerajs@c28ccb9221c8 azurelinux]$ gh pr view --json reviews https://github.com/microsoft/azurelinux/pull/11782 | grep "\"state\":\"CHANGES_REQUESTED\""
+{"reviews":[{"id":"PRR_kwDOEMtmMM6XCPah","author":{"login":"Sumynwa"},"authorAssociation":"CONTRIBUTOR","body":"","submittedAt":"2025-01-07T10:26:55Z","includesCreatedEdit":false,"reactionGroups":[],"state":"CHANGES_REQUESTED","commit":{"oid":"7429df295edeedf5244e929300428f8e5c62185d"}},{"id":"PRR_kwDOEMtmMM6XCTKM","author":{"login":"jykanase"},"authorAssociation":"CONTRIBUTOR","body":"","submittedAt":"2025-01-07T10:29:51Z","includesCreatedEdit":false,"reactionGroups":[],"state":"COMMENTED","commit":{"oid":"7429df295edeedf5244e929300428f8e5c62185d"}},{"id":"PRR_kwDOEMtmMM6XCeUG","author":{"login":"jykanase"},"authorAssociation":"CONTRIBUTOR","body":"","submittedAt":"2025-01-07T10:49:40Z","includesCreatedEdit":false,"reactionGroups":[],"state":"COMMENTED","commit":{"oid":"7429df295edeedf5244e929300428f8e5c62185d"}},{"id":"PRR_kwDOEMtmMM6XNkWi","author":{"login":"Sumynwa"},"authorAssociation":"CONTRIBUTOR","body":"","submittedAt":"2025-01-08T11:38:39Z","includesCreatedEdit":false,"reactionGroups":[],"state":"CHANGES_REQUESTED","commit":{"oid":"649c5e54bd3ae9e10ee3e73fd0c0da7754c098e9"}},{"id":"PRR_kwDOEMtmMM6YA486","author":{"login":"jykanase"},"authorAssociation":"CONTRIBUTOR","body":"","submittedAt":"2025-01-14T16:40:05Z","includesCreatedEdit":false,"reactionGroups":[],"state":"COMMENTED","commit":{"oid":"fb766ef15480ce824a611ce134a6b92a73305942"}}]}
+[neerajs@c28ccb9221c8 azurelinux]$ gh pr view --json reviews https://github.com/microsoft/azurelinux/pull/11782 | grep -c "\"state\":\"CHANGES_REQUESTED\""
+1
+[neerajs@c28ccb9221c8 azurelinux]$ gh pr view --json reviews https://github.com/microsoft/azurelinux/pull/11782 | grep -o "\"state\":\"CHANGES_REQUESTED\""
+"state":"CHANGES_REQUESTED"
+"state":"CHANGES_REQUESTED"
+[neerajs@c28ccb9221c8 azurelinux]$ gh pr view --json reviews https://github.com/microsoft/azurelinux/pull/11782 | grep -o "\"state\":\"CHANGES_REQUESTED\"" | wc -l
+2
+[neerajs@c28ccb9221c8 azurelinux]$ 
+[neerajs@c28ccb9221c8 azurelinux]$ 
+[neerajs@c28ccb9221c8 azurelinux]$ 
+[neerajs@c28ccb9221c8 azurelinux]$ gh pr view --json reviews https://github.com/microsoft/azurelinux/pull/11673 | grep -o "\"state\":\"CHANGES_REQUESTED\"" | wc -l
+0
+[neerajs@c28ccb9221c8 azurelinux]$ gh pr view --json reviews https://github.com/microsoft/azurelinux/pull/11673 |
+> ^C
+[neerajs@c28ccb9221c8 azurelinux]$ gh pr view --json reviews https://github.com/microsoft/azurelinux/pull/11673 
+{
+  "reviews": [
+    {
+      "id": "PRR_kwDOEMtmMM6XBcwy",
+      "author": {
+        "login": "suresh-thelkar"
+      },
+      "authorAssociation": "CONTRIBUTOR",
+      "body": "Some of the PR checks are failing. Can you please take a look. ",
+      "submittedAt": "2025-01-07T08:59:51Z",
+      "includesCreatedEdit": false,
+      "reactionGroups": [],
+      "state": "COMMENTED",
+      "commit": {
+        "oid": "e2c2f0fff7947e7f37395ca48ee986252cafd890"
+      }
+    }
+  ]
+}
+[neerajs@c28ccb9221c8 azurelinux]$ gh pr view --json reviews https://github.com/microsoft/azurelinux/pull/12220
+{
+  "reviews": []
+}
+[neerajs@c28ccb9221c8 azurelinux]$ gh pr view --json reviews https://github.com/microsoft/azurelinux/pull/12220 | wc -l
+1
+[neerajs@c28ccb9221c8 azurelinux]$ gh pr view --json reviews https://github.com/microsoft/azurelinux/pull/12220 | wc 
+      1       1      15
+[neerajs@c28ccb9221c8 azurelinux]$ gh pr view --json reviews https://github.com/microsoft/azurelinux/pull/12220 | wc -w
+1
+[neerajs@c28ccb9221c8 azurelinux]$ gh pr view --json reviews https://github.com/microsoft/azurelinux/pull/12220 | wc -c
+15
+[neerajs@c28ccb9221c8 azurelinux]$ gh pr view --json reviews https://github.com/microsoft/azurelinux/pull/12220 | wc -c
+15
+[neerajs@c28ccb9221c8 azurelinux]$

@@ -1,0 +1,46 @@
+#! /bin/bash
+
+#This script is able to bump up the release number of a spec file
+#provided the release is in the format "[0-9][0-9]*%{?dist}" or "[0-9][0-9]*[ \t]*$"
+
+print_usage()
+{
+	echo "Usage:"
+	echo "$0 <spec file to be modified>"
+	echo ""
+	echo "the output is shown on stdout"
+	exit
+}
+
+spcfl=$1
+
+if [ $# -ne 1 ]
+then
+	print_usage
+fi
+
+relsline=`grep -e "^Release:" $spcfl | grep -e "[0-9][0-9]*%{?dist}" -e "[0-9][0-9]*[ \t]*$"`
+#relsline=`grep -e "^Release:" $spcfl | grep -e "[0-9][0-9]*[ \t]*$"`
+relnum=$(echo $relsline | awk '{print $2}' | awk 'BEGIN { FS = "%"} {print $1'}) 
+new_relnum=$(($relnum+1)); 
+
+#echo "The old relsline is "
+#echo $relsline
+
+awk -v nrnum_var="$new_relnum" '
+/^Release:[ \t][ \t]*[0-9][0-9]*%{\?dist}/ {
+	printf ("Release:	%s%{?dist}\n", nrnum_var)
+}
+/^Release:[ \t][ \t]*[0-9][0-9]*[ \t]*$/ {
+	printf ("Release:	%s\n", nrnum_var)
+}
+!/^Release:[ \t][ \t]*[0-9][0-9]*%{\?dist}/ && !/^Release:[ \t][ \t]*[0-9][0-9]*[ \t]*$/ {
+	print $0
+	}
+' $spcfl
+
+
+
+#The below line is for reference.
+#This had been successful in incrementing the release number
+#for pkg in `cat ~/utils/AZL_StandardTools/IMPORT_SPECS_MDFY_CGMJ/import_specs_modify_cgmjson/bulkbuilt_cmt_lst28Nov.txt | head -5`; do relsline=`grep -e "^Release:" $pkg/$pkg.spec | grep -e "[0-9][0-9]*%{?dist}"`; echo $relsline; relnum=$(echo $relsline | awk '{print $2}' | awk 'BEGIN { FS = "%"} {print $1'}) ; echo $relnum; new_relnum=$(($relnum+1)); echo $new_relnum; done

@@ -1,0 +1,11 @@
+
+# Usage
+# invoke this script passing the list of package names with versions as input
+# like
+#
+# $ cat paclist.txt | chk_n_rem_ver_release_part
+awk ' 
+BEGIN {FS = "-"} NF >= 3 { for (i = 1; i <= NF - 2; i++) 
+{ if (i > 1) {printf "-"} printf $i; } printf "\n";
+}' 
+#paclist.txt

@@ -1,0 +1,36 @@
+awk '
+	BEGIN {
+		blt_srpms_started=0
+		blt_srpms_finished=0
+		firstskipped=0
+	}
+
+	/\[scheduler\] Built SRPMs:/ {
+#		print ("Going to set blt_srpms_started to 1")
+		blt_srpms_started=1
+	}
+
+	/\[scheduler\] Unresolved dependencies:/ {
+#		print ("Going to set blt_srpms_finished to 1")
+		blt_srpms_finished=1
+	}
+
+	{
+		if (firstskipped==1) 
+		{
+#			printf ("first skipped is %s, dep started is %s, dep finished is %s\n", firstskipped, blt_srpms_started, blt_srpms_finished)
+#			print ($0)
+			if ((blt_srpms_started==1) && (blt_srpms_finished==0))
+			{
+				print $3
+			}
+		}
+
+		if ((blt_srpms_started==1) && (firstskipped==0))
+		{
+#			print ("going to set first skipped to 1")
+#			print ($0)
+			firstskipped=1
+		}
+	}
+'

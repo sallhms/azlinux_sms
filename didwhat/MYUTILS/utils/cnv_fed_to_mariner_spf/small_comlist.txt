@@ -1,0 +1,3 @@
+tim-schema,100.99.20
+mariadb-connector-odbc
+cim-schema,2.54.1,cim-schema-2.54.1-5.azl3.src.rpm

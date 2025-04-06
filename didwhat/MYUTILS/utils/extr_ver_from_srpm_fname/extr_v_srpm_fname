@@ -1,0 +1,23 @@
+#
+#This script extracts and prints the version portion from the name of an srpm file.
+#The logic is:
+#split the file name with - as the field separator
+#there must be 3 or more parts resulting from this split
+#print the second last part, that is the version
+#
+#So, f
+
+awk '
+BEGIN {FS = "-"} NF >= 3 {print $(NF - 1)}
+'
+
+
+#awk ' 
+#BEGIN {FS = "-"} NF >= 3 { for (i = NF - 1; i <= NF; i++) 
+#{ if (i > (NF - 1)) {printf "-"} printf $i; } printf "\n";
+#}'
+
+#awk 'BEGIN { FS = "-"} NF >= 3 {print $3 "-" $2 "-" $1
+#
+#}'
+

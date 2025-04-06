@@ -1,0 +1,18 @@
+
+
+print_usage()
+{
+	echo "Usage:"
+	echo "$0 first_file second_file"
+	exit 1
+}
+
+if [ $# -ne 2 ]
+then
+	print_usage
+fi
+
+file1=$1
+file2=$2
+for pkgnm in `cat $file1`; do  grep -e "^\<$pkgnm\>$" $file2 > /dev/null; if [ $? -ne 0 ]; then echo "$pkgnm missing in $file2"; fi; done
+

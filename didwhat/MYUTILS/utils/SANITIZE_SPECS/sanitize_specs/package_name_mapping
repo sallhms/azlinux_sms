@@ -1,0 +1,8 @@
+#!/bin/bash
+
+declare -A package_name_map=(
+    ["runc"]="moby-runc" # Present in Fedora 32 as runc, Present in Mariner Core as moby-runc
+)
+
+export PACKAGE_NAME_REGEX
+PACKAGE_NAME_REGEX="($(echo "${!package_name_map[@]}" | sed "s/ /|/g"))"

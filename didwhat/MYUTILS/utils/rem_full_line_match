@@ -1,0 +1,43 @@
+#!/bin/bash
+
+set -e
+
+function clean_up {
+    echo "====== Cleaning up ======"
+
+    if [[ -f "$WORKING_TEMP_FILE" ]]
+    then
+        rm -rf "$WORKING_TEMP_FILE"
+    fi
+}
+trap clean_up EXIT SIGINT SIGTERM
+
+PROG_NAME=$0
+print_usage()
+{
+	echo "Usage:"
+	echo "${PROG_NAME##*/} <line_match_pattern> <inout_file>"
+	echo ""
+	echo "Description:"
+	echo "Remove a line that fully matches the given pattern."
+	echo "Caution: The file is changed in place."
+	echo ""
+}
+
+if [ $# -ne 2 ]
+then
+	print_usage
+	exit
+fi
+
+MATCH_STR=$1
+INOUT_FILE=$2
+
+WORKING_TEMP_FILE="$(mktemp -q)"
+
+awk -v avar_origstr="$MATCH_STR" '
+!($0 ~ avar_origstr) {print $0}
+' $INOUT_FILE > $WORKING_TEMP_FILE 
+
+cp $WORKING_TEMP_FILE $INOUT_FILE
+

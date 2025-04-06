@@ -1,0 +1,39 @@
+awk '
+	BEGIN {
+		fld_srpms_started=0
+		fld_srpms_finished=0
+		firstskipped=0
+	}
+
+	/\[scheduler\] Failed SRPMs:/ {
+#		print ("Going to set fld_srpms_started to 1")
+		fld_srpms_started=1
+	}
+
+	/\[scheduler\] ---------------------------/ {
+		if (fld_srpms_started==1)
+		{
+#			print ("Going to set fld_srpms_finished to 1")
+			fld_srpms_finished=1
+		}
+	}
+
+	{
+		if (firstskipped==1) 
+		{
+#			printf ("first skipped is %s, dep started is %s, dep finished is %s\n", firstskipped, fld_srpms_started, fld_srpms_finished)
+#			print ($0)
+			if ((fld_srpms_started==1) && (fld_srpms_finished==0))
+			{
+				print $3
+			}
+		}
+
+		if ((fld_srpms_started==1) && (firstskipped==0))
+		{
+#			print ("going to set first skipped to 1")
+#			print ($0)
+			firstskipped=1
+		}
+	}
+'

@@ -1,0 +1,36 @@
+#! /bin/bash
+
+#This script is able to extract the release number from a spec file
+#provided the release is in the format "[0-9][0-9]*%{?dist}" or "[0-9][0-9]*[ \t]*$"
+
+print_usage()
+{
+	echo "Usage:"
+	echo "$0 <spec file>"
+	echo ""
+	echo "the output is shown on stdout"
+	exit
+}
+
+spcfl=$1
+
+if [ $# -ne 1 ]
+then
+	print_usage
+fi
+
+relsline=`grep -e "^Release:" $spcfl | grep -e "[0-9][0-9]*%{?dist}" -e "[0-9][0-9]*[ \t]*$"`
+relnum=$(echo $relsline | awk '{print $2}' | awk 'BEGIN { FS = "%"} {print $1'}) 
+
+#echo "The relsline is "
+#echo $relsline
+
+awk -v nrnum_var="$relnum" '
+/^Release:[ \t][ \t]*[0-9][0-9]*%{\?dist}/ {
+	printf ("%s\n", nrnum_var)
+}
+/^Release:[ \t][ \t]*[0-9][0-9]*[ \t]*$/ {
+	printf ("%s\n", nrnum_var)
+}
+' $spcfl
+

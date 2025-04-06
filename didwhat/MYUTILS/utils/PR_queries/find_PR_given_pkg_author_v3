@@ -1,0 +1,107 @@
+#! /usr/bin/bash
+# This script takes as input the Author name and the package name and
+# searches for an OPEN or MERGED PR matching these two parameters.
+# It further imposes a restriction that the word CVE must not be present
+# in the title of the PR.  This ensures that we do not pick CVE PRs.
+
+print_usage() {
+	echo "Usage:"
+	echo "$0 <code_dir> <github name of the author> <package name>"
+	exit 1
+}
+
+if [ $# -ne 3 ]
+then
+	print_usage
+fi
+
+CODEDIR=$1
+AUTH=$2
+PKGNM=$3
+
+pushd $CODEDIR > /dev/null
+#RESULT1="EMPTY"
+#RESULT1=$(gh pr list -L 100 --author "$AUTH" -S "is:open $PKGNM in:title NOT in:title CVE")
+result=$(gh pr list -L 100 --author "$AUTH" -S "is:open $PKGNM in:title NOT in:title CVE")
+#echo "RESULT1 = $RESULT1" | grep -e "$PKGNM[ \t]*:" -e "[ \t]$PKGNM[ \t]"
+RESULT1=$(echo "$result" | grep -e "$PKGNM[ \t]*:" -e "[ \t]$PKGNM[ \t]")
+if [ "${RESULT1:-0}" == 0 ]
+then
+	#echo "search results for open PR empty"
+	#RESULT2="EMPTY"
+	#RESULT2=$(gh pr list -L 100 --author "$AUTH" -S "is:merged $PKGNM in:title NOT in:title CVE")
+	result=$(gh pr list -L 100 --author "$AUTH" -S "is:merged $PKGNM in:title NOT in:title CVE")
+	#echo "RESULT2 = $RESULT2" | grep -e "$PKGNM[ \t]*:" -e "[ \t]$PKGNM[ \t]"
+	RESULT2=$(echo "$result" | grep -e "$PKGNM[ \t]*:" -e "[ \t]$PKGNM[ \t]")
+	if [ "${RESULT2:-0}" == 0 ]
+	then
+		#echo "search results for merged PR empty"
+		: # do nothing.  Useful noop when the above echo command is commented out
+	else
+		echo $RESULT2 | awk '{print $1" "$(NF-1)" "$(NF)}'
+	fi
+else
+	echo $RESULT1 | awk '{print $1" "$(NF-1)" "$(NF)}'
+fi
+popd > /dev/null
+
+#EXAMPLE COMMANDS START:
+#[neerajs@c28ccb9221c8 azurelinux]$ gh pr list -L 100 --author "kevin-b-lockwood" -S "is:merged CVE in:title" | wc
+#      3      29     405
+#[neerajs@c28ccb9221c8 azurelinux]$ gh pr list -L 100 --author "kevin-b-lockwood" -S "is:merged NOT in
+#:title CVE" | wc
+#      7      61     906
+#[neerajs@c28ccb9221c8 azurelinux]$ gh pr list -L 100 --author "kevin-b-lockwood" -S "is:open NOT in:t
+#itle CVE" | wc
+#     56     466    6870
+#[neerajs@c28ccb9221c8 azurelinux]$ gh pr list -L 100 --author "kevin-b-lockwood" -S "is:open libipt i
+#n:title NOT in:title CVE" | wc
+#      1       8     106
+#[neerajs@c28ccb9221c8 azurelinux]$ gh pr list -L 100 --author "kevin-b-lockwood" -S "is:open libipt in:title NOT in:title CVE" 
+#
+#Showing 1 of 1 pull request in microsoft/azurelinux that matches your search
+#
+#ID      TITLE                     BRANCH                                           CREATED AT        
+##10939  Update libipt to 2.1.1-1  kevin-b-lockwood:kevin-b-lockwood/libipt-2.1...  about 3 months ago
+#[neerajs@c28ccb9221c8 azurelinux]$ gh pr list -L 100 --author "kevin-b-lockwood" -S "is:open libipt in:title NOT in:title CVE" 
+#
+#Showing 1 of 1 pull request in microsoft/azurelinux that matches your search
+#
+#ID      TITLE                     BRANCH                                           CREATED AT        
+##10939  Update libipt to 2.1.1-1  kevin-b-lockwood:kevin-b-lockwood/libipt-2.1...  about 3 months ago
+#[neerajs@c28ccb9221c8 azurelinux]$ gh pr list -L 100 --author "kevin-b-lockwood" -S "is:open giflib i
+#n:title NOT in:title CVE" 
+#no pull requests match your search in microsoft/azurelinux
+#[neerajs@c28ccb9221c8 azurelinux]$ gh pr list -L 100 --author "kevin-b-lockwood" -S "is:open giflib in:title" 
+#
+#Showing 1 of 1 pull request in microsoft/azurelinux that matches your search
+#
+#ID      TITLE                                  BRANCH                                 CREATED AT     
+##12410  Patch giflib for CVE-2023-39742 in...  kevin-b-lockwood:kevin-b-lockwood/...  about 1 day ago
+#[neerajs@c28ccb9221c8 azurelinux]$ 
+#EXAMPLE COMMANDS END:
+
+#Change History
+#-------------
+#v1:
+#Initial version.
+#16 Feb 2025
+#    1. This script takes as input the Author name and the package name and
+#       searches for an OPEN or MERGED PR matching these two parameters.
+#       It further imposes a restriction that the word CVE must not be present
+#       in the title of the PR.  This ensures that we do not pick CVE PRs.
+#v2:
+#16 Feb 2025
+#    1. Now there is no need to run this script in the code directory.
+#       The path to code directory has been added as the first argument.
+#       The script changes to that directory, carries out the search and then
+#       changes back to the original directory.
+#v3:
+#17 Feb 2025
+#    1. The match for package name was not precise in the previous version v2.
+#       A search for "hyphen" would give PR of "hyphen-pt" i.e. 
+#       https://github.com/microsoft/azurelinux/pull/10907.  Similarly, a 
+#       search for "libcdio" would give PR for "libcdio-paranoia" i.e. #11006.
+#       And a search for "mythes" would give the PR for "mythes-de" i.e.
+#       #11622.
+#    2. The changes in this version i.e. v3, fix that.

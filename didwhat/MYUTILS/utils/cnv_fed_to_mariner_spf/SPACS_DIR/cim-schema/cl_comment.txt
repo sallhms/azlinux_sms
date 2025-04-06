@@ -1,0 +1,2 @@
+- Initial CBL-Mariner import from Fedora 41 (license: MIT).
+- License verified

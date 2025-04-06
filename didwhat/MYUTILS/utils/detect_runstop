@@ -1,0 +1,27 @@
+checking_interval=10
+
+PROG_NAME=$0
+
+print_usage()
+{
+	echo "Usage:"
+	echo "${PROG_NAME##*/} <process id> <cmd to run>"
+	echo "This will check every minute for the existence of the given process id"
+	echo "till the process termintes.  At such time this script will stop after "
+	echo "printing the time."
+	echo "Every minute it will run the given command too.  The argument is optional."
+}
+
+if [ $# -lt 1 ]
+then
+	print_usage
+	exit
+fi
+
+prid=$1;
+shift
+cmdtorun=$@
+
+while true;  do ps -ef | awk '{print $2}' | grep $prid; if [ $? -eq 0 ]; then date; echo "$prid running"; $cmdtorun; else echo "$prid finished"; date; break; fi; sleep $checking_interval; done
+
+#while true;  do ps -ef | awk '{print $2}' | grep $prid; if [ $? -eq 0 ]; then echo -n "$prid running :: "; date; else echo "$prid finished"; date; break; fi; sleep $checking_interval; done

@@ -1,0 +1,64 @@
+#! /bin/bash
+
+# Example runs on the spec files included in the tool directory itself::::
+# BEGIN SAMPLE RUNS
+# RUN 1 for a file that had multiple dependencies in a single BuildRequires
+###neerajs@azuli-m1 [ ~/utils/SPLIT_MULTIPLE_BUILDREQUIRES ]$ ./split_breq xterm.spec > temp_xterm.spec
+###neerajs@azuli-m1 [ ~/utils/SPLIT_MULTIPLE_BUILDREQUIRES ]$ diff xterm.spec temp_xterm.spec
+###11,13c11,21
+###< BuildRequires: gcc pkgconfig ncurses-devel libutempter-devel
+###< BuildRequires: libXft-devel libXaw-devel libXext-devel desktop-file-utils
+###< BuildRequires: libxkbfile-devel pcre2-devel pkgconfig(libpcre2-posix)
+###---
+###> BuildRequires: gcc
+###> BuildRequires: pkgconfig
+###> BuildRequires: ncurses-devel
+###> BuildRequires: libutempter-devel
+###> BuildRequires: libXft-devel
+###> BuildRequires: libXaw-devel
+###> BuildRequires: libXext-devel
+###> BuildRequires: desktop-file-utils
+###> BuildRequires: libxkbfile-devel
+###> BuildRequires: pcre2-devel
+###> BuildRequires: pkgconfig(libpcre2-posix)
+# RUN 2 for a file that did not have any multiple dependencies in a single BuildRequires
+###neerajs@azuli-m1 [ ~/utils/SPLIT_MULTIPLE_BUILDREQUIRES ]$ ./split_breq clutter.spec > temp_clutter.spec 
+###neerajs@azuli-m1 [ ~/utils/SPLIT_MULTIPLE_BUILDREQUIRES ]$ diff clutter.spec temp_clutter.spec 
+###neerajs@azuli-m1 [ ~/utils/SPLIT_MULTIPLE_BUILDREQUIRES ]$ 
+# END SAMPLE RUNS
+
+
+print_usage()
+{
+	echo "Given an input spec file, this script will generate an output where each BuildRequires line with multiple dependencies mentioned will be replaced by multiple BuildRequires with single dependency"
+	echo "Usage:"
+	echo "$0 spec_file"
+}
+
+if [ $# -ne 1 ]
+then
+	print_usage
+	exit
+fi
+
+spcfl=$1
+
+awk '
+	BEGIN {FS=" "} 
+	/^BuildRequires:/ && !/[<>=]/ { 
+		if (NF > 2 ) 
+		{ 
+			for (fldnum=2; fldnum <= NF; fldnum++) 
+			{ 
+				printf("BuildRequires: %s\n", $fldnum)
+			} 
+		}
+		else
+		{
+			print $0
+		}
+	}
+	!/^BuildRequires:/ || /[<>=]/ {
+		print $0
+	}
+' $spcfl

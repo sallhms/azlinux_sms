@@ -1,0 +1,120 @@
+#!/bin/bash
+
+set -e
+
+function clean_up {
+    echo "====== Cleaning up ======"
+
+    if [[ -f "$TEMP_SPEC" ]]
+    then
+        rm -rf "$TEMP_SPEC"
+        rm -rf "$TEMP_SPEC_INC_REL"
+    fi
+}
+trap clean_up EXIT SIGINT SIGTERM
+
+print_usage() {
+	echo "Usage:"
+	echo "$0  <name of the list_file> <specs_dir>"
+	echo ""
+	echo "where:"
+	echo "    specs_dir is the directory under which there is a folder with"
+	echo "              name same as the package and that folder has the"
+	echo "              spec file to be modified"
+	echo ""
+	echo "Caution: The spec files will be overwritten"
+	echo ""
+	echo "Note: The format of the list_file contents is"
+	echo "packagename,packageversion"
+	exit 
+}
+
+if [ $# -ne 2 ]
+then
+	print_usage
+fi
+
+list_file=$1
+
+if ! [ -f $list_file ]
+then
+	echo "Error: The file $list_file doesnt exist"
+	echo ""
+	print_usage
+	exit
+fi
+
+specs_dir=$2
+if ! [ -d $specs_dir ]
+then
+	echo "Error: The directory $specs_dir doesnt exist"
+	echo ""
+	print_usage
+	exit
+fi
+
+for pdet_line in `cat $list_file`
+do
+
+	pkgnm=`echo $pdet_line | awk 'BEGIN {FS = ","} {print $1}'`
+	echo $pkgnm
+	
+	full_sp_path="$specs_dir/$pkgnm/$pkgnm.spec"
+	
+	if ! [ -f $full_sp_path ]
+	then
+		echo "$full_sp_path doesn't exist"
+		continue
+	fi
+
+	#Although we leave the Version tag in the spec file untouched, we still need the 
+	#version number in a variable so that the changelog comment can have that info
+	pkgvr=`echo $pdet_line | awk 'BEGIN {FS = ","} {print $2}'`
+
+	#only for debugging
+	echo $pkgvr
+
+	dt_part=$(date +%a" "%b" "%d" "%Y)
+	#echo $dt_part
+
+	author_part="Neeraj Sallh <v-nsallh@microsoft.com>" 
+	#echo $author_part
+
+	TEMP_SPEC_INC_REL=$(mktemp /tmp/tempsp-XXXXXXX)	
+
+	#incrementing the Release here instead of the awk lines ahead, because
+	#the script in inc_spec_rel_num can take care of two patterns
+	/home/neerajs/utils/INC_SPEC_REL_NUM/inc_spec_rel_num $full_sp_path > $TEMP_SPEC_INC_REL
+
+	#note down the incremented release number
+	pkrel_part=$(/home/neerajs/utils/FIND_SPEC_REL_NUM/find_spec_rel_num $TEMP_SPEC_INC_REL)
+
+	TEMP_SPEC=$(mktemp /tmp/tempsp-XXXXXXX)	
+
+	awk -v version_var="$pkgvr" -v dt_var="$dt_part" -v auth_var="$author_part" -v rel_var="$pkrel_part"  '
+	/^Name:/ {
+		print "Vendor:         Microsoft Corporation"
+		print "Distribution:   Azure Linux"
+		print ($0)
+	}
+#We will uncomment the below awk block only if the version number too needs to be changed
+#	/^Version:/ {
+#		printf ("Version:        %s\n", version_var)
+#	}
+	/^%changelog/ {
+		print ($0)
+		printf ("* %s %s - %s-%s\n", dt_var, auth_var, version_var, rel_var)
+		printf ("- Initial Azure Linux import from Fedora 41 (license: MIT).\n") 
+		printf ("- License verified\n")
+		printf ("\n")
+	}
+#When the version number is also getting changed and the block above is no more
+#commented out, we will uncomment the below pattern line and comment out the next
+#pattern line
+#	!/^Name:/ && !/^Version:/ && !/^%changelog/ {
+	!/^Name:/ && !/^%changelog/ {
+		print ($0)
+	}
+	'  $TEMP_SPEC_INC_REL > $TEMP_SPEC
+	cp $TEMP_SPEC $full_sp_path
+done

@@ -1,0 +1,66 @@
+#!/usr/bin/bash
+# First argument has to be the state for which you intend to carry out the search
+# Second argument has to be the list of authornames file
+
+#set -x
+print_usage() {
+	echo "Usage:"
+	echo "$0 <sourcerepo> <state_of_PR> <file_listing_author_github_names>"
+	echo "where:"
+	echo "	state_of_PR {open|closed|merged|draft|unmerged|approved|all}"
+	echo "	source_repo should be in the formate [HOST/]OWNER/REPO"
+	if [ $dirpushed -eq 1 ]
+	then
+		popd
+	fi
+	exit 1
+}
+
+if [ $# -ne 3 ]
+then
+	print_usage
+fi
+
+if [ ! -f $3 ]
+then
+	echo "The third argument is expected to be a file but $3 is not a file"
+	print_usage
+fi
+
+sourcerepo=$1
+state=$2
+listauthors=$3
+
+echo "Source repo is $sourcerepo"
+echo "PR state to be searched $state"
+echo "author list file is $listauthors"
+
+search_template="EMPTY"
+
+case "$state" in 
+	open ) search_template='is:open NOT in:title CVE';;
+	closed ) ;;
+	merged ) search_template='is:merged NOT in:title CVE';;
+	draft ) search_template='is:draft NOT in:title CVE';;
+	approved ) search_template='review:approved NOT in:title CVE';;
+	all ) ;;
+	unmerged ) search_template='is:closed is:unmerged';;
+	* ) echo "Invalid state specified=$state"; print_usage;;
+esac
+
+#set -x
+for githubname in `cat $listauthors`
+do
+echo
+echo "========================================================================="
+echo "$githubname"::"$state"
+echo "========================================================================="
+if [  "$search_template" == "EMPTY" ]
+then
+	#echo "1" $search_template
+	gh pr list -R $sourcerepo -L 100 --author "$githubname" --state $state
+else
+	#echo "2" $search_template
+	gh pr list -R $sourcerepo -L 100 --author "$githubname" -S "$search_template"
+fi
+done

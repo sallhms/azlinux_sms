@@ -1,0 +1,64 @@
+#!/usr/bin/bash
+# First argument has to be the state for which you intend to carry out the search
+# Second argument has to be the list of authornames file
+
+print_usage() {
+	echo "Usage:"
+	echo "$0 state_of_PR file_listing_author_github_names created_comp_str"
+	echo "	state_of_PR {open|closed|merged|unmerged|all}"
+	echo "  if created date is not required as filter please specify the third arg as NULL"
+	exit 1
+}
+
+if [ $# -ne 3 ]
+then
+	print_usage
+fi
+
+state=$1
+listauthors=$2
+created_comp_str="$3"
+echo "created_comp_str=$created_comp_str"
+
+if [ $created_comp_str = "NULL" ]
+then
+	created_comp_str=""
+else
+	created_comp_str="created:$created_comp_str"
+fi
+
+echo "for search created_comp_str=$created_comp_str"
+
+search_template="EMPTY"
+
+case "$state" in 
+	open ) search_template="is:open in:title CVE $created_comp_str"
+		echo "search_template=$search_template"
+		;;
+	closed ) ;;
+	merged ) search_template="is:merged in:title CVE $created_comp_str"
+		echo "search_template=$search_template"
+		;;
+	all ) ;;
+	unmerged ) search_template="is:closed is:unmerged in:title CVE $created_comp_str"
+		echo "search_template=$search_template"
+		;;
+	* ) echo "Invalid state specified=$state"; print_usage;;
+esac
+
+#set -x
+for githubname in `cat $listauthors`
+do
+echo
+echo "========================================================================="
+echo "$githubname"::"$state"
+echo "========================================================================="
+if [  "$search_template" == "EMPTY" ]
+then
+	#echo "1" $search_template
+	gh pr list -L 100 --author "$githubname" --state $state
+else
+	#echo "2" $search_template
+	gh pr list -L 100 --author "$githubname" -S "$search_template"
+fi
+done

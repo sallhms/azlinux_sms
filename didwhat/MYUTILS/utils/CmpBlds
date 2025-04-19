@@ -1,0 +1,210 @@
+
+function print_usage {
+	echo "Usage:"
+	echo "$0 thenbuildname nowbuildname thenlogsdir nowlogsdir file_listing_PR_pkgs"
+	echo "thenbuildname - the name with which you want to identify the then build" 	
+	echo "nowbuildname - the name with which you want to identify the now build"
+	echo "thenlogsdir - fully qualified path to the directory where the BuildLoogs.txt file for the then build is kept"
+	echo "nowlogsdir - fully qualified path to the directory where the BuildLoogs.txt file for the now build is kept"
+	echo "file_listing_PR_pkgs"
+	exit
+}
+
+function clean_up {
+    echo "====== Cleaning up ======"
+
+    if [[ -f "$WORKING_TEMP_FILE" ]]
+    then
+        rm -rf "$WORKING_TEMP_FILE"
+    fi
+}
+trap clean_up EXIT SIGINT SIGTERM
+
+if [ $# -ne 5 ]
+then
+	echo "5 arguments needed as follows:"
+	print_usage
+fi
+
+#Name of then build
+#thenbuildnm="03Apr"
+thenbuildnm=$1
+#Name of now build
+#nowbuildnm="17Apr"
+nowbuildnm=$2
+#Fully qualified path to the directory where the BuildLogs.txt file for the then build is present. 
+#thendir="/mnt/c/Users/v-nsallh/Junk/PipelineBuilds/CopyOneBranch_Daily_03Apr_777677"
+thendir=$3
+#Fully qualified path to the directory where the BuildLogs.txt file for the now build is present. 
+#nowdir="/mnt/c/Users/v-nsallh/Junk/PipelineBuilds/OneBranch_Daily_17Apr_784735"
+nowdir=$4
+#Fully qualified path to a file that contains list of package names for which PRs have been raised.
+#pkgPRMapfile="/mnt/c/Users/v-nsallh/Junk/PipelineBuilds/pkgnm_PRs_04Apr.txt"
+pkgPRMapfile=$5
+
+if [ ! -f $pkgPRMapfile ]
+then
+	echo "The fifth argument $pkgPRMapfile is not a file"
+	print_usage
+fi
+
+if [ ! -d $thendir ]
+then
+	echo "The third argument $thendir is not a directory"
+	print_usage
+fi
+
+if [ ! -d $nowdir ]
+then
+	echo "The fourth argument $nowdir is not a directory"
+	print_usage
+fi
+
+if [ $nowdir = $thendir ]
+then
+	echo "The two directories $nowdir and $thendir must be different"
+	echo "Else the listing files will be corrupted"
+	print_usage
+fi
+
+#Create the lists for each build
+
+echo ""
+
+echo "Creating the Passed/Failed/Blocked/Unresolved lists for $thenbuildnm"
+pushd $thendir
+cat BuildLogs.txt | ~/utils/find_failed_from_bld_logs/get_failed_frm_logs | ~/utils/remove_ver_rel/remove_ver_rel_part | sort -u > unqsrtd_Failed_SRPMs_pkgnm
+cat BuildLogs.txt | ~/utils/find_blkd_from_bld_logs/get_blkd_frm_logs | ~/utils/remove_ver_rel/remove_ver_rel_part | sort -u > unqsrtd_Blocked_SRPMs_pkgnm
+cat BuildLogs.txt | ~/utils/find_unres_from_bld_logs/get_unres_frm_logs | ~/utils/remove_ver_rel/remove_ver_rel_part | sort -u > unqsrtd_Unres_SRPMs_pkgnm
+cat BuildLogs.txt | ~/utils/find_built_from_bld_logs/get_built_frm_logs | ~/utils/remove_ver_rel/remove_ver_rel_part | sort -u > unqsrtd_Built_SRPMs_pkgnm
+popd
+
+echo ""
+
+echo "Creating the Passed/Failed/Blocked/Unresolved lists for $nowbuildnm"
+pushd $nowdir
+cat BuildLogs.txt | ~/utils/find_failed_from_bld_logs/get_failed_frm_logs | ~/utils/remove_ver_rel/remove_ver_rel_part | sort -u > unqsrtd_Failed_SRPMs_pkgnm
+cat BuildLogs.txt | ~/utils/find_blkd_from_bld_logs/get_blkd_frm_logs | ~/utils/remove_ver_rel/remove_ver_rel_part | sort -u > unqsrtd_Blocked_SRPMs_pkgnm
+cat BuildLogs.txt | ~/utils/find_unres_from_bld_logs/get_unres_frm_logs | ~/utils/remove_ver_rel/remove_ver_rel_part | sort -u > unqsrtd_Unres_SRPMs_pkgnm
+cat BuildLogs.txt | ~/utils/find_built_from_bld_logs/get_built_frm_logs | ~/utils/remove_ver_rel/remove_ver_rel_part | sort -u > unqsrtd_Built_SRPMs_pkgnm
+popd
+
+echo ""
+
+#PACKAGES THEN FAILING AND NOT FAILING NOW
+#=========================================
+#
+#The list of packages that were Failing in 26 Mar build and are not failing now:
+#NOTE: Because of the problem of the script the package "dbus-c++" gets falsely reported.
+
+echo "PACKAGES THEN FAILING AND NOT FAILING NOW"
+echo "========================================="
+echo "The overall list of packages that Failed in $thenbuildnm and are not failing in $nowbuildnm:"
+echo "(NOTE: Because of the problem of the script the package \"dbus-c++\" gets falsely reported.)"
+first_not_in_second $thendir/unqsrtd_Failed_SRPMs_pkgnm $nowdir/unqsrtd_Failed_SRPMs_pkgnm | awk '{print $1}'
+echo ""
+
+
+########The command for more detailed output on the movement from Failed to Non-Failed.  Only for reference or some debugging of the script.
+#####for pkgnm in `first_not_in_second $thendir/unqsrtd_Failed_SRPMs_pkgnm $nowdir/unqsrtd_Failed_SRPMs_pkgnm | awk '{print $1}'`; do echo "In $nowdir the $pkgnm is found in "; grep -e "$pkgnm" $nowdir/unqsrtd*_SRPMs_pkgnm; done
+
+#Details of movement from Failed to Non-Failed:
+echo "Breakup of movement from Failed to Non-Failed:"
+echo "----------------------------------------------"
+echo "List of SRPMs that were Failed earlier ($thenbuildnm) and are now ($nowbuildnm) Passed: "
+for pkgnm in `first_not_in_second $thendir/unqsrtd_Failed_SRPMs_pkgnm $nowdir/unqsrtd_Failed_SRPMs_pkgnm | awk '{print $1}'`; do echo "In $nowdir the $pkgnm is found in "; grep -e "$pkgnm" $nowdir/unqsrtd*_SRPMs_pkgnm; done | grep -e "unqsrtd.*_pkgnm:" | grep -e "_Built_" | awk 'BEGIN {FS=":"} {print $2}'
+echo ""
+echo "List of SRPMs that were Failed earlier ($thenbuildnm) and are now ($nowbuildnm) Blocked: "
+for pkgnm in `first_not_in_second $thendir/unqsrtd_Failed_SRPMs_pkgnm $nowdir/unqsrtd_Failed_SRPMs_pkgnm | awk '{print $1}'`; do echo "In $nowdir the $pkgnm is found in "; grep -e "$pkgnm" $nowdir/unqsrtd*_SRPMs_pkgnm; done | grep -e "unqsrtd.*_pkgnm:" | grep -e "_Blocked" | awk 'BEGIN {FS=":"} {print $2}'
+echo "(NOTE: The above are a concern because these indicate some dependencies are not getting resolved now but were getting resolved earlier)"
+echo ""
+echo "List of SRPMs that Failed earlier ($thenbuildnm) and are Failed now ($nowbuildnm) too: "
+for pkgnm in `first_not_in_second $thendir/unqsrtd_Failed_SRPMs_pkgnm $nowdir/unqsrtd_Failed_SRPMs_pkgnm | awk '{print $1}'`; do echo "In $nowdir the $pkgnm is found in "; grep -e "$pkgnm" $nowdir/unqsrtd*_SRPMs_pkgnm; done | grep -e "unqsrtd.*_pkgnm:" | grep -e "_Failed_" | awk 'BEGIN {FS=":"} {print $2}'
+echo ""
+
+
+#
+#Summary of the movement from the failed to non-failed is that 19 were reported as no more failing.
+#Out of these 15 have passed now.
+#3 have moved to blocked
+#1 is still failing
+#
+echo "Summary of movement from Failed to Non-Failed:"
+echo "---------------------------------------------:"
+echo -n "Total numbers that were Failed earlier ($thenbuildnm) and Not Failed now ($nowbuildnm): "
+first_not_in_second $thendir/unqsrtd_Failed_SRPMs_pkgnm $nowdir/unqsrtd_Failed_SRPMs_pkgnm | awk '{print $1}' | wc -l
+echo -n "Number of SRPMs that were Failed earlier ($thenbuildnm) and are now ($nowbuildnm) Passed: "
+for pkgnm in `first_not_in_second $thendir/unqsrtd_Failed_SRPMs_pkgnm $nowdir/unqsrtd_Failed_SRPMs_pkgnm | awk '{print $1}'`; do echo "In $nowdir the $pkgnm is found in "; grep -e "$pkgnm" $nowdir/unqsrtd*_SRPMs_pkgnm; done | grep -e "unqsrtd.*_pkgnm:" | grep -e "_Built_" | wc -l
+echo -n "Number of SRPMs that were Failed earlier ($thenbuildnm) and are now ($nowbuildnm) Blocked : "
+for pkgnm in `first_not_in_second $thendir/unqsrtd_Failed_SRPMs_pkgnm $nowdir/unqsrtd_Failed_SRPMs_pkgnm | awk '{print $1}'`; do echo "In $nowdir the $pkgnm is found in "; grep -e "$pkgnm" $nowdir/unqsrtd*_SRPMs_pkgnm; done | grep -e "unqsrtd.*_pkgnm:" | grep -e "_Blocked" | wc -l
+echo "(NOTE: The above are a concern because these indicate some dependencies are not getting resolved now but were getting resolved earlier)"
+echo -n "Number of SRPMs that Failed earlier ($thenbuildnm) and are Failed now ($nowbuildnm) too: "
+for pkgnm in `first_not_in_second $thendir/unqsrtd_Failed_SRPMs_pkgnm $nowdir/unqsrtd_Failed_SRPMs_pkgnm | awk '{print $1}'`; do echo "In $nowdir the $pkgnm is found in "; grep -e "$pkgnm" $nowdir/unqsrtd*_SRPMs_pkgnm; done | grep -e "unqsrtd.*_pkgnm:" | grep -e "_Failed_" | wc -l
+echo ""
+
+#THOSE SRPMs THAT CHANGED FROM FAILED TO PASSED AND HAVE PRs RAISED FOR THEM
+#===========================================================================
+
+echo "THOSE SRPMs THAT CHANGED FROM FAILED TO PASSED AND HAVE PRs RAISED FOR THEM"
+echo "==========================================================================="
+echo "Details of packages that changed from Failed to Passed and have PRs raised for them:"
+echo "------------------------------------------------------------------------------------"
+WORKING_TEMP_FILE="$(mktemp -q)"
+#echo $WORKING_TEMP_FILE
+
+#grep -f <(for pkgnm in `first_not_in_second $thendir/unqsrtd_Failed_SRPMs_pkgnm $nowdir/unqsrtd_Failed_SRPMs_pkgnm | awk '{print $1}'`; do echo "In $nowdir the $pkgnm is found in "; grep -e "$pkgnm" $nowdir/unqsrtd*_SRPMs_pkgnm; done | grep -e "unqsrtd.*_pkgnm:" | grep -e "_Built_" | awk 'BEGIN {FS=":"} {print $2}') $pkgPRMapfile
+for pkgnm in `first_not_in_second $thendir/unqsrtd_Failed_SRPMs_pkgnm $nowdir/unqsrtd_Failed_SRPMs_pkgnm | awk '{print $1}'`; do echo "In $nowdir the $pkgnm is found in "; grep -e "$pkgnm" $nowdir/unqsrtd*_SRPMs_pkgnm; done | grep -e "unqsrtd.*_pkgnm:" | grep -e "_Built_" | awk 'BEGIN {FS=":"} {print $2}' > $WORKING_TEMP_FILE
+first_present_in_second $WORKING_TEMP_FILE $pkgPRMapfile | awk '{print $1}'
+#first_present_in_second $nowdir/unqsrtd_Failed_SRPMs_pkgnm $pkgPRMapfile
+echo ""
+echo -n "Number of packages that changed from Failed to Passed and have PRs raised for them:"
+first_present_in_second $WORKING_TEMP_FILE $pkgPRMapfile | awk '{print $1}' | wc -l
+#first_present_in_second $nowdir/unqsrtd_Failed_SRPMs_pkgnm $pkgPRMapfile | wc -l
+echo ""
+
+#
+#PACKAGES NOW FAILING AND NOT FAILING THEN
+#=========================================
+
+echo "PACKAGES NOW FAILING AND NOT FAILING THEN"
+echo "========================================="
+echo "Detailed List of packages that were Non-Failed in $thenbuildnm but are Failed in $nowbuildnm:"
+echo "-------------------------------------------------------------------------------------"
+first_not_in_second $nowdir/unqsrtd_Failed_SRPMs_pkgnm $thendir/unqsrtd_Failed_SRPMs_pkgnm | awk '{print $1}'
+echo ""
+echo "List of packages that were Passed in $thenbuildnm but are Failed in $nowbuildnm:"
+for pkgnm in `first_not_in_second $nowdir/unqsrtd_Failed_SRPMs_pkgnm $thendir/unqsrtd_Failed_SRPMs_pkgnm | awk '{print $1}'`; do echo "In $thendir the $pkgnm is found in "; grep -e "$pkgnm" $thendir/unqsrtd*_SRPMs_pkgnm; done | grep -e "unqsrtd_.*_pkgnm" | grep -e "_Built_" | awk 'BEGIN{FS=":"} {print $2}'
+echo ""
+echo "List of packages that were Blocked in $thenbuildnm but are Failed in $nowbuildnm:"
+for pkgnm in `first_not_in_second $nowdir/unqsrtd_Failed_SRPMs_pkgnm $thendir/unqsrtd_Failed_SRPMs_pkgnm | awk '{print $1}'`; do echo "In $thendir the $pkgnm is found in "; grep -e "$pkgnm" $thendir/unqsrtd*_SRPMs_pkgnm; done | grep -e "unqsrtd_.*_pkgnm" | grep -e "_Blocked_" | awk 'BEGIN{FS=":"} {print $2}'
+echo ""
+echo "List of packages that were Blocked in $thenbuildnm and are also Failed in $nowbuildnm (this is meant to catch failure of this script):"
+for pkgnm in `first_not_in_second $nowdir/unqsrtd_Failed_SRPMs_pkgnm $thendir/unqsrtd_Failed_SRPMs_pkgnm | awk '{print $1}'`; do echo "In $thendir the $pkgnm is found in "; grep -e "$pkgnm" $thendir/unqsrtd*_SRPMs_pkgnm; done | grep -e "unqsrtd_.*_pkgnm" | grep -e "_Failed_" | awk 'BEGIN{FS=":"} {print $2}'
+echo ""
+
+
+echo "Summary counts of packages that were Non-Failed in $thenbuildnm but are Failed in $nowbuildnm:"
+echo "--------------------------------------------------------------------------------------"
+echo -n "Number of packages that were Non-Failed in $thenbuildnm but are Failed in $nowbuildnm:"
+first_not_in_second $nowdir/unqsrtd_Failed_SRPMs_pkgnm $thendir/unqsrtd_Failed_SRPMs_pkgnm | awk '{print $1}' | wc -l
+echo -n "Number of packages that were Passed in $thenbuildnm but are Failed in $nowbuildnm:"
+for pkgnm in `first_not_in_second $nowdir/unqsrtd_Failed_SRPMs_pkgnm $thendir/unqsrtd_Failed_SRPMs_pkgnm | awk '{print $1}'`; do echo "In $thendir the $pkgnm is found in "; grep -e "$pkgnm" $thendir/unqsrtd*_SRPMs_pkgnm; done | grep -e "unqsrtd_.*_pkgnm" | grep -e "_Built_"  | wc -l
+echo -n "Number List of packages that were Blocked in $thenbuildnm but are Failed in $nowbuildnm:"
+for pkgnm in `first_not_in_second $nowdir/unqsrtd_Failed_SRPMs_pkgnm $thendir/unqsrtd_Failed_SRPMs_pkgnm | awk '{print $1}'`; do echo "In $thendir the $pkgnm is found in "; grep -e "$pkgnm" $thendir/unqsrtd*_SRPMs_pkgnm; done | grep -e "unqsrtd_.*_pkgnm" | grep -e "_Blocked_"  | wc -l
+echo -n "Number List of packages that were Blocked in $thenbuildnm and are also Failed in $nowbuildnm (this is meant to catch failure of this script):"
+for pkgnm in `first_not_in_second $nowdir/unqsrtd_Failed_SRPMs_pkgnm $thendir/unqsrtd_Failed_SRPMs_pkgnm | awk '{print $1}'`; do echo "In $thendir the $pkgnm is found in "; grep -e "$pkgnm" $thendir/unqsrtd*_SRPMs_pkgnm; done | grep -e "unqsrtd_.*_pkgnm" | grep -e "_Failed_"  | wc -l
+echo ""
+
+
+#FAILED BUT HAVE PRs RAISED FOR THEM
+#===================================
+#
+echo "FAILED BUT HAVE PRs RAISED FOR THEM"
+echo "==================================="
+echo "Details of packages that failed in $nowbuildnm, but have PRs raised for them:"
+first_present_in_second $nowdir/unqsrtd_Failed_SRPMs_pkgnm $pkgPRMapfile | awk '{print $1}'
+echo ""
+echo -n "Number of packages that failed in $nowbuildnm, but have PRs raised for them:"
+first_present_in_second $nowdir/unqsrtd_Failed_SRPMs_pkgnm $pkgPRMapfile | wc -l
+echo ""
+

@@ -3,11 +3,13 @@
 print_usage()
 {
 	echo "Usage:"
-	echo "$0 src_root_dir"
+	echo "$0 src_root_dir build_script_logfile"
 	echo "src_root_dir - Root directory of the source that was built"
+	echo "build_script_logfile - fully qualified path to the file where build script generated the output logs"
+	exit
 }
 
-if [ $# -ne 1 ]
+if [ $# -ne 2 ]
 then
 	echo "Wrong number of arguments"
 	print_usage
@@ -15,19 +17,29 @@ then
 fi
 
 sroot_dir=$1
-d_dir=res_dir-$(date +%Y%m%d-%H%M%S)
-echo $d_dir
+bldscrptlogfl=$2
 
 if [ ! -d $sroot_dir ]
 then
 	echo "src_root_dir argument - $sroot_dir - must be a directory"
 	print_usage
 fi
+if [ ! -f $bldscrptlogfl ]
+then
+	echo "build_script_logfile argument - $bldscrptlogfl - must be a file"
+	print_usage
+fi
+
+
+d_dir=res_dir-$(date +%Y%m%d-%H%M%S)
+echo $d_dir
 
 mkdir -p $d_dir
 
 mkdir -p $d_dir/out
 mkdir -p $d_dir/build/
+
+cp $bldscrptlogfl $d_dir
 
 ls $sroot_dir/out/SRPMS/ >  $d_dir/out/ls_out_SRPMS.txt
 ls $sroot_dir/out/RPMS/noarch/> $d_dir/out/ls_out_RPMS_noarch.txt

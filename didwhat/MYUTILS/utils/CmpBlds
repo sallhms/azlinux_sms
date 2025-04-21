@@ -6,7 +6,7 @@ function print_usage {
 	echo "nowbuildname - the name with which you want to identify the now build"
 	echo "thenlogsdir - fully qualified path to the directory where the BuildLoogs.txt file for the then build is kept"
 	echo "nowlogsdir - fully qualified path to the directory where the BuildLoogs.txt file for the now build is kept"
-	echo "file_listing_PR_pkgs"
+	echo "file_listing_PR_pkgs - fully qualified path to the file that lists the Packages for which PRs have been raised."
 	exit
 }
 
@@ -178,7 +178,7 @@ echo ""
 echo "List of packages that were Blocked in $thenbuildnm but are Failed in $nowbuildnm:"
 for pkgnm in `first_not_in_second $nowdir/unqsrtd_Failed_SRPMs_pkgnm $thendir/unqsrtd_Failed_SRPMs_pkgnm | awk '{print $1}'`; do echo "In $thendir the $pkgnm is found in "; grep -e "$pkgnm" $thendir/unqsrtd*_SRPMs_pkgnm; done | grep -e "unqsrtd_.*_pkgnm" | grep -e "_Blocked_" | awk 'BEGIN{FS=":"} {print $2}'
 echo ""
-echo "List of packages that were Blocked in $thenbuildnm and are also Failed in $nowbuildnm (this is meant to catch failure of this script):"
+echo "List of packages that were Failed in $thenbuildnm and are also Failed in $nowbuildnm (this is meant to catch failure of this script):"
 for pkgnm in `first_not_in_second $nowdir/unqsrtd_Failed_SRPMs_pkgnm $thendir/unqsrtd_Failed_SRPMs_pkgnm | awk '{print $1}'`; do echo "In $thendir the $pkgnm is found in "; grep -e "$pkgnm" $thendir/unqsrtd*_SRPMs_pkgnm; done | grep -e "unqsrtd_.*_pkgnm" | grep -e "_Failed_" | awk 'BEGIN{FS=":"} {print $2}'
 echo ""
 

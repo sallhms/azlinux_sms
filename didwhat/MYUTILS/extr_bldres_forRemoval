@@ -1,9 +1,10 @@
 
 
+PROG_NAME=$0
 print_usage()
 {
 	echo "Usage:"
-	echo "$0 src_root_dir build_script_logfile"
+	echo "${PROG_NAME##*/} src_root_dir build_script_logfile"
 	echo "src_root_dir - Root directory of the source that was built"
 	echo "build_script_logfile - fully qualified path to the file where build script generated the output logs"
 	exit
@@ -38,15 +39,22 @@ mkdir -p $d_dir
 
 mkdir -p $d_dir/out
 mkdir -p $d_dir/build/
+mkdir -p $d_dir/build/pkg_artifacts/
 
 cp $bldscrptlogfl $d_dir
+only_fname_logfl=${bldscrptlogfl##*/}
+
+pushd $d_dir
+tar -czf ${only_fname_logfl}.tgz $only_fname_logfl
+rm $only_fname_logfl
+popd
 
 ls $sroot_dir/out/SRPMS/ >  $d_dir/out/ls_out_SRPMS.txt
 ls $sroot_dir/out/RPMS/noarch/> $d_dir/out/ls_out_RPMS_noarch.txt
 ls $sroot_dir/out/RPMS/x86_64/> $d_dir/out/ls_out_RPMS_x86_64.txt
-tree out > $d_dir/out/tree_out.txt
+tree $sroot_dir/out > $d_dir/out/tree_out.txt
 
-cp -r $sroot_dir/build/pkg_artifacts/ $d_dir/build/
+cp -r $sroot_dir/build/pkg_artifacts/build_state.csv $d_dir/build/pkg_artifacts/build_state.csv
 
 pushd $sroot_dir/build
 tar -czf $sroot_dir/logs.tgz logs

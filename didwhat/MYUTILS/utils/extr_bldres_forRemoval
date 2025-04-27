@@ -44,9 +44,22 @@ mkdir -p $d_dir/build/pkg_artifacts/
 cp $bldscrptlogfl $d_dir
 only_fname_logfl=${bldscrptlogfl##*/}
 
+#Create the lists of build Passed/Failed/Blocked/Unresolved from the build logs
+#tar zip the build logs to save space
 pushd $d_dir
+
+#create lists
+echo "Creating the lists of build Passed/Failed/Blocked/Unresolved from the build logs"
+cat $bldscrptlogfl | ~/utils/find_failed_from_bld_logs/get_failed_frm_logs | ~/utils/remove_ver_rel/remove_ver_rel_part | sort -u > unqsrtd_Failed_SRPMs_pkgnm
+cat $bldscrptlogfl | ~/utils/find_blkd_from_bld_logs/get_blkd_frm_logs | ~/utils/remove_ver_rel/remove_ver_rel_part | sort -u > unqsrtd_Blocked_SRPMs_pkgnm
+cat $bldscrptlogfl | ~/utils/find_unres_from_bld_logs/get_unres_frm_logs | ~/utils/remove_ver_rel/remove_ver_rel_part | sort -u > unqsrtd_Unres_SRPMs_pkgnm
+cat $bldscrptlogfl | ~/utils/find_built_from_bld_logs/get_built_frm_logs | ~/utils/remove_ver_rel/remove_ver_rel_part | sort -u > unqsrtd_Built_SRPMs_pkgnm
+
+#tar zip the build logs
+echo "Creating tar zip for the main build log file"
 tar -czf ${only_fname_logfl}.tgz $only_fname_logfl
 rm $only_fname_logfl
+
 popd
 
 ls $sroot_dir/out/SRPMS/ >  $d_dir/out/ls_out_SRPMS.txt

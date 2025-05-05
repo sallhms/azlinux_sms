@@ -12,6 +12,7 @@ WCREFRESH=y
 SDIR=../SPECS
 USEPKGBLDCACHE=y
 USECCACHE=y
+RELMAJID="3.0"
 helpFuncion () {
 	echo ""
 	echo "Build a package(s) for 3.0 locally:"
@@ -129,7 +130,9 @@ then
 	echo "     DAILY_BUILD_ID=$BID \ ";
 	echo "     REFRESH_WORKER_CHROOT=$WCREFRESH \ ";
 	echo "     USE_PACKAGE_BUILD_CACHE=$USEPKGBLDCACHE \ ";
+	echo "     REPO_LIST=$REPOLIST \ ";
 	echo "     SPECS_DIR=$SDIR \ ";
+	echo "     RELEASE_MAJOR_ID=$RELMAJID\ ";
 	echo "     -j $(nproc) \ ";
 	echo "     $@ ";
 	exit 0
@@ -145,7 +148,9 @@ else
 	echo "     DAILY_BUILD_ID=$BID \ ";
 	echo "     REFRESH_WORKER_CHROOT=$WCREFRESH \ ";
 	echo "     USE_PACKAGE_BUILD_CACHE=$USEPKGBLDCACHE \ ";
+	echo "     REPO_LIST=$REPOLIST \ ";
 	echo "     SPECS_DIR=$SDIR \ ";
+	echo "     RELEASE_MAJOR_ID=$RELMAJID\ ";
 	echo "     -j $(nproc) \ ";
 	echo "     $@ ";
 	exit 0
@@ -166,6 +171,7 @@ sudo make build-packages \
 	USE_PACKAGE_BUILD_CACHE=$USEPKGBLDCACHE \
 	REPO_LIST=$REPOLIST \
 	SPECS_DIR=$SDIR \
+	RELEASE_MAJOR_ID=$RELMAJID\
 	-j $(nproc) \
 	$@
 else
@@ -182,6 +188,7 @@ sudo make build-packages \
 	USE_PACKAGE_BUILD_CACHE=$USEPKGBLDCACHE \
 	REPO_LIST=$REPOLIST \
 	SPECS_DIR=$SDIR \
+	RELEASE_MAJOR_ID=$RELMAJID\
 	-j $(nproc) \
 	$@
 fi

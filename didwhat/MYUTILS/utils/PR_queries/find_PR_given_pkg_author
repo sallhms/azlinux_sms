@@ -108,3 +108,15 @@ fi
 #28 Feb 2025
 #    1. Improved the regular expression to allow space or comma-separated package 
 #       names in the PR title.
+#v6:
+#Date not known
+#    1. The history of this version was not a part of the last commit.  Only
+#       the script changes got committed.
+#    2. In this commit we record the history.
+#    3. The change in v6 as compared to v5 was that we started specifying the 
+#       SOURCEREPO instead of CODEDIR.  This way there was no need of keeping a
+#       clone of the code base available in a directory.  The query is performed
+#       directly from the repo specified.
+#    4. Note that the option -R is used for this purpose.
+#    5. This change meant that we no more needed to do a pushdir and popdir to 
+#       and from the source directory, in the script.

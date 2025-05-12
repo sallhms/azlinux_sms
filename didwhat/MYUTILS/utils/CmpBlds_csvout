@@ -1,0 +1,166 @@
+
+function print_usage {
+	echo "Usage:"
+	echo "$0 thenbuildname nowbuildname thenlogsdir nowlogsdir file_listing_PR_pkgs"
+	echo "thenbuildname - the name with which you want to identify the then build" 	
+	echo "nowbuildname - the name with which you want to identify the now build"
+	echo "thenlogsdir - fully qualified path to the directory where the BuildLoogs.txt file for the then build is kept"
+	echo "nowlogsdir - fully qualified path to the directory where the BuildLoogs.txt file for the now build is kept"
+	echo "file_listing_PR_pkgs - fully qualified path to the file that lists the Packages for which PRs have been raised."
+	exit
+}
+
+function clean_up {
+    echo "====== Cleaning up ======"
+
+    if [[ -f "$WORKING_TEMP_FILE" ]]
+    then
+        rm -rf "$WORKING_TEMP_FILE"
+    fi
+}
+trap clean_up EXIT SIGINT SIGTERM
+
+if [ $# -ne 5 ]
+then
+	echo "5 arguments needed as follows:"
+	print_usage
+fi
+
+#Name of then build
+#thenbuildnm="03Apr"
+thenbuildnm=$1
+#Name of now build
+#nowbuildnm="17Apr"
+nowbuildnm=$2
+#Fully qualified path to the directory where the BuildLogs.txt file for the then build is present. 
+#thendir="/mnt/c/Users/v-nsallh/Junk/PipelineBuilds/CopyOneBranch_Daily_03Apr_777677"
+thendir=$3
+#Fully qualified path to the directory where the BuildLogs.txt file for the now build is present. 
+#nowdir="/mnt/c/Users/v-nsallh/Junk/PipelineBuilds/OneBranch_Daily_17Apr_784735"
+nowdir=$4
+#Fully qualified path to a file that contains list of package names for which PRs have been raised.
+#pkgPRMapfile="/mnt/c/Users/v-nsallh/Junk/PipelineBuilds/pkgnm_PRs_04Apr.txt"
+pkgPRMapfile=$5
+
+if [ ! -f $pkgPRMapfile ]
+then
+	echo "The fifth argument $pkgPRMapfile is not a file"
+	print_usage
+fi
+
+if [ ! -d $thendir ]
+then
+	echo "The third argument $thendir is not a directory"
+	print_usage
+fi
+
+if [ ! -d $nowdir ]
+then
+	echo "The fourth argument $nowdir is not a directory"
+	print_usage
+fi
+
+if [ $nowdir = $thendir ]
+then
+	echo "The two directories $nowdir and $thendir must be different"
+	echo "Else the listing files will be corrupted"
+	print_usage
+fi
+
+FtoNF_fname="${thenbuildnm}_Failed_to_${nowbuildnm}_nonFailed.csv"
+echo $FtoNF_fname
+NFtoF_fname="${thenbuildnm}_nonFailed_to_${nowbuildnm}_Failed.csv"
+echo $NFtoF_fname
+NPtoP_fname="${thenbuildnm}_nonPassed_to_${nowbuildnm}_Passed.csv"
+echo $NPtoP_fname
+
+#Create the lists for each build
+
+echo ""
+
+echo "Creating the Passed/Failed/Blocked/Unresolved lists for $thenbuildnm"
+pushd $thendir
+cat BuildLogs.txt | ~/utils/find_failed_from_bld_logs/get_failed_frm_logs | ~/utils/remove_ver_rel/remove_ver_rel_part | sort -u > unqsrtd_Failed_SRPMs_pkgnm
+cat BuildLogs.txt | ~/utils/find_blkd_from_bld_logs/get_blkd_frm_logs | ~/utils/remove_ver_rel/remove_ver_rel_part | sort -u > unqsrtd_Blocked_SRPMs_pkgnm
+cat BuildLogs.txt | ~/utils/find_unres_from_bld_logs/get_unres_frm_logs | ~/utils/remove_ver_rel/remove_ver_rel_part | sort -u > unqsrtd_Unres_SRPMs_pkgnm
+cat BuildLogs.txt | ~/utils/find_built_from_bld_logs/get_built_frm_logs | ~/utils/remove_ver_rel/remove_ver_rel_part | sort -u > unqsrtd_Built_SRPMs_pkgnm
+popd
+
+echo ""
+
+echo "Creating the Passed/Failed/Blocked/Unresolved lists for $nowbuildnm"
+pushd $nowdir
+cat BuildLogs.txt | ~/utils/find_failed_from_bld_logs/get_failed_frm_logs | ~/utils/remove_ver_rel/remove_ver_rel_part | sort -u > unqsrtd_Failed_SRPMs_pkgnm
+cat BuildLogs.txt | ~/utils/find_blkd_from_bld_logs/get_blkd_frm_logs | ~/utils/remove_ver_rel/remove_ver_rel_part | sort -u > unqsrtd_Blocked_SRPMs_pkgnm
+cat BuildLogs.txt | ~/utils/find_unres_from_bld_logs/get_unres_frm_logs | ~/utils/remove_ver_rel/remove_ver_rel_part | sort -u > unqsrtd_Unres_SRPMs_pkgnm
+cat BuildLogs.txt | ~/utils/find_built_from_bld_logs/get_built_frm_logs | ~/utils/remove_ver_rel/remove_ver_rel_part | sort -u > unqsrtd_Built_SRPMs_pkgnm
+popd
+
+echo ""
+
+#PACKAGES THEN FAILING AND NOT FAILING NOW
+#=========================================
+#
+#The list of packages that were Failing in 26 Mar build and are not failing now:
+#NOTE: Because of the problem of the script the package "dbus-c++" gets falsely reported.
+
+echo "Processing for PACKAGES THEN FAILING AND NOT FAILING NOW"
+echo "========================================================"
+#CSV format output
+#echo "CSV format output start:"
+#echo "------------------------"
+
+echo "Failed to Non-Failed transition:Package Name,Status in $thenbuildnm,Status in $nowbuildnm" > $FtoNF_fname
+
+for pkgnm in `first_not_in_second $thendir/unqsrtd_Failed_SRPMs_pkgnm $nowdir/unqsrtd_Failed_SRPMs_pkgnm | awk '{print $1}'`; do echo "In $nowdir the $pkgnm is found in "; grep -e "$pkgnm" $nowdir/unqsrtd*_SRPMs_pkgnm; done | grep -e "unqsrtd.*_pkgnm:" | grep -e "_Built_" | awk 'BEGIN {FS=":"} {print $2",Failed,Passed"}' >> $FtoNF_fname
+
+for pkgnm in `first_not_in_second $thendir/unqsrtd_Failed_SRPMs_pkgnm $nowdir/unqsrtd_Failed_SRPMs_pkgnm | awk '{print $1}'`; do echo "In $nowdir the $pkgnm is found in "; grep -e "$pkgnm" $nowdir/unqsrtd*_SRPMs_pkgnm; done | grep -e "unqsrtd.*_pkgnm:" | grep -e "_Blocked" | awk 'BEGIN {FS=":"} {print $2",Failed,Blocked"}' >> $FtoNF_fname
+
+for pkgnm in `first_not_in_second $thendir/unqsrtd_Failed_SRPMs_pkgnm $nowdir/unqsrtd_Failed_SRPMs_pkgnm | awk '{print $1}'`; do echo "In $nowdir the $pkgnm is found in "; grep -e "$pkgnm" $nowdir/unqsrtd*_SRPMs_pkgnm; done | grep -e "unqsrtd.*_pkgnm:" | grep -e "_Failed_" | awk 'BEGIN {FS=":"} {print $2",Failed,Failed"}' >> $FtoNF_fname
+
+#echo "CSV format output end:"
+#echo "----------------------"
+#echo ""
+
+#
+#PACKAGES NOW FAILING AND NOT FAILING THEN
+#=========================================
+
+echo "Processing for PACKAGES NOW FAILING AND NOT FAILING THEN"
+echo "========================================================"
+#CSV format output
+#echo "CSV format output start:"
+#echo "------------------------"
+
+echo "Non-Failed to Failed Transition:Package Name,Status in $thenbuildnm,Status in $nowbuildnm" > $NFtoF_fname
+
+for pkgnm in `first_not_in_second $nowdir/unqsrtd_Failed_SRPMs_pkgnm $thendir/unqsrtd_Failed_SRPMs_pkgnm | awk '{print $1}'`; do echo "In $thendir the $pkgnm is found in "; grep -e "$pkgnm" $thendir/unqsrtd*_SRPMs_pkgnm; done | grep -e "unqsrtd_.*_pkgnm" | grep -e "_Built_" | awk 'BEGIN{FS=":"} {print $2",Passed,Failed"}' >> $NFtoF_fname
+
+for pkgnm in `first_not_in_second $nowdir/unqsrtd_Failed_SRPMs_pkgnm $thendir/unqsrtd_Failed_SRPMs_pkgnm | awk '{print $1}'`; do echo "In $thendir the $pkgnm is found in "; grep -e "$pkgnm" $thendir/unqsrtd*_SRPMs_pkgnm; done | grep -e "unqsrtd_.*_pkgnm" | grep -e "_Blocked_" | awk 'BEGIN{FS=":"} {print $2",Blocked,Failed"}' >> $NFtoF_fname
+
+for pkgnm in `first_not_in_second $nowdir/unqsrtd_Failed_SRPMs_pkgnm $thendir/unqsrtd_Failed_SRPMs_pkgnm | awk '{print $1}'`; do echo "In $thendir the $pkgnm is found in "; grep -e "$pkgnm" $thendir/unqsrtd*_SRPMs_pkgnm; done | grep -e "unqsrtd_.*_pkgnm" | grep -e "_Failed_" | awk 'BEGIN{FS=":"} {print $2",Failed,Failed"}' >> $NFtoF_fname
+
+#echo "CSV format output end:"
+#echo "----------------------"
+#echo ""
+
+
+#NON-PASSED THEN BUT PASSED NOW
+#==============================
+echo "Processing for NON-PASSED THEN BUT PASSED NOW"
+echo "============================================="
+
+#CSV format output
+#echo "CSV format output start:"
+#echo "------------------------"
+
+echo "Non-Passed to Passed Transition:Package Name,Status in $thenbuildnm,Status in $nowbuildnm" > $NPtoP_fname
+
+for pkgnm in `first_not_in_second $nowdir/unqsrtd_Built_SRPMs_pkgnm $thendir/unqsrtd_Built_SRPMs_pkgnm | awk '{print $1}'`; do echo "In $thendir the $pkgnm is found in "; grep -e "$pkgnm" $thendir/unqsrtd*_SRPMs_pkgnm; done | grep -e "unqsrtd_.*_pkgnm" | grep -e "_Failed_" | awk 'BEGIN{FS=":"} {print $2,",Failed,Passed"}' >> $NPtoP_fname
+
+for pkgnm in `first_not_in_second $nowdir/unqsrtd_Built_SRPMs_pkgnm $thendir/unqsrtd_Built_SRPMs_pkgnm | awk '{print $1}'`; do echo "In $thendir the $pkgnm is found in "; grep -e "$pkgnm" $thendir/unqsrtd*_SRPMs_pkgnm; done | grep -e "unqsrtd_.*_pkgnm" | grep -e "_Blocked_" | awk 'BEGIN{FS=":"} {print $2,",Blocked,Passed"}' >> $NPtoP_fname
+
+#echo "CSV format output end:"
+#echo "----------------------"
+#echo ""
+

@@ -122,6 +122,21 @@ echo "List of SRPMs that Failed earlier ($thenbuildnm) and are Failed now ($nowb
 for pkgnm in `first_not_in_second $thendir/unqsrtd_Failed_SRPMs_pkgnm $nowdir/unqsrtd_Failed_SRPMs_pkgnm | awk '{print $1}'`; do echo "In $nowdir the $pkgnm is found in "; grep -e "$pkgnm" $nowdir/unqsrtd*_SRPMs_pkgnm; done | grep -e "unqsrtd.*_pkgnm:" | grep -e "_Failed_" | awk 'BEGIN {FS=":"} {print $2}'
 echo ""
 
+#CSV format output
+echo "CSV format output start:"
+echo "------------------------"
+
+echo "Failed to Non-Failed transition:Package Name,Status in $thenbuildnm,Status in $nowbuildnm"
+
+for pkgnm in `first_not_in_second $thendir/unqsrtd_Failed_SRPMs_pkgnm $nowdir/unqsrtd_Failed_SRPMs_pkgnm | awk '{print $1}'`; do echo "In $nowdir the $pkgnm is found in "; grep -e "$pkgnm" $nowdir/unqsrtd*_SRPMs_pkgnm; done | grep -e "unqsrtd.*_pkgnm:" | grep -e "_Built_" | awk 'BEGIN {FS=":"} {print $2",Failed,Passed"}'
+
+for pkgnm in `first_not_in_second $thendir/unqsrtd_Failed_SRPMs_pkgnm $nowdir/unqsrtd_Failed_SRPMs_pkgnm | awk '{print $1}'`; do echo "In $nowdir the $pkgnm is found in "; grep -e "$pkgnm" $nowdir/unqsrtd*_SRPMs_pkgnm; done | grep -e "unqsrtd.*_pkgnm:" | grep -e "_Blocked" | awk 'BEGIN {FS=":"} {print $2",Failed,Blocked"}'
+
+for pkgnm in `first_not_in_second $thendir/unqsrtd_Failed_SRPMs_pkgnm $nowdir/unqsrtd_Failed_SRPMs_pkgnm | awk '{print $1}'`; do echo "In $nowdir the $pkgnm is found in "; grep -e "$pkgnm" $nowdir/unqsrtd*_SRPMs_pkgnm; done | grep -e "unqsrtd.*_pkgnm:" | grep -e "_Failed_" | awk 'BEGIN {FS=":"} {print $2",Failed,Failed"}'
+
+echo "CSV format output end:"
+echo "----------------------"
+echo ""
 
 #
 #Summary of the movement from the failed to non-failed is that 19 were reported as no more failing.
@@ -182,6 +197,21 @@ echo "List of packages that were Failed in $thenbuildnm and are also Failed in $
 for pkgnm in `first_not_in_second $nowdir/unqsrtd_Failed_SRPMs_pkgnm $thendir/unqsrtd_Failed_SRPMs_pkgnm | awk '{print $1}'`; do echo "In $thendir the $pkgnm is found in "; grep -e "$pkgnm" $thendir/unqsrtd*_SRPMs_pkgnm; done | grep -e "unqsrtd_.*_pkgnm" | grep -e "_Failed_" | awk 'BEGIN{FS=":"} {print $2}'
 echo ""
 
+#CSV format output
+echo "CSV format output start:"
+echo "------------------------"
+
+echo "Non-Failed to Failed Transition:Package Name,Status in $thenbuildnm,Status in $nowbuildnm"
+
+for pkgnm in `first_not_in_second $nowdir/unqsrtd_Failed_SRPMs_pkgnm $thendir/unqsrtd_Failed_SRPMs_pkgnm | awk '{print $1}'`; do echo "In $thendir the $pkgnm is found in "; grep -e "$pkgnm" $thendir/unqsrtd*_SRPMs_pkgnm; done | grep -e "unqsrtd_.*_pkgnm" | grep -e "_Built_" | awk 'BEGIN{FS=":"} {print $2",Passed,Failed"}'
+
+for pkgnm in `first_not_in_second $nowdir/unqsrtd_Failed_SRPMs_pkgnm $thendir/unqsrtd_Failed_SRPMs_pkgnm | awk '{print $1}'`; do echo "In $thendir the $pkgnm is found in "; grep -e "$pkgnm" $thendir/unqsrtd*_SRPMs_pkgnm; done | grep -e "unqsrtd_.*_pkgnm" | grep -e "_Blocked_" | awk 'BEGIN{FS=":"} {print $2",Blocked,Failed"}'
+
+for pkgnm in `first_not_in_second $nowdir/unqsrtd_Failed_SRPMs_pkgnm $thendir/unqsrtd_Failed_SRPMs_pkgnm | awk '{print $1}'`; do echo "In $thendir the $pkgnm is found in "; grep -e "$pkgnm" $thendir/unqsrtd*_SRPMs_pkgnm; done | grep -e "unqsrtd_.*_pkgnm" | grep -e "_Failed_" | awk 'BEGIN{FS=":"} {print $2",Failed,Failed"}'
+
+echo "CSV format output end:"
+echo "----------------------"
+echo ""
 
 echo "Summary counts of packages that were Non-Failed in $thenbuildnm but are Failed in $nowbuildnm:"
 echo "--------------------------------------------------------------------------------------"
@@ -223,6 +253,20 @@ for pkgnm in `first_not_in_second $nowdir/unqsrtd_Built_SRPMs_pkgnm $thendir/unq
 echo ""
 echo "List of packages that were Blocked in $thenbuildnm but are Passed in $nowbuildnm:"
 for pkgnm in `first_not_in_second $nowdir/unqsrtd_Built_SRPMs_pkgnm $thendir/unqsrtd_Built_SRPMs_pkgnm | awk '{print $1}'`; do echo "In $thendir the $pkgnm is found in "; grep -e "$pkgnm" $thendir/unqsrtd*_SRPMs_pkgnm; done | grep -e "unqsrtd_.*_pkgnm" | grep -e "_Blocked_" | awk 'BEGIN{FS=":"} {print $2}'
+echo ""
+
+#CSV format output
+echo "CSV format output start:"
+echo "------------------------"
+
+echo "Non-Passed to Passed Transition:Package Name,Status in $thenbuildnm,Status in $nowbuildnm"
+
+for pkgnm in `first_not_in_second $nowdir/unqsrtd_Built_SRPMs_pkgnm $thendir/unqsrtd_Built_SRPMs_pkgnm | awk '{print $1}'`; do echo "In $thendir the $pkgnm is found in "; grep -e "$pkgnm" $thendir/unqsrtd*_SRPMs_pkgnm; done | grep -e "unqsrtd_.*_pkgnm" | grep -e "_Failed_" | awk 'BEGIN{FS=":"} {print $2,",Failed,Passed"}'
+
+for pkgnm in `first_not_in_second $nowdir/unqsrtd_Built_SRPMs_pkgnm $thendir/unqsrtd_Built_SRPMs_pkgnm | awk '{print $1}'`; do echo "In $thendir the $pkgnm is found in "; grep -e "$pkgnm" $thendir/unqsrtd*_SRPMs_pkgnm; done | grep -e "unqsrtd_.*_pkgnm" | grep -e "_Blocked_" | awk 'BEGIN{FS=":"} {print $2,",Blocked,Passed"}'
+
+echo "CSV format output end:"
+echo "----------------------"
 echo ""
 
 echo "Summary counts of packages that were Non-Passed in $thenbuildnm but are Passed in $nowbuildnm:"

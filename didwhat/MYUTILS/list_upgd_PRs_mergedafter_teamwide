@@ -1,0 +1,50 @@
+#!/usr/bin/bash
+# First argument has to be the list of authornames file
+# Second argument has to be a date in yyyy-mm-dd format.  This is the date on which or after which you are interested for the merged PRs.
+
+#set -x
+print_usage() {
+	echo "Usage:"
+	echo "$0 <sourcerepo> <file_listing_author_github_names> <the_date>"
+	echo "where:"
+	echo "	source_repo should be in the format [HOST/]OWNER/REPO."
+	echo "	the date at which or after which the PR was merged.  Its format is yyyy-mm-dd."
+	if [ $dirpushed -eq 1 ]
+	then
+		popd
+	fi
+	exit 1
+}
+
+if [ $# -ne 3 ]
+then
+	print_usage
+fi
+
+if [ ! -f $2 ]
+then
+	echo "The third argument is expected to be a file but $2 is not a file"
+	print_usage
+fi
+
+sourcerepo=$1
+listauthors=$2
+after_date=$3
+
+echo "Source repo is $sourcerepo"
+echo "author list file is $listauthors"
+echo "the date on or after which the PR should have been merged is $after_date"
+
+set -x
+search_template="is:merged NOT in:title CVE merged:>=$after_date"
+
+for githubname in `cat $listauthors`
+do
+echo
+echo "========================================================================="
+echo "$githubname"::"merged"
+echo "========================================================================="
+	#echo "2" $search_template
+	gh pr list -R $sourcerepo -L 100 --author "$githubname" -S "$search_template"
+done
+set +x

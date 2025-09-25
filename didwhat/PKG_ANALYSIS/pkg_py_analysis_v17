@@ -1,6 +1,6 @@
 
 
-MSTR_LIST="/third_disk/bb17Mar/azurelinux/didwhat/PKG_ANALYSIS_DATAFILES/ExtendedPackages_wSuppInfo.csv"
+MSTR_LIST="/third_disk/bb17Mar/GenerateReport/didwhat/PKG_ANALYSIS_DATAFILES/ExtendedPackages_wSuppInfo.csv"
 #MSTR_LIST="/third_disk/bb04Mar/azurelinux/didwhat/PKG_ANALYSIS_DATAFILES/ExtendedPackages_wSuppInfo_split2.csv"
 
 #MSTR_LIST="/third_disk/bb03Mar/azurelinux/didwhat/PKG_ANALYSIS_DATAFILES/ExtendedPackages_wSuppInfo_small_devs.csv"
@@ -28,18 +28,19 @@ MSREPO_3DEV_WORKDIR="/fifth_disk/upgdReferenceBranch/azurelinux"
 #time.
 #In addition to detection of package version, this would be required for knowing if a package
 #builds in the pipeline or not.  But for that we are now carrying out daily build.
-BUILD_ARTFCT_STATUS_FL="/third_disk/bb17Mar/azurelinux/didwhat/PKG_ANALYSIS_DATAFILES/build_state_06Nov2024.csv"
+BUILD_ARTFCT_STATUS_FL="/third_disk/bb17Mar/GenerateReport/didwhat/PKG_ANALYSIS_DATAFILES/build_state_06Nov2024.csv"
 #BUILD_ARTFCT_STATUS_FL="/home/neerajs/Downloads/daily_builds/06Nov2024/build_state.csv"
 #BUILD_ARTFCT_STATUS_FL="/home/neerajs/utils/TestIdeas/PKG_ANALYSIS_DATAFILES/last_fifty_build_state.csv"
 
 #This is a constant now.  It is the results of the download of spec files from Fedora 41
-DNLD_DETAILS_FL="/third_disk/bb17Mar/azurelinux/didwhat/PKG_ANALYSIS_DATAFILES/scr_run_log.txt"
+DNLD_DETAILS_FL="/third_disk/bb17Mar/GenerateReport/didwhat/PKG_ANALYSIS_DATAFILES/scr_run_log.txt"
 #DNLD_DETAILS_FL="/home/neerajs/Downloads/docker_folder/impspc/fetchdir/scr_run_log.txt"
 
 REPO_FOR_PR_SEARCH="https://github.com/microsoft/azurelinux.git"
 
 BULK_BUILD_ROOT="/fifth_disk/bb_dec23/code/azurelinux"
-ADD_BULK_BUILD_ARTFCT_STATUS_FL="/third_disk/bb17Mar/azurelinux/didwhat/PKG_ANALYSIS_DATAFILES/build_state_17Mar.csv"
+ADD_BULK_BUILD_ARTFCT_STATUS_FL="/third_disk/bb17Mar/GenerateReport/didwhat/PKG_ANALYSIS_DATAFILES/build_state_28Apr.csv"
+#ADD_BULK_BUILD_ARTFCT_STATUS_FL="/third_disk/bb17Mar/GenerateReport/didwhat/PKG_ANALYSIS_DATAFILES/build_state_17Mar.csv"
 #ADD_BULK_BUILD_ARTFCT_STATUS_FL="/third_disk/bb05Mar/azurelinux/didwhat/PKG_ANALYSIS_DATAFILES/build_state_additional.csv"
 #ADD_BULK_BUILD_ARTFCT_STATUS_FL="/home/neerajs/utils/PKG_ANALYSIS_27Feb/build_state.csv"
 
@@ -72,8 +73,8 @@ import subprocess
 #file won't be available.
 #We neither open the corresponding build artifact file ADD_BULK_BUILD_ARTFCT_STATUS_FL
 #in that case nor do we create the additional column "Additional Bulk Build Status"
-#prebuild_analysis=True
-prebuild_analysis=False
+prebuild_analysis=True
+#prebuild_analysis=False
 
 mstr_list_developer = 'Not Assigned'
 mstr_list_pkg_prio = 'Not Assigned'

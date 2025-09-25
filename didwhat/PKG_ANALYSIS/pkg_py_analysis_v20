@@ -1,6 +1,7 @@
 
 
 MSTR_LIST="/third_disk/bb17Mar/GenerateReport/didwhat/PKG_ANALYSIS_DATAFILES/ExtendedPackages_wSuppInfo.csv"
+#MSTR_LIST="/third_disk/bb17Mar/GenerateReport/didwhat/PKG_ANALYSIS_DATAFILES/ExtendedPackages_wSuppInfo_newcols_first122.csv"
 #MSTR_LIST="/third_disk/bb17Mar/GenerateReport/didwhat/PKG_ANALYSIS_DATAFILES/ExtendedPackages_wSuppInfo_rem.csv"
 #MSTR_LIST="/third_disk/bb17Mar/GenerateReport/didwhat/PKG_ANALYSIS_DATAFILES/ExtendedPackages_wSuppInfo_first10.csv"
 #MSTR_LIST="/third_disk/bb04Mar/azurelinux/didwhat/PKG_ANALYSIS_DATAFILES/ExtendedPackages_wSuppInfo_split2.csv"
@@ -87,9 +88,13 @@ mstr_list_pkg_prio = 'Not Assigned'
 link_raised_PR = 'Not Assigned'
 pkgname_raised_PR = 'Not Assigned'
 mstr_list_upgd_decision = ''
-final_upgd_decision = ''
+fnlupgd_bldvr_dnldvr_mstrovrrd = ''
 mstr_list_pkgnewname = ''
 mstr_list_addedpkg = ''
+mstr_list_newact = ''
+mstr_list_newupgd = ''
+mstr_list_bldchkneed  = ''
+mstr_list_pr_crtd_despt_NO  = ''
 
 PRnum = ''
 PRstatus = ''
@@ -123,7 +128,7 @@ dl_srpm3 = 'Default Initialized'
 pkg_existence = ''
 ver_in_3_dev = ''
 
-upgd_reqd = 'Revisit'
+upgd_bldver_vs_fed41dnldver = 'Revisit'
 
 bulk_build_success = ''
 bulk_build_success_count = 0
@@ -382,25 +387,25 @@ def compare_version(first_ver, sec_ver):
 def set_upgrade_reqd(pkname):
 	global ver_bld_status
 	global dnld_ver
-	global upgd_reqd
+	global upgd_bldver_vs_fed41dnldver
 
-	upgd_reqd = 'Revisit'
+	upgd_bldver_vs_fed41dnldver = 'Revisit'
 
 	if ( 'Not Found' == ver_bld_status ):
-		upgd_reqd = 'Revisit No Bld Ver'
+		upgd_bldver_vs_fed41dnldver = 'Revisit No Bld Ver'
 	elif ('Not Found' == dnld_ver ):
-		upgd_reqd = 'Revisit No Dnld Ver'
+		upgd_bldver_vs_fed41dnldver = 'Revisit No Dnld Ver'
 	else:
 		result = compare_version(ver_bld_status, dnld_ver)
 		#print (func_nm_shrthnd() + f': Package {pkname}: version in build status {ver_bld_status}, downloaded version {dnld_ver}, result = {result}')
 		if ( 'First Less than Second' == result ):
-			upgd_reqd = 'Y'
+			upgd_bldver_vs_fed41dnldver = 'Y'
 		elif ( 'First Equal to Second' == result ):
-			upgd_reqd = 'N'
+			upgd_bldver_vs_fed41dnldver = 'N'
 		elif ( 'First Greater than Second' == result ):
-			upgd_reqd = 'N'
+			upgd_bldver_vs_fed41dnldver = 'N'
 		else:
-			upgd_reqd = result
+			upgd_bldver_vs_fed41dnldver = result
 		
 def check_bulk_build(pkname):
 	global dnld_det_srpmlist
@@ -538,6 +543,8 @@ def check_PR(pkname, dev_name):
 	global PRrepoowner
 	global PRrepologin
 	global PRorigin
+	global mstr_list_newupgd
+	global mstr_list_pr_crtd_despt_NO
 
 	if ( 'NA' == dev_name):
         	link_raised_PR = 'NA'
@@ -587,30 +594,71 @@ def check_PR(pkname, dev_name):
 		return
 
 	maxtries = 3
-	for i in range(maxtries):
-		#print(f'For package {pkname}, try number {i + 1} out of max {maxtries} tries')
-		#sh_scr_result=subprocess.run(['/home/neerajs/utils/PR_queries/find_PR_given_pkg_author', '/home/neerajs/Downloads/docker_folder/REPOS/Microsoft_AZL/azurelinux', 'kevin-b-lockwood', 'perl-Lingua-EN-Inflect'], stdout=subprocess.PIPE)
-		#author_github_nm='kevin-b-lockwood'
-		#pkname='perl-Lingua-EN-Inflect'
-		sh_scr_result=subprocess.run(['/home/neerajs/utils/PR_queries/find_PR_given_pkg_author', f'{REPO_FOR_PR_SEARCH}', f'{author_github_nm}', f'{pkname}'], stdout=subprocess.PIPE)
-		strres = (sh_scr_result.stdout.decode('utf-8')).rstrip()
-		#print (func_nm_shrthnd() + f': PR search results: {strres}')
-		res_parts = re.split(r" ", strres)
-		#print(f'res_parts={res_parts}')
-
-		#three parts in result means the command was successful.
-		#else retry
-		if (len(res_parts) == 3):
-			break;
+	#There was a newer decision to have a PR like the package was decided for removal/replace/upgrade
+	#or sometimes a PR was created even when the above was not true
+	if ( mstr_list_newupgd == 'DECIDED_REMOVE' or  mstr_list_newupgd == 'Y_DECIDED_REPLACE' or mstr_list_newupgd == 'Y' or mstr_list_pr_crtd_despt_NO == 'Y'):
+		for i in range(maxtries):
+			#print(f'For package {pkname}, try number {i + 1} out of max {maxtries} tries')
+			#sh_scr_result=subprocess.run(['/home/neerajs/utils/PR_queries/find_PR_given_pkg_author', '/home/neerajs/Downloads/docker_folder/REPOS/Microsoft_AZL/azurelinux', 'kevin-b-lockwood', 'perl-Lingua-EN-Inflect'], stdout=subprocess.PIPE)
+			#author_github_nm='kevin-b-lockwood'
+			#pkname='perl-Lingua-EN-Inflect'
+			sh_scr_result=subprocess.run(['/home/neerajs/utils/PR_queries/find_PR_given_pkg_author', f'{REPO_FOR_PR_SEARCH}', f'{author_github_nm}', f'{pkname}'], stdout=subprocess.PIPE)
+			strres = (sh_scr_result.stdout.decode('utf-8')).rstrip()
+			#print (func_nm_shrthnd() + f': PR search results: {strres}')
+			res_parts = re.split(r" ", strres)
+			#print(f'res_parts={res_parts}')
+	
+			#three parts in result means the command was successful.
+			#else retry
+			if (len(res_parts) == 3):
+				break;
+			else:
+	#			eprint(func_nm_shrthnd() + f': PR search results for package {pkname}: {strres}, try number {i}')
+				log.warning(func_nm_shrthnd() + f': PR search results for package {pkname}: {strres}, try number {i}')
+				if ( i >= (maxtries - 1) ):
+	#				eprint(func_nm_shrthnd() + f': Maximum tries ( = {maxtries}) exhausted trying to find PR for package {pkname}')
+					log.warning(func_nm_shrthnd() + f': Maximum tries ( = {maxtries}) exhausted trying to find PR for package {pkname}')
+	
+		if (len(res_parts) != 3):
+			#print ('pkg not found')
+			PRnum='NA'
+			PRstatus='NA'
+			PRcreationdate='NA'
+			link_raised_PR='NA'
+			PRtopicbranch='NA'
+			PRrepository = 'NA'
+			PRreponame = 'NA'
+			PRrepoowner = 'NA'
+			PRrepologin = 'NA'
+			PRorigin= 'NA'
 		else:
-#			eprint(func_nm_shrthnd() + f': PR search results for package {pkname}: {strres}, try number {i}')
-			log.warning(func_nm_shrthnd() + f': PR search results for package {pkname}: {strres}, try number {i}')
-			if ( i >= (maxtries - 1) ):
-#				eprint(func_nm_shrthnd() + f': Maximum tries ( = {maxtries}) exhausted trying to find PR for package {pkname}')
-				log.warning(func_nm_shrthnd() + f': Maximum tries ( = {maxtries}) exhausted trying to find PR for package {pkname}')
-
-	if (len(res_parts) != 3):
-		#print ('pkg not found')
+			PRnum=res_parts[0]
+			PRstatus=res_parts[1]
+			PRcreationdate=res_parts[2]
+			link_raised_PR=f'https://github.com/microsoft/azurelinux/pull/{PRnum}'
+	
+			#Determine the topic branch for the PR PRnum
+			#cmd = f'gh pr view {PRnum} -R https://github.com/microsoft/azurelinux.git --json headRefName'
+			cmd = f'gh pr view {PRnum} -R https://github.com/microsoft/azurelinux.git --json headRefName,headRefOid,headRepository,headRepositoryOwner'
+			sh_scr_result=subprocess.Popen(cmd, shell=True, stdout=subprocess.PIPE)
+			#print(func_nm_shrthnd() + f': gh pr view full results, i.e. sh_scr_result = {sh_scr_result}')
+			
+			#convert the output into a string
+			outAsStr,err = sh_scr_result.communicate()
+	
+			#Convert string to JSON
+			outAsJson=json.loads(outAsStr)
+			#print(func_nm_shrthnd() + f': gh pr view results, i.e. outAsJson = {outAsJson}')
+	
+			#Parse json for desired element, i.e. the topic branch name or the headRefName
+			PRtopicbranch = outAsJson["headRefName"]
+			PRrepository = outAsJson["headRepository"]
+			PRreponame = PRrepository["name"]
+			PRrepoowner = outAsJson["headRepositoryOwner"]
+			PRrepologin = PRrepoowner["login"]
+			PRorigin=f'https://github.com/{PRrepologin}/{PRreponame}.git'
+			#print(func_nm_shrthnd() + f': gh pr view results, i.e. Topic Branch = {PRtopicbranch}, Repository = {PRrepository}, Owner = {PRrepoowner}, Reponame = {PRreponame}, Repologin = {PRrepologin}, Origin for pull command = {PRorigin}')
+	else:
 		PRnum='NA'
 		PRstatus='NA'
 		PRcreationdate='NA'
@@ -621,34 +669,6 @@ def check_PR(pkname, dev_name):
 		PRrepoowner = 'NA'
 		PRrepologin = 'NA'
 		PRorigin= 'NA'
-	else:
-		PRnum=res_parts[0]
-		PRstatus=res_parts[1]
-		PRcreationdate=res_parts[2]
-		link_raised_PR=f'https://github.com/microsoft/azurelinux/pull/{PRnum}'
-
-		#Determine the topic branch for the PR PRnum
-		#cmd = f'gh pr view {PRnum} -R https://github.com/microsoft/azurelinux.git --json headRefName'
-		cmd = f'gh pr view {PRnum} -R https://github.com/microsoft/azurelinux.git --json headRefName,headRefOid,headRepository,headRepositoryOwner'
-		sh_scr_result=subprocess.Popen(cmd, shell=True, stdout=subprocess.PIPE)
-		#print(func_nm_shrthnd() + f': gh pr view full results, i.e. sh_scr_result = {sh_scr_result}')
-		
-		#convert the output into a string
-		outAsStr,err = sh_scr_result.communicate()
-
-		#Convert string to JSON
-		outAsJson=json.loads(outAsStr)
-		#print(func_nm_shrthnd() + f': gh pr view results, i.e. outAsJson = {outAsJson}')
-
-		#Parse json for desired element, i.e. the topic branch name or the headRefName
-		PRtopicbranch = outAsJson["headRefName"]
-		PRrepository = outAsJson["headRepository"]
-		PRreponame = PRrepository["name"]
-		PRrepoowner = outAsJson["headRepositoryOwner"]
-		PRrepologin = PRrepoowner["login"]
-		PRorigin=f'https://github.com/{PRrepologin}/{PRreponame}.git'
-		#print(func_nm_shrthnd() + f': gh pr view results, i.e. Topic Branch = {PRtopicbranch}, Repository = {PRrepository}, Owner = {PRrepoowner}, Reponame = {PRreponame}, Repologin = {PRrepologin}, Origin for pull command = {PRorigin}')
-
 	#print(f'PRcreationdate={PRcreationdate} PRnum={PRnum} PRstatus={PRstatus} link_raised_PR={link_raised_PR} Topic Branch={PRtopicbranch}Repologin = {PRrepologin}, Origin for pull command = {PRorigin}')
 	
 
@@ -726,7 +746,7 @@ def main() -> None:
 	global dnld_det_success
 	global pkg_existence
 	global ver_in_3_dev
-	global upgd_reqd
+	global upgd_bldver_vs_fed41dnldver
 	global bulk_build_success
 	global bulk_build_success_count
 	global rev_pr_fl_developer
@@ -737,6 +757,10 @@ def main() -> None:
 	global mstr_list_pkg_prio
 	global mstr_list_pkgnewname
 	global mstr_list_addedpkg
+	global mstr_list_newact
+	global mstr_list_newupgd
+	global mstr_list_bldchkneed 
+	global mstr_list_pr_crtd_despt_NO 
 	global link_raised_PR
 	global PRnum
 	global PRstatus
@@ -748,7 +772,7 @@ def main() -> None:
 	global PRrepologin
 	global PRorigin
 	global mstr_list_upgd_decision
-	global final_upgd_decision
+	global fnlupgd_bldvr_dnldvr_mstrovrrd
 
 	#logging.basicConfig(format='%(message)s')
 	logging.basicConfig(
@@ -762,13 +786,13 @@ def main() -> None:
 	
 	pk_count = 0
 
-	cols = ['Package','Developer','Upgrade to be done (Y/N/To be removed)','Is some confirmation required (Y/N)','Confirmation done  (Y/N)','2.0 EXT pkg present in either SPECS or EXT of 3.0-dev (Y/N)','2.0 EXT pkg present in EXT of 3.0-dev(Y/N)','Confirm if removal is deliberate (Y/N) (If N in both Column F and Column G, here we put Y.  A Y here means we must check with Microsoft if this is a deliberate removal of the package)','Moved from EXT in 2.0 to Core in 3.0-dev (Y/N) (If Y in Column F and N in Column G, then this is Y)','Remarks','Priority (P0, P1, P2)','New Name of Package','Package added to Azure Linux 3.0-dev']
+	cols = ['Package','Developer','Upgrade to be done (Y/N/To be removed)','Is some confirmation required (Y/N)','Confirmation done  (Y/N)','2.0 EXT pkg present in either SPECS or EXT of 3.0-dev (Y/N)','2.0 EXT pkg present in EXT of 3.0-dev(Y/N)','Confirm if removal is deliberate (Y/N) (If N in both Column F and Column G, here we put Y.  A Y here means we must check with Microsoft if this is a deliberate removal of the package)','Moved from EXT in 2.0 to Core in 3.0-dev (Y/N) (If Y in Column F and N in Column G, then this is Y)','Remarks','Priority (P0, P1, P2)','New Name of Package','Package added to Azure Linux 3.0-dev','Newer ACTION','Newer UPGRADE','Newer BUILD_CHECK_REQD','PR Created Despite a No in Newer Upgrade decision']
 	table = pd.read_csv(MSTR_LIST, usecols=cols)
 
 	if ( prebuild_analysis == True ):
-		print (f'Package,New Name of Package,Package Priority,Developer in Master List,PR Number,Link of PR Raised,PR Status,PR Creation Date,Upgrade Required,Final Upgrade Decision (Y/N),Build Status,Version in Build Status,Release in Build Status,Download Success,Number SRPMs downloaded,Dowloaded SRPM 1,Dowloaded SRPM 2,Dowloaded SRPM 3,Version Downloaded SRPM,Release Downloaded SRPM,Package location info,Package Version in 3.0-dev,Bulk Build Success,Bulk Build Number of SRPMs,Developer from under review sheet,Under Review PR Link,Reviewer,Review Status,PR Origin,TopicBranch')
+		print (f'Package,New Name of Package,Package Priority,Developer in Master List,PR Number,Link of PR Raised,PR Status,PR Creation Date,Newer Upgrade Decision,PR Created Despite a NO,Upgrade Required based on build ver vs dnld ver,Final Upgrade Decision based on build ver vs dnld ver vs master list override (Y/N),Build Status,Version in Build Status,Release in Build Status,Download Success,Number SRPMs downloaded,Dowloaded SRPM 1,Dowloaded SRPM 2,Dowloaded SRPM 3,Version Downloaded SRPM,Release Downloaded SRPM,Package location info,Package Version in 3.0-dev,Bulk Build Success,Bulk Build Number of SRPMs,Developer from under review sheet,Under Review PR Link,Reviewer,Review Status,PR Origin,TopicBranch')
 	else:
-		print (f'Package,New Name of Package,Package Priority,Developer in Master List,PR Number,Link of PR Raised,PR Status,PR Creation Date,Upgrade Required,Final Upgrade Decision (Y/N),Build Status,Version in Build Status,Release in Build Status,Download Success,Number SRPMs downloaded,Dowloaded SRPM 1,Dowloaded SRPM 2,Dowloaded SRPM 3,Version Downloaded SRPM,Release Downloaded SRPM,Package location info,Package Version in 3.0-dev,Bulk Build Success,Bulk Build Number of SRPMs,Developer from under review sheet,Under Review PR Link,Reviewer,Review Status,PR Origin,TopicBranch,Additional Bulk Build Status')
+		print (f'Package,New Name of Package,Package Priority,Developer in Master List,PR Number,Link of PR Raised,PR Status,PR Creation Date,Newer Upgrade Decision,PR Created Despite a NO,Upgrade Required,Final Upgrade Decision (Y/N),Build Status,Version in Build Status,Release in Build Status,Download Success,Number SRPMs downloaded,Dowloaded SRPM 1,Dowloaded SRPM 2,Dowloaded SRPM 3,Version Downloaded SRPM,Release Downloaded SRPM,Package location info,Package Version in 3.0-dev,Bulk Build Success,Bulk Build Number of SRPMs,Developer from under review sheet,Under Review PR Link,Reviewer,Review Status,PR Origin,TopicBranch,Additional Bulk Build Status')
 	for row in table.itertuples():
 		pk_count = pk_count + 1
 		pkname = row[1]
@@ -798,6 +822,22 @@ def main() -> None:
 		#print(f'Package needs to be added {row[13]}')
 		if isNaN(mstr_list_addedpkg):
 			mstr_list_addedpkg = 'NA'
+		mstr_list_newact = row[14]
+		#print(f'Newer Action that was decided {row[14]}')
+		if isNaN(mstr_list_newact):
+			mstr_list_newact = 'NA'
+		mstr_list_newupgd = row[15]
+		#print(f'Newer Upgrade decision made {row[15]}')
+		if isNaN(mstr_list_newupgd):
+			mstr_list_newupgd = 'NA'
+		mstr_list_bldchkneed = row[16]
+		#print(f'Build check decision made {row[16]}')
+		if isNaN(mstr_list_bldchkneed):
+			mstr_list_bldchkneed = 'NA'
+		mstr_list_pr_crtd_despt_NO = row[17]
+		#print(f'Build check decision made {row[17]}')
+		if isNaN(mstr_list_pr_crtd_despt_NO):
+			mstr_list_pr_crtd_despt_NO = 'NA'
 
 		check_build_status(pkname)
 		#print (f' Package:{pkname}, Version:{ver_bld_status}, Release:{rel_bld_status}, Build Status:{bld_status}')
@@ -817,9 +857,9 @@ def main() -> None:
 			check_PR(pkname, mstr_list_developer)
 
 		if ( mstr_list_upgd_decision == 'Override_to_Y'):
-			final_upgd_decision = 'Y'
+			fnlupgd_bldvr_dnldvr_mstrovrrd = 'Y'
 		else:
-			final_upgd_decision = upgd_reqd 
+			fnlupgd_bldvr_dnldvr_mstrovrrd = upgd_bldver_vs_fed41dnldver 
 		#mstr_list_developer="kevin-b-lockwood"
 		#pkname="perl-Lingua-EN-Inflect"
 		#check_PR(pkname, mstr_list_developer)
@@ -831,9 +871,9 @@ def main() -> None:
 		#check_PR(pkname, mstr_list_developer)
 
 		if ( prebuild_analysis == True ):
-			print (f'{pkname},{mstr_list_pkgnewname},{mstr_list_pkg_prio},{mstr_list_developer},{PRnum},{link_raised_PR},{PRstatus},{PRcreationdate},{upgd_reqd},{final_upgd_decision},{bld_status},{ver_bld_status},{rel_bld_status},{dnld_det_success},{dl_srpm_count},{dl_srpm1},{dl_srpm2},{dl_srpm3},{dnld_ver},{dnld_rel},{pkg_existence},{ver_in_3_dev},{bulk_build_success},{bulk_build_success_count},{rev_pr_fl_developer},{rev_pr_fl_prlink},{rev_pr_fl_reviewer},{rev_pr_fl_status},{PRorigin},{PRtopicbranch}')
+			print (f'{pkname},{mstr_list_pkgnewname},{mstr_list_pkg_prio},{mstr_list_developer},{PRnum},{link_raised_PR},{PRstatus},{PRcreationdate},{mstr_list_newupgd},{mstr_list_pr_crtd_despt_NO},{upgd_bldver_vs_fed41dnldver},{fnlupgd_bldvr_dnldvr_mstrovrrd},{bld_status},{ver_bld_status},{rel_bld_status},{dnld_det_success},{dl_srpm_count},{dl_srpm1},{dl_srpm2},{dl_srpm3},{dnld_ver},{dnld_rel},{pkg_existence},{ver_in_3_dev},{bulk_build_success},{bulk_build_success_count},{rev_pr_fl_developer},{rev_pr_fl_prlink},{rev_pr_fl_reviewer},{rev_pr_fl_status},{PRorigin},{PRtopicbranch}')
 		else:
-			print (f'{pkname},{mstr_list_pkgnewname},{mstr_list_pkg_prio},{mstr_list_developer},{PRnum},{link_raised_PR},{PRstatus},{PRcreationdate},{upgd_reqd},{final_upgd_decision},{bld_status},{ver_bld_status},{rel_bld_status},{dnld_det_success},{dl_srpm_count},{dl_srpm1},{dl_srpm2},{dl_srpm3},{dnld_ver},{dnld_rel},{pkg_existence},{ver_in_3_dev},{bulk_build_success},{bulk_build_success_count},{rev_pr_fl_developer},{rev_pr_fl_prlink},{rev_pr_fl_reviewer},{rev_pr_fl_status},{PRorigin},{PRtopicbranch},{ab_bld_status}')
+			print (f'{pkname},{mstr_list_pkgnewname},{mstr_list_pkg_prio},{mstr_list_developer},{PRnum},{link_raised_PR},{PRstatus},{PRcreationdate},{mstr_list_newupgd},{mstr_list_pr_crtd_despt_NO},{upgd_bldver_vs_fed41dnldver},{fnlupgd_bldvr_dnldvr_mstrovrrd},{bld_status},{ver_bld_status},{rel_bld_status},{dnld_det_success},{dl_srpm_count},{dl_srpm1},{dl_srpm2},{dl_srpm3},{dnld_ver},{dnld_rel},{pkg_existence},{ver_in_3_dev},{bulk_build_success},{bulk_build_success_count},{rev_pr_fl_developer},{rev_pr_fl_prlink},{rev_pr_fl_reviewer},{rev_pr_fl_status},{PRorigin},{PRtopicbranch},{ab_bld_status}')
 
 		#For quick testing we uncomment the below two lines.  The effect is same as a small 
 		#master list of packages (20 entries only)
@@ -946,3 +986,9 @@ if __name__ == '__main__':
 #    1.   Added tries in case the gh query for a PR fails
 #v19:
 #    1.   Add error printing to STDERR
+#v20:
+#    1.   Renamed "upgd_reqd" to "upgd_bldver_vs_fed41dnldver"
+#    2.   Renamed "final_upgd_decision" to "fnlupgd_bldvr_dnldvr_mstrovrrd"
+#    3.   Added three column to the ExtendedPackages_wSuppInfo.xlsx file, for the Newer decisions related to upgrade.  These are "Newer ACTION", "Newer UPGRADE", "Newer BUILD_CHECK_REQD".
+#    4.   Added a column to the ExtendedPackages_wSuppInfo.xlsx file, for the cases where a PR was created despite a NO indicated by the Newer decisions.  This column is "PR Created Despite a No in Newer Upgrade decision".
+#    5.   Run github search of PRs only if the Newer Upgrade decision indicates that PR would be required, i.e. whether the package is to be removed or upgraded or fixed, as per the newer decision or in case PR has already been created despite a NO.

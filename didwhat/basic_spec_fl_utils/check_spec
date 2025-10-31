@@ -1,0 +1,27 @@
+#! /bin/bash
+
+print_usage()
+{
+        echo "Usage:"
+        echo "$0 <spec file>"
+        echo ""
+        echo "the output is shown on stdout"
+        exit
+}
+
+if [ $# -ne 1 ]
+then
+        print_usage
+fi
+
+spcfl=$1
+retstring=$(rpmspec --parse $spcfl 2>&1 | head -1)
+firstword=$(echo $retstring | cut -d ":" -f1)
+if [ "$firstword" = "error" ]
+then
+	echo "spec file not ok"
+	echo "$retstring"
+else
+	echo "spec file ok"
+fi
+

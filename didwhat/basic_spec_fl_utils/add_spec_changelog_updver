@@ -1,0 +1,100 @@
+#!/bin/bash
+
+#This script adds an entry at the top of the changelog section of a an rpm
+#spec file.  It extracts the version and release number information from 
+#the spec file fields Version and Release and uses those to generate the 
+#change log
+
+dt_part=$(date +%a" "%b" "%d" "%Y)
+LINE3_OF_CHANGELOG="- License verified\n"
+
+function clean_up {
+    echo "====== Cleaning up ======"
+
+    if [[ -d "$TEMP_SPEC" ]]
+    then
+        rm -rf "$TEMP_SPEC"
+    fi
+}
+trap clean_up EXIT SIGINT SIGTERM
+
+print_usage()
+{
+        echo "Usage:"
+        echo "$0 <spec file> <Name of Author>"
+        echo ""
+        echo "the output is shown on stdout"
+        exit
+}
+
+if [ $# -ne 2 ]
+then
+        print_usage
+fi
+
+spcfl=$1
+#author_name="Neeraj Sallh"
+author_name=$2
+author_email=$(git log -1 --pretty=format:'<%ae>')
+
+#The below grep and regexp are able to extract the release number from a spec file
+#provided the release is in the format "[0-9][0-9]*%{?dist}" or "[0-9][0-9]*[ \t]*$"
+
+#extract the release tag line from the spec file
+relsline=`grep -e "^Release:" $spcfl | grep -e "[0-9][0-9]*%{?dist}" -e "[0-9][0-9]*[ \t]*$"`
+
+#extract the release info
+relnum=$(echo $relsline | awk '{print $2}' | awk 'BEGIN { FS = "%"} {print $1'})
+
+#echo "The relsline is "
+#echo $relsline
+
+#from the release info extract the numerical part and store it in a shell variable
+rel_numerical_part=$(awk -v nrnum_var="$relnum" '
+/^Release:[ \t][ \t]*[0-9][0-9]*%{\?dist}/ {
+        printf ("%s\n", nrnum_var)
+}
+/^Release:[ \t][ \t]*[0-9][0-9]*[ \t]*$/ {
+        printf ("%s\n", nrnum_var)
+}
+' $spcfl )
+
+#echo $rel_numerical_part
+#########################
+
+
+#Store the version number in a variable so that the changelog comment can have that info
+pkgvr=`echo $pdet_line | awk 'BEGIN {FS = ","} {print $2}'`
+if [ -z "$pkgvr" ]
+then
+	pkgvr=`rpmspec -q --qf  "%{version}\n" $spcfl 2>/dev/null | head -1`
+else
+	echo "The environment variable pkgvr is empty"
+fi
+
+#only for debugging
+#echo $pkgvr
+
+LINE2_OF_CHANGELOG="- Update to version $pkgvr"
+
+#You can comment the earlier definition of LINE2_OF_CHANGELOG and use this one 
+#echo $dt_part
+
+TEMP_SPEC=$(mktemp /tmp/tempsp-XXXXXXX)	
+
+#awk -v version_var="$pkgvr" -v dt_var="$dt_part" -v auth_var="$author_part" -v rel_var="$rel_numerical_part" -v line2_chlog="$LINE2_OF_CHANGELOG"  '
+awk -v version_var="$pkgvr" -v dt_var="$dt_part" -v auth_nm="$author_name" -v auth_eml="$author_email" -v rel_var="$rel_numerical_part" -v line2_chlog="$LINE2_OF_CHANGELOG" -v line3_chlog="$LINE3_OF_CHANGELOG"  '
+/^%changelog/ {
+	print ($0)
+	printf ("* %s %s %s - %s-%s\n", dt_var, auth_nm, auth_eml, version_var, rel_var)
+	printf ("%s\n", line2_chlog) 
+	printf ("\n")
+}
+!/^%changelog/ {
+	print ($0)
+}
+'  $spcfl > $TEMP_SPEC
+#echo "$TEMP_SPEC was created"
+#cat $TEMP_SPEC
+mv $TEMP_SPEC $spcfl
+

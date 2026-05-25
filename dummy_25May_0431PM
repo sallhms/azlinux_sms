@@ -4,3 +4,4 @@ The script file name was corrected
 Provided execute permissions to the script file branch_validation
 Added branch name extraction logic to branch_validation
 Corrected the invocation of validate_branch_name function
+debug1
